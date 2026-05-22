@@ -1,0 +1,4 @@
+[2026-02-27 15:45] ONBOARDING COMPLETE
+[2026-02-27 15:45] Technical level: non_tech
+[2026-02-27 15:45] Custom Rules: Chia nhỏ task cực độ, tự động test liên tục
+[2026-02-27 15:45] Ready for first project

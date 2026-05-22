@@ -1,0 +1,17 @@
+{
+    "updated_at": "2026-02-27T15:45:00+07:00",
+    "working_on": {
+        "feature": null,
+        "task": null,
+        "status": "idle"
+    },
+    "pending_tasks": [],
+    "errors_encountered": [],
+    "decisions_made": [
+        {
+            "decision": "Lưu settings cụ thể: non-tech, chia nhỏ task, liên tục review",
+            "reason": "Yêu cầu tùy chỉnh custom rules từ User"
+        }
+    ],
+    "skipped_tests": []
+}
