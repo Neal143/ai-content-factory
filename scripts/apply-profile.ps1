@@ -213,6 +213,12 @@ if ($Action -eq "patch") {
         @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_chain_find }
     )
 
+    # Chain separator (format-agent) - only check when non-default
+    $chainTotal = $p.chain_separator.blank_lines_above + $p.chain_separator.blank_lines_below
+    if ($p.chain_separator.marker -or $chainTotal -gt 0) {
+        $checks += @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_chain_sep_find }
+    }
+
     if ($p.mode -eq "advanced") {
         $checks += @{ File = ".agents/skills/structure-designer/SKILL.md"; Pattern = $pat.structure_designer.sd_total_find }
         $checks += @{ File = ".agents/skills/structure-designer/SKILL.md"; Pattern = $pat.structure_designer.sd_hook_find }
@@ -288,6 +294,14 @@ if ($Action -eq "patch") {
         } else {
             Invoke-Patch $faPath $pat.format_agent.fa_para_sep_find ($pat.format_agent.fa_para_sep_replace_blank -replace '{above}', $p.paragraph_separator.blank_lines_above -replace '{below}', $p.paragraph_separator.blank_lines_below)
         }
+    }
+
+    # Chain separator (format-agent)
+    $chainTotal = $p.chain_separator.blank_lines_above + $p.chain_separator.blank_lines_below
+    if ($p.chain_separator.marker) {
+        Invoke-Patch $faPath $pat.format_agent.fa_chain_sep_find ($pat.format_agent.fa_chain_sep_replace_marker -replace '{marker}', $p.chain_separator.marker -replace '{above}', $p.chain_separator.blank_lines_above -replace '{below}', $p.chain_separator.blank_lines_below)
+    } elseif ($chainTotal -gt 0) {
+        Invoke-Patch $faPath $pat.format_agent.fa_chain_sep_find ($pat.format_agent.fa_chain_sep_replace_blank -replace '{total}', $chainTotal)
     }
 
     # Chain instructions (find/replace in SKILL.md)
