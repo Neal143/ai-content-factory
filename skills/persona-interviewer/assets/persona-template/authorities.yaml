@@ -1,0 +1,20 @@
+# Persona Pack Template — Authority Library
+# Version: v18.0
+
+# Expert registry — thêm experts phù hợp với niche của bạn
+experts: []
+# Template:
+#  - name: "Cal Newport"
+#    field: "Productivity"
+#    credentials: "Giáo sư MIT, tác giả 'Deep Work'"
+#    cascade: "nổi tiếng đến mức Basecamp copy hệ thống của ổng"
+#    topics: ["Deep Work", "Focus"]
+#    used_count: 0
+
+citation_patterns:
+  - "full_intro_cascade"     # Tên + credentials + cascade
+  - "soft_name_drop"         # "Có ông giáo sư..."
+  - "achievement_first"      # Achievement trước, tên sau
+  - "story_based"            # "Tui nhớ có đọc bài..."
+
+diversity_rule: "Không dùng cùng 1 expert quá 2 lần trong 5 bài liên tiếp"

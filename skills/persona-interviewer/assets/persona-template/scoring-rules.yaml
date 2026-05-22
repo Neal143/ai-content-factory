@@ -1,0 +1,40 @@
+# Last update: 05/05/2026 18:10 (GMT+7)
+# Persona Pack Template — Scoring Rules
+# Version: v18.2
+# Custom auto-fail rules và thresholds
+
+scoring:
+  total_points: 130
+  pass_threshold: 105
+
+  sections:
+    voice_dna:
+      max_points: 30
+      auto_fail_items:
+        - rule: "pronoun_self_violation"
+          description: "Dùng sai đại từ xưng hô bản thân"
+        - rule: "pronoun_audience_violation"
+          description: "Dùng sai đại từ gọi audience"
+        - rule: "filler_missing"
+          description: "Số fillers dưới mức tối thiểu"
+
+    anti_ai:
+      max_points: 20
+      # Universal — không custom
+
+    content_quality:
+      max_points: 60
+      auto_fail_items:
+        - rule: "engagement_gap_exceeded"
+          description: "Quá nhiều câu liên tiếp không engage reader"
+        - rule: "language_purity_violated"
+          description: "Trộn lẫn ngôn ngữ (ngoài proper nouns)"
+        - rule: "story_fabricated"
+          description: "[SAS v18.2] Bịa chuyện cá nhân/observed không có trong vault. CHỈ dùng vault stories hoặc famous world stories."
+        - rule: "framework_uncredited"
+          description: "[KCS v18.2] Nhắc framework/formula mà không có credibility intro (ai tạo, ai dùng, quy mô)"
+
+    poetic_mastery:
+      max_points: 20
+      # Universal — không custom
+# FILE_KEY: PENDING

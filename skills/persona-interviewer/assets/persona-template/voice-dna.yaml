@@ -1,0 +1,56 @@
+# Last update: 05/05/2026 18:10 (GMT+7)
+# Persona Pack Template — Voice DNA
+# Version: v19.0
+# Instructions: File này được copy vào personas/[user-name]/ khi onboarding
+
+voice:
+  # --- Đại từ nhân xưng ---
+  pronouns:
+    self: ""              # Ví dụ: "tui", "tôi", "mình", "anh", "chị"
+    audience: ""          # Ví dụ: "anh em", "các bạn", "mọi người", "bạn"
+    expert_after_intro: ""  # Ví dụ: "ổng/bả", "anh ấy/chị ấy", "họ"
+    banned: []            # Danh sách đại từ KHÔNG được dùng
+
+  # --- Giọng điệu ---
+  tone:
+    primary: ""           # confident-direct | warm-friendly | academic | casual | motivational
+    personality: ""       # Mô tả ngắn: "đàn anh nói thẳng", "người bạn chia sẻ", "mentor truyền cảm hứng"
+    language: "vi"        # vi | en | mixed
+    formality: "casual"   # formal | semi-formal | casual
+
+  # --- Fillers (Từ lấp) ---
+  fillers:
+    enabled: true
+    min_per_post: 0
+    max_per_post: 0
+    library: []           # Ví dụ: ["há há", "nha", "cơ mà"]
+
+  # --- Parentheticals (Ngoặc đơn) ---
+  parentheticals:
+    enabled: true
+    min_per_post: 0
+    max_per_post: 0
+    library: []           # Ví dụ: ["(và đây mới là phần hay)", "(tin tui đi)"]
+
+  # --- Reader Engagement ---
+  engagement:
+    frequency: "every_2_3_sentences"  # every_1_2 | every_2_3 | every_3_4
+    patterns: []          # Ví dụ: ["anh em", "bạn thấy không"]
+    max_gap: 3            # Auto-fail nếu > N câu không engage
+
+  # --- Anti-AI Patterns ---
+  anti_patterns:
+    no_dash: true              # Không dấu gạch ngang connector (X - Y - Z)
+    no_staccato: true          # Không câu cụt liên tiếp (Micro-Staccato v19.0)
+    no_anaphora: true          # Không 3+ câu cùng mở đầu (Anaphora Overload v19.0)
+    no_repetitive: true        # Không cấu trúc lặp (X là Y x3)
+    language_purity: true      # 100% ngôn ngữ target
+    banned_words: []           # Từ bị cấm (thường là English words đan xen)
+
+  # --- Writing Techniques ---
+  techniques:
+    killer_statements: true    # Bắt buộc 1-2 killer statements
+    concrete_imagery_min: 3    # Min số hình ảnh cụ thể
+    redefinition: true         # Bắt buộc tái định nghĩa 1 khái niệm
+    narrative_schedule: true   # Dùng narrative thay vì numbered lists
+# FILE_KEY: PENDING
