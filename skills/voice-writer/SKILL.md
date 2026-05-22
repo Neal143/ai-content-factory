@@ -81,7 +81,7 @@ Viết lần lượt 5 sections. Mỗi section:
 | **Vivid Extrapolation** | Tuân thủ 2 kịch bản tại writing-rules.md Section 6. Cấm ẩn dụ sáo rỗng |
 | **Anti-AI** | Quét 10 patterns (anti-ai-patterns.md) + blacklist (english-blacklist.md). Đặc biệt: Micro-Staccato (2+ câu ≤8 từ kề nhau) + Anaphora (3+ câu cùng cụm mở đầu) |
 | **Killer Statements** | ≥ 2 câu khẳng định mạnh, đáng nhớ mỗi bài |
-| **Paragraph** | 3-5 câu/paragraph. Không viết paragraph 1 câu (trừ Hook câu đầu tiên). Không viết paragraph > 5 câu. LƯU Ý: Đoạn mới CHỈ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`. |
+| **Paragraph** | 8-10 câu/paragraph. Không viết paragraph 1 câu (trừ Hook câu đầu tiên). Không viết paragraph > 10 câu. LƯU Ý: Đoạn mới CHỈ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`. |
 | **Chain** | BẮT BUỘC bấm ENTER (xuống dòng) để ngắt câu thành các chuỗi 1-2 câu/dòng. Có 3-5 chuỗi dài (3-5 câu/dòng) toàn bài. Xem writing-rules.md Section 9 |
 
 **Bảng biến thiên JTBD (Deconstructed):**
