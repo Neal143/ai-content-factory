@@ -1,0 +1,14 @@
+# _audience_index.yaml
+# Single Source of Truth — Toàn bộ Audience đã tồn tại trong Vault
+# Được tạo lần đầu bởi: persona-interviewer (Câu 10 Bước 1)
+# Được cập nhật bởi: persona-interviewer, book-audience-matcher
+
+audiences:
+  - id: ""                        # LLM tự sinh — English snake_case, 3-6 từ
+    file_ref: "[[]]"              # Wikilink khớp chính xác với tên file vật lý
+    audience_level: ""            # big | little | micro
+    audience_Job_performer: ""
+    audience_main_job: ""
+    audience_circumstance: ""
+    parent_audience: []    # ← Mảng rỗng (đúng chuẩn DAG)
+    aliases: []

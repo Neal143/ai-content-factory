@@ -1,0 +1,8 @@
+# === WHITELIST MODE ===
+# Chặn toàn bộ mọi thứ ở thư mục gốc
+/*
+
+# Chỉ cho phép theo dõi .agents và chính file .gitignore
+!.agents/
+!.agents/**
+!.gitignore

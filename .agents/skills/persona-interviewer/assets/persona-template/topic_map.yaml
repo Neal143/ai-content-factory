@@ -1,0 +1,8 @@
+# BẢN ĐỒ TOPIC
+# id: English snake_case — dùng cho AI matching, script calls, frontmatter tags
+# label: Tiếng Việt đầy đủ dấu — CHỈ dùng cho human readability, KHÔNG dùng để match
+topics:
+  - id: "anchor_topic_english"
+    label: "Tên chủ đề tiếng Việt đầy đủ dấu"
+    pillar_parents: ["anchor_pillar"]
+    belongs_to_audience: ["[[Anchor_Audience]]"]

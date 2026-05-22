@@ -1,0 +1,35 @@
+# Persona Pack Template — Content Pillars
+# Version: v18.0
+
+pillars:
+  pillar_1:
+    name: ""
+    theme: ""
+
+    insights: []
+    target_emotion: ""       # empowerment | aspiration | relief | connection
+
+  pillar_2:
+    name: ""
+    theme: ""
+
+    insights: []
+    target_emotion: ""
+
+  pillar_3:
+    name: ""
+    theme: ""
+
+    insights: []
+    target_emotion: ""
+
+  pillar_4:
+    name: ""
+    theme: ""
+
+    insights: []
+    target_emotion: ""
+
+rotation_rules:
+  weekly: "Mỗi tuần ít nhất 2 pillars khác nhau"
+  consecutive_limit: 2        # Không viết cùng 1 pillar quá N bài liên tiếp

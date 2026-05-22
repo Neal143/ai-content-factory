@@ -1,0 +1,20 @@
+# Persona Pack Template — Profile
+# Version: v18.0
+# Instructions: File này được copy vào personas/[user-name]/ khi onboarding
+
+personal:
+  name: ""                     # Tên thật hoặc bút danh
+  nickname: ""                 # Tên rút gọn dùng trong bài
+  title: ""                    # Ví dụ: "Content Creator", "Startup Founder"
+  experience: ""               # Ví dụ: "10+ năm ngành marketing"
+  signature_phrase: ""         # Câu nói đặc trưng
+
+authority_claims: []           # Những credentials/thành tựu có thể dùng
+# Ví dụ:
+# - "10 năm kinh nghiệm content marketing"
+# - "Đã coaching 1000+ học viên"
+
+content_approach:
+  core_belief: ""              # Ví dụ: "Soul over Template"
+  method: ""                   # Ví dụ: "Viết theo DNA, không viết theo template"
+  unique_value: ""             # Ví dụ: "Nói thẳng những gì người khác ngại nói"

@@ -1,0 +1,52 @@
+{
+  "insights": [
+    {
+      "headline": "sợ AI thay thế con thiếu kỹ năng",
+      "insight_type": "fear",
+      "raw_payload": "Sợ AI sẽ thay thế con trong tương lai vì con thiếu những kỹ năng 'đúng'.",
+      "llm_explain": "Đây là nỗi sợ hệ thống — không đơn thuần là lo lắng về công nghệ, mà là nỗi lo về việc con sẽ không đủ năng lực thích nghi và tồn tại có ý nghĩa trong một thế giới bị AI chi phối. Cha mẹ cảm thấy mình phải chuẩn bị cho con ngay từ bây giờ nhưng không biết kỹ năng 'đúng' là gì."
+    },
+    {
+      "headline": "sợ lãng phí giai đoạn vàng của con",
+      "insight_type": "fear",
+      "raw_payload": "Sợ đang lãng phí giai đoạn quan trọng nhất của con mà không biết.",
+      "llm_explain": "Nỗi sợ này chứa đựng sự bất lực kép: vừa không biết mình đang làm sai ở đâu, vừa lo lắng rằng khi nhận ra thì đã quá muộn. Giai đoạn 0-7 tuổi được nhận thức là 'không thể hoàn tác' — điều này tạo ra áp lực cực lớn lên cha mẹ."
+    },
+    {
+      "headline": "muốn làm cha mẹ đủ tốt không bỏ lỡ giai đoạn vàng",
+      "insight_type": "desire",
+      "raw_payload": "Trở thành người cha/mẹ đủ tốt — không hoàn hảo, nhưng đủ để con không bị bỏ lỡ giai đoạn vàng.",
+      "llm_explain": "Đây là khao khát 'đủ' chứ không phải 'hoàn hảo' — một tư duy rất trưởng thành và thực tế. Cha mẹ không muốn là siêu nhân, họ chỉ muốn đủ tự tin rằng mình không làm hỏng những thứ quan trọng nhất. Đây là entry point cảm xúc cực kỳ mạnh để tiếp cận nhóm đối tượng này."
+    },
+    {
+      "headline": "màn hình áp lực học sớm làm hại con",
+      "insight_type": "pain_point",
+      "raw_payload": "Màn hình, mạng xã hội, áp lực học sớm đang làm hại con mà không nhận ra.",
+      "llm_explain": "Insight này mang tính 'myth-busting' — cha mẹ đang làm những thứ được coi là bình thường (cho con xem tablet, cho học sớm) nhưng theo triết lý Steiner/Waldorf đây là những can thiệp sai giai đoạn. Sức nặng nằm ở 'mà không nhận ra' — họ đang gây hại mà không biết."
+    },
+    {
+      "headline": "muốn con hạnh phúc ý nghĩa dù thế giới thay đổi",
+      "insight_type": "desire",
+      "raw_payload": "Muốn con có cuộc đời hạnh phúc và có ý nghĩa — dù thế giới thay đổi thế nào.",
+      "llm_explain": "Đây là khao khát siêu việt và bất biến — không gắn với bất kỳ phương pháp cụ thể nào. Triết lý Steiner hướng đến việc nuôi dưỡng con người toàn diện, không chỉ học giỏi hay kiếm tiền giỏi — điều này khớp hoàn toàn với nỗi khao khát này của cha mẹ."
+    },
+    {
+      "headline": "không chắc làm đúng không có thời gian sửa sai",
+      "insight_type": "pain_point",
+      "raw_payload": "Không chắc mình đang làm đúng, và không có nhiều thời gian để sửa sai.",
+      "llm_explain": "Đây là nỗi đau kép: sự không chắc chắn kết hợp với áp lực thời gian. Cha mẹ cần một hệ thống hoặc triết lý đáng tin cậy để làm chỗ dựa — và Steiner/khoa học thần kinh cung cấp chính xác điều đó."
+    },
+    {
+      "headline": "cảm giác đang làm đúng đi đúng hướng",
+      "insight_type": "desire",
+      "raw_payload": "Cảm giác mình đang làm đúng, đang đi đúng hướng.",
+      "llm_explain": "Cha mẹ không chỉ muốn làm đúng — họ muốn CẢM GIÁC mình đang làm đúng. Đây là nhu cầu về sự xác nhận và an tâm nội tâm. Nội dung dựa trên khoa học và triết lý có thể cung cấp 'neo' tâm lý này cho họ."
+    },
+    {
+      "headline": "quá bận quá mệt không đủ hiện diện cho con",
+      "insight_type": "pain_point",
+      "raw_payload": "Quá bận, quá mệt nên không dành đủ sự hiện diện cho con.",
+      "llm_explain": "Đây là rào cản thực tế nhất — không phải thiếu tình yêu, không phải thiếu kiến thức, mà là thiếu năng lượng và thời gian. Kể chuyện là công cụ giao tiếp cảm xúc cực hiệu quả trong thời gian ngắn — ngay cả 10 phút kể chuyện trước giờ ngủ cũng tạo ra kết nối sâu."
+    }
+  ]
+}
