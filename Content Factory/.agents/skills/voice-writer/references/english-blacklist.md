@@ -21,4 +21,4 @@ Tuyệt đối KHÔNG được dùng các từ tiếng Anh sau trong bài viết
 
 **Ngoại lệ**: Tên riêng (Facebook, Google) và thuật ngữ chuyên ngành không có từ Việt phổ biến (marketing, startup) thì được phép giữ nguyên.
 
-> FILE_KEY: ae5426b3
+> FILE_KEY: 09d16a52
