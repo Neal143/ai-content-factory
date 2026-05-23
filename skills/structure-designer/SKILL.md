@@ -16,15 +16,15 @@ Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất:
 4. `Knowledge/Information/Data Atoms` — Insight/Solution/Concept từ DIKW
 
 ## 2. Outline 5 Sections Bắt Buộc
-**Story PHẢI đứng trước Deep Dive. Pivot đứng sau Deep Dive.** Phân bổ tổng 1500-1800 từ (KHÔNG quá 1800):
+**Story PHẢI đứng trước Deep Dive. Pivot đứng sau Deep Dive.** Phân bổ tổng 1300-1800 từ (KHÔNG quá 1800):
 
 | Section | Mục đích | Độ dài | Word Count | VTS Value Thread | Emotional Arc | Atom Injection |
 |---|---|---|---|---|---|---|
-| **Hook** | Gây sốc/tò mò | 1-3 câu | 80-120 | Value Promise mạnh nhất | Empathy | Không giới hạn |
-| **Story** | Đồng cảm với nỗi đau độc giả | 3-5 câu | 200-300 | Insight Identification | Empathy | Wisdom + Information |
-| **Deep Dive** | Đào sâu giá trị cốt lõi | 60% bài | 700-900 | Pain Avoidance xen Value Promise | Tension → Insight | Knowledge + Data (ưu tiên) |
-| **Pivot** | Xoay chiều, thách thức nhận thức | 3-5 câu | 200-300 | Social Proof + Value Promise | Action | Wisdom |
-| **Closing** | Kết bài mạnh | 2-4 câu | 100-150 | Result Preview / Personal Commitment | Hope | N/A |
+| **Hook** | Gây sốc/tò mò | 1-3 câu | 78-108 | Value Promise mạnh nhất | Empathy | Không giới hạn |
+| **Story** | Đồng cảm với nỗi đau độc giả | 3-5 câu | 208-288 | Insight Identification | Empathy | Wisdom + Information |
+| **Deep Dive** | Đào sâu giá trị cốt lõi | 60% bài | 676-936 | Pain Avoidance xen Value Promise | Tension → Insight | Knowledge + Data (ưu tiên) |
+| **Pivot** | Xoay chiều, thách thức nhận thức | 3-5 câu | 208-288 | Social Proof + Value Promise | Action | Wisdom |
+| **Closing** | Kết bài mạnh | 2-4 câu | 130-180 | Result Preview / Personal Commitment | Hope | N/A |
 
 **Ghi chú Atom Mapping:**
 - Wisdom atoms (Personal Stories) → Story hoặc Pivot (chỗ cần cảm xúc sâu).

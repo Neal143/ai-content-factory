@@ -95,12 +95,12 @@ if ($Action -eq "validate") {
     # --- Min/max range validation ---
     foreach ($field in @("sentences_per_paragraph", "sentences_per_normal_chain",
                          "sentences_per_long_chain", "long_chains_per_article")) {
-        if ($null -eq $p.$field) { continue }  # B6/B7 can be null
+        if ($null -eq $p.$field) { continue }  # B8/B9 can be null
         $err = Test-Range $p.$field $field
         if ($err) { $errors += $err }
     }
 
-    # --- R1: B1 != B2 ---
+    # --- R1: B1 != B3 ---
     $b1 = $p.section_separator; $b2 = $p.paragraph_separator
     if (-not $b1.marker -and -not $b2.marker) {
         $b1Total = $b1.blank_lines_above + $b1.blank_lines_below
@@ -112,7 +112,7 @@ if ($Action -eq "validate") {
         $errors += "[FAIL] R1: Section marker '$($b1.marker)' conflicts with paragraph marker"
     }
 
-    # --- R2: B2 != B4 ---
+    # --- R2: B3 != B6 ---
     $b4 = $p.chain_separator
     if (-not $b2.marker -and -not $b4.marker) {
         $b2Total = $b2.blank_lines_above + $b2.blank_lines_below
@@ -124,19 +124,19 @@ if ($Action -eq "validate") {
         $errors += "[FAIL] R2: Paragraph marker '$($b2.marker)' conflicts with chain marker"
     }
 
-    # --- R3: B3.max >= B5.max ---
+    # --- R3: B5.max >= B7.max ---
     if ($p.sentences_per_paragraph.max -lt $p.sentences_per_normal_chain.max) {
         $errors += "[FAIL] R3: sentences_per_paragraph.max ($($p.sentences_per_paragraph.max)) < sentences_per_normal_chain.max ($($p.sentences_per_normal_chain.max))"
     }
 
-    # --- R4: B3.max >= B6.max ---
+    # --- R4: B5.max >= B8.max ---
     if ($null -ne $p.sentences_per_long_chain) {
         if ($p.sentences_per_paragraph.max -lt $p.sentences_per_long_chain.max) {
             $errors += "[FAIL] R4: sentences_per_paragraph.max ($($p.sentences_per_paragraph.max)) < sentences_per_long_chain.max ($($p.sentences_per_long_chain.max))"
         }
     }
 
-    # --- R5: B6.min > B5.max ---
+    # --- R5: B8.min > B7.max ---
     if ($null -ne $p.sentences_per_long_chain) {
         if ($p.sentences_per_long_chain.min -le $p.sentences_per_normal_chain.max) {
             $errors += "[FAIL] R5: sentences_per_long_chain.min ($($p.sentences_per_long_chain.min)) must be > sentences_per_normal_chain.max ($($p.sentences_per_normal_chain.max))"
@@ -145,7 +145,7 @@ if ($Action -eq "validate") {
 
     # --- R6, R7, R8: advanced mode only ---
     if ($p.mode -eq "advanced") {
-        # R6: A4.min >= sum(A5.min)
+        # R6: A2.min >= sum(A3.min)
         $sumMin = 0
         foreach ($sec in @("Hook", "Story", "Deep Dive", "Pivot", "Closing")) {
             $sumMin += $p.word_count_per_section.$sec.min
@@ -154,7 +154,7 @@ if ($Action -eq "validate") {
             $errors += "[FAIL] R6: word_count_total.min ($($p.word_count_total.min)) < total section min ($sumMin)"
         }
 
-        # R7: A4.max <= sum(A5.max) * 1.1
+        # R7: A2.max <= sum(A3.max) * 1.1
         $sumMax = 0
         foreach ($sec in @("Hook", "Story", "Deep Dive", "Pivot", "Closing")) {
             $sumMax += $p.word_count_per_section.$sec.max
@@ -164,7 +164,7 @@ if ($Action -eq "validate") {
             $errors += "[FAIL] R7: word_count_total.max ($($p.word_count_total.max)) > total section max * 1.1 ($ceiling)"
         }
 
-        # R8: A6.max <= A4.max
+        # R8: A4.max <= A2.max
         if ($p.word_count_per_paragraph.max -gt $p.word_count_total.max) {
             $errors += "[FAIL] R8: word_count_per_paragraph.max ($($p.word_count_per_paragraph.max)) > word_count_total.max ($($p.word_count_total.max))"
         }

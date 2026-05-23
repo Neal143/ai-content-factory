@@ -7,7 +7,7 @@ last_update: 23/05/2026 (GMT+7)
 # Profile Selector
 
 > File: profile-selector/SKILL.md
-> Last update: 19/05/2026 15:41 (GMT+7)
+> Last update: 23/05/2026 (GMT+7)
 > Vai trò: Chọn chế độ viết, tạo profile, validate constraints, patch prompt files.
 > Sử dụng khi: Workflow content-post.md gọi ở Bước 2 (lần chạy mới). KHÔNG chạy khi resume.
 > Output: `profiles/active.json` đã tạo + prompt files đã patch (nếu Basic/Advanced).
@@ -26,7 +26,7 @@ powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Ac
 Chọn chế độ viết:
 1️⃣ Auto — Viết theo cấu hình mặc định
 2️⃣ Thử nghiệm Basic — Tùy chỉnh cấu trúc (separator, số câu)
-3️⃣ Thử nghiệm Nâng cao — Tùy chỉnh toàn diện (+ heading, word count)
+3️⃣ Thử nghiệm Nâng cao — Tùy chỉnh toàn diện (+ word count)
 ```
 
 ## Bước 3: Xử lý theo chế độ
@@ -61,41 +61,54 @@ Chọn chế độ viết:
 
 ### 3C — Nâng cao
 
-Tương tự Basic nhưng hỏi thêm 5 biến (A1–A6), set `"mode":"advanced"`.
+Tương tự Basic nhưng hỏi thêm 4 biến (A1–A4), set `"mode":"advanced"`.
 
 ---
 
 **Danh sách câu hỏi Basic (B1–B10):**
 ```text
+══ SECTION ══
 [B1] Phân tách giữa các section:
-     — Marker hiển thị giữa các section (mặc định: không có, chỉ dòng trống. Nhập ký hiệu nếu muốn, VD: ———, ***): ___
-     — Số dòng trống phía trên marker (mặc định: 1): ___
-     — Số dòng trống phía dưới marker (mặc định: 1): ___
-[B2] Phân tách giữa các đoạn văn:
-     — Marker hiển thị giữa các đoạn (mặc định: không có): ___
-     — Số dòng trống phía trên (mặc định: 1): ___
-     — Số dòng trống phía dưới (mặc định: 0): ___
-[B3] Số câu mỗi đoạn (mặc định: 8-10): ___
-[B4] Phân tách giữa các chuỗi câu trong đoạn:
-     — Marker hiển thị giữa các chuỗi (mặc định: không có): ___
-     — Số dòng trống phía trên (mặc định: 0): ___
-     — Số dòng trống phía dưới (mặc định: 0): ___
-[B5] Số câu mỗi chuỗi bình thường (mặc định: 1-2): ___
-[B6] Số câu mỗi chuỗi dài (mặc định: 3-5): ___
-[B7] Số chuỗi dài mỗi bài (mặc định: 3-5): ___
-[B8] Bài viết có title trong output cuối? (mặc định: không): ___
-[B9] Section có heading trong output cuối? (mặc định: không): ___
-[B10] Đoạn có heading trong output cuối? (mặc định: không): ___
+     — Marker (mặc định: không có. VD: ———, ***): ___
+     — Dòng trống phía trên (mặc định: 1): ___
+     — Dòng trống phía dưới (mặc định: 1): ___
+[B2] Section có heading? (mặc định: không): ___
+     — Nếu có — dòng trống phía trên heading (mặc định: 1): ___
+     — Nếu có — dòng trống phía dưới heading (mặc định: 0): ___
+     💡 Khi cả B1 marker lẫn B2 heading cùng bật: [section trước] → separator → heading → [section sau]. Spacing cộng dồn.
+
+══ PARAGRAPH ══
+[B3] Phân tách giữa các đoạn văn:
+     — Marker (mặc định: không có): ___
+     — Dòng trống phía trên (mặc định: 1): ___
+     — Dòng trống phía dưới (mặc định: 0): ___
+[B4] Đoạn có heading? (mặc định: không): ___
+     — Nếu có — dòng trống phía trên heading (mặc định: 1): ___
+     — Nếu có — dòng trống phía dưới heading (mặc định: 0): ___
+     💡 Khi cả B3 marker lẫn B4 heading cùng bật: [đoạn trước] → separator → heading → [đoạn sau]. Spacing cộng dồn.
+[B5] Số câu mỗi đoạn (mặc định: 8-10): ___
+     💡 2 câu dưới 4 từ liền nhau được tính là 1 câu.
+
+══ CHAIN ══
+[B6] Phân tách giữa các chuỗi câu trong đoạn:
+     — Marker (mặc định: không có): ___
+     — Dòng trống phía trên (mặc định: 0): ___
+     — Dòng trống phía dưới (mặc định: 0): ___
+[B7] Số câu mỗi chuỗi bình thường (mặc định: 1-2): ___
+[B8] Số câu mỗi chuỗi dài (mặc định: 3-5): ___
+[B9] Số chuỗi dài mỗi bài (mặc định: 3-5): ___
+
+══ HIỂN THỊ ══
+[B10] Bài viết có title trong output cuối? (mặc định: không): ___
 ```
 
-**Câu hỏi bổ sung Nâng cao (A1–A6):**
+**Câu hỏi bổ sung Nâng cao (A1–A4):**
 ```text
-[A1] Ngữ cảnh sử dụng chuỗi dài: ___
-[A2] Spacing heading section — dòng trống trên/dưới (ví dụ: 1-0): ___
-[A3] Spacing heading đoạn — dòng trống trên/dưới (ví dụ: 1-0): ___
-[A4] Số từ toàn bài (ví dụ: 1500-1800, dung sai ±10%): ___
-[A5] Số từ mỗi section: ___
-[A6] Số từ tối đa mỗi đoạn: ___
+[A1] Ngữ cảnh sử dụng chuỗi dài (mặc định: tạo chiều sâu cảm xúc hoặc lập luận phức tạp): ___
+[A2] Số từ toàn bài (mặc định: 1300-1800, dung sai ±10%): ___
+[A3] Phân bổ từ mỗi section — nhập % hoặc số tuyệt đối (mặc định: 6/16/52/16/10 %): ___
+     💡 Thứ tự: Hook / Story / Deep Dive / Pivot / Closing. Nếu nhập %, agent tính min-max dựa trên A2. Tổng phải = 100%.
+[A4] Số từ tối đa mỗi đoạn (mặc định: 400): ___
 ```
 
 
