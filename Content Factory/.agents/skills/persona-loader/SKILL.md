@@ -6,7 +6,7 @@ last_update: 06/05/2026 22:00 (GMT+7)
 
 # Persona Loader (Phase 4.5)
 
-> EXECUTION_KEY: 30fbe7a2
+> EXECUTION_KEY: 70682abd
 
 Nạp 3 file persona YAML + JTBD từ blackboard, compile thành Persona Pack, ghi vào run folder.
 
