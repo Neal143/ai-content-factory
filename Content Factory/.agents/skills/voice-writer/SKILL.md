@@ -37,7 +37,7 @@ Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
 
 ### Bước 3: Viết bài section-by-section
 
-> ⛔ **TUYỆT ĐỐI KHÔNG viết toàn bộ 1500-1800 từ trong 1 lượt.**
+> ⛔ **TUYỆT ĐỐI KHÔNG viết toàn bộ 1300-1800 từ trong 1 lượt.**
 
 **3.0 — Word Budget:**
 Đọc word count từ Outline (Phase 4). Nếu không có, dùng mặc định:
@@ -65,7 +65,7 @@ Viết lần lượt 5 sections. Mỗi section:
 - Trước khi viết section tiếp, đọc lại section vừa viết để đảm bảo transition tự nhiên
 
 **3.2 — Kiểm tra toàn bài:**
-Đọc lại `05-draft.md` → kiểm tra transitions + tổng word count (mục tiêu: 1500-1800 từ, ưu tiên ngữ nghĩa hơn con số tuyệt đối).
+Đọc lại `05-draft.md` → kiểm tra transitions + tổng word count (mục tiêu: 1300-1800 từ, ưu tiên ngữ nghĩa hơn con số tuyệt đối).
 
 **Constraints áp dụng cho MỖI section:**
 
