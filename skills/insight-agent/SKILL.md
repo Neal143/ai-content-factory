@@ -6,7 +6,7 @@ last_update: 05/05/2026 13:13 (GMT+7)
 
 # Insight Agent Skill (Phase 2)
 
-> EXECUTION_KEY: e70d43bf
+> EXECUTION_KEY: ac270e14
 
 ## Điều kiện Đầu vào
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất 2 khối:
