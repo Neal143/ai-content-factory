@@ -67,8 +67,8 @@ Tương tự Basic nhưng hỏi thêm 5 biến (A1–A6), set `"mode":"advanced"
 
 **Danh sách câu hỏi Basic (B1–B10):**
 ```text
-[B1] Phân tách giữa các phần (Hook ↔ Story ↔ Deep Dive...):
-     — Marker hiển thị giữa các phần (mặc định: không có, chỉ dòng trống. Nhập ký hiệu nếu muốn, VD: ———, ***): ___
+[B1] Phân tách giữa các section:
+     — Marker hiển thị giữa các section (mặc định: không có, chỉ dòng trống. Nhập ký hiệu nếu muốn, VD: ———, ***): ___
      — Số dòng trống phía trên marker (mặc định: 1): ___
      — Số dòng trống phía dưới marker (mặc định: 1): ___
 [B2] Phân tách giữa các đoạn văn:
@@ -94,7 +94,7 @@ Tương tự Basic nhưng hỏi thêm 5 biến (A1–A6), set `"mode":"advanced"
 [A2] Spacing heading section — dòng trống trên/dưới (ví dụ: 1-0): ___
 [A3] Spacing heading đoạn — dòng trống trên/dưới (ví dụ: 1-0): ___
 [A4] Số từ toàn bài (ví dụ: 1500-1800): ___
-[A5] Số từ mỗi phần — Hook/Story/Deep Dive/Pivot/Closing: ___
+[A5] Số từ mỗi section: ___
 [A6] Số từ tối đa mỗi đoạn: ___
 ```
 
