@@ -1,7 +1,7 @@
 ---
 name: Profile Selector
 description: Chọn chế độ viết (Auto/Basic/Nâng cao), validate constraints, patch prompt files.
-last_update: 19/05/2026 15:41 (GMT+7)
+last_update: 23/05/2026 (GMT+7)
 ---
 
 # Profile Selector
@@ -67,22 +67,25 @@ Tương tự Basic nhưng hỏi thêm 5 biến (A1–A6), set `"mode":"advanced"
 
 **Danh sách câu hỏi Basic (B1–B10):**
 ```text
-[B1] Cách tách phần — marker (mặc định: ⁂, để trống = chỉ dòng trống): ___
-[B1] Dòng trống phía trên marker: ___
-[B1] Dòng trống phía dưới marker: ___
-[B2] Cách tách đoạn — marker (để trống = không dùng): ___
-[B2] Dòng trống phía trên: ___
-[B2] Dòng trống phía dưới: ___
-[B3] Số câu mỗi đoạn (ví dụ: 3-5): ___
-[B4] Cách tách chuỗi câu — marker (để trống = không dùng): ___
-[B4] Dòng trống phía trên: ___
-[B4] Dòng trống phía dưới: ___
-[B5] Số câu mỗi chuỗi bình thường (ví dụ: 3-5): ___
-[B6] Số câu mỗi chuỗi dài (ví dụ: 6-8): ___
-[B7] Số chuỗi dài mỗi bài (ví dụ: 0-2): ___
-[B8] Bài viết có title trong output cuối? (yes/no): ___
-[B9] Section có heading trong output cuối? (yes/no): ___
-[B10] Đoạn có heading trong output cuối? (yes/no): ___
+[B1] Phân tách giữa các phần (Hook ↔ Story ↔ Deep Dive...):
+     — Marker hiển thị giữa các phần (mặc định: không có, chỉ dòng trống. Nhập ký hiệu nếu muốn, VD: ———, ***): ___
+     — Số dòng trống phía trên marker (mặc định: 1): ___
+     — Số dòng trống phía dưới marker (mặc định: 1): ___
+[B2] Phân tách giữa các đoạn văn:
+     — Marker hiển thị giữa các đoạn (mặc định: không có): ___
+     — Số dòng trống phía trên (mặc định: 1): ___
+     — Số dòng trống phía dưới (mặc định: 0): ___
+[B3] Số câu mỗi đoạn (mặc định: 8-10): ___
+[B4] Phân tách giữa các chuỗi câu trong đoạn:
+     — Marker hiển thị giữa các chuỗi (mặc định: không có): ___
+     — Số dòng trống phía trên (mặc định: 0): ___
+     — Số dòng trống phía dưới (mặc định: 0): ___
+[B5] Số câu mỗi chuỗi bình thường (mặc định: 1-2): ___
+[B6] Số câu mỗi chuỗi dài (mặc định: 3-5): ___
+[B7] Số chuỗi dài mỗi bài (mặc định: 3-5): ___
+[B8] Bài viết có title trong output cuối? (mặc định: không): ___
+[B9] Section có heading trong output cuối? (mặc định: không): ___
+[B10] Đoạn có heading trong output cuối? (mặc định: không): ___
 ```
 
 **Câu hỏi bổ sung Nâng cao (A1–A6):**
