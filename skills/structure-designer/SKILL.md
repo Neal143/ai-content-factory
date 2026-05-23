@@ -6,7 +6,7 @@ last_update: 04/05/2026 16:15 (GMT+7)
 
 # Structure Designer (Phase 4)
 
-> EXECUTION_KEY: fa031759
+> EXECUTION_KEY: df46e90b
 
 ## 1. Input Variables
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất:

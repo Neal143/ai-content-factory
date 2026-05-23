@@ -93,7 +93,7 @@ Tương tự Basic nhưng hỏi thêm 5 biến (A1–A6), set `"mode":"advanced"
 [A1] Ngữ cảnh sử dụng chuỗi dài: ___
 [A2] Spacing heading section — dòng trống trên/dưới (ví dụ: 1-0): ___
 [A3] Spacing heading đoạn — dòng trống trên/dưới (ví dụ: 1-0): ___
-[A4] Số từ toàn bài (ví dụ: 1500-1800): ___
+[A4] Số từ toàn bài (ví dụ: 1500-1800, dung sai ±10%): ___
 [A5] Số từ mỗi section: ___
 [A6] Số từ tối đa mỗi đoạn: ___
 ```

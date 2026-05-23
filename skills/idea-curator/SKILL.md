@@ -5,7 +5,7 @@ description: Skill Phase 1 — Phân tích topic, tìm góc nhìn contrarian và
 
 # Idea Curator (Phase 1)
 
-> EXECUTION_KEY: d8f23059
+> EXECUTION_KEY: d7f3a85e
 
 ## Điều kiện Đầu vào
 1. **`topic`**: ID chủ đề bài viết (String).
