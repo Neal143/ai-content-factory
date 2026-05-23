@@ -1,7 +1,7 @@
 ---
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
-last_update: 04/05/2026 16:15 (GMT+7)
+last_update: 23/05/2026 16:15 (GMT+7)
 ---
 
 # Voice Writer (Phase 5)
@@ -65,7 +65,7 @@ Viết lần lượt 5 sections. Mỗi section:
 - Trước khi viết section tiếp, đọc lại section vừa viết để đảm bảo transition tự nhiên
 
 **3.2 — Kiểm tra toàn bài:**
-Đọc lại `05-draft.md` → kiểm tra transitions + tổng word count (1500-1800).
+Đọc lại `05-draft.md` → kiểm tra transitions + tổng word count (mục tiêu: 1500-1800 từ, ưu tiên ngữ nghĩa hơn con số tuyệt đối).
 
 **Constraints áp dụng cho MỖI section:**
 

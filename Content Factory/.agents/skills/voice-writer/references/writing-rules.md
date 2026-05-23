@@ -58,7 +58,7 @@ Khi nhắc expert từ `authorities.yaml`:
 - Tuân thủ `diversity_rule` (không lặp expert quá 2 lần trong 5 bài).
 
 ## 8. Word Count
-Tổng bài viết: 1500-1800 từ. KHÔNG quá 1800 từ.
+Mục tiêu: 1500-1800 từ. Ưu tiên chất lượng ngữ nghĩa — nếu lệch nhẹ (±10%) mà mạch văn mạch lạc, KHÔNG cắt xén hay nhồi câu vô hồn để ép số.
 
 ## 9. Chain Structure — Nhịp câu trong đoạn
 Mỗi paragraph gồm 3-5 câu tổng cộng. Chia đoạn thành các "chuỗi câu" (chain) bằng cách xuống dòng (newline) trong cùng 1 đoạn. TUYỆT ĐỐI KHÔNG viết liền một mạch. BẮT BUỘC bấm ENTER (xuống dòng) để tạo chuỗi. Mỗi chuỗi bình thường có 1-2 câu. Có 3-5 chuỗi dài (3-5 câu trên cùng dòng) trong toàn bài. Chuỗi dài chỉ dùng khi cần chiều sâu cảm xúc hoặc lập luận phức tạp (thường ở Story hoặc Deep Dive).
