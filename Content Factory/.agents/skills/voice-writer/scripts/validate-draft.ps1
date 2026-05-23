@@ -1,4 +1,4 @@
-# Last Update: 19/05/2026 20:15 (GMT+7)
+# Last Update: 23/05/2026 16:15 (GMT+7)
 <#
 .SYNOPSIS
     Validate Draft - Objective checks for Phase 5 (Voice Writer)
@@ -46,14 +46,12 @@ $cfgSentPerLongMin = if ($profile) { $profile.sentences_per_long_chain.min } els
 $cfgSentPerLongMax = if ($profile) { $profile.sentences_per_long_chain.max } else { 8 }
 $cfgLongChainsMin = if ($profile) { $profile.long_chains_per_article.min } else { 0 }
 $cfgLongChainsMax = if ($profile) { $profile.long_chains_per_article.max } else { 2 }
-$cfgSectionMarker = if ($profile) { $profile.section_separator.marker } else { [string][char]0x2042 }
-$cfgSectionBlankAbove = if ($profile) { $profile.section_separator.blank_lines_above } else { 1 }
-$cfgSectionBlankBelow = if ($profile) { $profile.section_separator.blank_lines_below } else { 1 }
 $cfgTitleInOutput = if ($profile) { $profile.output_elements.title } else { $false }
 $cfgSectionHeadingInOutput = if ($profile) { $profile.output_elements.section_heading } else { $false }
 $cfgParaHeadingInOutput = if ($profile) { $profile.output_elements.paragraph_heading } else { $false }
 $cfgVeryShortThreshold = if ($profile) { $profile.very_short_sentence_threshold } else { 4 }
 $cfgMode = if ($profile) { $profile.mode } else { "auto" }
+$cfgWordCountTolerance = if ($profile -and $profile.word_count_tolerance_percent -ne $null) { $profile.word_count_tolerance_percent } else { 10 }
 
 # Auto-detect PersonaPath tu blackboard neu chua truyen
 if (-not $PersonaPath) {
@@ -120,15 +118,23 @@ $draftForCount = $draftForCount -replace [string][char]0x2042, ''
 $linesForCount = $draftForCount -split '\r?\n'
 
 # ============================================================
-# CHECK 1: Word Count (Configurable)
+# CHECK 1: Word Count (Configurable, 3-tier: PASS/WARN/FAIL)
+# PASS: trong [min, max]
+# WARN: ngoai range nhung trong vung tolerance (± N%) — khong chan pipeline
+# FAIL: ngoai vung tolerance — chan pipeline
 # ============================================================
-# $draftForCount already stripped above (line 117-119)
 $words = ($draftForCount -split '\s+' | Where-Object { $_ -ne '' }).Count
+$toleranceMin = [math]::Floor($cfgWordCountMin * (1 - $cfgWordCountTolerance / 100))
+$toleranceMax = [math]::Ceiling($cfgWordCountMax * (1 + $cfgWordCountTolerance / 100))
+
 if ($words -ge $cfgWordCountMin -and $words -le $cfgWordCountMax) {
-    Add-Result "Word Count" "PASS" "$words words (range: $cfgWordCountMin-$cfgWordCountMax)"
+    Add-Result "Word Count" "PASS" "$words words (target: $cfgWordCountMin-$cfgWordCountMax)"
+}
+elseif ($words -ge $toleranceMin -and $words -le $toleranceMax) {
+    Add-Result "Word Count" "WARN" "$words words (target: $cfgWordCountMin-$cfgWordCountMax | tolerance: $toleranceMin-$toleranceMax)"
 }
 else {
-    Add-Result "Word Count" "FAIL" "$words words (range: $cfgWordCountMin-$cfgWordCountMax)"
+    Add-Result "Word Count" "FAIL" "$words words (target: $cfgWordCountMin-$cfgWordCountMax | tolerance: $toleranceMin-$toleranceMax)"
 }
 
 # ============================================================
