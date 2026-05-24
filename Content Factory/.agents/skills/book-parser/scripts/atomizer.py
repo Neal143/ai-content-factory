@@ -266,6 +266,8 @@ def build_frontmatter(atom):
     # Source
     lines.append('source_type: book')
     lines.append(f'source_name: {json.dumps(atom["source_name"], ensure_ascii=False)}')
+    if atom.get("source_id"):
+        lines.append(f'source_id: {json.dumps(atom["source_id"], ensure_ascii=False)}')
     lines.append('confidence: 0.9')
 
     # Graph links (chỉ field áp dụng cho type tương ứng)
@@ -741,6 +743,11 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
     source_name = build_source_name(context)
     build_adm_lookup(context)
 
+    # Trích xuất book_name để sinh source_id
+    bm = context.get("book_meta", {})
+    book_name = bm.get("book_name", "unknown")
+    source_id = slugify_vi(book_name)
+
     # Bộ đệm
     atoms = []               # Atom core (sẽ ghi file)
     atoms_by_slug = {}        # Lookup nhanh bằng slug (cho vivid-append)
@@ -800,6 +807,7 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
                 "sub_field_value": classification.get("sub_field_value"),
                 "topics": topics,
                 "source_name": source_name,
+                "source_id": source_id,  # Gán source_id đã slugify
                 "folder": classification["folder"],
                 "filename": filename,
                 "body_text": body,
