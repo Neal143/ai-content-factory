@@ -2,12 +2,12 @@
 name: Semantic Router
 description: Định tuyến topic từ yêu cầu nội dung → ánh xạ vào topic_map, xác định Pillar, Audience.
 input: Chuỗi "[yêu cầu tạo nội dung]"
-output: Blackboard 6 biến: Target_Pillar, Target_Audience, topic, Is_Novel_Angle, Persona_Path, resolved_jtbd.
+output: Blackboard 8 biến: Target_Pillar, Target_Audience, topic, Is_Novel_Angle, Persona_Path, resolved_jtbd, Target_Source_Type, Target_Source_IDs.
 ---
 
 # Semantic Router Skill
 
-> EXECUTION_KEY: 4210bade
+> EXECUTION_KEY: 3892f174
 
 **Quy tắc Cốt lõi:** Skill này trả về DUY NHẤT 1 TOPIC — hoặc `mapped_topic` hoặc `novel_angle`, không bao giờ cả hai.
 
@@ -103,16 +103,35 @@ Dựa vào `Target_Audience` từ Bước 3 hoặc Bước 5:
 - **Single audience**: `view_file` tại `vault/01-Atomic/Audiences/[Target_Audience].md` → trích `audience_Job_performer`, `audience_main_job`, `audience_circumstance` → ghi `resolved_jtbd` vào blackboard. `source_audience` = audience ID.
 - **Multi-audience**: CHƯA ghi `resolved_jtbd` (DIKW Bridge resolve sau Anchor-First).
 
-`Is_Novel_Angle = False` → **Bước 9**.
+`Is_Novel_Angle = False` → **Bước 8.5**.
+
+---
+
+## Bước 8.5: Trích xuất Ràng buộc Nguồn (Source Constraint Extraction)
+
+Từ chuỗi yêu cầu nội dung của người dùng, phân tích xem có nhắc đến một hoặc nhiều nguồn sách cụ thể không (ví dụ: "dựa trên sách Good Inside", "từ sách Good Inside và The Whole-Brain Child"):
+1. **Nếu có:**
+   - Đặt `Target_Source_Type` = "book".
+   - Chuyển tên sách thành slug dạng lowercase không dấu (ví dụ: "Good Inside" -> "good-inside", "The Whole-Brain Child" -> "the-whole-brain-child").
+   - Đặt `Target_Source_IDs` = danh sách mảng các slug (ví dụ: `["good-inside"]` hoặc `["good-inside", "the-whole-brain-child"]`).
+2. **Nếu viết tự do (freestyle, không chỉ định sách cụ thể):**
+   - Đặt `Target_Source_Type` = null.
+   - Đặt `Target_Source_IDs` = [].
+
+→ **Bước 9**.
+
+---
 
 ## Bước 9: Đóng gói Blackboard
 
-Output 6 biến:
+Output 8 biến:
 - `topic`: 1 string ID duy nhất
 - `Target_Pillar`: Tên Pillar
 - `Target_Audience`: Audience ID (string), danh sách Audience IDs (YAML array), hoặc rỗng (Novel Angle)
 - `Is_Novel_Angle`: True / False
 - `Persona_Path`: Đường dẫn thư mục persona (đã xác định ở Bước 3 của workflow bởi `validate-persona.ps1`)
 - `resolved_jtbd`: Block JTBD gồm `audience_Job_performer`, `audience_main_job`, `audience_circumstance`, `source_audience`. Có khi single audience hoặc Novel Angle. Chưa có khi multi-audience (DIKW Bridge bổ sung).
+- `Target_Source_Type`: "book" hoặc null
+- `Target_Source_IDs`: Mảng YAML chứa danh sách slug nguồn (ví dụ: `["good-inside"]` hoặc `[]`)
 
 Sau khi ghi `00-blackboard.yaml`, BẮT BUỘC append 1 dòng dưới cùng: `# execution_key: [giá trị EXECUTION_KEY từ SKILL.md]`

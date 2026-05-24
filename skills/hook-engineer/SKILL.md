@@ -5,7 +5,7 @@ description: Skill Phase 3 — Thiết kế câu mở đầu (Hook) theo 15 côn
 
 # Hook Engineer Skill (Phase 3)
 
-> EXECUTION_KEY: 901c2d35
+> EXECUTION_KEY: 62b85e97
 
 ## Điều kiện Đầu vào
 Từ Global Context, trích xuất 4 khối dữ liệu:
