@@ -8,7 +8,7 @@ description: Pipeline sản xuất nội dung viral 7 giai đoạn – chạy 1 
 
 > **LỆNH**: `/content-post [yêu cầu]` | `/content-post tiếp tục` (resume)
 
-> PIPELINE_STATUS: SẴN SÀNG
+> PIPELINE_STATUS: CHƯA SẴN SÀNG
 
 ## Output Rules
 
@@ -96,10 +96,7 @@ powershell -ExecutionPolicy Bypass -File ".agents/scripts/validate-persona.ps1"
 ### Bước 7: Hoàn thành
 Xác nhận: (1) artifacts trong run folder, (2) bài viết cuối tại `output/posts/` đã **strip sạch `<!-- execution_key: ... -->`**, (3) `production-log.md` & `hook-history.md` đã cập nhật bởi FormatAgent. Sentinel sẽ tự động lưu `checkpoint.yaml` thành completed. Thông báo User hoàn thành.
 
-Sau khi hoàn thành:
-```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Action restore
-```
+Sau khi hoàn thành: Hệ thống Sentinel sẽ **TỰ ĐỘNG** chạy lệnh `apply-profile.ps1 -Action restore` để dọn dẹp profile. Agent KHÔNG CẦN chạy lệnh này.
 
 ## CHECKPOINT & RESUME DỰ PHÒNG (FAIL-SAFE)
 

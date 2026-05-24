@@ -1,12 +1,12 @@
 ---
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
-last_update: 23/05/2026 16:15 (GMT+7)
+last_update: 24/05/2026 14:30 (GMT+7)
 ---
 
 # Voice Writer (Phase 5)
 
-> EXECUTION_KEY: ad4cf3e1
+> EXECUTION_KEY: c6f97e8a
 
 ## Điều kiện Đầu vào
 1. **`Outline 5 phần`** (Phase 4)
@@ -17,20 +17,25 @@ last_update: 23/05/2026 16:15 (GMT+7)
 ## Hướng dẫn hoạt động
 
 ### Bước 1: Đọc tham chiếu BẮT BUỘC
-Dùng tool `view_file` đọc lần lượt 3 file:
+Dùng tool `view_file` đọc lần lượt 8 file:
 - `.agents/skills/voice-writer/references/writing-rules.md`
 - `.agents/skills/voice-writer/references/anti-ai-patterns.md`
 - `.agents/skills/voice-writer/references/english-blacklist.md`
+- `.agents/skills/voice-writer/references/capitalization.md`
+- `.agents/skills/voice-writer/references/english-mixing.md`
+- `.agents/skills/voice-writer/references/prose-format.md`
+- `.agents/skills/voice-writer/references/punctuation.md`
+- `.agents/skills/voice-writer/references/ai-detection.md`
 
-> ⛔ **FATAL RULE:** PHẢI dùng tool đọc thành công cả 3. File Not Found → DỪNG, BÁO USER. Cấm hallucinate nội dung.
+> ⛔ **FATAL RULE:** PHẢI dùng tool đọc thành công toàn bộ 8 file. File Not Found → DỪNG, BÁO USER. Cấm hallucinate nội dung.
 
 Sau khi đọc mỗi file, ghi nhận giá trị `FILE_KEY` ở dòng cuối file đó.
 
 Sau khi hoàn thành toàn bộ nội dung `05-draft.md`, append vào **cuối file** dòng:
 ```
-<!-- ref_keys: writing-rules=[key1], anti-ai=[key2], english-blacklist=[key3] -->
+<!-- ref_keys: writing-rules=[key1], anti-ai=[key2], english-blacklist=[key3], capitalization=[key4], english-mixing=[key5], prose-format=[key6], punctuation=[key7], ai-detection=[key8] -->
 ```
-Thay [key1], [key2], [key3] bằng đúng giá trị FILE_KEY đã đọc từ mỗi file.
+Thay [key1]...[key8] bằng đúng giá trị FILE_KEY đã đọc từ mỗi file.
 
 ### Bước 2: Nhận input
 Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
@@ -79,10 +84,11 @@ Viết lần lượt 5 sections. Mỗi section:
 | **KCS** | Mọi Solution/Concept PHẢI có ≥1: Ai tạo + credential / Ai dùng thành công + kết quả / Bao nhiêu người áp dụng |
 | **Authority Citation** | Áp dụng Credential Cascade theo writing-rules.md Section 7. Đa dạng cách giới thiệu expert |
 | **Vivid Extrapolation** | Tuân thủ 2 kịch bản tại writing-rules.md Section 6. Cấm ẩn dụ sáo rỗng |
-| **Anti-AI** | Quét 10 patterns (anti-ai-patterns.md) + blacklist (english-blacklist.md). Đặc biệt: Micro-Staccato (2+ câu ≤8 từ kề nhau) + Anaphora (3+ câu cùng cụm mở đầu) |
+| **Anti-AI** | Quét 10 patterns + blacklist + AI detection. Đặc biệt: Cấm AI Labels (Key, Note, Summary). Cấm lạm dụng từ nối (>3 lần/bài). Cấm trộn tiếng Anh. |
 | **Killer Statements** | ≥ 2 câu khẳng định mạnh, đáng nhớ mỗi bài |
 | **Paragraph** | 8-10 câu/paragraph. Không viết paragraph 1 câu (trừ Hook câu đầu tiên). Không viết paragraph > 10 câu. LƯU Ý: Đoạn mới CHỈ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`. |
 | **Chain** | BẮT BUỘC bấm ENTER (xuống dòng) để ngắt câu thành các chuỗi 1-2 câu/dòng. Có 3-5 chuỗi dài (3-5 câu/dòng) toàn bài. Xem writing-rules.md Section 9 |
+| **Prose & Punc** (AUTO-FAIL) | Không dùng Title Case (H2+ viết hoa chữ đầu). Không dấu hai chấm trong tiêu đề. Dấu câu sát từ trước, cách từ sau. Cấm em-dash `—` (đổi sang từ nối hoặc ` - `). Cấm Oxford comma `, và`. Cấm Bullet trong thân văn xuôi. Độ dài đoạn văn phải biến thiên, tránh các đoạn liên tiếp có số câu bằng nhau. |
 
 **Bảng biến thiên JTBD (Deconstructed):**
 
@@ -117,6 +123,7 @@ Script kiểm tra 10 chỉ số objective. Nếu FAIL → **sửa ngay** trướ
 | SAS v18.2 | Mọi story trace back: ① vault, ② famous person/org + nguồn, ③ published book + tác giả. Bịa = AUTO-FAIL | → FAIL, escalate User |
 | KCS v18.2 | Mọi Solution/Concept có credibility intro (origin/achievement/scale) | → REVISE, quay Bước 3 thêm credibility intro |
 | JTBD | Không chứa chuỗi tĩnh JTBD | → REVISE, quay Bước 3 |
+| VN Standards | Đúng chuẩn viết hoa (H2+), không trộn tiếng Anh, Prose format (không bullet), Punctuation chuẩn | → REVISE, quay Bước 3 |
 
 **Verdict:**
 - **PASS** → Chuyển Phase 6.
