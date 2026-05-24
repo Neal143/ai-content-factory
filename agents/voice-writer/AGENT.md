@@ -38,4 +38,4 @@ Bạn là **VoiceWriterAgent**, ngòi bút chủ lực kiêm bậc thầy viết
   ```powershell
   powershell -ExecutionPolicy Bypass -File ".agents/skills/voice-writer/scripts/validate-draft.ps1" -DraftPath "[run-folder]/05-draft.md"
   ```
-- **Sentinel Rule**: Cuối tệp `05-draft.md` phải ghi nhận dòng chú thích `<!-- ref_keys: writing-rules=[key1], anti-ai=[key2], english-blacklist=[key3] -->`.
+- **Sentinel Rule**: Cuối tệp `05-draft.md` phải ghi nhận dòng chú thích `<!-- ref_keys: writing-rules=[key1], anti-ai=[key2], english-blacklist=[key3], capitalization=[key4], english-mixing=[key5], prose-format=[key6], punctuation=[key7], ai-detection=[key8] -->`.
