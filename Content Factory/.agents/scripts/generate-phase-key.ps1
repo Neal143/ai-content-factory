@@ -1,6 +1,6 @@
 # File       : generate-phase-key.ps1
-# Last update: 07/05/2026 21:44 (GMT+7)
-# Vai tro    : Tao random key, inject vao 9 SKILL.md + 3 ref files + 5 persona files
+# Last update: 24/05/2026 13:30 (GMT+7)
+# Vai tro    : Tao random key, inject vao 9 SKILL.md + 8 ref files + 5 persona files
 #              Sau khi inject xong: set PIPELINE_STATUS = SAN SANG trong content-post.md.
 # Dung khi   : (1) User chay thu cong lan dau / sau crash. (2) detect-bypass.ps1 goi tu dong sau Phase 7.
 # Output     : Exit 0 = OK | Exit 1 = FAIL
@@ -73,7 +73,12 @@ foreach ($folder in $skillFolders) {
 $refFiles = @(
     @{ Path = ".agents/skills/voice-writer/references/writing-rules.md";     Label = "writing-rules"    },
     @{ Path = ".agents/skills/voice-writer/references/anti-ai-patterns.md";  Label = "anti-ai-patterns" },
-    @{ Path = ".agents/skills/voice-writer/references/english-blacklist.md"; Label = "english-blacklist" }
+    @{ Path = ".agents/skills/voice-writer/references/english-blacklist.md"; Label = "english-blacklist" },
+    @{ Path = ".agents/skills/voice-writer/references/capitalization.md";    Label = "capitalization"   },
+    @{ Path = ".agents/skills/voice-writer/references/english-mixing.md";    Label = "english-mixing"   },
+    @{ Path = ".agents/skills/voice-writer/references/prose-format.md";      Label = "prose-format"     },
+    @{ Path = ".agents/skills/voice-writer/references/punctuation.md";       Label = "punctuation"      },
+    @{ Path = ".agents/skills/voice-writer/references/ai-detection.md";      Label = "ai-detection"     }
 )
 
 $refPattern = '(?m)^> FILE_KEY: .+$'
@@ -141,8 +146,8 @@ if ($failCount -gt 0) {
     Write-Host "[FAIL] $failCount file(s) failed."
     exit 1
 }
-$totalKeys = if ($PersonaPath) { 17 } else { 12 }
-$detail = if ($PersonaPath) { "9 SKILL + 3 ref + 5 persona" } else { "9 SKILL + 3 ref" }
+$totalKeys = if ($PersonaPath) { 22 } else { 17 }
+$detail = if ($PersonaPath) { "9 SKILL + 8 ref + 5 persona" } else { "9 SKILL + 8 ref" }
 Write-Host "[OK] All $totalKeys keys injected. ($detail)"
 
 # --- Set PIPELINE_STATUS = SAN SANG ---

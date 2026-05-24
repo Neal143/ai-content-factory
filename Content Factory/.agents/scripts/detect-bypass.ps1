@@ -279,6 +279,19 @@ if ($Phase -eq 7) {
     } else {
         Write-Host "[WARN] Key rotation failed. Keys se duoc tao lai o lan chay tiep theo."
     }
+
+    # --- AUTO RESTORE PROFILE (chi Phase 7) ---
+    Write-Host "`n[INFO] Auto-restoring profile..."
+    $restoreScript = ".agents/scripts/apply-profile.ps1"
+    if (Test-Path $restoreScript) {
+        $restoreArgs = @("-ExecutionPolicy", "Bypass", "-File", $restoreScript, "-Action", "restore")
+        $restoreProc = Start-Process powershell -ArgumentList $restoreArgs -Wait -PassThru -NoNewWindow
+        if ($restoreProc.ExitCode -eq 0) {
+            Write-Host "[OK] Profile restored and cleaned up."
+        } else {
+            Write-Host "[WARN] Profile restore encountered issues."
+        }
+    }
 }
 
 Write-Host "[SENTINEL PASS] Phase $Phase PASS"
