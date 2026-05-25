@@ -6,9 +6,10 @@ last_update: 04/05/2026 16:15 (GMT+7)
 
 # Structure Designer (Phase 4)
 
-> EXECUTION_KEY: f4c91ea5
+> EXECUTION_KEY: fbd50ae4
 
 ## 1. Input Variables
+**BẮT BUỘC**: Dùng tool `view_file` đọc file `00.5-dikw-combo.md` trong run folder để lấy dữ liệu Atoms và trích xuất mã `BUNDLE_KEY` ở cuối file.
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất:
 1. `Hook 3 phần` (Phase 3)
 2. `Research Brief` (Phase 2)
@@ -92,6 +93,9 @@ Xuất Outline vào file `04-outline.md` tại Run Folder. Mỗi Section PHẢI 
 ```
 
 ⛔ **Word count PHẢI là 1 con số cụ thể** (VD: `250 từ`), KHÔNG ĐƯỢC ghi range (VD: `200-300 từ`).
+
+Sau khi ghi xong file Outline, BẮT BUỘC append vào dòng cuối cùng mã sau: 
+`<!-- bundle_key: [Mã trích xuất từ file Combo] -->`
 
 ## 5. [SCRIPTED VALIDATION]
 Sau khi xuất xong Outline, chạy lệnh:

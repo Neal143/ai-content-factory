@@ -5,7 +5,7 @@ description: Skill Phase 1 — Phân tích topic, tìm góc nhìn contrarian và
 
 # Idea Curator (Phase 1)
 
-> EXECUTION_KEY: c3a154e0
+> EXECUTION_KEY: 1d063c79
 
 ## Điều kiện Đầu vào
 1. **`topic`**: ID chủ đề bài viết (String).
@@ -41,6 +41,7 @@ description: Skill Phase 1 — Phân tích topic, tìm góc nhìn contrarian và
 6. Xuất **Idea Brief** gồm:
    - ⛔ BẮT BUỘC giữ nguyên văn từ Blackboard: `topic` (NGUYÊN VĂN GỐC), `Target_Pillar` (NGUYÊN VĂN GỐC), `Target_Audience` (nếu có), `Is_Novel_Angle`.
    - Bổ sung: Contrarian Angle, Core Tension, Hidden Belief, Transformation Promise, Viral Score, Kịch bản đã dùng.
+   - ⛔ **FATAL RULE (nếu chạy Kịch bản 1):** BẮT BUỘC dùng tool `view_file` đọc `00.5-dikw-combo.md` để trích xuất và chèn dòng `<!-- bundle_key: [Mã trích xuất] -->` vào dòng cuối cùng của Idea Brief.
 7. **[SCRIPTED VALIDATION]** Chạy:
    ```powershell
    powershell -ExecutionPolicy Bypass -File ".agents/skills/idea-curator/scripts/validate-idea.ps1" -IdeaPath "[Đường dẫn file Idea Brief]"

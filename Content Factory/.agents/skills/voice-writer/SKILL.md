@@ -1,4 +1,4 @@
-﻿---
+---
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
 last_update: 24/05/2026 14:30 (GMT+7)
@@ -6,7 +6,7 @@ last_update: 24/05/2026 14:30 (GMT+7)
 
 # Voice Writer (Phase 5)
 
-> EXECUTION_KEY: 726e3f41
+> EXECUTION_KEY: 108a5dc4
 
 ## Điều kiện Đầu vào
 1. **`Outline 5 phần`** (Phase 4)
@@ -39,6 +39,7 @@ Thay [key1]...[key8] bằng đúng giá trị FILE_KEY đã đọc từ mỗi fi
 
 ### Bước 2: Nhận input
 Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
+**BẮT BUỘC**: Dùng tool `view_file` đọc file `00.5-dikw-combo.md` trong run folder để lấy dữ liệu thô của các Atoms và trích xuất mã `BUNDLE_KEY` ở cuối file.
 
 ### Bước 3: Viết bài section-by-section
 
@@ -62,6 +63,7 @@ Viết lần lượt 5 sections. Mỗi section:
 
 **Markers bắt buộc:**
 - Dòng đầu tiên: `<!-- TITLE: [Tiêu đề bài viết] -->`
+- Dòng cuối cùng của file 05-draft.md (sau khi kết thúc Closing và ghi các ref_keys): `<!-- bundle_key: [Mã trích xuất từ 00.5-dikw-combo.md] -->`
 - Trước mỗi section: `<!-- SECTION: [Tên section] -->` (Hook/Story/Deep Dive/Pivot/Closing)
 - Sau SECTION marker: `<!-- SECTION_HEADING: [Heading section — AI tự đặt] -->`
 - Trước mỗi đoạn: `<!-- PARAGRAPH: [Số thứ tự đoạn — đánh số liên tục 1→N trên toàn bài] -->`

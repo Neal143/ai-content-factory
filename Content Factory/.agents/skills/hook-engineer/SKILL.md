@@ -5,14 +5,14 @@ description: Skill Phase 3 — Thiết kế câu mở đầu (Hook) theo 15 côn
 
 # Hook Engineer Skill (Phase 3)
 
-> EXECUTION_KEY: 62b85e97
+> EXECUTION_KEY: 2b7f3a49
 
 ## Điều kiện Đầu vào
-Từ Global Context, trích xuất 4 khối dữ liệu:
-1. **`Research Brief`** — Sản phẩm Phase 2 (Insight Agent).
-2. **`Insight Atom gốc`** — Lõi Logic của câu Hook (từ nguyên liệu DIKW).
-3. **`Minified JSON Vivid Payload`** — Lớp áo Cảm giác phân rã (từ nguyên liệu DIKW).
-4. **`resolved_jtbd`** — 3 biến JTBD đã resolve từ `00-blackboard.yaml`.
+Từ Run Folder hiện tại, sử dụng tool `view_file` trích xuất 4 khối dữ liệu:
+1. **`Research Brief`**: Nằm trong file `02-research-brief.md` (Sản phẩm Phase 2).
+2. **`Insight Atom gốc`**: Nằm trong file `00.5-dikw-combo.md` (Lõi Logic của câu Hook).
+3. **`Minified JSON Vivid Payload`**: Nằm trong file `00.5-dikw-combo.md` (Lớp áo Cảm giác phân rã).
+4. **`resolved_jtbd`**: Đọc từ file `00-blackboard.yaml`.
 
 ## Nguyên tắc Cốt lõi
 
@@ -52,11 +52,12 @@ Hook PHẢI kết hợp: **Bề chìm Logic** (`Insight Atom gốc`) + **Lớp v
 
    **Verdict:** ≥ 8 điểm → PASS. < 8 → viết lại.
 
-6. Xuất **Hook** theo cấu trúc sau, kèm điểm số:
+6. Xuất **Hook** ra file `03-hook.md` theo cấu trúc sau, kèm điểm số:
    - **Formula**: FXX
    - **Core Hook**: Câu hook chính (≤ 15 từ)
    - **Promise**: 1-2 câu hứa hẹn giá trị cho reader
    - **Authority Tease**: Nhá tên expert/data sẽ dùng trong bài
+   - ⛔ **FATAL RULE:** BẮT BUỘC dùng tool `view_file` đọc `00.5-dikw-combo.md` để trích xuất và chèn dòng `<!-- bundle_key: [Mã trích xuất] -->` vào dòng cuối cùng của file `03-hook.md`.
 
 7. **[SCRIPTED VALIDATION]** Chạy:
    ```powershell

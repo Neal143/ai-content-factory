@@ -1,4 +1,4 @@
-﻿
+
 
 # Writing Rules — Quy tắc viết bài
 # Version: v19.0
@@ -89,4 +89,4 @@ Hãy hình dung tâm trí như một dàn đồng ca gồm nhiều giọng hát 
 
 **LƯU Ý:** Xuống dòng giữa các chuỗi KHÔNG tạo đoạn mới — vẫn thuộc cùng 1 paragraph (cùng 1 ý lớn). Đoạn mới chỉ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`.
 
-> FILE_KEY: fb2d98e1
+> FILE_KEY: b8425f3d
