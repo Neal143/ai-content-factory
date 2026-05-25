@@ -6,7 +6,7 @@ last_update: 05/05/2026 13:13 (GMT+7)
 
 # Insight Agent Skill (Phase 2)
 
-> EXECUTION_KEY: 54721bd3
+> EXECUTION_KEY: 9f12673a
 
 ## Điều kiện Đầu vào
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất 2 khối:
@@ -42,6 +42,7 @@ Mỗi khi nhắc Solution/Concept/Framework trong bài, BẮT BUỘC có ≥ 1 C
 
 ### Bước 1: Nhận input
 Trích xuất Idea Brief + Gói nguyên liệu DIKW từ Bảng đen (Global Context).
+**BẮT BUỘC**: Dùng tool `view_file` đọc file `00.5-dikw-combo.md` trong run folder để lấy dữ liệu thô của các Atoms và trích xuất mã `BUNDLE_KEY` ở cuối file.
 
 ### Bước 2: Thu thập dẫn chứng
 1. Đọc `[Persona_Path]/authorities.yaml` → tìm experts phù hợp topic.
@@ -52,8 +53,7 @@ Trích xuất Idea Brief + Gói nguyên liệu DIKW từ Bảng đen (Global Con
 
 ### Bước 3: Xuất Research Brief
 
-> ⛔ **FATAL RULE:** Với MỌI atom từ Vault trong Gói DIKW, BẮT BUỘC dùng `view_file`
-> với **Atom path** (cột 1 bảng Gói DIKW) để đọc file vật lý. Cấm tóm tắt từ memory.
+> ⛔ **FATAL RULE:** BẮT BUỘC dùng dữ liệu thô của các Atoms đã đọc từ file `00.5-dikw-combo.md` để điền vào phần dưới (Cấm tóm tắt từ memory hoặc tự bịa dẫn chứng).
 
 Output file `02-research-brief.md` theo đúng format:
 
@@ -89,6 +89,8 @@ Với mỗi story atom trong Gói DIKW:
 **[Lesson]** [Nội dung <lesson> từ atom, nguyên văn]
 
 Không có atom từ vault → dùng famous world/published book, ghi rõ nguồn, `[Atom: none]`.
+
+Dòng cuối cùng của file 02-research-brief.md: `<!-- bundle_key: [Mã trích xuất từ 00.5-dikw-combo.md] -->`
 
 #### SAS & KCS Status
 - SAS status: PASS / FAIL

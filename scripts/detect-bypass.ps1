@@ -16,8 +16,8 @@
 #>
 
 param(
-    [Parameter(Mandatory=$true)][string]$RunFolder,
-    [Parameter(Mandatory=$true)][int]$Phase
+    [Parameter(Mandatory = $true)][string]$RunFolder,
+    [Parameter(Mandatory = $true)][int]$Phase
 )
 
 $failed = $false
@@ -26,13 +26,13 @@ $failed = $false
 # CHECK 1 - Script rac trong output/ root VA workspace root
 # Ly do: LLM tao .py/.js/.sh de hardcode noi dung
 # ============================================================
-$forbiddenExtensions = @("*.py","*.js","*.sh")
+$forbiddenExtensions = @("*.py", "*.js", "*.sh")
 $scanPaths = @("output", ".")
 $forbidden = @()
 foreach ($scanPath in $scanPaths) {
     if (Test-Path $scanPath) {
         $forbidden += Get-ChildItem -Path "$scanPath\*" -Include $forbiddenExtensions -File -ErrorAction SilentlyContinue |
-            Where-Object { $_.DirectoryName -eq (Resolve-Path $scanPath).Path }
+        Where-Object { $_.DirectoryName -eq (Resolve-Path $scanPath).Path }
     }
 }
 if ($forbidden.Count -gt 0) {
@@ -75,14 +75,14 @@ if ($Phase -ge 6) {
 # Agent phai doc SKILL.md de lay key, ghi vao output. Check nay doi chieu.
 # ============================================================
 $skillPaths = @{
-    0 = ".agents/skills/semantic-router/SKILL.md"
-    1 = ".agents/skills/idea-curator/SKILL.md"
-    2 = ".agents/skills/insight-agent/SKILL.md"
-    3 = ".agents/skills/hook-engineer/SKILL.md"
-    4 = ".agents/skills/structure-designer/SKILL.md"
-    5 = ".agents/skills/voice-writer/SKILL.md"
-    6 = ".agents/skills/qa-checker/SKILL.md"
-    7 = ".agents/skills/format-agent/SKILL.md"
+    0  = ".agents/skills/semantic-router/SKILL.md"
+    1  = ".agents/skills/idea-curator/SKILL.md"
+    2  = ".agents/skills/insight-agent/SKILL.md"
+    3  = ".agents/skills/hook-engineer/SKILL.md"
+    4  = ".agents/skills/structure-designer/SKILL.md"
+    5  = ".agents/skills/voice-writer/SKILL.md"
+    6  = ".agents/skills/qa-checker/SKILL.md"
+    7  = ".agents/skills/format-agent/SKILL.md"
     45 = ".agents/skills/persona-loader/SKILL.md"
 }
 $outputFiles = @{
@@ -128,19 +128,77 @@ if ($skillPaths.ContainsKey($Phase)) {
 }
 
 # ============================================================
+# CHECK 4B & 4C - DIKW POKA-YOKE
+# Ly do: Chinh xac thuc thi tu DIKW den Insight, Structure va Voice.
+# ============================================================
+$blackboard = Join-Path $RunFolder "00-blackboard.yaml"
+$isNovel = $false
+if (Test-Path $blackboard) {
+    $bbContent = Get-Content $blackboard -Raw -Encoding UTF8
+    if ($bbContent -match 'Is_Novel_Angle:\s*true') { $isNovel = $true }
+}
+
+# Chi kiem tra tu Phase 1 tro di, va bai toan khong phai la Novel Angle
+if (-not $isNovel -and $Phase -ge 1) {
+    $dikwFile = Join-Path $RunFolder "00.5-dikw-combo.md"
+    
+    # CHECK 4C (Tier 1): File phai ton tai (Chong viec Agent loi qua Buoc 5 DIKW)
+    if (-not (Test-Path $dikwFile)) {
+        Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua tao file nguyen lieu Combo (00.5-dikw-combo.md). Yeu cau kiem tra lai Buoc 5 DIKW Bridge."
+        $failed = $true
+    } else {
+        $dikwContent = Get-Content $dikwFile -Raw -Encoding UTF8
+        
+        # CHECK 4C (Tier 2): Kiem tra Bundle Atoms (Giau ly do KEY de chong Cheat)
+        $hasKey = $dikwContent -match '<!-- BUNDLE_KEY:\s*([A-Za-z0-9]+)\s*-->'
+        if (-not $hasKey) {
+            Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua chay script bundle-atoms hoac chay khong thanh cong. Yeu cau thuc thi lai script roi kiem tra file output."
+            $failed = $true
+        } else {
+            $expectedKey = $Matches[1]
+            
+            # CHECK 4B: Kiem tra Output Phase 1, 2, 3, 4 va 5 co doc Combo chua va co dung key khong
+            if ($Phase -ge 1 -and $Phase -le 5) {
+                $outputFile = ""
+                if ($Phase -eq 1) { $outputFile = "01-idea-brief.md" }
+                if ($Phase -eq 2) { $outputFile = "02-research-brief.md" }
+                if ($Phase -eq 3) { $outputFile = "03-hook.md" }
+                if ($Phase -eq 4) { $outputFile = "04-outline.md" }
+                if ($Phase -eq 5) { $outputFile = "05-draft.md" }
+                
+                $outputPath = Join-Path $RunFolder $outputFile
+                
+                # Chan lo hong: File khong ton tai phai bao FAIL ngay lap tuc chu khong bo qua
+                if (-not (Test-Path $outputPath)) {
+                    Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Thieu file output cua Phase $Phase ($outputFile)."
+                    $failed = $true
+                } else {
+                    $outContent = Get-Content $outputPath -Raw -Encoding UTF8
+                    # Regex defensive: Cho phep dau ngoac vuong [] tuy chon de phong LLM giu nguyen placeholder format
+                    if ($outContent -notmatch "<!-- bundle_key:\s*\[?$expectedKey\]?\s*-->") {
+                        Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
+                        $failed = $true
+                    }
+                }
+            }
+        }
+    }
+}
+
+# ============================================================
 # CHECK 5 - Re-run validation script (chong Agent bia ket qua PASS)
 # Ly do: Agent co the khong goi script ma tu bia ket qua.
 # Sentinel tu chay lai script tuong ung, neu FAIL thi Agent da bia.
 # ============================================================
 $validationScripts = @{
-    1 = @{ Script = ".agents/skills/idea-curator/scripts/validate-idea.ps1";         Param = "IdeaPath";     File = "01-idea-brief.md" }
-    2 = @{ Script = ".agents/skills/insight-agent/scripts/validate-research.ps1";     Param = "ResearchPath"; File = "02-research-brief.md" }
-    3 = @{ Script = ".agents/skills/hook-engineer/scripts/validate-hook.ps1";         Param = "HookPath";     File = "03-hook.md" }
-    4 = @{ Script = ".agents/skills/structure-designer/scripts/validate-outline.ps1"; Param = "OutlinePath";  File = "04-outline.md" }
-    5 = @{ Script = ".agents/skills/voice-writer/scripts/validate-draft.ps1";         Param = "DraftPath";    File = "05-draft.md" }
-    6 = @{ Script = ".agents/skills/qa-checker/scripts/validate-qa.ps1";              Param = "QAResultPath"; File = "06-qa-result.md" }
-    7 = @{ Script = ".agents/skills/format-agent/scripts/validate-format.ps1";        Param = "DraftPath";    File = "07-final.md" }
-    45 = @{ Script = ".agents/skills/persona-loader/scripts/validate-persona-pack.ps1"; Param = "PackPath";    File = "04.5-persona-pack.md" }
+    1  = @{ Script = ".agents/skills/idea-curator/scripts/validate-idea.ps1"; Param = "IdeaPath"; File = "01-idea-brief.md" }
+    2  = @{ Script = ".agents/skills/insight-agent/scripts/validate-research.ps1"; Param = "ResearchPath"; File = "02-research-brief.md" }
+    3  = @{ Script = ".agents/skills/hook-engineer/scripts/validate-hook.ps1"; Param = "HookPath"; File = "03-hook.md" }
+    4  = @{ Script = ".agents/skills/structure-designer/scripts/validate-outline.ps1"; Param = "OutlinePath"; File = "04-outline.md" }
+    5  = @{ Script = ".agents/skills/voice-writer/scripts/validate-draft.ps1"; Param = "DraftPath"; File = "05-draft.md" }
+    6  = @{ Script = ".agents/skills/qa-checker/scripts/validate-qa.ps1"; Param = "QAResultPath"; File = "06-qa-result.md" }
+    7  = @{ Script = ".agents/skills/format-agent/scripts/validate-format.ps1"; Param = "DraftPath"; File = "07-final.md" }
+    45 = @{ Script = ".agents/skills/persona-loader/scripts/validate-persona-pack.ps1"; Param = "PackPath"; File = "04.5-persona-pack.md" }
 }
 
 if ($validationScripts.ContainsKey($Phase)) {
@@ -253,7 +311,8 @@ if ($Phase -eq 4 -or $Phase -eq 7) {
         if ($cpProc.ExitCode -ne 0) {
             Write-Host "[WARN] Checkpoint creation failed. Thong bao User."
         }
-    } else {
+    }
+    else {
         Write-Host "[WARN] create-checkpoint.ps1 khong ton tai."
     }
 }
@@ -276,7 +335,8 @@ if ($Phase -eq 7) {
     $keyProc = Start-Process powershell -ArgumentList $keyArgs -Wait -PassThru -NoNewWindow
     if ($keyProc.ExitCode -eq 0) {
         Write-Host "[OK] Key rotation completed for next session."
-    } else {
+    }
+    else {
         Write-Host "[WARN] Key rotation failed. Keys se duoc tao lai o lan chay tiep theo."
     }
 
@@ -288,7 +348,8 @@ if ($Phase -eq 7) {
         $restoreProc = Start-Process powershell -ArgumentList $restoreArgs -Wait -PassThru -NoNewWindow
         if ($restoreProc.ExitCode -eq 0) {
             Write-Host "[OK] Profile restored and cleaned up."
-        } else {
+        }
+        else {
             Write-Host "[WARN] Profile restore encountered issues."
         }
     }

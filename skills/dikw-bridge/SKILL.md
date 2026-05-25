@@ -125,6 +125,10 @@ Quét YAML Frontmatter của các Atom trong Combo, gộp 3 mảng (`vivid_circu
 2. `resolved_jtbd` đã ghi vào `00-blackboard.yaml` ở Bước 5:
    - IF Target_Audience là array → mục 1b đã ghi.
    - IF Target_Audience là string → Semantic Router đã ghi, DIKW không ghi lại.
+3. BẮT BUỘC CHẠY SCRIPT SAU ĐÂY để tự động gộp text nguyên liệu vào file Combo (⚠ **CHÚ Ý:** TUYỆT ĐỐI KHÔNG COPY MÙ. Bạn PHẢI tự thay thế biến `[run-folder]` bằng tên thư mục run folder thực tế của phiên hiện tại):
+```powershell
+powershell -ExecutionPolicy Bypass -File ".agents/skills/dikw-bridge/scripts/bundle-atoms.ps1" -ComboFile "output/runs/[run-folder]/00.5-dikw-combo.md"
+```
 
 ⛔ File này là bản sao vật lý của Gói nguyên liệu DIKW, phục vụ resume dự phòng khi pipeline cần khôi phục. Output trong context memory vẫn được sử dụng bình thường bởi các Phase tiếp theo.
 

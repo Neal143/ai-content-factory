@@ -6,7 +6,7 @@ last_update: 05/05/2026 18:11 (GMT+7)
 
 # QA Checker (Phase 6)
 
-> EXECUTION_KEY: f3b20d81
+> EXECUTION_KEY: 1e4ad59f
 
 ## Điều kiện Đầu vào
 
