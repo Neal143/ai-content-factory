@@ -1,7 +1,8 @@
 ---
 type: insight
 insight_type: "{{type}}"
-insight_name: "{{name}}"
+topics: {{topics}}
+source_id: "persona-interview"
 belongs_to_audience: "[[{{target_audience}}]]"
 status: processed
 created: "{{date}}"
@@ -50,4 +51,13 @@ Người dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI
 
 ## 3. Liên kết mở rộng
 ========================================== -->
+
+<!--
+Tên file: insight.md
+Last update: 27/05/2026 00:15 (GMT+7)
+Vai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW
+Được sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight
+Output: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight
+Tóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.
+-->
 

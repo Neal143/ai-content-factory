@@ -27,3 +27,19 @@
 - ⛔ Atom status = "rejected" → KHÔNG dùng.
 - ⛔ Agent tự tạo story personal/observed → AUTO-FAIL.
 - ✅ Solution/Concept PHẢI có KCS credibility intro.
+
+## 4. Tool Interface
+
+Toàn bộ logic Bước 1-4 được đóng gói trong script:
+```powershell
+powershell -ExecutionPolicy Bypass -File ".agents/skills/dikw-bridge/scripts/Get-DIKWCombo.ps1" -Topics "[topic]" -Audience "[audience]" -PersonaUser "[user]" [-TargetSourceIds @("source1")]
+```
+
+<!--
+Tên file: injection-rules.md
+Last update: 27/05/2026 01:20 (GMT+7)
+Vai trò: Tài liệu hướng dẫn quy chuẩn tiêm DIKW và giao diện gọi Tool Get-DIKWCombo.
+Được sử dụng khi nào: Khi Agent thực thi Bước 1-4 của dikw-bridge hoặc tham chiếu trọng số và thứ tự ưu tiên viết bài.
+Output: Quy chuẩn trọng số các lớp DIKW, thứ tự ưu tiên câu chuyện, luật Poka-Yoke và cú pháp dòng lệnh gọi Combo Engine.
+Tóm tắt logic hoạt động: Định nghĩa chính xác trọng số các tầng DIKW (Wisdom=10, Knowledge=7, etc.), thứ tự ưu tiên các câu chuyện cá nhân/quan sát, các bộ lọc an toàn Poka-Yoke và giao diện dòng lệnh của Get-DIKWCombo.ps1 để tối ưu hóa hiệu suất truy vấn DAG O(1).
+-->

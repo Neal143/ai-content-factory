@@ -1,6 +1,11 @@
 ---
 name: Persona Interviewer
 description: BẮT BUỘC KÍCH HOẠT skill này NGAY LẬP TỨC nếu User dùng lệnh /onboarding-persona, hoặc có nhu cầu cài đặt hệ thống persona, thiết lập phong cách viết, hay tham gia phỏng vấn cấu hình giọng văn. Skill này điều phối toàn bộ quá trình thu thập và lưu dữ liệu. KHÔNG YÊU CẦU GIẢI THÍCH TRƯỚC.
+last_update: 27/05/2026 00:25 (GMT+7)
+role: Hướng dẫn tích hợp phỏng vấn và thu thập thông tin Persona
+usage: Được kích hoạt khi onboarding hoặc phỏng vấn thiết lập phong cách, tạo file Insight vật lý
+output: Hướng dẫn luồng tương tác 12 câu hỏi và ghi nhận file tĩnh insights_payload.json
+logic: Chứa chi tiết 3 Tiers onboarding và chi tiết render file vật lý Schema B từ payload
 ---
 
 # Persona Interviewer Skill
@@ -143,14 +148,15 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
         pillar_parents: ["[Tên_Pillar_cha_user_vừa_khai]"]
         belongs_to_audience: ["[[Tên_file_Audience_vừa_tạo_ở_Câu_10]]"]
       ```
-    - **Bước 2 (Xác nhận Mapping)**: Tự động phân bổ danh sách Seed Insights (từ Câu 10) vào các Pillars tương ứng (nhưng CHƯA ghi file). Hiển thị bảng Mapping ra Chatbox và yêu cầu: *"Vui lòng xem lại bảng phân bổ Insight vào Pillar và gõ (Y) để xác nhận."*
+    - **Bước 2 (Xác nhận Mapping)**: Tự động phân bổ danh sách Seed Insights (từ Câu 10) vào các Pillars tương ứng. **Đồng thời resolve topics**: Với mỗi Insight được map vào Pillar P, tra cứu `topic_map.yaml` → lấy tất cả topic có `pillar_parents` chứa P → gán danh sách `id` làm giá trị `topics` cho Insight đó. Hiển thị bảng Mapping (bao gồm cột Topics) ra Chatbox và yêu cầu: *"Vui lòng xem lại bảng phân bổ Insight vào Pillar và gõ (Y) để xác nhận."*
       > ⛔ **TOÀN VẸN NỘI DUNG (Copy-Paste Integrity):** Khi hiển thị bảng Mapping và khi ghi vào payload JSON, nội dung của mỗi Insight **BẮT BUỘC phải được sao chép NGUYÊN VĂN y hệt** từ câu trả lời User đã chốt ở Câu 10. **TUYỆT ĐỐI CẤM diễn giải lại, tóm tắt, hay thay đổi bất kỳ từ nào** — dù chỉ 1 từ — trong phần `raw_payload`. Mọi chỉnh sửa dù nhỏ đều làm sai lệch ý nghĩa gốc của User.
       > ⛔ **MỘT INSIGHT - MỘT PILLAR (One Insight, One Pillar):** Mỗi Insight chỉ được phép xuất hiện ở **đúng 1 Pillar duy nhất** — Pillar phù hợp nhất với bản chất của Insight đó. **TUYỆT ĐỐI CẤM** phân bổ cùng 1 Insight vào nhiều Pillars dù Insight đó có vẻ liên quan đến nhiều chủ đề. Khi không chắc, hãy chọn Pillar có độ liên quan cao nhất và chỉ 1 mà thôi.
-    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml`. Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agent/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 4 biến chính xác sau:
+    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml`. Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agent/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
       + `headline`: Đặt tên tối giản, loại bỏ stop words, chỉ lấy cụm danh từ/động từ chính. Script sẽ tự chuyển thành **Slug Naming** chuẩn: `[slug-keyword-tieng-viet-khong-dau].md` (chữ thường, không dấu, nối bằng gạch ngang).
       + `insight_type`: Phân loại nhóm Insight (ví dụ: desire, pain_point...).
       + `raw_payload`: Nguyên văn phần text thô do User gợi mở.
       + `llm_explain`: Phân tích chuyên sâu đúc rút từ AI (Insightful explain).
+      + `topics`: Mảng `id` topics đã resolve ở Bước 2 (VD: `["dieu_hoa_cam_xuc", "gan_ket_an_toan"]`).
       Sau đó AI tự động GỌI GÓI LỆNH TERMINAL bọc sẵn dưới đây để hệ thống tự xuất mẻ file vật lý cuối cùng: 
       ```powershell
       powershell -ExecutionPolicy Bypass -File .agent/skills/persona-interviewer/scripts/run_insights.ps1 -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"
