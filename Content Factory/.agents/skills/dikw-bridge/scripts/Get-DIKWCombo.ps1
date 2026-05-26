@@ -1,6 +1,6 @@
 <#
 Tên file: Get-DIKWCombo.ps1
-Last update: 27/05/2026 01:10 (GMT+7)
+Last update: 27/05/2026 00:35 (GMT+7)
 Vai trò: Script công cụ thực hiện truy vấn và lắp ghép tổ hợp DIKW Combo tối ưu từ Data Vault.
 Sử dụng khi nào: Được gọi bởi dikw-bridge skill thay thế cho Bước 1-4 để tìm kiếm nguyên liệu viết bài đăng.
 Output: In ra stdout 3 block dữ liệu: Bảng Combo (Markdown), Vivid Curation Payload (JSON), và Resolved JTBD (Text).
@@ -73,7 +73,7 @@ function Clean-Wikilink ([string]$val) {
 # ==========================================
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $buildScript = Join-Path $scriptDir "build-vault-index.ps1"
-$indexPath = ".agents/skills/dikw-bridge/vault_index.json"
+$indexPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
 
 # Rebuild index tự động
 if (Test-Path $buildScript) {
