@@ -26,9 +26,7 @@ Bạn là **VoiceWriterAgent**, ngòi bút chủ lực kiêm bậc thầy viết
 
 ## 3. Input & Output Specs
 
-- **Inputs**:
-  - `04-outline.md` và `04.5-persona-pack.md`.
-  - Các dẫn chứng từ `02-research-brief.md` và hook từ `03-hook.md`.
+- **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `05-draft.md`: Bản thảo thô hoàn chỉnh chứa đầy đủ markers cấu trúc và nội dung bài viết.
 

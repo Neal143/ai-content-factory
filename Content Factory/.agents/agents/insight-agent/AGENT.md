@@ -23,9 +23,7 @@ Bạn là **InsightAgent**, một nhà nghiên cứu học thuật kiêm chuyên
 
 ## 3. Input & Output Specs
 
-- **Inputs**:
-  - `01-idea-brief.md` từ Phase 1.
-  - Các nguyên tử dữ liệu trong `00.5-dikw-combo.md`.
+- **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `02-research-brief.md`: Bản tóm tắt dẫn chứng nghiên cứu được cấu trúc hóa tỉ mỉ.
 

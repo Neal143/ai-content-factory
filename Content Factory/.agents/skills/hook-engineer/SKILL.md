@@ -1,14 +1,26 @@
 ---
 name: Hook Engineer
 description: Skill Phase 3 — Thiết kế câu mở đầu (Hook) theo 15 công thức, chấm điểm và kiểm tra rotation.
+required_inputs:
+  - CONTRARIAN_ANGLE         # from 01-idea-brief.md (Phase 1)
+  - CORE_TENSION             # from 01-idea-brief.md (Phase 1)
+  - EVIDENCE_LIST            # from 02-research-brief.md (Phase 2)
+  - EXPERT_QUOTES            # from 02-research-brief.md (Phase 2)
+  - blackboard               # 00-blackboard.yaml (resolved_jtbd)
+  - dikw_combo               # 00.5-dikw-combo.md (Insight Atom + Vivid Payload)
+provided_outputs:
+  - CORE_HOOK
+  - HOOK_VARIATIONS
 ---
 
 # Hook Engineer Skill (Phase 3)
 
-> EXECUTION_KEY: 2b7f3a49
+> EXECUTION_KEY: cb1f8375
 
 ## Điều kiện Đầu vào
-Từ Run Folder hiện tại, sử dụng tool `view_file` trích xuất 4 khối dữ liệu:
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
+
+Trích xuất 4 khối dữ liệu:
 1. **`Research Brief`**: Nằm trong file `02-research-brief.md` (Sản phẩm Phase 2).
 2. **`Insight Atom gốc`**: Nằm trong file `00.5-dikw-combo.md` (Lõi Logic của câu Hook).
 3. **`Minified JSON Vivid Payload`**: Nằm trong file `00.5-dikw-combo.md` (Lớp áo Cảm giác phân rã).
@@ -52,11 +64,9 @@ Hook PHẢI kết hợp: **Bề chìm Logic** (`Insight Atom gốc`) + **Lớp v
 
    **Verdict:** ≥ 8 điểm → PASS. < 8 → viết lại.
 
-6. Xuất **Hook** ra file `03-hook.md` theo cấu trúc sau, kèm điểm số:
-   - **Formula**: FXX
-   - **Core Hook**: Câu hook chính (≤ 15 từ)
-   - **Promise**: 1-2 câu hứa hẹn giá trị cho reader
-   - **Authority Tease**: Nhá tên expert/data sẽ dùng trong bài
+6. Xuất **Hook** ra file `03-hook.md` — BẮT BUỘC bọc trong thẻ `[BLOCK: TÊN]...[/BLOCK: TÊN]`:
+   - `[BLOCK: CORE_HOOK]` — Chứa Formula, Core Hook (≤ 15 từ), Promise, Authority Tease, điểm số.
+   - `[BLOCK: HOOK_VARIATIONS]` — Chứa 2 phương án Hook dự phòng (bản 2 và 3 từ bước 4).
    - ⛔ **FATAL RULE:** BẮT BUỘC dùng tool `view_file` đọc `00.5-dikw-combo.md` để trích xuất và chèn dòng `<!-- bundle_key: [Mã trích xuất] -->` vào dòng cuối cùng của file `03-hook.md`.
 
 7. **[SCRIPTED VALIDATION]** Chạy:

@@ -25,4 +25,4 @@
 - Max 3 dấu chấm than (!) mỗi bài.
 - Cấm tiếng Anh lóng (xem `english-blacklist.md`).
 
-> FILE_KEY: 9c1b6d07
+> FILE_KEY: 1a025b6c

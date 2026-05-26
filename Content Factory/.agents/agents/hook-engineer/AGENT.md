@@ -23,9 +23,7 @@ Bạn là **HookEngineerAgent**, chuyên gia tâm lý học hành vi kiêm kỹ 
 
 ## 3. Input & Output Specs
 
-- **Inputs**:
-  - `01-idea-brief.md` & `02-research-brief.md` từ các bước trước.
-  - Vivid Payload (Mini-JSON) và lịch sử viết hook `hook-history.md`.
+- **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `03-hook.md`: Bản thiết kế các phương án mở bài, bảng điểm chi tiết và câu hook được duyệt cuối cùng.
 

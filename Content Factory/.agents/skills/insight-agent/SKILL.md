@@ -2,13 +2,26 @@
 name: Insight Agent
 description: Skill Phase 2 — Thu thập dẫn chứng, studies, expert quotes. Áp dụng SAS chống bịa và KCS cho framework.
 last_update: 05/05/2026 13:13 (GMT+7)
+required_inputs:
+  - CONTRARIAN_ANGLE         # from 01-idea-brief.md (Phase 1)
+  - CORE_TENSION             # from 01-idea-brief.md (Phase 1)
+  - HIDDEN_BELIEF            # from 01-idea-brief.md (Phase 1)
+  - blackboard               # 00-blackboard.yaml
+  - dikw_combo               # 00.5-dikw-combo.md
+  - persona_authorities      # [Persona_Path]/authorities.yaml
+provided_outputs:
+  - EVIDENCE_LIST
+  - EXPERT_QUOTES
+  - STORY_LIST
 ---
 
 # Insight Agent Skill (Phase 2)
 
-> EXECUTION_KEY: 9f12673a
+> EXECUTION_KEY: a6ecf18d
 
 ## Điều kiện Đầu vào
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
+
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất 2 khối:
 1. **`Idea Brief`** (Phase 1 Idea Curator).
 2. **`[3-5 Data-Points hoặc Quotes]`** (từ Gói nguyên liệu DIKW).
@@ -55,7 +68,12 @@ Trích xuất Idea Brief + Gói nguyên liệu DIKW từ Bảng đen (Global Con
 
 > ⛔ **FATAL RULE:** BẮT BUỘC dùng dữ liệu thô của các Atoms đã đọc từ file `00.5-dikw-combo.md` để điền vào phần dưới (Cấm tóm tắt từ memory hoặc tự bịa dẫn chứng).
 
-Output file `02-research-brief.md` theo đúng format:
+Output file `02-research-brief.md` — mỗi phần BẮT BUỘC bọc trong thẻ `[BLOCK: TÊN]...[/BLOCK: TÊN]`:
+- `[BLOCK: EVIDENCE_LIST]` — Bao bọc toàn bộ section Evidence List + Số liệu cụ thể
+- `[BLOCK: EXPERT_QUOTES]` — Bao bọc toàn bộ section Expert Quotes
+- `[BLOCK: STORY_LIST]` — Bao bọc toàn bộ section Story List
+
+Theo format:
 
 #### Evidence List (Studies & Numbers)
 
