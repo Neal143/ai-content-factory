@@ -1,19 +1,13 @@
 ---
-name: DIKW Bridge
-description: Skill đóng vai trò cầu nối, gọi tool Get-DIKWCombo để tìm nguyên liệu liên quan đến topic trong Vault và xếp thứ hạng theo mô hình DIKW.
-last_update: 27/05/2026 00:40 (GMT+7)
+name: SKILL.md (DIKW Bridge)
+last_update: 27/05/2026 00:45 (GMT+7)
+role: Skill đóng vai trò cầu nối, gọi tool Get-DIKWCombo để tìm nguyên liệu liên quan đến topic trong Vault và xếp thứ hạng theo mô hình DIKW.
+usage: Khi workflow /content-post kích hoạt agent DIKW Bridge để thu thập và sắp xếp combo nguyên liệu cho bài viết.
+output: Combo nguyên liệu tối ưu (Anchor Insight, Solution/Concept, Stories, Quotes/Data-Points) được ghi vào Blackboard và lưu trữ tại 00.5-dikw-combo.md.
+logic: Phân giải thông tin Blackboard, gọi Tool Get-DIKWCombo.ps1 để thực hiện truy vấn và xếp hạng tối ưu theo DAG in-memory O(1), định dạng payload chuẩn hóa và kích hoạt script đóng gói vật lý bundle-atoms.ps1.
 ---
 
 # DIKW Bridge Skill
-
-<!--
-Tên file: SKILL.md
-Last update: 27/05/2026 00:40 (GMT+7)
-Vai trò: Định nghĩa các bước thực thi của DIKW Bridge Skill trong pipeline sản xuất nội dung.
-Được sử dụng khi nào: Khi workflow /content-post kích hoạt agent DIKW Bridge để thu thập và sắp xếp combo nguyên liệu cho bài viết.
-Output: Combo nguyên liệu tối ưu (Anchor Insight, Solution/Concept, Stories, Quotes/Data-Points) được ghi vào Blackboard và lưu trữ tại 00.5-dikw-combo.md.
-Tóm tắt logic hoạt động: Phân giải thông tin Blackboard, gọi Tool Get-DIKWCombo.ps1 để thực hiện truy vấn và xếp hạng tối ưu theo DAG in-memory O(1), định dạng payload chuẩn hóa và kích hoạt script đóng gói vật lý bundle-atoms.ps1.
--->
 
 ## Hướng dẫn hoạt động
 
