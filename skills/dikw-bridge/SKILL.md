@@ -1,89 +1,28 @@
 ---
 name: DIKW Bridge
-description: Skill đóng vai trò cầu nối, quét kho dữ liệu Obsidian (Vault) để tìm nguyên liệu liên quan đến topic và xếp thứ hạng theo mô hình DIKW.
-last_update: 24/05/2026 16:55 (GMT+7)
+description: Skill đóng vai trò cầu nối, gọi tool Get-DIKWCombo để tìm nguyên liệu liên quan đến topic trong Vault và xếp thứ hạng theo mô hình DIKW.
+last_update: 27/05/2026 00:20 (GMT+7)
 ---
 
 # DIKW Bridge Skill
 
 ## Hướng dẫn hoạt động
 
-### Bước 1: Tiếp nhận Context & Khai báo Nguồn
-- Tiếp nhận từ Workflow `/content-post`: `mapped_topics` (topic IDs) và `Target_Audience` (Audience ID hoặc array Audience IDs).
-- Đọc kĩ `.agents/skills/dikw-bridge/references/injection-rules.md`.
-- **Phân giải User ID**: Trích xuất `[User]` từ phần cuối của `Persona_Path` trong Bảng đen (ví dụ: `Persona_Path: personas/Neal` → `[User]` = `Neal`).
+### Bước 1: Tiếp nhận Context & Gọi Combo Engine (Get-DIKWCombo.ps1)
+- **Tiếp nhận tham số**: Đọc các cấu hình từ Blackboard (`00-blackboard.yaml`) bao gồm:
+  - `mapped_topics` (danh sách topic IDs cần truy vấn)
+  - `Target_Audience` (Audience ID hoặc mảng các Audience IDs)
+  - `Persona_Path` (đường dẫn đến cấu hình Persona hiện tại)
+  - `Target_Source_IDs` (mảng các nguồn dữ liệu cụ thể cần lọc, ví dụ: `["good-inside"]`, nếu có)
+- **Phân giải thông tin**:
+  - Trích xuất tên người dùng `[User]` từ trường `Persona_Path` (ví dụ: `Persona_Path: personas/Neal` → `[User]` = `Neal`).
+- **Thực thi Tool Get-DIKWCombo**: Chạy lệnh PowerShell tích hợp dưới đây để thực hiện tính toán in-memory O(1), tự động áp dụng các màng lọc Smart Global Pre-Filter, bộ lọc đa điều kiện, validate đồ thị DAG liên kết và thuật toán chọn combo tối ưu:
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/skills/dikw-bridge/scripts/Get-DIKWCombo.ps1" -Topics "[mapped_topics]" -Audience "[Target_Audience]" -PersonaUser "[User]" [-TargetSourceIds "[Target_Source_IDs]"]
+  ```
+  *(Truyền danh sách các topic hoặc audience dưới dạng chuỗi phân tách bằng dấu phẩy nếu có nhiều phần tử. Chỉ truyền `-TargetSourceIds` nếu `Target_Source_IDs` được định nghĩa trong Blackboard).*
 
-**Nguồn 1 — Vault Atoms (Ưu tiên cao nhất):**
-- Path: `vault/01-Atomic/`
-- Quét 6 thư mục vật lý (Direct Read, TUYỆT ĐỐI không dùng LLM extraction):
-  1. `Stories/` → Wisdom (W)
-  2. `Solutions/` → Knowledge (K)
-  3. `Insights/` → Knowledge (K)
-  4. `Concepts/` → Information (I)
-  5. `Quotes/` → Data (D)
-  6. `Data-Points/` → Data (D)
-
-**Nguồn 2-4 — Extract Stories bổ sung (chỉ phục vụ Wisdom layer):**
-
-| Nguồn | Path | Confidence |
-|-------|------|------------|
-| Viral Posts | `vault/[User]/Viral Posts/` | 0.9 |
-| Posted | `vault/[User]/Posted/` | 0.8 |
-| Reflective Writing | `vault/Content/Reflective Writing.md` | 0.6 |
-
-**Exclude**: `.obsidian`, `.git`, `.gitkeep`, `Template`, `_Templates`, `_System`
-
----
-
-### Thủ tục phụ: Smart Global Pre-Filter (Màng Lọc Nguồn Toàn Cục)
-Trước khi thực hiện các phép lọc chuyên sâu ở Bước 2, hãy đọc `Target_Source_IDs` từ Blackboard (`00-blackboard.yaml`).
-
-1. **Nếu `Target_Source_IDs` CÓ RÀNG BUỘC (mảng có phần tử, ví dụ: `["good-inside"]`):**
-   - Quét tất cả các file MD trong **Nguồn 1** (`vault/01-Atomic/` gồm 6 thư mục con: `Stories`, `Solutions`, `Insights`, `Concepts`, `Quotes`, `Data-Points`).
-   - Đọc trường `source_id` trong frontmatter của từng file.
-   - **LOẠI BỎ NGAY LẬP TỨC** các file thuộc `vault/01-Atomic/` ra khỏi danh sách ứng viên đưa vào Rổ nguyên liệu nếu file đó không chứa thuộc tính `source_id` hoặc giá trị `source_id` không nằm trong mảng `Target_Source_IDs`.
-   - ⛔ **QUY TẮC BẢO TOÀN (Zero-breakage Rule):** Màng lọc này TUYỆT ĐỐI KHÔNG ÁP DỤNG cho các file quét từ các **Nguồn 2-4** (như `Viral Posts/`, `Posted/`, `Reflective Writing.md`). Những file này không có `source_id` và thuộc về tài nguyên dùng chung của Persona, phải được giữ nguyên vẹn để đi tiếp vào vòng chấm điểm như bình thường.
-
-2. **Nếu `Target_Source_IDs` TRỐNG (mảng rỗng hoặc null, tức viết tự do):**
-   - Bỏ qua màng lọc này, giữ nguyên toàn bộ các file ứng viên và đi tiếp vào Bước 2.
-
----
-
-### Bước 2: Lọc Nhánh Chính (Bộ lọc O(1) Đa Điều Kiện)
-- Tầng 2: **Insights** = Anchors. Quét các file `Insights` thoả mãn ĐỒNG THỜI:
-  - Có ít nhất một topic thuộc mảng `mapped_topics` HOẶC có thuộc tính `source_id` nằm trong mảng `Target_Source_IDs` (nếu mảng này tồn tại và có phần tử).
-  - Có `belongs_to_audience` khớp với `Target_Audience` (strip `[[]]` trước khi so sánh):
-    - `Target_Audience` là string → so sánh trực tiếp.
-    - `Target_Audience` là array → khớp nếu trùng **bất kỳ** phần tử nào.
-- Các file Insight thỏa mãn sẽ là Mỏ neo gốc (Anchors) đưa vào Rổ nguyên liệu.
-
-### Bước 3: Lọc Nhánh Rễ (Validate Graph Links & Purge)
-- **Tầng 3 (Validate `supports_insight`):** Scan `Solutions`, `Concepts`. Chỉ lấy các Atom nào có Node Link `supports_insight` trỏ VÀO MỘT TRONG CÁC file Insight (Tầng 2) đang có trong Rổ.
-- **Tầng 4 (Validate `supports_knowledge`):** Scan `Stories`, `Quotes`, `Data-Points`. Chỉ lấy các Atom nào có Node Link `supports_knowledge` trỏ VÀO MỘT TRONG CÁC file Solution/Concept (Tầng 3) đang có trong Rổ.
-- **⛔ Orphan Purge:** Drop hoàn toàn các Atom thiếu Link Graph, hoặc Link trỏ ra ngoài Rổ nguyên liệu. Không đưa rác vào quy trình.
-- **Anti-Repetition:** Đọc `production-log.md` để tự động loại bỏ các Atoms đã được sử dụng trong 3 bài post gần nhất.
-
-### Bước 4: Anchor-First Selection (Chọn Combo Deterministic)
-
-> Relevance = `topic_overlap_count` × `dikw_weight` (từ `injection-rules.md`).
-> Loại atom có confidence < 0.5 hoặc status = "rejected"/"quarantine".
-
-**Phase A — Chọn Anchor Insight:**
-1. Score từng Insight trong Rổ. Sort DESC.
-2. Tiebreaker ngang điểm: Insight có nhiều downstream atoms (Solutions/Concepts trỏ về) thắng. Vẫn ngang → alphabet filename.
-
-**Phase B — Kiểm tra Viability (top-down):**
-3. FOR each Insight (score cao → thấp):
-   a. Tìm Solutions/Concepts có `supports_insight` → Insight này. Không có → **skip**.
-   b. Score Solutions/Concepts → chọn top 1.
-   c. Tìm Stories có `supports_knowledge` → Solution/Concept đã chọn.
-   d. Tìm Data-Points/Quotes có `supports_knowledge` → Solution/Concept đã chọn.
-   e. Nếu (Data-Points + Quotes) < 1 → **skip**, thử Insight tiếp.
-   f. **VIABLE** → chốt Anchor. BREAK.
-
-**Phase C — Lấp slot Combo:**
-5. Stories: top 1-2 (score DESC, ưu tiên subtype theo `injection-rules.md`).
-6. Data-Points/Quotes: top 3-5 (score DESC).
+- **Xử lý kết quả**: Combo Engine sẽ tự động xuất ra bộ nguyên liệu hoàn chỉnh (1 Anchor Insight, 1 Solution/Concept bổ trợ, 1-2 Stories, và 3-5 Quotes/Data-Points) thỏa mãn 100% các luật Poka-Yoke và cơ chế Anti-Repetition (loại bỏ các nguyên liệu đã dùng trong 3 bài đăng gần nhất từ `production-log.md`). Kết quả này sẽ được chuyển tiếp trực tiếp sang Bước 5 để thực hiện đóng gói payload.
 
 ### Bước 5: Đóng gói (Export Payload)
 Xuất "Gói nguyên liệu DIKW (Atomic Combo)" nạp làm đầu vào trực tiếp cho **Idea Curator** (Bước 2) và **Content-Post** (điều phối cho các Agent khác toàn dây chuyền).
@@ -131,4 +70,13 @@ powershell -ExecutionPolicy Bypass -File ".agents/skills/dikw-bridge/scripts/bun
 ```
 
 ⛔ File này là bản sao vật lý của Gói nguyên liệu DIKW, phục vụ resume dự phòng khi pipeline cần khôi phục. Output trong context memory vẫn được sử dụng bình thường bởi các Phase tiếp theo.
+
+<!--
+Tên file: SKILL.md
+Last update: 27/05/2026 00:20 (GMT+7)
+Vai trò: Định nghĩa các bước thực thi của DIKW Bridge Skill trong pipeline sản xuất nội dung.
+Được sử dụng khi nào: Khi workflow /content-post kích hoạt agent DIKW Bridge để thu thập và sắp xếp combo nguyên liệu cho bài viết.
+Output: Combo nguyên liệu tối ưu (Anchor Insight, Solution/Concept, Stories, Quotes/Data-Points) được ghi vào Blackboard và lưu trữ tại 00.5-dikw-combo.md.
+Tóm tắt logic hoạt động: Phân giải thông tin Blackboard, gọi Tool Get-DIKWCombo.ps1 để thực hiện truy vấn và xếp hạng tối ưu theo DAG in-memory O(1), định dạng payload chuẩn hóa và kích hoạt script đóng gói vật lý bundle-atoms.ps1.
+-->
 
