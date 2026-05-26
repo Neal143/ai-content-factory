@@ -1,6 +1,6 @@
 <#
 Tên file: build-vault-index.ps1
-Last update: 27/05/2026 00:55 (GMT+7)
+Last update: 27/05/2026 00:35 (GMT+7)
 Vai trò: Script PowerShell quét toàn bộ Data Vault nguyên tố DIKW và xây dựng Index dạng JSON (nodes và edges).
 Sử dụng khi nào: Được gọi tự động trước mỗi truy vấn DIKW Combo để cung cấp cơ sở dữ liệu in-memory tốc độ cao O(1).
 Output: File vault_index.json chứa toàn bộ thông tin metadata của các atoms và các liên kết DAG.
@@ -19,7 +19,7 @@ param (
     [string]$VaultPath = "vault/01-Atomic",
 
     [Parameter(Mandatory = $false)]
-    [string]$OutputPath = ".agents/skills/dikw-bridge/vault_index.json"
+    [string]$OutputPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
 )
 
 # ==========================================
