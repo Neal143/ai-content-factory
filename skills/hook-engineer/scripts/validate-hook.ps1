@@ -32,6 +32,36 @@ if (-not (Test-Path $HookPath)) {
 $hook = Get-Content $HookPath -Raw -Encoding UTF8
 
 # ============================================================
+# CHECK BLOCK: Data Contract Validation (Dynamic from SKILL.md)
+# ============================================================
+$skillMdPath = Join-Path $PSScriptRoot "../SKILL.md"
+if (Test-Path $skillMdPath) {
+    $skillRaw = Get-Content $skillMdPath -Raw -Encoding UTF8
+    if ($skillRaw -match "(?s)^---\r?\n(.*?)\r?\n---") {
+        $fm = $Matches[1]
+        if ($fm -match "(?s)provided_outputs:\r?\n(.*?)(?:\r?\n\S|\Z)") {
+            $poBlock = $Matches[1]
+            $outputs = [regex]::Matches($poBlock, '-\s*(\S+)') | ForEach-Object { $_.Groups[1].Value }
+            foreach ($blk in $outputs) {
+                $rx = "(?s)\[BLOCK:\s*$blk\s*\](.*?)\[/BLOCK:\s*$blk\s*\]"
+                if ($hook -match $rx) {
+                    if ($Matches[1].Trim().Length -gt 0) {
+                        Add-Result "Block [$blk]" "PASS" "OK ($($Matches[1].Trim().Length) chars)"
+                    } else {
+                        Add-Result "Block [$blk]" "FAIL" "Block rong"
+                    }
+                } else {
+                    Add-Result "Block [$blk]" "FAIL" "Thieu [BLOCK: $blk]...[/BLOCK: $blk]"
+                }
+            }
+        }
+    }
+} else {
+    Add-Result "Block Check" "WARN" "SKILL.md khong tim thay tai $skillMdPath"
+}
+
+
+# ============================================================
 # CHECK 1: Core Hook ≤ 15 words
 # ============================================================
 # Try to find the core hook line (after "Core Hook:" or first non-header line)

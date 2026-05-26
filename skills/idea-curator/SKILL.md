@@ -1,17 +1,28 @@
 ---
 name: Idea Curator
 description: Skill Phase 1 — Phân tích topic, tìm góc nhìn contrarian và đánh giá tiềm năng viral.
+required_inputs:
+  - blackboard              # 00-blackboard.yaml (topic, Target_Pillar, Target_Audience, Is_Novel_Angle)
+  - dikw_combo              # 00.5-dikw-combo.md (optional, chỉ Kịch bản 1)
+provided_outputs:
+  - CONTRARIAN_ANGLE
+  - CORE_TENSION
+  - HIDDEN_BELIEF
+  - TRANSFORMATION_PROMISE
+  - VIRAL_SCORE
 ---
 
 # Idea Curator (Phase 1)
 
-> EXECUTION_KEY: 1d063c79
+> EXECUTION_KEY: 8f94036d
 
 ## Điều kiện Đầu vào
-1. **`topic`**: ID chủ đề bài viết (String).
-2. **`Target_Pillar`**: Pillar thương hiệu đã phân loại bởi Semantic Router.
-3. **`Target_Audience`**: Đối tượng độc giả (chỉ có khi `Is_Novel_Angle == False`).
-4. **`Gói nguyên liệu DIKW (Atomic Combo)`**: Các file `Insight`, `Solution/Concept` từ Vault (chỉ có khi Kịch bản 1).
+> **PAYLOAD:** Dữ kiện đầu vào (từ các phase trước hoặc hệ thống) đã được biên dịch sẵn trong `.temp/payload.md` (run folder). BẮT BUỘC đọc file này để lấy dữ kiện thay vì tự mở file gốc.
+
+1. **`topic`**: ID chủ đề bài viết (String) (Đọc từ payload).
+2. **`Target_Pillar`**: Pillar thương hiệu đã phân loại bởi Semantic Router (Đọc từ payload).
+3. **`Target_Audience`**: Đối tượng độc giả (chỉ có khi `Is_Novel_Angle == False`) (Đọc từ payload).
+4. **`Gói nguyên liệu DIKW (Atomic Combo)`**: Các file `Insight`, `Solution/Concept` từ Vault (chỉ có khi Kịch bản 1) (Đọc từ payload).
 
 ## Luồng Xử lý (2-Mode)
 
@@ -38,10 +49,16 @@ description: Skill Phase 1 — Phân tích topic, tìm góc nhìn contrarian và
 | Cá nhân hóa | 3đ | Người đọc có thấy mình trong đó không? |
 | Ứng dụng tức thời | 3đ | Đọc xong có thể làm ngay không? |
 
-6. Xuất **Idea Brief** gồm:
-   - ⛔ BẮT BUỘC giữ nguyên văn từ Blackboard: `topic` (NGUYÊN VĂN GỐC), `Target_Pillar` (NGUYÊN VĂN GỐC), `Target_Audience` (nếu có), `Is_Novel_Angle`.
-   - Bổ sung: Contrarian Angle, Core Tension, Hidden Belief, Transformation Promise, Viral Score, Kịch bản đã dùng.
-   - ⛔ **FATAL RULE (nếu chạy Kịch bản 1):** BẮT BUỘC dùng tool `view_file` đọc `00.5-dikw-combo.md` để trích xuất và chèn dòng `<!-- bundle_key: [Mã trích xuất] -->` vào dòng cuối cùng của Idea Brief.
+6. Xuất **Idea Brief** — mỗi khối nội dung BẮT BUỘC bọc trong thẻ `[BLOCK: TÊN]...[/BLOCK: TÊN]`:
+   - ⛔ BẮT BUỘC giữ nguyên văn từ Blackboard: `topic`, `Target_Pillar`, `Target_Audience` (nếu có), `Is_Novel_Angle`.
+   - Các block bắt buộc:
+     - `[BLOCK: CONTRARIAN_ANGLE]` — Góc nhìn phản trực giác
+     - `[BLOCK: CORE_TENSION]` — Căng thẳng cốt lõi
+     - `[BLOCK: HIDDEN_BELIEF]` — Niềm tin ẩn cần phá vỡ
+     - `[BLOCK: TRANSFORMATION_PROMISE]` — Hứa hẹn thay đổi
+     - `[BLOCK: VIRAL_SCORE]` — Điểm viral + bảng phân tích
+   - Bổ sung: Kịch bản đã dùng.
+   - ⛔ **FATAL RULE (nếu chạy Kịch bản 1):** BẮT BUỘC tìm mã bundle key trong khối DIKW của file payload và chèn dòng `<!-- bundle_key: [Mã trích xuất] -->` vào dòng cuối cùng của Idea Brief.
 7. **[SCRIPTED VALIDATION]** Chạy:
    ```powershell
    powershell -ExecutionPolicy Bypass -File ".agents/skills/idea-curator/scripts/validate-idea.ps1" -IdeaPath "[Đường dẫn file Idea Brief]"

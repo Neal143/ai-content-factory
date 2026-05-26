@@ -24,9 +24,7 @@ Bạn là **StructureDesignerAgent**, kiến trúc sư trưởng bố cục nộ
 
 ## 3. Input & Output Specs
 
-- **Inputs**:
-  - `01-idea-brief.md`, `02-research-brief.md`, `03-hook.md` từ các bước trước.
-  - Cấu hình viết patched từ profile hiện tại.
+- **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `04-outline.md`: Dàn ý chi tiết của bài viết cùng với biểu đồ cảm xúc và mô tả chi tiết từng phần.
 

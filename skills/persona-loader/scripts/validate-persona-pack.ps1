@@ -22,6 +22,30 @@ if ($content.Trim().Length -eq 0) {
     Write-Host "[FAIL] 04.5-persona-pack.md is empty"; exit 1
 }
 
+# --- Check BLOCK: Data Contract Validation ---
+$skillMdPath = Join-Path $PSScriptRoot "../SKILL.md"
+if (Test-Path $skillMdPath) {
+    $skillRaw = Get-Content $skillMdPath -Raw -Encoding UTF8
+    if ($skillRaw -match "(?s)^---\r?\n(.*?)\r?\n---") {
+        $fm = $Matches[1]
+        if ($fm -match "(?s)provided_outputs:\r?\n(.*?)(?:\r?\n\S|\Z)") {
+            $poBlock = $Matches[1]
+            $outputs = [regex]::Matches($poBlock, '-\s*(\S+)') | ForEach-Object { $_.Groups[1].Value }
+            foreach ($blk in $outputs) {
+                $rx = "(?s)\[BLOCK:\s*$blk\s*\](.*?)\[/BLOCK:\s*$blk\s*\]"
+                if ($content -match $rx) {
+                    if ($Matches[1].Trim().Length -eq 0) {
+                        Write-Host "[FAIL] Block [$blk] rong"; $failed = $true
+                    }
+                } else {
+                    Write-Host "[FAIL] Thieu [BLOCK: $blk]...[/BLOCK: $blk]"; $failed = $true
+                }
+            }
+        }
+    }
+}
+
+
 # --- Check 2: 4 section headers phai co mat ---
 $requiredSections = @("[Voice DNA]", "[JTBD Anchor]", "[Profile]", "[Authorities]")
 foreach ($section in $requiredSections) {

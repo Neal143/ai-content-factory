@@ -26,9 +26,7 @@ Bạn là **FormatAgent**, người kiểm soát khâu hoàn thiện cuối cùn
 
 ## 3. Input & Output Specs
 
-- **Inputs**:
-  - Bản thảo đã được phê duyệt từ Blackboard.
-  - Các thông số `Topic Slug`, `Pillar gốc`, `QA Score`.
+- **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `07-final.md`: Bản lưu trữ thành phẩm kỹ thuật trong run folder.
   - `output/posts/[YYYY-MM-DD]-[topic-slug].md`: Bản phân phối cuối cùng đã được làm sạch markers.

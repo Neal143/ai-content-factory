@@ -2,11 +2,21 @@
 name: Persona Loader
 description: Phase 4.5 — Nạp Voice DNA, Profile, Authorities và JTBD (từ blackboard) vào Persona Pack. Validation do validate-persona.ps1 đảm nhận.
 last_update: 06/05/2026 22:00 (GMT+7)
+required_inputs:
+  - blackboard               # 00-blackboard.yaml (Persona_Path, resolved_jtbd)
+  - persona_voice_dna        # [Persona_Path]/voice-dna.yaml
+  - persona_profile          # [Persona_Path]/profile.yaml
+  - persona_authorities      # [Persona_Path]/authorities.yaml
+provided_outputs:
+  - PERSONA_DNA
 ---
 
 # Persona Loader (Phase 4.5)
 
-> EXECUTION_KEY: b15d9a68
+> EXECUTION_KEY: 9fcd8e46
+
+## Điều kiện Đầu vào
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
 
 Nạp 3 file persona YAML + JTBD từ blackboard, compile thành Persona Pack, ghi vào run folder.
 
@@ -29,7 +39,7 @@ Sau khi đọc mỗi file, ghi nhận giá trị `FILE_KEY` (dòng `# FILE_KEY: 
 
 ## Bước 2: Compile Persona Pack
 
-Compile thành file `04.5-persona-pack.md` trong run folder theo format:
+Compile thành file `04.5-persona-pack.md` — TOÀN BỘ nội dung pack BẮT BUỘC bọc trong `[BLOCK: PERSONA_DNA]...[/BLOCK: PERSONA_DNA]`:
 
 ```
 [System Context: JTBD Anchor]

@@ -26,10 +26,7 @@ Bạn là **QaCheckerAgent**, chánh thanh tra chất lượng khắt khe nhất
 
 ## 3. Input & Output Specs
 
-- **Inputs**:
-  - `05-draft.md` từ Phase 5.
-  - `02-research-brief.md` chứa dữ liệu nguồn.
-  - Các cấu hình từ thư mục Persona.
+- **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `06-qa-result.md`: Báo cáo đánh giá chất lượng chi tiết /130 điểm và phán quyết cuối cùng.
   - `gate6-issues.md`: (Chỉ khi REVISE) danh sách các lỗi cần hiệu chỉnh.

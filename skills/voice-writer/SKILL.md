@@ -2,6 +2,15 @@
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
 last_update: 24/05/2026 14:30 (GMT+7)
+required_inputs:
+  - OUTLINE_SECTIONS         # from 04-outline.md (Phase 4)
+  - CLOSING_COMBO            # from 04-outline.md (Phase 4)
+  - PERSONA_DNA              # from 04.5-persona-pack.md (Phase 4.5)
+  - EVIDENCE_LIST            # from 02-research-brief.md (Phase 2)
+  - STORY_LIST               # from 02-research-brief.md (Phase 2)
+  - dikw_combo               # 00.5-dikw-combo.md
+provided_outputs:
+  - DRAFT_SECTIONS
 ---
 
 # Voice Writer (Phase 5)
@@ -9,6 +18,8 @@ last_update: 24/05/2026 14:30 (GMT+7)
 > EXECUTION_KEY: 108a5dc4
 
 ## Điều kiện Đầu vào
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
+
 1. **`Outline 5 phần`** (Phase 4)
 2. **`Persona Pack`** (Phase 4.5 — đã có trong context)
 3. **`Atomic Combo`** (Stories, Insight, Solutions, Concepts... từ Bước 5 của workflow)
@@ -57,7 +68,7 @@ Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
 | Closing | 150 |
 
 **3.1 — Viết từng section:**
-Viết lần lượt 5 sections. Mỗi section:
+Viết lần lượt 5 sections. TOÀN BỘ nội dung bài viết (từ dòng `<!-- TITLE: ... -->` đến hết Closing) BẮT BUỘC bọc trong `[BLOCK: DRAFT_SECTIONS]...[/BLOCK: DRAFT_SECTIONS]`. Mỗi section:
 - Bám sát outline, nằm trong word budget
 - Ghi vào `05-draft.md` trong run folder (section 1: overwrite, section 2-5: append). LUÔN viết đầy đủ structural markers (dạng HTML comment). Tất cả marker KHÔNG được đếm vào word count.
 

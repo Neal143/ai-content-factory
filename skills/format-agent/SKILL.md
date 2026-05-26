@@ -2,6 +2,12 @@
 name: Format Agent
 description: Skill Phase 7 — Format bài viết, nhúng metadata, cập nhật log sản xuất và hook history.
 last_update: 23/05/2026 (GMT+7)
+required_inputs:
+  - DRAFT_SECTIONS           # from 05-draft.md (Phase 5)
+  - QA_REPORT                # from 06-qa-result.md (Phase 6)
+  - blackboard               # 00-blackboard.yaml (topic slug, pillar)
+provided_outputs:
+  - FINAL_POST
 ---
 
 # Format Agent (Phase 7)
@@ -9,10 +15,13 @@ last_update: 23/05/2026 (GMT+7)
 > EXECUTION_KEY: edba0213
 
 ## Điều kiện Đầu vào
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
+
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất và sử dụng 3 khối dữ liệu để đóng gói:
 1. **`Draft đã PASS QA`** (Phase 5/6).
 2. **`Topic Slug`** (đặt tên file).
 3. **`Pillar gốc`** (update log + tags).
+
 
 ## Quy tắc Format
 
@@ -43,10 +52,10 @@ Nội dung bài viết bắt đầu từ đây...
 
 ## Hướng dẫn thực thi
 
-1. Format bài viết theo bảng Quy tắc Format.
+1. Format bài viết theo bảng Quy tắc Format. TOÀN BỘ nội dung file `07-final.md` (từ sau YAML Frontmatter) BẮT BUỘC bọc trong `[BLOCK: FINAL_POST]...[/BLOCK: FINAL_POST]`.
 2. Nhúng YAML Frontmatter vào đầu file.
 3. Lưu bài vào 2 nơi:
-   - `output/runs/[run-folder]/07-final.md` (giữ nguyên execution key)
+   - `output/runs/[run-folder]/07-final.md` (giữ nguyên execution key và block tags)
    - `output/posts/[YYYY-MM-DD]-[topic-slug].md`
      Strip/format structural markers (dùng string replace, KHÔNG chỉnh nội dung khác):
      - `<!-- execution_key: ... -->` → Xóa
@@ -56,6 +65,7 @@ Nội dung bài viết bắt đầu từ đây...
      - `<!-- SECTION_HEADING: ... -->` → Xóa
      - `<!-- PARAGRAPH: N -->` → Xóa (luôn xóa — đây là số thứ tự kỹ thuật)
      - `<!-- PARAGRAPH_HEADING: ... -->` → Xóa
+     - `[BLOCK: FINAL_POST]` và `[/BLOCK: FINAL_POST]` → Xóa
      - Marker `⁂`: Tìm mỗi khối gồm [1 dòng trống + dòng chứa `⁂` + 1 dòng trống], replace TOÀN BỘ khối bằng 2 dòng trống
      - Giữa các đoạn: cách dòng trên 1 dòng trống, cách dòng dưới 0 dòng trống
      - Giữa các chuỗi câu trong cùng 1 đoạn: giữ nguyên 1 xuống dòng, không thêm dòng trống

@@ -85,9 +85,45 @@ powershell -ExecutionPolicy Bypass -File ".agents/scripts/validate-persona.ps1"
 
 **Quy tắc thực thi của Sub-Agents:**
 1. Mỗi phase: Đọc cấu hình nhận thức của tác nhân tại tệp **`AGENT.md`** để nạp vai trò tư duy chuyên biệt, sau đó bắt buộc `view_file` quy trình **`SKILL.md`** tương ứng để lấy mã khóa thực thi `EXECUTION_KEY` và thực thi ghi output.
-2. Sau khi ghi output, ghi dòng cuối: `<!-- execution_key: [EXECUTION_KEY từ SKILL.md] -->`
-3. Chạy Sentinel kiểm định. **Phase 4.5 dùng `-Phase 45`** (integer).
-4. Tất cả `run_command` trong Bước 6 đều `SafeToAutoRun = true`.
+2. **PAYLOAD RULE:** Trước mỗi phase, hệ thống tự động biên dịch file `.temp/payload.md` trong run folder — chứa sẵn các dữ kiện cần thiết (từ output các phase trước hoặc biến khởi tạo như blackboard/dikw). Sub-agent đọc `.temp/payload.md` để lấy dữ kiện thay vì tự mở từng file cũ. Ngoài ra, agent vẫn đọc các file khác theo chỉ dẫn của SKILL.md (persona files, reference files, log files, v.v.).
+3. Sau khi ghi output, ghi dòng cuối: `<!-- execution_key: [EXECUTION_KEY từ SKILL.md] -->`
+4. Chạy Sentinel kiểm định. **Phase 4.5 dùng `-Phase 45`** (integer).
+5. Tất cả `run_command` trong Bước 6 đều `SafeToAutoRun = true`.
+
+**Lệnh Biên dịch JIT Payload cho từng Phase (BẮT BUỘC chạy trước khi gọi Agent):**
+
+- **Phase 1 (Ý tưởng):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"
+  ```
+- **Phase 2 (Nghiên cứu):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "01-idea-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, belief:01-idea-brief.md|HIDDEN_BELIEF, dikw:?00.5-dikw-combo.md, blackboard:00-blackboard.yaml"
+  ```
+- **Phase 3 (Hook):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "02-research-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, quotes:02-research-brief.md|EXPERT_QUOTES, blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"
+  ```
+- **Phase 4 (Dàn ý):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "03-hook.md" -InputMap "hook:03-hook.md|CORE_HOOK, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"
+  ```
+- **Phase 4.5 (Persona):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml"
+  ```
+- **Phase 5 (Viết bài):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "04.5-persona-pack.md" -InputMap "outline:04-outline.md|OUTLINE_SECTIONS, closing:04-outline.md|CLOSING_COMBO, persona:04.5-persona-pack.md|PERSONA_DNA, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"
+  ```
+- **Phase 6 (QA):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "05-draft.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS"
+  ```
+- **Phase 7 (Format):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "06-qa-result.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS, qa:06-qa-result.md|QA_REPORT, blackboard:00-blackboard.yaml"
+  ```
 
 **Checkpoint tự động tại Phase 4:** Khi Phase 4 Sentinel PASS – `checkpoint.yaml` được tạo TỰ ĐỘNG bởi Sentinel ở trạng thái `in_progress` (làm điểm neo fail-safe). Agent **TIẾP TỤC** chạy Phase 4.5 ngay lập tức mà không dừng.
 

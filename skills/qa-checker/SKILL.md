@@ -2,17 +2,24 @@
 name: QA Checker
 description: Skill Phase 6 — Chấm điểm bài viết theo 4 sections, tổng 130 điểm. Quyết định PASS/REVISE/FAIL.
 last_update: 05/05/2026 18:11 (GMT+7)
+required_inputs:
+  - DRAFT_SECTIONS           # from 05-draft.md (Phase 5)
+  - persona_voice_dna        # [Persona_Path]/voice-dna.yaml (WR-03 verification)
+  - persona_scoring_rules    # [Persona_Path]/scoring-rules.yaml (pass_threshold)
+provided_outputs:
+  - QA_REPORT
 ---
 
 # QA Checker (Phase 6)
 
-> EXECUTION_KEY: 1e4ad59f
+> EXECUTION_KEY: 9126bd4e
 
 ## Điều kiện Đầu vào
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
 
 > ⛔ **DEFAULT DENY:** Để chấm điểm khách quan, CẤM đọc các file sau trong Run Folder:
 > `01-idea-brief.md`, `03-hook.md`, `04-outline.md`, `gate5-issues.md`, `gate6-issues.md`.
-> Lưu ý: TUYỆT ĐỐI KHÔNG dùng nội dung `02-research-brief.md` để thiên vị đánh giá.
+> Lưu ý: TUYỆT ĐỐI KHÔNG dùng nội dung `02-research-brief.md` để thiên vị đánh giá (ngoại trừ việc đọc `02-research-brief.md` trực tiếp để thực hiện Atom Attribution Check CT-05).
 
 ## Quy trình
 
@@ -24,7 +31,7 @@ last_update: 05/05/2026 18:11 (GMT+7)
 
 **Ghi log:** `[Phase 6 Self-Check] Score: X/130 | Verdict: PASS/REVISE/FAIL | Attempt: N of 3`
 
-**Output:** `06-qa-result.md` — Cuối file BẮT BUỘC append: `<!-- persona_keys: voice-dna=[key], scoring-rules=[key] -->` (lấy giá trị `# FILE_KEY:` đã ghi nhận ở WR-03 và Verdict).
+**Output:** `06-qa-result.md` — TOÀN BỘ nội dung chấm điểm BẮT BUỘC bọc trong `[BLOCK: QA_REPORT]...[/BLOCK: QA_REPORT]`. Cuối file BẮT BUỘC append: `<!-- persona_keys: voice-dna=[key], scoring-rules=[key] -->` (lấy giá trị `# FILE_KEY:` đã ghi nhận ở WR-03 và Verdict).
 
 ---
 

@@ -2,13 +2,24 @@
 name: Structure Designer
 description: Phase 4 — Thiết kế outline 5 sections, emotional arc, chọn closing combo với rotation check.
 last_update: 04/05/2026 16:15 (GMT+7)
+required_inputs:
+  - CORE_HOOK                # from 03-hook.md (Phase 3)
+  - CORE_TENSION             # from 01-idea-brief.md (Phase 1)
+  - EVIDENCE_LIST            # from 02-research-brief.md (Phase 2)
+  - STORY_LIST               # from 02-research-brief.md (Phase 2)
+  - dikw_combo               # 00.5-dikw-combo.md
+provided_outputs:
+  - OUTLINE_SECTIONS
+  - CLOSING_COMBO
 ---
 
 # Structure Designer (Phase 4)
 
-> EXECUTION_KEY: fbd50ae4
+> EXECUTION_KEY: c92851e3
 
 ## 1. Input Variables
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
+
 **BẮT BUỘC**: Dùng tool `view_file` đọc file `00.5-dikw-combo.md` trong run folder để lấy dữ liệu Atoms và trích xuất mã `BUNDLE_KEY` ở cuối file.
 Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất:
 1. `Hook 3 phần` (Phase 3)
@@ -76,7 +87,11 @@ E6       ✅       ✅          ✅         ❌         ✅          ✅
 - Cả 2 lớp đều phải rotate độc lập.
 
 ## 4. Format Output Bắt Buộc
-Xuất Outline vào file `04-outline.md` tại Run Folder. Mỗi Section PHẢI ghi rõ:
+Xuất Outline vào file `04-outline.md` — BẮT BUỘC bọc trong thẻ `[BLOCK: TÊN]...[/BLOCK: TÊN]`:
+- `[BLOCK: OUTLINE_SECTIONS]` — Bao bọc toàn bộ 5 sections của outline
+- `[BLOCK: CLOSING_COMBO]` — Bao bọc riêng phần Closing (E[?] + S[?] và nội dung)
+
+Mỗi Section bên trong OUTLINE_SECTIONS PHẢI ghi rõ:
 
 ```
 ## [Tên Section]
