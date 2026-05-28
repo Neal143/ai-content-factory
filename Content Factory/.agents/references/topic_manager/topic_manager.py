@@ -94,7 +94,7 @@ def batch_commit(topic_map_path, input_path, output_path):
     """
     Tên: batch_commit
     Vai trò: Đọc proposed_topics.json, ghi topic mới/append audience vào topic_map.yaml,
-             xuất resolved_topics.json cho atomizer_context.json.
+             xuất resolved_topics.json cho atomizer.py.
     Khi nào sử dụng: Được gọi bởi Agent trong book-parser Phase 1, Bước 1.5 (Batch Mode).
     Output: topic_map.yaml (cập nhật) + resolved_topics.json (mới).
 

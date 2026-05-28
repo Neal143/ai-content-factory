@@ -86,7 +86,7 @@ def find_next_chunk(ledger_path, cache_path):
     toc_match = re.search(r'TOC_MASTER[:\*\s]*\n(.*?)(?:\n\n\n|\Z|<!--)', cache_content, re.DOTALL)
     if toc_match:
         toc_body = toc_match.group(1)
-        for m in re.finditer(r'(?:[-*]\s*)Chunk\s+(\d+):\s*(.+?)(?:\r?\n|$)', toc_body):
+        for m in re.finditer(r'(?:[-*]\s*)?Chunk\s+(\d+):\s*(.+?)(?:\r?\n|$)', toc_body):
             toc_map[int(m.group(1))] = m.group(2).strip()
 
     chunk_name = toc_map.get(next_idx, f"Unknown Chunk {next_idx}")

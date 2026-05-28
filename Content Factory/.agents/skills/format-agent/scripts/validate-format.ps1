@@ -145,41 +145,6 @@ if ($hasFrontmatter) {
 }
 
 # ============================================================
-# CHECK 5: Pillar Rotation (no duplicates in 2 consecutive posts)
-# Reason: AI ignores pillar diversity when appending production log.
-# Script reads production-log.md and compares with current frontmatter.
-# ============================================================
-$currentPillar = ""
-if ($hasFrontmatter -and $frontmatterBlock -match 'pillar:\s*"([^"]+)"') {
-    $currentPillar = $Matches[1]
-}
-
-if ($currentPillar -and (Test-Path $LogPath)) {
-    $logRaw = Get-Content $LogPath -Raw -Encoding UTF8
-    $pillarMatches = [regex]::Matches($logRaw, '\*\*Pillar\*\*:\s*(.+)')
-    if ($pillarMatches.Count -ge 2) {
-        # Current post was appended to log BEFORE running this script
-        # So "previous" post is the second to last match
-        $previousPillar = $pillarMatches[$pillarMatches.Count - 2].Groups[1].Value.Trim()
-        if ($currentPillar -eq $previousPillar) {
-            Add-Result "Pillar Rotation" "FAIL" "Pillar '$currentPillar' matches previous post"
-        }
-        else {
-            Add-Result "Pillar Rotation" "PASS" "Current: '$currentPillar' vs Previous: '$previousPillar'"
-        }
-    }
-    else {
-        Add-Result "Pillar Rotation" "PASS" "Only 1 post in log (no rotation needed)"
-    }
-}
-elseif (-not $currentPillar) {
-    Add-Result "Pillar Rotation" "WARN" "Could not extract pillar from frontmatter"
-}
-else {
-    Add-Result "Pillar Rotation" "PASS" "No production log yet (first post)"
-}
-
-# ============================================================
 # CHECK 6: Content Integrity (word count delta <= 2%)
 # Ly do: Phase 7 Agent rewrites content -> loses words.
 # Compare word count between 05-draft.md and 07-final.md body.

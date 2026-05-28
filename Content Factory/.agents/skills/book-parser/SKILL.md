@@ -76,42 +76,28 @@ Sau khi script `batch-commit` chạy xong, đọc file `[run_folder]/resolved_to
 ### Bước 2.1: Tải niêm phong Dữ Liệu (Đã có sẵn)
 Dữ liệu JSON (`parsed_metadata.json`) và Baseline CSV (`extraction_baseline.csv`) đã được niêm phong hoàn chỉnh từ `/extract-book` và nằm sẵn trong `[run_folder]`. Cấu trúc Baseline đóng vai trò là Manifest cho toàn bộ pipeline. Agent KHÔNG CẦN gọi lệnh nào để parse lại ở bước này mà kế thừa file JSON có sẵn và chuyển thẳng sang Bước 2.2.
 
-### Bước 2.2: Đóng gói Context
-Tạo file `[run_folder]/atomizer_context.json` bằng cách **đọc trực tiếp `[run_folder]/resolved_topics.json`** (output của Bước 1.5) và copy dữ liệu sang. File JSON PHẢI có đúng cấu trúc sau:
-```json
-{
-  "source_acronym": "[từ-viết-tắt-của-sách-mũi-tên]",
-  "book_meta": {
-      "book_name": "Tên Sách",
-      "author": "Tác Giả",
-      "year": "Năm xuất bản"
-  },
-  "book_topics": [],          // Copy từ resolved_topics.json["book"]
-  "chunk_topics_map": {}      // Copy các key số từ resolved_topics.json
-}
-```
-
-> ⚠️ **KHÔNG** nhúng `audience_decision_map` vào file này. Script `atomizer.py` đọc trực tiếp từ file `audience_decision_map.json` qua argument `--decision-map` (xem Bước 2.3).
-
-> ⚠️ **KHÔNG** tự tổng hợp `book_topics` hoặc `chunk_topics_map` từ working memory. Đọc từ `resolved_topics.json` và copy nguyên.
-
-### Bước 2.3: Chạy Atomizer Script
+### Bước 2.2: Chạy Atomizer Script
 Thực thi lệnh Python sau để đẩy data xuống Disk:
 ```bash
 python .agents/skills/book-parser/scripts/atomizer.py \
     "[run_folder]/parsed_metadata.json" \
-    "[run_folder]/atomizer_context.json" \
     vault/ \
-    --decision-map "[run_folder]/audience_decision_map.json" \
-    --baseline     "[run_folder]/extraction_baseline.csv" \
-    --report       "[run_folder]/pipeline_report.md"
+    --acronym         "[từ-viết-tắt-của-sách-mũi-tên]" \
+    --decision-map    "[run_folder]/audience_decision_map.json" \
+    --resolved-topics "[run_folder]/resolved_topics.json" \
+    --baseline        "[run_folder]/extraction_baseline.csv" \
+    --report          "[run_folder]/pipeline_report.md"
 ```
 
 > ⚠️ **LUẬT THÉP:** KHÔNG TỰ PHÂN RÃ FILE BẰNG TAY (Agent execution). 
 > - Toàn bộ logic phân mảng DIKW (Tầng 2, 3, 4), đóng dấu YAML Frontmatter, cấy Topics, xử lý Vivid (ký sinh), sinh File Name Slugify, và Gate Validation (POKA-YOKE) **đã được nhúng cứng vào script `atomizer.py`**.
-> - Nếu script báo lỗi Quarantine (DLQ), file lỗi tự động được chuyển vảo `01-Atomic/_DLQ/`.
+> - Nếu script báo lỗi Quarantine (DLQ), file lỗi tự động được chuyển vào `01-Atomic/_DLQ/`.
 
-### Bước 2.4: Báo Cáo Cuối Cùng
+> ⚠️ **LUẬT THÉP POKA-YOKE:**
+> - Tuyệt đối không được tự ý tạo thủ công file `resolved_topics.json` bằng cách viết tay hoặc dùng bash script `echo`. File này bắt buộc phải được sinh ra từ Bước 1.5 bằng cách chạy script `batch-commit`.
+> - Nếu bạn cố tình bỏ qua Bước 1.5, script `atomizer.py` sẽ ném ra lỗi Fatal và bắt buộc bạn phải dừng luồng Phase 2 để quay lại thực hiện đúng quy trình.
+
+### Bước 2.3: Báo Cáo Cuối Cùng
 Lấy Standard Output (stdout) từ `atomizer.py`, tổng hợp và báo cáo lại cho người dùng:
 1. Số lượng Atoms đã tạo.
 2. Danh sách Wikilinks đã thành công.

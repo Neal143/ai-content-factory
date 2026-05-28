@@ -3,11 +3,11 @@ TÊN SCRIPT: atomizer.py
 VAI TRÒ: Script deterministic thay thế Agent tạo file Atom thủ công.
          Parse JSON metadata → Phân loại DIKW → Sinh Atom in-memory →
          Vivid-Append → Gate Validation POKA-YOKE → Commit Write.
-KHI NÀO SỬ DỤNG: Được gọi bởi Agent trong book-parser Phase 2, Bước 2.3.
+KHI NÀO SỬ DỤNG: Được gọi bởi Agent trong book-parser Phase 2, Bước 2.2.
 OUTPUT: Atom files vật lý trong vault + stdout báo cáo + DLQ files nếu lỗi.
 
 TÓM TẮT LOGIC:
-  1. Đọc parsed_metadata.json và atomizer_context.json (Agent tạo)
+  1. Đọc parsed_metadata.json + resolved_topics.json (Poka-Yoke Gate)
   2. Duyệt TOÀN BỘ items[] trong mỗi chunk — KHÔNG bỏ sót
   3. Phân loại DIKW theo bảng ánh xạ (dikw-mapping.md)
   4. Vivid items → buffer, Core items → atom in-memory
@@ -941,10 +941,13 @@ if __name__ == "__main__":
         description="Atomizer: Script deterministic tạo Atom files từ parsed metadata"
     )
     parser.add_argument("metadata_json", help="Đường dẫn tới parsed_metadata.json")
-    parser.add_argument("context_json", help="Đường dẫn tới atomizer_context.json")
     parser.add_argument("vault_root",  help="Đường dẫn tới vault root (VD: vault/)")
     parser.add_argument("--decision-map", required=True,
                         help="Đường dẫn tới audience_decision_map.json")
+    parser.add_argument("--resolved-topics", required=True,
+                        help="Đường dẫn tới resolved_topics.json (từ Bước 1.5)")
+    parser.add_argument("--acronym", required=True,
+                        help="Từ viết tắt của sách (VD: BTRB)")
     parser.add_argument("--dry-run",   action="store_true", help="In báo cáo mà không ghi file")
     parser.add_argument("--overwrite", action="store_true", help="Ghi đè file atom đã tồn tại")
     parser.add_argument("--baseline",  default=None, help="Đường dẫn extraction_baseline.csv")
@@ -952,25 +955,44 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Validate input files
+    # Nhóm 1: Kiểm tra tính tồn tại của các file đầu vào bắt buộc
     for fpath, label in [
         (args.metadata_json, "metadata"),
-        (args.context_json, "context"),
         (args.decision_map, "decision-map"),
     ]:
         if not os.path.exists(fpath):
             print(f"❌ Error: File {label} không tồn tại: {fpath}")
             sys.exit(1)
 
-    # Load JSON
+    # Nhóm 2: Load dữ liệu Metadata gốc
     with open(args.metadata_json, 'r', encoding='utf-8') as f:
         metadata = json.load(f)
-    with open(args.context_json, 'r', encoding='utf-8') as f:
-        context = json.load(f)
 
-    # Đọc Decision Map trực tiếp từ file trên disk — không phụ thuộc vào context
+    # Nhóm 3: Khởi tạo Context in-memory và ánh xạ thông tin gốc
+    context = {}
+    context["source_acronym"] = args.acronym
+    context["book_meta"] = metadata.get("book", {})
+
+    # Nhóm 4: Đọc Decision Map trực tiếp từ file
     with open(args.decision_map, 'r', encoding='utf-8') as f:
         context["audience_decision_map"] = json.load(f)
+
+    # Nhóm 5: Poka-Yoke + Anti-Hallucination Gate kiểm tra resolved_topics.json
+    try:
+        with open(args.resolved_topics, 'r', encoding='utf-8') as f:
+            resolved_data = json.load(f)
+    except FileNotFoundError:
+        print("\n❌ [FATAL ERROR - LLM INSTRUCTION]")
+        print("NGUYÊN NHÂN: Bạn đã KHÔNG THỰC THI Bước 1.5 (Semantic Dedup).")
+        print("HÀNH ĐỘNG BẮT BUỘC:")
+        print("1. TUYỆT ĐỐI KHÔNG tự tạo file này bằng lệnh bash (echo, cat, v.v.).")
+        print("2. DỪNG NGAY Phase 2.")
+        print("3. QUAY LẠI thực thi Bước 1.5 bằng cách gọi script `batch-commit`.")
+        sys.exit(1)
+
+    # Nhóm 6: Ánh xạ Topic đã được xử lý semantic dedup vào Context
+    context["book_topics"] = resolved_data.get("book", [])
+    context["chunk_topics_map"] = {k: v for k, v in resolved_data.items() if k != "book"}
 
     # Run
     result = run_atomizer(
