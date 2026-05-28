@@ -1,4 +1,4 @@
-﻿---
+---
 name: Format Agent
 description: Skill Phase 7 — Format bài viết, nhúng metadata, cập nhật log sản xuất và hook history.
 last_update: 23/05/2026 (GMT+7)
@@ -66,7 +66,7 @@ Nội dung bài viết bắt đầu từ đây...
      - `<!-- PARAGRAPH: N -->` → Xóa (luôn xóa — đây là số thứ tự kỹ thuật)
      - `<!-- PARAGRAPH_HEADING: ... -->` → Xóa
      - `[BLOCK: FINAL_POST]` và `[/BLOCK: FINAL_POST]` → Xóa
-     - Marker `⁂`: Tìm mỗi khối gồm [1 dòng trống + dòng chứa `⁂` + 1 dòng trống], replace TOÀN BỘ khối bằng [1 dòng trống + marker . + 1 dòng trống]
+     - Marker `⁂`: Tìm mỗi khối gồm [1 dòng trống + dòng chứa `⁂` + 1 dòng trống], replace TOÀN BỘ khối bằng 2 dòng trống
      - Giữa các đoạn: cách dòng trên 1 dòng trống, cách dòng dưới 0 dòng trống
      - Giữa các chuỗi câu trong cùng 1 đoạn: giữ nguyên 1 xuống dòng, không thêm dòng trống
 4. Cập nhật `output/logs/production-log.md` — append entry:
