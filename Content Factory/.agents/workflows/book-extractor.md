@@ -1,9 +1,9 @@
 ---
-description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 3 Session độc lập để giải phóng Token Context Window)
-last_update: 28/05/2026 22:35 (GMT+7)
+description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 4 Session độc lập để giải phóng Token Context Window)
+last_update: 30/05/2026 06:15 (GMT+7)
 ---
 
-# 📖 Workflow: Book Extractor Pipeline (3-Session Architecture)
+# 📖 Workflow: Book Extractor Pipeline (4-Session Architecture)
 
 - **Tên file**: .agents/workflows/book-extractor.md
 - **Last update**: 28/05/2026 22:35 (GMT+7)
@@ -13,7 +13,8 @@ last_update: 28/05/2026 22:35 (GMT+7)
 - **Tóm tắt logic hoạt động**: 
   - Session 1 (Phase 1): Trích xuất sách thô từ NotebookLM -> Báo cáo & Handoff 1.
   - Session 2 (Phase 2): Tinh lọc vivid (Vivid Curation) & Niêm phong dữ liệu -> Báo cáo & Handoff 2.
-  - Session 3 (Phase 3 & 4): Phân giải đối tượng độc giả & Phân rã các Atoms DIKW vật lý vào Obsidian Vault.
+  - Session 3 (Phase 3): Phân giải đối tượng độc giả → Báo cáo & Handoff 3.
+  - Session 4 (Phase 4): Sinh Topics (batch processing) & Phân rã các Atoms DIKW vật lý vào Obsidian Vault.
 
 ---
 
@@ -109,7 +110,7 @@ last_update: 28/05/2026 22:35 (GMT+7)
      ```text
      **[Hệ thống] Chuyển giao tiến trình xử lý sách (Session Bàn giao 2)**
 
-     - **Workflow đang chạy**: `/book-extractor` (Pipeline bóc tách sách - Phase 3 & 4: `/atomize-book`).
+     - **Workflow đang chạy**: `/book-extractor` (Pipeline bóc tách sách - Phase 3: Phân giải Đối tượng Độc giả).
      - **Sách đang xử lý**: [Tên Sách thực tế từ Blackboard]
      - **Run Folder**: [Đường dẫn thực tế của run_folder từ Blackboard]
      - **Cache File**: [Đường dẫn thực tế của cache_file từ Blackboard]
@@ -120,7 +121,7 @@ last_update: 28/05/2026 22:35 (GMT+7)
      **[Yêu cầu thực thi ngay]**
      1. Đọc tệp tin workflow tại d:\AI\AI content factory - v3.7B\Content Factory\.agents\workflows\book-extractor.md để nắm quy trình tổng thể.
      2. Sử dụng công cụ đọc tệp để nạp toàn bộ cấu hình từ `00-blackboard.yaml` trong thư mục chạy [Đường dẫn thực tế của run_folder từ Blackboard] nhằm khôi phục 100% ngữ cảnh trạng thái.
-     3. Khởi chạy ngay **Bước 5 (Phase 3 & 4: Phân giải Độc giả & Phân rã Atoms DIKW)** để thực hiện tiến trình `/atomize-book` và hoàn tất quy trình.
+     3. Khởi chạy ngay **Bước 5 (Phase 3: Phân giải Đối tượng Độc giả)** để thực hiện phân giải audience.
      4. Bắt đầu ngay lập tức và không cần giải thích thêm!
      ```
 
@@ -128,12 +129,12 @@ last_update: 28/05/2026 22:35 (GMT+7)
 
 ---
 
-## 💎 SESSION 3: PHÂN RÃ ATOMS (PHASE 3 & 4)
+## 🎯 SESSION 3: PHÂN GIẢI ĐỐI TƯỢNG ĐỘC GIẢ (PHASE 3)
 
 ### Bước 5: Tiếp nhận Handoff 2 & Khôi phục Context (Chỉ áp dụng ở Session mới)
 
 - **Tác nhân thực hiện**: Agent chính điều phối (khi nhận được Handoff Prompt 2 ở cuộc hội thoại mới).
-- **Mục đích**: Nạp lại trạng thái, khôi phục context từ Blackboard tĩnh trên đĩa để bắt đầu Session 3 (Quy trình `/atomize-book`).
+- **Mục đích**: Nạp lại trạng thái, khôi phục context từ Blackboard tĩnh trên đĩa để bắt đầu Session 3 (Phase 3: Phân giải Đối tượng Độc giả).
 - **Input**: Đường dẫn `run_folder` do người dùng cung cấp trong prompt bàn giao.
 - **Hành động của Agent chính**:
   1. Sử dụng công cụ đọc tệp tin `00-blackboard.yaml` trong thư mục `run_folder` đã cung cấp.
@@ -151,25 +152,65 @@ last_update: 28/05/2026 22:35 (GMT+7)
   - Bản đồ quyết định độc giả: `audience_decision_map.json` ghi nhận trên đĩa trong run-folder.
   - Các file đối tượng độc giả vật lý mới tạo trong `01-Atomic/Audiences/`.
 - **Hành động của Agent chính**:
-  - Cập nhật Blackboard `current_phase: 4` và tự động chuyển tiếp sang Phase 4.
+- **Hành động của Agent chính (BREAKPOINT 3 - GIẢI PHÓNG TOKEN)**:
+  1. Đọc kết quả phân giải audience từ BookAudienceMatcherAgent.
+  2. **Cập nhật Blackboard**: Ghi đè `current_phase: 4` vào `00-blackboard.yaml`.
+  3. **Dừng tiến trình chạy của Session hiện tại ở đây** để giải phóng Token Context Window.
+  4. Sinh ra một đoạn **Handoff Prompt 3** sử dụng định dạng Markdown Codeblock:
 
-### Bước 7 (Phase 4): Phân rã Atoms DIKW
+     ```text
+     **[Hệ thống] Chuyển giao tiến trình xử lý sách (Session Bàn giao 3)**
+
+     - **Workflow đang chạy**: `/book-extractor` (Pipeline bóc tách sách - Phase 4: Topic Gen & Atomize).
+     - **Sách đang xử lý**: [Tên Sách thực tế từ Blackboard]
+     - **Run Folder**: [Đường dẫn thực tế của run_folder từ Blackboard]
+     - **Cache File**: [Đường dẫn thực tế của cache_file từ Blackboard]
+     - **Trạng thái hiện tại**: 
+       + Phase 3 (Audience Matcher) đã hoàn tất phân giải đối tượng độc giả thành công.
+       + Audience Decision Map đã ghi tại [run_folder]/audience_decision_map.json.
+       + Tệp blackboard tĩnh `00-blackboard.yaml` đã cập nhật trạng thái `current_phase: 4`.
+
+     **[Yêu cầu thực thi ngay]**
+     1. Đọc tệp tin workflow tại d:\AI\AI content factory - v3.7B\Content Factory\.agents\workflows\book-extractor.md để nắm quy trình tổng thể.
+     2. Sử dụng công cụ đọc tệp để nạp toàn bộ cấu hình từ `00-blackboard.yaml` trong thư mục chạy [Đường dẫn thực tế của run_folder từ Blackboard] nhằm khôi phục 100% ngữ cảnh trạng thái.
+     3. Khởi chạy ngay **Bước 7 (Phase 4: Topic Gen & Atomize)** để hoàn tất quy trình.
+     4. Bắt đầu ngay lập tức và không cần giải thích thêm!
+     ```
+
+  5. Hướng dẫn người dùng mở một cuộc hội thoại mới (New Conversation) hoàn toàn sạch sẽ, sau đó dán đoạn prompt bàn giao trên vào để tiếp tục thực hiện Phase 4.
+
+---
+
+## 💎 SESSION 4: TOPIC GEN & PHÂN RÃ ATOMS (PHASE 4)
+
+### Bước 7: Tiếp nhận Handoff 3 & Khôi phục Context (Chỉ áp dụng ở Session mới)
+
+- **Tác nhân thực hiện**: Agent chính điều phối (khi nhận được Handoff Prompt 3 ở cuộc hội thoại mới).
+- **Mục đích**: Nạp lại trạng thái, khôi phục context từ Blackboard tĩnh trên đĩa để bắt đầu Session 4 (Phase 4: Topic Gen & Atomize).
+- **Input**: Đường dẫn `run_folder` do người dùng cung cấp trong prompt bàn giao.
+- **Hành động của Agent chính**:
+  1. Sử dụng công cụ đọc tệp tin `00-blackboard.yaml` trong thư mục `run_folder` đã cung cấp.
+  2. Nạp toàn bộ các tham số cấu hình (tên sách, notebook, cache file, run folder) vào Context làm việc của Session mới.
+  3. Đảm bảo nạp đúng giá trị `current_phase: 4` từ Blackboard.
+  4. Tự động chuyển tiếp tiến trình sang **Bước 8 (Phase 4)** để gọi BookParserAgent.
+
+### Bước 8 (Phase 4): Sinh Topics (Batch) & Phân rã Atoms DIKW
 
 - **Sub-Agent**: **BookParserAgent** (Nhận thức tại `.agents/agents/book-parser/AGENT.md`)
-- **Mục đích**: Phân rã cấu trúc sách thành các file Atoms vật lý lưu vào Obsidian Vault.
+- **Mục đích**: Sinh Topics tự động qua batch processing, chạy Semantic Dedup, rồi phân rã cấu trúc sách thành các file Atoms vật lý lưu vào Obsidian Vault.
 - **Input**:
   - `cache_file`, `run_folder` từ Blackboard và bản đồ độc giả `audience_decision_map.json`.
 - **Output**:
   - Các file Atom vật lý (Circumstance, Concept, Insight, Solution) được ghi xuống Obsidian Vault.
   - Cập nhật Baseline CSV.
 - **Hành động của Agent chính**:
-  - Cập nhật Blackboard `current_phase: completed` và tự động chuyển sang Bước 8.
+  - Cập nhật Blackboard `current_phase: completed` và tự động chuyển sang Bước 9.
 
 ---
 
 ## 🏁 BÁO CÁO NGHIỆM THU
 
-### Bước 8: Báo cáo Nghiệm thu (Agent chính thực hiện)
+### Bước 9: Báo cáo Nghiệm thu (Agent chính thực hiện)
 
 Khi Phase 4 hoàn tất thành công:
 1. Đọc nội dung tệp tin báo cáo `pipeline_report.md` từ run-folder.
