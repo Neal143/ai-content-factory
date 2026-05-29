@@ -51,4 +51,4 @@ Tóm tắt logic hoạt động: AI đọc và áp dụng bộ từ khóa bị c
 - [ ] Thuật ngữ lần đầu: Việt (*English*)
 - [ ] Thuật ngữ các lần sau: nhất quán dùng Việt
 
-> FILE_KEY: 591407dc
+> FILE_KEY: e0294cdb
