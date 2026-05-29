@@ -10,3 +10,4 @@ Mỗi khi gặp dòng `view_file [path]`:
 3. Nếu file đọc thành công → tuân theo TỪNG BƯỚC trong file đó, bao gồm 
    mọi gate cứng (chờ User phản hồi, validation script, abort condition).
 4. TUYỆT ĐỐI CẤM tự suy luận nội dung thay vì đọc file thực.
+5. Tuyệt đối cấm tự viết script để sinh dữ liệu đầu vào cho hệ thống. Bắt buộc phải sử dụng script đã được thiết kế sẵn. Mọi hành động bypass sẽ bị đánh giá là làm sập hệ thống.
