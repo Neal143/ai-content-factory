@@ -158,7 +158,7 @@ def detect_empty_content_after_markers(content: str, run_folder) -> list:
         # Tìm cache file path từ run_folder
         cache_file = None
         if run_folder:
-            ledger_path = os.path.join(run_folder, 'miner_progress.yaml')
+            ledger_path = os.path.join(os.path.abspath(run_folder), 'session_1', 'miner_progress.yaml')
             if os.path.isfile(ledger_path):
                 try:
                     with open(ledger_path, 'r', encoding='utf-8') as f:
@@ -179,7 +179,7 @@ def detect_empty_content_after_markers(content: str, run_folder) -> list:
 
     # Cập nhật ledger — reset PENDING để enable re-mine
     if flagged_indices and run_folder:
-        ledger_path = os.path.join(run_folder, 'miner_progress.yaml')
+        ledger_path = os.path.join(os.path.abspath(run_folder), 'session_1', 'miner_progress.yaml')
         if os.path.isfile(ledger_path):
             try:
                 with open(ledger_path, 'r', encoding='utf-8') as f:
@@ -417,7 +417,9 @@ def _write_report(filepath, lines, run_folder=None):
     if not run_folder:
         run_folder = find_run_folder(filepath)
     if run_folder:
-        report_path = os.path.join(run_folder, 'post_mine_report.txt')
+        session_dir = os.path.join(os.path.abspath(run_folder), 'session_1')
+        os.makedirs(session_dir, exist_ok=True)
+        report_path = os.path.join(session_dir, 'post_mine_report.txt')
         try:
             with open(report_path, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(lines))

@@ -33,7 +33,8 @@ def normalize_whitespace(text: str) -> str:
 def get_valid_chunks(run_folder: str) -> list:
     """Quét và lấy danh sách chunks hợp lệ (passed = true)"""
     chunks = []
-    chunk_files = sorted(glob.glob(os.path.join(run_folder, "chunk_*_raw.txt")))
+    session_1_dir = os.path.join(os.path.abspath(run_folder), "session_1")
+    chunk_files = sorted(glob.glob(os.path.join(session_1_dir, "chunk_*_raw.txt")))
     skipped_count = 0
     
     for raw_file in chunk_files:
@@ -43,7 +44,7 @@ def get_valid_chunks(run_folder: str) -> list:
             continue
             
         chunk_index = int(chunk_idx_str)
-        gate_file = os.path.join(run_folder, f"chunk_{chunk_idx_str.zfill(2)}_gate.json")
+        gate_file = os.path.join(session_1_dir, f"chunk_{chunk_idx_str.zfill(2)}_gate.json")
         
         # Default true if gate file missing, else check passed
         is_passed = True
@@ -146,7 +147,40 @@ def get_next_batch(run_folder: str, session_dir: str):
         
     target_file = os.path.join(run_folder, "current_topic_batch.json")
     shutil.copy2(batch_file, target_file)
+    
+    # Sinh file template điền sẵn
+    temp_file_path = os.path.join(run_folder, "topic_eval_temp.json")
+    with open(batch_file, 'r', encoding='utf-8') as f:
+        batch_data = json.load(f)
+        
+    template_data = {
+        "password": batch_data["batch_password"],
+        "entries": [
+            {
+                "chunk_index": c["chunk_index"],
+                "topics": [
+                    {
+                        "id": "[ĐIỀN VÀO ĐÂY: snake_case]",
+                        "label": "[ĐIỀN VÀO ĐÂY: Tiếng Việt]",
+                        "tier": "[ĐIỀN VÀO ĐÂY: broad/medium/narrow]",
+                        "evidence": "[ĐIỀN VÀO ĐÂY: Trích nguyên văn]"
+                    },
+                    {
+                        "id": "[ĐIỀN VÀO ĐÂY: snake_case]",
+                        "label": "[ĐIỀN VÀO ĐÂY: Tiếng Việt]",
+                        "tier": "[ĐIỀN VÀO ĐÂY: broad/medium/narrow]",
+                        "evidence": "[ĐIỀN VÀO ĐÂY: Trích nguyên văn]"
+                    }
+                ]
+            } for c in batch_data["chunks"]
+        ]
+    }
+    with open(temp_file_path, 'w', encoding='utf-8') as tf:
+        json.dump(template_data, tf, ensure_ascii=False, indent=2)
+
     print(f"Batch {current_batch}/{state['total_batches']} đã sẵn sàng tại:\n{target_file}")
+    print(f"📝 Tệp làm bài ĐÃ ĐƯỢC TẠO SẴN tại: {temp_file_path}")
+    print(f"⚠️ Vui lòng mở tệp này ra và SỬA/THAY THẾ các trường [ĐIỀN VÀO ĐÂY], sau đó gọi --submit-file.")
 
 # === NHÓM 4: Submission validation ===
 def validate_submission(run_folder: str, session_dir: str, submit_file: str):
@@ -277,10 +311,10 @@ if __name__ == "__main__":
         create_batches(args.run_folder, args.split_dir, args.batch_size)
     elif args.get_next and args.session_dir:
         # derive run_folder from session_dir
-        r_folder = os.path.dirname(args.session_dir)
+        r_folder = os.path.dirname(os.path.abspath(args.session_dir))
         get_next_batch(r_folder, args.session_dir)
     elif args.submit_file and args.session_dir:
-        r_folder = os.path.dirname(args.session_dir)
+        r_folder = os.path.dirname(os.path.abspath(args.session_dir))
         validate_submission(r_folder, args.session_dir, args.submit_file)
     else:
         parser.print_help()

@@ -33,7 +33,7 @@ def prepare_mapper(run_folder, book_name):
     Phase 1: Clean mapper raw text và ghi file xương sống vào vault.
     Returns: path tới cache file đã ghi.
     """
-    mapper_raw_path = os.path.join(run_folder, 'mapper_raw.md')
+    mapper_raw_path = os.path.join(os.path.abspath(run_folder), 'session_1', 'mapper_raw.md')
     vault_path = os.path.join('vault', '02-sources', 'books', f"{book_name}.md")
 
     print(f"Preparing mapper for: {book_name}")

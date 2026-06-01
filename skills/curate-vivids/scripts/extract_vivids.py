@@ -220,7 +220,7 @@ def handle_get_next(session_dir):
         sys.exit(1)
 
     # Sao chép batch hiện tại ra run_folder/current_batch.json để agent đọc qua view_file
-    run_folder = os.path.dirname(session_dir)
+    run_folder = os.path.dirname(os.path.abspath(session_dir))
     current_batch_path = os.path.join(run_folder, "current_batch.json")
     with open(batch_path, 'r', encoding='utf-8') as src:
         content = src.read()
@@ -228,7 +228,29 @@ def handle_get_next(session_dir):
         dst.write(content)
 
     print(f"📋 BATCH {current}/{total} — Đã xuất: {current_batch_path}")
-    print(f"⚠️ Dùng view_file đọc file trên → đánh giá từng vivid (Rubric C1-C5) → tạo eval_temp.json → gọi --submit-file.")
+    
+    # Sinh file vivid_eval_temp.json
+    temp_file_path = os.path.join(run_folder, "vivid_eval_temp.json")
+    with open(batch_path, 'r', encoding='utf-8') as f:
+        batch_data = json.load(f)
+        
+    template_data = {
+        "password": batch_data.get('batch_password', ''),
+        "evaluations": [
+            {
+                "vivid_fragment": vivid['body'][:50] + "...",
+                "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+                "reason": "[ĐIỀN VÀO ĐÂY]",
+                "scores": {"C1": 0, "C2": 0, "C3": 0, "C4": 0, "C5": 0},
+                "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+            } for chunk in batch_data.get('chunks', []) for vivid in chunk.get('vivids', [])
+        ]
+    }
+    with open(temp_file_path, 'w', encoding='utf-8') as tf:
+        json.dump(template_data, tf, ensure_ascii=False, indent=2)
+
+    print(f"📝 Tệp làm bài ĐÃ ĐƯỢC TẠO SẴN tại: {temp_file_path}")
+    print(f"⚠️ Vui lòng mở tệp này ra và SỬA/THAY THẾ các trường [ĐIỀN VÀO ĐÂY], sau đó gọi --submit-file.")
 
 def handle_submit(session_dir, submit_file_path):
     """
@@ -384,7 +406,7 @@ def handle_submit(session_dir, submit_file_path):
     print(f"✅ Batch {current}/{total} đã được xác nhận. Ghi nhận {len(new_discards)} DISCARD(s).")
 
     # --- 8. Nếu còn batch tiếp theo → sao chép ra current_batch.json ---
-    run_folder = os.path.dirname(session_dir)
+    run_folder = os.path.dirname(os.path.abspath(session_dir))
     current_batch_path = os.path.join(run_folder, "current_batch.json")
 
     if state['current_batch'] <= total:
@@ -395,7 +417,29 @@ def handle_submit(session_dir, submit_file_path):
         with open(current_batch_path, 'w', encoding='utf-8') as dst:
             dst.write(content)
         print(f"\n📋 BATCH {state['current_batch']}/{total} — Đã xuất: {current_batch_path}")
-        print(f"⚠️ Dùng view_file đọc file trên → đánh giá → tạo eval_temp.json → gọi --submit-file.")
+        
+        # Sinh file vivid_eval_temp.json cho batch tiếp theo
+        temp_file_path = os.path.join(run_folder, "vivid_eval_temp.json")
+        with open(next_batch_path, 'r', encoding='utf-8') as f:
+            batch_data = json.load(f)
+            
+        template_data = {
+            "password": batch_data.get('batch_password', ''),
+            "evaluations": [
+                {
+                    "vivid_fragment": vivid['body'][:50] + "...",
+                    "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+                    "reason": "[ĐIỀN VÀO ĐÂY]",
+                    "scores": {"C1": 0, "C2": 0, "C3": 0, "C4": 0, "C5": 0},
+                    "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+                } for chunk in batch_data.get('chunks', []) for vivid in chunk.get('vivids', [])
+            ]
+        }
+        with open(temp_file_path, 'w', encoding='utf-8') as tf:
+            json.dump(template_data, tf, ensure_ascii=False, indent=2)
+
+        print(f"📝 Tệp làm bài ĐÃ ĐƯỢC TẠO SẴN tại: {temp_file_path}")
+        print(f"⚠️ Vui lòng mở tệp này ra và SỬA/THAY THẾ các trường [ĐIỀN VÀO ĐÂY], sau đó gọi --submit-file.")
     else:
         # --- 9. Hoàn tất chuỗi → sinh discards.json, dọn file tạm ---
         discards_output_path = os.path.join(run_folder, "discards.json")

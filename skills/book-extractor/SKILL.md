@@ -89,7 +89,7 @@ Bạn là chuyên gia điều phối trích xuất sách quy mô lớn. Nhiệm 
 ### Bước 1: The Mapper (Sinh Tổng quan & Mục Lục)
 
 - Gọi CLI: `nlm notebook query <notebook_id> "Tham chiếu file prompt-mapper-v4.md, hãy sinh Tổng quan và Mục lục cho sách [Tên Sách]." --json`
-- Parse JSON output → extract trường `answer` → lưu plain text vào: `.extraction_runs/[run-folder]/mapper_raw.md`.
+- Parse JSON output → extract trường `answer` → lưu plain text vào: `.extraction_runs/[run-folder]/session_1/mapper_raw.md`. (Lưu ý: Bạn phải tự tạo thư mục `session_1` nếu nó chưa tồn tại).
   ⚠️ Nếu CLI trả exit code ≠ 0 → retry tối đa 2 lần. Đọc stderr để chẩn đoán.
 
 ### Bước 1.5: Mapper Validation Gate
@@ -133,7 +133,7 @@ Nếu đây KHÔNG phải run mới (tức `miner_progress.yaml` đã tồn tạ
 
 **① Nhận lệnh chunk tiếp theo:**
 Agent **LUÔN** chạy `next_chunk.py` ở đầu mỗi vòng lặp — không ngoại lệ:
-  `python .agents/skills/book-extractor/scripts/next_chunk.py "[run-folder]/miner_progress.yaml" "vault/02-sources/books/[Tên Sách].md"`
+  `python .agents/skills/book-extractor/scripts/next_chunk.py "[run-folder]/session_1/miner_progress.yaml" "vault/02-sources/books/[Tên Sách].md"`
 Script trả JSON chứa: `chunk_index`, `chunk_nn`, `chunk_name`, `raw_file`, `notebook_id`, `cache_file`, `progress`, `cli_nlm_query`, `cli_gate_checker`, `cli_append_cache`.
 ⚠️ Agent dùng **TRỰC TIẾP** các lệnh CLI và paths từ JSON. KHÔNG tự compose, KHÔNG sửa, KHÔNG dùng trí nhớ.
 Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
@@ -148,11 +148,11 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 **②-b.** Agent lưu nội dung `answer` vào file path lấy từ trường `raw_file` trong output JSON của `next_chunk.py`.
 
 **②-c.** Agent gọi script Gate (lệnh lấy từ `cli_gate_checker` của `next_chunk.py`):
-  - Script chạy `normalize_dikw_names` (Auto-Repair) + Gates [1-7] (Cấu trúc & Khóa ngoại xác định) → ghi kết quả vào `[run-folder]/chunk_NN_gate.json`.
+  - Script chạy `normalize_dikw_names` (Auto-Repair) + Gates [1-7] (Cấu trúc & Khóa ngoại xác định) → ghi kết quả vào `[run-folder]/session_1/chunk_NN_gate.json`.
   ⚠️ Output JSON chứa trường `next_action` — Agent dùng trường này để quyết định bước tiếp theo.
 
 **③ Đọc kết quả Gate [1-7]:**
-Đọc file `[run-folder]/chunk_NN_gate.json` → lấy trường `next_action`. Agent thực thi TRỰC TIẾP theo `next_action.type`:
+Đọc file `[run-folder]/session_1/chunk_NN_gate.json` → lấy trường `next_action`. Agent thực thi TRỰC TIẾP theo `next_action.type`:
 
 → `"AGENT_EVAL"` → Chuyển bước ④.
 → `"RETRY"` → Gọi lại NLM query gốc (từ `next_chunk.py`), lưu đè raw file, chạy lại `gate_checker.py`.
@@ -161,7 +161,7 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
    Hết `max_retry` → dùng `on_exhaust.cli_append` và `on_exhaust.ledger_update`.
 
 **④ Agent đánh giá Gate [8] (Semantic Alignment):**
-Đọc file `[run-folder]/chunk_NN_raw.txt`. Thực hiện:
+Đọc file `[run-folder]/session_1/chunk_NN_raw.txt`. Thực hiện:
 
 **[8] SEMANTIC ALIGNMENT (Agent chấm điểm):**
 - Trục 1 (Audience→Insight): JTBD Audience có khớp chặt với Insight không? Chấm 1-5.
@@ -180,7 +180,7 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 
 **⑤ Cập nhật Ledger + Tiếp tục:**
 Gọi script `update_ledger.py` với `status` và `error_code` lấy từ `next_action.ledger_update`:
-  `python .agents/skills/book-extractor/scripts/update_ledger.py "[run-folder]/miner_progress.yaml" <chunk_index> <status> [error_code]`
+  `python .agents/skills/book-extractor/scripts/update_ledger.py "[run-folder]/session_1/miner_progress.yaml" <chunk_index> <status> [error_code]`
   Script trả JSON summary gồm `progress` và `milestone`. Nếu `milestone: true` → in progress summary.
   Quay lại bước ①.
 
@@ -196,18 +196,18 @@ Lưu ý: Noise format (**, `, ngoặc kép) KHÔNG phải lý do retry — Norma
 **Agent gọi Script khi kết thúc vòng lặp Bước 2:**
 `python .agents/skills/book-extractor/scripts/post_mine.py "[path-to-cache-file]" --run-folder "[run-folder]"`
 
-Script thực thi 4 giai đoạn tự động (Sentinel → Count → Integrity Audit → Normalizer), ghi report vào `[run-folder]/post_mine_report.txt`.
+Script thực thi 4 giai đoạn tự động (Sentinel → Count → Integrity Audit → Normalizer), ghi report vào `[run-folder]/session_1/post_mine_report.txt`.
 
 **⛔ POST-MINE MANDATORY CHECKPOINT:**
 Ngay khi terminal in ra "POST-MINE COMPLETE", Agent có nghĩa vụ NGAY LẬP TỨC:
-1. Đọc nội dung file `.extraction_runs/[run-folder]/post_mine_report.txt`
+1. Đọc nội dung file `.extraction_runs/[run-folder]/session_1/post_mine_report.txt`
 2. Nếu không chứa "FATAL" → TIẾN THẲNG sang Bước 4 (Audit + Report).
 ❌ Nếu chứa "FATAL" → DỪNG NGAY. Report lỗi cho User. KHÔNG tiếp sang Bước 4.
 
 ### Bước 4: Audit + Report (POKA-YOKE cuối cùng)
 
 Agent gọi script:
-`python .agents/skills/book-extractor/scripts/audit_cache.py "vault/02-sources/books/[Tên Sách].md" --ledger "[run-folder]/miner_progress.yaml" --report "[run-folder]/pipeline_report.md"`
+`python .agents/skills/book-extractor/scripts/audit_cache.py "vault/02-sources/books/[Tên Sách].md" --ledger "[run-folder]/session_1/miner_progress.yaml" --report "[run-folder]/pipeline_report.md"`
 
 Script thực hiện 2 việc:
 1. **Quality Audit**: Chạy Gates [1-6] trên từng chunk trong file vault đã normalize.
