@@ -38,7 +38,7 @@ Ngay khi nhận INPUT, thực hiện tuần tự hoàn toàn tự động — **
 **Bước 1.2 — Sinh Book Topics (2-3 topics, phản ánh toàn bộ cuốn sách):**
 Đọc `[run_folder]/mapper_raw.md` để nắm tổng quan sách (thesis, big idea, tóm tắt 1 trang — 8KB). Đọc hướng dẫn tại `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**. Sinh 2-3 cặp `(id, label)` theo đúng định nghĩa Broad / Medium / Narrow. Chạy **Kiểm tra nhanh** trước khi chốt.
 
-Sau khi chốt, ghi kết quả vào `[run_folder]/book_topics_draft.json`:
+Sau khi chốt, ghi kết quả vào `[run_folder]/session_4/book_topics_draft.json`:
 ```json
 { "pillar": "[Pillar đã chọn ở 1.1]", "book_topics": [{"id": "...", "label": "...", "tier": "..."}] }
 ```
@@ -54,7 +54,7 @@ Sau khi chốt, ghi kết quả vào `[run_folder]/book_topics_draft.json`:
 ```bash
 python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
     --run-folder "[run_folder]" \
-    --split-dir "[run_folder]/topic_chunks" \
+    --split-dir "[run_folder]/session_4/topic_chunks" \
     --batch-size 10
 ```
 
@@ -63,19 +63,19 @@ python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
 1. Lấy batch:
    ```bash
    python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
-       --session-dir "[run_folder]/topic_chunks" --get-next
+       --session-dir "[run_folder]/session_4/topic_chunks" --get-next
    ```
-2. Đọc `[run_folder]/current_topic_batch.json` bằng `view_file`.
+2. Mở file `[run_folder]/session_4/current_topic_batch.json` bằng `view_file` để xem nội dung chunk.
 3. Với từng chunk trong batch:
    - Tham chiếu `topic-taxonomy.md` → Section "Chunk Topics" + "Quan hệ giữa Book và Chunk Topics".
    - Sinh 2-3 cặp `(id, label)` + `tier` + `evidence` (trích nguyên văn 1 đoạn từ nội dung chunk).
    - Cùng Pillar đã chọn ở Bước 1.1.
-4. Ghi kết quả vào `[run_folder]/topic_eval_temp.json` (schema: xem script doc).
+4. Mở tệp **đã được tạo sẵn** tại `[run_folder]/session_4/topic_eval_temp.json` và SỬA/ĐIỀN VÀO các trường `[ĐIỀN VÀO ĐÂY]`. Đừng tự tạo file mới.
 5. Nộp bài:
    ```bash
    python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
-       --session-dir "[run_folder]/topic_chunks" \
-       --submit-file "[run_folder]/topic_eval_temp.json"
+       --session-dir "[run_folder]/session_4/topic_chunks" \
+       --submit-file "[run_folder]/session_4/topic_eval_temp.json"
    ```
 6. Nếu FAIL → đọc lỗi, sửa `topic_eval_temp.json`, submit lại.
    Nếu PASS → quay lại bước 1.
@@ -90,8 +90,8 @@ Logic Self-Check đã được nhúng vào `prepare_topic_batches.py --submit-fi
 **Bước 1.5 — Semantic Dedup (Batch Mode):**
 
 Sau khi vòng lặp batch hoàn tất (script in "🎉 HOÀN THÀNH"), đọc 3 file:
-- `[run_folder]/collected_topics.json` — danh sách Chunk Topics thô (output batch loop).
-- `[run_folder]/book_topics_draft.json` — Book Topics (output Bước 1.2).
+- `[run_folder]/session_4/collected_topics.json` — danh sách Chunk Topics thô (output batch loop).
+- `[run_folder]/session_4/book_topics_draft.json` — Book Topics (output Bước 1.2).
 - `[run_folder]/audience_decision_map.json` — mapping chunk_index → audience wikilinks.
 
 Gom tất cả topics (Book + Chunk) và chuẩn bị 4 biến cho **từng nhóm topic riêng lẻ**:
@@ -102,7 +102,7 @@ Gom tất cả topics (Book + Chunk) và chuẩn bị 4 biến cho **từng nhó
 
 👉 **HÀNH ĐỘNG:** Đọc và thực thi file `topic_manager.md` tại `.agents/references/topic_manager/topic_manager.md` *(workspace root-relative — KHÔNG nằm trong `vault/`, không được prefix thêm `vault/`)*, sử dụng **Chế độ Batch** (xem Section "Chế độ Batch" trong topic_manager.md). Không dừng chờ.
 
-Sau khi script `batch-commit` chạy xong, đọc file `[run_folder]/resolved_topics.json` để lấy:
+Sau khi script `batch-commit` chạy xong, đọc file `[run_folder]/session_4/resolved_topics.json` để lấy:
 - `book_topics`: mảng `[resolved_id]` của Book Topics.
 - `chunk_topics_map`: dict `{ chunk_index: [resolved_id, ...] }` của Chunk Topics.
 
@@ -130,7 +130,7 @@ python .agents/skills/book-parser/scripts/atomizer.py \
     vault/ \
     --acronym         "[từ-viết-tắt-của-sách-mũi-tên]" \
     --decision-map    "[run_folder]/audience_decision_map.json" \
-    --resolved-topics "[run_folder]/resolved_topics.json" \
+    --resolved-topics "[run_folder]/session_4/resolved_topics.json" \
     --baseline        "[run_folder]/extraction_baseline.csv" \
     --report          "[run_folder]/pipeline_report.md"
 ```

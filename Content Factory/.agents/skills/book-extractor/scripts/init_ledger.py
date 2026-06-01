@@ -59,7 +59,9 @@ def init_ledger(run_folder, cache_file, notebook_id):
     Tạo miner_progress.yaml từ thông tin META_BOOK trong cache file.
     Returns: dict kết quả (JSON-serializable).
     """
-    ledger_path = os.path.join(run_folder, 'miner_progress.yaml')
+    session_dir = os.path.join(os.path.abspath(run_folder), 'session_1')
+    os.makedirs(session_dir, exist_ok=True)
+    ledger_path = os.path.join(session_dir, 'miner_progress.yaml')
 
     # ── Guard: không ghi đè ledger đã tồn tại ──
     if os.path.isfile(ledger_path):
@@ -116,7 +118,7 @@ def init_ledger(run_folder, cache_file, notebook_id):
     }
 
     # ── Ghi file ──
-    os.makedirs(run_folder, exist_ok=True)
+    # os.makedirs(run_folder, exist_ok=True) # Đã tạo session_dir phía trên
     with open(ledger_path, 'w', encoding='utf-8') as f:
         yaml.dump(ledger, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 

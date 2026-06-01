@@ -284,7 +284,9 @@ def main():
     discards_path = os.path.abspath(args.discards)
     candidates_path = os.path.abspath(args.candidates)
     cache_path = os.path.abspath(args.cache_file)
-    run_dir = os.path.abspath(args.run_folder)
+    root_run_folder = os.path.abspath(args.run_folder)
+    run_dir = os.path.join(root_run_folder, 'session_2')
+    os.makedirs(run_dir, exist_ok=True)
 
     # 1. Kiểm tra đầu vào bắt buộc
     if not os.path.exists(discards_path):
@@ -336,7 +338,7 @@ def main():
     kept, discarded = write_curation_log(log_path, candidates, discards_matched)
 
     # 4. Kích hoạt các sealing scripts
-    sealing_success = run_sealing(cache_path, run_dir)
+    sealing_success = run_sealing(cache_path, root_run_folder)
 
     # 5. In báo cáo tổng thể
     print("\n📊 BÁO CÁO KẾT QUẢ CURATION:")
