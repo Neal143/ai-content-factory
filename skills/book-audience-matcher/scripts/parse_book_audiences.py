@@ -110,6 +110,9 @@ if __name__ == "__main__":
     data = parse_book_audiences(args.input_file)
 
     if args.output_json:
+        out_dir = __import__('os').path.dirname(__import__('os').path.abspath(args.output_json))
+        if out_dir:
+            __import__('os').makedirs(out_dir, exist_ok=True)
         with open(args.output_json, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         print(f"✅ Đã xuất JSON ra: {args.output_json}")
