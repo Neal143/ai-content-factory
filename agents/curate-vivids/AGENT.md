@@ -4,7 +4,7 @@
 > **Last update**: 21/05/2026 20:00 (GMT+7)
 > **Vai trò**: Tác nhân chuyên trách đánh giá, tinh lọc và sàng lọc các hạt nhân vivid metadata (circumstance, insight, knowledge) chất lượng cao và niêm phong tài sản dữ liệu của cuốn sách.
 > **Sử dụng khi**: Kích hoạt tại Phase 2 của Quy trình xử lý sách (/book-extractor.md).
-> **Output**: File cache `vault/02-sources/books/[Tên Sách].md` đã được làm sạch (vivid loại bỏ đổi thành `[NOT_FOUND]`), `vivid_curation_log.json` và các tệp niêm phong `parsed_metadata.json`, `pipeline_report.md`.
+> **Output**: File cache `vault/02-sources/books/[Tên Sách].md` đã được làm sạch (vivid loại bỏ đổi thành `[NOT_FOUND]`), `session_2/vivid_curation_log.json` và các tệp niêm phong `parsed_metadata.json`, `pipeline_report.md`.
 > **Tóm tắt logic hoạt động**: Nạp cấu hình từ Blackboard -> Kiểm tra từng vivid trong mỗi chunk theo bộ lọc Universal Disqualifiers (U1-U4) và bộ lọc Type-specific Disqualifiers -> Chấm điểm Rubric 5 tiêu chí (cần đạt >= 7đ) -> Cập nhật file cache và ghi log curation -> Chạy các python script niêm phong dữ liệu.
 
 ## 1. System Prompt & Directives
@@ -28,9 +28,9 @@ Bạn là **VividCuratorAgent**, một nhà phê bình văn học kiêm chuyên 
   - `book_name`, `cache_file`, `run_folder`, `slug` từ Blackboard.
 - **Outputs**:
   - Cập nhật đè lên `vault/02-sources/books/[Tên Sách].md`.
-  - `[run_folder]/vivid_curation_log.json`, `parsed_metadata.json`, và `pipeline_report.md`.
+  - `[run_folder]/session_2/vivid_curation_log.json`, `parsed_metadata.json`, và `pipeline_report.md`.
 
 ## 4. Self-Check & Validation Gate
 
-- **Validation Check**: Đối chiếu tính toàn vẹn của tệp tin `vivid_curation_log.json` và kiểm tra xem có dòng Body nào bị gãy cấu trúc META không để đảm bảo dữ liệu niêm phong hoàn chỉnh.
+- **Validation Check**: Đối chiếu tính toàn vẹn của tệp tin `session_2/vivid_curation_log.json` và kiểm tra xem có dòng Body nào bị gãy cấu trúc META không để đảm bảo dữ liệu niêm phong hoàn chỉnh.
 Không yêu cầu ghi nhận execution_key ở tệp tin đầu ra.

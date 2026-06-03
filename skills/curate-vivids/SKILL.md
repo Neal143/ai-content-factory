@@ -14,7 +14,7 @@ description: Core Skill Phase 2 — Đánh giá, tinh lọc vivid metadata trong
   2. Thư mục batch files kèm password + session state: `vivid_chunks/`
   3. File JSON discards (script tự động tạo sau chuỗi đánh giá): `discards.json`
   4. File cache `vault/02-sources/books/[Tên Sách].md` đã được tinh lọc.
-  5. Curation log `vivid_curation_log.json`.
+  5. Curation log `session_2/vivid_curation_log.json`.
   6. Các tệp niêm phong `parsed_metadata.json`, `pipeline_report.md`.
 - **Tóm tắt logic hoạt động**: Nạp cấu hình từ Blackboard -> Chạy extract_vivids.py trích xuất vivid kèm context, gom batch kèm password ngẫu nhiên -> Agent tương tác qua lệnh --session-dir (lấy batch → xuất current_batch.json → agent đọc + chấm rubric C1-C5 → nộp bảng điểm → script xác thực password + đếm vivid + rubric scores → mở khóa batch tiếp) -> Script tự động sinh discards.json khi hoàn thành chuỗi -> Chạy apply_curation.py áp dụng quyết định, ghi log, và tự động niêm phong dữ liệu.
 
@@ -181,6 +181,6 @@ python .agents/skills/curate-vivids/scripts/apply_curation.py --discards "[run_f
 2. **vivid_chunks/** (Bước 2.2): Thư mục chứa batch files (kèm password), `_manifest.json`, và `session_state.json`. Agent tương tác qua lệnh `--session-dir`.
 3. **discards.json** (Bước 2.2, script tự động tạo sau khi hoàn thành chuỗi đánh giá): Chứa danh sách quyết định loại bỏ vivid, format tương thích 100% với `apply_curation.py`.
 4. **File cache đã lọc**: Cập nhật trực tiếp đè lên `vault/02-sources/books/[Tên Sách].md` (body các vivid bị loại đổi thành `[NOT_FOUND]`).
-5. **vivid_curation_log.json** (Bước 2.4): Log tổng hợp chi tiết trạng thái đánh giá (KEEP/DISCARD) của từng vivid.
+5. **session_2/vivid_curation_log.json** (Bước 2.4): Log tổng hợp chi tiết trạng thái đánh giá (KEEP/DISCARD) của từng vivid.
 6. **parsed_metadata.json** (Bước 2.4, tự động sinh): Cấu trúc metadata hoàn chỉnh của cuốn sách.
 7. **pipeline_report.md** (Bước 2.4, tự động sinh): Báo cáo tiến trình và chất lượng của lượt trích xuất.

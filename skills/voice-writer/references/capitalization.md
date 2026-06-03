@@ -67,4 +67,4 @@ Tiếng Việt CHỈ viết hoa chữ cái đầu tiên, KHÔNG viết hoa mỗi
 - [ ] Tiêu đề: không dùng dấu hai chấm
 - [ ] Tiêu đề H2+: chỉ viết hoa chữ đầu
 
-> FILE_KEY: e9f3b6a2
+> FILE_KEY: 43eac679

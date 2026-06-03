@@ -36,12 +36,19 @@ Ngay khi nhận INPUT, thực hiện tuần tự hoàn toàn tự động — **
 Đọc `pillars.yaml` của Persona đang active. Chọn **01 Pillar** phù hợp nhất với nội dung tổng thể của sách. Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline.
 
 **Bước 1.2 — Sinh Book Topics (2-3 topics, phản ánh toàn bộ cuốn sách):**
-Đọc `[run_folder]/mapper_raw.md` để nắm tổng quan sách (thesis, big idea, tóm tắt 1 trang — 8KB). Đọc hướng dẫn tại `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**. Sinh 2-3 cặp `(id, label)` theo đúng định nghĩa Broad / Medium / Narrow. Chạy **Kiểm tra nhanh** trước khi chốt.
+Đọc `[run_folder]/session_1/mapper_raw.md` để nắm tổng quan sách (thesis, big idea, tóm tắt 1 trang — 8KB). Tham chiếu `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**.
 
-Sau khi chốt, ghi kết quả vào `[run_folder]/session_4/book_topics_draft.json`:
-```json
-{ "pillar": "[Pillar đã chọn ở 1.1]", "book_topics": [{"id": "...", "label": "...", "tier": "..."}] }
-```
+1. Cấp phát Template Book Topics bằng lệnh:
+   ```bash
+   python .agents/skills/book-parser/scripts/prepare_topic_batches.py --run-folder "[run_folder]" --prepare-book-topics
+   ```
+2. Mở file `[run_folder]/session_4/book_topics_temp.json` vừa được sinh ra.
+3. Điền vào các trường `[ĐIỀN VÀO ĐÂY]` (Đặc biệt chú ý trường giải thích CAPTCHA `reasoning` cần ghi chi tiết).
+4. Nộp bài bằng lệnh:
+   ```bash
+   python .agents/skills/book-parser/scripts/prepare_topic_batches.py --run-folder "[run_folder]" --submit-book-topics "[run_folder]/session_4/book_topics_temp.json"
+   ```
+5. Nếu bị Reject, sửa file và gọi lại lệnh nộp bài cho đến khi có thông báo `✅ PASS validation`. File `book_topics_draft.json` sẽ tự động được tạo.
 
 > ⚠️ **Quy tắc Vòng lặp (Chunk Isolation):** Từ Bước 1.3 trở đi, phải thực thi **biệt lập cho từng chunk riêng lẻ** — không gom, không trộn:
 > - **Cách ly Rác (Warning Isolation):** Chunk có `passed: false` trong gate file tự động bị script `prepare_topic_batches.py` loại bỏ khi chia batch. Không cần xử lý thủ công.
@@ -55,7 +62,7 @@ Sau khi chốt, ghi kết quả vào `[run_folder]/session_4/book_topics_draft.j
 python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
     --run-folder "[run_folder]" \
     --split-dir "[run_folder]/session_4/topic_chunks" \
-    --batch-size 10
+    --batch-size 3
 ```
 
 **Bước 1.3b — Vòng lặp sinh Chunk Topics (lặp đến khi script in "🎉 HOÀN THÀNH"):**
@@ -87,24 +94,22 @@ Logic Self-Check đã được nhúng vào `prepare_topic_batches.py --submit-fi
 - Nếu FAIL → Agent đọc lỗi, sửa và submit lại (= Auto-Repair).
 - Nếu Agent không thể sửa sau 2 lần → drop topic đó, ghi log, tiếp tục.
 
-**Bước 1.5 — Semantic Dedup (Batch Mode):**
+### Bước 1.5 — Semantic Dedup (Giao việc cho Plugin Topic Manager)
 
-Sau khi vòng lặp batch hoàn tất (script in "🎉 HOÀN THÀNH"), đọc 3 file:
-- `[run_folder]/session_4/collected_topics.json` — danh sách Chunk Topics thô (output batch loop).
-- `[run_folder]/session_4/book_topics_draft.json` — Book Topics (output Bước 1.2).
-- `[run_folder]/audience_decision_map.json` — mapping chunk_index → audience wikilinks.
+Nhằm giảm tải nhận thức cho Agent và ngăn ngừa đứt gãy dữ liệu (mất vết hoặc mất metadata), toàn bộ tiến trình Dedup được di dời sang **Plugin Topic Manager** để xử lý 2-Pass.
 
-Gom tất cả topics (Book + Chunk) và chuẩn bị 4 biến cho **từng nhóm topic riêng lẻ**:
-- `id`: mảng `[id_rong] [id_trung] ([id_hep])` của nhóm đó.
-- `label`: mảng `"[label rộng]" "[label trung]" ("[label hẹp]")` của nhóm đó.
-- `pillar`: Tên Pillar đã chốt chung ở Bước 1.1.
-- `audience`: Lấy `audience_filename` từ `audience_decision_map.json` ứng với chunk_index, bọc thành wikilink `[[audience_filename]]`. Book Topics dùng entry có `scope: "book"` (chunk_index = null).
+1. **Kết xuất dữ liệu thô bàn giao:**
+   Chạy lệnh kết xuất file proposed_topics.json:
+   ```bash
+   python .agents/skills/book-parser/scripts/prepare_topic_batches.py --run-folder "[run_folder]" --decision-map "[run_folder]/audience_decision_map.json" --export-proposed-topics
+   ```
+2. **Ủy thác xử lý:**
+   Hãy bàn giao toàn quyền xử lý cho Plugin `topic_manager`. Bạn KHÔNG cần phải tự suy luận đối chiếu YAML hay chạy script tại thư mục `book-parser` nữa.
+3. **Đợi kết quả:**
+   Hãy tạm dừng luồng chạy tại đây. Chờ cho Plugin xử lý hoàn tất các chặng Internal và External, tự động cập nhật YAML toàn cục và xuất file `session_4/resolved_topics.json`.
+4. **Tiếp tục:**
+   Khi đã có file `resolved_topics.json`, bạn mới được phép bước sang Phase 2 (Atom Generation).
 
-👉 **HÀNH ĐỘNG:** Đọc và thực thi file `topic_manager.md` tại `.agents/references/topic_manager/topic_manager.md` *(workspace root-relative — KHÔNG nằm trong `vault/`, không được prefix thêm `vault/`)*, sử dụng **Chế độ Batch** (xem Section "Chế độ Batch" trong topic_manager.md). Không dừng chờ.
-
-Sau khi script `batch-commit` chạy xong, đọc file `[run_folder]/session_4/resolved_topics.json` để lấy:
-- `book_topics`: mảng `[resolved_id]` của Book Topics.
-- `chunk_topics_map`: dict `{ chunk_index: [resolved_id, ...] }` của Chunk Topics.
 
 
 ---
@@ -140,7 +145,7 @@ python .agents/skills/book-parser/scripts/atomizer.py \
 > - Nếu script báo lỗi Quarantine (DLQ), file lỗi tự động được chuyển vào `01-Atomic/_DLQ/`.
 
 > ⚠️ **LUẬT THÉP POKA-YOKE:**
-> - Tuyệt đối không được tự ý tạo thủ công file `resolved_topics.json` bằng cách viết tay hoặc dùng bash script `echo`. File này bắt buộc phải được sinh ra từ Bước 1.5 bằng cách chạy script `batch-commit`.
+> - Tuyệt đối không được tự ý tạo thủ công file `resolved_topics.json` bằng cách viết tay hoặc dùng bash script `echo`. File này bắt buộc phải được sinh ra từ Bước 1.5 thông qua lệnh `--submit-dedup-batch`.
 > - Nếu bạn cố tình bỏ qua Bước 1.5, script `atomizer.py` sẽ ném ra lỗi Fatal và bắt buộc bạn phải dừng luồng Phase 2 để quay lại thực hiện đúng quy trình.
 
 ### Bước 2.3: Báo Cáo Cuối Cùng
