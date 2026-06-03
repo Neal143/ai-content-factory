@@ -76,9 +76,9 @@ last_update: 30/05/2026 06:15 (GMT+7)
   1. Chạy `extract_vivids.py` → JSON.
   2. Áp dụng rubric VividCurator → sinh `discards.json`.
   3. Chạy `apply_curation.py` → lọc cache, ghi log, chạy sealing (`extract_metadata.py`, `generate_baseline.py`).
-- **Output**: Cập nhật cache (thay vivid DISCARD bằng `[NOT_FOUND]`), `vivid_curation_log.json`, `parsed_metadata.json`, `pipeline_report.md`.
+- **Output**: Cập nhật cache (thay vivid DISCARD bằng `[NOT_FOUND]`), `session_2/vivid_curation_log.json`, `parsed_metadata.json`, `pipeline_report.md`.
 - **Agent chính (BREAKPOINT 2)**:
-  1. In báo cáo từ `vivid_curation_log.json` (KEEP/DISCARD).
+  1. In báo cáo từ `session_2/vivid_curation_log.json` (KEEP/DISCARD).
   2. **Cập nhật Blackboard**: Ghi đè `current_phase: 3`.
   3. **DỪNG TIẾN TRÌNH**. Yêu cầu user mở New Chat và dán Handoff Prompt:
      ```text
@@ -148,7 +148,15 @@ last_update: 30/05/2026 06:15 (GMT+7)
 - **Mục đích**: Batch sinh Topics, Semantic Dedup, phân rã Atoms.
 - **Input**: `cache_file`, `run_folder`, `audience_decision_map.json`.
 - **Output**: Các Atoms ghi vào Obsidian, cập nhật Baseline CSV.
-- **Agent chính**: Cập nhật `current_phase: completed` → chuyển Bước 9.
+- **Agent chính**: Cập nhật `current_phase: completed` → chuyển Bước 8.5.
+
+### Bước 8.5 (Phase 4): Đóng dấu Metadata ngược lại Nguồn gốc
+- **Sub-Agent**: Agent chính điều phối
+- **Hành động**: BẮT BUỘC thực thi lệnh sau để chèn metadata vào file markdown nguồn:
+  ```powershell
+  python .agents/scripts/patch_source_metadata.py --run-folder "[run-folder]"
+  ```
+- **Agent chính**: Sau khi lệnh chạy thành công, chuyển sang Bước 9.
 
 ---
 

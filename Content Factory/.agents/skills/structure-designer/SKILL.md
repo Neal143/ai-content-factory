@@ -15,7 +15,7 @@ provided_outputs:
 
 # Structure Designer (Phase 4)
 
-> EXECUTION_KEY: ef657c01
+> EXECUTION_KEY: 2809ecfb
 
 ## 1. Input Variables
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.

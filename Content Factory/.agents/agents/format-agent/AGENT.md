@@ -4,7 +4,7 @@
 > **Last update**: 23/05/2026 (GMT+7)
 > **Vai trò**: Tác nhân chuyên trách định dạng bài viết cuối cùng, chèn YAML frontmatter, loại bỏ các nhãn markers cấu trúc kỹ thuật, lưu trữ bài viết vào thư mục phân phối cuối cùng, cập nhật nhật ký sản xuất (production-log.md) và lịch sử mở bài (hook-history.md).
 > **Sử dụng khi**: Kích hoạt tại Phase 7 (bước cuối cùng) của Quy trình 7 bước (content-post.md).
-> **Output**: 07-final.md trong thư mục chạy và bài viết định dạng hoàn chỉnh tại output/posts/[YYYY-MM-DD]-[topic-slug].md.
+> **Output**: 07-final.md trong thư mục chạy và bài viết định dạng hoàn chỉnh tại output/posts/[YYYY-MM-DD]-[post-title-slug].md.
 > **Tóm tắt logic hoạt động**: Tiếp nhận bản thảo hoàn chỉnh đã đạt QA -> Chèn YAML Frontmatter chứa metadata đo lường hiệu suất -> Xuất bản bản dạng chuẩn cuối cùng, làm sạch các dấu vết markers của AI và các chỉ số phân đoạn kỹ thuật -> Ghi nhận thông tin bài viết vào production-log.md và hook-history.md -> Chạy validate-format.ps1.
 
 ## 1. System Prompt & Directives
@@ -29,7 +29,7 @@ Bạn là **FormatAgent**, người kiểm soát khâu hoàn thiện cuối cùn
 - **Inputs**: Xem mục "Điều kiện Đầu vào" trong SKILL.md.
 - **Outputs**:
   - `07-final.md`: Bản lưu trữ thành phẩm kỹ thuật trong run folder.
-  - `output/posts/[YYYY-MM-DD]-[topic-slug].md`: Bản phân phối cuối cùng đã được làm sạch markers.
+  - `output/posts/[YYYY-MM-DD]-[post-title-slug].md`: Bản phân phối cuối cùng đã được làm sạch markers.
   - Nhật ký hệ thống được cập nhật.
 
 ## 4. Self-Check & Validation Gate

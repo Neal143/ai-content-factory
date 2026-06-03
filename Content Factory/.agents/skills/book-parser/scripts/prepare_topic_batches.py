@@ -5,6 +5,7 @@ import re
 import uuid
 import argparse
 import shutil
+import subprocess
 from pathlib import Path
 
 """
@@ -123,6 +124,109 @@ def create_batches(run_folder: str, split_dir: str, batch_size: int):
         
     print(f"✅ {len(chunks)} chunks hợp lệ, {skipped_count} chunks skipped, {total_batches} batches tạo.")
 
+# === NHÓM 2.5: Book Topics ===
+def prepare_book_topics(run_folder: str):
+    session_dir = os.path.join(os.path.abspath(run_folder), "session_4")
+    os.makedirs(session_dir, exist_ok=True)
+    temp_file_path = os.path.join(session_dir, "book_topics_temp.json")
+    
+    # Sinh Password Gate ngẫu nhiên
+    batch_password = uuid.uuid4().hex[:8]
+    
+    template_data = {
+        "password": batch_password,
+        "pillar": "[ĐIỀN VÀO ĐÂY: Tên Pillar]",
+        "book_topics": [
+            {
+                "id": "[ĐIỀN VÀO ĐÂY: snake_case]", 
+                "label": "[ĐIỀN VÀO ĐÂY: Tiếng Việt]", 
+                "tier": "[ĐIỀN VÀO ĐÂY: broad/medium/narrow]",
+                "reasoning": "[ĐIỀN VÀO ĐÂY: Giải thích lý do chọn Topic này dựa trên tổng quan cuốn sách (LLM-CAPTCHA)]"
+            },
+            {
+                "id": "[ĐIỀN VÀO ĐÂY: snake_case]", 
+                "label": "[ĐIỀN VÀO ĐÂY: Tiếng Việt]", 
+                "tier": "[ĐIỀN VÀO ĐÂY: broad/medium/narrow]",
+                "reasoning": "[ĐIỀN VÀO ĐÂY: Giải thích lý do chọn Topic này dựa trên tổng quan cuốn sách (LLM-CAPTCHA)]"
+            },
+            {
+                "id": "[ĐIỀN VÀO ĐÂY: (Tùy chọn) Bỏ qua slot này nếu không có]", 
+                "label": "[ĐIỀN VÀO ĐÂY: (Tùy chọn)]", 
+                "tier": "narrow",
+                "reasoning": "[ĐIỀN VÀO ĐÂY: (Tùy chọn)]"
+            }
+        ]
+    }
+    
+    with open(temp_file_path, 'w', encoding='utf-8') as f:
+        json.dump(template_data, f, ensure_ascii=False, indent=2)
+        
+    state_file = os.path.join(session_dir, "book_topic_state.json")
+    with open(state_file, 'w', encoding='utf-8') as f:
+        json.dump({"password": batch_password}, f)
+        
+    print(f"📝 Tệp làm bài ĐÃ ĐƯỢC TẠO SẴN tại: {temp_file_path}")
+    print(f"⚠️ Vui lòng mở tệp này ra bằng công cụ IDE, SỬA/THAY THẾ các trường [ĐIỀN VÀO ĐÂY], sau đó gọi --submit-book-topics.")
+
+def submit_book_topics(run_folder: str, submit_file: str):
+    session_dir = os.path.join(os.path.abspath(run_folder), "session_4")
+    state_file = os.path.join(session_dir, "book_topic_state.json")
+    
+    try:
+        with open(state_file, 'r', encoding='utf-8') as f:
+            state = json.load(f)
+        with open(submit_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"Lỗi đọc file: {str(e)}")
+        return
+
+    if data.get("password") != state.get("password"):
+        print("❌ Reject: Sai password")
+        return
+
+    pillar = data.get("pillar", "")
+    if "[ĐIỀN VÀO ĐÂY" in pillar or not pillar:
+        print("❌ Reject: Pillar chưa được điền hợp lệ")
+        return
+        
+    raw_topics = data.get("book_topics", [])
+    valid_topics = []
+    
+    for idx, topic in enumerate(raw_topics):
+        t_id = topic.get("id", "")
+        if "[ĐIỀN VÀO ĐÂY" in t_id:
+            continue
+            
+        t_label = topic.get("label", "")
+        t_tier = topic.get("tier", "")
+        t_reason = topic.get("reasoning", "")
+        
+        if "[ĐIỀN VÀO ĐÂY" in t_label or "[ĐIỀN VÀO ĐÂY" in t_tier:
+            print(f"❌ Reject: Topic {idx} chưa điền đủ label/tier")
+            return
+            
+        if "[ĐIỀN VÀO ĐÂY" in t_reason or len(t_reason.strip()) < 15:
+            print(f"❌ Reject: Topic {idx} thiếu giải thích reasoning (LLM-CAPTCHA)")
+            return
+            
+        if not re.match(r'^[a-z0-9_]+$', t_id):
+            print(f"❌ Reject: Topic {idx} có id sai format '{t_id}'")
+            return
+            
+        valid_topics.append({"id": t_id, "label": t_label, "tier": t_tier})
+
+    if len(valid_topics) < 2:
+        print("❌ Reject: Phải có ít nhất 2 book topics")
+        return
+        
+    final_data = {"pillar": pillar, "book_topics": valid_topics}
+    final_file = os.path.join(session_dir, "book_topics_draft.json")
+    with open(final_file, 'w', encoding='utf-8') as f:
+        json.dump(final_data, f, ensure_ascii=False, indent=2)
+        
+    print(f"✅ PASS validation. book_topics_draft.json đã sẵn sàng tại:\n{final_file}")
+
 # === NHÓM 3: Session state management ===
 def get_next_batch(run_folder: str, session_dir: str):
     """Lấy batch hiện tại cho Agent đọc"""
@@ -163,13 +267,15 @@ def get_next_batch(run_folder: str, session_dir: str):
                         "id": "[ĐIỀN VÀO ĐÂY: snake_case]",
                         "label": "[ĐIỀN VÀO ĐÂY: Tiếng Việt]",
                         "tier": "[ĐIỀN VÀO ĐÂY: broad/medium/narrow]",
-                        "evidence": "[ĐIỀN VÀO ĐÂY: Trích nguyên văn]"
+                        "evidence": "[ĐIỀN VÀO ĐÂY: Trích nguyên văn]",
+                        "reasoning": "[ĐIỀN VÀO ĐÂY: Giải thích sự liên kết logic giữa Chunk Topic này và Book Topic tương ứng (LLM-CAPTCHA)]"
                     },
                     {
                         "id": "[ĐIỀN VÀO ĐÂY: snake_case]",
                         "label": "[ĐIỀN VÀO ĐÂY: Tiếng Việt]",
                         "tier": "[ĐIỀN VÀO ĐÂY: broad/medium/narrow]",
-                        "evidence": "[ĐIỀN VÀO ĐÂY: Trích nguyên văn]"
+                        "evidence": "[ĐIỀN VÀO ĐÂY: Trích nguyên văn]",
+                        "reasoning": "[ĐIỀN VÀO ĐÂY: Giải thích sự liên kết logic giữa Chunk Topic này và Book Topic tương ứng (LLM-CAPTCHA)]"
                     }
                 ]
             } for c in batch_data["chunks"]
@@ -265,6 +371,12 @@ def validate_submission(run_folder: str, session_dir: str, submit_file: str):
                 print(f"❌ Reject: Entry {chunk_idx} evidence không tìm thấy trong nội dung chunk:\n'{t_evi}'")
                 return
                 
+            # 9. LLM-CAPTCHA check
+            t_reason = topic.get("reasoning", "")
+            if "[ĐIỀN VÀO ĐÂY" in t_reason or len(t_reason.strip()) < 15:
+                print(f"❌ Reject: Entry {chunk_idx} thiếu reasoning (LLM-CAPTCHA)")
+                return
+                
     # All checks passed
     print(f"✅ Batch {current_batch}/{state['total_batches']} PASS validation.")
     
@@ -294,6 +406,53 @@ def validate_submission(run_folder: str, session_dir: str, submit_file: str):
             json.dump(state["submitted_topics"], f, ensure_ascii=False, indent=2)
         print(f"🎉 HOÀN THÀNH — collected_topics.json đã sẵn sàng tại:\n{out_file}")
 
+# === NHÓM 5.5: Xuất Dữ Liệu Đề Xuất Bàn Giao ===
+def export_proposed_topics(run_folder: str, decision_map_path: str):
+    """
+    Gom dữ liệu topic từ book draft và chunk topics, gán nhãn audience tương ứng và xuất ra proposed_topics.json.
+    Tệp xuất ra sẽ là đầu vào cho Plugin Topic Manager xử lý 2-Pass Dedup.
+    """
+    # Nhóm 5.5.1: Thiết lập thư mục session và cấu hình đường dẫn xuất file
+    session_dir = os.path.join(os.path.abspath(run_folder), "session_4")
+    out_file = os.path.join(session_dir, "proposed_topics.json")
+    
+    # Nhóm 5.5.2: Đọc dữ liệu nguồn thô của book, chunk và bản đồ phân phối audience
+    with open(os.path.join(session_dir, "book_topics_draft.json"), 'r', encoding='utf-8') as f:
+        book_data = json.load(f)
+    with open(os.path.join(session_dir, "collected_topics.json"), 'r', encoding='utf-8') as f:
+        chunk_data = json.load(f)
+    with open(decision_map_path, 'r', encoding='utf-8') as f:
+        dec_map = json.load(f)
+
+    entries = []
+    
+    # Nhóm 5.5.3: Trích xuất và gắn mảng audience cho Book level
+    book_aud = next((m["audience_filename"] for m in dec_map if m["scope"] == "book"), "")
+    for t in book_data["book_topics"]:
+        entries.append({
+            "source_group": "book",
+            "id": t["id"],
+            "label": t["label"],
+            "audiences": [f"[[{book_aud}]]"] if book_aud else []
+        })
+        
+    # Nhóm 5.5.4: Trích xuất và gắn mảng audience cho từng Chunk level tương ứng
+    for c in chunk_data:
+        idx = c["chunk_index"]
+        c_aud = next((m["audience_filename"] for m in dec_map if m.get("chunk_index") == idx), "")
+        for t in c["topics"]:
+            entries.append({
+                "source_group": str(idx),
+                "id": t["id"],
+                "label": t["label"],
+                "audiences": [f"[[{c_aud}]]"] if c_aud else []
+            })
+            
+    # Nhóm 5.5.5: Ghi lưu kết quả proposed_topics.json cho plugin
+    with open(out_file, 'w', encoding='utf-8') as f:
+        json.dump({"pillar": book_data["pillar"], "entries": entries}, f, ensure_ascii=False, indent=2)
+    print(f"✅ Đã kết xuất thành công {len(entries)} đề xuất vào: {out_file}")
+
 # === NHÓM 6: CLI argument parser ===
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Chuẩn bị và quản lý Batch Topic Gen")
@@ -305,16 +464,27 @@ if __name__ == "__main__":
     parser.add_argument("--get-next", action="store_true", help="Lấy batch tiếp theo")
     parser.add_argument("--submit-file", type=str, help="File JSON kết quả từ Agent để duyệt")
     
+    parser.add_argument("--prepare-book-topics", action="store_true", help="Sinh template cho Book Topics")
+    parser.add_argument("--submit-book-topics", type=str, help="Submit file Book Topics")
+    
+    parser.add_argument("--export-proposed-topics", action="store_true", help="Kết xuất proposed_topics.json bàn giao cho Plugin")
+    parser.add_argument("--decision-map", type=str, help="Đường dẫn audience_decision_map.json")
+    
     args = parser.parse_args()
     
     if args.split_dir and args.run_folder and not args.get_next and not args.submit_file:
         create_batches(args.run_folder, args.split_dir, args.batch_size)
     elif args.get_next and args.session_dir:
-        # derive run_folder from session_dir
         r_folder = os.path.dirname(os.path.abspath(args.session_dir))
         get_next_batch(r_folder, args.session_dir)
     elif args.submit_file and args.session_dir:
         r_folder = os.path.dirname(os.path.abspath(args.session_dir))
         validate_submission(r_folder, args.session_dir, args.submit_file)
+    elif args.prepare_book_topics and args.run_folder:
+        prepare_book_topics(args.run_folder)
+    elif args.submit_book_topics and args.run_folder:
+        submit_book_topics(args.run_folder, args.submit_book_topics)
+    elif args.export_proposed_topics and args.run_folder and args.decision_map:
+        export_proposed_topics(args.run_folder, args.decision_map)
     else:
         parser.print_help()

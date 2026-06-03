@@ -8,7 +8,7 @@ description: Pipeline sản xuất nội dung viral 7 giai đoạn – chạy 1 
 
 > **LỆNH**: `/content-post [yêu cầu]` | `/content-post tiếp tục` (resume)
 
-> PIPELINE_STATUS: CHƯA SẴN SÀNG
+> PIPELINE_STATUS: SẴN SÀNG
 
 ## Output Rules
 
@@ -81,7 +81,7 @@ powershell -ExecutionPolicy Bypass -File ".agents/scripts/validate-persona.ps1"
 | 4.5 – Persona | **PersonaLoaderAgent** | `.agents/agents/persona-loader/AGENT.md` | `.agents/skills/persona-loader/SKILL.md` | `04.5-persona-pack.md` |
 | 5 – Viết bài | **VoiceWriterAgent** | `.agents/agents/voice-writer/AGENT.md` | `.agents/skills/voice-writer/SKILL.md` | `05-draft.md` |
 | 6 – QA & Scoring | **QaCheckerAgent** | `.agents/agents/qa-checker/AGENT.md` | `.agents/skills/qa-checker/SKILL.md` | `06-qa-result.md` |
-| 7 – Đóng gói | **FormatAgent** | `.agents/agents/format-agent/AGENT.md` | `.agents/skills/format-agent/SKILL.md` | `07-final.md` + `output/posts/[YYYY-MM-DD]-[topic-slug].md` |
+| 7 – Đóng gói | **FormatAgent** | `.agents/agents/format-agent/AGENT.md` | `.agents/skills/format-agent/SKILL.md` | `07-final.md` + `output/posts/[YYYY-MM-DD]-[post-title-slug].md` |
 
 **Quy tắc thực thi của Sub-Agents:**
 1. Mỗi phase: Đọc cấu hình nhận thức của tác nhân tại tệp **`AGENT.md`** để nạp vai trò tư duy chuyên biệt, sau đó bắt buộc `view_file` quy trình **`SKILL.md`** tương ứng để lấy mã khóa thực thi `EXECUTION_KEY` và thực thi ghi output.

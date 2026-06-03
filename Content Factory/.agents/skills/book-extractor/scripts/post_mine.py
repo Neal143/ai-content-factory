@@ -45,7 +45,7 @@ def log(phase, status, message):
 
 
 def find_run_folder(filepath):
-    """Tìm .extraction_runs/[run-folder] dựa trên tên sách"""
+    """Tìm [run-folder] dựa trên tên sách"""
     search = filepath
     for _ in range(5):
         search = os.path.dirname(search)
@@ -413,7 +413,7 @@ def post_mine(filepath, run_folder=None):
 
 
 def _write_report(filepath, lines, run_folder=None):
-    """Write report to .extraction_runs/[run-folder]/post_mine_report.txt"""
+    """Write report to [run-folder]/session_1/post_mine_report.txt"""
     if not run_folder:
         run_folder = find_run_folder(filepath)
     if run_folder:

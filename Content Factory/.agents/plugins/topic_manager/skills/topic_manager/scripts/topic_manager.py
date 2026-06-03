@@ -1,8 +1,19 @@
+"""
+Tên file: topic_manager.py
+Last update: 01/06/2026 23:55 (GMT+7)
+Vai trò: Thư viện ghi nhận và lưu trữ topic mới / append audience vào topic_map.yaml.
+Sử dụng khi nào: Được gọi trực tiếp bởi dedup_engine.py ở Chặng 3 (Compile & Commit).
+Output: Cập nhật vật lý lên file topic_map.yaml.
+Tóm tắt logic hoạt động:
+  - confirm_new: Thêm các topics hoàn toàn mới vào YAML.
+  - update_audience: Append mảng audiences vào topic đã tồn tại trong YAML (idempotent).
+  - batch_commit: Batch commit từ file JSON (dành cho chế độ cũ).
+"""
 import os
 import json
 import yaml
 
-# ── Hằng số: Comment header cho topic_map.yaml ──
+# === NHÓM 1: Hằng số & Cấu hình Header YAML ===
 TOPIC_MAP_HEADER = (
     "# BẢN ĐỒ TOPIC\n"
     "# id: English snake_case — dùng cho AI matching, script calls, frontmatter tags\n"
@@ -16,6 +27,7 @@ def _write_topic_map(data, path):
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
 
+# === NHÓM 2: Tạo Mới Topic (confirm_new) ===
 def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_audience):
     """
     Ghi topics đã được LLM xác nhận là HOÀN TOÀN MỚI vào topic_map.yaml.
@@ -51,6 +63,7 @@ def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_au
     print(f"✅ Đã ghi {len(new_topics)} topic mới vào {topic_map_path}")
 
 
+# === NHÓM 3: Cập Nhật Audience (update_audience) ===
 def update_audience(topic_map_path, resolved_id, new_audiences):
     """
     Append audience mới vào belongs_to_audience của topic đã tồn tại.
@@ -83,6 +96,7 @@ def update_audience(topic_map_path, resolved_id, new_audiences):
         print(f"ℹ️ Audience đã tồn tại trong '{resolved_id}', không cần cập nhật.")
 
 
+# === NHÓM 4: Batch Commit (batch_commit) ===
 def _group_key(entry):
     """Convert scope+chunk_index sang dict key cho output."""
     if entry["scope"] == "book":
@@ -97,15 +111,6 @@ def batch_commit(topic_map_path, input_path, output_path):
              xuất resolved_topics.json cho atomizer.py.
     Khi nào sử dụng: Được gọi bởi Agent trong book-parser Phase 1, Bước 1.5 (Batch Mode).
     Output: topic_map.yaml (cập nhật) + resolved_topics.json (mới).
-
-    Tóm tắt logic:
-      1. Đọc proposed_topics.json
-      2. Tách entries thành 2 nhóm: creates và merges
-      3. Deduplicate creates theo id (giữ first, gộp audiences + groups)
-      4. Xử lý TẤT CẢ creates trước (gọi confirm_new)
-      5. Xử lý TẤT CẢ merges sau (gọi update_audience)
-      6. Build output dict: group → [resolved_id, ...]
-      7. Ghi resolved_topics.json
     """
     # Đọc input
     with open(input_path, 'r', encoding='utf-8') as f:
@@ -119,8 +124,6 @@ def batch_commit(topic_map_path, input_path, output_path):
     merges = [e for e in entries if e["action"] == "merge"]
 
     # ── Bước 2: Deduplicate creates theo id ──
-    # Nếu LLM sinh cùng 1 topic mới cho 2 chunks khác nhau,
-    # chỉ tạo 1 lần, gộp audiences.
     seen_ids = {}  # id → {"label": ..., "audiences": set(), "groups": []}
     for entry in creates:
         tid = entry["id"].replace('-', '_').lower()  # Poka-Yoke normalize
@@ -156,18 +159,16 @@ def batch_commit(topic_map_path, input_path, output_path):
         )
 
     # ── Bước 5: Build resolved_topics output ──
-    # Key = group (vd: "book", "1", "2", ...)
-    # Value = [resolved_id, ...]
     output = {}
 
-    # Từ creates (đã dedup) — resolved_id = tid (normalized)
+    # Từ creates (đã dedup)
     for tid, info in seen_ids.items():
         for group in info["groups"]:
             output.setdefault(group, [])
             if tid not in output[group]:
                 output[group].append(tid)
 
-    # Từ merges — normalize resolved_to khớp với id đã ghi bởi confirm_new
+    # Từ merges
     for entry in merges:
         group = _group_key(entry)
         resolved_id = entry["resolved_to"].replace('-', '_').lower()  # Poka-Yoke normalize
@@ -185,6 +186,7 @@ def batch_commit(topic_map_path, input_path, output_path):
     print(f"   Output:  {output_path}")
 
 
+# === NHÓM 5: Thực Thi CLI Parser ===
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Topic Manager — ghi dữ liệu vào topic_map.yaml")

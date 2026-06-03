@@ -1,0 +1,10 @@
+{
+  "_metadata": {
+    "last_update": "01/06/2026 23:55 (GMT+7)",
+    "vai_tro": "Khai báo định danh của Plugin Topic Manager",
+    "su_dung_khi_nao": "Khi hệ thống load các plugins",
+    "output": "Plugin Config JSON",
+    "tom_tat_logic": "Khai báo tên plugin là topic_manager"
+  },
+  "name": "topic_manager"
+}

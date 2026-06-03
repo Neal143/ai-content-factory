@@ -15,7 +15,7 @@ provided_outputs:
 
 # Hook Engineer Skill (Phase 3)
 
-> EXECUTION_KEY: d6b34f8a
+> EXECUTION_KEY: de845a01
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.

@@ -89,13 +89,13 @@ Bạn là chuyên gia điều phối trích xuất sách quy mô lớn. Nhiệm 
 ### Bước 1: The Mapper (Sinh Tổng quan & Mục Lục)
 
 - Gọi CLI: `nlm notebook query <notebook_id> "Tham chiếu file prompt-mapper-v4.md, hãy sinh Tổng quan và Mục lục cho sách [Tên Sách]." --json`
-- Parse JSON output → extract trường `answer` → lưu plain text vào: `.extraction_runs/[run-folder]/session_1/mapper_raw.md`. (Lưu ý: Bạn phải tự tạo thư mục `session_1` nếu nó chưa tồn tại).
+- Parse JSON output → extract trường `answer` → lưu plain text vào: `[run-folder]/session_1/mapper_raw.md`. (Lưu ý: Bạn phải tự tạo thư mục `session_1` nếu nó chưa tồn tại).
   ⚠️ Nếu CLI trả exit code ≠ 0 → retry tối đa 2 lần. Đọc stderr để chẩn đoán.
 
 ### Bước 1.5: Mapper Validation Gate
 
 Agent gọi Core Script:
-`python .agents/skills/book-extractor/scripts/prepare_mapper.py ".extraction_runs/[run-folder]" "[Tên Sách]"`
+`python .agents/skills/book-extractor/scripts/prepare_mapper.py "[run-folder]" "[Tên Sách]"`
 
 Script phân tích `mapper_raw.md`, làm sạch META, ghi file xương sống vào vault `vault/02-sources/books/[Tên Sách].md`, rồi chạy 4-point validation. Agent đọc JSON verdict từ stdout:
 - `"passed": true` → Bước 2
@@ -200,7 +200,7 @@ Script thực thi 4 giai đoạn tự động (Sentinel → Count → Integrity 
 
 **⛔ POST-MINE MANDATORY CHECKPOINT:**
 Ngay khi terminal in ra "POST-MINE COMPLETE", Agent có nghĩa vụ NGAY LẬP TỨC:
-1. Đọc nội dung file `.extraction_runs/[run-folder]/session_1/post_mine_report.txt`
+1. Đọc nội dung file `[run-folder]/session_1/post_mine_report.txt`
 2. Nếu không chứa "FATAL" → TIẾN THẲNG sang Bước 4 (Audit + Report).
 ❌ Nếu chứa "FATAL" → DỪNG NGAY. Report lỗi cho User. KHÔNG tiếp sang Bước 4.
 
