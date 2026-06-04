@@ -1,4 +1,4 @@
-﻿---
+---
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
 last_update: 24/05/2026 14:30 (GMT+7)
@@ -15,7 +15,7 @@ provided_outputs:
 
 # Voice Writer (Phase 5)
 
-> EXECUTION_KEY: 9aef264c
+> EXECUTION_KEY: cd1b69ef
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.

@@ -88,10 +88,10 @@ if (-not $isValidationMode) {
     $qaScore = "100/100"
     if (Test-Path $qaPath) {
         $qa = Get-Content $qaPath -Raw -Encoding UTF8
-        if ($qa -match '(?i)(?:t.*?ng.*?i.*?m|verdict|total score).*?(\d+/\d+)') {
-            $qaScore = $Matches[1]
-        } elseif ($qa -match '(?i)score.*?(\d+/\d+)') {
-            $qaScore = $Matches[1]
+        if ($qa -match '(?i)(?:t.*?ng.*?i.*?m|verdict|total score).*?(\d+\s*/\s*\d+)') {
+            $qaScore = $Matches[1] -replace '\s+', ''
+        } elseif ($qa -match '(?i)score.*?(\d+\s*/\s*\d+)') {
+            $qaScore = $Matches[1] -replace '\s+', ''
         }
     }
 
