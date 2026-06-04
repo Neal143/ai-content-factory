@@ -56,7 +56,8 @@ function Invoke-Patch {
         Set-Content $FilePath $content -Encoding UTF8 -NoNewline
         Write-Host "  PATCHED: $FilePath"
         return $true
-    } else {
+    }
+    else {
         Write-Host "  WARNING: Pattern not found in ${FilePath}: '$($Find.Substring(0, [Math]::Min(50, $Find.Length)))...'"
         return $false
     }
@@ -70,8 +71,7 @@ function Invoke-Patch {
 $targetFiles = @(
     ".agents/skills/voice-writer/SKILL.md",
     ".agents/skills/voice-writer/references/writing-rules.md",
-    ".agents/skills/structure-designer/SKILL.md",
-    ".agents/skills/format-agent/SKILL.md"
+    ".agents/skills/structure-designer/SKILL.md"
 )
 
 # ============================================================
@@ -85,7 +85,8 @@ if ($Action -eq "validate") {
 
     try {
         $p = Get-Content $ProfilePath -Raw -Encoding UTF8 | ConvertFrom-Json
-    } catch {
+    }
+    catch {
         Write-Host "[FAIL] Invalid JSON: $ProfilePath"
         exit 1
     }
@@ -94,7 +95,7 @@ if ($Action -eq "validate") {
 
     # --- Min/max range validation ---
     foreach ($field in @("sentences_per_paragraph", "sentences_per_normal_chain",
-                         "sentences_per_long_chain", "long_chains_per_article")) {
+            "sentences_per_long_chain", "long_chains_per_article")) {
         if ($null -eq $p.$field) { continue }  # B8/B9 can be null
         $err = Test-Range $p.$field $field
         if ($err) { $errors += $err }
@@ -108,7 +109,8 @@ if ($Action -eq "validate") {
         if ($b1Total -le $b2Total) {
             $errors += "[FAIL] R1: Section separator ($($b1Total) blank lines) must be > paragraph separator ($($b2Total) blank lines) when both have no marker"
         }
-    } elseif ($b1.marker -and $b2.marker -and $b1.marker -eq $b2.marker) {
+    }
+    elseif ($b1.marker -and $b2.marker -and $b1.marker -eq $b2.marker) {
         $errors += "[FAIL] R1: Section marker '$($b1.marker)' conflicts with paragraph marker"
     }
 
@@ -120,7 +122,8 @@ if ($Action -eq "validate") {
         if ($b2Total -gt 0 -and $b4Total -gt 0 -and $b2Total -le $b4Total) {
             $errors += "[FAIL] R2: Paragraph separator ($($b2Total) blank lines) must be > chain separator ($($b4Total) blank lines) when both have no marker"
         }
-    } elseif ($b2.marker -and $b4.marker -and $b2.marker -eq $b4.marker) {
+    }
+    elseif ($b2.marker -and $b4.marker -and $b2.marker -eq $b4.marker) {
         $errors += "[FAIL] R2: Paragraph marker '$($b2.marker)' conflicts with chain marker"
     }
 
@@ -173,7 +176,8 @@ if ($Action -eq "validate") {
     if ($errors.Count -eq 0) {
         Write-Host "VALIDATION PASSED"
         exit 0
-    } else {
+    }
+    else {
         $errors | ForEach-Object { Write-Host $_ }
         exit 1
     }
@@ -204,20 +208,9 @@ if ($Action -eq "patch") {
         @{ File = ".agents/skills/voice-writer/SKILL.md"; Pattern = $pat.voice_writer.vw_word_count_find },
         @{ File = ".agents/skills/voice-writer/SKILL.md"; Pattern = $pat.voice_writer.vw_paragraph_length_find },
         @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_total_words_find },
-        @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_section_sep_find },
-        @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_title_find },
-        @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_section_heading_find },
-        @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_para_heading_find },
-        @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_para_sep_find },
         @{ File = ".agents/skills/voice-writer/SKILL.md"; Pattern = $pat.voice_writer.vw_chain_find },
         @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_chain_find }
     )
-
-    # Chain separator (format-agent) - only check when non-default
-    $chainTotal = $p.chain_separator.blank_lines_above + $p.chain_separator.blank_lines_below
-    if ($p.chain_separator.marker -or $chainTotal -gt 0) {
-        $checks += @{ File = ".agents/skills/format-agent/SKILL.md"; Pattern = $pat.format_agent.fa_chain_sep_find }
-    }
 
     if ($p.mode -eq "advanced") {
         $checks += @{ File = ".agents/skills/structure-designer/SKILL.md"; Pattern = $pat.structure_designer.sd_total_find }
@@ -251,7 +244,6 @@ if ($Action -eq "patch") {
     Write-Host "`n=== PATCHING ==="
     $vwPath = ".agents/skills/voice-writer/SKILL.md"
     $wrPath = ".agents/skills/voice-writer/references/writing-rules.md"
-    $faPath = ".agents/skills/format-agent/SKILL.md"
     $sdPath = ".agents/skills/structure-designer/SKILL.md"
 
     # voice-writer/SKILL.md
@@ -262,47 +254,6 @@ if ($Action -eq "patch") {
     # writing-rules.md
     Invoke-Patch $wrPath $pat.writing_rules.wr_total_words_find ($pat.writing_rules.wr_total_words_replace -replace '{min}', $p.word_count_total.min -replace '{max}', $p.word_count_total.max)
 
-    # format-agent/SKILL.md (Section separator)
-    $defaultFaInstruction = $pat.format_agent.fa_section_sep_find
-    if ($p.section_separator.marker -and $p.section_separator.marker -ne [string][char]0x2042) {
-        $newFaInstruction = $pat.format_agent.fa_section_sep_replace_marker -replace '{marker}', $p.section_separator.marker -replace '{above}', $p.section_separator.blank_lines_above -replace '{below}', $p.section_separator.blank_lines_below
-    } elseif (-not $p.section_separator.marker) {
-        $totalBlanks = $p.section_separator.blank_lines_above + $p.section_separator.blank_lines_below
-        $newFaInstruction = $pat.format_agent.fa_section_sep_replace_blank -replace '{total}', $totalBlanks
-    } else {
-        $newFaInstruction = $defaultFaInstruction
-    }
-    if ($newFaInstruction -ne $defaultFaInstruction) {
-        Invoke-Patch $faPath $defaultFaInstruction $newFaInstruction
-    }
-
-    # Format output elements
-    if ($p.output_elements.title -eq $true) {
-        Invoke-Patch $faPath $pat.format_agent.fa_title_find $pat.format_agent.fa_title_replace
-    }
-    if ($p.output_elements.section_heading -eq $true) {
-        Invoke-Patch $faPath $pat.format_agent.fa_section_heading_find ($pat.format_agent.fa_section_heading_replace -replace '{above}', $p.section_heading_spacing.blank_lines_above -replace '{below}', $p.section_heading_spacing.blank_lines_below)
-    }
-    if ($p.output_elements.paragraph_heading -eq $true) {
-        Invoke-Patch $faPath $pat.format_agent.fa_para_heading_find ($pat.format_agent.fa_para_heading_replace -replace '{above}', $p.paragraph_heading_spacing.blank_lines_above -replace '{below}', $p.paragraph_heading_spacing.blank_lines_below)
-    }
-
-    # Paragraph separator
-    if ($p.paragraph_separator.marker -or $p.paragraph_separator.blank_lines_above -ne 1 -or $p.paragraph_separator.blank_lines_below -ne 0) {
-        if ($p.paragraph_separator.marker) {
-            Invoke-Patch $faPath $pat.format_agent.fa_para_sep_find ($pat.format_agent.fa_para_sep_replace_marker -replace '{marker}', $p.paragraph_separator.marker -replace '{above}', $p.paragraph_separator.blank_lines_above -replace '{below}', $p.paragraph_separator.blank_lines_below)
-        } else {
-            Invoke-Patch $faPath $pat.format_agent.fa_para_sep_find ($pat.format_agent.fa_para_sep_replace_blank -replace '{above}', $p.paragraph_separator.blank_lines_above -replace '{below}', $p.paragraph_separator.blank_lines_below)
-        }
-    }
-
-    # Chain separator (format-agent)
-    $chainTotal = $p.chain_separator.blank_lines_above + $p.chain_separator.blank_lines_below
-    if ($p.chain_separator.marker) {
-        Invoke-Patch $faPath $pat.format_agent.fa_chain_sep_find ($pat.format_agent.fa_chain_sep_replace_marker -replace '{marker}', $p.chain_separator.marker -replace '{above}', $p.chain_separator.blank_lines_above -replace '{below}', $p.chain_separator.blank_lines_below)
-    } elseif ($chainTotal -gt 0) {
-        Invoke-Patch $faPath $pat.format_agent.fa_chain_sep_find ($pat.format_agent.fa_chain_sep_replace_blank -replace '{total}', $chainTotal)
-    }
 
     # Chain instructions (find/replace in SKILL.md)
     Invoke-Patch $vwPath $pat.voice_writer.vw_chain_find ($pat.voice_writer.vw_chain_replace -replace '{n_min}', $p.sentences_per_normal_chain.min -replace '{n_max}', $p.sentences_per_normal_chain.max -replace '{lc_min}', $p.long_chains_per_article.min -replace '{lc_max}', $p.long_chains_per_article.max -replace '{l_min}', $p.sentences_per_long_chain.min -replace '{l_max}', $p.sentences_per_long_chain.max)
@@ -342,7 +293,8 @@ if ($Action -eq "restore") {
 
     if ($restoredCount -eq 0) {
         Write-Host "Nothing to restore"
-    } else {
+    }
+    else {
         Write-Host "`n$restoredCount file(s) restored."
     }
     exit 0
