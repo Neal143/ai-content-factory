@@ -138,8 +138,8 @@ try {
     [Console]::Error.WriteLine("[HOOK] BLOCK - target outside allowed directory!")
 
     $response = @{
-        decision = "force_ask"
-        reason   = "[Hook] Agent dang chay [$activeWorkflow] nhung co ghi file ngoai thu muc [$allowedRelative/]. Duong dan vi pham: $targetFile. Bam Deny de chan."
+        decision = "deny"
+        reason   = "[Hook-DENY] BLOCKING: Agent dang chay [$activeWorkflow] nhung co ghi file ngoai thu muc [$allowedRelative/]. Duong dan vi pham: $targetFile."
     }
 
     [Console]::Out.Write(($response | ConvertTo-Json -Compress))
