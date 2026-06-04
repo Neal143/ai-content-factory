@@ -1,18 +1,20 @@
-# File       : detect-bypass.ps1
-# Last update: 21/05/2026 11:22 (GMT+7)
+﻿# File       : detect-bypass.ps1
+# Last update: 04/06/2026 16:45 (GMT+7)
 # Vai tro    : Phat hien hanh vi bypass cua LLM trong pipeline content-post
 # Dung khi   : content-post.md goi sau khi moi Phase ghi xong output
-# Output     : Exit 0 = PASS | Exit 1 = FAIL (kem danh sach vi pham)
-# Logic      : Check 1-3 luon chay. Check 4-5 kiem tra execution key va re-run validation.
-#              Phase 4 PASS: goi create-checkpoint.ps1 de luu trang thai fail-safe.
-#              Phase 7 PASS: goi generate-phase-key.ps1 de rotate key + set PIPELINE_STATUS.
+# Output     : Exit 0 = PASS | Exit 1 = HALT | Exit 2 = RETRY
+# Logic      : Check 0-3 luon chay. Check 4-5 kiem tra execution key va re-run validation.
+#              Sinh checklist json & markdown.
+#              SSOT: Trich xuat huong dan JIT tu content-post.md.
+#              Phase 4 PASS: goi create-checkpoint.ps1.
+#              Phase 7 PASS: goi generate-phase-key.ps1 & apply-profile.
 <#
 .SYNOPSIS
     Anti-Bypass Sentinel
 .PARAMETER RunFolder
     Duong dan run folder hien tai (vd: output/runs/2026-04-28_topic-slug/)
 .PARAMETER Phase
-    Phase vua hoan thanh (1-7)
+    Phase vua hoan thanh (0-7, 45)
 #>
 
 param(
@@ -20,11 +22,61 @@ param(
     [Parameter(Mandatory = $true)][int]$Phase
 )
 
-$failed = $false
+$bypassFailed = $false
+$qualityFailed = $false
+$checkResults = @{}
+
+# ============================================================
+# CHECK 0 - Prerequisite Chain Validation
+# Ly do: Agent nhay coc Phase -> cac Phase sau khong phat hien.
+# Kiem tra: Tat ca output file cua cac Phase truoc phai ton tai VA khong rong.
+# ============================================================
+$phaseOrder = @(0, 1, 2, 3, 4, 45, 5, 6, 7)
+$phaseOutputMap = @{
+    0  = "00-blackboard.yaml"
+    1  = "01-idea-brief.md"
+    2  = "02-research-brief.md"
+    3  = "03-hook.md"
+    4  = "04-outline.md"
+    45 = "04.5-persona-pack.md"
+    5  = "05-draft.md"
+    6  = "06-qa-result.md"
+    7  = "07-final.md"
+}
+
+if ($Phase -ne 0) {
+    $currentIndex = [array]::IndexOf($phaseOrder, $Phase)
+    $missingPrereqs = @()
+
+    for ($i = 0; $i -lt $currentIndex; $i++) {
+        $prereqPhase = $phaseOrder[$i]
+        $prereqFile = Join-Path $RunFolder $phaseOutputMap[$prereqPhase]
+
+        if (-not (Test-Path $prereqFile)) {
+            $missingPrereqs += "Phase $prereqPhase ($($phaseOutputMap[$prereqPhase]) - KHONG TON TAI)"
+        }
+        elseif ((Get-Item $prereqFile).Length -eq 0) {
+            $missingPrereqs += "Phase $prereqPhase ($($phaseOutputMap[$prereqPhase]) - FILE RONG)"
+        }
+    }
+
+    if ($missingPrereqs.Count -gt 0) {
+        $checkResults["C0"] = "FAIL"
+        Write-Host "[FAIL] BYPASS DETECTED [Check 0]: Agent nhay coc - thieu output cua cac Phase truoc:"
+        foreach ($m in $missingPrereqs) { Write-Host "  - $m" }
+        $bypassFailed = $true
+    }
+    else {
+        $checkResults["C0"] = "PASS"
+        Write-Host "[PASS] CHECK 0: Prerequisite chain verified."
+    }
+}
+else {
+    $checkResults["C0"] = "SKIP"
+}
 
 # ============================================================
 # CHECK 1 - Script rac trong output/ root VA workspace root
-# Ly do: LLM tao .py/.js/.sh de hardcode noi dung
 # ============================================================
 $forbiddenExtensions = @("*.py", "*.js", "*.sh")
 $scanPaths = @("output", ".")
@@ -37,23 +89,26 @@ foreach ($scanPath in $scanPaths) {
 }
 if ($forbidden.Count -gt 0) {
     Write-Host "[FAIL] BYPASS DETECTED [Check 1]: Script bi cam: $($forbidden.FullName -join ', ')"
-    $failed = $true
+    $bypassFailed = $true
+    $checkResults["C1"] = "FAIL"
+} else {
+    $checkResults["C1"] = "PASS"
 }
 
 # ============================================================
 # CHECK 2 - File ghi sai vao vault/output/ (duong dan bi cam)
-# Ly do: LLM ghi ra vault/output/posts/ thay vi output/posts/
 # ============================================================
 $vaultFiles = Get-ChildItem -Path "vault/output/" -Recurse -File -ErrorAction SilentlyContinue
 if ($vaultFiles) {
     Write-Host "[FAIL] BYPASS DETECTED [Check 2]: File bi ghi vao vault/output/: $($vaultFiles.Name -join ', ')"
-    $failed = $true
+    $bypassFailed = $true
+    $checkResults["C2"] = "FAIL"
+} else {
+    $checkResults["C2"] = "PASS"
 }
 
 # ============================================================
 # CHECK 3 - qa_score hardcode ma 06-qa-result.md chua ton tai
-# Ly do: LLM hardcode qa_score: 130/130 ma khong thuc su chay QA Checker
-# Chi kiem tra tu Phase 6 tro di (Phase 5 draft chua can co qa-result)
 # ============================================================
 if ($Phase -ge 6) {
     $draftPath = Join-Path $RunFolder "05-draft.md"
@@ -63,16 +118,20 @@ if ($Phase -ge 6) {
         $hasQAFile = Test-Path (Join-Path $RunFolder "06-qa-result.md")
         if ($hasScore -and -not $hasQAFile) {
             Write-Host "[FAIL] BYPASS DETECTED [Check 3]: qa_score hardcode trong 05-draft.md nhung 06-qa-result.md chua ton tai."
-            $failed = $true
+            $bypassFailed = $true
+            $checkResults["C3"] = "FAIL"
+        } else {
+            $checkResults["C3"] = "PASS"
         }
+    } else {
+        $checkResults["C3"] = "SKIP"
     }
+} else {
+    $checkResults["C3"] = "SKIP"
 }
 
 # ============================================================
-# CHECK 4 - Execution Key Verification (chung minh Agent doc SKILL.md)
-# Ly do: Agent bypass doc SKILL.md, chay bang implicit memory.
-# Key duoc inject vao SKILL.md o cuoi pipeline truoc do (boi detect-bypass.ps1 Phase 7).
-# Agent phai doc SKILL.md de lay key, ghi vao output. Check nay doi chieu.
+# CHECK 4 - Execution Key Verification
 # ============================================================
 $skillPaths = @{
     0  = ".agents/skills/semantic-router/SKILL.md"
@@ -85,51 +144,48 @@ $skillPaths = @{
     7  = ".agents/skills/format-agent/SKILL.md"
     45 = ".agents/skills/persona-loader/SKILL.md"
 }
-$outputFiles = @{
-    0 = "00-blackboard.yaml"; 1 = "01-idea-brief.md"; 2 = "02-research-brief.md"; 3 = "03-hook.md"
-    4 = "04-outline.md"; 5 = "05-draft.md"; 6 = "06-qa-result.md"; 7 = "07-final.md"
-    45 = "04.5-persona-pack.md"
-}
 
 if ($skillPaths.ContainsKey($Phase)) {
     $skillFile = $skillPaths[$Phase]
-    $outputFile = Join-Path $RunFolder $outputFiles[$Phase]
+    $outputFile = Join-Path $RunFolder $phaseOutputMap[$Phase]
 
-    # Lay key tu SKILL.md
     $expectedKey = ""
     if (Test-Path $skillFile) {
         $skillContent = Get-Content $skillFile -Raw -Encoding UTF8
         if ($skillContent -match '> EXECUTION_KEY:\s*(\S+)') { $expectedKey = $Matches[1] }
     }
 
-    # Lay key tu output file
     $actualKey = ""
     if (Test-Path $outputFile) {
         $outputContent = Get-Content $outputFile -Raw -Encoding UTF8
         if ($outputContent -match '(?:<!--|#)\s*execution_key:\s*(\S+)(?:\s*-->)?') { $actualKey = $Matches[1] }
     }
 
-    # So khop
     if ($expectedKey -eq "" -or $expectedKey -eq "PENDING" -or $expectedKey -eq "__PENDING__") {
         Write-Host "[FAIL] BYPASS DETECTED [Check 4]: SKILL.md thieu execution_key. Chay generate-phase-key.ps1 truoc."
-        $failed = $true
+        $bypassFailed = $true
+        $checkResults["C4"] = "FAIL"
     }
     elseif ($actualKey -eq "") {
         Write-Host "[FAIL] BYPASS DETECTED [Check 4]: Output thieu execution_key."
-        $failed = $true
+        $bypassFailed = $true
+        $checkResults["C4"] = "FAIL"
     }
     elseif ($expectedKey -ne $actualKey) {
         Write-Host "[FAIL] BYPASS DETECTED [Check 4]: Key khong khop. Expected: $expectedKey | Actual: $actualKey"
-        $failed = $true
+        $bypassFailed = $true
+        $checkResults["C4"] = "FAIL"
     }
     else {
         Write-Host "[PASS] CHECK 4: Execution key verified."
+        $checkResults["C4"] = "PASS"
     }
+} else {
+    $checkResults["C4"] = "SKIP"
 }
 
 # ============================================================
 # CHECK 4B & 4C - DIKW POKA-YOKE
-# Ly do: Chinh xac thuc thi tu DIKW den Insight, Structure va Voice.
 # ============================================================
 $blackboard = Join-Path $RunFolder "00-blackboard.yaml"
 $isNovel = $false
@@ -138,57 +194,52 @@ if (Test-Path $blackboard) {
     if ($bbContent -match 'Is_Novel_Angle:\s*true') { $isNovel = $true }
 }
 
-# Chi kiem tra tu Phase 1 tro di, va bai toan khong phai la Novel Angle
 if (-not $isNovel -and $Phase -ge 1) {
     $dikwFile = Join-Path $RunFolder "00.5-dikw-combo.md"
     
-    # CHECK 4C (Tier 1): File phai ton tai (Chong viec Agent loi qua Buoc 5 DIKW)
     if (-not (Test-Path $dikwFile)) {
-        Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua tao file nguyen lieu Combo (00.5-dikw-combo.md). Yeu cau kiem tra lai Buoc 5 DIKW Bridge."
-        $failed = $true
+        Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua tao file (00.5-dikw-combo.md)."
+        $bypassFailed = $true
+        $checkResults["C4BC"] = "FAIL"
     } else {
         $dikwContent = Get-Content $dikwFile -Raw -Encoding UTF8
         
-        # CHECK 4C (Tier 2): Kiem tra Bundle Atoms (Giau ly do KEY de chong Cheat)
         $hasKey = $dikwContent -match '<!-- BUNDLE_KEY:\s*([A-Za-z0-9]+)\s*-->'
         if (-not $hasKey) {
-            Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua chay script bundle-atoms hoac chay khong thanh cong. Yeu cau thuc thi lai script roi kiem tra file output."
-            $failed = $true
+            Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua chay script hoac thieu BUNDLE_KEY."
+            $bypassFailed = $true
+            $checkResults["C4BC"] = "FAIL"
         } else {
             $expectedKey = $Matches[1]
             
-            # CHECK 4B: Kiem tra Output Phase 1, 2, 3, 4 va 5 co doc Combo chua va co dung key khong
             if ($Phase -ge 1 -and $Phase -le 5) {
-                $outputFile = ""
-                if ($Phase -eq 1) { $outputFile = "01-idea-brief.md" }
-                if ($Phase -eq 2) { $outputFile = "02-research-brief.md" }
-                if ($Phase -eq 3) { $outputFile = "03-hook.md" }
-                if ($Phase -eq 4) { $outputFile = "04-outline.md" }
-                if ($Phase -eq 5) { $outputFile = "05-draft.md" }
+                $outputPath = Join-Path $RunFolder $phaseOutputMap[$Phase]
                 
-                $outputPath = Join-Path $RunFolder $outputFile
-                
-                # Chan lo hong: File khong ton tai phai bao FAIL ngay lap tuc chu khong bo qua
                 if (-not (Test-Path $outputPath)) {
-                    Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Thieu file output cua Phase $Phase ($outputFile)."
-                    $failed = $true
+                    Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Thieu file output cua Phase $Phase."
+                    $bypassFailed = $true
+                    $checkResults["C4BC"] = "FAIL"
                 } else {
                     $outContent = Get-Content $outputPath -Raw -Encoding UTF8
-                    # Regex defensive: Cho phep dau ngoac vuong [] tuy chon de phong LLM giu nguyen placeholder format
                     if ($outContent -notmatch "<!-- bundle_key:\s*\[?$expectedKey\]?\s*-->") {
                         Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
-                        $failed = $true
+                        $bypassFailed = $true
+                        $checkResults["C4BC"] = "FAIL"
+                    } else {
+                        $checkResults["C4BC"] = "PASS"
                     }
                 }
+            } else {
+                $checkResults["C4BC"] = "PASS"
             }
         }
     }
+} else {
+    $checkResults["C4BC"] = "SKIP"
 }
 
 # ============================================================
-# CHECK 5 - Re-run validation script (chong Agent bia ket qua PASS)
-# Ly do: Agent co the khong goi script ma tu bia ket qua.
-# Sentinel tu chay lai script tuong ung, neu FAIL thi Agent da bia.
+# CHECK 5 - Re-run validation script
 # ============================================================
 $validationScripts = @{
     1  = @{ Script = ".agents/skills/idea-curator/scripts/validate-idea.ps1"; Param = "IdeaPath"; File = "01-idea-brief.md" }
@@ -206,13 +257,11 @@ if ($validationScripts.ContainsKey($Phase)) {
     $targetFile = Join-Path $RunFolder $vs.File
 
     if (Test-Path $vs.Script) {
-        # Build argument list (khong dung splatting vi goi external process)
         $paramName = $vs.Param
         $argList = @("-ExecutionPolicy", "Bypass", "-File", $vs.Script, "-$paramName", $targetFile)
         if ($Phase -eq 7) {
             $argList += @("-SourceDraftPath", (Join-Path $RunFolder "05-draft.md"))
         }
-        # Phase 45: truyen them -PersonaPath de validate-persona-pack.ps1 doi chieu keys
         if ($Phase -eq 45) {
             $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
             $personaPath = ""
@@ -228,31 +277,32 @@ if ($validationScripts.ContainsKey($Phase)) {
 
         if ($rerunExit -eq 0) {
             Write-Host "[PASS] CHECK 5: Re-run validation PASS for Phase $Phase"
+            $checkResults["C5"] = "PASS"
         }
         else {
             Write-Host "[FAIL] BYPASS DETECTED [Check 5]: Re-run validation FAIL for Phase $Phase."
-            $failed = $true
+            $qualityFailed = $true
+            $checkResults["C5"] = "FAIL"
         }
     }
     else {
-        $scriptPath = $vs.Script
-        Write-Host "[WARN] CHECK 5: Validation script not found: $scriptPath"
+        Write-Host "[WARN] CHECK 5: Validation script not found: $($vs.Script)"
+        $checkResults["C5"] = "SKIP"
     }
 }
 elseif ($Phase -eq 0) {
-    # CHECK 5B - Phase 0 (Semantic Router): inline validate 00-blackboard.yaml
-    # Khong co validation script rieng, nen check truc tiep 4 fields bat buoc.
+    # CHECK 5B - Phase 0 inline validation
     $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
     if (-not (Test-Path $bbPath)) {
         Write-Host "[FAIL] BYPASS DETECTED [Check 5]: 00-blackboard.yaml khong ton tai."
-        $failed = $true
+        $qualityFailed = $true
+        $checkResults["C5"] = "FAIL"
     }
     else {
         $bbContent = Get-Content $bbPath -Raw -Encoding UTF8
         $requiredFields = @("topic", "Target_Pillar", "Is_Novel_Angle", "Persona_Path")
         $missingFields = @()
         foreach ($field in $requiredFields) {
-            # Extract gia tri sau dau ':', strip quotes va whitespace, check co noi dung thuc su
             $fieldMatch = [regex]::Match($bbContent, "(?m)^$field\s*:\s*(.*)$")
             $isEmpty = $true
             if ($fieldMatch.Success) {
@@ -263,64 +313,199 @@ elseif ($Phase -eq 0) {
         }
         if ($missingFields.Count -gt 0) {
             $missing = $missingFields -join ", "
-            Write-Host "[FAIL] BYPASS DETECTED [Check 5]: Blackboard thieu/rong cac field: $missing"
-            $failed = $true
+            Write-Host "[FAIL] BYPASS DETECTED [Check 5]: Blackboard thieu/rong: $missing"
+            $qualityFailed = $true
+            $checkResults["C5"] = "FAIL"
         }
         else {
-            Write-Host "[PASS] CHECK 5: Blackboard fields validated for Phase 0."
+            Write-Host "[PASS] CHECK 5: Blackboard fields validated."
+            $checkResults["C5"] = "PASS"
         }
 
-        # CHECK 5C - Topic ID format: snake_case, 2-4 tu
         $topicMatch = [regex]::Match($bbContent, '(?m)^topic:\s*"?([^"\r\n]+)"?')
         if ($topicMatch.Success) {
             $topicVal = $topicMatch.Groups[1].Value.Trim()
             $wordCount = ($topicVal -split '_').Count
             if ($topicVal -notmatch '^[a-z][a-z0-9_]{2,40}$' -or $wordCount -gt 4) {
-                Write-Host "[FAIL] BYPASS DETECTED [Check 5C]: topic '$topicVal' khong dung format (snake_case, 2-4 tu)."
-                $failed = $true
+                Write-Host "[FAIL] BYPASS DETECTED [Check 5C]: topic '$topicVal' sai format."
+                $qualityFailed = $true
+                $checkResults["C5"] = "FAIL"
             }
         }
 
-        # CHECK 5D - Persona_Path khong chua backslash kep
         $ppMatch = [regex]::Match($bbContent, '(?m)^Persona_Path:\s*"?([^"\r\n]+)"?')
         if ($ppMatch.Success) {
             $ppVal = $ppMatch.Groups[1].Value.Trim()
             if ($ppVal -match '\\\\') {
-                Write-Host "[FAIL] BYPASS DETECTED [Check 5D]: Persona_Path chua escaped backslash: $ppVal"
-                $failed = $true
+                Write-Host "[FAIL] BYPASS DETECTED [Check 5D]: Persona_Path chua escaped backslash."
+                $qualityFailed = $true
+                $checkResults["C5"] = "FAIL"
             }
         }
     }
+} else {
+    $checkResults["C5"] = "SKIP"
 }
+
+# ============================================================
+# UPDATE SENTINEL CHECKLIST
+# ============================================================
+function Update-SentinelChecklist {
+    param(
+        [string]$RunFolder,
+        [int]$Phase,
+        [string]$Status,
+        [hashtable]$CheckResults
+    )
+
+    $phaseMeta = [ordered]@{
+        0  = @{ Name = "Semantic Router";      Output = "00-blackboard.yaml" }
+        1  = @{ Name = "Idea Curator";         Output = "01-idea-brief.md" }
+        2  = @{ Name = "Insight Agent";        Output = "02-research-brief.md" }
+        3  = @{ Name = "Hook Engineer";        Output = "03-hook.md" }
+        4  = @{ Name = "Structure Designer";   Output = "04-outline.md" }
+        45 = @{ Name = "Persona Loader";       Output = "04.5-persona-pack.md" }
+        5  = @{ Name = "Voice Writer";         Output = "05-draft.md" }
+        6  = @{ Name = "QA Checker";           Output = "06-qa-result.md" }
+        7  = @{ Name = "Format Agent";         Output = "07-final.md" }
+    }
+
+    $tempFolder = Join-Path $RunFolder ".temp"
+    if (-not (Test-Path $tempFolder)) { New-Item -ItemType Directory -Path $tempFolder -Force | Out-Null }
+    $dataPath = Join-Path $tempFolder "sentinel-data.json"
+
+    $data = @{}
+    if (Test-Path $dataPath) {
+        $raw = Get-Content $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
+        foreach ($prop in $raw.PSObject.Properties) { $data[$prop.Name] = $prop.Value }
+    }
+
+    $timestamp = (Get-Date).ToUniversalTime().AddHours(7).ToString("HH:mm")
+    $checksStr = ($CheckResults.GetEnumerator() | Sort-Object Name | ForEach-Object {
+        $icon = switch ($_.Value) { "PASS" { [char]0x2705 } "FAIL" { [char]0x274C } default { [char]0x23ED } }
+        "$($_.Key)$icon"
+    }) -join " "
+
+    $data["$Phase"] = @{
+        status    = $Status
+        timestamp = $timestamp
+        checks    = $checksStr
+    }
+
+    $data | ConvertTo-Json -Depth 3 | Set-Content $dataPath -Encoding UTF8
+
+    $runName = Split-Path $RunFolder -Leaf
+    $now = (Get-Date).ToUniversalTime().AddHours(7).ToString("dd/MM/yyyy HH:mm")
+    $md = @()
+    $md += "# Sentinel Execution Checklist"
+    $md += ""
+    $md += "> Auto-generated by ``detect-bypass.ps1``. KHÔNG chỉnh sửa thủ công."
+    $md += "> Run: ``$runName``"
+    $md += "> Cập nhật: $now (GMT+7)"
+    $md += ""
+    $md += "### Ghi chú ký hiệu (Legend)"
+    $md += "**1. Trạng thái Phase:**"
+    $md += "- **[PASS]** : Hoàn thành hợp lệ, không phát hiện vi phạm."
+    $md += "- **[HALT]** : Dừng hệ thống lập tức do phát hiện vi phạm luật cố ý (Bypass)."
+    $md += "- **[RETRY]**: Sai định dạng đầu ra (Quality Fail), hệ thống đang tự động sửa lỗi (tối đa 3 lần)."
+    $md += ""
+    $md += "**2. Kết quả kiểm tra (Checks):**"
+    $md += "✅ Đạt | ❌ Vi phạm | ⏭️ Bỏ qua (Không áp dụng ở Phase này)"
+    $md += ""
+    $md += "**3. Mã kiểm tra (Chốt chặn Sentinel):**"
+    $md += "- **C0** : Prerequisite (Kiểm tra output các Phase trước, chặn nhảy cóc)."
+    $md += "- **C1** : Script Scanner (Chặn lén tạo file script để lách luật)."
+    $md += "- **C2** : Vault Guard (Chặn ghi file vào không gian vault/)."
+    $md += "- **C3** : QA Forgery (Chặn hành vi tự chế điểm số QA ảo)."
+    $md += "- **C4** : Execution Key (Xác minh Agent thực sự đã đọc SKILL.md)."
+    $md += "- **C4BC**: DIKW Poka-yoke (Xác minh luồng DIKW Bridge chạy đúng)."
+    $md += "- **C5** : Quality Validate (Chấm điểm lại, validate định dạng đầu ra)."
+    $md += ""
+    $md += "| Phase | Agent | Output | Trạng thái | Thời điểm | Checks |"
+    $md += "|:------|:------|:-------|:-----------|:----------|:-------|"
+
+    foreach ($phaseKey in @("0","1","2","3","4","45","5","6","7")) {
+        $pi = [int]$phaseKey
+        $meta = $phaseMeta[$pi]
+        $displayPhase = if ($phaseKey -eq "45") { "4.5" } else { $phaseKey }
+
+        if ($data.ContainsKey($phaseKey)) {
+            $entry = $data[$phaseKey]
+            $statusStr = switch ($entry.status) {
+                "PASS"  { "**[PASS]**" }
+                "HALT"  { "**[HALT]**" }
+                "RETRY" { "**[RETRY]**" }
+                default { $entry.status }
+            }
+            $md += "| $displayPhase | $($meta.Name) | `$($meta.Output)` | $statusStr | $($entry.timestamp) | $($entry.checks) |"
+        } else {
+            $md += "| $displayPhase | $($meta.Name) | `$($meta.Output)` | - | - | - |"
+        }
+    }
+    
+    $mdPath = Join-Path $RunFolder "sentinel-checklist.md"
+    $md -join "`n" | Set-Content $mdPath -Encoding UTF8
+}
+
+$status = "PASS"
+if ($bypassFailed) { $status = "HALT" }
+elseif ($qualityFailed) { $status = "RETRY" }
+
+Update-SentinelChecklist -RunFolder $RunFolder -Phase $Phase -Status $status -CheckResults $checkResults
 
 # ============================================================
 # KET QUA
 # ============================================================
-if ($failed) {
-    Write-Host "[SENTINEL FAIL] Phase $Phase -- Dung pipeline. Escalate User ngay lap tuc."
+if ($bypassFailed) {
+    Write-Host "[SENTINEL HALT] Phase $Phase -- BYPASS DETECTED. Dung pipeline. Escalate User."
     exit 1
 }
+if ($qualityFailed) {
+    Write-Host "[SENTINEL RETRY] Phase $Phase -- Quality check FAIL. Agent tu sua output roi chay lai Sentinel."
+    exit 2
+}
 
-# --- AUTO CHECKPOINT (Phase 4 va Phase 7 - fail-safe) ---
-# Phase 4 ghi in_progress (fail-safe anchor), Phase 7 ghi completed. Agent khong can tu tao.
-if ($Phase -eq 4 -or $Phase -eq 7) {
-    $cpScript = ".agents/scripts/create-checkpoint.ps1"
-    if (Test-Path $cpScript) {
-        $cpArgs = @("-ExecutionPolicy", "Bypass", "-File", $cpScript, "-RunFolder", $RunFolder)
-        $cpProc = Start-Process powershell -ArgumentList $cpArgs -Wait -PassThru -NoNewWindow
-        if ($cpProc.ExitCode -ne 0) {
-            Write-Host "[WARN] Checkpoint creation failed. Thong bao User."
+# ============================================================
+# EXTRACT NEXT STEP GUIDANCE (SSOT)
+# ============================================================
+$workflowFile = ".agents/workflows/content-post.md"
+if (Test-Path $workflowFile) {
+    $content = Get-Content $workflowFile -Raw -Encoding UTF8
+    
+    $tagToFind = $Phase
+    if ($Phase -eq 0) {
+        $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
+        $isNovelForNext = $false
+        if (Test-Path $bbPath) {
+            $bbContent = Get-Content $bbPath -Raw -Encoding UTF8
+            if ($bbContent -match 'Is_Novel_Angle:\s*true') { $isNovelForNext = $true }
         }
+        if ($isNovelForNext) { $tagToFind = "1" } else { $tagToFind = "DIKW" }
+    } elseif ($Phase -eq 4) {
+        $tagToFind = "45"
+    } elseif ($Phase -eq 45) {
+        $tagToFind = "5"
+    } else {
+        $tagToFind = [string]($Phase + 1)
     }
-    else {
-        Write-Host "[WARN] create-checkpoint.ps1 khong ton tai."
+
+    if ($tagToFind -ne "8") {
+        $pattern = "(?s)<!-- NEXT_GUIDANCE:\s*$tagToFind\s*-->(.*?)<!-- /NEXT_GUIDANCE:\s*$tagToFind\s*-->"
+        if ($content -match $pattern) {
+            Write-Host ""
+            Write-Host "============================================================"
+            Write-Host "[NEXT STEP GUIDANCE]"
+            Write-Host "============================================================"
+            Write-Host $Matches[1].Trim()
+            Write-Host "============================================================"
+        }
     }
 }
 
+# (Da xoa Auto Checkpoint cu vi he thong da chuyen sang Continuous State Tracking thong qua sentinel-data.json)
+
 # --- KEY ROTATION (chi Phase 7) ---
-# generate-phase-key.ps1 rotate key moi + tu set PIPELINE_STATUS = SAN SANG
 if ($Phase -eq 7) {
-    # Lay PersonaPath tu blackboard
     $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
     $pPath = ""
     if (Test-Path $bbPath) {
@@ -328,30 +513,16 @@ if ($Phase -eq 7) {
         if ($bbContent -match 'Persona_Path:\s*"?([^"\r\n]+)"?') { $pPath = $Matches[1].Trim() }
     }
 
-    # Rotate key cho session tiep theo
     $keyScript = ".agents/scripts/generate-phase-key.ps1"
     $keyArgs = @("-ExecutionPolicy", "Bypass", "-File", $keyScript)
     if ($pPath) { $keyArgs += @("-PersonaPath", $pPath) }
     $keyProc = Start-Process powershell -ArgumentList $keyArgs -Wait -PassThru -NoNewWindow
-    if ($keyProc.ExitCode -eq 0) {
-        Write-Host "[OK] Key rotation completed for next session."
-    }
-    else {
-        Write-Host "[WARN] Key rotation failed. Keys se duoc tao lai o lan chay tiep theo."
-    }
 
-    # --- AUTO RESTORE PROFILE (chi Phase 7) ---
     Write-Host "`n[INFO] Auto-restoring profile..."
     $restoreScript = ".agents/scripts/apply-profile.ps1"
     if (Test-Path $restoreScript) {
         $restoreArgs = @("-ExecutionPolicy", "Bypass", "-File", $restoreScript, "-Action", "restore")
         $restoreProc = Start-Process powershell -ArgumentList $restoreArgs -Wait -PassThru -NoNewWindow
-        if ($restoreProc.ExitCode -eq 0) {
-            Write-Host "[OK] Profile restored and cleaned up."
-        }
-        else {
-            Write-Host "[WARN] Profile restore encountered issues."
-        }
     }
 }
 

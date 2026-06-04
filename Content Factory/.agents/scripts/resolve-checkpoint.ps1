@@ -1,14 +1,6 @@
-# File       : resolve-checkpoint.ps1
-# Last update: 08/05/2026 06:13 (GMT+7)
-# Vai tro    : Tim run folder dang do (in_progress), parse checkpoint + blackboard,
-#              tra ve danh sach file can view_file cho agent resume.
-# Dung khi   : content-post.md Resume goi 1 LAN khi `/content-post tiep tuc`
-# Output     : Exit 0 = OK (key=value) | Exit 1 = FAIL (error message)
-# Logic      : Quet output/runs/ -> parse checkpoint.yaml -> parse blackboard -> map phases -> output
-
 $ErrorActionPreference = "Stop"
 
-# --- Mapping phase -> output filename (dong bo voi detect-bypass.ps1 L87-91) ---
+# --- Mapping phase -> output filename ---
 $phaseFileMap = @{
     1  = "01-idea-brief.md"
     2  = "02-research-brief.md"
@@ -20,49 +12,57 @@ $phaseFileMap = @{
     45 = "04.5-persona-pack.md"
 }
 
-# --- Quet output/runs/ tim folder co checkpoint.yaml status: in_progress ---
 $runsDir = "output/runs"
 if (-not (Test-Path $runsDir)) {
     Write-Host "[FAIL] Thu muc '$runsDir' khong ton tai."
     exit 1
 }
 
-$runFolders = Get-ChildItem -Path $runsDir -Directory | Sort-Object Name -Descending
+# Lay run folder gan nhat
+$runFolders = Get-ChildItem -Path $runsDir -Directory | Sort-Object CreationTime -Descending
 $foundFolder = $null
-$checkpointData = $null
+$sentinelData = $null
 
 foreach ($folder in $runFolders) {
-    $cpPath = Join-Path $folder.FullName "checkpoint.yaml"
-    if (Test-Path $cpPath) {
-        $cpContent = Get-Content $cpPath -Raw -Encoding UTF8
-        if ($cpContent -match 'status:\s*in_progress') {
-            $foundFolder = $folder
-            $checkpointData = $cpContent
-            break
-        }
+    $dataPath = Join-Path $folder.FullName ".temp/sentinel-data.json"
+    if (Test-Path $dataPath) {
+        $foundFolder = $folder
+        $raw = Get-Content $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
+        $sentinelData = @{}
+        foreach ($prop in $raw.PSObject.Properties) { $sentinelData[$prop.Name] = $prop.Value }
+        break
     }
 }
 
-if (-not $foundFolder) {
-    Write-Host "[FAIL] Khong tim thay pipeline dang do (checkpoint.yaml voi status: in_progress)."
+if (-not $foundFolder -or -not $sentinelData) {
+    Write-Host "[FAIL] Khong tim thay lich su chay (sentinel-data.json) trong tat ca cac thu muc."
+    exit 1
+}
+
+# Kiem tra da hoan thanh chua
+if ($sentinelData.ContainsKey("7") -and $sentinelData["7"].status -eq "PASS") {
+    Write-Host "[FAIL] Pipeline gan nhat ($($foundFolder.Name)) da hoan thanh (Phase 7 PASS). Khong co pipeline nao dang do."
+    exit 1
+}
+
+# Tim Phase cao nhat co status PASS
+$validPhases = @(0, 1, 2, 3, 4, 45, 5, 6)
+$currentPhase = -1
+foreach ($p in $validPhases) {
+    $pk = [string]$p
+    if ($sentinelData.ContainsKey($pk) -and $sentinelData[$pk].status -eq "PASS") {
+        $currentPhase = $p
+    }
+}
+
+if ($currentPhase -eq -1) {
+    Write-Host "[FAIL] Khong tim thay Phase nao PASS trong sentinel-data.json. He thong bi loi ngay tu dau."
     exit 1
 }
 
 $runFolderRel = "output/runs/$($foundFolder.Name)"
 
-# --- Parse current_phase ---
-$currentPhase = ""
-if ($checkpointData -match 'current_phase:\s*(\S+)') {
-    $currentPhase = $Matches[1]
-}
-
-# --- Parse completed_phases ---
-$completedPhases = @()
-if ($checkpointData -match 'completed_phases:\s*\[([^\]]+)\]') {
-    $completedPhases = $Matches[1] -split ',\s*' | ForEach-Object { $_.Trim() }
-}
-
-# --- Parse blackboard ---
+# Parse blackboard
 $bbPath = Join-Path $foundFolder.FullName "00-blackboard.yaml"
 if (-not (Test-Path $bbPath)) {
     Write-Host "[FAIL] 00-blackboard.yaml khong ton tai trong $runFolderRel."
@@ -74,38 +74,24 @@ if ($bbContent -match 'Persona_Path:\s*"?([^"\r\n]+)"?') {
     $personaPath = $Matches[1].Trim()
 }
 
-# --- Build LOAD_FILES ---
+# Build LOAD_FILES
 $loadFiles = @("00-blackboard.yaml")
-
-# Them 00.5-dikw-combo.md neu ton tai
 $comboPath = Join-Path $foundFolder.FullName "00.5-dikw-combo.md"
 if (Test-Path $comboPath) {
     $loadFiles += "00.5-dikw-combo.md"
 }
 
-# Map completed_phases -> filenames (FAIL neu file thieu = corrupted state)
-$missingCount = 0
-foreach ($phase in $completedPhases) {
-    $phaseInt = [int]$phase
-    if ($phaseFileMap.ContainsKey($phaseInt)) {
-        $fileName = $phaseFileMap[$phaseInt]
+# Nop cac output theo tien do
+foreach ($p in $validPhases) {
+    if ($p -le $currentPhase -and $phaseFileMap.ContainsKey($p)) {
+        $fileName = $phaseFileMap[$p]
         $filePath = Join-Path $foundFolder.FullName $fileName
         if (Test-Path $filePath) {
             $loadFiles += $fileName
-        } else {
-            Write-Host "[FAIL] File khong ton tai: $runFolderRel/$fileName (checkpoint ghi completed nhung file mat)"
-            $missingCount++
         }
     }
 }
 
-# --- Check corrupted state ---
-if ($missingCount -gt 0) {
-    Write-Host "[FAIL] $missingCount file(s) trong completed_phases khong ton tai. State bi corrupted."
-    exit 1
-}
-
-# --- Output ---
 Write-Host "RUN_FOLDER=$runFolderRel"
 Write-Host "CURRENT_PHASE=$currentPhase"
 Write-Host "PERSONA_PATH=$personaPath"

@@ -249,13 +249,19 @@ if (-not $isValidationMode) {
     }
 
     $today = Get-Date -Format "yyyy-MM-dd"
+    $timestamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
     $titleSlug = Get-Slug $title
-    $postPath = Join-Path $postsDir "${today}-${titleSlug}.md"
+    $postPath = Join-Path $postsDir "${timestamp}-${titleSlug}.md"
     
     $postContent = $finalContent -replace '(?m)^\[BLOCK: FINAL_POST\]\r?\n?', '' `
                                  -replace '(?m)^\[/BLOCK: FINAL_POST\]\r?\n?', '' `
                                  -replace '(?m)^<!-- execution_key:.*?-->\r?\n?', ''
-    $postContent = $postContent.Trim() + "`r`n"
+    
+    $runFolderName = Split-Path -Leaf $RunFolderAbs
+    $runFolderUri = "file:///" + ($RunFolderAbs -replace '\\', '/').Replace(" ", "%20")
+    $footer = "`r`n`r`n---`r`n> 📁 **Run Folder:** [$runFolderName]($runFolderUri)`r`n"
+    
+    $postContent = $postContent.Trim() + $footer
     [System.IO.File]::WriteAllText($postPath, $postContent, $utf8NoBom)
 
     Write-Host " [i] Cap nhat production-log.md..." -ForegroundColor Cyan
@@ -278,7 +284,7 @@ if (-not $isValidationMode) {
 
     $logEntry = @"
 
-## [$today] - $title
+## [$timestamp] - $title
 - **Pillar**: $pillar
 - **Topic**: "$topic"
 - **Target_Audience**: $targetAudience
@@ -289,11 +295,11 @@ if (-not $isValidationMode) {
 - **Status**: published
 "@
 
-    $logHeaderCheck = "## [$today] - $title"
+    $logHeaderCheck = "## [$timestamp] - $title"
     if (Test-Path $logPathAbs) {
         $existingLog = Get-Content $logPathAbs -Raw -Encoding UTF8
         if ($existingLog -match [regex]::Escape($logHeaderCheck)) {
-            Write-Host " [i] Ban ghi nhat ky cho bai viet nay da ton tai trong ngay. Bo qua ghi trung lap." -ForegroundColor Yellow
+            Write-Host " [i] Ban ghi nhat ky cho bai viet nay da ton tai trong phien nay. Bo qua ghi trung lap." -ForegroundColor Yellow
         } else {
             [System.IO.File]::AppendAllText($logPathAbs, $logEntry, $utf8NoBom)
         }
@@ -315,14 +321,14 @@ if (-not $isValidationMode) {
     }
     $hookScoreStr = if ($hookScore -eq "N/A") { "N/A" } else { "${hookScore}/10" }
     
-    $postFilename = "${today}-${titleSlug}.md"
-    $hookEntry = "`r`n| $today | $topic | [$postFilename](../posts/$postFilename) | $hookFormula | $hookScoreStr |"
+    $postFilename = "${timestamp}-${titleSlug}.md"
+    $hookEntry = "`r`n| $timestamp | $topic | [$postFilename](../posts/$postFilename) | $hookFormula | $hookScoreStr |"
     
-    $hookLineCheck = "| $today | $topic |"
+    $hookLineCheck = "| $timestamp | $topic |"
     if (Test-Path $hookHistoryPathAbs) {
         $existingHook = Get-Content $hookHistoryPathAbs -Raw -Encoding UTF8
         if ($existingHook -match [regex]::Escape($hookLineCheck)) {
-            Write-Host " [i] Lich su hook cho chu de nay da ton tai trong ngay. Bo qua ghi trung lap." -ForegroundColor Yellow
+            Write-Host " [i] Lich su hook cho chu de nay da ton tai trong phien. Bo qua ghi trung lap." -ForegroundColor Yellow
         } else {
             [System.IO.File]::AppendAllText($hookHistoryPathAbs, $hookEntry, $utf8NoBom)
         }

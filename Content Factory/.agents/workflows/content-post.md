@@ -1,169 +1,134 @@
 ---
-description: Pipeline sản xuất nội dung viral 7 giai đoạn – chạy 1 phiên liên tục qua hệ thống Sub-Agents chuyên biệt.
+description: Pipeline 7 giai đoạn – 1 phiên liên tục qua Sub-Agents.
 ---
 
-> **Last Update**: 21/05/2026 11:22 (GMT+7)
-
+> **Last Update**: 04/06/2026 16:00 (GMT+7)
 # Workflow: Viết bài viral (Content Post)
-
-> **LỆNH**: `/content-post [yêu cầu]` | `/content-post tiếp tục` (resume)
-
-> PIPELINE_STATUS: SẴN SÀNG
+> **LỆNH**: `/content-post [yêu cầu]` | `/content-post tiếp tục`
+> PIPELINE_STATUS: CHƯA SẴN SÀNG
 
 ## Output Rules
+- Run folder: `output/runs/[YYYY-MM-DD_HHmmss]_[topic-slug]/`
+- `00.5-dikw-combo.md` – output Phase 5 DIKW, phục vụ resume (không có nếu `Is_Novel_Angle=True`).
+- `gate5-issues.md`, `gate6-issues.md` lưu tại run folder.
+- 🚫 KHÔNG ghi ra `output/` root hay `vault/output/`.
+- Context mất/truncate – tự mở đọc file trong run folder.
 
-- Run folder: `output/runs/[YYYY-MM-DD]_[topic-slug]/`
-- DIKW Combo: `00.5-dikw-combo.md` – output Bước 5, phục vụ resume (không có khi `Is_Novel_Angle=True`).
-- Gate issues: `gate5-issues.md`, `gate6-issues.md` trong run folder.
-- 🚫 KHÔNG ghi ra `output/` root hoặc `vault/output/`.
-- Context mất/truncate – đọc file trong run folder.
-
-## 🚫 HÀNH VI BỊ CẤM (Vi phạm = Dừng pipeline, escalate User)
-
+## 🚫 HÀNH VI BỊ CẤM (Vi phạm = HALT, báo User)
 1. CẤM tạo file script mới (`.py`, `.js`, `.sh`, `.ps1`).
-2. CẤM hardcode nội dung bài viết vào biến string/array.
+2. CẤM hardcode bài viết vào biến/code.
 3. CẤM hardcode điểm QA vào frontmatter.
-4. CẤM padding word count bằng copy-paste hoặc đoạn vô nghĩa.
+4. CẤM padding từ vựng rác.
 5. CẤM ghi file vào `vault/output/`.
-6. TRUNCATION GUARD: Context chứa `truncated due to its long length` – DỪNG pipeline, thông báo User.
-7. SYSTEM DRIFT GUARD: Script báo lỗi – CHỈ sửa nội dung viết. Nghi script hỏng – DỪNG + BÁO User. KHÔNG tạo script dò lỗi, KHÔNG bóp méo bài.
+6. TRUNCATION GUARD: Context bị `truncated` -> DỪNG + BÁO User.
+7. SYSTEM DRIFT GUARD: Script lỗi -> DỪNG + BÁO. KHÔNG tự bóp méo nội dung để lách lỗi.
 
 ## Hướng dẫn thực thi
 
-### Bước 1: Gate - Kiểm tra Pipeline Status
-- Đọc dòng `PIPELINE_STATUS` ở đầu file này.
-- `SẴN SÀNG` – tiếp tục Bước 2.
-- `CHƯA SẴN SÀNG` – **DỪNG**. Thông báo User chạy:
-  ```
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/generate-phase-key.ps1"
-  ```
-- **Ngoại lệ**: `/content-post tiếp tục` – bỏ qua Bước 1, chuyển thẳng mục Resume.
-
-### Bước 2: Chọn Chế Độ Viết
-- **AGENT**: Triệu hồi **ProfileSelectorAgent** (đọc nhận thức tại `.agents/agents/profile-selector/AGENT.md` và thực thi quy trình kỹ thuật tại `.agents/skills/profile-selector/SKILL.md`).
-- **Ngoại lệ**: `/content-post tiếp tục` – bỏ qua Bước 2 (profile đã tồn tại từ lần chạy trước, prompt đã patch). Skip thẳng tới mục Resume.
-
-### Bước 3: Validate Persona
-Chạy [1 LẦN DUY NHẤT]:
+### 1. Gate Check
+Đọc `PIPELINE_STATUS`. Nếu `CHƯA SẴN SÀNG`, chạy lệnh dưới rồi DỪNG + BÁO:
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/scripts/validate-persona.ps1"
+powershell -ep Bypass -f .agents/scripts/generate-phase-key.ps1
 ```
-- Exit 0 – Lấy `PERSONA_PATH` từ dòng cuối output. Lưu cho toàn pipeline.
-- Exit 1 – DỪNG pipeline.
+*(Lệnh `/content-post tiếp tục`: Bỏ qua B1, B2 -> sang Resume).*
 
-### Bước 4: Semantic Router
-- **Input**: `[yêu cầu tạo nội dung]` từ lệnh.
-- **AGENT**: Triệu hồi **SemanticRouterAgent** (đọc nhận thức tại `.agents/agents/semantic-router/AGENT.md` và thực thi quy trình định tuyến tại `.agents/skills/semantic-router/SKILL.md`).
-- **Output**: Blackboard 6 biến (`Target_Pillar`, `Target_Audience`, `topic`, `Is_Novel_Angle`, `Persona_Path`, `resolved_jtbd`) – persist vào `00-blackboard.yaml` trong run folder.
-  - `Is_Novel_Angle == False` – chạy **Bước 5 (DIKW Bridge)**.
-  - `Is_Novel_Angle == True` – bypass Bước 5, chạy **Bước 6 (bắt đầu Phase 1)**.
-- **Lưu snapshot cấu hình**: `Copy-Item "profiles/active.json" -Destination "[run-folder]/00-profile.json"` (trace ngược bài viết – cấu hình đã dùng).
-- Sentinel Phase 0:
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/detect-bypass.ps1" -RunFolder "output/runs/[run-folder]/" -Phase 0
-  ```
+### 2. Chọn Chế Độ Viết
+Gọi **ProfileSelectorAgent** (Đọc AGENT.md & SKILL.md tại `.agents/agents/profile-selector/`).
 
-### Bước 5: DIKW Bridge
-- **AGENT**: Triệu hồi **DikwBridgeAgent** (đọc nhận thức tại `.agents/agents/dikw-bridge/AGENT.md` và thực thi quy trình kết nối tri thức tại `.agents/skills/dikw-bridge/SKILL.md`).
+### 3. Validate Persona (1 Lần)
+```powershell
+powershell -ep Bypass -f .agents/scripts/validate-persona.ps1
+```
+- Exit 0: Lưu `PERSONA_PATH` ở dòng cuối output.
+- Exit 1: DỪNG.
 
-### Bước 6: Pipeline 7 Phases (chạy qua các Sub-Agents chuyên biệt)
+### 4. Semantic Router
+Gọi **SemanticRouterAgent**. Ghi `00-blackboard.yaml`.
+- `Is_Novel_Angle=False`: Chạy Bước 5.
+- `Is_Novel_Angle=True`: Chạy Bước 6.
+Snapshot: `Copy-Item "profiles/active.json" -Destination "[run-folder]/00-profile.json"`
+Sentinel 0: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 0`
 
-> **RULES:** (1) Blackboard lũy kế truyền nguyên cho mỗi phase. (2) Sau mỗi phase chạy Sentinel `detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase N`. FAIL – dừng, escalate. (3) Mỗi AGENT.md + SKILL.md có Self-Check Gate cuối.
+### 5. DIKW Bridge
+<!-- NEXT_GUIDANCE: DIKW -->
+Gọi **DikwBridgeAgent**. Xong -> Compile payload Phase 1.
+<!-- /NEXT_GUIDANCE: DIKW -->
 
-**Bảng định tuyến Sub-Agents:**
+### 6. Pipeline 7 Phases
+> **RULES:** (1) Giữ Blackboard. (2) Chạy Sentinel mỗi phase. (3) Tự check Gate. (4) Tự đọc payload `.temp/payload.md`. (5) Ghi `<!-- execution_key: [KEY] -->` cuối output. (6) Sentinel `exit 0`=PASS (xem NEXT_GUIDANCE), `exit 1`=HALT, `exit 2`=RETRY (sửa + chạy lại max 3 lần). (7) Các lệnh dưới an toàn (`SafeToAutoRun = true`).
 
-| Phase | Agent | Cấu hình Agent | Core SKILL path | Output |
-|-------|-------|----------------|-----------------|--------|
-| 1 – Ý tưởng | **IdeaCuratorAgent** | `.agents/agents/idea-curator/AGENT.md` | `.agents/skills/idea-curator/SKILL.md` | `01-idea-brief.md` |
-| 2 – Nghiên cứu | **InsightAgent** | `.agents/agents/insight-agent/AGENT.md` | `.agents/skills/insight-agent/SKILL.md` | `02-research-brief.md` |
-| 3 – Hook / Mở bài | **HookEngineerAgent** | `.agents/agents/hook-engineer/AGENT.md` | `.agents/skills/hook-engineer/SKILL.md` | `03-hook.md` |
-| 4 – Cấu trúc / Dàn ý | **StructureDesignerAgent** | `.agents/agents/structure-designer/AGENT.md` | `.agents/skills/structure-designer/SKILL.md` | `04-outline.md` |
-| 4.5 – Persona | **PersonaLoaderAgent** | `.agents/agents/persona-loader/AGENT.md` | `.agents/skills/persona-loader/SKILL.md` | `04.5-persona-pack.md` |
-| 5 – Viết bài | **VoiceWriterAgent** | `.agents/agents/voice-writer/AGENT.md` | `.agents/skills/voice-writer/SKILL.md` | `05-draft.md` |
-| 6 – QA & Scoring | **QaCheckerAgent** | `.agents/agents/qa-checker/AGENT.md` | `.agents/skills/qa-checker/SKILL.md` | `06-qa-result.md` |
-| 7 – Đóng gói | **FormatAgent** | `.agents/agents/format-agent/AGENT.md` | `.agents/skills/format-agent/SKILL.md` | `07-final.md` + `output/posts/[YYYY-MM-DD]-[post-title-slug].md` |
+*(Chạy tuần tự các lệnh JIT sau trước khi gọi Agent)*
 
-**Quy tắc thực thi của Sub-Agents:**
-1. Mỗi phase: Đọc cấu hình nhận thức của tác nhân tại tệp **`AGENT.md`** để nạp vai trò tư duy chuyên biệt, sau đó bắt buộc `view_file` quy trình **`SKILL.md`** tương ứng để lấy mã khóa thực thi `EXECUTION_KEY` và thực thi ghi output.
-2. **PAYLOAD RULE:** Trước mỗi phase, hệ thống tự động biên dịch file `.temp/payload.md` trong run folder — chứa sẵn các dữ kiện cần thiết (từ output các phase trước hoặc biến khởi tạo như blackboard/dikw). Sub-agent đọc `.temp/payload.md` để lấy dữ kiện thay vì tự mở từng file cũ. Ngoài ra, agent vẫn đọc các file khác theo chỉ dẫn của SKILL.md (persona files, reference files, log files, v.v.).
-3. Sau khi ghi output, ghi dòng cuối: `<!-- execution_key: [EXECUTION_KEY từ SKILL.md] -->`
-4. Chạy Sentinel kiểm định. **Phase 4.5 dùng `-Phase 45`** (integer).
-5. Tất cả `run_command` trong Bước 6 đều `SafeToAutoRun = true`.
+<!-- NEXT_GUIDANCE: 1 -->
+**Phase 1: Idea Curator** (`01-idea-brief.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"`
+2. Gọi Agent: Đọc AGENT.md & SKILL.md tại `.agents/agents/idea-curator/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 1`
+<!-- /NEXT_GUIDANCE: 1 -->
 
-**Lệnh Biên dịch JIT Payload cho từng Phase (BẮT BUỘC chạy trước khi gọi Agent):**
+<!-- NEXT_GUIDANCE: 2 -->
+**Phase 2: Insight Agent** (`02-research-brief.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -PrevOutput "01-idea-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, belief:01-idea-brief.md|HIDDEN_BELIEF, dikw:?00.5-dikw-combo.md, blackboard:00-blackboard.yaml"`
+2. Gọi Agent: `.agents/agents/insight-agent/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 2`
+<!-- /NEXT_GUIDANCE: 2 -->
 
-- **Phase 1 (Ý tưởng):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"
-  ```
-- **Phase 2 (Nghiên cứu):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "01-idea-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, belief:01-idea-brief.md|HIDDEN_BELIEF, dikw:?00.5-dikw-combo.md, blackboard:00-blackboard.yaml"
-  ```
-- **Phase 3 (Hook):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "02-research-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, quotes:02-research-brief.md|EXPERT_QUOTES, blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"
-  ```
-- **Phase 4 (Dàn ý):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "03-hook.md" -InputMap "hook:03-hook.md|CORE_HOOK, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"
-  ```
-- **Phase 4.5 (Persona):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml"
-  ```
-- **Phase 5 (Viết bài):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "04.5-persona-pack.md" -InputMap "outline:04-outline.md|OUTLINE_SECTIONS, closing:04-outline.md|CLOSING_COMBO, persona:04.5-persona-pack.md|PERSONA_DNA, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"
-  ```
-- **Phase 6 (QA):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "05-draft.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS"
-  ```
-- **Phase 7 (Format):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File ".agents/scripts/compile-payload.ps1" -RunFolder "output/runs/[run-folder]/" -PrevOutput "06-qa-result.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS, qa:06-qa-result.md|QA_REPORT, blackboard:00-blackboard.yaml"
-  ```
+<!-- NEXT_GUIDANCE: 3 -->
+**Phase 3: Hook Engineer** (`03-hook.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -PrevOutput "02-research-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, quotes:02-research-brief.md|EXPERT_QUOTES, blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"`
+2. Gọi Agent: `.agents/agents/hook-engineer/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 3`
+<!-- /NEXT_GUIDANCE: 3 -->
 
-**Checkpoint tự động tại Phase 4:** Khi Phase 4 Sentinel PASS – `checkpoint.yaml` được tạo TỰ ĐỘNG bởi Sentinel ở trạng thái `in_progress` (làm điểm neo fail-safe). Agent **TIẾP TỤC** chạy Phase 4.5 ngay lập tức mà không dừng.
+<!-- NEXT_GUIDANCE: 4 -->
+**Phase 4: Structure Designer** (`04-outline.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -PrevOutput "03-hook.md" -InputMap "hook:03-hook.md|CORE_HOOK, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"`
+2. Gọi Agent: `.agents/agents/structure-designer/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 4`
+<!-- /NEXT_GUIDANCE: 4 -->
 
-**Phase 6 REVISE:** `gate6-issues.md` – VoiceWriterAgent sửa draft và QaCheckerAgent chấm lại (tối đa 3 lần). FAIL – escalate User.
+<!-- NEXT_GUIDANCE: 45 -->
+**Phase 4.5: Persona Loader** (`04.5-persona-pack.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml"`
+2. Gọi Agent: `.agents/agents/persona-loader/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 45`
+<!-- /NEXT_GUIDANCE: 45 -->
 
-### Bước 7: Hoàn thành
-Xác nhận: (1) artifacts trong run folder, (2) bài viết cuối tại `output/posts/` đã **strip sạch `<!-- execution_key: ... -->`**, (3) `production-log.md` & `hook-history.md` đã cập nhật bởi FormatAgent. Sentinel sẽ tự động lưu `checkpoint.yaml` thành completed. Thông báo User hoàn thành.
+<!-- NEXT_GUIDANCE: 5 -->
+**Phase 5: Voice Writer** (`05-draft.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -PrevOutput "04.5-persona-pack.md" -InputMap "outline:04-outline.md|OUTLINE_SECTIONS, closing:04-outline.md|CLOSING_COMBO, persona:04.5-persona-pack.md|PERSONA_DNA, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"`
+2. Gọi Agent: `.agents/agents/voice-writer/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 5`
+<!-- /NEXT_GUIDANCE: 5 -->
 
-Sau khi hoàn thành: Hệ thống Sentinel sẽ **TỰ ĐỘNG** chạy lệnh `apply-profile.ps1 -Action restore` để dọn dẹp profile. Agent KHÔNG CẦN chạy lệnh này.
+<!-- NEXT_GUIDANCE: 6 -->
+**Phase 6: QA Checker** (`06-qa-result.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -PrevOutput "05-draft.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS"`
+2. Gọi Agent: `.agents/agents/qa-checker/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 6`
+<!-- /NEXT_GUIDANCE: 6 -->
 
-## CHECKPOINT & RESUME DỰ PHÒNG (FAIL-SAFE)
+<!-- NEXT_GUIDANCE: 7 -->
+**Phase 7: Format Agent** (`07-final.md`)
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "output/runs/[run-folder]/" -PrevOutput "06-qa-result.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS, qa:06-qa-result.md|QA_REPORT, blackboard:00-blackboard.yaml"`
+2. Gọi Agent: `.agents/agents/format-agent/`
+3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "output/runs/[run-folder]/" -Phase 7`
+<!-- /NEXT_GUIDANCE: 7 -->
 
-### Ghi checkpoint
+**Phase 6 REVISE:** Tạo `gate6-issues.md` -> VoiceWriter sửa, QA chấm lại (max 3 lần). FAIL -> Báo User.
 
-`checkpoint.yaml` được tạo **TỰ ĐỘNG** bởi `detect-bypass.ps1` khi Phase 4 PASS và Phase 7 PASS.
-Agent **KHÔNG** tự tạo checkpoint thủ công dưới mọi hình thức.
+### 7. Hoàn thành
+Xác nhận có `07-final.md`, bài viết tại `output/posts/` (đã strip `execution_key`), `production-log.md` & `hook-history.md` đã cập nhật. Báo User hoàn thành. Sentinel tự động chạy `apply-profile.ps1 -Action restore`.
 
-- Phase 4 PASS → `checkpoint.yaml` ghi `status: in_progress` (điểm neo dự phòng).
-- Phase 7 PASS → `checkpoint.yaml` ghi `status: completed`.
-
-### Resume (`/content-post tiếp tục`) — Chỉ dùng khi pipeline bị lỗi giữa chừng
-
-> **Lưu ý Profile:** Khi resume, `profiles/active.json` vẫn tồn tại từ lần chạy trước.
-> Prompt files đã được patch. KHÔNG chạy lại Bước 2.
-> Restore sẽ chạy ở Bước 7 khi pipeline hoàn thành.
-
-1. Bỏ qua Bước 1 (Gate) và Bước 2 (Chọn Chế Độ Viết).
-2. Chạy:
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File ".agents/scripts/resolve-checkpoint.ps1"
-   ```
-   - Exit 0 – Parse output: `RUN_FOLDER`, `CURRENT_PHASE`, `PERSONA_PATH`, `LOAD_FILES`.
-   - Exit 1 – Thông báo User theo error message.
-3. 🚫 **BẮT BUỘC `view_file`** đọc NỘI DUNG ĐẦY ĐỦ mọi file trong `LOAD_FILES` (path = `RUN_FOLDER/filename`). KHÔNG chỉ đọc tên file.
-4. Chạy Phase 4.5 (BẮT BUỘC – do Persona Pack không còn trong context khi resume).
-5. Tiếp tục từ phase sau `CURRENT_PHASE`. Không hỏi lại input.
+## CHECKPOINT & RESUME DỰ PHÒNG
+- Tiến độ (State) được lưu tự động & liên tục sau mỗi Phase thành công qua hệ thống Sentinel Tracker. Bất kể đứt gãy ở Phase nào, hệ thống tự động Resume chính xác tại Phase đó.
+- Lệnh `/content-post tiếp tục`:
+  1. Chạy: `powershell -ep Bypass -f .agents/scripts/resolve-checkpoint.ps1`
+  2. Parse output -> Đọc NỘI DUNG ĐẦY ĐỦ các file trong `LOAD_FILES`.
+  3. BẮT BUỘC chạy lại Phase 4.5.
+  4. Tiếp tục từ phase kế tiếp.
 
 ## XỬ LÝ LỖI
-
-1. FAIL Poka-Yoke gate – Agent tự sửa và Retry (max 3 lần).
-2. FAIL 3 lần – Escalate User.
-3. Agent drifting – Revert + ghi log.
-4. Bypass Sentinel FAIL – Dừng ngay. Không retry. Escalate User kèm danh sách file vi phạm.
+1. `exit 2` (RETRY): Tự sửa output, chạy Sentinel lại (max 3 lần).
+2. `exit 1` (HALT): DỪNG NGAY. Báo User.
+3. FAIL liên tiếp 3 lần: Báo User.
