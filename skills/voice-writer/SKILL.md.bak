@@ -1,4 +1,4 @@
-﻿---
+---
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
 last_update: 24/05/2026 14:30 (GMT+7)

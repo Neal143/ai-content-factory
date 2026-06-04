@@ -8,7 +8,7 @@ description: Pipeline sản xuất nội dung viral 7 giai đoạn – chạy 1 
 
 > **LỆNH**: `/content-post [yêu cầu]` | `/content-post tiếp tục` (resume)
 
-> PIPELINE_STATUS: SẴN SÀNG
+> PIPELINE_STATUS: CHƯA SẴN SÀNG
 
 ## Output Rules
 
