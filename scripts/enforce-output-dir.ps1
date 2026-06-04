@@ -135,16 +135,11 @@ try {
     }
 
     # --- Nhom 8: VI PHAM - tra quyet dinh chan ---
-    [Console]::Error.WriteLine("[HOOK] BLOCK - target outside allowed directory!")
-
-    $response = @{
-        decision = "deny"
-        reason   = "[Hook-DENY] BLOCKING: Agent dang chay [$activeWorkflow] nhung co ghi file ngoai thu muc [$allowedRelative/]. Duong dan vi pham: $targetFile."
-    }
-
-    [Console]::Out.Write(($response | ConvertTo-Json -Compress))
+    $errorMessage = "❌ [LỖI NGHIÊM TRỌNG - HOOK BLOCKED] Agent đang chạy quy trình [$activeWorkflow] NHƯNG lại cố gắng ghi đè/tạo file bên ngoài thư mục cho phép [$allowedRelative/]. Đường dẫn vi phạm: $targetFile."
+    [Console]::Error.WriteLine($errorMessage)
+    exit 1
 } catch {
     # Failsafe: Log loi va cho phep de khong chan cac thao tac hop le
     [Console]::Error.WriteLine("[HOOK-FATAL] $($_.Exception.Message)")
-    [Console]::Out.Write("{}")
+    exit 0
 }
