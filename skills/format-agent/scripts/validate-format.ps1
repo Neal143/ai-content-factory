@@ -147,6 +147,8 @@ if (-not $isValidationMode) {
     $isFirstSection = $true
     $isFirstParagraph = $true
 
+    $runFolderUriFrontmatter = "file:///" + ($RunFolderAbs -replace '\\', '/').Replace(" ", "%20")
+    
     Add-Text "---"
     Add-Text "title: ""$title"""
     Add-Text "date: $(Get-Date -Format 'yyyy-MM-dd')"
@@ -156,6 +158,7 @@ if (-not $isValidationMode) {
     Add-Text "hook_formula: ""$hookFormula"""
     Add-Text "word_count: $wordCount"
     Add-Text "qa_score: $qaScore"
+    Add-Text "run_folder: ""$runFolderUriFrontmatter"""
     Add-Text "status: published"
     Add-Text "---"
     Add-BlankLines 1
@@ -257,11 +260,7 @@ if (-not $isValidationMode) {
                                  -replace '(?m)^\[/BLOCK: FINAL_POST\]\r?\n?', '' `
                                  -replace '(?m)^<!-- execution_key:.*?-->\r?\n?', ''
     
-    $runFolderName = Split-Path -Leaf $RunFolderAbs
-    $runFolderUri = "file:///" + ($RunFolderAbs -replace '\\', '/').Replace(" ", "%20")
-    $footer = "`r`n`r`n---`r`n> 📁 **Run Folder:** [$runFolderName]($runFolderUri)`r`n"
-    
-    $postContent = $postContent.Trim() + $footer
+    $postContent = $postContent.Trim() + "`r`n"
     [System.IO.File]::WriteAllText($postPath, $postContent, $utf8NoBom)
 
     Write-Host " [i] Cap nhat production-log.md..." -ForegroundColor Cyan

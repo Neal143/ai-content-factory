@@ -1,4 +1,4 @@
-﻿---
+---
 name: Voice Writer
 description: Skill Phase 5 — Viết bài hoàn chỉnh dựa trên Voice DNA, tiêm atoms theo DIKW, áp dụng Anti-AI scan.
 last_update: 24/05/2026 14:30 (GMT+7)
@@ -68,7 +68,7 @@ Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
 | Closing | 150 |
 
 **3.1 — Viết từng section:**
-Viết lần lượt 5 sections. TOÀN BỘ nội dung bài viết (từ dòng `<!-- TITLE: ... -->` đến hết Closing) BẮT BUỘC bọc trong `[BLOCK: DRAFT_SECTIONS]...[/BLOCK: DRAFT_SECTIONS]`. Mỗi section:
+Viết lần lượt 5 sections. TOÀN BỘ nội dung bài viết (từ dòng `<!-- TITLE: ... -->` đến hết Closing) BẮT BUỘC bọc trong `<!-- [BLOCK: DRAFT_SECTIONS] -->...<!-- [/BLOCK: DRAFT_SECTIONS] -->`. Mỗi section:
 - Bám sát outline, nằm trong word budget
 - Ghi vào `05-draft.md` trong run folder (section 1: overwrite, section 2-5: append). LUÔN viết đầy đủ structural markers (dạng HTML comment). Tất cả marker KHÔNG được đếm vào word count.
 
