@@ -62,4 +62,4 @@ Tóm tắt logic hoạt động: AI đọc và tự rà soát văn phong, kiểm
 - [ ] Từ nối đa dạng (không lặp >3 lần)
 - [ ] Không quá mượt mà — có chỗ rough tự nhiên
 
-> FILE_KEY: ae9b5841
+> FILE_KEY: 20d45f69
