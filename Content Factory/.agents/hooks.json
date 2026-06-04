@@ -10,6 +10,26 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"./.agents/scripts/enforce-output-dir.ps1\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"./.agents/scripts/enforce-output-dir.ps1\"",
+            "timeout": 10
+          }
+        ]
       }
     ]
   }
