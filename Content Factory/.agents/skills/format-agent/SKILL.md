@@ -12,93 +12,20 @@ provided_outputs:
 
 # Format Agent (Phase 7)
 
-> EXECUTION_KEY: edba0213
+> EXECUTION_KEY: 16d5eb92
 
 ## Điều kiện Đầu vào
-> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
-
-Từ Bảng đen (Global Context), TUYỆT ĐỐI CHỈ truy xuất và sử dụng 3 khối dữ liệu để đóng gói:
-1. **`Draft đã PASS QA`** (Phase 5/6).
-2. **`Topic Slug`** (đặt tên file).
-3. **`Pillar gốc`** (update log + tags).
-
-
-## Quy tắc Format
-
-| Rule | Chi tiết |
-|------|----------|
-| File Name | `[YYYY-MM-DD]-[post-title-slug].md` |
-
-> ⛔ **FATAL RULE — DATA INTEGRITY**: TUYỆT ĐỐI CẤM chỉnh sửa từ ngữ, câu chữ trong bài viết.
-> Được phép: nhúng YAML frontmatter, strip/replace markers, thay đổi whitespace giữa block cấu trúc theo profile, copy file, update logs, ghi execution key.
-> Nội dung đã qua QA Phase 6. Thay đổi từ ngữ = vi phạm Data Integrity.
-
-## YAML Frontmatter
-Chèn vào đầu file. **BẮT BUỘC** 1 dòng trống sau `---` kết thúc:
-```yaml
----
-title: "Tiêu đề bài viết"
-date: YYYY-MM-DD
-pillar: "Tên pillar"
-topic: "topic_id_snake_case"
-target_audience: "audience_filename"
-hook_formula: "F[number]"
-word_count: [number]
-qa_score: [number]/[max_score]
-status: published
----
-
-Nội dung bài viết bắt đầu từ đây...
-```
+> **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn. Phase này là một trạm tự động (Automation Node).
 
 ## Hướng dẫn thực thi
 
-1. Format bài viết theo bảng Quy tắc Format. TOÀN BỘ nội dung file `07-final.md` (từ sau YAML Frontmatter) BẮT BUỘC bọc trong `[BLOCK: FINAL_POST]...[/BLOCK: FINAL_POST]`.
-2. Nhúng YAML Frontmatter vào đầu file.
-3. Lưu bài vào 2 nơi:
-   - `output/runs/[run-folder]/07-final.md` (giữ nguyên execution key và block tags)
-   - `output/posts/[YYYY-MM-DD]-[post-title-slug].md`
-     Strip/format structural markers (dùng string replace, KHÔNG chỉnh nội dung khác):
-     - `<!-- execution_key: ... -->` → Xóa
-     - `<!-- ref_keys: ... -->` → Xóa
-     - `<!-- TITLE: ... -->` → Xóa
-     - `<!-- SECTION: ... -->` → Xóa (luôn xóa — đây là tên kỹ thuật, không phải heading)
-     - `<!-- SECTION_HEADING: ... -->` → Xóa
-     - `<!-- PARAGRAPH: N -->` → Xóa (luôn xóa — đây là số thứ tự kỹ thuật)
-     - `<!-- PARAGRAPH_HEADING: ... -->` → Xóa
-     - `[BLOCK: FINAL_POST]` và `[/BLOCK: FINAL_POST]` → Xóa
-     - Marker `⁂`: Tìm mỗi khối gồm [1 dòng trống + dòng chứa `⁂` + 1 dòng trống], replace TOÀN BỘ khối bằng [1 dòng trống + marker . + 1 dòng trống]
-     - Giữa các đoạn: cách dòng trên 1 dòng trống, cách dòng dưới 0 dòng trống
-     - Giữa các chuỗi câu trong cùng 1 đoạn: giữ nguyên 1 xuống dòng, không thêm dòng trống
-4. Cập nhật `output/logs/production-log.md` — append entry (Đảm bảo định dạng chuẩn `## [YYYY-MM-DD] — [Tiêu đề bài]`):
-   ```
-   ## [YYYY-MM-DD] — [Tiêu đề bài]
-   - **Pillar**: [tên pillar]
-   - **Topic**: "[topic_id_snake_case]"
-   - **Target_Audience**: [Target_Audience từ blackboard]
-   - **Hook Formula**: F[number]
-   - **QA Score**: [number]/[max_score]
-   - **Atoms Used**: [danh sách atom names]
-   - **Revisions**: [số lần REVISE]
-   - **Status**: published
-   ```
-5. Cập nhật `output/logs/hook-history.md` — append 1 dòng vào bảng:
-   ```
-   | [YYYY-MM-DD] | [Topic slug] | F[number] | [Hook score]/10 |
-   ```
+> ⛔ **CẤM SINH VĂN BẢN:** Bạn KHÔNG ĐƯỢC PHÉP tự sinh yaml, không tự ghi log, không tự format bài viết. Tất cả đã được giao cho script thực hiện để đảm bảo độ chính xác 100%.
 
-### Poka-Yoke Gate
-> ⛔ KHÔNG ĐƯỢC BỎ QUA.
-
-Chạy script validation:
+1. Chạy lệnh dưới đây để hệ thống tự động bóc tách dữ liệu, format cấu trúc, render spacing và cập nhật file log:
 ```powershell
-powershell -ExecutionPolicy Bypass -File .agents/skills/format-agent/scripts/validate-format.ps1 -DraftPath "output/runs/[run-folder]/07-final.md" -SourceDraftPath "output/runs/[run-folder]/05-draft.md"
+powershell -ExecutionPolicy Bypass -File .agents/skills/format-agent/scripts/validate-format.ps1 -DraftPath "output/runs/[run-folder]/05-draft.md" -RunFolder "output/runs/[run-folder]/"
 ```
 
-| Exit code | Verdict | Action |
-|-----------|---------|--------|
-| 0 | PASS | Thông báo User bài viết hoàn thành (ngôn ngữ tự nhiên, KHÔNG paste raw output) |
-| > 0 | FAIL | Đọc output script. Content Integrity FAIL → KHÔNG tự fix, escalate User. Lỗi khác → tự fix, chạy lại (max 1 retry) |
-| > 0 lần 2 | FAIL | Dừng pipeline, escalate User |
-
-Ghi log: `[Phase 7 Gate] Verdict: PASS/FAIL | Attempt: N/2`
+2. Đọc kết quả Output. 
+   - Nếu `[PASS]` toàn bộ và Exit Code `0`, thông báo cho User: "Đã đóng gói và xuất bản bài viết thành công."
+   - Nếu Exit Code `1`, báo lỗi cho User để hỗ trợ sửa chữa.
