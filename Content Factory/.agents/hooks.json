@@ -1,0 +1,16 @@
+{
+  "enforce-output-dir": {
+    "PreToolUse": [
+      {
+        "matcher": "write_to_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"./.agents/scripts/enforce-output-dir.ps1\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
