@@ -1,0 +1,71 @@
+graph LR
+    %% @flow(1) [Tổng quan] 00. Backbone DIKW: Start -> ReadContext -> FilterAnchors -> FilterRoots -> FilterLeaves -> LogDB -> Purge -> ScoreInsight -> CheckViability -> SelectAnchor -> FillCombo -> IsAudienceArray -> GenJSON -> WriteOutput -> ComboFile -> End
+    %% @flow(2 > 00) [Payload] 01. Phân giải Multi-Audience: IsAudienceArray -> AudienceDB -> ResolveJTBD -> GenJSON
+    %% @flow(2 > 00) [Lọc Combo] 02. Chuyển Insight: CheckViability -> NextInsight -> CheckViability
+
+    Start([Khởi động DIKW Bridge])
+    
+    subgraph S1 [Bước 1 & 2: Khởi tạo & Lọc Tầng 2]
+        direction LR
+        ReadContext[Trích xuất Bảng đen]
+        FilterAnchors[Lọc Insights làm Anchor]
+    end
+
+    subgraph S3 [Bước 3: Lọc Rễ & Lọc Rác]
+        direction LR
+        FilterRoots[Lọc Solutions & Concepts]
+        FilterLeaves[Lọc Stories & Data]
+        LogDB[(production-log.md)]
+        Purge[Lọc Orphans & Atoms cũ]
+    end
+
+    subgraph S4 [Bước 4: Chọn Combo Anchor-First]
+        direction LR
+        ScoreInsight[Chấm điểm Insights]
+        CheckViability{Đủ Atoms phụ không?}
+        NextInsight[Chọn Insight kế tiếp]
+        SelectAnchor[Chốt Anchor Insight]
+        FillCombo[Chọn Top Nodes phụ]
+    end
+
+    subgraph S5 [Bước 5: Đóng gói Payload]
+        direction LR
+        IsAudienceArray{Audience là Array?}
+        AudienceDB[(vault/Audiences)]
+        ResolveJTBD[Phân giải JTBD]
+        GenJSON[Tạo Vivid Minified JSON]
+    end
+
+    subgraph S6 [Bước 6: Persist Output]
+        direction LR
+        WriteOutput[Lưu Payload ra file]
+        ComboFile[(00.5-dikw-combo.md)]
+    end
+
+    End((Hoàn tất Skill))
+
+    %% CONNECTIONS
+    Start --> ReadContext
+    ReadContext --> FilterAnchors
+    
+    FilterAnchors --> FilterRoots
+    FilterRoots --> FilterLeaves
+    FilterLeaves --> LogDB
+    LogDB --> Purge
+    
+    Purge --> ScoreInsight
+    ScoreInsight --> CheckViability
+    CheckViability -->|Không| NextInsight
+    NextInsight -.-> CheckViability
+    CheckViability -->|Có| SelectAnchor
+    SelectAnchor --> FillCombo
+    
+    FillCombo --> IsAudienceArray
+    IsAudienceArray -->|Có| AudienceDB
+    AudienceDB --> ResolveJTBD
+    ResolveJTBD --> GenJSON
+    IsAudienceArray -->|Không| GenJSON
+    
+    GenJSON --> WriteOutput
+    WriteOutput --> ComboFile
+    ComboFile --> End

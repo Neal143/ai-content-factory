@@ -7,13 +7,13 @@ output: Blackboard 8 biến: Target_Pillar, Target_Audience, topic, Is_Novel_Ang
 
 # Semantic Router Skill
 
-> EXECUTION_KEY: 3190e746
+> EXECUTION_KEY: ec20935b
 
 **Quy tắc Cốt lõi:** Skill này trả về DUY NHẤT 1 TOPIC — hoặc `mapped_topic` hoặc `novel_angle`, không bao giờ cả hai.
 
 ### Thủ tục: Pillar Duplicate Check
 
-Đọc `output/logs/production-log.md`. Trích xuất `Pillar` của 2 bài gần nhất.
+Đọc `vault/.content-pipeline/logs/production-log.md`. Trích xuất `Pillar` của 2 bài gần nhất.
 - Nếu cả 2 trùng với `Target_Pillar` → Dừng, hỏi: *"Pillar **[Target_Pillar]** đã dùng 2 bài liên tiếp. Tiếp tục hay đổi Pillar?"*
   - User tiếp tục → đi tiếp bước kế.
   - User đổi → quay Bước 1.

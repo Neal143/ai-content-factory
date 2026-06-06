@@ -1,0 +1,33 @@
+graph LR
+    %% @flow(1) [Structure Designer] 00. Tổng quan: start -> read_inputs -> design_outline -> apply_closing -> write_output -> check_word_count -> pass_validation -> done
+    %% @flow(2 > 00) [Structure Designer] 01. Kiểm tra Lỗi: check_word_count -.-> fail_validation; check_rotation -.-> fail_validation; check_nomenclature -.-> fail_validation; check_atoms -.-> fail_validation; fail_validation -.-> check_retry
+    %% @flow(3 > 01) [Structure Designer] 02. Xử lý Lỗi: check_retry -.->|Chưa| retry_fix -.-> design_outline; check_retry -.->|Rồi| escalate
+
+    start([Bắt đầu Phase 4]) --> read_inputs[Đọc Global Context]
+    read_inputs --> design_outline[Thiết kế Outline 5 phần]
+    design_outline --> apply_closing[Áp dụng Hybrid Closing]
+    apply_closing --> write_output[/Xuất 04-outline.md/]
+    write_output --> check_word_count
+
+    subgraph Validation [Script: validate-outline.ps1]
+        direction LR
+        check_word_count{Tổng từ 1500-1800?}
+        check_word_count -->|Chuẩn| check_rotation{Trùng Closing Combo?}
+        check_word_count -.->|Sai lệch| fail_validation(Báo lỗi)
+
+        check_rotation -->|Hợp lệ| check_nomenclature{Chứa từ cấm?}
+        check_rotation -.->|Trùng lặp| fail_validation
+
+        check_nomenclature -->|Sạch| check_atoms{Khai báo đủ Atoms?}
+        check_nomenclature -.->|Có lỗi| fail_validation
+
+        check_atoms -->|Đầy đủ| pass_validation(Validation PASS)
+        check_atoms -.->|Thiếu sót| fail_validation
+    end
+
+    pass_validation --> done([Chuyển Phase 5])
+    
+    fail_validation -.-> check_retry{Vượt quá 3 lần?}
+    check_retry -.->|Chưa| retry_fix[Yêu cầu AI sửa]
+    check_retry -.->|Rồi| escalate([Dừng & Báo User])
+    retry_fix -.-> design_outline

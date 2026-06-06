@@ -1,0 +1,127 @@
+graph LR
+    %% ============================================================
+    %% SO SÁNH PIPELINE: HIỆN TẠI vs SAU UPGRADE
+    %% ============================================================
+    %% @flow(1) 00. Hiện tại: start_now --> idea_now --> research_now --> hook_now --> structure_now --> cp_now --> writing_now --> qa_now --> format_now --> done_now
+    %% @flow(1) 10. Sau upgrade: start_new --> clean --> choose --> ready --> idea --> research --> hook --> structure --> cp --> writing --> qa --> format --> restore --> done_new
+    %% @flow(2 > 10) 11. Luồng Auto: choose --> auto_copy --> profile_db --> ready
+    %% @flow(2 > 10) 12. Luồng Thử nghiệm: choose --> ask_params --> create_json --> validate_json --> profile_db --> patch --> ready
+    %% @flow(3 > 12) 12a. Validate lỗi: validate_json --> ask_params
+    %% @flow(2 > 10) 14. Prompt đã sửa: patch --> writing
+    %% @flow(2 > 10) 15. Prompt đã sửa: patch --> structure
+    %% @flow(2 > 10) 16. Script đọc JSON: profile_db --> qa
+    %% @flow(2 > 10) 17. Script đọc JSON: profile_db --> format
+    %% @flow(2 > 00) 01. Revise hiện tại: qa_now --> writing_now
+    %% @flow(2 > 10) 18. Revise mới: qa --> writing
+
+    %% ============================================================
+    %% HIỆN TẠI
+    %% ============================================================
+    subgraph NOW ["HIỆN TẠI — Mọi giá trị cố định trong code"]
+        direction LR
+        start_now([User gọi /content-post]) --> idea_now[Chọn chủ đề]
+        idea_now --> research_now[Nghiên cứu chuyên sâu]
+        research_now --> hook_now[Viết câu Hook]
+        hook_now --> structure_now["Thiết kế dàn bài (5 phần)"]
+        structure_now --> cp_now(Lưu checkpoint giữa phiên)
+        cp_now --> writing_now["Viết bài (1500-1800 từ, cố định)"]
+        writing_now --> qa_now["Chấm điểm (ngưỡng cố định)"]
+        qa_now --> format_now[Đóng gói xuất bản]
+        format_now --> done_now((Bài viết hoàn chỉnh))
+        qa_now -.-> |Chưa đạt| writing_now
+    end
+
+    %% ============================================================
+    %% SAU UPGRADE
+    %% ============================================================
+    subgraph NEW ["SAU UPGRADE — User tùy chỉnh cấu trúc bài viết"]
+        direction LR
+
+        %% --- Khởi tạo ---
+        start_new([User gọi /content-post]) --> clean[Dọn patch thừa lần trước]
+        clean --> choose{Chọn chế độ viết?}
+
+        %% --- Nhánh Auto ---
+        choose --> |Auto| auto_copy[Dùng cấu hình mặc định]
+        auto_copy --> profile_db
+        profile_db --> ready
+
+        %% --- Nhánh Thử nghiệm ---
+        choose --> |"Thử nghiệm (Basic/Nâng cao)"| ask_params[Hỏi user tùy chỉnh cấu trúc]
+        ask_params --> create_json[Tạo file cấu hình]
+        create_json --> validate_json{Cấu hình hợp lệ?}
+        validate_json --> |Không| ask_params
+        validate_json --> |Có| profile_db
+
+        %% --- File cấu hình trung tâm ---
+        profile_db[(File cấu hình active.json)]
+
+        %% --- CƠ CHẾ 1: Patch trực tiếp vào prompt files (tạm thời) ---
+        profile_db --> patch["Sửa trực tiếp giá trị trong prompt files"]
+        patch --> ready
+
+        %% --- Merge: Setup hoàn tất ---
+        ready(Setup hoàn tất) --> idea
+
+        %% --- Pipeline gốc ---
+        idea[Chọn chủ đề] --> research[Nghiên cứu chuyên sâu]
+        research --> hook[Viết câu Hook]
+        hook --> structure["Thiết kế dàn bài (5 phần)"]
+        structure --> cp(Lưu checkpoint giữa phiên)
+        cp --> writing["Viết bài (theo cấu hình)"]
+        writing --> qa["Chấm điểm (theo cấu hình)"]
+        qa --> format["Đóng gói + xử lý marker"]
+        format --> restore[Khôi phục prompt files gốc]
+        restore --> done_new((Bài viết hoàn chỉnh))
+        qa -.-> |Chưa đạt| writing
+
+        %% --- Prompt files đã bị sửa ảnh hưởng tới bước nào ---
+        patch -.-> |"structure-designer/SKILL.md đã sửa (chỉ Nâng cao)"| structure
+        patch -.-> |"voice-writer/SKILL.md + writing-rules.md đã sửa"| writing
+
+        %% --- CƠ CHẾ 2: Validator script đọc trực tiếp JSON (vĩnh viễn) ---
+        profile_db -.-> |"validate-draft.ps1 đọc JSON"| qa
+        profile_db -.-> |"validate-format.ps1 đọc JSON"| format
+    end
+
+    %% === STYLING — HIỆN TẠI ===
+    style start_now fill:#6366f1,stroke:#4338ca,color:#fff
+    style done_now fill:#10b981,stroke:#059669,color:#fff
+    style idea_now fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style research_now fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style hook_now fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style cp_now fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style structure_now fill:#f59e0b,stroke:#d97706,color:#000
+    style writing_now fill:#f59e0b,stroke:#d97706,color:#000
+    style qa_now fill:#f59e0b,stroke:#d97706,color:#000
+    style format_now fill:#f59e0b,stroke:#d97706,color:#000
+
+    %% === STYLING — SAU UPGRADE ===
+    style start_new fill:#6366f1,stroke:#4338ca,color:#fff
+    style done_new fill:#10b981,stroke:#059669,color:#fff
+
+    %% Node MỚI (xanh dương)
+    style clean fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style choose fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style auto_copy fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style ask_params fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style create_json fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style validate_json fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style patch fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style restore fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style profile_db fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style ready fill:#3b82f6,stroke:#1d4ed8,color:#fff
+
+    %% Node BỊ ẢNH HƯỞNG bởi PATCH prompt (viền cam)
+    style writing fill:#fef3c7,stroke:#f59e0b,color:#000
+    style structure fill:#fef3c7,stroke:#f59e0b,color:#000
+
+    %% Node BỊ ẢNH HƯỞNG bởi REFACTOR script (viền đỏ)
+    style qa fill:#fecaca,stroke:#ef4444,color:#000
+    style format fill:#fecaca,stroke:#ef4444,color:#000
+
+    %% Node KHÔNG ĐỔI (xám)
+    style idea fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style research fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style hook fill:#f3f4f6,stroke:#9ca3af,color:#000
+    style cp fill:#f3f4f6,stroke:#9ca3af,color:#000

@@ -1,0 +1,37 @@
+{
+  "batch_index": 4,
+  "batch_password": "57838261",
+  "total_batches": 6,
+  "items": [
+    {
+      "uid": "uid_chunk_16",
+      "id": "parents_establish_discipline_effective_communication_daily_requests",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ.",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay]]"
+    },
+    {
+      "uid": "uid_chunk_17",
+      "id": "parents_adjust_child_behavior_inappropriate_play",
+      "semantic_query": "Cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực.",
+      "file_ref": "[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]"
+    },
+    {
+      "uid": "uid_chunk_18",
+      "id": "parents_establish_discipline_guide_voluntary_cooperation_opposition",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy.",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]"
+    },
+    {
+      "uid": "uid_chunk_19",
+      "id": "parents_establish_discipline_routine_daily_disruptions_opposition",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày.",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]"
+    },
+    {
+      "uid": "uid_chunk_20",
+      "id": "parents_transform_negative_behavior_violent_actions",
+      "semantic_query": "Cha mẹ muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt.",
+      "file_ref": "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]"
+    }
+  ]
+}

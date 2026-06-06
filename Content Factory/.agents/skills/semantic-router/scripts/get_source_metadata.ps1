@@ -1,10 +1,13 @@
-<#
-.SYNOPSIS
-Trích xuất metadata nguồn siêu tốc (Zero-Inference).
-.DESCRIPTION
-LAST UPDATE: 03/06/2026 (GMT+7)
-VAI TRÒ: Tìm file markdown vật lý, bốc tách source_id, topic_ids và audience_filename (cấp sách hoặc chunk).
-#>
+# Tên file: get_source_metadata.ps1
+# Last update: 05/06/2026 11:30 (GMT+7)
+# Vai trò: Trích xuất metadata nguồn siêu tốc (Zero-Inference) phục vụ định tuyến ngữ nghĩa.
+# Sử dụng khi nào: Được gọi ở Phase 0 bởi semantic-router agent để phân tích thông tin file nguồn.
+# Output: Trả về chuỗi JSON chứa topic_ids, Target_Audience, Target_Source_Type, Target_Source_IDs.
+# Tóm tắt logic hoạt động:
+#   1. Tìm kiếm file markdown nguồn khớp với SearchTerm trong vault/02-sources.
+#   2. Đọc và phân tích nội dung file để trích xuất source_id và metadata của các chunk.
+#   3. Kiểm tra trùng lặp trong production-log.md để đảm bảo không tái sử dụng các tổ hợp chủ đề + độc giả đã xuất bản.
+#   4. Xuất thông tin dưới định dạng JSON nén để trả về cho Agent.
 
 param (
     [Parameter(Mandatory=$true)]
@@ -31,7 +34,7 @@ $topics_str = ""
 
 # Đọc production-log.md để lấy danh sách (Topic, Audience) đã sử dụng
 $usedCombos = @()
-$logPath = "output/logs/production-log.md"
+$logPath = "vault/.content-pipeline/logs/production-log.md"
 if (Test-Path $logPath) {
     $logContent = Get-Content $logPath -Raw
     $logBlocks = $logContent -split "## "

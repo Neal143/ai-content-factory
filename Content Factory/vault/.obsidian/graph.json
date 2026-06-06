@@ -1,0 +1,72 @@
+{
+  "collapse-filter": false,
+  "search": "path:01-Atomic/Audiences  ",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "path:01-Atomic/Audiences  ",
+      "color": {
+        "a": 1,
+        "rgb": 14048348
+      }
+    },
+    {
+      "query": "path:01-Atomic/Insights  ",
+      "color": {
+        "a": 1,
+        "rgb": 14069084
+      }
+    },
+    {
+      "query": "path:01-Atomic/Solutions  ",
+      "color": {
+        "a": 1,
+        "rgb": 11392604
+      }
+    },
+    {
+      "query": "path:01-Atomic/Concepts  ",
+      "color": {
+        "a": 1,
+        "rgb": 11392604
+      }
+    },
+    {
+      "query": "path:01-Atomic/Data-Points  ",
+      "color": {
+        "a": 1,
+        "rgb": 6084269
+      }
+    },
+    {
+      "query": "path:01-Atomic/Stories  ",
+      "color": {
+        "a": 1,
+        "rgb": 6073814
+      }
+    },
+    {
+      "query": "path:01-Atomic/Quotes  ",
+      "color": {
+        "a": 1,
+        "rgb": 6053078
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.32923875432526,
+  "lineSizeMultiplier": 0.634083044982699,
+  "collapse-forces": false,
+  "centerStrength": 0.406574394463668,
+  "repelStrength": 9.10034602076125,
+  "linkStrength": 0,
+  "linkDistance": 30,
+  "scale": 0.2526664797027404,
+  "close": true
+}

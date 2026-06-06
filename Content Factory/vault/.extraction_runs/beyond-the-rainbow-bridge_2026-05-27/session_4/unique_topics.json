@@ -1,0 +1,227 @@
+[
+  {
+    "id": "early_childhood_development",
+    "label": "Phát triển não bộ mầm non",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "waldorf_rhythm",
+    "label": "Nhịp điệu sinh hoạt Waldorf",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "play_evolution",
+    "label": "Tiến hóa trò chơi trẻ em",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "environmental_absorption",
+    "label": "Thẩm thấu môi trường mầm non",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "media_impact_on_children",
+    "label": "Tác động truyền thông lên trẻ em",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "warmth_importance",
+    "label": "Tầm quan trọng của giữ ấm",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "fever_role",
+    "label": "Vai trò của sốt",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "external_rhythm",
+    "label": "Nhịp điệu ngoại tại",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "breathing_model",
+    "label": "Mô hình Thở vào Thở ra",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "free_play",
+    "label": "Vui chơi tự do",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "archetypal_toys",
+    "label": "Đồ chơi nguyên mẫu",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "repetitive_play",
+    "label": "Trò chơi lặp lại",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "clean_up_play",
+    "label": "Dọn dẹp bằng trò chơi",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "little_puberty",
+    "label": "Khủng hoảng tuổi lên sáu",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "screen_time_harm",
+    "label": "Tác hại của màn hình",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "play_as_learning",
+    "label": "Vui chơi là học tập",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "will_senses",
+    "label": "Bốn giác quan ý chí",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "baby_walker_harm",
+    "label": "Tác hại của xe tập đi",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "feeling_senses",
+    "label": "Giác quan cảm xúc",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "color_therapy",
+    "label": "Liệu pháp màu sắc",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "cognitive_senses",
+    "label": "Giác quan nhận thức",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "machine_noise_harm",
+    "label": "Tác hại của âm thanh máy móc",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "imitation_nature",
+    "label": "Bản chất sự bắt chước",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "self_education_discipline",
+    "label": "Kỷ luật qua tự giáo dục",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "reduce_no",
+    "label": "Tiết giảm từ không",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "energy_redirection",
+    "label": "Chuyển hướng năng lượng",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "use_may",
+    "label": "Sử dụng từ May",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "illusion_of_choice",
+    "label": "Ảo tưởng về lựa chọn",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "rhythm_discipline",
+    "label": "Kỷ luật bằng nhịp điệu",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "healing_action",
+    "label": "Hành động chữa lành",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "violence_myth",
+    "label": "Lầm tưởng xả bạo lực",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "consequent_action",
+    "label": "Hành động nhất quán",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "healing_conflict",
+    "label": "Hóa giải xung đột",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "positivity_discipline",
+    "label": "Kỷ luật tích cực",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "tired_child_care",
+    "label": "Chăm sóc trẻ mệt mỏi",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "spiritual_discipline",
+    "label": "Kỷ luật tâm linh",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "true_discipline",
+    "label": "Kỷ luật đích thực",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "yelling_harm",
+    "label": "Tác hại của la mắng",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "four_temperaments",
+    "label": "Bốn khí chất",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "like_heals_like",
+    "label": "Giống nhau chữa lành",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "music_rhythm",
+    "label": "Nhịp điệu âm nhạc",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "rainbow_bridge_story",
+    "label": "Câu chuyện Cầu Vồng",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "tell_from_memory",
+    "label": "Kể chuyện từ trí nhớ",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "fairy_tale_complexity",
+    "label": "Độ phức tạp cổ tích",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  },
+  {
+    "id": "flexible_story_selection",
+    "label": "Chọn truyện linh hoạt",
+    "pillar": "Steiner và khoa học phát triển toàn diện"
+  }
+]

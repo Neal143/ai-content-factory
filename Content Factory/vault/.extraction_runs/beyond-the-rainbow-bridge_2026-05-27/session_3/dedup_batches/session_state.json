@@ -1,0 +1,694 @@
+{
+  "total_batches": 6,
+  "current_batch": 7,
+  "completed": true,
+  "established_audiences": [
+    {
+      "uid": "uid_book",
+      "id": "parents_build_healthy_development_foundation_infant_to_seven",
+      "semantic_query": "Cha mẹ muốn tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi.",
+      "file_ref": "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]",
+      "internal_parents": []
+    },
+    {
+      "uid": "uid_chunk_01",
+      "id": "parents_build_healthy_habits_rhythm_daily_routines",
+      "semantic_query": "Cha mẹ muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình.",
+      "file_ref": "[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_03",
+      "id": "parents_protect_healthy_development_modern_culture_pressures",
+      "semantic_query": "Cha mẹ muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại.",
+      "file_ref": "[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_04",
+      "id": "parents_build_healthy_happy_foundation_modern_parenting_confusion",
+      "semantic_query": "Cha mẹ muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại.",
+      "file_ref": "[[cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_05",
+      "id": "parents_protect_health_promote_development_daily_care",
+      "semantic_query": "Cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày.",
+      "file_ref": "[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_06",
+      "id": "parents_establish_stability_rhythm_modern_busy_life",
+      "semantic_query": "Cha mẹ muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng.",
+      "file_ref": "[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_07",
+      "id": "parents_create_environment_nurture_imagination_intellect_free_play",
+      "semantic_query": "Cha mẹ muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi.",
+      "file_ref": "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_08",
+      "id": "parents_choose_toys_build_healthy_play_space_infant_to_two_half",
+      "semantic_query": "Cha mẹ muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi.",
+      "file_ref": "[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]",
+      "internal_parents": [
+        "uid_chunk_07"
+      ]
+    },
+    {
+      "uid": "uid_chunk_09",
+      "id": "parents_promote_imagination_focus_toys_space_two_half_to_five",
+      "semantic_query": "Cha mẹ muốn thúc đẩy trí tưởng tượng và sự tập trung của trẻ khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi.",
+      "file_ref": "[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]",
+      "internal_parents": [
+        "uid_chunk_07"
+      ]
+    },
+    {
+      "uid": "uid_chunk_10",
+      "id": "parents_understand_play_psychology_changes_five_to_seven",
+      "semantic_query": "Cha mẹ muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới.",
+      "file_ref": "[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]",
+      "internal_parents": [
+        "uid_chunk_07"
+      ]
+    },
+    {
+      "uid": "uid_chunk_11",
+      "id": "parents_create_play_environment_develop_imagination_life_skills_setup_space_toys",
+      "semantic_query": "Cha mẹ muốn tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng và kỹ năng sống khi thiết lập không gian sống và chọn mua đồ chơi cho con.",
+      "file_ref": "[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]",
+      "internal_parents": [
+        "uid_chunk_07"
+      ]
+    },
+    {
+      "uid": "uid_chunk_12",
+      "id": "parents_nurture_physical_basic_senses_development_infant_to_seven",
+      "semantic_query": "Cha mẹ muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi.",
+      "file_ref": "[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_13",
+      "id": "parents_nurture_soul_protect_emotional_senses_artificial_stimuli",
+      "semantic_query": "Cha mẹ muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo.",
+      "file_ref": "[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_14",
+      "id": "parents_nurture_cognitive_senses_complex_communication_sounds",
+      "semantic_query": "Cha mẹ muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp.",
+      "file_ref": "[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_15",
+      "id": "parents_discipline_child_bad_behaviors",
+      "semantic_query": "Cha mẹ muốn rèn luyện kỷ luật cho con khi đối mặt với những hành vi chưa tốt của trẻ nhỏ.",
+      "file_ref": "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_16",
+      "id": "parents_establish_discipline_effective_communication_daily_requests",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ.",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_17",
+      "id": "parents_adjust_child_behavior_inappropriate_play",
+      "semantic_query": "Cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực.",
+      "file_ref": "[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]",
+      "internal_parents": [
+        "uid_chunk_15"
+      ]
+    },
+    {
+      "uid": "uid_chunk_18",
+      "id": "parents_establish_discipline_guide_voluntary_cooperation_opposition",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy.",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]",
+      "internal_parents": [
+        "uid_chunk_15"
+      ]
+    },
+    {
+      "uid": "uid_chunk_19",
+      "id": "parents_establish_discipline_routine_daily_disruptions_opposition",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày.",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]",
+      "internal_parents": [
+        "uid_chunk_15"
+      ]
+    },
+    {
+      "uid": "uid_chunk_20",
+      "id": "parents_transform_negative_behavior_violent_actions",
+      "semantic_query": "Cha mẹ muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt.",
+      "file_ref": "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]",
+      "internal_parents": [
+        "uid_chunk_15"
+      ]
+    },
+    {
+      "uid": "uid_chunk_21",
+      "id": "parents_handle_opposition_conflict_daily_stubbornness_arguments",
+      "semantic_query": "Cha mẹ muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày.",
+      "file_ref": "[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]",
+      "internal_parents": [
+        "uid_chunk_15"
+      ]
+    },
+    {
+      "uid": "uid_chunk_22",
+      "id": "parents_soothe_child_emotions_tired_crying",
+      "semantic_query": "Cha mẹ muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc.",
+      "file_ref": "[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_23",
+      "id": "parents_find_correct_discipline_adjustment_methods_educational_difficulties",
+      "semantic_query": "Cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ.",
+      "file_ref": "[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_24",
+      "id": "parents_maintain_discipline_harmony_child_explosive_behavior_end_of_day",
+      "semantic_query": "Cha mẹ muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày.",
+      "file_ref": "[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]",
+      "internal_parents": [
+        "uid_chunk_15"
+      ]
+    },
+    {
+      "uid": "uid_chunk_25",
+      "id": "parents_personalize_education_methods_different_personalities_behaviors",
+      "semantic_query": "Cha mẹ muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ.",
+      "file_ref": "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_26",
+      "id": "caregivers_create_rhythm_guide_preschoolers_daily_activities_home_classroom",
+      "semantic_query": "Người chăm sóc trẻ muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học.",
+      "file_ref": "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-dan-dat-hoat-dong_o-nha-hoac-lop-hoc]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_27",
+      "id": "parents_organize_birthday_celebration_nurture_soul_spiritual_connection",
+      "semantic_query": "Cha mẹ muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới.",
+      "file_ref": "[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_28",
+      "id": "parents_choose_right_fairy_tales_child_age_psychological_maturity",
+      "semantic_query": "Cha mẹ muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con.",
+      "file_ref": "[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    }
+  ],
+  "collapse_map": {},
+  "batches_data": [
+    [
+      {
+        "jtbd_raw": "Người muốn tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi.",
+        "scope": "book",
+        "chunk_index": null,
+        "chunk_name": null,
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái",
+        "audience_circumstance": "khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi",
+        "aliases": [
+          "nuôi con khỏe mạnh cho bé dưới bảy tuổi",
+          "chăm sóc trẻ giai đoạn đầu đời"
+        ],
+        "uid": "uid_book"
+      },
+      {
+        "chunk_index": 1,
+        "chunk_name": "My Life, My Work, Our Children - My Parents' Home",
+        "jtbd_raw": "Người muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con",
+        "audience_circumstance": "khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình",
+        "aliases": [
+          "tạo nề nếp sinh hoạt cho con tại nhà",
+          "xây dựng thói quen tốt hàng ngày cho trẻ"
+        ],
+        "uid": "uid_chunk_01"
+      },
+      {
+        "chunk_index": 3,
+        "chunk_name": "My Life, My Work, Our Children - Our Children",
+        "jtbd_raw": "Người muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "bảo vệ sự phát triển lành mạnh của trẻ",
+        "audience_circumstance": "khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại",
+        "aliases": [
+          "giữ gìn tuổi thơ an toàn cho con giữa thời hiện đại",
+          "bảo vệ con khỏi áp lực trưởng thành sớm"
+        ],
+        "uid": "uid_chunk_03"
+      },
+      {
+        "chunk_index": 4,
+        "chunk_name": "Chunk 4: Raising Healthy, Happy, and Capable Children - Growing Into Life.",
+        "jtbd_raw": "Người muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con",
+        "audience_circumstance": "khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại",
+        "aliases": [
+          "tìm kiếm phương pháp nuôi con khỏe mạnh hiện nay",
+          "vượt qua băn khoăn khi giáo dục trẻ thời hiện đại"
+        ],
+        "uid": "uid_chunk_04"
+      },
+      {
+        "chunk_index": 5,
+        "chunk_name": "Chunk 5: Raising Healthy, Happy, and Capable Children - The Importance of Warmth",
+        "jtbd_raw": "Cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ",
+        "audience_circumstance": "khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày",
+        "aliases": [
+          "chăm sóc sức khỏe toàn diện cho trẻ nhỏ mỗi ngày",
+          "bảo vệ con cái trong sinh hoạt thường nhật"
+        ],
+        "uid": "uid_chunk_05"
+      }
+    ],
+    [
+      {
+        "chunk_index": 6,
+        "chunk_name": "Raising Healthy, Happy, and Capable Children - The Importance of Rhythm",
+        "jtbd_raw": "Người muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "thiết lập sự ổn định và nề nếp cho con",
+        "audience_circumstance": "khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng",
+        "aliases": [
+          "xây dựng lịch trình sinh hoạt ổn định cho con",
+          "duy trì nề nếp gia đình khi bận rộn"
+        ],
+        "uid": "uid_chunk_06"
+      },
+      {
+        "chunk_index": 7,
+        "chunk_name": "Creative Play - The Nature of Young Children's Play",
+        "jtbd_raw": "Người muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do",
+        "audience_circumstance": "khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi",
+        "aliases": [
+          "khuyến khích con vui chơi tự do để phát triển trí tuệ",
+          "nuôi dưỡng trí tưởng tượng cho trẻ dưới 7 tuổi"
+        ],
+        "uid": "uid_chunk_07"
+      },
+      {
+        "chunk_index": 8,
+        "chunk_name": "Chunk 8: Creative Play - Play, The Lifeblood of a Healthy Childhood - Newborn to Two-and-a-Half",
+        "jtbd_raw": "Người muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "chọn đồ chơi và xây dựng không gian chơi lành mạnh",
+        "audience_circumstance": "khi chăm sóc con từ sơ sinh đến 2,5 tuổi",
+        "aliases": [
+          "mua đồ chơi an toàn cho trẻ sơ sinh",
+          "thiết kế góc chơi cho bé dưới 2.5 tuổi"
+        ],
+        "uid": "uid_chunk_08"
+      },
+      {
+        "chunk_index": 9,
+        "chunk_name": "Chunk 9: Creative Play - Play, The Lifeblood of a Healthy Childhood - Two-and-a-Half to Five.",
+        "jtbd_raw": "Người muốn thúc đẩy trí tưởng tượng và sự tập trung của trẻ khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "thúc đẩy trí tưởng tượng và sự tập trung của trẻ",
+        "audience_circumstance": "khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi",
+        "aliases": [
+          "chọn đồ chơi phát triển trí tuệ cho bé 2.5 - 5 tuổi",
+          "tạo không gian chơi giúp trẻ tập trung"
+        ],
+        "uid": "uid_chunk_09"
+      },
+      {
+        "chunk_index": 10,
+        "chunk_name": "Chunk 10: Creative Play - Play, The Lifeblood of a Healthy Childhood - Five to Seven.",
+        "jtbd_raw": "Người muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi",
+        "audience_circumstance": "khi con trải qua các giai đoạn phát triển mới",
+        "aliases": [
+          "nắm bắt tâm lý vui chơi của trẻ 5-7 tuổi",
+          "theo dõi sự phát triển tâm sinh lý của trẻ mẫu giáo lớn"
+        ],
+        "uid": "uid_chunk_10"
+      }
+    ],
+    [
+      {
+        "chunk_index": 11,
+        "chunk_name": "Creative Play - Children as the Creators of Play",
+        "jtbd_raw": "Người muốn tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng và kỹ năng sống khi thiết lập không gian sống và chọn mua đồ chơi cho con.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng và kỹ năng sống",
+        "audience_circumstance": "khi thiết lập không gian sống và chọn mua đồ chơi cho con",
+        "aliases": [
+          "xây dựng không gian chơi phát triển kỹ năng cho trẻ",
+          "bố trí góc chơi và đồ chơi kích thích trí tưởng tượng"
+        ],
+        "uid": "uid_chunk_11"
+      },
+      {
+        "chunk_index": 12,
+        "chunk_name": "Developing the Twelve Senses - Will Senses",
+        "jtbd_raw": "Người muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con",
+        "audience_circumstance": "khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi",
+        "aliases": [
+          "chăm sóc thể chất cho trẻ dưới 7 tuổi",
+          "kích thích giác quan cơ bản của trẻ giai đoạn đầu đời"
+        ],
+        "uid": "uid_chunk_12"
+      },
+      {
+        "chunk_index": 13,
+        "chunk_name": "Chunk 13: Developing the Twelve Senses - Feeling Senses",
+        "jtbd_raw": "Người muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ",
+        "audience_circumstance": "khi môi trường xung quanh ngập tràn các kích thích nhân tạo",
+        "aliases": [
+          "bảo vệ cảm xúc của con khỏi kích thích môi trường",
+          "chăm sóc đời sống tinh thần cho trẻ nhỏ hiện nay"
+        ],
+        "uid": "uid_chunk_13"
+      },
+      {
+        "chunk_index": 14,
+        "chunk_name": "Chunk 14: Developing the Twelve Senses - Cognitive Senses",
+        "jtbd_raw": "Người muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "nuôi dưỡng các giác quan nhận thức của trẻ",
+        "audience_circumstance": "khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp",
+        "aliases": [
+          "phát triển nhận thức của con khi mở rộng giao tiếp",
+          "hướng dẫn trẻ xử lý thông tin xã hội"
+        ],
+        "uid": "uid_chunk_14"
+      },
+      {
+        "chunk_index": 15,
+        "chunk_name": "Creative Discipline - Imitation and Self-Discipline",
+        "jtbd_raw": "Người muốn rèn luyện kỷ luật cho con khi đối mặt với những hành vi chưa tốt của trẻ nhỏ.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "rèn luyện kỷ luật cho con",
+        "audience_circumstance": "khi đối mặt với những hành vi chưa tốt của trẻ nhỏ",
+        "aliases": [
+          "thiết lập kỷ luật khi trẻ hư",
+          "uốn nắn hành vi xấu ở trẻ nhỏ"
+        ],
+        "uid": "uid_chunk_15"
+      }
+    ],
+    [
+      {
+        "chunk_index": 16,
+        "chunk_name": "Chunk 16: Creative Discipline - Clear Messages and Limited Choices",
+        "jtbd_raw": "Người muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "thiết lập kỷ luật và giao tiếp hiệu quả",
+        "audience_circumstance": "khi đưa ra các yêu cầu hàng ngày cho trẻ",
+        "aliases": [
+          "rèn tính tự giác cho con thông qua giao tiếp hàng ngày",
+          "dạy con nghe lời khi đưa ra yêu cầu"
+        ],
+        "uid": "uid_chunk_16"
+      },
+      {
+        "chunk_index": 17,
+        "chunk_name": "Creative Discipline - Distraction",
+        "jtbd_raw": "Người muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "điều chỉnh hành vi của trẻ",
+        "audience_circumstance": "khi trẻ đang chơi đùa thiếu chuẩn mực",
+        "aliases": [
+          "uốn nắn con khi chơi không ngoan",
+          "chỉnh đốn thái độ khi trẻ vui chơi quá đà"
+        ],
+        "uid": "uid_chunk_17"
+      },
+      {
+        "chunk_index": 18,
+        "chunk_name": "Chunk 18: Creative Discipline - The Magic Word: May.",
+        "jtbd_raw": "Người muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện",
+        "audience_circumstance": "khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy",
+        "aliases": [
+          "xử lý tình huống con chống đối",
+          "dạy con tự nguyện hợp tác không cần ép buộc"
+        ],
+        "uid": "uid_chunk_18"
+      },
+      {
+        "chunk_index": 19,
+        "chunk_name": "Creative Discipline - Rhythm",
+        "jtbd_raw": "Người muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "thiết lập kỷ luật và nề nếp cho con",
+        "audience_circumstance": "khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày",
+        "aliases": [
+          "rèn nề nếp khi sinh hoạt gia đình bị đảo lộn",
+          "khắc phục thói quen xấu trong sinh hoạt của trẻ"
+        ],
+        "uid": "uid_chunk_19"
+      },
+      {
+        "chunk_index": 20,
+        "chunk_name": "Creative Discipline - Healing Action",
+        "jtbd_raw": "Người muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "chuyển hóa hành vi tiêu cực của trẻ",
+        "audience_circumstance": "khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt",
+        "aliases": [
+          "xử lý khi con đánh bạn hoặc cắn người",
+          "ngăn chặn hành vi bạo lực ở trẻ nhỏ"
+        ],
+        "uid": "uid_chunk_20"
+      }
+    ],
+    [
+      {
+        "chunk_index": 21,
+        "chunk_name": "Creative Discipline - Consequent Action",
+        "jtbd_raw": "Người muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "xử lý hành vi chống đối và xung đột của trẻ",
+        "audience_circumstance": "khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày",
+        "aliases": [
+          "giải quyết xung đột với con khi bé bướng bỉnh",
+          "xử lý tình huống con hay cãi lại"
+        ],
+        "uid": "uid_chunk_21"
+      },
+      {
+        "chunk_index": 22,
+        "chunk_name": "Creative Discipline - Positivity",
+        "jtbd_raw": "Người muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "xoa dịu cảm xúc của trẻ",
+        "audience_circumstance": "khi trẻ mệt mỏi hoặc quấy khóc",
+        "aliases": [
+          "dỗ dành khi con khóc mệt",
+          "làm dịu tâm trạng trẻ lúc quấy khóc"
+        ],
+        "uid": "uid_chunk_22"
+      },
+      {
+        "chunk_index": 23,
+        "chunk_name": "Creative Discipline - Guidance",
+        "jtbd_raw": "Người muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn",
+        "audience_circumstance": "khi gặp khó khăn trong quá trình giáo dục trẻ",
+        "aliases": [
+          "tìm phương pháp kỷ luật hiệu quả khi dạy con",
+          "giải quyết bế tắc trong giáo dục trẻ nhỏ"
+        ],
+        "uid": "uid_chunk_23"
+      },
+      {
+        "chunk_index": 24,
+        "chunk_name": "Chunk 24: Creative Discipline - Conclusion",
+        "jtbd_raw": "Người muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "duy trì kỷ luật và sự hòa hợp trong gia đình",
+        "audience_circumstance": "khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày",
+        "aliases": [
+          "giữ hòa khí gia đình khi trẻ quấy cuối ngày",
+          "ổn định trật tự gia đình vào buổi tối"
+        ],
+        "uid": "uid_chunk_24"
+      },
+      {
+        "chunk_index": 25,
+        "chunk_name": "Chunk 25: Epilogue: A Note on the Temperaments",
+        "jtbd_raw": "Người muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "cá nhân hóa phương pháp giáo dục",
+        "audience_circumstance": "khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ",
+        "aliases": [
+          "nuôi dạy theo tính cách riêng của con",
+          "áp dụng giáo dục phù hợp với đặc điểm từng trẻ"
+        ],
+        "uid": "uid_chunk_25"
+      }
+    ],
+    [
+      {
+        "chunk_index": 26,
+        "chunk_name": "Parent-Child Classes with Barbara - Sample of Songs and Verses",
+        "jtbd_raw": "Người muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học",
+        "scope": "chunk",
+        "audience_Job_performer": "người chăm sóc trẻ",
+        "audience_main_job": "tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng",
+        "audience_circumstance": "khi ở nhà hoặc trong lớp học",
+        "aliases": [
+          "tổ chức các hoạt động hàng ngày cho trẻ mầm non",
+          "hướng dẫn trẻ nhỏ theo nhịp điệu sinh hoạt"
+        ],
+        "uid": "uid_chunk_26"
+      },
+      {
+        "chunk_index": 27,
+        "chunk_name": "Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories",
+        "jtbd_raw": "Người muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng",
+        "audience_circumstance": "khi trẻ bước sang tuổi mới",
+        "aliases": [
+          "tổ chức sinh nhật ý nghĩa cho con",
+          "làm tiệc sinh nhật nuôi dưỡng tâm hồn trẻ"
+        ],
+        "uid": "uid_chunk_27"
+      },
+      {
+        "chunk_index": 28,
+        "chunk_name": "Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages",
+        "jtbd_raw": "Người muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con.",
+        "scope": "chunk",
+        "audience_Job_performer": "cha mẹ",
+        "audience_main_job": "chọn đúng truyện cổ tích phù hợp cho trẻ nghe",
+        "audience_circumstance": "khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con",
+        "aliases": [
+          "chọn sách truyện cho con theo độ tuổi",
+          "kể chuyện cổ tích phù hợp với tâm lý trẻ"
+        ],
+        "uid": "uid_chunk_28"
+      }
+    ]
+  ],
+  "chunk_index_to_uid": {
+    "1": "uid_chunk_01",
+    "3": "uid_chunk_03",
+    "4": "uid_chunk_04",
+    "5": "uid_chunk_05",
+    "6": "uid_chunk_06",
+    "7": "uid_chunk_07",
+    "8": "uid_chunk_08",
+    "9": "uid_chunk_09",
+    "10": "uid_chunk_10",
+    "11": "uid_chunk_11",
+    "12": "uid_chunk_12",
+    "13": "uid_chunk_13",
+    "14": "uid_chunk_14",
+    "15": "uid_chunk_15",
+    "16": "uid_chunk_16",
+    "17": "uid_chunk_17",
+    "18": "uid_chunk_18",
+    "19": "uid_chunk_19",
+    "20": "uid_chunk_20",
+    "21": "uid_chunk_21",
+    "22": "uid_chunk_22",
+    "23": "uid_chunk_23",
+    "24": "uid_chunk_24",
+    "25": "uid_chunk_25",
+    "26": "uid_chunk_26",
+    "27": "uid_chunk_27",
+    "28": "uid_chunk_28"
+  },
+  "current_batch_password": "5e9cba83"
+}

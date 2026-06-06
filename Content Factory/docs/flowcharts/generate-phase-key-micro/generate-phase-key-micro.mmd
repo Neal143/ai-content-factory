@@ -1,0 +1,61 @@
+graph LR
+    %% @flow(1) [Phase Key Generator] 00. Tổng quan: start -> check_param -> loop_skills -> loop_refs -> check_persona -> check_fail -> update_status -> done
+    %% @flow(2 > 00) [Phase Key Generator] 01. Tìm Persona: start -> check_param -> auto_detect -> loop_skills
+    %% @flow(2 > 00) [Phase Key Generator] 02. Inject Skills: loop_skills -> replace_skill_key -> next_skill -> loop_refs
+    %% @flow(3 > 02) [Phase Key Generator] 02a. Lỗi File: replace_skill_key -.-> inc_fail_skill -.-> next_skill
+    %% @flow(2 > 00) [Phase Key Generator] 03. Inject Refs: loop_refs -> replace_ref_key -> next_ref -> check_persona
+    %% @flow(3 > 03) [Phase Key Generator] 03a. Lỗi File: replace_ref_key -.-> inc_fail_ref -.-> next_ref
+    %% @flow(2 > 00) [Phase Key Generator] 04. Inject Persona: check_persona -> loop_persona -> replace_persona_key -> next_persona -> check_fail
+    %% @flow(3 > 04) [Phase Key Generator] 04a. Lỗi File: replace_persona_key -.-> inc_fail_persona -.-> next_persona
+    %% @flow(2 > 00) [Phase Key Generator] 05. Kết thúc: check_fail -> update_status -> done
+    %% @flow(3 > 05) [Phase Key Generator] 05a. Lỗi Tổng: check_fail -.-> fail_exit
+
+    subgraph Phase_Init [Bước 1: Auto-Detect Persona]
+        direction LR
+        start([Khởi chạy Script]) --> check_param{Có tham số PersonaPath?}
+        check_param -->|Có| loop_skills[[Lặp 9 thư mục SKILL]]
+        check_param -->|Không| auto_detect[Dò tìm duy nhất 1 thư mục con trong personas/]
+        auto_detect --> loop_skills
+    end
+
+    subgraph Phase_Skills [Bước 2: Inject EXECUTION_KEY]
+        direction LR
+        loop_skills --> replace_skill_key{Tồn tại Placeholder?}
+        replace_skill_key -->|Có| save_skill[Ghi đè 8-char Hex Key]
+        replace_skill_key -.->|Không| inc_fail_skill[Tăng FailCount]
+        save_skill --> next_skill{Còn SKILL?}
+        inc_fail_skill -.-> next_skill
+        next_skill -->|Còn| loop_skills
+        next_skill -->|Hết| loop_refs[[Lặp 3 file Reference]]
+    end
+
+    subgraph Phase_Refs [Bước 3: Inject FILE_KEY cho Refs]
+        direction LR
+        loop_refs --> replace_ref_key{Tồn tại Placeholder?}
+        replace_ref_key -->|Có| save_ref[Ghi đè 8-char Hex Key]
+        replace_ref_key -.->|Không| inc_fail_ref[Tăng FailCount]
+        save_ref --> next_ref{Còn File?}
+        inc_fail_ref -.-> next_ref
+        next_ref -->|Còn| loop_refs
+        next_ref -->|Hết| check_persona{Có PersonaPath?}
+    end
+
+    subgraph Phase_Persona [Bước 4: Inject FILE_KEY cho Persona]
+        direction LR
+        check_persona -->|Không| check_fail{FailCount > 0?}
+        check_persona -->|Có| loop_persona[[Lặp 5 file Persona YAML]]
+        loop_persona --> replace_persona_key{Tồn tại Placeholder?}
+        replace_persona_key -->|Có| save_persona[Ghi đè 8-char Hex Key]
+        replace_persona_key -.->|Không| inc_fail_persona[Tăng FailCount]
+        save_persona --> next_persona{Còn File?}
+        inc_fail_persona -.-> next_persona
+        next_persona -->|Còn| loop_persona
+        next_persona -->|Hết| check_fail
+    end
+
+    subgraph Phase_End [Bước 5: Tổng kết & Mở khóa]
+        direction LR
+        check_fail -.->|Có| fail_exit((Exit 1 - FAIL))
+        check_fail -->|Không| update_status[Set SẴN SÀNG trong content-post.md]
+        update_status --> done((Exit 0 - PASS))
+    end

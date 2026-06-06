@@ -1,4 +1,4 @@
-# Last Update: 24/05/2026 13:30 (GMT+7)
+﻿# Last Update: 24/05/2026 13:30 (GMT+7)
 <#
 .SYNOPSIS
     Validate Draft - Objective checks for Phase 5 (Voice Writer)
@@ -22,36 +22,36 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# --- Load Format Profile ---
-$profilePath = "profiles/active.json"
-if (-not (Test-Path $profilePath)) {
-    $profilePath = "profiles/default.json"
+# --- Load Format Config ---
+$formatPath = "formats/active.json"
+if (-not (Test-Path $formatPath)) {
+    $formatPath = "formats/default.json"
 }
-if (-not (Test-Path $profilePath)) {
-    Write-Host "WARNING: No format profile found. Using hardcoded defaults."
-    $profile = $null
+if (-not (Test-Path $formatPath)) {
+    Write-Host "WARNING: No format config found. Using hardcoded defaults."
+    $format = $null
 } else {
-    $profile = Get-Content $profilePath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $format = Get-Content $formatPath -Raw -Encoding UTF8 | ConvertFrom-Json
 }
 
 # --- Extract config values (fallback to current defaults) ---
-$cfgWordCountMin = if ($profile) { $profile.word_count_total.min } else { 1500 }
-$cfgWordCountMax = if ($profile) { $profile.word_count_total.max } else { 1800 }
-$cfgMaxParaWords = if ($profile) { $profile.word_count_per_paragraph.max } else { 400 }
-$cfgSentPerParaMin = if ($profile) { $profile.sentences_per_paragraph.min } else { 3 }
-$cfgSentPerParaMax = if ($profile) { $profile.sentences_per_paragraph.max } else { 5 }
-$cfgSentPerNormalMin = if ($profile) { $profile.sentences_per_normal_chain.min } else { 3 }
-$cfgSentPerNormalMax = if ($profile) { $profile.sentences_per_normal_chain.max } else { 5 }
-$cfgSentPerLongMin = if ($profile) { $profile.sentences_per_long_chain.min } else { 6 }
-$cfgSentPerLongMax = if ($profile) { $profile.sentences_per_long_chain.max } else { 8 }
-$cfgLongChainsMin = if ($profile) { $profile.long_chains_per_article.min } else { 0 }
-$cfgLongChainsMax = if ($profile) { $profile.long_chains_per_article.max } else { 2 }
-$cfgTitleInOutput = if ($profile) { $profile.output_elements.title } else { $false }
-$cfgSectionHeadingInOutput = if ($profile) { $profile.output_elements.section_heading } else { $false }
-$cfgParaHeadingInOutput = if ($profile) { $profile.output_elements.paragraph_heading } else { $false }
-$cfgVeryShortThreshold = if ($profile) { $profile.very_short_sentence_threshold } else { 4 }
-$cfgMode = if ($profile) { $profile.mode } else { "auto" }
-$cfgWordCountTolerance = if ($profile -and $profile.word_count_tolerance_percent -ne $null) { $profile.word_count_tolerance_percent } else { 10 }
+$cfgWordCountMin = if ($format) { $format.word_count_total.min } else { 1500 }
+$cfgWordCountMax = if ($format) { $format.word_count_total.max } else { 1800 }
+$cfgMaxParaWords = if ($format) { $format.word_count_per_paragraph.max } else { 400 }
+$cfgSentPerParaMin = if ($format) { $format.sentences_per_paragraph.min } else { 3 }
+$cfgSentPerParaMax = if ($format) { $format.sentences_per_paragraph.max } else { 5 }
+$cfgSentPerNormalMin = if ($format) { $format.sentences_per_normal_chain.min } else { 3 }
+$cfgSentPerNormalMax = if ($format) { $format.sentences_per_normal_chain.max } else { 5 }
+$cfgSentPerLongMin = if ($format) { $format.sentences_per_long_chain.min } else { 6 }
+$cfgSentPerLongMax = if ($format) { $format.sentences_per_long_chain.max } else { 8 }
+$cfgLongChainsMin = if ($format) { $format.long_chains_per_article.min } else { 0 }
+$cfgLongChainsMax = if ($format) { $format.long_chains_per_article.max } else { 2 }
+$cfgTitleInOutput = if ($format) { $format.output_elements.title } else { $false }
+$cfgSectionHeadingInOutput = if ($format) { $format.output_elements.section_heading } else { $false }
+$cfgParaHeadingInOutput = if ($format) { $format.output_elements.paragraph_heading } else { $false }
+$cfgVeryShortThreshold = if ($format) { $format.very_short_sentence_threshold } else { 4 }
+$cfgMode = if ($format) { $format.mode } else { "auto" }
+$cfgWordCountTolerance = if ($format -and $format.word_count_tolerance_percent -ne $null) { $format.word_count_tolerance_percent } else { 10 }
 
 # Auto-detect PersonaPath tu blackboard neu chua truyen
 if (-not $PersonaPath) {

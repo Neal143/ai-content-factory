@@ -1,0 +1,28 @@
+{
+  "batch_index": 6,
+  "batch_password": "3b798e83",
+  "total_batches": 6,
+  "items_to_process": [
+    {
+      "chunk_index": 26,
+      "chunk_name": "Parent-Child Classes with Barbara - Sample of Songs and Verses",
+      "jtbd_raw": "Người muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học",
+      "scope": "chunk",
+      "uid": "uid_chunk_26"
+    },
+    {
+      "chunk_index": 27,
+      "chunk_name": "Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories",
+      "jtbd_raw": "Người muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới.",
+      "scope": "chunk",
+      "uid": "uid_chunk_27"
+    },
+    {
+      "chunk_index": 28,
+      "chunk_name": "Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages",
+      "jtbd_raw": "Người muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con.",
+      "scope": "chunk",
+      "uid": "uid_chunk_28"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+graph LR
+    %% @flow(2) [Insight Agent] 01. Backbone: start -> collect_data -> read_atoms -> gen_brief -> val_start -> val_check_file -> val_check_numbers -> val_check_story -> val_check_kcs -> val_aggregate -> val_exit -> check_pass -> done
+    %% @flow(3 > 01) [Insight Agent] 02. Xử lý Dẫn chứng: collect_data -> find_experts -> apply_filters -> read_atoms
+    %% @flow(3 > 01) [Insight Agent] 03. Validation Script: val_start -> val_check_file -> val_check_numbers -> val_check_story -> val_check_kcs -> val_aggregate -> val_exit
+    %% @flow(4 > 03) [Insight Agent] 03a. Lỗi File Research: val_check_file -> val_fail_file
+    %% @flow(3 > 01) [Insight Agent] 04. Vòng lặp Xử lý Lỗi: check_pass -> revise -> check_retry
+    %% @flow(4 > 04) [Insight Agent] 04a. Thử lại: check_retry -> collect_data
+    %% @flow(4 > 04) [Insight Agent] 04b. Thất bại (Retry): check_retry -> fail
+
+    start(["Nhận Idea và DIKW"]) --> collect_data[Thu thập Dẫn chứng]
+    
+    collect_data --> find_experts[[Tra cứu Authorities]]
+    collect_data --> read_atoms
+    
+    find_experts --> apply_filters["Áp dụng SAS và KCS"]
+    apply_filters --> read_atoms[[Đọc file Atom gốc]]
+    
+    read_atoms --> gen_brief[Khởi tạo Research Brief]
+    
+    gen_brief --> val_start
+    
+    subgraph validate_research ["script: validate-research.ps1"]
+        direction LR
+        val_start([Khởi chạy Script]) --> val_check_file{"File Tồn tại?"}
+        
+        val_check_file -->|Không| val_fail_file((Dừng - Lỗi File))
+        val_check_file -->|Có| val_check_numbers[Kiểm tra Số lượng Dẫn chứng]
+        
+        val_check_numbers --> val_check_story[Kiểm tra Nguồn Câu chuyện]
+        val_check_story --> val_check_kcs[Kiểm tra Trạng thái KCS]
+        
+        val_check_kcs --> val_aggregate[Tổng hợp KQ Validation]
+        val_aggregate --> val_exit((Trả về Exit Code))
+    end
+    
+    val_exit --> check_pass{Exit Code = 0?}
+    
+    check_pass -->|Có| done((Hoàn tất Phase 2))
+    check_pass -->|Không| revise[Bổ sung Dẫn chứng]
+    
+    revise --> check_retry{Quá 2 lần thử?}
+    check_retry -.->|Không| collect_data
+    check_retry -.->|Có| fail((Dừng Pipeline))

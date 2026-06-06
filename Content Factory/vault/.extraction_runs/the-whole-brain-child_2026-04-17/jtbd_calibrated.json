@@ -1,0 +1,137 @@
+[
+  {
+    "scope": "book",
+    "chunk_index": null,
+    "chunk_name": null,
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "áp dụng các chiến lược khoa học thần kinh để điều chỉnh cảm xúc và hành vi của trẻ",
+    "audience_circumstance": "khi đối mặt với những khủng hoảng và xung đột trong quá trình nuôi dạy con hằng ngày",
+    "aliases": ["dùng khoa học thần kinh xử lý bé ăn vạ", "quản lý cảm xúc của con lúc khủng hoảng"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 1,
+    "chunk_name": "Chunk 1: Introduction: SURVIVE AND THRIVE",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "nuôi dạy con cái phát triển toàn diện (thrive)",
+    "audience_circumstance": "khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày (survive)",
+    "aliases": ["giúp con phát triển lúc đang kiệt sức", "rèn luyện con khi cha mẹ căng thẳng"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 2,
+    "chunk_name": "Chunk 2: Chapter 1: PARENTING WITH THE BRAIN IN MIND",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "thấu hiểu tâm lý và hành vi của con",
+    "audience_circumstance": "khi đối mặt với những thử thách nuôi dạy hàng ngày",
+    "aliases": ["hiểu tâm lý trẻ lúc gặp khó khăn", "đọc vị hành vi của bé mỗi ngày"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 3,
+    "chunk_name": "Chunk 3: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #1: Connect and Redirect: Surfing Emotional Waves",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "xoa dịu cơn khủng hoảng của trẻ một cách hiệu quả",
+    "audience_circumstance": "khi đối mặt với những cảm xúc bùng nổ vô lý",
+    "aliases": ["dập tắt cơn ăn vạ vô lý của con", "xử lý khủng hoảng cảm xúc ở trẻ"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 4,
+    "chunk_name": "Chunk 4: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #2: Name It to Tame It: Telling Stories to Calm Big Emotions",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "xoa dịu những cảm xúc tiêu cực và sự sợ hãi tột độ của trẻ",
+    "audience_circumstance": "khi trẻ vừa trải qua một biến cố đau đớn hoặc đáng sợ",
+    "aliases": ["giúp bé vượt qua nỗi sợ hãi chấn thương", "xoa dịu con sau biến cố tâm lý"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 5,
+    "chunk_name": "Chunk 5: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #3: Engage, Don't Enrage: Appealing to the Upstairs Brain",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "giải quyết sự chống đối và xoa dịu trẻ",
+    "audience_circumstance": "khi trẻ đang trong trạng thái bùng nổ cảm xúc hoặc tức giận",
+    "aliases": ["hạ hỏa bé lúc chống đối", "xử lý cơn thịnh nộ của con"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 6,
+    "chunk_name": "Chunk 6: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #4: Use It or Lose It: Exercising the Upstairs Brain",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "rèn luyện và phát triển trí não tầng trên của con",
+    "audience_circumstance": "khi tương tác với trẻ hàng ngày",
+    "aliases": ["kích thích não thùy trán của bé", "dạy con tư duy logic mỗi ngày"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 7,
+    "chunk_name": "Chunk 7: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #5: Move It or Lose It: Moving the Body to Avoid Losing the Mind",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "giúp con bình tĩnh và lấy lại khả năng tự kiểm soát",
+    "audience_circumstance": "khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc",
+    "aliases": ["lấy lại kiểm soát lúc bé hoảng loạn", "giúp con tự trấn an khi bùng nổ"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 8,
+    "chunk_name": "Chunk 8: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #6: Use the Remote of the Mind: Replaying Memories",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "giúp trẻ đối mặt và tích hợp các ký ức đau buồn",
+    "audience_circumstance": "khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ",
+    "aliases": ["chữa lành vết thương lòng cho bé", "khuyến khích con đối diện với nỗi đau"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 9,
+    "chunk_name": "Chunk 9: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #7: Remember to Remember: Making Recollection a Part of Your Family's Daily Life",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con",
+    "audience_circumstance": "khi tương tác cùng con hằng ngày",
+    "aliases": ["tập cho con nhớ lại trải nghiệm cũ", "giúp bé kể chuyện hàng ngày"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 10,
+    "chunk_name": "Chunk 10: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #8: Let the Clouds of Emotion Roll By: Teaching That Feelings Come and Go",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "giúp con nhận thức tính tạm thời của cảm xúc",
+    "audience_circumstance": "khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã",
+    "aliases": ["dạy con cảm xúc chỉ là nhất thời", "hướng dẫn bé vượt qua cơn buồn bã"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 11,
+    "chunk_name": "Chunk 11: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #9: SIFT: Paying Attention to What's Going On Inside",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân",
+    "audience_circumstance": "khi trẻ đang bị xáo trộn cảm xúc",
+    "aliases": ["giúp con gọi tên cảm xúc riêng", "mở khóa nội tâm bé lúc căng thẳng"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 12,
+    "chunk_name": "Chunk 12: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #10: Exercise Mindsight: Getting Back to the Hub",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý",
+    "audience_circumstance": "khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu",
+    "aliases": ["dạy con tĩnh tâm lúc lo lắng", "hướng dẫn trẻ tự thiền và điều chỉnh"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 13,
+    "chunk_name": "Chunk 13: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #11: Increase the Family Fun Factor: Making a Point to Enjoy Each Other",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "xây dựng nền tảng gắn kết và tình cảm tích cực cho con cái",
+    "audience_circumstance": "khi cảm thấy bị cuốn vào guồng quay mệt mỏi của việc kỷ luật và đưa đón con hàng ngày",
+    "aliases": ["tạo niềm vui gia đình giữa lịch trình bận rộn", "gắn kết anh chị em hằng ngày"]
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 14,
+    "chunk_name": "Chunk 14: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #12: Connect Through Conflict: Teach Kids to Argue with a \"We\" in Mind",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_main_job": "rèn luyện kỹ năng giải quyết mâu thuẫn cho con",
+    "audience_circumstance": "khi trẻ xảy ra xung đột với người khác",
+    "aliases": ["dạy con cách làm hòa lúc cãi lộn", "chỉ bé cách giải quyết căng thẳng với bạn bè"]
+  }
+]

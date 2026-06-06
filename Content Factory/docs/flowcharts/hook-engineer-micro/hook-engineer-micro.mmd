@@ -1,0 +1,62 @@
+graph LR
+    %% @flow(2) [Hook Engineer] 01. Backbone: start -> process_hook -> gen_brief -> val_start -> val_check_file -> val_length -> val_rotation -> val_aggregate -> val_exit -> check_pass -> done
+    %% @flow(3 > 01) [Hook Engineer] 02. Tạo Hook: process_hook -> read_formulas -> prev_history -> write_hooks -> score_hooks -> gen_brief
+    %% @flow(3 > 01) [Hook Engineer] 03. Validation Script: val_start -> val_check_file -> val_length -> val_rotation -> val_aggregate -> val_exit
+    %% @flow(4 > 03) [Hook Engineer] 03a. Lỗi File Hook: val_check_file -> val_fail_file
+    %% @flow(4 > 03) [Hook Engineer] 03b. Logic Length: val_length -> val_find_core -> val_count -> val_length_cond -> val_rotation
+    %% @flow(4 > 03) [Hook Engineer] 03c. Logic Rotation: val_rotation -> val_has_history -> val_check_overlap -> val_aggregate
+    %% @flow(3 > 01) [Hook Engineer] 04. Vòng lặp Kiểm tra: check_pass -> revise -> check_retry
+    %% @flow(4 > 04) [Hook Engineer] 04a. Thử lại: check_retry -> process_hook
+    %% @flow(4 > 04) [Hook Engineer] 04b. Thất bại (Retry): check_retry -> fail
+    %% @flow(3 > 01) [Hook Engineer] 05. Ngoại lệ Đọc file: read_formulas -> fail
+
+    start(["Nhận 4 Khối Dữ liệu"]) --> process_hook[Xử lý Mở bài]
+    
+    process_hook --> read_formulas[[Đọc file Hook Formulas]]
+    read_formulas -.->|Thiếu file| fail((Dừng Pipeline))
+    
+    read_formulas --> prev_history[[Đọc Lịch sử Hook]]
+    prev_history --> write_hooks[Viết 3 Phiên bản]
+    write_hooks --> score_hooks["Chấm điểm (Thang 10)"]
+    score_hooks --> gen_brief[Xuất file Hook Brief]
+    
+    process_hook --> gen_brief
+    
+    gen_brief --> val_start
+    
+    subgraph validate_hook ["script: validate-hook.ps1"]
+        val_start([Khởi chạy Script]) --> val_check_file{"File Hook tồn tại?"}
+        
+        val_check_file -->|Không| val_fail_file((Dừng - Lỗi File))
+        val_check_file -->|Có| val_length[[Validate: Độ dài Core Hook]]
+        
+        val_length --> val_find_core{"Tìm thấy Core Hook?"}
+        val_find_core -->|Có| val_count[Đếm số từ]
+        val_find_core -->|Không| val_rotation
+        
+        val_count --> val_length_cond{"Số từ ≤ 15?"}
+        val_length_cond -->|Có| val_rotation[[Validate: Trùng lặp Lịch sử]]
+        val_length_cond -->|Không| val_rotation
+        
+        val_length --> val_rotation
+        
+        val_rotation --> val_has_history{"Có file History?"}
+        val_has_history -->|Không| val_aggregate[Tổng hợp KQ Validation]
+        val_has_history -->|Có| val_check_overlap{"Trùng 2 bài gần nhất?"}
+        
+        val_check_overlap -->|Có| val_aggregate
+        val_check_overlap -->|Không| val_aggregate
+        
+        val_rotation --> val_aggregate
+        
+        val_aggregate --> val_exit((Trả về Exit Code))
+    end
+    
+    val_exit --> check_pass{"Exit Code = 0 và Score ≥ 8?"}
+    
+    check_pass -->|Có| done((Hoàn tất Phase 3))
+    check_pass -->|Không| revise[Đổi Công thức]
+    
+    revise --> check_retry{"Quá 2 lần thử?"}
+    check_retry -.->|Không| process_hook
+    check_retry -.->|Có| fail

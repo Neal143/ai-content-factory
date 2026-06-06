@@ -1,0 +1,27 @@
+{
+  "chunk_index": 9,
+  "chunk_name": "Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection",
+  "passed": false,
+  "skipped": false,
+  "failed_gates": [
+    "[2]"
+  ],
+  "error_code": "MISMATCH",
+  "needs_retry": true,
+  "needs_supplement": false,
+  "detail": "CHUNK mismatch (vs TOC_MASTER): expected='Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection' | found='Phần I: Các Nguyên Tắc Nuôi Dạy Con Của Bác Sĩ Becky - Chương 8: Giảm Xấu Hổ, Tăng Kết Nối'",
+  "raw_file": "chunk_09_raw.txt",
+  "next_action": {
+    "type": "RETRY",
+    "max_retry": 2,
+    "instruction": "Gọi lại NLM query gốc (từ next_chunk.py), lưu đè raw file, chạy lại gate_checker.",
+    "detail": "CHUNK mismatch (vs TOC_MASTER): expected='Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection' | found='Phần I: Các Nguyên Tắc Nuôi Dạy Con Của Bác Sĩ Becky - Chương 8: Giảm Xấu Hổ, Tăng Kết Nối'",
+    "on_exhaust": {
+      "ledger_update": {
+        "status": "FATAL",
+        "error_code": "MISMATCH"
+      },
+      "do_not_append": true
+    }
+  }
+}

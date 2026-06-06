@@ -1,0 +1,430 @@
+# BẢN ĐỒ TOPIC
+# id: English snake_case — dùng cho AI matching, script calls, frontmatter tags
+# label: Tiếng Việt đầy đủ dấu — CHỈ dùng cho human readability, KHÔNG dùng để match
+topics:
+- id: truc_giac
+  label: Trực giác
+  pillar_parents:
+  - Kỷ nguyên sống cùng AI
+  belongs_to_audience: []
+- id: lao_dong_co_y_nghia
+  label: Lao động có ý nghĩa
+  pillar_parents:
+  - Kỷ nguyên sống cùng AI
+  belongs_to_audience: []
+- id: tu_chu_tu_duy
+  label: Tự chủ tư duy
+  pillar_parents:
+  - Kỷ nguyên sống cùng AI
+  belongs_to_audience: []
+- id: ai_literacy
+  label: AI literacy
+  pillar_parents:
+  - Kỷ nguyên sống cùng AI
+  belongs_to_audience: []
+- id: nao_bo_tre_em
+  label: Não bộ trẻ em
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience:
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+- id: gan_ket_an_toan
+  label: Gắn kết an toàn
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: trai_nghiem_giac_quan
+  label: Trải nghiệm giác quan
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: ngon_ngu_som
+  label: Ngôn ngữ sớm
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: waldorf
+  label: Waldorf
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience: []
+- id: chu_ky_7_nam
+  label: Chu kỳ 7 năm
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience: []
+- id: tri_tuong_tuong
+  label: Trí tưởng tượng
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  - Kể chuyện để giáo dục và nuôi dưỡng tâm hồn trẻ
+  belongs_to_audience: []
+- id: nghe_thuat_giao_duc
+  label: Nghệ thuật giáo dục
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience: []
+- id: ke_chuyen
+  label: Kể chuyện
+  pillar_parents:
+  - Kể chuyện để giáo dục và nuôi dưỡng tâm hồn trẻ
+  belongs_to_audience: []
+- id: dao_duc_qua_cau_chuyen
+  label: Đạo đức qua câu chuyện
+  pillar_parents:
+  - Kể chuyện để giáo dục và nuôi dưỡng tâm hồn trẻ
+  belongs_to_audience: []
+- id: co_tich
+  label: Cổ tích
+  pillar_parents:
+  - Kể chuyện để giáo dục và nuôi dưỡng tâm hồn trẻ
+  belongs_to_audience: []
+- id: phat_trien_tam_ly_tre
+  label: Phát triển tâm lý trẻ
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: dieu_hoa_cam_xuc
+  label: Điều hòa cảm xúc
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: khoa_hoc_than_kinh_ung_dung
+  label: Khoa học thần kinh ứng dụng
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: khung_hoang_cam_xuc
+  label: Khủng hoảng cảm xúc
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: ket_noi_truoc_khi_dieu_huong
+  label: Kết nối trước khi điều hướng
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: goi_ten_cam_xuc
+  label: Gọi tên cảm xúc
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: kich_hoat_nao_tang_tren
+  label: Kích hoạt não tầng trên
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: tu_duy_logic_cho_tre
+  label: Tư duy logic cho trẻ
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: dieu_hoa_qua_the_chat
+  label: Điều hòa qua thể chất
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: ung_pho_ky_uc_buon
+  label: Ứng phó ký ức buồn
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: ren_luyen_tri_nho
+  label: Rèn luyện trí nhớ
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: tinh_tam_thoi_cua_cam_xuc
+  label: Tính tạm thời của cảm xúc
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: nhan_dien_the_gioi_noi_tam
+  label: Nhận diện thế giới nội tâm
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: ky_nang_sift
+  label: Kỹ năng SIFT
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: tu_xoa_diu_lo_au
+  label: Tự xoa dịu lo âu
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: niem_vui_gia_dinh
+  label: Niềm vui gia đình
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience: []
+- id: ky_nang_giai_quyet_xung_dot
+  label: Kỹ năng giải quyết xung đột
+  pillar_parents:
+  - Cửa sổ vàng phát triển trẻ 0-7 tuổi
+  belongs_to_audience:
+  - '[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]'
+- id: waldorf_rhythm
+  label: Nhịp điệu sinh hoạt Waldorf
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]'
+- id: play_evolution
+  label: Tiến hóa trò chơi trẻ em
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]'
+- id: environmental_absorption
+  label: Thẩm thấu môi trường mầm non
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]'
+  - '[[cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day]]'
+- id: media_impact_on_children
+  label: Tác động truyền thông lên trẻ em
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]'
+- id: warmth_importance
+  label: Tầm quan trọng của giữ ấm
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]'
+- id: fever_role
+  label: Vai trò của sốt
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]'
+- id: external_rhythm
+  label: Nhịp điệu ngoại tại
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]'
+- id: breathing_model
+  label: Mô hình Thở vào Thở ra
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]'
+- id: free_play
+  label: Vui chơi tự do
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+- id: archetypal_toys
+  label: Đồ chơi nguyên mẫu
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]'
+  - '[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]'
+  - '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+  - '[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]'
+- id: repetitive_play
+  label: Trò chơi lặp lại
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]'
+- id: clean_up_play
+  label: Dọn dẹp bằng trò chơi
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]'
+- id: little_puberty
+  label: Khủng hoảng tuổi lên sáu
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]'
+- id: screen_time_harm
+  label: Tác hại của màn hình
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]'
+- id: play_as_learning
+  label: Vui chơi là học tập
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]'
+- id: will_senses
+  label: Bốn giác quan ý chí
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]'
+- id: baby_walker_harm
+  label: Tác hại của xe tập đi
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]'
+- id: feeling_senses
+  label: Giác quan cảm xúc
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]'
+- id: color_therapy
+  label: Liệu pháp màu sắc
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]'
+- id: cognitive_senses
+  label: Giác quan nhận thức
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]'
+- id: machine_noise_harm
+  label: Tác hại của âm thanh máy móc
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]'
+- id: imitation_nature
+  label: Bản chất sự bắt chước
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+- id: self_education_discipline
+  label: Kỷ luật qua tự giáo dục
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+- id: reduce_no
+  label: Tiết giảm từ không
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]'
+- id: energy_redirection
+  label: Chuyển hướng năng lượng
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]'
+- id: use_may
+  label: Sử dụng từ May
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]'
+- id: illusion_of_choice
+  label: Ảo tưởng về lựa chọn
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]'
+- id: rhythm_discipline
+  label: Kỷ luật bằng nhịp điệu
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]'
+- id: healing_action
+  label: Hành động chữa lành
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]'
+- id: violence_myth
+  label: Lầm tưởng xả bạo lực
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]'
+- id: consequent_action
+  label: Hành động nhất quán
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]'
+- id: positivity_discipline
+  label: Kỷ luật tích cực
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]'
+- id: tired_child_care
+  label: Chăm sóc trẻ mệt mỏi
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]'
+- id: spiritual_discipline
+  label: Kỷ luật tâm linh
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]'
+- id: true_discipline
+  label: Kỷ luật đích thực
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]'
+- id: yelling_harm
+  label: Tác hại của la mắng
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]'
+- id: four_temperaments
+  label: Bốn khí chất
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]'
+- id: like_heals_like
+  label: Giống nhau chữa lành
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]'
+- id: music_rhythm
+  label: Nhịp điệu âm nhạc
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]'
+- id: rainbow_bridge_story
+  label: Câu chuyện Cầu Vồng
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]'
+- id: tell_from_memory
+  label: Kể chuyện từ trí nhớ
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]'
+- id: fairy_tale_complexity
+  label: Độ phức tạp cổ tích
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]'
+- id: flexible_story_selection
+  label: Chọn truyện linh hoạt
+  pillar_parents:
+  - Steiner và khoa học phát triển toàn diện
+  belongs_to_audience:
+  - '[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]'

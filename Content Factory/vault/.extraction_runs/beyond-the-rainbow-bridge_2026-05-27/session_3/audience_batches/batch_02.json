@@ -1,0 +1,37 @@
+{
+  "batch_index": 2,
+  "batch_password": "78b9798f",
+  "total_batches": 6,
+  "items": [
+    {
+      "uid": "uid_chunk_06",
+      "id": "parents_establish_stability_rhythm_modern_busy_life",
+      "semantic_query": "Cha mẹ muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng.",
+      "file_ref": "[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]"
+    },
+    {
+      "uid": "uid_chunk_07",
+      "id": "parents_create_environment_nurture_imagination_intellect_free_play",
+      "semantic_query": "Cha mẹ muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi.",
+      "file_ref": "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+    },
+    {
+      "uid": "uid_chunk_08",
+      "id": "parents_choose_toys_build_healthy_play_space_infant_to_two_half",
+      "semantic_query": "Cha mẹ muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi.",
+      "file_ref": "[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]"
+    },
+    {
+      "uid": "uid_chunk_09",
+      "id": "parents_promote_imagination_focus_toys_space_two_half_to_five",
+      "semantic_query": "Cha mẹ muốn thúc đẩy trí tưởng tượng và sự tập trung của trẻ khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi.",
+      "file_ref": "[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]"
+    },
+    {
+      "uid": "uid_chunk_10",
+      "id": "parents_understand_play_psychology_changes_five_to_seven",
+      "semantic_query": "Cha mẹ muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới.",
+      "file_ref": "[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]"
+    }
+  ]
+}

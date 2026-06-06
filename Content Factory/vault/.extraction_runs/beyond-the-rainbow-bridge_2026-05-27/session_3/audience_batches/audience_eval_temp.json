@@ -1,0 +1,32 @@
+{
+  "password": "132f2b70",
+  "entries": [
+    {
+      "uid": "uid_chunk_26",
+      "action": "merge",
+      "audience_filename": "bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": [],
+      "reason": "IDENTICAL: Trùng khớp hoàn toàn với audience bo_me_va_giao_vien_tao_nhip_dieu_sinh_hoat_va_dan_dat... trong index."
+    },
+    {
+      "uid": "uid_chunk_27",
+      "action": "create",
+      "audience_filename": "cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": [],
+      "reason": "DISTINCT."
+    },
+    {
+      "uid": "uid_chunk_28",
+      "action": "create",
+      "audience_filename": "cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": [],
+      "reason": "DISTINCT."
+    }
+  ]
+}

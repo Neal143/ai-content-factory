@@ -1,0 +1,56 @@
+{
+  "chunk_index": 2,
+  "chunk_name": "Chapter 1: PARENTING WITH THE BRAIN IN MIND",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_02_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [7c2] và [8], ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 2,
+      "gate_7c2_pass": null,
+      "gate_7c2_detail": "",
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_axis_3": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory\\.extraction_runs\\the-whole-brain-child_2026-04-17\\chunk_02_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory\\.extraction_runs\\the-whole-brain-child_2026-04-17\\chunk_02_raw.txt\" \"D:\\AI\\AI content factory\\vault\\02-sources\\books\\The Whole-Brain Child.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_7c2": {
+      "max_retry": 1,
+      "action": "Gửi NLM query đồng bộ định danh, lưu đè raw file, re-eval Gate [7c2+8]",
+      "fallback": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory\\.extraction_runs\\the-whole-brain-child_2026-04-17\\chunk_02_raw.txt\" \"D:\\AI\\AI content factory\\vault\\02-sources\\books\\The Whole-Brain Child.md\" --warnings \"LINK_INTEGRITY_WARNING\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "LINK_ERROR"
+        }
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [7c2+8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory\\.extraction_runs\\the-whole-brain-child_2026-04-17\\chunk_02_raw.txt\" \"D:\\AI\\AI content factory\\vault\\02-sources\\books\\The Whole-Brain Child.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  }
+}

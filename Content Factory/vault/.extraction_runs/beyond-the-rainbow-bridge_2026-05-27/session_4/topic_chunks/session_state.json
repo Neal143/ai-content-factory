@@ -1,0 +1,397 @@
+{
+  "total_batches": 9,
+  "current_batch": 10,
+  "completed": true,
+  "submitted_topics": [
+    {
+      "chunk_index": 1,
+      "topics": [
+        {
+          "id": "household_rhythm",
+          "label": "Nhịp điệu việc nhà",
+          "tier": "medium"
+        },
+        {
+          "id": "play_evolution",
+          "label": "Tiến hóa trò chơi trẻ em",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 3,
+      "topics": [
+        {
+          "id": "environmental_absorption",
+          "label": "Thẩm thấu môi trường mầm non",
+          "tier": "medium"
+        },
+        {
+          "id": "media_impact_on_children",
+          "label": "Tác động truyền thông lên trẻ em",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 4,
+      "topics": [
+        {
+          "id": "unfiltered_absorption",
+          "label": "Thẩm thấu không màng lọc",
+          "tier": "medium"
+        },
+        {
+          "id": "language_imitation",
+          "label": "Bắt chước ngôn ngữ",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 5,
+      "topics": [
+        {
+          "id": "warmth_importance",
+          "label": "Tầm quan trọng của giữ ấm",
+          "tier": "medium"
+        },
+        {
+          "id": "fever_role",
+          "label": "Vai trò của sốt",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 6,
+      "topics": [
+        {
+          "id": "external_rhythm",
+          "label": "Nhịp điệu ngoại tại",
+          "tier": "medium"
+        },
+        {
+          "id": "breathing_model",
+          "label": "Mô hình Thở vào Thở ra",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 7,
+      "topics": [
+        {
+          "id": "free_play",
+          "label": "Vui chơi tự do",
+          "tier": "medium"
+        },
+        {
+          "id": "archetypal_toys",
+          "label": "Đồ chơi nguyên mẫu",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 8,
+      "topics": [
+        {
+          "id": "simple_toys",
+          "label": "Đồ chơi đơn giản",
+          "tier": "medium"
+        },
+        {
+          "id": "repetitive_play",
+          "label": "Trò chơi lặp lại",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 9,
+      "topics": [
+        {
+          "id": "open_ended_toys",
+          "label": "Đồ chơi mở",
+          "tier": "medium"
+        },
+        {
+          "id": "clean_up_play",
+          "label": "Dọn dẹp bằng trò chơi",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 10,
+      "topics": [
+        {
+          "id": "little_puberty",
+          "label": "Khủng hoảng tuổi lên sáu",
+          "tier": "medium"
+        },
+        {
+          "id": "screen_time_harm",
+          "label": "Tác hại của màn hình",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 11,
+      "topics": [
+        {
+          "id": "toys_and_imagination",
+          "label": "Đồ chơi và trí tưởng tượng",
+          "tier": "medium"
+        },
+        {
+          "id": "play_as_learning",
+          "label": "Vui chơi là học tập",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 12,
+      "topics": [
+        {
+          "id": "will_senses",
+          "label": "Bốn giác quan ý chí",
+          "tier": "medium"
+        },
+        {
+          "id": "baby_walker_harm",
+          "label": "Tác hại của xe tập đi",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 13,
+      "topics": [
+        {
+          "id": "feeling_senses",
+          "label": "Giác quan cảm xúc",
+          "tier": "medium"
+        },
+        {
+          "id": "color_therapy",
+          "label": "Liệu pháp màu sắc",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 14,
+      "topics": [
+        {
+          "id": "cognitive_senses",
+          "label": "Giác quan nhận thức",
+          "tier": "medium"
+        },
+        {
+          "id": "machine_noise_harm",
+          "label": "Tác hại của âm thanh máy móc",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 15,
+      "topics": [
+        {
+          "id": "imitation_nature",
+          "label": "Bản chất sự bắt chước",
+          "tier": "medium"
+        },
+        {
+          "id": "self_education_discipline",
+          "label": "Kỷ luật qua tự giáo dục",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 17,
+      "topics": [
+        {
+          "id": "reduce_no",
+          "label": "Tiết giảm từ không",
+          "tier": "medium"
+        },
+        {
+          "id": "energy_redirection",
+          "label": "Chuyển hướng năng lượng",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 18,
+      "topics": [
+        {
+          "id": "use_may",
+          "label": "Sử dụng từ May",
+          "tier": "medium"
+        },
+        {
+          "id": "illusion_of_choice",
+          "label": "Ảo tưởng về lựa chọn",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 19,
+      "topics": [
+        {
+          "id": "rhythm_discipline",
+          "label": "Kỷ luật bằng nhịp điệu",
+          "tier": "medium"
+        },
+        {
+          "id": "rhythm_balance",
+          "label": "Sự cân bằng nhịp điệu",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 20,
+      "topics": [
+        {
+          "id": "healing_action",
+          "label": "Hành động chữa lành",
+          "tier": "medium"
+        },
+        {
+          "id": "violence_myth",
+          "label": "Lầm tưởng xả bạo lực",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 21,
+      "topics": [
+        {
+          "id": "consequent_action",
+          "label": "Hành động nhất quán",
+          "tier": "medium"
+        },
+        {
+          "id": "healing_conflict",
+          "label": "Hóa giải xung đột",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 22,
+      "topics": [
+        {
+          "id": "positivity_discipline",
+          "label": "Kỷ luật tích cực",
+          "tier": "medium"
+        },
+        {
+          "id": "tired_child_care",
+          "label": "Chăm sóc trẻ mệt mỏi",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 23,
+      "topics": [
+        {
+          "id": "spiritual_discipline",
+          "label": "Kỷ luật tâm linh",
+          "tier": "medium"
+        },
+        {
+          "id": "sleep_life_connection",
+          "label": "Kết nối qua giấc ngủ",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 24,
+      "topics": [
+        {
+          "id": "true_discipline",
+          "label": "Kỷ luật đích thực",
+          "tier": "medium"
+        },
+        {
+          "id": "yelling_harm",
+          "label": "Tác hại của la mắng",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 25,
+      "topics": [
+        {
+          "id": "four_temperaments",
+          "label": "Bốn khí chất",
+          "tier": "medium"
+        },
+        {
+          "id": "like_heals_like",
+          "label": "Giống nhau chữa lành",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 26,
+      "topics": [
+        {
+          "id": "music_rhythm",
+          "label": "Nhịp điệu âm nhạc",
+          "tier": "medium"
+        },
+        {
+          "id": "song_and_movement",
+          "label": "Bài hát và vận động",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 27,
+      "topics": [
+        {
+          "id": "rainbow_bridge_story",
+          "label": "Câu chuyện Cầu Vồng",
+          "tier": "medium"
+        },
+        {
+          "id": "tell_from_memory",
+          "label": "Kể chuyện từ trí nhớ",
+          "tier": "narrow"
+        }
+      ]
+    },
+    {
+      "chunk_index": 28,
+      "topics": [
+        {
+          "id": "fairy_tale_complexity",
+          "label": "Độ phức tạp cổ tích",
+          "tier": "medium"
+        },
+        {
+          "id": "flexible_story_selection",
+          "label": "Chọn truyện linh hoạt",
+          "tier": "narrow"
+        }
+      ]
+    }
+  ]
+}

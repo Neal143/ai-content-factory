@@ -1,0 +1,47 @@
+graph LR
+    %% @flow(1) [Idea Curator] 00. Tổng quan: start -> read_inputs -> check_mode -> gen_brief -> validate_script -> done
+    %% @flow(2 > 00) [Idea Curator] 01. Backbone: start -> read_inputs -> check_mode -> gen_brief
+    %% @flow(3 > 01) [Idea Curator] 01a. Nhánh Thuần Vault: check_mode -> mode_standard -> gen_brief
+    %% @flow(3 > 01) [Idea Curator] 01b. Nhánh Suy luận: check_mode -> mode_improvise -> gen_brief
+    %% @flow(2 > 00) [Idea Curator] 02. Validation (Script): gen_brief -> validate_script -> check_blackboard -> check_audience -> check_viral -> check_structural -> check_dikw -> done
+    %% @flow(3 > 02) [Idea Curator] 02a. Lỗi Poka-Yoke: check_blackboard -.-> revise_idea
+    %% @flow(3 > 02) [Idea Curator] 02b. Lỗi Poka-Yoke: check_audience -.-> revise_idea
+    %% @flow(3 > 02) [Idea Curator] 02c. Lỗi Poka-Yoke: check_viral -.-> revise_idea
+    %% @flow(3 > 02) [Idea Curator] 02d. Lỗi Poka-Yoke: check_structural -.-> revise_idea
+    %% @flow(3 > 02) [Idea Curator] 02e. Lỗi Poka-Yoke: check_dikw -.-> revise_idea
+    %% @flow(3 > 02) [Idea Curator] 02f. Sửa Lỗi: revise_idea -.-> validate_script
+
+    subgraph Phase_Routing [Bước 1: Định tuyến Kịch bản]
+        direction LR
+        start([Khởi chạy Phase 1]) --> read_inputs[Đọc Đầu vào]
+        ref_bb[/00-blackboard.yaml/] -.-> read_inputs
+        ref_pillar[/pillar-guide.md/] -.-> read_inputs
+        read_inputs --> check_mode{Novel Angle / DIKW rỗng?}
+        check_mode -->|Không| mode_standard[Kịch bản 1: Thuần Vault]
+        check_mode -->|Có| mode_improvise[Kịch bản 2: Suy luận Sáng tạo]
+    end
+
+    subgraph Phase_Generation [Bước 2: Khởi tạo Idea Brief]
+        direction LR
+        mode_standard --> gen_brief[Sinh file 01-idea-brief.md]
+        mode_improvise --> gen_brief
+    end
+
+    subgraph Phase_Validation [Bước 3: validate-idea.ps1]
+        direction LR
+        gen_brief --> validate_script([Bắt đầu Script])
+        validate_script --> check_blackboard{Đủ biến cốt lõi?}
+        check_blackboard -->|OK| check_audience{Đủ Target Audience?}
+        check_audience -->|OK| check_viral{Viral Score >= 7?}
+        check_viral -->|OK| check_structural{Đủ 4 Core Sections?}
+        check_structural -->|OK| check_dikw{Có nguồn DIKW?}
+        
+        check_blackboard -.->|FAIL| revise_idea[Sửa Idea Brief]
+        check_audience -.->|FAIL| revise_idea
+        check_viral -.->|FAIL| revise_idea
+        check_structural -.->|FAIL| revise_idea
+        check_dikw -.->|FAIL| revise_idea
+        
+        revise_idea -.-> validate_script
+        check_dikw -->|ALL PASS| done((Hoàn tất Phase 1))
+    end

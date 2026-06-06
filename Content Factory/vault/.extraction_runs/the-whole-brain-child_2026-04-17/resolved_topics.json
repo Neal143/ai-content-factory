@@ -1,0 +1,66 @@
+{
+  "book": [
+    "phat_trien_tam_ly_tre",
+    "dieu_hoa_cam_xuc",
+    "khoa_hoc_than_kinh_ung_dung"
+  ],
+  "1": [
+    "khung_hoang_cam_xuc",
+    "phat_trien_tam_ly_tre"
+  ],
+  "3": [
+    "ket_noi_truoc_khi_dieu_huong",
+    "dieu_hoa_cam_xuc"
+  ],
+  "4": [
+    "goi_ten_cam_xuc",
+    "dieu_hoa_cam_xuc",
+    "ke_chuyen"
+  ],
+  "5": [
+    "kich_hoat_nao_tang_tren",
+    "dieu_hoa_cam_xuc"
+  ],
+  "6": [
+    "tu_duy_logic_cho_tre",
+    "nao_bo_tre_em"
+  ],
+  "7": [
+    "dieu_hoa_qua_the_chat",
+    "dieu_hoa_cam_xuc"
+  ],
+  "8": [
+    "ung_pho_ky_uc_buon",
+    "phat_trien_tam_ly_tre",
+    "tri_tuong_tuong"
+  ],
+  "9": [
+    "ren_luyen_tri_nho",
+    "phat_trien_tam_ly_tre"
+  ],
+  "10": [
+    "tinh_tam_thoi_cua_cam_xuc",
+    "dieu_hoa_cam_xuc"
+  ],
+  "11": [
+    "nhan_dien_the_gioi_noi_tam",
+    "ky_nang_sift",
+    "dieu_hoa_cam_xuc"
+  ],
+  "12": [
+    "tu_xoa_diu_lo_au",
+    "dieu_hoa_cam_xuc"
+  ],
+  "13": [
+    "niem_vui_gia_dinh",
+    "gan_ket_an_toan"
+  ],
+  "14": [
+    "ky_nang_giai_quyet_xung_dot",
+    "gan_ket_an_toan"
+  ],
+  "2": [
+    "nao_bo_tre_em",
+    "khoa_hoc_than_kinh_ung_dung"
+  ]
+}

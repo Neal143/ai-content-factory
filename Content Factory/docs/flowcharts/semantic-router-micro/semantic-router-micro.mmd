@@ -1,0 +1,152 @@
+graph LR
+    %% @flow(1) [Tổng quan] 00. Luồng Khớp Nhanh: Start -> Input -> CheckPillarInput -> SetPillar -> ReadLog1 -> DupCheck1 -> RunScript -> MatchScript -> CheckAudience -> CheckSingle -> ResolveJTBD2 -> SetNotNovel -> WriteBB -> Output -> End
+    %% @flow(1) [Tổng quan] 10. Luồng Novel Angle: RunScript -> GenTopic -> MapTopic -> MatchMap -> CheckAuth1 -> AssignAuto -> WaitPillar3 -> ResolveJTBD1 -> SetNovel -> CheckAuth2 -> ReadLog2 -> DupCheck2 -> WriteBB
+    %% @flow(2 > 00) [Ngoại lệ Pillar] 01. Nhập sai Pillar: MatchPillar -> WaitPillar2 -> MatchPillar
+    %% @flow(2 > 00) [Ngoại lệ Pillar] 02. Đổi Pillar (Sớm): DupCheck1 -> WaitDup1 -> CheckPillarInput
+    %% @flow(2 > 10) [Ngoại lệ Pillar] 03. Đổi Pillar (Muộn): DupCheck2 -> WaitDup2 -> CheckPillarInput
+    %% @flow(2 > 00) [Audience] 04. Xử lý Multi-Audience: CheckAudience -> WaitAudience -> CheckSingle -> SkipJTBD -> SetNotNovel
+
+    %% INPUT
+    Start([Khởi động Semantic Router])
+    Input[/Chuỗi yêu cầu nội dung/]
+
+    subgraph S1 [Bước 1: Xác định Pillar]
+        direction LR
+        CheckPillarInput{User có nhập Pillar?}
+        MenuPillar[In Menu & Tư vấn Pillar]
+        WaitPillar1[/Chờ User phản hồi/]
+        MatchPillar[Semantic Match với pillars.yaml]
+        WaitPillar2[/Chờ User chọn lại/]
+        SetPillar[Chốt Target_Pillar]
+    end
+
+    subgraph S2 [Bước 2: Kiểm tra trùng Pillar sớm]
+        direction LR
+        ReadLog1[(Đọc production-log.md)]
+        DupCheck1{Trùng 2 bài liên tiếp?}
+        WaitDup1[/Chờ User quyết định/]
+    end
+
+    subgraph S3 [Bước 3: Quét Direct Match]
+        direction LR
+        RunScript[[Chạy direct_match.ps1]]
+        MatchScript{Có dữ liệu MATCH?}
+    end
+
+    subgraph S4 [Bước 4: Sinh Topic truy vấn]
+        direction LR
+        GenTopic[Sinh Topic Trung & Hẹp]
+    end
+
+    subgraph S5 [Bước 5: Đối chiếu Topic Map]
+        direction LR
+        MapTopic[Đối chiếu topic_map.yaml]
+        MatchMap{Khớp Topic Map?}
+    end
+
+    subgraph S6 [Bước 6: Gán Pillar cho Novel Angle]
+        direction LR
+        CheckAuth1{User ủy quyền ở B1?}
+        AssignAuto[AI tự chọn Pillar]
+        WaitPillar3[/Chờ User xác nhận/]
+        AssignDirect[Gán Target_Pillar có sẵn]
+        ResolveJTBD1[Resolve JTBD cho Novel Angle]
+        SetNovel[Gán Is_Novel_Angle = True]
+    end
+
+    subgraph S7 [Bước 7: Kiểm tra trùng Pillar muộn]
+        direction LR
+        CheckAuth2{User ủy quyền ở B1?}
+        ReadLog2[(Đọc production-log.md)]
+        DupCheck2{Trùng 2 bài liên tiếp?}
+        WaitDup2[/Chờ User quyết định/]
+    end
+
+    subgraph S8 [Bước 8: Phân giải Audience & JTBD]
+        direction LR
+        CheckAudience{Audience ngang hàng?}
+        WaitAudience[/Chờ User chọn 1 hoặc ALL/]
+        CheckSingle{Là Single Audience?}
+        ResolveJTBD2[Resolve JTBD]
+        SkipJTBD[Chưa ghi JTBD]
+        SetNotNovel[Gán Is_Novel_Angle = False]
+    end
+
+    subgraph S9 [Bước 9: Đóng gói Blackboard]
+        direction LR
+        WriteBB[Ghi 00-blackboard.yaml]
+    end
+
+    Output[/00-blackboard.yaml <br> topic, Target_Pillar, Target_Audience, Is_Novel_Angle, Persona_Path, resolved_jtbd/]
+    End((Hoàn tất Skill))
+
+    %% CONNECTIONS
+    Start --> Input
+    Input --> CheckPillarInput
+    
+    %% S1
+    CheckPillarInput -- Không --> MenuPillar
+    MenuPillar --> WaitPillar1
+    WaitPillar1 -- "Chọn (1->N-1)" --> SetPillar
+    WaitPillar1 -- "Ủy quyền (N)" --> RunScript
+    
+    CheckPillarInput -- Có --> MatchPillar
+    MatchPillar -.->|Không khớp| WaitPillar2
+    WaitPillar2 -.-> MatchPillar
+    MatchPillar -->|Khớp| SetPillar
+    
+    SetPillar --> ReadLog1
+    
+    %% S2
+    ReadLog1 --> DupCheck1
+    DupCheck1 -->|Có| WaitDup1
+    WaitDup1 -.->|Đổi Pillar| CheckPillarInput
+    WaitDup1 -->|Tiếp tục| RunScript
+    DupCheck1 -->|Không| RunScript
+    
+    %% S3
+    RunScript --> MatchScript
+    MatchScript -->|Có| CheckAudience
+    MatchScript -->|Không| GenTopic
+    
+    %% S4
+    GenTopic --> MapTopic
+    
+    %% S5
+    MapTopic --> MatchMap
+    MatchMap -->|Có| CheckAudience
+    MatchMap -->|Không| CheckAuth1
+    
+    %% S6
+    CheckAuth1 -->|Có| AssignAuto
+    AssignAuto --> WaitPillar3
+    WaitPillar3 --> ResolveJTBD1
+    
+    CheckAuth1 -->|Không| AssignDirect
+    AssignDirect --> ResolveJTBD1
+    
+    ResolveJTBD1 --> SetNovel
+    SetNovel --> CheckAuth2
+    
+    %% S7
+    CheckAuth2 -->|Có| ReadLog2
+    ReadLog2 --> DupCheck2
+    DupCheck2 -->|Có| WaitDup2
+    WaitDup2 -.->|Đổi Pillar| CheckPillarInput
+    WaitDup2 -->|Tiếp tục| WriteBB
+    DupCheck2 -->|Không| WriteBB
+    CheckAuth2 -->|Không| WriteBB
+    
+    %% S8
+    CheckAudience -->|Có| WaitAudience
+    WaitAudience --> CheckSingle
+    CheckAudience -->|Không| CheckSingle
+    CheckSingle -->|Có| ResolveJTBD2
+    CheckSingle -->|Không| SkipJTBD
+    ResolveJTBD2 --> SetNotNovel
+    SkipJTBD --> SetNotNovel
+    SetNotNovel --> WriteBB
+    
+    %% S9
+    WriteBB --> Output
+    Output --> End

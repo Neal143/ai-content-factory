@@ -168,7 +168,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
 > **UX Report (Cuối Tier 2):** Báo cáo: **Completeness 65%. Hoàn tất quá trình Onboarding** và giới thiệu về Tier 3 là giai đoạn AI sẽ tự động học hỏi và tinh chỉnh trong quá trình user sử dụng hệ thống, user không cần phải làm gì cả. Sau đó Hướng dẫn user thực hiện các bước sau:
 > - Dùng `/story-bank` để kể 10 câu chuyện đầu tiên
 > - Dùng `/content-post` để test bài đầu tiên
-> - Copy bài đã đăng vào `vault/[Tên_User]/Posted/` và bài viral vào `vault/[Tên_User]/Viral Posts/` để hệ thống tìm thêm stories
+> - Copy bài đã đăng vào `vault/03-Content/Posted/` và bài viral vào `vault/03-Content/Viral Posts/` để hệ thống tìm thêm stories
 
 ## Tier 3: Mastery (Auto)
 Mục tiêu: Đạt 100%. User không cần làm gì, cơ chế hệ thống sẽ tự động cập nhật ngầm qua quá trình sử dụng:

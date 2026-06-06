@@ -1,0 +1,37 @@
+{
+  "batch_index": 3,
+  "batch_password": "74478edc",
+  "total_batches": 6,
+  "items": [
+    {
+      "uid": "uid_chunk_11",
+      "id": "parents_create_play_environment_develop_imagination_life_skills_setup_space_toys",
+      "semantic_query": "Cha mẹ muốn tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng và kỹ năng sống khi thiết lập không gian sống và chọn mua đồ chơi cho con.",
+      "file_ref": "[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]"
+    },
+    {
+      "uid": "uid_chunk_12",
+      "id": "parents_nurture_physical_basic_senses_development_infant_to_seven",
+      "semantic_query": "Cha mẹ muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi.",
+      "file_ref": "[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]"
+    },
+    {
+      "uid": "uid_chunk_13",
+      "id": "parents_nurture_soul_protect_emotional_senses_artificial_stimuli",
+      "semantic_query": "Cha mẹ muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo.",
+      "file_ref": "[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]"
+    },
+    {
+      "uid": "uid_chunk_14",
+      "id": "parents_nurture_cognitive_senses_complex_communication_sounds",
+      "semantic_query": "Cha mẹ muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp.",
+      "file_ref": "[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]"
+    },
+    {
+      "uid": "uid_chunk_15",
+      "id": "parents_discipline_child_bad_behaviors",
+      "semantic_query": "Cha mẹ muốn rèn luyện kỷ luật cho con khi đối mặt với những hành vi chưa tốt của trẻ nhỏ.",
+      "file_ref": "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+    }
+  ]
+}

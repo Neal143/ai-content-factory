@@ -1,0 +1,57 @@
+graph LR
+    %% @flow(1) [Voice Writer] 00. Tổng quan: start -> read_refs -> write_draft -> validate_script -> self_check -> done
+    %% @flow(2 > 00) [Voice Writer] 01. Chuẩn bị: start -> read_refs -> extract_input -> write_draft
+    %% @flow(3 > 01) [Voice Writer] 01a. Mất file tham chiếu: read_refs -.-> fail_read_refs -.-> exit_fail
+    %% @flow(2 > 00) [Voice Writer] 02. Viết nháp: write_draft -> validate_script
+    %% @flow(2 > 00) [Voice Writer] 03. Validation (Script): validate_script -> check_format -> check_lexical -> check_anti_ai -> check_keys -> self_check
+    %% @flow(3 > 03) [Voice Writer] 03a. Lỗi Cấu trúc: check_format -.-> revise_draft -.-> write_draft
+    %% @flow(3 > 03) [Voice Writer] 03b. Lỗi Lexical: check_lexical -.-> revise_draft
+    %% @flow(3 > 03) [Voice Writer] 03c. Lỗi Anti-AI: check_anti_ai -.-> revise_draft
+    %% @flow(3 > 03) [Voice Writer] 03d. Sai Tham chiếu: check_keys -.-> revise_draft
+    %% @flow(2 > 00) [Voice Writer] 04. Self-Check Gate: self_check -> check_sas -> check_quality -> done
+    %% @flow(3 > 04) [Voice Writer] 04a. SAS Violation (Bịa Story): check_sas -.-> fail_sas -.-> exit_fail
+    %% @flow(3 > 04) [Voice Writer] 04b. Chưa đạt chuẩn Subjective: check_quality -.-> issue_tracking -.-> revise_draft
+
+    subgraph Phase_Init [Bước 1-2: Khởi tạo & Tham chiếu]
+        direction LR
+        start([Khởi chạy Phase 5]) --> read_refs[Đọc File References]
+        ref_rules[/writing-rules.md/] -.-> read_refs
+        ref_anti_ai[/anti-ai-patterns.md/] -.-> read_refs
+        ref_blacklist[/english-blacklist.md/] -.-> read_refs
+        read_refs -->|OK| extract_input[Nạp Input Context]
+        read_refs -.->|Lỗi File| fail_read_refs[Dừng báo lỗi User]
+    end
+
+    subgraph Phase_Execution [Bước 3: Viết Section-by-Section]
+        direction LR
+        extract_input --> write_draft[Viết bài theo Word Budget]
+        revise_draft[Sửa lỗi cục bộ] -.-> write_draft
+    end
+
+    subgraph Phase_Validation [Bước 4: validate-draft.ps1]
+        direction LR
+        write_draft --> validate_script[[Khởi chạy Script]]
+        validate_script --> check_format{Chuẩn Cấu trúc?}
+        check_format -->|OK| check_lexical{Đạt Voice DNA?}
+        check_lexical -->|OK| check_anti_ai{Sạch Anti-AI?}
+        check_anti_ai -->|OK| check_keys{Khớp Ref Keys?}
+        
+        check_format -.->|FAIL| revise_draft
+        check_lexical -.->|FAIL| revise_draft
+        check_anti_ai -.->|FAIL| revise_draft
+        check_keys -.->|FAIL| revise_draft
+    end
+
+    subgraph Phase_Gate [Bước 5-7: Self-Check & Revision]
+        direction LR
+        check_keys -->|ALL PASS| self_check[Kiểm tra Subjective]
+        self_check --> check_sas{Vi phạm SAS v18.2?}
+        check_sas -.->|Có| fail_sas[Báo User & Dừng]
+        check_sas -->|Không| check_quality{Đạt 8 Tiêu chí?}
+        check_quality -->|PASS| done((Hoàn thành Phase 5))
+        check_quality -.->|REVISE| issue_tracking[Ghi gate5-issues.md]
+        issue_tracking -.-> revise_draft
+    end
+
+    fail_read_refs -.-> exit_fail((Hủy tiến trình))
+    fail_sas -.-> exit_fail

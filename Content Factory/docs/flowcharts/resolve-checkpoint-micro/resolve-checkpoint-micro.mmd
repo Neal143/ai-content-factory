@@ -1,0 +1,38 @@
+graph LR
+    %% @flow(1) [Khôi phục Phiên] 00. Tổng quan: start -> scan_runs -> parse_checkpoint -> build_files -> output_env -> done
+    %% @flow(2 > 00) [Khôi phục Phiên] 01. Tìm Session: start -> scan_runs -> find_inprogress -> parse_checkpoint
+    %% @flow(3 > 01) [Khôi phục Phiên] 01a. Ngoại lệ tìm kiếm: scan_runs -> fail_dir -> exit_fail
+    %% @flow(3 > 01) [Khôi phục Phiên] 01b. Không có session: find_inprogress -> fail_no_session -> exit_fail
+    %% @flow(2 > 00) [Khôi phục Phiên] 02. Parse Dữ liệu: parse_checkpoint -> parse_bb -> build_files
+    %% @flow(3 > 02) [Khôi phục Phiên] 02a. Thiếu Blackboard: parse_bb -> fail_bb -> exit_fail
+    %% @flow(2 > 00) [Khôi phục Phiên] 03. Tái tạo Context: build_files -> check_corrupted -> output_env -> done
+    %% @flow(3 > 03) [Khôi phục Phiên] 03a. State Corrupted: check_corrupted -> fail_corrupted -> exit_fail
+
+    subgraph Phase_Init [1. Khởi tạo & Tìm kiếm]
+        direction LR
+        start([Khởi chạy Resume]) --> scan_runs[Kiểm tra thư mục Runs]
+        scan_runs -->|OK| find_inprogress[Tìm Session In_progress]
+        scan_runs -.->|Lỗi| fail_dir[Báo lỗi thư mục]
+        find_inprogress -->|Đã thấy| parse_checkpoint[Đọc Checkpoint]
+        find_inprogress -.->|Trống| fail_no_session[Báo lỗi không Session]
+    end
+
+    subgraph Phase_Parse [2. Trích xuất Context]
+        direction LR
+        parse_checkpoint --> parse_bb[Đọc Blackboard]
+        parse_bb -->|OK| build_files[Tạo mảng LOAD_FILES]
+        parse_bb -.->|Mất file| fail_bb[Báo lỗi mất Blackboard]
+    end
+
+    subgraph Phase_Check [3. Kiểm chứng & Hoàn tất]
+        direction LR
+        build_files --> check_corrupted{Đủ file map không?}
+        check_corrupted -->|Đủ| output_env[Xuất biến môi trường]
+        check_corrupted -.->|Thiếu| fail_corrupted[Báo lỗi Corrupted]
+        output_env --> done((Khôi phục Thành công))
+    end
+
+    fail_dir -.-> exit_fail((Hủy Khôi phục))
+    fail_no_session -.-> exit_fail
+    fail_bb -.-> exit_fail
+    fail_corrupted -.-> exit_fail

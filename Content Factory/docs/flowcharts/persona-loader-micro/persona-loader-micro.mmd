@@ -1,0 +1,43 @@
+graph LR
+    %% @flow(1) [Persona Loader] 00. Tổng quan: start -> read_files -> compile_pack -> validate_pack -> rotate_key -> done
+    %% @flow(2 > 00) [Persona Loader] 01. Nạp YAML & BB: start -> read_files -> read_bb -> compile_pack
+    %% @flow(3 > 01) [Persona Loader] 01a. Mất file YAML: read_files -> fail_file_not_found -> exit_fail
+    %% @flow(2 > 00) [Persona Loader] 02. Đóng gói: compile_pack -> write_keys -> validate_pack
+    %% @flow(2 > 00) [Persona Loader] 03. Validation: validate_pack -> check_sections -> check_fields -> check_keys -> rotate_key
+    %% @flow(3 > 03) [Persona Loader] 03a. Lỗi File Pack: validate_pack -> fail_pack_missing -> exit_fail
+    %% @flow(3 > 03) [Persona Loader] 03b. Lỗi Format/Data: check_sections -> fail_format -> exit_fail
+    %% @flow(3 > 03) [Persona Loader] 03c. Lỗi Format/Data: check_fields -> fail_format
+    %% @flow(3 > 03) [Persona Loader] 03d. Lỗi Format/Data: check_keys -> fail_format
+    %% @flow(2 > 00) [Persona Loader] 04. Idempotent Rotation: rotate_key -> done
+
+    subgraph Phase_Execution [Phase 4.5: Tạo Persona Pack]
+        direction LR
+        start([Nạp Skill]) --> read_files[Đọc 3 file YAML]
+        read_files -->|OK| read_bb[Đọc JTBD từ Blackboard]
+        read_files -.->|Lỗi| fail_file_not_found[Báo lỗi File Not Found]
+        
+        read_bb --> compile_pack[Compile Persona Pack]
+        compile_pack --> write_keys[Ghi Execution & Persona Keys]
+    end
+
+    subgraph Phase_Validation [Validation & Rotation - Kích hoạt bởi Sentinel]
+        direction LR
+        write_keys --> validate_pack{Pack tồn tại?}
+        validate_pack -->|Có| check_sections{Đủ 4 Sections?}
+        validate_pack -.->|Không/Rỗng| fail_pack_missing[Báo lỗi file Pack]
+        
+        check_sections -->|Đủ| check_fields{Trường thiết yếu OK?}
+        check_sections -.->|Thiếu| fail_format[Báo lỗi định dạng/dữ liệu]
+        
+        check_fields -->|OK| check_keys{Key khớp Source?}
+        check_fields -.->|Lỗi| fail_format
+        
+        check_keys -->|Khớp| rotate_key[Rotate Voice-DNA Key]
+        check_keys -.->|Sai lệch| fail_format
+        
+        rotate_key --> done((Hoàn tất Load Persona))
+    end
+
+    fail_file_not_found -.-> exit_fail((Hủy tiến trình))
+    fail_pack_missing -.-> exit_fail
+    fail_format -.-> exit_fail

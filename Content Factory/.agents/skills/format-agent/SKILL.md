@@ -12,7 +12,7 @@ provided_outputs:
 
 # Format Agent (Phase 7)
 
-> EXECUTION_KEY: 9826045c
+> EXECUTION_KEY: a379250b
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn. Phase này là một trạm tự động (Automation Node).
@@ -23,7 +23,7 @@ provided_outputs:
 
 1. Chạy lệnh dưới đây để hệ thống tự động bóc tách dữ liệu, format cấu trúc, render spacing và cập nhật file log:
 ```powershell
-powershell -ExecutionPolicy Bypass -File .agents/skills/format-agent/scripts/validate-format.ps1 -DraftPath "output/runs/[run-folder]/05-draft.md" -RunFolder "output/runs/[run-folder]/"
+powershell -ExecutionPolicy Bypass -File .agents/skills/format-agent/scripts/validate-format.ps1 -DraftPath "vault/.content-pipeline/runs/[run-folder]/05-draft.md" -RunFolder "vault/.content-pipeline/runs/[run-folder]/"
 ```
 
 2. Đọc kết quả Output. 

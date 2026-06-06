@@ -1,0 +1,60 @@
+{
+  "password": "923e12c4",
+  "anchors": [
+    {
+      "id": "true_discipline",
+      "label": "Kỷ luật đích thực",
+      "pillar": "Steiner và khoa học phát triển toàn diện"
+    },
+    {
+      "id": "yelling_harm",
+      "label": "Tác hại của la mắng",
+      "pillar": "Steiner và khoa học phát triển toàn diện"
+    },
+    {
+      "id": "four_temperaments",
+      "label": "Bốn khí chất",
+      "pillar": "Steiner và khoa học phát triển toàn diện"
+    },
+    {
+      "id": "like_heals_like",
+      "label": "Giống nhau chữa lành",
+      "pillar": "Steiner và khoa học phát triển toàn diện"
+    },
+    {
+      "id": "music_rhythm",
+      "label": "Nhịp điệu âm nhạc",
+      "pillar": "Steiner và khoa học phát triển toàn diện"
+    }
+  ],
+  "batch_topics": [
+    {
+      "proposed_id": "rainbow_bridge_story",
+      "label": "Câu chuyện Cầu Vồng",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Ví dụ cụ thể về câu chuyện sinh nhật mang tính biểu tượng Waldorf."
+    },
+    {
+      "proposed_id": "tell_from_memory",
+      "label": "Kể chuyện từ trí nhớ",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Một phương pháp kỹ thuật kể chuyện để tạo sự gắn kết."
+    },
+    {
+      "proposed_id": "fairy_tale_complexity",
+      "label": "Độ phức tạp cổ tích",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Hệ thống chọn truyện cổ tích dựa trên lứa tuổi."
+    },
+    {
+      "proposed_id": "flexible_story_selection",
+      "label": "Chọn truyện linh hoạt",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Quy tắc áp dụng sự linh hoạt thay vì cứng nhắc trong việc chọn truyện."
+    }
+  ]
+}

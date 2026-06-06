@@ -1,0 +1,40 @@
+{
+  "password": "849299df",
+  "batch_topics": [
+    {
+      "proposed_id": "music_rhythm",
+      "label": "Nhịp điệu âm nhạc",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chưa có trong YAML."
+    },
+    {
+      "proposed_id": "rainbow_bridge_story",
+      "label": "Câu chuyện Cầu Vồng",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chưa có trong YAML."
+    },
+    {
+      "proposed_id": "tell_from_memory",
+      "label": "Kể chuyện từ trí nhớ",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chưa có trong YAML."
+    },
+    {
+      "proposed_id": "fairy_tale_complexity",
+      "label": "Độ phức tạp cổ tích",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chưa có trong YAML."
+    },
+    {
+      "proposed_id": "flexible_story_selection",
+      "label": "Chọn truyện linh hoạt",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chưa có trong YAML."
+    }
+  ]
+}

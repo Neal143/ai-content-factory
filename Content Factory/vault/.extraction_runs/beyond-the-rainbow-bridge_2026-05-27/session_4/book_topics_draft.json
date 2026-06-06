@@ -1,0 +1,15 @@
+{
+  "pillar": "Steiner và khoa học phát triển toàn diện",
+  "book_topics": [
+    {
+      "id": "early_childhood_development",
+      "label": "Phát triển não bộ mầm non",
+      "tier": "broad"
+    },
+    {
+      "id": "waldorf_rhythm",
+      "label": "Nhịp điệu sinh hoạt Waldorf",
+      "tier": "medium"
+    }
+  ]
+}

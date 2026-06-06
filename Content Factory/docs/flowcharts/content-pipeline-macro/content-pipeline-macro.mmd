@@ -1,0 +1,93 @@
+graph LR
+    %% @flow(1) [Content Pipeline] 00. Tổng quan: cmd_new -> S_Entry -> S_Session1 -> S_Session2 -> S_End
+
+    %% --- GLOBAL NODES ---
+    escalate((Dừng khẩn cấp & Escalate User))
+
+    subgraph S_Entry [Điểm vào & Khởi tạo]
+        direction LR
+        cmd_new([Lệnh: /content-post]) --> check_status{PIPELINE_STATUS?}
+        check_status -.->|CHƯA SẴN SÀNG| escalate
+        check_status -->|SẴN SÀNG| p0[Bước 3: validate-persona]
+        p0 -.->|Exit 1| escalate
+        p0 -->|Exit 0| p05[Bước 4: semantic-router]
+        
+        p05 -.->|00-blackboard.yaml| run_folder[(Run Folder)]
+        p05 --> sen0{Sentinel Ph.0}
+        sen0 -.->|FAIL| escalate
+    end
+
+    subgraph S_Session1 [Phiên 1: Research & Outline]
+        direction LR
+        sen0 -->|PASS| check_novel{Is_Novel_Angle?}
+        check_novel -->|False| p1[Phase 1: dikw-bridge]
+        p1 -.->|00.5-dikw-combo.md| run_folder
+        p1 --> p2_1[Phase 1: idea-curator]
+        check_novel -->|True| p2_1
+        
+        p2_1 -.->|01-idea-brief.md| run_folder
+        p2_1 --> sen1{Sentinel Ph.1}
+        sen1 -.->|FAIL| escalate
+        
+        sen1 -->|PASS| p2_2[Phase 2: insight-agent]
+        p2_2 -.->|02-research-brief.md| run_folder
+        p2_2 --> sen2{Sentinel Ph.2}
+        sen2 -.->|FAIL| escalate
+        
+        sen2 -->|PASS| p2_3[Phase 3: hook-engineer]
+        p2_3 -.->|03-hook.md| run_folder
+        p2_3 --> sen3{Sentinel Ph.3}
+        sen3 -.->|FAIL| escalate
+        
+        sen3 -->|PASS| p2_4[Phase 4: structure-designer]
+        p2_4 -.->|04-outline.md| run_folder
+        p2_4 --> sen4{Sentinel Ph.4}
+        sen4 -.->|FAIL| escalate
+        sen4 -->|PASS + HALT| pause_cp((Dừng: Chờ Mở Session 2))
+    end
+
+    subgraph S_Session2 [Phiên 2: Write & Format]
+        direction LR
+        cmd_resume([Lệnh: /content tiếp tục]) --> p_resolve[Chạy resolve-checkpoint]
+        p_resolve -.->|Exit 1| escalate
+        p_resolve -->|Exit 0| load_files[view_file tất cả LOAD_FILES]
+        load_files --> p45[Phase 4.5: persona-loader]
+        
+        p45 -.->|04.5-persona-pack.md| run_folder
+        p45 --> sen45{Sentinel Ph.45}
+        sen45 -.->|FAIL| escalate
+        
+        sen45 -->|PASS| p5[Phase 5: voice-writer]
+        p5 -.->|05-draft.md| run_folder
+        p5 --> sen5{Sentinel Ph.5}
+        sen5 -.->|FAIL| escalate
+        
+        sen5 -->|PASS| gate5{Self-Check Gate 5}
+        gate5 -.->|REVISE| err_g5[/gate5-issues.md/] -.-> p5
+        gate5 -.->|FAIL 3 lần| escalate
+        
+        gate5 -->|PASS| p6[Phase 6: qa-checker]
+        p6 -.->|06-qa-result.md| run_folder
+        p6 --> sen6{Sentinel Ph.6}
+        sen6 -.->|FAIL| escalate
+        
+        sen6 -->|PASS| gate6{Self-Check Gate 6}
+        gate6 -.->|REVISE| err_g6[/gate6-issues.md/] -.-> p5
+        gate6 -.->|FAIL 3 lần| escalate
+        
+        gate6 -->|PASS| p7[Phase 7: format-agent]
+        p7 -.->|07-final.md| run_folder
+        p7 -.->|Xuất bản| out_post[/posts/YYYY-MM-DD-slug.md/]
+    end
+
+    %% --- LIÊN KẾT PHIÊN ---
+    pause_cp -.->|User mở conversation mới| cmd_resume
+
+    subgraph S_End [Hoàn Thành]
+        direction LR
+        p7 --> write_log[Ghi production-log & hook-history]
+        write_log --> check_cp{Có checkpoint.yaml?}
+        check_cp -->|Có| update_cp[Cập nhật status: completed]
+        check_cp -->|Không| end_pipe((Hoàn Thành))
+        update_cp --> end_pipe
+    end

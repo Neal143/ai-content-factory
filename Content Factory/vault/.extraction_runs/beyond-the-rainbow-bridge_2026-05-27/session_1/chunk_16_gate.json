@@ -1,0 +1,27 @@
+{
+  "chunk_index": 16,
+  "chunk_name": "Creative Discipline - Reforming the Space",
+  "passed": false,
+  "skipped": false,
+  "failed_gates": [
+    "[2]"
+  ],
+  "error_code": "MISMATCH",
+  "needs_retry": true,
+  "needs_supplement": false,
+  "detail": "CHUNK mismatch (vs Agent-provided): expected='Chunk 16: Creative Discipline - Reforming the Space' | found='Chunk 16: Creative Discipline - Clear Messages and Limited Choices'",
+  "raw_file": "chunk_16_raw.txt",
+  "next_action": {
+    "type": "RETRY",
+    "max_retry": 2,
+    "instruction": "Gọi lại NLM query gốc (từ next_chunk.py), lưu đè raw file, chạy lại gate_checker.",
+    "detail": "CHUNK mismatch (vs Agent-provided): expected='Chunk 16: Creative Discipline - Reforming the Space' | found='Chunk 16: Creative Discipline - Clear Messages and Limited Choices'",
+    "on_exhaust": {
+      "ledger_update": {
+        "status": "FATAL",
+        "error_code": "MISMATCH"
+      },
+      "do_not_append": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "password": "d0ea287c",
+  "pillar": "Steiner và khoa học phát triển toàn diện",
+  "book_topics": [
+    {
+      "id": "early_childhood_development",
+      "label": "Phát triển não bộ mầm non",
+      "tier": "broad",
+      "reasoning": "Cuốn sách tập trung vào những năm đầu đời của trẻ (từ 0-7 tuổi), đây là giai đoạn cửa sổ vàng để phát triển cả thể chất và tinh thần theo triết lý Waldorf."
+    },
+    {
+      "id": "waldorf_rhythm",
+      "label": "Nhịp điệu sinh hoạt Waldorf",
+      "tier": "medium",
+      "reasoning": "Một trong những yếu tố cốt lõi của cuốn sách là cách thiết lập nhịp điệu sinh hoạt hằng ngày và nhịp điệu theo mùa để nuôi dưỡng cảm giác an toàn và sự phát triển của trẻ."
+    }
+  ]
+}

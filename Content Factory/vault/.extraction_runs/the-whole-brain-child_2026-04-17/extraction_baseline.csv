@@ -1,0 +1,108 @@
+section,chunk,category,id,status
+audience,book,audience,Người muốn áp dụng các chiến lược khoa học thần kinh để điều chỉnh cảm xúc và hành vi của trẻ khi đối mặt với những khủng hoảng và xung đột trong quá trình nuôi dạy con hằng ngày.,DONE
+audience,1,audience,"Người muốn nuôi dạy con cái phát triển toàn diện (thrive) khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày (survive).",DONE
+audience,2,audience,Người làm cha mẹ muốn thấu hiểu tâm lý và hành vi của con khi đối mặt với những thử thách nuôi dạy hàng ngày.,DONE
+audience,3,audience,Người muốn xoa dịu cơn khủng hoảng của trẻ một cách hiệu quả khi đối mặt với những cảm xúc bùng nổ vô lý.,DONE
+audience,4,audience,Người muốn xoa dịu những cảm xúc tiêu cực và sự sợ hãi tột độ của trẻ khi trẻ vừa trải qua một biến cố đau đớn hoặc đáng sợ.,DONE
+audience,5,audience,Người muốn giải quyết sự chống đối và xoa dịu trẻ khi trẻ đang trong trạng thái bùng nổ cảm xúc hoặc tức giận.,DONE
+audience,6,audience,Người làm cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày.,DONE
+audience,7,audience,Người muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc.,DONE
+audience,8,audience,Người muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ.,DONE
+audience,9,audience,Người muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày.,DONE
+audience,10,audience,"Người cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã.",DONE
+audience,11,audience,Người cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc.,DONE
+audience,12,audience,"Người làm cha mẹ muốn hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu.",DONE
+audience,13,audience,Người làm cha mẹ muốn xây dựng nền tảng gắn kết và tình cảm tích cực cho con cái khi cảm thấy bị cuốn vào guồng quay mệt mỏi của việc kỷ luật và đưa đón con hàng ngày.,DONE
+audience,14,audience,Người làm cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác.,DONE
+vivid,1,vivid_circumstance,"Người muốn nuôi dạy con cái phát triển toàn diện (thrive) khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày (survive).",DONE
+atom,1,insight,"Tách rời việc ""Sống sót"" và ""Phát triển""",DONE
+atom,1,knowledge,"Phương pháp kết hợp ""Sống sót và Phát triển"" (Survive-and-Thrive Approach)",DONE
+atom,1,quote,neu-bat-ky-dieu,DONE
+atom,2,insight,Thiếu hiểu biết về não bộ trẻ em,DONE
+atom,2,knowledge,Sự hội nhập của não bộ (Brain Integration),DONE
+vivid,2,vivid_knowledge,Sự hội nhập của não bộ (Brain Integration),DONE
+atom,2,knowledge,Tính dẻo của não bộ và vai trò của trải nghiệm (Neuroplasticity),DONE
+atom,2,evidence,hang-gio-tiep-xuc,DONE
+atom,2,story,Marianna và Marco-do-chinh-xac-la,DONE
+atom,2,quote,nhung-cach-hieu-mot,DONE
+vivid,3,vivid_circumstance,Người muốn xoa dịu cơn khủng hoảng của trẻ một cách hiệu quả khi đối mặt với những cảm xúc bùng nổ vô lý.,DONE
+atom,3,insight,Bất lực và bị cuốn theo cơn lũ cảm xúc vô lý của con,DONE
+vivid,3,vivid_insight,Bất lực và bị cuốn theo cơn lũ cảm xúc vô lý của con,DONE
+atom,3,knowledge,Chiến lược Kết nối và Chuyển hướng (Connect and Redirect),DONE
+vivid,3,vivid_knowledge,Chiến lược Kết nối và Chuyển hướng (Connect and Redirect),DONE
+atom,3,evidence,khi-mot-dua-tre,DONE
+atom,3,story,Tina và con trai 7 tuổi-mot-dem-no-con,DONE
+atom,3,quote,khi-mot-dua-tre,DONE
+atom,3,quote,giong-nhu-mot-nhan,DONE
+atom,4,insight,Bị cảm xúc tiêu cực lấn át (Emotional flood),DONE
+atom,4,knowledge,Name It to Tame It (Gọi tên để làm dịu),DONE
+atom,4,evidence,cho-thay-viec-chi,DONE
+atom,4,evidence,nao-phai-xu-ly,DONE
+atom,4,story,Katie-katie-mot-co-be,DONE
+atom,4,quote,healing-from-a-difficult,DONE
+vivid,5,vivid_circumstance,Người muốn giải quyết sự chống đối và xoa dịu trẻ khi trẻ đang trong trạng thái bùng nổ cảm xúc hoặc tức giận.,DONE
+atom,5,insight,Bẫy Quyền Uy Khi Trẻ Chống Đối,DONE
+atom,5,knowledge,"Thu hút thay vì chọc giận (Engage, Don't Enrage)",DONE
+atom,5,story,Người bố và con trai-or-option-2-i,DONE
+atom,5,quote,every-time-we-say,DONE
+atom,6,insight,Cám dỗ tự đưa ra quyết định thay con,DONE
+atom,6,knowledge,"Nguyên lý rèn luyện ""Dùng nó hay mất nó"" (Use It or Lose It)",DONE
+atom,6,knowledge,Khung rèn luyện 4 chức năng của Não tầng trên,DONE
+atom,6,quote,nao-tang-tren-giong,DONE
+vivid,7,vivid_circumstance,Người muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc.,DONE
+atom,7,insight,Bất lực khi con mất kiểm soát cảm xúc,DONE
+atom,7,knowledge,Thay đổi trạng thái thể chất để thay đổi trạng thái cảm xúc (Move It or Lose It),DONE
+vivid,7,vivid_knowledge,Thay đổi trạng thái thể chất để thay đổi trạng thái cảm xúc (Move It or Lose It),DONE
+atom,7,evidence,thay-doi-trang-thai,DONE
+atom,7,story,Liam-liam-mot-be-muoi,DONE
+atom,7,quote,co-the-chua-day,DONE
+vivid,8,vivid_circumstance,Người muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ.,DONE
+atom,8,insight,Sự sợ hãi khi phải đối mặt với ký ức tổn thương,DONE
+atom,8,knowledge,"Chiến lược ""Chiếc điều khiển tâm trí"" (Use the Remote of the Mind)",DONE
+vivid,8,vivid_knowledge,"Chiến lược ""Chiếc điều khiển tâm trí"" (Use the Remote of the Mind)",DONE
+atom,8,story,Eli và cha David-david-nhan-manh-voi,DONE
+atom,8,quote,se-ke-qua-giong,DONE
+vivid,9,vivid_circumstance,Người muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày.,DONE
+atom,9,insight,Trẻ lảng tránh kể chuyện hoặc trả lời qua loa,DONE
+atom,9,knowledge,Nguyên lý hoạt động của trí nhớ và Lợi ích của việc hồi tưởng,DONE
+atom,9,knowledge,"Chiến lược thực hành ""Remember to Remember"" (Nhắc nhớ để ghi nhớ)",DONE
+atom,9,evidence,da-chi-ra-ro,DONE
+atom,9,story,Một người mẹ mới ly hôn-mot-nguoi-me-khac,DONE
+atom,9,quote,chi-cach-dat-hoi,DONE
+vivid,10,vivid_circumstance,"Người cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã.",DONE
+atom,10,insight,"Sự nhầm lẫn giữa ""Cảm thấy"" và ""Là"" (State vs. Trait)",DONE
+vivid,10,vivid_insight,"Sự nhầm lẫn giữa ""Cảm thấy"" và ""Là"" (State vs. Trait)",DONE
+atom,10,knowledge,"Mô hình ""Đám mây cảm xúc"" (Thời tiết của tâm trí)",DONE
+vivid,10,vivid_knowledge,"Mô hình ""Đám mây cảm xúc"" (Thời tiết của tâm trí)",DONE
+atom,10,knowledge,Cách áp dụng chiến lược theo từng độ tuổi,DONE
+atom,10,evidence,mot-cam-xuc-trung,DONE
+atom,10,story,Một cô bé và bố-nguoi-dang-ngoi-canh,DONE
+atom,10,quote,so-hai-vong-va,DONE
+atom,10,quote,con-mua-la-co,DONE
+atom,11,insight,Trẻ thiếu từ vựng để gọi tên và nhận diện các sắc thái cảm xúc phức tạp,DONE
+vivid,11,vivid_insight,Trẻ thiếu từ vựng để gọi tên và nhận diện các sắc thái cảm xúc phức tạp,DONE
+atom,11,knowledge,"Phương pháp SIFT (Sensations, Images, Feelings, Thoughts)",DONE
+vivid,11,vivid_knowledge,"Phương pháp SIFT (Sensations, Images, Feelings, Thoughts)",DONE
+atom,11,evidence,tuong-tac-hai-chieu,DONE
+atom,11,story,Mẹ và con-vao-mot-khoang-thoi,DONE
+atom,11,quote,cach-day-tre-sift,DONE
+atom,12,insight,Bất lực khi con bị cảm xúc tiêu cực nuốt chửng,DONE
+atom,12,knowledge,"Thực hành Mindsight (Tâm trí) để quay về ""Trục bánh xe""",DONE
+vivid,12,vivid_knowledge,"Thực hành Mindsight (Tâm trí) để quay về ""Trục bánh xe""",DONE
+atom,12,evidence,viec-tap-trung-chu,DONE
+atom,12,story,Andrea và Nicole-truoc-buoi-bieu-dien,DONE
+atom,12,quote,hay-tim-cach-giup,DONE
+atom,13,insight,Kiet Suc Vi Nuoi Day Thieu Niem Vui,DONE
+atom,13,knowledge,Vai trò của Dopamine và Niềm vui trong việc gắn kết,DONE
+atom,13,knowledge,Công thức Toán học của Tình Anh Em (Niềm vui > Xung đột),DONE
+atom,13,knowledge,"Tăng cường ""Yếu tố Vui vẻ"" để chuyển hóa trạng thái (Shift State of Mind)",DONE
+atom,13,evidence,nguy-hiem-thuc-giua,DONE
+atom,13,evidence,nha-khoa-hoc-ve,DONE
+atom,13,quote,neu-ban-muon-phat,DONE
+vivid,14,vivid_circumstance,Người làm cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác.,DONE
+atom,14,insight,Né tránh và mệt mỏi với các cuộc xung đột của con,DONE
+atom,14,knowledge,Dạy trẻ nhìn qua lăng kính của người khác,DONE
+atom,14,knowledge,Lắng nghe những điều không được nói ra (Giao tiếp phi ngôn ngữ),DONE
+atom,14,knowledge,Dạy trẻ cách sửa chữa và hàn gắn,DONE
+atom,14,story,Mẹ và con gái-ban-dang-lam-viec,DONE
+atom,14,quote,qua-thuong-xuyen-ta,DONE

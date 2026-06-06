@@ -1,0 +1,38 @@
+{
+  "password": "3b798e83",
+  "entries": [
+    {
+      "uid": "uid_chunk_26",
+      "audience_Job_performer": "người chăm sóc trẻ",
+      "audience_main_job": "tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng",
+      "audience_circumstance": "khi ở nhà hoặc trong lớp học",
+      "aliases": [
+        "tổ chức các hoạt động hàng ngày cho trẻ mầm non",
+        "hướng dẫn trẻ nhỏ theo nhịp điệu sinh hoạt"
+      ],
+      "reason": "Cha mẹ hoặc giáo viên mầm non (người chăm sóc trẻ) là người thực hiện việc tạo nhịp điệu này."
+    },
+    {
+      "uid": "uid_chunk_27",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng",
+      "audience_circumstance": "khi trẻ bước sang tuổi mới",
+      "aliases": [
+        "tổ chức sinh nhật ý nghĩa cho con",
+        "làm tiệc sinh nhật nuôi dưỡng tâm hồn trẻ"
+      ],
+      "reason": "Tổ chức sinh nhật cho con mang tính gắn kết thiêng liêng là vai trò của cha mẹ."
+    },
+    {
+      "uid": "uid_chunk_28",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "chọn đúng truyện cổ tích phù hợp cho trẻ nghe",
+      "audience_circumstance": "khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con",
+      "aliases": [
+        "chọn sách truyện cho con theo độ tuổi",
+        "kể chuyện cổ tích phù hợp với tâm lý trẻ"
+      ],
+      "reason": "Cha mẹ là người chọn lọc và kể chuyện cho trẻ nghe dựa trên sự phát triển của con."
+    }
+  ]
+}

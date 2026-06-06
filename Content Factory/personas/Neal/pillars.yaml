@@ -1,0 +1,47 @@
+# Persona Pack Template — Content Pillars
+# Version: v18.0
+
+pillars:
+  pillar_1:
+    name: "Kỷ nguyên sống cùng AI"
+    theme: "Con người cần gì để hạnh phúc và kiểm soát AI"
+    insights:
+      - type: "fear"
+        raw: "Sợ AI sẽ thay thế con trong tương lai vì con thiếu những kỹ năng 'đúng'."
+    target_emotion: "aspiration"
+
+  pillar_2:
+    name: "Cửa sổ vàng phát triển trẻ 0-7 tuổi"
+    theme: "Giai đoạn nền tảng định hình não bộ, cảm xúc, nhân cách"
+    insights:
+      - type: "fear"
+        raw: "Sợ đang lãng phí giai đoạn quan trọng nhất của con mà không biết."
+      - type: "desire"
+        raw: "Trở thành người cha/mẹ đủ tốt — không hoàn hảo, nhưng đủ để con không bị bỏ lỡ giai đoạn vàng."
+    target_emotion: "empowerment"
+
+  pillar_3:
+    name: "Steiner và khoa học phát triển toàn diện"
+    theme: "Triết lý giáo dục Waldorf kết hợp khoa học thần kinh hiện đại"
+    insights:
+      - type: "pain_point"
+        raw: "Màn hình, mạng xã hội, áp lực học sớm đang làm hại con mà không nhận ra."
+      - type: "desire"
+        raw: "Muốn con có cuộc đời hạnh phúc và có ý nghĩa — dù thế giới thay đổi thế nào."
+      - type: "pain_point"
+        raw: "Không chắc mình đang làm đúng, và không có nhiều thời gian để sửa sai."
+      - type: "desire"
+        raw: "Cảm giác mình đang làm đúng, đang đi đúng hướng."
+    target_emotion: "connection"
+
+  pillar_4:
+    name: "Kể chuyện để giáo dục và nuôi dưỡng tâm hồn trẻ"
+    theme: "Câu chuyện như công cụ giáo dục cổ xưa nhất"
+    insights:
+      - type: "pain_point"
+        raw: "Quá bận, quá mệt nên không dành đủ sự hiện diện cho con."
+    target_emotion: "connection"
+
+rotation_rules:
+  weekly: "Mỗi tuần ít nhất 2 pillars khác nhau"
+  consecutive_limit: 2        # Không viết cùng 1 pillar quá N bài liên tiếp

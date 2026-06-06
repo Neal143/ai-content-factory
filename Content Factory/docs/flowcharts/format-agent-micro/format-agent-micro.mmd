@@ -1,0 +1,40 @@
+graph LR
+    %% @flow(1) [Format Agent] 00. Tổng quan: start -> get_context -> add_yaml -> save_files -> update_logs -> validate_script -> done
+    %% @flow(2 > 00) [Format Agent] 01. Nhúng Format: start -> get_context -> add_yaml -> save_files
+    %% @flow(2 > 00) [Format Agent] 02. Ghi Log: save_files -> update_logs -> validate_script
+    %% @flow(2 > 00) [Format Agent] 03. Validation (Script): validate_script -> check_logs -> check_yaml -> check_pillar -> check_integrity -> done
+    %% @flow(3 > 03) [Format Agent] 03a. Lỗi Poka-Yoke: check_logs -.-> fix_issue
+    %% @flow(3 > 03) [Format Agent] 03b. Lỗi Poka-Yoke: check_yaml -.-> fix_issue
+    %% @flow(3 > 03) [Format Agent] 03c. Lỗi Poka-Yoke: check_pillar -.-> fix_issue
+    %% @flow(3 > 03) [Format Agent] 03d. Lỗi Poka-Yoke: check_integrity -.-> fix_issue
+    %% @flow(3 > 03) [Format Agent] 03e. Sửa Lỗi: fix_issue -.-> validate_script
+    
+    subgraph Phase_Format [Bước 1-3: Format & Lưu File]
+        direction LR
+        start([Khởi chạy Phase 7]) --> get_context[Trích xuất Global Context]
+        get_context --> add_yaml[Nhúng YAML Frontmatter]
+        add_yaml --> save_files[Lưu 07-final.md & Published File]
+    end
+
+    subgraph Phase_Logs [Bước 4-6: Cập nhật Logs]
+        direction LR
+        save_files --> update_logs[Cập nhật production-log & hook-history]
+        
+        ref_draft[/05-draft.md/] -.-> validate_script
+        ref_prod_log[/production-log.md/] -.-> validate_script
+        ref_hook_log[/hook-history.md/] -.-> validate_script
+        
+        update_logs --> validate_script([Bắt đầu Script])
+        validate_script --> check_logs{Log có Update?}
+        check_logs -->|OK| check_yaml{YAML đủ & chuẩn?}
+        check_yaml -->|OK| check_pillar{Pillar xoay vòng?}
+        check_pillar -->|OK| check_integrity{Delta từ <= 2%?}
+        
+        check_logs -.->|FAIL| fix_issue[Sửa lỗi Format]
+        check_yaml -.->|FAIL| fix_issue
+        check_pillar -.->|FAIL| fix_issue
+        check_integrity -.->|FAIL| fix_issue
+        
+        fix_issue -.-> validate_script
+        check_integrity -->|ALL PASS| done((Kết thúc Pipeline))
+    end

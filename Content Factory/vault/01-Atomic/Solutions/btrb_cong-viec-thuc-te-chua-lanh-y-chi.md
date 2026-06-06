@@ -1,0 +1,16 @@
+---
+type: solution
+knowledge_type: actionable_rule
+topics: ["nao_bo_tre_em", "waldorf_rhythm", "true_discipline", "yelling_harm"]
+status: processed
+source_type: book
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+confidence: 0.9
+supports_insight: "[[btrb_kiet-suc-va-thieu-tu-ky-luat]]"
+vivid_knowledges: ["Một cậu bé đang bật nảy khắp tường bỗng trở nên điềm tĩnh và trật tự hơn khi được giao nhiệm vụ thái rau quả hoặc rửa bát cùng mẹ."]
+---
+
+*   **Bản chất:** Lôi kéo những đứa trẻ đang bồn chồn, dư thừa năng lượng vào việc tham gia các công việc thực tế (real work) của người lớn để thiết lập lại trật tự nội tâm.
+    *   **Cách thức vận hành:** Trẻ em nhận biết rất rõ sự khác biệt giữa những việc bận rộn giả tạo và công việc thực sự. Khi trẻ tham gia vào các công việc thực tế, năng lượng ý chí (will) đang trong trạng thái hỗn loạn của trẻ sẽ được định hình và sắp xếp lại nhờ vào sự tập trung và tính mục đích của công việc.
+    *   **Ứng dụng thực tế:** Tác giả yêu cầu cha mẹ TỪ BỎ việc chỉ dùng lời nhắc nhở hoặc để mặc trẻ đang dư năng lượng tự do bật nảy khắp nhà. THỰC THI việc sát cánh cùng trẻ, lôi kéo trẻ vào những công việc nhà thực tế như rửa bát, cắt gọt trái cây, rau củ để làm bữa tối, hoặc dọn dẹp sân vườn nhằm mang lại sự điềm tĩnh và trật tự.

@@ -1,0 +1,1464 @@
+[
+    {
+        "chunk_index": 2,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Khi con cái gào thét \"Con ghét mẹ! Mẹ là người mẹ tồi tệ nhất thế giới!\" | Cha mẹ bàng hoàng, đau lòng và tức giận | Cuốn vào vòng xoáy mắng mỏ, dằn vặt bản thân.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 2,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Đánh đồng hành vi với bản chất con người",
+        "original_text": "Một đứa trẻ chìm trong biển cảm xúc đau đớn, lo sợ bị bỏ rơi nhưng lại bùng nổ ra ngoài bằng những lời nói sắc nhọn như dao găm.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 2,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Niềm tin \"Tốt đẹp ở bên trong\" (Good Inside)",
+        "original_text": "\"Bên dưới hành vi 'Gửi em bé trở lại bệnh viện đi! Con ghét em!' là một đứa trẻ đang đau khổ với nỗi sợ bị bỏ rơi.\"",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 2,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Người phá vỡ vòng lặp (Cycle-breaker)",
+        "original_text": "Đặt tay lên ngực và nhắn nhủ: \"Mình ở đây vì mình muốn là điểm xoay chuyển. Mình muốn bắt đầu một điều gì đó khác biệt.\"",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 3,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Phòng khách/Cửa ra vào | Trẻ hét lên \"Con không lạnh, con không mặc áo khoác\", cha mẹ khăng khăng ép buộc | Căng thẳng, đối đầu, bực tức",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 3,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sự giằng xé giữa kỷ luật và kết nối",
+        "original_text": "Người mẹ kiệt sức vì liên tục phải đóng vai ác để giữ kỷ luật đến mức không còn giây phút vui vẻ nào bên con.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 3,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Thoát khỏi cuộc chiến quyền lực (Power Struggle)",
+        "original_text": "Trận chiến trước cửa: Mẹ khăng khăng bắt mặc áo khoác vì trời lạnh, con cự tuyệt vì không thấy lạnh.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 4,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Buổi chiều tối tại nhà | Con la hét khóc lóc đòi mẹ khi mẹ phải bắt đầu làm việc | Bề ngoài có vẻ hỗn loạn, mẹ dễ hoang mang và tự trách mình",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 4,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Định nghĩa vai trò trong hệ thống gia đình (Family System Roles)",
+        "original_text": "Cha mẹ giống như một chiếc cầu thang (staircase), kết nối bộ não tầng dưới (cảm xúc bùng nổ) với bộ não tầng trên (nhận thức, quyết định) của trẻ.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 5,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Khi cha mẹ kiệt sức với trẻ mới biết đi và tự hỏi liệu tất cả sự khó nhọc này có đáng giá hay không | Cảm thấy mệt mỏi, hoài nghi",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 5,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Hoài nghi nỗ lực & Tội lỗi làm hỏng con",
+        "original_text": "Cảm giác tội lỗi của bậc cha mẹ đang hoạt động quá mức (parental guilt is running on overdrive)",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 5,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Ký ức cơ thể (Body Memory)",
+        "original_text": "Bản thiết kế (blueprint) mà trẻ mang theo bước vào thế giới",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 5,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Mô hình hoạt động nội tâm (Internal Working Model)",
+        "original_text": "Thu thập dữ liệu từ môi trường để tự thiết lập mạng lưới thần kinh (wire themselves)",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 6,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Cuối ngày tồi tệ ở nhà | Nghe con la hét chống đối lại quyết định của mình | Nổi cơn thịnh nộ và hét lên mắng nhiếc con xối xả.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 6,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ sự tổn thương không thể vãn hồi",
+        "original_text": "Bị gặm nhấm bởi suy nghĩ \"đây là lỗi của mình\", \"mình đã làm hỏng con mãi mãi\".",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 6,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Kỹ năng Sửa chữa (The Power of Repair)",
+        "original_text": "Phủ một lớp trải nghiệm mới lên trên để viết lại phần kết cho một câu chuyện cũ.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 7,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Khi con khóc lóc vì tháp đồ chơi liên tục bị đổ hoặc con phàn nàn vì chạy chậm nhất lớp | Cha mẹ cuống cuồng nói lời an ủi, đánh lạc hướng hoặc vội vàng làm hộ con | Cảm thấy xót xa, lo lắng và muốn dập tắt ngay sự khó chịu của con",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 7,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Cạm bẫy giải cứu cảm xúc",
+        "original_text": "Cha mẹ đóng vai \"cảnh sát hạnh phúc\", vội vã đưa trẻ ra khỏi cảm giác khó chịu và đặt ngay vào một chiến thắng tưng bừng",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 7,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Hạnh phúc vs. Sự kiên cường (Resilience > Happiness)",
+        "original_text": "Trẻ dung nạp được sự thất vọng sẽ tạo ra một lớp đệm mềm mại bao quanh những cảm xúc khó khăn trong chiếc lọ nội tâm",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 8,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Đứng trong bếp lúc 5h30 chiều | Nghe con cãi nhau, đọc email sếp chê trách, phát hiện hết đồ ăn, bạn đời phàn nàn | Cảm thấy quá tải, ném vung vãi hộp ngũ cốc và la hét",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 8,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Behavior-First (Ưu tiên hành vi bề mặt)",
+        "original_text": "Dùng băng dính (duct tape) dán lên vết rỉ nước trên trần nhà thay vì tìm nguồn rò rỉ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 8,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Behavior-First (Ưu tiên hành vi bề mặt)",
+        "original_text": "Chơi trò đập chuột (Whack-a-Mole): đập dập được lỗi này thì lỗi khác lại trồi lên",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 8,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Behavior is a window (Hành vi là một ô cửa sổ)",
+        "original_text": "Nhìn qua ô cửa sổ hành vi để thấy một đứa trẻ đang đau khổ và cần sự kết nối đằng sau hành vi ném hộp ngũ cốc",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 9,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Con giấu đồ chơi của em khiến em khóc nhưng kiên quyết từ chối xin lỗi, hoặc con nói dối trắng trợn về việc bị loại khỏi đội bóng",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 9,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Bất lực trước sự bướng bỉnh và vô cảm của con",
+        "original_text": "Đứa trẻ lạnh lùng, tê liệt và phớt lờ cha mẹ thay vì thể hiện sự hối lỗi",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 9,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Khái niệm Xấu hổ (Shame) như một cơ chế sinh tồn",
+        "original_text": "Trẻ đông cứng lại như một lớp màng bảo vệ để che giấu phần tồi tệ của bản thân khỏi nguy cơ bị bỏ rơi",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 9,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)",
+        "original_text": "Mẹ nói thay lời xin lỗi giúp con mà không dùng ánh mắt hình viên đạn hay bài giảng đạo đức",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 10,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Phòng bếp | Bố mẹ cãi vã lớn tiếng, nét mặt giận dữ | Trẻ đang ăn trưa, im lặng nhưng mang nỗi sợ bên trong",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 10,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sợ trẻ tổn thương hoặc chưa sẵn sàng",
+        "original_text": "Người lớn, Dùng từ nói giảm nói tránh \"Ông đi ngủ một giấc dài\", Bối rối, né tránh sự thật",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 10,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Xác nhận nhận thức của trẻ (Confirming Perceptions)",
+        "original_text": "Cha mẹ, Xác nhận: \"Bố mẹ vừa dùng giọng rất to. Con đã nhận ra điều đó\", Bình tĩnh, chân thành",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 10,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Thừa nhận những điều chưa biết (Labeling What You Don't Know)",
+        "original_text": "Cha mẹ, Thú nhận: \"Bố/mẹ hy vọng bà sẽ khỏe lại, nhưng sự thật là chúng ta không biết trước được\", Đồng cảm, vững vàng",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 10,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Cách truyền đạt những sự thật khó khăn (Delivering Hard Truths)",
+        "original_text": "Cha mẹ nhìn sâu vào mắt trẻ, Nói rành rọt: \"Ông đã mất. Cơ thể ngừng hoạt động\" và dừng lại, Bình tĩnh, chân thật",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 11,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Thời điểm cuối ngày mệt mỏi | Trẻ phản đối, khóc lóc, vòi vĩnh khi cha mẹ muốn đi bộ một mình hoặc đi ăn cùng bạn bè | Cha mẹ cảm thấy kiệt sức, tội lỗi và chịu áp lực phải hy sinh toàn bộ thời gian cho con",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 11,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Nuôi con tận hiến (Selfless Parenting)",
+        "original_text": "Một nhà lãnh đạo mất hút, dễ dàng bị người khác lấn lướt, khiến những đứa trẻ đi theo cảm thấy hoảng sợ và lạc lối",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 11,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Lãnh đạo vững vàng (The Sturdy Leader) thay vì Nuôi con tận hiến",
+        "original_text": "Không thể rót nước cho con khi chiếc cốc của mình đã cạn khô",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 12,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Nhà cửa lộn xộn mỗi sáng | Trẻ khóc lóc ầm ĩ, đóng sập cửa phòng và cha mẹ la hét đe dọa | Cảm giác cạn kiệt năng lượng, mệt mỏi và bất lực",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 12,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Tài khoản Vốn kết nối (Connection Capital)",
+        "original_text": "Tài khoản ngân hàng cảm xúc, Nạp vốn bằng sự thấu hiểu/Rút vốn bằng các mệnh lệnh, Sự hợp tác bên ngoài/Sự chống đối bề mặt",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 13,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Trong nhà | Mẹ bực tức hét lên \"Con có đang nghe mẹ nói không?\" vì con phớt lờ yêu cầu | Trẻ đóng băng phòng thủ, mẹ tức giận và kiệt sức.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 13,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Bất lực vì con không nghe lời",
+        "original_text": "Người mẹ tuyệt vọng than thở \"Con trai phớt lờ mọi thứ tôi nói, không có sự tôn trọng nào cả nên tôi kết thúc bằng việc la hét.\"",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 13,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Bản chất thực sự của việc \"Không lắng nghe\"",
+        "original_text": "La hét hỏi \"Có nghe không?\" khiến cơ thể trẻ bật chế độ động vật phòng vệ, hoàn toàn đóng băng không thể tiếp thu lời nói.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 13,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Chiến lược \"Kết nối trước khi yêu cầu\" (Connect Before You Ask)",
+        "original_text": "Nhẹ nhàng bước tới chỗ con đang chơi khối gỗ: \"Chơi khối vui quá nhỉ! Con muốn dọn dẹp bây giờ hay 2 phút nữa?\"",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 14,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Bếp vào buổi sáng | Trẻ ngã lăn ra sàn, khóc lóc và la hét không ngừng đòi ăn kem | Tức giận, mất kiểm soát cảm xúc",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 14,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Bùng nổ do quá tải cảm xúc thất vọng",
+        "original_text": "Hũ chứa cảm xúc đau buồn bị đầy ứ và tràn ra ngoài thành vụ nổ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 15,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Tại phòng bếp | Trẻ ném bình nước, lao vào đánh, véo mẹ và gào thét \"Con ghét mẹ!\" | Hoảng loạn, giận dữ, mất kiểm soát",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 15,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sợ hãi và bất lực trước sự thù địch của con",
+        "original_text": "Ngọn lửa cảm xúc cháy bùng (emotional fire) cần được cô lập trong không gian nhỏ để không thiêu rụi cả ngôi nhà.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 16,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Phòng chơi ở nhà | Tiếng la hét, khóc lóc và đồ đạc rơi loảng xoảng | Hai đứa trẻ giằng co đồ chơi, tố cáo nhau đẩy ngã và tranh giành đúng sai với cha mẹ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 16,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ mất vị trí (Trẻ) & Áp lực hòa thuận (Cha mẹ)",
+        "original_text": "Tưởng tượng vợ/chồng bạn đưa một người mới về nhà, bắt bạn san sẻ mọi thứ và mắng bạn nếu bạn không nhường nhịn người đó",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 17,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Thời điểm bị từ chối một mong muốn | Đứa trẻ hét lớn \"Con ghét gia đình này! Mẹ là người tồi tệ nhất!\" | Phụ huynh cảm thấy bị xúc phạm, tức giận, muốn la mắng trừng phạt ngay lập tức",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 18,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Chiều muộn 5h30 tại nhà | Trẻ kéo dài giọng rên rỉ đòi gọt bút chì \"Can you get me one?!?!\" | Mẹ căng thẳng, cảm thấy như sắp nổ tung.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 18,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sự ám ảnh và tức điên trước tiếng rên rỉ",
+        "original_text": "Tiếng rên rỉ luồn lách dưới da thịt (gets under our skin), kích hoạt hệ thống phản xạ chối bỏ sự yếu đuối trong cơ thể cha mẹ.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 19,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Phát hiện con làm sai hoặc che giấu sự thật | Nghe con liên tục chối bay chối biến | Trạng thái căng thẳng, sẵn sàng vạch trần lời nói dối của con",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 19,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ con trở thành kẻ dối trá thao túng",
+        "original_text": "Nghe con chối tội rành rành, Tức giận mắng \"Đừng có nói dối vào mặt mẹ\", Đẩy trẻ vào thế phòng thủ và đóng sập giao tiếp",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 19,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Lời nói dối là một cơ chế tự vệ và mong ước (Lying as a wish and self-defense)",
+        "original_text": "Một câu ẩn dụ chân thực không chứa ngoặc vuông",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 19,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Định hình lại lời nói dối thành một mong ước (Reframe the Lie as a Wish)",
+        "original_text": "Một câu ẩn dụ chân thực không chứa ngoặc vuông",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 20,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Tại một buổi cắm trại | Con la hét, khóc lóc và bám chặt lấy bố khi thấy đống lửa trại | Bố bực bội cố gắng dùng logic giải thích rằng ngọn lửa rất vui và không đáng sợ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 20,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Nhảy xuống hố cùng con (Jump into the Hole with Them)",
+        "original_text": "Trẻ đang ở dưới một cái hố nhỏ tượng trưng cho sự lo âu, Cha mẹ nhảy thẳng xuống hố để bầu bạn thay vì cố gắng kéo trẻ lên",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 21,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Tại một bữa tiệc sinh nhật nhộn nhịp | Trẻ khóc lóc trốn sau lưng mẹ trong khi các bạn đang chơi | Mẹ bực bội, cảm thấy xấu hổ và tội lỗi.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 21,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sợ con mãi nhút nhát và cô lập",
+        "original_text": "Trẻ là người duy nhất ngồi trên đùi cha mẹ trong một buổi tụ tập, cha mẹ trỗi dậy thôi thúc muốn đẩy con ra xa.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 21,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Phản tư về bản thân (Check In with Yourself)",
+        "original_text": "Tự nhủ rằng việc con từ chối hùa theo đám đông thực chất là một sự kiên định, táo bạo và cực kỳ tự tin.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 22,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Con đang xếp hình và không ghép được một mảnh | Bực bội ném mảnh ghép đi | Than vãn: \"Con rất tệ, con ghét nó\"",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 22,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Bế tắc khi con dễ dàng từ bỏ",
+        "original_text": "Cha mẹ mất kiên nhẫn và nói \"Con không thấy là nó không vừa à!\" khiến con càng thêm nản chí",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 22,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Sự bao dung của cha mẹ tạo nền tảng cho sự kiên cường của con",
+        "original_text": "Cha mẹ bình tĩnh để con tự giải quyết khó khăn thay vì chỉ ngay ra giải pháp",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 22,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=4 Chiến lược xây dựng khả năng chịu đựng sự thất vọng",
+        "original_text": "Tự lẩm bẩm \"Mọi thứ mới mẻ đều khó khăn... mình có thể làm những việc khó\" cho con nghe thấy",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 23,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Lúc 4 giờ chiều ở nhà | Trẻ kêu đói lả và nằng nặc đòi ăn bánh Goldfish thay vì chờ bữa tối | Cha mẹ cảm thấy bất lực, nhượng bộ và sau đó bực tức vì trẻ bỏ bữa tối",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 23,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sợ làm cha mẹ tồi qua bữa ăn",
+        "original_text": "Nhìn con từ chối bữa tối đã cất công chuẩn bị, Cảm thấy như con đang nói: \"Con từ chối thức ăn và từ chối mẹ, mẹ là một người mẹ tồi!\", Lo âu, bất an về vai trò làm cha mẹ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 23,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Phân chia Trách nhiệm (Division of Responsibility)",
+        "original_text": "Cha mẹ đóng vai trò như một \"chiếc hộp\" thiết lập các cạnh bên ngoài, Trẻ được tự do khám phá và thể hiện bản thân ở bên trong chiếc hộp đó",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 23,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Giảm thiểu lo âu quan trọng hơn lượng thức ăn (Minimizing anxiety over consumption)",
+        "original_text": "Phục vụ một phần nhỏ đồ tráng miệng ngay trên cùng một chiếc đĩa bên cạnh bông cải xanh, thịt gà và mì ống",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 24,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Khi Kiki (4 tuổi) chạy trốn không chịu ôm ông ngoại, ông liền chê trách và tạo cảm giác tội lỗi, khiến người mẹ đứng giữa cảm thấy vừa bực bội vừa áy náy.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 25,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Ngay tại nhà | Cha báo tin con trượt đội bóng chày và thấy con rơm rớm nước mắt | Người cha bối rối, lưỡng lự không biết nên nói gì hay đánh lạc hướng để xoa dịu nỗi đau của con.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 25,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Nước mắt là tín hiệu của hệ thống gắn kết (Tears as Attachment Signal)",
+        "original_text": "Chất lỏng trào ra từ mắt nhằm buộc đối phương phải dừng lại và chú ý đến một điều lớn lao đang diễn ra bên trong.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 27,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Khi bé Freya (5 tuổi) viết sai chính tả | Bé liên tục tẩy xóa, tức giận và hét lên \"Con ghét viết\" | Mẹ bối rối không biết làm sao",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 27,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Logic Giải Quyết Hoàn Hảo",
+        "original_text": "Cha mẹ cố giải thích \"Một cú ném hỏng không định nghĩa một vận động viên\", nhưng trẻ vẫn sụp đổ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 28,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Tại cửa lớp mầm non | Trẻ khóc thét, ôm chặt lấy chân cha mẹ không chịu buông | Cha mẹ bối rối, không biết làm sao để dứt ra.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 28,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi xót xa và bối rối khi con gào khóc níu kéo",
+        "original_text": "Trẻ gào thét \"Không không không, Bố ơi, ở lại! Ở lại!\" khiến cha mẹ chết lặng, không rõ tại sao mọi chuyện lại tồi tệ thế này.",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 28,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Bộ công cụ xoa dịu lo âu chia ly",
+        "original_text": "Trẻ mang theo bức ảnh gia đình ép nhựa, nhìn vào đó và nhẩm nhiều lần: \"Gia đình mình đang ở gần\".",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 29,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Đêm khuya | Trẻ khóc lóc bám víu đòi cha mẹ ở lại ngủ cùng | Phụ huynh bối rối, kiệt sức và tuyệt vọng",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 29,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ chia ly trong bóng tối",
+        "original_text": "Đêm tối, sự cô đơn, cơ thể chậm lại và những suy nghĩ đáng sợ xuất hiện",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 29,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Giấc ngủ là sự chia ly (Sleep struggles are separation struggles)",
+        "original_text": "(Sleep struggles are separation struggles)",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 29,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Giấc ngủ là sự chia ly (Sleep struggles are separation struggles)",
+        "original_text": "(Sleep struggles are separation struggles) (Sleep struggles are separation struggles)",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 29,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Quy trình xây dựng giấc ngủ an toàn (Building Sleep Safety)",
+        "original_text": "(Building Sleep Safety)",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 29,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Quy trình xây dựng giấc ngủ an toàn (Building Sleep Safety)",
+        "original_text": "(Building Sleep Safety) (Building Sleep Safety)",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 30,
+        "type": "vivid",
+        "parent": "META_CHUNK_AUDIENCE: content_type=vivid_circumstance",
+        "original_text": "Phòng chơi | Trẻ la hét \"Tránh ra, con ghét mẹ!\" khi bị nhắc nhở | Mẹ bực bội, bất lực",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 30,
+        "type": "vivid",
+        "parent": "META_INSIGHT: content_type=vivid_insight | supports_insight=Sự bất lực khi cách nuôi dạy thông thường phản tác dụng",
+        "original_text": "Đứa trẻ như con thú bị nhốt trong lồng đang chiến đấu để sinh tồn",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 30,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Deeply Feeling Kids (DFKs) và Cơ chế Xấu hổ (Shame)",
+        "original_text": "Đứa trẻ như con thú bị nhốt trong lồng đang chiến đấu để sinh tồn",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 30,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Trò chơi Thumbs Up/Down/to the Side",
+        "original_text": "Trẻ trốn dưới gầm giường và giao tiếp qua ngón tay cái",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    },
+    {
+        "chunk_index": 31,
+        "type": "vivid",
+        "parent": "META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Trẻ em là những nhà thám hiểm tương lai",
+        "original_text": "Không gian của các khả năng, Thấy nhà thám hiểm ở rìa xa nhất, Hình dáng giống những đứa trẻ",
+        "disqualifier": "None",
+        "scores": {
+            "C1": 2,
+            "C2": 2,
+            "C3": 2,
+            "C4": 2,
+            "C5": 2
+        },
+        "total": 10,
+        "verdict": "KEEP",
+        "reason": "Passed universal disqualifiers and rubric"
+    }
+]

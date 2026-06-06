@@ -1,0 +1,149 @@
+graph LR
+    %% @flow(1) [Tổng quan] 00. Backbone: Start -> Input -> Check1 -> Check2 -> IsPhase6 -> HasKeyPhase -> HasValidation -> RunValidate -> ValidateStatus -> IsFail -> IsPhase4 -> IsPhase7 -> End
+    %% @flow(1) [Tổng quan] 00a. Bypass Detected: IsFail -> ExitFail
+    %% @flow(2 > 00) [Check] 01. Quét File: Check1 -> SetFail1
+    %% @flow(2 > 00) [Check] 02. Quét Vault: Check2 -> SetFail2
+    %% @flow(2 > 00) [Check] 03. Fake QA: IsPhase6 -> HasScore -> SetFail3
+    %% @flow(2 > 00) [Check] 04. Execution Key: HasKeyPhase -> CompareKey -> SetFail4
+    %% @flow(2 > 00) [Check] 05. Re-validation (Phase > 0): HasValidation -> RunValidate -> ValidateStatus -> SetFail5
+    %% @flow(2 > 00) [Check] 06. Re-validation (Phase 0): HasValidation -> IsPhase0 -> Check5B -> Check5C -> Check5D -> IsFail
+    %% @flow(2 > 00) [Checkpoint] 10. Tạo Checkpoint (Phase 4): IsPhase4 -> RunCheckpoint -> ScanFiles -> HasFiles -> GenYaml -> PrintHalt -> IsPhase7
+    %% @flow(3 > 10) [Checkpoint] 10a. Lỗi Quét File: HasFiles -> PrintWarn -> IsPhase7
+    %% @flow(2 > 00) [Key Rotation] 20. Đảo Key (Phase 7): IsPhase7 -> RunKeyRotate -> End
+
+    Start([Khởi động detect-bypass.ps1])
+    Input[/Tham số: RunFolder, Phase/]
+    
+    subgraph S1 [Check 1 & 2: Quét file rác]
+        direction LR
+        Check1{Có file script lậu?}
+        SetFail1[Gán cờ Fail 1]
+        Check2{Lưu nhầm vào vault?}
+        SetFail2[Gán cờ Fail 2]
+    end
+
+    subgraph S2 [Check 3: Phát hiện Fake QA]
+        direction LR
+        IsPhase6{Phase >= 6?}
+        HasScore{Bịa qa_score trong draft?}
+        SetFail3[Gán cờ Fail 3]
+    end
+
+    subgraph S3 [Check 4: Đối chiếu Execution Key]
+        direction LR
+        HasKeyPhase{Thuộc Phase yêu cầu Key?}
+        CompareKey{Actual Key == Expected Key?}
+        SetFail4[Gán cờ Fail 4]
+    end
+
+    subgraph S4 [Check 5: Re-run Validation]
+        direction LR
+        HasValidation{Có Script Validation?}
+        RunValidate[[Chạy validate-*.ps1 tương ứng]]
+        ValidateStatus{ExitCode == 0?}
+        SetFail5[Gán cờ Fail 5]
+        
+        IsPhase0{Là Phase 0?}
+        Check5B{Blackboard đủ 4 fields?}
+        SetFail6[Gán cờ Fail 5B]
+        Check5C{Topic format chuẩn?}
+        SetFail7[Gán cờ Fail 5C]
+        Check5D{Đường dẫn an toàn?}
+        SetFail8[Gán cờ Fail 5D]
+    end
+
+    subgraph S5 [Tổng hợp kết quả Sentinel]
+        direction LR
+        IsFail{Cờ Fail có bật?}
+        ExitFail((Kết thúc: Lỗi Bypass))
+    end
+
+    subgraph S6 [Auto Checkpoint - Phase 4]
+        direction LR
+        IsPhase4{Là Phase 4?}
+        RunCheckpoint[[Chạy create-checkpoint.ps1]]
+        ScanFiles[Quét file định vị Phase]
+        HasFiles{Có file output nào?}
+        PrintWarn[In cảnh báo Lỗi Checkpoint]
+        GenYaml[Ghi checkpoint.yaml]
+        PrintHalt[In tín hiệu HALT]
+    end
+
+    subgraph S7 [Key Rotation - Phase 7]
+        direction LR
+        IsPhase7{Là Phase 7?}
+        RunKeyRotate[[Chạy generate-phase-key.ps1]]
+    end
+
+    End((Thành công: PASS))
+
+    %% CONNECTIONS
+    Start --> Input
+    Input --> Check1
+    
+    %% S1
+    Check1 -->|Không| Check2
+    Check1 -->|Có| SetFail1
+    SetFail1 -.-> Check2
+    
+    Check2 -->|Không| IsPhase6
+    Check2 -->|Có| SetFail2
+    SetFail2 -.-> IsPhase6
+    
+    %% S2
+    IsPhase6 -->|Có| HasScore
+    IsPhase6 -->|Không| HasKeyPhase
+    HasScore -->|Không| HasKeyPhase
+    HasScore -->|Có| SetFail3
+    SetFail3 -.-> HasKeyPhase
+    
+    %% S3
+    HasKeyPhase -->|Có| CompareKey
+    HasKeyPhase -->|Không| HasValidation
+    CompareKey -->|Có| HasValidation
+    CompareKey -->|Không| SetFail4
+    SetFail4 -.-> HasValidation
+    
+    %% S4
+    HasValidation -->|Có| RunValidate
+    RunValidate --> ValidateStatus
+    ValidateStatus -->|Có| IsFail
+    ValidateStatus -->|Không| SetFail5
+    SetFail5 -.-> IsFail
+    
+    HasValidation -->|Không| IsPhase0
+    IsPhase0 -->|Không| IsFail
+    IsPhase0 -->|Có| Check5B
+    
+    Check5B -->|Có| Check5C
+    Check5B -->|Không| SetFail6
+    SetFail6 -.-> Check5C
+    
+    Check5C -->|Có| Check5D
+    Check5C -->|Không| SetFail7
+    SetFail7 -.-> Check5D
+    
+    Check5D -->|Có| IsFail
+    Check5D -->|Không| SetFail8
+    SetFail8 -.-> IsFail
+    
+    %% S5
+    IsFail -->|Có| ExitFail
+    IsFail -->|Không| IsPhase4
+    
+    %% S6
+    IsPhase4 -->|Có| RunCheckpoint
+    IsPhase4 -->|Không| IsPhase7
+    
+    RunCheckpoint --> ScanFiles
+    ScanFiles --> HasFiles
+    HasFiles -->|Không| PrintWarn
+    HasFiles -->|Có| GenYaml
+    GenYaml --> PrintHalt
+    PrintHalt --> IsPhase7
+    PrintWarn -.-> IsPhase7
+    
+    %% S7
+    IsPhase7 -->|Có| RunKeyRotate
+    IsPhase7 -->|Không| End
+    RunKeyRotate --> End

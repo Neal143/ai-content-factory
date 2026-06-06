@@ -1,0 +1,15 @@
+---
+type: concept
+knowledge_type: concept
+topics: ["gan_ket_an_toan", "phat_trien_tam_ly_tre", "dieu_hoa_cam_xuc", "khung_hoang_cam_xuc", "ky_nang_sift"]
+status: processed
+source_type: book
+source_name: "Good Inside (bởi Dr. Becky Kennedy, 2022)"
+source_id: "good-inside"
+confidence: 0.9
+supports_insight: "[[GI_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung]]"
+vivid_knowledges: ["Đứa trẻ như con thú bị nhốt trong lồng đang chiến đấu để sinh tồn"]
+---
+
+*   **Định nghĩa/Phát biểu luật:** DFKs là những đứa trẻ cảm nhận thế giới sâu sắc hơn, dễ bị kích động và cảm giác mãnh liệt kéo dài lâu hơn các trẻ khác. Ở DFK, sự tổn thương (vulnerability) nằm ngay sát với sự xấu hổ (shame).
+*   **Diễn giải Core Logic:** Sự xấu hổ đưa con người vào trạng thái phòng vệ nguyên thủy để bảo vệ bản thân (đóng băng, tấn công, hoặc nhốt người khác lại). Khi DFK thấy mất kiểm soát, chúng sợ hãi sự tồi tệ của chính mình và lo sợ rằng cảm xúc khổng lồ của chúng sẽ làm người khác hoảng sợ rồi bỏ rơi chúng. Vì vậy, chúng đẩy cha mẹ ra xa chính vào lúc cần được giúp đỡ nhất. Việc áp dụng các phương pháp thông thường (như khuyên bảo hay khơi gợi cảm xúc) khiến trẻ DFK cảm thấy như bị tấn công, dẫn đến phản ứng chống trả kịch liệt.

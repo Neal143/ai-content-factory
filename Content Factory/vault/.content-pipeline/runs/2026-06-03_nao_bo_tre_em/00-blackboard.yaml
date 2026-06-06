@@ -1,0 +1,14 @@
+topic: "nao_bo_tre_em"
+Target_Pillar: "Steiner và khoa học phát triển toàn diện"
+Target_Audience: "cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con"
+  audience_circumstance: "khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình"
+  source_audience: "cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay"
+Target_Source_Type: "book"
+Target_Source_IDs: 
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+# execution_key: b8a514d7

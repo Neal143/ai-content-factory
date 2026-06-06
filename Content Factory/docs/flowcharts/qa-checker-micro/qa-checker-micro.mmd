@@ -1,0 +1,40 @@
+graph LR
+    %% @flow(1) [QA Checker] 00. Tổng quan: start -> extract_draft -> score_rules -> atom_check -> determine_verdict -> validate_script -> done
+    %% @flow(2 > 00) [QA Checker] 01. Chấm điểm: start -> extract_draft -> score_rules -> atom_check -> determine_verdict
+    %% @flow(2 > 00) [QA Checker] 02. Validation (Script): determine_verdict -> validate_script -> check_score -> check_verdict -> check_atom -> check_keys -> done
+    %% @flow(3 > 02) [QA Checker] 02a. Lỗi Poka-Yoke: check_score -.-> revise_result
+    %% @flow(3 > 02) [QA Checker] 02b. Lỗi Poka-Yoke: check_verdict -.-> revise_result
+    %% @flow(3 > 02) [QA Checker] 02c. Lỗi Poka-Yoke: check_atom -.-> revise_result
+    %% @flow(3 > 02) [QA Checker] 02d. Lỗi Poka-Yoke: check_keys -.-> revise_result
+    %% @flow(3 > 02) [QA Checker] 02e. Sửa Lỗi: revise_result -.-> validate_script
+    
+    subgraph Phase_Execution [Bước 1-5: Chấm điểm & Verdict]
+        direction LR
+        start([Khởi chạy Phase 6]) --> extract_draft[Trích xuất Draft]
+        
+        ref_draft[/05-draft.md/] -.-> extract_draft
+        ref_research[/02-research-brief.md/] -.-> extract_draft
+        ref_rules[/scoring-rules.yaml/] -.-> extract_draft
+        ref_dna[/voice-dna.yaml/] -.-> extract_draft
+        
+        extract_draft --> score_rules[Chấm 130đ theo Rubric]
+        score_rules --> atom_check[Kiểm tra CT-05 Atom Attribution]
+        atom_check --> determine_verdict[Xác định Verdict]
+    end
+
+    subgraph Phase_Validation [Bước 6: validate-qa.ps1]
+        direction LR
+        determine_verdict --> validate_script([Bắt đầu Script])
+        validate_script --> check_score{Đạt Điểm Sàn?}
+        check_score -->|OK| check_verdict{Verdict Nhất quán?}
+        check_verdict -->|OK| check_atom{Đủ Vault Fact?}
+        check_atom -->|OK| check_keys{Khớp Persona Keys?}
+        
+        check_score -.->|FAIL| revise_result[Sửa lỗi Verdict/Score]
+        check_verdict -.->|FAIL| revise_result
+        check_atom -.->|FAIL| revise_result
+        check_keys -.->|FAIL| revise_result
+        
+        revise_result -.-> validate_script
+        check_keys -->|ALL PASS| done((Kết thúc Phase 6))
+    end

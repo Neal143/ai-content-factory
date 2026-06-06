@@ -1,0 +1,18 @@
+---
+type: story
+subtype: story
+topics: ["nao_bo_tre_em", "waldorf_rhythm", "consequent_action", "ky_nang_giai_quyet_xung_dot"]
+status: processed
+protagonist: "Hai bé gái 4 tuổi và bé gái 6 tuổi"
+source_type: book
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+confidence: 0.9
+supports_knowledge: "[[btrb_hoa-giai-xung-dot-qua-lang-nghe-va-hanh-dong-thuc-te]]"
+---
+
+<situation>The very next morning two four-year-old girls in my class were playing together in the little house area. Suddenly, a loud argument erupted.</situation>
+<problem>I heard, "My father can build a better house than your father!" ... "No he can't, my father builds the best houses in the world." ... I felt paralyzed inside and knocked down a few pegs from the feeling I had had the evening before.</problem>
+<turning_point>Then, in a perfectly calm voice the six-year-old standing next to me said, "Oh, just go start over."</turning_point>
+<outcome>The two little girls looked at each other, said, "OK," turned around and walked back to the little house area and resumed their play.</outcome>
+<lesson>Apparently just being listened to allowed them to take in the simple solution from the six-year-old, and peace was restored.</lesson>

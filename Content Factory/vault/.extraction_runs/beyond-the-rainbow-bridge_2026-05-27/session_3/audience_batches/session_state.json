@@ -1,0 +1,231 @@
+{
+  "total_batches": 6,
+  "current_batch": 7,
+  "completed": true,
+  "submitted_decisions": [
+    {
+      "uid": "uid_book",
+      "action": "create",
+      "audience_filename": "cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi",
+      "audience_level": "big",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_01",
+      "action": "create",
+      "audience_filename": "cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_03",
+      "action": "create",
+      "audience_filename": "cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_04",
+      "action": "create",
+      "audience_filename": "cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_05",
+      "action": "create",
+      "audience_filename": "cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_06",
+      "action": "create",
+      "audience_filename": "cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_07",
+      "action": "create",
+      "audience_filename": "cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_08",
+      "action": "create",
+      "audience_filename": "cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_09",
+      "action": "create",
+      "audience_filename": "cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_10",
+      "action": "create",
+      "audience_filename": "cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_11",
+      "action": "create",
+      "audience_filename": "cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_12",
+      "action": "create",
+      "audience_filename": "cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_13",
+      "action": "create",
+      "audience_filename": "cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_14",
+      "action": "create",
+      "audience_filename": "cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_15",
+      "action": "create",
+      "audience_filename": "cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_16",
+      "action": "create",
+      "audience_filename": "cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_17",
+      "action": "create",
+      "audience_filename": "cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_18",
+      "action": "create",
+      "audience_filename": "cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_19",
+      "action": "create",
+      "audience_filename": "cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_20",
+      "action": "create",
+      "audience_filename": "cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_21",
+      "action": "create",
+      "audience_filename": "cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_22",
+      "action": "create",
+      "audience_filename": "cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_23",
+      "action": "create",
+      "audience_filename": "cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_24",
+      "action": "create",
+      "audience_filename": "cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay",
+      "audience_level": "micro",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_25",
+      "action": "create",
+      "audience_filename": "cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_26",
+      "action": "merge",
+      "audience_filename": "bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_27",
+      "action": "create",
+      "audience_filename": "cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_28",
+      "action": "create",
+      "audience_filename": "cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    }
+  ]
+}

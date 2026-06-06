@@ -1,0 +1,37 @@
+{
+  "batch_index": 5,
+  "batch_password": "23e6e67c",
+  "total_batches": 6,
+  "items": [
+    {
+      "uid": "uid_chunk_21",
+      "id": "parents_handle_opposition_conflict_daily_stubbornness_arguments",
+      "semantic_query": "Cha mẹ muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày.",
+      "file_ref": "[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]"
+    },
+    {
+      "uid": "uid_chunk_22",
+      "id": "parents_soothe_child_emotions_tired_crying",
+      "semantic_query": "Cha mẹ muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc.",
+      "file_ref": "[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]"
+    },
+    {
+      "uid": "uid_chunk_23",
+      "id": "parents_find_correct_discipline_adjustment_methods_educational_difficulties",
+      "semantic_query": "Cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ.",
+      "file_ref": "[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]"
+    },
+    {
+      "uid": "uid_chunk_24",
+      "id": "parents_maintain_discipline_harmony_child_explosive_behavior_end_of_day",
+      "semantic_query": "Cha mẹ muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày.",
+      "file_ref": "[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]"
+    },
+    {
+      "uid": "uid_chunk_25",
+      "id": "parents_personalize_education_methods_different_personalities_behaviors",
+      "semantic_query": "Cha mẹ muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ.",
+      "file_ref": "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]"
+    }
+  ]
+}

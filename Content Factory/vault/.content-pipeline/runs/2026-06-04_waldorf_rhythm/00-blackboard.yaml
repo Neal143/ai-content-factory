@@ -1,0 +1,14 @@
+topic: "waldorf_rhythm"
+Target_Pillar: "Steiner và khoa học phát triển toàn diện"
+Target_Audience: "cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "bảo vệ sự phát triển lành mạnh của trẻ"
+  audience_circumstance: "khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại"
+  source_audience: "cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai"
+Target_Source_Type: "book"
+Target_Source_IDs:
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+# execution_key: 5a06b982

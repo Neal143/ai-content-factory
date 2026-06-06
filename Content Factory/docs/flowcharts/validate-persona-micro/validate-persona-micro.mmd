@@ -1,0 +1,62 @@
+graph TD
+    %% ==========================================
+    %% MICRO FLOWCHART (LOD 2): validate-persona.ps1
+    %% Vai trò: Kiểm tra dữ liệu Persona & Khóa luồng
+    %% ==========================================
+
+    Start([Khởi động: validate-persona.ps1]) --> CheckParam{Có truyền PersonaPath?}
+    
+    %% --- BƯỚC 1: AUTO DETECT ---
+    subgraph AutoDetect [Auto-Detect Persona]
+        CheckParam -- "Không" --> CheckRoot{Thư mục personas/ tồn tại?}
+        CheckRoot -- "Không" --> FailRoot[FAIL: Thư mục không tồn tại]
+        
+        CheckRoot -- "Có" --> CheckSubs{Số lượng folder con?}
+        CheckSubs -- "0" --> FailZero[FAIL: Chưa có persona, yêu cầu chạy onboarding]
+        CheckSubs -- "> 1" --> FailMany[FAIL: Nhiều persona, bắt buộc truyền tham số]
+        CheckSubs -- "Đúng 1" --> AutoSelect[Tự động lấy folder con duy nhất]
+    end
+    
+    CheckParam -- "Có" --> LoopStart
+    AutoSelect --> LoopStart
+    
+    %% --- BƯỚC 2: QUÉT 6 FILE YAML ---
+    subgraph ValidateFiles [Quét 6 file YAML bắt buộc]
+        LoopStart[[Lặp: profile, voice-dna, pillars, audience, authorities, scoring-rules]]
+        LoopStart --> CheckExist{File tồn tại?}
+        
+        CheckExist -- "Không" --> IncFail1[FailCount++]
+        CheckExist -- "Có" --> CheckContent{Có Top-level field không rỗng?}
+        
+        CheckContent -- "Không (Trống)" --> IncFail2[FailCount++]
+        CheckContent -- "Có dữ liệu" --> NextFile{Còn file?}
+        
+        IncFail1 --> NextFile
+        IncFail2 --> NextFile
+        NextFile -- "Còn" --> LoopStart
+    end
+    
+    %% --- BƯỚC 3: ĐÁNH GIÁ & KHÓA LUỒNG ---
+    NextFile -- "Hết 6 file" --> CheckFail{FailCount > 0?}
+    CheckFail -- "Có" --> FailTotal[FAIL: Thiếu dữ liệu Persona]
+    
+    CheckFail -- "Không" --> CheckWF{content-post.md tồn tại?}
+    CheckWF -- "Có" --> LockPipeline[Ghi đè PIPELINE_STATUS = CHƯA SẴN SÀNG]
+    CheckWF -- "Không" --> OutputPath
+    LockPipeline --> OutputPath[In ra dòng cuối: PERSONA_PATH=...]
+    OutputPath --> End([Exit 0: PASS])
+    
+    %% --- GOM LỖI CHUNG ---
+    FailRoot --> Exit1([Exit 1: DỪNG PIPELINE])
+    FailZero --> Exit1
+    FailMany --> Exit1
+    FailTotal --> Exit1
+
+    %% ================== CSS ==================
+    classDef stop fill:#ffebee,stroke:#c62828,stroke-width:2px;
+    classDef process fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef check fill:#fff8e1,stroke:#f57f17,stroke-width:2px;
+
+    class Exit1,FailRoot,FailZero,FailMany,FailTotal stop;
+    class Start,AutoSelect,LoopStart,IncFail1,IncFail2,LockPipeline,OutputPath,End process;
+    class CheckParam,CheckRoot,CheckSubs,CheckExist,CheckContent,NextFile,CheckFail check;

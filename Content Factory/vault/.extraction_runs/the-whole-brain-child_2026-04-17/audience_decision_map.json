@@ -1,0 +1,167 @@
+[
+  {
+    "scope": "book",
+    "chunk_index": null,
+    "action": "create",
+    "audience_filename": "cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cap-vo-chong_tim-hieu-ve-nuoi-con_sap-co-con-hoac-dang-co-con-o-do-tuoi-0-7-tuoi]]"
+    ],
+    "jtbd_raw": "Người muốn áp dụng các chiến lược khoa học thần kinh để điều chỉnh cảm xúc và hành vi của trẻ khi đối mặt với những khủng hoảng và xung đột trong quá trình nuôi dạy con hằng ngày."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 1,
+    "action": "create",
+    "audience_filename": "cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang-hang-ngay",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn nuôi dạy con cái phát triển toàn diện (thrive) khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày (survive)."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 2,
+    "action": "create",
+    "audience_filename": "cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người làm cha mẹ muốn thấu hiểu tâm lý và hành vi của con khi đối mặt với những thử thách nuôi dạy hàng ngày."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 3,
+    "action": "create",
+    "audience_filename": "cha-me_xoa-diu-con-khung-hoang-cua-tre_khi-doi-mat-voi-cam-xuc-bung-no-vo-ly",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn xoa dịu cơn khủng hoảng của trẻ một cách hiệu quả khi đối mặt với những cảm xúc bùng nổ vô lý."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 4,
+    "action": "create",
+    "audience_filename": "cha-me_xoa-diu-cam-xuc-tieu-cuc-va-su-so-hai-cua-tre_khi-tre-vua-trai-qua-bien-co-dau-don",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn xoa dịu những cảm xúc tiêu cực và sự sợ hãi tột độ của trẻ khi trẻ vừa trải qua một biến cố đau đớn hoặc đáng sợ."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 5,
+    "action": "create",
+    "audience_filename": "cha-me_giai-quyet-su-chong-doi-va-xoa-diu-tre_khi-tre-dang-trong-trang-thai-bung-no-cam-xuc",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn giải quyết sự chống đối và xoa dịu trẻ khi trẻ đang trong trạng thái bùng nổ cảm xúc hoặc tức giận."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 6,
+    "action": "create",
+    "audience_filename": "cha-me_ren-luyen-va-phat-trien-tri-nao-tang-tren-cua-con_khi-tuong-tac-voi-tre-hang-ngay",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người làm cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 7,
+    "action": "create",
+    "audience_filename": "cha-me_giup-con-binh-tinh-va-lay-lai-kha-nang-tu-kiem-soat_khi-tre-dang-bi-mat-binh-tinh",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 8,
+    "action": "create",
+    "audience_filename": "cha-me_giup-tre-doi-mat-va-tich-hop-cac-ky-uc-dau-buon_khi-tre-co-bieu-hien-ne-tranh-hay-so-hai",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 9,
+    "action": "create",
+    "audience_filename": "cha-me_ren-luyen-ky-nang-hoi-tuong-de-cung-co-tri-nho-cho-con_khi-tuong-tac-cung-con-hang-ngay",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 10,
+    "action": "create",
+    "audience_filename": "cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cua-cam-xuc_khi-con-dang-bi-mac-ket-va-choang-ngop",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 11,
+    "action": "create",
+    "audience_filename": "cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam-de-lam-chu-ban-than_khi-tre-dang-bi-xao-tron-cam-xuc",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 12,
+    "action": "create",
+    "audience_filename": "cha-me_huong-dan-con-cach-tu-xoa-diu-va-kiem-soat-su-chu-y_khi-con-bi-mac-ket-vao-nhung-suy-nghi-tieu-cuc",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người làm cha mẹ muốn hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 13,
+    "action": "create",
+    "audience_filename": "cha-me_xay-dung-nen-tang-gan-ket-va-tinh-cam-tich-cuc-cho-con-cai_khi-cam-thay-bi-cuon-vao-guong-quay-met-moi",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người làm cha mẹ muốn xây dựng nền tảng gắn kết và tình cảm tích cực cho con cái khi cảm thấy bị cuốn vào guồng quay mệt mỏi của việc kỷ luật và đưa đón con hàng ngày."
+  },
+  {
+    "scope": "chunk",
+    "chunk_index": 14,
+    "action": "create",
+    "audience_filename": "cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xay-ra-xung-dot-voi-nguoi-khac",
+    "audience_level": "micro",
+    "parent_audience": [
+      "[[cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con]]"
+    ],
+    "jtbd_raw": "Người làm cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác."
+  }
+]
