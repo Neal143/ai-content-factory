@@ -79,4 +79,4 @@ Không dùng cùng một kiểu nối quá 2-3 lần liên tiếp. Luân phiên:
 - [ ] Ký hiệu nối câu đa dạng
 - [ ] Không dùng headers trong storytelling
 
-> FILE_KEY: 36bd18e2
+> FILE_KEY: 6d5fa970

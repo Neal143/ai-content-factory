@@ -1,4 +1,4 @@
-<#
+﻿<#
 Tên file: Get-DIKWCombo.ps1
 Last update: 27/05/2026 00:35 (GMT+7)
 Vai trò: Script công cụ thực hiện truy vấn và lắp ghép tổ hợp DIKW Combo tối ưu từ Data Vault.
@@ -31,7 +31,7 @@ param (
     [string]$VaultPath = "vault/01-Atomic",
 
     [Parameter(Mandatory = $false)]
-    [string]$ProductionLog = "output/logs/production-log.md"
+    [string]$ProductionLog = "vault/.content-pipeline/logs/production-log.md"
 )
 
 # ==========================================
@@ -99,7 +99,7 @@ foreach ($key in $index.nodes.psobject.properties.name) {
     if ($node.status -in @("rejected", "quarantine")) { continue }
     
     # 2. Smart Pre-Filter: Lọc TargetSourceIds (Không lọc Nguồn 2-4)
-    $isSource24 = ($key -like "*Posted*" -or $key -like "*Viral*" -or $key -like "*Reflective*")
+    $isSource24 = ($key -like "*Posted*" -or $key -like "*Viral*")
     if (-not $isSource24 -and $TargetSourceIds.Count -gt 0) {
         if ($null -eq $node.source_id -or $node.source_id -notin $TargetSourceIds) {
             continue
@@ -133,15 +133,15 @@ if (Test-Path $ProductionLog) {
 # ==========================================
 $Source24Nodes = [ordered]@{ }
 
-$viralPath = "vault/$PersonaUser/Viral Posts"
-$postedPath = "vault/$PersonaUser/Posted"
-$reflectivePath = "vault/Content/Reflective Writing.md"
+$viralPath = "vault/03-Content/Viral Posts"
+$postedPath = "vault/03-Content/Posted"
+
 
 # Quét Viral Posts
 if (Test-Path $viralPath) {
     $files = Get-ChildItem -Path $viralPath -Filter "*.md" -File
     foreach ($f in $files) {
-        $relPath = "vault/$PersonaUser/Viral Posts/$($f.Name)"
+        $relPath = "vault/03-Content/Viral Posts/$($f.Name)"
         $Source24Nodes[$relPath] = [pscustomobject]@{
             "type"                = "story"
             "confidence"          = 0.9
@@ -158,7 +158,7 @@ if (Test-Path $viralPath) {
 if (Test-Path $postedPath) {
     $files = Get-ChildItem -Path $postedPath -Filter "*.md" -File
     foreach ($f in $files) {
-        $relPath = "vault/$PersonaUser/Posted/$($f.Name)"
+        $relPath = "vault/03-Content/Posted/$($f.Name)"
         $Source24Nodes[$relPath] = [pscustomobject]@{
             "type"                = "story"
             "confidence"          = 0.8
@@ -171,18 +171,7 @@ if (Test-Path $postedPath) {
     }
 }
 
-# Quét Reflective Writing
-if (Test-Path $reflectivePath) {
-    $Source24Nodes[$reflectivePath] = [pscustomobject]@{
-        "type"                = "story"
-        "confidence"          = 0.6
-        "topics"              = @()
-        "source_id"           = $null
-        "belongs_to_audience" = $null
-        "status"              = "processed"
-        "subtype"             = "personal"
-    }
-}
+
 
 # Gộp Nguồn 2-4 vào danh sách nodes hợp lệ (loại trừ các file đã dùng)
 foreach ($key in $Source24Nodes.Keys) {
@@ -263,7 +252,7 @@ foreach ($key in $validNodes.Keys) {
     if ($key -in $usedAtoms) { continue }
     
     # Nếu là Nguồn 2-4 (đã gộp sẵn vào stories ở trên) -> Cho qua không cần link
-    $isSource24 = ($key -like "*Posted*" -or $key -like "*Viral*" -or $key -like "*Reflective*")
+    $isSource24 = ($key -like "*Posted*" -or $key -like "*Viral*")
     if ($isSource24) {
         $T4_Nodes += $key
         continue
@@ -353,7 +342,7 @@ foreach ($anchor in $sortedAnchors) {
         # Lọc Tầng 4 trỏ về Solution này
         $viableT4 = @()
         foreach ($t4 in $T4_Nodes) {
-            $isSource24 = ($t4 -like "*Posted*" -or $t4 -like "*Viral*" -or $t4 -like "*Reflective*")
+            $isSource24 = ($t4 -like "*Posted*" -or $t4 -like "*Viral*")
             
             if ($isSource24 -or $index.edges.supports_knowledge.$t4 -eq $solPath) {
                 $nodeData = $validNodes[$t4]
@@ -435,7 +424,7 @@ if (-not $Selected_Insight) {
     # 3. Stories
     foreach ($st in $Selected_Stories) {
         $stData = $validNodes[$st.Path]
-        $isSource24 = ($st.Path -like "*Posted*" -or $st.Path -like "*Viral*" -or $st.Path -like "*Reflective*")
+        $isSource24 = ($st.Path -like "*Posted*" -or $st.Path -like "*Viral*")
         $targetLink = if ($isSource24) { "[Nguon 2-4]" } else { $Selected_Solution }
         Write-Host "$($st.Path) | Story | 10 | $($st.Score) | $targetLink"
     }

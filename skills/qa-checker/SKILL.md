@@ -12,7 +12,7 @@ provided_outputs:
 
 # QA Checker (Phase 6)
 
-> EXECUTION_KEY: 0b63a945
+> EXECUTION_KEY: 437dc15b
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
@@ -57,7 +57,7 @@ provided_outputs:
    - Nếu draft thực sự thiếu tone đó → khai báo `[trụ-tone]: KHÔNG TÌM THẤY` (không cần chạy tool).
 3. **Scripted Verification:** Từ mỗi câu ở bước 2, bóc ra **cụm từ liên tục 7-12 từ, nằm trọn 1 dòng, không chứa format**. Chạy:
    ```
-   grep_search(query="cụm từ trích xuất", file="output/runs/[run-folder]/05-draft.md")
+   grep_search(query="cụm từ trích xuất", file="vault/.content-pipeline/runs/[run-folder]/05-draft.md")
    ```
    - Có kết quả → Pass trụ đó.
    - Không tìm thấy → Fail trụ đó (bịa đặt).

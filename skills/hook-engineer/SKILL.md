@@ -15,7 +15,7 @@ provided_outputs:
 
 # Hook Engineer Skill (Phase 3)
 
-> EXECUTION_KEY: 94a7b0e5
+> EXECUTION_KEY: 7e068425
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
@@ -48,7 +48,7 @@ Hook PHẢI kết hợp: **Bề chìm Logic** (`Insight Atom gốc`) + **Lớp v
 
 2. Chọn 1 formula phù hợp nhất với topic + research data.
 
-3. **Rotation Check**: Đọc `output/logs/hook-history.md` → formula này đã dùng trong 2 bài gần nhất? Nếu trùng → đổi formula.
+3. **Rotation Check**: Đọc `vault/.content-pipeline/logs/hook-history.md` → formula này đã dùng trong 2 bài gần nhất? Nếu trùng → đổi formula.
 
 4. Viết 3 phiên bản Hook, **áp dụng triệt để 2 Nguyên tắc Cốt lõi** (JTBD Phân Rã + Hooking Kép).
 

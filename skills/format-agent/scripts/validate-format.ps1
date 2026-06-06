@@ -1,18 +1,20 @@
-# Last Update: 04/06/2026 00:15 (GMT+7)
-<#
-.SYNOPSIS
-    Format & Validate - Dinh dang tu dong va kiem dinh cheo cho Phase 7 (Format Agent)
-.DESCRIPTION
-    Ten file: validate-format.ps1
-    Vai tro: Dinh dang tu dong bai viet theo cau hinh active.json va kiem dinh chat luong tep 07-final.md.
-#>
+﻿# Tên file: validate-format.ps1
+# Last update: 05/06/2026 11:30 (GMT+7)
+# Vai trò: Định dạng tự động bài viết cuối cùng, chèn YAML frontmatter và kiểm định chất lượng tệp 07-final.md.
+# Sử dụng khi nào: Được gọi ở Phase 7 bởi format-agent để hoàn tất và lưu trữ bài viết.
+# Output: Tạo file 07-final.md, lưu trữ bài đăng vào vault/03-Content/Posted/, ghi nhật ký vào production-log.md và hook-history.md.
+# Tóm tắt logic hoạt động:
+#   1. Ở chế độ định dạng: Đọc bản thảo thô đạt QA -> Chèn YAML Frontmatter -> Làm sạch các thẻ AI marker -> Xuất bản 07-final.md.
+#   2. Lưu bài viết hoàn chỉnh sang vault/03-Content/Posted/ dưới dạng tệp có tiền tố timestamp và slug hóa tiêu đề.
+#   3. Ghi chép thông tin bài viết vào production-log.md và lịch sử mở bài vào hook-history.md (sử dụng đường dẫn tương đối đúng).
+#   4. Ở chế độ kiểm định: Xác minh cấu trúc tệp 07-final.md, kiểm tra sự chênh lệch từ (Content Integrity < 2%) và các trường YAML bắt buộc.
 
 param(
     [Parameter(Mandatory=$true)][string]$DraftPath,
     [string]$SourceDraftPath = "",
     [string]$RunFolder = "",
-    [string]$LogPath = "output/logs/production-log.md",
-    [string]$HookHistoryPath = "output/logs/hook-history.md"
+    [string]$LogPath = "vault/.content-pipeline/logs/production-log.md",
+    [string]$HookHistoryPath = "vault/.content-pipeline/logs/hook-history.md"
 )
 
 $ErrorActionPreference = "Stop"
@@ -57,9 +59,9 @@ function Get-Slug($str) {
 # ----------------------------------------------------------------------
 if (-not $isValidationMode) {
     
-    $profilePath = "profiles/active.json"
-    if (-not (Test-Path $profilePath)) { $profilePath = "profiles/default.json" }
-    $profile = Get-Content $profilePath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $formatPath = "formats/active.json"
+    if (-not (Test-Path $formatPath)) { $formatPath = "formats/default.json" }
+    $format = Get-Content $formatPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
     $blackboardPath = Join-Path $RunFolderAbs "00-blackboard.yaml"
     $pillar = "Unknown"; $topic = "Unknown"; $targetAudience = "Unknown"
@@ -165,7 +167,7 @@ if (-not $isValidationMode) {
     Add-Text "[BLOCK: FINAL_POST]"
     Add-BlankLines 1
 
-    if ($profile.output_elements -ne $null -and $profile.output_elements.title -eq $true) {
+    if ($format.output_elements -ne $null -and $format.output_elements.title -eq $true) {
         Add-Text "# $title"
         Add-BlankLines 1
     }
@@ -183,11 +185,11 @@ if (-not $isValidationMode) {
 
         if ($line -match '^\s*<!--\s*SECTION:\s*(.*?)\s*-->\s*$') {
             if (-not $isFirstSection) {
-                if ($profile.section_separator -ne $null) {
+                if ($format.section_separator -ne $null) {
                     $global:pendingBlankLines = 0
-                    Add-BlankLines $profile.section_separator.blank_lines_above
-                    if ($profile.section_separator.marker) { Add-Text $profile.section_separator.marker }
-                    Add-BlankLines $profile.section_separator.blank_lines_below
+                    Add-BlankLines $format.section_separator.blank_lines_above
+                    if ($format.section_separator.marker) { Add-Text $format.section_separator.marker }
+                    Add-BlankLines $format.section_separator.blank_lines_below
                 }
             }
             $isFirstSection = $false
@@ -197,21 +199,21 @@ if (-not $isValidationMode) {
 
         if ($line -match '^\s*<!--\s*SECTION_HEADING:\s*(.*?)\s*-->\s*$') {
             $secHead = $Matches[1]
-            if ($profile.output_elements -ne $null -and $profile.output_elements.section_heading -eq $true) {
-                if ($profile.section_heading_spacing -ne $null) { Add-BlankLines $profile.section_heading_spacing.blank_lines_above }
+            if ($format.output_elements -ne $null -and $format.output_elements.section_heading -eq $true) {
+                if ($format.section_heading_spacing -ne $null) { Add-BlankLines $format.section_heading_spacing.blank_lines_above }
                 Add-Text $secHead
-                if ($profile.section_heading_spacing -ne $null) { Add-BlankLines $profile.section_heading_spacing.blank_lines_below }
+                if ($format.section_heading_spacing -ne $null) { Add-BlankLines $format.section_heading_spacing.blank_lines_below }
             }
             continue
         }
 
         if ($line -match '^\s*<!--\s*PARAGRAPH:\s*(.*?)\s*-->\s*$') {
             if (-not $isFirstParagraph) {
-                if ($profile.paragraph_separator -ne $null) {
+                if ($format.paragraph_separator -ne $null) {
                     $global:pendingBlankLines = 0
-                    Add-BlankLines $profile.paragraph_separator.blank_lines_above
-                    if ($profile.paragraph_separator.marker) { Add-Text $profile.paragraph_separator.marker }
-                    Add-BlankLines $profile.paragraph_separator.blank_lines_below
+                    Add-BlankLines $format.paragraph_separator.blank_lines_above
+                    if ($format.paragraph_separator.marker) { Add-Text $format.paragraph_separator.marker }
+                    Add-BlankLines $format.paragraph_separator.blank_lines_below
                 }
             }
             $isFirstParagraph = $false
@@ -220,10 +222,10 @@ if (-not $isValidationMode) {
 
         if ($line -match '^\s*<!--\s*PARAGRAPH_HEADING:\s*(.*?)\s*-->\s*$') {
             $parHead = $Matches[1]
-            if ($profile.output_elements -ne $null -and $profile.output_elements.paragraph_heading -eq $true) {
-                if ($profile.paragraph_heading_spacing -ne $null) { Add-BlankLines $profile.paragraph_heading_spacing.blank_lines_above }
+            if ($format.output_elements -ne $null -and $format.output_elements.paragraph_heading -eq $true) {
+                if ($format.paragraph_heading_spacing -ne $null) { Add-BlankLines $format.paragraph_heading_spacing.blank_lines_above }
                 Add-Text $parHead
-                if ($profile.paragraph_heading_spacing -ne $null) { Add-BlankLines $profile.paragraph_heading_spacing.blank_lines_below }
+                if ($format.paragraph_heading_spacing -ne $null) { Add-BlankLines $format.paragraph_heading_spacing.blank_lines_below }
             }
             continue
         }
@@ -246,7 +248,7 @@ if (-not $isValidationMode) {
     $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
     [System.IO.File]::WriteAllText($finalPath, $finalContent, $utf8NoBom)
 
-    $postsDir = [System.IO.Path]::GetFullPath("output/posts")
+    $postsDir = [System.IO.Path]::GetFullPath("vault/03-Content/Posted")
     if (-not (Test-Path $postsDir)) {
         New-Item -ItemType Directory -Path $postsDir -Force | Out-Null
     }
@@ -321,7 +323,7 @@ if (-not $isValidationMode) {
     $hookScoreStr = if ($hookScore -eq "N/A") { "N/A" } else { "${hookScore}/10" }
     
     $postFilename = "${timestamp}-${titleSlug}.md"
-    $hookEntry = "`r`n| $timestamp | $topic | [$postFilename](../posts/$postFilename) | $hookFormula | $hookScoreStr |"
+    $hookEntry = "`r`n| $timestamp | $topic | [$postFilename](../../03-Content/Posted/$postFilename) | $hookFormula | $hookScoreStr |"
     
     $hookLineCheck = "| $timestamp | $topic |"
     if (Test-Path $hookHistoryPathAbs) {

@@ -1,11 +1,11 @@
-# ENCODING RULE: This file MUST contain ASCII-only characters.
+﻿# ENCODING RULE: This file MUST contain ASCII-only characters.
 # All non-ASCII content (Vietnamese patterns, messages) must be stored
 # in JSON files and read at runtime with -Encoding UTF8.
 # Reason: PowerShell 5 requires BOM for UTF-8, which AI tools may strip.
 
 # ============================================================
-# File: apply-profile.ps1
-# Role: Manage profile for content-post pipeline.
+# File: apply-format.ps1
+# Role: Manage format configurations for content-post pipeline.
 #   - validate: Check constraints R1-R8 in active.json
 #   - patch: Backup + string-replace prompt files using active.json and patch-patterns.json
 #   - restore: Restore prompt files from .bak
@@ -17,9 +17,9 @@ param(
     [ValidateSet("validate", "patch", "restore")]
     [string]$Action = "validate",
 
-    [string]$ProfilePath = "profiles/active.json",
-    [string]$DefaultPath = "profiles/default.json",
-    [string]$PatternsPath = "profiles/patch-patterns.json"
+    [string]$FormatPath = "formats/active.json",
+    [string]$DefaultPath = "formats/default.json",
+    [string]$PatternsPath = "formats/patch-patterns.json"
 )
 
 # ============================================================
@@ -78,16 +78,16 @@ $targetFiles = @(
 # ACTION: VALIDATE
 # ============================================================
 if ($Action -eq "validate") {
-    if (-not (Test-Path $ProfilePath)) {
-        Write-Host "[FAIL] Profile not found: $ProfilePath"
+    if (-not (Test-Path $FormatPath)) {
+        Write-Host "[FAIL] Format config not found: $FormatPath"
         exit 1
     }
 
     try {
-        $p = Get-Content $ProfilePath -Raw -Encoding UTF8 | ConvertFrom-Json
+        $p = Get-Content $FormatPath -Raw -Encoding UTF8 | ConvertFrom-Json
     }
     catch {
-        Write-Host "[FAIL] Invalid JSON: $ProfilePath"
+        Write-Host "[FAIL] Invalid JSON: $FormatPath"
         exit 1
     }
 
@@ -187,8 +187,8 @@ if ($Action -eq "validate") {
 # ACTION: PATCH
 # ============================================================
 if ($Action -eq "patch") {
-    if (-not (Test-Path $ProfilePath)) {
-        Write-Host "[FAIL] Profile not found: $ProfilePath"
+    if (-not (Test-Path $FormatPath)) {
+        Write-Host "[FAIL] Format config not found: $FormatPath"
         exit 1
     }
     if (-not (Test-Path $PatternsPath)) {
@@ -196,7 +196,7 @@ if ($Action -eq "patch") {
         exit 1
     }
 
-    $p = Get-Content $ProfilePath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $p = Get-Content $FormatPath -Raw -Encoding UTF8 | ConvertFrom-Json
     $pat = Get-Content $PatternsPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
     Write-Host "=== PRE-FLIGHT CHECK ==="

@@ -89,4 +89,4 @@ Hãy hình dung tâm trí như một dàn đồng ca gồm nhiều giọng hát 
 
 **LƯU Ý:** Xuống dòng giữa các chuỗi KHÔNG tạo đoạn mới — vẫn thuộc cùng 1 paragraph (cùng 1 ý lớn). Đoạn mới chỉ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`.
 
-> FILE_KEY: ef20d713
+> FILE_KEY: 47dbac56

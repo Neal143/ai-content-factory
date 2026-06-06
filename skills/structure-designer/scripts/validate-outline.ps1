@@ -1,37 +1,35 @@
-# Last Update: 02/05/2026 16:50 (GMT+7)
-<#
-.SYNOPSIS
-    Validate Outline - Objective checks for Phase 4 (Structure Designer)
-.DESCRIPTION
-    Check: section count (5), word allocation total (configurable), closing rotation.
-.PARAMETER OutlinePath
-    Path to outline-brief.md
-.PARAMETER LogPath
-    Path to production-log.md
-.NOTES
-    Last Update: 18/05/2026
-#>
+﻿# Tên file: validate-outline.ps1
+# Last update: 05/06/2026 11:30 (GMT+7)
+# Vai trò: Kiểm định chất lượng và tính hợp lệ của Outline (Dàn ý) bài viết cho Phase 4.
+# Sử dụng khi nào: Được gọi ở Phase 4 bởi detect-bypass.ps1 để kiểm tra file 04-outline.md.
+# Output: Exit 0 nếu hợp lệ (PASS), exit > 0 nếu vi phạm điều kiện kiểm định (FAIL).
+# Tóm tắt logic hoạt động:
+#   1. Đọc tệp cấu hình formats/active.json để lấy số từ mục tiêu min/max.
+#   2. Đọc file 04-outline.md và phân tích các thẻ BLOCK theo hợp đồng dữ liệu trong SKILL.md.
+#   3. Tính toán tổng số lượng từ phân bổ cho các phần trong dàn ý và so sánh với cấu hình.
+#   4. Kiểm tra rotation của phần kết bài (Closing Rotation E/S combo) dựa trên lịch sử trong production-log.md.
+#   5. Xác minh sự tồn tại của từ cấm "Framework" và khai báo Atom trong các phần Story và Deep Dive.
 
 param(
     [Parameter(Mandatory=$true)][string]$OutlinePath,
-    [string]$LogPath = "output/logs/production-log.md"
+    [string]$LogPath = "vault/.content-pipeline/logs/production-log.md"
 )
 
 $ErrorActionPreference = "Stop"
 
-# --- Load Format Profile ---
-$profilePath = "profiles/active.json"
-if (-not (Test-Path $profilePath)) {
-    $profilePath = "profiles/default.json"
+# --- Load Format Config ---
+$formatPath = "formats/active.json"
+if (-not (Test-Path $formatPath)) {
+    $formatPath = "formats/default.json"
 }
-if (-not (Test-Path $profilePath)) {
-    Write-Host "WARNING: No format profile found. Using hardcoded defaults."
-    $profile = $null
+if (-not (Test-Path $formatPath)) {
+    Write-Host "WARNING: No format config found. Using hardcoded defaults."
+    $format = $null
 } else {
-    $profile = Get-Content $profilePath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $format = Get-Content $formatPath -Raw -Encoding UTF8 | ConvertFrom-Json
 }
-$cfgWordCountMin = if ($profile) { $profile.word_count_total.min } else { 1500 }
-$cfgWordCountMax = if ($profile) { $profile.word_count_total.max } else { 1800 }
+$cfgWordCountMin = if ($format) { $format.word_count_total.min } else { 1500 }
+$cfgWordCountMax = if ($format) { $format.word_count_total.max } else { 1800 }
 
 $results = @()
 $passCount = 0

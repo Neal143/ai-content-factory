@@ -15,7 +15,7 @@ provided_outputs:
 
 # Structure Designer (Phase 4)
 
-> EXECUTION_KEY: bc982105
+> EXECUTION_KEY: 970263c8
 
 ## 1. Input Variables
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
@@ -81,7 +81,7 @@ E6       ✅       ✅          ✅         ❌         ✅          ✅
 ```
 
 ### Rotation Check
-- Đọc `output/logs/production-log.md` → kiểm tra 2 bài gần nhất.
+- Đọc `vault/.content-pipeline/logs/production-log.md` → kiểm tra 2 bài gần nhất.
 - **Emotional tone**: Không trùng 2 bài liên tiếp.
 - **Structural technique**: Không trùng 2 bài liên tiếp.
 - Cả 2 lớp đều phải rotate độc lập.

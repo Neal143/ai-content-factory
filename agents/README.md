@@ -33,7 +33,7 @@ graph TD
 
 | Tên Agent | Thư mục định nghĩa | Vai trò cốt lõi |
 |-----------|--------------------|-----------------|
-| **ProfileSelectorAgent** | `profile-selector/` | Quản lý chế độ viết và cấu hình tham số |
+| **FormatSelectorAgent** | `format-selector/` | Quản lý chế độ viết và cấu hình tham số |
 | **SemanticRouterAgent** | `semantic-router/` | Định tuyến chủ đề vào Persona Pillars |
 | **DikwBridgeAgent** | `dikw-bridge/` | Phân giải tri thức Obsidian theo cấu trúc DIKW |
 | **IdeaCuratorAgent** | `idea-curator/` | Tạo góc nhìn contrarian độc đáo và chấm điểm lan truyền |

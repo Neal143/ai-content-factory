@@ -1,22 +1,22 @@
 ---
-name: Profile Selector
+name: Format Selector
 description: Chọn chế độ viết (Auto/Basic/Nâng cao), validate constraints, patch prompt files.
 last_update: 23/05/2026 (GMT+7)
 ---
 
-# Profile Selector
+# Format Selector
 
-> File: profile-selector/SKILL.md
+> File: format-selector/SKILL.md
 > Last update: 23/05/2026 (GMT+7)
-> Vai trò: Chọn chế độ viết, tạo profile, validate constraints, patch prompt files.
+> Vai trò: Chọn chế độ viết, tạo cấu hình format JSON, validate constraints, patch prompt files.
 > Sử dụng khi: Workflow content-post.md gọi ở Bước 2 (lần chạy mới). KHÔNG chạy khi resume.
-> Output: `profiles/active.json` đã tạo + prompt files đã patch (nếu Basic/Advanced).
+> Output: `formats/active.json` đã tạo + prompt files đã patch (nếu Basic/Advanced).
 
 ## Bước 1: Dọn patch thừa
 
 // turbo
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Action restore
+powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-format.ps1" -Action restore
 ```
 (Nếu không có `.bak` → script in "Nothing to restore" và exit 0. Không lỗi.)
 
@@ -36,11 +36,11 @@ Chọn chế độ viết:
 
 3. // turbo
    ```powershell
-   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Action validate
+   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-format.ps1" -Action validate
    ```
 4. // turbo
    ```powershell
-   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Action patch
+   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-format.ps1" -Action patch
    ```
 5. Hoàn thành skill.
 
@@ -48,15 +48,15 @@ Chọn chế độ viết:
 
 1. Agent hỏi user 10 biến (B1–B10) qua chat (xem danh sách câu hỏi bên dưới).
 2. Agent parse câu trả lời: `3-5` → `{"min":3,"max":5}`. `3` → `{"min":3,"max":3}`. Invalid → hỏi lại.
-3. Agent tạo `profiles/active.json` (merge câu trả lời vào default.json, set `"mode":"basic"`).
+3. Agent tạo `formats/active.json` (merge câu trả lời vào default.json, set `"mode":"basic"`).
 4. // turbo
    ```powershell
-   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Action validate
+   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-format.ps1" -Action validate
    ```
    Exit 0 → tiếp. Exit 1 → Agent đọc output, giải thích lỗi cho user, hỏi sửa.
 5. // turbo
    ```powershell
-   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-profile.ps1" -Action patch
+   powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-format.ps1" -Action patch
    ```
 
 ### 3C — Nâng cao

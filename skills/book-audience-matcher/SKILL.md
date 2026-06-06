@@ -26,7 +26,7 @@ Skill này chạy trong workflow `/atomize-book` (conversation riêng, SAU khi `
 ```
 INPUT (nhận từ /atomize-book):
 - File cache path: `vault/02-sources/books/[Tên Sách].md`
-- Run folder path: `.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
+- Run folder path: `vault/.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
   (Thư mục đã được book-extractor tạo sẵn và NIÊM PHONG dữ liệu)
 
 Bắt buộc phải có sẵn trong run-folder (từ Phase 1):

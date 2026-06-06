@@ -1,19 +1,17 @@
-<#
-.SYNOPSIS
-    Validate Hook — Objective checks cho Phase 3 (Hook Engineer)
-.DESCRIPTION
-    Kiểm tra: core hook word count (≤ 15 từ), hook formula rotation.
-.PARAMETER HookPath
-    Đường dẫn tới file hook-brief.md
-.PARAMETER HistoryPath
-    Đường dẫn tới file hook-history.md
-.NOTES
-    Last Update: 28/04/2026 15:24 (GMT+7)
-#>
+# Tên file: validate-hook.ps1
+# Last update: 05/06/2026 11:30 (GMT+7)
+# Vai trò: Kiểm định tính hợp lệ của Hook (Mở bài) cho Phase 3.
+# Sử dụng khi nào: Được gọi ở Phase 3 bởi detect-bypass.ps1 để kiểm tra file 03-hook.md.
+# Output: Exit 0 nếu hợp lệ (PASS), exit > 0 nếu phát hiện lỗi hoặc vi phạm luật xoay vòng (FAIL).
+# Tóm tắt logic hoạt động:
+#   1. Xác minh sự hiện diện của các thẻ BLOCK dữ liệu cần thiết theo yêu cầu của SKILL.md.
+#   2. Đếm số lượng từ của Core Hook để đảm bảo ngắn gọn (không vượt quá 15 từ).
+#   3. Phân tích Hook Formula được sử dụng và đối chiếu với lịch sử trong vault/.content-pipeline/logs/hook-history.md.
+#   4. Đảm bảo công thức mở bài không bị lặp lại trong 2 bài viết xuất bản gần nhất (Hook Rotation).
 
 param(
     [Parameter(Mandatory = $true)][string]$HookPath,
-    [string]$HistoryPath = "output/logs/hook-history.md"
+    [string]$HistoryPath = "vault/.content-pipeline/logs/hook-history.md"
 )
 
 $ErrorActionPreference = "Stop"

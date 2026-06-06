@@ -25,7 +25,7 @@ description: Core Skill Phase 2 — Đánh giá, tinh lọc vivid metadata trong
 Các biến được nạp tự động từ tệp tin Blackboard chung `00-blackboard.yaml`:
 1. **`book_name`**: Tên của cuốn sách đang xử lý (String).
 2. **`cache_file`**: Đường dẫn file cache sách thô (e.g., `vault/02-sources/books/[Tên Sách].md`).
-3. **`run_folder`**: Thư mục chạy của phiên (e.g., `.extraction_runs/[slug]_[YYYY-MM-DD]/`).
+3. **`run_folder`**: Thư mục chạy của phiên (e.g., `vault/.extraction_runs/[slug]_[YYYY-MM-DD]/`).
 4. **`slug`**: Tên slug của cuốn sách (String).
 
 ---

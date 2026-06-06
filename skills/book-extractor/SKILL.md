@@ -63,10 +63,10 @@ Bạn là chuyên gia điều phối trích xuất sách quy mô lớn. Nhiệm 
 
 ## QUY TẮC VỆ SINH (HYGIENE)
 
-1. **TASK ĐẦU TIÊN:** Ngay khi nhận lệnh khởi tạo, BẮT BUỘC TẠO THƯ MỤC TRƯỚC: `.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
+1. **TASK ĐẦU TIÊN:** Ngay khi nhận lệnh khởi tạo, BẮT BUỘC TẠO THƯ MỤC TRƯỚC: `vault/.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
    → Thư mục này được gọi tắt là **[run-folder]** trong toàn bộ tài liệu này. Mọi hành động CLI chỉ được phép thực hiện SAU KHI thư mục này đã tồn tại.
 2. MỌI file phụ trợ (scripts, logs, raw responses, ledger YAML, tmp output) → ghi vào **[run-folder]**.
-   ⚠️ BẮT BUỘC dùng path đầy đủ: `.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/[tên-file]`
+   ⚠️ BẮT BUỘC dùng path đầy đủ: `vault/.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/[tên-file]`
    TUYỆT ĐỐI KHÔNG dùng tên file bare (vd: `t.json`, `output.json`) — hệ thống sẽ ghi nhầm ra root workspace.
 3. **CẤM REDIRECT RA ROOT:** Khi dùng công cụ (như `run_command`) cho tác vụ chạy script, KHÔNG sử dụng toán tử chuyển hướng `> file.txt` vào root. Hãy đọc trực tiếp Standard Output. Nếu bắt buộc xuất log/file tạm, tham số `Cwd` phải là `[run-folder]` hoặc redirect dùng đường dẫn tuyệt đối xuất vào `[run-folder]`.
 4. File output CUỐI CÙNG (raw book đã qua Normalizer) → ghi vào `vault/02-sources/books/[Tên Sách].md`
@@ -231,7 +231,7 @@ Script thực hiện 2 việc:
 
 Skill trả về **2 artifacts** cho `/extract-book`:
 1. **File cache:** `vault/02-sources/books/[Tên Sách].md`
-2. **Run folder:** `.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
+2. **Run folder:** `vault/.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
    - `pipeline_report.md` — audit trail xuyên suốt pipeline
 
 Workflow `/extract-book` sẽ xử lý handoff — skill không cần biết bước tiếp theo.

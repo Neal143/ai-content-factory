@@ -1,3 +1,14 @@
+# Tên file: resolve-checkpoint.ps1
+# Last update: 05/06/2026 11:30 (GMT+7)
+# Vai trò: Xác định trạng thái Phase và thư mục chạy (Run Folder) gần nhất để phục hồi pipeline.
+# Sử dụng khi nào: Được chạy khi bắt đầu content-post.md để khôi phục hoặc tiếp tục phiên làm việc bị gián đoạn.
+# Output: In ra stdout chuỗi thông tin định dạng "RunFolder=[Path] | ResumePhase=[Phase]" hoặc exit 1 nếu lỗi.
+# Tóm tắt logic hoạt động:
+#   1. Kiểm tra sự tồn tại của thư mục "vault/.content-pipeline/runs".
+#   2. Lấy danh sách các thư mục chạy được sắp xếp theo thời gian tạo mới nhất.
+#   3. Quét các file ".temp/sentinel-data.json" để tìm Phase hoàn thành thành công gần nhất.
+#   4. Trả về thông số thư mục và Phase tiếp theo cần chạy (ResumePhase = Phase_Thành_Công_Gần_Nhất + 1).
+
 $ErrorActionPreference = "Stop"
 
 # --- Mapping phase -> output filename ---
@@ -12,7 +23,7 @@ $phaseFileMap = @{
     45 = "04.5-persona-pack.md"
 }
 
-$runsDir = "output/runs"
+$runsDir = "vault/.content-pipeline/runs"
 if (-not (Test-Path $runsDir)) {
     Write-Host "[FAIL] Thu muc '$runsDir' khong ton tai."
     exit 1
@@ -60,7 +71,7 @@ if ($currentPhase -eq -1) {
     exit 1
 }
 
-$runFolderRel = "output/runs/$($foundFolder.Name)"
+$runFolderRel = "vault/.content-pipeline/runs/$($foundFolder.Name)"
 
 # Parse blackboard
 $bbPath = Join-Path $foundFolder.FullName "00-blackboard.yaml"

@@ -1,4 +1,4 @@
-param (
+﻿param (
     [Parameter(Mandatory = $true)]
     [string]$UserName
 )
@@ -56,23 +56,6 @@ foreach ($folder in $vaultFolders) {
         New-Item -ItemType File -Path (Join-Path $fullPath ".gitkeep") -Force | Out-Null
         Write-Host "  + Tạo folder chuyên biệt: $folder (/w .gitkeep)"
     }
-}
-
-# 3. Tạo file tiêu chuẩn Reflective Writing
-$reflectiveFile = Join-Path $vaultDir "Content\Reflective Writing.md"
-if (-Not (Test-Path $reflectiveFile)) {
-    $content = @"
----
-title: Reflective Writing
-date: $(Get-Date -Format 'yyyy-MM-dd')
-tags: [reflection]
----
-
-# Nhật ký và Suy ngẫm cá nhân
-
-"@
-    Set-Content -Path $reflectiveFile -Value $content -Encoding UTF8
-    Write-Host "[OK] Đã khởi tạo file suy ngẫm gốc: Content\Reflective Writing.md"
 }
 
 Write-Host ">>> HOÀN TẤT TẠO LẬP HỆ THỐNG!" -ForegroundColor Green

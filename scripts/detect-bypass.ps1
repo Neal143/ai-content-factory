@@ -1,18 +1,21 @@
-﻿# File       : detect-bypass.ps1
-# Last update: 04/06/2026 16:45 (GMT+7)
-# Vai tro    : Phat hien hanh vi bypass cua LLM trong pipeline content-post
-# Dung khi   : content-post.md goi sau khi moi Phase ghi xong output
-# Output     : Exit 0 = PASS | Exit 1 = HALT | Exit 2 = RETRY
-# Logic      : Check 0-3 luon chay. Check 4-5 kiem tra execution key va re-run validation.
-#              Sinh checklist json & markdown.
-#              SSOT: Trich xuat huong dan JIT tu content-post.md.
-#              Phase 4 PASS: goi create-checkpoint.ps1.
-#              Phase 7 PASS: goi generate-phase-key.ps1 & apply-profile.
+﻿# Tên file: detect-bypass.ps1
+# Last update: 05/06/2026 11:30 (GMT+7)
+# Vai trò: Phát hiện hành vi bypass của LLM trong pipeline content-post.
+# Sử dụng khi nào: Được gọi bởi content-post.md sau khi mỗi Phase ghi xong output.
+# Output: Exit 0 = PASS | Exit 1 = HALT | Exit 2 = RETRY, cập nhật sentinel-checklist.md và sentinel-data.json.
+# Tóm tắt logic hoạt động:
+#   1. Check 0 (Prerequisite Chain): Kiểm tra sự hiện diện và tính hợp lệ của output từ các Phase trước để chặn nhảy cóc.
+#   2. Check 1 (Script Scanner): Kiểm tra file cấm tạo lén trong thư mục output/ và thư mục gốc.
+#   3. Check 2 (Vault Guard): Phát hiện file rác ghi trực tiếp vào root của vault/.content-pipeline/ (chỉ cho phép ghi vào thư mục con).
+#   4. Check 3 (QA Forgery): Chặn việc điền khống điểm QA mà chưa thực hiện Phase 6.
+#   5. Check 4 (Execution Key): Đối chiếu mã khóa execution_key giữa SKILL.md và output để đảm bảo Agent thực sự đọc SKILL.md.
+#   6. Check 4BC (DIKW Poka-yoke): Kiểm tra bundle_key khớp với combo atom đã chọn.
+#   7. Check 5 (Quality Validate): Chạy lại script kiểm định chất lượng nội dung tương ứng của Phase vừa hoàn tất.
 <#
 .SYNOPSIS
     Anti-Bypass Sentinel
 .PARAMETER RunFolder
-    Duong dan run folder hien tai (vd: output/runs/2026-04-28_topic-slug/)
+    Duong dan run folder hien tai (vd: vault/.content-pipeline/runs/2026-04-28_topic-slug/)
 .PARAMETER Phase
     Phase vua hoan thanh (0-7, 45)
 #>
@@ -96,11 +99,16 @@ if ($forbidden.Count -gt 0) {
 }
 
 # ============================================================
-# CHECK 2 - File ghi sai vao vault/output/ (duong dan bi cam)
+# CHECK 2 - File rac ghi truc tiep vao vault/.content-pipeline/ root (chi cho phep sub-folder)
 # ============================================================
-$vaultFiles = Get-ChildItem -Path "vault/output/" -Recurse -File -ErrorAction SilentlyContinue
-if ($vaultFiles) {
-    Write-Host "[FAIL] BYPASS DETECTED [Check 2]: File bi ghi vao vault/output/: $($vaultFiles.Name -join ', ')"
+$pipelineRoot = "vault/.content-pipeline"
+$rootFiles = @()
+if (Test-Path $pipelineRoot) {
+    $rootFiles = Get-ChildItem -Path "$pipelineRoot\*" -File -ErrorAction SilentlyContinue |
+        Where-Object { $_.DirectoryName -eq (Resolve-Path $pipelineRoot).Path }
+}
+if ($rootFiles.Count -gt 0) {
+    Write-Host "[FAIL] BYPASS DETECTED [Check 2]: File bi ghi vao root vault/.content-pipeline/: $($rootFiles.Name -join ', ')"
     $bypassFailed = $true
     $checkResults["C2"] = "FAIL"
 } else {
@@ -437,9 +445,9 @@ function Update-SentinelChecklist {
                 "RETRY" { "**[RETRY]**" }
                 default { $entry.status }
             }
-            $md += "| $displayPhase | $($meta.Name) | `$($meta.Output)` | $statusStr | $($entry.timestamp) | $($entry.checks) |"
+            $md += "| $displayPhase | $($meta.Name) | ``$($meta.Output)`` | $statusStr | $($entry.timestamp) | $($entry.checks) |"
         } else {
-            $md += "| $displayPhase | $($meta.Name) | `$($meta.Output)` | - | - | - |"
+            $md += "| $displayPhase | $($meta.Name) | ``$($meta.Output)`` | - | - | - |"
         }
     }
     
@@ -518,8 +526,8 @@ if ($Phase -eq 7) {
     if ($pPath) { $keyArgs += @("-PersonaPath", $pPath) }
     $keyProc = Start-Process powershell -ArgumentList $keyArgs -Wait -PassThru -NoNewWindow
 
-    Write-Host "`n[INFO] Auto-restoring profile..."
-    $restoreScript = ".agents/scripts/apply-profile.ps1"
+    Write-Host "`n[INFO] Auto-restoring format..."
+    $restoreScript = ".agents/scripts/apply-format.ps1"
     if (Test-Path $restoreScript) {
         $restoreArgs = @("-ExecutionPolicy", "Bypass", "-File", $restoreScript, "-Action", "restore")
         $restoreProc = Start-Process powershell -ArgumentList $restoreArgs -Wait -PassThru -NoNewWindow
