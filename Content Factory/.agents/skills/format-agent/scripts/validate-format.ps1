@@ -1,4 +1,4 @@
-﻿# Tên file: validate-format.ps1
+# Tên file: validate-format.ps1
 # Last update: 05/06/2026 11:30 (GMT+7)
 # Vai trò: Định dạng tự động bài viết cuối cùng, chèn YAML frontmatter và kiểm định chất lượng tệp 07-final.md.
 # Sử dụng khi nào: Được gọi ở Phase 7 bởi format-agent để hoàn tất và lưu trữ bài viết.
@@ -10,7 +10,7 @@
 #   4. Ở chế độ kiểm định: Xác minh cấu trúc tệp 07-final.md, kiểm tra sự chênh lệch từ (Content Integrity < 2%) và các trường YAML bắt buộc.
 
 param(
-    [Parameter(Mandatory=$true)][string]$DraftPath,
+    [Parameter(Mandatory = $true)][string]$DraftPath,
     [string]$SourceDraftPath = "",
     [string]$RunFolder = "",
     [string]$LogPath = "vault/.content-pipeline/logs/production-log.md",
@@ -92,7 +92,8 @@ if (-not $isValidationMode) {
         $qa = Get-Content $qaPath -Raw -Encoding UTF8
         if ($qa -match '(?i)(?:t.*?ng.*?i.*?m|verdict|total score).*?(\d+\s*/\s*\d+)') {
             $qaScore = $Matches[1] -replace '\s+', ''
-        } elseif ($qa -match '(?i)score.*?(\d+\s*/\s*\d+)') {
+        }
+        elseif ($qa -match '(?i)score.*?(\d+\s*/\s*\d+)') {
             $qaScore = $Matches[1] -replace '\s+', ''
         }
     }
@@ -113,25 +114,13 @@ if (-not $isValidationMode) {
         }
     }
 
-    $atoms = @()
-    $dikwComboPath = Join-Path $RunFolderAbs "00.5-dikw-combo.md"
-    if (Test-Path $dikwComboPath) {
-        $dikwLines = Get-Content $dikwComboPath -Encoding UTF8
-        foreach ($line in $dikwLines) {
-            if ($line -match '(?:vault/01-Atomic/\S+?/)([^/\s|]+)\.md') {
-                $atoms += $Matches[1]
-            }
-        }
-    }
-    $atomsStr = if ($atoms.Count -gt 0) { ($atoms | Select-Object -Unique) -join ", " } else { "none" }
-
     $revisions = (Get-ChildItem -Path $RunFolderAbs -Filter "gate6-issues*" -File -ErrorAction SilentlyContinue).Count
 
     $global:outputLines = @()
     $global:pendingBlankLines = 0
 
     function Add-Text($text) {
-        if ($text -eq $null -or $text.Trim() -eq "") { return }
+        if ($null -eq $text -or $text.Trim() -eq "") { return }
         if ($global:outputLines.Count -gt 0) {
             for ($i = 0; $i -lt $global:pendingBlankLines; $i++) {
                 $global:outputLines += ""
@@ -148,6 +137,8 @@ if (-not $isValidationMode) {
     $lines = $draftContent -split "`r?`n"
     $isFirstSection = $true
     $isFirstParagraph = $true
+    # Cờ theo dõi để xác định có 2 khối text (chain) liền kề hay không
+    $lastLineWasText = $false
 
     $runFolderUriFrontmatter = "file:///" + ($RunFolderAbs -replace '\\', '/').Replace(" ", "%20")
     
@@ -167,7 +158,7 @@ if (-not $isValidationMode) {
     Add-Text "[BLOCK: FINAL_POST]"
     Add-BlankLines 1
 
-    if ($format.output_elements -ne $null -and $format.output_elements.title -eq $true) {
+    if ($null -ne $format.output_elements -and $format.output_elements.title -eq $true) {
         Add-Text "# $title"
         Add-BlankLines 1
     }
@@ -185,7 +176,7 @@ if (-not $isValidationMode) {
 
         if ($line -match '^\s*<!--\s*SECTION:\s*(.*?)\s*-->\s*$') {
             if (-not $isFirstSection) {
-                if ($format.section_separator -ne $null) {
+                if ($null -ne $format.section_separator) {
                     $global:pendingBlankLines = 0
                     Add-BlankLines $format.section_separator.blank_lines_above
                     if ($format.section_separator.marker) { Add-Text $format.section_separator.marker }
@@ -194,22 +185,26 @@ if (-not $isValidationMode) {
             }
             $isFirstSection = $false
             $isFirstParagraph = $true
+            # Chặn chain_separator can thiệp vào dòng chữ đầu tiên của phần mới
+            $lastLineWasText = $false
             continue
         }
 
         if ($line -match '^\s*<!--\s*SECTION_HEADING:\s*(.*?)\s*-->\s*$') {
             $secHead = $Matches[1]
-            if ($format.output_elements -ne $null -and $format.output_elements.section_heading -eq $true) {
-                if ($format.section_heading_spacing -ne $null) { Add-BlankLines $format.section_heading_spacing.blank_lines_above }
+            if ($null -ne $format.output_elements -and $format.output_elements.section_heading -eq $true) {
+                if ($null -ne $format.section_heading_spacing) { Add-BlankLines $format.section_heading_spacing.blank_lines_above }
                 Add-Text $secHead
-                if ($format.section_heading_spacing -ne $null) { Add-BlankLines $format.section_heading_spacing.blank_lines_below }
+                if ($null -ne $format.section_heading_spacing) { Add-BlankLines $format.section_heading_spacing.blank_lines_below }
             }
+            # Chặn chain_separator can thiệp vào dòng chữ kế tiếp của heading
+            $lastLineWasText = $false
             continue
         }
 
         if ($line -match '^\s*<!--\s*PARAGRAPH:\s*(.*?)\s*-->\s*$') {
             if (-not $isFirstParagraph) {
-                if ($format.paragraph_separator -ne $null) {
+                if ($null -ne $format.paragraph_separator) {
                     $global:pendingBlankLines = 0
                     Add-BlankLines $format.paragraph_separator.blank_lines_above
                     if ($format.paragraph_separator.marker) { Add-Text $format.paragraph_separator.marker }
@@ -217,25 +212,49 @@ if (-not $isValidationMode) {
                 }
             }
             $isFirstParagraph = $false
+            # Chặn chain_separator can thiệp vào dòng chữ đầu tiên của đoạn mới
+            $lastLineWasText = $false
             continue
         }
 
         if ($line -match '^\s*<!--\s*PARAGRAPH_HEADING:\s*(.*?)\s*-->\s*$') {
             $parHead = $Matches[1]
-            if ($format.output_elements -ne $null -and $format.output_elements.paragraph_heading -eq $true) {
-                if ($format.paragraph_heading_spacing -ne $null) { Add-BlankLines $format.paragraph_heading_spacing.blank_lines_above }
+            if ($null -ne $format.output_elements -and $format.output_elements.paragraph_heading -eq $true) {
+                if ($null -ne $format.paragraph_heading_spacing) { Add-BlankLines $format.paragraph_heading_spacing.blank_lines_above }
                 Add-Text $parHead
-                if ($format.paragraph_heading_spacing -ne $null) { Add-BlankLines $format.paragraph_heading_spacing.blank_lines_below }
+                if ($null -ne $format.paragraph_heading_spacing) { Add-BlankLines $format.paragraph_heading_spacing.blank_lines_below }
             }
+            # Chặn chain_separator can thiệp vào dòng chữ kế tiếp của heading đoạn
+            $lastLineWasText = $false
             continue
         }
 
+        # Nhóm code 1: Xử lý khoảng trắng nguyên bản từ bản nháp
+        # Giữ lại khoảng trắng gốc và đóng khóa chặn chain_separator
         if ($line -eq "") { 
             Add-BlankLines 1
+            $lastLineWasText = $false
             continue
         }
 
+        # Nhóm code 2: Áp dụng chain_separator khi có 2 khối text liền kề
+        if ($lastLineWasText) {
+            $cSep = $format.chain_separator
+            # Dọn sạch hàng chờ để chuẩn bị nạp thông số chính xác từ cấu hình
+            $global:pendingBlankLines = 0
+            if ($null -ne $cSep) {
+                if ($null -ne $cSep.blank_lines_above -and $cSep.blank_lines_above -gt 0) { Add-BlankLines $cSep.blank_lines_above }
+                if ([string]::IsNullOrEmpty($cSep.marker) -eq $false) { Add-Text $cSep.marker }
+                if ($null -ne $cSep.blank_lines_below -and $cSep.blank_lines_below -gt 0) { Add-BlankLines $cSep.blank_lines_below }
+            } else {
+                # Fallback an toàn nếu cấu hình bị lỗi/thiếu
+                Add-BlankLines 1
+            }
+        }
+
+        # Nhóm code 3: In nội dung văn bản ra tệp và mở khóa theo dõi
         Add-Text $line
+        $lastLineWasText = $true
     }
 
     Add-BlankLines 1
@@ -259,8 +278,8 @@ if (-not $isValidationMode) {
     $postPath = Join-Path $postsDir "${timestamp}-${titleSlug}.md"
     
     $postContent = $finalContent -replace '(?m)^\[BLOCK: FINAL_POST\]\r?\n?', '' `
-                                 -replace '(?m)^\[/BLOCK: FINAL_POST\]\r?\n?', '' `
-                                 -replace '(?m)^<!-- execution_key:.*?-->\r?\n?', ''
+        -replace '(?m)^\[/BLOCK: FINAL_POST\]\r?\n?', '' `
+        -replace '(?m)^<!-- execution_key:.*?-->\r?\n?', ''
     
     $postContent = $postContent.Trim() + "`r`n"
     [System.IO.File]::WriteAllText($postPath, $postContent, $utf8NoBom)
@@ -301,10 +320,12 @@ if (-not $isValidationMode) {
         $existingLog = Get-Content $logPathAbs -Raw -Encoding UTF8
         if ($existingLog -match [regex]::Escape($logHeaderCheck)) {
             Write-Host " [i] Ban ghi nhat ky cho bai viet nay da ton tai trong phien nay. Bo qua ghi trung lap." -ForegroundColor Yellow
-        } else {
+        }
+        else {
             [System.IO.File]::AppendAllText($logPathAbs, $logEntry, $utf8NoBom)
         }
-    } else {
+    }
+    else {
         $dir = Split-Path $logPathAbs
         if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
         [System.IO.File]::WriteAllText($logPathAbs, "# Production Log`r`n$logEntry", $utf8NoBom)
@@ -315,7 +336,8 @@ if (-not $isValidationMode) {
     $hookScore = "N/A"
     if ($qa -match '(?m)CT-01.*?\b(\d+)/10') {
         $hookScore = $Matches[1]
-    } elseif ($qaScore -match '(\d+)/') {
+    }
+    elseif ($qaScore -match '(\d+)/') {
         $num = [math]::Round([int]$Matches[1] / 13, 0)
         if ($num -gt 10) { $num = 10 }
         $hookScore = "$num"
@@ -330,10 +352,12 @@ if (-not $isValidationMode) {
         $existingHook = Get-Content $hookHistoryPathAbs -Raw -Encoding UTF8
         if ($existingHook -match [regex]::Escape($hookLineCheck)) {
             Write-Host " [i] Lich su hook cho chu de nay da ton tai trong phien. Bo qua ghi trung lap." -ForegroundColor Yellow
-        } else {
+        }
+        else {
             [System.IO.File]::AppendAllText($hookHistoryPathAbs, $hookEntry, $utf8NoBom)
         }
-    } else {
+    }
+    else {
         $dir = Split-Path $hookHistoryPathAbs
         if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
         $header = @"
@@ -352,7 +376,8 @@ if (-not $isValidationMode) {
 if ($isValidationMode) {
     $fileToValidate = $DraftPath
     $sourceFileToCompare = $SourceDraftPath
-} else {
+}
+else {
     $fileToValidate = Join-Path $RunFolderAbs "07-final.md"
     $sourceFileToCompare = $DraftPath
 }
@@ -376,16 +401,19 @@ if (Test-Path $skillMdPath) {
                 if ($draft -match $rx) {
                     if ($Matches[1].Trim().Length -gt 0) {
                         Add-Result "Block [$blk]" "PASS" "OK"
-                    } else {
+                    }
+                    else {
                         Add-Result "Block [$blk]" "FAIL" "Empty"
                     }
-                } else {
+                }
+                else {
                     Add-Result "Block [$blk]" "FAIL" "Missing tag"
                 }
             }
         }
     }
-} else {
+}
+else {
     Add-Result "Block Check" "WARN" "SKILL.md not found"
 }
 
@@ -395,10 +423,12 @@ if (Test-Path $logPathAbs) {
     $today = Get-Date -Format "yyyy-MM-dd"
     if ($logContent -match $today) {
         Add-Result "Production Log" "PASS" "Updated for today"
-    } else {
+    }
+    else {
         Add-Result "Production Log" "FAIL" "Missing today's entry"
     }
-} else {
+}
+else {
     Add-Result "Production Log" "FAIL" "File not found"
 }
 
@@ -408,10 +438,12 @@ if (Test-Path $hookHistoryPathAbs) {
     $today = Get-Date -Format "yyyy-MM-dd"
     if ($hookContent.Length -gt 20 -and $hookContent -match $today) {
         Add-Result "Hook History" "PASS" "Updated for today"
-    } else {
+    }
+    else {
         Add-Result "Hook History" "FAIL" "Missing today's entry"
     }
-} else {
+}
+else {
     Add-Result "Hook History" "FAIL" "File not found"
 }
 
@@ -431,16 +463,19 @@ if ($draft -match '(?s)^---\r?\n(.+?)\r?\n---') {
 
 if ($hasFrontmatter -and $missingKeys.Count -eq 0) {
     Add-Result "YAML Frontmatter" "PASS" "All required fields present"
-} elseif ($hasFrontmatter) {
+}
+elseif ($hasFrontmatter) {
     Add-Result "YAML Frontmatter" "FAIL" "Missing fields: $($missingKeys -join ', ')"
-} else {
+}
+else {
     Add-Result "YAML Frontmatter" "FAIL" "Missing YAML block"
 }
 
 if ($hasFrontmatter) {
     if ($draft -match '(?s)^---.*?---\r?\n\r?\n') {
         Add-Result "YAML Spacing" "PASS" "Valid blank line after frontmatter"
-    } else {
+    }
+    else {
         Add-Result "YAML Spacing" "FAIL" "Missing blank line after frontmatter"
     }
 }
@@ -461,13 +496,16 @@ if ($sourceFileToCompareAbs -and (Test-Path $sourceFileToCompareAbs)) {
         $deltaPercent = [math]::Round(($delta / $sourceWords) * 100, 1)
         if ($deltaPercent -le 2) {
             Add-Result "Content Integrity" "PASS" "Deviation $deltaPercent% - Within safe threshold"
-        } else {
+        }
+        else {
             Add-Result "Content Integrity" "FAIL" "Deviation $deltaPercent% - Exceeds 2% threshold"
         }
-    } else {
+    }
+    else {
         Add-Result "Content Integrity" "WARN" "Source file empty"
     }
-} elseif ($sourceFileToCompareAbs) {
+}
+elseif ($sourceFileToCompareAbs) {
     Add-Result "Content Integrity" "FAIL" "Source file not found"
 }
 
