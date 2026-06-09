@@ -135,4 +135,4 @@ Hợp lệ khi nhấn mạnh sự tương phản hoặc mở rộng thông tin b
 - [ ] Dấu hai chấm: hạn chế — thay bằng từ nối
 - [ ] Tính từ bổ nghĩa liên tiếp: không dùng dấu phẩy
 
-> FILE_KEY: e8145f37
+> FILE_KEY: 9a7362cb

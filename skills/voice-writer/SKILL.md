@@ -50,6 +50,7 @@ Thay [key1]...[key8] bằng đúng giá trị FILE_KEY đã đọc từ mỗi fi
 
 ### Bước 2: Nhận input
 Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
+- Nếu Payload có khối `connection` (`IDEA_CONNECTION`) mang thông tin liên kết, hãy ĐỌC HIỂU Bản chất Mối nối Logic và sử dụng thông tin này linh hoạt ở phần Mở bài hoặc Chuyển ý để nhắc nhớ độc giả về bài trước đó, tạo mạch liền mạch cho kênh. Nếu có nhiều báo cáo liên kết, hãy tự do lựa chọn 1 mối nối phù hợp nhất.
 **BẮT BUỘC**: Dùng tool `view_file` đọc file `00.5-dikw-combo.md` trong run folder để lấy dữ liệu thô của các Atoms và trích xuất mã `BUNDLE_KEY` ở cuối file.
 
 ### Bước 3: Viết bài section-by-section

@@ -61,7 +61,7 @@ Gọi **DikwBridgeAgent**. Xong -> Compile payload Phase 1.
 
 <!-- NEXT_GUIDANCE: 1 -->
 **Phase 1: Idea Curator** (`01-idea-brief.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md, history:?vault/.content-pipeline/logs/idea-history.md|@LAST_7_DAYS"`
 2. Gọi Agent: Đọc AGENT.md & SKILL.md tại `.agents/agents/idea-curator/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 1`
 <!-- /NEXT_GUIDANCE: 1 -->
@@ -96,7 +96,7 @@ Gọi **DikwBridgeAgent**. Xong -> Compile payload Phase 1.
 
 <!-- NEXT_GUIDANCE: 5 -->
 **Phase 5: Voice Writer** (`05-draft.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "04.5-persona-pack.md" -InputMap "outline:04-outline.md|OUTLINE_SECTIONS, closing:04-outline.md|CLOSING_COMBO, persona:04.5-persona-pack.md|PERSONA_DNA, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "04.5-persona-pack.md" -InputMap "outline:04-outline.md|OUTLINE_SECTIONS, closing:04-outline.md|CLOSING_COMBO, persona:04.5-persona-pack.md|PERSONA_DNA, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md, connection:?01-idea-brief.md|IDEA_CONNECTION"`
 2. Gọi Agent: `.agents/agents/voice-writer/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 5`
 <!-- /NEXT_GUIDANCE: 5 -->

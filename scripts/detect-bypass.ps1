@@ -367,15 +367,15 @@ function Update-SentinelChecklist {
     )
 
     $phaseMeta = [ordered]@{
-        0  = @{ Name = "Semantic Router";      Output = "00-blackboard.yaml" }
-        1  = @{ Name = "Idea Curator";         Output = "01-idea-brief.md" }
-        2  = @{ Name = "Insight Agent";        Output = "02-research-brief.md" }
-        3  = @{ Name = "Hook Engineer";        Output = "03-hook.md" }
-        4  = @{ Name = "Structure Designer";   Output = "04-outline.md" }
-        45 = @{ Name = "Persona Loader";       Output = "04.5-persona-pack.md" }
-        5  = @{ Name = "Voice Writer";         Output = "05-draft.md" }
-        6  = @{ Name = "QA Checker";           Output = "06-qa-result.md" }
-        7  = @{ Name = "Format Agent";         Output = "07-final.md" }
+        "0"  = @{ Name = "Semantic Router";      Output = "00-blackboard.yaml" }
+        "1"  = @{ Name = "Idea Curator";         Output = "01-idea-brief.md" }
+        "2"  = @{ Name = "Insight Agent";        Output = "02-research-brief.md" }
+        "3"  = @{ Name = "Hook Engineer";        Output = "03-hook.md" }
+        "4"  = @{ Name = "Structure Designer";   Output = "04-outline.md" }
+        "45" = @{ Name = "Persona Loader";       Output = "04.5-persona-pack.md" }
+        "5"  = @{ Name = "Voice Writer";         Output = "05-draft.md" }
+        "6"  = @{ Name = "QA Checker";           Output = "06-qa-result.md" }
+        "7"  = @{ Name = "Format Agent";         Output = "07-final.md" }
     }
 
     $tempFolder = Join-Path $RunFolder ".temp"
@@ -433,8 +433,7 @@ function Update-SentinelChecklist {
     $md += "|:------|:------|:-------|:-----------|:----------|:-------|"
 
     foreach ($phaseKey in @("0","1","2","3","4","45","5","6","7")) {
-        $pi = [int]$phaseKey
-        $meta = $phaseMeta[$pi]
+        $meta = $phaseMeta[$phaseKey]
         $displayPhase = if ($phaseKey -eq "45") { "4.5" } else { $phaseKey }
 
         if ($data.ContainsKey($phaseKey)) {
