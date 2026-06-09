@@ -1,13 +1,13 @@
 ---
 title: "Sức mạnh của sự tĩnh lặng và hàng rào bảo vệ tâm trí con"
-date: 2026-06-06
+date: 2026-06-09
 pillar: "Steiner và khoa học phát triển toàn diện"
 topic: "nao_bo_tre_em"
 target_audience: "cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day"
 hook_formula: "F1"
 word_count: 1993
 qa_score: 130/130
-run_folder: "file:///D:/AI/AI%20content%20factory%20-%20v3.7B/Content%20Factory/vault/.content-pipeline/runs/2026-06-06_113451_nao-bo-tre-em/"
+run_folder: "file:///D:/AI/AI%20content%20factory%20-%20v3.7B/Content%20Factory/vault/.content-pipeline/runs/2026-06-06_113451_nao-bo-tre-em"
 status: published
 ---
 
@@ -64,4 +64,4 @@ Việc dũng cảm đưa tay tắt đi những thiết bị công nghệ vô h�
 
 [/BLOCK: FINAL_POST]
 
-<!-- execution_key: 02b4e659 -->
+<!-- execution_key: a379250b -->

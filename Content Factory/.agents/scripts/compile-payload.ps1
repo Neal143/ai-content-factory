@@ -114,18 +114,41 @@ foreach ($item in $items) {
         $extractedContent = ""
 
         if ($blockName) {
-            # Gắp block cụ thể bằng Regex
-            $blockRegex = "(?s)\[BLOCK:\s*$blockName\s*\](.*?)\[/BLOCK:\s*$blockName\s*\]"
-            if ($fileContent -match $blockRegex) {
-                $extractedContent = $Matches[1].Trim()
-                Write-Host "  [OK] Gap block [$blockName] tu $fileName ($($extractedContent.Length) chars)"
-            } else {
-                if ($isOptional) {
-                    Write-Host "  [SKIP] Block [$blockName] khong tim thay trong $fileName (optional)"
-                    continue
+            # Xử lý thẻ ảo @LAST_7_DAYS
+            if ($blockName -eq "@LAST_7_DAYS") {
+                $today = (Get-Date).Date
+                $lines = $fileContent -split "`r?`n"
+                $filtered = @()
+                $keep = $false
+                foreach ($line in $lines) {
+                    if ($line -match '^## \[(\d{4}-\d{2}-\d{2})_\d{6}\]') {
+                        try {
+                            $logDate = [datetime]::ParseExact($Matches[1], 'yyyy-MM-dd', [System.Globalization.CultureInfo]::InvariantCulture)
+                            $keep = ((New-TimeSpan -Start $logDate -End $today).Days -le 7)
+                        } catch { 
+                            $keep = $false 
+                        }
+                    } elseif ($line -match '^# ') {
+                        $keep = $true
+                    }
+                    if ($keep) { $filtered += $line }
                 }
-                Write-Host "  [CRITICAL] THIEU BLOCK [$blockName] trong $fileName!" -ForegroundColor Red
-                exit 1
+                $extractedContent = $filtered -join "`n"
+                Write-Host "  [OK] Gap block [@LAST_7_DAYS] tu $fileName ($($extractedContent.Length) chars)"
+            } else {
+                # Gắp block cụ thể bằng Regex
+                $blockRegex = "(?s)\[BLOCK:\s*$blockName\s*\](.*?)\[/BLOCK:\s*$blockName\s*\]"
+                if ($fileContent -match $blockRegex) {
+                    $extractedContent = $Matches[1].Trim()
+                    Write-Host "  [OK] Gap block [$blockName] tu $fileName ($($extractedContent.Length) chars)"
+                } else {
+                    if ($isOptional) {
+                        Write-Host "  [SKIP] Block [$blockName] khong tim thay trong $fileName (optional)"
+                        continue
+                    }
+                    Write-Host "  [CRITICAL] THIEU BLOCK [$blockName] trong $fileName!" -ForegroundColor Red
+                    exit 1
+                }
             }
         } else {
             $extractedContent = $fileContent.Trim()

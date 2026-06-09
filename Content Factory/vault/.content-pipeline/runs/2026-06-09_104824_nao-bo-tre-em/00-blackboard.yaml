@@ -1,6 +1,6 @@
-topic: "nao_bo_tre_em"
 Target_Pillar: "Cửa sổ vàng phát triển trẻ 0-7 tuổi"
 Target_Audience: "cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay"
+topic: "nao_bo_tre_em"
 Is_Novel_Angle: false
 Persona_Path: "personas/Neal"
 resolved_jtbd:
@@ -11,5 +11,4 @@ resolved_jtbd:
 Target_Source_Type: "book"
 Target_Source_IDs:
   - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
-
-# execution_key: 14d23795
+# execution_key: ec20935b

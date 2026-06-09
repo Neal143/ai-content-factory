@@ -17,7 +17,7 @@ provided_outputs:
 
 # Insight Agent Skill (Phase 2)
 
-> EXECUTION_KEY: 4e9c58a7
+> EXECUTION_KEY: 5bfe87c6
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.

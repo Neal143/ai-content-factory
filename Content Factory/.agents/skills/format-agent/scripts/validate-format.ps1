@@ -368,6 +368,49 @@ if (-not $isValidationMode) {
 "@
         [System.IO.File]::WriteAllText($hookHistoryPathAbs, "$header$hookEntry", $utf8NoBom)
     }
+
+    # Ghi log Idea History (Idea Curator sẽ đọc)
+    Write-Host " [i] Cap nhat idea-history.md..." -ForegroundColor Cyan
+    $ideaHistoryPathAbs = [System.IO.Path]::GetFullPath("vault/.content-pipeline/logs/idea-history.md")
+    $ideaBriefPath = Join-Path $RunFolderAbs "01-idea-brief.md"
+    
+    if (Test-Path $ideaBriefPath) {
+        $ideaBriefContent = Get-Content $ideaBriefPath -Raw -Encoding UTF8
+        
+        $extAngle = if ($ideaBriefContent -match '(?s)\[BLOCK:\s*CONTRARIAN_ANGLE\s*\](.*?)\[/BLOCK:\s*CONTRARIAN_ANGLE\s*\]') { $Matches[1].Trim() -replace '\s+', ' ' } else { "N/A" }
+        $extTension = if ($ideaBriefContent -match '(?s)\[BLOCK:\s*CORE_TENSION\s*\](.*?)\[/BLOCK:\s*CORE_TENSION\s*\]') { $Matches[1].Trim() -replace '\s+', ' ' } else { "N/A" }
+        $extBelief = if ($ideaBriefContent -match '(?s)\[BLOCK:\s*HIDDEN_BELIEF\s*\](.*?)\[/BLOCK:\s*HIDDEN_BELIEF\s*\]') { $Matches[1].Trim() -replace '\s+', ' ' } else { "N/A" }
+        $extPromise = if ($ideaBriefContent -match '(?s)\[BLOCK:\s*TRANSFORMATION_PROMISE\s*\](.*?)\[/BLOCK:\s*TRANSFORMATION_PROMISE\s*\]') { $Matches[1].Trim() -replace '\s+', ' ' } else { "N/A" }
+
+        # Tạo đường dẫn tương đối phục vụ truy xuất link
+        $runFolderName = Split-Path $RunFolderAbs -Leaf
+        $ideaBriefLink = "../runs/$runFolderName/01-idea-brief.md"
+        $postLink = "../../../$postFilename"
+
+        $ideaEntry = @"
+
+## [$timestamp] - [$title]($postLink)
+- **Idea Brief**: [01-idea-brief.md]($ideaBriefLink)
+- **Pillar**: $pillar
+- **Topic**: "$topic"
+- **Contrarian Angle**: $extAngle
+- **Core Tension**: $extTension
+- **Hidden Belief**: $extBelief
+- **Transformation Promise**: $extPromise
+"@
+        
+        $ideaHeaderCheck = "## [$timestamp] - \["
+        if (Test-Path $ideaHistoryPathAbs) {
+            $existingIdeaLog = Get-Content $ideaHistoryPathAbs -Raw -Encoding UTF8
+            if ($existingIdeaLog -notmatch [regex]::Escape("[$timestamp]")) {
+                [System.IO.File]::AppendAllText($ideaHistoryPathAbs, $ideaEntry, $utf8NoBom)
+            }
+        } else {
+            $dir = Split-Path $ideaHistoryPathAbs
+            if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+            [System.IO.File]::WriteAllText($ideaHistoryPathAbs, "# Idea History Log`r`n$ideaEntry", $utf8NoBom)
+        }
+    }
 }
 
 # ----------------------------------------------------------------------
