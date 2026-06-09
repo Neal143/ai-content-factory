@@ -39,6 +39,11 @@
     "min": 3,
     "max": 5
   },
+  "punchlines_per_article": {
+    "_desc": "Số lượng Killer Statements / Punchline yêu cầu trong toàn bài",
+    "min": 2,
+    "max": 3
+  },
   "long_chains_per_article": {
     "_desc": "Số chuỗi câu dài cho phép trong cả bài",
     "min": 3,

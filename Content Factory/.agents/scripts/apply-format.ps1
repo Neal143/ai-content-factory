@@ -1,4 +1,4 @@
-﻿# ENCODING RULE: This file MUST contain ASCII-only characters.
+# ENCODING RULE: This file MUST contain ASCII-only characters.
 # All non-ASCII content (Vietnamese patterns, messages) must be stored
 # in JSON files and read at runtime with -Encoding UTF8.
 # Reason: PowerShell 5 requires BOM for UTF-8, which AI tools may strip.
@@ -71,7 +71,8 @@ function Invoke-Patch {
 $targetFiles = @(
     ".agents/skills/voice-writer/SKILL.md",
     ".agents/skills/voice-writer/references/writing-rules.md",
-    ".agents/skills/structure-designer/SKILL.md"
+    ".agents/skills/structure-designer/SKILL.md",
+    ".agents/skills/qa-checker/SKILL.md"
 )
 
 # ============================================================
@@ -95,7 +96,7 @@ if ($Action -eq "validate") {
 
     # --- Min/max range validation ---
     foreach ($field in @("sentences_per_paragraph", "sentences_per_normal_chain",
-            "sentences_per_long_chain", "long_chains_per_article")) {
+            "sentences_per_long_chain", "long_chains_per_article", "punchlines_per_article")) {
         if ($null -eq $p.$field) { continue }  # B8/B9 can be null
         $err = Test-Range $p.$field $field
         if ($err) { $errors += $err }
@@ -209,7 +210,9 @@ if ($Action -eq "patch") {
         @{ File = ".agents/skills/voice-writer/SKILL.md"; Pattern = $pat.voice_writer.vw_paragraph_length_find },
         @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_total_words_find },
         @{ File = ".agents/skills/voice-writer/SKILL.md"; Pattern = $pat.voice_writer.vw_chain_find },
-        @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_chain_find }
+        @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_chain_find },
+        @{ File = ".agents/skills/voice-writer/references/writing-rules.md"; Pattern = $pat.writing_rules.wr_punchline_find },
+        @{ File = ".agents/skills/qa-checker/SKILL.md"; Pattern = $pat.qa_checker.qa_punchline_find }
     )
 
     if ($p.mode -eq "advanced") {
@@ -245,6 +248,7 @@ if ($Action -eq "patch") {
     $vwPath = ".agents/skills/voice-writer/SKILL.md"
     $wrPath = ".agents/skills/voice-writer/references/writing-rules.md"
     $sdPath = ".agents/skills/structure-designer/SKILL.md"
+    $qaPath = ".agents/skills/qa-checker/SKILL.md"
 
     # voice-writer/SKILL.md
     Invoke-Patch $vwPath $pat.voice_writer.vw_no_write_all_find ($pat.voice_writer.vw_no_write_all_replace -replace '{min}', $p.word_count_total.min -replace '{max}', $p.word_count_total.max)
@@ -260,6 +264,10 @@ if ($Action -eq "patch") {
 
     # Chain instructions (find/replace in writing-rules.md)
     Invoke-Patch $wrPath $pat.writing_rules.wr_chain_find ($pat.writing_rules.wr_chain_replace -replace '{n_min}', $p.sentences_per_normal_chain.min -replace '{n_max}', $p.sentences_per_normal_chain.max -replace '{lc_min}', $p.long_chains_per_article.min -replace '{lc_max}', $p.long_chains_per_article.max -replace '{l_min}', $p.sentences_per_long_chain.min -replace '{l_max}', $p.sentences_per_long_chain.max)
+
+    # Punchline instructions
+    Invoke-Patch $wrPath $pat.writing_rules.wr_punchline_find ($pat.writing_rules.wr_punchline_replace -replace '{min}', $p.punchlines_per_article.min -replace '{max}', $p.punchlines_per_article.max)
+    Invoke-Patch $qaPath $pat.qa_checker.qa_punchline_find ($pat.qa_checker.qa_punchline_replace -replace '{min}', $p.punchlines_per_article.min -replace '{max}', $p.punchlines_per_article.max)
 
     # structure-designer (advanced mode)
     if ($p.mode -eq "advanced") {

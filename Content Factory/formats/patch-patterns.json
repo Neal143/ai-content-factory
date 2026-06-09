@@ -21,7 +21,16 @@
     "wr_total_words_replace": "Mục tiêu: {min}-{max} từ. Ưu tiên chất lượng ngữ nghĩa — nếu lệch nhẹ (±10%) mà mạch văn mạch lạc, KHÔNG cắt xén hay nhồi câu vô hồn để ép số.",
     "wr_chain_find": "TUYỆT ĐỐI KHÔNG viết liền một mạch. BẮT BUỘC bấm ENTER (xuống dòng) để tạo chuỗi. Mỗi chuỗi bình thường có 1-2 câu. Có 3-5 chuỗi dài (3-5 câu trên cùng dòng) trong toàn bài.",
     "_desc_wr_chain": "Thay giá trị chain mặc định trong writing-rules.md bằng giá trị user chọn",
-    "wr_chain_replace": "TUYỆT ĐỐI KHÔNG viết liền một mạch. BẮT BUỘC bấm ENTER (xuống dòng) để tạo chuỗi. Mỗi chuỗi bình thường có {n_min}-{n_max} câu. Có {lc_min}-{lc_max} chuỗi dài ({l_min}-{l_max} câu trên cùng dòng) trong toàn bài."
+    "wr_chain_replace": "TUYỆT ĐỐI KHÔNG viết liền một mạch. BẮT BUỘC bấm ENTER (xuống dòng) để tạo chuỗi. Mỗi chuỗi bình thường có {n_min}-{n_max} câu. Có {lc_min}-{lc_max} chuỗi dài ({l_min}-{l_max} câu trên cùng dòng) trong toàn bài.",
+    "wr_punchline_find": "Mỗi bài BẮT BUỘC có từ **2 đến 3** \"Killer Statements\" hoặc \"Punchline\"",
+    "_desc_wr_punchline": "Thay số lượng punchline mặc định bằng giá trị user chọn",
+    "wr_punchline_replace": "Mỗi bài BẮT BUỘC có từ **{min} đến {max}** \"Killer Statements\" hoặc \"Punchline\""
+  },
+  "qa_checker": {
+    "_desc": "Patch file prompt của QA Checker",
+    "qa_punchline_find": "| CT-03 | 10đ | Killer Statements & Punchline từ 2-3 |",
+    "_desc_qa_punchline": "Thay số lượng killer statement mặc định bằng giá trị user chọn",
+    "qa_punchline_replace": "| CT-03 | 10đ | Killer Statements & Punchline từ {min}-{max} |"
   },
   "format_agent": {
     "_desc": "Patch file prompt của Format Agent (Phase 7 — đóng gói bài cuối)",

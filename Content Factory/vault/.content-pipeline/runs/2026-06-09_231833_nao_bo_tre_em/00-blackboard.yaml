@@ -1,0 +1,14 @@
+Target_Pillar: "Steiner và khoa học phát triển toàn diện"
+Target_Audience: "cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron"
+topic: "nao_bo_tre_em"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "thiết lập sự ổn định và nề nếp cho con"
+  audience_circumstance: "khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng"
+  source_audience: "cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron"
+Target_Source_Type: "book"
+Target_Source_IDs:
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+# execution_key: bf2e96da

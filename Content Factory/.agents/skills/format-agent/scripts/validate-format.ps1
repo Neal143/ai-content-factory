@@ -253,6 +253,7 @@ if (-not $isValidationMode) {
         }
 
         # Nhóm code 3: In nội dung văn bản ra tệp và mở khóa theo dõi
+        $line = $line -replace '\s*<!--\s*PUNCHLINE\s*-->', ''
         Add-Text $line
         $lastLineWasText = $true
     }

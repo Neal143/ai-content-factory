@@ -79,4 +79,4 @@ Hạn chế tối đa. Chỉ dùng cho giờ (14:30), trích dẫn trực tiếp
 - [ ] Tính từ bổ nghĩa liên tiếp không dùng dấu phẩy
 - [ ] Không dùng bullet trong thân văn giải thích
 
-> FILE_KEY: 4b8e6ad2
+> FILE_KEY: 65798bd0

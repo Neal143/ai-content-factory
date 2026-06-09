@@ -70,11 +70,10 @@ provided_outputs:
 
 | Rule | Điểm | Kiểm tra |
 |------|------|----------|
-| AI-01 | 4đ | Không dash connector |
-| AI-02 | 4đ | Không staccato / micro-staccato |
-| AI-03 | 4đ | Không anaphora |
-| AI-04 | 4đ | Không repetitive pattern |
-| AI-05 | 4đ | Language purity (không English lóng) |
+| AI-01 | 5đ | Không dash connector |
+| AI-02 | 5đ | Không Micro-staccato |
+| AI-03 | 5đ | Không anaphora |
+| AI-05 | 5đ | Language purity (không English lóng) |
 
 **Auto-fail:** Bất kỳ pattern AI nào (5 items trên).
 
@@ -84,7 +83,7 @@ provided_outputs:
 |------|------|----------|
 | CT-01 | 10đ | Hook score ≥ 8 (từ Phase 3) |
 | CT-02 | 10đ | Authority citations ≥ 2 |
-| CT-03 | 10đ | Killer statements ≥ 2 |
+| CT-03 | 10đ | Killer Statements & Punchline từ 2-3 |
 | CT-04 | 10đ | Cross-check Vector Vivid (Fail nếu lạm dụng Extrapolate lệch chuẩn so với Constraint-based Improvise) |
 | CT-05 | 10đ | Story verified (SAS pass) — xem **Atom Attribution Check** bên dưới |
 | CT-06 | 10đ | Số lượng Vivid ≥ 3 |
