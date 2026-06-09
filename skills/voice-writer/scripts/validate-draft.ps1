@@ -695,6 +695,19 @@ if ($aiDetectFails.Count -eq 0) {
 }
 
 # ============================================================
+# CHECK 18: Punchline Limits
+# ============================================================
+$cfgPunchlineMin = if ($format -and $null -ne $format.punchlines_per_article) { $format.punchlines_per_article.min } else { 2 }
+$cfgPunchlineMax = if ($format -and $null -ne $format.punchlines_per_article) { $format.punchlines_per_article.max } else { 3 }
+
+$punchlineCount = ([regex]::Matches($bodyForParse, '<!--\s*PUNCHLINE\s*-->')).Count
+if ($punchlineCount -ge $cfgPunchlineMin -and $punchlineCount -le $cfgPunchlineMax) {
+    Add-Result "Punchline Limits" "PASS" "Found $punchlineCount punchlines (min: $cfgPunchlineMin, max: $cfgPunchlineMax)"
+} else {
+    Add-Result "Punchline Limits" "FAIL" "Found $punchlineCount punchlines. Required: $cfgPunchlineMin-$cfgPunchlineMax <!-- PUNCHLINE --> markers"
+}
+
+# ============================================================
 # OUTPUT REPORT
 # ============================================================
 Write-Host ""

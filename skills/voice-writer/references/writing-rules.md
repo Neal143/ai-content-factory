@@ -42,9 +42,11 @@ Mỗi đoạn PHẢI có ít nhất 1 value signal. Phân bổ theo section:
 
 Nếu 5 câu liên tiếp mà không có giá trị gì → Engagement Gap → sẽ bị QA phạt.
 
-## 5. Killer Statements
-Mỗi bài cần ≥ 2 "Killer Statements" — câu nói mạnh, đáng nhớ, có thể trích dẫn riêng lẻ.
-Ví dụ: "Người thành công không phải người biết nhiều, mà là người biết bỏ đúng thứ."
+## 5. Killer Statements & Punchline
+Mỗi bài BẮT BUỘC có từ **2 đến 3** "Killer Statements" hoặc "Punchline" — câu nói mạnh, đáng nhớ, chứa đựng sự thật nghịch lý (paradox) hoặc insight sắc bén, có sức sát thương cao và có thể trích dẫn riêng lẻ.
+- **Marker Bắt Buộc:** Dù bạn viết Killer Statement hay Punchline, ngay sau câu đó ĐỀU PHẢI dán nhãn `<!-- PUNCHLINE -->` (dùng chung 1 thẻ) để hệ thống QA đếm số lượng.
+- *Lưu ý:* Luôn kết hợp với Quy tắc Lấy đà (Setup Context) bằng Normal/Long Chain ở phía trước để câu đó phát huy tối đa uy lực (xem Section 9).
+Ví dụ: "Người thành công không phải người biết nhiều, mà là người biết bỏ đúng thứ." <!-- PUNCHLINE -->
 
 ## 6. Constraint-based Improvise (Áp chế Văn mẫu & Vivid Động)
 Mọi hình ảnh ẩn dụ BẮT BUỘC tuân thủ 2 Kịch bản Bắt buộc:
@@ -60,8 +62,58 @@ Khi nhắc expert từ `authorities.yaml`:
 ## 8. Word Count
 Mục tiêu: 1300-1800 từ. Ưu tiên chất lượng ngữ nghĩa — nếu lệch nhẹ (±10%) mà mạch văn mạch lạc, KHÔNG cắt xén hay nhồi câu vô hồn để ép số.
 
-## 9. Chain Structure — Nhịp câu trong đoạn
-Mỗi paragraph gồm 3-5 câu tổng cộng. Chia đoạn thành các "chuỗi câu" (chain) bằng cách xuống dòng (newline) trong cùng 1 đoạn. TUYỆT ĐỐI KHÔNG viết liền một mạch. BẮT BUỘC bấm ENTER (xuống dòng) để tạo chuỗi. Mỗi chuỗi bình thường có 1-2 câu. Có 3-5 chuỗi dài (3-5 câu trên cùng dòng) trong toàn bài. Chuỗi dài chỉ dùng khi cần chiều sâu cảm xúc hoặc lập luận phức tạp (thường ở Story hoặc Deep Dive).
+## 9. Chain Structure & Emotional Pacing — Nhịp câu trong đoạn
+Đoạn văn (Paragraph) là một khối ý lớn được tạo bởi nhiều câu. Để bài viết không trở thành những "bức tường chữ" đơn điệu, bạn phải tạo biến thiên nhịp điệu (Rhythm) và kiểm soát nhịp cảm xúc (Emotional Pacing) bằng cách phân mảnh đoạn văn thành các "chuỗi câu" (chain) qua dấu ENTER.
+
+### A. Phân loại Chuỗi (Chain) và Mục đích
+- **Câu đơn (1 câu 1 dòng):** Là dạng chuỗi ngắn mang tính sát thương cao nhất. Dùng cho: Insights then chốt, khoảnh khắc dramatic, killer statement, Punchline x Paradox (Câu đấm chứa nghịch lý), hoặc dùng 1 nhóm câu đơn liên tiếp để tạo khoảng lặng thị giác.
+  > *Quy tắc Lấy đà:* Nếu dùng làm Punchline/Paradox, BẮT BUỘC phải có Long/Normal Chain phía trước làm bệ phóng (Setup Context). Cú đấm chỉ phát huy uy lực khi có khoảng lấy đà đủ tốt.
+- **Normal Chain (Chuỗi bình thường 1-2 câu):** Dùng để chuyển ý, giải thích ngắn, hoặc tạo nhịp thở (Breath) sau một chuỗi dài.
+- **Long Chain (Chuỗi dài):** Đóng vai trò như đoạn trung/dài, dùng để giải thích chính, xây dựng lập luận.
+- **Super Long Chain (Chuỗi siêu dài):** Chỉ dùng khi bắt buộc, giới hạn tối đa 1-2 lần/bài. 
+  > *Quy tắc Nhịp thở:* Trước và sau một Super Long Chain BẮT BUỘC phải có Câu đơn hoặc Normal Chain để tạo trạm dừng lấy hơi cho người đọc.
+  
+  Super Long Chain chỉ hợp lệ trong 3 trường hợp sau:
+
+| Lý do | Ví dụ | Tại sao không ngắt |
+|-------|-------|---------------------|
+| Chuỗi bằng chứng liền mạch | Debunk: tóm tắt báo cáo gốc 17 trang, mỗi ý dẫn đến ý tiếp | Ngắt giữa chừng → người đọc mất mạch source-vs-claim |
+| Chuỗi logic A→B→C→D dài | Personal essay: tình huống → vấn đề → insight → chứng minh | Ngắt đoạn = phá vỡ flow lập luận, insight không đủ sức |
+| Show-don't-tell cần nhiều chi tiết | Kể cụ thể "không biết đọc báo cáo tài chính theo thứ tự nào, chỉ số nào cần cảnh báo..." | Ngắt = mất tính cụ thể, thành tell thay vì show |
+
+> **CẤM:** Viết chuỗi dài chỉ vì lười ngắt. Nếu trong một chuỗi dài mà mỗi câu có thể tự đứng độc lập trọn vẹn ý → BẮT BUỘC phải ngắt xuống dòng. Tránh tuyệt đối việc các chuỗi liên tiếp có độ dài bằng nhau (gây đơn điệu).
+
+### B. Quy tắc ngắt chuỗi
+TUYỆT ĐỐI KHÔNG viết liền một mạch. BẮT BUỘC bấm ENTER (xuống dòng) để tạo chuỗi. Mỗi chuỗi bình thường có 1-2 câu. Có 3-5 chuỗi dài (3-5 câu trên cùng dòng) trong toàn bài.
+
+### C. Emotional Pacing (Nhịp Cảm Xúc)
+**Vary rhythm liên tục — Không bao giờ để nhịp điệu bị đoán trước.**
+Sự kết hợp giữa các Chain tạo ra đường cong cảm xúc:
+- **Tăng tension:** Setup (Long Chain) → Complication (Long/Normal Chain) → Crisis (Normal Chain ngắn) → Câu dramatic (Câu đơn).
+- **Giải phóng tension:** Impact (Câu đơn) → Breath (Normal Chain) → Explanation (Long Chain) → Exploration (Super Long Chain).
+
+### D. Ví dụ Minh Họa
+
+**Ví dụ đoạn có 10 câu, chia thành 5 chuỗi (4 + 2 + 2 + 1 + 1) — Biến thiên nhịp độ từ cao trào đến tĩnh lặng:**
+```
+<!-- PARAGRAPH: 10 -->
+<!-- PARAGRAPH_HEADING: Huyền thoại về sự bận rộn -->
+Trong văn hóa làm việc hiện đại, sự bận rộn thường bị nhầm lẫn với năng suất. Chúng ta tự hào khoe khoang về những đêm thức trắng, những ly cà phê thứ tư trong ngày và những danh sách công việc dài dằng dặc chưa bao giờ được gạch hết. Xã hội tung hô những người kiệt sức như những chiến binh, tạo ra một tiêu chuẩn độc hại rằng nếu bạn không stress, nghĩa là bạn đang lười biếng. Cảm giác lúc nào cũng phải làm một việc gì đó trở thành một cơn nghiện khó bỏ.
+Nhưng sự thật là, chuyển động không đồng nghĩa với tiến lên. Phần lớn thời gian, chúng ta chỉ đang chạy tại chỗ với tốc độ tối đa.
+Khi năng lượng bị cạn kiệt, não bộ chuyển sang chế độ sinh tồn và từ chối mọi tư duy sáng tạo. Những quyết định mang tính chiến lược dần bị thay thế bởi phản xạ đối phó ngắn hạn.
+Sự bận rộn giả tạo chính là liều thuốc độc giết chết những đột phá thực sự.
+Hãy dừng lại trước khi bạn tự thiêu rụi chính mình.
+```
+
+**Ví dụ đoạn có 8 câu, chia thành 4 chuỗi (3 + 2 + 2 + 1) — Thể hiện rõ Nhịp Cảm Xúc (Tăng Tension):**
+```
+<!-- PARAGRAPH: 8 -->
+<!-- PARAGRAPH_HEADING: Cái bẫy của sự hoàn hảo -->
+Khi một đứa trẻ luôn đạt điểm mười, người lớn thường vội vàng gắn cho chúng cái mác "thiên tài" hoặc "đứa trẻ hoàn hảo". Họ liên tục dùng những lời khen ngợi có cánh để củng cố hình tượng đó, mặc định rằng đây là cách tốt nhất để nuôi dưỡng sự tự tin. Thậm chí, những tấm giấy khen được đóng khung treo trang trọng giữa nhà như một minh chứng cho sự thành công của cả gia đình.
+Nhưng ẩn đằng sau lớp vỏ bọc hào nhoáng ấy là một nỗi sợ hãi đang âm thầm lớn lên. Đứa trẻ bắt đầu tin rằng giá trị của mình chỉ tồn tại khi và chỉ khi không bao giờ mắc lỗi.
+Mỗi bài kiểm tra giờ đây không còn là cơ hội để học hỏi. Chúng biến thành những phiên tòa phán xét sự tồn tại của chính mình.
+Sự hoàn hảo không tạo ra thiên tài, nó tạo ra những tù nhân.
+```
 
 **Ví dụ đoạn có 4 câu, chia thành 2 chuỗi (2 câu + 2 câu):**
 ```

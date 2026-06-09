@@ -58,4 +58,4 @@ Tuyệt đối KHÔNG được dùng các từ tiếng Anh sau trong bài viết
 - [ ] Thuật ngữ lần đầu: Việt (*English*)
 - [ ] Thuật ngữ các lần sau: nhất quán dùng Việt
 
-> FILE_KEY: 31ed84a9
+> FILE_KEY: 72ed065a

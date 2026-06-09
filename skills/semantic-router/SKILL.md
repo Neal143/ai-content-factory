@@ -7,7 +7,7 @@ output: Blackboard 8 biến: Target_Pillar, Target_Audience, topic, Is_Novel_Ang
 
 # Semantic Router Skill
 
-> EXECUTION_KEY: bf2e96da
+> EXECUTION_KEY: 71c95daf
 
 **Quy tắc Cốt lõi:** Skill này trả về DUY NHẤT 1 TOPIC — hoặc `mapped_topic` hoặc `novel_angle`, không bao giờ cả hai.
 

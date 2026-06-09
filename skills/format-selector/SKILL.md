@@ -46,7 +46,7 @@ Chọn chế độ viết:
 
 ### 3B — Basic
 
-1. Agent hỏi user 10 biến (B1–B10) qua chat (xem danh sách câu hỏi bên dưới).
+1. Agent hỏi user 11 biến (B1–B11) qua chat (xem danh sách câu hỏi bên dưới).
 2. Agent parse câu trả lời: `3-5` → `{"min":3,"max":5}`. `3` → `{"min":3,"max":3}`. Invalid → hỏi lại.
 3. Agent tạo `formats/active.json` (merge câu trả lời vào default.json, set `"mode":"basic"`).
 4. // turbo
@@ -65,7 +65,7 @@ Tương tự Basic nhưng hỏi thêm 4 biến (A1–A4), set `"mode":"advanced"
 
 ---
 
-**Danh sách câu hỏi Basic (B1–B10):**
+**Danh sách câu hỏi Basic (B1–B11):**
 ```text
 ══ SECTION ══
 [B1] Phân tách giữa các section:
@@ -97,9 +97,10 @@ Tương tự Basic nhưng hỏi thêm 4 biến (A1–A4), set `"mode":"advanced"
 [B7] Số câu mỗi chuỗi bình thường (mặc định: 1-2): ___
 [B8] Số câu mỗi chuỗi dài (mặc định: 3-5): ___
 [B9] Số chuỗi dài mỗi bài (mặc định: 3-5): ___
+[B10] Số Killer Statements / Punchline mỗi bài (mặc định: 2-3): ___
 
 ══ HIỂN THỊ ══
-[B10] Bài viết có title trong output cuối? (mặc định: không): ___
+[B11] Bài viết có title trong output cuối? (mặc định: không): ___
 ```
 
 **Câu hỏi bổ sung Nâng cao (A1–A4):**

@@ -33,7 +33,7 @@ powershell -ep Bypass -f .agents/scripts/generate-phase-key.ps1
 *(Lệnh `/content-post tiếp tục`: Bỏ qua B1, B2 -> sang Resume).*
 
 ### 2. Chọn Chế Độ Viết
-Gọi **FormatSelectorAgent** (Đọc AGENT.md & SKILL.md tại `.agents/agents/format-selector/`).
+Gọi **FormatSelectorAgent** (Đọc AGENT.md tại `.agents/agents/format-selector/`).
 
 ### 3. Validate Persona (1 Lần)
 ```powershell
@@ -62,7 +62,7 @@ Gọi **DikwBridgeAgent**. Xong -> Compile payload Phase 1.
 <!-- NEXT_GUIDANCE: 1 -->
 **Phase 1: Idea Curator** (`01-idea-brief.md`)
 1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md, history:?vault/.content-pipeline/logs/idea-history.md|@LAST_7_DAYS"`
-2. Gọi Agent: Đọc AGENT.md & SKILL.md tại `.agents/agents/idea-curator/`
+2. Gọi Agent: Đọc AGENT.md tại `.agents/agents/idea-curator/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 1`
 <!-- /NEXT_GUIDANCE: 1 -->
 
