@@ -3,32 +3,29 @@ Tên file: anti-ai-rules.md
 Last update: 09/06/2026 15:30 (GMT+7)
 Vai trò: Hướng dẫn phát hiện dấu vết AI và tối ưu văn phong tự nhiên.
 Được sử dụng khi nào: Khi AI thực hiện viết bài nháp (draft).
-Output là gì: Bài viết tự nhiên, không mắc 10 pattern bị cấm và các lỗi over-formatting.
-Tóm tắt logic hoạt động: Cung cấp 10 mẫu cấu trúc câu mang dấu vết AI (Anti-AI patterns) kèm ví dụ sửa đổi; liệt kê các dấu hiệu AI nâng cao, các grep pattern phát hiện lặp từ/kí tự đặc biệt và danh sách checklist kiểm định.
+Output là gì: Bài viết tự nhiên, không mắc các pattern bị cấm và các lỗi over-formatting.
+Tóm tắt logic hoạt động: Cung cấp các mẫu cấu trúc câu mang dấu vết AI (Anti-AI patterns) kèm ví dụ sửa đổi; liệt kê các dấu hiệu AI nâng cao, các grep pattern phát hiện lặp từ/kí tự đặc biệt và danh sách checklist kiểm định.
 -->
 
 # Anti-AI Rules & Authenticity
 **Module:** check/anti-ai
 
-## 1. Anti-AI Patterns — 10 Pattern bị cấm
+## 1. Anti-AI Patterns — các Pattern bị cấm
 
-### ⛔ AUTO-FAIL (5 patterns — phát hiện 1 cái = fail ngay)
+### ⛔ AUTO-FAIL (2 patterns — phát hiện 1 cái = fail ngay)
 | # | Pattern | Ví dụ ❌ | Sửa ✅ |
 |---|---------|--------|------|
 | 1 | **Dash Connector** | "Sáng - gym - ăn healthy" | "Sáng dậy sớm rồi tập gym" |
-| 2 | **Staccato** | "Sáng mở mắt. Cả ngày chạy. Tối nằm." | "Sáng mở mắt đã thấy mệt, cả ngày chạy rồi tối về chỉ muốn nằm" |
-| 3 | **Micro-Staccato** | "Đổi đời luôn. Một. Viết ra giấy." | Merge thành câu dài flowing tự nhiên |
-| 4 | **Anaphora** | "Không X. Không Y. Không Z." | Varied sentence openers, đổi cấu trúc |
-| 5 | **Repetitive** | "X là vốn. Y là vốn. Z là vốn." | Liệt kê tự nhiên trong một câu |
+| 2 | **Micro-Staccato** | "Đổi đời luôn. Một. Viết ra giấy." | Merge thành câu dài flowing tự nhiên |
 
 ### ⚠️ HIGH-RISK (5 patterns — cộng dồn ≥ 3 = fail)
 | # | Pattern | Ví dụ ❌ | Sửa ✅ |
 |---|---------|--------|------|
-| 6 | **QA Pattern** | "Kết quả? Bất ngờ lắm." | Narrative bridge tự nhiên |
-| 7 | **Numbered Lists** | "1. Làm A. 2. Làm B." | Viết thành prose tự nhiên |
-| 8 | **Logic Symbols** | "X + Y = Thành công" | Diễn đạt bằng câu văn |
-| 9 | **Generic Transitions** | "Đầu tiên... Tiếp theo... Cuối cùng..." | Transition tự nhiên, đa dạng |
-| 10 | **Metaphor Stack** | 3+ ẩn dụ chồng chất trong 1 đoạn | Max 1 ẩn dụ/đoạn |
+| 3 | **QA Pattern** | "Kết quả? Bất ngờ lắm." | Narrative bridge tự nhiên |
+| 4 | **Numbered Lists** | "1. Làm A. 2. Làm B." | Viết thành prose tự nhiên |
+| 5 | **Logic Symbols** | "X + Y = Thành công" | Diễn đạt bằng câu văn |
+| 6 | **Generic Transitions** | "Đầu tiên... Tiếp theo... Cuối cùng..." | Transition tự nhiên, đa dạng |
+| 7 | **Metaphor Stack** | 3+ ẩn dụ chồng chất trong 1 đoạn | Max 1 ẩn dụ/đoạn |
 
 ## 2. Các dấu hiệu nhận biết AI khác
 
@@ -67,11 +64,11 @@ Tóm tắt logic hoạt động: Cung cấp 10 mẫu cấu trúc câu mang dấu
 | Emoji | `🚀` / `✨` / `💡` (ngoài formula box) | Nghi AI-generated |
 
 ## Checklist
-- [ ] Không vi phạm 10 Anti-AI Patterns
+- [ ] Không vi phạm Anti-AI Patterns
 - [ ] Không có nhãn AI (Key, Note, Summary)
 - [ ] Không over-formatting (bold labels trong storytelling)
 - [ ] Đoạn văn biến thiên (không đều nhau)
 - [ ] Từ nối đa dạng (không lặp >3 lần)
 - [ ] Không quá mượt mà — có chỗ rough tự nhiên
 
-> FILE_KEY: 8c96f3a0
+> FILE_KEY: aa11bb22
