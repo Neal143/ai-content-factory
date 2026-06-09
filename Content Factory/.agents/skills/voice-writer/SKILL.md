@@ -28,25 +28,21 @@ provided_outputs:
 ## Hướng dẫn hoạt động
 
 ### Bước 1: Đọc tham chiếu BẮT BUỘC
-Dùng tool `view_file` đọc lần lượt 8 file:
+Dùng tool `view_file` đọc lần lượt 4 file:
 - `.agents/skills/voice-writer/references/writing-rules.md`
-- `.agents/skills/voice-writer/references/anti-ai-patterns.md`
-- `.agents/skills/voice-writer/references/english-blacklist.md`
-- `.agents/skills/voice-writer/references/capitalization.md`
-- `.agents/skills/voice-writer/references/english-mixing.md`
-- `.agents/skills/voice-writer/references/prose-format.md`
-- `.agents/skills/voice-writer/references/punctuation.md`
-- `.agents/skills/voice-writer/references/ai-detection.md`
+- `.agents/skills/voice-writer/references/anti-ai-rules.md`
+- `.agents/skills/voice-writer/references/english-rules.md`
+- `.agents/skills/voice-writer/references/typography-and-format.md`
 
-> ⛔ **FATAL RULE:** PHẢI dùng tool đọc thành công toàn bộ 8 file. File Not Found → DỪNG, BÁO USER. Cấm hallucinate nội dung.
+> ⛔ **FATAL RULE:** PHẢI dùng tool đọc thành công toàn bộ 4 file. File Not Found → DỪNG, BÁO USER. Cấm hallucinate nội dung.
 
 Sau khi đọc mỗi file, ghi nhận giá trị `FILE_KEY` ở dòng cuối file đó.
 
 Sau khi hoàn thành toàn bộ nội dung `05-draft.md`, append vào **cuối file** dòng:
 ```
-<!-- ref_keys: writing-rules=[key1], anti-ai=[key2], english-blacklist=[key3], capitalization=[key4], english-mixing=[key5], prose-format=[key6], punctuation=[key7], ai-detection=[key8] -->
+<!-- ref_keys: writing-rules=[key1], anti-ai-rules=[key2], english-rules=[key3], typography-and-format=[key4] -->
 ```
-Thay [key1]...[key8] bằng đúng giá trị FILE_KEY đã đọc từ mỗi file.
+Thay [key1]...[key4] bằng đúng giá trị FILE_KEY đã đọc từ mỗi file.
 
 ### Bước 2: Nhận input
 Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.

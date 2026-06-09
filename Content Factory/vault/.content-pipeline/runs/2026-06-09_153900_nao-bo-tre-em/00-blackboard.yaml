@@ -1,0 +1,14 @@
+topic: "nao_bo_tre_em"
+Target_Pillar: "Steiner và khoa học phát triển toàn diện"
+Target_Audience: "cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ"
+  audience_circumstance: "khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày"
+  source_audience: "cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay"
+Target_Source_Type: "book"
+Target_Source_IDs:
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+# execution_key: cf4eb5d6
