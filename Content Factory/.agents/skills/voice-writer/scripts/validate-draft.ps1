@@ -1,4 +1,4 @@
-﻿# Last Update: 24/05/2026 13:30 (GMT+7)
+# Last Update: 24/05/2026 13:30 (GMT+7)
 <#
 .SYNOPSIS
     Validate Draft - Objective checks for Phase 5 (Voice Writer)
@@ -8,15 +8,15 @@
     Only checks objective measures: word count, banned words, anti-AI patterns, pronouns, fillers, punctuation.
 .PARAMETER DraftPath
     Path to draft.md file
-.PARAMETER BlacklistPath
-    Path to english-blacklist.md file
+.PARAMETER EnglishRulesPath
+    Path to english-rules.md file
 .NOTES
-    Last Update: 19/05/2026
+    Last Update: 09/06/2026
 #>
 
 param(
     [Parameter(Mandatory = $true)][string]$DraftPath,
-    [string]$BlacklistPath = ".agents/skills/voice-writer/references/english-blacklist.md",
+    [string]$EnglishRulesPath = ".agents/skills/voice-writer/references/english-rules.md",
     [string]$PersonaPath = ""
 )
 
@@ -44,14 +44,11 @@ $cfgSentPerNormalMin = if ($format) { $format.sentences_per_normal_chain.min } e
 $cfgSentPerNormalMax = if ($format) { $format.sentences_per_normal_chain.max } else { 5 }
 $cfgSentPerLongMin = if ($format) { $format.sentences_per_long_chain.min } else { 6 }
 $cfgSentPerLongMax = if ($format) { $format.sentences_per_long_chain.max } else { 8 }
+Write-Verbose "Long chain limits: $cfgSentPerLongMin - $cfgSentPerLongMax"
 $cfgLongChainsMin = if ($format) { $format.long_chains_per_article.min } else { 0 }
 $cfgLongChainsMax = if ($format) { $format.long_chains_per_article.max } else { 2 }
-$cfgTitleInOutput = if ($format) { $format.output_elements.title } else { $false }
-$cfgSectionHeadingInOutput = if ($format) { $format.output_elements.section_heading } else { $false }
-$cfgParaHeadingInOutput = if ($format) { $format.output_elements.paragraph_heading } else { $false }
 $cfgVeryShortThreshold = if ($format) { $format.very_short_sentence_threshold } else { 4 }
-$cfgMode = if ($format) { $format.mode } else { "auto" }
-$cfgWordCountTolerance = if ($format -and $format.word_count_tolerance_percent -ne $null) { $format.word_count_tolerance_percent } else { 10 }
+$cfgWordCountTolerance = if ($format -and $null -ne $format.word_count_tolerance_percent) { $format.word_count_tolerance_percent } else { 10 }
 
 # Auto-detect PersonaPath tu blackboard neu chua truyen
 if (-not $PersonaPath) {
@@ -89,7 +86,7 @@ function Add-Result($check, $status, $detail) {
 # --- New sentence counting rule ---
 # Normal sentence (>= threshold words): counts as 1
 # Very short sentence (< threshold words): 2 sentences = 1, remainder = 0
-function Count-ValidSentences([string[]]$sentences, [int]$threshold) {
+function Measure-ValidSentence([string[]]$sentences, [int]$threshold) {
     $normalCount = 0
     $shortCount = 0
     foreach ($s in $sentences) {
@@ -140,7 +137,7 @@ if (Test-Path $skillMdPath) {
     Add-Result "Block Check" "WARN" "SKILL.md khong tim thay tai $skillMdPath"
 }
 
-$lines = Get-Content $DraftPath -Encoding UTF8
+# Đã xóa biến $lines vì không được sử dụng
 
 # --- Stripped version: remove structural markers for content checks (3-6, 10) ---
 $draftForCount = $draft -replace '<!--[^>]*-->', ''
@@ -170,23 +167,31 @@ else {
 # ============================================================
 # CHECK 2: Banned Words (English Blacklist)
 # ============================================================
+# Khởi tạo mảng từ bị cấm (banned words)
 $bannedWords = @()
-if (Test-Path $BlacklistPath) {
-    $blacklistContent = Get-Content $BlacklistPath -Encoding UTF8
-    foreach ($line in $blacklistContent) {
+if (Test-Path $EnglishRulesPath) {
+    # Đọc nội dung tệp quy tắc tiếng Anh
+    $rulesContent = Get-Content $EnglishRulesPath -Encoding UTF8
+    foreach ($line in $rulesContent) {
+        # Chỉ quét các dòng dạng bảng markdown chứa ký tự '|'
         if ($line.Contains('|')) {
             $cols = $line.Split('|')
             if ($cols.Length -ge 3) {
-                $word = $cols[2].Trim()
-                if (-not [string]::IsNullOrWhiteSpace($word) -and $word -notmatch ' T. c.m|---') {
-                    $bannedWords += $word
+                # Trích xuất cột số thứ tự (cột 1) và cột từ cấm (cột 2)
+                $num = $cols[1].Trim()
+                # Poka-yoke: Chỉ lấy từ cấm ở các dòng mà cột thứ nhất là số đếm (bỏ qua header, hàng phân cách và các bảng khác)
+                if ($num -match '^\d+$') {
+                    $word = $cols[2].Trim()
+                    if (-not [string]::IsNullOrWhiteSpace($word)) {
+                        $bannedWords += $word
+                    }
                 }
             }
         }
     }
 }
 else {
-    Write-Host "WARNING: Blacklist file not found at $BlacklistPath"
+    Write-Host "WARNING: English rules file not found at $EnglishRulesPath"
 }
 
 $foundBanned = @()
@@ -478,7 +483,7 @@ foreach ($pb in $allParagraphs) {
 
     # Count total sentences in the paragraph using the new rule
     $paraSentences = [regex]::Split($trimmed, "(?<!\b(?:[A-Z]|TS|GS|ThS|BS|Dr|Mr|Mrs|Ms|vs))[.!?$([char]0x2026)]+\s")
-    $paraValidCount = Count-ValidSentences $paraSentences $cfgVeryShortThreshold
+    $paraValidCount = Measure-ValidSentence $paraSentences $cfgVeryShortThreshold
 
     if ($paraValidCount -lt $cfgSentPerParaMin -or $paraValidCount -gt $cfgSentPerParaMax) {
         $badSentParas++
@@ -487,7 +492,7 @@ foreach ($pb in $allParagraphs) {
     # Check each chain
     foreach ($chain in $chains) {
         $chainSentences = [regex]::Split($chain, "(?<!\b(?:[A-Z]|TS|GS|ThS|BS|Dr|Mr|Mrs|Ms|vs))[.!?$([char]0x2026)]+\s")
-        $chainValidCount = Count-ValidSentences $chainSentences $cfgVeryShortThreshold
+        $chainValidCount = Measure-ValidSentence $chainSentences $cfgVeryShortThreshold
 
         if ($chainValidCount -ge $cfgSentPerLongMin) {
             # Long chain
@@ -532,15 +537,12 @@ if ($totalLongChains -ge $cfgLongChainsMin -and $totalLongChains -le $cfgLongCha
 # Ly do: Agent dung memory thay vi doc file vat ly writing-rules, anti-ai, english-blacklist.
 # Logic: Doc FILE_KEY tu 3 ref file, doi chieu voi ref_keys comment trong draft.
 # ============================================================
+# Bản đồ ánh xạ nhãn và đường dẫn vật lý của 4 tệp quy tắc tham chiếu mới
 $refFilePaths = @{
-    "writing-rules"     = ".agents/skills/voice-writer/references/writing-rules.md"
-    "anti-ai"           = ".agents/skills/voice-writer/references/anti-ai-patterns.md"
-    "english-blacklist" = ".agents/skills/voice-writer/references/english-blacklist.md"
-    "capitalization"    = ".agents/skills/voice-writer/references/capitalization.md"
-    "english-mixing"    = ".agents/skills/voice-writer/references/english-mixing.md"
-    "prose-format"      = ".agents/skills/voice-writer/references/prose-format.md"
-    "punctuation"       = ".agents/skills/voice-writer/references/punctuation.md"
-    "ai-detection"      = ".agents/skills/voice-writer/references/ai-detection.md"
+    "writing-rules"         = ".agents/skills/voice-writer/references/writing-rules.md"
+    "anti-ai-rules"         = ".agents/skills/voice-writer/references/anti-ai-rules.md"
+    "english-rules"         = ".agents/skills/voice-writer/references/english-rules.md"
+    "typography-and-format" = ".agents/skills/voice-writer/references/typography-and-format.md"
 }
 
 $expectedRefKeys = @{}
@@ -586,6 +588,7 @@ foreach ($name in $refFilePaths.Keys) {
     }
 }
 
+# Đánh giá kết quả kiểm tra khóa tham chiếu (Ref File Keys)
 if ($pendingWarn) {
     Add-Result "Ref File Keys" "WARN" "FILE_KEY PENDING - generate-phase-key.ps1 NOT RUN. Run script before Phase 1."
 }
@@ -593,7 +596,8 @@ elseif ($refKeysFail) {
     Add-Result "Ref File Keys" "FAIL" "ref_keys in draft mismatch FILE_KEY in reference files - Agent did not read physical files"
 }
 else {
-    Add-Result "Ref File Keys" "PASS" "All 8 reference file keys verified"
+    # Cập nhật thông báo kiểm tra thành công cho cả 4 tệp quy tắc mới
+    Add-Result "Ref File Keys" "PASS" "All 4 reference file keys verified"
 }
 
 # ============================================================

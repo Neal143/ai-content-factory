@@ -69,16 +69,12 @@ foreach ($folder in $skillFolders) {
     }
 }
 
-# --- Mapping 3 reference files (voice-writer Phase 5) ---
+# --- Bản đồ ánh xạ 4 tệp quy tắc tham chiếu mới của Voice Writer ---
 $refFiles = @(
-    @{ Path = ".agents/skills/voice-writer/references/writing-rules.md";     Label = "writing-rules"    },
-    @{ Path = ".agents/skills/voice-writer/references/anti-ai-patterns.md";  Label = "anti-ai-patterns" },
-    @{ Path = ".agents/skills/voice-writer/references/english-blacklist.md"; Label = "english-blacklist" },
-    @{ Path = ".agents/skills/voice-writer/references/capitalization.md";    Label = "capitalization"   },
-    @{ Path = ".agents/skills/voice-writer/references/english-mixing.md";    Label = "english-mixing"   },
-    @{ Path = ".agents/skills/voice-writer/references/prose-format.md";      Label = "prose-format"     },
-    @{ Path = ".agents/skills/voice-writer/references/punctuation.md";       Label = "punctuation"      },
-    @{ Path = ".agents/skills/voice-writer/references/ai-detection.md";      Label = "ai-detection"     }
+    @{ Path = ".agents/skills/voice-writer/references/writing-rules.md";          Label = "writing-rules"         },
+    @{ Path = ".agents/skills/voice-writer/references/anti-ai-rules.md";          Label = "anti-ai-rules"         },
+    @{ Path = ".agents/skills/voice-writer/references/english-rules.md";          Label = "english-rules"         },
+    @{ Path = ".agents/skills/voice-writer/references/typography-and-format.md";  Label = "typography-and-format" }
 )
 
 $refPattern = '(?m)^> FILE_KEY: .+$'
@@ -146,8 +142,9 @@ if ($failCount -gt 0) {
     Write-Host "[FAIL] $failCount file(s) failed."
     exit 1
 }
-$totalKeys = if ($PersonaPath) { 22 } else { 17 }
-$detail = if ($PersonaPath) { "9 SKILL + 8 ref + 5 persona" } else { "9 SKILL + 8 ref" }
+# Tính tổng số key cần inject: Nếu có PersonaPath thì cộng thêm 5 file persona (tổng 18), ngược lại chỉ tính 9 SKILL + 4 ref (tổng 13)
+$totalKeys = if ($PersonaPath) { 18 } else { 13 }
+$detail = if ($PersonaPath) { "9 SKILL + 4 ref + 5 persona" } else { "9 SKILL + 4 ref" }
 Write-Host "[OK] All $totalKeys keys injected. ($detail)"
 
 # --- Set PIPELINE_STATUS = SAN SANG ---

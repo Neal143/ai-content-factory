@@ -27,3 +27,12 @@
 - **Atoms Used**: vault/01-Atomic/Insights/btrb_su-lam-guong-va-nhip-dieu-gia-dinh-la-giao-duc-tot-nhat.md, vault/01-Atomic/Solutions/btrb_kien-tao-nhip-dieu-sinh-hoat-va-thoi-quen-thong-qua-su-tan-tam-trong-cong-viec-gia-dinh.md, vault/01-Atomic/Quotes/btrb_quote-barbara-j-patterson-da-co-san-chung-o-ben-trong-1.md
 - **Revisions**: 0
 - **Status**: published
+## [2026-06-09_155414] - Năng lượng bị đánh cắp - Tại sao sự ấm áp quyết định sự phát triển não bộ của con
+- **Pillar**: Steiner và khoa học phát triển toàn diện
+- **Topic**: "nao_bo_tre_em"
+- **Target_Audience**: cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay
+- **Hook Formula**: F1
+- **QA Score**: 5/5
+- **Atoms Used**: vault/01-Atomic/Insights/btrb_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh.md, vault/01-Atomic/Solutions/btrb_vai-tro-cua-su-am-ap-doi-voi-su-phat-trien-the-chat.md, vault/01-Atomic/Quotes/btrb_quote-dr-andrea-rentea-nam-long-ap-5.md
+- **Revisions**: 0
+- **Status**: published
