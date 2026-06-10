@@ -141,4 +141,17 @@ Hãy hình dung tâm trí như một dàn đồng ca gồm nhiều giọng hát 
 
 **LƯU Ý:** Xuống dòng giữa các chuỗi KHÔNG tạo đoạn mới — vẫn thuộc cùng 1 paragraph (cùng 1 ý lớn). Đoạn mới chỉ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`.
 
+## 10. Vietnamese Naturalness & Flow (Văn phong thuần Việt)
+Để bài viết mang lại cảm giác tự nhiên, mượt mà và gần gũi với độc giả Việt Nam, hãy áp dụng nguyên tắc chuyển đổi tư duy diễn đạt sau (đây là định hướng phong cách, không phải là luật cấm cứng nhắc):
+
+- **Tư duy ngôn ngữ (Language Paradigm)**: Tiếng Anh ưu tiên danh từ hóa và câu bị động. Tiếng Việt ưu tiên động từ trực diện và câu chủ động (có thể ẩn chủ ngữ).
+  * *Ví dụ đối chiếu 1 (Danh từ hóa -> Động từ)*: 
+    [Dịch thô]: "Việc đưa ra quyết định nhanh chóng sẽ giúp cho sự tối ưu hóa hệ thống được diễn ra." 
+    [Thuần Việt]: "Quyết định nhanh sẽ giúp hệ thống vận hành trơn tru."
+  * *Ví dụ đối chiếu 2 (Câu bị động/Đại từ quan hệ -> Chủ động)*:
+    [Dịch thô]: "Đây là một trong những rào cản lớn nhất mà được tạo ra bởi AI."
+    [Thuần Việt]: "Đây là rào cản lớn nhất do AI tạo ra."
+- **Diễn giải thuật ngữ thân thiện**: Khi cần giải thích các khái niệm phức tạp, hãy diễn giải lại một cách dễ hiểu và gắn liền với các ví dụ thực tế.
+- **Tôn trọng tuyệt đối Persona**: Luôn ưu tiên sử dụng các cách diễn đạt, từ vựng đặc trưng, hình ảnh ẩn dụ (metaphors), hoặc cách ví von đã được người dùng định nghĩa cụ thể trong file `voice-dna.yaml`. Hệ thống không can thiệp vào phong cách cá nhân của người viết.
+
 > FILE_KEY: 47dbac56
