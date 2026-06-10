@@ -28,21 +28,22 @@ provided_outputs:
 ## Hướng dẫn hoạt động
 
 ### Bước 1: Đọc tham chiếu BẮT BUỘC
-Dùng tool `view_file` đọc lần lượt 4 file:
+Dùng tool `view_file` đọc lần lượt 5 file:
 - `.agents/skills/voice-writer/references/writing-rules.md`
 - `.agents/skills/voice-writer/references/anti-ai-rules.md`
 - `.agents/skills/voice-writer/references/english-rules.md`
 - `.agents/skills/voice-writer/references/typography-and-format.md`
+- `.agents/skills/voice-writer/references/metaphor.md`
 
-> ⛔ **FATAL RULE:** PHẢI dùng tool đọc thành công toàn bộ 4 file. File Not Found → DỪNG, BÁO USER. Cấm hallucinate nội dung.
+> ⛔ **FATAL RULE:** PHẢI dùng tool đọc thành công toàn bộ 5 file. File Not Found → DỪNG, BÁO USER. Cấm hallucinate nội dung.
 
 Sau khi đọc mỗi file, ghi nhận giá trị `FILE_KEY` ở dòng cuối file đó.
 
 Sau khi hoàn thành toàn bộ nội dung `05-draft.md`, append vào **cuối file** dòng:
 ```
-<!-- ref_keys: writing-rules=[key1], anti-ai-rules=[key2], english-rules=[key3], typography-and-format=[key4] -->
+<!-- ref_keys: writing-rules=[key1], anti-ai-rules=[key2], english-rules=[key3], typography-and-format=[key4], metaphor=[key5] -->
 ```
-Thay [key1]...[key4] bằng đúng giá trị FILE_KEY đã đọc từ mỗi file.
+Thay [key1]...[key5] bằng đúng giá trị FILE_KEY đã đọc từ mỗi file.
 
 ### Bước 2: Nhận input
 Trích xuất dữ liệu từ Global Context theo Điều kiện Đầu vào.
@@ -93,7 +94,7 @@ Viết lần lượt 5 sections. TOÀN BỘ nội dung bài viết (từ dòng `
 | **SAS v18.2** (AUTO-FAIL) | CHỈ dùng stories từ Vault (verified) HOẶC người/tổ chức nổi tiếng thế giới. Vault trống → famous world stories + ghi nguồn. Không story phù hợp → viết bằng data/research. KHÔNG BỊA |
 | **KCS** | Mọi Solution/Concept PHẢI có ≥1: Ai tạo + credential / Ai dùng thành công + kết quả / Bao nhiêu người áp dụng |
 | **Authority Citation** | Áp dụng Credential Cascade theo writing-rules.md Section 7. Đa dạng cách giới thiệu expert |
-| **Vivid Extrapolation** | Tuân thủ 2 kịch bản tại writing-rules.md Section 6. Cấm ẩn dụ sáo rỗng |
+| **Vivid Extrapolation** | Tuân thủ 2 kịch bản tại writing-rules.md Section 6. BẮT BUỘC áp dụng 1 trong 3 cấu trúc ẩn dụ (Extended, Compounding, Loop) từ metaphor.md nếu có yếu tố ẩn dụ. Cấm ẩn dụ sáo rỗng |
 | **Anti-AI** | Quét 10 patterns + blacklist + AI detection. Đặc biệt: Cấm AI Labels (Key, Note, Summary). Cấm lạm dụng từ nối (>3 lần/bài). Cấm trộn tiếng Anh. |
 | **Killer Statements** | ≥ 2 câu khẳng định mạnh, đáng nhớ mỗi bài |
 | **Paragraph** | 8-10 câu/paragraph. Không viết paragraph 1 câu (trừ Hook câu đầu tiên). Không viết paragraph > 10 câu. LƯU Ý: Đoạn mới CHỈ bắt đầu khi có marker `<!-- PARAGRAPH: N -->`. |
@@ -126,7 +127,7 @@ Script kiểm tra 10 chỉ số objective. Nếu FAIL → **sửa ngay** trướ
 |-------|----------|----------|
 | Voice DNA | 100% pronoun/filler/tone compliance | → REVISE, quay Bước 3 |
 | Anti-AI | Zero AI signatures (10 patterns) | → REVISE, quay Bước 3 |
-| Vivid | Neo chặt JSON Vivid gốc hoặc phóng tác 5 giác quan. Cấm ẩn dụ sáo rỗng | → REVISE, quay Bước 3 |
+| Vivid | Neo chặt JSON Vivid gốc hoặc phóng tác 5 giác quan. Tuân thủ 3 cấu trúc ẩn dụ từ metaphor.md (Extended, Compounding, Loop). Cấm ẩn dụ sáo rỗng | → REVISE, quay Bước 3 |
 | Engagement | Không gap > 5 câu liên tiếp không value signal | → REVISE, quay Bước 3 |
 | Killer Statements | ≥ 2 câu mạnh, đáng nhớ | → REVISE, quay Bước 3 |
 | Atom Integrity | No fabricated atoms, all verified | → REVISE, quay Bước 3 |

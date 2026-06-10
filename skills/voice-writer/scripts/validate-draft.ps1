@@ -30,7 +30,8 @@ if (-not (Test-Path $formatPath)) {
 if (-not (Test-Path $formatPath)) {
     Write-Host "WARNING: No format config found. Using hardcoded defaults."
     $format = $null
-} else {
+}
+else {
     $format = Get-Content $formatPath -Raw -Encoding UTF8 | ConvertFrom-Json
 }
 
@@ -93,7 +94,8 @@ function Measure-ValidSentence([string[]]$sentences, [int]$threshold) {
         $wc = ($s -split '\s+' | Where-Object { $_ -ne '' }).Count
         if ($wc -ge $threshold) {
             $normalCount++
-        } elseif ($wc -gt 0) {
+        }
+        elseif ($wc -gt 0) {
             $shortCount++
         }
     }
@@ -124,16 +126,19 @@ if (Test-Path $skillMdPath) {
                 if ($draft -match $rx) {
                     if ($Matches[1].Trim().Length -gt 0) {
                         Add-Result "Block [$blk]" "PASS" "OK ($($Matches[1].Trim().Length) chars)"
-                    } else {
+                    }
+                    else {
                         Add-Result "Block [$blk]" "FAIL" "Block rong"
                     }
-                } else {
+                }
+                else {
                     Add-Result "Block [$blk]" "FAIL" "Thieu [BLOCK: $blk]...[/BLOCK: $blk]"
                 }
             }
         }
     }
-} else {
+}
+else {
     Add-Result "Block Check" "WARN" "SKILL.md khong tim thay tai $skillMdPath"
 }
 
@@ -287,7 +292,8 @@ $bodyForParse = $bodyForParse.Trim()
 # --- CHECK 7a: TITLE marker ---
 if ($bodyForParse -match '<!--\s*TITLE:\s*(.+?)\s*-->') {
     Add-Result "Title Marker" "PASS" "Title: $($Matches[1])"
-} else {
+}
+else {
     Add-Result "Title Marker" "FAIL" "Missing <!-- TITLE: ... -->"
 }
 
@@ -298,7 +304,8 @@ $foundSections = @($sectionMatches | ForEach-Object { $_.Groups[1].Value.Trim() 
 
 if ($foundSections.Count -eq 5 -and ($foundSections -join ',') -eq ($expectedSections -join ',')) {
     Add-Result "Section Markers" "PASS" "5 sections in correct order"
-} else {
+}
+else {
     Add-Result "Section Markers" "FAIL" "Expect: $($expectedSections -join ', '). Found: $($foundSections -join ', ')"
 }
 
@@ -306,7 +313,8 @@ if ($foundSections.Count -eq 5 -and ($foundSections -join ',') -eq ($expectedSec
 $sectionHeadings = [regex]::Matches($bodyForParse, '<!--\s*SECTION_HEADING:\s*(.+?)\s*-->')
 if ($sectionHeadings.Count -eq 5) {
     Add-Result "Section Headings" "PASS" "5/5 section headings"
-} else {
+}
+else {
     Add-Result "Section Headings" "FAIL" "$($sectionHeadings.Count)/5 section headings"
 }
 
@@ -319,7 +327,8 @@ for ($i = 0; $i -lt $paraNumbers.Count; $i++) {
 }
 if ($paraOK -and $paraNumbers.Count -gt 0) {
     Add-Result "Paragraph Markers" "PASS" "$($paraNumbers.Count) paragraphs, sequence 1->$($paraNumbers.Count)"
-} else {
+}
+else {
     Add-Result "Paragraph Markers" "FAIL" "Sequence not continuous or missing: $($paraNumbers -join ', ')"
 }
 
@@ -327,7 +336,8 @@ if ($paraOK -and $paraNumbers.Count -gt 0) {
 $paraHeadings = [regex]::Matches($bodyForParse, '<!--\s*PARAGRAPH_HEADING:\s*(.+?)\s*-->')
 if ($paraHeadings.Count -eq $paraNumbers.Count) {
     Add-Result "Paragraph Headings" "PASS" "$($paraHeadings.Count)/$($paraNumbers.Count) paragraph headings"
-} else {
+}
+else {
     Add-Result "Paragraph Headings" "FAIL" "$($paraHeadings.Count)/$($paraNumbers.Count) paragraph headings"
 }
 
@@ -340,16 +350,16 @@ $bodyClean = $bodyClean.Trim()
 
 # Level 1: Split sections by ASTERISM (if used) or fallback
 $sections = @($bodyForParse -split [regex]::Escape([char]0x2042) |
-              ForEach-Object { $_.Trim() } |
-              Where-Object { $_ -ne '' })
+    ForEach-Object { $_.Trim() } |
+    Where-Object { $_ -ne '' })
 
 # Level 2: Split paragraphs within each section
 $allParagraphs = @()
 foreach ($section in $sections) {
     $paraBlocks = @($section -split '<!--\s*PARAGRAPH:\s*\d+\s*-->' |
-                    ForEach-Object { $_ -replace '<!--[^>]*-->', '' } |
-                    ForEach-Object { $_.Trim() } |
-                    Where-Object { $_ -ne '' })
+        ForEach-Object { $_ -replace '<!--[^>]*-->', '' } |
+        ForEach-Object { $_.Trim() } |
+        Where-Object { $_ -ne '' })
     $allParagraphs += $paraBlocks
 }
 
@@ -365,7 +375,8 @@ for ($i = 0; $i -lt $allParagraphs.Count; $i++) {
 }
 if ($longParas.Count -eq 0) {
     Add-Result "Max Paragraph Length" "PASS" "All paragraphs <= $cfgMaxParaWords words"
-} else {
+}
+else {
     Add-Result "Max Paragraph Length" "FAIL" "Over-length: $($longParas -join ', ')"
 }
 
@@ -478,8 +489,8 @@ foreach ($pb in $allParagraphs) {
 
     # Split paragraph into chains using newline
     $chains = @($trimmed -split '\r?\n' |
-                ForEach-Object { $_.Trim() } |
-                Where-Object { $_ -ne '' })
+        ForEach-Object { $_.Trim() } |
+        Where-Object { $_ -ne '' })
 
     # Count total sentences in the paragraph using the new rule
     $paraSentences = [regex]::Split($trimmed, "(?<!\b(?:[A-Z]|TS|GS|ThS|BS|Dr|Mr|Mrs|Ms|vs))[.!?$([char]0x2026)]+\s")
@@ -513,7 +524,8 @@ foreach ($pb in $allParagraphs) {
 # Report CHECK 13a
 if ($badSentParas -eq 0) {
     Add-Result "Paragraph Sentences" "PASS" "All $checkedParas paragraphs within $cfgSentPerParaMin-$cfgSentPerParaMax sentences"
-} else {
+}
+else {
     Add-Result "Paragraph Sentences" "FAIL" "$badSentParas/$checkedParas paragraphs outside $cfgSentPerParaMin-$cfgSentPerParaMax range"
 }
 
@@ -521,28 +533,31 @@ if ($badSentParas -eq 0) {
 $chainSeverity = "FAIL"
 if ($badChains.Count -eq 0) {
     Add-Result "Chain Sentences" "PASS" "All chains within configured ranges"
-} else {
+}
+else {
     Add-Result "Chain Sentences" $chainSeverity "$($badChains.Count) chain(s) out of range: $($badChains[0..2] -join ', ')..."
 }
 
 # Report CHECK 13c: Long chains per article
 if ($totalLongChains -ge $cfgLongChainsMin -and $totalLongChains -le $cfgLongChainsMax) {
     Add-Result "Long Chain Count" "PASS" "$totalLongChains long chains (range: $cfgLongChainsMin-$cfgLongChainsMax)"
-} else {
+}
+else {
     Add-Result "Long Chain Count" $chainSeverity "$totalLongChains long chains (range: $cfgLongChainsMin-$cfgLongChainsMax)"
 }
 
 # ============================================================
-# CHECK 14: Reference File Keys (chung minh Agent doc 3 file tham chieu)
-# Ly do: Agent dung memory thay vi doc file vat ly writing-rules, anti-ai, english-blacklist.
-# Logic: Doc FILE_KEY tu 3 ref file, doi chieu voi ref_keys comment trong draft.
+# CHECK 14: Reference File Keys (chung minh Agent doc 5 file tham chieu)
+# Ly do: Agent dung memory thay vi doc file vat ly writing-rules, anti-ai-rules, english-rules, typography-and-format, metaphor.
+# Logic: Doc FILE_KEY tu 5 ref file, doi chieu voi ref_keys comment trong draft.
 # ============================================================
-# Bản đồ ánh xạ nhãn và đường dẫn vật lý của 4 tệp quy tắc tham chiếu mới
+# Bản đồ ánh xạ nhãn và đường dẫn vật lý của 5 tệp quy tắc tham chiếu mới
 $refFilePaths = @{
     "writing-rules"         = ".agents/skills/voice-writer/references/writing-rules.md"
     "anti-ai-rules"         = ".agents/skills/voice-writer/references/anti-ai-rules.md"
     "english-rules"         = ".agents/skills/voice-writer/references/english-rules.md"
     "typography-and-format" = ".agents/skills/voice-writer/references/typography-and-format.md"
+    "metaphor"              = ".agents/skills/voice-writer/references/metaphor.md"
 }
 
 $expectedRefKeys = @{}
@@ -596,8 +611,8 @@ elseif ($refKeysFail) {
     Add-Result "Ref File Keys" "FAIL" "ref_keys in draft mismatch FILE_KEY in reference files - Agent did not read physical files"
 }
 else {
-    # Cập nhật thông báo kiểm tra thành công cho cả 4 tệp quy tắc mới
-    Add-Result "Ref File Keys" "PASS" "All 4 reference file keys verified"
+    # Cập nhật thông báo kiểm tra thành công cho cả 5 tệp quy tắc mới
+    Add-Result "Ref File Keys" "PASS" "All 5 reference file keys verified"
 }
 
 # ============================================================
@@ -631,7 +646,8 @@ if ($draftForCount -match $oxfordPattern) {
 
 if ($capPuncFails.Count -eq 0) {
     Add-Result "VN Punctuation" "PASS" "No major punctuation errors"
-} else {
+}
+else {
     Add-Result "VN Punctuation" "FAIL" "Found: $($capPuncFails -join ', ')"
 }
 
@@ -654,7 +670,8 @@ if ($draftForCount -match '(?m)^##\s') {
 # Su dung WARN thay vi FAIL de tranh false-positive (bai bio/profile cho phep bullet)
 if ($proseFails.Count -eq 0) {
     Add-Result "Prose Format" "PASS" "No prose formatting errors"
-} else {
+}
+else {
     Add-Result "Prose Format" "WARN" "Found: $($proseFails -join ', ') (Review context manually)"
 }
 
@@ -690,7 +707,8 @@ foreach ($trans in $transitions) {
 
 if ($aiDetectFails.Count -eq 0) {
     Add-Result "AI Detection" "PASS" "No obvious AI markers"
-} else {
+}
+else {
     Add-Result "AI Detection" "FAIL" "Found: $($aiDetectFails -join ', ')"
 }
 
@@ -703,7 +721,8 @@ $cfgPunchlineMax = if ($format -and $null -ne $format.punchlines_per_article) { 
 $punchlineCount = ([regex]::Matches($bodyForParse, '<!--\s*PUNCHLINE\s*-->')).Count
 if ($punchlineCount -ge $cfgPunchlineMin -and $punchlineCount -le $cfgPunchlineMax) {
     Add-Result "Punchline Limits" "PASS" "Found $punchlineCount punchlines (min: $cfgPunchlineMin, max: $cfgPunchlineMax)"
-} else {
+}
+else {
     Add-Result "Punchline Limits" "FAIL" "Found $punchlineCount punchlines. Required: $cfgPunchlineMin-$cfgPunchlineMax <!-- PUNCHLINE --> markers"
 }
 

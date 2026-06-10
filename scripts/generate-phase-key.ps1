@@ -74,7 +74,8 @@ $refFiles = @(
     @{ Path = ".agents/skills/voice-writer/references/writing-rules.md";          Label = "writing-rules"         },
     @{ Path = ".agents/skills/voice-writer/references/anti-ai-rules.md";          Label = "anti-ai-rules"         },
     @{ Path = ".agents/skills/voice-writer/references/english-rules.md";          Label = "english-rules"         },
-    @{ Path = ".agents/skills/voice-writer/references/typography-and-format.md";  Label = "typography-and-format" }
+    @{ Path = ".agents/skills/voice-writer/references/typography-and-format.md";  Label = "typography-and-format" },
+    @{ Path = ".agents/skills/voice-writer/references/metaphor.md";               Label = "metaphor"              }
 )
 
 $refPattern = '(?m)^> FILE_KEY: .+$'
@@ -142,9 +143,9 @@ if ($failCount -gt 0) {
     Write-Host "[FAIL] $failCount file(s) failed."
     exit 1
 }
-# Tính tổng số key cần inject: Nếu có PersonaPath thì cộng thêm 5 file persona (tổng 18), ngược lại chỉ tính 9 SKILL + 4 ref (tổng 13)
-$totalKeys = if ($PersonaPath) { 18 } else { 13 }
-$detail = if ($PersonaPath) { "9 SKILL + 4 ref + 5 persona" } else { "9 SKILL + 4 ref" }
+# Tính tổng số key cần inject: Nếu có PersonaPath thì cộng thêm 5 file persona (tổng 19), ngược lại chỉ tính 9 SKILL + 5 ref (tổng 14)
+$totalKeys = if ($PersonaPath) { 19 } else { 14 }
+$detail = if ($PersonaPath) { "9 SKILL + 5 ref + 5 persona" } else { "9 SKILL + 5 ref" }
 Write-Host "[OK] All $totalKeys keys injected. ($detail)"
 
 # --- Set PIPELINE_STATUS = SAN SANG ---
