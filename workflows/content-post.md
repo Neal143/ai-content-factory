@@ -5,7 +5,7 @@ description: Pipeline 7 giai đoạn – 1 phiên liên tục qua Sub-Agents.
 > **Last Update**: 04/06/2026 16:00 (GMT+7)
 # Workflow: Viết bài viral (Content Post)
 > **LỆNH**: `/content-post [yêu cầu]` | `/content-post tiếp tục`
-> PIPELINE_STATUS: SẴN SÀNG
+> PIPELINE_STATUS: CHƯA SẴN SÀNG
 
 ## Output Rules
 - Run folder: `vault/.content-pipeline/runs/[YYYY-MM-DD_HHmmss]_[topic-slug]/`
