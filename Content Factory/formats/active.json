@@ -2,7 +2,7 @@
   "_meta": {
     "description": "Format Profile — Cấu hình cấu trúc bài viết cho pipeline content-post",
     "version": "1.0",
-    "last_update": "09/06/2026"
+    "last_update": "19/05/2026"
   },
   "_desc_mode": "Chế độ viết: auto (mặc định), basic (tùy chỉnh 10 biến), advanced (tùy chỉnh toàn diện)",
   "mode": "basic",
