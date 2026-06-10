@@ -2,7 +2,7 @@
 
 ## F1: Counter-Intuitive Statement
 - **Pattern**: "[Hành động ai cũng khuyên] thực ra đang [hậu quả tiêu cực ngầm]."
-- **Example**: "Anh em càng cố gắng [X] thì càng [Y tiêu cực]."
+- **Example**: "Bố mẹ càng ép con ăn cơm đúng bữa, con càng dễ rơi vào chứng biếng ăn tâm lý."
 - **Khi nào**: Phản bác niềm tin phổ biến
 - **Requires**: Data/evidence chống lưng
 
@@ -20,7 +20,7 @@
 
 ## F4: Famous Person Quote
 - **Pattern**: "[Expert name], [credentials]... [ổng/bả/họ] nói: '[quote powerful]'."
-- **Example**: "Daniel Siegel, giáo sư thần kinh học UCLA, nói: '[quote]'."
+- **Example**: "Giáo sư Nguyễn Văn A, nguyên Viện trưởng Viện Tâm lý học, nhận định: 'Kỷ luật không nước mắt bắt đầu từ việc cha mẹ biết im lặng'."
 - **Khi nào**: Có expert authority mạnh
 - **Requires**: Expert từ authorities.yaml, quote thật
 
@@ -74,7 +74,7 @@
 
 ## F13: Scenario Paint
 - **Pattern**: "[Vivid scene]... [reader thấy chính mình]... và [twist]."
-- **Example**: "[Cảnh quen thuộc: con khóc, bạn mệt, điện thoại reo]... và bạn chọn [hành động]."
+- **Example**: "Bát đĩa ngổn ngang chưa rửa, tiếng con khóc thét đòi sữa lúc 2h sáng, còn bạn bất lực nhìn chồng vẫn ngủ ngáy đều bên cạnh."
 - **Khi nào**: Muốn reader identify ngay
 - **Requires**: Vivid Payload hoặc phóng tác giác quan
 

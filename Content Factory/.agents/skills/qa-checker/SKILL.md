@@ -73,9 +73,12 @@ provided_outputs:
 | AI-01 | 5đ | Không dash connector |
 | AI-02 | 5đ | Không Micro-staccato |
 | AI-03 | 5đ | Không anaphora |
-| AI-05 | 5đ | Language purity (không English lóng) |
+| AI-05 | 5đ | Language purity & Vietnamese Naturalness (Đánh giá cảm quan) |
 
 **Auto-fail:** Bất kỳ pattern AI nào (5 items trên).
+
+#### AI-05 Verification Protocol
+Thực hiện đánh giá tổng thể bản thảo. Nếu phát hiện câu văn bị "gượng gạo" do lạm dụng dịch thô (translationese) quá 3 chỗ, hoặc lạm dụng các câu đệm rập khuôn của AI ("Hãy cùng khám phá", "Bạn đã bao giờ tự hỏi"), hãy trừ tối đa 2 điểm tại tiêu chí AI-05 và ghi chú rõ các câu cần mượt mà hơn vào `gate6-issues.md`. Tuyệt đối không bắt lỗi từ khóa đơn lẻ một cách máy móc làm ảnh hưởng đến sáng tạo.
 
 ### Content (60đ)
 
