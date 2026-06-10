@@ -65,4 +65,4 @@ Càng dùng AI nhiều → năng lực tự thân càng yếu
 - [ ] Compounding → vấn đề nghe mang tính hệ thống?
 - [ ] Loop → chuỗi flow tự nhiên, ≤ 5 bước?
 
-> FILE_KEY: PENDING
+> FILE_KEY: e7609b35

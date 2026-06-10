@@ -15,7 +15,7 @@ provided_outputs:
 
 # Idea Curator (Phase 1)
 
-> EXECUTION_KEY: 54dfec96
+> EXECUTION_KEY: 40e1378a
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện đầu vào (từ các phase trước hoặc hệ thống) đã được biên dịch sẵn trong `.temp/payload.md` (run folder). BẮT BUỘC đọc file này để lấy dữ kiện thay vì tự mở file gốc.

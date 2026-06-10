@@ -1,4 +1,4 @@
-﻿---
+---
 name: QA Checker
 description: Skill Phase 6 — Chấm điểm bài viết theo 4 sections, tổng 130 điểm. Quyết định PASS/REVISE/FAIL.
 last_update: 05/05/2026 18:11 (GMT+7)

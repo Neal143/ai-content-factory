@@ -29,6 +29,21 @@ $bypassFailed = $false
 $qualityFailed = $false
 $checkResults = @{}
 
+# [Nhóm code: Khởi tạo lưu trữ lỗi]
+# Sử dụng $script scope để giới hạn rủi ro tràn RAM hoặc xung đột nếu chạy đa luồng.
+$script:errorLogs = @()
+
+# [Nhóm code: Hàm ghi nhận lỗi]
+function Log-Error([string]$CheckCode, [string]$Msg) {
+    Write-Host "[FAIL] BYPASS DETECTED [$CheckCode]: $Msg"
+    $script:errorLogs += @{
+        timestamp = (Get-Date).ToUniversalTime().AddHours(7).ToString("HH:mm:ss")
+        phase     = $Phase
+        check     = $CheckCode
+        message   = $Msg
+    }
+}
+
 # ============================================================
 # CHECK 0 - Prerequisite Chain Validation
 # Ly do: Agent nhay coc Phase -> cac Phase sau khong phat hien.
@@ -65,7 +80,8 @@ if ($Phase -ne 0) {
 
     if ($missingPrereqs.Count -gt 0) {
         $checkResults["C0"] = "FAIL"
-        Write-Host "[FAIL] BYPASS DETECTED [Check 0]: Agent nhay coc - thieu output cua cac Phase truoc:"
+        $errDetail = $missingPrereqs -join "; "
+        Log-Error "C0" "Agent nhay coc - thieu output cua cac Phase truoc: $errDetail"
         foreach ($m in $missingPrereqs) { Write-Host "  - $m" }
         $bypassFailed = $true
     }
@@ -91,7 +107,7 @@ foreach ($scanPath in $scanPaths) {
     }
 }
 if ($forbidden.Count -gt 0) {
-    Write-Host "[FAIL] BYPASS DETECTED [Check 1]: Script bi cam: $($forbidden.FullName -join ', ')"
+    Log-Error "C1" "Script bi cam: $($forbidden.FullName -join ', ')"
     $bypassFailed = $true
     $checkResults["C1"] = "FAIL"
 } else {
@@ -108,7 +124,7 @@ if (Test-Path $pipelineRoot) {
         Where-Object { $_.DirectoryName -eq (Resolve-Path $pipelineRoot).Path }
 }
 if ($rootFiles.Count -gt 0) {
-    Write-Host "[FAIL] BYPASS DETECTED [Check 2]: File bi ghi vao root vault/.content-pipeline/: $($rootFiles.Name -join ', ')"
+    Log-Error "C2" "File bi ghi vao root vault/.content-pipeline/: $($rootFiles.Name -join ', ')"
     $bypassFailed = $true
     $checkResults["C2"] = "FAIL"
 } else {
@@ -125,7 +141,7 @@ if ($Phase -ge 6) {
         $hasScore = $content -match 'qa_score:\s*\d+'
         $hasQAFile = Test-Path (Join-Path $RunFolder "06-qa-result.md")
         if ($hasScore -and -not $hasQAFile) {
-            Write-Host "[FAIL] BYPASS DETECTED [Check 3]: qa_score hardcode trong 05-draft.md nhung 06-qa-result.md chua ton tai."
+            Log-Error "C3" "qa_score hardcode trong 05-draft.md nhung 06-qa-result.md chua ton tai."
             $bypassFailed = $true
             $checkResults["C3"] = "FAIL"
         } else {
@@ -170,17 +186,17 @@ if ($skillPaths.ContainsKey($Phase)) {
     }
 
     if ($expectedKey -eq "" -or $expectedKey -eq "PENDING" -or $expectedKey -eq "__PENDING__") {
-        Write-Host "[FAIL] BYPASS DETECTED [Check 4]: SKILL.md thieu execution_key. Chay generate-phase-key.ps1 truoc."
+        Log-Error "C4" "SKILL.md thieu execution_key. Chay generate-phase-key.ps1 truoc."
         $bypassFailed = $true
         $checkResults["C4"] = "FAIL"
     }
     elseif ($actualKey -eq "") {
-        Write-Host "[FAIL] BYPASS DETECTED [Check 4]: Output thieu execution_key."
+        Log-Error "C4" "Output thieu execution_key."
         $bypassFailed = $true
         $checkResults["C4"] = "FAIL"
     }
     elseif ($expectedKey -ne $actualKey) {
-        Write-Host "[FAIL] BYPASS DETECTED [Check 4]: Key khong khop. Expected: $expectedKey | Actual: $actualKey"
+        Log-Error "C4" "Key khong khop. Expected: $expectedKey | Actual: $actualKey"
         $bypassFailed = $true
         $checkResults["C4"] = "FAIL"
     }
@@ -206,7 +222,7 @@ if (-not $isNovel -and $Phase -ge 1) {
     $dikwFile = Join-Path $RunFolder "00.5-dikw-combo.md"
     
     if (-not (Test-Path $dikwFile)) {
-        Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua tao file (00.5-dikw-combo.md)."
+        Log-Error "C4BC" "DikwBridgeAgent chua tao file (00.5-dikw-combo.md)."
         $bypassFailed = $true
         $checkResults["C4BC"] = "FAIL"
     } else {
@@ -214,7 +230,7 @@ if (-not $isNovel -and $Phase -ge 1) {
         
         $hasKey = $dikwContent -match '<!-- BUNDLE_KEY:\s*([A-Za-z0-9]+)\s*-->'
         if (-not $hasKey) {
-            Write-Host "[FAIL] BYPASS DETECTED [Check 4C]: DikwBridgeAgent chua chay script hoac thieu BUNDLE_KEY."
+            Log-Error "C4BC" "DikwBridgeAgent chua chay script hoac thieu BUNDLE_KEY."
             $bypassFailed = $true
             $checkResults["C4BC"] = "FAIL"
         } else {
@@ -224,13 +240,13 @@ if (-not $isNovel -and $Phase -ge 1) {
                 $outputPath = Join-Path $RunFolder $phaseOutputMap[$Phase]
                 
                 if (-not (Test-Path $outputPath)) {
-                    Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Thieu file output cua Phase $Phase."
+                    Log-Error "C4BC" "Thieu file output cua Phase $Phase."
                     $bypassFailed = $true
                     $checkResults["C4BC"] = "FAIL"
                 } else {
                     $outContent = Get-Content $outputPath -Raw -Encoding UTF8
                     if ($outContent -notmatch "<!-- bundle_key:\s*\[?$expectedKey\]?\s*-->") {
-                        Write-Host "[FAIL] BYPASS DETECTED [Check 4B]: Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
+                        Log-Error "C4BC" "Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
                         $bypassFailed = $true
                         $checkResults["C4BC"] = "FAIL"
                     } else {
@@ -288,7 +304,7 @@ if ($validationScripts.ContainsKey($Phase)) {
             $checkResults["C5"] = "PASS"
         }
         else {
-            Write-Host "[FAIL] BYPASS DETECTED [Check 5]: Re-run validation FAIL for Phase $Phase."
+            Log-Error "C5" "Re-run validation FAIL for Phase $Phase."
             $qualityFailed = $true
             $checkResults["C5"] = "FAIL"
         }
@@ -302,7 +318,7 @@ elseif ($Phase -eq 0) {
     # CHECK 5B - Phase 0 inline validation
     $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
     if (-not (Test-Path $bbPath)) {
-        Write-Host "[FAIL] BYPASS DETECTED [Check 5]: 00-blackboard.yaml khong ton tai."
+        Log-Error "C5" "00-blackboard.yaml khong ton tai."
         $qualityFailed = $true
         $checkResults["C5"] = "FAIL"
     }
@@ -321,7 +337,7 @@ elseif ($Phase -eq 0) {
         }
         if ($missingFields.Count -gt 0) {
             $missing = $missingFields -join ", "
-            Write-Host "[FAIL] BYPASS DETECTED [Check 5]: Blackboard thieu/rong: $missing"
+            Log-Error "C5" "Blackboard thieu/rong: $missing"
             $qualityFailed = $true
             $checkResults["C5"] = "FAIL"
         }
@@ -335,7 +351,7 @@ elseif ($Phase -eq 0) {
             $topicVal = $topicMatch.Groups[1].Value.Trim()
             $wordCount = ($topicVal -split '_').Count
             if ($topicVal -notmatch '^[a-z][a-z0-9_]{2,40}$' -or $wordCount -gt 4) {
-                Write-Host "[FAIL] BYPASS DETECTED [Check 5C]: topic '$topicVal' sai format."
+                Log-Error "C5" "topic '$topicVal' sai format."
                 $qualityFailed = $true
                 $checkResults["C5"] = "FAIL"
             }
@@ -345,7 +361,7 @@ elseif ($Phase -eq 0) {
         if ($ppMatch.Success) {
             $ppVal = $ppMatch.Groups[1].Value.Trim()
             if ($ppVal -match '\\\\') {
-                Write-Host "[FAIL] BYPASS DETECTED [Check 5D]: Persona_Path chua escaped backslash."
+                Log-Error "C5" "Persona_Path chua escaped backslash."
                 $qualityFailed = $true
                 $checkResults["C5"] = "FAIL"
             }
@@ -384,8 +400,13 @@ function Update-SentinelChecklist {
 
     $data = @{}
     if (Test-Path $dataPath) {
-        $raw = Get-Content $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
-        foreach ($prop in $raw.PSObject.Properties) { $data[$prop.Name] = $prop.Value }
+        # [Nhóm code: Try-Catch I/O] Chống sập Sentinel nếu file json bị hỏng do cắt điện/crash
+        try {
+            $raw = Get-Content $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
+            if ($raw) { foreach ($prop in $raw.PSObject.Properties) { $data[$prop.Name] = $prop.Value } }
+        } catch {
+            Write-Host "[WARN] Lỗi đọc sentinel-data.json, hệ thống sẽ tự khởi tạo lại cấu trúc."
+        }
     }
 
     $timestamp = (Get-Date).ToUniversalTime().AddHours(7).ToString("HH:mm")
@@ -394,13 +415,25 @@ function Update-SentinelChecklist {
         "$($_.Key)$icon"
     }) -join " "
 
+    # [Nhóm code: Bảo tồn lỗi theo Phase an toàn]
+    $existingErrors = @()
+    if ($data.ContainsKey("$Phase")) {
+        $errs = $data["$Phase"].errors
+        if ($null -ne $errs) { foreach ($e in @($errs)) { $existingErrors += $e } }
+    }
+    $mergedErrors = @()
+    foreach ($e in $existingErrors) { $mergedErrors += $e }
+    foreach ($e in $script:errorLogs) { $mergedErrors += $e }
+
     $data["$Phase"] = @{
         status    = $Status
         timestamp = $timestamp
         checks    = $checksStr
+        errors    = $mergedErrors
     }
 
-    $data | ConvertTo-Json -Depth 3 | Set-Content $dataPath -Encoding UTF8
+    # [Nhóm code: Vá lỗi Serialization của PowerShell]
+    $data | ConvertTo-Json -Depth 5 | Set-Content $dataPath -Encoding UTF8
 
     $runName = Split-Path $RunFolder -Leaf
     $now = (Get-Date).ToUniversalTime().AddHours(7).ToString("dd/MM/yyyy HH:mm")
@@ -447,6 +480,28 @@ function Update-SentinelChecklist {
             $md += "| $displayPhase | $($meta.Name) | ``$($meta.Output)`` | $statusStr | $($entry.timestamp) | $($entry.checks) |"
         } else {
             $md += "| $displayPhase | $($meta.Name) | ``$($meta.Output)`` | - | - | - |"
+        }
+    }
+
+    # [Nhóm code: Render báo cáo lỗi Markdown]
+    $allErrors = @()
+    foreach ($phaseKey in @("0","1","2","3","4","45","5","6","7")) {
+        if ($data.ContainsKey($phaseKey)) {
+            $errs = $data[$phaseKey].errors
+            if ($null -ne $errs) { foreach ($e in @($errs)) { $allErrors += $e } }
+        }
+    }
+
+    if ($allErrors.Count -gt 0) {
+        $md += ""
+        $md += "### ⚠️ Lịch sử Lỗi (Error Log)"
+        $md += "| Thời điểm | Phase | Check | Chi tiết lỗi |"
+        $md += "|:----------|:------|:------|:-------------|"
+        foreach ($err in $allErrors) {
+            $errPhase = if ([string]$err.phase -eq "45") { "4.5" } else { $err.phase }
+            $safeMsg = [string]$err.message
+            if ($safeMsg) { $safeMsg = $safeMsg.Replace("|", "/").Replace("`n", " ").Replace("`r", "") }
+            $md += "| $($err.timestamp) | $errPhase | $($err.check) | $safeMsg |"
         }
     }
     
