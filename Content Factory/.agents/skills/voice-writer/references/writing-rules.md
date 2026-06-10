@@ -152,6 +152,7 @@ Hãy hình dung tâm trí như một dàn đồng ca gồm nhiều giọng hát 
     [Dịch thô]: "Đây là một trong những rào cản lớn nhất mà được tạo ra bởi AI."
     [Thuần Việt]: "Đây là rào cản lớn nhất do AI tạo ra."
 - **Diễn giải thuật ngữ thân thiện**: Khi cần giải thích các khái niệm phức tạp, hãy diễn giải lại một cách dễ hiểu và gắn liền với các ví dụ thực tế.
+- **Tránh ẩn dụ dịch thô**: Hạn chế sử dụng các hình ảnh ẩn dụ mang hơi hướng dịch từ tiếng Anh (ví dụ: 'con voi trong phòng', 'hai mặt của một đồng xu'). Hãy tự động hướng tới các ẩn dụ bản địa gần gũi với đời sống Việt Nam.
 - **Tôn trọng tuyệt đối Persona**: Luôn ưu tiên sử dụng các cách diễn đạt, từ vựng đặc trưng, hình ảnh ẩn dụ (metaphors), hoặc cách ví von đã được người dùng định nghĩa cụ thể trong file `voice-dna.yaml`. Hệ thống không can thiệp vào phong cách cá nhân của người viết.
 
 > FILE_KEY: 47dbac56
