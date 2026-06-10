@@ -1,0 +1,14 @@
+Target_Pillar: "Cửa sổ vàng phát triển trẻ 0-7 tuổi"
+Target_Audience: "cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi"
+topic: "nao_bo_tre_em"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do"
+  audience_circumstance: "khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi"
+  source_audience: "cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi"
+Target_Source_Type: "book"
+Target_Source_IDs: 
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+# execution_key: 71c95daf

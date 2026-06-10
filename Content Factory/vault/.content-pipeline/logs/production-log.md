@@ -45,3 +45,30 @@
 - **Atoms Used**: vault/01-Atomic/Insights/btrb_can-kiet-sinh-luc-do-mat-nhip-dieu-song.md, vault/01-Atomic/Solutions/btrb_su-hinh-thanh-nhip-dieu-noi-tai-tu-nhip-dieu-ngoai-tai.md, vault/01-Atomic/Quotes/btrb_quote-tac-gia-du-khach-lech-mui-gio-6.md
 - **Revisions**: 0
 - **Status**: published
+## [2026-06-10_162116] - Đồ chơi đắt tiền và nghịch lý sự cằn cỗi của trí tưởng tượng
+- **Pillar**: Cửa sổ vàng phát triển trẻ 0-7 tuổi
+- **Topic**: "nao_bo_tre_em"
+- **Target_Audience**: cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi
+- **Hook Formula**: F1
+- **QA Score**: 130/130
+- **Atoms Used**: vault/01-Atomic/Insights/btrb_bay-do-choi-dinh-hinh-san-va-du-thua.md, vault/01-Atomic/Solutions/btrb_vui-choi-tu-do-la-nen-tang-cua-tu-duy-tri-tue.md, vault/01-Atomic/Quotes/btrb_quote-bruno-bettelheim-nen-tang-tri-tue-7.md
+- **Revisions**: 0
+- **Status**: published
+## [2026-06-10_223326] - Sự lãng phí của đồ chơi giáo dục và sức mạnh từ nhịp điệu lao động
+- **Pillar**: Steiner và khoa học phát triển toàn diện
+- **Topic**: "nao_bo_tre_em"
+- **Target_Audience**: cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi
+- **Hook Formula**: F15
+- **QA Score**: 125/130
+- **Atoms Used**: vault/01-Atomic/Insights/btrb_do-choi-cang-nhieu-va-cau-ky-cang-tot.md, vault/01-Atomic/Solutions/btrb_tre-choi-thong-qua-viec-bat-chuoc-cong-viec.md, vault/01-Atomic/Quotes/btrb_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md
+- **Revisions**: 0
+- **Status**: published
+## [2026-06-11_000326] - Đồ chơi chớp nháy đang âm thầm đánh cắp trí tưởng tượng của con
+- **Pillar**: Cửa sổ vàng phát triển trẻ 0-7 tuổi
+- **Topic**: "nao_bo_tre_em"
+- **Target_Audience**: cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi
+- **Hook Formula**: F11
+- **QA Score**: 130/130
+- **Atoms Used**: vault/01-Atomic/Insights/btrb_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon.md, vault/01-Atomic/Solutions/btrb_cung-cap-do-choi-mo-open-ended-toys.md, vault/01-Atomic/Quotes/btrb_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md
+- **Revisions**: 0
+- **Status**: published

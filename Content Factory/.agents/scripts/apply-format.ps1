@@ -120,8 +120,8 @@ if ($Action -eq "validate") {
     if (-not $b2.marker -and -not $b4.marker) {
         $b2Total = $b2.blank_lines_above + $b2.blank_lines_below
         $b4Total = $b4.blank_lines_above + $b4.blank_lines_below
-        if ($b2Total -gt 0 -and $b4Total -gt 0 -and $b2Total -le $b4Total) {
-            $errors += "[FAIL] R2: Paragraph separator ($($b2Total) blank lines) must be > chain separator ($($b4Total) blank lines) when both have no marker"
+        if ($b2Total -gt 0 -and $b4Total -gt 0 -and $b2Total -lt $b4Total) {
+            $errors += "[FAIL] R2: Paragraph separator ($($b2Total) blank lines) must be >= chain separator ($($b4Total) blank lines) when both have no marker"
         }
     }
     elseif ($b2.marker -and $b4.marker -and $b2.marker -eq $b4.marker) {

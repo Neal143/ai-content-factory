@@ -1,0 +1,15 @@
+Target_Pillar: "Cửa sổ vàng phát triển trẻ 0-7 tuổi"
+Target_Audience: "cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi"
+topic: "nao_bo_tre_em"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "thúc đẩy trí tưởng tượng và sự tập trung của trẻ"
+  audience_circumstance: "khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi"
+  source_audience: "cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi"
+Target_Source_Type: "book"
+Target_Source_IDs:
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+
+# execution_key: 2abec475

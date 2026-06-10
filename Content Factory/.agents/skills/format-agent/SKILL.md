@@ -12,7 +12,7 @@ provided_outputs:
 
 # Format Agent (Phase 7)
 
-> EXECUTION_KEY: 2c4ebda9
+> EXECUTION_KEY: 865d943e
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn. Phase này là một trạm tự động (Automation Node).
