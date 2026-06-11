@@ -1,6 +1,6 @@
 # Idea History Log
 
-## [2026-06-09_110220] - [Vấn đề của sự kỷ luật không nằm ở việc nhồi nhét](../../../2026-06-09_110220-van-de-cua-su-ky-luat-khong-nam-o-viec-nhoi-nhet.md)
+## [2026-06-09_104824] - [Vấn đề của sự kỷ luật không nằm ở việc nhồi nhét](../../../2026-06-09_104824-van-de-cua-su-ky-luat-khong-nam-o-viec-nhoi-nhet.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-09_104824_nao-bo-tre-em/01-idea-brief.md)
 - **Pillar**: Cửa sổ vàng phát triển trẻ 0-7 tuổi
 - **Topic**: "nao_bo_tre_em"
@@ -16,7 +16,7 @@
 - **Core Tension**: Core Tension: Cha mẹ muốn con được thoải mái, không ép mặc nhiều khi con kêu "không lạnh". Nhưng sự nhượng bộ đó lại đang tước đoạt nguồn sinh lực phát triển quý giá nhất của con.
 - **Hidden Belief**: Hidden Belief: "Chỉ cần sờ tay chân thấy bình thường và con nói không lạnh thì nghĩa là con đang ổn."
 - **Transformation Promise**: Transformation Promise: Cha mẹ sẽ hiểu được quy luật năng lượng của cơ thể trẻ, từ đó chủ động biến việc GIỮ ẤM trở thành ưu tiên hàng đầu.
-## [2026-06-09_233159] - [Sức mạnh của nhịp điệu sinh học - Khi nề nếp không sinh ra từ mệnh lệnh](../../../2026-06-09_233159-suc-manh-cua-nhip-dieu-sinh-hoc-khi-ne-nep-khong-sinh-ra-tu-menh-lenh.md)
+## [2026-06-09_231833] - [Sức mạnh của nhịp điệu sinh học - Khi nề nếp không sinh ra từ mệnh lệnh](../../../2026-06-09_231833-suc-manh-cua-nhip-dieu-sinh-hoc-khi-ne-nep-khong-sinh-ra-tu-menh-lenh.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-09_231833_nao_bo_tre_em/01-idea-brief.md)
 - **Pillar**: Steiner và khoa học phát triển toàn diện
 - **Topic**: "nao_bo_tre_em"
@@ -24,7 +24,7 @@
 - **Core Tension**: Core Tension: Cha mẹ đang kiệt sức, mỗi ngày đều như một cuộc chiến khi phải liên tục la mắng, giục giã con ăn uống, ngủ nghỉ. Họ khát khao con tự giác, nhưng nghịch lý là chính môi trường sống hỗn loạn, thiếu vắng nhịp điệu cố định của gia đình lại đang đẩy đứa trẻ vào trạng thái chới với, mất phương hướng giống hệt như một "du khách bị lệch múi giờ".
 - **Hidden Belief**: Hidden Belief: Phá vỡ niềm tin: "Trẻ không chịu ăn, không chịu ngủ đúng giờ là do bướng bỉnh, chống đối và cần phải rèn giũa nghiêm khắc hơn." Sự thật: Trẻ không cố tình chống đối bạn, cơ thể của trẻ chỉ đang bối rối vì không biết điều gì sẽ xảy ra tiếp theo do thiếu một nhịp điệu vững chắc.
 - **Transformation Promise**: Transformation Promise: Giúp cha mẹ rũ bỏ cảm giác bất lực và mệt mỏi trong việc rèn nề nếp cho con. Nhận ra bí quyết giải phóng bản thân: Chỉ cần duy trì một nhịp điệu sinh hoạt bên ngoài đều đặn, cơ thể và tâm trí con sẽ tự động "vào khuôn khổ" một cách tự nhiên mà không cần đến bất kỳ tiếng quát mắng nào.
-## [2026-06-10_162116] - [Đồ chơi đắt tiền và nghịch lý sự cằn cỗi của trí tưởng tượng](../../../2026-06-10_162116-do-choi-dat-tien-va-nghich-ly-su-can-coi-cua-tri-tuong-tuong.md)
+## [2026-06-10_160521] - [Đồ chơi đắt tiền và nghịch lý sự cằn cỗi của trí tưởng tượng](../../../2026-06-10_160521-do-choi-dat-tien-va-nghich-ly-su-can-coi-cua-tri-tuong-tuong.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-10_160521_nao_bo_tre_em/01-idea-brief.md)
 - **Pillar**: Cửa sổ vàng phát triển trẻ 0-7 tuổi
 - **Topic**: "nao_bo_tre_em"
@@ -32,7 +32,7 @@
 - **Core Tension**: Core Tension: Phụ huynh liên tục tốn tiền mua những món đồ chơi hiện đại nhất với hy vọng con sẽ tự chơi và phát triển trí não, nhưng lại luôn mệt mỏi, thất vọng vì trẻ chỉ hứng thú vài phút rồi nhanh chóng chán nản, thụ động và lại tiếp tục đòi đồ chơi mới.
 - **Hidden Belief**: Hidden Belief: Niềm tin ẩn: "Đồ chơi giáo dục tốt phải là thứ đồ chơi sinh động, chân thực, tự động phát ra âm thanh để dạy cho con một kiến thức cụ thể nào đó." Sự thật: Trẻ em không học qua việc quan sát một món đồ chơi tự hoạt động. Vui chơi tự do với các vật liệu nguyên sơ, không có hình thù định sẵn mới là nền tảng tạo ra sự kiên trì và phát triển tư duy trừu tượng ở trẻ.
 - **Transformation Promise**: Transformation Promise: Giúp cha mẹ rũ bỏ áp lực phải mua sắm đồ chơi đắt tiền để chứng tỏ mình yêu con. Chuyển hóa nhận thức để họ hiểu rằng việc dọn dẹp bớt sự dư thừa, trả lại cho con không gian vui chơi tự do cùng những vật liệu đơn giản (như khúc gỗ, tấm vải) mới là món quà tuyệt vời nhất để nuôi dưỡng trí tuệ và sự kiên trì cho tương lai.
-## [2026-06-10_223326] - [Sự lãng phí của đồ chơi giáo dục và sức mạnh từ nhịp điệu lao động](../../../2026-06-10_223326-su-lang-phi-cua-do-choi-giao-duc-va-suc-manh-tu-nhip-dieu-lao-dong.md)
+## [2026-06-10_221422] - [Sự lãng phí của đồ chơi giáo dục và sức mạnh từ nhịp điệu lao động](../../../2026-06-10_221422-su-lang-phi-cua-do-choi-giao-duc-va-suc-manh-tu-nhip-dieu-lao-dong.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-10_221422_nao-bo-tre-em/01-idea-brief.md)
 - **Pillar**: Steiner và khoa học phát triển toàn diện
 - **Topic**: "nao_bo_tre_em"
@@ -40,7 +40,7 @@
 - **Core Tension**: Core Tension: Cha mẹ luôn muốn tạo ra không gian vui chơi phong phú để con phát triển, nhưng lại cảm thấy kiệt sức, áp lực khi vừa phải dọn dẹp nhà cửa vừa phải trông chừng và "chơi cùng" đứa con đang độ tuổi tò mò, thích lôi kéo đồ đạc.
 - **Hidden Belief**: Hidden Belief: Người lớn tin rằng đồ chơi đắt tiền, bắt mắt với các hình thù hoạt họa là cách tốt nhất để trẻ giải trí và phát triển trí não; đồng thời coi việc nhà là gánh nặng cần làm cho xong để dành thời gian "chất lượng" thực sự chơi với con.
 - **Transformation Promise**: Transformation Promise: Giúp cha mẹ rũ bỏ hoàn toàn áp lực phải mua sắm đồ chơi tinh xảo hay gồng mình "chơi" cùng con. Họ sẽ nhận ra rằng việc làm nhà một cách bình tĩnh, trật tự chính là cách cung cấp "vật liệu" vô giá cho trẻ bắt chước, từ đó biến mọi khoảnh khắc sinh hoạt thành không gian giáo dục tự nhiên nhất. Dựa trên Insight: "Đồ chơi càng nhiều và cầu kỳ càng tốt" và Solution: "Trẻ chơi thông qua việc bắt chước công việc".
-## [2026-06-11_000326] - [Đồ chơi chớp nháy đang âm thầm đánh cắp trí tưởng tượng của con](../../../2026-06-11_000326-do-choi-chop-nhay-dang-am-tham-danh-cap-tri-tuong-tuong-cua-con.md)
+## [2026-06-10_162722] - [Đồ chơi chớp nháy đang âm thầm đánh cắp trí tưởng tượng của con](../../../2026-06-10_162722-do-choi-chop-nhay-dang-am-tham-danh-cap-tri-tuong-tuong-cua-con.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-10_162722_beyond-the-rainbow-bridge/01-idea-brief.md)
 - **Pillar**: Cửa sổ vàng phát triển trẻ 0-7 tuổi
 - **Topic**: "nao_bo_tre_em"
@@ -48,7 +48,7 @@
 - **Core Tension**: Core Tension: Cha mẹ khát khao thúc đẩy sự tập trung và trí tưởng tượng của con nên không tiếc tiền lấp đầy phòng bằng đồ chơi nhựa phát sáng, tự động. Thế nhưng nghịch lý là đồ chơi càng nhiều, trẻ càng cả thèm chóng chán, chỉ loanh quanh 5 phút rồi lại vứt xó, cuối cùng lại mè nheo đòi hỏi những món mới hoặc dán mắt vào màn hình điện tử.
 - **Hidden Belief**: Hidden Belief: "Con mình sẽ bị thiệt thòi, không bằng bạn bằng bè nếu chỉ lủi thủi chơi với dăm ba cái kẹp gỗ, quả thông hay vỏ sò khô khốc. Đồ chơi càng hiện đại, đắt tiền, phát ra âm thanh hình ảnh chân thực thì mới có tác dụng giáo dục và kích thích não bộ."
 - **Transformation Promise**: Transformation Promise: Giúp cha mẹ giải thoát khỏi gánh nặng tài chính và áp lực từ cuộc đua mua sắm đồ chơi. Chuyển đổi tư duy từ việc "mua đồ chơi để giải trí cho con" sang "cung cấp vật liệu tự nhiên (open-ended toys) để não bộ con tự do kiến tạo". Phụ huynh sẽ tự tin thay thế những cỗ máy bằng nhựa bằng những giỏ mây đựng gỗ, vải lụa, giúp trẻ có được sự tập trung sâu sắc và trí tưởng tượng vô hạn.
-## [2026-06-11_105124] - [Giải cứu cơ bắp tưởng tượng tuổi lên sáu](../../../2026-06-11_105124-giai-cuu-co-bap-tuong-tuong-tuoi-len-sau.md)
+## [2026-06-11_102838] - [Giải cứu cơ bắp tưởng tượng tuổi lên sáu](../../../2026-06-11_102838-giai-cuu-co-bap-tuong-tuong-tuoi-len-sau.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-11_102838_nao_bo_tre_em/01-idea-brief.md)
 - **Pillar**: Steiner và khoa học phát triển toàn diện
 - **Topic**: "nao_bo_tre_em"
@@ -56,7 +56,7 @@
 - **Core Tension**: Core Tension: Cha mẹ muốn con thông minh bằng các chương trình giáo dục sớm, nhưng kết quả là con ngày càng chán nản, dễ nổi cáu và hoàn toàn mất đi khả năng tự chơi một mình.
 - **Hidden Belief**: Hidden Belief: Cha mẹ tin rằng màn hình giáo dục hoặc tư duy logic sớm giúp con phát triển trí tuệ nhanh hơn.
 - **Transformation Promise**: Transformation Promise: Áp dụng Solution từ Vault, giúp cha mẹ nhận ra sự chán nản tuổi lên 6 là tự nhiên, từ đó ngừng "bòn rút" năng lượng của con qua màn hình, khôi phục "cơ bắp tưởng tượng".
-## [2026-06-11_174514] - [Sự tàn lụi của trí tưởng tượng dưới lớp vỏ bọc đồ chơi hoàn hảo](../../../2026-06-11_174514-su-tan-lui-cua-tri-tuong-tuong-duoi-lop-vo-boc-do-choi-hoan-hao.md)
+## [2026-06-11_172738] - [Sự tàn lụi của trí tưởng tượng dưới lớp vỏ bọc đồ chơi hoàn hảo](../../../2026-06-11_172738-su-tan-lui-cua-tri-tuong-tuong-duoi-lop-vo-boc-do-choi-hoan-hao.md)
 - **Idea Brief**: [01-idea-brief.md](../runs/2026-06-11_172738_nao_bo_tre_em/01-idea-brief.md)
 - **Pillar**: Steiner và khoa học phát triển toàn diện
 - **Topic**: "nao_bo_tre_em"
