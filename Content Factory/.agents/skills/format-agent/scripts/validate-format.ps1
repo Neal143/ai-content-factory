@@ -408,7 +408,6 @@ if (-not $isValidationMode) {
 - **Transformation Promise**: $extPromise
 "@
         
-        $ideaHeaderCheck = "## [$timestamp] - \["
         if (Test-Path $ideaHistoryPathAbs) {
             $existingIdeaLog = Get-Content $ideaHistoryPathAbs -Raw -Encoding UTF8
             if ($existingIdeaLog -notmatch [regex]::Escape("[$timestamp]")) {
