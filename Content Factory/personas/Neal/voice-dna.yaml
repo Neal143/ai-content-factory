@@ -53,4 +53,4 @@ voice:
     concrete_imagery_min: 3    # Min số hình ảnh cụ thể
     redefinition: true         # Bắt buộc tái định nghĩa 1 khái niệm
     narrative_schedule: true   # Dùng narrative thay vì numbered lists
-# FILE_KEY: 938a7cb2
+# FILE_KEY:

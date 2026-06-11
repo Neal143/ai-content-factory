@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "description": "Format Profile — Cấu hình cấu trúc bài viết cho pipeline content-post",
+    "version": "1.0",
+    "last_update": "19/05/2026"
+  },
+  "_desc_mode": "Chế độ viết: auto (mặc định), basic (tùy chỉnh 10 biến), advanced (tùy chỉnh toàn diện)",
+  "mode": "basic",
+  "section_separator": {
+    "_desc": "Cách ngăn giữa các phần (Hook ↔ Story ↔ Deep Dive...). marker = ký hiệu ngăn, rỗng = chỉ dùng dòng trống",
+    "marker": ".",
+    "blank_lines_above": 1,
+    "blank_lines_below": 1
+  },
+  "paragraph_separator": {
+    "_desc": "Cách ngăn giữa các đoạn văn trong cùng 1 phần. Mặc định: không marker, 1 dòng trống phía trên",
+    "marker": "",
+    "blank_lines_above": 1,
+    "blank_lines_below": 0
+  },
+  "chain_separator": {
+    "_desc": "Cách ngăn giữa các chuỗi câu trong cùng 1 đoạn. Mặc định: viết liền, không ngắt",
+    "marker": "",
+    "blank_lines_above": 1,
+    "blank_lines_below": 0
+  },
+  "sentences_per_paragraph": {
+    "_desc": "Số câu trong mỗi đoạn văn",
+    "min": 8,
+    "max": 10
+  },
+  "sentences_per_normal_chain": {
+    "_desc": "Số câu trong chuỗi câu bình thường",
+    "min": 1,
+    "max": 2
+  },
+  "sentences_per_long_chain": {
+    "_desc": "Số câu trong chuỗi câu dài — dùng khi cần chiều sâu cảm xúc hoặc lập luận phức tạp",
+    "min": 3,
+    "max": 5
+  },
+  "punchlines_per_article": {
+    "_desc": "Số lượng Killer Statements / Punchline yêu cầu trong toàn bài",
+    "min": 2,
+    "max": 3
+  },
+  "long_chains_per_article": {
+    "_desc": "Số chuỗi câu dài cho phép trong cả bài",
+    "min": 3,
+    "max": 5
+  },
+  "_desc_long_chain_context": "Hướng dẫn cho AI biết khi nào nên dùng chuỗi câu dài",
+  "long_chain_context": "Sử dụng chuỗi câu dài khi cần tạo độ sâu cảm xúc hoặc dẫn dắt lập luận phức tạp (thường ở phần Story hoặc Deep Dive).",
+  "output_elements": {
+    "_desc": "Các thành phần hiển thị trong bài viết cuối cùng. true = hiện, false = ẩn",
+    "title": false,
+    "section_heading": false,
+    "paragraph_heading": false
+  },
+  "section_heading_spacing": {
+    "_desc": "Khoảng cách dòng trống xung quanh heading phần (chỉ có ý nghĩa khi section_heading = true)",
+    "blank_lines_above": 1,
+    "blank_lines_below": 0
+  },
+  "paragraph_heading_spacing": {
+    "_desc": "Khoảng cách dòng trống xung quanh heading đoạn (chỉ có ý nghĩa khi paragraph_heading = true)",
+    "blank_lines_above": 1,
+    "blank_lines_below": 0
+  },
+  "word_count_total": {
+    "_desc": "Tổng số từ toàn bài viết",
+    "min": 1300,
+    "max": 1800
+  },
+  "_desc_word_count_tolerance_percent": "Ngưỡng dung sai % cho word count. Bài nằm ngoài [min,max] nhưng trong vùng tolerance → WARN (không chặn pipeline). Ngoài vùng tolerance → FAIL.",
+  "word_count_tolerance_percent": 10,
+  "word_count_per_section": {
+    "_desc": "Số từ mỗi phần — chỉ kiểm tra khi mode = advanced",
+    "Hook": {
+      "min": 78,
+      "max": 108
+    },
+    "Story": {
+      "min": 208,
+      "max": 288
+    },
+    "Deep Dive": {
+      "min": 676,
+      "max": 936
+    },
+    "Pivot": {
+      "min": 208,
+      "max": 288
+    },
+    "Closing": {
+      "min": 130,
+      "max": 180
+    }
+  },
+  "word_count_per_paragraph": {
+    "_desc": "Số từ tối đa mỗi đoạn. Vượt ngưỡng = script báo lỗi",
+    "max": 400
+  },
+  "_desc_very_short_sentence_threshold": "Câu dưới bao nhiêu từ bị coi là 'câu cụt'? 2 câu cụt gộp lại mới tính bằng 1 câu đầy đủ",
+  "very_short_sentence_threshold": 4
+}

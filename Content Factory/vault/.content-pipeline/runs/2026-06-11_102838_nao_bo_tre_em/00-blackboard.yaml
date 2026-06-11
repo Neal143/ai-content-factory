@@ -1,0 +1,14 @@
+topic: "nao_bo_tre_em"
+Target_Pillar: "Steiner và khoa học phát triển toàn diện"
+Target_Audience: "cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi"
+Is_Novel_Angle: false
+Persona_Path: "personas/Neal"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi"
+  audience_circumstance: "khi con trải qua các giai đoạn phát triển mới"
+  source_audience: "cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi"
+Target_Source_Type: "book"
+Target_Source_IDs:
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+# execution_key: c9deb785

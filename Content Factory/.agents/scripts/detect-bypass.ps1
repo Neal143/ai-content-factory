@@ -110,7 +110,8 @@ if ($forbidden.Count -gt 0) {
     Log-Error "C1" "Script bi cam: $($forbidden.FullName -join ', ')"
     $bypassFailed = $true
     $checkResults["C1"] = "FAIL"
-} else {
+}
+else {
     $checkResults["C1"] = "PASS"
 }
 
@@ -121,13 +122,14 @@ $pipelineRoot = "vault/.content-pipeline"
 $rootFiles = @()
 if (Test-Path $pipelineRoot) {
     $rootFiles = Get-ChildItem -Path "$pipelineRoot\*" -File -ErrorAction SilentlyContinue |
-        Where-Object { $_.DirectoryName -eq (Resolve-Path $pipelineRoot).Path }
+    Where-Object { $_.DirectoryName -eq (Resolve-Path $pipelineRoot).Path }
 }
 if ($rootFiles.Count -gt 0) {
     Log-Error "C2" "File bi ghi vao root vault/.content-pipeline/: $($rootFiles.Name -join ', ')"
     $bypassFailed = $true
     $checkResults["C2"] = "FAIL"
-} else {
+}
+else {
     $checkResults["C2"] = "PASS"
 }
 
@@ -144,13 +146,16 @@ if ($Phase -ge 6) {
             Log-Error "C3" "qa_score hardcode trong 05-draft.md nhung 06-qa-result.md chua ton tai."
             $bypassFailed = $true
             $checkResults["C3"] = "FAIL"
-        } else {
+        }
+        else {
             $checkResults["C3"] = "PASS"
         }
-    } else {
+    }
+    else {
         $checkResults["C3"] = "SKIP"
     }
-} else {
+}
+else {
     $checkResults["C3"] = "SKIP"
 }
 
@@ -204,7 +209,8 @@ if ($skillPaths.ContainsKey($Phase)) {
         Write-Host "[PASS] CHECK 4: Execution key verified."
         $checkResults["C4"] = "PASS"
     }
-} else {
+}
+else {
     $checkResults["C4"] = "SKIP"
 }
 
@@ -225,7 +231,8 @@ if (-not $isNovel -and $Phase -ge 1) {
         Log-Error "C4BC" "DikwBridgeAgent chua tao file (00.5-dikw-combo.md)."
         $bypassFailed = $true
         $checkResults["C4BC"] = "FAIL"
-    } else {
+    }
+    else {
         $dikwContent = Get-Content $dikwFile -Raw -Encoding UTF8
         
         $hasKey = $dikwContent -match '<!-- BUNDLE_KEY:\s*([A-Za-z0-9]+)\s*-->'
@@ -233,7 +240,8 @@ if (-not $isNovel -and $Phase -ge 1) {
             Log-Error "C4BC" "DikwBridgeAgent chua chay script hoac thieu BUNDLE_KEY."
             $bypassFailed = $true
             $checkResults["C4BC"] = "FAIL"
-        } else {
+        }
+        else {
             $expectedKey = $Matches[1]
             
             if ($Phase -ge 1 -and $Phase -le 5) {
@@ -243,22 +251,26 @@ if (-not $isNovel -and $Phase -ge 1) {
                     Log-Error "C4BC" "Thieu file output cua Phase $Phase."
                     $bypassFailed = $true
                     $checkResults["C4BC"] = "FAIL"
-                } else {
+                }
+                else {
                     $outContent = Get-Content $outputPath -Raw -Encoding UTF8
                     if ($outContent -notmatch "<!-- bundle_key:\s*\[?$expectedKey\]?\s*-->") {
                         Log-Error "C4BC" "Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
                         $bypassFailed = $true
                         $checkResults["C4BC"] = "FAIL"
-                    } else {
+                    }
+                    else {
                         $checkResults["C4BC"] = "PASS"
                     }
                 }
-            } else {
+            }
+            else {
                 $checkResults["C4BC"] = "PASS"
             }
         }
     }
-} else {
+}
+else {
     $checkResults["C4BC"] = "SKIP"
 }
 
@@ -367,7 +379,8 @@ elseif ($Phase -eq 0) {
             }
         }
     }
-} else {
+}
+else {
     $checkResults["C5"] = "SKIP"
 }
 
@@ -383,15 +396,15 @@ function Update-SentinelChecklist {
     )
 
     $phaseMeta = [ordered]@{
-        "0"  = @{ Name = "Semantic Router";      Output = "00-blackboard.yaml" }
-        "1"  = @{ Name = "Idea Curator";         Output = "01-idea-brief.md" }
-        "2"  = @{ Name = "Insight Agent";        Output = "02-research-brief.md" }
-        "3"  = @{ Name = "Hook Engineer";        Output = "03-hook.md" }
-        "4"  = @{ Name = "Structure Designer";   Output = "04-outline.md" }
-        "45" = @{ Name = "Persona Loader";       Output = "04.5-persona-pack.md" }
-        "5"  = @{ Name = "Voice Writer";         Output = "05-draft.md" }
-        "6"  = @{ Name = "QA Checker";           Output = "06-qa-result.md" }
-        "7"  = @{ Name = "Format Agent";         Output = "07-final.md" }
+        "0"  = @{ Name = "Semantic Router"; Output = "00-blackboard.yaml" }
+        "1"  = @{ Name = "Idea Curator"; Output = "01-idea-brief.md" }
+        "2"  = @{ Name = "Insight Agent"; Output = "02-research-brief.md" }
+        "3"  = @{ Name = "Hook Engineer"; Output = "03-hook.md" }
+        "4"  = @{ Name = "Structure Designer"; Output = "04-outline.md" }
+        "45" = @{ Name = "Persona Loader"; Output = "04.5-persona-pack.md" }
+        "5"  = @{ Name = "Voice Writer"; Output = "05-draft.md" }
+        "6"  = @{ Name = "QA Checker"; Output = "06-qa-result.md" }
+        "7"  = @{ Name = "Format Agent"; Output = "07-final.md" }
     }
 
     $tempFolder = Join-Path $RunFolder ".temp"
@@ -404,16 +417,17 @@ function Update-SentinelChecklist {
         try {
             $raw = Get-Content $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
             if ($raw) { foreach ($prop in $raw.PSObject.Properties) { $data[$prop.Name] = $prop.Value } }
-        } catch {
+        }
+        catch {
             Write-Host "[WARN] Lỗi đọc sentinel-data.json, hệ thống sẽ tự khởi tạo lại cấu trúc."
         }
     }
 
     $timestamp = (Get-Date).ToUniversalTime().AddHours(7).ToString("HH:mm")
     $checksStr = ($CheckResults.GetEnumerator() | Sort-Object Name | ForEach-Object {
-        $icon = switch ($_.Value) { "PASS" { [char]0x2705 } "FAIL" { [char]0x274C } default { [char]0x23ED } }
-        "$($_.Key)$icon"
-    }) -join " "
+            $icon = switch ($_.Value) { "PASS" { [char]0x2705 } "FAIL" { [char]0x274C } default { [char]0x23ED } }
+            "$($_.Key)$icon"
+        }) -join " "
 
     # [Nhóm code: Bảo tồn lỗi theo Phase an toàn]
     $existingErrors = @()
@@ -465,27 +479,28 @@ function Update-SentinelChecklist {
     $md += "| Phase | Agent | Output | Trạng thái | Thời điểm | Checks |"
     $md += "|:------|:------|:-------|:-----------|:----------|:-------|"
 
-    foreach ($phaseKey in @("0","1","2","3","4","45","5","6","7")) {
+    foreach ($phaseKey in @("0", "1", "2", "3", "4", "45", "5", "6", "7")) {
         $meta = $phaseMeta[$phaseKey]
         $displayPhase = if ($phaseKey -eq "45") { "4.5" } else { $phaseKey }
 
         if ($data.ContainsKey($phaseKey)) {
             $entry = $data[$phaseKey]
             $statusStr = switch ($entry.status) {
-                "PASS"  { "**[PASS]**" }
-                "HALT"  { "**[HALT]**" }
+                "PASS" { "**[PASS]**" }
+                "HALT" { "**[HALT]**" }
                 "RETRY" { "**[RETRY]**" }
                 default { $entry.status }
             }
             $md += "| $displayPhase | $($meta.Name) | ``$($meta.Output)`` | $statusStr | $($entry.timestamp) | $($entry.checks) |"
-        } else {
+        }
+        else {
             $md += "| $displayPhase | $($meta.Name) | ``$($meta.Output)`` | - | - | - |"
         }
     }
 
     # [Nhóm code: Render báo cáo lỗi Markdown]
     $allErrors = @()
-    foreach ($phaseKey in @("0","1","2","3","4","45","5","6","7")) {
+    foreach ($phaseKey in @("0", "1", "2", "3", "4", "45", "5", "6", "7")) {
         if ($data.ContainsKey($phaseKey)) {
             $errs = $data[$phaseKey].errors
             if ($null -ne $errs) { foreach ($e in @($errs)) { $allErrors += $e } }
@@ -543,11 +558,14 @@ if (Test-Path $workflowFile) {
             if ($bbContent -match 'Is_Novel_Angle:\s*true') { $isNovelForNext = $true }
         }
         if ($isNovelForNext) { $tagToFind = "1" } else { $tagToFind = "DIKW" }
-    } elseif ($Phase -eq 4) {
+    }
+    elseif ($Phase -eq 4) {
         $tagToFind = "45"
-    } elseif ($Phase -eq 45) {
+    }
+    elseif ($Phase -eq 45) {
         $tagToFind = "5"
-    } else {
+    }
+    else {
         $tagToFind = [string]($Phase + 1)
     }
 
@@ -566,7 +584,7 @@ if (Test-Path $workflowFile) {
 
 # (Da xoa Auto Checkpoint cu vi he thong da chuyen sang Continuous State Tracking thong qua sentinel-data.json)
 
-# --- KEY ROTATION (chi Phase 7) ---
+# --- KEY CLEAR (chi Phase 7) ---
 if ($Phase -eq 7) {
     $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
     $pPath = ""
@@ -576,7 +594,7 @@ if ($Phase -eq 7) {
     }
 
     $keyScript = ".agents/scripts/generate-phase-key.ps1"
-    $keyArgs = @("-ExecutionPolicy", "Bypass", "-File", $keyScript)
+    $keyArgs = @("-ExecutionPolicy", "Bypass", "-File", $keyScript, "-Action", "Clear")
     if ($pPath) { $keyArgs += @("-PersonaPath", $pPath) }
     $keyProc = Start-Process powershell -ArgumentList $keyArgs -Wait -PassThru -NoNewWindow
 

@@ -48,3 +48,11 @@
 - **Core Tension**: Core Tension: Cha mẹ khát khao thúc đẩy sự tập trung và trí tưởng tượng của con nên không tiếc tiền lấp đầy phòng bằng đồ chơi nhựa phát sáng, tự động. Thế nhưng nghịch lý là đồ chơi càng nhiều, trẻ càng cả thèm chóng chán, chỉ loanh quanh 5 phút rồi lại vứt xó, cuối cùng lại mè nheo đòi hỏi những món mới hoặc dán mắt vào màn hình điện tử.
 - **Hidden Belief**: Hidden Belief: "Con mình sẽ bị thiệt thòi, không bằng bạn bằng bè nếu chỉ lủi thủi chơi với dăm ba cái kẹp gỗ, quả thông hay vỏ sò khô khốc. Đồ chơi càng hiện đại, đắt tiền, phát ra âm thanh hình ảnh chân thực thì mới có tác dụng giáo dục và kích thích não bộ."
 - **Transformation Promise**: Transformation Promise: Giúp cha mẹ giải thoát khỏi gánh nặng tài chính và áp lực từ cuộc đua mua sắm đồ chơi. Chuyển đổi tư duy từ việc "mua đồ chơi để giải trí cho con" sang "cung cấp vật liệu tự nhiên (open-ended toys) để não bộ con tự do kiến tạo". Phụ huynh sẽ tự tin thay thế những cỗ máy bằng nhựa bằng những giỏ mây đựng gỗ, vải lụa, giúp trẻ có được sự tập trung sâu sắc và trí tưởng tượng vô hạn.
+## [2026-06-11_105124] - [Giải cứu cơ bắp tưởng tượng tuổi lên sáu](../../../2026-06-11_105124-giai-cuu-co-bap-tuong-tuong-tuoi-len-sau.md)
+- **Idea Brief**: [01-idea-brief.md](../runs/2026-06-11_102838_nao_bo_tre_em/01-idea-brief.md)
+- **Pillar**: Steiner và khoa học phát triển toàn diện
+- **Topic**: "nao_bo_tre_em"
+- **Contrarian Angle**: Contrarian Angle: Dựa trên Insight từ Vault, trẻ 5-7 tuổi bỗng dưng hay "than chán" không phải vì thiếu trò chơi, mà vì "cơ bắp tưởng tượng" bị teo tóp do nhồi nhét tư duy logic sớm và tiếp xúc màn hình. Năng lượng ý chí bị kìm nén như đập nước ngăn lại.
+- **Core Tension**: Core Tension: Cha mẹ muốn con thông minh bằng các chương trình giáo dục sớm, nhưng kết quả là con ngày càng chán nản, dễ nổi cáu và hoàn toàn mất đi khả năng tự chơi một mình.
+- **Hidden Belief**: Hidden Belief: Cha mẹ tin rằng màn hình giáo dục hoặc tư duy logic sớm giúp con phát triển trí tuệ nhanh hơn.
+- **Transformation Promise**: Transformation Promise: Áp dụng Solution từ Vault, giúp cha mẹ nhận ra sự chán nản tuổi lên 6 là tự nhiên, từ đó ngừng "bòn rút" năng lượng của con qua màn hình, khôi phục "cơ bắp tưởng tượng".

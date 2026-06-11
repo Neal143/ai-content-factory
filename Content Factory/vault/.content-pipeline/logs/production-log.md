@@ -72,3 +72,12 @@
 - **Atoms Used**: vault/01-Atomic/Insights/btrb_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon.md, vault/01-Atomic/Solutions/btrb_cung-cap-do-choi-mo-open-ended-toys.md, vault/01-Atomic/Quotes/btrb_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md
 - **Revisions**: 0
 - **Status**: published
+## [2026-06-11_105124] - Giải cứu cơ bắp tưởng tượng tuổi lên sáu
+- **Pillar**: Steiner và khoa học phát triển toàn diện
+- **Topic**: "nao_bo_tre_em"
+- **Target_Audience**: cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi
+- **Hook Formula**: F15
+- **QA Score**: 130/130
+- **Atoms Used**: vault/01-Atomic/Insights/btrb_boi-roi-truoc-su-thay-doi-tam-ly-tuoi-len-sau.md, vault/01-Atomic/Solutions/btrb_tac-hai-cua-tu-duy-tri-thuc-som-va-man-hinh-doi-voi-suc-khoe.md, vault/01-Atomic/Quotes/btrb_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md
+- **Revisions**: 0
+- **Status**: published
