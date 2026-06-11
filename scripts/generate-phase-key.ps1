@@ -8,7 +8,8 @@
 
 param(
     [string]$SkillDir = ".agents/skills",
-    [string]$PersonaPath = ""
+    [string]$PersonaPath = "",
+    [string]$Action = "Generate"
 )
 
 $ErrorActionPreference = "Stop"
@@ -39,7 +40,7 @@ $skillFolders = @(
 )
 
 $failCount = 0
-$pattern = '(?m)^> EXECUTION_KEY: .+$'
+$pattern = '(?m)^> EXECUTION_KEY:[^\r\n]*'
 
 foreach ($folder in $skillFolders) {
     $skillPath = Join-Path $SkillDir "$folder/SKILL.md"
@@ -55,7 +56,8 @@ foreach ($folder in $skillFolders) {
 
     $content = Get-Content $skillPath -Raw -Encoding UTF8
     if ($content -match $pattern) {
-        $content = $content -replace $pattern, "> EXECUTION_KEY: $key"
+        $replacement = if ($Action -eq "Clear") { "> EXECUTION_KEY:" } else { "> EXECUTION_KEY: $key" }
+        $content = $content -replace $pattern, $replacement
         [System.IO.File]::WriteAllText(
             (Resolve-Path $skillPath).Path,
             $content,
@@ -78,7 +80,7 @@ $refFiles = @(
     @{ Path = ".agents/skills/voice-writer/references/metaphor.md";               Label = "metaphor"              }
 )
 
-$refPattern = '(?m)^> FILE_KEY: .+$'
+$refPattern = '(?m)^> FILE_KEY:[^\r\n]*'
 
 foreach ($rf in $refFiles) {
     if (-not (Test-Path $rf.Path)) {
@@ -89,7 +91,8 @@ foreach ($rf in $refFiles) {
     $key = -join (('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') | Get-Random -Count 8)
     $content = Get-Content $rf.Path -Raw -Encoding UTF8
     if ($content -match $refPattern) {
-        $content = $content -replace $refPattern, "> FILE_KEY: $key"
+        $replacement = if ($Action -eq "Clear") { "> FILE_KEY:" } else { "> FILE_KEY: $key" }
+        $content = $content -replace $refPattern, $replacement
         [System.IO.File]::WriteAllText(
             (Resolve-Path $rf.Path).Path,
             $content,
@@ -113,7 +116,7 @@ if ($PersonaPath) {
         @{ Path = "$PersonaPath/authorities.yaml";    Label = "authorities"   }
     )
 
-    $personaPattern = '(?m)^# FILE_KEY: .+$'
+    $personaPattern = '(?m)^# FILE_KEY:[^\r\n]*'
 
     foreach ($pf in $personaFiles) {
         if (-not (Test-Path $pf.Path)) {
@@ -124,7 +127,8 @@ if ($PersonaPath) {
         $key = -join (('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') | Get-Random -Count 8)
         $content = Get-Content $pf.Path -Raw -Encoding UTF8
         if ($content -match $personaPattern) {
-            $content = $content -replace $personaPattern, "# FILE_KEY: $key"
+            $replacement = if ($Action -eq "Clear") { "# FILE_KEY:" } else { "# FILE_KEY: $key" }
+            $content = $content -replace $personaPattern, $replacement
             [System.IO.File]::WriteAllText(
                 (Resolve-Path $pf.Path).Path,
                 $content,
@@ -152,9 +156,9 @@ Write-Host "[OK] All $totalKeys keys injected. ($detail)"
 $wfPath = ".agents/workflows/content-post.md"
 if (Test-Path $wfPath) {
     $wfContent = Get-Content $wfPath -Raw -Encoding UTF8
-    if ($wfContent -match '(?m)^> PIPELINE_STATUS: .+$') {
+    if ($wfContent -match '(?m)^> PIPELINE_STATUS:[^\r\n]*') {
         $sanSang = "S" + [char]0x1EB4 + "N S" + [char]0x00C0 + "NG"
-        $wfContent = $wfContent -replace '(?m)^> PIPELINE_STATUS: .+$', "> PIPELINE_STATUS: $sanSang"
+        $wfContent = $wfContent -replace '(?m)^> PIPELINE_STATUS:[^\r\n]*', "> PIPELINE_STATUS: $sanSang"
         [System.IO.File]::WriteAllText(
             (Resolve-Path $wfPath).Path, $wfContent,
             [System.Text.UTF8Encoding]::new($false)

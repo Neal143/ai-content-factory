@@ -26,11 +26,16 @@ description: Pipeline 7 giai đoạn – 1 phiên liên tục qua Sub-Agents.
 ## Hướng dẫn thực thi
 
 ### 1. Gate Check
-Đọc `PIPELINE_STATUS`. Nếu `CHƯA SẴN SÀNG`, chạy lệnh dưới rồi DỪNG + BÁO:
-```powershell
-powershell -ep Bypass -f .agents/scripts/generate-phase-key.ps1
-```
-*(Lệnh `/content-post tiếp tục`: Bỏ qua B1, B2 -> sang Resume).*
+Kiểm tra cú pháp yêu cầu từ User:
+- NẾU lệnh là `/content-post tiếp tục`: Bỏ qua Bước 1, Bước 2. Đi thẳng tới CHECKPOINT & RESUME DỰ PHÒNG.
+- NẾU lệnh chứa cấu trúc `/content-post hủy và viết mới:`:
+  1. Tự động chạy lệnh `powershell -ep Bypass -f .agents/scripts/generate-phase-key.ps1` để reset hệ thống và sinh bộ key mới.
+  2. Chờ thực thi xong, đi thẳng sang Bước 2 để bắt đầu làm việc.
+- NẾU lệnh là bắt đầu bài mới thông thường (`/content-post [yêu cầu]`):
+  Đọc `PIPELINE_STATUS`. Nếu là `CHƯA SẴN SÀNG`, DỪNG NGAY. In ra mẫu câu sau để User copy:
+  > ⚠️ Hệ thống đang kẹt một phiên làm việc dang dở. Copy và gửi lại 1 trong 2 lệnh sau:
+  > 1. Để tiếp tục phiên cũ: `/content-post tiếp tục`
+  > 2. Để hủy phiên cũ và bắt đầu bài mới này: `/content-post hủy và viết mới: [nội dung yêu cầu bài viết của bạn]`
 
 ### 2. Chọn Chế Độ Viết
 Đọc `.agents/agents/format-selector/AGENT.md`, gọi tool `define_subagent` (name: "FormatSelector", system_prompt: nội dung AGENT.md). Gọi `invoke_subagent` (TypeName: "FormatSelector", Prompt: "Thực thi").

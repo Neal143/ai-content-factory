@@ -15,7 +15,7 @@ provided_outputs:
 
 # Voice Writer (Phase 5)
 
-> EXECUTION_KEY: 2a9f1547
+> EXECUTION_KEY:
 
 ## Điều kiện Đầu vào
 > **PAYLOAD:** Dữ kiện từ các phase trước đã được biên dịch sẵn trong `.temp/payload.md` (run folder). Đọc file này để lấy input từ phase trước. Các file khác (persona, references, logs) vẫn đọc trực tiếp theo hướng dẫn bên dưới.
