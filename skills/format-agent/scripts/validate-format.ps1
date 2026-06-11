@@ -1,4 +1,4 @@
-# Tên file: validate-format.ps1
+﻿# Tên file: validate-format.ps1
 # Last update: 05/06/2026 11:30 (GMT+7)
 # Vai trò: Định dạng tự động bài viết cuối cùng, chèn YAML frontmatter và kiểm định chất lượng tệp 07-final.md.
 # Sử dụng khi nào: Được gọi ở Phase 7 bởi format-agent để hoàn tất và lưu trữ bài viết.
@@ -142,9 +142,18 @@ if (-not $isValidationMode) {
 
     $runFolderUriFrontmatter = "file:///" + ($RunFolderAbs -replace '\\', '/').Replace(" ", "%20")
     
+    $runFolderNameForTime = Split-Path $RunFolderAbs -Leaf
+    if ($runFolderNameForTime -match '^(\d{4}-\d{2}-\d{2}_\d{6})') {
+        $timestamp = $Matches[1]
+        $today = $timestamp.Substring(0, 10)
+    } else {
+        $timestamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
+        $today = Get-Date -Format "yyyy-MM-dd"
+    }
+    
     Add-Text "---"
     Add-Text "title: ""$title"""
-    Add-Text "date: $(Get-Date -Format 'yyyy-MM-dd')"
+    Add-Text "date: $today"
     Add-Text "pillar: ""$pillar"""
     Add-Text "topic: ""$topic"""
     Add-Text "target_audience: ""$targetAudience"""
@@ -273,8 +282,7 @@ if (-not $isValidationMode) {
         New-Item -ItemType Directory -Path $postsDir -Force | Out-Null
     }
 
-    $today = Get-Date -Format "yyyy-MM-dd"
-    $timestamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
+    # Đã lấy $today và $timestamp đồng bộ từ RunFolder ở trên
     $titleSlug = Get-Slug $title
     $postPath = Join-Path $postsDir "${timestamp}-${titleSlug}.md"
     
