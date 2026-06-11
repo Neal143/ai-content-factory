@@ -1,5 +1,5 @@
 ﻿# Tên file: detect-bypass.ps1
-# Last update: 05/06/2026 11:30 (GMT+7)
+# Last update: 11/06/2026 15:03 (GMT+7)
 # Vai trò: Phát hiện hành vi bypass của LLM trong pipeline content-post.
 # Sử dụng khi nào: Được gọi bởi content-post.md sau khi mỗi Phase ghi xong output.
 # Output: Exit 0 = PASS | Exit 1 = HALT | Exit 2 = RETRY, cập nhật sentinel-checklist.md và sentinel-data.json.
@@ -34,7 +34,7 @@ $checkResults = @{}
 $script:errorLogs = @()
 
 # [Nhóm code: Hàm ghi nhận lỗi]
-function Log-Error([string]$CheckCode, [string]$Msg) {
+function Write-SentinelError([string]$CheckCode, [string]$Msg) {
     Write-Host "[FAIL] BYPASS DETECTED [$CheckCode]: $Msg"
     $script:errorLogs += @{
         timestamp = (Get-Date).ToUniversalTime().AddHours(7).ToString("HH:mm:ss")
@@ -81,7 +81,7 @@ if ($Phase -ne 0) {
     if ($missingPrereqs.Count -gt 0) {
         $checkResults["C0"] = "FAIL"
         $errDetail = $missingPrereqs -join "; "
-        Log-Error "C0" "Agent nhay coc - thieu output cua cac Phase truoc: $errDetail"
+        Write-SentinelError "C0" "Agent nhay coc - thieu output cua cac Phase truoc: $errDetail"
         foreach ($m in $missingPrereqs) { Write-Host "  - $m" }
         $bypassFailed = $true
     }
@@ -107,7 +107,7 @@ foreach ($scanPath in $scanPaths) {
     }
 }
 if ($forbidden.Count -gt 0) {
-    Log-Error "C1" "Script bi cam: $($forbidden.FullName -join ', ')"
+    Write-SentinelError "C1" "Script bi cam: $($forbidden.FullName -join ', ')"
     $bypassFailed = $true
     $checkResults["C1"] = "FAIL"
 }
@@ -125,7 +125,7 @@ if (Test-Path $pipelineRoot) {
     Where-Object { $_.DirectoryName -eq (Resolve-Path $pipelineRoot).Path }
 }
 if ($rootFiles.Count -gt 0) {
-    Log-Error "C2" "File bi ghi vao root vault/.content-pipeline/: $($rootFiles.Name -join ', ')"
+    Write-SentinelError "C2" "File bi ghi vao root vault/.content-pipeline/: $($rootFiles.Name -join ', ')"
     $bypassFailed = $true
     $checkResults["C2"] = "FAIL"
 }
@@ -143,7 +143,7 @@ if ($Phase -ge 6) {
         $hasScore = $content -match 'qa_score:\s*\d+'
         $hasQAFile = Test-Path (Join-Path $RunFolder "06-qa-result.md")
         if ($hasScore -and -not $hasQAFile) {
-            Log-Error "C3" "qa_score hardcode trong 05-draft.md nhung 06-qa-result.md chua ton tai."
+            Write-SentinelError "C3" "qa_score hardcode trong 05-draft.md nhung 06-qa-result.md chua ton tai."
             $bypassFailed = $true
             $checkResults["C3"] = "FAIL"
         }
@@ -191,17 +191,17 @@ if ($skillPaths.ContainsKey($Phase)) {
     }
 
     if ($expectedKey -eq "" -or $expectedKey -eq "PENDING" -or $expectedKey -eq "__PENDING__") {
-        Log-Error "C4" "SKILL.md thieu execution_key. Chay generate-phase-key.ps1 truoc."
+        Write-SentinelError "C4" "SKILL.md thieu execution_key. Chay generate-phase-key.ps1 truoc."
         $bypassFailed = $true
         $checkResults["C4"] = "FAIL"
     }
     elseif ($actualKey -eq "") {
-        Log-Error "C4" "Output thieu execution_key."
+        Write-SentinelError "C4" "Output thieu execution_key."
         $bypassFailed = $true
         $checkResults["C4"] = "FAIL"
     }
     elseif ($expectedKey -ne $actualKey) {
-        Log-Error "C4" "Key khong khop. Expected: $expectedKey | Actual: $actualKey"
+        Write-SentinelError "C4" "Key khong khop. Expected: $expectedKey | Actual: $actualKey"
         $bypassFailed = $true
         $checkResults["C4"] = "FAIL"
     }
@@ -228,7 +228,7 @@ if (-not $isNovel -and $Phase -ge 1) {
     $dikwFile = Join-Path $RunFolder "00.5-dikw-combo.md"
     
     if (-not (Test-Path $dikwFile)) {
-        Log-Error "C4BC" "DikwBridgeAgent chua tao file (00.5-dikw-combo.md)."
+        Write-SentinelError "C4BC" "DikwBridgeAgent chua tao file (00.5-dikw-combo.md)."
         $bypassFailed = $true
         $checkResults["C4BC"] = "FAIL"
     }
@@ -237,7 +237,7 @@ if (-not $isNovel -and $Phase -ge 1) {
         
         $hasKey = $dikwContent -match '<!-- BUNDLE_KEY:\s*([A-Za-z0-9]+)\s*-->'
         if (-not $hasKey) {
-            Log-Error "C4BC" "DikwBridgeAgent chua chay script hoac thieu BUNDLE_KEY."
+            Write-SentinelError "C4BC" "DikwBridgeAgent chua chay script hoac thieu BUNDLE_KEY."
             $bypassFailed = $true
             $checkResults["C4BC"] = "FAIL"
         }
@@ -248,14 +248,14 @@ if (-not $isNovel -and $Phase -ge 1) {
                 $outputPath = Join-Path $RunFolder $phaseOutputMap[$Phase]
                 
                 if (-not (Test-Path $outputPath)) {
-                    Log-Error "C4BC" "Thieu file output cua Phase $Phase."
+                    Write-SentinelError "C4BC" "Thieu file output cua Phase $Phase."
                     $bypassFailed = $true
                     $checkResults["C4BC"] = "FAIL"
                 }
                 else {
                     $outContent = Get-Content $outputPath -Raw -Encoding UTF8
                     if ($outContent -notmatch "<!-- bundle_key:\s*\[?$expectedKey\]?\s*-->") {
-                        Log-Error "C4BC" "Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
+                        Write-SentinelError "C4BC" "Agent chua doc file Combo hoac dien sai BUNDLE_KEY."
                         $bypassFailed = $true
                         $checkResults["C4BC"] = "FAIL"
                     }
@@ -316,7 +316,7 @@ if ($validationScripts.ContainsKey($Phase)) {
             $checkResults["C5"] = "PASS"
         }
         else {
-            Log-Error "C5" "Re-run validation FAIL for Phase $Phase."
+            Write-SentinelError "C5" "Re-run validation FAIL for Phase $Phase."
             $qualityFailed = $true
             $checkResults["C5"] = "FAIL"
         }
@@ -330,7 +330,7 @@ elseif ($Phase -eq 0) {
     # CHECK 5B - Phase 0 inline validation
     $bbPath = Join-Path $RunFolder "00-blackboard.yaml"
     if (-not (Test-Path $bbPath)) {
-        Log-Error "C5" "00-blackboard.yaml khong ton tai."
+        Write-SentinelError "C5" "00-blackboard.yaml khong ton tai."
         $qualityFailed = $true
         $checkResults["C5"] = "FAIL"
     }
@@ -349,7 +349,7 @@ elseif ($Phase -eq 0) {
         }
         if ($missingFields.Count -gt 0) {
             $missing = $missingFields -join ", "
-            Log-Error "C5" "Blackboard thieu/rong: $missing"
+            Write-SentinelError "C5" "Blackboard thieu/rong: $missing"
             $qualityFailed = $true
             $checkResults["C5"] = "FAIL"
         }
@@ -363,7 +363,7 @@ elseif ($Phase -eq 0) {
             $topicVal = $topicMatch.Groups[1].Value.Trim()
             $wordCount = ($topicVal -split '_').Count
             if ($topicVal -notmatch '^[a-z][a-z0-9_]{2,40}$' -or $wordCount -gt 4) {
-                Log-Error "C5" "topic '$topicVal' sai format."
+                Write-SentinelError "C5" "topic '$topicVal' sai format."
                 $qualityFailed = $true
                 $checkResults["C5"] = "FAIL"
             }
@@ -373,7 +373,7 @@ elseif ($Phase -eq 0) {
         if ($ppMatch.Success) {
             $ppVal = $ppMatch.Groups[1].Value.Trim()
             if ($ppVal -match '\\\\') {
-                Log-Error "C5" "Persona_Path chua escaped backslash."
+                Write-SentinelError "C5" "Persona_Path chua escaped backslash."
                 $qualityFailed = $true
                 $checkResults["C5"] = "FAIL"
             }
@@ -596,13 +596,13 @@ if ($Phase -eq 7) {
     $keyScript = ".agents/scripts/generate-phase-key.ps1"
     $keyArgs = @("-ExecutionPolicy", "Bypass", "-File", $keyScript, "-Action", "Clear")
     if ($pPath) { $keyArgs += @("-PersonaPath", $pPath) }
-    $keyProc = Start-Process powershell -ArgumentList $keyArgs -Wait -PassThru -NoNewWindow
+    Start-Process powershell -ArgumentList $keyArgs -Wait -NoNewWindow
 
     Write-Host "`n[INFO] Auto-restoring format..."
     $restoreScript = ".agents/scripts/apply-format.ps1"
     if (Test-Path $restoreScript) {
         $restoreArgs = @("-ExecutionPolicy", "Bypass", "-File", $restoreScript, "-Action", "restore")
-        $restoreProc = Start-Process powershell -ArgumentList $restoreArgs -Wait -PassThru -NoNewWindow
+        Start-Process powershell -ArgumentList $restoreArgs -Wait -NoNewWindow
     }
 }
 

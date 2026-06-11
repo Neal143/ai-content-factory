@@ -66,56 +66,56 @@ Gọi **DikwBridgeAgent**. Xong -> Compile payload Phase 1.
 
 <!-- NEXT_GUIDANCE: 1 -->
 **Phase 1: Idea Curator** (`01-idea-brief.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md, history:?vault/.content-pipeline/logs/idea-history.md|@LAST_7_DAYS"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 1`
 2. Gọi Agent: Đọc AGENT.md tại `.agents/agents/idea-curator/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 1`
 <!-- /NEXT_GUIDANCE: 1 -->
 
 <!-- NEXT_GUIDANCE: 2 -->
 **Phase 2: Insight Agent** (`02-research-brief.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "01-idea-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, belief:01-idea-brief.md|HIDDEN_BELIEF, dikw:?00.5-dikw-combo.md, blackboard:00-blackboard.yaml"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 2`
 2. Gọi Agent: `.agents/agents/insight-agent/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 2`
 <!-- /NEXT_GUIDANCE: 2 -->
 
 <!-- NEXT_GUIDANCE: 3 -->
 **Phase 3: Hook Engineer** (`03-hook.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "02-research-brief.md" -InputMap "angle:01-idea-brief.md|CONTRARIAN_ANGLE, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, quotes:02-research-brief.md|EXPERT_QUOTES, blackboard:00-blackboard.yaml, dikw:?00.5-dikw-combo.md"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 3`
 2. Gọi Agent: `.agents/agents/hook-engineer/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 3`
 <!-- /NEXT_GUIDANCE: 3 -->
 
 <!-- NEXT_GUIDANCE: 4 -->
 **Phase 4: Structure Designer** (`04-outline.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "03-hook.md" -InputMap "hook:03-hook.md|CORE_HOOK, tension:01-idea-brief.md|CORE_TENSION, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 4`
 2. Gọi Agent: `.agents/agents/structure-designer/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 4`
 <!-- /NEXT_GUIDANCE: 4 -->
 
 <!-- NEXT_GUIDANCE: 45 -->
 **Phase 4.5: Persona Loader** (`04.5-persona-pack.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -InputMap "blackboard:00-blackboard.yaml"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 45`
 2. Gọi Agent: `.agents/agents/persona-loader/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 45`
 <!-- /NEXT_GUIDANCE: 45 -->
 
 <!-- NEXT_GUIDANCE: 5 -->
 **Phase 5: Voice Writer** (`05-draft.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "04.5-persona-pack.md" -InputMap "outline:04-outline.md|OUTLINE_SECTIONS, closing:04-outline.md|CLOSING_COMBO, persona:04.5-persona-pack.md|PERSONA_DNA, evidence:02-research-brief.md|EVIDENCE_LIST, stories:02-research-brief.md|STORY_LIST, dikw:?00.5-dikw-combo.md, connection:?01-idea-brief.md|IDEA_CONNECTION"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 5`
 2. Gọi Agent: `.agents/agents/voice-writer/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 5`
 <!-- /NEXT_GUIDANCE: 5 -->
 
 <!-- NEXT_GUIDANCE: 6 -->
 **Phase 6: QA Checker** (`06-qa-result.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "05-draft.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 6`
 2. Gọi Agent: `.agents/agents/qa-checker/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 6`
 <!-- /NEXT_GUIDANCE: 6 -->
 
 <!-- NEXT_GUIDANCE: 7 -->
 **Phase 7: Format Agent** (`07-final.md`)
-1. Payload: `powershell -ep Bypass -f .agents/scripts/compile-payload.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -PrevOutput "06-qa-result.md" -InputMap "draft:05-draft.md|DRAFT_SECTIONS, qa:06-qa-result.md|QA_REPORT, blackboard:00-blackboard.yaml"`
+1. Payload: `powershell -ep Bypass -f .agents/scripts/prepare-payload.ps1 -Pipeline "content-post" -Phase 7`
 2. Gọi Agent: `.agents/agents/format-agent/`
 3. Sentinel: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 7`
 <!-- /NEXT_GUIDANCE: 7 -->

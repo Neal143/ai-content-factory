@@ -56,3 +56,11 @@
 - **Core Tension**: Core Tension: Cha mẹ muốn con thông minh bằng các chương trình giáo dục sớm, nhưng kết quả là con ngày càng chán nản, dễ nổi cáu và hoàn toàn mất đi khả năng tự chơi một mình.
 - **Hidden Belief**: Hidden Belief: Cha mẹ tin rằng màn hình giáo dục hoặc tư duy logic sớm giúp con phát triển trí tuệ nhanh hơn.
 - **Transformation Promise**: Transformation Promise: Áp dụng Solution từ Vault, giúp cha mẹ nhận ra sự chán nản tuổi lên 6 là tự nhiên, từ đó ngừng "bòn rút" năng lượng của con qua màn hình, khôi phục "cơ bắp tưởng tượng".
+## [2026-06-11_174514] - [Sự tàn lụi của trí tưởng tượng dưới lớp vỏ bọc đồ chơi hoàn hảo](../../../2026-06-11_174514-su-tan-lui-cua-tri-tuong-tuong-duoi-lop-vo-boc-do-choi-hoan-hao.md)
+- **Idea Brief**: [01-idea-brief.md](../runs/2026-06-11_172738_nao_bo_tre_em/01-idea-brief.md)
+- **Pillar**: Steiner và khoa học phát triển toàn diện
+- **Topic**: "nao_bo_tre_em"
+- **Contrarian Angle**: Contrarian Angle: Một món đồ chơi "xịn" nhất không phải là món đồ có thể làm được nhiều thứ nhất (như phát nhạc, di chuyển, nhấp nháy), mà là món đồ "không làm gì cả" để nhường toàn bộ sân khấu cho trí tưởng tượng của trẻ. Đồ chơi càng "chưa hoàn thiện" (insight: mua đồ chơi quá hoàn thiện làm thui chột trí tưởng tượng), trí não của trẻ càng phải nỗ lực hoạt động và trưởng thành.
+- **Core Tension**: Core Tension: Cha mẹ luôn muốn mua những đồ chơi đẹp nhất, hiện đại nhất và giáo dục nhất để bù đắp cho con, nhưng lại thất vọng khi thấy con chỉ chơi vài lần rồi vứt xó, không hiểu rằng chính sự hoàn hảo của đồ chơi đã tước đi cơ hội để con tự mình "chơi".
+- **Hidden Belief**: Hidden Belief: Đồ chơi giáo dục đắt tiền, nhiều chi tiết và mô phỏng y như thật là công cụ tốt nhất để dạy trẻ về thế giới.
+- **Transformation Promise**: Transformation Promise: Từ việc vung tiền mua những món đồ chơi hoàn hảo, cha mẹ chuyển sang tự tin cung cấp những đồ chơi mở (solution: cung cấp đồ chơi mở và không gian để trẻ tự sáng tạo trò chơi) - trao lại cho trẻ quyền năng lớn nhất: quyền tự định hình thế giới qua lăng kính tưởng tượng của mình.

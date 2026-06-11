@@ -1,0 +1,94 @@
+﻿{
+    "7":  {
+              "status":  "PASS",
+              "timestamp":  "17:45",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3✅ C4✅ C4BC✅ C5✅"
+          },
+    "3":  {
+              "status":  "PASS",
+              "timestamp":  "17:35",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "2":  {
+              "status":  "PASS",
+              "timestamp":  "17:34",
+              "errors":  [
+                             {
+                                 "phase":  2,
+                                 "message":  "Output thieu execution_key.",
+                                 "timestamp":  "17:34:20",
+                                 "check":  "C4"
+                             }
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "45":  {
+               "status":  "PASS",
+               "timestamp":  "17:38",
+               "errors":  [
+                              {
+                                  "phase":  45,
+                                  "message":  "Re-run validation FAIL for Phase 45.",
+                                  "timestamp":  "17:37:51",
+                                  "check":  "C5"
+                              }
+                          ],
+               "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+           },
+    "1":  {
+              "status":  "PASS",
+              "timestamp":  "17:33",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "4":  {
+              "status":  "PASS",
+              "timestamp":  "17:36",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "6":  {
+              "status":  "PASS",
+              "timestamp":  "17:44",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3✅ C4✅ C4BC✅ C5✅"
+          },
+    "5":  {
+              "status":  "PASS",
+              "timestamp":  "17:43",
+              "errors":  [
+                             {
+                                 "phase":  5,
+                                 "message":  "Output thieu execution_key.",
+                                 "timestamp":  "17:42:54",
+                                 "check":  "C4"
+                             }
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "0":  {
+              "status":  "PASS",
+              "timestamp":  "17:28",
+              "errors":  [
+                             {
+                                 "phase":  0,
+                                 "message":  "Key khong khop. Expected: **Quy | Actual: DIKW_BRIDGE",
+                                 "timestamp":  "17:28:06",
+                                 "check":  "C4"
+                             }
+                         ],
+              "checks":  "C0⏭ C1✅ C2✅ C3⏭ C4✅ C4BC⏭ C5✅"
+          }
+}
