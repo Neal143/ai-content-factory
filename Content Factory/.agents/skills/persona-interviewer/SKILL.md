@@ -141,17 +141,34 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
 
 11. **3-4 chủ đề chính (Pillars) bạn hay viết là gì?**
     *Lưu ý: Hỏi tách biệt 2 bước sau, đợi User trả lời bước 1 xong mới đưa bước 2.*
-    - **Bước 1 (Khai thác Pillar & Topic)**: Đặt câu hỏi: *"Sang phần Vũ trụ Nội dung nhé! Bạn thường tập trung vào 3-4 nhóm chủ đề lớn (Pillars) nào? Để hệ thống phân loại chính xác, dưới mỗi chủ đề lớn đó, bạn có thể gạch vài từ khóa (Topics ngách) cụ thể mà bạn hay đào sâu không?"*
+    - **Bước 1 (Khai thác Pillar & Topic)**: Đặt câu hỏi: *"Sang phần Vũ trụ Nội dung nhé! Bạn thường tập trung vào 3-4 trụ cột nội dung (Pillars) nào? Với mỗi trụ cột, hãy thêm mô tả ngắn gọn thể hiện mục đích và/hoặc phạm vi khai thác của pillar và bất cứ thông tin nào làm rõ về pillar đó. Ngoài ra, dưới mỗi trụ cột đó, bạn có thể gạch vài từ khóa (Topics ngách) cụ thể mà bạn hay đào sâu không?"*
+      *Lưu ý cho AI: BẮT BUỘC cung cấp template mẫu để User dễ trả lời, ví dụ:*
+      ```text
+      Pillar 1:
+      Name: 
+      Description: 
+      Topics:
+      - 
+      - 
+
+      Pillar 2:
+      Name: 
+      Description: 
+      Topics:
+      - 
+      - 
+      ```
+      *User chỉ cần copy template và điền sau dấu `:` hoặc sau dấu `-`.*
       + ⛔ Khi nhận câu trả lời, **BẮT BUỘC** ghi các Topics ngách vào thẻ mảng `topics: []` trong `topic_map.yaml` ngay lập tức. **TUYỆT ĐỐI CẤM ghi vào `pillars.yaml`** ở bước này. Mỗi entry PHẢI tuân thủ đúng schema 3 trường — **điền đầy đủ cả `pillar_parents`** bằng tên Pillar cha mà User vừa cung cấp (đây KHÔNG phải là ghi vào `pillars.yaml`):
       ```yaml
       - id: "[slug_không_dấu_dùng_gạch_dưới]" # VD: quan_ly_thoi_gian. KHÔNG dùng dấu gạch ngang
         pillar_parents: ["[Tên_Pillar_cha_user_vừa_khai]"]
         belongs_to_audience: ["[[Tên_file_Audience_vừa_tạo_ở_Câu_10]]"]
       ```
-    - **Bước 2 (Xác nhận Mapping)**: Tự động phân bổ danh sách Seed Insights (từ Câu 10) vào các Pillars tương ứng. **Đồng thời resolve topics**: Với mỗi Insight được map vào Pillar P, tra cứu `topic_map.yaml` → lấy tất cả topic có `pillar_parents` chứa P → gán danh sách `id` làm giá trị `topics` cho Insight đó. Hiển thị bảng Mapping (bao gồm cột Topics) ra Chatbox và yêu cầu: *"Vui lòng xem lại bảng phân bổ Insight vào Pillar và gõ (Y) để xác nhận."*
+    - **Bước 2 (Xác nhận Mapping)**: Tự động phân bổ danh sách Seed Insights (từ Câu 10) vào các Pillars tương ứng, dựa trên `name` và `description` của mỗi Pillar để xác định Pillar phù hợp nhất cho từng Insight. **Đồng thời resolve topics**: Với mỗi Insight được map vào Pillar P, tra cứu `topic_map.yaml` → lấy tất cả topic có `pillar_parents` chứa P → gán danh sách `id` làm giá trị `topics` cho Insight đó. Hiển thị bảng Mapping (bao gồm cột Topics) ra Chatbox và yêu cầu: *"Vui lòng xem lại bảng phân bổ Insight vào Pillar và gõ (Y) để xác nhận."*
       > ⛔ **TOÀN VẸN NỘI DUNG (Copy-Paste Integrity):** Khi hiển thị bảng Mapping và khi ghi vào payload JSON, nội dung của mỗi Insight **BẮT BUỘC phải được sao chép NGUYÊN VĂN y hệt** từ câu trả lời User đã chốt ở Câu 10. **TUYỆT ĐỐI CẤM diễn giải lại, tóm tắt, hay thay đổi bất kỳ từ nào** — dù chỉ 1 từ — trong phần `raw_payload`. Mọi chỉnh sửa dù nhỏ đều làm sai lệch ý nghĩa gốc của User.
       > ⛔ **MỘT INSIGHT - MỘT PILLAR (One Insight, One Pillar):** Mỗi Insight chỉ được phép xuất hiện ở **đúng 1 Pillar duy nhất** — Pillar phù hợp nhất với bản chất của Insight đó. **TUYỆT ĐỐI CẤM** phân bổ cùng 1 Insight vào nhiều Pillars dù Insight đó có vẻ liên quan đến nhiều chủ đề. Khi không chắc, hãy chọn Pillar có độ liên quan cao nhất và chỉ 1 mà thôi.
-    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml`. Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agent/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
+    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml` (bao gồm `name`, `description` — mô tả ngắn gọn do User cung cấp ở Bước 1, và `insights`, `target_emotion`). Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agent/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
       + `headline`: Đặt tên tối giản, loại bỏ stop words, chỉ lấy cụm danh từ/động từ chính. Script sẽ tự chuyển thành **Slug Naming** chuẩn: `[slug-keyword-tieng-viet-khong-dau].md` (chữ thường, không dấu, nối bằng gạch ngang).
       + `insight_type`: Phân loại nhóm Insight (ví dụ: desire, pain_point...).
       + `raw_payload`: Nguyên văn phần text thô do User gợi mở.

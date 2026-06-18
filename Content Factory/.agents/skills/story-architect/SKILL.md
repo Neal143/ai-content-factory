@@ -23,7 +23,7 @@ Xác định:
 - **Protagonist**: self / người quen (tên cụ thể) / nhân vật nổi tiếng?
 - **SubType**: personal / observed / secondhand / historical / famous_world? (xem bảng 5 subtypes trong `story-schema.md`)
 - **Timeline**: thời gian cụ thể (năm, tháng, "hồi đại học")?
-- **Topic (Sinh 2-3 topics đa tầng làm biến `[id]` và `[label]`):** Xác định 2-3 cặp `(id, label)` phản ánh câu chuyện theo phổ độ rộng (1 rộng + 1 trung + 1 hẹp tùy chọn). Toàn bộ topics phải nhất quán với 01 Pillar cụ thể mà Story match.
+- **Topic (Sinh 2-3 topics đa tầng làm biến `[id]` và `[label]`):** Xác định 2-3 cặp `(id, label)` phản ánh câu chuyện theo phổ độ rộng (1 rộng + 1 trung + 1 hẹp tùy chọn). Toàn bộ topics phải nhất quán với 01 Pillar cụ thể mà Story match. Đọc `pillars.yaml`, dựa trên `name` và `description` của mỗi Pillar để chọn Pillar phù hợp nhất với nội dung câu chuyện.
   - **`id`**: English snake_case (ví dụ: `patience_in_parenting`).
   - **`label`**: Tiếng Việt đầy đủ dấu (ví dụ: `Kiên nhẫn trong nuôi dạy con`).
   - **Topic rộng (Broad):** Thường map với emotion/theme của story.

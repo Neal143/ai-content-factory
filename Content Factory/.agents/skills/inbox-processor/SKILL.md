@@ -19,7 +19,7 @@ Quét toàn bộ file trong `vault/00-Inbox/` xem có file nào đang ở trạn
 > ⚠️ **Quy tắc Vòng lặp:** Phải lặp lại toàn bộ Bước 3 này cho **từng mẩu nội dung** riêng biệt. Tuyệt đối không gom/trộn lẫn Topics của nhiều mẩu nội dung vào chung một lần thực thi phân tích.
 
 Trước khi định tuyến hay lưu file, BẮT BUỘC phải thực hiện tuần tự để có cơ sở dữ liệu:
-1. **Chọn Pillar gốc:** Đọc cấu trúc `pillars.yaml`, chọn đúng **01 Pillar** đang tồn tại phù hợp nhất với nội dung của Atom.
+1. **Chọn Pillar gốc:** Đọc cấu trúc `pillars.yaml`, dựa trên `name` và `description` của mỗi Pillar, chọn đúng **01 Pillar** đang tồn tại phù hợp nhất với nội dung của Atom.
 2. **Sinh 2-3 topics đa tầng (Gán làm biến `[id]` và `[label]`):** Dựa vào Pillar vừa chọn, sinh ra 2-3 cặp `(id, label)` phản ánh nội dung theo phổ độ rộng: **1 rộng + 1 trung  + 1 hẹp (tùy chọn)**.
    - **`id`**: English snake_case, mô tả bằng 2-4 từ tiếng Anh (ví dụ: `attachment_root_of_suffering`).
    - **`label`**: Tiếng Việt đầy đủ dấu, đọc tự nhiên như tên một bài viết ngắn (ví dụ: `Attachment là gốc rễ của khổ đau`).

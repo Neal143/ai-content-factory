@@ -23,7 +23,7 @@ output: Blackboard 8 biến: Target_Pillar, Target_Audience, topic, Is_Novel_Ang
 
 ## Bước 1: Xác định Pillar
 
-Đọc `[Persona_Path]/pillars.yaml` (Persona_Path đã xác định ở Bước 3 của workflow). Xác định `Target_Pillar`:
+Đọc `[Persona_Path]/pillars.yaml` (Persona_Path đã xác định ở Bước 3 của workflow). Xác định `Target_Pillar` dựa trên cả hai trường `name` và `description` của mỗi Pillar:
 
 - **A — User KHÔNG nhập Pillar:**
   - In danh sách Pillar đánh số. Thêm option cuối: `N. Hãy chọn cho tôi`.
@@ -93,7 +93,7 @@ Phân luồng:
 ## Bước 6: Gán Pillar cho Novel Angle
 
 - Đã có `Target_Pillar`: Gán trực tiếp.
-- Ủy quyền: Đọc `pillars.yaml`, tự chọn Pillar phù hợp nhất. Hỏi User xác nhận.
+- Ủy quyền: Đọc `pillars.yaml`, dựa trên `name` và `description` của mỗi Pillar để chọn Pillar phù hợp nhất. Hỏi User xác nhận.
   - ⛔ STOP — CHỜ USER XÁC NHẬN. KHÔNG tự ý tiếp tục.
 
 **JTBD Resolution (Novel Angle):** Đọc `[Persona_Path]/audience.yaml` → trích `audience_Job_performer`, `audience_main_job`, `audience_circumstance` → ghi vào blackboard key `resolved_jtbd`. `source_audience: "big"`.
