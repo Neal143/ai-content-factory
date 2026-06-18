@@ -4,28 +4,28 @@
 pillars:
   pillar_1:
     name: ""
-    theme: ""
+    description: ""
 
     insights: []
     target_emotion: ""       # empowerment | aspiration | relief | connection
 
   pillar_2:
     name: ""
-    theme: ""
+    description: ""
 
     insights: []
     target_emotion: ""
 
   pillar_3:
     name: ""
-    theme: ""
+    description: ""
 
     insights: []
     target_emotion: ""
 
   pillar_4:
     name: ""
-    theme: ""
+    description: ""
 
     insights: []
     target_emotion: ""
