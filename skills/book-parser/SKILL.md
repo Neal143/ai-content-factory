@@ -32,11 +32,13 @@ Skill này được `book-extractor` Session 4 gọi. Phase 1 và Phase 2 thực
 
 Ngay khi nhận INPUT, thực hiện tuần tự hoàn toàn tự động — **không dừng chờ User**.
 
-**Bước 1.1 — Chọn Pillar gốc (duy nhất toàn book):**
-Đọc `pillars.yaml` của Persona đang active. Dựa trên `name` và `description` của mỗi Pillar, chọn **01 Pillar** phù hợp nhất với nội dung tổng thể của sách. Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline.
+**Bước 1.1 — Đọc Tổng quan sách & Chọn Pillar gốc (duy nhất toàn book):**
+1. Đọc file `[run_folder]/session_1/mapper_raw.md` để nắm rõ nội dung tổng quan của cuốn sách (thesis, big idea, tóm tắt 1 trang).
+2. Đọc `pillars.yaml` của Persona đang active. Dựa trên `name` và `description` của mỗi Pillar, đối chiếu với nội dung tổng quan sách vừa đọc để chọn **01 Pillar** phù hợp nhất. Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline.
 
 **Bước 1.2 — Sinh Book Topics (2-3 topics, phản ánh toàn bộ cuốn sách):**
-Đọc `[run_folder]/session_1/mapper_raw.md` để nắm tổng quan sách (thesis, big idea, tóm tắt 1 trang — 8KB). Tham chiếu `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**.
+Dựa vào kiến thức tổng quan sách đã nắm được ở Bước 1.1, tham chiếu `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**.
+
 
 1. Cấp phát Template Book Topics bằng lệnh:
    ```bash
