@@ -1,0 +1,10 @@
+POST-MINE REPORT
+File: D:\AI\AI content factory\vault\02-sources\books\The Whole-Brain Child.md
+Timestamp: 2026-04-24T23:31:15.813868
+────────────────────────────────────────
+Phase 1: SENTINEL_OK
+Phase 2: CHUNK_COUNT_MISMATCH (expected=15, found=14)
+  FLAGS: CLEAN
+  EMPTY_CONTENT: CLEAN
+Phase 3: NORMALIZER_OK
+  [WHITELIST]: CLEAN
