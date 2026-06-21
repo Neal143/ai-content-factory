@@ -45,21 +45,27 @@ def log(phase, status, message):
 
 
 def find_run_folder(filepath):
-    """Tìm [run-folder] dựa trên tên sách"""
+    """Tim [run-folder] dua tren ten sach.
+    Scan cac source-type subdirs (books/, videos/, ...) ben trong .extraction_runs/
+    """
     search = filepath
     for _ in range(5):
         search = os.path.dirname(search)
         runs_dir = os.path.join(search, '.extraction_runs')
         if os.path.isdir(runs_dir):
-            # Sort theo modification time — lấy folder mới nhất chính xác
-            folders = sorted(
-                [f for f in os.listdir(runs_dir)
-                 if os.path.isdir(os.path.join(runs_dir, f))],
-                key=lambda x: os.path.getmtime(os.path.join(runs_dir, x)),
-                reverse=True
-            )
-            if folders:
-                return os.path.join(runs_dir, folders[0])
+            # Collect run folders tu tat ca source-type subdirs (books/, videos/, ...)
+            all_run_folders = []
+            for source_type in os.listdir(runs_dir):
+                type_dir = os.path.join(runs_dir, source_type)
+                if os.path.isdir(type_dir):
+                    for f in os.listdir(type_dir):
+                        full_path = os.path.join(type_dir, f)
+                        if os.path.isdir(full_path):
+                            all_run_folders.append(full_path)
+            if all_run_folders:
+                # Sort theo modification time — lay folder moi nhat
+                all_run_folders.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+                return all_run_folders[0]
     print(f"  [WARNING] --run-folder not provided. Using heuristic discovery (non-deterministic).")
     print(f"  [WARNING] Recommend: python post_mine.py <file> --run-folder <folder>")
     return None
@@ -433,7 +439,7 @@ def _write_report(filepath, lines, run_folder=None):
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage: python post_mine.py <path_to_markdown_file> [--run-folder <run_folder>]")
-        print('Example: python post_mine.py "vault/02-sources/books/Book.md" --run-folder ".extraction_runs/book_2026-04-11"')
+        print('Example: python post_mine.py "vault/02-sources/books/Book.md" --run-folder ".extraction_runs/books/book_2026-04-11"')
         sys.exit(1)
 
     filepath = sys.argv[1]

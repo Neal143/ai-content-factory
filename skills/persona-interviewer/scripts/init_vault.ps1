@@ -1,4 +1,4 @@
-﻿param (
+param (
     [Parameter(Mandatory = $true)]
     [string]$UserName
 )
@@ -40,11 +40,10 @@ $vaultFolders = @(
     "01-Atomic\Quotes",
     "01-Atomic\Data-Points",
     "01-Atomic\Audiences",
-    "$UserName\Posted",
-    "$UserName\Viral Posts",
-    "Content",
-    "output\logs",
-    "output\posts"
+    "01-Atomic\_DLQ",
+    "02-sources\books",
+    "03-Content\Posted",
+    "03-Content\Viral Posts"
 )
 
 Write-Host ">>> Đang thiết lập cấu trúc Vault..."

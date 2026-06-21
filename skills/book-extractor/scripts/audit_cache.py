@@ -23,7 +23,7 @@ KHÔNG LÀM: Không sửa file vault. Không cập nhật ledger. Không gọi N
 
 CÁCH DÙNG:
   cd "d:\\AI\\AI content factory"
-  python .agent/skills/book-extractor/scripts/audit_cache.py "vault/02-sources/books/Book.md" --ledger ".extraction_runs/book_2026-04-15/session_1/miner_progress.yaml"
+  python .agent/skills/book-extractor/scripts/audit_cache.py "vault/02-sources/books/Book.md" --ledger ".extraction_runs/books/book_2026-04-15/session_1/miner_progress.yaml"
 """
 
 import re
@@ -228,7 +228,7 @@ def audit_cache(filepath: str, ledger_path: str = None, report_path: str = None)
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage:   python audit_cache.py <path-to-cache-file> [--ledger <ledger-path>]")
-        print('Example: python audit_cache.py "vault/02-sources/books/Book.md" --ledger ".extraction_runs/book_2026-04-15/session_1/miner_progress.yaml"')
+        print('Example: python audit_cache.py "vault/02-sources/books/Book.md" --ledger ".extraction_runs/books/book_2026-04-15/session_1/miner_progress.yaml"')
         sys.exit(1)
 
     fp = sys.argv[1]

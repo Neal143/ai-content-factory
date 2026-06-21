@@ -4,7 +4,7 @@
 > **Last update**: 21/05/2026 20:00 (GMT+7)
 > **Vai trò**: Tác nhân chuyên trách đào xúc, khai thác nội dung sách từ NotebookLM thành Raw Markdown có cấu trúc, quản lý tiến trình ledger và thực thi các chốt an toàn kỹ thuật.
 > **Sử dụng khi**: Kích hoạt tại Phase 1 của Quy trình xử lý sách (/book-extractor.md).
-> **Output**: File cache sách `vault/02-sources/books/[Tên Sách].md` và thư mục chạy `vault/.extraction_runs/[ten-sach-slug]_[YYYY-MM-DD]/` chứa `miner_progress.yaml`.
+> **Output**: File cache sách `vault/02-sources/books/[Tên Sách].md` và thư mục chạy `vault/.extraction_runs/books/[ten-sach-slug]_[YYYY-MM-DD]/` chứa `miner_progress.yaml`.
 > **Tóm tắt logic hoạt động**: Phân tích Notebook ID -> Khởi tạo Ledger -> Chạy vòng lặp trích xuất từng Chunk qua CLI và script gate check -> Đánh giá Semantic Alignment (Gate 8) đạt tối thiểu 4/5 điểm trên mỗi trục -> Cập nhật Ledger tiến độ và chạy Normalizer/Quality Audit ở Post-Mine.
 
 ## 1. System Prompt & Directives

@@ -23,9 +23,9 @@ param(
 $ErrorActionPreference = "Stop"
 
 # --- Load Format Config ---
-$formatPath = "formats/active.json"
+$formatPath = ".agents/formats/active.json"
 if (-not (Test-Path $formatPath)) {
-    $formatPath = "formats/default.json"
+    $formatPath = ".agents/formats/default.json"
 }
 if (-not (Test-Path $formatPath)) {
     Write-Host "WARNING: No format config found. Using hardcoded defaults."

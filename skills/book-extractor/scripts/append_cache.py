@@ -228,7 +228,7 @@ def append_cache(raw_file, cache_file, warnings=None):
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print("Usage: python append_cache.py <raw_file> <cache_file> [--warnings \"FLAG1,FLAG2\"]")
-        print('Example: python append_cache.py ".extraction_runs/run/chunk_05_raw.txt" "vault/02-sources/books/Book.md"')
+        print('Example: python append_cache.py ".extraction_runs/books/run/chunk_05_raw.txt" "vault/02-sources/books/Book.md"')
         print('Example: python append_cache.py "chunk_05_raw.txt" "Book.md" --warnings "MISSING_TAGS,INCOMPLETE_CONTENT"')
         sys.exit(1)
 

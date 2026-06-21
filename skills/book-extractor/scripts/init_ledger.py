@@ -135,7 +135,7 @@ def init_ledger(run_folder, cache_file, notebook_id):
 if __name__ == '__main__':
     if len(sys.argv) < 4:
         print("Usage: python init_ledger.py <run_folder> <cache_file> <notebook_id>")
-        print('Example: python init_ledger.py ".extraction_runs/book_2026-04-15" "vault/02-sources/books/Book.md" "abc123"')
+        print('Example: python init_ledger.py ".extraction_runs/books/book_2026-04-15" "vault/02-sources/books/Book.md" "abc123"')
         sys.exit(1)
 
     run_folder = sys.argv[1]

@@ -24,7 +24,7 @@ Skill này được `book-extractor` Session 4 gọi. Phase 1 và Phase 2 thực
 
 **INPUT Phase 1 (nhận từ book-extractor Session 4):**
 - File cache path: `vault/02-sources/books/[Tên Sách].md`
-- Run folder path: `vault/.extraction_runs/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
+- Run folder path: `vault/.extraction_runs/books/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
   *(Run-folder được book-extractor Session 4 truyền trực tiếp qua INPUT. Thư mục đã tồn tại từ lúc Session 1 chạy. Trong tài liệu này gọi tắt là `[run_folder]`. KHÔNG tự derive.)*
 - Audience Decision Map: Array of entries, mỗi entry có `scope`, `chunk_index`, `audience_filename`, ... từ book-audience-matcher (xem schema tại book-audience-matcher/SKILL.md)
 
