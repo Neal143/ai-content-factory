@@ -53,7 +53,7 @@ Bắt đầu Tier 1 ngay nhé?
 > ⚡ **Automation Trigger — Kích hoạt ngay khi có Tên (Câu 1):**
 > Bất kể User trả lời gộp hay rời rạc, **ngay khi xác định được tên** từ bất kỳ tin nhắn nào, BẠN PHẢI lập tức chạy script thiết lập Vault TRƯỚC KHI làm bất cứ điều gì khác:
 > ```powershell
-> powershell -ExecutionPolicy Bypass -File .agent/skills/persona-interviewer/scripts/init_vault.ps1 -UserName "[NHẬP_TÊN_KHÔNG_KHOẢNG_TRẮNG]"
+> powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scripts/init_vault.ps1 -UserName "[NHẬP_TÊN_KHÔNG_KHOẢNG_TRẮNG]"
 > ```
 > *(Chuẩn hóa tên: "Alex Nguyen" → "Alex-Nguyen")*
 
@@ -120,9 +120,9 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       -> Ngay khi có câu trả lời, ghi dữ liệu vào `audience.yaml`.
       -> **Tiếp theo, Khởi tạo Mỏ Neo Vật Lý (Single Source of Truth)**: Bắt buộc thực hiện tuần tự 3 hành động sau:
          - **Hành động 1 — Chuẩn hóa tên file:** Sinh tên file theo đúng quy tắc `[job_performer-slug]_[main_job-slug]_[circumstance-slug].md`. (Dấu gạch ngang `-` nối các từ trong cùng 1 thành phần JTBD. Dấu gạch dưới `_` phân tách 3 thành phần JTBD. Không dấu, viết thường toàn bộ).
-         - **Hành động 2 — Tạo file vật lý:** AI tuân thủ nghiêm ngặt tiêu chuẩn kiến trúc định dạng được quy định tại `.agent/skills/book-audience-matcher/references/audience-structure.md`. Trích xuất toàn bộ dữ liệu thuộc khối `# --- JTBD ROUTING BLOCK ---` từ file `audience.yaml` (vừa lưu), sau đó bọc giữa hai ký tự phân cách `---` để thiết lập thành cấu trúc YAML Frontmatter hợp lệ. Đối với phần thân (Body) của file, kế thừa nguyên vẹn các khối truy vấn Dataview tĩnh theo đúng khuôn mẫu từ file tiêu chuẩn nói trên. Lưu trữ file hoàn chỉnh tại đường dẫn: `vault/01-Atomic/Audiences/[Tên-File-Chuẩn-Hóa-Ở-Hành-Động-1]`.
+         - **Hành động 2 — Tạo file vật lý:** AI tuân thủ nghiêm ngặt tiêu chuẩn kiến trúc định dạng được quy định tại `.agents/skills/book-audience-matcher/references/audience-structure.md`. Trích xuất toàn bộ dữ liệu thuộc khối `# --- JTBD ROUTING BLOCK ---` từ file `audience.yaml` (vừa lưu), sau đó bọc giữa hai ký tự phân cách `---` để thiết lập thành cấu trúc YAML Frontmatter hợp lệ. Đối với phần thân (Body) của file, kế thừa nguyên vẹn các khối truy vấn Dataview tĩnh theo đúng khuôn mẫu từ file tiêu chuẩn nói trên. Lưu trữ file hoàn chỉnh tại đường dẫn: `vault/01-Atomic/Audiences/[Tên-File-Chuẩn-Hóa-Ở-Hành-Động-1]`.
          - **Hành động 3 — Khởi tạo Index:** Sau khi hoàn tất tạo file Audience vật lý, kiểm tra tệp tin `vault/01-Atomic/Audiences/_audience_index.yaml`:
-           + Nếu **CHƯA tồn tại**: Khởi tạo từ template `.agent/skills/persona-interviewer/assets/_audience_index_template.yaml` và ghi nhận bản ghi (entry) đầu tiên.
+           + Nếu **CHƯA tồn tại**: Khởi tạo từ template `.agents/skills/persona-interviewer/assets/_audience_index_template.yaml` và ghi nhận bản ghi (entry) đầu tiên.
            + Nếu **ĐÃ tồn tại**: Trích xuất và nối (append) bản ghi mới vào cuối giới hạn của cấu trúc mảng `audiences:`.
            + Định dạng dữ liệu của bản ghi (áp dụng cho cả 2 trường hợp):
              ```yaml
@@ -168,7 +168,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
     - **Bước 2 (Xác nhận Mapping)**: Tự động phân bổ danh sách Seed Insights (từ Câu 10) vào các Pillars tương ứng, dựa trên `name` và `description` của mỗi Pillar để xác định Pillar phù hợp nhất cho từng Insight. **Đồng thời resolve topics**: Với mỗi Insight được map vào Pillar P, tra cứu `topic_map.yaml` → lấy tất cả topic có `pillar_parents` chứa P → gán danh sách `id` làm giá trị `topics` cho Insight đó. Hiển thị bảng Mapping (bao gồm cột Topics) ra Chatbox và yêu cầu: *"Vui lòng xem lại bảng phân bổ Insight vào Pillar và gõ (Y) để xác nhận."*
       > ⛔ **TOÀN VẸN NỘI DUNG (Copy-Paste Integrity):** Khi hiển thị bảng Mapping và khi ghi vào payload JSON, nội dung của mỗi Insight **BẮT BUỘC phải được sao chép NGUYÊN VĂN y hệt** từ câu trả lời User đã chốt ở Câu 10. **TUYỆT ĐỐI CẤM diễn giải lại, tóm tắt, hay thay đổi bất kỳ từ nào** — dù chỉ 1 từ — trong phần `raw_payload`. Mọi chỉnh sửa dù nhỏ đều làm sai lệch ý nghĩa gốc của User.
       > ⛔ **MỘT INSIGHT - MỘT PILLAR (One Insight, One Pillar):** Mỗi Insight chỉ được phép xuất hiện ở **đúng 1 Pillar duy nhất** — Pillar phù hợp nhất với bản chất của Insight đó. **TUYỆT ĐỐI CẤM** phân bổ cùng 1 Insight vào nhiều Pillars dù Insight đó có vẻ liên quan đến nhiều chủ đề. Khi không chắc, hãy chọn Pillar có độ liên quan cao nhất và chỉ 1 mà thôi.
-    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml` (bao gồm `name`, `description` — mô tả ngắn gọn do User cung cấp ở Bước 1, và `insights`, `target_emotion`). Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agent/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
+    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml` (bao gồm `name`, `description` — mô tả ngắn gọn do User cung cấp ở Bước 1, và `insights`, `target_emotion`). Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agents/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
       + `headline`: Đặt tên tối giản, loại bỏ stop words, chỉ lấy cụm danh từ/động từ chính. Script sẽ tự chuyển thành **Slug Naming** chuẩn: `[slug-keyword-tieng-viet-khong-dau].md` (chữ thường, không dấu, nối bằng gạch ngang).
       + `insight_type`: Phân loại nhóm Insight (ví dụ: desire, pain_point...).
       + `raw_payload`: Nguyên văn phần text thô do User gợi mở.
@@ -176,7 +176,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       + `topics`: Mảng `id` topics đã resolve ở Bước 2 (VD: `["dieu_hoa_cam_xuc", "gan_ket_an_toan"]`).
       Sau đó AI tự động GỌI GÓI LỆNH TERMINAL bọc sẵn dưới đây để hệ thống tự xuất mẻ file vật lý cuối cùng: 
       ```powershell
-      powershell -ExecutionPolicy Bypass -File .agent/skills/persona-interviewer/scripts/run_insights.ps1 -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"
+      powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scripts/run_insights.ps1 -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"
       ```
 
 12. **Danh sách 3 chuyên gia / tác giả uy tín hay trích dẫn?** 
