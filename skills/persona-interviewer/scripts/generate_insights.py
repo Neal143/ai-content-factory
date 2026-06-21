@@ -58,8 +58,13 @@ def generate_insights(payload_path, template_path, output_dir, target_audience):
     os.makedirs(output_dir, exist_ok=True)
     today = datetime.now().strftime("%Y-%m-%d")
     
-    # Lặp qua từng insight trong payload
-    for item in payload.get("insights", []):
+    # Ho tro ca 2 dinh dang: array truc tiep hoac object {"insights": [...]}
+    if isinstance(payload, list):
+        insights_list = payload
+    else:
+        insights_list = payload.get("insights", [])
+
+    for item in insights_list:
         insight_type = item.get("insight_type", "insight")
         headline = item.get("headline", "Untitled")
         raw_payload = item.get("raw_payload", "")

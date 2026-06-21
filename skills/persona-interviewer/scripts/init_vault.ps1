@@ -5,12 +5,12 @@
 
 $ErrorActionPreference = "Stop"
 
-# Xác định workspace root (Cách scripts folder 4 cấp: .agent/skills/persona-interviewer/scripts)
+# Xác định workspace root (Cách scripts folder 4 cấp: .agents/skills/persona-interviewer/scripts)
 $workspaceRoot = (Resolve-Path "$PSScriptRoot\..\..\..\..").Path
 
 $personaDir = Join-Path $workspaceRoot "personas"
 $userPersonaDir = Join-Path $personaDir $UserName
-$templateDir = Join-Path $workspaceRoot ".agent\skills\persona-interviewer\assets\persona-template"
+$templateDir = Join-Path $workspaceRoot ".agents\skills\persona-interviewer\assets\persona-template"
 $vaultDir = Join-Path $workspaceRoot "vault"
 
 Write-Host ">>> Bắt đầu khởi tạo hệ sinh thái Persona và Vault cho: $UserName"
