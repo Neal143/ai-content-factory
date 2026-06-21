@@ -1,4 +1,4 @@
-﻿---
+---
 description: Pipeline 7 giai đoạn – 1 phiên liên tục qua Sub-Agents.
 ---
 
@@ -51,7 +51,7 @@ powershell -ep Bypass -f .agents/scripts/validate-persona.ps1
 Đọc `.agents/agents/semantic-router/AGENT.md`, gọi tool `define_subagent` (name: "SemanticRouter", system_prompt: nội dung AGENT.md, enable_write_tools: true). Gọi `invoke_subagent` (TypeName: "SemanticRouter", Workspace: "vault/.content-pipeline/runs/[run-folder]/", Prompt: "Thực thi và ghi `00-blackboard.yaml`").
 - `Is_Novel_Angle=False`: Chạy Bước 5.
 - `Is_Novel_Angle=True`: Chạy Bước 6.
-Snapshot: `Copy-Item "formats/active.json" -Destination "[run-folder]/00-format.json"`
+Snapshot: `Copy-Item ".agents/formats/active.json" -Destination "[run-folder]/00-format.json"`
 Sentinel 0: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 0`
 
 ### 5. DIKW Bridge

@@ -1,10 +1,10 @@
-﻿# Tên file: validate-outline.ps1
+# Tên file: validate-outline.ps1
 # Last update: 05/06/2026 11:30 (GMT+7)
 # Vai trò: Kiểm định chất lượng và tính hợp lệ của Outline (Dàn ý) bài viết cho Phase 4.
 # Sử dụng khi nào: Được gọi ở Phase 4 bởi detect-bypass.ps1 để kiểm tra file 04-outline.md.
 # Output: Exit 0 nếu hợp lệ (PASS), exit > 0 nếu vi phạm điều kiện kiểm định (FAIL).
 # Tóm tắt logic hoạt động:
-#   1. Đọc tệp cấu hình formats/active.json để lấy số từ mục tiêu min/max.
+#   1. Đọc tệp cấu hình .agents/formats/active.json để lấy số từ mục tiêu min/max.
 #   2. Đọc file 04-outline.md và phân tích các thẻ BLOCK theo hợp đồng dữ liệu trong SKILL.md.
 #   3. Tính toán tổng số lượng từ phân bổ cho các phần trong dàn ý và so sánh với cấu hình.
 #   4. Kiểm tra rotation của phần kết bài (Closing Rotation E/S combo) dựa trên lịch sử trong production-log.md.
@@ -18,9 +18,9 @@ param(
 $ErrorActionPreference = "Stop"
 
 # --- Load Format Config ---
-$formatPath = "formats/active.json"
+$formatPath = ".agents/formats/active.json"
 if (-not (Test-Path $formatPath)) {
-    $formatPath = "formats/default.json"
+    $formatPath = ".agents/formats/default.json"
 }
 if (-not (Test-Path $formatPath)) {
     Write-Host "WARNING: No format config found. Using hardcoded defaults."

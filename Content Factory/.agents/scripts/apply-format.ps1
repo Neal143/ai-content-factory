@@ -17,9 +17,9 @@ param(
     [ValidateSet("validate", "patch", "restore")]
     [string]$Action = "validate",
 
-    [string]$FormatPath = "formats/active.json",
-    [string]$DefaultPath = "formats/default.json",
-    [string]$PatternsPath = "formats/patch-patterns.json"
+    [string]$FormatPath = ".agents/formats/active.json",
+    [string]$DefaultPath = ".agents/formats/default.json",
+    [string]$PatternsPath = ".agents/formats/patch-patterns.json"
 )
 
 # ============================================================

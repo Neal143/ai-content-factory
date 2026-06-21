@@ -1,4 +1,4 @@
-﻿# Tên file: validate-format.ps1
+# Tên file: validate-format.ps1
 # Last update: 05/06/2026 11:30 (GMT+7)
 # Vai trò: Định dạng tự động bài viết cuối cùng, chèn YAML frontmatter và kiểm định chất lượng tệp 07-final.md.
 # Sử dụng khi nào: Được gọi ở Phase 7 bởi format-agent để hoàn tất và lưu trữ bài viết.
@@ -59,8 +59,8 @@ function Get-Slug($str) {
 # ----------------------------------------------------------------------
 if (-not $isValidationMode) {
     
-    $formatPath = "formats/active.json"
-    if (-not (Test-Path $formatPath)) { $formatPath = "formats/default.json" }
+    $formatPath = ".agents/formats/active.json"
+    if (-not (Test-Path $formatPath)) { $formatPath = ".agents/formats/default.json" }
     $format = Get-Content $formatPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
     $blackboardPath = Join-Path $RunFolderAbs "00-blackboard.yaml"

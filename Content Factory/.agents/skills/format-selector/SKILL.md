@@ -10,7 +10,7 @@ last_update: 23/05/2026 (GMT+7)
 > Last update: 23/05/2026 (GMT+7)
 > Vai trò: Chọn chế độ viết, tạo cấu hình format JSON, validate constraints, patch prompt files.
 > Sử dụng khi: Workflow content-post.md gọi ở Bước 2 (lần chạy mới). KHÔNG chạy khi resume.
-> Output: `formats/active.json` đã tạo + prompt files đã patch (nếu Basic/Advanced).
+> Output: `.agents/formats/active.json` đã tạo + prompt files đã patch (nếu Basic/Advanced).
 
 ## Bước 1: Dọn patch thừa
 
@@ -48,7 +48,7 @@ Chọn chế độ viết:
 
 1. Agent hỏi user 11 biến (B1–B11) qua chat (xem danh sách câu hỏi bên dưới).
 2. Agent parse câu trả lời: `3-5` → `{"min":3,"max":5}`. `3` → `{"min":3,"max":3}`. Invalid → hỏi lại.
-3. Agent tạo `formats/active.json` (merge câu trả lời vào default.json, set `"mode":"basic"`).
+3. Agent tạo `.agents/formats/active.json` (merge câu trả lời vào default.json, set `"mode":"basic"`).
 4. // turbo
    ```powershell
    powershell -ExecutionPolicy Bypass -File ".agents/scripts/apply-format.ps1" -Action validate

@@ -190,7 +190,7 @@ def validate_mapper(cache_file):
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print("Usage: python prepare_mapper.py <run_folder> <book_name>")
-        print("Example: python prepare_mapper.py .extraction_runs/the-whole-brain-child_2026-04-11 \"The Whole-Brain Child\"")
+        print("Example: python prepare_mapper.py .extraction_runs/books/the-whole-brain-child_2026-04-11 \"The Whole-Brain Child\"")
         sys.exit(1)
 
     run_folder = sys.argv[1]

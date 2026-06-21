@@ -129,7 +129,7 @@ def find_next_chunk(ledger_path, cache_path):
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print("Usage: python next_chunk.py <ledger_path> <cache_path>")
-        print('Example: python next_chunk.py ".extraction_runs/book_2026-04-15/miner_progress.yaml" "vault/02-sources/books/Book.md"')
+        print('Example: python next_chunk.py ".extraction_runs/books/book_2026-04-15/miner_progress.yaml" "vault/02-sources/books/Book.md"')
         sys.exit(1)
 
     ledger_path = sys.argv[1]

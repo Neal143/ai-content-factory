@@ -55,7 +55,7 @@ powershell -ep Bypass -f .agents/scripts/validate-persona.ps1
 Gọi **SemanticRouterAgent**. Ghi `00-blackboard.yaml`.
 - `Is_Novel_Angle=False`: Chạy Bước 5.
 - `Is_Novel_Angle=True`: Chạy Bước 6.
-Snapshot: `Copy-Item "formats/active.json" -Destination "[run-folder]/00-format.json"`
+Snapshot: `Copy-Item ".agents/formats/active.json" -Destination "[run-folder]/00-format.json"`
 Sentinel 0: `powershell -ep Bypass -f .agents/scripts/detect-bypass.ps1 -RunFolder "vault/.content-pipeline/runs/[run-folder]/" -Phase 0`
 
 ### 5. DIKW Bridge
