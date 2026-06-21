@@ -65,5 +65,6 @@ python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.p
 
 ### Nguyên Tắc Bất Biến:
 - **One Topic, One Pillar:** Một khái niệm chỉ được gán cho một Pillar duy nhất trong YAML.
-- **Pillar Override:** Nếu `merge` vào topic sẵn có, bắt buộc kế thừa Pillar của topic gốc đó.
-- **Global Scope:** Khi quét so khớp ở Chặng 2, bắt buộc đối chiếu với toàn bộ `topic_map.yaml`, không lọc theo Pillar.
+- **Pillar Override:** Nếu `merge` vào topic sẵn có, bắt buộc kế thừa Pillar của topic gốc đó. Chỉ được merge khi cả 2 topic có cùng tiền tố Pillar (VD: `p1_` merge vào `p1_`).
+- **Global Scope:** Khi quét so khớp ở Chặng 2, đối chiếu với toàn bộ `topic_map.yaml` nhưng CHỈ xét merge với các topic có CÙNG tiền tố Pillar. Các topic khác tiền tố được coi là khái niệm độc lập.
+- **Cross-Pillar Firewall (NO MATCH):** Cùng label nhưng khác tiền tố Pillar (VD: `p3_tri_tuong_tuong` vs `p4_tri_tuong_tuong`) là 2 khái niệm ĐỘC LẬP. Tuyệt đối KHÔNG được merge.

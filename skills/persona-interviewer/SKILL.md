@@ -160,8 +160,9 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       ```
       *User chỉ cần copy template và điền sau dấu `:` hoặc sau dấu `-`.*
       + ⛔ Khi nhận câu trả lời, **BẮT BUỘC** ghi các Topics ngách vào thẻ mảng `topics: []` trong `topic_map.yaml` ngay lập tức. **TUYỆT ĐỐI CẤM ghi vào `pillars.yaml`** ở bước này. Mỗi entry PHẢI tuân thủ đúng schema 3 trường — **điền đầy đủ cả `pillar_parents`** bằng tên Pillar cha mà User vừa cung cấp (đây KHÔNG phải là ghi vào `pillars.yaml`):
+      + ⛔ **BẮT BUỘC tiền tố Pillar:** Tra `pillars.yaml` lấy key của Pillar (VD: `pillar_1` → `p1`, `pillar_3` → `p3`). Nối tiền tố `pN_` vào trước `id`. Mục đích: phân biệt topic cùng tên nhưng khác ngữ cảnh Pillar.
       ```yaml
-      - id: "[slug_không_dấu_dùng_gạch_dưới]" # VD: quan_ly_thoi_gian. KHÔNG dùng dấu gạch ngang
+      - id: "pN_[slug_không_dấu_dùng_gạch_dưới]" # VD: p1_quan_ly_thoi_gian. KHÔNG dùng dấu gạch ngang
         pillar_parents: ["[Tên_Pillar_cha_user_vừa_khai]"]
         belongs_to_audience: ["[[Tên_file_Audience_vừa_tạo_ở_Câu_10]]"]
       ```

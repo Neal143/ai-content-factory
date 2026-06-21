@@ -21,7 +21,7 @@ Quét toàn bộ file trong `vault/00-Inbox/` xem có file nào đang ở trạn
 Trước khi định tuyến hay lưu file, BẮT BUỘC phải thực hiện tuần tự để có cơ sở dữ liệu:
 1. **Chọn Pillar gốc:** Đọc cấu trúc `pillars.yaml`, dựa trên `name` và `description` của mỗi Pillar, chọn đúng **01 Pillar** đang tồn tại phù hợp nhất với nội dung của Atom.
 2. **Sinh 2-3 topics đa tầng (Gán làm biến `[id]` và `[label]`):** Dựa vào Pillar vừa chọn, sinh ra 2-3 cặp `(id, label)` phản ánh nội dung theo phổ độ rộng: **1 rộng + 1 trung  + 1 hẹp (tùy chọn)**.
-   - **`id`**: English snake_case, mô tả bằng 2-4 từ tiếng Anh (ví dụ: `attachment_root_of_suffering`).
+   - **`id`**: BẮT BUỘC tra `pillars.yaml` lấy key Pillar đã chọn ở Bước 1 (VD: `pillar_1` → `p1`), gắn làm tiền tố: `pN_english_snake_case`, 2-4 từ (ví dụ: `p1_attachment_root_of_suffering`).
    - **`label`**: Tiếng Việt đầy đủ dấu, đọc tự nhiên như tên một bài viết ngắn (ví dụ: `Attachment là gốc rễ của khổ đau`).
    - **Topic rộng (Broad):** Chủ đề bao quát mà ≥5 nội dung khác nhau trong cùng Pillar có thể dùng.
    - **Topic trung (Medium/Central) :** Luận điểm cốt lõi của nội dung — bắt buộc 100%, quan trọng nhất.
@@ -29,7 +29,7 @@ Trước khi định tuyến hay lưu file, BẮT BUỘC phải thực hiện tu
    - Tất cả topics thuộc cùng 1 Pillar đã chọn ở Bước 1.
 3. **Semantic Dedup (Topic Manager):** 
    Trước khi đọc module quản lý topic, BẮT BUỘC phải chuẩn bị sẵn 4 biến tương ứng trong working memory cho Atom này:
-   - `id`: `[id_rong] [id_trung] ([id_hep])`.
+   - `id`: `[pN_id_rong] [pN_id_trung] ([pN_id_hep])`.
    - `label`: `"[label rộng]" "[label trung]" ("[label hẹp]")`.
    - `pillar`: `[Tên Pillar đã match ở Bước 1]`
    - `audience`: Wikilink trỏ duy nhất vào file Big Audience gốc (file có `audience_level: big` nằm trong thư mục `vault/01-Atomic/Audiences/`).

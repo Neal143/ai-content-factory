@@ -78,7 +78,7 @@ python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
 3. Với từng chunk trong batch:
    - Tham chiếu `topic-taxonomy.md` → Section "Chunk Topics" + "Quan hệ giữa Book và Chunk Topics".
    - Sinh 2-3 cặp `(id, label)` + `tier` + `evidence` (trích nguyên văn 1 đoạn từ nội dung chunk).
-   - Cùng Pillar đã chọn ở Bước 1.1.
+   - Cùng Pillar đã chọn ở Bước 1.1. BẮT BUỘC gắn tiền tố `pN_` (lấy từ key Pillar, VD: `pillar_2` → `p2`) vào trước mọi `id`.
 4. Mở tệp **đã được tạo sẵn** tại `[run_folder]/session_4/topic_eval_temp.json` và SỬA/ĐIỀN VÀO các trường `[ĐIỀN VÀO ĐÂY]`. Đừng tự tạo file mới.
 5. Nộp bài:
    ```bash

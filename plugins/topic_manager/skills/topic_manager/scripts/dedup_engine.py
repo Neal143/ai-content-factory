@@ -180,6 +180,13 @@ def submit_internal(session_dir, submit_file):
         # Nhóm 1.14.5: Xử lý khi chọn merge (so khớp) vào topic đã ghi nhận
         else:
             resolved_to = t.get("resolved_to", "").replace('-', '_').lower()
+            # Poka-Yoke: Chặn merge cross-pillar
+            import re
+            p_proposed = re.match(r'^(p\d+)_', proposed_id)
+            p_resolved = re.match(r'^(p\d+)_', resolved_to)
+            if p_proposed and p_resolved and p_proposed.group(1) != p_resolved.group(1):
+                print(f"❌ Reject: CROSS-PILLAR merge bị cấm. '{proposed_id}' và '{resolved_to}' thuộc Pillar khác nhau.")
+                return
             if not resolved_to or "[ĐIỀN VÀO ĐÂY" in resolved_to:
                 print(f"❌ Reject: Merge topic '{proposed_id}' nhưng thiếu trường resolved_to")
                 return
@@ -359,6 +366,13 @@ def submit_external(session_dir, map_path, submit_file):
         # Nhóm 2.14.5: Kiểm tra và lưu vết quyết định gộp vào ID toàn cục sẵn có
         else:
             resolved_to = t.get("resolved_to", "").replace('-', '_').lower()
+            # Poka-Yoke: Chặn merge cross-pillar
+            import re
+            p_proposed = re.match(r'^(p\d+)_', proposed_id)
+            p_resolved = re.match(r'^(p\d+)_', resolved_to)
+            if p_proposed and p_resolved and p_proposed.group(1) != p_resolved.group(1):
+                print(f"❌ Reject: CROSS-PILLAR merge bị cấm. '{proposed_id}' và '{resolved_to}' thuộc Pillar khác nhau.")
+                return
             if not resolved_to or "[ĐIỀN VÀO ĐÂY" in resolved_to:
                 print(f"❌ Reject: Merge topic '{proposed_id}' nhưng thiếu trường resolved_to")
                 return
