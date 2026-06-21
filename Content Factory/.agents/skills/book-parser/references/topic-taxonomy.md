@@ -7,7 +7,7 @@ Hướng dẫn xác định 3 tầng topics (Broad / Medium / Narrow) cho sách 
 ## Quy tắc chung (áp dụng cho cả Book Topics và Chunk Topics)
 
 Mỗi topic là một cặp `(id, label)`:
-- **`id`**: English snake_case, 2-5 từ, dạng danh từ/cụm danh từ (VD: `goal_setting_framework`). Không dùng tên riêng, không dùng mệnh đề nhân quả.
+- **`id`**: BẮT BUỘC tra `pillars.yaml` lấy key Pillar (VD: `pillar_1` → `p1`), gắn làm tiền tố: `pN_english_snake_case`, 2-5 từ, dạng danh từ/cụm danh từ (VD: `p1_goal_setting_framework`). Không dùng tên riêng, không dùng mệnh đề nhân quả.
 - **`label`**: Tiếng Việt đầy đủ dấu, đọc tự nhiên như tên một bài viết ngắn (VD: `Khung thiết lập mục tiêu tổ chức`).
 - **Tái sử dụng:** Mọi topic — kể cả Narrow — phải có thể gắn vào ≥3 nội dung khác trong cùng Pillar.
 - **Quan hệ cấp độ:** `Broad ⊇ Medium ⊇ Narrow` về độ bao quát.

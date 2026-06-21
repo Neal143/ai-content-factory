@@ -50,7 +50,7 @@ foreach ($line in $lines) {
         }
         # Flush entry khi có đủ 4 trường
         if ($currentId -and $currentLabel) {
-            $idMatch = $Topic -match [regex]::Escape($currentId.Replace("_"," "))
+            $idMatch = $Topic -match [regex]::Escape(($currentId -replace '^p\d+_', '').Replace("_"," "))
             $labelMatch = $Topic -match [regex]::Escape($currentLabel)
             if ($idMatch -or $labelMatch) {
                 $matchedEntries += [PSCustomObject]@{
