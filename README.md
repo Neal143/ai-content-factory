@@ -41,6 +41,7 @@ Sau khi đã Onboard thành công, hệ thống cung cấp sẵn các bộ đị
 - 📖 **`/story-bank`**: Công cụ nhập liệu và cấu trúc hóa các trải nghiệm/câu chuyện cá nhân để làm chất liệu viết bài.
 - 🔄 **`/transfer-extraction`**: Trình xuất/nhập (Export/Import) dữ liệu sách giữa các môi trường Factory khác nhau.
 - 🎭 **`/onboarding-persona`**: Cỗ máy phỏng vấn tạo và điều chỉnh tệp DNA giọng văn (Persona) cho tác giả.
+- 🔄 **`/update-agents`**: Cập nhật lõi hệ thống `.agents` lên phiên bản mới nhất từ GitHub (tự động chạy migration cấu trúc vault/personas nếu có).
 
 ---
 
