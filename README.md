@@ -19,14 +19,28 @@ Hệ thống tương thích hoàn hảo với các IDE hỗ trợ AI mới nhấ
 - 📜 **`rules/`**: Bức tường lửa (Gatekeeper). Chứa các quy định tuyệt đối về văn phong, cấu trúc ngắt đoạn, chống dịch thuật rập khuôn và vượt qua các công cụ phát hiện AI.
 - ⚙️ **`scripts/`**: Cỗ máy vận hành ngầm dưới đáy. Gồm các mã nguồn PowerShell/Python đảm nhiệm việc I/O file, nối ghép các khâu, phân rã dữ liệu (batching) và phát hiện các Agent "lách luật" (Sentinel Error Logging).
 
-## 🚀 Khởi động nhanh (Dành cho AI IDE)
+## 🚀 Hướng dẫn Onboarding (Dành cho người mới)
 
-1. Mở IDE trí tuệ nhân tạo của bạn.
-2. Dán đường link repo để IDE tự động tải lõi hệ thống về làm Workspace:
+Nếu đây là lần đầu tiên bạn (hoặc AI IDE của bạn) tải hệ thống này về, bạn **bắt buộc** phải khai báo thông tin cá nhân (Persona) để hệ thống biết bạn là ai, cách bạn viết văn và tệp độc giả của bạn là gì.
+
+1. Khởi động IDE hỗ trợ AI (như Antigravity/Cursor).
+2. Tải hệ thống về làm Workspace:
    ```bash
    git clone https://github.com/Neal143/ai-content-factory.git
    ```
-3. Sau khi kéo code về, hãy gọi lệnh `Run Workflow` và trỏ vào một file trong mục `workflows/` (vd: `/content-post`) để nhà máy chính thức bấm máy!
+3. Gõ lệnh `/onboarding-persona` vào cửa sổ chat với AI để kích hoạt hệ thống phỏng vấn khai báo thông tin.
+4. Trả lời các câu hỏi AI đưa ra. AI sẽ tự động phân tích và tạo cấu hình Persona hoàn chỉnh lưu vào máy bạn.
+
+## 📜 Danh mục Workflows hiện có
+
+Sau khi đã Onboard thành công, hệ thống cung cấp sẵn các bộ định tuyến (Workflows) dưới đây để phục vụ cho mọi nhu cầu sản xuất nội dung của bạn. Chỉ cần gõ `/[tên-workflow]` để AI tự động kích hoạt:
+
+- ✍️ **`/content-post`**: Dây chuyền sản xuất nội dung mạng xã hội (Pipeline 7 giai đoạn liên tục qua các Sub-Agents).
+- 📚 **`/book-extractor`**: Cỗ máy bóc tách và phân rã sách nguyên quyển thành mạng lưới tri thức nguyên tử DIKW (Chia 4 Sessions tự động chống tràn bộ nhớ).
+- 📥 **`/process-inbox`**: Trợ lý phân loại và xử lý các ghi chú/ý tưởng thô vụn từ Inbox.
+- 📖 **`/story-bank`**: Công cụ nhập liệu và cấu trúc hóa các trải nghiệm/câu chuyện cá nhân để làm chất liệu viết bài.
+- 🔄 **`/transfer-extraction`**: Trình xuất/nhập (Export/Import) dữ liệu sách giữa các môi trường Factory khác nhau.
+- 🎭 **`/onboarding-persona`**: Cỗ máy phỏng vấn tạo và điều chỉnh tệp DNA giọng văn (Persona) cho tác giả.
 
 ---
 
