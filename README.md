@@ -21,7 +21,7 @@ Hệ thống tương thích hoàn hảo với các IDE hỗ trợ AI mới nhấ
 
 ## 🚀 Hướng dẫn Onboarding (Dành cho người mới)
 
-Nếu đây là lần đầu tiên bạn (hoặc AI IDE của bạn) tải hệ thống này về, bạn **bắt buộc** phải khai báo thông tin cá nhân (Persona) để hệ thống biết bạn là ai, cách bạn viết văn và tệp độc giả của bạn là gì.
+Nếu đây là lần đầu tiên bạn (hoặc AI IDE của bạn) tải hệ thống này về, bạn **bắt buộc** phải khai báo thông tin cá nhân (Persona) để hệ thống biết bạn là ai, cách bạn viết gì và tệp độc giả của bạn là gì.
 
 1. Khởi động IDE hỗ trợ AI (như Antigravity/Cursor).
 2. Tải hệ thống về làm Workspace:
