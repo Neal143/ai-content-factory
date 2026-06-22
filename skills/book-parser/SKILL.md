@@ -1,7 +1,7 @@
----
+﻿---
 name: Book Parser (The Atomizer)
 description: Skill phân rã sách thành Atom vật lý. Được gọi bởi book-extractor Session 4. Phase 1: Sinh Book Topics & Chunk Topics (batch processing) + Semantic Dedup. Phase 2: Atomization (tiếp ngay sau Phase 1 trong cùng 1 lần gọi).
-last_update: 30/05/2026 06:15 (GMT+7)
+last_update: 22/06/2026 15:42 (GMT+7)
 ---
 
 # Book Parser Skill (The Atomizer)
@@ -34,7 +34,7 @@ Ngay khi nhận INPUT, thực hiện tuần tự hoàn toàn tự động — **
 
 **Bước 1.1 — Đọc Tổng quan sách & Chọn Pillar gốc (duy nhất toàn book):**
 1. Đọc file `[run_folder]/session_1/mapper_raw.md` để nắm rõ nội dung tổng quan của cuốn sách (thesis, big idea, tóm tắt 1 trang).
-2. Đọc `pillars.yaml` của Persona đang active. Dựa trên `name` và `description` của mỗi Pillar, đối chiếu với nội dung tổng quan sách vừa đọc để chọn **01 Pillar** phù hợp nhất. Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline.
+2. Xác định `[Persona_Path]`: Lấy thư mục con duy nhất trong `personas/` (VD: `personas/Vuon-ong-steiner`). Đọc `[Persona_Path]/pillars.yaml`. Dựa trên `name` và `description` của mỗi Pillar, đối chiếu với nội dung tổng quan sách vừa đọc để chọn **01 Pillar** phù hợp nhất. Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline. Giá trị `[Persona_Path]` cũng bất biến cho toàn bộ pipeline.
 
 **Bước 1.2 — Sinh Book Topics (2-3 topics, phản ánh toàn bộ cuốn sách):**
 Dựa vào kiến thức tổng quan sách đã nắm được ở Bước 1.1, tham chiếu `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**.
@@ -106,7 +106,11 @@ Nhằm giảm tải nhận thức cho Agent và ngăn ngừa đứt gãy dữ li
    python .agents/skills/book-parser/scripts/prepare_topic_batches.py --run-folder "[run_folder]" --decision-map "[run_folder]/audience_decision_map.json" --export-proposed-topics
    ```
 2. **Ủy thác xử lý:**
-   Hãy bàn giao toàn quyền xử lý cho Plugin `topic_manager`. Bạn KHÔNG cần phải tự suy luận đối chiếu YAML hay chạy script tại thư mục `book-parser` nữa.
+   Hãy bàn giao toàn quyền xử lý cho Plugin `topic_manager` với 2 tham số bắt buộc:
+   - `[session_4_dir]`: `[run_folder]/session_4`
+   - `[Persona_Path]`: Đường dẫn thư mục persona đã xác định ở Bước 1.1 (VD: `personas/Vuon-ong-steiner`)
+
+   Bạn KHÔNG cần phải tự suy luận đối chiếu YAML hay chạy script tại thư mục `book-parser` nữa.
 3. **Đợi kết quả:**
    Hãy tạm dừng luồng chạy tại đây. Chờ cho Plugin xử lý hoàn tất các chặng Internal và External, tự động cập nhật YAML toàn cục và xuất file `session_4/resolved_topics.json`.
 4. **Tiếp tục:**

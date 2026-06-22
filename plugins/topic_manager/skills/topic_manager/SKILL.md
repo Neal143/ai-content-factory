@@ -1,7 +1,7 @@
-# Plugin Topic Manager — 2-Pass Semantic Dedup
+﻿# Plugin Topic Manager — 2-Pass Semantic Dedup
 
 **Tên file:** `SKILL.md`
-**Last update:** 01/06/2026 23:55 (GMT+7)
+**Last update:** 22/06/2026 15:42 (GMT+7)
 **Vai trò:** Cẩm nang hướng dẫn vận hành 2-pass Semantic Dedup cho Agent.
 **Được sử dụng khi nào:** Khi Plugin được triệu gọi để xử lý proposed_topics.json.
 **Output:** File resolved_topics.json hoàn chỉnh và topic_map.yaml được cập nhật.
@@ -10,6 +10,10 @@
   - Cung cấp bảng quy luật so khớp ngữ nghĩa MATCH / NO MATCH bất biến để LLM ra quyết định chuẩn xác.
 
 ---
+
+> **Biến bắt buộc từ Caller:**
+> - `[session_4_dir]`: Đường dẫn thư mục session_4 (truyền từ book-parser).
+> - `[Persona_Path]`: Đường dẫn thư mục persona (VD: `personas/Vuon-ong-steiner`). Được book-parser truyền khi ủy thác. Nếu không được truyền, xác định bằng cách lấy thư mục con duy nhất trong `personas/`.
 
 ## HƯỚNG DẪN VẬN HÀNH 2-PASS DEDUP CLI
 
@@ -33,15 +37,15 @@
 ### CHẶNG 2: SO KHỚP NGOẠI VI (EXTERNAL MATCH)
 1. **Khởi tạo và nhận Batch 5 unique topics:**
    ```bash
-   python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[topic_map_yaml_path]" --prepare-external
+   python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[Persona_Path]/topic_map.yaml" --prepare-external
    ```
 2. **Mở file làm bài:** View file `session_4/external_temp.json`.
-3. **Quyết định:** Đọc file `topic_map.yaml` toàn cục. Đối chiếu 5 unique topics:
+3. **Quyết định:** Đọc file `[Persona_Path]/topic_map.yaml`. Đối chiếu 5 unique topics:
    - `create`: Nếu khái niệm chưa tồn tại trong YAML toàn cục.
    - `merge`: Nếu khái niệm đã tồn tại sẵn trong YAML. Điền `resolved_to` là ID gốc trong YAML.
 4. **Nộp bài:**
    ```bash
-   python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[topic_map_yaml_path]" --submit-external
+   python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[Persona_Path]/topic_map.yaml" --submit-external
    ```
 5. **Lặp lại:** Gọi lại bước 1 cho đến khi màn hình báo hoàn tất Chặng 2.
 
@@ -50,7 +54,7 @@
 ### CHẶNG 3: BIÊN DỊCH & COMMIT
 Tự động chạy ngầm biên dịch và cập nhật YAML, không cần LLM can thiệp:
 ```bash
-python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[topic_map_yaml_path]" --compile-and-commit
+python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[Persona_Path]/topic_map.yaml" --compile-and-commit
 ```
 
 ---
