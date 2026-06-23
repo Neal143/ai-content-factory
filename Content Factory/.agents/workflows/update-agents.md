@@ -22,20 +22,26 @@ Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới
    - Ví dụ: `D:\MyFactory`
 3. Lưu cả 2 đường dẫn này để sử dụng ở các bước sau.
 
-## Giai đoạn 3: Tải bản mới nhất
+## Giai đoạn 3: Kiểm tra phiên bản
+
+1. Đọc phiên bản hiện tại (Local) từ dòng đầu tiên của file `[FACTORY_ROOT]/.agents/README.md`.
+2. Lấy phiên bản mới nhất (Remote) trực tiếp từ GitHub bằng lệnh:
+   ```powershell
+   (Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Neal143/ai-content-factory/master/README.md") -split "`n" | Select-Object -First 1
+   ```
+3. So sánh 2 phiên bản:
+   - Nếu **giống nhau**: Thông báo "Hệ thống đã là phiên bản mới nhất!". KẾT THÚC quy trình.
+   - Nếu **khác nhau**: Thông báo "Phát hiện phiên bản mới: Local → Remote". Tiếp tục Giai đoạn 4.
+
+## Giai đoạn 4: Tải bản mới nhất
 
 1. Chạy lệnh tải repo về thư mục tạm:
    ```
    git clone --depth 1 https://github.com/Neal143/ai-content-factory.git "[FACTORY_ROOT]/.agents_update_temp"
    ```
-2. Nếu lệnh clone thất bại (mất mạng, sai URL, v.v.): Báo lỗi cho User và DỪNG LẠI. KHÔNG được tiếp tục sang Giai đoạn 4.
-3. So sánh version: Đọc dòng đầu tiên (`# 🏭 AI Content Factory vX.Y.Z`) trong cả 2 file:
-   - Local: `[FACTORY_ROOT]/.agents/README.md`
-   - Remote: `[FACTORY_ROOT]/.agents_update_temp/README.md`
-   - Nếu version **giống nhau**: Thông báo "Hệ thống đã là phiên bản mới nhất (vX.Y.Z)!". Xóa thư mục tạm: `Remove-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -Recurse -Force`. KẾT THÚC.
-   - Nếu version **khác nhau**: Thông báo "Phát hiện phiên bản mới: vX.Y.Z → vA.B.C". Tiếp tục Giai đoạn 4.
+2. Nếu lệnh clone thất bại (mất mạng, sai URL, v.v.): Báo lỗi cho User và DỪNG LẠI. KHÔNG được tiếp tục sang Giai đoạn 5.
 
-## Giai đoạn 4: Sao lưu và Thay thế
+## Giai đoạn 5: Sao lưu và Thay thế
 
 1. **Tạo thư mục backup:** Chạy lệnh sau để tạo thư mục backup với timestamp (múi giờ Hà Nội GMT+7). Ghi nhận đường dẫn đầy đủ của thư mục backup vừa tạo — gọi là `[BACKUP_DIR]` — để sử dụng ở các bước sau:
    ```powershell
@@ -60,7 +66,7 @@ Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới
    Remove-Item -Path "[FACTORY_ROOT]\.agents\.git" -Recurse -Force
    ```
 
-## Giai đoạn 5: Kiểm tra và Hoàn tất
+## Giai đoạn 6: Kiểm tra và Hoàn tất
 
 1. Kiểm tra nhanh thư mục `.agents` mới có tồn tại các thư mục con bắt buộc không: `workflows/`, `skills/`, `agents/`, `scripts/`.
 2. **Nếu THÀNH CÔNG (đủ 4 thư mục con):**
