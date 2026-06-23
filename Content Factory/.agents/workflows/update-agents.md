@@ -35,40 +35,46 @@ Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới
    - Nếu version **giống nhau**: Thông báo "Hệ thống đã là phiên bản mới nhất (vX.Y.Z)!". Xóa thư mục tạm: `Remove-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -Recurse -Force`. KẾT THÚC.
    - Nếu version **khác nhau**: Thông báo "Phát hiện phiên bản mới: vX.Y.Z → vA.B.C". Tiếp tục Giai đoạn 4.
 
-## Giai đoạn 4: Thay thế
+## Giai đoạn 4: Sao lưu và Thay thế
 
-1. **Dọn dẹp backup cũ:** Nếu `.agents_backup` tồn tại từ lần update trước, xóa nó đi (chỉ giữ backup của lần update hiện tại):
+1. **Tạo thư mục backup:** Chạy lệnh sau để tạo thư mục backup với timestamp (múi giờ Hà Nội GMT+7). Ghi nhận đường dẫn đầy đủ của thư mục backup vừa tạo — gọi là `[BACKUP_DIR]` — để sử dụng ở các bước sau:
    ```powershell
-   if (Test-Path "[FACTORY_ROOT]\.agents_backup") { Remove-Item -Path "[FACTORY_ROOT]\.agents_backup" -Recurse -Force }
+   $timestamp = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId((Get-Date), 'SE Asia Standard Time').ToString('yyyy-MM-dd_HHmmss')
+   $backupDir = Join-Path "[FACTORY_ROOT]" ".update_backups\backup_$timestamp"
+   New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
+   Write-Host "BACKUP_DIR=$backupDir"
    ```
-2. **Sao lưu (An toàn):** Đổi tên thư mục `.agents` hiện tại thành `.agents_backup`:
+   Lưu giá trị `BACKUP_DIR` in ra để dùng ở tất cả các bước tiếp theo.
+
+2. **Sao lưu code:** Copy thư mục `.agents` hiện tại vào backup:
    ```powershell
-   Rename-Item -Path "[FACTORY_ROOT]\.agents" -NewName ".agents_backup"
+   robocopy "[FACTORY_ROOT]\.agents" "[BACKUP_DIR]\agents" /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
    ```
-3. **Chuyển đổi:** Đổi tên thư mục vừa tải về thành `.agents` chính thức:
+3. **Xóa code cũ và chuyển đổi:**
    ```powershell
+   Remove-Item -Path "[FACTORY_ROOT]\.agents" -Recurse -Force
    Rename-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -NewName ".agents"
    ```
-4. **Dọn rác Git:** Xóa thư mục `.git` bên trong `.agents` mới (vì nó là sản phẩm của lệnh clone, User không cần):
+4. **Dọn rác Git:** Xóa thư mục `.git` bên trong `.agents` mới:
    ```powershell
    Remove-Item -Path "[FACTORY_ROOT]\.agents\.git" -Recurse -Force
    ```
 
-## Giai đoạn 5: Kiểm tra và Dọn dẹp
+## Giai đoạn 5: Kiểm tra và Hoàn tất
 
 1. Kiểm tra nhanh thư mục `.agents` mới có tồn tại các thư mục con bắt buộc không: `workflows/`, `skills/`, `agents/`, `scripts/`.
 2. **Nếu THÀNH CÔNG (đủ 4 thư mục con):**
-   - Chạy migration tự động:
+   - Chạy migration tự động (truyền đường dẫn backup để migration lưu dữ liệu vào cùng thư mục):
      ```powershell
-     powershell -ExecutionPolicy Bypass -File "[FACTORY_ROOT]\.agents\scripts\run-migrations.ps1" -FactoryRoot "[FACTORY_ROOT]"
+     powershell -ExecutionPolicy Bypass -File "[FACTORY_ROOT]\.agents\scripts\run-migrations.ps1" -FactoryRoot "[FACTORY_ROOT]" -BackupDir "[BACKUP_DIR]"
      ```
-   - Nếu migration báo lỗi (exit code khác 0): Thông báo cho User "⚠️ Cập nhật .agents thành công nhưng có migration thất bại. Hãy báo lại cho tác giả hệ thống."
-   - Báo cáo: "✅ Đã cập nhật `.agents` thành công lên phiên bản mới nhất! Bản backup phiên bản cũ được giữ tại `.agents_backup/`. Nếu pipeline lỗi sau update, rollback bằng lệnh: `Rename-Item .agents .agents_failed; Rename-Item .agents_backup .agents`"
+   - Nếu migration báo lỗi (exit code khác 0): Thông báo cho User "⚠️ Cập nhật .agents thành công nhưng có migration thất bại. Dữ liệu gốc được giữ an toàn tại `.update_backups/`. Hãy báo lại cho tác giả hệ thống."
+   - Báo cáo: "✅ Đã cập nhật `.agents` thành công lên phiên bản mới nhất! Toàn bộ backup (code + dữ liệu) được giữ tại `.update_backups/`. Bạn có thể xóa các bản backup cũ khi xác nhận hệ thống hoạt động bình thường."
 3. **Nếu THẤT BẠI (thiếu thư mục con):**
-   - Khôi phục bản sao lưu:
+   - Khôi phục từ backup:
      ```powershell
-     Remove-Item -Path "[FACTORY_ROOT]\.agents" -Recurse -Force
-     Rename-Item -Path "[FACTORY_ROOT]\.agents_backup" -NewName ".agents"
+     Remove-Item -Path "[FACTORY_ROOT]\.agents" -Recurse -Force -ErrorAction SilentlyContinue
+     robocopy "[BACKUP_DIR]\agents" "[FACTORY_ROOT]\.agents" /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
      ```
-   - Báo lỗi: "❌ Cập nhật thất bại. Hệ thống đã tự động khôi phục về phiên bản cũ. Không có dữ liệu nào bị mất."
+   - Báo lỗi: "❌ Cập nhật thất bại. Hệ thống đã tự động khôi phục về phiên bản cũ từ backup. Không có dữ liệu nào bị mất."
    - Dọn rác: `Remove-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -Recurse -Force -ErrorAction SilentlyContinue`
