@@ -22,8 +22,15 @@ param(
 )
 
 # --- Path setup ---
-$versionFile = Join-Path $FactoryRoot "FACTORY_VERSION"
+$oldVersionFile = Join-Path $FactoryRoot "FACTORY_VERSION"
+$versionFile = Join-Path $FactoryRoot ".migration_version"
 $migrationsDir = Join-Path $FactoryRoot ".agents\migrations"
+
+# --- Migrate old version file if exists ---
+if (Test-Path $oldVersionFile) {
+    Write-Host "Found old FACTORY_VERSION file. Renaming to .migration_version..."
+    Move-Item -Path $oldVersionFile -Destination $versionFile -Force
+}
 
 # --- Read current version (default 0 if file missing) ---
 if (Test-Path $versionFile) {
@@ -31,7 +38,7 @@ if (Test-Path $versionFile) {
 } else {
     $currentVersion = 0
     Set-Content -Path $versionFile -Value "0" -NoNewline
-    Write-Host "FACTORY_VERSION not found. Created with value 0."
+    Write-Host ".migration_version not found. Created with value 0."
 }
 
 # --- Scan migration scripts ---
