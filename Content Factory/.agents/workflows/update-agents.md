@@ -8,13 +8,7 @@ Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới
 
 > **CẢNH BÁO:** Workflow này sẽ XÓA TOÀN BỘ nội dung thư mục `.agents` hiện tại và THAY THẾ bằng phiên bản mới nhất từ GitHub. Bất kỳ file nào User tự ý sửa bên trong `.agents/` sẽ bị mất. Dữ liệu cá nhân (`vault/`, `personas/`) KHÔNG bị ảnh hưởng.
 
-## Giai đoạn 1: Xác nhận trước khi cập nhật
-
-1. Thông báo cho User: "Workflow này sẽ thay thế toàn bộ thư mục `.agents` bằng phiên bản mới nhất từ GitHub. Dữ liệu `vault/` và `personas/` của bạn sẽ KHÔNG bị ảnh hưởng. Bạn có muốn tiếp tục không?"
-2. Dừng và đợi câu trả lời từ User.
-3. Nếu User từ chối: Kết thúc ngay lập tức.
-
-## Giai đoạn 2: Xác định đường dẫn
+## Giai đoạn 1: Xác định đường dẫn
 
 1. Xác định đường dẫn tuyệt đối của thư mục `.agents` hiện tại. Thư mục này chính là thư mục CHA của file workflow bạn đang đọc.
    - Ví dụ: Nếu bạn đang đọc file tại `D:\MyFactory\.agents\workflows\update-agents.md` thì thư mục `.agents` là `D:\MyFactory\.agents`.
@@ -22,7 +16,7 @@ Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới
    - Ví dụ: `D:\MyFactory`
 3. Lưu cả 2 đường dẫn này để sử dụng ở các bước sau.
 
-## Giai đoạn 3: Kiểm tra phiên bản
+## Giai đoạn 2: Kiểm tra phiên bản
 
 1. Đọc phiên bản hiện tại (Local) từ dòng đầu tiên của file `[FACTORY_ROOT]/.agents/README.md`.
 2. Lấy phiên bản mới nhất (Remote) trực tiếp từ GitHub bằng lệnh:
@@ -31,7 +25,13 @@ Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới
    ```
 3. So sánh 2 phiên bản:
    - Nếu **giống nhau**: Thông báo "Hệ thống đã là phiên bản mới nhất!". KẾT THÚC quy trình.
-   - Nếu **khác nhau**: Thông báo "Phát hiện phiên bản mới: Local → Remote". Tiếp tục Giai đoạn 4.
+   - Nếu **khác nhau**: Thông báo "Phát hiện phiên bản mới: Local → Remote". Tiếp tục Giai đoạn 3.
+
+## Giai đoạn 3: Xác nhận từ User
+
+1. Thông báo cho User: "Phát hiện phiên bản mới! Workflow này sẽ thay thế toàn bộ thư mục `.agents` bằng phiên bản mới nhất từ GitHub. Dữ liệu `vault/` và `personas/` của bạn sẽ KHÔNG bị ảnh hưởng. Bạn có muốn tiếp tục cập nhật không?"
+2. Dừng và đợi câu trả lời từ User.
+3. Nếu User từ chối: Kết thúc ngay lập tức.
 
 ## Giai đoạn 4: Tải bản mới nhất
 
