@@ -1,66 +1,75 @@
 ---
-description: 🔄 Cap nhat he thong .agents len phien ban moi nhat tu GitHub
+description: 🔄 Cập nhật hệ thống .agents lên phiên bản mới nhất từ GitHub
 ---
 
 # WORKFLOW: /update-agents
 
-Ban la **Antigravity Update Manager**. Nhiem vu: Tai phien ban moi nhat cua thu muc `.agents` tu GitHub ve may cua User, thay the hoan toan thu muc cu de dam bao dong bo tuyet doi voi ban goc.
+Bạn là **Antigravity Update Manager**. Nhiệm vụ: Tải phiên bản mới nhất của thư mục `.agents` từ GitHub về máy của User, thay thế hoàn toàn thư mục cũ để đảm bảo đồng bộ tuyệt đối với bản gốc.
 
-> **CANH BAO:** Workflow nay se XOA TOAN BO noi dung thu muc `.agents` hien tai va THAY THE bang phien ban moi nhat tu GitHub. Bat ky file nao User tu y sua ben trong `.agents/` se bi mat. Du lieu ca nhan (`vault/`, `personas/`) KHONG bi anh huong.
+> **CẢNH BÁO:** Workflow này sẽ XÓA TOÀN BỘ nội dung thư mục `.agents` hiện tại và THAY THẾ bằng phiên bản mới nhất từ GitHub. Bất kỳ file nào User tự ý sửa bên trong `.agents/` sẽ bị mất. Dữ liệu cá nhân (`vault/`, `personas/`) KHÔNG bị ảnh hưởng.
 
-## Giai doan 1: Xac nhan truoc khi cap nhat
+## Giai đoạn 1: Xác nhận trước khi cập nhật
 
-1. Thong bao cho User: "Workflow nay se thay the toan bo thu muc `.agents` bang phien ban moi nhat tu GitHub. Du lieu `vault/` va `personas/` cua ban se KHONG bi anh huong. Ban co muon tiep tuc khong?"
-2. Dung va doi cau tra loi tu User.
-3. Neu User tu choi: Ket thuc ngay lap tuc.
+1. Thông báo cho User: "Workflow này sẽ thay thế toàn bộ thư mục `.agents` bằng phiên bản mới nhất từ GitHub. Dữ liệu `vault/` và `personas/` của bạn sẽ KHÔNG bị ảnh hưởng. Bạn có muốn tiếp tục không?"
+2. Dừng và đợi câu trả lời từ User.
+3. Nếu User từ chối: Kết thúc ngay lập tức.
 
-## Giai doan 2: Xac dinh duong dan
+## Giai đoạn 2: Xác định đường dẫn
 
-1. Xac dinh duong dan tuyet doi cua thu muc `.agents` hien tai. Thu muc nay chinh la thu muc CHA cua file workflow ban dang doc.
-   - Vi du: Neu ban dang doc file tai `D:\MyFactory\.agents\workflows\update-agents.md` thi thu muc `.agents` la `D:\MyFactory\.agents`.
-2. Xac dinh thu muc CHA cua `.agents` (goi la `FACTORY_ROOT`).
-   - Vi du: `D:\MyFactory`
-3. Luu ca 2 duong dan nay de su dung o cac buoc sau.
+1. Xác định đường dẫn tuyệt đối của thư mục `.agents` hiện tại. Thư mục này chính là thư mục CHA của file workflow bạn đang đọc.
+   - Ví dụ: Nếu bạn đang đọc file tại `D:\MyFactory\.agents\workflows\update-agents.md` thì thư mục `.agents` là `D:\MyFactory\.agents`.
+2. Xác định thư mục CHA của `.agents` (gọi là `FACTORY_ROOT`).
+   - Ví dụ: `D:\MyFactory`
+3. Lưu cả 2 đường dẫn này để sử dụng ở các bước sau.
 
-## Giai doan 3: Tai ban moi nhat
+## Giai đoạn 3: Tải bản mới nhất
 
-1. Chay lenh tai repo ve thu muc tam:
+1. Chạy lệnh tải repo về thư mục tạm:
    ```
    git clone --depth 1 https://github.com/Neal143/ai-content-factory.git "[FACTORY_ROOT]/.agents_update_temp"
    ```
-2. Neu lenh clone that bai (mat mang, sai URL, v.v.): Bao loi cho User va DUNG LAI. KHONG duoc tiep tuc sang Giai doan 4.
+2. Nếu lệnh clone thất bại (mất mạng, sai URL, v.v.): Báo lỗi cho User và DỪNG LẠI. KHÔNG được tiếp tục sang Giai đoạn 4.
 
-## Giai doan 4: Thay the
+## Giai đoạn 4: Sao lưu và Thay thế
 
-1. **Sao luu (An toan):** Doi ten thu muc `.agents` hien tai thanh `.agents_backup`:
+1. **Tạo thư mục backup:** Chạy lệnh sau để tạo thư mục backup với timestamp (múi giờ Hà Nội GMT+7). Ghi nhận đường dẫn đầy đủ của thư mục backup vừa tạo — gọi là `[BACKUP_DIR]` — để sử dụng ở các bước sau:
    ```powershell
-   Rename-Item -Path "[FACTORY_ROOT]\.agents" -NewName ".agents_backup"
+   $timestamp = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId((Get-Date), 'SE Asia Standard Time').ToString('yyyy-MM-dd_HHmmss')
+   $backupDir = Join-Path "[FACTORY_ROOT]" ".update_backups\backup_$timestamp"
+   New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
+   Write-Host "BACKUP_DIR=$backupDir"
    ```
-2. **Chuyen doi:** Doi ten thu muc vua tai ve thanh `.agents` chinh thuc:
+   Lưu giá trị `BACKUP_DIR` in ra để dùng ở tất cả các bước tiếp theo.
+
+2. **Sao lưu code:** Copy thư mục `.agents` hiện tại vào backup:
    ```powershell
+   robocopy "[FACTORY_ROOT]\.agents" "[BACKUP_DIR]\agents" /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
+   ```
+3. **Xóa code cũ và chuyển đổi:**
+   ```powershell
+   Remove-Item -Path "[FACTORY_ROOT]\.agents" -Recurse -Force
    Rename-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -NewName ".agents"
    ```
-3. **Don rac Git:** Xoa thu muc `.git` ben trong `.agents` moi (vi no la san pham cua lenh clone, User khong can):
+4. **Dọn rác Git:** Xóa thư mục `.git` bên trong `.agents` mới:
    ```powershell
    Remove-Item -Path "[FACTORY_ROOT]\.agents\.git" -Recurse -Force
    ```
 
-## Giai doan 5: Kiem tra va Don dep
+## Giai đoạn 5: Kiểm tra và Hoàn tất
 
-1. Kiem tra nhanh thu muc `.agents` moi co ton tai cac thu muc con bat buoc khong: `workflows/`, `skills/`, `agents/`, `scripts/`.
-2. **Neu THANH CONG (du 4 thu muc con):**
-   - Xoa thu muc sao luu: `Remove-Item -Path "[FACTORY_ROOT]\.agents_backup" -Recurse -Force`
-   - Chay migration tu dong:
+1. Kiểm tra nhanh thư mục `.agents` mới có tồn tại các thư mục con bắt buộc không: `workflows/`, `skills/`, `agents/`, `scripts/`.
+2. **Nếu THÀNH CÔNG (đủ 4 thư mục con):**
+   - Chạy migration tự động (truyền đường dẫn backup để migration lưu dữ liệu vào cùng thư mục):
      ```powershell
-     powershell -ExecutionPolicy Bypass -File "[FACTORY_ROOT]\.agents\scripts\run-migrations.ps1" -FactoryRoot "[FACTORY_ROOT]"
+     powershell -ExecutionPolicy Bypass -File "[FACTORY_ROOT]\.agents\scripts\run-migrations.ps1" -FactoryRoot "[FACTORY_ROOT]" -BackupDir "[BACKUP_DIR]"
      ```
-   - Neu migration bao loi (exit code khac 0): Thong bao cho User "⚠️ Cap nhat .agents thanh cong nhung co migration that bai. Hay bao lai cho tac gia he thong."
-   - Bao cao: "✅ Da cap nhat `.agents` thanh cong len phien ban moi nhat!"
-3. **Neu THAT BAI (thieu thu muc con):**
-   - Khoi phuc ban sao luu:
+   - Nếu migration báo lỗi (exit code khác 0): Thông báo cho User "⚠️ Cập nhật .agents thành công nhưng có migration thất bại. Dữ liệu gốc được giữ an toàn tại `.update_backups/`. Hãy báo lại cho tác giả hệ thống."
+   - Báo cáo: "✅ Đã cập nhật `.agents` thành công lên phiên bản mới nhất! Toàn bộ backup (code + dữ liệu) được giữ tại `.update_backups/`. Bạn có thể xóa các bản backup cũ khi xác nhận hệ thống hoạt động bình thường."
+3. **Nếu THẤT BẠI (thiếu thư mục con):**
+   - Khôi phục từ backup:
      ```powershell
-     Remove-Item -Path "[FACTORY_ROOT]\.agents" -Recurse -Force
-     Rename-Item -Path "[FACTORY_ROOT]\.agents_backup" -NewName ".agents"
+     Remove-Item -Path "[FACTORY_ROOT]\.agents" -Recurse -Force -ErrorAction SilentlyContinue
+     robocopy "[BACKUP_DIR]\agents" "[FACTORY_ROOT]\.agents" /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
      ```
-   - Bao loi: "❌ Cap nhat that bai. He thong da tu dong khoi phuc ve phien ban cu. Khong co du lieu nao bi mat."
-   - Don rac: `Remove-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -Recurse -Force -ErrorAction SilentlyContinue`
+   - Báo lỗi: "❌ Cập nhật thất bại. Hệ thống đã tự động khôi phục về phiên bản cũ từ backup. Không có dữ liệu nào bị mất."
+   - Dọn rác: `Remove-Item -Path "[FACTORY_ROOT]\.agents_update_temp" -Recurse -Force -ErrorAction SilentlyContinue`

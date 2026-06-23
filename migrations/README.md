@@ -1,19 +1,26 @@
 # Migrations
 
-Thu muc nay chua cac script cap nhat cau truc `vault/` va `personas/` khi he thong nang cap phien ban.
+Thư mục này chứa các script cập nhật cấu trúc `vault/` và `personas/` khi hệ thống nâng cấp phiên bản.
 
-## Quy tac dat ten
+## Quy tắc đặt tên
 - Format: `NNN_mo-ta-ngan.ps1` (VD: `001_add-dlq-folder.ps1`)
-- So thu tu tang dan, khong duoc trung, khong duoc nhay so
+- Số thứ tự tăng dần, không được trùng, không được nhảy số
 
-## Quy tac viet script
-- Nhan tham so `$FactoryRoot` (duong dan goc factory)
-- BAT BUOC idempotent (kiem tra truoc khi tao/doi ten/di chuyen)
-- Tra exit code 0 = thanh cong, khac 0 = that bai
-- Dung tieng Anh hoac tieng Viet khong dau trong comment
-- Khi them folder moi, dong thoi cap nhat workflow onboarding cho user moi
+## Quy tắc viết script
+- Nhận tham số `$FactoryRoot` (đường dẫn gốc factory)
+- BẮT BUỘC idempotent (kiểm tra trước khi tạo/đổi tên/di chuyển)
+- Trả exit code 0 = thành công, khác 0 = thất bại
+- Dùng tiếng Anh hoặc tiếng Việt không dấu trong comment (rule encoding PowerShell)
+- Khi thêm folder mới, đồng thời cập nhật workflow onboarding cho user mới
 
-## Vi du tao folder moi
+## Quy tắc an toàn dữ liệu
+- **KHÔNG BAO GIỜ** xóa folder hoặc file có dữ liệu user (`vault/`, `personas/`)
+- Chỉ thực hiện: tạo mới folder, đổi tên folder/file, di chuyển file
+- Khi đổi tên: PHẢI kiểm tra cả source tồn tại VÀ destination chưa tồn tại
+- Hệ thống tự động backup `vault/` và `personas/` trước khi chạy migration. Nếu migration thất bại, user có thể khôi phục từ `.update_backups/`
+- **KHÔNG được thao tác trên `.update_backups/`** — đây là thư mục backup của user, không thuộc phạm vi migration
+
+## Ví dụ tạo folder mới
 ```powershell
 param([string]$FactoryRoot)
 $target = Join-Path $FactoryRoot "vault\05-NewSection"
@@ -21,7 +28,7 @@ if (-not (Test-Path $target)) { New-Item -Path $target -ItemType Directory -Forc
 exit 0
 ```
 
-## Vi du doi ten folder
+## Ví dụ đổi tên folder
 ```powershell
 param([string]$FactoryRoot)
 $old = Join-Path $FactoryRoot "vault\03-Content"
