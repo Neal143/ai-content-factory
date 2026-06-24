@@ -1,10 +1,7 @@
 ﻿param([string]$FactoryRoot)
 
-if (-not $FactoryRoot) {
-    $FactoryRoot = "."
-}
-
-Set-Location -Path $FactoryRoot
+$workspaceRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
+Set-Location -Path $workspaceRoot
 
 # 1. Quét thay đổi trong file structure-manifest.txt
 $manifestDiff = git diff HEAD~1 -- .agents/migrations/structure-manifest.txt
@@ -13,8 +10,8 @@ if ($manifestDiff) {
     $newManifestLines = $manifestDiff | Where-Object { $_ -match '^\+(?!\+)' -and $_ -notmatch '^\+\s*#' -and $_ -match '\S' }
 }
 
-# 2. Quét các dòng code tạo/đổi tên folder trong toàn bộ commit
-$fullDiff = git diff HEAD~1
+# 2. Quét các dòng code tạo/đổi tên folder trong toàn bộ commit CHỈ trên file .ps1
+$fullDiff = git diff HEAD~1 -- '*.ps1'
 $codeMatches = @()
 if ($fullDiff) {
     $codeMatches = $fullDiff | Where-Object { 

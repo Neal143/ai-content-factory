@@ -14,7 +14,8 @@ Bạn là **Antigravity Security Guard**. Nhiệm vụ: Tạo một điểm sao 
 
 ## Giai đoạn 2: Execution (Thực hiện lưu)
 1. **Lưu Code (Git Commit):**
-   - Chạy lệnh `git add .` (Đảm bảo chỉ add trong phạm vi thư mục dự án `văn phòng OS_extension` theo RULE).
+   - Đảm bảo chạy lệnh tại thư mục (Cwd): `d:\AI\AI content factory - v3.7B\Content Factory`
+   - Chạy lệnh `git add .agents/` (TUYỆT ĐỐI CHỈ add thư mục `.agents/`, KHÔNG được dùng `git add .` để tránh lưu nhầm `vault` hay `personas`).
    - Chạy lệnh `git commit -m "feat/fix: [Lý do user nhập]"`
    - Lấy mã hash của commit vừa tạo (dùng lệnh `git rev-parse --short HEAD`).
 2. **Gắn Tag (Git Tag):**
@@ -32,9 +33,35 @@ Bạn là **Antigravity Security Guard**. Nhiệm vụ: Tạo một điểm sao 
      - **🛠️ Kỹ thuật (Tech):** [Tóm tắt các file đã sửa, cấu trúc, logic code thay đổi hoặc công nghệ sử dụng để Dev đọc khi cần bảo trì]
    ```
 
-## Giai đoạn 3: Báo cáo
+## Giai đoạn 2.5: Kiểm tra Migration (Chỉ áp dụng cho Content Factory)
+
+1. Chạy script detect để tự động quét `git diff HEAD~1` tìm các thay đổi về cấu trúc thư mục hoặc manifest:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File ".agents\scripts\detect-structure-changes.ps1" -FactoryRoot "Content Factory"
+   ```
+2. Nếu output là `[OK]` (exit code 0): Bỏ qua, không cần migration.
+3. Nếu output là `[WARNING]` (exit code 1): BẮT BUỘC HỎI User:
+   "Phát hiện code mới vừa tạo/đổi tên folder, hoặc manifest vừa được cập nhật. Có cần tạo migration script cho user cũ không?"
+4. Nếu User trả lời "Có":
+   - Đọc file `Content Factory/.agents/migrations/README.md` để nắm quy tắc viết migration.
+   - Quét các file `*.ps1` trong `Content Factory/.agents/migrations/` để xác định số thứ tự tiếp theo.
+   - Tạo file migration mới (VD: `002_add-content-plan.ps1`) theo đúng quy tắc trong README.md.
+   - CẬP NHẬT `Content Factory/.agents/migrations/structure-manifest.txt` với tên folder mới.
+   - Commit bổ sung: `git add "Content Factory/.agents/migrations/" ; git commit -m "migration: [mô tả ngắn]"`
+   - Cập nhật lại mã khôi phục trong checkpoints.md bằng hash của commit migration (commit cuối cùng).
+5. Nếu User trả lời "Không": Bỏ qua.
+
+## Giai đoạn 3: Báo cáo & Đề xuất Push
 1. Báo cáo ngắn gọn cho User: "✅ Đã lưu checkpoint thành công! Mã khôi phục: `[hash]`".
-2. Báo cho User biết không cần push lên mạng, code đã được an toàn trên máy.
+2. HỎI User xem có muốn push code lên GitHub không: "Bạn có muốn push bản cập nhật của `.agents` này lên GitHub không?". Dừng và đợi câu trả lời từ User.
+
+## Giai đoạn 4: Push lên GitHub (Chỉ khi User đồng ý)
+1. Nếu User trả lời "Có": 
+   - Đảm bảo lệnh được chạy tại thư mục GỐC (Cwd): `d:\AI\AI content factory - v3.7B` (lưu ý: KHÔNG phải Content Factory).
+   - Chạy lệnh 1 (Dọn nhánh cũ + Tách nhánh siêu tốc): `git branch -D agents-only 2>$null; git subtree split --prefix="Content Factory/.agents" --rejoin -b agents-only`
+   - Chạy lệnh 2 (Đẩy lên mạng): `git push agents-origin agents-only:master`
+   - Báo cáo: "✅ Đã push thành công thư mục `.agents` lên GitHub."
+2. Nếu User trả lời "Không" hoặc từ chối: Bỏ qua và kết thúc.
 
 ---
 
