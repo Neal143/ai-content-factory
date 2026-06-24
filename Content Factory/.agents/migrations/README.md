@@ -11,10 +11,10 @@ Thư mục này chứa các script cập nhật cấu trúc `vault/` và `person
 - BẮT BUỘC idempotent (kiểm tra trước khi tạo/đổi tên/di chuyển)
 - Trả exit code 0 = thành công, khác 0 = thất bại
 - Dùng tiếng Anh hoặc tiếng Việt không dấu trong comment (rule encoding PowerShell)
-- Khi thêm folder mới, đồng thời cập nhật workflow onboarding cho user mới
+- Khi thêm folder hệ thống mới, BẮT BUỘC cập nhật `structure-manifest.txt` TRƯỚC, sau đó mới tạo migration script.
 
 ## Quy tắc an toàn dữ liệu
-- **KHÔNG BAO GIỜ** xóa folder hoặc file có dữ liệu user (`vault/`, `personas/`)
+- **KHÔNG BAO GIỜ** xóa folder hoặc file có dữ liệu user (`vault/`, `personas/`, `docs/`, `plans/`)
 - Chỉ thực hiện: tạo mới folder, đổi tên folder/file, di chuyển file
 - Khi đổi tên: PHẢI kiểm tra cả source tồn tại VÀ destination chưa tồn tại
 - Hệ thống tự động backup `vault/` và `personas/` trước khi chạy migration. Nếu migration thất bại, user có thể khôi phục từ `.update_backups/`
