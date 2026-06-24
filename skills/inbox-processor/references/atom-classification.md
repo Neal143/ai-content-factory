@@ -46,6 +46,7 @@ belongs_to_audience: "[JTBD_Name]" # Chỉ cho Tầng 2 (Insights)
 supports_insight: "[Tên_Insight]"  # Chỉ cho Tầng 3 (Solutions, Concepts)
 supports_knowledge: "[Tên_Solution_Hoặc_Concept]" # Chỉ cho Tầng 4 (Stories, Quotes, Data-Points)
 status: processed
+source_type: "User" | "book"    # User = user tu viet/ke/trai nghiem, book = trich tu sach/bao
 created: YYYY-MM-DD
 source_file: "tên-file-gốc-trong-inbox.md"
 confidence: 0.0-1.0

@@ -66,6 +66,9 @@ Lưu mảng `[resolved_id]` trả về vào biến `story_resolved_topics` trong
 
 ### Bước 6: Đóng gói YAML KCS
 Tạo YAML frontmatter cho cả 2 file tuân thủ triệt để cấu trúc KCS uy tín.
+- **Source Type Tagging (Đóng dấu Nguồn):** Gán `source_type` vào CẢ File A VÀ File B:
+  - SubType = `personal` hoặc `observed` → `source_type: "User"` cho cả 2 file.
+  - SubType = `secondhand`, `historical`, `famous_world` → `source_type: "book"`.
 - **The Librarian (Đóng dấu Topic):** 100% Atom (kể cả File A và File B) BẮT BUỘC phải chèn mảng `topics` vào YAML Frontmatter. Giá trị của mảng này là biến `story_resolved_topics` đã lưu trong working memory ở Bước 5. Cú pháp bắt buộc:
   ```yaml
   topics: ["id_rong", "id_trung"]
@@ -74,3 +77,9 @@ Tạo YAML frontmatter cho cả 2 file tuân thủ triệt để cấu trúc KCS
   ```
   *(Lưu ý: Chỉ lưu `id` tiếng Anh vào frontmatter, bỏ qua `label` tiếng Việt. Thứ tự mảng: rộng → trung → hẹp)*
 
+### Bước 7: Cập nhật Personal Atoms Queue
+Sau khi cả File A và File B đã được lưu vào `vault/01-Atomic/`, chạy script đăng ký atoms mới vào hàng đợi (script tự bỏ qua nếu atom không có `source_type: "User"`):
+```powershell
+powershell -ExecutionPolicy Bypass -File ".agents/scripts/Update-PersonalAtomsQueue.ps1" -Action "append" -AtomPathsRaw "[đường_dẫn_File_A],[đường_dẫn_File_B]"
+```
+*(Thay `[đường_dẫn_File_A]` và `[đường_dẫn_File_B]` bằng đường dẫn tương đối thực tế, phân cách bằng dấu phẩy KHÔNG có khoảng trắng. Ví dụ: `vault/01-Atomic/Solutions/ten-a.md,vault/01-Atomic/Stories/ten-b.md`)*

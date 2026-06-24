@@ -340,6 +340,17 @@ if (-not $isValidationMode) {
         [System.IO.File]::WriteAllText($logPathAbs, "# Production Log`r`n$logEntry", $utf8NoBom)
     }
 
+    # -- Personal Atoms Queue: remove atoms da dung khoi queue --
+    $queueScript = ".agents/scripts/Update-PersonalAtomsQueue.ps1"
+    if ((Test-Path $queueScript) -and $atomsList -and $atomsList.Count -gt 0) {
+        try {
+            $atomPathsCsv = ($atomsList | ForEach-Object { $_.Trim() }) -join ","
+            powershell -ExecutionPolicy Bypass -File $queueScript -Action "remove" -AtomPathsRaw $atomPathsCsv 2>$null | Out-Null
+        } catch {
+            Write-Host " [WARN] Khong the cap nhat personal atoms queue." -ForegroundColor Yellow
+        }
+    }
+
     Write-Host " [i] Cap nhat hook-history.md..." -ForegroundColor Cyan
     $hookHistoryPathAbs = [System.IO.Path]::GetFullPath($HookHistoryPath)
     $hookScore = "N/A"
