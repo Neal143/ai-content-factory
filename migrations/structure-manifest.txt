@@ -1,0 +1,27 @@
+﻿# Structure Manifest — Single source of truth cho cấu trúc thư mục hệ thống
+# Mỗi dòng là 1 folder path tương đối từ Content Factory root
+# CHỈ khai báo folder HỆ THỐNG (giống nhau ở mọi user)
+# KHÔNG khai báo: .agents/, .obsidian/, folder động (như personas/[name], .extraction_runs/books/[book])
+#
+# LƯU Ý: Khi thêm/đổi tên folder hệ thống, CẬP NHẬT file này TRƯỚC tiên.
+
+docs
+personas
+plans
+vault
+vault/00-Inbox
+vault/01-Atomic
+vault/01-Atomic/Stories
+vault/01-Atomic/Insights
+vault/01-Atomic/Solutions
+vault/01-Atomic/Concepts
+vault/01-Atomic/Quotes
+vault/01-Atomic/Data-Points
+vault/01-Atomic/Audiences
+vault/01-Atomic/_DLQ
+vault/02-sources
+vault/02-sources/books
+vault/03-Content
+vault/03-Content/Posted
+vault/03-Content/Viral Posts
+vault/03-Content/Content Plan
