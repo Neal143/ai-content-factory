@@ -67,6 +67,13 @@ Sau khi extract xong, update frontmatter file gốc trong `00-Inbox/` theo forma
 ### Bước 7: Di chuyển & Lưu
 Di chuyển atom files sang `vault/01-Atomic/[Type]/`. Đặt tên file theo slug: `[keyword-keyword].md`.
 
+### Bước 7.5: Cập nhật Personal Atoms Queue
+Sau khi atom files đã lưu, chạy script đăng ký vào hàng đợi (script tự bỏ qua nếu atom không có `source_type: "User"`):
+```powershell
+powershell -ExecutionPolicy Bypass -File ".agents/scripts/Update-PersonalAtomsQueue.ps1" -Action "append" -AtomPathsRaw "[path_atom_1],[path_atom_2],..."
+```
+*(Truyền TẤT CẢ đường dẫn atoms vừa tạo, phân cách bằng dấu phẩy KHÔNG có khoảng trắng.)*
+
 ### Bước 8: Báo cáo
 Report cho user:
 - Số files đã xử lý

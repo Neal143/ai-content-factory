@@ -19,6 +19,7 @@
 ---
 type: story
 subtype: personal
+source_type: "User"
 protagonist: "self"
 topics: [career, focus]
 verified: true               # TÁC GIẢ tự xác nhận
@@ -35,6 +36,7 @@ created: 2026-03-03
 ---
 type: story
 subtype: observed
+source_type: "User"
 protagonist: "Anh Minh"     # Tên thật hoặc bút danh
 topics: [business, risk]
 verified: true               # Tác giả xác nhận đã gặp/chứng kiến
@@ -52,6 +54,7 @@ created: 2026-03-03
 ---
 type: story
 subtype: secondhand
+source_type: "book"
 protagonist: "Cal Newport"
 topics: [productivity]
 verified: true
@@ -67,6 +70,7 @@ created: 2026-03-03
 ---
 type: story
 subtype: historical
+source_type: "book"
 protagonist: "Steve Jobs"
 topics: [innovation, leadership]
 verified: true
@@ -87,6 +91,7 @@ created: 2026-03-03
 ---
 type: story
 subtype: famous_world
+source_type: "book"
 protagonist: "Ray Dalio"
 topics: [investment, principles]
 verified: true                  # Đã public, có sách/bài báo
@@ -133,6 +138,7 @@ Bảng xếp hạng ưu tiên khi inject story vào bài viết:
 ---
 title: "Tên câu chuyện"
 subtype: personal | observed | secondhand | historical | famous_world
+source_type: "User" | "book"    # User cho personal/observed, book cho secondhand/historical/famous_world
 protagonist: "Tên nhân vật chính"
 topics: [topic1, topic2]
 verified: true | false
