@@ -169,7 +169,25 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
     - **Bước 2 (Xác nhận Mapping)**: Tự động phân bổ danh sách Seed Insights (từ Câu 10) vào các Pillars tương ứng, dựa trên `name` và `description` của mỗi Pillar để xác định Pillar phù hợp nhất cho từng Insight. **Đồng thời resolve topics**: Với mỗi Insight được map vào Pillar P, tra cứu `topic_map.yaml` → lấy tất cả topic có `pillar_parents` chứa P → gán danh sách `id` làm giá trị `topics` cho Insight đó. Hiển thị bảng Mapping (bao gồm cột Topics) ra Chatbox và yêu cầu: *"Vui lòng xem lại bảng phân bổ Insight vào Pillar và gõ (Y) để xác nhận."*
       > ⛔ **TOÀN VẸN NỘI DUNG (Copy-Paste Integrity):** Khi hiển thị bảng Mapping và khi ghi vào payload JSON, nội dung của mỗi Insight **BẮT BUỘC phải được sao chép NGUYÊN VĂN y hệt** từ câu trả lời User đã chốt ở Câu 10. **TUYỆT ĐỐI CẤM diễn giải lại, tóm tắt, hay thay đổi bất kỳ từ nào** — dù chỉ 1 từ — trong phần `raw_payload`. Mọi chỉnh sửa dù nhỏ đều làm sai lệch ý nghĩa gốc của User.
       > ⛔ **MỘT INSIGHT - MỘT PILLAR (One Insight, One Pillar):** Mỗi Insight chỉ được phép xuất hiện ở **đúng 1 Pillar duy nhất** — Pillar phù hợp nhất với bản chất của Insight đó. **TUYỆT ĐỐI CẤM** phân bổ cùng 1 Insight vào nhiều Pillars dù Insight đó có vẻ liên quan đến nhiều chủ đề. Khi không chắc, hãy chọn Pillar có độ liên quan cao nhất và chỉ 1 mà thôi.
-    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml` (bao gồm `name`, `description` — mô tả ngắn gọn do User cung cấp ở Bước 1, và `insights`, `target_emotion`). Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agents/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
+    - **Hành động Hệ thống (Phát tín hiệu Script)**: CHỈ SAU KHI nhận lệnh `(Y)` từ User, tiến trình mới được phép ghi nối dữ liệu Pillars vào `pillars.yaml`. 
+      ⛔ **BẮT BUỘC tuân thủ cấu trúc Schema YAML sau đây khi ghi vào pillars.yaml:**
+      ```yaml
+        [pillar_key]: # Bắt đầu từ pillar_1, pillar_2... tự tăng theo số lượng
+          name: "[Tên pillar lấy từ Bước 1]"
+          description: "[Mô tả lấy từ Bước 1]"
+          target_emotion: "[AI tự phân tích và suy luận 1 cảm xúc mục tiêu duy nhất]"
+          insights:
+            - type: "[loại_insight_ánh_xạ_từ_Câu_10]" # VD: fear, desire, pain_point...
+              # 1. Nguồn từ User
+              raw: >
+                [nội_dung_nguyên_bản_từ_Câu_10]
+              # 2. Nguồn từ Script (Dự đoán tên file vật lý do script xuất ra dựa trên biến headline bên dưới)
+              file_ref: "[[slug-keyword-tieng-viet-khong-dau]]" 
+              # 3. Nguồn từ LLM (Đồng bộ với biến llm_explain sinh ra ở payload bên dưới)
+              llm_explain: >
+                [nội_dung_phân_tích_chuyên_sâu]
+      ```
+      Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agents/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
       + `headline`: Đặt tên tối giản, loại bỏ stop words, chỉ lấy cụm danh từ/động từ chính. Script sẽ tự chuyển thành **Slug Naming** chuẩn: `[slug-keyword-tieng-viet-khong-dau].md` (chữ thường, không dấu, nối bằng gạch ngang).
       + `insight_type`: Phân loại nhóm Insight (ví dụ: desire, pain_point...).
       + `raw_payload`: Nguyên văn phần text thô do User gợi mở.
