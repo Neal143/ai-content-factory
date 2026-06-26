@@ -1,7 +1,7 @@
 ---
 name: Persona Interviewer
 description: BẮT BUỘC KÍCH HOẠT skill này NGAY LẬP TỨC nếu User dùng lệnh /onboarding-persona, hoặc có nhu cầu cài đặt hệ thống persona, thiết lập phong cách viết, hay tham gia phỏng vấn cấu hình giọng văn. Skill này điều phối toàn bộ quá trình thu thập và lưu dữ liệu. KHÔNG YÊU CẦU GIẢI THÍCH TRƯỚC.
-last_update: 27/05/2026 00:25 (GMT+7)
+last_update: 26/06/2026 15:16 (GMT+7)
 role: Hướng dẫn tích hợp phỏng vấn và thu thập thông tin Persona
 usage: Được kích hoạt khi onboarding hoặc phỏng vấn thiết lập phong cách, tạo file Insight vật lý
 output: Hướng dẫn luồng tương tác 12 câu hỏi và ghi nhận file tĩnh insights_payload.json
@@ -181,12 +181,15 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
               # 1. Nguồn từ User
               raw: >
                 [nội_dung_nguyên_bản_từ_Câu_10]
-              # 2. Nguồn từ Script (Dự đoán tên file vật lý do script xuất ra dựa trên biến headline bên dưới)
-              file_ref: "[[slug-keyword-tieng-viet-khong-dau]]" 
-              # 3. Nguồn từ LLM (Đồng bộ với biến llm_explain sinh ra ở payload bên dưới)
+              # 2. PLACEHOLDER — Script tự thay thế sau khi tạo file (LLM KHÔNG được tự đoán slug)
+              #    N = chỉ số thứ tự insight, bắt đầu từ 0, khớp với thứ tự trong payload JSON array
+              file_ref: "[[PENDING_0]]"
+              file_link: "PENDING_0"
+              # 3. Nguồn từ LLM
               llm_explain: >
                 [nội_dung_phân_tích_chuyên_sâu]
       ```
+      > ⛔ **QUY TẮC ĐÁNH SỐ PENDING:** Đánh số `PENDING_N` bắt đầu từ `0`, tăng dần theo đúng thứ tự insight trong payload JSON array. Insight đầu tiên trong payload = `PENDING_0`, insight thứ hai = `PENDING_1`, v.v. **Thứ tự phải KHỚP HOÀN TOÀN** giữa pillars.yaml và payload. Script sẽ tự động thay thế placeholder thành link thật sau khi tạo file.
       Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agents/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
       + `headline`: Đặt tên tối giản, loại bỏ stop words, chỉ lấy cụm danh từ/động từ chính. Script sẽ tự chuyển thành **Slug Naming** chuẩn: `[slug-keyword-tieng-viet-khong-dau].md` (chữ thường, không dấu, nối bằng gạch ngang).
       + `insight_type`: Phân loại nhóm Insight (ví dụ: desire, pain_point...).
@@ -195,7 +198,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       + `topics`: Mảng `id` topics đã resolve ở Bước 2 (VD: `["dieu_hoa_cam_xuc", "gan_ket_an_toan"]`).
       Sau đó AI tự động GỌI GÓI LỆNH TERMINAL bọc sẵn dưới đây để hệ thống tự xuất mẻ file vật lý cuối cùng: 
       ```powershell
-      powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scripts/run_insights.ps1 -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"
+      powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scripts/run_insights.ps1 -UserName "[Tên_User_không_khoảng_trắng]" -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"
       ```
 
 12. **Danh sách 3 chuyên gia / tác giả uy tín hay trích dẫn?** 
