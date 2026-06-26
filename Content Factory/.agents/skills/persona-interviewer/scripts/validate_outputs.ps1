@@ -92,9 +92,13 @@ foreach ($userFolder in $userFolders) {
             if (Test-RequiredField $c $key) { Write-Host "[OK] pillars -> $key" -ForegroundColor Green }
             else { Write-Host "[FAIL] pillars -> $key (RỖNG)" -ForegroundColor Red }
         }
-        foreach ($key in @("type","raw","file_ref","llm_explain")) {
+        foreach ($key in @("type","raw","file_ref","file_link","llm_explain")) {
             if (Test-RequiredField $c $key) { Write-Host "[OK] pillars -> insight.$key" -ForegroundColor Green }
-            else { Write-Host "[FAIL] pillars -> insight.$key (RỖNG)" -ForegroundColor Red }
+            else { Write-Host "[FAIL] pillars -> insight.$key (RONG)" -ForegroundColor Red }
+        }
+        # Kiem tra khong con PENDING placeholder (Script chua chay hoac bi loi)
+        if ($c -match "PENDING_\d+") {
+            Write-Host "[FAIL] pillars.yaml con chua placeholder PENDING (script chua chay?)" -ForegroundColor Red
         }
     }
 
