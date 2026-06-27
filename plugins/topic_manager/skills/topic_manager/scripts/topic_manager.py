@@ -24,6 +24,7 @@ def _write_topic_map(data, path):
     """Helper ghi topic_map.yaml — bảo toàn comment header."""
     with open(path, 'w', encoding='utf-8') as f:
         f.write(TOPIC_MAP_HEADER)
+        yaml.Dumper.ignore_aliases = lambda *args: True
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
 
