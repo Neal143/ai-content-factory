@@ -50,7 +50,7 @@ function Get-PersonaUser {
 }
 
 # Parse frontmatter tu 1 atom file, tra ve hashtable
-function Parse-AtomFrontmatter ([string]$filePath) {
+function Get-AtomFrontmatter ([string]$filePath) {
     if (-not (Test-Path $filePath)) { return $null }
     $lines = Get-Content -Path $filePath -Encoding utf8
     if ($lines.Count -lt 2 -or $lines[0].Trim() -ne "---") { return $null }
@@ -76,7 +76,7 @@ function Parse-AtomFrontmatter ([string]$filePath) {
 }
 
 # Build topic lookup tu topic_map.yaml: topic_id -> { label, pillar }
-function Build-TopicLookup ([string]$personaUser) {
+function New-TopicLookup ([string]$personaUser) {
     $topicMapPath = "personas/$personaUser/topic_map.yaml"
     $lookup = @{}
     if (-not (Test-Path $topicMapPath)) { return $lookup }
@@ -190,7 +190,7 @@ if ($Action -eq "init") {
     if (-not (Test-Path $indexPath)) { Write-Error "[ERR] vault_index.json khong ton tai"; exit 1 }
 
     $index = Get-Content -Path $indexPath -Raw -Encoding utf8 | ConvertFrom-Json
-    $topicLookup = Build-TopicLookup $personaUser
+    $topicLookup = New-TopicLookup $personaUser
 
     # Lay tat ca atoms da dung tu production-log (TOAN BO log, khong gioi han)
     $usedAtoms = @()
@@ -239,7 +239,7 @@ elseif ($Action -eq "append") {
     if ($AtomPaths.Count -eq 0) { Write-Host "[SKIP] Khong co atom path nao."; exit 0 }
 
     $personaUser = Get-PersonaUser
-    $topicLookup = if ($personaUser) { Build-TopicLookup $personaUser } else { @{} }
+    $topicLookup = if ($personaUser) { New-TopicLookup $personaUser } else { @{} }
 
     # Dam bao file + thu muc ton tai
     if (-not (Test-Path $QueueFile)) {
@@ -274,7 +274,7 @@ elseif ($Action -eq "append") {
         $searchKey = $path -replace '^vault/', ''
         if ($existingContent -match [regex]::Escape($searchKey)) { continue }
 
-        $fm = Parse-AtomFrontmatter $path
+        $fm = Get-AtomFrontmatter $path
         if (-not $fm) { continue }
         if ($fm["source_type"] -ne "User") { continue }
 
