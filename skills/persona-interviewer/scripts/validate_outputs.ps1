@@ -77,9 +77,18 @@ foreach ($userFolder in $userFolders) {
     $audiencePath = Join-Path $userFolder.FullName "audience.yaml"
     if (Test-Path $audiencePath) {
         $c = Get-Content $audiencePath -Raw
-        foreach ($key in @("audience_Job_performer","audience_main_job","audience_circumstance")) {
+        foreach ($key in @("audience_Job_performer","audience_main_job","audience_circumstance","file_ref","file_link")) {
             if (Test-RequiredField $c $key) { Write-Host "[OK] audience.yaml -> $key" -ForegroundColor Green }
-            else { Write-Host "[FAIL] audience.yaml -> $key (RỖNG)" -ForegroundColor Red }
+            else { Write-Host "[FAIL] audience.yaml -> $key (RONG)" -ForegroundColor Red }
+        }
+        # Kiem tra file_link tro den file THUC TE ton tai tren o cung
+        if ($c -match 'file_link:\s*"file:///([^"]+)"') {
+            $decodedPath = [System.Uri]::UnescapeDataString($Matches[1])
+            if (Test-Path $decodedPath) {
+                Write-Host "[OK] audience file_link -> file ton tai" -ForegroundColor Green
+            } else {
+                Write-Host "[FAIL] audience file_link -> file KHONG ton tai: $decodedPath" -ForegroundColor Red
+            }
         }
     }
 
