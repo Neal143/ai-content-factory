@@ -6,6 +6,8 @@ audience_level: "big"
 audience_Job_performer: "[Performer]"
 audience_main_job: "[Main Job]"
 audience_circumstance: "[Circumstance]"
+file_ref: ""                 # Script tu dong dien sau khi tim thay file Audience
+file_link: ""                # Script tu dong dien URI clickable (VS Code)
 vivid_circumstances: []
 vivid_circumstances_reserve: []
 parent_audience: []          # Bắt buộc tạo mảng Block Array nếu có phần tử (xuống dòng, "- [[slug]]")

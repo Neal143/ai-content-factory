@@ -100,6 +100,111 @@ def backfill_pillars(username, slug_map, workspace_root):
     else:
         print(f"[INFO] pillars.yaml [{username}] khong can cap nhat")
 
+def backfill_audience(username, workspace_root):
+    """
+    Reverse Lookup: Tim file Audience vat ly trong vault/01-Atomic/Audiences/
+    bang cach so khop 3 truong JTBD voi Frontmatter cua file .md.
+    Neu tim thay, tu dong ghi file_ref va file_link vao audience.yaml.
+    Luon ghi de gia tri hien tai de dam bao chinh xac 100%.
+    
+    Args:
+        username: Ten Persona (VD: "Neal")
+        workspace_root: Duong dan tuyet doi den thu muc Content Factory
+    """
+    audience_yaml_path = os.path.join(workspace_root, "personas", username, "audience.yaml")
+    audiences_dir = os.path.join(workspace_root, "vault", "01-Atomic", "Audiences")
+    
+    if not os.path.exists(audience_yaml_path):
+        print(f"[WARN] Khong tim thay: {audience_yaml_path}")
+        return
+    if not os.path.exists(audiences_dir):
+        print(f"[WARN] Khong tim thay thu muc: {audiences_dir}")
+        return
+    
+    with open(audience_yaml_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # === BUOC 1: Doc 3 truong JTBD tu audience.yaml ===
+    jp = re.search(r'audience_Job_performer:\s*"([^"]*)"', content)
+    mj = re.search(r'audience_main_job:\s*"([^"]*)"', content)
+    ac = re.search(r'audience_circumstance:\s*"([^"]*)"', content)
+    
+    if not all([jp, mj, ac]):
+        print(f"[WARN] audience.yaml [{username}] thieu truong JTBD, bo qua")
+        return
+    
+    target_jp = jp.group(1)
+    target_mj = mj.group(1)
+    target_ac = ac.group(1)
+    
+    # === BUOC 2: Quet vault/01-Atomic/Audiences/ tim file khop JTBD ===
+    matched_file = None
+    for fname in os.listdir(audiences_dir):
+        if not fname.endswith('.md') or fname.startswith('_'):
+            continue
+        fpath = os.path.join(audiences_dir, fname)
+        with open(fpath, 'r', encoding='utf-8') as f:
+            md_content = f.read()
+        
+        # Parse Frontmatter (giua 2 dau ---)
+        fm_match = re.match(r'^---\s*\n(.*?)\n---', md_content, re.DOTALL)
+        if not fm_match:
+            continue
+        fm = fm_match.group(1)
+        
+        # So khop 3 truong JTBD
+        fm_jp = re.search(r'audience_Job_performer:\s*"([^"]*)"', fm)
+        fm_mj = re.search(r'audience_main_job:\s*"([^"]*)"', fm)
+        fm_ac = re.search(r'audience_circumstance:\s*"([^"]*)"', fm)
+        
+        if (fm_jp and fm_mj and fm_ac and
+            fm_jp.group(1) == target_jp and
+            fm_mj.group(1) == target_mj and
+            fm_ac.group(1) == target_ac):
+            matched_file = fname
+            break
+    
+    if not matched_file:
+        print(f"[WARN] Khong tim thay file Audience khop JTBD trong {audiences_dir}")
+        return
+    
+    # === BUOC 3: Sinh file_ref va file_link ===
+    slug = os.path.splitext(matched_file)[0]
+    abs_path = os.path.join(audiences_dir, matched_file).replace("\\", "/")
+    encoded_path = quote(abs_path, safe=':/')
+    file_ref_value = f'"[[{slug}]]"'
+    file_link_value = f'"file:///{encoded_path}"'
+    
+    # === BUOC 4: Ghi vao audience.yaml (luon ghi de) ===
+    lines = content.split('\n')
+    new_lines = []
+    has_file_ref = any(line.strip().startswith('file_ref:') for line in lines)
+    inserted = False
+    
+    for line in lines:
+        stripped = line.strip()
+        # Neu da co truong cu -> ghi de gia tri moi
+        if stripped.startswith('file_ref:'):
+            new_lines.append(f'file_ref: {file_ref_value}')
+            continue
+        if stripped.startswith('file_link:'):
+            new_lines.append(f'file_link: {file_link_value}')
+            continue
+        new_lines.append(line)
+        # Neu chua co truong nao -> chen sau audience_circumstance
+        if not inserted and not has_file_ref and 'audience_circumstance:' in line:
+            new_lines.append(f'file_ref: {file_ref_value}')
+            new_lines.append(f'file_link: {file_link_value}')
+            inserted = True
+    
+    new_content = '\n'.join(new_lines)
+    if new_content != content:
+        with open(audience_yaml_path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        print(f"[OK] Da cap nhat audience.yaml [{username}] voi file_ref va file_link")
+    else:
+        print(f"[INFO] audience.yaml [{username}] khong can cap nhat")
+
 # ==========================================
 # NHOM 3: LOGIC CHINH XU LY GENERATE INSIGHTS
 # ==========================================
@@ -172,11 +277,13 @@ def generate_insights(payload_path, template_path, output_dir, target_audience, 
             
         print(f"[OK] Da tao file: {filepath}")
 
-    # Sau khi tao xong tat ca file, cap nhat pillars.yaml neu co username
-    if username and slug_map:
+    # Sau khi tao xong tat ca file, cap nhat pillars.yaml + audience.yaml
+    if username:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         workspace_root = os.path.abspath(os.path.join(script_dir, "..", "..", "..", ".."))
-        backfill_pillars(username, slug_map, workspace_root)
+        if slug_map:
+            backfill_pillars(username, slug_map, workspace_root)
+        backfill_audience(username, workspace_root)
 
 # ==========================================
 # NHOM 4: KHOI CHAY SCRIPT TU COMMAND LINE (CLI ENTRYPOINT)
@@ -200,6 +307,7 @@ if __name__ == "__main__":
         script_dir = os.path.dirname(os.path.abspath(__file__))
         workspace_root = os.path.abspath(os.path.join(script_dir, "..", "..", "..", ".."))
         backfill_pillars(args.username, {}, workspace_root)
+        backfill_audience(args.username, workspace_root)
     else:
         # Che do binh thuong: tao file + backfill (neu co username)
         if not all([args.payload, args.template, args.output, args.audience]):
