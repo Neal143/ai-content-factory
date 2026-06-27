@@ -1,6 +1,6 @@
 <#
 Ten file: Update-PersonalAtomsQueue.ps1
-Last update: 24/06/2026 10:15 (GMT+7)
+Last update: 27/06/2026 17:16 (GMT+7)
 Vai tro: Quan ly file trang thai personal-atoms-queue.md — theo doi atoms ca nhan chua duoc su dung.
 Su dung khi nao:
   - init: Chay 1 lan de bootstrap tu vault scan (hoac re-sync). Idempotent.
@@ -64,9 +64,10 @@ function Parse-AtomFrontmatter ([string]$filePath) {
             # Parse inline array: ["a","b"]
             if ($val.StartsWith("[") -and $val.EndsWith("]")) {
                 $inner = $val.Substring(1, $val.Length - 2)
-                $arr = $inner.Split(",") | ForEach-Object { $_.Trim().Trim("'").Trim('"') } | Where-Object { $_ -ne "" }
+                $arr = @($inner.Split(",") | ForEach-Object { $_.Trim().Trim("'").Trim('"') } | Where-Object { $_ -ne "" })
                 $data[$key] = $arr
-            } else {
+            }
+            else {
                 $data[$key] = $val
             }
         }
@@ -142,24 +143,27 @@ function Format-AtomRow ([int]$index, [string]$atomPath, [hashtable]$fm, [hashta
     # Tim topic kha dung (co trong topic_map) - lay toi da 3
     $mappedTopics = @()
     $topicsRaw = $fm["topics"]
-    if ($topicsRaw -is [Array]) {
-        foreach ($t in $topicsRaw) {
-            $info = Resolve-TopicInfo $t $topicLookup
-            if ($info) {
-                $mappedTopics += "$t ($($info.label))"
-                if ($mappedTopics.Count -ge 3) { break }
-            }
+    $topicsArray = @()
+    if ($null -ne $topicsRaw) {
+        if ($topicsRaw -is [Array]) { $topicsArray = $topicsRaw }
+        elseif ($topicsRaw -is [String]) { $topicsArray = @($topicsRaw) }
+    }
+
+    foreach ($t in $topicsArray) {
+        $info = Resolve-TopicInfo $t $topicLookup
+        if ($info) {
+            $mappedTopics += "$t ($($info.label))"
+            if ($mappedTopics.Count -ge 3) { break }
         }
     }
+    
     $topicDisplay = if ($mappedTopics.Count -gt 0) { $mappedTopics -join ", " } else { "Chua co topic trong map" }
 
     # Tim pillar tu topic dau tien khop
     $pillar = "N/A"
-    if ($topicsRaw -is [Array]) {
-        foreach ($t in $topicsRaw) {
-            $info = Resolve-TopicInfo $t $topicLookup
-            if ($info -and $info.pillar -ne "N/A") { $pillar = $info.pillar; break }
-        }
+    foreach ($t in $topicsArray) {
+        $info = Resolve-TopicInfo $t $topicLookup
+        if ($info -and $info.pillar -ne "N/A") { $pillar = $info.pillar; break }
     }
 
     # Relative link: queue tai vault/03-Content/Content Plan/ -> atom tai vault/01-Atomic/...
@@ -218,7 +222,8 @@ if ($Action -eq "init") {
     $content = $header + $TABLE_HEADER
     if ($rows.Count -gt 0) {
         $content += "`r`n" + ($rows -join "`r`n")
-    } else {
+    }
+    else {
         $content += "`r`n| - | *$PLACEHOLDER_MARKER* | - | - | - | - | - |"
     }
     $content += "`r`n"
