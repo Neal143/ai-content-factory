@@ -1,22 +1,22 @@
 {
-  "password": "f1e21d26",
+  "password": "7e1eee39",
   "entries": [
     {
       "chunk_index": 27,
       "topics": [
         {
-          "id": "rainbow_bridge_story",
-          "label": "Câu chuyện Cầu Vồng",
+          "id": "p1_rainbow_bridge_story",
+          "label": "Câu chuyện Cầu Vồng (Rainbow Bridge Story)",
           "tier": "medium",
-          "evidence": "Và thế là họ cùng nhau du hành qua cây cầu vồng và bước xuống chiếc cầu thang xoắn ốc cho đến khi tới một cánh cổng lớn.",
-          "reasoning": "Ví dụ về một câu chuyện nuôi dưỡng trí tưởng tượng và thế giới tâm hồn (Phát triển não bộ mầm non)."
+          "evidence": "Một câu chuyện kể truyền miệng mang tính biểu tượng về hành trình của một linh hồn (\"đứa trẻ thiên đường\") từ thế giới tâm linh",
+          "reasoning": "Một phương pháp kỷ niệm sinh nhật cụ thể mang tính tâm linh đặc trưng của Waldorf (Book Medium)."
         },
         {
-          "id": "tell_from_memory",
-          "label": "Kể chuyện từ trí nhớ",
+          "id": "p1_adopted_child_story",
+          "label": "Chuyện sinh nhật cho trẻ nhận con nuôi",
           "tier": "narrow",
-          "evidence": "Tốt nhất là nên kể bằng trí nhớ thay vì đọc từ một văn bản viết sẵn.",
-          "reasoning": "Một phương pháp để tạo sự kết nối tự nhiên thay vì thụ động."
+          "evidence": "Giải thích nguồn gốc và hành trình của trẻ nhận con nuôi một cách đầy tình yêu thương, giúp trẻ thấu hiểu và trân trọng cả cha mẹ ruột (người cho sự sống) và cha mẹ nuôi (người trao mái ấm).",
+          "reasoning": "Cách tùy biến câu chuyện sinh nhật cho một đối tượng cụ thể."
         }
       ]
     },
@@ -24,18 +24,18 @@
       "chunk_index": 28,
       "topics": [
         {
-          "id": "fairy_tale_complexity",
-          "label": "Độ phức tạp cổ tích",
+          "id": "p1_fairy_tales_by_age",
+          "label": "Phân loại truyện cổ tích theo độ tuổi",
           "tier": "medium",
-          "evidence": "Điểm nhận diện cốt lõi của hệ thống phân loại này là dựa trên sự tăng dần về độ phức tạp của cốt truyện. Các yếu tố như thử thách, bóng dáng của nỗi buồn và mô tả về cái ác được tăng liều lượng cẩn thận để đảm bảo sự tiếp nhận an toàn và phù hợp với tâm lý của trẻ qua từng độ tuổi.",
-          "reasoning": "Lựa chọn mức độ kích thích nội tâm phù hợp với độ tuổi (0-7 tuổi)."
+          "evidence": "Danh sách phân loại truyện cổ tích thành 4 nhóm tuổi chính",
+          "reasoning": "Hướng dẫn chung về việc kể chuyện cổ tích (Book Medium)."
         },
         {
-          "id": "flexible_story_selection",
-          "label": "Chọn truyện linh hoạt",
+          "id": "p1_flexible_story_selection",
+          "label": "Lựa chọn truyện linh hoạt theo mức độ trưởng thành",
           "tier": "narrow",
-          "evidence": "Bằng cách đọc qua một vài câu chuyện trong mỗi danh mục, người lớn sẽ nắm bắt được bức tranh tổng thể về sự tiến triển độ khó của các câu chuyện, từ đó hiểu được cơ chế chọn truyện phù hợp mà không bị lệ thuộc vào con số tuổi tác.",
-          "reasoning": "Cách giáo dục thấu hiểu nhu cầu hiện tại thay vì áp dụng cứng nhắc."
+          "evidence": "Những hướng dẫn phân loại độ tuổi kể trên chỉ là những gợi ý nhẹ nhàng (light indications), không phải là các quy tắc cứng nhắc",
+          "reasoning": "Sự linh hoạt trong thực hành kể chuyện để phù hợp với từng đứa trẻ."
         }
       ]
     }

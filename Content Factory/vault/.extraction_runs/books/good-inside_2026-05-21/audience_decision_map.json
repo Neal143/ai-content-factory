@@ -3,279 +3,308 @@
     "scope": "book",
     "chunk_index": null,
     "action": "create",
-    "audience_filename": "cha-me_nuoi-day-con-kien-cuong_khi-doi-mat-voi-hanh-vi-kho-khan",
+    "audience_filename": "cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan",
     "audience_level": "big",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ."
+    "parent_audience": []
   },
   {
     "scope": "chunk",
     "chunk_index": 2,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-kiem-soat-nhung-hanh-vi-chong_khi-oi-mat-voi-nhung-con-thinh-no-hoac-l",
+    "audience_filename": "cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 3,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-thiet-lap-ranh-gio_khi-tre-phan-khang-tuc-gian-hoac-co-thai",
+    "audience_filename": "cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 4,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-duy-tri-ranh-gioi-_khi-con-cai-phan-khang-va-bung-no-cam-xu",
+    "audience_filename": "cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 5,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-xay-dung-nen-tang-_khi-ang-cam-thay-kiet-suc-va-hoai-nghi-v",
+    "audience_filename": "cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 6,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-han-gan-ton-thuong-va-sua-chu_khi-nhan-ra-ban-than-a-co-nhung-phan-ung",
+    "audience_filename": "cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 7,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-trang-bi-nang-luc-oi-mat-voi-_khi-tre-gap-that-bai-hoac-boc-lo-nhung-c",
+    "audience_filename": "cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 8,
     "action": "create",
-    "audience_filename": "cha-me_cha-me-muon-thau-hieu-nguyen-nhan-goc-re_khi-tre-lien-tuc-co-nhung-hanh-vi-toi-te",
+    "audience_filename": "cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 9,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-pha-vo-su-khang-cu-buong-binh_khi-tre-vua-lam-sai-mot-viec-gi-o",
+    "audience_filename": "cha-me_pha-vo-su-khang-cu_tre-lam-sai",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó"
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 10,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-giai-thich-nhung-v_khi-con-cai-at-cau-hoi-kho-hoac-chung-ki",
+    "audience_filename": "cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 11,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-phuc-hoi-suc-khoe-tinh-than-v_khi-ang-ganh-vac-trach-nhiem-nuoi-day-co",
+    "audience_filename": "cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 12,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-tai-lap-su-gan-ket-va-loai-bo_khi-ang-mac-ket-trong-vong-lap-la-mang-v",
+    "audience_filename": "cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 13,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-con-cai-hop-tac-th_khi-tre-ang-phot-lo-loi-noi-cua-ho",
+    "audience_filename": "cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 14,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-giup-con-xay-dung-_khi-tre-bung-no-an-va-do-nhung-mong-muon",
+    "audience_filename": "cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 15,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-ngan-chan-va-kiem-soat-hanh-v_khi-tre-ang-trong-con-khung-hoang-mat-bi",
+    "audience_filename": "cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 16,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-giam-bot-xung-ot-va-xay-dung-_khi-chung-tranh-cai-anh-nhau-hoac-ghen-t",
+    "audience_filename": "cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự chú ý."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 17,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-phan-hoi-lai-thai-o-chong-oi-_khi-con-la-het-cai-loi-hoac-buong-nhung-",
+    "audience_filename": "cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn phản hồi lại thái độ chống đối của con một cách hiệu quả khi con la hét, cãi lời hoặc buông những lời tổn thương."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 18,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-dap-tat-tieng-ren-ri-oi-hoi-c_khi-cam-thay-mat-kien-nhan-va-cang-thang",
+    "audience_filename": "cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 19,
     "action": "create",
-    "audience_filename": "cha-me_phu-huynh-muon-khuyen-khich-con-cai-noi-_khi-phat-hien-tre-co-hanh-vi-che-giau-ho",
+    "audience_filename": "cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Phụ huynh muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 20,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-giup-con-kiem-soat_khi-con-hoang-loan-truoc-mot-tinh-huong-",
+    "audience_filename": "cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 21,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-giup-con-cai-xu-ly-su-nhut-nh_khi-chung-ngap-ngung-tron-tranh-trong-ca",
+    "audience_filename": "cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 22,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-giup-con-phat-trien-kha-nang-_khi-con-de-dang-bo-cuoc-hoac-noi-cau-tru",
+    "audience_filename": "cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn giúp con phát triển khả năng chịu đựng sự thất vọng khi con dễ dàng bỏ cuộc hoặc nổi cáu trước những thử thách khó khăn."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 23,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-thiet-lap-ranh-gioi-va-thoi-q_khi-tre-co-bieu-hien-ken-an-oi-o-an-vat-",
+    "audience_filename": "cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn thiết lập ranh giới và thói quen ăn uống lành mạnh khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 24,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-day-con-cach-thiet_khi-oi-mat-voi-ap-luc-phai-lam-hai-long-",
+    "audience_filename": "cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 25,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-lam-cha-me-muon-giai-ma-nguyen-nha_khi-tre-bat-ngo-roi-nuoc-mat-hoac-co-bie",
+    "audience_filename": "cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người làm cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 26,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-cha-me-muon-xay-dung-su-tu-tin-thu_khi-tre-cam-thay-that-vong-tu-ti-hoac-ng",
+    "audience_filename": "cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người cha mẹ muốn xây dựng sự tự tin thực sự cho con khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 27,
     "action": "create",
-    "audience_filename": "cha-me_cha-me-muon-giup-con-vuot-qua-su-so-hai_khi-mac-sai-lam-khi-con-the-hien-thai-o-",
+    "audience_filename": "cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Cha mẹ muốn giúp con vượt qua sự sợ hãi khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 28,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-giup-con-tach-roi-khoi-cha-me_khi-tre-khoc-loc-bam-viu-luc-i-hoc-hoac-",
+    "audience_filename": "cha-me_tach-roi-binh-an_tre-bam-me",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 29,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-giup-con-tu-i-vao-giac-ngu-va_khi-tre-lien-tuc-quay-khoc-chong-oi-va-o",
+    "audience_filename": "cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 30,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-xoa-diu-va-ieu-chinh-cam-xuc-_khi-tre-bung-no-du-doi-va-cu-tuyet-su-gi",
+    "audience_filename": "cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   },
   {
     "scope": "chunk",
     "chunk_index": 31,
     "action": "create",
-    "audience_filename": "cha-me_nguoi-muon-thau-hieu-ban-chat-su-thay-oi_khi-chiem-nghiem-lai-y-nghia-cua-tuoi-th",
+    "audience_filename": "cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho",
     "audience_level": "little",
-    "parent_audience": [],
-    "jtbd_raw": "Người muốn thấu hiểu bản chất sự thay đổi của loài người khi chiêm nghiệm lại ý nghĩa của tuổi thơ."
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ]
   }
 ]

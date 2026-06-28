@@ -1,0 +1,14 @@
+topic: "p1_early_childhood_education"
+Target_Pillar: "Xác định triết lý giáo dục cho con"
+Target_Audience: "cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai"
+Is_Novel_Angle: false
+Persona_Path: "personas/Vuon-ong-steiner"
+Target_Source_Type: "book"
+Target_Source_IDs:
+  - "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+resolved_jtbd:
+  audience_Job_performer: "cha mẹ"
+  audience_main_job: "bảo vệ sự phát triển lành mạnh của trẻ"
+  audience_circumstance: "khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại"
+  source_audience: "cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai"
+# execution_key: e95307a8

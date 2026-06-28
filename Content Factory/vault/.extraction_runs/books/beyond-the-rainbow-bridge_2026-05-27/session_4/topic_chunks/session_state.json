@@ -7,13 +7,13 @@
       "chunk_index": 1,
       "topics": [
         {
-          "id": "household_rhythm",
-          "label": "Nhịp điệu việc nhà",
-          "tier": "medium"
+          "id": "p1_early_childhood_education",
+          "label": "Giáo dục và phát triển những năm đầu đời",
+          "tier": "broad"
         },
         {
-          "id": "play_evolution",
-          "label": "Tiến hóa trò chơi trẻ em",
+          "id": "p1_family_rhythm",
+          "label": "Nhịp điệu sinh hoạt gia đình",
           "tier": "medium"
         }
       ]
@@ -22,13 +22,13 @@
       "chunk_index": 3,
       "topics": [
         {
-          "id": "environmental_absorption",
-          "label": "Thẩm thấu môi trường mầm non",
+          "id": "p1_environmental_absorption",
+          "label": "Sự thẩm thấu môi trường xung quanh",
           "tier": "medium"
         },
         {
-          "id": "media_impact_on_children",
-          "label": "Tác động truyền thông lên trẻ em",
+          "id": "p1_environmental_filter",
+          "label": "Bộ lọc môi trường và làm gương",
           "tier": "narrow"
         }
       ]
@@ -37,14 +37,14 @@
       "chunk_index": 4,
       "topics": [
         {
-          "id": "unfiltered_absorption",
-          "label": "Thẩm thấu không màng lọc",
+          "id": "p1_parenting_foundations",
+          "label": "Ba viên đá tảng để nuôi dạy trẻ",
           "tier": "medium"
         },
         {
-          "id": "language_imitation",
-          "label": "Bắt chước ngôn ngữ",
-          "tier": "medium"
+          "id": "p1_language_imitation",
+          "label": "Hỗ trợ ngôn ngữ qua bắt chước",
+          "tier": "narrow"
         }
       ]
     },
@@ -52,13 +52,13 @@
       "chunk_index": 5,
       "topics": [
         {
-          "id": "warmth_importance",
-          "label": "Tầm quan trọng của giữ ấm",
+          "id": "p1_warmth_and_health",
+          "label": "Vai trò của sự ấm áp đối với sức khỏe",
           "tier": "medium"
         },
         {
-          "id": "fever_role",
-          "label": "Vai trò của sốt",
+          "id": "p1_childhood_fever",
+          "label": "Vai trò của sốt trong việc xây dựng năng lực giữ ấm",
           "tier": "narrow"
         }
       ]
@@ -67,13 +67,13 @@
       "chunk_index": 6,
       "topics": [
         {
-          "id": "external_rhythm",
-          "label": "Nhịp điệu ngoại tại",
+          "id": "p1_biological_rhythm",
+          "label": "Sự đồng bộ hóa nhịp điệu sinh học",
           "tier": "medium"
         },
         {
-          "id": "breathing_model",
-          "label": "Mô hình Thở vào Thở ra",
+          "id": "p1_cosmic_rhythms",
+          "label": "Nhịp điệu vũ trụ và mùa vụ",
           "tier": "narrow"
         }
       ]
@@ -82,13 +82,13 @@
       "chunk_index": 7,
       "topics": [
         {
-          "id": "free_play",
-          "label": "Vui chơi tự do",
+          "id": "p1_creative_play_stages",
+          "label": "Ba giai đoạn tiến hóa của vui chơi sáng tạo",
           "tier": "medium"
         },
         {
-          "id": "archetypal_toys",
-          "label": "Đồ chơi nguyên mẫu",
+          "id": "p1_archetypal_toys",
+          "label": "Nguyên tắc sử dụng đồ chơi mở và nguyên mẫu",
           "tier": "narrow"
         }
       ]
@@ -97,13 +97,13 @@
       "chunk_index": 8,
       "topics": [
         {
-          "id": "simple_toys",
-          "label": "Đồ chơi đơn giản",
+          "id": "p1_simple_toys",
+          "label": "Quy tắc chọn đồ chơi đơn giản và chân thực",
           "tier": "medium"
         },
         {
-          "id": "repetitive_play",
-          "label": "Trò chơi lặp lại",
+          "id": "p1_play_as_imitation",
+          "label": "Trẻ chơi thông qua việc bắt chước công việc",
           "tier": "narrow"
         }
       ]
@@ -112,13 +112,13 @@
       "chunk_index": 9,
       "topics": [
         {
-          "id": "open_ended_toys",
-          "label": "Đồ chơi mở",
+          "id": "p1_open_ended_toys",
+          "label": "Cung cấp đồ chơi mở (Open-ended toys)",
           "tier": "medium"
         },
         {
-          "id": "clean_up_play",
-          "label": "Dọn dẹp bằng trò chơi",
+          "id": "p1_natural_elements_play",
+          "label": "Bảo vệ không gian vui chơi và tiếp xúc tự nhiên",
           "tier": "narrow"
         }
       ]
@@ -127,13 +127,13 @@
       "chunk_index": 10,
       "topics": [
         {
-          "id": "little_puberty",
-          "label": "Khủng hoảng tuổi lên sáu",
+          "id": "p1_little_puberty",
+          "label": "Sự thay đổi tuổi lên sáu (Little Puberty)",
           "tier": "medium"
         },
         {
-          "id": "screen_time_harm",
-          "label": "Tác hại của màn hình",
+          "id": "p1_dangers_of_early_intellectualism",
+          "label": "Tác hại của tư duy trí thức sớm",
           "tier": "narrow"
         }
       ]
@@ -142,14 +142,14 @@
       "chunk_index": 11,
       "topics": [
         {
-          "id": "toys_and_imagination",
-          "label": "Đồ chơi và trí tưởng tượng",
+          "id": "p1_open_ended_toys_creativity",
+          "label": "Cung cấp đồ chơi mở và không gian để trẻ tự sáng tạo trò chơi",
           "tier": "medium"
         },
         {
-          "id": "play_as_learning",
-          "label": "Vui chơi là học tập",
-          "tier": "medium"
+          "id": "p1_inner_imagination",
+          "label": "Đồ chơi đơn giản kích thích nội tâm",
+          "tier": "narrow"
         }
       ]
     },
@@ -157,13 +157,13 @@
       "chunk_index": 12,
       "topics": [
         {
-          "id": "will_senses",
+          "id": "p1_will_senses",
           "label": "Bốn giác quan ý chí",
           "tier": "medium"
         },
         {
-          "id": "baby_walker_harm",
-          "label": "Tác hại của xe tập đi",
+          "id": "p1_nurturing_will_senses",
+          "label": "Nguyên tắc nuôi dưỡng các giác quan ý chí",
           "tier": "narrow"
         }
       ]
@@ -172,13 +172,13 @@
       "chunk_index": 13,
       "topics": [
         {
-          "id": "feeling_senses",
-          "label": "Giác quan cảm xúc",
+          "id": "p1_smell_and_memory",
+          "label": "Khứu giác định hình ký ức và khả năng mở lòng",
           "tier": "medium"
         },
         {
-          "id": "color_therapy",
-          "label": "Liệu pháp màu sắc",
+          "id": "p1_color_therapy",
+          "label": "Ứng dụng màu sắc tương phản để trị liệu",
           "tier": "narrow"
         }
       ]
@@ -187,13 +187,13 @@
       "chunk_index": 14,
       "topics": [
         {
-          "id": "cognitive_senses",
-          "label": "Giác quan nhận thức",
+          "id": "p1_protect_hearing",
+          "label": "Bảo vệ thính giác khỏi tiếng ồn vô cơ",
           "tier": "medium"
         },
         {
-          "id": "machine_noise_harm",
-          "label": "Tác hại của âm thanh máy móc",
+          "id": "p1_human_interaction_language",
+          "label": "Ngôn ngữ chỉ phát triển qua tương tác người với người",
           "tier": "narrow"
         }
       ]
@@ -202,13 +202,13 @@
       "chunk_index": 15,
       "topics": [
         {
-          "id": "imitation_nature",
-          "label": "Bản chất sự bắt chước",
+          "id": "p1_discipline_through_self_education",
+          "label": "Kỷ luật thông qua tự giáo dục bản thân",
           "tier": "medium"
         },
         {
-          "id": "self_education_discipline",
-          "label": "Kỷ luật qua tự giáo dục",
+          "id": "p1_harm_of_anger_and_preaching",
+          "label": "Tác hại của sự tức giận và thuyết giáo",
           "tier": "narrow"
         }
       ]
@@ -217,12 +217,12 @@
       "chunk_index": 17,
       "topics": [
         {
-          "id": "reduce_no",
-          "label": "Tiết giảm từ không",
+          "id": "p1_reduce_the_word_no",
+          "label": "Tiết giảm từ Không",
           "tier": "medium"
         },
         {
-          "id": "energy_redirection",
+          "id": "p1_energy_redirection",
           "label": "Chuyển hướng năng lượng",
           "tier": "narrow"
         }
@@ -232,13 +232,13 @@
       "chunk_index": 18,
       "topics": [
         {
-          "id": "use_may",
-          "label": "Sử dụng từ May",
+          "id": "p1_use_of_may",
+          "label": "Sử dụng từ \"May\" (Được phép/Có thể) thay vì câu hỏi",
           "tier": "medium"
         },
         {
-          "id": "illusion_of_choice",
-          "label": "Ảo tưởng về lựa chọn",
+          "id": "p1_illusion_of_choice",
+          "label": "Ảo tưởng về sự lựa chọn",
           "tier": "narrow"
         }
       ]
@@ -247,13 +247,13 @@
       "chunk_index": 19,
       "topics": [
         {
-          "id": "rhythm_discipline",
-          "label": "Kỷ luật bằng nhịp điệu",
+          "id": "p1_rhythm_as_discipline",
+          "label": "Cơ chế kỷ luật tự nhiên của nhịp điệu",
           "tier": "medium"
         },
         {
-          "id": "rhythm_balance",
-          "label": "Sự cân bằng nhịp điệu",
+          "id": "p1_rhythm_anticipation",
+          "label": "Sự đoán định của nhịp điệu",
           "tier": "narrow"
         }
       ]
@@ -262,13 +262,13 @@
       "chunk_index": 20,
       "topics": [
         {
-          "id": "healing_action",
-          "label": "Hành động chữa lành",
+          "id": "p1_healing_action",
+          "label": "Chữa lành hành vi tấn công vật lý",
           "tier": "medium"
         },
         {
-          "id": "violence_myth",
-          "label": "Lầm tưởng xả bạo lực",
+          "id": "p1_real_work_for_violent_play",
+          "label": "Chữa lành trò chơi bạo lực bằng lao động thực tế",
           "tier": "narrow"
         }
       ]
@@ -277,13 +277,13 @@
       "chunk_index": 21,
       "topics": [
         {
-          "id": "consequent_action",
-          "label": "Hành động nhất quán",
+          "id": "p1_consequent_action",
+          "label": "Xử lý sự bướng bỉnh bằng hành động nhất quán",
           "tier": "medium"
         },
         {
-          "id": "healing_conflict",
-          "label": "Hóa giải xung đột",
+          "id": "p1_listen_and_redirect",
+          "label": "Hóa giải xung đột qua lắng nghe và hành động thực tế",
           "tier": "narrow"
         }
       ]
@@ -292,13 +292,13 @@
       "chunk_index": 22,
       "topics": [
         {
-          "id": "positivity_discipline",
-          "label": "Kỷ luật tích cực",
+          "id": "p1_positive_discipline",
+          "label": "Kỷ luật tích cực và thấu hiểu",
           "tier": "medium"
         },
         {
-          "id": "tired_child_care",
-          "label": "Chăm sóc trẻ mệt mỏi",
+          "id": "p1_harm_of_criticism",
+          "label": "Tác hại của sự chỉ trích",
           "tier": "narrow"
         }
       ]
@@ -307,13 +307,13 @@
       "chunk_index": 23,
       "topics": [
         {
-          "id": "spiritual_discipline",
-          "label": "Kỷ luật tâm linh",
+          "id": "p1_spiritual_work_in_discipline",
+          "label": "Thực hành tâm linh trong giấc ngủ để tìm giải pháp kỷ luật",
           "tier": "medium"
         },
         {
-          "id": "sleep_life_connection",
-          "label": "Kết nối qua giấc ngủ",
+          "id": "p1_angelic_help",
+          "label": "Kết nối tâm linh qua giấc ngủ",
           "tier": "narrow"
         }
       ]
@@ -322,13 +322,13 @@
       "chunk_index": 24,
       "topics": [
         {
-          "id": "true_discipline",
+          "id": "p1_true_discipline",
           "label": "Kỷ luật đích thực",
           "tier": "medium"
         },
         {
-          "id": "yelling_harm",
-          "label": "Tác hại của la mắng",
+          "id": "p1_end_of_day_reflection",
+          "label": "Phản tỉnh cuối ngày",
           "tier": "narrow"
         }
       ]
@@ -337,14 +337,14 @@
       "chunk_index": 25,
       "topics": [
         {
-          "id": "four_temperaments",
-          "label": "Bốn khí chất",
-          "tier": "medium"
+          "id": "p1_four_temperaments",
+          "label": "Bốn nhóm khí chất cơ bản của trẻ",
+          "tier": "broad"
         },
         {
-          "id": "like_heals_like",
-          "label": "Giống nhau chữa lành",
-          "tier": "narrow"
+          "id": "p1_like_heals_like",
+          "label": "Nguyên tắc Lấy độc trị độc trong giáo dục khí chất",
+          "tier": "medium"
         }
       ]
     },
@@ -352,13 +352,13 @@
       "chunk_index": 26,
       "topics": [
         {
-          "id": "music_rhythm",
-          "label": "Nhịp điệu âm nhạc",
+          "id": "p1_songs_for_routines",
+          "label": "Sử dụng bài hát để thiết lập thói quen và chuyển tiếp",
           "tier": "medium"
         },
         {
-          "id": "song_and_movement",
-          "label": "Bài hát và vận động",
+          "id": "p1_songs_and_movement",
+          "label": "Kết hợp bài hát với vận động cơ thể",
           "tier": "narrow"
         }
       ]
@@ -367,13 +367,13 @@
       "chunk_index": 27,
       "topics": [
         {
-          "id": "rainbow_bridge_story",
-          "label": "Câu chuyện Cầu Vồng",
+          "id": "p1_rainbow_bridge_story",
+          "label": "Câu chuyện Cầu Vồng (Rainbow Bridge Story)",
           "tier": "medium"
         },
         {
-          "id": "tell_from_memory",
-          "label": "Kể chuyện từ trí nhớ",
+          "id": "p1_adopted_child_story",
+          "label": "Chuyện sinh nhật cho trẻ nhận con nuôi",
           "tier": "narrow"
         }
       ]
@@ -382,13 +382,13 @@
       "chunk_index": 28,
       "topics": [
         {
-          "id": "fairy_tale_complexity",
-          "label": "Độ phức tạp cổ tích",
+          "id": "p1_fairy_tales_by_age",
+          "label": "Phân loại truyện cổ tích theo độ tuổi",
           "tier": "medium"
         },
         {
-          "id": "flexible_story_selection",
-          "label": "Chọn truyện linh hoạt",
+          "id": "p1_flexible_story_selection",
+          "label": "Lựa chọn truyện linh hoạt theo mức độ trưởng thành",
           "tier": "narrow"
         }
       ]

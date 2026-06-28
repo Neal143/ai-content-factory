@@ -1,0 +1,24 @@
+{
+  "password": "e6ac229c",
+  "pillar": "pillar_1",
+  "book_topics": [
+    {
+      "id": "p1_parenting_child_behavior",
+      "label": "Hành vi của trẻ và cách ứng xử",
+      "tier": "broad",
+      "reasoning": "Cuốn sách giải quyết vấn đề cốt lõi trong nuôi dạy con là đối diện và xử lý các hành vi tiêu cực hoặc bùng nổ của trẻ hàng ngày."
+    },
+    {
+      "id": "p1_connection_over_correction",
+      "label": "Kết nối thay vì sửa chữa hành vi",
+      "tier": "medium",
+      "reasoning": "Luận điểm trung tâm của sách là cha mẹ cần ưu tiên thấu hiểu cảm xúc và kết nối với trẻ thay vì chỉ tập trung sửa đổi bề mặt hành vi bằng hình phạt."
+    },
+    {
+      "id": "p1_sturdy_leadership",
+      "label": "Lãnh đạo vững chãi trong gia đình",
+      "tier": "narrow",
+      "reasoning": "Cơ chế đặc trưng của sách là khuyến khích cha mẹ trở thành người lãnh đạo vững chãi (sturdy leader), kết hợp giữa sự thấu cảm, ấm áp và ranh giới rõ ràng."
+    }
+  ]
+}

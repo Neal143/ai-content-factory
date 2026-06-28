@@ -1,6 +1,6 @@
 {
   "book_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven",
-  "total_vivids": 35,
+  "total_vivids": 34,
   "chunks": [
     {
       "chunk_index": 1,
@@ -75,11 +75,6 @@
           "vivid_type": "vivid_circumstance",
           "parent": "circumstance",
           "body": "Ngay sau những giây phút chào đón đứa trẻ ra đời | Đứa trẻ sơ sinh đang đói quẫy đạp chân tay loạn xạ | Cha mẹ cảm thấy niềm vui trào dâng xen lẫn nỗi sợ hãi sâu sắc"
-        },
-        {
-          "vivid_type": "vivid_insight",
-          "parent": "Nỗi sợ nuôi dạy con sai cách trong thế giới hiện đại",
-          "body": "Giống như mười hai bà mụ trong truyện cổ tích khao khát ban những phép màu tuyệt vời nhất cho công chúa sơ sinh"
         },
         {
           "vivid_type": "vivid_knowledge",

@@ -1,0 +1,239 @@
+{
+  "total_batches": 6,
+  "current_batch": 7,
+  "completed": true,
+  "submitted_decisions": [
+    {
+      "uid": "uid_book",
+      "action": "create",
+      "audience_filename": "cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan",
+      "audience_level": "big",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_02",
+      "action": "create",
+      "audience_filename": "cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_03",
+      "action": "create",
+      "audience_filename": "cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_04",
+      "action": "create",
+      "audience_filename": "cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_05",
+      "action": "create",
+      "audience_filename": "cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_06",
+      "action": "create",
+      "audience_filename": "cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_07",
+      "action": "create",
+      "audience_filename": "cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_08",
+      "action": "create",
+      "audience_filename": "cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_09",
+      "action": "create",
+      "audience_filename": "cha-me_pha-vo-su-khang-cu_tre-lam-sai",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_10",
+      "action": "create",
+      "audience_filename": "cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_11",
+      "action": "create",
+      "audience_filename": "cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_12",
+      "action": "create",
+      "audience_filename": "cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_13",
+      "action": "create",
+      "audience_filename": "cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_14",
+      "action": "create",
+      "audience_filename": "cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_15",
+      "action": "create",
+      "audience_filename": "cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_16",
+      "action": "create",
+      "audience_filename": "cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_18",
+      "action": "create",
+      "audience_filename": "cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_19",
+      "action": "create",
+      "audience_filename": "cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_20",
+      "action": "create",
+      "audience_filename": "cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_21",
+      "action": "create",
+      "audience_filename": "cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_23",
+      "action": "create",
+      "audience_filename": "cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_24",
+      "action": "create",
+      "audience_filename": "cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_25",
+      "action": "create",
+      "audience_filename": "cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_26",
+      "action": "create",
+      "audience_filename": "cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_27",
+      "action": "create",
+      "audience_filename": "cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_28",
+      "action": "create",
+      "audience_filename": "cha-me_tach-roi-binh-an_tre-bam-me",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_29",
+      "action": "create",
+      "audience_filename": "cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_30",
+      "action": "create",
+      "audience_filename": "cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    },
+    {
+      "uid": "uid_chunk_31",
+      "action": "create",
+      "audience_filename": "cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho",
+      "audience_level": "little",
+      "parent_audience_append": [],
+      "external_parents": []
+    }
+  ]
+}

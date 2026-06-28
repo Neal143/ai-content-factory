@@ -1,18 +1,24 @@
 {
-  "password": "d0ea287c",
-  "pillar": "Steiner và khoa học phát triển toàn diện",
+  "password": "529d183d",
+  "pillar": "pillar_1",
   "book_topics": [
     {
-      "id": "early_childhood_development",
-      "label": "Phát triển não bộ mầm non",
+      "id": "p1_early_childhood_education",
+      "label": "Giáo dục và phát triển những năm đầu đời",
       "tier": "broad",
-      "reasoning": "Cuốn sách tập trung vào những năm đầu đời của trẻ (từ 0-7 tuổi), đây là giai đoạn cửa sổ vàng để phát triển cả thể chất và tinh thần theo triết lý Waldorf."
+      "reasoning": "Cuốn sách tập trung vào giai đoạn từ sơ sinh đến bảy tuổi, cung cấp nền tảng giáo dục thay thế cho việc nhồi nhét học thuật sớm. Topic này đại diện cho miền vấn đề cốt lõi về sự phát triển của trẻ nhỏ."
     },
     {
-      "id": "waldorf_rhythm",
-      "label": "Nhịp điệu sinh hoạt Waldorf",
+      "id": "p1_rhythm_and_senses",
+      "label": "Bảo vệ giác quan và nhịp điệu sinh hoạt",
       "tier": "medium",
-      "reasoning": "Một trong những yếu tố cốt lõi của cuốn sách là cách thiết lập nhịp điệu sinh hoạt hằng ngày và nhịp điệu theo mùa để nuôi dưỡng cảm giác an toàn và sự phát triển của trẻ."
+      "reasoning": "Luận điểm trung tâm của sách lập luận rằng sự khỏe mạnh của trẻ được xây dựng thông qua một lịch trình sinh hoạt nhịp nhàng và việc bảo vệ sự phát triển tự nhiên của 12 giác quan."
+    },
+    {
+      "id": "p1_imitation_and_play",
+      "label": "Học qua bắt chước và trò chơi tự do",
+      "tier": "narrow",
+      "reasoning": "Cơ chế đặc thù mà sách sử dụng để hướng dẫn thực hành giáo dục: trẻ thẩm thấu thế giới thông qua việc bắt chước cha mẹ và phát triển toàn diện thông qua các trò chơi mở từ thiên nhiên."
     }
   ]
 }

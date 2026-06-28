@@ -1,0 +1,42 @@
+{
+  "batch_index": 3,
+  "batch_password": "0503ab75",
+  "total_batches": 3,
+  "items_to_process": [
+    {
+      "chunk_index": 10,
+      "chunk_name": "Chunk 10: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #8: Let the Clouds of Emotion Roll By: Teaching That Feelings Come and Go",
+      "jtbd_raw": "Người cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã.",
+      "scope": "chunk",
+      "uid": "uid_chunk_10"
+    },
+    {
+      "chunk_index": 11,
+      "chunk_name": "Chunk 11: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #9: SIFT: Paying Attention to What's Going On Inside",
+      "jtbd_raw": "Người cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc.",
+      "scope": "chunk",
+      "uid": "uid_chunk_11"
+    },
+    {
+      "chunk_index": 12,
+      "chunk_name": "Chunk 12: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #10: Exercise Mindsight: Getting Back to the Hub",
+      "jtbd_raw": "Người làm cha mẹ muốn hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu.",
+      "scope": "chunk",
+      "uid": "uid_chunk_12"
+    },
+    {
+      "chunk_index": 13,
+      "chunk_name": "Chunk 13: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #11: Increase the Family Fun Factor: Making a Point to Enjoy Each Other",
+      "jtbd_raw": "Người làm cha mẹ muốn xây dựng nền tảng gắn kết và tình cảm tích cực cho con cái khi cảm thấy bị cuốn vào guồng quay mệt mỏi của việc kỷ luật và đưa đón con hàng ngày.",
+      "scope": "chunk",
+      "uid": "uid_chunk_13"
+    },
+    {
+      "chunk_index": 14,
+      "chunk_name": "Chunk 14: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #12: Connect Through Conflict: Teach Kids to Argue with a \"We\" in Mind",
+      "jtbd_raw": "Người làm cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác.",
+      "scope": "chunk",
+      "uid": "uid_chunk_14"
+    }
+  ]
+}

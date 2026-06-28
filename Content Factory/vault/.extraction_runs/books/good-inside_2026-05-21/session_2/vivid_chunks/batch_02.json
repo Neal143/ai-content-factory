@@ -1,0 +1,157 @@
+{
+  "book_name": "Unknown Book",
+  "batch_index": 2,
+  "batch_password": "abea69b8",
+  "chunks": [
+    {
+      "chunk_index": 6,
+      "chunk_name": "Chunk 6: Part I: Dr. Becky’s Parenting Principles - Chapter 5: It’s Not Too Late",
+      "context": {
+        "jtbd": "Người muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái.",
+        "insight": {
+          "name": "Nỗi sợ sự tổn thương không thể vãn hồi",
+          "body": "*   **Mô tả:** Cha mẹ thường bị chìm ngập trong sự tự trách, hoang mang và mang nỗi sợ tột cùng rằng những sai lầm trong quá khứ (hay cáu gắt, kỷ luật độc hại) đã làm hỏng con cái vĩnh viễn, và giờ đây mọi nỗ lực thay đổi đều là \"đã quá muộn\"."
+        },
+        "knowledges": [
+          {
+            "name": "Kỹ năng Sửa chữa (The Power of Repair)",
+            "body": "*   **Mục đích:** Viết lại phần kết cho các trải nghiệm tồi tệ để biến những ký ức sợ hãi, cô đơn của trẻ thành cảm giác an toàn, được thấu hiểu. Giúp trẻ ngừng tự đổ lỗi cho bản thân và làm hình mẫu cho trẻ về cách nhận trách nhiệm.\n*   **Các bước thực thi (Step-by-step):**\n    *   **Bước 1: Nói lời xin lỗi và thuật lại sự việc.** (\"Mẹ xin lỗi. Chuyện là thế này...\"). Cha mẹ cần kể lại khoảnh khắc đã xảy ra để trẻ biết rằng những cảm nhận tồi tệ đó không phải là do trẻ tự tưởng tượng ra, giúp trẻ xác thực được thực tại của mình.\n    *   **Bước 2: Nhận trách nhiệm và nói rõ những gì bạn ước mình đã làm khác đi.** Bạn phải chỉ rõ vai trò của mình trong sự cố thay vì ngụ ý rằng trẻ đã \"khiến bạn\" phản ứng như vậy. (Ví dụ: \"Mẹ đã có những cảm xúc quá lớn và nó bật ra thành tiếng hét. Đó là cảm xúc của mẹ và mẹ có trách nhiệm phải kiểm soát nó tốt hơn. Việc mẹ hét lên không bao giờ là lỗi của con...\").\n    *   **Bước 3: Nêu kế hoạch hành động trong tương lai.** Nói cho trẻ biết bạn dự định sẽ làm gì khác đi từ nay về sau để giải quyết vấn đề của mình, cho trẻ thấy bạn cũng đang nỗ lực học hỏi và sửa sai.\n*   **Điều kiện áp dụng:** Thực hiện sau bất kỳ khoảnh khắc \"vỡ mộng\" hay phản ứng sai lầm nào của cha mẹ (yell, blowup). Có thể áp dụng 10 phút, 10 ngày hoặc thậm chí 10 năm sau khi sự việc xảy ra."
+          }
+        ]
+      },
+      "vivids": [
+        {
+          "vivid_type": "vivid_circumstance",
+          "parent": "circumstance",
+          "body": "Cuối ngày tồi tệ ở nhà | Nghe con la hét chống đối lại quyết định của mình | Nổi cơn thịnh nộ và hét lên mắng nhiếc con xối xả."
+        },
+        {
+          "vivid_type": "vivid_insight",
+          "parent": "Nỗi sợ sự tổn thương không thể vãn hồi",
+          "body": "Bị gặm nhấm bởi suy nghĩ \"đây là lỗi của mình\", \"mình đã làm hỏng con mãi mãi\"."
+        },
+        {
+          "vivid_type": "vivid_knowledge",
+          "parent": "Kỹ năng Sửa chữa (The Power of Repair)",
+          "body": "Phủ một lớp trải nghiệm mới lên trên để viết lại phần kết cho một câu chuyện cũ."
+        }
+      ]
+    },
+    {
+      "chunk_index": 7,
+      "chunk_name": "Chunk 7: Part I: Dr. Becky’s Parenting Principles - Chapter 6: Resilience > Happiness",
+      "context": {
+        "jtbd": "Người muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực.",
+        "insight": {
+          "name": "Cạm bẫy giải cứu cảm xúc",
+          "body": "*   **Mô tả:** Cha mẹ sợ hãi khi nhìn thấy con cái đau khổ, thất vọng hay ghen tị. Vì muốn con \"hạnh phúc\", họ thường vô thức đóng vai trò \"cảnh sát hạnh phúc\", ngay lập tức gạt bỏ những cảm xúc khó khăn của con bằng cách đánh lạc hướng hoặc giải quyết vấn đề hộ con, mà không biết rằng điều này lại tước đi khả năng tự đối phó của trẻ trong tương lai."
+        },
+        "knowledges": [
+          {
+            "name": "Hạnh phúc vs. Sự kiên cường (Resilience > Happiness)",
+            "body": "*   **Định nghĩa/Phát biểu luật:** Sự kiên cường (resilience) là khả năng trải nghiệm nhiều loại cảm xúc khác nhau mà vẫn giữ được bản ngã của chính mình; nó giúp con người phục hồi sau căng thẳng, thất bại và nghịch cảnh. Sự kiên cường là tiền đề cho phép hạnh phúc nảy nở (Regulation first, happiness second).\n    *   **Diễn giải Core Logic:** Nếu cha mẹ luôn lấy \"hạnh phúc\" làm mục tiêu tối thượng, họ sẽ cố gắng giảm thiểu hoặc loại bỏ sự thất vọng để mang lại chiến thắng tức thời cho trẻ. Trẻ sẽ học được mạch thần kinh sai lệch: \"Sự khó chịu là sai trái và cần được loại bỏ ngay lập tức\". Ngược lại, sự kiên cường không liên quan đến kết quả thành công, mà nằm ở khoảng không gian *trước khi* đạt được thành công. Nó là năng lực chịu đựng sự đau khổ, đứng vững trong khoảnh khắc khó khăn mà không cần sự xác nhận của thành tựu. Công thức cốt lõi là: Căng thẳng + Cách đối phó = Trải nghiệm nội tâm (stress + coping = internal experience).\n    *   **💡 Ẩn dụ:** \"Chiếc lọ cảm xúc.\" Nếu không biết cách điều chỉnh sự đau khổ, những cảm giác sợ hãi và lo âu sẽ choán hết không gian của \"chiếc lọ\" nội tâm, khiến hạnh phúc bị chèn ép và không thể xuất hiện."
+          }
+        ]
+      },
+      "vivids": [
+        {
+          "vivid_type": "vivid_circumstance",
+          "parent": "circumstance",
+          "body": "Khi con khóc lóc vì tháp đồ chơi liên tục bị đổ hoặc con phàn nàn vì chạy chậm nhất lớp | Cha mẹ cuống cuồng nói lời an ủi, đánh lạc hướng hoặc vội vàng làm hộ con | Cảm thấy xót xa, lo lắng và muốn dập tắt ngay sự khó chịu của con"
+        },
+        {
+          "vivid_type": "vivid_insight",
+          "parent": "Cạm bẫy giải cứu cảm xúc",
+          "body": "Cha mẹ đóng vai \"cảnh sát hạnh phúc\", vội vã đưa trẻ ra khỏi cảm giác khó chịu và đặt ngay vào một chiến thắng tưng bừng"
+        },
+        {
+          "vivid_type": "vivid_knowledge",
+          "parent": "Hạnh phúc vs. Sự kiên cường (Resilience > Happiness)",
+          "body": "Trẻ dung nạp được sự thất vọng sẽ tạo ra một lớp đệm mềm mại bao quanh những cảm xúc khó khăn trong chiếc lọ nội tâm"
+        }
+      ]
+    },
+    {
+      "chunk_index": 8,
+      "chunk_name": "Chunk 8: Part I: Dr. Becky’s Parenting Principles - Chapter 7: Behavior Is a Window",
+      "context": {
+        "jtbd": "Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát.",
+        "insight": {
+          "name": "Behavior-First (Ưu tiên hành vi bề mặt)",
+          "body": "*   **Mô tả:** Cha mẹ bị mắc kẹt trong vòng lặp liên tục sử dụng các biện pháp sửa đổi hành vi (thưởng, phạt, góc phạt, bảng dán nhãn) để dập tắt hành vi xấu ngay lập tức. Tuy nhiên, điều này không giải quyết được nhu cầu thực sự bên trong, khiến hành vi này mất đi thì hành vi xấu khác lại mọc lên như nấm, đồng thời làm xói mòn lòng tin và sự kết nối giữa cha mẹ và con cái."
+        },
+        "knowledges": [
+          {
+            "name": "Behavior is a window (Hành vi là một ô cửa sổ)",
+            "body": "*   **Bản chất:** Hành vi (dù sai trái) không bao giờ là \"sự kiện chính\" (the main event), mà nó là một manh mối, một \"ô cửa sổ\" nhìn vào thế giới nội tâm của trẻ (cảm xúc, suy nghĩ, thôi thúc, nhận thức và nhu cầu chưa được đáp ứng).\n*   **Cách thức vận hành:** Khi cha mẹ tập trung quá nhiều vào việc phán xét và thay đổi một hành vi bề mặt, họ sẽ cản trở sự thay đổi thực sự vì đã bỏ lỡ \"cuộc đấu tranh cốt lõi\" thúc đẩy hành vi đó. Khi cha mẹ cung cấp những gì trẻ cần để bớt \"dễ cháy\" (combustible) ở bên trong thông qua sự thấu hiểu, hành vi bên ngoài của trẻ sẽ tự động bớt bùng nổ hơn và tạo ra sự thay đổi bền vững.\n*   **Ứng dụng thực tế:** Tác giả yêu cầu TỪ BỎ hoàn toàn cách tiếp cận \"ưu tiên hành vi\" (Behavior-first) như dùng bảng điểm thưởng, phạt, lờ đi hoặc góc phạt. THỰC THI việc nhìn xuyên qua ô cửa sổ hành vi, tiếp cận bằng sự tò mò (curiosity) thay vì đổ lỗi (blame) để phát hiện và đáp ứng những cảm xúc ngầm bên dưới của trẻ."
+          }
+        ]
+      },
+      "vivids": [
+        {
+          "vivid_type": "vivid_circumstance",
+          "parent": "circumstance",
+          "body": "Đứng trong bếp lúc 5h30 chiều | Nghe con cãi nhau, đọc email sếp chê trách, phát hiện hết đồ ăn, bạn đời phàn nàn | Cảm thấy quá tải, ném vung vãi hộp ngũ cốc và la hét"
+        },
+        {
+          "vivid_type": "vivid_insight",
+          "parent": "Behavior-First (Ưu tiên hành vi bề mặt)",
+          "body": "Dùng băng dính (duct tape) dán lên vết rỉ nước trên trần nhà thay vì tìm nguồn rò rỉ"
+        },
+        {
+          "vivid_type": "vivid_insight",
+          "parent": "Behavior-First (Ưu tiên hành vi bề mặt)",
+          "body": "Chơi trò đập chuột (Whack-a-Mole): đập dập được lỗi này thì lỗi khác lại trồi lên"
+        },
+        {
+          "vivid_type": "vivid_knowledge",
+          "parent": "Behavior is a window (Hành vi là một ô cửa sổ)",
+          "body": "Nhìn qua ô cửa sổ hành vi để thấy một đứa trẻ đang đau khổ và cần sự kết nối đằng sau hành vi ném hộp ngũ cốc"
+        }
+      ]
+    },
+    {
+      "chunk_index": 9,
+      "chunk_name": "Chunk 9: Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection",
+      "context": {
+        "jtbd": "Người muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó",
+        "insight": {
+          "name": "Bất lực trước sự bướng bỉnh và vô cảm của con",
+          "body": "*   **Mô tả:** Cha mẹ thường cảm thấy tức giận, thất vọng và bế tắc tột độ khi con cái làm sai nhưng lại phản ứng bằng thái độ lạnh lùng, vô cảm, từ chối nhận lỗi hoặc tiếp tục nói dối. Cha mẹ dễ rơi vào hố sâu diễn dịch sai lầm rằng con mình \"thiếu sự đồng cảm\" hoặc \"cố tình chống đối\", dẫn đến những phản ứng gay gắt và các biện pháp trừng phạt chỉ làm tình hình tệ đi."
+        },
+        "knowledges": [
+          {
+            "name": "Khái niệm Xấu hổ (Shame) như một cơ chế sinh tồn",
+            "body": "*   **Định nghĩa/Phát biểu luật:** Sự xấu hổ là cảm giác tin rằng \"phần này trong tôi không thể kết nối được—không ai muốn biết hoặc ở cạnh phần này\". Nó kích hoạt nỗi sợ hãi tột cùng của trẻ: \"Mình xấu xa, mình không xứng đáng, mình không thể gắn kết... mình sẽ bị bỏ lại một mình\".\n    *   **Diễn giải Core Logic:** Sự xấu hổ không phải là dấu hiệu của sự hư hỏng, mà là một cảm xúc thích nghi tiến hóa (evolutionarily adaptive feeling). Đối với một đứa trẻ, bị bỏ lại một mình đồng nghĩa với sự nguy hiểm đe dọa tính mạng. Do đó, sự xấu hổ hoạt động như một hệ thống cảnh báo, ra lệnh cho trẻ phải che giấu đi những phần tính cách/hành vi không thu hút được sự gắn kết (như việc vừa làm một điều tồi tệ). Nó \"đóng băng\" trẻ tại chỗ như một cơ chế tự vệ. Trẻ không thể xin lỗi vì để làm thế, trẻ phải nhìn nhận bản thân như một kẻ tồi tệ và đối mặt với nguy cơ bị từ chối tình yêu thương."
+          },
+          {
+            "name": "Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)",
+            "body": "*   **Mục đích:** Giúp trẻ thoát khỏi trạng thái \"đóng băng\" do xấu hổ, phá vỡ bế tắc hành vi, khôi phục sự an toàn cảm xúc để trẻ có thể tự nguyện thay đổi từ bên trong.\n    *   **Các bước thực thi (Step-by-step):** \n        *   Bước 1: Nhận diện sự xấu hổ (Detect). Cha mẹ cần phát triển \"siêu năng lực\" nhìn xuyên qua lớp vỏ bọc bướng bỉnh, lạnh lùng, tê liệt hoặc phớt lờ của trẻ. Hãy nhận ra đó không phải là sự vô cảm, mà chính là sự xấu hổ đang đóng băng trẻ lại.\n        *   Bước 2: Tạm gác lại mục tiêu kỷ luật. Khi trẻ đang bị choáng ngợp bởi sự xấu hổ, cha mẹ PHẢI sẵn sàng gác lại những mục tiêu ban đầu (như ép trẻ xin lỗi, dạy lòng biết ơn, hay đòi hỏi câu trả lời trung thực). Sự học hỏi và tự thức tỉnh không thể diễn ra khi sự xấu hổ đang ngự trị.\n        *   Bước 3: Giảm thiểu sự xấu hổ (Reduce). Tập trung hoàn toàn vào việc giúp trẻ cảm thấy an toàn và gắn kết trở lại. Cha mẹ có thể làm mẫu (ví dụ: nói thay lời xin lỗi cho trẻ), thể hiện sự thấu cảm mà không kèm theo bất kỳ bài giảng đạo đức hay ánh mắt phán xét nào. Chỉ khi sự xấu hổ biến mất, sự thay đổi mới có thể bắt đầu.\n    *   **Điều kiện áp dụng:** Bất cứ khi nào trẻ rơi vào trạng thái bế tắc, tê liệt, lạnh nhạt hoặc tranh giành quyền lực một cách dữ dội sau khi làm sai hoặc gặp thất bại."
+          }
+        ]
+      },
+      "vivids": [
+        {
+          "vivid_type": "vivid_circumstance",
+          "parent": "circumstance",
+          "body": "Con giấu đồ chơi của em khiến em khóc nhưng kiên quyết từ chối xin lỗi, hoặc con nói dối trắng trợn về việc bị loại khỏi đội bóng"
+        },
+        {
+          "vivid_type": "vivid_insight",
+          "parent": "Bất lực trước sự bướng bỉnh và vô cảm của con",
+          "body": "Đứa trẻ lạnh lùng, tê liệt và phớt lờ cha mẹ thay vì thể hiện sự hối lỗi"
+        },
+        {
+          "vivid_type": "vivid_knowledge",
+          "parent": "Khái niệm Xấu hổ (Shame) như một cơ chế sinh tồn",
+          "body": "Trẻ đông cứng lại như một lớp màng bảo vệ để che giấu phần tồi tệ của bản thân khỏi nguy cơ bị bỏ rơi"
+        },
+        {
+          "vivid_type": "vivid_knowledge",
+          "parent": "Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)",
+          "body": "Mẹ nói thay lời xin lỗi giúp con mà không dùng ánh mắt hình viên đạn hay bài giảng đạo đức"
+        }
+      ]
+    }
+  ]
+}

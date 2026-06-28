@@ -1,634 +1,788 @@
+# _audience_index.yaml
+# Single Source of Truth — Toan bo Audience da ton tai trong Vault
+# Duoc tao lan dau boi: persona-interviewer (Cau 10 Buoc 1)
+# Duoc cap nhat boi: persona-interviewer, book-audience-matcher
 
 audiences:
-- id: cha_me_nuoi_day_con_kien_cuong_khi_doi_mat_voi_hanh_vi_kho_khan
-  file_ref: '[[cha-me_nuoi-day-con-kien-cuong_khi-doi-mat-voi-hanh-vi-kho-khan]]'
+- id: phu_huynh_co_con_0_7_tuoi_day_con_tai_viet_nam
+  file_ref: '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   audience_level: big
-  audience_Job_performer: Cha mẹ
-  audience_main_job: nuôi dạy con kiên cường
-  audience_circumstance: khi đối mặt với hành vi khó khăn
+  audience_Job_performer: Phu huynh sap co con hoac co con tu 0-7 tuoi
+  audience_main_job: Thiet lap nen tang phat trien cho con
+  audience_circumstance: Sap co con hoac co con tu 0-7 tuoi, song o Viet Nam
   parent_audience: []
-  aliases:
-  - nuôi con
-  - đối mặt khó khăn
-- id: cha_me_nguoi_muon_kiem_soat_nhung_hanh_vi_chong_khi_oi_mat_voi_nhung_con_thinh_no_hoac_l
-  file_ref: '[[cha-me_nguoi-muon-kiem-soat-nhung-hanh-vi-chong_khi-oi-mat-voi-nhung-con-thinh-no-hoac-l]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn kiểm soát những hành vi chống đối của con cái mà không
-    làm tổn thương lòng tự trọng của chúng
-  audience_circumstance: khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương
-    từ trẻ.
-  parent_audience: []
-  aliases:
-  - Người muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương
-    lòng tự trọng của chúng
-- id: cha_me_nguoi_lam_cha_me_muon_thiet_lap_ranh_gio_khi_tre_phan_khang_tuc_gian_hoac_co_thai
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-thiet-lap-ranh-gio_khi-tre-phan-khang-tuc-gian-hoac-co-thai]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn thiết lập ranh giới kỷ luật với con cái
-  audience_circumstance: khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn thiết lập ranh giới kỷ luật với con cái
-- id: cha_me_nguoi_lam_cha_me_muon_duy_tri_ranh_gioi__khi_con_cai_phan_khang_va_bung_no_cam_xu
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-duy-tri-ranh-gioi-_khi-con-cai-phan-khang-va-bung-no-cam-xu]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn duy trì ranh giới an toàn và sự kết nối
-  audience_circumstance: khi con cái phản kháng và bùng nổ cảm xúc.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn duy trì ranh giới an toàn và sự kết nối
-- id: cha_me_nguoi_lam_cha_me_muon_xay_dung_nen_tang__khi_ang_cam_thay_kiet_suc_va_hoai_nghi_v
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-xay-dung-nen-tang-_khi-ang-cam-thay-kiet-suc-va-hoai-nghi-v]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững
-    chắc cho con
-  audience_circumstance: khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc
-    nuôi dạy trẻ ở độ tuổi quá nhỏ.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con
-- id: cha_me_nguoi_muon_han_gan_ton_thuong_va_sua_chu_khi_nhan_ra_ban_than_a_co_nhung_phan_ung
-  file_ref: '[[cha-me_nguoi-muon-han-gan-ton-thuong-va-sua-chu_khi-nhan-ra-ban-than-a-co-nhung-phan-ung]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi
-    dạy con
-  audience_circumstance: khi nhận ra bản thân đã có những phản ứng độc hại với con
-    cái.
-  parent_audience: []
-  aliases:
-  - Người muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con
-- id: cha_me_nguoi_muon_trang_bi_nang_luc_oi_mat_voi__khi_tre_gap_that_bai_hoac_boc_lo_nhung_c
-  file_ref: '[[cha-me_nguoi-muon-trang-bi-nang-luc-oi-mat-voi-_khi-tre-gap-that-bai-hoac-boc-lo-nhung-c]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn trang bị năng lực đối mặt với khó khăn cho con
-  audience_circumstance: khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực.
-  parent_audience: []
-  aliases:
-  - Người muốn trang bị năng lực đối mặt với khó khăn cho con
-- id: cha_me_cha_me_muon_thau_hieu_nguyen_nhan_goc_re_khi_tre_lien_tuc_co_nhung_hanh_vi_toi_te
-  file_ref: '[[cha-me_cha-me-muon-thau-hieu-nguyen-nhan-goc-re_khi-tre-lien-tuc-co-nhung-hanh-vi-toi-te]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống
-    đối của con
-  audience_circumstance: khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát.
-  parent_audience: []
-  aliases:
-  - Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con
-- id: cha_me_nguoi_muon_pha_vo_su_khang_cu_buong_binh_khi_tre_vua_lam_sai_mot_viec_gi_o
-  file_ref: '[[cha-me_nguoi-muon-pha-vo-su-khang-cu-buong-binh_khi-tre-vua-lam-sai-mot-viec-gi-o]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của
-    con
-  audience_circumstance: khi trẻ vừa làm sai một việc gì đó
-  parent_audience: []
-  aliases:
-  - Người muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con
-- id: cha_me_nguoi_lam_cha_me_muon_giai_thich_nhung_v_khi_con_cai_at_cau_hoi_kho_hoac_chung_ki
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-giai-thich-nhung-v_khi-con-cai-at-cau-hoi-kho-hoac-chung-ki]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn giải thích những vấn đề phức tạp, nhạy
-    cảm
-  audience_circumstance: khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối
-    rối.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm
-- id: cha_me_nguoi_muon_phuc_hoi_suc_khoe_tinh_than_v_khi_ang_ganh_vac_trach_nhiem_nuoi_day_co
-  file_ref: '[[cha-me_nguoi-muon-phuc-hoi-suc-khoe-tinh-than-v_khi-ang-ganh-vac-trach-nhiem-nuoi-day-co]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân
-  audience_circumstance: khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày.
-  parent_audience: []
-  aliases:
-  - Người muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân
-- id: cha_me_nguoi_muon_tai_lap_su_gan_ket_va_loai_bo_khi_ang_mac_ket_trong_vong_lap_la_mang_v
-  file_ref: '[[cha-me_nguoi-muon-tai-lap-su-gan-ket-va-loai-bo_khi-ang-mac-ket-trong-vong-lap-la-mang-v]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối
-    của con
-  audience_circumstance: khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích
-    hàng ngày.
-  parent_audience: []
-  aliases:
-  - Người muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con
-- id: cha_me_nguoi_lam_cha_me_muon_con_cai_hop_tac_th_khi_tre_ang_phot_lo_loi_noi_cua_ho
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-con-cai-hop-tac-th_khi-tre-ang-phot-lo-loi-noi-cua-ho]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn con cái hợp tác thực hiện các yêu cầu
-  audience_circumstance: khi trẻ đang phớt lờ lời nói của họ.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn con cái hợp tác thực hiện các yêu cầu
-- id: cha_me_nguoi_lam_cha_me_muon_giup_con_xay_dung__khi_tre_bung_no_an_va_do_nhung_mong_muon
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-giup-con-xay-dung-_khi-tre-bung-no-an-va-do-nhung-mong-muon]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm
-    xúc
-  audience_circumstance: khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc
-- id: cha_me_nguoi_muon_ngan_chan_va_kiem_soat_hanh_v_khi_tre_ang_trong_con_khung_hoang_mat_bi
-  file_ref: '[[cha-me_nguoi-muon-ngan-chan-va-kiem-soat-hanh-v_khi-tre-ang-trong-con-khung-hoang-mat-bi]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn ngăn chặn và kiểm soát hành vi bạo lực của con
-  audience_circumstance: khi trẻ đang trong cơn khủng hoảng mất bình tĩnh.
-  parent_audience: []
-  aliases:
-  - Người muốn ngăn chặn và kiểm soát hành vi bạo lực của con
-- id: cha_me_nguoi_muon_giam_bot_xung_ot_va_xay_dung__khi_chung_tranh_cai_anh_nhau_hoac_ghen_t
-  file_ref: '[[cha-me_nguoi-muon-giam-bot-xung-ot-va-xay-dung-_khi-chung-tranh-cai-anh-nhau-hoac-ghen-t]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận
-    giữa các con
-  audience_circumstance: khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự
-    chú ý.
-  parent_audience: []
-  aliases:
-  - Người muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con
-- id: cha_me_nguoi_muon_phan_hoi_lai_thai_o_chong_oi__khi_con_la_het_cai_loi_hoac_buong_nhung_
-  file_ref: '[[cha-me_nguoi-muon-phan-hoi-lai-thai-o-chong-oi-_khi-con-la-het-cai-loi-hoac-buong-nhung-]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn phản hồi lại thái độ chống đối của con một cách hiệu
-    quả
-  audience_circumstance: khi con la hét, cãi lời hoặc buông những lời tổn thương.
-  parent_audience: []
-  aliases:
-  - Người muốn phản hồi lại thái độ chống đối của con một cách hiệu quả
-- id: cha_me_nguoi_muon_dap_tat_tieng_ren_ri_oi_hoi_c_khi_cam_thay_mat_kien_nhan_va_cang_thang
-  file_ref: '[[cha-me_nguoi-muon-dap-tat-tieng-ren-ri-oi-hoi-c_khi-cam-thay-mat-kien-nhan-va-cang-thang]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn dập tắt tiếng rên rỉ đòi hỏi của con
-  audience_circumstance: khi cảm thấy mất kiên nhẫn và căng thẳng tột độ.
-  parent_audience: []
-  aliases:
-  - Người muốn dập tắt tiếng rên rỉ đòi hỏi của con
-- id: cha_me_phu_huynh_muon_khuyen_khich_con_cai_noi__khi_phat_hien_tre_co_hanh_vi_che_giau_ho
-  file_ref: '[[cha-me_phu-huynh-muon-khuyen-khich-con-cai-noi-_khi-phat-hien-tre-co-hanh-vi-che-giau-ho]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Phụ huynh muốn khuyến khích con cái nói sự thật
-  audience_circumstance: khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm.
-  parent_audience: []
-  aliases:
-  - Phụ huynh muốn khuyến khích con cái nói sự thật
-- id: cha_me_nguoi_lam_cha_me_muon_giup_con_kiem_soat_khi_con_hoang_loan_truoc_mot_tinh_huong_
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-giup-con-kiem-soat_khi-con-hoang-loan-truoc-mot-tinh-huong-]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn giúp con kiểm soát nỗi sợ hãi
-  audience_circumstance: khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn giúp con kiểm soát nỗi sợ hãi
-- id: cha_me_nguoi_muon_giup_con_cai_xu_ly_su_nhut_nh_khi_chung_ngap_ngung_tron_tranh_trong_ca
-  file_ref: '[[cha-me_nguoi-muon-giup-con-cai-xu-ly-su-nhut-nh_khi-chung-ngap-ngung-tron-tranh-trong-ca]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn giúp con cái xử lý sự nhút nhát
-  audience_circumstance: khi chúng ngập ngừng, trốn tránh trong các tình huống xã
-    hội hoặc đám đông.
-  parent_audience: []
-  aliases:
-  - Người muốn giúp con cái xử lý sự nhút nhát
-- id: cha_me_nguoi_muon_giup_con_phat_trien_kha_nang__khi_con_de_dang_bo_cuoc_hoac_noi_cau_tru
-  file_ref: '[[cha-me_nguoi-muon-giup-con-phat-trien-kha-nang-_khi-con-de-dang-bo-cuoc-hoac-noi-cau-tru]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn giúp con phát triển khả năng chịu đựng sự thất vọng
-  audience_circumstance: khi con dễ dàng bỏ cuộc hoặc nổi cáu trước những thử thách
-    khó khăn.
-  parent_audience: []
-  aliases:
-  - Người muốn giúp con phát triển khả năng chịu đựng sự thất vọng
-- id: cha_me_nguoi_muon_thiet_lap_ranh_gioi_va_thoi_q_khi_tre_co_bieu_hien_ken_an_oi_o_an_vat_
-  file_ref: '[[cha-me_nguoi-muon-thiet-lap-ranh-gioi-va-thoi-q_khi-tre-co-bieu-hien-ken-an-oi-o-an-vat-]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn thiết lập ranh giới và thói quen ăn uống lành mạnh
-  audience_circumstance: khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng
-    trong bữa ăn.
-  parent_audience: []
-  aliases:
-  - Người muốn thiết lập ranh giới và thói quen ăn uống lành mạnh
-- id: cha_me_nguoi_lam_cha_me_muon_day_con_cach_thiet_khi_oi_mat_voi_ap_luc_phai_lam_hai_long_
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-day-con-cach-thiet_khi-oi-mat-voi-ap-luc-phai-lam-hai-long-]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể
-    và tin tưởng vào bản thân
-  audience_circumstance: khi đối mặt với áp lực phải làm hài lòng người khác.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào
-    bản thân
-- id: cha_me_nguoi_lam_cha_me_muon_giai_ma_nguyen_nha_khi_tre_bat_ngo_roi_nuoc_mat_hoac_co_bie
-  file_ref: '[[cha-me_nguoi-lam-cha-me-muon-giai-ma-nguyen-nha_khi-tre-bat-ngo-roi-nuoc-mat-hoac-co-bie]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người làm cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những
-    tiếng khóc của con
-  audience_circumstance: khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái
-    quá.
-  parent_audience: []
-  aliases:
-  - Người làm cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của
-    con
-- id: cha_me_nguoi_cha_me_muon_xay_dung_su_tu_tin_thu_khi_tre_cam_thay_that_vong_tu_ti_hoac_ng
-  file_ref: '[[cha-me_nguoi-cha-me-muon-xay-dung-su-tu-tin-thu_khi-tre-cam-thay-that-vong-tu-ti-hoac-ng]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người cha mẹ muốn xây dựng sự tự tin thực sự cho con
-  audience_circumstance: khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân.
-  parent_audience: []
-  aliases:
-  - Người cha mẹ muốn xây dựng sự tự tin thực sự cho con
-- id: cha_me_cha_me_muon_giup_con_vuot_qua_su_so_hai_khi_mac_sai_lam_khi_con_the_hien_thai_o_
-  file_ref: '[[cha-me_cha-me-muon-giup-con-vuot-qua-su-so-hai_khi-mac-sai-lam-khi-con-the-hien-thai-o-]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Cha mẹ muốn giúp con vượt qua sự sợ hãi
-  audience_circumstance: khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt
-    hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo.
-  parent_audience: []
-  aliases:
-  - Cha mẹ muốn giúp con vượt qua sự sợ hãi
-- id: cha_me_nguoi_muon_giup_con_tach_roi_khoi_cha_me_khi_tre_khoc_loc_bam_viu_luc_i_hoc_hoac_
-  file_ref: '[[cha-me_nguoi-muon-giup-con-tach-roi-khoi-cha-me_khi-tre-khoc-loc-bam-viu-luc-i-hoc-hoac-]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn giúp con tách rời khỏi cha mẹ một cách bình an
-  audience_circumstance: khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng
-    mặt.
-  parent_audience: []
-  aliases:
-  - Người muốn giúp con tách rời khỏi cha mẹ một cách bình an
-- id: cha_me_nguoi_muon_giup_con_tu_i_vao_giac_ngu_va_khi_tre_lien_tuc_quay_khoc_chong_oi_va_o
-  file_ref: '[[cha-me_nguoi-muon-giup-con-tu-i-vao-giac-ngu-va_khi-tre-lien-tuc-quay-khoc-chong-oi-va-o]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm
-  audience_circumstance: khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha
-    mẹ.
-  parent_audience: []
-  aliases:
-  - Người muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm
-- id: cha_me_nguoi_muon_xoa_diu_va_ieu_chinh_cam_xuc__khi_tre_bung_no_du_doi_va_cu_tuyet_su_gi
-  file_ref: '[[cha-me_nguoi-muon-xoa-diu-va-ieu-chinh-cam-xuc-_khi-tre-bung-no-du-doi-va-cu-tuyet-su-gi]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn xoa dịu và điều chỉnh cảm xúc của con
-  audience_circumstance: khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ.
-  parent_audience: []
-  aliases:
-  - Người muốn xoa dịu và điều chỉnh cảm xúc của con
-- id: cha_me_nguoi_muon_thau_hieu_ban_chat_su_thay_oi_khi_chiem_nghiem_lai_y_nghia_cua_tuoi_th
-  file_ref: '[[cha-me_nguoi-muon-thau-hieu-ban-chat-su-thay-oi_khi-chiem-nghiem-lai-y-nghia-cua-tuoi-th]]'
-  audience_level: little
-  audience_Job_performer: Cha mẹ
-  audience_main_job: Người muốn thấu hiểu bản chất sự thay đổi của loài người
-  audience_circumstance: khi chiêm nghiệm lại ý nghĩa của tuổi thơ.
-  parent_audience: []
-  aliases:
-  - Người muốn thấu hiểu bản chất sự thay đổi của loài người
-- id: bo_me_va_giao_vien_tao_nhip_dieu_sinh_hoat_va_dan_dat_tre_mam_non_qua_cac_hoat_dong_hang_ngay_mot_cach_nhe_nhang_khi_o_nha_hoac_trong_lop_hoc
-  file_ref: '[[bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]'
-  audience_level: little
-  audience_Job_performer: bố mẹ và giáo viên
-  audience_main_job: tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động
-    hàng ngày một cách nhẹ nhàng
-  audience_circumstance: khi ở nhà hoặc trong lớp học
-  parent_audience:
-  - '[[bo-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
-  aliases:
-  - dẫn dắt trẻ qua hoạt động hàng ngày
-  - tạo nhịp điệu cho trẻ mầm non
-- id: cha_me_tao_lap_nen_tang_phat_trien_toan_dien_tre_tu_so_sinh_den_bay_tuoi
-  file_ref: '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  aliases: []
+- id: cha_me_tao_lap_nen_tang_phat_trien_khoe_manh_va_toan_dien_cho_con_cai_khi_tre_dang_buoc_vao_giai_doan_tu_so_sinh_den_bay_tuoi
+  file_ref: '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   audience_level: big
   audience_Job_performer: cha mẹ
   audience_main_job: tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái
   audience_circumstance: khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi
   parent_audience: []
   aliases:
-  - nuôi con khỏe mạnh cho bé dưới bảy tuổi
-  - chăm sóc trẻ giai đoạn đầu đời
-- id: cha_me_xay_dung_thoi_quen_va_nhip_dieu_thiet_lap_sinh_hoat_hang_ngay
-  file_ref: '[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]'
+  - nuôi dưỡng trẻ từ 0 đến 7 tuổi
+  - giúp con phát triển toàn diện những năm đầu đời
+- id: cha_me_xay_dung_nen_tang_thoi_quen_va_nhip_dieu_song_lanh_manh_cho_con_khi_thiet_lap_cac_thoi_quen_sinh_hoat_hang_ngay_trong_gia_dinh
+  file_ref: '[[cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con
   audience_circumstance: khi thiết lập các thói quen sinh hoạt hàng ngày trong gia
     đình
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - tạo nề nếp sinh hoạt cho con tại nhà
-  - xây dựng thói quen tốt hàng ngày cho trẻ
-- id: cha_me_bao_ve_su_phat_trien_lanh_manh_doi_mat_ap_luc_van_hoa_hien_dai
-  file_ref: '[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]'
+  - tạo lập nhịp điệu sinh hoạt cho trẻ
+  - rèn luyện thói quen sống lành mạnh tại nhà
+- id: cha_me_bao_ve_su_phat_trien_lanh_manh_cua_tre_khi_doi_mat_voi_tac_dong_tieu_cuc_va_su_thuc_ep_truong_thanh_som_tu_van_hoa_hien_dai
+  file_ref: '[[cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: bảo vệ sự phát triển lành mạnh của trẻ
   audience_circumstance: khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành
     sớm từ văn hóa hiện đại
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - giữ gìn tuổi thơ an toàn cho con giữa thời hiện đại
-  - bảo vệ con khỏi áp lực trưởng thành sớm
-- id: cha_me_xay_dung_phat_trien_khoe_manh_hanh_phuc_hoang_mang_cach_nuoi_day
-  file_ref: '[[cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day]]'
+  - giữ gìn tuổi thơ cho con trước áp lực xã hội
+  - nuôi dạy con chậm lại giữa thế giới vội vã
+- id: cha_me_xay_dung_nen_tang_phat_trien_khoe_manh_va_hanh_phuc_cho_con_khi_doi_mat_voi_noi_hoang_mang_ve_cach_nuoi_day_trong_the_gioi_hien_dai
+  file_ref: '[[cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con
   audience_circumstance: khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế
     giới hiện đại
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - tìm kiếm phương pháp nuôi con khỏe mạnh hiện nay
-  - vượt qua băn khoăn khi giáo dục trẻ thời hiện đại
-- id: cha_me_bao_ve_suc_khoe_thuc_day_phat_trien_cham_soc_sinh_hoat_hang_ngay
-  file_ref: '[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]'
+  - tìm kiếm định hướng giáo dục trẻ tự tin
+  - xây dựng hạnh phúc cho con giữa nhiều phương pháp bủa vây
+- id: cha_me_bao_ve_suc_khoe_va_thuc_day_su_phat_trien_toan_dien_cua_tre_khi_cham_soc_tre_nho_trong_sinh_hoat_hang_ngay
+  file_ref: '[[cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ
   audience_circumstance: khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - chăm sóc sức khỏe toàn diện cho trẻ nhỏ mỗi ngày
-  - bảo vệ con cái trong sinh hoạt thường nhật
-- id: cha_me_thiet_lap_on_dinh_ne_nep_doi_mat_nhip_song_ban_ron
-  file_ref: '[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]'
+  - chăm sóc thể chất và tinh thần cho con
+  - nuôi dưỡng trẻ lớn khôn mỗi ngày
+- id: cha_me_thiet_lap_su_on_dinh_va_ne_nep_cho_con_khi_doi_mat_voi_nhip_song_hien_dai_ban_ron_va_mat_can_bang
+  file_ref: '[[cha-me_thiet-lap-su-on-dinh-va-ne-nep-cho-con_khi-doi-mat-voi-nhip-song-hien-dai-ban-ron-va-mat-can-bang]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: thiết lập sự ổn định và nề nếp cho con
   audience_circumstance: khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - xây dựng lịch trình sinh hoạt ổn định cho con
-  - duy trì nề nếp gia đình khi bận rộn
-- id: cha_me_nuoi_duong_tri_tuong_tuong_tri_tue_vui_choi_tre_tu_0_den_7_tuoi
-  file_ref: '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+  - tạo dựng nhịp điệu sinh hoạt cho trẻ
+  - rèn nề nếp cho con giữa lối sống bận rộn
+- id: cha_me_tao_moi_truong_nuoi_duong_tri_tuong_tuong_va_su_phat_trien_tri_tue_cho_tre_thong_qua_vui_choi_tu_do_khi_nuoi_day_tre_trong_giai_doan_tu_0_den_7_tuoi
+  file_ref: '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí
     tuệ cho trẻ thông qua vui chơi tự do
   audience_circumstance: khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - khuyến khích con vui chơi tự do để phát triển trí tuệ
-  - nuôi dưỡng trí tưởng tượng cho trẻ dưới 7 tuổi
-- id: cha_me_chon_do_choi_xay_dung_khong_gian_choi_tre_tu_so_sinh_den_2_5_tuoi
-  file_ref: '[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]'
+  - khuyến khích trẻ vui chơi tự do
+  - xây dựng không gian chơi mở cho trẻ mầm non
+- id: cha_me_chon_do_choi_va_xay_dung_khong_gian_choi_lanh_manh_khi_cham_soc_con_tu_so_sinh_den_2_5_tuoi
+  file_ref: '[[cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: chọn đồ chơi và xây dựng không gian chơi lành mạnh
   audience_circumstance: khi chăm sóc con từ sơ sinh đến 2,5 tuổi
   parent_audience:
-  - '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+  - '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
   aliases:
   - mua đồ chơi an toàn cho trẻ sơ sinh
-  - thiết kế góc chơi cho bé dưới 2.5 tuổi
-- id: cha_me_thuc_day_tri_tuong_tuong_tap_trung_tim_do_choi_tre_2_5_den_5_tuoi
-  file_ref: '[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]'
+  - thiết kế góc chơi cho bé dưới 3 tuổi
+- id: cha_me_thuc_day_tri_tuong_tuong_va_su_tap_trung_cua_tre_khi_tim_kiem_cac_mon_do_choi_va_khong_gian_vui_choi_phu_hop_cho_tre_tu_2_5_den_5_tuoi
+  file_ref: '[[cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: thúc đẩy trí tưởng tượng và sự tập trung của trẻ
   audience_circumstance: khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp
     cho trẻ từ 2.5 đến 5 tuổi
   parent_audience:
-  - '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+  - '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
   aliases:
-  - chọn đồ chơi phát triển trí tuệ cho bé 2.5 - 5 tuổi
-  - tạo không gian chơi giúp trẻ tập trung
-- id: cha_me_hieu_thay_doi_cach_choi_tam_ly_tre_tu_5_den_7_tuoi
-  file_ref: '[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]'
+  - chọn đồ chơi phát triển tư duy cho trẻ 3-5 tuổi
+  - tạo môi trường kích thích sự tập trung cho trẻ mầm non
+- id: cha_me_hieu_su_thay_doi_trong_cach_choi_va_tam_ly_cua_tre_tu_5_den_7_tuoi_khi_con_trai_qua_cac_giai_doan_phat_trien_moi
+  file_ref: '[[cha-me_hieu-su-thay-doi-trong-cach-choi-va-tam-ly-cua-tre-tu-5-den-7-tuoi_khi-con-trai-qua-cac-giai-doan-phat-trien-moi]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7
     tuổi
   audience_circumstance: khi con trải qua các giai đoạn phát triển mới
   parent_audience:
-  - '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+  - '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
   aliases:
-  - nắm bắt tâm lý vui chơi của trẻ 5-7 tuổi
-  - theo dõi sự phát triển tâm sinh lý của trẻ mẫu giáo lớn
-- id: cha_me_tao_moi_truong_vui_choi_thiet_lap_khong_gian_mua_do_choi
-  file_ref: '[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]'
+  - nắm bắt tâm lý vui chơi của trẻ tiền tiểu học
+  - đồng hành cùng sự biến đổi tâm lý của bé 5-7 tuổi
+- id: cha_me_tao_ra_moi_truong_vui_choi_giup_tre_phat_trien_tri_tuong_tuong_va_ky_nang_song_khi_thiet_lap_khong_gian_song_va_chon_mua_do_choi_cho_con
+  file_ref: '[[cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng
     và kỹ năng sống
   audience_circumstance: khi thiết lập không gian sống và chọn mua đồ chơi cho con
   parent_audience:
-  - '[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]'
+  - '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
   aliases:
-  - xây dựng không gian chơi phát triển kỹ năng cho trẻ
-  - bố trí góc chơi và đồ chơi kích thích trí tưởng tượng
-- id: cha_me_nuoi_duong_the_chat_giac_quan_co_ban_tre_tu_so_sinh_den_bay_tuoi
-  file_ref: '[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]'
+  - sắp xếp góc chơi tự do cho bé
+  - mua sắm đồ chơi kích thích sáng tạo
+- id: cha_me_nuoi_duong_su_phat_trien_the_chat_va_cac_giac_quan_co_ban_cua_con_khi_tre_o_giai_doan_tu_so_sinh_den_bay_tuoi
+  file_ref: '[[cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của
     con
   audience_circumstance: khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - chăm sóc thể chất cho trẻ dưới 7 tuổi
-  - kích thích giác quan cơ bản của trẻ giai đoạn đầu đời
-- id: cha_me_nuoi_duong_tam_hon_bao_ve_giac_quan_cam_xuc_moi_truong_kich_thich_nhan_tao
-  file_ref: '[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]'
+  - chăm sóc thể chất và giác quan cho trẻ mầm non
+  - hỗ trợ phát triển giác quan 7 năm đầu đời
+- id: cha_me_nuoi_duong_tam_hon_va_bao_ve_cac_giac_quan_cam_xuc_cua_tre_khi_moi_truong_xung_quanh_ngap_tran_cac_kich_thich_nhan_tao
+  file_ref: '[[cha-me_nuoi-duong-tam-hon-va-bao-ve-cac-giac-quan-cam-xuc-cua-tre_khi-moi-truong-xung-quanh-ngap-tran-cac-kich-thich-nhan-tao]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ
   audience_circumstance: khi môi trường xung quanh ngập tràn các kích thích nhân tạo
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - bảo vệ cảm xúc của con khỏi kích thích môi trường
-  - chăm sóc đời sống tinh thần cho trẻ nhỏ hiện nay
-- id: cha_me_nuoi_duong_giac_quan_nhan_thuc_tiep_xuc_am_thanh_giao_tiep_phuc_tap
-  file_ref: '[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]'
+  - bảo vệ trẻ khỏi ô nhiễm thông tin và cảm xúc
+  - chăm sóc đời sống tinh thần cho trẻ giữa thời đại số
+- id: cha_me_nuoi_duong_cac_giac_quan_nhan_thuc_cua_tre_khi_con_tre_bat_dau_tiep_xuc_voi_nhieu_nguon_am_thanh_va_cac_moi_quan_he_giao_tiep_phuc_tap
+  file_ref: '[[cha-me_nuoi-duong-cac-giac-quan-nhan-thuc-cua-tre_khi-con-tre-bat-dau-tiep-xuc-voi-nhieu-nguon-am-thanh-va-cac-moi-quan-he-giao-tiep-phuc-tap]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: nuôi dưỡng các giác quan nhận thức của trẻ
   audience_circumstance: khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và
     các mối quan hệ giao tiếp phức tạp
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - phát triển nhận thức của con khi mở rộng giao tiếp
-  - hướng dẫn trẻ xử lý thông tin xã hội
-- id: cha_me_ren_luyen_ky_luat_doi_mat_hanh_vi_chua_tot
-  file_ref: '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - giúp con phát triển khả năng nghe và hiểu ngôn ngữ
+  - hỗ trợ trẻ nhận thức và giao tiếp trong môi trường xã hội
+- id: cha_me_ren_luyen_ky_luat_cho_con_khi_doi_mat_voi_nhung_hanh_vi_chua_tot_cua_tre_nho
+  file_ref: '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: rèn luyện kỷ luật cho con
   audience_circumstance: khi đối mặt với những hành vi chưa tốt của trẻ nhỏ
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - thiết lập kỷ luật khi trẻ hư
-  - uốn nắn hành vi xấu ở trẻ nhỏ
-- id: cha_me_thiet_lap_ky_luat_giao_tiep_hieu_qua_dua_ra_yeu_cau_hang_ngay
-  file_ref: '[[cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay]]'
+  - uốn nắn hành vi chưa ngoan của con
+  - dạy con tính kỷ luật thông qua làm gương
+- id: cha_me_thiet_lap_ky_luat_va_giao_tiep_hieu_qua_khi_dua_ra_cac_yeu_cau_hang_ngay_cho_tre
+  file_ref: '[[cha-me_thiet-lap-ky-luat-va-giao-tiep-hieu-qua_khi-dua-ra-cac-yeu-cau-hang-ngay-cho-tre]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: thiết lập kỷ luật và giao tiếp hiệu quả
   audience_circumstance: khi đưa ra các yêu cầu hàng ngày cho trẻ
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - rèn tính tự giác cho con thông qua giao tiếp hàng ngày
-  - dạy con nghe lời khi đưa ra yêu cầu
-- id: cha_me_dieu_chinh_hanh_vi_choi_dua_thieu_chuan_muc
-  file_ref: '[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]'
+  - ra lệnh cho con một cách hiệu quả
+  - giao tiếp kỷ luật với trẻ nhỏ
+- id: cha_me_dieu_chinh_hanh_vi_cua_tre_khi_tre_dang_choi_dua_thieu_chuan_muc
+  file_ref: '[[cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: điều chỉnh hành vi của trẻ
   audience_circumstance: khi trẻ đang chơi đùa thiếu chuẩn mực
   parent_audience:
-  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - uốn nắn con khi chơi không ngoan
-  - chỉnh đốn thái độ khi trẻ vui chơi quá đà
-- id: cha_me_thiet_lap_ky_luat_huong_dan_hop_tac_doi_mat_chong_doi
-  file_ref: '[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]'
+  - uốn nắn trẻ khi chơi đùa quá khích
+  - xử lý hành vi sai lệch của con lúc chơi
+- id: cha_me_thiet_lap_ky_luat_va_huong_dan_tre_hop_tac_tu_nguyen_khi_doi_mat_voi_su_chong_doi_hoac_boi_roi_giua_cac_phuong_phap_nuoi_day
+  file_ref: '[[cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện
   audience_circumstance: khi đối mặt với sự chống đối hoặc bối rối giữa các phương
     pháp nuôi dạy
   parent_audience:
-  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - xử lý tình huống con chống đối
-  - dạy con tự nguyện hợp tác không cần ép buộc
-- id: cha_me_thiet_lap_ky_luat_ne_nep_xao_tron_chong_doi_sinh_hoat
-  file_ref: '[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]'
+  - dạy con tính tự giác kỷ luật
+  - xử lý khi trẻ chống đối hợp tác
+- id: cha_me_thiet_lap_ky_luat_va_ne_nep_cho_con_khi_doi_mat_voi_su_xao_tron_hoac_chong_doi_trong_sinh_hoat_hang_ngay
+  file_ref: '[[cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: thiết lập kỷ luật và nề nếp cho con
   audience_circumstance: khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt
     hàng ngày
   parent_audience:
-  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - rèn nề nếp khi sinh hoạt gia đình bị đảo lộn
-  - khắc phục thói quen xấu trong sinh hoạt của trẻ
-- id: cha_me_chuyen_hoa_hanh_vi_tieu_cuc_hanh_dong_bao_luc
-  file_ref: '[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]'
+  - rèn nề nếp sinh hoạt cho trẻ khó bảo
+  - dạy con kỷ luật qua sinh hoạt hàng ngày
+- id: cha_me_chuyen_hoa_hanh_vi_tieu_cuc_cua_tre_khi_tre_co_cac_hanh_dong_bao_luc_nhu_danh_can_cao_hoac_nho_nuoc_bot
+  file_ref: '[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: chuyển hóa hành vi tiêu cực của trẻ
   audience_circumstance: khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc
     nhổ nước bọt
   parent_audience:
-  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - xử lý khi con đánh bạn hoặc cắn người
-  - ngăn chặn hành vi bạo lực ở trẻ nhỏ
-- id: cha_me_xu_ly_chong_doi_xung_dot_doi_mat_buong_binh_tranh_cai
-  file_ref: '[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]'
+  - xử lý khi trẻ mầm non có hành vi bạo lực
+  - ngăn chặn thói quen đánh cắn ở trẻ nhỏ
+- id: cha_me_xu_ly_hanh_vi_chong_doi_va_xung_dot_cua_tre_khi_doi_mat_voi_su_buong_binh_hoac_tranh_cai_hang_ngay
+  file_ref: '[[cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: xử lý hành vi chống đối và xung đột của trẻ
   audience_circumstance: khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày
   parent_audience:
-  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - giải quyết xung đột với con khi bé bướng bỉnh
-  - xử lý tình huống con hay cãi lại
-- id: cha_me_xoa_diu_cam_xuc_tre_met_moi_quay_khoc
-  file_ref: '[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]'
+  - đối phó với tính bướng bỉnh của con
+  - giải quyết xung đột với trẻ nhỏ
+- id: cha_me_xoa_diu_cam_xuc_cua_tre_khi_tre_met_moi_hoac_quay_khoc
+  file_ref: '[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: xoa dịu cảm xúc của trẻ
   audience_circumstance: khi trẻ mệt mỏi hoặc quấy khóc
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - dỗ dành khi con khóc mệt
-  - làm dịu tâm trạng trẻ lúc quấy khóc
-- id: cha_me_tim_cach_dieu_chinh_ky_luat_gap_kho_khan_giao_duc
-  file_ref: '[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]'
+  - dỗ dành bé khi mệt
+  - an ủi con lúc quấy khóc
+- id: cha_me_tim_ra_cach_dieu_chinh_va_ky_luat_tre_dung_dan_khi_gap_kho_khan_trong_qua_trinh_giao_duc_tre
+  file_ref: '[[cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn
   audience_circumstance: khi gặp khó khăn trong quá trình giáo dục trẻ
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - tìm phương pháp kỷ luật hiệu quả khi dạy con
-  - giải quyết bế tắc trong giáo dục trẻ nhỏ
-- id: cha_me_duy_tri_ky_luat_hoa_hop_hanh_vi_bung_no_cuoi_ngay
-  file_ref: '[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]'
+  - tìm phương pháp giáo dục con phù hợp
+  - thay đổi cách kỷ luật trẻ mầm non
+- id: cha_me_duy_tri_ky_luat_va_su_hoa_hop_trong_gia_dinh_khi_doi_mat_voi_nhung_hanh_vi_bung_no_bon_chon_cua_con_tre_vao_cuoi_ngay
+  file_ref: '[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: duy trì kỷ luật và sự hòa hợp trong gia đình
   audience_circumstance: khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ
     vào cuối ngày
   parent_audience:
-  - '[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]'
+  - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
   aliases:
-  - giữ hòa khí gia đình khi trẻ quấy cuối ngày
-  - ổn định trật tự gia đình vào buổi tối
-- id: cha_me_ca_nhan_hoa_phuong_phap_giao_duc_tinh_cach_hanh_vi_khac_biet
-  file_ref: '[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]'
+  - quản lý hành vi của con lúc chiều tối
+  - giữ không khí gia đình yên bình cuối ngày
+- id: cha_me_ca_nhan_hoa_phuong_phap_giao_duc_khi_doi_mat_voi_nhung_tinh_cach_va_hanh_vi_khac_biet_cua_tung_dua_tre
+  file_ref: '[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: cá nhân hóa phương pháp giáo dục
   audience_circumstance: khi đối mặt với những tính cách và hành vi khác biệt của
     từng đứa trẻ
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - nuôi dạy theo tính cách riêng của con
-  - áp dụng giáo dục phù hợp với đặc điểm từng trẻ
-- id: cha_me_to_chuc_sinh_nhat_nuoi_duong_tam_hon_tre_buoc_sang_tuoi_moi
-  file_ref: '[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]'
+  - dạy con theo tính cách riêng
+  - giáo dục thuận tự nhiên theo khí chất của trẻ
+- id: nguoi_cham_soc_tre_tao_nhip_dieu_sinh_hoat_va_dan_dat_tre_mam_non_qua_cac_hoat_dong_hang_ngay_mot_cach_nhe_nhang_khi_o_nha_hoac_trong_lop_hoc
+  file_ref: '[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]'
+  audience_level: little
+  audience_Job_performer: người chăm sóc trẻ
+  audience_main_job: tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động
+    hàng ngày một cách nhẹ nhàng
+  audience_circumstance: khi ở nhà hoặc trong lớp học
+  parent_audience:
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  aliases:
+  - tổ chức hoạt động cho trẻ mầm non
+  - hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu
+- id: cha_me_to_chuc_mot_le_ky_niem_sinh_nhat_nuoi_duong_tam_hon_va_gan_ket_thieng_lieng_khi_tre_buoc_sang_tuoi_moi
+  file_ref: '[[cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết
     thiêng liêng
   audience_circumstance: khi trẻ bước sang tuổi mới
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - tổ chức sinh nhật ý nghĩa cho con
-  - làm tiệc sinh nhật nuôi dưỡng tâm hồn trẻ
-- id: cha_me_chon_dung_truyen_co_tich_tim_cau_chuyen_theo_do_tuoi_tam_ly
-  file_ref: '[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]'
+  - chuẩn bị sinh nhật ý nghĩa cho con
+  - tổ chức sinh nhật kiểu Waldorf cho bé
+- id: cha_me_chon_dung_truyen_co_tich_phu_hop_cho_tre_nghe_khi_dang_tim_kiem_cac_cau_chuyen_tuong_ung_voi_do_tuoi_va_muc_do_truong_thanh_tam_ly_cua_con
+  file_ref: '[[cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con]]'
   audience_level: little
   audience_Job_performer: cha mẹ
   audience_main_job: chọn đúng truyện cổ tích phù hợp cho trẻ nghe
   audience_circumstance: khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và
     mức độ trưởng thành tâm lý của con
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   aliases:
-  - chọn sách truyện cho con theo độ tuổi
-  - kể chuyện cổ tích phù hợp với tâm lý trẻ
+  - kể chuyện cổ tích cho con ngủ
+  - chọn truyện đọc cho bé theo độ tuổi
+- id: cha_me_nuoi_day_tre_kien_cuong_doi_mat_hanh_vi_kho_khan
+  file_ref: '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  audience_level: big
+  audience_Job_performer: Cha mẹ
+  audience_main_job: nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia
+    đình gắn kết
+  audience_circumstance: khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng
+    nổ của con trẻ
+  parent_audience: []
+  aliases:
+  - phụ huynh muốn con tự lập và gắn kết gia đình
+  - người làm cha mẹ muốn rèn tính kiên cường cho con
+- id: cha_me_kiem_soat_hanh_vi_chong_doi_doi_mat_con_thinh_no
+  file_ref: '[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: kiểm soát những hành vi chống đối của con cái mà không làm tổn
+    thương lòng tự trọng của chúng
+  audience_circumstance: khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương
+    từ trẻ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn trị thói chống đối của con
+  - cha mẹ cần xử lý khi con nổi giận vô cớ
+- id: cha_me_thiet_lap_ranh_gioi_ky_luat_tre_phan_khang
+  file_ref: '[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: thiết lập ranh giới kỷ luật với con cái
+  audience_circumstance: khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - người nuôi con muốn giữ kỷ luật khi con cãi lại
+  - phụ huynh cần đặt quy tắc khi con hỗn láo
+- id: cha_me_duy_tri_ranh_gioi_an_toan_tre_bung_no_cam_xuc
+  file_ref: '[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: duy trì ranh giới an toàn và sự kết nối
+  audience_circumstance: khi con cái phản kháng và bùng nổ cảm xúc
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn giữ nguyên tắc nhưng không mất kết nối
+  - cha mẹ muốn thiết lập kỷ luật trong lúc con khóc lóc
+- id: cha_me_xay_dung_nen_tang_tam_ly_kiet_suc_khi_nuoi_con
+  file_ref: '[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con
+  audience_circumstance: khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc
+    nuôi dạy trẻ ở độ tuổi quá nhỏ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - người nuôi con nhỏ muốn xây dựng cảm xúc cho trẻ
+  - phụ huynh kiệt sức khi chăm con nhỏ
+- id: cha_me_han_gan_ton_thuong_nhan_ra_phan_ung_doc_hai
+  file_ref: '[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con
+  audience_circumstance: khi nhận ra bản thân đã có những phản ứng độc hại với con
+    cái
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn chuộc lỗi với con
+  - cha mẹ sửa sai sau khi quát mắng con
+- id: cha_me_trang_bi_nang_luc_doi_mat_kho_khan_tre_gap_that_bai
+  file_ref: '[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: trang bị năng lực đối mặt với khó khăn cho con
+  audience_circumstance: khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn dạy con kiên cường
+  - cha mẹ giúp con đối mặt thất bại
+- id: cha_me_thau_hieu_nguyen_nhan_tre_co_hanh_vi_toi_te
+  file_ref: '[[cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con
+  audience_circumstance: khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn hiểu tại sao con hư
+  - cha mẹ tìm hiểu lý do con chống đối
+- id: cha_me_pha_vo_su_khang_cu_tre_lam_sai
+  file_ref: '[[cha-me_pha-vo-su-khang-cu_tre-lam-sai]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con
+  audience_circumstance: khi trẻ vừa làm sai một việc gì đó
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh đối phó khi con bướng bỉnh
+  - cha mẹ xử lý khi con cố chấp
+- id: cha_me_giai_thich_van_de_phuc_tap_con_dat_cau_hoi_kho
+  file_ref: '[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giải thích những vấn đề phức tạp, nhạy cảm
+  audience_circumstance: khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối
+    rối
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh trả lời câu hỏi khó của con
+  - cha mẹ giải thích chuyện nhạy cảm cho trẻ
+- id: cha_me_phuc_hoi_suc_khoe_tinh_than_ganh_vac_trach_nhiem
+  file_ref: '[[cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân
+  audience_circumstance: khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn lấy lại năng lượng
+  - cha mẹ chăm sóc bản thân khi nuôi con
+- id: cha_me_tai_lap_su_gan_ket_mac_ket_vong_lap_la_mang
+  file_ref: '[[cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: tái lập sự gắn kết và loại bỏ các hành vi chống đối của con
+  audience_circumstance: khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích
+    hàng ngày
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh gắn kết lại với con
+  - cha mẹ thoát khỏi vòng lặp la mắng
+- id: cha_me_khien_con_hop_tac_tre_phot_lo_loi_noi
+  file_ref: '[[cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: khiến con cái hợp tác thực hiện các yêu cầu
+  audience_circumstance: khi trẻ đang phớt lờ lời nói của họ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh muốn con nghe lời
+  - cha mẹ trị tính không chịu nghe lời của con
+- id: cha_me_giup_con_dieu_chinh_cam_xuc_tre_bung_no_an_va
+  file_ref: '[[cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giúp con xây dựng kỹ năng điều chỉnh cảm xúc
+  audience_circumstance: khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh xử lý khi con ăn vạ
+  - cha mẹ rèn cảm xúc cho trẻ hay cáu gắt
+- id: cha_me_ngan_chan_hanh_vi_bao_luc_tre_khung_hoang
+  file_ref: '[[cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: ngăn chặn và kiểm soát hành vi bạo lực của con
+  audience_circumstance: khi trẻ đang trong cơn khủng hoảng mất bình tĩnh
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh trị hành vi bạo lực của con
+  - cha mẹ xử lý khi con đánh người
+- id: cha_me_giam_bot_xung_dot_anh_chi_em_danh_nhau
+  file_ref: '[[cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các
+    con
+  audience_circumstance: khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự
+    chú ý
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh hòa giải khi các con đánh nhau
+  - cha mẹ xử lý khi anh chị em ghen tị
+- id: cha_me_dap_tat_tieng_ren_ri_mat_kien_nhan_cang_thang
+  file_ref: '[[cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: dập tắt tiếng rên rỉ đòi hỏi của con
+  audience_circumstance: khi cảm thấy mất kiên nhẫn và căng thẳng tột độ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh xử lý khi con mè nheo
+  - cha mẹ kiềm chế khi con nhõng nhẽo
+- id: cha_me_khuyen_khich_con_noi_su_that_tre_che_giau_loi_lam
+  file_ref: '[[cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: khuyến khích con cái nói sự thật
+  audience_circumstance: khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh dạy con tính trung thực
+  - cha mẹ xử lý khi trẻ nói dối
+- id: cha_me_giup_con_kiem_soat_noi_so_con_hoang_loan
+  file_ref: '[[cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giúp con kiểm soát nỗi sợ hãi
+  audience_circumstance: khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh trấn an khi con hoảng sợ
+  - cha mẹ giúp con vượt qua nỗi sợ
+- id: cha_me_giup_con_xu_ly_nhut_nhat_tinh_huong_xa_hoi
+  file_ref: '[[cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giúp con cái xử lý sự nhút nhát
+  audience_circumstance: khi chúng ngập ngừng, trốn tránh trong các tình huống xã
+    hội hoặc đám đông
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh giúp trẻ nhút nhát
+  - cha mẹ rèn tự tin cho con rụt rè
+- id: cha_me_thiet_lap_thoi_quen_an_uong_tre_ken_an
+  file_ref: '[[cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: thiết lập ranh giới và thói quen ăn uống lành mạnh
+  audience_circumstance: khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng
+    trong bữa ăn
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh trị chứng biếng ăn của con
+  - cha mẹ xử lý khi con kén ăn
+- id: cha_me_day_con_thiet_lap_ranh_gioi_co_the_ap_luc_lam_hai_long
+  file_ref: '[[cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản
+    thân
+  audience_circumstance: khi đối mặt với áp lực phải làm hài lòng người khác
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh dạy con bảo vệ cơ thể
+  - cha mẹ dạy con biết nói không
+- id: cha_me_giai_ma_nguyen_nhan_con_khoc_loc_thai_qua
+  file_ref: '[[cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con
+  audience_circumstance: khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái
+    quá
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh xử lý khi con hay khóc
+  - cha mẹ dỗ trẻ khóc nhè
+- id: cha_me_xay_dung_su_tu_tin_tre_that_vong_tu_ti
+  file_ref: '[[cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: xây dựng sự tự tin thực sự cho con
+  audience_circumstance: khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh rèn tự tin cho con
+  - cha mẹ giúp trẻ tự ti
+- id: cha_me_vuot_qua_so_hai_sai_lam_con_cau_toan
+  file_ref: '[[cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giúp con vượt qua sự sợ hãi khi mắc sai lầm
+  audience_circumstance: khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay
+    khi không đạt được kết quả hoàn hảo
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh trị chứng cầu toàn của con
+  - cha mẹ giúp trẻ sợ sai
+- id: cha_me_tach_roi_binh_an_tre_bam_me
+  file_ref: '[[cha-me_tach-roi-binh-an_tre-bam-me]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giúp con tách rời khỏi cha mẹ một cách bình an
+  audience_circumstance: khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng
+    mặt
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh xử lý hội chứng bám mẹ
+  - cha mẹ giúp con quen đi học
+- id: cha_me_giup_con_tu_ngu_tre_quay_khoc_chong_doi
+  file_ref: '[[cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: giúp con tự đi vào giấc ngủ và ngủ xuyên đêm
+  audience_circumstance: khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha
+    mẹ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh luyện ngủ cho con
+  - cha mẹ giúp trẻ tự ngủ
+- id: cha_me_xoa_diu_cam_xuc_tre_cu_tuyet_giup_do
+  file_ref: '[[cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: xoa dịu và điều chỉnh cảm xúc của con
+  audience_circumstance: khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh dỗ trẻ khóc thét
+  - cha mẹ xử lý khi con từ chối giúp đỡ
+- id: cha_me_thau_hieu_ban_chat_thay_doi_chiem_nghiem_tuoi_tho
+  file_ref: '[[cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho]]'
+  audience_level: little
+  audience_Job_performer: Cha mẹ
+  audience_main_job: thấu hiểu bản chất sự thay đổi của loài người
+  audience_circumstance: khi chiêm nghiệm lại ý nghĩa của tuổi thơ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - người chiêm nghiệm về tuổi thơ
+  - cha mẹ nhìn lại quá khứ
+- id: cha_me_nuoi_day_con_phat_trien_toan_dien_khi_doi_mat_khung_hoang_cang_thang
+  file_ref: '[[cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: nuôi dạy con cái phát triển toàn diện
+  audience_circumstance: khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi
+    và căng thẳng hàng ngày
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh mệt mỏi
+  - người nuôi dạy con
+- id: cha_me_thau_hieu_tam_ly_va_hanh_vi_cua_con_khi_doi_mat_thu_thach_nuoi_day_hang_ngay
+  file_ref: '[[cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: thấu hiểu tâm lý và hành vi của con
+  audience_circumstance: khi đối mặt với những thử thách nuôi dạy hàng ngày
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người làm cha mẹ
+- id: cha_me_ren_luyen_phat_trien_tri_nao_tang_tren_khi_tuong_tac_hang_ngay
+  file_ref: '[[cha-me_ren-luyen-phat-trien-tri-nao-tang-tren_khi-tuong-tac-hang-ngay]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: rèn luyện và phát triển trí não tầng trên của con
+  audience_circumstance: khi tương tác với trẻ hàng ngày
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người dạy dỗ con
+- id: cha_me_giup_con_binh_tinh_lay_lai_kiem_soat_khi_tre_mat_binh_tinh_choang_ngop
+  file_ref: '[[cha-me_giup-con-binh-tinh-lay-lai-kiem-soat_khi-tre-mat-binh-tinh-choang-ngop]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: giúp con bình tĩnh và lấy lại khả năng tự kiểm soát
+  audience_circumstance: khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người xoa dịu trẻ
+- id: cha_me_giup_tre_doi_mat_tich_hop_ky_uc_dau_buon_khi_tre_ne_tranh_so_hai_chuyen_cu
+  file_ref: '[[cha-me_giup-tre-doi-mat-tich-hop-ky-uc-dau-buon_khi-tre-ne-tranh-so-hai-chuyen-cu]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: giúp trẻ đối mặt và tích hợp các ký ức đau buồn
+  audience_circumstance: khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện
+    cũ
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người chăm sóc
+- id: cha_me_ren_luyen_ky_nang_hoi_tuong_cung_co_tri_nho_khi_tuong_tac_hang_ngay
+  file_ref: '[[cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu
+    cảm xúc cho con
+  audience_circumstance: khi tương tác cùng con hằng ngày
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người trò chuyện cùng con
+- id: cha_me_giup_con_nhan_thuc_tinh_tam_thoi_cam_xuc_khi_con_mac_ket_tuc_gian
+  file_ref: '[[cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cam-xuc_khi-con-mac-ket-tuc-gian]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: giúp con nhận thức tính tạm thời của cảm xúc
+  audience_circumstance: khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ
+    hãi hoặc buồn bã
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người hướng dẫn con
+- id: cha_me_huong_dan_con_nhan_dien_the_gioi_noi_tam_khi_tre_xao_tron_cam_xuc
+  file_ref: '[[cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân
+  audience_circumstance: khi trẻ đang bị xáo trộn cảm xúc
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người giáo dục con
+- id: cha_me_huong_dan_con_tu_xoa_diu_kiem_soat_chu_y_khi_con_mac_ket_suy_nghi_tieu_cuc
+  file_ref: '[[cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý
+  audience_circumstance: khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực
+    hoặc lo âu
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người hỗ trợ con
+- id: cha_me_ren_luyen_ky_nang_giai_quyet_mau_thuan_cho_con_khi_tre_xung_dot_voi_nguoi_khac
+  file_ref: '[[cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac]]'
+  audience_level: little
+  audience_Job_performer: cha mẹ
+  audience_main_job: rèn luyện kỹ năng giải quyết mâu thuẫn cho con
+  audience_circumstance: khi trẻ xảy ra xung đột với người khác
+  parent_audience:
+  - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
+  aliases:
+  - phụ huynh
+  - người phân xử mâu thuẫn

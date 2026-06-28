@@ -1,0 +1,65 @@
+﻿{
+    "3":  {
+              "status":  "PASS",
+              "timestamp":  "11:03",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "45":  {
+               "status":  "PASS",
+               "timestamp":  "11:05",
+               "errors":  [
+                              {
+                                  "phase":  45,
+                                  "message":  "Re-run validation FAIL for Phase 45.",
+                                  "timestamp":  "11:05:18",
+                                  "check":  "C5"
+                              }
+                          ],
+               "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+           },
+    "1":  {
+              "status":  "PASS",
+              "timestamp":  "10:59",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "4":  {
+              "status":  "PASS",
+              "timestamp":  "11:04",
+              "errors":  [
+
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          },
+    "0":  {
+              "status":  "PASS",
+              "timestamp":  "10:54",
+              "errors":  [
+                             {
+                                 "phase":  0,
+                                 "message":  "Script bi cam: D:\\AI\\Content Factories\\Vuon-ong-steiner\\auto_dedup.py, D:\\AI\\Content Factories\\Vuon-ong-steiner\\auto_dedup_ext.py",
+                                 "timestamp":  "10:54:11",
+                                 "check":  "C1"
+                             }
+                         ],
+              "checks":  "C0⏭ C1✅ C2✅ C3⏭ C4✅ C4BC⏭ C5✅"
+          },
+    "2":  {
+              "status":  "PASS",
+              "timestamp":  "11:02",
+              "errors":  [
+                             {
+                                 "phase":  2,
+                                 "message":  "Output thieu execution_key.",
+                                 "timestamp":  "11:01:33",
+                                 "check":  "C4"
+                             }
+                         ],
+              "checks":  "C0✅ C1✅ C2✅ C3⏭ C4✅ C4BC✅ C5✅"
+          }
+}

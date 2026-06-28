@@ -1,0 +1,70 @@
+{
+  "password": "f1a845b3",
+  "evaluations": [
+    {
+      "vivid_fragment": "Phòng chơi | Trẻ la hét \"Tránh ra, con ghét mẹ!\" k...",
+      "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+      "reason": "[ĐIỀN VÀO ĐÂY]",
+      "scores": {
+        "C1": 0,
+        "C2": 0,
+        "C3": 0,
+        "C4": 0,
+        "C5": 0
+      },
+      "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+    },
+    {
+      "vivid_fragment": "Đứa trẻ như con thú bị nhốt trong lồng đang chiến ...",
+      "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+      "reason": "[ĐIỀN VÀO ĐÂY]",
+      "scores": {
+        "C1": 0,
+        "C2": 0,
+        "C3": 0,
+        "C4": 0,
+        "C5": 0
+      },
+      "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+    },
+    {
+      "vivid_fragment": "Đứa trẻ như con thú bị nhốt trong lồng đang chiến ...",
+      "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+      "reason": "[ĐIỀN VÀO ĐÂY]",
+      "scores": {
+        "C1": 0,
+        "C2": 0,
+        "C3": 0,
+        "C4": 0,
+        "C5": 0
+      },
+      "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+    },
+    {
+      "vivid_fragment": "Trẻ trốn dưới gầm giường và giao tiếp qua ngón tay...",
+      "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+      "reason": "[ĐIỀN VÀO ĐÂY]",
+      "scores": {
+        "C1": 0,
+        "C2": 0,
+        "C3": 0,
+        "C4": 0,
+        "C5": 0
+      },
+      "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+    },
+    {
+      "vivid_fragment": "Không gian của các khả năng, Thấy nhà thám hiểm ở ...",
+      "decision": "[ĐIỀN VÀO ĐÂY: KEEP hoặc DISCARD]",
+      "reason": "[ĐIỀN VÀO ĐÂY]",
+      "scores": {
+        "C1": 0,
+        "C2": 0,
+        "C3": 0,
+        "C4": 0,
+        "C5": 0
+      },
+      "disqualifier": "[ĐIỀN VÀO ĐÂY hoặc xóa dòng này nếu KEEP]"
+    }
+  ]
+}

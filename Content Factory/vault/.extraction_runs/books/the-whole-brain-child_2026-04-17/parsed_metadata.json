@@ -18,7 +18,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Chunk mở đầu đặt ra hai mục tiêu cơ bản nhất của mọi bậc cha mẹ: \"sống sót\" (survive) qua những khoảnh khắc khủng hoảng hàng ngày và giúp con \"phát triển\" (thrive) thành người tử tế, có trách nhiệm. Các bậc phụ huynh thường có xu hướng tách biệt những lúc căng thẳng với những khoảnh khắc bình yên để dạy dỗ con cái. Tuy nhiên, các tác giả khẳng định rằng chính những lúc khủng hoảng đó lại là cơ hội tuyệt vời nhất để nuôi dưỡng và phát triển tâm trí trẻ, dựa trên sự hiểu biết về cách não bộ vận hành.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\", \"khung_hoang_cam_xuc\"] | audience_filename=cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang-hang-ngay\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Chunk mở đầu đặt ra hai mục tiêu cơ bản nhất của mọi bậc cha mẹ: \"sống sót\" (survive) qua những khoảnh khắc khủng hoảng hàng ngày và giúp con \"phát triển\" (thrive) thành người tử tế, có trách nhiệm. Các bậc phụ huynh thường có xu hướng tách biệt những lúc căng thẳng với những khoảnh khắc bình yên để dạy dỗ con cái. Tuy nhiên, các tác giả khẳng định rằng chính những lúc khủng hoảng đó lại là cơ hội tuyệt vời nhất để nuôi dưỡng và phát triển tâm trí trẻ, dựa trên sự hiểu biết về cách não bộ vận hành.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -79,7 +79,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "① Toàn cảnh & Insight đối tượng\n- Tóm tắt Chunk: Chương 1 cung cấp cái nhìn tổng quan về phương pháp nuôi dạy con cái dựa trên nền tảng hiểu biết về bộ não (whole-brain perspective). Tác giả nhấn mạnh rằng bộ não của trẻ không ngừng được định hình và tái cấu trúc bởi chính những trải nghiệm mà cha mẹ cung cấp. Khái niệm cốt lõi được giới thiệu là \"sự hội nhập\" (integration) – quá trình kết nối các phần khác nhau của não bộ để chúng hoạt động cùng nhau như một thể thống nhất, từ đó tạo nền tảng cho sự phát triển vững chắc về cảm xúc, trí tuệ và xã hội của trẻ.\n- 🎯 Đối tượng Chunk này:"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\", \"nao_bo_tre_em\"] | audience_filename=cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay\n\n① Toàn cảnh & Insight đối tượng\n- Tóm tắt Chunk: Chương 1 cung cấp cái nhìn tổng quan về phương pháp nuôi dạy con cái dựa trên nền tảng hiểu biết về bộ não (whole-brain perspective). Tác giả nhấn mạnh rằng bộ não của trẻ không ngừng được định hình và tái cấu trúc bởi chính những trải nghiệm mà cha mẹ cung cấp. Khái niệm cốt lõi được giới thiệu là \"sự hội nhập\" (integration) – quá trình kết nối các phần khác nhau của não bộ để chúng hoạt động cùng nhau như một thể thống nhất, từ đó tạo nền tảng cho sự phát triển vững chắc về cảm xúc, trí tuệ và xã hội của trẻ.\n- 🎯 Đối tượng Chunk này:"
         },
         {
           "meta": {
@@ -160,7 +160,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích giới thiệu chiến lược \"Kết nối và Chuyển hướng\" (Connect and Redirect) để xử lý những tình huống trẻ bị cảm xúc lấn át. Tác giả nhấn mạnh rằng khi não phải của trẻ (cảm xúc) đang mất kiểm soát, những lý lẽ logic từ não trái sẽ không có tác dụng. Thay vì phản ứng cứng nhắc bằng logic hay mệnh lệnh, cha mẹ cần kết nối với não phải của trẻ trước thông qua sự đồng cảm và các tín hiệu phi ngôn ngữ. Sau khi trẻ đã bình tĩnh và cảm thấy được thấu hiểu, cha mẹ mới chuyển hướng sang não trái để giải quyết vấn đề và đưa ra bài học.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"ket_noi_truoc_khi_dieu_huong\", \"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\"] | audience_filename=cha-me_xoa-diu-con-khung-hoang-cua-tre_khi-doi-mat-voi-cam-xuc-bung-no-vo-ly\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích giới thiệu chiến lược \"Kết nối và Chuyển hướng\" (Connect and Redirect) để xử lý những tình huống trẻ bị cảm xúc lấn át. Tác giả nhấn mạnh rằng khi não phải của trẻ (cảm xúc) đang mất kiểm soát, những lý lẽ logic từ não trái sẽ không có tác dụng. Thay vì phản ứng cứng nhắc bằng logic hay mệnh lệnh, cha mẹ cần kết nối với não phải của trẻ trước thông qua sự đồng cảm và các tín hiệu phi ngôn ngữ. Sau khi trẻ đã bình tĩnh và cảm thấy được thấu hiểu, cha mẹ mới chuyển hướng sang não trái để giải quyết vấn đề và đưa ra bài học.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -255,7 +255,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "① Toàn cảnh & Insight đối tượng\n* Tóm tắt Chunk: (3-5 câu) Khi trẻ trải qua những khoảnh khắc đau đớn, thất vọng hoặc đáng sợ, não phải của trẻ sẽ bị ngập tràn bởi cảm xúc và những cảm giác cơ thể. Phương pháp \"Name It to Tame It\" (Gọi tên để làm dịu) hướng dẫn cha mẹ cách giúp con kết hợp não trái và não phải bằng cách kể lại câu chuyện về trải nghiệm khó khăn đó. Việc kể chuyện giúp gắn từ ngữ và logic vào cảm xúc, từ đó làm dịu đi nỗi sợ hãi và giúp trẻ vượt qua chấn thương tâm lý.\n* 🎯 Đối tượng Chunk này:"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"phat_trien_tam_ly_tre\", \"goi_ten_cam_xuc\", \"ke_chuyen\", \"dieu_hoa_cam_xuc\", \"khoa_hoc_than_kinh_ung_dung\"] | audience_filename=cha-me_xoa-diu-cam-xuc-tieu-cuc-va-su-so-hai-cua-tre_khi-tre-vua-trai-qua-bien-co-dau-don\n\n① Toàn cảnh & Insight đối tượng\n* Tóm tắt Chunk: (3-5 câu) Khi trẻ trải qua những khoảnh khắc đau đớn, thất vọng hoặc đáng sợ, não phải của trẻ sẽ bị ngập tràn bởi cảm xúc và những cảm giác cơ thể. Phương pháp \"Name It to Tame It\" (Gọi tên để làm dịu) hướng dẫn cha mẹ cách giúp con kết hợp não trái và não phải bằng cách kể lại câu chuyện về trải nghiệm khó khăn đó. Việc kể chuyện giúp gắn từ ngữ và logic vào cảm xúc, từ đó làm dịu đi nỗi sợ hãi và giúp trẻ vượt qua chấn thương tâm lý.\n* 🎯 Đối tượng Chunk này:"
         },
         {
           "meta": {
@@ -328,7 +328,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "① Toàn cảnh & Insight đối tượng\nTóm tắt Chunk: Đoạn trích tập trung vào chiến lược số 3 mang tên \"Thu hút thay vì chọc giận\" (Engage, Don't Enrage) nhằm kết nối và phát triển não tầng trên của trẻ. Thay vì sử dụng quyền uy áp đặt khiến não tầng dưới của trẻ bị kích hoạt gây ra sự chống đối, cha mẹ được khuyến khích đặt những câu hỏi kích thích tư duy, khơi gợi trẻ tự tìm giải pháp và thương lượng. Phương pháp này giúp trẻ chuyển từ trạng thái phản ứng bản năng sang trạng thái suy nghĩ, từ đó rèn luyện kỹ năng giải quyết vấn đề, ra quyết định và thấu hiểu hậu quả."
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"kich_hoat_nao_tang_tren\", \"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\"] | audience_filename=cha-me_giai-quyet-su-chong-doi-va-xoa-diu-tre_khi-tre-dang-trong-trang-thai-bung-no-cam-xuc\n\n① Toàn cảnh & Insight đối tượng\nTóm tắt Chunk: Đoạn trích tập trung vào chiến lược số 3 mang tên \"Thu hút thay vì chọc giận\" (Engage, Don't Enrage) nhằm kết nối và phát triển não tầng trên của trẻ. Thay vì sử dụng quyền uy áp đặt khiến não tầng dưới của trẻ bị kích hoạt gây ra sự chống đối, cha mẹ được khuyến khích đặt những câu hỏi kích thích tư duy, khơi gợi trẻ tự tìm giải pháp và thương lượng. Phương pháp này giúp trẻ chuyển từ trạng thái phản ứng bản năng sang trạng thái suy nghĩ, từ đó rèn luyện kỹ năng giải quyết vấn đề, ra quyết định và thấu hiểu hậu quả."
         },
         {
           "meta": {
@@ -395,7 +395,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích này giải thích rằng \"bộ não tầng trên\" (upstairs brain) hoạt động giống như một khối cơ bắp, cần được sử dụng và tập luyện thường xuyên để phát triển tối ưu (Nguyên lý \"Dùng nó hay mất nó\"). Nó cung cấp các chiến lược thực tế để cha mẹ tạo cơ hội cho con rèn luyện 4 chức năng quan trọng: Khả năng ra quyết định, Thấu hiểu bản thân, Sự thấu cảm và Đạo đức. Bằng cách khuyến khích trẻ tự suy nghĩ, cân nhắc và đưa ra lựa chọn, cha mẹ đang trực tiếp xây dựng nền tảng cho sức khỏe tinh thần và trí thông minh xã hội của trẻ.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"tu_duy_logic_cho_tre\", \"phat_trien_tam_ly_tre\", \"nao_bo_tre_em\", \"dieu_hoa_cam_xuc\", \"khoa_hoc_than_kinh_ung_dung\"] | audience_filename=cha-me_ren-luyen-va-phat-trien-tri-nao-tang-tren-cua-con_khi-tuong-tac-voi-tre-hang-ngay\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích này giải thích rằng \"bộ não tầng trên\" (upstairs brain) hoạt động giống như một khối cơ bắp, cần được sử dụng và tập luyện thường xuyên để phát triển tối ưu (Nguyên lý \"Dùng nó hay mất nó\"). Nó cung cấp các chiến lược thực tế để cha mẹ tạo cơ hội cho con rèn luyện 4 chức năng quan trọng: Khả năng ra quyết định, Thấu hiểu bản thân, Sự thấu cảm và Đạo đức. Bằng cách khuyến khích trẻ tự suy nghĩ, cân nhắc và đưa ra lựa chọn, cha mẹ đang trực tiếp xây dựng nền tảng cho sức khỏe tinh thần và trí thông minh xã hội của trẻ.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -459,7 +459,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích giới thiệu chiến lược thứ 5 của cách tiếp cận toàn não bộ: \"Move It or Lose It\" (Vận động hay Đánh mất). Các tác giả lý giải rằng rất nhiều cảm xúc của chúng ta bắt nguồn từ các trạng thái vật lý của cơ thể. Khi trẻ rơi vào trạng thái choáng ngợp hoặc mất kiểm soát, việc để trẻ vận động thể chất sẽ giúp thay đổi tính hóa học của não bộ, từ đó giúp hệ thống thần kinh kết nối lại (tích hợp) và lấy lại sự bình tĩnh.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\", \"dieu_hoa_qua_the_chat\"] | audience_filename=cha-me_giup-con-binh-tinh-va-lay-lai-kha-nang-tu-kiem-soat_khi-tre-dang-bi-mat-binh-tinh\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích giới thiệu chiến lược thứ 5 của cách tiếp cận toàn não bộ: \"Move It or Lose It\" (Vận động hay Đánh mất). Các tác giả lý giải rằng rất nhiều cảm xúc của chúng ta bắt nguồn từ các trạng thái vật lý của cơ thể. Khi trẻ rơi vào trạng thái choáng ngợp hoặc mất kiểm soát, việc để trẻ vận động thể chất sẽ giúp thay đổi tính hóa học của não bộ, từ đó giúp hệ thống thần kinh kết nối lại (tích hợp) và lấy lại sự bình tĩnh.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -537,7 +537,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n- Tóm tắt Chunk: Đoạn trích giới thiệu chiến lược \"Chiếc điều khiển tâm trí\" nhằm giúp trẻ em đối mặt và xử lý các ký ức đau buồn hoặc đáng sợ trong quá khứ. Trẻ thường có xu hướng né tránh việc kể lại những trải nghiệm khó khăn vì cảm giác sợ hãi. Bằng cách tưởng tượng ký ức như một đĩa DVD và cung cấp cho trẻ \"chiếc điều khiển\" để tùy ý tạm dừng, tua nhanh hay tua lại, cha mẹ trao cho con quyền kiểm soát quá trình kể chuyện. Điều này giúp trẻ tích hợp các ký ức ngầm thành ký ức rõ ràng một cách an toàn để vượt qua những nỗi sợ vô hình đang chi phối chúng.\n- 🎯 Đối tượng Chunk này:"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"ung_pho_ky_uc_buon\", \"tri_tuong_tuong\", \"phat_trien_tam_ly_tre\", \"dieu_hoa_cam_xuc\", \"khoa_hoc_than_kinh_ung_dung\"] | audience_filename=cha-me_giup-tre-doi-mat-va-tich-hop-cac-ky-uc-dau-buon_khi-tre-co-bieu-hien-ne-tranh-hay-so-hai\n\n**① Toàn cảnh & Insight đối tượng**\n- Tóm tắt Chunk: Đoạn trích giới thiệu chiến lược \"Chiếc điều khiển tâm trí\" nhằm giúp trẻ em đối mặt và xử lý các ký ức đau buồn hoặc đáng sợ trong quá khứ. Trẻ thường có xu hướng né tránh việc kể lại những trải nghiệm khó khăn vì cảm giác sợ hãi. Bằng cách tưởng tượng ký ức như một đĩa DVD và cung cấp cho trẻ \"chiếc điều khiển\" để tùy ý tạm dừng, tua nhanh hay tua lại, cha mẹ trao cho con quyền kiểm soát quá trình kể chuyện. Điều này giúp trẻ tích hợp các ký ức ngầm thành ký ức rõ ràng một cách an toàn để vượt qua những nỗi sợ vô hình đang chi phối chúng.\n- 🎯 Đối tượng Chunk này:"
         },
         {
           "meta": {
@@ -611,7 +611,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn nội dung giải thích tầm quan trọng của việc hồi tưởng đối với sự phát triển não bộ của trẻ em. Trí nhớ giống như một vùng cơ bắp, càng được tập luyện bằng cách kể lại và nhớ lại (remember to remember), nó càng trở nên mạnh mẽ. Tác giả cung cấp hàng loạt các phương pháp thiết thực giúp cha mẹ khơi gợi để trẻ chia sẻ và củng cố ký ức, qua đó giúp trẻ tích hợp ký ức ẩn (implicit memory) và ký ức hiện (explicit memory) nhằm thấu hiểu bản thân tốt hơn ở hiện tại.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"ren_luyen_tri_nho\", \"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\"] | audience_filename=cha-me_ren-luyen-ky-nang-hoi-tuong-de-cung-co-tri-nho-cho-con_khi-tuong-tac-cung-con-hang-ngay\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn nội dung giải thích tầm quan trọng của việc hồi tưởng đối với sự phát triển não bộ của trẻ em. Trí nhớ giống như một vùng cơ bắp, càng được tập luyện bằng cách kể lại và nhớ lại (remember to remember), nó càng trở nên mạnh mẽ. Tác giả cung cấp hàng loạt các phương pháp thiết thực giúp cha mẹ khơi gợi để trẻ chia sẻ và củng cố ký ức, qua đó giúp trẻ tích hợp ký ức ẩn (implicit memory) và ký ức hiện (explicit memory) nhằm thấu hiểu bản thân tốt hơn ở hiện tại.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -691,7 +691,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích này tập trung vào chiến lược \"Để những đám mây cảm xúc trôi qua\", hướng dẫn cha mẹ cách dạy trẻ hiểu rằng cảm xúc giống như thời tiết – chúng đến rồi đi. Bằng cách nhận thức được tính tạm thời của cảm xúc (trạng thái) thay vì coi đó là bản chất (tính cách), trẻ sẽ không bị mắc kẹt vào các cảm giác tiêu cực như sợ hãi, thất vọng hay cô đơn, từ đó dễ dàng lấy lại sự cân bằng trong tâm trí.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"tinh_tam_thoi_cua_cam_xuc\", \"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\"] | audience_filename=cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cua-cam-xuc_khi-con-dang-bi-mac-ket-va-choang-ngop\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích này tập trung vào chiến lược \"Để những đám mây cảm xúc trôi qua\", hướng dẫn cha mẹ cách dạy trẻ hiểu rằng cảm xúc giống như thời tiết – chúng đến rồi đi. Bằng cách nhận thức được tính tạm thời của cảm xúc (trạng thái) thay vì coi đó là bản chất (tính cách), trẻ sẽ không bị mắc kẹt vào các cảm giác tiêu cực như sợ hãi, thất vọng hay cô đơn, từ đó dễ dàng lấy lại sự cân bằng trong tâm trí.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -795,7 +795,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Chương này đi sâu vào Chiến lược \"Toàn não bộ\" số 9: SIFT (Sensations, Images, Feelings, Thoughts) [1-3]. Phương pháp này cung cấp công cụ giúp trẻ chú ý đến thế giới nội tâm của mình, nhận diện và thấu hiểu các \"điểm trên vành bánh xe nhận thức\" đang hoạt động [1]. Bằng cách phân tích các cảm giác cơ thể, hình ảnh trong đầu, cảm xúc và suy nghĩ, trẻ sẽ không bị mắc kẹt vào các phản ứng bốc đồng mà có thể giành lại quyền kiểm soát trạng thái tâm lý [4].\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"ky_nang_sift\", \"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\", \"nhan_dien_the_gioi_noi_tam\"] | audience_filename=cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam-de-lam-chu-ban-than_khi-tre-dang-bi-xao-tron-cam-xuc\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Chương này đi sâu vào Chiến lược \"Toàn não bộ\" số 9: SIFT (Sensations, Images, Feelings, Thoughts) [1-3]. Phương pháp này cung cấp công cụ giúp trẻ chú ý đến thế giới nội tâm của mình, nhận diện và thấu hiểu các \"điểm trên vành bánh xe nhận thức\" đang hoạt động [1]. Bằng cách phân tích các cảm giác cơ thể, hình ảnh trong đầu, cảm xúc và suy nghĩ, trẻ sẽ không bị mắc kẹt vào các phản ứng bốc đồng mà có thể giành lại quyền kiểm soát trạng thái tâm lý [4].\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -874,7 +874,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích giới thiệu Chiến lược Não bộ Toàn diện số 10: Thực hành \"Mindsight\" (Tâm trí) để đưa trẻ trở về trạng thái cân bằng tại \"Trục bánh xe\" (Hub). Tác giả cung cấp các bài tập tĩnh tâm, hít thở và hình dung cụ thể theo từng độ tuổi, giúp trẻ không còn là nạn nhân của cảm xúc tiêu cực mà biết cách tự làm dịu bản thân, vượt qua những cơn bão nội tâm và phát triển sự tập trung.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"tu_xoa_diu_lo_au\", \"phat_trien_tam_ly_tre\", \"khoa_hoc_than_kinh_ung_dung\", \"dieu_hoa_cam_xuc\"] | audience_filename=cha-me_huong-dan-con-cach-tu-xoa-diu-va-kiem-soat-su-chu-y_khi-con-bi-mac-ket-vao-nhung-suy-nghi-tieu-cuc\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Đoạn trích giới thiệu Chiến lược Não bộ Toàn diện số 10: Thực hành \"Mindsight\" (Tâm trí) để đưa trẻ trở về trạng thái cân bằng tại \"Trục bánh xe\" (Hub). Tác giả cung cấp các bài tập tĩnh tâm, hít thở và hình dung cụ thể theo từng độ tuổi, giúp trẻ không còn là nạn nhân của cảm xúc tiêu cực mà biết cách tự làm dịu bản thân, vượt qua những cơn bão nội tâm và phát triển sự tập trung.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -946,7 +946,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Tác giả nhấn mạnh tầm quan trọng của việc gia tăng \"yếu tố vui vẻ\" (fun factor) trong gia đình để chuẩn bị cho trẻ khả năng xây dựng các mối quan hệ. Vui chơi không chỉ mang lại tiếng cười mà còn giải phóng dopamine - hóa chất của phần thưởng - giúp củng cố mong muốn gắn kết tích cực. Trong mối quan hệ anh chị em, nguyên tắc cốt lõi là duy trì \"phương trình toán học\" nơi lượng niềm vui được chia sẻ phải lớn hơn lượng xung đột. \n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"phat_trien_tam_ly_tre\", \"niem_vui_gia_dinh\", \"gan_ket_an_toan\", \"dieu_hoa_cam_xuc\", \"khoa_hoc_than_kinh_ung_dung\"] | audience_filename=cha-me_xay-dung-nen-tang-gan-ket-va-tinh-cam-tich-cuc-cho-con-cai_khi-cam-thay-bi-cuon-vao-guong-quay-met-moi\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Tác giả nhấn mạnh tầm quan trọng của việc gia tăng \"yếu tố vui vẻ\" (fun factor) trong gia đình để chuẩn bị cho trẻ khả năng xây dựng các mối quan hệ. Vui chơi không chỉ mang lại tiếng cười mà còn giải phóng dopamine - hóa chất của phần thưởng - giúp củng cố mong muốn gắn kết tích cực. Trong mối quan hệ anh chị em, nguyên tắc cốt lõi là duy trì \"phương trình toán học\" nơi lượng niềm vui được chia sẻ phải lớn hơn lượng xung đột. \n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {
@@ -1031,7 +1031,7 @@
       "items": [
         {
           "meta": {},
-          "body_text": "**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Chunk này trình bày Chiến lược Não bộ Toàn vẹn số 12, hướng dẫn cách tận dụng các cuộc xung đột và bất đồng để dạy trẻ kỹ năng xây dựng mối quan hệ. Thay vì cố gắng né tránh xung đột một cách vô ích, cha mẹ có thể dùng nó làm cơ hội để rèn luyện cho trẻ cách nhìn nhận vấn đề từ góc độ của người khác, biết cách đọc các tín hiệu phi ngôn ngữ và chủ động hàn gắn lỗi lầm. Những kỹ năng này giúp trẻ phát triển sự đồng cảm và khả năng kết nối sâu sắc (mindsight) với mọi người xung quanh.\n*   **🎯 Đối tượng Chunk này:**"
+          "body_text": "RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=[\"phat_trien_tam_ly_tre\", \"gan_ket_an_toan\", \"dieu_hoa_cam_xuc\", \"ky_nang_giai_quyet_xung_dot\", \"khoa_hoc_than_kinh_ung_dung\"] | audience_filename=cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xay-ra-xung-dot-voi-nguoi-khac\n\n**① Toàn cảnh & Insight đối tượng**\n*   **Tóm tắt Chunk:** Chunk này trình bày Chiến lược Não bộ Toàn vẹn số 12, hướng dẫn cách tận dụng các cuộc xung đột và bất đồng để dạy trẻ kỹ năng xây dựng mối quan hệ. Thay vì cố gắng né tránh xung đột một cách vô ích, cha mẹ có thể dùng nó làm cơ hội để rèn luyện cho trẻ cách nhìn nhận vấn đề từ góc độ của người khác, biết cách đọc các tín hiệu phi ngôn ngữ và chủ động hàn gắn lỗi lầm. Những kỹ năng này giúp trẻ phát triển sự đồng cảm và khả năng kết nối sâu sắc (mindsight) với mọi người xung quanh.\n*   **🎯 Đối tượng Chunk này:**"
         },
         {
           "meta": {

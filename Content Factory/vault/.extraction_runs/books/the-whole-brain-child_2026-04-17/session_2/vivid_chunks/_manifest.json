@@ -1,0 +1,18 @@
+{
+  "book_name": "The Whole-Brain Child",
+  "total_vivids": 18,
+  "total_batches": 2,
+  "batch_size": 15,
+  "batches": [
+    {
+      "file": "batch_01.json",
+      "vivid_count": 14,
+      "chunk_count": 8
+    },
+    {
+      "file": "batch_02.json",
+      "vivid_count": 4,
+      "chunk_count": 3
+    }
+  ]
+}

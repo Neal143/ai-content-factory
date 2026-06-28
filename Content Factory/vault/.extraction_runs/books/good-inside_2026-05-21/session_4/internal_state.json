@@ -1,0 +1,292 @@
+{
+  "pending": [],
+  "resolved": {
+    "p1_parenting_child_behavior": "p1_parenting_child_behavior",
+    "p1_connection_over_correction": "p1_connection_over_correction",
+    "p1_sturdy_leadership": "p1_sturdy_leadership",
+    "p1_good_inside_core_belief": "p1_good_inside_core_belief",
+    "p1_most_generous_interpretation": "p1_most_generous_interpretation",
+    "p1_two_things_are_true": "p1_two_things_are_true",
+    "p1_escaping_power_struggle": "p1_escaping_power_struggle",
+    "p1_family_system_roles": "p1_family_system_roles",
+    "p1_boundary_validation_empathy": "p1_boundary_validation_empathy",
+    "p1_body_memory": "p1_body_memory",
+    "p1_internal_working_model": "p1_internal_working_model",
+    "p1_neuroplasticity_repair": "p1_neuroplasticity_repair",
+    "p1_the_power_of_repair": "p1_the_power_of_repair",
+    "p1_resilience_over_happiness": "p1_resilience_over_happiness",
+    "p1_support_not_solve": "p1_support_not_solve",
+    "p1_behavior_is_a_window": "p1_behavior_is_a_window",
+    "p1_connection_capital": "p1_connection_capital",
+    "p1_confirming_perceptions": "p1_confirming_perceptions",
+    "p1_delivering_hard_truths": "p1_delivering_hard_truths",
+    "p1_sturdy_leader_self_care": "p1_sturdy_leader_self_care",
+    "p1_avp_strategy": "p1_avp_strategy",
+    "p1_not_listening_nature": "p1_not_listening_nature",
+    "p1_connect_before_asking": "p1_connect_before_asking",
+    "p1_contain_the_fire": "p1_contain_the_fire",
+    "p1_i_wont_let_you": "p1_i_wont_let_you",
+    "p1_sibling_attachment_security": "p1_sibling_attachment_security",
+    "p1_focus_on_needs_not_fairness": "p1_focus_on_needs_not_fairness",
+    "p1_whining_formula": "p1_whining_formula",
+    "p1_humor_response": "p1_humor_response",
+    "p1_lying_as_defense": "p1_lying_as_defense",
+    "p1_reframe_lie_as_wish": "p1_reframe_lie_as_wish",
+    "p1_jump_into_the_hole": "p1_jump_into_the_hole",
+    "p1_fear_resolution_script": "p1_fear_resolution_script",
+    "p1_true_confidence_concept": "p1_true_confidence_concept",
+    "p1_validate_and_empower_shyness": "p1_validate_and_empower_shyness",
+    "p1_parental_tolerance_for_resilience": "p1_parental_tolerance_for_resilience",
+    "p1_frustration_tolerance_strategies": "p1_frustration_tolerance_strategies",
+    "p1_division_of_responsibility_food": "p1_division_of_responsibility_food",
+    "p1_minimizing_anxiety_over_consumption": "p1_minimizing_anxiety_over_consumption",
+    "p1_consent_circuitry": "p1_consent_circuitry",
+    "p1_trusting_bodily_signals": "p1_trusting_bodily_signals",
+    "p1_tears_as_attachment_signal": "p1_tears_as_attachment_signal",
+    "p1_normalize_crying": "p1_normalize_crying",
+    "p1_perfectionism_nature": "p1_perfectionism_nature",
+    "p1_reframe_perfectionism": "p1_reframe_perfectionism",
+    "p1_three_pillars_of_change": "p1_three_pillars_of_change",
+    "p1_children_as_explorers": "p1_children_as_explorers"
+  },
+  "unique_topics": [
+    {
+      "id": "p1_parenting_child_behavior",
+      "label": "Hành vi của trẻ và cách ứng xử",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_connection_over_correction",
+      "label": "Kết nối thay vì sửa chữa hành vi",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_sturdy_leadership",
+      "label": "Lãnh đạo vững chãi trong gia đình",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_good_inside_core_belief",
+      "label": "Niềm tin tốt đẹp bên trong",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_most_generous_interpretation",
+      "label": "Góc nhìn bao dung nhất",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_two_things_are_true",
+      "label": "Nguyên tắc hai điều đều đúng",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_escaping_power_struggle",
+      "label": "Thoát khỏi cuộc chiến quyền lực",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_family_system_roles",
+      "label": "Vai trò trong hệ thống gia đình",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_boundary_validation_empathy",
+      "label": "Ranh giới xác thực và thấu cảm",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_body_memory",
+      "label": "Ký ức cơ thể",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_internal_working_model",
+      "label": "Mô hình hoạt động nội tâm",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_neuroplasticity_repair",
+      "label": "Khả năng tái tạo của não bộ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_the_power_of_repair",
+      "label": "Kỹ năng Sửa chữa",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_resilience_over_happiness",
+      "label": "Sự kiên cường hơn hạnh phúc",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_support_not_solve",
+      "label": "Hỗ trợ thay vì giải quyết",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_behavior_is_a_window",
+      "label": "Hành vi là một ô cửa sổ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_connection_capital",
+      "label": "Vốn kết nối",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_confirming_perceptions",
+      "label": "Xác nhận nhận thức của trẻ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_delivering_hard_truths",
+      "label": "Cách truyền đạt sự thật khó khăn",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_sturdy_leader_self_care",
+      "label": "Lãnh đạo vững vàng và tự chăm sóc",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_avp_strategy",
+      "label": "Ghi nhận, xác nhận và cho phép",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_not_listening_nature",
+      "label": "Bản chất của sự không lắng nghe",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_connect_before_asking",
+      "label": "Kết nối trước khi yêu cầu",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_contain_the_fire",
+      "label": "Cô lập đám cháy",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_i_wont_let_you",
+      "label": "Mẹ sẽ không để con",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_sibling_attachment_security",
+      "label": "Sự an toàn gắn bó của anh chị em",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_focus_on_needs_not_fairness",
+      "label": "Tập trung vào nhu cầu thay vì công bằng",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_whining_formula",
+      "label": "Công thức của sự rên rỉ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_humor_response",
+      "label": "Phản hồi bằng sự hài hước",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_lying_as_defense",
+      "label": "Lời nói dối là cơ chế tự vệ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_reframe_lie_as_wish",
+      "label": "Định hình lại lời nói dối thành mong ước",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_jump_into_the_hole",
+      "label": "Nhảy xuống hố cùng con",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_fear_resolution_script",
+      "label": "Kịch bản 6 bước giải quyết nỗi sợ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_true_confidence_concept",
+      "label": "Sự tự tin đích thực",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_validate_and_empower_shyness",
+      "label": "Công nhận và trao quyền",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_parental_tolerance_for_resilience",
+      "label": "Sự bao dung của cha mẹ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_frustration_tolerance_strategies",
+      "label": "Chiến lược xây dựng khả năng chịu đựng",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_division_of_responsibility_food",
+      "label": "Phân chia Trách nhiệm trong bữa ăn",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_minimizing_anxiety_over_consumption",
+      "label": "Giảm lo âu hơn đong đếm thức ăn",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_consent_circuitry",
+      "label": "Mạch đồng thuận",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_trusting_bodily_signals",
+      "label": "Chiến lược \"Mẹ tin con\"",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_tears_as_attachment_signal",
+      "label": "Nước mắt là tín hiệu gắn kết",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_normalize_crying",
+      "label": "Bình thường hóa việc khóc",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_perfectionism_nature",
+      "label": "Bản chất của Chủ nghĩa hoàn hảo",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_reframe_perfectionism",
+      "label": "Định hướng lại Chủ nghĩa hoàn hảo",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_three_pillars_of_change",
+      "label": "Ba trụ cột của sự thay đổi",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_children_as_explorers",
+      "label": "Trẻ em là những nhà thám hiểm tương lai",
+      "pillar": "pillar_1"
+    }
+  ],
+  "pillar": "pillar_1",
+  "completed": true,
+  "password": "10c9fd4f"
+}

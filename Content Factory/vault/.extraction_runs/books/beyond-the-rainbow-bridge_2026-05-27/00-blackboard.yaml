@@ -1,7 +1,7 @@
-book_name: Beyond the rainbow bridge
-notebook_name: ''
-notebook_id: 47da2c6b-49a5-4c68-8ea3-022768c65408
-run_folder: .extraction_runs/books/beyond-the-rainbow-bridge_2026-05-27/
-cache_file: vault/02-sources/books/Beyond the rainbow bridge.md
-slug: beyond-the-rainbow-bridge
+book_name: "Beyond the rainbow bridge"
+notebook_name: ""
+notebook_id: "47da2c6b-49a5-4c68-8ea3-022768c65408"
+run_folder: "vault/.extraction_runs/books/beyond-the-rainbow-bridge_2026-05-27/"
+cache_file: "vault/02-sources/books/Beyond the rainbow bridge.md"
+slug: "beyond-the-rainbow-bridge"
 current_phase: 4

@@ -1,0 +1,37 @@
+{
+  "batch_index": 1,
+  "batch_password": "c7dbcddc",
+  "total_batches": 6,
+  "items": [
+    {
+      "uid": "uid_book",
+      "id": "cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan",
+      "semantic_query": "Cha mẹ muốn nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ.",
+      "file_ref": "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    },
+    {
+      "uid": "uid_chunk_02",
+      "id": "cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no",
+      "semantic_query": "Cha mẹ muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ.",
+      "file_ref": "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+    },
+    {
+      "uid": "uid_chunk_03",
+      "id": "cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang",
+      "semantic_query": "Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ.",
+      "file_ref": "[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]"
+    },
+    {
+      "uid": "uid_chunk_04",
+      "id": "cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc",
+      "semantic_query": "Cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc.",
+      "file_ref": "[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]"
+    },
+    {
+      "uid": "uid_chunk_05",
+      "id": "cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con",
+      "semantic_query": "Cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ.",
+      "file_ref": "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]"
+    }
+  ]
+}

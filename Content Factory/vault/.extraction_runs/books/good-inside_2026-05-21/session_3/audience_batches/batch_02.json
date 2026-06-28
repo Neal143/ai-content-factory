@@ -1,0 +1,37 @@
+{
+  "batch_index": 2,
+  "batch_password": "2cf83ad6",
+  "total_batches": 6,
+  "items": [
+    {
+      "uid": "uid_chunk_06",
+      "id": "cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai",
+      "semantic_query": "Cha mẹ muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái.",
+      "file_ref": "[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]"
+    },
+    {
+      "uid": "uid_chunk_07",
+      "id": "cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai",
+      "semantic_query": "Cha mẹ muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực.",
+      "file_ref": "[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]"
+    },
+    {
+      "uid": "uid_chunk_08",
+      "id": "cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te",
+      "semantic_query": "Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát.",
+      "file_ref": "[[cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te]]"
+    },
+    {
+      "uid": "uid_chunk_09",
+      "id": "cha-me_pha-vo-su-khang-cu_tre-lam-sai",
+      "semantic_query": "Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó",
+      "file_ref": "[[cha-me_pha-vo-su-khang-cu_tre-lam-sai]]"
+    },
+    {
+      "uid": "uid_chunk_10",
+      "id": "cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho",
+      "semantic_query": "Cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối.",
+      "file_ref": "[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]"
+    }
+  ]
+}

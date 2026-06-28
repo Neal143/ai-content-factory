@@ -1,40 +1,40 @@
 {
-  "password": "849299df",
+  "password": "b5bbd1ba",
   "batch_topics": [
     {
-      "proposed_id": "music_rhythm",
-      "label": "Nhịp điệu âm nhạc",
+      "proposed_id": "p1_four_temperaments",
+      "label": "Bốn nhóm khí chất cơ bản của trẻ",
       "action": "create",
       "resolved_to": "",
-      "reasoning": "Chưa có trong YAML."
+      "reasoning": "Auto create by agent script"
     },
     {
-      "proposed_id": "rainbow_bridge_story",
-      "label": "Câu chuyện Cầu Vồng",
+      "proposed_id": "p1_like_heals_like",
+      "label": "Nguyên tắc Lấy độc trị độc trong giáo dục khí chất",
       "action": "create",
       "resolved_to": "",
-      "reasoning": "Chưa có trong YAML."
+      "reasoning": "Auto create by agent script"
     },
     {
-      "proposed_id": "tell_from_memory",
-      "label": "Kể chuyện từ trí nhớ",
+      "proposed_id": "p1_songs_for_routines",
+      "label": "Sử dụng bài hát để thiết lập thói quen và chuyển tiếp",
       "action": "create",
       "resolved_to": "",
-      "reasoning": "Chưa có trong YAML."
+      "reasoning": "Auto create by agent script"
     },
     {
-      "proposed_id": "fairy_tale_complexity",
-      "label": "Độ phức tạp cổ tích",
+      "proposed_id": "p1_rainbow_bridge_story",
+      "label": "Câu chuyện Cầu Vồng (Rainbow Bridge Story)",
       "action": "create",
       "resolved_to": "",
-      "reasoning": "Chưa có trong YAML."
+      "reasoning": "Auto create by agent script"
     },
     {
-      "proposed_id": "flexible_story_selection",
-      "label": "Chọn truyện linh hoạt",
+      "proposed_id": "p1_fairy_tales_by_age",
+      "label": "Phân loại truyện cổ tích theo độ tuổi",
       "action": "create",
       "resolved_to": "",
-      "reasoning": "Chưa có trong YAML."
+      "reasoning": "Auto create by agent script"
     }
   ]
 }

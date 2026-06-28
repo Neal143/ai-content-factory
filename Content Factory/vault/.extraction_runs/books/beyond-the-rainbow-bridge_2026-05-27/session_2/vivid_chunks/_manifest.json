@@ -1,12 +1,12 @@
 {
   "book_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven",
-  "total_vivids": 35,
+  "total_vivids": 34,
   "total_batches": 3,
   "batch_size": 15,
   "batches": [
     {
       "file": "batch_01.json",
-      "vivid_count": 15,
+      "vivid_count": 14,
       "chunk_count": 5
     },
     {

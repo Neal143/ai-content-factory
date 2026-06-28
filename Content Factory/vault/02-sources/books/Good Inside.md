@@ -2,7 +2,7 @@
 
 **1.1. Tóm tắt META_BOOK:**
 META_BOOK: book_name=Good Inside: A Guide to Becoming the Parent You Want to Be | author=Dr. Becky Kennedy | year=2022 | topics=Parenting, Child Psychology, Connection, Resilience, Emotion Regulation | total_chunks=31
-RESOLVED_BOOK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["gan_ket_an_toan", "phat_trien_tam_ly_tre"] | audience_filename=cha-me_nuoi-day-con-kien-cuong_khi-doi-mat-voi-hanh-vi-kho-khan
+RESOLVED_BOOK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"] | audience_filename=cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan
 
 **1.2. Giới thiệu & Đối tượng vĩ mô (Book Audience)**
 *   **Giới thiệu:** Cuốn sách "Good Inside" giải quyết những bế tắc thường gặp của cha mẹ khi đối diện với các hành vi tiêu cực của trẻ như ăn vạ, không nghe lời, hay đánh anh chị em. Tác giả lập luận rằng thay vì tập trung uốn nắn hành vi bề nổi bằng hình phạt hay phần thưởng, cha mẹ cần nhìn nhận cốt lõi tốt đẹp ("good inside") bên trong mỗi đứa trẻ và chính bản thân mình. Bằng cách kết hợp ranh giới vững chắc với sự thấu cảm, cha mẹ có thể giúp trẻ xây dựng kỹ năng điều chỉnh cảm xúc lâu dài. Cuốn sách tạo ra một sự thay đổi lớn: từ việc kiểm soát hành vi sang việc thấu hiểu và đáp ứng nhu cầu nội tâm của trẻ. Đọc xong cuốn sách, người đọc sẽ nhìn nhận mọi hành vi "xấu" của trẻ như một lăng kính mở ra những khó khăn đang cần được giúp đỡ, từ đó tự tin trở thành một người lãnh đạo vững chãi trong gia đình.
@@ -87,7 +87,7 @@ Giá trị lớn nhất của cuốn sách là giúp các bậc phụ huynh tr�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 2: Part I: Dr. Becky’s Parenting Principles - Chapter 1: Good Inside | CHUNK_index=2
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["trai_nghiem_giac_quan", "nhan_dien_the_gioi_noi_tam", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "khung_hoang_cam_xuc"] | audience_filename=cha-me_nguoi-muon-kiem-soat-nhung-hanh-vi-chong_khi-oi-mat-voi-nhung-con-thinh-no-hoac-l
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_ban_chat_va_hanh_vi", "p1_connection_over_correction", "p1_goc_nhin_bao_dung", "p1_parenting_child_behavior"] | audience_filename=cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no
 
 **① Toàn cảnh & Insight đối tượng**
 
@@ -156,7 +156,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Tầm quan 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 3: Part I: Dr. Becky’s Parenting Principles - Chapter 2: Two Things Are True | CHUNK_index=3
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "trai_nghiem_giac_quan", "gan_ket_an_toan", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-thiet-lap-ranh-gio_khi-tre-phan-khang-tuc-gian-hoac-co-thai
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_thoat_chien_quyen_luc", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_hai_dieu_deu_dung", "p1_parenting_child_behavior"] | audience_filename=cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này trình bày nguyên tắc nền tảng "Hai điều đều đúng" (Two things are true) – khả năng chấp nhận nhiều thực tế, suy nghĩ hoặc cảm xúc đối lập cùng tồn tại song song. Bằng cách áp dụng triết lý này, cha mẹ không cần phải đánh đổi giữa việc giữ kỷ luật cứng rắn và thể hiện sự ấm áp. Nó cung cấp các hướng dẫn thực tế để thoát khỏi các cuộc chiến quyền lực, xử lý sự thô lỗ của trẻ và tự xoa dịu cảm giác tội lỗi của chính cha mẹ trong quá trình nuôi dạy con.
@@ -219,7 +219,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bàn về m
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 4: Part I: Dr. Becky’s Parenting Principles - Chapter 3: Know Your Job | CHUNK_index=4
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "khung_hoang_cam_xuc", "gan_ket_an_toan", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-duy-tri-ranh-gioi-_khi-con-cai-phan-khang-va-bung-no-cam-xu
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_connection_over_correction", "p1_ranh_gioi_thau_cam", "p1_vai_tro_gia_dinh", "p1_parenting_child_behavior"] | audience_filename=cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này giải thích tầm quan trọng tối thượng của việc xác định rõ vai trò và trách nhiệm trong hệ thống gia đình. Công việc của cha mẹ là thiết lập sự an toàn thể chất và tâm lý thông qua các ranh giới, sự thấu cảm và xác thực cảm xúc. Trong khi đó, công việc của trẻ là khám phá và học hỏi thông qua việc trải nghiệm và thể hiện cảm xúc. Việc cha mẹ thấu hiểu cặn kẽ "bản mô tả công việc" này sẽ giúp họ tránh bị cuốn vào vòng xoáy đổ lỗi cho bản thân hay con cái, từ đó giữ được sự vững vàng ngay cả khi trẻ bùng nổ dữ dội nhất.
@@ -289,7 +289,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky | context=Thay đổi góc nh
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 5: Part I: Dr. Becky’s Parenting Principles - Chapter 4: The Early Years Matter | CHUNK_index=5
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_qua_the_chat", "nao_bo_tre_em", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "ung_pho_ky_uc_buon"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-xay-dung-nen-tang-_khi-ang-cam-thay-kiet-suc-va-hoai-nghi-v
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_mo_hinh_noi_tam", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_parenting_child_behavior", "p1_ky_uc_co_the"] | audience_filename=cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 4 giải đáp băn khoăn của nhiều cha mẹ về việc liệu những vất vả trong việc nuôi dạy trẻ nhỏ có thực sự đáng giá khi trẻ không có ký ức rõ ràng về giai đoạn này. Tác giả khẳng định rằng những năm đầu đời mang tính quyết định, bởi trẻ em ghi nhớ mọi tương tác bằng chính cơ thể và hệ thần kinh của mình. Thông qua cơ chế "mô hình hoạt động nội tâm", những trải nghiệm sớm định hình kỳ vọng của trẻ về thế giới, cách chúng đối mặt với cảm xúc và cảm nhận về bản thân trong suốt cuộc đời. Đồng thời, tiến sĩ Becky cũng trấn an các phụ huynh đang mang cảm giác tội lỗi rằng não bộ con người luôn có khả năng thay đổi và tái thiết lập, nên không bao giờ là quá muộn để bắt đầu sửa chữa.
@@ -353,7 +353,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Lờ
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 6: Part I: Dr. Becky’s Parenting Principles - Chapter 5: It’s Not Too Late | CHUNK_index=6
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "ung_pho_ky_uc_buon", "gan_ket_an_toan", "nao_bo_tre_em"] | audience_filename=cha-me_nguoi-muon-han-gan-ton-thuong-va-sua-chu_khi-nhan-ra-ban-than-a-co-nhung-phan-ung
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_connection_over_correction", "p1_tinh_deo_dai_nao_bo", "p1_ky_nang_sua_chua", "p1_parenting_child_behavior"] | audience_filename=cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này đập tan nỗi sợ "đã quá muộn" của các bậc cha mẹ khi lỡ mắc sai lầm hoặc có những hành xử tồi tệ với con cái trong quá khứ. Dựa trên cơ sở khoa học về tính dẻo dai của thần kinh (neuroplasticity), tác giả khẳng định não bộ luôn có khả năng học lại và tái tạo. Do đó, việc áp dụng kỹ năng "Sửa chữa" (Repair) để viết lại cái kết cho những tổn thương cũ là công cụ mạnh mẽ nhất giúp cha mẹ hàn gắn kết nối, bất kể con ở độ tuổi nào.
@@ -410,7 +410,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Khuy
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 7: Part I: Dr. Becky’s Parenting Principles - Chapter 6: Resilience > Happiness | CHUNK_index=7
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_cam_xuc", "ky_nang_giai_quyet_xung_dot", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "kich_hoat_nao_tang_tren"] | audience_filename=cha-me_nguoi-muon-trang-bi-nang-luc-oi-mat-voi-_khi-tre-gap-that-bai-hoac-boc-lo-nhung-c
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_kien_cuong_hon_hanh_phuc", "p1_sturdy_leadership", "p1_ho_tro_thay_giai_quyet", "p1_connection_over_correction", "p1_parenting_child_behavior"] | audience_filename=cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này thách thức mục tiêu nuôi dạy con phổ biến nhất: "Tôi chỉ muốn con mình được hạnh phúc". Tác giả Dr. Becky lập luận rằng việc lấy hạnh phúc làm thước đo tối thượng thường khiến cha mẹ cuống cuồng tìm cách "giải cứu" con khỏi sự khó chịu, qua đó vô tình tước đi cơ hội rèn luyện khả năng đối phó với khó khăn của trẻ. Thay vì tập trung vào hạnh phúc nhất thời, cha mẹ nên ưu tiên xây dựng sự kiên cường (resilience) – năng lực dung nạp sự thất vọng, quản lý cảm xúc và vượt qua nghịch cảnh – vì đây mới là con đường bền vững nhất dẫn đến một cuộc đời hạnh phúc thực sự.
@@ -464,7 +464,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Đúc kết
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 8: Part I: Dr. Becky’s Parenting Principles - Chapter 7: Behavior Is a Window | CHUNK_index=8
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "ket_noi_truoc_khi_dieu_huong", "kich_hoat_nao_tang_tren"] | audience_filename=cha-me_cha-me-muon-thau-hieu-nguyen-nhan-goc-re_khi-tre-lien-tuc-co-nhung-hanh-vi-toi-te
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_hanh_vi_la_cua_so", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_von_ket_noi", "p1_parenting_child_behavior"] | audience_filename=cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này vạch trần sai lầm của phương pháp giáo dục "ưu tiên hành vi" (behavior-first), nơi cha mẹ dùng thưởng phạt để dập tắt hành vi xấu bề mặt. Tác giả khẳng định hành vi (dù tồi tệ đến đâu) chỉ là một "ô cửa sổ" phản chiếu những cảm xúc, suy nghĩ và nhu cầu chưa được đáp ứng bên trong của trẻ. Bằng cách sử dụng "Diễn dịch rộng lượng nhất" (MGI) và tập trung xây dựng "Vốn kết nối" (Connection Capital), cha mẹ có thể giải quyết tận gốc nguyên nhân gây ra hành vi, giúp trẻ phát triển kỹ năng tự điều chỉnh cảm xúc và xây dựng mối quan hệ bền chặt thay vì chỉ tạo ra sự tuân thủ tạm thời.
@@ -540,7 +540,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bình luậ
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 9: Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection | CHUNK_index=9
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "khung_hoang_cam_xuc", "gan_ket_an_toan", "ngon_ngu_som"] | audience_filename=cha-me_nguoi-muon-pha-vo-su-khang-cu-buong-binh_khi-tre-vua-lam-sai-mot-viec-gi-o
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_pha-vo-su-khang-cu_tre-lam-sai
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này đi sâu vào khái niệm "sự xấu hổ" (shame) ở trẻ em, thứ cảm xúc tồi tệ thường ẩn nấp đằng sau các hành vi bướng bỉnh, xa lánh, từ chối xin lỗi hay nói dối. Tác giả giải thích sự xấu hổ là một cơ chế thích nghi tiến hóa nhằm bảo vệ trẻ khỏi nguy cơ bị bỏ rơi, nhưng lại khiến trẻ bị "đóng băng" cảm xúc và hành vi. Nhiệm vụ cốt lõi của cha mẹ trong những tình huống này không phải là kỷ luật, mà là nhận diện và giảm thiểu sự xấu hổ thông qua sự kết nối để khôi phục cảm giác an toàn cho trẻ.
@@ -611,7 +611,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Sự khác 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 10: Part I: Dr. Becky’s Parenting Principles - Chapter 9: Tell the Truth | CHUNK_index=10
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "ung_pho_ky_uc_buon", "ngon_ngu_som"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-giai-thich-nhung-v_khi-con-cai-at-cau-hoi-kho-hoac-chung-ki
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_connection_over_correction", "p1_truyen_dat_su_that", "p1_xac_nhan_nhan_thuc", "p1_parenting_child_behavior"] | audience_filename=cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho
 
 **① Toàn cảnh & Insight đối tượng**
 * **Tóm tắt Chunk:** Chương 9 nhấn mạnh tầm quan trọng của việc nói sự thật với trẻ, ngay cả trong những tình huống khó chịu, nhạy cảm hay đau buồn. Tác giả chỉ ra rằng việc che giấu sự thật chỉ khiến trẻ phải tự mình đối mặt với những cảm xúc lo âu, sợ hãi. Đồng thời, chương cung cấp các chiến lược thực tế để cha mẹ giao tiếp trung thực: xác nhận nhận thức của trẻ, tôn trọng các câu hỏi khó, dũng cảm thừa nhận những điều mình không biết và cách thức truyền đạt những tin tức tồi tệ.
@@ -676,7 +676,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Lời khuy�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 11: Part I: Dr. Becky’s Parenting Principles - Chapter 10: Self-Care | CHUNK_index=11
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_qua_the_chat", "trai_nghiem_giac_quan", "dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan"] | audience_filename=cha-me_nguoi-muon-phuc-hoi-suc-khoe-tinh-than-v_khi-ang-ganh-vac-trach-nhiem-nuoi-day-co
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_chien_luoc_tu_cham_soc", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_lanh_dao_vung_vang", "p1_parenting_child_behavior"] | audience_filename=cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 10 tái định nghĩa khái niệm chăm sóc bản thân (self-care) đối với các bậc cha mẹ, phản bác lầm tưởng rằng nuôi con đồng nghĩa với sự hy sinh cái tôi một cách tuyệt đối (selfless parenting). Dr. Becky khẳng định việc cha mẹ từ bỏ hoàn toàn nhu cầu cá nhân không chỉ vắt kiệt sức lực của họ mà còn khiến trẻ cảm thấy lo âu vì thiếu đi một người lãnh đạo vững vàng. Từ đó, tác giả cung cấp các chiến lược thực hành nhỏ gọn giúp cha mẹ ưu tiên nhu cầu bản thân, quản lý cảm giác tội lỗi và tự hàn gắn với chính mình.
@@ -735,7 +735,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Giải thí
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 12: Part II: Building Connection and Addressing Behaviors - Chapter 11: Building Connection Capital | CHUNK_index=12
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "khung_hoang_cam_xuc", "gan_ket_an_toan", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_nguoi-muon-tai-lap-su-gan-ket-va-loai-bo_khi-ang-mac-ket-trong-vong-lap-la-mang-v
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 11 giới thiệu một khái niệm nền tảng trong phương pháp kỷ luật không nước mắt: "Vốn kết nối" (Connection Capital) – được ví như một tài khoản ngân hàng cảm xúc của trẻ. Tác giả giải thích rằng mọi hành vi tồi tệ của trẻ thực chất đều là triệu chứng của việc thiếu hụt sự gắn kết hoặc trẻ đang phải đơn độc chống chọi với một nhu cầu chưa được đáp ứng. Thay vì cố gắng uốn nắn hành vi ngay trong những lúc căng thẳng, cha mẹ cần tích cực "nạp vốn" kết nối vào những thời điểm bình tĩnh để xây dựng sự hợp tác tự nguyện từ bên trong.
@@ -800,7 +800,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Chỉ ra c�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 13: Part II: Building Connection and Addressing Behaviors - Chapter 12: Not Listening | CHUNK_index=13
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "trai_nghiem_giac_quan", "gan_ket_an_toan", "ket_noi_truoc_khi_dieu_huong"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-con-cai-hop-tac-th_khi-tre-ang-phot-lo-loi-noi-cua-ho
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_connection_over_correction", "p1_su_tu_choi_hop_tac", "p1_parenting_child_behavior", "p1_ket_noi_truoc_yeu_cau"] | audience_filename=cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này định nghĩa lại bản chất của việc trẻ "không lắng nghe" thực chất là sự "không hợp tác" khi bị yêu cầu làm những điều chúng không muốn hoặc bị buộc phải dừng việc chúng đang thích. Tác giả nhấn mạnh rằng việc la mắng không tạo ra sự hợp tác mà chỉ đẩy trẻ vào trạng thái phòng thủ. Để giải quyết, cha mẹ cần xem đây là vấn đề của mối quan hệ và áp dụng chiến lược "Kết nối trước khi yêu cầu" nhằm tạo sự thấu hiểu và tự nguyện hợp tác từ trẻ.
@@ -865,7 +865,7 @@ META_QUOTE: content_type=quote | speaker=Con trai lớn của Dr. Becky | contex
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 14: Part II: Building Connection and Addressing Behaviors - Chapter 13: Emotional Tantrums | CHUNK_index=14
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "khung_hoang_cam_xuc", "gan_ket_an_toan", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-giup-con-xay-dung-_khi-tre-bung-no-an-va-do-nhung-mong-muon
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 13 giải mã các cơn ăn vạ cảm xúc ở trẻ (không bao gồm bạo lực thể chất), khẳng định đây là trạng thái mất điều chỉnh sinh lý bình thường chứ không phải hành vi chống đối [1, 2]. Thay vì cố gắng dập tắt cơn ăn vạ, cha mẹ cần giữ bình tĩnh, giữ an toàn và kết nối với con thông qua 4 chiến lược: Tự nhắc nhở bản thân, "Hai điều đều đúng", Gọi tên mong muốn, và Xác nhận mức độ to lớn của cảm xúc [2-6].
 *   **🎯 Đối tượng Chunk này:** 
@@ -923,7 +923,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Giải thích b
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 15: Part II: Building Connection and Addressing Behaviors - Chapter 14: Aggressive Tantrums (Hitting, Biting, Throwing) | CHUNK_index=15
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_qua_the_chat", "dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "khung_hoang_cam_xuc"] | audience_filename=cha-me_nguoi-muon-ngan-chan-va-kiem-soat-hanh-v_khi-tre-ang-trong-con-khung-hoang-mat-bi
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_co_lap_dam_chay", "p1_ban_chat_cua_khung_hoang", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_parenting_child_behavior"] | audience_filename=cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 14 phân tích nguyên nhân sâu xa đằng sau các cơn khủng hoảng bạo lực (đánh, cắn, ném) của trẻ: đó không phải là hành động cố tình chống đối mà là dấu hiệu trẻ đang bị quá tải và hoảng loạn trước những cảm xúc bùng nổ trong cơ thể. Tác giả cung cấp các chiến lược cụ thể như "Mẹ sẽ không để con...", "Phân biệt thôi thúc và hành động", "Cô lập đám cháy" và "Kể lại câu chuyện" để giúp cha mẹ giữ được sự vững chãi, khống chế hành vi nguy hiểm và bảo vệ trẻ.
@@ -1017,7 +1017,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Giải thí
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 16: Part II: Building Connection and Addressing Behaviors - Chapter 15: Sibling Rivalry | CHUNK_index=16
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "dieu_hoa_cam_xuc", "ky_nang_giai_quyet_xung_dot"] | audience_filename=cha-me_nguoi-muon-giam-bot-xung-ot-va-xay-dung-_khi-chung-tranh-cai-anh-nhau-hoac-ghen-t
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_dap_ung_nhu_cau_rieng", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_su_an_toan_gan_bo", "p1_parenting_child_behavior"] | audience_filename=cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 15 lý giải nguyên nhân cốt lõi của sự ganh tị và mâu thuẫn giữa anh chị em dưới góc độ thuyết gắn bó (attachment) và sự ảnh hưởng của thứ tự sinh. Tác giả Dr. Becky phá bỏ định kiến "phân xử đúng sai/công bằng" của phụ huynh, từ đó đưa ra bộ chiến lược thực chiến gồm: tăng cường kết nối cá nhân (PNP), đáp ứng theo nhu cầu thay vì sự cào bằng, cho phép xả cảm xúc tiêu cực an toàn và các bước can thiệp tùy theo mức độ nguy hiểm của tình huống.
@@ -1087,7 +1087,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bản chấ
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 17: Part II: Building Connection and Addressing Behaviors - Chapter 16: Rudeness and Defiance | CHUNK_index=17
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "ket_noi_truoc_khi_dieu_huong", "khung_hoang_cam_xuc"] | audience_filename=cha-me_nguoi-muon-phan-hoi-lai-thai-o-chong-oi-_khi-con-la-het-cai-loi-hoac-buong-nhung-
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 16 đi sâu vào một trong những hành vi khiến cha mẹ dễ "sôi máu" nhất: sự thô lỗ, hỗn hào và chống đối (nói trống không, cãi lại, thốt ra những lời thù hằn). Tác giả phân tích hành vi này dưới hai lăng kính: "sự thiếu tôn trọng" (lăng kính sai lầm phổ biến) và "sự rối loạn cảm xúc" (lăng kính thấu cảm). Thay vì rơi vào vòng lặp trừng phạt và phản ứng gay gắt, cha mẹ được hướng dẫn cách lùi lại, tách biệt sự non nớt trong kỹ năng quản lý cảm xúc của trẻ khỏi thái độ thô lỗ bề mặt, từ đó thiết lập ranh giới vững chắc nhưng vẫn giữ được sự kết nối.
@@ -1155,7 +1155,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Lý 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 18: Part II: Building Connection and Addressing Behaviors - Chapter 17: Whining | CHUNK_index=18
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "dieu_hoa_cam_xuc", "ngon_ngu_som"] | audience_filename=cha-me_nguoi-muon-dap-tat-tieng-ren-ri-oi-hoi-c_khi-cam-thay-mat-kien-nhan-va-cang-thang
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_hai_huoc_de_ket_noi", "p1_cong_thuc_ren_ri", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_parenting_child_behavior"] | audience_filename=cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang
 
 ① Toàn cảnh & Insight đối tượng
 - Tóm tắt Chunk: Chương 17 giải mã nguyên nhân gốc rễ của tiếng rên rỉ (whining) ở trẻ, khẳng định đây không phải là sự vô ơn mà là biểu hiện của sự bất lực, mong muốn kết nối hoặc cần giải tỏa cảm xúc. Tác giả lý giải tại sao tiếng rên rỉ lại dễ khiến cha mẹ "nổi điên" bằng cách liên kết điều này với việc sự yếu đuối không được chấp nhận trong tuổi thơ của chính cha mẹ. Cuối cùng, chương đưa ra các chiến lược thực tế như dùng sự hài hước, tự nói lại yêu cầu để giúp trẻ vượt qua trạng thái này mà không cần dùng đến hình phạt hay rơi vào cuộc chiến quyền lực.
@@ -1226,7 +1226,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Phân biệ
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 19: Part II: Building Connection and Addressing Behaviors - Chapter 18: Lying | CHUNK_index=19
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "ket_noi_truoc_khi_dieu_huong", "ngon_ngu_som"] | audience_filename=cha-me_phu-huynh-muon-khuyen-khich-con-cai-noi-_khi-phat-hien-tre-co-hanh-vi-che-giau-ho
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_dinh_hinh_mong_uoc", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_co_che_tu_ve", "p1_parenting_child_behavior"] | audience_filename=cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này giải mã nguyên nhân sâu xa khiến trẻ nói dối, vốn không phải do chúng thao túng hay chống đối, mà xuất phát từ bản năng tự vệ để bảo vệ sự gắn kết với cha mẹ, thể hiện sự độc lập hoặc mong ước thay đổi một thực tại tồi tệ. Thay vì ép trẻ nhận lỗi ngay lập tức bằng sự đe dọa hay hình phạt, tác giả đề xuất việc thấu hiểu những cảm xúc đằng sau lời nói dối để tạo ra môi trường an toàn. Mục tiêu cốt lõi không phải là ép buộc một lời thú tội tức thời, mà là xây dựng nền tảng để trẻ dám nói thật trong tương lai.
 *   **🎯 Đối tượng Chunk này:** 
@@ -1289,7 +1289,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Giải thí
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 20: Part II: Building Connection and Addressing Behaviors - Chapter 19: Fears and Anxiety | CHUNK_index=20
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_qua_the_chat", "dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "kich_hoat_nao_tang_tren"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-giup-con-kiem-soat_khi-con-hoang-loan-truoc-mot-tinh-huong-
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_nhay_xuong_ho_cung_con", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_dien_tap_truoc", "p1_parenting_child_behavior"] | audience_filename=cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 19 giải thích bản chất của nỗi sợ và sự lo âu ở trẻ nhỏ như một phản ứng sinh lý cảnh báo mối đe dọa (cảm giác "Tôi đang gặp nguy hiểm"). Tác giả vạch trần sai lầm phổ biến của cha mẹ khi dùng logic để thuyết phục trẻ ngừng sợ hãi, điều này không những vô tác dụng mà còn khiến trẻ thêm hoảng loạn và sinh ra "sự lo âu về chính sự lo âu". Thay vì cố gắng thay đổi cảm xúc của con, cha mẹ cần hiện diện, đồng hành và giúp trẻ tăng cường khả năng chịu đựng sự không thoải mái thông qua các chiến lược như "Nhảy xuống hố cùng con", "Diễn tập trước" và một kịch bản 6 bước xử lý nỗi sợ.
 *   **🎯 Đối tượng Chunk này:**
@@ -1362,7 +1362,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Bàn về việ
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 21: Part II: Building Connection and Addressing Behaviors - Chapter 20: Hesitation and Shyness | CHUNK_index=21
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "dieu_hoa_cam_xuc", "ke_chuyen"] | audience_filename=cha-me_nguoi-muon-giup-con-cai-xu-ly-su-nhut-nh_khi-chung-ngap-ngung-tron-tranh-trong-ca
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_su_tu_tin_dich_thuc", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_cong_nhan_su_san_sang", "p1_parenting_child_behavior"] | audience_filename=cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này tập trung vào sự do dự và nhút nhát của trẻ, khẳng định đây không phải là vấn đề cần sửa chữa. Thay vì thúc ép trẻ tham gia vào đám đông, cha mẹ cần quản lý sự lo âu của chính mình, công nhận cảm xúc của trẻ và trao quyền tự chủ. Khi trẻ cảm thấy an toàn và được lắng nghe, chúng sẽ tự biết khi nào mình thực sự sẵn sàng để bước ra ngoài.
@@ -1435,7 +1435,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Định ngh
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 22: Part II: Building Connection and Addressing Behaviors - Chapter 21: Frustration Intolerance | CHUNK_index=22
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "dieu_hoa_qua_the_chat", "gan_ket_an_toan", "kich_hoat_nao_tang_tren"] | audience_filename=cha-me_nguoi-muon-giup-con-phat-trien-kha-nang-_khi-con-de-dang-bo-cuoc-hoac-noi-cau-tru
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_su_bao_dung_cha_me", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_tu_duy_phat_trien", "p1_parenting_child_behavior"] | audience_filename=cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 21 giải quyết vấn đề trẻ thiếu khả năng chịu đựng sự thất vọng (frustration intolerance). Tác giả nhấn mạnh rằng để trẻ có thể kiên cường trước khó khăn, cha mẹ trước tiên phải học cách bao dung với sự thất vọng của chính con mình. Thông qua các chiến lược như làm mẫu hít thở sâu, thay đổi góc nhìn về sự bực bội, tập trung vào nỗ lực thay vì thành công và diễn tập trước, cha mẹ có thể giúp trẻ xây dựng "tư duy phát triển" để dũng cảm đối mặt với thử thách.
@@ -1499,7 +1499,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Lời khuyên c
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 23: Part II: Building Connection and Addressing Behaviors - Chapter 22: Food and Eating Habits | CHUNK_index=23
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "niem_vui_gia_dinh", "tu_xoa_diu_lo_au"] | audience_filename=cha-me_nguoi-muon-thiet-lap-ranh-gioi-va-thoi-q_khi-tre-co-bieu-hien-ken-an-oi-o-an-vat-
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_phan_chia_trach_nhiem", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_giam_thieu_lo_au", "p1_parenting_child_behavior"] | audience_filename=cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an
 
 **① Toàn cảnh & Insight đối tượng**
 - **Tóm tắt Chunk:** Chương 22 giải quyết những căng thẳng của cha mẹ xung quanh thói quen ăn uống của trẻ. Tác giả chỉ ra rằng ăn uống liên kết sâu sắc với sự bất an về vai trò làm cha mẹ và mong muốn khẳng định quyền tự quyết của trẻ. Thông qua mô hình "Phân chia trách nhiệm" của Ellyn Satter, tác giả cung cấp các chiến lược cụ thể về bữa ăn chính, đồ ăn vặt và món tráng miệng để giúp cha mẹ buông bỏ quyền kiểm soát và thiết lập ranh giới lành mạnh.
@@ -1556,7 +1556,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | context=Khi định hình 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 24: Part II: Building Connection and Addressing Behaviors - Chapter 23: Consent | CHUNK_index=24
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_qua_the_chat", "trai_nghiem_giac_quan", "dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-day-con-cach-thiet_khi-oi-mat-voi-ap-luc-phai-lam-hai-long-
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_connection_over_correction", "p1_chien_luoc_me_tin_con", "p1_quyen_tu_quyet_co_the", "p1_parenting_child_behavior"] | audience_filename=cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 23 định nghĩa lại khái niệm về sự đồng thuận (consent) ở trẻ em, mở rộng ra ngoài các tương tác vật lý để bao hàm toàn bộ quyền tự quyết đối với các tín hiệu của cơ thể (như cảm giác đói, no, sợ hãi, hay lạnh). Tác giả chỉ ra rằng khi cha mẹ ép trẻ làm hài lòng người khác (như ép trẻ phải ôm người thân dẫu trẻ không muốn), họ đang vô tình vô hiệu hóa trực giác của trẻ, gieo rắc sự hoài nghi vào bản thân chúng. Thay vào đó, việc tin tưởng và xác nhận cảm giác của trẻ sẽ xây dựng "mạch đồng thuận", giúp trẻ tự tin thiết lập ranh giới cá nhân và phân định rõ trách nhiệm đối với cảm xúc của người khác.
@@ -1627,7 +1627,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Câu nói cốt
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 25: Part II: Building Connection and Addressing Behaviors - Chapter 24: Tears | CHUNK_index=25
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "dieu_hoa_qua_the_chat", "gan_ket_an_toan", "ngon_ngu_som"] | audience_filename=cha-me_nguoi-lam-cha-me-muon-giai-ma-nguyen-nha_khi-tre-bat-ngo-roi-nuoc-mat-hoac-co-bie
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_tin_hieu_cua_gan_ket", "p1_binh_thuong_hoa_nuoc_mat", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_parenting_child_behavior"] | audience_filename=cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này khám phá ý nghĩa thực sự của những giọt nước mắt ở trẻ nhỏ, bác bỏ khái niệm "nước mắt giả tạo" (fake tears) và coi đó là tín hiệu tự nhiên của hệ thống gắn kết. Tác giả hướng dẫn cha mẹ cách phản ứng với nước mắt bằng sự tôn trọng và thấu cảm, thay vì bị kích hoạt bởi những định kiến từ thời thơ ấu. Đồng thời, đưa ra các chiến lược trò chuyện để giúp trẻ giải phóng sự xấu hổ và thấu hiểu thông điệp từ cơ thể mình.
@@ -1689,7 +1689,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Khi giải thí
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 26: Part II: Building Connection and Addressing Behaviors - Chapter 25: Building Confidence | CHUNK_index=26
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "nhan_dien_the_gioi_noi_tam", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_nguoi-cha-me-muon-xay-dung-su-tu-tin-thu_khi-tre-cam-thay-that-vong-tu-ti-hoac-ng
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương 25 định nghĩa lại sự tự tin không phải là việc luôn cảm thấy "tốt", mà là khả năng tin tưởng vào cảm xúc của chính mình và cảm thấy thoải mái với bản thân trong bất kỳ trạng thái cảm xúc nào. Tác giả chỉ ra sai lầm khi dùng lời khen ngợi (external validation) để bơm sự tự tin, từ đó hướng dẫn cha mẹ cách xây dựng sự vững vàng nội tâm (internal validation) cho trẻ thông qua việc công nhận cảm xúc và tập trung vào quá trình thay vì kết quả.
@@ -1753,7 +1753,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bàn về s
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 27: Part II: Building Connection and Addressing Behaviors - Chapter 26: Perfectionism | CHUNK_index=27
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "tu_duy_logic_cho_tre", "kich_hoat_nao_tang_tren"] | audience_filename=cha-me_cha-me-muon-giup-con-vuot-qua-su-so-hai_khi-mac-sai-lam-khi-con-the-hien-thai-o-
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_lam_mau_sai_lam", "p1_sturdy_leadership", "p1_connection_over_correction", "p1_su_chat_vat_cam_xuc", "p1_parenting_child_behavior"] | audience_filename=cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan
 
 **① Toàn cảnh & Insight đối tượng**
 * **Tóm tắt Chunk:** Chương 26 lý giải rằng chủ nghĩa hoàn hảo ở trẻ không phải là vấn đề về tư duy sai lệch mà thực chất là sự chật vật trong việc điều chỉnh cảm xúc. Trẻ theo chủ nghĩa hoàn hảo thường có cái tôi mong manh, tư duy cứng nhắc và luôn đánh đồng hành vi với bản sắc (làm sai tức là bản thân kém cỏi). Mục tiêu của cha mẹ không phải là "tiêu diệt" chủ nghĩa hoàn hảo, mà là giúp trẻ mở rộng khả năng chấp nhận sự không hoàn hảo ("sống trong vùng xám") và tách biệt giá trị bản thân khỏi thành tích thông qua các chiến lược cụ thể như làm mẫu sai lầm, gọi tên cảm xúc và chơi đóng vai.
@@ -1820,7 +1820,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Lý giải 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 28: Part II: Building Connection and Addressing Behaviors - Chapter 27: Separation Anxiety | CHUNK_index=28
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "khung_hoang_cam_xuc", "gan_ket_an_toan", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_nguoi-muon-giup-con-tach-roi-khoi-cha-me_khi-tre-khoc-loc-bam-viu-luc-i-hoc-hoac-
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_tach-roi-binh-an_tre-bam-me
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này phân tích cội rễ của hội chứng lo âu chia ly ở trẻ nhỏ (như khi đi học mầm non, cha mẹ đi làm, hoặc thậm chí là khi đi ngủ). Tác giả lý giải rằng hành vi bám víu và khóc lóc hoàn toàn bắt nguồn từ hệ thống gắn bó, khi trẻ liên kết sự hiện diện của cha mẹ với sự an toàn tuyệt đối. Để giải quyết, thay vì lén lút rời đi hay phủ nhận cảm xúc, cha mẹ cần giúp trẻ "nội tâm hóa" sự an toàn, mang hình bóng của cha mẹ vào tâm trí trẻ thông qua các vật thể chuyển tiếp, thiết lập thói quen chia ly và kiểm soát chính sự lo âu của người lớn.
@@ -1882,7 +1882,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Gi�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 29: Part II: Building Connection and Addressing Behaviors - Chapter 28: Sleep | CHUNK_index=29
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "trai_nghiem_giac_quan", "gan_ket_an_toan", "khung_hoang_cam_xuc"] | audience_filename=cha-me_nguoi-muon-giup-con-tu-i-vao-giac-ngu-va_khi-tre-lien-tuc-quay-khoc-chong-oi-va-o
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Vấn đề rối loạn giấc ngủ và phản kháng giờ đi ngủ của trẻ thực chất không phải là vấn đề về hành vi, mà là những cuộc đấu tranh nội tâm về sự chia ly [1]. Thay vì áp dụng các biện pháp kỷ luật cứng nhắc hay để trẻ "tự khóc cho đến khi ngủ", cha mẹ cần hiểu rằng ban đêm là thời điểm trẻ cảm thấy cô đơn và bất an nhất [1]. Để giải quyết tận gốc, cha mẹ cần giúp con xây dựng cảm giác an toàn và các kỹ năng đối phó ngay từ ban ngày, sau đó khéo léo truyền tải sự hiện diện của mình vào không gian ngủ của trẻ [2, 3].
@@ -1953,7 +1953,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Gi�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 30: Part II: Building Connection and Addressing Behaviors - Chapter 29: Kids Who Don’t Like Talking About Feelings (Deeply Feeling Kids) | CHUNK_index=30
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["dieu_hoa_cam_xuc", "phat_trien_tam_ly_tre", "gan_ket_an_toan", "ky_nang_sift", "khung_hoang_cam_xuc"] | audience_filename=cha-me_nguoi-muon-xoa-diu-va-ieu-chinh-cam-xuc-_khi-tre-bung-no-du-doi-va-cu-tuyet-su-gi
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_connection_over_correction", "p1_sturdy_leadership", "p1_parenting_child_behavior"] | audience_filename=cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này định nghĩa và giải thích về "Deeply Feeling Kids" (DFK - Những đứa trẻ cảm nhận sâu sắc), những em bé phản ứng mãnh liệt hơn, dễ bùng nổ và đặc biệt nhạy cảm với sự xấu hổ. Khi bị can thiệp, các bé thường phản ứng chống đối mạnh mẽ vì sợ hãi cảm xúc của chính mình sẽ đẩy người khác ra xa. Tác giả cung cấp các chiến lược chuyên biệt như ưu tiên sự chứa đựng (containment), hiện diện im lặng, và trò chơi giơ ngón tay cái để giúp cha mẹ hỗ trợ DFK mà không làm bé hoảng loạn thêm.
@@ -2015,7 +2015,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Nhắc nh�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 31: Conclusion | CHUNK_index=31
-RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["phat_trien_tam_ly_tre", "tu_duy_logic_cho_tre", "gan_ket_an_toan", "ke_chuyen"] | audience_filename=cha-me_nguoi-muon-thau-hieu-ban-chat-su-thay-oi_khi-chiem-nghiem-lai-y-nghia-cua-tuoi-th
+RESOLVED_CHUNK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_sturdy_leadership", "p1_connection_over_correction", "p1_ba_tru_cot_thay_doi", "p1_parenting_child_behavior", "p1_tre_em_nha_tham_hiem"] | audience_filename=cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho
 
 **① Toàn cảnh & Insight đối tượng**
 * **Tóm tắt Chunk:** Phần kết luận đúc kết lại những cơ chế nền tảng tạo nên khả năng thay đổi vô hạn của loài người [1]. Tác giả khẳng định sự phát triển của trẻ em được xây dựng dựa trên ba trụ cột đan xen chặt chẽ là sự học hỏi (sự thật), tư duy phản thực tế (trí tưởng tượng) và sự chăm sóc (tình yêu thương) [1]. Đồng thời, sách tôn vinh trẻ em chính là những "nhà thám hiểm" tiên phong mở ra mọi không gian khả năng của tương lai [2].

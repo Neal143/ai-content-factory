@@ -1,0 +1,46 @@
+{
+  "password": "10c9fd4f",
+  "anchors": [
+    {
+      "id": "p1_trusting_bodily_signals",
+      "label": "Chiến lược \"Mẹ tin con\"",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_tears_as_attachment_signal",
+      "label": "Nước mắt là tín hiệu gắn kết",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_normalize_crying",
+      "label": "Bình thường hóa việc khóc",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_perfectionism_nature",
+      "label": "Bản chất của Chủ nghĩa hoàn hảo",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_reframe_perfectionism",
+      "label": "Định hướng lại Chủ nghĩa hoàn hảo",
+      "pillar": "pillar_1"
+    }
+  ],
+  "batch_topics": [
+    {
+      "proposed_id": "p1_three_pillars_of_change",
+      "label": "Ba trụ cột của sự thay đổi",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Khái niệm hoàn toàn mới và độc lập so với các anchors hiện tại."
+    },
+    {
+      "proposed_id": "p1_children_as_explorers",
+      "label": "Trẻ em là những nhà thám hiểm tương lai",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Khái niệm hoàn toàn mới và độc lập so với các anchors hiện tại."
+    }
+  ]
+}

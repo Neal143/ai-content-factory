@@ -1,289 +1,264 @@
 {
   "pending": [],
   "resolved": {
-    "early_childhood_development": "early_childhood_development",
-    "waldorf_rhythm": "waldorf_rhythm",
-    "household_rhythm": "waldorf_rhythm",
-    "play_evolution": "play_evolution",
-    "environmental_absorption": "environmental_absorption",
-    "media_impact_on_children": "media_impact_on_children",
-    "unfiltered_absorption": "environmental_absorption",
-    "language_imitation": "environmental_absorption",
-    "warmth_importance": "warmth_importance",
-    "fever_role": "fever_role",
-    "external_rhythm": "external_rhythm",
-    "breathing_model": "breathing_model",
-    "free_play": "free_play",
-    "archetypal_toys": "archetypal_toys",
-    "simple_toys": "archetypal_toys",
-    "repetitive_play": "repetitive_play",
-    "open_ended_toys": "archetypal_toys",
-    "clean_up_play": "clean_up_play",
-    "little_puberty": "little_puberty",
-    "screen_time_harm": "screen_time_harm",
-    "toys_and_imagination": "archetypal_toys",
-    "play_as_learning": "play_as_learning",
-    "will_senses": "will_senses",
-    "baby_walker_harm": "baby_walker_harm",
-    "feeling_senses": "feeling_senses",
-    "color_therapy": "color_therapy",
-    "cognitive_senses": "cognitive_senses",
-    "machine_noise_harm": "machine_noise_harm",
-    "imitation_nature": "imitation_nature",
-    "self_education_discipline": "self_education_discipline",
-    "reduce_no": "reduce_no",
-    "energy_redirection": "energy_redirection",
-    "use_may": "use_may",
-    "illusion_of_choice": "illusion_of_choice",
-    "rhythm_discipline": "rhythm_discipline",
-    "rhythm_balance": "rhythm_discipline",
-    "healing_action": "healing_action",
-    "violence_myth": "violence_myth",
-    "consequent_action": "consequent_action",
-    "healing_conflict": "healing_conflict",
-    "positivity_discipline": "positivity_discipline",
-    "tired_child_care": "tired_child_care",
-    "spiritual_discipline": "spiritual_discipline",
-    "sleep_life_connection": "spiritual_discipline",
-    "true_discipline": "true_discipline",
-    "yelling_harm": "yelling_harm",
-    "four_temperaments": "four_temperaments",
-    "like_heals_like": "like_heals_like",
-    "music_rhythm": "music_rhythm",
-    "song_and_movement": "music_rhythm",
-    "rainbow_bridge_story": "rainbow_bridge_story",
-    "tell_from_memory": "tell_from_memory",
-    "fairy_tale_complexity": "fairy_tale_complexity",
-    "flexible_story_selection": "flexible_story_selection"
+    "p1_early_childhood_education": "p1_early_childhood_education",
+    "p1_rhythm_and_senses": "p1_rhythm_and_senses",
+    "p1_imitation_and_play": "p1_imitation_and_play",
+    "p1_family_rhythm": "p1_family_rhythm",
+    "p1_environmental_absorption": "p1_environmental_absorption",
+    "p1_environmental_filter": "p1_environmental_absorption",
+    "p1_parenting_foundations": "p1_parenting_foundations",
+    "p1_language_imitation": "p1_imitation_and_play",
+    "p1_warmth_and_health": "p1_warmth_and_health",
+    "p1_childhood_fever": "p1_warmth_and_health",
+    "p1_biological_rhythm": "p1_biological_rhythm",
+    "p1_cosmic_rhythms": "p1_cosmic_rhythms",
+    "p1_creative_play_stages": "p1_creative_play_stages",
+    "p1_archetypal_toys": "p1_archetypal_toys",
+    "p1_simple_toys": "p1_archetypal_toys",
+    "p1_play_as_imitation": "p1_play_as_imitation",
+    "p1_open_ended_toys": "p1_archetypal_toys",
+    "p1_natural_elements_play": "p1_natural_elements_play",
+    "p1_little_puberty": "p1_little_puberty",
+    "p1_dangers_of_early_intellectualism": "p1_dangers_of_early_intellectualism",
+    "p1_open_ended_toys_creativity": "p1_archetypal_toys",
+    "p1_inner_imagination": "p1_archetypal_toys",
+    "p1_will_senses": "p1_will_senses",
+    "p1_nurturing_will_senses": "p1_will_senses",
+    "p1_smell_and_memory": "p1_smell_and_memory",
+    "p1_color_therapy": "p1_color_therapy",
+    "p1_protect_hearing": "p1_protect_hearing",
+    "p1_human_interaction_language": "p1_human_interaction_language",
+    "p1_discipline_through_self_education": "p1_discipline_through_self_education",
+    "p1_harm_of_anger_and_preaching": "p1_harm_of_anger_and_preaching",
+    "p1_reduce_the_word_no": "p1_reduce_the_word_no",
+    "p1_energy_redirection": "p1_energy_redirection",
+    "p1_use_of_may": "p1_use_of_may",
+    "p1_illusion_of_choice": "p1_illusion_of_choice",
+    "p1_rhythm_as_discipline": "p1_rhythm_as_discipline",
+    "p1_rhythm_anticipation": "p1_rhythm_as_discipline",
+    "p1_healing_action": "p1_healing_action",
+    "p1_real_work_for_violent_play": "p1_real_work_for_violent_play",
+    "p1_consequent_action": "p1_consequent_action",
+    "p1_listen_and_redirect": "p1_listen_and_redirect",
+    "p1_positive_discipline": "p1_positive_discipline",
+    "p1_harm_of_criticism": "p1_harm_of_criticism",
+    "p1_spiritual_work_in_discipline": "p1_spiritual_work_in_discipline",
+    "p1_angelic_help": "p1_spiritual_work_in_discipline",
+    "p1_true_discipline": "p1_positive_discipline",
+    "p1_end_of_day_reflection": "p1_end_of_day_reflection",
+    "p1_four_temperaments": "p1_four_temperaments",
+    "p1_like_heals_like": "p1_like_heals_like",
+    "p1_songs_for_routines": "p1_songs_for_routines",
+    "p1_songs_and_movement": "p1_songs_for_routines",
+    "p1_rainbow_bridge_story": "p1_rainbow_bridge_story",
+    "p1_adopted_child_story": "p1_rainbow_bridge_story",
+    "p1_fairy_tales_by_age": "p1_fairy_tales_by_age",
+    "p1_flexible_story_selection": "p1_fairy_tales_by_age"
   },
   "unique_topics": [
     {
-      "id": "early_childhood_development",
-      "label": "Phát triển não bộ mầm non",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_early_childhood_education",
+      "label": "Giáo dục và phát triển những năm đầu đời",
+      "pillar": "pillar_1"
     },
     {
-      "id": "waldorf_rhythm",
-      "label": "Nhịp điệu sinh hoạt Waldorf",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_rhythm_and_senses",
+      "label": "Bảo vệ giác quan và nhịp điệu sinh hoạt",
+      "pillar": "pillar_1"
     },
     {
-      "id": "play_evolution",
-      "label": "Tiến hóa trò chơi trẻ em",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_imitation_and_play",
+      "label": "Học qua bắt chước và trò chơi tự do",
+      "pillar": "pillar_1"
     },
     {
-      "id": "environmental_absorption",
-      "label": "Thẩm thấu môi trường mầm non",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_family_rhythm",
+      "label": "Nhịp điệu sinh hoạt gia đình",
+      "pillar": "pillar_1"
     },
     {
-      "id": "media_impact_on_children",
-      "label": "Tác động truyền thông lên trẻ em",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_environmental_absorption",
+      "label": "Sự thẩm thấu môi trường xung quanh",
+      "pillar": "pillar_1"
     },
     {
-      "id": "warmth_importance",
-      "label": "Tầm quan trọng của giữ ấm",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_parenting_foundations",
+      "label": "Ba viên đá tảng để nuôi dạy trẻ",
+      "pillar": "pillar_1"
     },
     {
-      "id": "fever_role",
-      "label": "Vai trò của sốt",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_warmth_and_health",
+      "label": "Vai trò của sự ấm áp đối với sức khỏe",
+      "pillar": "pillar_1"
     },
     {
-      "id": "external_rhythm",
-      "label": "Nhịp điệu ngoại tại",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_biological_rhythm",
+      "label": "Sự đồng bộ hóa nhịp điệu sinh học",
+      "pillar": "pillar_1"
     },
     {
-      "id": "breathing_model",
-      "label": "Mô hình Thở vào Thở ra",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_cosmic_rhythms",
+      "label": "Nhịp điệu vũ trụ và mùa vụ",
+      "pillar": "pillar_1"
     },
     {
-      "id": "free_play",
-      "label": "Vui chơi tự do",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_creative_play_stages",
+      "label": "Ba giai đoạn tiến hóa của vui chơi sáng tạo",
+      "pillar": "pillar_1"
     },
     {
-      "id": "archetypal_toys",
-      "label": "Đồ chơi nguyên mẫu",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_archetypal_toys",
+      "label": "Nguyên tắc sử dụng đồ chơi mở và nguyên mẫu",
+      "pillar": "pillar_1"
     },
     {
-      "id": "repetitive_play",
-      "label": "Trò chơi lặp lại",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_play_as_imitation",
+      "label": "Trẻ chơi thông qua việc bắt chước công việc",
+      "pillar": "pillar_1"
     },
     {
-      "id": "clean_up_play",
-      "label": "Dọn dẹp bằng trò chơi",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_natural_elements_play",
+      "label": "Bảo vệ không gian vui chơi và tiếp xúc tự nhiên",
+      "pillar": "pillar_1"
     },
     {
-      "id": "little_puberty",
-      "label": "Khủng hoảng tuổi lên sáu",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_little_puberty",
+      "label": "Sự thay đổi tuổi lên sáu (Little Puberty)",
+      "pillar": "pillar_1"
     },
     {
-      "id": "screen_time_harm",
-      "label": "Tác hại của màn hình",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_dangers_of_early_intellectualism",
+      "label": "Tác hại của tư duy trí thức sớm",
+      "pillar": "pillar_1"
     },
     {
-      "id": "play_as_learning",
-      "label": "Vui chơi là học tập",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
-    },
-    {
-      "id": "will_senses",
+      "id": "p1_will_senses",
       "label": "Bốn giác quan ý chí",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "pillar": "pillar_1"
     },
     {
-      "id": "baby_walker_harm",
-      "label": "Tác hại của xe tập đi",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_smell_and_memory",
+      "label": "Khứu giác định hình ký ức và khả năng mở lòng",
+      "pillar": "pillar_1"
     },
     {
-      "id": "feeling_senses",
-      "label": "Giác quan cảm xúc",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_color_therapy",
+      "label": "Ứng dụng màu sắc tương phản để trị liệu",
+      "pillar": "pillar_1"
     },
     {
-      "id": "color_therapy",
-      "label": "Liệu pháp màu sắc",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_protect_hearing",
+      "label": "Bảo vệ thính giác khỏi tiếng ồn vô cơ",
+      "pillar": "pillar_1"
     },
     {
-      "id": "cognitive_senses",
-      "label": "Giác quan nhận thức",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_human_interaction_language",
+      "label": "Ngôn ngữ chỉ phát triển qua tương tác người với người",
+      "pillar": "pillar_1"
     },
     {
-      "id": "machine_noise_harm",
-      "label": "Tác hại của âm thanh máy móc",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_discipline_through_self_education",
+      "label": "Kỷ luật thông qua tự giáo dục bản thân",
+      "pillar": "pillar_1"
     },
     {
-      "id": "imitation_nature",
-      "label": "Bản chất sự bắt chước",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_harm_of_anger_and_preaching",
+      "label": "Tác hại của sự tức giận và thuyết giáo",
+      "pillar": "pillar_1"
     },
     {
-      "id": "self_education_discipline",
-      "label": "Kỷ luật qua tự giáo dục",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_reduce_the_word_no",
+      "label": "Tiết giảm từ Không",
+      "pillar": "pillar_1"
     },
     {
-      "id": "reduce_no",
-      "label": "Tiết giảm từ không",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
-    },
-    {
-      "id": "energy_redirection",
+      "id": "p1_energy_redirection",
       "label": "Chuyển hướng năng lượng",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "pillar": "pillar_1"
     },
     {
-      "id": "use_may",
-      "label": "Sử dụng từ May",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_use_of_may",
+      "label": "Sử dụng từ \"May\" (Được phép/Có thể) thay vì câu hỏi",
+      "pillar": "pillar_1"
     },
     {
-      "id": "illusion_of_choice",
-      "label": "Ảo tưởng về lựa chọn",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_illusion_of_choice",
+      "label": "Ảo tưởng về sự lựa chọn",
+      "pillar": "pillar_1"
     },
     {
-      "id": "rhythm_discipline",
-      "label": "Kỷ luật bằng nhịp điệu",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_rhythm_as_discipline",
+      "label": "Cơ chế kỷ luật tự nhiên của nhịp điệu",
+      "pillar": "pillar_1"
     },
     {
-      "id": "healing_action",
-      "label": "Hành động chữa lành",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_healing_action",
+      "label": "Chữa lành hành vi tấn công vật lý",
+      "pillar": "pillar_1"
     },
     {
-      "id": "violence_myth",
-      "label": "Lầm tưởng xả bạo lực",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_real_work_for_violent_play",
+      "label": "Chữa lành trò chơi bạo lực bằng lao động thực tế",
+      "pillar": "pillar_1"
     },
     {
-      "id": "consequent_action",
-      "label": "Hành động nhất quán",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_consequent_action",
+      "label": "Xử lý sự bướng bỉnh bằng hành động nhất quán",
+      "pillar": "pillar_1"
     },
     {
-      "id": "healing_conflict",
-      "label": "Hóa giải xung đột",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_listen_and_redirect",
+      "label": "Hóa giải xung đột qua lắng nghe và hành động thực tế",
+      "pillar": "pillar_1"
     },
     {
-      "id": "positivity_discipline",
-      "label": "Kỷ luật tích cực",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_positive_discipline",
+      "label": "Kỷ luật tích cực và thấu hiểu",
+      "pillar": "pillar_1"
     },
     {
-      "id": "tired_child_care",
-      "label": "Chăm sóc trẻ mệt mỏi",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_harm_of_criticism",
+      "label": "Tác hại của sự chỉ trích",
+      "pillar": "pillar_1"
     },
     {
-      "id": "spiritual_discipline",
-      "label": "Kỷ luật tâm linh",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_spiritual_work_in_discipline",
+      "label": "Thực hành tâm linh trong giấc ngủ để tìm giải pháp kỷ luật",
+      "pillar": "pillar_1"
     },
     {
-      "id": "true_discipline",
-      "label": "Kỷ luật đích thực",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_end_of_day_reflection",
+      "label": "Phản tỉnh cuối ngày",
+      "pillar": "pillar_1"
     },
     {
-      "id": "yelling_harm",
-      "label": "Tác hại của la mắng",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_four_temperaments",
+      "label": "Bốn nhóm khí chất cơ bản của trẻ",
+      "pillar": "pillar_1"
     },
     {
-      "id": "four_temperaments",
-      "label": "Bốn khí chất",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_like_heals_like",
+      "label": "Nguyên tắc Lấy độc trị độc trong giáo dục khí chất",
+      "pillar": "pillar_1"
     },
     {
-      "id": "like_heals_like",
-      "label": "Giống nhau chữa lành",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_songs_for_routines",
+      "label": "Sử dụng bài hát để thiết lập thói quen và chuyển tiếp",
+      "pillar": "pillar_1"
     },
     {
-      "id": "music_rhythm",
-      "label": "Nhịp điệu âm nhạc",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_rainbow_bridge_story",
+      "label": "Câu chuyện Cầu Vồng (Rainbow Bridge Story)",
+      "pillar": "pillar_1"
     },
     {
-      "id": "rainbow_bridge_story",
-      "label": "Câu chuyện Cầu Vồng",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
-    },
-    {
-      "id": "tell_from_memory",
-      "label": "Kể chuyện từ trí nhớ",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
-    },
-    {
-      "id": "fairy_tale_complexity",
-      "label": "Độ phức tạp cổ tích",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
-    },
-    {
-      "id": "flexible_story_selection",
-      "label": "Chọn truyện linh hoạt",
-      "pillar": "Steiner và khoa học phát triển toàn diện"
+      "id": "p1_fairy_tales_by_age",
+      "label": "Phân loại truyện cổ tích theo độ tuổi",
+      "pillar": "pillar_1"
     }
   ],
-  "pillar": "Steiner và khoa học phát triển toàn diện",
+  "pillar": "pillar_1",
   "completed": true,
-  "password": "923e12c4"
+  "password": "de0fee6c"
 }

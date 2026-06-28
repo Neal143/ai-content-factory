@@ -1,37 +1,37 @@
 {
   "batch_index": 4,
-  "batch_password": "57838261",
+  "batch_password": "891c128f",
   "total_batches": 6,
   "items": [
     {
       "uid": "uid_chunk_16",
-      "id": "parents_establish_discipline_effective_communication_daily_requests",
-      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ.",
-      "file_ref": "[[cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay]]"
+      "id": "cha-me_thiet-lap-ky-luat-va-giao-tiep-hieu-qua_khi-dua-ra-cac-yeu-cau-hang-ngay-cho-tre",
+      "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ",
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-va-giao-tiep-hieu-qua_khi-dua-ra-cac-yeu-cau-hang-ngay-cho-tre]]"
     },
     {
       "uid": "uid_chunk_17",
-      "id": "parents_adjust_child_behavior_inappropriate_play",
-      "semantic_query": "Cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực.",
-      "file_ref": "[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]"
+      "id": "cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc",
+      "semantic_query": "Cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực",
+      "file_ref": "[[cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc]]"
     },
     {
       "uid": "uid_chunk_18",
-      "id": "parents_establish_discipline_guide_voluntary_cooperation_opposition",
+      "id": "cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day",
       "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy.",
-      "file_ref": "[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]"
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day]]"
     },
     {
       "uid": "uid_chunk_19",
-      "id": "parents_establish_discipline_routine_daily_disruptions_opposition",
+      "id": "cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay",
       "semantic_query": "Cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày.",
-      "file_ref": "[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]"
+      "file_ref": "[[cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay]]"
     },
     {
       "uid": "uid_chunk_20",
-      "id": "parents_transform_negative_behavior_violent_actions",
+      "id": "cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot",
       "semantic_query": "Cha mẹ muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt.",
-      "file_ref": "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]"
+      "file_ref": "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot]]"
     }
   ]
 }

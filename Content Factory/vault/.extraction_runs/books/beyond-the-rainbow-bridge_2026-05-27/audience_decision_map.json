@@ -3,7 +3,7 @@
     "scope": "book",
     "chunk_index": null,
     "action": "create",
-    "audience_filename": "cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi",
+    "audience_filename": "cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi",
     "audience_level": "big",
     "parent_audience": [],
     "jtbd_raw": "Người muốn tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi."
@@ -12,10 +12,10 @@
     "scope": "chunk",
     "chunk_index": 1,
     "action": "create",
-    "audience_filename": "cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay",
+    "audience_filename": "cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình"
   },
@@ -23,10 +23,10 @@
     "scope": "chunk",
     "chunk_index": 3,
     "action": "create",
-    "audience_filename": "cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai",
+    "audience_filename": "cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại."
   },
@@ -34,10 +34,10 @@
     "scope": "chunk",
     "chunk_index": 4,
     "action": "create",
-    "audience_filename": "cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day",
+    "audience_filename": "cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại."
   },
@@ -45,10 +45,10 @@
     "scope": "chunk",
     "chunk_index": 5,
     "action": "create",
-    "audience_filename": "cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay",
+    "audience_filename": "cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày."
   },
@@ -56,10 +56,10 @@
     "scope": "chunk",
     "chunk_index": 6,
     "action": "create",
-    "audience_filename": "cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron",
+    "audience_filename": "cha-me_thiet-lap-su-on-dinh-va-ne-nep-cho-con_khi-doi-mat-voi-nhip-song-hien-dai-ban-ron-va-mat-can-bang",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng"
   },
@@ -67,10 +67,10 @@
     "scope": "chunk",
     "chunk_index": 7,
     "action": "create",
-    "audience_filename": "cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi",
+    "audience_filename": "cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi"
   },
@@ -78,10 +78,10 @@
     "scope": "chunk",
     "chunk_index": 8,
     "action": "create",
-    "audience_filename": "cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi",
+    "audience_filename": "cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
     ],
     "jtbd_raw": "Người muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi"
   },
@@ -89,10 +89,10 @@
     "scope": "chunk",
     "chunk_index": 9,
     "action": "create",
-    "audience_filename": "cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi",
+    "audience_filename": "cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
     ],
     "jtbd_raw": "Người muốn thúc đẩy trí tưởng tượng và sự tập trung của trẻ khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi."
   },
@@ -100,10 +100,10 @@
     "scope": "chunk",
     "chunk_index": 10,
     "action": "create",
-    "audience_filename": "cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi",
+    "audience_filename": "cha-me_hieu-su-thay-doi-trong-cach-choi-va-tam-ly-cua-tre-tu-5-den-7-tuoi_khi-con-trai-qua-cac-giai-doan-phat-trien-moi",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
     ],
     "jtbd_raw": "Người muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới."
   },
@@ -111,10 +111,10 @@
     "scope": "chunk",
     "chunk_index": 11,
     "action": "create",
-    "audience_filename": "cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi",
+    "audience_filename": "cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
     ],
     "jtbd_raw": "Người muốn tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng và kỹ năng sống khi thiết lập không gian sống và chọn mua đồ chơi cho con."
   },
@@ -122,10 +122,10 @@
     "scope": "chunk",
     "chunk_index": 12,
     "action": "create",
-    "audience_filename": "cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi",
+    "audience_filename": "cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi."
   },
@@ -133,10 +133,10 @@
     "scope": "chunk",
     "chunk_index": 13,
     "action": "create",
-    "audience_filename": "cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao",
+    "audience_filename": "cha-me_nuoi-duong-tam-hon-va-bao-ve-cac-giac-quan-cam-xuc-cua-tre_khi-moi-truong-xung-quanh-ngap-tran-cac-kich-thich-nhan-tao",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo."
   },
@@ -144,10 +144,10 @@
     "scope": "chunk",
     "chunk_index": 14,
     "action": "create",
-    "audience_filename": "cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap",
+    "audience_filename": "cha-me_nuoi-duong-cac-giac-quan-nhan-thuc-cua-tre_khi-con-tre-bat-dau-tiep-xuc-voi-nhieu-nguon-am-thanh-va-cac-moi-quan-he-giao-tiep-phuc-tap",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp"
   },
@@ -155,10 +155,10 @@
     "scope": "chunk",
     "chunk_index": 15,
     "action": "create",
-    "audience_filename": "cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot",
+    "audience_filename": "cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn rèn luyện kỷ luật cho con khi đối mặt với những hành vi chưa tốt của trẻ nhỏ."
   },
@@ -166,10 +166,10 @@
     "scope": "chunk",
     "chunk_index": 16,
     "action": "create",
-    "audience_filename": "cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay",
+    "audience_filename": "cha-me_thiet-lap-ky-luat-va-giao-tiep-hieu-qua_khi-dua-ra-cac-yeu-cau-hang-ngay-cho-tre",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ"
   },
@@ -177,10 +177,10 @@
     "scope": "chunk",
     "chunk_index": 17,
     "action": "create",
-    "audience_filename": "cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc",
+    "audience_filename": "cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực"
   },
@@ -188,10 +188,10 @@
     "scope": "chunk",
     "chunk_index": 18,
     "action": "create",
-    "audience_filename": "cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi",
+    "audience_filename": "cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy."
   },
@@ -199,10 +199,10 @@
     "scope": "chunk",
     "chunk_index": 19,
     "action": "create",
-    "audience_filename": "cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat",
+    "audience_filename": "cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày."
   },
@@ -210,10 +210,10 @@
     "scope": "chunk",
     "chunk_index": 20,
     "action": "create",
-    "audience_filename": "cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc",
+    "audience_filename": "cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt."
   },
@@ -221,10 +221,10 @@
     "scope": "chunk",
     "chunk_index": 21,
     "action": "create",
-    "audience_filename": "cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai",
+    "audience_filename": "cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày."
   },
@@ -232,10 +232,10 @@
     "scope": "chunk",
     "chunk_index": 22,
     "action": "create",
-    "audience_filename": "cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc",
+    "audience_filename": "cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc"
   },
@@ -243,10 +243,10 @@
     "scope": "chunk",
     "chunk_index": 23,
     "action": "create",
-    "audience_filename": "cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc",
+    "audience_filename": "cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ."
   },
@@ -254,10 +254,10 @@
     "scope": "chunk",
     "chunk_index": 24,
     "action": "create",
-    "audience_filename": "cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay",
+    "audience_filename": "cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
     ],
     "jtbd_raw": "Người muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày."
   },
@@ -265,21 +265,21 @@
     "scope": "chunk",
     "chunk_index": 25,
     "action": "create",
-    "audience_filename": "cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet",
+    "audience_filename": "cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ."
   },
   {
     "scope": "chunk",
     "chunk_index": 26,
-    "action": "merge",
-    "audience_filename": "bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc",
+    "action": "create",
+    "audience_filename": "nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học"
   },
@@ -287,10 +287,10 @@
     "scope": "chunk",
     "chunk_index": 27,
     "action": "create",
-    "audience_filename": "cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi",
+    "audience_filename": "cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới."
   },
@@ -298,10 +298,10 @@
     "scope": "chunk",
     "chunk_index": 28,
     "action": "create",
-    "audience_filename": "cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly",
+    "audience_filename": "cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con",
     "audience_level": "little",
     "parent_audience": [
-      "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     ],
     "jtbd_raw": "Người muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con."
   }

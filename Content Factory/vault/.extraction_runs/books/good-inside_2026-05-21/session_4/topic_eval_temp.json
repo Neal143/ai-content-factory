@@ -1,0 +1,24 @@
+{
+  "password": "a894ac30",
+  "entries": [
+    {
+      "chunk_index": 31,
+      "topics": [
+        {
+          "id": "p1_three_pillars_of_change",
+          "label": "Ba trụ cột của sự thay đổi",
+          "tier": "broad",
+          "evidence": "Sự thay đổi của con người được dệt nên từ ba sợi dây: sự học hỏi (learning), những giả định phản thực tế (counterfactuals) và sự chăm sóc (caregiving) [1]. Nói một cách thi vị, đó là sự thật, trí tưởng tượng và tình yêu [1].",
+          "reasoning": "Đúc kết triết lý nền tảng của toàn bộ quá trình nuôi dạy và phát triển trẻ em, hợp nhất cả sự gắn kết và học hỏi."
+        },
+        {
+          "id": "p1_children_as_explorers",
+          "label": "Trẻ em là những nhà thám hiểm tương lai",
+          "tier": "broad",
+          "evidence": "Khả năng thay đổi liên tục của loài người đồng nghĩa với việc ta không thể thấu hiểu bản chất con người chỉ bằng cách nhìn vào thực tại [2]. Thay vào đó, ta phải nhìn về phía trước, vào một không gian phân nhánh khổng lồ của những khả năng chưa từng xảy ra [2]. Ở tận cùng của ranh giới đó, những \"nhà thám hiểm\" đang mở đường chính là những đứa trẻ [2].",
+          "reasoning": "Tôn vinh vai trò của trẻ em trong quá trình tiến hóa và thay đổi, nâng tầm nhận thức của phụ huynh."
+        }
+      ]
+    }
+  ]
+}

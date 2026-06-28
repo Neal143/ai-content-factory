@@ -2,7 +2,7 @@
 
 **1.1.** Tên sách (gốc & dịch) | Tác giả | Năm | Chủ đề cốt lõi (Topics)
 META_BOOK: book_name=Beyond the Rainbow Bridge - Nurturing our children from birth to seven | author=Barbara J. Patterson, Pamela Bradley | year=2000 | topics=Giáo dục Waldorf, Nuôi dạy con 0-7 tuổi, Phát triển giác quan, Trò chơi sáng tạo, Nhịp điệu gia đình, Kỷ luật tích cực | total_chunks=28
-RESOLVED_BOOK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["nao_bo_tre_em", "waldorf_rhythm"] | audience_filename=cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi
+RESOLVED_BOOK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi
 
 **1.2. Giới thiệu & Đối tượng vĩ mô (Book Audience)**
 *   **Giới thiệu (5–7 câu):** Cuốn sách giải quyết những băn khoăn và lo âu của các bậc phụ huynh trong việc nuôi dạy trẻ từ sơ sinh đến bảy tuổi giữa một thế giới hiện đại nhiều áp lực và xao nhãng. Dựa trên triết lý giáo dục Waldorf do Rudolf Steiner khởi xướng, các tác giả lập luận rằng sự phát triển khỏe mạnh của trẻ cần được nuôi dưỡng thông qua nhịp điệu sinh hoạt đều đặn, sự ấm áp, trò chơi tự do và kỷ luật tích cực thay vì nhồi nhét nhận thức học thuật quá sớm. Sự khác biệt của cuốn sách nằm ở việc giải mã sâu sắc quá trình phát triển 12 giác quan của trẻ và định hình môi trường sống như một "chương trình giáo dục" tự nhiên nhất. Đọc xong cuốn sách, phụ huynh sẽ nhìn nhận lại không gian gia đình và hành vi của chính mình, từ đó biết cách thiết lập một môi trường bảo vệ tuổi thơ, nuôi dưỡng trọn vẹn cả thể chất, tâm hồn và tinh thần cho con trẻ.
@@ -74,7 +74,7 @@ Chunk 28: Parent-Child Classes with Barbara - Handwork Instructions
 
 <data_chunk>
 META_CHUNK: CHUNK=My Life, My Work, Our Children - My Parents' Home | CHUNK_index=1
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "play_evolution", "nao_bo_tre_em"] | audience_filename=cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_family_rhythm", "p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh
 
 **① Toàn cảnh & Insight đối tượng**
 
@@ -140,7 +140,7 @@ META_QUOTE: content_type=quote | speaker=Barbara J. Patterson | quote_keyword=da
 
 <data_chunk>
 META_CHUNK: CHUNK=My Life, My Work, Our Children - Our Children | CHUNK_index=3
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "environmental_absorption", "media_impact_on_children", "nao_bo_tre_em"] | audience_filename=cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_environmental_absorption", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích làm rõ tác động tiêu cực của văn hóa hiện đại (đồ chơi, truyền hình, quảng cáo) trong việc thúc ép trẻ em phải trưởng thành sớm. Tác giả nhấn mạnh rằng những gì được coi là "bình thường" trong xã hội ngày nay chưa chắc đã "lành mạnh" cho trẻ. Do đó, nhiệm vụ tối thượng của cha mẹ là chủ động sàng lọc môi trường, bảo vệ trẻ khỏi các ấn tượng giác quan độc hại và cung cấp những hình mẫu tốt để trẻ noi theo, bởi lẽ trẻ sẽ hấp thụ và trở thành chính những gì chúng tiếp xúc.
@@ -193,7 +193,7 @@ Hoặc trong nhiều năm hay những chu kỳ năm tháng kéo dài..."
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 4: Raising Healthy, Happy, and Capable Children - Growing Into Life. | CHUNK_index=4
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "environmental_absorption", "nao_bo_tre_em"] | audience_filename=cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_parenting_foundations", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích khai thác những trạng thái tâm lý mãnh liệt của cha mẹ khi đón con chào đời: từ niềm hạnh phúc vô bờ, khát vọng mang lại điều tốt đẹp nhất, cho đến nỗi sợ hãi khi phải nuôi dạy con giữa thế giới đầy biến động. Tác giả chỉ ra 3 nền tảng cốt lõi để nuôi dạy một đứa trẻ khỏe mạnh và hạnh phúc. Đặc biệt trong giai đoạn "Bước vào cuộc đời" (từ sơ sinh đến 2,5 tuổi), trẻ được khắc họa như một thực thể hấp thụ môi trường không màng lọc, phát triển các kỹ năng vận động và ngôn ngữ bằng sức mạnh nội tại và sự bắt chước.
@@ -254,7 +254,7 @@ META_QUOTE: content_type=quote | speaker=Rudolf Steiner | quote_keyword=an tuong
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 5: Raising Healthy, Happy, and Capable Children - The Importance of Warmth | CHUNK_index=5
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "warmth_importance", "fever_role", "nao_bo_tre_em"] | audience_filename=cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_warmth_and_health", "p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Theo triết lý của Rudolf Steiner, sự ấm áp là nền tảng của sức khỏe và sự phát triển, nhưng trẻ sơ sinh và trẻ nhỏ lại chưa có khả năng tự tạo và duy trì thân nhiệt tốt. Nếu trẻ phải tự tiêu tốn năng lượng để giữ ấm, các "lực lượng" dành cho việc phát triển cơ thể khỏe mạnh sẽ bị suy giảm. Vì vậy, cha mẹ đóng vai trò cốt lõi trong việc bảo vệ sự ấm áp cho trẻ bằng nhiều biện pháp từ quần áo, tiếp xúc cơ thể đến dinh dưỡng. Thậm chí, những cơn sốt trong các bệnh thời ấu thơ cũng được xem là quá trình rèn luyện giúp xây dựng năng lực giữ ấm mạnh mẽ về thể chất và tâm hồn khi trẻ trưởng thành.
@@ -316,7 +316,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Andrea Rentea | quote_keyword=nằm
 
 <data_chunk>
 META_CHUNK: CHUNK=Raising Healthy, Happy, and Capable Children - The Importance of Rhythm | CHUNK_index=6
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "breathing_model", "external_rhythm", "nao_bo_tre_em"] | audience_filename=cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_rhythm_and_senses", "p1_early_childhood_education", "p1_cosmic_rhythms", "p1_biological_rhythm"] | audience_filename=cha-me_thiet-lap-su-on-dinh-va-ne-nep-cho-con_khi-doi-mat-voi-nhip-song-hien-dai-ban-ron-va-mat-can-bang
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Tác giả phân tích tầm quan trọng sống còn của nhịp điệu (rhythm) đối với sự phát triển khỏe mạnh của trẻ nhỏ. Nhịp điệu bên ngoài trong cuộc sống hàng ngày (giờ ăn, giấc ngủ, các mùa) sẽ kiến tạo nên nhịp điệu sinh học và tâm lý bên trong trẻ. Việc xây dựng một lối sống có nhịp điệu "thở vào - thở ra" luân phiên giúp bảo vệ năng lượng của trẻ, thiết lập kỷ luật một cách tự nhiên và mang lại cảm giác an toàn tuyệt đối.
@@ -376,7 +376,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=du-khach-lec
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Play - The Nature of Young Children's Play | CHUNK_index=7
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "free_play", "archetypal_toys", "nao_bo_tre_em"] | audience_filename=cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_creative_play_stages", "p1_archetypal_toys", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Trẻ em khám phá thế giới, phát triển thể chất và định hình trí tuệ thông qua vui chơi sáng tạo và tự do. Quá trình vui chơi trải qua ba giai đoạn: từ vận động thuần túy nảy sinh từ cơ thể, tiến đến bắt chước và tưởng tượng, và cuối cùng là giả vờ có chủ đích. Để nuôi dưỡng trí tưởng tượng và sự phát triển toàn diện, trẻ cần những đồ chơi mang tính nguyên mẫu, mở và không định hình sẵn (archetypal toys) thay vì những món đồ chơi hoàn hảo, cơ học hay đồ điện tử làm thui chột não bộ.
@@ -444,7 +444,7 @@ META_QUOTE: content_type=quote | speaker=Bruno Bettelheim | quote_keyword=Nền 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 8: Creative Play - Play, The Lifeblood of a Healthy Childhood - Newborn to Two-and-a-Half | CHUNK_index=8
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "archetypal_toys", "repetitive_play", "nao_bo_tre_em"] | audience_filename=cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_archetypal_toys", "p1_play_as_imitation", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích tập trung phân tích bản chất của việc vui chơi trong giai đoạn từ sơ sinh đến 2,5 tuổi. Tác giả nhấn mạnh rằng ở độ tuổi này, trẻ không cần nhiều đồ chơi phức tạp; thay vào đó, những đồ vật đơn giản, búp bê làm từ vật liệu tự nhiên và các vật dụng gia đình lại là công cụ tốt nhất. Đồng thời, giai đoạn này trẻ chơi chủ yếu thông qua việc bắt chước các công việc hàng ngày của người lớn, và các hành động lặp đi lặp lại như "đổ đầy - làm trống" có mối liên hệ mật thiết với quá trình phát triển thể chất và trao đổi chất bên trong của trẻ.
@@ -506,7 +506,7 @@ META_QUOTE: content_type=quote | speaker=Barbara J. Patterson | quote_keyword=c�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 9: Creative Play - Play, The Lifeblood of a Healthy Childhood - Two-and-a-Half to Five. | CHUNK_index=9
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "archetypal_toys", "clean_up_play", "nao_bo_tre_em"] | audience_filename=cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_natural_elements_play", "p1_archetypal_toys", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chunk này tập trung vào giai đoạn từ 2,5 đến 5 tuổi, khi trẻ bắt đầu xuất hiện những trò chơi tưởng tượng và đóng vai. Trẻ ở độ tuổi này hấp thụ môi trường xung quanh một cách bản năng và tái hiện chúng rất sống động thông qua sự bắt chước. Tác giả nhấn mạnh việc cho trẻ chơi với những món đồ vật tự nhiên, chưa hoàn thiện (đồ chơi mở) và trải nghiệm với bốn yếu tố tự nhiên, đồng thời giữ một không gian yên tĩnh, không bị gián đoạn để trẻ tự do nhập vai và phát triển sức mạnh nội tại.
@@ -570,7 +570,7 @@ META_QUOTE: content_type=quote | speaker=Barbara J. Patterson | quote_keyword=B�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 10: Creative Play - Play, The Lifeblood of a Healthy Childhood - Five to Seven. | CHUNK_index=10
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "little_puberty", "screen_time_harm", "nao_bo_tre_em"] | audience_filename=cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_little_puberty", "p1_imitation_and_play", "p1_dangers_of_early_intellectualism", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_hieu-su-thay-doi-trong-cach-choi-va-tam-ly-cua-tre-tu-5-den-7-tuoi_khi-con-trai-qua-cac-giai-doan-phat-trien-moi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn văn mô tả sự thay đổi trong cách chơi của trẻ từ 5 đến 7 tuổi, khi hoạt động vui chơi trở nên có mục đích và mang tính xã hội hơn. Đặc biệt, tác giả làm sáng tỏ hiện tượng "thay đổi tuổi lên sáu" (little puberty) khi trẻ bắt đầu cảm thấy "chán" do sự chuyển dịch từ kích thích bên ngoài sang thế giới nội tâm. Bên cạnh đó, tác giả cảnh báo về những tác động tiêu cực của việc nhồi nhét trí thức quá sớm, cùng với tác hại của truyền hình và các thiết bị điện tử lên trí tưởng tượng và sự phát triển thể chất của trẻ.
@@ -618,7 +618,7 @@ META_QUOTE: content_type=quote | speaker=Barbara J. Patterson | quote_keyword=c�
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Play - Children as the Creators of Play | CHUNK_index=11
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "archetypal_toys", "play_as_learning", "nao_bo_tre_em"] | audience_filename=cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_archetypal_toys", "p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chunk này nhấn mạnh vai trò của trẻ em như những người sáng tạo ra trò chơi của riêng mình. Tác giả mô tả môi trường lớp học mẫu giáo Waldorf, nơi cung cấp những đồ chơi đơn giản, mang tính mở (như búp bê vải ít chi tiết, khối gỗ tự nhiên, vải lụa, quả thông, vỏ sò) thay vì những đồ chơi hoàn thiện hoặc thiết bị công nghệ. Những món đồ chơi "chưa hoàn thiện" này yêu cầu trẻ phải sử dụng trí tưởng tượng và sự nỗ lực để mang lại "phép thuật" cho chúng, từ đó giúp trẻ phát triển năng lực tư duy, khả năng giải quyết vấn đề và các kỹ năng tương tác xã hội quan trọng cho cuộc sống sau này.
@@ -660,7 +660,7 @@ META_QUOTE: content_type=quote | speaker=Joseph Chilton Pearce | quote_keyword=C
 
 <data_chunk>
 META_CHUNK: CHUNK=Developing the Twelve Senses - Will Senses | CHUNK_index=12
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["baby_walker_harm", "waldorf_rhythm", "will_senses", "nao_bo_tre_em"] | audience_filename=cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_will_senses", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích tập trung giải thích 4 "giác quan ý chí" (Will Senses) theo triết lý giáo dục Waldorf bao gồm: Xúc giác (Touch), Sự sống (Life), Vận động (Movement), và Thăng bằng (Balance). Những giác quan này hướng chủ yếu vào chính cơ thể trẻ, giúp trẻ định hình ranh giới bản thân và định vị trong không gian. Tác giả nhấn mạnh tầm quan trọng của việc để trẻ phát triển vận động một cách tự nhiên, chỉ ra tác hại của các thiết bị ép buộc sự phát triển (như xe tập đi) và cung cấp cách thức nuôi dưỡng các giác quan này thông qua môi trường sống, quần áo tự nhiên và các hoạt động phù hợp.
@@ -721,7 +721,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=cái tôi ch
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 13: Developing the Twelve Senses - Feeling Senses | CHUNK_index=13
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["color_therapy", "waldorf_rhythm", "feeling_senses", "nao_bo_tre_em"] | audience_filename=cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_smell_and_memory", "p1_color_therapy", "p1_imitation_and_play", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_nuoi-duong-tam-hon-va-bao-ve-cac-giac-quan-cam-xuc-cua-tre_khi-moi-truong-xung-quanh-ngap-tran-cac-kich-thich-nhan-tao
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Phần này đi sâu vào phân tích 4 giác quan cảm xúc (Feeling Senses) bao gồm khứu giác, vị giác, thị giác và cảm giác ấm áp theo góc nhìn của Rudolf Steiner. Tác giả giải thích cách từng giác quan không chỉ tiếp nhận thông tin vật lý mà còn tác động sâu sắc đến sự phát triển cơ thể ête (etheric body) và tâm hồn của trẻ nhỏ. Thay vì chỉ đáp ứng nhu cầu sinh lý, các giác quan này định hình mối quan hệ của trẻ với thế giới, từ việc khơi gợi ký ức, điều chỉnh cảm xúc, đến việc xây dựng sự ấm áp trong tâm hồn. Phụ huynh và giáo viên được hướng dẫn chi tiết cách bảo vệ và nuôi dưỡng các giác quan này thông qua môi trường tự nhiên, màu sắc, thức ăn và thái độ tình cảm.
@@ -781,7 +781,7 @@ META_QUOTE: content_type=quote | speaker=Barbara J. Patterson | quote_keyword=tr
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 14: Developing the Twelve Senses - Cognitive Senses | CHUNK_index=14
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "cognitive_senses", "machine_noise_harm", "nao_bo_tre_em"] | audience_filename=cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_human_interaction_language", "p1_rhythm_and_senses", "p1_early_childhood_education", "p1_protect_hearing"] | audience_filename=cha-me_nuoi-duong-cac-giac-quan-nhan-thuc-cua-tre_khi-con-tre-bat-dau-tiep-xuc-voi-nhieu-nguon-am-thanh-va-cac-moi-quan-he-giao-tiep-phuc-tap
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích thảo luận về 4 giác quan nhận thức (Cognitive Senses) theo triết lý giáo dục Waldorf: thính giác, ngôn ngữ, tư duy của người khác và cái "Tôi" của người khác. Tác giả nhấn mạnh tầm quan trọng của việc bảo vệ trẻ khỏi tiếng ồn vô cơ, đồng thời khẳng định việc phát triển ngôn ngữ và nhận thức xã hội phải được xây dựng dựa trên sự tương tác trực tiếp giữa người với người thay vì thông qua máy móc. Bên cạnh đó, trẻ có khả năng cảm nhận sâu sắc sự chân thực của người lớn, do vậy cha mẹ và giáo viên cần không ngừng tu dưỡng bản thân để trở thành những hình mẫu tích cực.
@@ -838,7 +838,7 @@ META_QUOTE: content_type=quote | speaker=Martin Large | quote_keyword=Học nói
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Imitation and Self-Discipline | CHUNK_index=15
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "imitation_nature", "self_education_discipline", "nao_bo_tre_em"] | audience_filename=cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_harm_of_anger_and_preaching", "p1_discipline_through_self_education", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Trẻ nhỏ là những sinh thể bắt chước, hấp thụ mọi hành vi của người lớn vào tận sâu trong ý chí và cả quá trình phát triển thể chất (tiêu hóa, nội tạng). Do đó, kỷ luật đối với trẻ nhỏ không nằm ở việc thuyết giáo hay trừng phạt, mà nằm ở việc người lớn phải tự kỷ luật và tự giáo dục chính mình. Mọi cơn thịnh nộ hay lời thuyết giảng từ người lớn chỉ tạo ra rào cản, khiến trẻ bị tổn thương thể chất và học cách phản ứng tiêu cực.
@@ -898,7 +898,7 @@ META_QUOTE: content_type=quote | speaker=Rudolf Steiner | quote_keyword=tre la c
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 16: Creative Discipline - Clear Messages and Limited Choices | CHUNK_index=16
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "nao_bo_tre_em"] | audience_filename=cha-me_thiet-lap-ky-luat-giao-tiep-hieu-qua_dua-ra-yeu-cau-hang-ngay
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_thiet-lap-ky-luat-va-giao-tiep-hieu-qua_khi-dua-ra-cac-yeu-cau-hang-ngay-cho-tre
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích chỉ ra sai lầm phổ biến của các bậc phụ huynh khi đưa ra yêu cầu cho trẻ dưới dạng câu hỏi và cho trẻ quá nhiều quyền lựa chọn. Tác giả giải thích cách những thông điệp mập mờ này gây bối rối và áp lực tâm lý cho trẻ nhỏ. Hậu quả lâu dài của việc trao quá nhiều quyền quyết định sớm là sự phát triển của tính ích kỷ, cái tôi tự trung tâm và sự thiếu hụt kỷ luật nội tại khi trẻ lớn lên.
@@ -943,7 +943,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=Lựa chọn
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Distraction | CHUNK_index=17
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "reduce_no", "energy_redirection", "nao_bo_tre_em"] | audience_filename=cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_energy_redirection", "p1_reduce_the_word_no", "p1_imitation_and_play", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn nội dung giải thích cách xử lý khi trẻ có những hành vi chơi đùa không phù hợp trong lớp học hoặc ở nhà. Thay vì liên tục sử dụng từ "không" hay cấm đoán khiến trẻ hình thành thói quen phớt lờ lời người lớn, tác giả đề xuất phương pháp chuyển hướng năng lượng. Bằng cách sử dụng sự phân tâm (distraction) hoặc gợi ý những hình thức chơi mới tích cực hơn, người lớn có thể duy trì sự hòa hợp và giúp trò chơi của trẻ tiếp diễn mà không bị gián đoạn.
@@ -1007,7 +1007,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=chuyen-huong
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 18: Creative Discipline - The Magic Word: May. | CHUNK_index=18
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "use_may", "illusion_of_choice", "nao_bo_tre_em"] | audience_filename=cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_illusion_of_choice", "p1_rhythm_and_senses", "p1_use_of_may", "p1_early_childhood_education"] | audience_filename=cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích thảo luận về nghệ thuật thiết lập kỷ luật sáng tạo cho trẻ nhỏ mà không rơi vào hai thái cực: độc đoán hay quá buông lỏng. Tác giả chỉ ra sai lầm của nhiều bậc cha mẹ hiện đại khi đưa ra quá nhiều lựa chọn hoặc liên tục giải thích lý lẽ, khiến trẻ trở nên ích kỷ và hay chống đối. Giải pháp cốt lõi được đưa ra là sử dụng từ "may" (con có thể / con được phép) - một từ mang lại cảm giác về đặc quyền, giúp điều hướng hành vi của trẻ một cách hiệu quả và hòa bình.
@@ -1061,7 +1061,7 @@ META_QUOTE: content_type=quote | speaker=Barbara Patterson | quote_keyword=Từ 
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Rhythm | CHUNK_index=19
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "rhythm_discipline", "nao_bo_tre_em"] | audience_filename=cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_rhythm_as_discipline", "p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích ngắn gọn nhấn mạnh vai trò thiết yếu của nhịp điệu (rhythm) như một công cụ đắc lực trong việc duy trì kỷ luật ở trẻ nhỏ. Thay vì dùng mệnh lệnh, nhịp điệu lặp lại hàng ngày, hàng tuần tạo ra sự cân bằng và an toàn tựa như nhịp đập của trái tim hay chu kỳ của mặt trời, giúp các hoạt động bên ngoài hòa hợp một cách tự nhiên với những diễn biến tâm sinh lý bên trong trẻ.
@@ -1104,7 +1104,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=Nhịp đi�
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Healing Action | CHUNK_index=20
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "violence_myth", "healing_action", "nao_bo_tre_em"] | audience_filename=cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_rhythm_and_senses", "p1_early_childhood_education", "p1_real_work_for_violent_play", "p1_healing_action"] | audience_filename=cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chunk này hướng dẫn cách xử lý các hành vi không thể chấp nhận ở trẻ (như đánh, cắn, cào, nhổ nước bọt, chơi bạo lực) bằng các "hành động chữa lành" (healing action) thay vì trừng phạt. Tác giả đề xuất các giải pháp gắn liền với việc chăm sóc cơ thể (quấn tay, cắt móng tay) kết hợp lời nói tích cực để điều hướng hành vi. Đồng thời, đối với trẻ thích chơi bạo lực, tác giả nhấn mạnh việc cho trẻ làm các công việc thực tế, tốn thể lực để chuyển hóa ý chí hỗn loạn thay vì để trẻ chơi vật lộn để "xả" năng lượng.
@@ -1156,7 +1156,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=công việc
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Consequent Action | CHUNK_index=21
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "consequent_action", "ky_nang_giai_quyet_xung_dot", "nao_bo_tre_em"] | audience_filename=cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_consequent_action", "p1_imitation_and_play", "p1_listen_and_redirect", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích thảo luận về cách xử lý các hành vi tiêu cực, bướng bỉnh và xung đột ở trẻ nhỏ thông qua hành động nhất quán (consequent action). Thay vì sa vào các cuộc chiến lời nói hay trừng phạt, tác giả đề xuất các phương pháp mềm mỏng nhưng kiên quyết như: lờ đi sự chống đối, cho trẻ không gian riêng, lắng nghe chú tâm, định dạng lại cách trẻ yêu cầu mượn đồ, và sử dụng các công việc thực tế (rửa bát, nướng bánh, may vá) để chữa lành những trẻ hay mách lẻo.
@@ -1212,7 +1212,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=tran chien y
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Positivity | CHUNK_index=22
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["tired_child_care", "waldorf_rhythm", "positivity_discipline", "nao_bo_tre_em"] | audience_filename=cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_harm_of_criticism", "p1_rhythm_and_senses", "p1_early_childhood_education", "p1_positive_discipline"] | audience_filename=cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích này nhấn mạnh tầm quan trọng của thái độ tích cực trong việc kỷ luật trẻ em. Thay vì chỉ trích hay la mắng, người lớn nên sử dụng những lời động viên tích cực để giúp trẻ tự tin và hợp tác hơn. Đôi khi, những hành vi khó khăn của trẻ chỉ đơn thuần xuất phát từ sự mệt mỏi, và cách giải quyết tốt nhất đơn giản chỉ là ôm ấp hoặc cho trẻ nghỉ ngơi để phục hồi [1].
@@ -1253,7 +1253,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=Tác hại c
 
 <data_chunk>
 META_CHUNK: CHUNK=Creative Discipline - Guidance | CHUNK_index=23
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "spiritual_discipline", "nao_bo_tre_em"] | audience_filename=cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_spiritual_work_in_discipline", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích ngắn gọn nhưng cốt lõi nhấn mạnh rằng sự trợ giúp lớn nhất trong việc hướng dẫn và kỷ luật trẻ đến từ công việc tâm linh và quá trình tự giáo dục của người nuôi dạy. Bằng cách mang theo những khó khăn của trẻ vào giấc ngủ và thầm kêu gọi sự trợ giúp từ thiên thần của đứa trẻ, người lớn sẽ tìm ra những suy nghĩ, lời nói và hành động đúng đắn vào ngày hôm sau, từ đó giúp trẻ phát triển những khả năng tốt nhất.
@@ -1294,7 +1294,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | quote_keyword=Trợ giúp 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 24: Creative Discipline - Conclusion | CHUNK_index=24
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "true_discipline", "yelling_harm", "nao_bo_tre_em"] | audience_filename=cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_imitation_and_play", "p1_rhythm_and_senses", "p1_end_of_day_reflection", "p1_early_childhood_education", "p1_positive_discipline"] | audience_filename=cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Phần này tóm kết lại khái niệm cốt lõi của "Kỷ luật sáng tạo" trong giáo dục trẻ nhỏ, nhấn mạnh việc hướng dẫn trẻ chuyển từ trạng thái bắt chước sang tự kỷ luật. Thông qua phần Hỏi - Đáp với phụ huynh, tác giả giải quyết những khó khăn thực tế khi cha mẹ cảm thấy kiệt sức, quá tải và thiếu tự kỷ luật. Giải pháp được đưa ra là thực hành phản tỉnh vào cuối ngày, bắt đầu từ những thay đổi nhỏ, và sử dụng lao động thực tế (real work) để xoa dịu những ý chí hỗn loạn của trẻ.
@@ -1359,7 +1359,7 @@ META_QUOTE: content_type=quote | speaker=Barbara Patterson | quote_keyword=ky lu
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 25: Epilogue: A Note on the Temperaments | CHUNK_index=25
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["four_temperaments", "waldorf_rhythm", "like_heals_like", "nao_bo_tre_em"] | audience_filename=cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_like_heals_like", "p1_four_temperaments", "p1_imitation_and_play", "p1_rhythm_and_senses", "p1_early_childhood_education"] | audience_filename=cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích phân tích sâu về 4 loại khí chất (temperaments) cơ bản ở con người, đặc biệt là ở trẻ em: Choleric, Phlegmatic, Sanguine và Melancholic. Việc nhận diện đúng khí chất chủ đạo giúp cha mẹ và giáo viên thấu hiểu nguyên nhân gốc rễ đằng sau các hành vi của trẻ. Từ đó, người lớn có thể áp dụng nguyên lý giáo dục "lấy độc trị độc" (like heals like) để giúp trẻ tự cân bằng và phát triển lành mạnh thay vì áp đặt các hình phạt hay kỳ vọng sai lệch.
@@ -1415,7 +1415,7 @@ META_QUOTE: content_type=quote | speaker=Rudolf Steiner | quote_keyword=quy tac 
 
 <data_chunk>
 META_CHUNK: CHUNK=Parent-Child Classes with Barbara - Sample of Songs and Verses | CHUNK_index=26
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["music_rhythm", "waldorf_rhythm", "nao_bo_tre_em"] | audience_filename=bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_songs_for_routines", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Phần này cung cấp một bộ sưu tập các bài hát và vần thơ mẫu được sử dụng trong lịch trình buổi sáng của lớp học phụ huynh - trẻ em do Barbara hướng dẫn. Các bài hát này không chỉ mang tính chất giải trí mà còn được thiết kế có chủ đích để tạo nhịp điệu, dẫn dắt các hoạt động chuyển tiếp (như rửa tay, ăn nhẹ, vòng tròn chào tạm biệt) và kết hợp với việc bắt chước các cử động cơ thể.
@@ -1469,7 +1469,7 @@ META_QUOTE: [NOT_FOUND]
 
 <data_chunk>
 META_CHUNK: CHUNK=Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories | CHUNK_index=27
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["rainbow_bridge_story", "waldorf_rhythm", "tell_from_memory", "nao_bo_tre_em"] | audience_filename=cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_rainbow_bridge_story", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Phần này giới thiệu các "Câu chuyện Cầu Vồng" (Rainbow Bridge Stories) thường được kể trong các dịp kỷ niệm sinh nhật của trẻ tại trường mầm non Waldorf hoặc ở nhà. Các câu chuyện này mang tính biểu tượng sâu sắc, miêu tả hành trình của một "đứa trẻ thiên đường" từ thế giới tâm linh đi qua cầu vồng để đầu thai vào vòng tay của cha mẹ trên trái đất. Tác giả cung cấp ba biến thể câu chuyện: dành cho lớp mẫu giáo độ tuổi hỗn hợp, dành cho trẻ nhận con nuôi, và dành cho trẻ mẫu giáo lớn, kèm theo những lưu ý để cá nhân hóa câu chuyện cho từng trẻ.
@@ -1534,7 +1534,7 @@ META_QUOTE: content_type=quote | speaker=Barbara Patterson | quote_keyword=ke-ba
 
 <data_chunk>
 META_CHUNK: CHUNK=Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages | CHUNK_index=28
-RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["waldorf_rhythm", "fairy_tale_complexity", "flexible_story_selection", "nao_bo_tre_em"] | audience_filename=cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly
+RESOLVED_CHUNK_META: source_id=[beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven] | topic_ids=["p1_early_childhood_education", "p1_fairy_tales_by_age", "p1_rhythm_and_senses", "p1_imitation_and_play"] | audience_filename=cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con
 
 ① Toàn cảnh & Insight đối tượng
 * Tóm tắt Chunk: Đoạn nội dung này cung cấp một bản hướng dẫn chi tiết do Joan Almon tổng hợp về cách lựa chọn truyện cổ tích và các câu chuyện phù hợp với từng độ tuổi của trẻ nhỏ. Tác giả chia các câu chuyện thành 4 nhóm từ mức độ đơn giản đến phức tạp, tương ứng với trẻ từ 3 tuổi đến độ tuổi lớp một. Mức độ thử thách, nỗi buồn và sự xuất hiện của cái ác trong truyện được tăng dần theo khả năng tiếp nhận và mức độ trưởng thành trong tâm hồn của trẻ. 

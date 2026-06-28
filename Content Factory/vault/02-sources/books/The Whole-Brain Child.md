@@ -1,7 +1,7 @@
 **TẦNG 1: TỔNG QUAN CUỐN SÁCH**
 
 META_BOOK: book_name=The Whole-Brain Child | author=Daniel J. Siegel, MD & Tina Payne Bryson, PhD | year=Không đề cập | topics=Child psychology, Child development, Child rearing, Parenting, Parent and child | total_chunks=15
-RESOLVED_BOOK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "dieu_hoa_cam_xuc", "khoa_hoc_than_kinh_ung_dung"] | audience_filename=cha-me_ap-dung-chien-luoc-khoa-hoc-than-kinh-dieu-chinh-cam-xuc_khi-doi-mat-khung-hoang-nuoi-day-con
+RESOLVED_BOOK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan
 
 **1.1. Tên Sách & Tác giả**
 The Whole-Brain Child - Daniel J. Siegel & Tina Payne Bryson
@@ -62,7 +62,7 @@ TOC_MASTER:
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 1: Introduction: SURVIVE AND THRIVE | CHUNK_index=1
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc", "khung_hoang_cam_xuc"] | audience_filename=cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang-hang-ngay
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_crisis_management_in_parenting", "p1_neuroscience_parenting", "p1_survive_and_thrive_mindset", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chunk mở đầu đặt ra hai mục tiêu cơ bản nhất của mọi bậc cha mẹ: "sống sót" (survive) qua những khoảnh khắc khủng hoảng hàng ngày và giúp con "phát triển" (thrive) thành người tử tế, có trách nhiệm. Các bậc phụ huynh thường có xu hướng tách biệt những lúc căng thẳng với những khoảnh khắc bình yên để dạy dỗ con cái. Tuy nhiên, các tác giả khẳng định rằng chính những lúc khủng hoảng đó lại là cơ hội tuyệt vời nhất để nuôi dưỡng và phát triển tâm trí trẻ, dựa trên sự hiểu biết về cách não bộ vận hành.
@@ -102,7 +102,7 @@ META_QUOTE: content_type=quote | quote_keyword=neu-bat-ky-dieu | speaker=Tina Pa
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 2: Chapter 1: PARENTING WITH THE BRAIN IN MIND | CHUNK_index=2
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc", "nao_bo_tre_em"] | audience_filename=cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_crisis_integration_opportunity", "p1_whole_brain_integration", "p1_neuroscience_parenting", "p1_child_brain_development"] | audience_filename=cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay
 
 ① Toàn cảnh & Insight đối tượng
 - Tóm tắt Chunk: Chương 1 cung cấp cái nhìn tổng quan về phương pháp nuôi dạy con cái dựa trên nền tảng hiểu biết về bộ não (whole-brain perspective). Tác giả nhấn mạnh rằng bộ não của trẻ không ngừng được định hình và tái cấu trúc bởi chính những trải nghiệm mà cha mẹ cung cấp. Khái niệm cốt lõi được giới thiệu là "sự hội nhập" (integration) – quá trình kết nối các phần khác nhau của não bộ để chúng hoạt động cùng nhau như một thể thống nhất, từ đó tạo nền tảng cho sự phát triển vững chắc về cảm xúc, trí tuệ và xã hội của trẻ.
@@ -152,7 +152,7 @@ META_QUOTE: content_type=quote | quote_keyword=nhung-cach-hieu-mot | speaker=Tá
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 3: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #1: Connect and Redirect: Surfing Emotional Waves | CHUNK_index=3
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["ket_noi_truoc_khi_dieu_huong", "phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_xoa-diu-con-khung-hoang-cua-tre_khi-doi-mat-voi-cam-xuc-bung-no-vo-ly
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_neuroscience_parenting", "p1_child_emotional_regulation", "p1_connect_and_redirect_strategy", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích giới thiệu chiến lược "Kết nối và Chuyển hướng" (Connect and Redirect) để xử lý những tình huống trẻ bị cảm xúc lấn át. Tác giả nhấn mạnh rằng khi não phải của trẻ (cảm xúc) đang mất kiểm soát, những lý lẽ logic từ não trái sẽ không có tác dụng. Thay vì phản ứng cứng nhắc bằng logic hay mệnh lệnh, cha mẹ cần kết nối với não phải của trẻ trước thông qua sự đồng cảm và các tín hiệu phi ngôn ngữ. Sau khi trẻ đã bình tĩnh và cảm thấy được thấu hiểu, cha mẹ mới chuyển hướng sang não trái để giải quyết vấn đề và đưa ra bài học.
@@ -200,7 +200,7 @@ META_QUOTE: content_type=quote | quote_keyword=giong-nhu-mot-nhan | speaker=Tác
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 4: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #2: Name It to Tame It: Telling Stories to Calm Big Emotions | CHUNK_index=4
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "goi_ten_cam_xuc", "ke_chuyen", "dieu_hoa_cam_xuc", "khoa_hoc_than_kinh_ung_dung"] | audience_filename=cha-me_xoa-diu-cam-xuc-tieu-cuc-va-su-so-hai-cua-tre_khi-tre-vua-trai-qua-bien-co-dau-don
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_child_emotional_healing", "p1_neuroscience_parenting", "p1_name_to_tame_strategy", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan
 
 ① Toàn cảnh & Insight đối tượng
 * Tóm tắt Chunk: (3-5 câu) Khi trẻ trải qua những khoảnh khắc đau đớn, thất vọng hoặc đáng sợ, não phải của trẻ sẽ bị ngập tràn bởi cảm xúc và những cảm giác cơ thể. Phương pháp "Name It to Tame It" (Gọi tên để làm dịu) hướng dẫn cha mẹ cách giúp con kết hợp não trái và não phải bằng cách kể lại câu chuyện về trải nghiệm khó khăn đó. Việc kể chuyện giúp gắn từ ngữ và logic vào cảm xúc, từ đó làm dịu đi nỗi sợ hãi và giúp trẻ vượt qua chấn thương tâm lý.
@@ -254,7 +254,7 @@ META_QUOTE: content_type=quote | quote_keyword=healing-from-a-difficult | speake
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 5: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #3: Engage, Don't Enrage: Appealing to the Upstairs Brain | CHUNK_index=5
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["kich_hoat_nao_tang_tren", "phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_giai-quyet-su-chong-doi-va-xoa-diu-tre_khi-tre-dang-trong-trang-thai-bung-no-cam-xuc
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_engage_not_enrage", "p1_neuroscience_parenting", "p1_handling_child_defiance", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no
 
 ① Toàn cảnh & Insight đối tượng
 Tóm tắt Chunk: Đoạn trích tập trung vào chiến lược số 3 mang tên "Thu hút thay vì chọc giận" (Engage, Don't Enrage) nhằm kết nối và phát triển não tầng trên của trẻ. Thay vì sử dụng quyền uy áp đặt khiến não tầng dưới của trẻ bị kích hoạt gây ra sự chống đối, cha mẹ được khuyến khích đặt những câu hỏi kích thích tư duy, khơi gợi trẻ tự tìm giải pháp và thương lượng. Phương pháp này giúp trẻ chuyển từ trạng thái phản ứng bản năng sang trạng thái suy nghĩ, từ đó rèn luyện kỹ năng giải quyết vấn đề, ra quyết định và thấu hiểu hậu quả.
@@ -301,7 +301,7 @@ META_QUOTE: content_type=quote | quote_keyword=every-time-we-say | speaker=Tác 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 6: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #4: Use It or Lose It: Exercising the Upstairs Brain | CHUNK_index=6
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["tu_duy_logic_cho_tre", "phat_trien_tam_ly_tre", "nao_bo_tre_em", "dieu_hoa_cam_xuc", "khoa_hoc_than_kinh_ung_dung"] | audience_filename=cha-me_ren-luyen-va-phat-trien-tri-nao-tang-tren-cua-con_khi-tuong-tac-voi-tre-hang-ngay
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_upstairs_brain_development", "p1_neuroscience_parenting", "p1_use_or_lose_principle", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_ren-luyen-phat-trien-tri-nao-tang-tren_khi-tuong-tac-hang-ngay
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích này giải thích rằng "bộ não tầng trên" (upstairs brain) hoạt động giống như một khối cơ bắp, cần được sử dụng và tập luyện thường xuyên để phát triển tối ưu (Nguyên lý "Dùng nó hay mất nó"). Nó cung cấp các chiến lược thực tế để cha mẹ tạo cơ hội cho con rèn luyện 4 chức năng quan trọng: Khả năng ra quyết định, Thấu hiểu bản thân, Sự thấu cảm và Đạo đức. Bằng cách khuyến khích trẻ tự suy nghĩ, cân nhắc và đưa ra lựa chọn, cha mẹ đang trực tiếp xây dựng nền tảng cho sức khỏe tinh thần và trí thông minh xã hội của trẻ.
@@ -360,7 +360,7 @@ META_QUOTE: content_type=quote | quote_keyword=nao-tang-tren-giong | speaker=Tá
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 7: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #5: Move It or Lose It: Moving the Body to Avoid Losing the Mind | CHUNK_index=7
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc", "dieu_hoa_qua_the_chat"] | audience_filename=cha-me_giup-con-binh-tinh-va-lay-lai-kha-nang-tu-kiem-soat_khi-tre-dang-bi-mat-binh-tinh
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_neuroscience_parenting", "p1_move_it_or_lose_it", "p1_child_emotional_regulation", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_giup-con-binh-tinh-lay-lai-kiem-soat_khi-tre-mat-binh-tinh-choang-ngop
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích giới thiệu chiến lược thứ 5 của cách tiếp cận toàn não bộ: "Move It or Lose It" (Vận động hay Đánh mất). Các tác giả lý giải rằng rất nhiều cảm xúc của chúng ta bắt nguồn từ các trạng thái vật lý của cơ thể. Khi trẻ rơi vào trạng thái choáng ngợp hoặc mất kiểm soát, việc để trẻ vận động thể chất sẽ giúp thay đổi tính hóa học của não bộ, từ đó giúp hệ thống thần kinh kết nối lại (tích hợp) và lấy lại sự bình tĩnh.
@@ -410,7 +410,7 @@ META_QUOTE: content_type=quote | quote_keyword=co-the-chua-day | speaker=Daniel 
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 8: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #6: Use the Remote of the Mind: Replaying Memories | CHUNK_index=8
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["ung_pho_ky_uc_buon", "tri_tuong_tuong", "phat_trien_tam_ly_tre", "dieu_hoa_cam_xuc", "khoa_hoc_than_kinh_ung_dung"] | audience_filename=cha-me_giup-tre-doi-mat-va-tich-hop-cac-ky-uc-dau-buon_khi-tre-co-bieu-hien-ne-tranh-hay-so-hai
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_remote_of_the_mind", "p1_neuroscience_parenting", "p1_child_trauma_recovery", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_giup-tre-doi-mat-tich-hop-ky-uc-dau-buon_khi-tre-ne-tranh-so-hai-chuyen-cu
 
 **① Toàn cảnh & Insight đối tượng**
 - Tóm tắt Chunk: Đoạn trích giới thiệu chiến lược "Chiếc điều khiển tâm trí" nhằm giúp trẻ em đối mặt và xử lý các ký ức đau buồn hoặc đáng sợ trong quá khứ. Trẻ thường có xu hướng né tránh việc kể lại những trải nghiệm khó khăn vì cảm giác sợ hãi. Bằng cách tưởng tượng ký ức như một đĩa DVD và cung cấp cho trẻ "chiếc điều khiển" để tùy ý tạm dừng, tua nhanh hay tua lại, cha mẹ trao cho con quyền kiểm soát quá trình kể chuyện. Điều này giúp trẻ tích hợp các ký ức ngầm thành ký ức rõ ràng một cách an toàn để vượt qua những nỗi sợ vô hình đang chi phối chúng.
@@ -461,7 +461,7 @@ META_QUOTE: content_type=quote | quote_keyword=se-ke-qua-giong | speaker=David |
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 9: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #7: Remember to Remember: Making Recollection a Part of Your Family's Daily Life | CHUNK_index=9
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["ren_luyen_tri_nho", "phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_ren-luyen-ky-nang-hoi-tuong-de-cung-co-tri-nho-cho-con_khi-tuong-tac-cung-con-hang-ngay
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_child_memory_development", "p1_neuroscience_parenting", "p1_remember_to_remember", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn nội dung giải thích tầm quan trọng của việc hồi tưởng đối với sự phát triển não bộ của trẻ em. Trí nhớ giống như một vùng cơ bắp, càng được tập luyện bằng cách kể lại và nhớ lại (remember to remember), nó càng trở nên mạnh mẽ. Tác giả cung cấp hàng loạt các phương pháp thiết thực giúp cha mẹ khơi gợi để trẻ chia sẻ và củng cố ký ức, qua đó giúp trẻ tích hợp ký ức ẩn (implicit memory) và ký ức hiện (explicit memory) nhằm thấu hiểu bản thân tốt hơn ở hiện tại.
@@ -519,7 +519,7 @@ META_QUOTE: content_type=quote | quote_keyword=chi-cach-dat-hoi | speaker=Tác g
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 10: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #8: Let the Clouds of Emotion Roll By: Teaching That Feelings Come and Go | CHUNK_index=10
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["tinh_tam_thoi_cua_cam_xuc", "phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cua-cam-xuc_khi-con-dang-bi-mac-ket-va-choang-ngop
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_neuroscience_parenting", "p1_child_emotional_regulation", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_emotional_cloud_model"] | audience_filename=cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cam-xuc_khi-con-mac-ket-tuc-gian
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích này tập trung vào chiến lược "Để những đám mây cảm xúc trôi qua", hướng dẫn cha mẹ cách dạy trẻ hiểu rằng cảm xúc giống như thời tiết – chúng đến rồi đi. Bằng cách nhận thức được tính tạm thời của cảm xúc (trạng thái) thay vì coi đó là bản chất (tính cách), trẻ sẽ không bị mắc kẹt vào các cảm giác tiêu cực như sợ hãi, thất vọng hay cô đơn, từ đó dễ dàng lấy lại sự cân bằng trong tâm trí.
@@ -582,7 +582,7 @@ META_QUOTE: content_type=quote | quote_keyword=con-mua-la-co | speaker=Tác gi�
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 11: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #9: SIFT: Paying Attention to What's Going On Inside | CHUNK_index=11
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["ky_nang_sift", "phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc", "nhan_dien_the_gioi_noi_tam"] | audience_filename=cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam-de-lam-chu-ban-than_khi-tre-dang-bi-xao-tron-cam-xuc
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_sift_method", "p1_child_self_awareness", "p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chương này đi sâu vào Chiến lược "Toàn não bộ" số 9: SIFT (Sensations, Images, Feelings, Thoughts) [1-3]. Phương pháp này cung cấp công cụ giúp trẻ chú ý đến thế giới nội tâm của mình, nhận diện và thấu hiểu các "điểm trên vành bánh xe nhận thức" đang hoạt động [1]. Bằng cách phân tích các cảm giác cơ thể, hình ảnh trong đầu, cảm xúc và suy nghĩ, trẻ sẽ không bị mắc kẹt vào các phản ứng bốc đồng mà có thể giành lại quyền kiểm soát trạng thái tâm lý [4].
@@ -638,7 +638,7 @@ META_QUOTE: content_type=quote | quote_keyword=cach-day-tre-sift | speaker=Danie
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 12: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #10: Exercise Mindsight: Getting Back to the Hub | CHUNK_index=12
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["tu_xoa_diu_lo_au", "phat_trien_tam_ly_tre", "khoa_hoc_than_kinh_ung_dung", "dieu_hoa_cam_xuc"] | audience_filename=cha-me_huong-dan-con-cach-tu-xoa-diu-va-kiem-soat-su-chu-y_khi-con-bi-mac-ket-vao-nhung-suy-nghi-tieu-cuc
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_child_mindfulness", "p1_neuroscience_parenting", "p1_mindsight_practice", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Đoạn trích giới thiệu Chiến lược Não bộ Toàn diện số 10: Thực hành "Mindsight" (Tâm trí) để đưa trẻ trở về trạng thái cân bằng tại "Trục bánh xe" (Hub). Tác giả cung cấp các bài tập tĩnh tâm, hít thở và hình dung cụ thể theo từng độ tuổi, giúp trẻ không còn là nạn nhân của cảm xúc tiêu cực mà biết cách tự làm dịu bản thân, vượt qua những cơn bão nội tâm và phát triển sự tập trung.
@@ -693,7 +693,7 @@ META_QUOTE: content_type=quote | quote_keyword=hay-tim-cach-giup | speaker=Danie
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 13: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #11: Increase the Family Fun Factor: Making a Point to Enjoy Each Other | CHUNK_index=13
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "niem_vui_gia_dinh", "gan_ket_an_toan", "dieu_hoa_cam_xuc", "khoa_hoc_than_kinh_ung_dung"] | audience_filename=cha-me_xay-dung-nen-tang-gan-ket-va-tinh-cam-tich-cuc-cho-con-cai_khi-cam-thay-bi-cuon-vao-guong-quay-met-moi
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_crisis_integration_opportunity", "p1_whole_brain_integration", "p1_neuroscience_parenting"] | audience_filename=cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Tác giả nhấn mạnh tầm quan trọng của việc gia tăng "yếu tố vui vẻ" (fun factor) trong gia đình để chuẩn bị cho trẻ khả năng xây dựng các mối quan hệ. Vui chơi không chỉ mang lại tiếng cười mà còn giải phóng dopamine - hóa chất của phần thưởng - giúp củng cố mong muốn gắn kết tích cực. Trong mối quan hệ anh chị em, nguyên tắc cốt lõi là duy trì "phương trình toán học" nơi lượng niềm vui được chia sẻ phải lớn hơn lượng xung đột. 
@@ -758,7 +758,7 @@ META_QUOTE: content_type=quote | quote_keyword=neu-ban-muon-phat | speaker=Danie
 
 <data_chunk>
 META_CHUNK: CHUNK=Chunk 14: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #12: Connect Through Conflict: Teach Kids to Argue with a "We" in Mind | CHUNK_index=14
-RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["phat_trien_tam_ly_tre", "gan_ket_an_toan", "dieu_hoa_cam_xuc", "ky_nang_giai_quyet_xung_dot", "khoa_hoc_than_kinh_ung_dung"] | audience_filename=cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xay-ra-xung-dot-voi-nguoi-khac
+RESOLVED_CHUNK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_neuroscience_parenting", "p1_child_conflict_resolution", "p1_connect_through_conflict", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac
 
 **① Toàn cảnh & Insight đối tượng**
 *   **Tóm tắt Chunk:** Chunk này trình bày Chiến lược Não bộ Toàn vẹn số 12, hướng dẫn cách tận dụng các cuộc xung đột và bất đồng để dạy trẻ kỹ năng xây dựng mối quan hệ. Thay vì cố gắng né tránh xung đột một cách vô ích, cha mẹ có thể dùng nó làm cơ hội để rèn luyện cho trẻ cách nhìn nhận vấn đề từ góc độ của người khác, biết cách đọc các tín hiệu phi ngôn ngữ và chủ động hàn gắn lỗi lầm. Những kỹ năng này giúp trẻ phát triển sự đồng cảm và khả năng kết nối sâu sắc (mindsight) với mọi người xung quanh.

@@ -1,0 +1,332 @@
+[
+  {
+    "chunk_index": 2,
+    "topics": [
+      {
+        "id": "p1_good_inside_core_belief",
+        "label": "Niềm tin tốt đẹp bên trong",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_most_generous_interpretation",
+        "label": "Góc nhìn bao dung nhất",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 3,
+    "topics": [
+      {
+        "id": "p1_two_things_are_true",
+        "label": "Nguyên tắc hai điều đều đúng",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_escaping_power_struggle",
+        "label": "Thoát khỏi cuộc chiến quyền lực",
+        "tier": "medium"
+      }
+    ]
+  },
+  {
+    "chunk_index": 4,
+    "topics": [
+      {
+        "id": "p1_family_system_roles",
+        "label": "Vai trò trong hệ thống gia đình",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_boundary_validation_empathy",
+        "label": "Ranh giới xác thực và thấu cảm",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 5,
+    "topics": [
+      {
+        "id": "p1_body_memory",
+        "label": "Ký ức cơ thể",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_internal_working_model",
+        "label": "Mô hình hoạt động nội tâm",
+        "tier": "medium"
+      }
+    ]
+  },
+  {
+    "chunk_index": 6,
+    "topics": [
+      {
+        "id": "p1_neuroplasticity_repair",
+        "label": "Khả năng tái tạo của não bộ",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_the_power_of_repair",
+        "label": "Kỹ năng Sửa chữa",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 7,
+    "topics": [
+      {
+        "id": "p1_resilience_over_happiness",
+        "label": "Sự kiên cường hơn hạnh phúc",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_support_not_solve",
+        "label": "Hỗ trợ thay vì giải quyết",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 8,
+    "topics": [
+      {
+        "id": "p1_behavior_is_a_window",
+        "label": "Hành vi là một ô cửa sổ",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_connection_capital",
+        "label": "Vốn kết nối",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 10,
+    "topics": [
+      {
+        "id": "p1_confirming_perceptions",
+        "label": "Xác nhận nhận thức của trẻ",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_delivering_hard_truths",
+        "label": "Cách truyền đạt sự thật khó khăn",
+        "tier": "medium"
+      }
+    ]
+  },
+  {
+    "chunk_index": 11,
+    "topics": [
+      {
+        "id": "p1_sturdy_leader_self_care",
+        "label": "Lãnh đạo vững vàng và tự chăm sóc",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_avp_strategy",
+        "label": "Ghi nhận, xác nhận và cho phép",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 13,
+    "topics": [
+      {
+        "id": "p1_not_listening_nature",
+        "label": "Bản chất của sự không lắng nghe",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_connect_before_asking",
+        "label": "Kết nối trước khi yêu cầu",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 15,
+    "topics": [
+      {
+        "id": "p1_contain_the_fire",
+        "label": "Cô lập đám cháy",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_i_wont_let_you",
+        "label": "Mẹ sẽ không để con",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 16,
+    "topics": [
+      {
+        "id": "p1_sibling_attachment_security",
+        "label": "Sự an toàn gắn bó của anh chị em",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_focus_on_needs_not_fairness",
+        "label": "Tập trung vào nhu cầu thay vì công bằng",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 18,
+    "topics": [
+      {
+        "id": "p1_whining_formula",
+        "label": "Công thức của sự rên rỉ",
+        "tier": "narrow"
+      },
+      {
+        "id": "p1_humor_response",
+        "label": "Phản hồi bằng sự hài hước",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 19,
+    "topics": [
+      {
+        "id": "p1_lying_as_defense",
+        "label": "Lời nói dối là cơ chế tự vệ",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_reframe_lie_as_wish",
+        "label": "Định hình lại lời nói dối thành mong ước",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 20,
+    "topics": [
+      {
+        "id": "p1_jump_into_the_hole",
+        "label": "Nhảy xuống hố cùng con",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_fear_resolution_script",
+        "label": "Kịch bản 6 bước giải quyết nỗi sợ",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 21,
+    "topics": [
+      {
+        "id": "p1_true_confidence_concept",
+        "label": "Sự tự tin đích thực",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_validate_and_empower_shyness",
+        "label": "Công nhận và trao quyền",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 22,
+    "topics": [
+      {
+        "id": "p1_parental_tolerance_for_resilience",
+        "label": "Sự bao dung của cha mẹ",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_frustration_tolerance_strategies",
+        "label": "Chiến lược xây dựng khả năng chịu đựng",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 23,
+    "topics": [
+      {
+        "id": "p1_division_of_responsibility_food",
+        "label": "Phân chia Trách nhiệm trong bữa ăn",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_minimizing_anxiety_over_consumption",
+        "label": "Giảm lo âu hơn đong đếm thức ăn",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 24,
+    "topics": [
+      {
+        "id": "p1_consent_circuitry",
+        "label": "Mạch đồng thuận",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_trusting_bodily_signals",
+        "label": "Chiến lược \"Mẹ tin con\"",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 25,
+    "topics": [
+      {
+        "id": "p1_tears_as_attachment_signal",
+        "label": "Nước mắt là tín hiệu gắn kết",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_normalize_crying",
+        "label": "Bình thường hóa việc khóc",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 27,
+    "topics": [
+      {
+        "id": "p1_perfectionism_nature",
+        "label": "Bản chất của Chủ nghĩa hoàn hảo",
+        "tier": "medium"
+      },
+      {
+        "id": "p1_reframe_perfectionism",
+        "label": "Định hướng lại Chủ nghĩa hoàn hảo",
+        "tier": "narrow"
+      }
+    ]
+  },
+  {
+    "chunk_index": 31,
+    "topics": [
+      {
+        "id": "p1_three_pillars_of_change",
+        "label": "Ba trụ cột của sự thay đổi",
+        "tier": "broad"
+      },
+      {
+        "id": "p1_children_as_explorers",
+        "label": "Trẻ em là những nhà thám hiểm tương lai",
+        "tier": "broad"
+      }
+    ]
+  }
+]

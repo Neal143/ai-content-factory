@@ -1,6 +1,6 @@
----
+﻿---
 name: Story Architect
-description: Skill chuyên phân tích, bóc tách và cấu trúc hóa Câu chuyện cá nhân (Personal Story) thành mô hình 5 phần chuẩn mực. Đánh giá tính chân thực của story.
+description: Skill chuyên phân tích, bóc tách và cấu trúc hóa câu chuyện (Story Atom) thành mô hình 5 phần chuẩn mực. Tự động kích hoạt khi user yêu cầu "xử lý câu chuyện", "kể chuyện", "extract truyện cũ".
 ---
 
 # Story Architect Skill
@@ -9,77 +9,134 @@ Bạn là nhà thiết kế cấu trúc câu chuyện. Nhiệm vụ của bạn 
 
 ## Hướng dẫn hoạt động
 
-> ⚠️ **Quy tắc Vòng lặp (Batch-processing):** Nếu nhận nhiều câu chuyện nguyên liệu trong cùng một lần gọi, phải lặp lại **toàn bộ các Bước 2–6** biệt lập cho **từng câu chuyện nguyên liệu thô** riêng lẻ. Tuyệt đối không gom/trộn dữ liệu của nhiều câu chuyện (Topics, Pillar, Audience) vào chung một lần thực thi.
+> ⚠️ **Quy tắc Vòng lặp (Batch-processing):** Nếu nhận nhiều câu chuyện nguyên liệu trong cùng một lần gọi, phải lặp lại **toàn bộ các Bước 2–7** biệt lập cho **từng câu chuyện nguyên liệu thô** riêng lẻ. Tuyệt đối không gom/trộn dữ liệu của nhiều câu chuyện (Topics, Pillar, Audience) vào chung một lần thực thi.
+
+### Bước 0: Xác định Nguồn (Input Routing)
+Tuyệt đối KHÔNG hỏi user nếu không cần thiết. Xử lý đầu vào theo các trường hợp sau:
+1. **User kể chuyện trực tiếp:** Xử lý phần text user vừa cung cấp.
+2. **User yêu cầu quét/extract truyện cũ:** Đọc file `references/story-extraction-patterns.md` và tiến hành quét Vault, không cần hỏi thêm.
+3. **Được gọi ngầm (vd: từ `process-inbox`):** Nhận raw data được truyền sang và chuyển thẳng đến Bước 1 để phân rã, **tuyệt đối không dừng lại hỏi user** làm gãy tự động hóa.
 
 ### Bước 1: Đọc tham chiếu BẮT BUỘC
 Đọc kĩ 2 file references:
-- `.agents/skills/story-architect/references/story-schema.md` — Mô hình 5 phần (S-P-T-O-L), 5 subtypes, Injection Priority Matrix, YAML Frontmatter template, 7 Poka-Yoke Rules chống rác vào vault.
+- `.agents/skills/story-architect/references/output-schema.md` — Mô hình 5 phần (S-P-T-O-L), 5 subtypes, Bảng 8 Knowledge Type, YAML Frontmatter template (File A + File B), Injection Priority Matrix, 7 Poka-Yoke Rules chống rác vào vault.
 - `.agents/skills/story-architect/references/story-extraction-patterns.md` — 6 regex patterns dùng khi extract story từ bài cũ.
 
-> ⛔ **KHÔNG ĐƯỢC BỎ QUA BƯỚC NÀY.** Toàn bộ Story Schema, subtypes, Poka-Yoke Rules và YAML template nằm trong `story-schema.md`, KHÔNG nằm trong SKILL.md này.
+> ⛔ **KHÔNG ĐƯỢC BỎ QUA BƯỚC NÀY.** Toàn bộ Story Schema, subtypes, Poka-Yoke Rules và YAML template nằm trong `output-schema.md`, KHÔNG nằm trong SKILL.md này.
 
-### Bước 2: Phân tích raw story
-Xác định:
-- **Protagonist**: self / người quen (tên cụ thể) / nhân vật nổi tiếng?
-- **SubType**: personal / observed / secondhand / historical / famous_world? (xem bảng 5 subtypes trong `story-schema.md`)
-- **Timeline**: thời gian cụ thể (năm, tháng, "hồi đại học")?
-- **Topic (Sinh 2-3 topics đa tầng làm biến `[id]` và `[label]`):** Xác định 2-3 cặp `(id, label)` phản ánh câu chuyện theo phổ độ rộng (1 rộng + 1 trung + 1 hẹp tùy chọn). Toàn bộ topics phải nhất quán với 01 Pillar cụ thể mà Story match. Đọc `pillars.yaml`, dựa trên `name` và `description` của mỗi Pillar để chọn Pillar phù hợp nhất với nội dung câu chuyện.
-  - **`id`**: BẮT BUỘC tra `pillars.yaml` lấy key Pillar đã match (VD: `pillar_2` → `p2`), gắn làm tiền tố: `pN_english_snake_case` (ví dụ: `p2_patience_in_parenting`).
-  - **`label`**: Tiếng Việt đầy đủ dấu (ví dụ: `Kiên nhẫn trong nuôi dạy con`).
-  - **Topic rộng (Broad):** Thường map với emotion/theme của story.
-  - **Topic trung (Medium/Central):** Map với lesson/insight cốt lõi của story — bắt buộc 100%.
-  - **Topic hẹp (Narrow/Optional):** Map với tình huống cụ thể trong story nếu có tính phổ quát.
-- **Measurable outcome**: có số liệu cụ thể không?
+### Bước 2: Phân tích Story & Đề xuất Combo (USER INTERACTION)
+Agent phân tích story, sau đó đề xuất 1 Combo duy nhất cho user xác nhận.
 
-### Bước 3: Sinh Output Kép (Split-Output Generation)
-Bóc tách raw story thành 2 thực thể Markdown hoàn toàn độc lập theo chuẩn DIKW Graph:
+1. **Phân tích Story:** Xác định các yếu tố:
+   - **Protagonist**: self / người quen (tên cụ thể) / nhân vật nổi tiếng?
+   - **SubType**: personal / observed / secondhand / historical / famous_world? (xem bảng 5 subtypes trong `output-schema.md`)
+   - **Timeline**: thời gian cụ thể (năm, tháng, "hồi đại học")?
+   - **Measurable outcome**: có số liệu cụ thể không?
+   - **Lesson**: Bài học rút ra từ câu chuyện (suy luận từ nội dung story).
+
+2. **Chọn Combo {Pillar, Insight, Topic}:**
+   - **Pillar:** Đọc `pillars.yaml`, đọc cả `name` và `description` → chọn 01 Pillar phù hợp nhất.
+   - **Insight:** Từ Pillar đã chọn, đọc `insights[]` trong `pillars.yaml` → đánh giá Lesson vs từng insight (dùng `raw` + `llm_explain`) → chọn 01 Insight phù hợp nhất.
+   - **Topic:** Từ Insight đã chọn, mở file insight vật lý (dùng `file_ref` → `vault/01-Atomic/Insights/[slug].md`) → đọc trường `topics` → chọn 01 Topic phù hợp nhất với story.
+
+3. **Đề xuất Combo:**
+   ```
+   Combo đề xuất cho câu chuyện này:
+   - Pillar: [Tên Pillar]
+   - Insight: [file_ref]
+   - Topic: [topic_id]
+   Bạn muốn thay đổi gì không?
+   ```
+
+4. **Xử lý phản hồi user:**
+   - **User đồng ý:** Tiếp tục sang mục 5.
+   - **User muốn thay đổi bất kỳ yếu tố nào (Pillar/Insight/Topic):** Đọc và thực thi `references/combo-negotiation.md`.
+
+5. **Topic Resolution (sau khi Combo chốt):**
+   Topic từ Combo sẽ được gán cho CẢ File A (Lesson) VÀ File B (Story).
+   - **Primary:** Topic đã chốt từ Combo.
+   - **Bổ sung:** Agent tự động thêm các topics khác từ `insight.topics` nếu phù hợp với story (tối đa 3 topics tổng cộng).
+   - Lưu danh sách topic_ids đã chốt vào biến `resolved_topics`.
+
+### Bước 3: Đánh giá Lesson & Khách quan hóa (BẮT BUỘC HỎI USER)
+Sợi dây DIKW (Tầng 4 -> Tầng 3 -> Tầng 2) bắt buộc phải thông suốt. File A (Lesson) LUÔN LUÔN được tạo. Lesson phải được đảm bảo tính khách quan trước khi lưu.
+
+Hỏi user:
+*"Bài học rút ra từ câu chuyện này là: [Lesson đã suy luận].
+1. Bạn có muốn bổ sung/chỉnh sửa gì để bài học này mang tính khách quan, có thể áp dụng cho nhiều đối tượng khác không?
+2. Bạn có hình ảnh/ẩn dụ nào gắn với bài học này không? (Ví dụ: 'Dàn đồng ca hòa quyện giọng hát, Các phần não bộ liên kết và hoạt động phối hợp') — cô đọng đúng 1 câu, tối đa 80 ký tự. Nếu không có, bỏ qua."*
+-> Tuyệt đối phải chờ user trả lời duyệt Lesson, **kể cả khi được gọi ngầm từ process-inbox**.
+-> Lưu vivid_knowledge vào biến `vivid_knowledge` (mảng, tối đa 3 phần tử). Nếu user không cung cấp → mảng rỗng `[]`.
+
+### Bước 4: Gate — Poka-Yoke & Duplicate Check + Sinh Output Kép
+**Kiểm định (tất cả phải PASS trước khi sinh output):**
+- **Duplicate Check:** Quét `vault/01-Atomic/Stories/` — nếu có story cùng protagonist + cùng turning point → Skip, báo user đã tồn tại.
+- **Graph Poka-Yoke:** Áp dụng 7 rules từ `output-schema.md`. File B MẶC ĐỊNH PHẢI CÓ link trỏ vào File A. Nếu mồ côi (Orphan) → AUTO REJECT.
+- **Story Quality Checks (Hard Reject):**
+  - Story KHÔNG CÓ protagonist → REJECT.
+  - Story KHÔNG CÓ turning point rõ ràng → YÊU CẦU user bổ sung.
+  - File B vừa tạo KHÔNG CÓ `supports_knowledge` trong YAML frontmatter → REJECT (kiểm tra nội bộ output, không quét vault).
+  - Confidence < 0.5 → KHÔNG xử lý, yêu cầu user xác minh.
+
+**Sinh Output Kép (sau khi tất cả Gate PASS):**
 
 **Kiến thức bắt buộc (8 `knowledge_type`):** `framework`, `principle`, `mental_model`, `actionable_rule`, `typology`, `trend`, `concept`, `philosophy`.
 
-**Hành động 1: Trích xuất L (Lesson) thành File A (Node Tầng 3)**
-- Quét vùng Lesson của câu chuyện, ép Agent chọn chính xác **1 trong 8 `knowledge_type`** nêu trên.
-- Lưu File A vào thư mục `Solutions/` (nếu type = framework, principle, mental_model, actionable_rule, typology, trend) hoặc `Concepts/` (nếu type = concept, philosophy).
-- **Cấy Link Tầng 2:** Sử dụng Pillar mà Story đã match, truy xuất Pillar đó để tìm ra Insight phù hợp nhất. Cấy biến định danh `supports_insight: "[Tên_Insight_Tầng_2]"` vào Frontmatter của File A.
-- Định dạng tên: `{slug}.md`.
+- **File A (Node Tầng 3 - Lesson):** Lesson đã khách quan hóa. Chọn 1 trong 8 `knowledge_type`. BẮT BUỘC cấy biến:
+  + `type: "solution"` nếu knowledge_type = framework, principle, mental_model, actionable_rule, typology, trend. `type: "concept"` nếu knowledge_type = concept, philosophy.
+  + `supports_insight: "[[Tên_File_Insight_Đã_Chốt]]"` (Trỏ lên Tầng 2).
+  + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
+  + `vivid_knowledges`: biến `vivid_knowledge` (đã lưu ở Bước 3). Nếu mảng rỗng thì không ghi trường này.
+  + Lưu vào `vault/01-Atomic/Solutions/` nếu type = solution.
+  + Lưu vào `vault/01-Atomic/Concepts/` nếu type = concept.
+  + Tên file: `{slug}.md`.
+- **File B (Node Tầng 4 - Story):** Nguyên trạng 5 phần. Lưu vào `vault/01-Atomic/Stories/` với tên `{category}-story-{slug}.md`. BẮT BUỘC cấy biến:
+  + `type: "story"`.
+  + `supports_knowledge: "[[Tên_File_A]]"` (Trỏ lên Tầng 3).
+  + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
 
-**Hành động 2: Nguyên trạng Story Atom thành File B (Node Tầng 4)**
-- File B VẪN BẢO QUẢN toàn vẹn 5 vùng cốt truyện: Situation → Problem → Turning Point → Outcome → Lesson (Tuyệt đối không cắt bỏ Lesson của File B).
-- BẮT BUỘC cấy YAML `supports_knowledge: "[Tên_File_A]"` để KHÓA THẲNG ĐÍCH DANH từ File B về File A vừa sinh ra.
-- Format tên file B: `{category}-story-{slug}.md`. Lưu vào thư mục `vault/01-Atomic/Stories/`.
+**Bảng 11 categories để chọn `{category}`:**
+| Category | Chủ đề |
+|----------|--------|
+| `career` | Sự nghiệp, công việc |
+| `content` | Viết bài, content creation |
+| `productivity` | Năng suất, tập trung |
+| `mindset` | Tư duy, tâm lý |
+| `relationship` | Quan hệ, networking |
+| `decision` | Ra quyết định |
+| `learning` | Học tập |
+| `business` | Kinh doanh |
+| `marketing` | Marketing, bán hàng |
+| `writing` | Viết lách |
+| `life` | Cuộc sống, trải nghiệm cá nhân |
 
-### Bước 4: Gate — Poka-Yoke & Duplicate Check
-Cả 2 kiểm định này phải PASS trước khi tiếp tục. Fail bất kỳ điều nào thì dừng và báo user ngay, không xử lý tiếp.
-- **Duplicate Check:** Quét `vault/01-Atomic/Stories/` — nếu có story cùng protagonist + cùng turning point → Skip, báo user đã tồn tại.
-- **Graph Poka-Yoke:** Áp dụng 7 rules từ `story-schema.md`. File B MẶC ĐỊNH PHẢI CÓ link trỏ vào File A. Nếu mồ côi (Orphan) → AUTO REJECT.
-
-### Bước 5: Semantic Dedup (Topic Manager)
-
-BẮT BUỘC phải chuẩn bị sẵn 4 biến trong working memory cho **câu chuyện nguyên liệu thô đang xử lý**:
-- `id`: `[pN_id_rong] [pN_id_trung] ([pN_id_hep])`.
-- `label`: `"[label rộng]" "[label trung]" ("[label hẹp]")`.
-- `pillar`: `[Tên Pillar đã match ở Bước 2]`
-- `audience`: Wikilink trỏ duy nhất vào file Big Audience gốc (file có `audience_level: big` nằm trong thư mục `vault/01-Atomic/Audiences/`).
-
-👉 **HÀNH ĐỘNG:** Đọc và thực thi ngay file `.agents/references/topic_manager/topic_manager.md` tại chỗ.
-
-Lưu mảng `[resolved_id]` trả về vào biến `story_resolved_topics` trong working memory. Cả File A và File B sẽ dùng chung biến này để điền vào `topics:`. (Biến `belongs_to_audience` ghi vào Atom vẫn dùng lại wikilink Big Audience trên).
-
-### Bước 6: Đóng gói YAML KCS
+### Bước 5: Đóng gói YAML KCS
 Tạo YAML frontmatter cho cả 2 file tuân thủ triệt để cấu trúc KCS uy tín.
-- **Source Type Tagging (Đóng dấu Nguồn):** Gán `source_type` vào CẢ File A VÀ File B:
-  - SubType = `personal` hoặc `observed` → `source_type: "User"` cho cả 2 file.
-  - SubType = `secondhand`, `historical`, `famous_world` → `source_type: "book"`.
-- **The Librarian (Đóng dấu Topic):** 100% Atom (kể cả File A và File B) BẮT BUỘC phải chèn mảng `topics` vào YAML Frontmatter. Giá trị của mảng này là biến `story_resolved_topics` đã lưu trong working memory ở Bước 5. Cú pháp bắt buộc:
+- **Source Type Tagging (Đóng dấu Nguồn):** Đã gán mặc định `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"` ở Bước 4.
+- **The Librarian (Đóng dấu Topic):** 100% Atom BẮT BUỘC phải chèn mảng `topics` vào YAML Frontmatter. Giá trị = biến `resolved_topics` (lưu ở Bước 2 mục 5). Cú pháp:
   ```yaml
-  topics: ["id_rong", "id_trung"]
-  # hoặc nếu có topic hẹp:
-  topics: ["id_rong", "id_trung", "id_hep"]
+  topics: ["topic_id_1", "topic_id_2"]
   ```
-  *(Lưu ý: Chỉ lưu `id` tiếng Anh vào frontmatter, bỏ qua `label` tiếng Việt. Thứ tự mảng: rộng → trung → hẹp)*
+  *(Chỉ lưu `id` tiếng Anh, bỏ `label` tiếng Việt)*
 
-### Bước 7: Cập nhật Personal Atoms Queue
-Sau khi cả File A và File B đã được lưu vào `vault/01-Atomic/`, chạy script đăng ký atoms mới vào hàng đợi (script tự bỏ qua nếu atom không có `source_type: "User"`):
+### Bước 6: Cập nhật Personal Atoms Queue
+Sau khi cả File A và File B đã được lưu vào `vault/01-Atomic/`, chạy script đăng ký atoms mới vào hàng đợi:
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".agents/scripts/Update-PersonalAtomsQueue.ps1" -Action "append" -AtomPathsRaw "[đường_dẫn_File_A],[đường_dẫn_File_B]"
 ```
 *(Thay `[đường_dẫn_File_A]` và `[đường_dẫn_File_B]` bằng đường dẫn tương đối thực tế, phân cách bằng dấu phẩy KHÔNG có khoảng trắng. Ví dụ: `vault/01-Atomic/Solutions/ten-a.md,vault/01-Atomic/Stories/ten-b.md`)*
+
+### Bước 7: Báo cáo
+Báo cáo cho user:
+- **File đã tạo:** File A path + File B path.
+- **Phân loại:** SubType, Category, Knowledge Type.
+- **Topics:** Danh sách topic_ids đã gán.
+- **Lesson:** Tóm tắt 1 dòng.
+- **Confidence:** Score.
+- **Graph links:** `supports_insight` (File A → Insight), `supports_knowledge` (File B → File A).
+
+**💡 Tips cho User (chỉ hiển thị nếu nội dung user kể quá sơ sài):**
+- Kể chi tiết cảm xúc ("lúc đó tôi thấy...").
+- Nhắc đến số liệu cụ thể ("tăng 40%").
+- Nêu rõ bước ngoặt khiến bạn thay đổi.
+- Không cần văn vẻ, Agent sẽ tự động rewrite khi dùng lại.

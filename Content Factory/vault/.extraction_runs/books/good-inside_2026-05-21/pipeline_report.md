@@ -1,9 +1,7 @@
 
+
 ## 1b. generate_baseline
 - Audiences: 31 | Atoms: 198 | Vivids: 94
-
-## 2. book-audience-matcher
-- DONE: 31 / 31
 
 ## 3. book-parser (Atomizer)
 - DONE: 272 | DLQ: 9 | CAP_RESERVED: 0 | MISSING: 11
@@ -19,14 +17,8 @@
   ❌ Chunk 26 — [vivid_knowledge] framework: Các chiến lược xây dựng sự tự tin [NOT_
   ❌ Chunk 28 — [story] Wesley và cha (Jeff)-unknown
 
-## 1b. generate_baseline
-- Audiences: 31 | Atoms: 198 | Vivids: 94
-
-## 2. book-audience-matcher
-- DONE: 31 / 31
-
 ## 3. book-parser (Atomizer)
-- DONE: 272 | DLQ: 9 | CAP_RESERVED: 0 | MISSING: 11
+- DONE: 269 | DLQ: 9 | CAP_RESERVED: 3 | MISSING: 11
   ❌ Chunk 14 — [vivid_knowledge] Cơn ăn vạ cảm xúc (Emotional Tantrums)
   ❌ Chunk 14 — [vivid_knowledge] Tự nhắc nhở về sự tốt đẹp của bản thân (Remind You
   ❌ Chunk 16 — [vivid_knowledge] Bản chất của xung đột: Sự an toàn gắn bó & Thứ tự 

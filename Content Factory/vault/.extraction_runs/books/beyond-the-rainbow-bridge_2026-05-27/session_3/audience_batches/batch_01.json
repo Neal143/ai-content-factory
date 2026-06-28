@@ -1,37 +1,37 @@
 {
   "batch_index": 1,
-  "batch_password": "ebf198ba",
+  "batch_password": "5c806d5b",
   "total_batches": 6,
   "items": [
     {
       "uid": "uid_book",
-      "id": "parents_build_healthy_development_foundation_infant_to_seven",
+      "id": "cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi",
       "semantic_query": "Cha mẹ muốn tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi.",
-      "file_ref": "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+      "file_ref": "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
     },
     {
       "uid": "uid_chunk_01",
-      "id": "parents_build_healthy_habits_rhythm_daily_routines",
-      "semantic_query": "Cha mẹ muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình.",
-      "file_ref": "[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]"
+      "id": "cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh",
+      "semantic_query": "Cha mẹ muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình",
+      "file_ref": "[[cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh]]"
     },
     {
       "uid": "uid_chunk_03",
-      "id": "parents_protect_healthy_development_modern_culture_pressures",
+      "id": "cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai",
       "semantic_query": "Cha mẹ muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại.",
-      "file_ref": "[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]"
+      "file_ref": "[[cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai]]"
     },
     {
       "uid": "uid_chunk_04",
-      "id": "parents_build_healthy_happy_foundation_modern_parenting_confusion",
+      "id": "cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai",
       "semantic_query": "Cha mẹ muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại.",
-      "file_ref": "[[cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day]]"
+      "file_ref": "[[cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai]]"
     },
     {
       "uid": "uid_chunk_05",
-      "id": "parents_protect_health_promote_development_daily_care",
+      "id": "cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay",
       "semantic_query": "Cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày.",
-      "file_ref": "[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]"
+      "file_ref": "[[cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay]]"
     }
   ]
 }

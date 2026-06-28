@@ -1,0 +1,237 @@
+{
+  "pillar": "pillar_1",
+  "entries": [
+    {
+      "source_group": "book",
+      "id": "p1_neuroscience_parenting",
+      "label": "Nuôi dạy con theo khoa học thần kinh",
+      "audiences": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "source_group": "book",
+      "id": "p1_whole_brain_integration",
+      "label": "Tích hợp não bộ toàn diện cho trẻ",
+      "audiences": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "source_group": "book",
+      "id": "p1_crisis_integration_opportunity",
+      "label": "Biến khủng hoảng thành cơ hội phát triển",
+      "audiences": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "source_group": "1",
+      "id": "p1_crisis_management_in_parenting",
+      "label": "Quản lý khủng hoảng trong nuôi dạy con",
+      "audiences": [
+        "[[cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang]]"
+      ]
+    },
+    {
+      "source_group": "1",
+      "id": "p1_survive_and_thrive_mindset",
+      "label": "Tư duy sống sót và phát triển",
+      "audiences": [
+        "[[cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang]]"
+      ]
+    },
+    {
+      "source_group": "2",
+      "id": "p1_child_brain_development",
+      "label": "Phát triển não bộ trẻ em",
+      "audiences": [
+        "[[cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay]]"
+      ]
+    },
+    {
+      "source_group": "2",
+      "id": "p1_brain_integration_concept",
+      "label": "Khái niệm hội nhập não bộ",
+      "audiences": [
+        "[[cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay]]"
+      ]
+    },
+    {
+      "source_group": "3",
+      "id": "p1_child_emotional_regulation",
+      "label": "Điều chỉnh cảm xúc ở trẻ",
+      "audiences": [
+        "[[cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va]]"
+      ]
+    },
+    {
+      "source_group": "3",
+      "id": "p1_connect_and_redirect_strategy",
+      "label": "Chiến lược kết nối và chuyển hướng",
+      "audiences": [
+        "[[cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va]]"
+      ]
+    },
+    {
+      "source_group": "4",
+      "id": "p1_child_emotional_healing",
+      "label": "Chữa lành cảm xúc cho trẻ",
+      "audiences": [
+        "[[cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan]]"
+      ]
+    },
+    {
+      "source_group": "4",
+      "id": "p1_name_to_tame_strategy",
+      "label": "Chiến lược gọi tên để làm dịu",
+      "audiences": [
+        "[[cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan]]"
+      ]
+    },
+    {
+      "source_group": "5",
+      "id": "p1_handling_child_defiance",
+      "label": "Xử lý sự chống đối ở trẻ",
+      "audiences": [
+        "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+      ]
+    },
+    {
+      "source_group": "5",
+      "id": "p1_engage_not_enrage",
+      "label": "Chiến lược thu hút thay vì chọc giận",
+      "audiences": [
+        "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+      ]
+    },
+    {
+      "source_group": "6",
+      "id": "p1_upstairs_brain_development",
+      "label": "Phát triển não tầng trên ở trẻ",
+      "audiences": [
+        "[[cha-me_ren-luyen-phat-trien-tri-nao-tang-tren_khi-tuong-tac-hang-ngay]]"
+      ]
+    },
+    {
+      "source_group": "6",
+      "id": "p1_use_or_lose_principle",
+      "label": "Nguyên lý dùng nó hay mất nó",
+      "audiences": [
+        "[[cha-me_ren-luyen-phat-trien-tri-nao-tang-tren_khi-tuong-tac-hang-ngay]]"
+      ]
+    },
+    {
+      "source_group": "7",
+      "id": "p1_child_emotional_regulation",
+      "label": "Điều chỉnh cảm xúc ở trẻ",
+      "audiences": [
+        "[[cha-me_giup-con-binh-tinh-lay-lai-kiem-soat_khi-tre-mat-binh-tinh-choang-ngop]]"
+      ]
+    },
+    {
+      "source_group": "7",
+      "id": "p1_move_it_or_lose_it",
+      "label": "Chiến lược vận động hay đánh mất",
+      "audiences": [
+        "[[cha-me_giup-con-binh-tinh-lay-lai-kiem-soat_khi-tre-mat-binh-tinh-choang-ngop]]"
+      ]
+    },
+    {
+      "source_group": "8",
+      "id": "p1_child_trauma_recovery",
+      "label": "Phục hồi tổn thương tâm lý ở trẻ",
+      "audiences": [
+        "[[cha-me_giup-tre-doi-mat-tich-hop-ky-uc-dau-buon_khi-tre-ne-tranh-so-hai-chuyen-cu]]"
+      ]
+    },
+    {
+      "source_group": "8",
+      "id": "p1_remote_of_the_mind",
+      "label": "Chiến lược chiếc điều khiển tâm trí",
+      "audiences": [
+        "[[cha-me_giup-tre-doi-mat-tich-hop-ky-uc-dau-buon_khi-tre-ne-tranh-so-hai-chuyen-cu]]"
+      ]
+    },
+    {
+      "source_group": "9",
+      "id": "p1_child_memory_development",
+      "label": "Phát triển trí nhớ cho trẻ",
+      "audiences": [
+        "[[cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay]]"
+      ]
+    },
+    {
+      "source_group": "9",
+      "id": "p1_remember_to_remember",
+      "label": "Chiến lược nhắc nhớ để ghi nhớ",
+      "audiences": [
+        "[[cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay]]"
+      ]
+    },
+    {
+      "source_group": "10",
+      "id": "p1_child_emotional_regulation",
+      "label": "Điều chỉnh cảm xúc ở trẻ",
+      "audiences": [
+        "[[cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cam-xuc_khi-con-mac-ket-tuc-gian]]"
+      ]
+    },
+    {
+      "source_group": "10",
+      "id": "p1_emotional_cloud_model",
+      "label": "Mô hình đám mây cảm xúc",
+      "audiences": [
+        "[[cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cam-xuc_khi-con-mac-ket-tuc-gian]]"
+      ]
+    },
+    {
+      "source_group": "11",
+      "id": "p1_child_self_awareness",
+      "label": "Nhận thức bản thân ở trẻ",
+      "audiences": [
+        "[[cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc]]"
+      ]
+    },
+    {
+      "source_group": "11",
+      "id": "p1_sift_method",
+      "label": "Phương pháp SIFT",
+      "audiences": [
+        "[[cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc]]"
+      ]
+    },
+    {
+      "source_group": "12",
+      "id": "p1_child_mindfulness",
+      "label": "Chánh niệm cho trẻ",
+      "audiences": [
+        "[[cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc]]"
+      ]
+    },
+    {
+      "source_group": "12",
+      "id": "p1_mindsight_practice",
+      "label": "Thực hành tâm trí Mindsight",
+      "audiences": [
+        "[[cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc]]"
+      ]
+    },
+    {
+      "source_group": "14",
+      "id": "p1_child_conflict_resolution",
+      "label": "Giải quyết mâu thuẫn ở trẻ",
+      "audiences": [
+        "[[cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac]]"
+      ]
+    },
+    {
+      "source_group": "14",
+      "id": "p1_connect_through_conflict",
+      "label": "Kết nối qua mâu thuẫn",
+      "audiences": [
+        "[[cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac]]"
+      ]
+    }
+  ]
+}

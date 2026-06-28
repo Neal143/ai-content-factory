@@ -1,5 +1,5 @@
 {
-  "password": "3b798e83",
+  "password": "d899e286",
   "entries": [
     {
       "uid": "uid_chunk_26",
@@ -7,10 +7,10 @@
       "audience_main_job": "tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng",
       "audience_circumstance": "khi ở nhà hoặc trong lớp học",
       "aliases": [
-        "tổ chức các hoạt động hàng ngày cho trẻ mầm non",
-        "hướng dẫn trẻ nhỏ theo nhịp điệu sinh hoạt"
+        "tổ chức hoạt động cho trẻ mầm non",
+        "hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu"
       ],
-      "reason": "Cha mẹ hoặc giáo viên mầm non (người chăm sóc trẻ) là người thực hiện việc tạo nhịp điệu này."
+      "reason": "Hoạt động ở nhà hoặc trong lớp học, dành cho cả cha mẹ hoặc giáo viên, nên dùng 'người chăm sóc trẻ'."
     },
     {
       "uid": "uid_chunk_27",
@@ -18,10 +18,10 @@
       "audience_main_job": "tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng",
       "audience_circumstance": "khi trẻ bước sang tuổi mới",
       "aliases": [
-        "tổ chức sinh nhật ý nghĩa cho con",
-        "làm tiệc sinh nhật nuôi dưỡng tâm hồn trẻ"
+        "chuẩn bị sinh nhật ý nghĩa cho con",
+        "tổ chức sinh nhật kiểu Waldorf cho bé"
       ],
-      "reason": "Tổ chức sinh nhật cho con mang tính gắn kết thiêng liêng là vai trò của cha mẹ."
+      "reason": "Hoạt động kỷ niệm cho trẻ, performer chủ yếu là cha mẹ."
     },
     {
       "uid": "uid_chunk_28",
@@ -29,10 +29,10 @@
       "audience_main_job": "chọn đúng truyện cổ tích phù hợp cho trẻ nghe",
       "audience_circumstance": "khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con",
       "aliases": [
-        "chọn sách truyện cho con theo độ tuổi",
-        "kể chuyện cổ tích phù hợp với tâm lý trẻ"
+        "kể chuyện cổ tích cho con ngủ",
+        "chọn truyện đọc cho bé theo độ tuổi"
       ],
-      "reason": "Cha mẹ là người chọn lọc và kể chuyện cho trẻ nghe dựa trên sự phát triển của con."
+      "reason": "Hành động cho 'con', performer là cha mẹ."
     }
   ]
 }

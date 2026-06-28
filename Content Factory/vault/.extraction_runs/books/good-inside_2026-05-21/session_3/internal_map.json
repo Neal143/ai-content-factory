@@ -1,0 +1,296 @@
+{
+  "unique_audiences": [
+    {
+      "uid": "uid_book",
+      "id": "cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan",
+      "semantic_query": "Cha mẹ muốn nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ.",
+      "file_ref": "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]",
+      "internal_parents": []
+    },
+    {
+      "uid": "uid_chunk_02",
+      "id": "cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no",
+      "semantic_query": "Cha mẹ muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ.",
+      "file_ref": "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_03",
+      "id": "cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang",
+      "semantic_query": "Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ.",
+      "file_ref": "[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_04",
+      "id": "cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc",
+      "semantic_query": "Cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc.",
+      "file_ref": "[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_05",
+      "id": "cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con",
+      "semantic_query": "Cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ.",
+      "file_ref": "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_06",
+      "id": "cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai",
+      "semantic_query": "Cha mẹ muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái.",
+      "file_ref": "[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_07",
+      "id": "cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai",
+      "semantic_query": "Cha mẹ muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực.",
+      "file_ref": "[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_08",
+      "id": "cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te",
+      "semantic_query": "Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát.",
+      "file_ref": "[[cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_09",
+      "id": "cha-me_pha-vo-su-khang-cu_tre-lam-sai",
+      "semantic_query": "Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó",
+      "file_ref": "[[cha-me_pha-vo-su-khang-cu_tre-lam-sai]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_10",
+      "id": "cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho",
+      "semantic_query": "Cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối.",
+      "file_ref": "[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_11",
+      "id": "cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem",
+      "semantic_query": "Cha mẹ muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày.",
+      "file_ref": "[[cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_12",
+      "id": "cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang",
+      "semantic_query": "Cha mẹ muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày.",
+      "file_ref": "[[cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_13",
+      "id": "cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi",
+      "semantic_query": "Cha mẹ muốn khiến con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ.",
+      "file_ref": "[[cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_14",
+      "id": "cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va",
+      "semantic_query": "Cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối.",
+      "file_ref": "[[cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_15",
+      "id": "cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang",
+      "semantic_query": "Cha mẹ muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh.",
+      "file_ref": "[[cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_16",
+      "id": "cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau",
+      "semantic_query": "Cha mẹ muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự chú ý.",
+      "file_ref": "[[cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_18",
+      "id": "cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang",
+      "semantic_query": "Cha mẹ muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ.",
+      "file_ref": "[[cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_19",
+      "id": "cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam",
+      "semantic_query": "Cha mẹ muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm.",
+      "file_ref": "[[cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_20",
+      "id": "cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan",
+      "semantic_query": "Cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể.",
+      "file_ref": "[[cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_21",
+      "id": "cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi",
+      "semantic_query": "Cha mẹ muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông.",
+      "file_ref": "[[cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_23",
+      "id": "cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an",
+      "semantic_query": "Cha mẹ muốn thiết lập ranh giới và thói quen ăn uống lành mạnh khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn.",
+      "file_ref": "[[cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_24",
+      "id": "cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long",
+      "semantic_query": "Cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác.",
+      "file_ref": "[[cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_25",
+      "id": "cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua",
+      "semantic_query": "Cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá.",
+      "file_ref": "[[cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_26",
+      "id": "cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti",
+      "semantic_query": "Cha mẹ muốn xây dựng sự tự tin thực sự cho con khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân.",
+      "file_ref": "[[cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_27",
+      "id": "cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan",
+      "semantic_query": "Cha mẹ muốn giúp con vượt qua sự sợ hãi khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo.",
+      "file_ref": "[[cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_28",
+      "id": "cha-me_tach-roi-binh-an_tre-bam-me",
+      "semantic_query": "Cha mẹ muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt.",
+      "file_ref": "[[cha-me_tach-roi-binh-an_tre-bam-me]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_29",
+      "id": "cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi",
+      "semantic_query": "Cha mẹ muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ.",
+      "file_ref": "[[cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_30",
+      "id": "cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do",
+      "semantic_query": "Cha mẹ muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ.",
+      "file_ref": "[[cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    },
+    {
+      "uid": "uid_chunk_31",
+      "id": "cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho",
+      "semantic_query": "Cha mẹ muốn thấu hiểu bản chất sự thay đổi của loài người khi chiêm nghiệm lại ý nghĩa của tuổi thơ.",
+      "file_ref": "[[cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho]]",
+      "internal_parents": [
+        "uid_book"
+      ]
+    }
+  ],
+  "chunk_mapping": {
+    "book": "uid_book",
+    "2": "uid_chunk_02",
+    "3": "uid_chunk_03",
+    "4": "uid_chunk_04",
+    "5": "uid_chunk_05",
+    "6": "uid_chunk_06",
+    "7": "uid_chunk_07",
+    "8": "uid_chunk_08",
+    "9": "uid_chunk_09",
+    "10": "uid_chunk_10",
+    "11": "uid_chunk_11",
+    "12": "uid_chunk_12",
+    "13": "uid_chunk_13",
+    "14": "uid_chunk_14",
+    "15": "uid_chunk_15",
+    "16": "uid_chunk_16",
+    "17": "uid_chunk_02",
+    "18": "uid_chunk_18",
+    "19": "uid_chunk_19",
+    "20": "uid_chunk_20",
+    "21": "uid_chunk_21",
+    "22": "uid_chunk_07",
+    "23": "uid_chunk_23",
+    "24": "uid_chunk_24",
+    "25": "uid_chunk_25",
+    "26": "uid_chunk_26",
+    "27": "uid_chunk_27",
+    "28": "uid_chunk_28",
+    "29": "uid_chunk_29",
+    "30": "uid_chunk_30",
+    "31": "uid_chunk_31"
+  }
+}

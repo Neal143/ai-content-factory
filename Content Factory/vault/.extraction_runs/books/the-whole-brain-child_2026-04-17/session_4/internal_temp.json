@@ -1,0 +1,60 @@
+{
+  "password": "bca8fa78",
+  "anchors": [
+    {
+      "id": "p1_child_memory_development",
+      "label": "Phát triển trí nhớ cho trẻ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_remember_to_remember",
+      "label": "Chiến lược nhắc nhớ để ghi nhớ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_emotional_cloud_model",
+      "label": "Mô hình đám mây cảm xúc",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_child_self_awareness",
+      "label": "Nhận thức bản thân ở trẻ",
+      "pillar": "pillar_1"
+    },
+    {
+      "id": "p1_sift_method",
+      "label": "Phương pháp SIFT",
+      "pillar": "pillar_1"
+    }
+  ],
+  "batch_topics": [
+    {
+      "proposed_id": "p1_child_mindfulness",
+      "label": "Chánh niệm cho trẻ",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Khái niệm mới về chánh niệm"
+    },
+    {
+      "proposed_id": "p1_mindsight_practice",
+      "label": "Thực hành tâm trí Mindsight",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chiến lược cụ thể mới"
+    },
+    {
+      "proposed_id": "p1_child_conflict_resolution",
+      "label": "Giải quyết mâu thuẫn ở trẻ",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Khái niệm mới về mâu thuẫn"
+    },
+    {
+      "proposed_id": "p1_connect_through_conflict",
+      "label": "Kết nối qua mâu thuẫn",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chiến lược giải quyết cụ thể"
+    }
+  ]
+}

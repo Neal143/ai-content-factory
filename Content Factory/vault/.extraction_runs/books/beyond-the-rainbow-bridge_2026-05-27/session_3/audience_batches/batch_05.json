@@ -1,37 +1,37 @@
 {
   "batch_index": 5,
-  "batch_password": "23e6e67c",
+  "batch_password": "cc7d09e3",
   "total_batches": 6,
   "items": [
     {
       "uid": "uid_chunk_21",
-      "id": "parents_handle_opposition_conflict_daily_stubbornness_arguments",
+      "id": "cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay",
       "semantic_query": "Cha mẹ muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày.",
-      "file_ref": "[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]"
+      "file_ref": "[[cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay]]"
     },
     {
       "uid": "uid_chunk_22",
-      "id": "parents_soothe_child_emotions_tired_crying",
+      "id": "cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc",
       "semantic_query": "Cha mẹ muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc.",
-      "file_ref": "[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]"
+      "file_ref": "[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]"
     },
     {
       "uid": "uid_chunk_23",
-      "id": "parents_find_correct_discipline_adjustment_methods_educational_difficulties",
+      "id": "cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre",
       "semantic_query": "Cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ.",
-      "file_ref": "[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]"
+      "file_ref": "[[cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre]]"
     },
     {
       "uid": "uid_chunk_24",
-      "id": "parents_maintain_discipline_harmony_child_explosive_behavior_end_of_day",
+      "id": "cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay",
       "semantic_query": "Cha mẹ muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày.",
-      "file_ref": "[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]"
+      "file_ref": "[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]"
     },
     {
       "uid": "uid_chunk_25",
-      "id": "parents_personalize_education_methods_different_personalities_behaviors",
+      "id": "cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre",
       "semantic_query": "Cha mẹ muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ.",
-      "file_ref": "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]"
+      "file_ref": "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]"
     }
   ]
 }

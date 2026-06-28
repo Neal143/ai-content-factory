@@ -1,8 +1,8 @@
 {
   "book": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven",
-  "total_vivids_evaluated": 35,
+  "total_vivids_evaluated": 34,
   "kept": 34,
-  "discarded": 1,
+  "discarded": 0,
   "details": [
     {
       "chunk_index": 4,
@@ -14,17 +14,6 @@
       "total": null,
       "verdict": "KEEP",
       "reason": "Passed all filters"
-    },
-    {
-      "chunk_index": 4,
-      "type": "vivid_insight",
-      "parent": "Nỗi sợ nuôi dạy con sai cách trong thế giới hiện đại",
-      "original_text": "Giống như mười hai bà mụ trong truyện cổ tích khao khát ban những phép màu tuyệt vời nhất cho công chúa sơ sinh",
-      "disqualifier": "LOW_SCORE",
-      "scores": null,
-      "total": null,
-      "verdict": "DISCARD",
-      "reason": "Ẩn dụ hơi cliché và không kết nối mạnh với nỗi sợ hãi."
     },
     {
       "chunk_index": 4,

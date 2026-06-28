@@ -1,0 +1,15 @@
+---
+type: solution
+knowledge_type: actionable_rule
+topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_jump_into_the_hole", "p1_fear_resolution_script"]
+status: processed
+source_type: book
+source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
+source_id: "unknown"
+confidence: 0.9
+supports_insight: "[[good-inside_dung-logic-de-tran-an-noi-so]]"
+---
+
+*   **Bản chất:** Là phương pháp chủ động luyện tập các phản ứng trước khi một tình huống gây lo âu thực sự diễn ra.
+*   **Cách thức vận hành:** Việc cha mẹ né tránh nhắc đến các tình huống khiến trẻ lo lắng chỉ truyền đi thông điệp rằng chính cha mẹ cũng sợ điều đó, làm tăng thêm sự bất an. Việc "diễn tập trước" cho trẻ thấy thử thách này có thể chinh phục được và giúp hệ thần kinh của trẻ được chuẩn bị sẵn sàng.
+*   **Ứng dụng thực tế:** TỪ BỎ việc phớt lờ, im lặng chắp tay hy vọng trẻ sẽ quên đi nỗi sợ. Hãy THỰC THI việc đóng vai trực tiếp hoặc sử dụng thú nhồi bông để diễn tập trước các tình huống gây căng thẳng (chia tay buổi sáng, đi khám bác sĩ, đi chơi với bạn...).

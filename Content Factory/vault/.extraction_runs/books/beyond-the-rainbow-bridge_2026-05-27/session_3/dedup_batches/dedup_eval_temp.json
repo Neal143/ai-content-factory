@@ -1,38 +1,38 @@
 {
-  "password": "5e9cba83",
+  "password": "dbcff52c",
   "entries": [
     {
       "uid": "uid_chunk_26",
-      "id": "caregivers_create_rhythm_guide_preschoolers_daily_activities_home_classroom",
+      "id": "nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc",
       "semantic_query": "Người chăm sóc trẻ muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học.",
-      "file_ref": "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-dan-dat-hoat-dong_o-nha-hoac-lop-hoc]]",
+      "file_ref": "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]",
       "collapse_target": null,
       "internal_parents": [
         "uid_book"
       ],
-      "reason": "DISTINCT: Focuses on rhythm and guidance by caregivers in both home and classroom settings."
+      "reason": "DISTINCT. Focuses on rhythms for young children in classes/home."
     },
     {
       "uid": "uid_chunk_27",
-      "id": "parents_organize_birthday_celebration_nurture_soul_spiritual_connection",
+      "id": "cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi",
       "semantic_query": "Cha mẹ muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới.",
-      "file_ref": "[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]",
+      "file_ref": "[[cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi]]",
       "collapse_target": null,
       "internal_parents": [
         "uid_book"
       ],
-      "reason": "DISTINCT: Focuses specifically on birthday celebrations."
+      "reason": "DISTINCT. Focuses on birthday ceremonies."
     },
     {
       "uid": "uid_chunk_28",
-      "id": "parents_choose_right_fairy_tales_child_age_psychological_maturity",
+      "id": "cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con",
       "semantic_query": "Cha mẹ muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con.",
-      "file_ref": "[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]",
+      "file_ref": "[[cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con]]",
       "collapse_target": null,
       "internal_parents": [
         "uid_book"
       ],
-      "reason": "DISTINCT: Focuses specifically on choosing fairy tales based on psychological maturity."
+      "reason": "DISTINCT. Focuses on fairy tales selection."
     }
   ]
 }

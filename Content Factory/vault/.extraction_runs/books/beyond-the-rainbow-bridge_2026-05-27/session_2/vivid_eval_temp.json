@@ -1,0 +1,77 @@
+{
+  "password": "e4253a9e",
+  "evaluations": [
+    {
+      "vivid_fragment": "Bạo lực ở trẻ không được chứa trong một chiếc bình...",
+      "decision": "KEEP",
+      "reason": "Ẩn dụ chiếc bình bị rỉ rất hay về bạo lực",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Trẻ tham gia làm vườn, đào hố, chuyển những tảng đ...",
+      "decision": "KEEP",
+      "reason": "Hoạt động vật lý cụ thể để giải tỏa năng lượng",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Cuối ngày tại nhà | Trẻ bướng bỉnh, chạy nhảy bật ...",
+      "decision": "KEEP",
+      "reason": "Hoàn cảnh phổ biến cuối ngày",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Một người mẹ thú nhận đang kẹt dưới chiến hào nuôi...",
+      "decision": "KEEP",
+      "reason": "Hình ảnh ẩn dụ mạnh về sự mệt mỏi của cha mẹ",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Một cậu bé đang bật nảy khắp tường bỗng trở nên đi...",
+      "decision": "KEEP",
+      "reason": "Hiệu quả rõ rệt của nhịp điệu tĩnh",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Để một cậu bé đang hừng hực cơn giận dữ chạy ra vư...",
+      "decision": "KEEP",
+      "reason": "Phương pháp xử lý vật lý trực tiếp",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    }
+  ]
+}

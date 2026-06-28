@@ -1,15 +1,20 @@
 {
-  "pillar": "Steiner và khoa học phát triển toàn diện",
+  "pillar": "pillar_1",
   "book_topics": [
     {
-      "id": "early_childhood_development",
-      "label": "Phát triển não bộ mầm non",
+      "id": "p1_early_childhood_education",
+      "label": "Giáo dục và phát triển những năm đầu đời",
       "tier": "broad"
     },
     {
-      "id": "waldorf_rhythm",
-      "label": "Nhịp điệu sinh hoạt Waldorf",
+      "id": "p1_rhythm_and_senses",
+      "label": "Bảo vệ giác quan và nhịp điệu sinh hoạt",
       "tier": "medium"
+    },
+    {
+      "id": "p1_imitation_and_play",
+      "label": "Học qua bắt chước và trò chơi tự do",
+      "tier": "narrow"
     }
   ]
 }

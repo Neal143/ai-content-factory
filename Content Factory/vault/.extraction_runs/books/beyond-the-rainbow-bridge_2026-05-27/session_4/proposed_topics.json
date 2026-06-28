@@ -1,436 +1,444 @@
 {
-  "pillar": "Steiner và khoa học phát triển toàn diện",
+  "pillar": "pillar_1",
   "entries": [
     {
       "source_group": "book",
-      "id": "early_childhood_development",
-      "label": "Phát triển não bộ mầm non",
+      "id": "p1_early_childhood_education",
+      "label": "Giáo dục và phát triển những năm đầu đời",
       "audiences": [
-        "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+        "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
       ]
     },
     {
       "source_group": "book",
-      "id": "waldorf_rhythm",
-      "label": "Nhịp điệu sinh hoạt Waldorf",
+      "id": "p1_rhythm_and_senses",
+      "label": "Bảo vệ giác quan và nhịp điệu sinh hoạt",
       "audiences": [
-        "[[cha-me_tao-lap-nen-tang-phat-trien-toan-dien_tre-tu-so-sinh-den-bay-tuoi]]"
+        "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
+      ]
+    },
+    {
+      "source_group": "book",
+      "id": "p1_imitation_and_play",
+      "label": "Học qua bắt chước và trò chơi tự do",
+      "audiences": [
+        "[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]"
       ]
     },
     {
       "source_group": "1",
-      "id": "household_rhythm",
-      "label": "Nhịp điệu việc nhà",
+      "id": "p1_early_childhood_education",
+      "label": "Giáo dục và phát triển những năm đầu đời",
       "audiences": [
-        "[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]"
+        "[[cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh]]"
       ]
     },
     {
       "source_group": "1",
-      "id": "play_evolution",
-      "label": "Tiến hóa trò chơi trẻ em",
+      "id": "p1_family_rhythm",
+      "label": "Nhịp điệu sinh hoạt gia đình",
       "audiences": [
-        "[[cha-me_xay-dung-thoi-quen-va-nhip-dieu_thiet-lap-sinh-hoat-hang-ngay]]"
+        "[[cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh]]"
       ]
     },
     {
       "source_group": "3",
-      "id": "environmental_absorption",
-      "label": "Thẩm thấu môi trường mầm non",
+      "id": "p1_environmental_absorption",
+      "label": "Sự thẩm thấu môi trường xung quanh",
       "audiences": [
-        "[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]"
+        "[[cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai]]"
       ]
     },
     {
       "source_group": "3",
-      "id": "media_impact_on_children",
-      "label": "Tác động truyền thông lên trẻ em",
+      "id": "p1_environmental_filter",
+      "label": "Bộ lọc môi trường và làm gương",
       "audiences": [
-        "[[cha-me_bao-ve-su-phat-trien-lanh-manh_doi-mat-ap-luc-van-hoa-hien-dai]]"
+        "[[cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai]]"
       ]
     },
     {
       "source_group": "4",
-      "id": "unfiltered_absorption",
-      "label": "Thẩm thấu không màng lọc",
+      "id": "p1_parenting_foundations",
+      "label": "Ba viên đá tảng để nuôi dạy trẻ",
       "audiences": [
-        "[[cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day]]"
+        "[[cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai]]"
       ]
     },
     {
       "source_group": "4",
-      "id": "language_imitation",
-      "label": "Bắt chước ngôn ngữ",
+      "id": "p1_language_imitation",
+      "label": "Hỗ trợ ngôn ngữ qua bắt chước",
       "audiences": [
-        "[[cha-me_xay-dung-phat-trien-khoe-manh-hanh-phuc_hoang-mang-cach-nuoi-day]]"
+        "[[cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai]]"
       ]
     },
     {
       "source_group": "5",
-      "id": "warmth_importance",
-      "label": "Tầm quan trọng của giữ ấm",
+      "id": "p1_warmth_and_health",
+      "label": "Vai trò của sự ấm áp đối với sức khỏe",
       "audiences": [
-        "[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]"
+        "[[cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay]]"
       ]
     },
     {
       "source_group": "5",
-      "id": "fever_role",
-      "label": "Vai trò của sốt",
+      "id": "p1_childhood_fever",
+      "label": "Vai trò của sốt trong việc xây dựng năng lực giữ ấm",
       "audiences": [
-        "[[cha-me_bao-ve-suc-khoe-thuc-day-phat-trien_cham-soc-sinh-hoat-hang-ngay]]"
+        "[[cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay]]"
       ]
     },
     {
       "source_group": "6",
-      "id": "external_rhythm",
-      "label": "Nhịp điệu ngoại tại",
+      "id": "p1_biological_rhythm",
+      "label": "Sự đồng bộ hóa nhịp điệu sinh học",
       "audiences": [
-        "[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]"
+        "[[cha-me_thiet-lap-su-on-dinh-va-ne-nep-cho-con_khi-doi-mat-voi-nhip-song-hien-dai-ban-ron-va-mat-can-bang]]"
       ]
     },
     {
       "source_group": "6",
-      "id": "breathing_model",
-      "label": "Mô hình Thở vào Thở ra",
+      "id": "p1_cosmic_rhythms",
+      "label": "Nhịp điệu vũ trụ và mùa vụ",
       "audiences": [
-        "[[cha-me_thiet-lap-on-dinh-ne-nep_doi-mat-nhip-song-ban-ron]]"
+        "[[cha-me_thiet-lap-su-on-dinh-va-ne-nep-cho-con_khi-doi-mat-voi-nhip-song-hien-dai-ban-ron-va-mat-can-bang]]"
       ]
     },
     {
       "source_group": "7",
-      "id": "free_play",
-      "label": "Vui chơi tự do",
+      "id": "p1_creative_play_stages",
+      "label": "Ba giai đoạn tiến hóa của vui chơi sáng tạo",
       "audiences": [
-        "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+        "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
       ]
     },
     {
       "source_group": "7",
-      "id": "archetypal_toys",
-      "label": "Đồ chơi nguyên mẫu",
+      "id": "p1_archetypal_toys",
+      "label": "Nguyên tắc sử dụng đồ chơi mở và nguyên mẫu",
       "audiences": [
-        "[[cha-me_nuoi-duong-tri-tuong-tuong-tri-tue-vui-choi_tre-tu-0-den-7-tuoi]]"
+        "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
       ]
     },
     {
       "source_group": "8",
-      "id": "simple_toys",
-      "label": "Đồ chơi đơn giản",
+      "id": "p1_simple_toys",
+      "label": "Quy tắc chọn đồ chơi đơn giản và chân thực",
       "audiences": [
-        "[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]"
+        "[[cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi]]"
       ]
     },
     {
       "source_group": "8",
-      "id": "repetitive_play",
-      "label": "Trò chơi lặp lại",
+      "id": "p1_play_as_imitation",
+      "label": "Trẻ chơi thông qua việc bắt chước công việc",
       "audiences": [
-        "[[cha-me_chon-do-choi-xay-dung-khong-gian-choi_tre-tu-so-sinh-den-2-5-tuoi]]"
+        "[[cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi]]"
       ]
     },
     {
       "source_group": "9",
-      "id": "open_ended_toys",
-      "label": "Đồ chơi mở",
+      "id": "p1_open_ended_toys",
+      "label": "Cung cấp đồ chơi mở (Open-ended toys)",
       "audiences": [
-        "[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]"
+        "[[cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi]]"
       ]
     },
     {
       "source_group": "9",
-      "id": "clean_up_play",
-      "label": "Dọn dẹp bằng trò chơi",
+      "id": "p1_natural_elements_play",
+      "label": "Bảo vệ không gian vui chơi và tiếp xúc tự nhiên",
       "audiences": [
-        "[[cha-me_thuc-day-tri-tuong-tuong-tap-trung_tim-do-choi-tre-2-5-den-5-tuoi]]"
+        "[[cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi]]"
       ]
     },
     {
       "source_group": "10",
-      "id": "little_puberty",
-      "label": "Khủng hoảng tuổi lên sáu",
+      "id": "p1_little_puberty",
+      "label": "Sự thay đổi tuổi lên sáu (Little Puberty)",
       "audiences": [
-        "[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]"
+        "[[cha-me_hieu-su-thay-doi-trong-cach-choi-va-tam-ly-cua-tre-tu-5-den-7-tuoi_khi-con-trai-qua-cac-giai-doan-phat-trien-moi]]"
       ]
     },
     {
       "source_group": "10",
-      "id": "screen_time_harm",
-      "label": "Tác hại của màn hình",
+      "id": "p1_dangers_of_early_intellectualism",
+      "label": "Tác hại của tư duy trí thức sớm",
       "audiences": [
-        "[[cha-me_hieu-thay-doi-cach-choi-tam-ly_tre-tu-5-den-7-tuoi]]"
+        "[[cha-me_hieu-su-thay-doi-trong-cach-choi-va-tam-ly-cua-tre-tu-5-den-7-tuoi_khi-con-trai-qua-cac-giai-doan-phat-trien-moi]]"
       ]
     },
     {
       "source_group": "11",
-      "id": "toys_and_imagination",
-      "label": "Đồ chơi và trí tưởng tượng",
+      "id": "p1_open_ended_toys_creativity",
+      "label": "Cung cấp đồ chơi mở và không gian để trẻ tự sáng tạo trò chơi",
       "audiences": [
-        "[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]"
+        "[[cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con]]"
       ]
     },
     {
       "source_group": "11",
-      "id": "play_as_learning",
-      "label": "Vui chơi là học tập",
+      "id": "p1_inner_imagination",
+      "label": "Đồ chơi đơn giản kích thích nội tâm",
       "audiences": [
-        "[[cha-me_tao-moi-truong-vui-choi_thiet-lap-khong-gian-mua-do-choi]]"
+        "[[cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con]]"
       ]
     },
     {
       "source_group": "12",
-      "id": "will_senses",
+      "id": "p1_will_senses",
       "label": "Bốn giác quan ý chí",
       "audiences": [
-        "[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]"
+        "[[cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi]]"
       ]
     },
     {
       "source_group": "12",
-      "id": "baby_walker_harm",
-      "label": "Tác hại của xe tập đi",
+      "id": "p1_nurturing_will_senses",
+      "label": "Nguyên tắc nuôi dưỡng các giác quan ý chí",
       "audiences": [
-        "[[cha-me_nuoi-duong-the-chat-giac-quan-co-ban_tre-tu-so-sinh-den-bay-tuoi]]"
+        "[[cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi]]"
       ]
     },
     {
       "source_group": "13",
-      "id": "feeling_senses",
-      "label": "Giác quan cảm xúc",
+      "id": "p1_smell_and_memory",
+      "label": "Khứu giác định hình ký ức và khả năng mở lòng",
       "audiences": [
-        "[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]"
+        "[[cha-me_nuoi-duong-tam-hon-va-bao-ve-cac-giac-quan-cam-xuc-cua-tre_khi-moi-truong-xung-quanh-ngap-tran-cac-kich-thich-nhan-tao]]"
       ]
     },
     {
       "source_group": "13",
-      "id": "color_therapy",
-      "label": "Liệu pháp màu sắc",
+      "id": "p1_color_therapy",
+      "label": "Ứng dụng màu sắc tương phản để trị liệu",
       "audiences": [
-        "[[cha-me_nuoi-duong-tam-hon-bao-ve-giac-quan-cam-xuc_moi-truong-kich-thich-nhan-tao]]"
+        "[[cha-me_nuoi-duong-tam-hon-va-bao-ve-cac-giac-quan-cam-xuc-cua-tre_khi-moi-truong-xung-quanh-ngap-tran-cac-kich-thich-nhan-tao]]"
       ]
     },
     {
       "source_group": "14",
-      "id": "cognitive_senses",
-      "label": "Giác quan nhận thức",
+      "id": "p1_protect_hearing",
+      "label": "Bảo vệ thính giác khỏi tiếng ồn vô cơ",
       "audiences": [
-        "[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]"
+        "[[cha-me_nuoi-duong-cac-giac-quan-nhan-thuc-cua-tre_khi-con-tre-bat-dau-tiep-xuc-voi-nhieu-nguon-am-thanh-va-cac-moi-quan-he-giao-tiep-phuc-tap]]"
       ]
     },
     {
       "source_group": "14",
-      "id": "machine_noise_harm",
-      "label": "Tác hại của âm thanh máy móc",
+      "id": "p1_human_interaction_language",
+      "label": "Ngôn ngữ chỉ phát triển qua tương tác người với người",
       "audiences": [
-        "[[cha-me_nuoi-duong-giac-quan-nhan-thuc_tiep-xuc-am-thanh-giao-tiep-phuc-tap]]"
+        "[[cha-me_nuoi-duong-cac-giac-quan-nhan-thuc-cua-tre_khi-con-tre-bat-dau-tiep-xuc-voi-nhieu-nguon-am-thanh-va-cac-moi-quan-he-giao-tiep-phuc-tap]]"
       ]
     },
     {
       "source_group": "15",
-      "id": "imitation_nature",
-      "label": "Bản chất sự bắt chước",
+      "id": "p1_discipline_through_self_education",
+      "label": "Kỷ luật thông qua tự giáo dục bản thân",
       "audiences": [
-        "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+        "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
       ]
     },
     {
       "source_group": "15",
-      "id": "self_education_discipline",
-      "label": "Kỷ luật qua tự giáo dục",
+      "id": "p1_harm_of_anger_and_preaching",
+      "label": "Tác hại của sự tức giận và thuyết giáo",
       "audiences": [
-        "[[cha-me_ren-luyen-ky-luat_doi-mat-hanh-vi-chua-tot]]"
+        "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
       ]
     },
     {
       "source_group": "17",
-      "id": "reduce_no",
-      "label": "Tiết giảm từ không",
+      "id": "p1_reduce_the_word_no",
+      "label": "Tiết giảm từ Không",
       "audiences": [
-        "[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]"
+        "[[cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc]]"
       ]
     },
     {
       "source_group": "17",
-      "id": "energy_redirection",
+      "id": "p1_energy_redirection",
       "label": "Chuyển hướng năng lượng",
       "audiences": [
-        "[[cha-me_dieu-chinh-hanh-vi_choi-dua-thieu-chuan-muc]]"
+        "[[cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc]]"
       ]
     },
     {
       "source_group": "18",
-      "id": "use_may",
-      "label": "Sử dụng từ May",
+      "id": "p1_use_of_may",
+      "label": "Sử dụng từ \"May\" (Được phép/Có thể) thay vì câu hỏi",
       "audiences": [
-        "[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]"
+        "[[cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day]]"
       ]
     },
     {
       "source_group": "18",
-      "id": "illusion_of_choice",
-      "label": "Ảo tưởng về lựa chọn",
+      "id": "p1_illusion_of_choice",
+      "label": "Ảo tưởng về sự lựa chọn",
       "audiences": [
-        "[[cha-me_thiet-lap-ky-luat-huong-dan-hop-tac_doi-mat-chong-doi]]"
+        "[[cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day]]"
       ]
     },
     {
       "source_group": "19",
-      "id": "rhythm_discipline",
-      "label": "Kỷ luật bằng nhịp điệu",
+      "id": "p1_rhythm_as_discipline",
+      "label": "Cơ chế kỷ luật tự nhiên của nhịp điệu",
       "audiences": [
-        "[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]"
+        "[[cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay]]"
       ]
     },
     {
       "source_group": "19",
-      "id": "rhythm_balance",
-      "label": "Sự cân bằng nhịp điệu",
+      "id": "p1_rhythm_anticipation",
+      "label": "Sự đoán định của nhịp điệu",
       "audiences": [
-        "[[cha-me_thiet-lap-ky-luat-ne-nep_xao-tron-chong-doi-sinh-hoat]]"
+        "[[cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay]]"
       ]
     },
     {
       "source_group": "20",
-      "id": "healing_action",
-      "label": "Hành động chữa lành",
+      "id": "p1_healing_action",
+      "label": "Chữa lành hành vi tấn công vật lý",
       "audiences": [
-        "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]"
+        "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot]]"
       ]
     },
     {
       "source_group": "20",
-      "id": "violence_myth",
-      "label": "Lầm tưởng xả bạo lực",
+      "id": "p1_real_work_for_violent_play",
+      "label": "Chữa lành trò chơi bạo lực bằng lao động thực tế",
       "audiences": [
-        "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc_hanh-dong-bao-luc]]"
+        "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot]]"
       ]
     },
     {
       "source_group": "21",
-      "id": "consequent_action",
-      "label": "Hành động nhất quán",
+      "id": "p1_consequent_action",
+      "label": "Xử lý sự bướng bỉnh bằng hành động nhất quán",
       "audiences": [
-        "[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]"
+        "[[cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay]]"
       ]
     },
     {
       "source_group": "21",
-      "id": "healing_conflict",
-      "label": "Hóa giải xung đột",
+      "id": "p1_listen_and_redirect",
+      "label": "Hóa giải xung đột qua lắng nghe và hành động thực tế",
       "audiences": [
-        "[[cha-me_xu-ly-chong-doi-xung-dot_doi-mat-buong-binh-tranh-cai]]"
+        "[[cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay]]"
       ]
     },
     {
       "source_group": "22",
-      "id": "positivity_discipline",
-      "label": "Kỷ luật tích cực",
+      "id": "p1_positive_discipline",
+      "label": "Kỷ luật tích cực và thấu hiểu",
       "audiences": [
-        "[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]"
+        "[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]"
       ]
     },
     {
       "source_group": "22",
-      "id": "tired_child_care",
-      "label": "Chăm sóc trẻ mệt mỏi",
+      "id": "p1_harm_of_criticism",
+      "label": "Tác hại của sự chỉ trích",
       "audiences": [
-        "[[cha-me_xoa-diu-cam-xuc_tre-met-moi-quay-khoc]]"
+        "[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]"
       ]
     },
     {
       "source_group": "23",
-      "id": "spiritual_discipline",
-      "label": "Kỷ luật tâm linh",
+      "id": "p1_spiritual_work_in_discipline",
+      "label": "Thực hành tâm linh trong giấc ngủ để tìm giải pháp kỷ luật",
       "audiences": [
-        "[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]"
+        "[[cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre]]"
       ]
     },
     {
       "source_group": "23",
-      "id": "sleep_life_connection",
-      "label": "Kết nối qua giấc ngủ",
+      "id": "p1_angelic_help",
+      "label": "Kết nối tâm linh qua giấc ngủ",
       "audiences": [
-        "[[cha-me_tim-cach-dieu-chinh-ky-luat_gap-kho-khan-giao-duc]]"
+        "[[cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre]]"
       ]
     },
     {
       "source_group": "24",
-      "id": "true_discipline",
+      "id": "p1_true_discipline",
       "label": "Kỷ luật đích thực",
       "audiences": [
-        "[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]"
+        "[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]"
       ]
     },
     {
       "source_group": "24",
-      "id": "yelling_harm",
-      "label": "Tác hại của la mắng",
+      "id": "p1_end_of_day_reflection",
+      "label": "Phản tỉnh cuối ngày",
       "audiences": [
-        "[[cha-me_duy-tri-ky-luat-hoa-hop_hanh-vi-bung-no-cuoi-ngay]]"
+        "[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]"
       ]
     },
     {
       "source_group": "25",
-      "id": "four_temperaments",
-      "label": "Bốn khí chất",
+      "id": "p1_four_temperaments",
+      "label": "Bốn nhóm khí chất cơ bản của trẻ",
       "audiences": [
-        "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]"
+        "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]"
       ]
     },
     {
       "source_group": "25",
-      "id": "like_heals_like",
-      "label": "Giống nhau chữa lành",
+      "id": "p1_like_heals_like",
+      "label": "Nguyên tắc Lấy độc trị độc trong giáo dục khí chất",
       "audiences": [
-        "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_tinh-cach-hanh-vi-khac-biet]]"
+        "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]"
       ]
     },
     {
       "source_group": "26",
-      "id": "music_rhythm",
-      "label": "Nhịp điệu âm nhạc",
+      "id": "p1_songs_for_routines",
+      "label": "Sử dụng bài hát để thiết lập thói quen và chuyển tiếp",
       "audiences": [
-        "[[bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]"
+        "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]"
       ]
     },
     {
       "source_group": "26",
-      "id": "song_and_movement",
-      "label": "Bài hát và vận động",
+      "id": "p1_songs_and_movement",
+      "label": "Kết hợp bài hát với vận động cơ thể",
       "audiences": [
-        "[[bo-me-va-giao-vien_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]"
+        "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]"
       ]
     },
     {
       "source_group": "27",
-      "id": "rainbow_bridge_story",
-      "label": "Câu chuyện Cầu Vồng",
+      "id": "p1_rainbow_bridge_story",
+      "label": "Câu chuyện Cầu Vồng (Rainbow Bridge Story)",
       "audiences": [
-        "[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]"
+        "[[cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi]]"
       ]
     },
     {
       "source_group": "27",
-      "id": "tell_from_memory",
-      "label": "Kể chuyện từ trí nhớ",
+      "id": "p1_adopted_child_story",
+      "label": "Chuyện sinh nhật cho trẻ nhận con nuôi",
       "audiences": [
-        "[[cha-me_to-chuc-sinh-nhat-nuoi-duong-tam-hon_tre-buoc-sang-tuoi-moi]]"
+        "[[cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi]]"
       ]
     },
     {
       "source_group": "28",
-      "id": "fairy_tale_complexity",
-      "label": "Độ phức tạp cổ tích",
+      "id": "p1_fairy_tales_by_age",
+      "label": "Phân loại truyện cổ tích theo độ tuổi",
       "audiences": [
-        "[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]"
+        "[[cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con]]"
       ]
     },
     {
       "source_group": "28",
-      "id": "flexible_story_selection",
-      "label": "Chọn truyện linh hoạt",
+      "id": "p1_flexible_story_selection",
+      "label": "Lựa chọn truyện linh hoạt theo mức độ trưởng thành",
       "audiences": [
-        "[[cha-me_chon-dung-truyen-co-tich_tim-cau-chuyen-theo-do-tuoi-tam-ly]]"
+        "[[cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con]]"
       ]
     }
   ]

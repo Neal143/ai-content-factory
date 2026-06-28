@@ -1,0 +1,202 @@
+{
+  "total_batches": 5,
+  "current_batch": 6,
+  "completed": true,
+  "submitted_topics": [
+    {
+      "chunk_index": 1,
+      "topics": [
+        {
+          "id": "p1_crisis_management_in_parenting",
+          "label": "Quản lý khủng hoảng trong nuôi dạy con",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_survive_and_thrive_mindset",
+          "label": "Tư duy sống sót và phát triển",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 2,
+      "topics": [
+        {
+          "id": "p1_child_brain_development",
+          "label": "Phát triển não bộ trẻ em",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_brain_integration_concept",
+          "label": "Khái niệm hội nhập não bộ",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 3,
+      "topics": [
+        {
+          "id": "p1_child_emotional_regulation",
+          "label": "Điều chỉnh cảm xúc ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_connect_and_redirect_strategy",
+          "label": "Chiến lược kết nối và chuyển hướng",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 4,
+      "topics": [
+        {
+          "id": "p1_child_emotional_healing",
+          "label": "Chữa lành cảm xúc cho trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_name_to_tame_strategy",
+          "label": "Chiến lược gọi tên để làm dịu",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 5,
+      "topics": [
+        {
+          "id": "p1_handling_child_defiance",
+          "label": "Xử lý sự chống đối ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_engage_not_enrage",
+          "label": "Chiến lược thu hút thay vì chọc giận",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 6,
+      "topics": [
+        {
+          "id": "p1_upstairs_brain_development",
+          "label": "Phát triển não tầng trên ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_use_or_lose_principle",
+          "label": "Nguyên lý dùng nó hay mất nó",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 7,
+      "topics": [
+        {
+          "id": "p1_child_emotional_regulation",
+          "label": "Điều chỉnh cảm xúc ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_move_it_or_lose_it",
+          "label": "Chiến lược vận động hay đánh mất",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 8,
+      "topics": [
+        {
+          "id": "p1_child_trauma_recovery",
+          "label": "Phục hồi tổn thương tâm lý ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_remote_of_the_mind",
+          "label": "Chiến lược chiếc điều khiển tâm trí",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 9,
+      "topics": [
+        {
+          "id": "p1_child_memory_development",
+          "label": "Phát triển trí nhớ cho trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_remember_to_remember",
+          "label": "Chiến lược nhắc nhớ để ghi nhớ",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 10,
+      "topics": [
+        {
+          "id": "p1_child_emotional_regulation",
+          "label": "Điều chỉnh cảm xúc ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_emotional_cloud_model",
+          "label": "Mô hình đám mây cảm xúc",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 11,
+      "topics": [
+        {
+          "id": "p1_child_self_awareness",
+          "label": "Nhận thức bản thân ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_sift_method",
+          "label": "Phương pháp SIFT",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 12,
+      "topics": [
+        {
+          "id": "p1_child_mindfulness",
+          "label": "Chánh niệm cho trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_mindsight_practice",
+          "label": "Thực hành tâm trí Mindsight",
+          "tier": "medium"
+        }
+      ]
+    },
+    {
+      "chunk_index": 14,
+      "topics": [
+        {
+          "id": "p1_child_conflict_resolution",
+          "label": "Giải quyết mâu thuẫn ở trẻ",
+          "tier": "broad"
+        },
+        {
+          "id": "p1_connect_through_conflict",
+          "label": "Kết nối qua mâu thuẫn",
+          "tier": "medium"
+        }
+      ]
+    }
+  ]
+}

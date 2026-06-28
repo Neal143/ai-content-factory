@@ -1,0 +1,20 @@
+{
+  "pillar": "pillar_1",
+  "book_topics": [
+    {
+      "id": "p1_neuroscience_parenting",
+      "label": "Nuôi dạy con theo khoa học thần kinh",
+      "tier": "broad"
+    },
+    {
+      "id": "p1_whole_brain_integration",
+      "label": "Tích hợp não bộ toàn diện cho trẻ",
+      "tier": "medium"
+    },
+    {
+      "id": "p1_crisis_integration_opportunity",
+      "label": "Biến khủng hoảng thành cơ hội phát triển",
+      "tier": "narrow"
+    }
+  ]
+}

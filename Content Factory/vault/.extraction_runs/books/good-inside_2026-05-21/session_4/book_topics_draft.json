@@ -1,0 +1,20 @@
+{
+  "pillar": "pillar_1",
+  "book_topics": [
+    {
+      "id": "p1_parenting_child_behavior",
+      "label": "Hành vi của trẻ và cách ứng xử",
+      "tier": "broad"
+    },
+    {
+      "id": "p1_connection_over_correction",
+      "label": "Kết nối thay vì sửa chữa hành vi",
+      "tier": "medium"
+    },
+    {
+      "id": "p1_sturdy_leadership",
+      "label": "Lãnh đạo vững chãi trong gia đình",
+      "tier": "narrow"
+    }
+  ]
+}

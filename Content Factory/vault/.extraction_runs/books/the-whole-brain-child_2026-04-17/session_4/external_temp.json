@@ -1,0 +1,12 @@
+{
+  "password": "be0f5f8f",
+  "batch_topics": [
+    {
+      "proposed_id": "p1_connect_through_conflict",
+      "label": "Kết nối qua mâu thuẫn",
+      "action": "create",
+      "resolved_to": "",
+      "reasoning": "Chưa tồn tại khái niệm này trong YAML"
+    }
+  ]
+}

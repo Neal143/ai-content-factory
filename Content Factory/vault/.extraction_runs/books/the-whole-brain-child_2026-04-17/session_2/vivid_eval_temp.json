@@ -1,0 +1,53 @@
+{
+  "password": "d9e95576",
+  "evaluations": [
+    {
+      "vivid_fragment": "Cảm xúc nghèo nàn, Vẽ bức tranh nội tâm bằng màu đ...",
+      "decision": "KEEP",
+      "reason": "Metaphor hay",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Hệ thần kinh, Hoạt động như những chiếc ăng-ten mạ...",
+      "decision": "KEEP",
+      "reason": "Metaphor hay",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Hình ảnh cho trẻ nằm ngửa, đặt một chiếc thuyền đồ...",
+      "decision": "KEEP",
+      "reason": "Thực hành sinh động",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Tại bàn làm việc | Bé gái 7 tuổi tức giận bước đến...",
+      "decision": "KEEP",
+      "reason": "Rất cụ thể, dễ nhận diện",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    }
+  ]
+}
