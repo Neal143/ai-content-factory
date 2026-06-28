@@ -1,16 +1,48 @@
 {
-    "updated_at": "2026-02-27T15:45:00+07:00",
+    "updated_at": "2026-06-01T11:15:00+07:00",
     "working_on": {
-        "feature": null,
-        "task": null,
-        "status": "idle"
+        "feature": "Macro-Session Isolation & Anti-Bypass Poka-Yoke cho toàn bộ Pipeline",
+        "task": "Áp dụng Isolation cho Session 1, 2, 4 và tài liệu hóa bài học kinh nghiệm thiết kế",
+        "status": "completed"
     },
     "pending_tasks": [],
-    "errors_encountered": [],
+    "recent_changes": [
+        {
+            "timestamp": "2026-06-01T11:15:00+07:00",
+            "type": "refactor",
+            "description": "Tái cấu trúc thư mục Macro Session 1, 2, 4. Áp dụng Anti-Bypass (Pre-filled Templates) cho Agent. Viết tài liệu rút kinh nghiệm kiến trúc.",
+            "files": [
+                "Content Factory/.agents/skills/book-extractor/scripts/prepare_mapper.py",
+                "Content Factory/.agents/skills/book-extractor/scripts/init_ledger.py",
+                "Content Factory/.agents/skills/book-extractor/scripts/post_mine.py",
+                "Content Factory/.agents/skills/book-extractor/SKILL.md",
+                "Content Factory/.agents/skills/curate-vivids/scripts/extract_vivids.py",
+                "Content Factory/.agents/skills/curate-vivids/scripts/apply_curation.py",
+                "Content Factory/.agents/skills/curate-vivids/SKILL.md",
+                "Content Factory/.agents/skills/book-parser/scripts/prepare_topic_batches.py",
+                "Content Factory/.agents/skills/book-parser/SKILL.md",
+                "Content Factory/docs/lesson_learned_anti_bypass_poka_yoke.md"
+            ]
+        }
+    ],
+    "errors_encountered": [
+        {
+            "error": "Agent lách luật bằng cách viết code để sinh file JSON làm đứt gãy luồng xử lý (Anti-Bypass).",
+            "solution": "Đổi UX sang dạng Pre-filled Templates ('ĐÃ ĐƯỢC TẠO SẴN, ĐIỀN VÀO ĐÂY') để ngăn Agent viết mã Python."
+        },
+        {
+            "error": "Quá tải nhận thức (Cognitive Load) khi xử lý tập dữ liệu dài gây ảo giác và đánh giá sơ sài.",
+            "solution": "Chia nhỏ dữ liệu (Micro-tasking/Batching) để buộc Agent tập trung sâu vào từng phần tử nhỏ."
+        },
+        {
+            "error": "Lỗi đứt gãy Session Scoping do dữ liệu rác trộn lẫn với dữ liệu Handoff ở thư mục Root.",
+            "solution": "Cô lập dữ liệu vòng lặp vào các thư mục con session_1/, session_2/, session_4/ và chỉ giữ file Handoff ở Root."
+        }
+    ],
     "decisions_made": [
         {
-            "decision": "Lưu settings cụ thể: non-tech, chia nhỏ task, liên tục review",
-            "reason": "Yêu cầu tùy chỉnh custom rules từ User"
+            "decision": "Thiết lập kiến trúc 3 bước: Micro-tasking -> Macro-Session Isolation -> Anti-Bypass Prompting.",
+            "reason": "Giải quyết từ nguyên nhân gốc rễ (Tải nhận thức) đến hạ tầng lưu trữ (Cô lập dữ liệu) và giao diện UX (Chống lách luật)."
         }
     ],
     "skipped_tests": []

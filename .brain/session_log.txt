@@ -2,3 +2,50 @@
 [2026-02-27 15:45] Technical level: non_tech
 [2026-02-27 15:45] Custom Rules: Chia nhỏ task cực độ, tự động test liên tục
 [2026-02-27 15:45] Ready for first project
+[2026-05-24 13:30] START phase-01-skill-update
+[2026-05-24 13:30] DONE task: Copy refs and add FILE_KEY placeholders
+[2026-05-24 13:30] DONE task: Delete Section 4 from prose-format.md
+[2026-05-24 13:30] DONE task: Update SKILL.md constraints & self-check gate
+[2026-05-24 13:30] END phase-01-skill-update ✅
+[2026-05-24 13:30] START phase-02-script-update
+[2026-05-24 13:30] DONE task: Inject CHECK 15, 16, 17 into validate-draft.ps1
+[2026-05-24 13:30] DONE task: Update CHECK 14 array to 8 references
+[2026-05-24 13:30] END phase-02-script-update ✅
+[2026-05-24 13:30] START phase-03-key-generator
+[2026-05-24 13:30] DONE task: Update generate-phase-key.ps1 array & key logic
+[2026-05-24 13:30] END phase-03-key-generator ✅
+[2026-05-24 13:31] RUN generate-phase-key.ps1: PASSED (All 22 keys injected)
+[2026-05-24 13:31] PIPELINE STATUS set to SAN SANG
+
+[2026-05-27 00:15] START phase-01-schema-b-fix
+[2026-05-27 00:17] DONE task: Edit template insight.md (remove insight_name, add topics + source_id)
+[2026-05-27 00:22] DONE task: Edit generate_insights.py (parse & inject topics)
+[2026-05-27 00:27] DONE task: Edit persona-interviewer/SKILL.md (logic resolve topics + payload format)
+[2026-05-27 00:35] DONE task: Backfill 8 Schema B files (using backfill_insights.py script)
+[2026-05-27 00:36] END phase-01-schema-b-fix ✅
+
+[2026-05-27 00:40] START phase-02-gi-backfill
+[2026-05-27 00:42] DONE task: Re-run Topic Generation (using generate_gi_resolved_topics.py semantic scoring)
+[2026-05-27 00:44] DONE task: Recreate atomizer_context.json from new resolved_topics.json
+[2026-05-27 00:50] DONE task: Backfill 178 GI_ atoms (using backfill-topics.py script with regex fallback)
+[2026-05-27 00:52] END phase-02-gi-backfill ✅
+
+[2026-05-27 00:55] START phase-03-vault-index
+[2026-05-27 00:58] DONE task: Create build-vault-index.ps1 (an toàn frontmatter parsing + resolution edges)
+[2026-05-27 01:00] DONE task: Build vault_index.json first output (260 nodes & 203 edges)
+[2026-05-27 01:02] END phase-03-vault-index ✅
+
+[2026-05-27 01:10] START phase-04-dikw-combo-tool
+[2026-05-27 01:12] DONE task: Create Get-DIKWCombo.ps1 (DAG lookup O(1) + viability check + anti-repetition)
+[2026-05-27 01:15] DONE task: Create test-dikw-combo.ps1 & run unit test successfully
+[2026-05-27 01:18] DONE task: Register Get-DIKWCombo tool in injection-rules.md
+[2026-05-27 01:20] END phase-04-dikw-combo-tool ✅
+
+[2026-05-27 01:25] START phase-05-dikw-bridge-refactor
+[2026-05-27 01:28] DONE task: Relocate vault_index.json to assets folder and update indexer and Get-DIKWCombo path
+[2026-05-27 01:30] DONE task: Edit dikw-bridge/SKILL.md (replace Steps 1-4 with O(1) Get-DIKWCombo call, renumber Steps 1, 2, 3, consolidate metadata to top)
+[2026-05-27 01:35] DONE task: Consolidate metadata of injection-rules.md into YAML frontmatter
+[2026-05-27 01:40] DONE task: Fix PowerShell array CLI argument binding bug and pass all unit tests
+[2026-05-27 01:45] DONE task: Clean up all deadcode and migration scripts in scratch folder
+[2026-05-27 01:50] END phase-05-dikw-bridge-refactor ✅
+[2026-05-27 01:50] DIKW INDEX REFACTOR PROJECT COMPLETED ✅ (All 14/14 tasks PASSED)

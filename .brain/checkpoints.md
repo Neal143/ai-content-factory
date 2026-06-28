@@ -1,5 +1,72 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 28/06/2026
+#### Cập nhật Story Architect SKILL và Output Schema
+- **Mã khôi phục:** `7d7862a`
+- **Thẻ (Tag):** `v3.8.2-story-architect-upgrade`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Nâng cấp quy trình Story Architect để tự động hóa trơn tru việc bóc tách câu chuyện (Story Atom). Ép cấu trúc Output thống nhất, có kịch bản xử lý tự động khi user muốn đổi Topic/Insight mà không bị đứt gãy luồng.
+  - **🛠️ Kỹ thuật (Tech):** Overwrite toàn diện `SKILL.md` (giảm dư thừa, thêm Poka-Yoke trực tiếp), chia nhỏ `combo-negotiation.md` cho luồng đàm phán Combo, gom 1 schema vào `output-schema.md` chuẩn hóa field `source_type` và xóa file `story-schema.md` cũ. Thêm script tự động ép UTF-8 BOM để tránh vỡ font chữ tiếng Việt.
+
+### 📅 Ngày 27/06/2026
+#### Fix IDE unapproved verb warnings
+- **Mã khôi phục:** `e7ef2a0`
+- **Thẻ (Tag):** `v3.8.1-clean-warnings`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Dọn dẹp cảnh báo mã nguồn, giữ file script sạch sẽ 100% không còn warning từ trình soạn thảo.
+  - **🛠️ Kỹ thuật (Tech):** Đổi tên 2 hàm `Parse-AtomFrontmatter` thành `Get-AtomFrontmatter` và `Build-TopicLookup` thành `New-TopicLookup` trong file `Update-PersonalAtomsQueue.ps1` để tuân thủ danh sách Approved Verbs của PowerShell (PSScriptAnalyzer).
+
+### 📅 Ngày 27/06/2026
+#### Fix array unrolling Update-PersonalAtomsQueue
+- **Mã khôi phục:** `b3c68ff`
+- **Thẻ (Tag):** `v3.8.0-fix-array-unroll`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Vá lỗi bỏ sót việc tự động gán Topic/Pillar cho những atom cá nhân chỉ có duy nhất 1 topic trong mảng.
+  - **🛠️ Kỹ thuật (Tech):** Áp dụng phòng thủ nhiều lớp trong `Update-PersonalAtomsQueue.ps1`: ép kiểu về mảng `@(...)` khi parse inline array tại `Parse-AtomFrontmatter` và thêm fallback ép kiểu `[String]` -> `[Array]` trước khi duyệt tại `Format-AtomRow`.
+
+### 📅 Ngày 27/06/2026
+#### Tắt tính năng tạo YAML aliases trong topic_map.yaml
+- **Mã khôi phục:** `d9781b8`
+- **Thẻ (Tag):** `v1.3.1-disable-yaml-aliases`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Xóa các ký tự neo/bí danh lạ (`&id001`, `*id001`) trong file `topic_map.yaml` giúp người dùng đọc file dễ chịu hơn.
+  - **🛠️ Kỹ thuật (Tech):** Thêm cấu hình `yaml.Dumper.ignore_aliases = lambda *args: True` vào file `topic_manager.py` để ra lệnh cho PyYAML ngừng rút gọn file bằng Anchors & Aliases. Cập nhật vật lý lại file `topic_map.yaml` của Neal.
+
+
+### 📅 Ngày 27/06/2026
+#### Thêm file_ref/file_link cho audience.yaml (Reverse Lookup)
+- **Mã khôi phục:** `1ed09c5`
+- **Thẻ (Tag):** `v1.3-audience-reverse-lookup`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** File `audience.yaml` giờ tự động có link clickable trỏ thẳng đến file Audience vật lý trong vault. User click trực tiếp từ VS Code để nhảy đến file, không cần tìm thủ công. Validator kiểm tra link có trỏ đúng file thật trên ổ cứng.
+  - **🛠️ Kỹ thuật (Tech):** Thêm hàm `backfill_audience()` vào `generate_insights.py` sử dụng cơ chế Reverse Lookup (quét Frontmatter 3 trường JTBD trong `vault/01-Atomic/Audiences/` để match file). Cập nhật `validate_outputs.ps1` thêm check `file_ref`, `file_link` + verify file tồn tại bằng `Test-Path` sau decode `%20`. Cập nhật template `audience.yaml` thêm 2 placeholder rỗng.
+
+
+### 📅 Ngày 26/06/2026
+#### feat: auto file_ref/file_link via script (PENDING mechanism)
+- **Mã khôi phục:** `2d2e931`
+- **Thẻ (Tag):** `v1.2-pending-mechanism`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Tự động hóa hoàn toàn việc gắn link Insight vào file Pillars. Người dùng giờ đây có thể click trực tiếp vào link Insight từ VS Code hoặc Obsidian mà không bị lỗi link mồ côi (không mở được).
+  - **🛠️ Kỹ thuật (Tech):** Chuyển việc gán `file_ref` và `file_link` từ LLM (hay đoán sai) sang Python script (`generate_insights.py`) thông qua cơ chế `PENDING_N` placeholder. Cập nhật validator `validate_outputs.ps1` để check `file_link` và reject PENDING thừa. Thêm tính năng backfill bằng cờ `--backfill-only`.
+
+### 📅 Ngày 26/06/2026
+#### Tạo validator V6 + tích hợp workflow audit
+- **Mã khôi phục:** `d66cdd9`
+- **Thẻ (Tag):** `v3.7.1-validator-v6`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Tạo công cụ kiểm định tự động (Output Validator V6) chạy ngay sau mỗi phiên onboarding, đảm bảo mọi dữ liệu Persona (giọng văn, chân dung độc giả, trụ cột nội dung, insights) đều được sinh ra đầy đủ và chính xác. Chốt chặn này ngăn chặn việc Agent tiếp theo (Story Architect) nhận dữ liệu lỗi.
+  - **🛠️ Kỹ thuật (Tech):** Tạo mới `validate_outputs.ps1` (V6) với Unified Regex xử lý đúng YAML inline comments, Block Scalar, array items. Chỉ kiểm tra output BẮT BUỘC theo SKILL.md (loại trừ template placeholders và trường skippable). Tích hợp Post-Execution Audit vào `onboarding-persona.md` workflow với cảnh báo ⛔ ép AI chạy script sau Tier 2.
+
+
+### 📅 Ngày 25/06/2026
+#### Cập nhật Schema YAML cho Insights
+- **Mã khôi phục:** `2498d3a`
+- **Thẻ (Tag):** `v1.0.x-fix-yaml-schema`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo hệ thống lưu trữ Insight của Persona (File `pillars.yaml`) luôn ổn định, không bị gãy vỡ do lỗi ký tự. Đồng thời lưu vết nguồn gốc rõ ràng (User -> Script -> LLM) giúp bảo vệ luồng tư duy xuyên suốt của hệ thống bài viết.
+  - **🛠️ Kỹ thuật (Tech):** Áp dụng cấu trúc Block Scalar (`>`) thay thế ngoặc kép (`""`) trong định dạng Schema YAML của `persona-interviewer/SKILL.md` để triệt tiêu lỗi YAML parse error (Poka-Yoke). Bổ sung biến `file_ref` và `llm_explain` vào Schema để đồng bộ (Single Source of Truth) giữa payload tĩnh và cấu hình YAML.
+
 ### 📅 Ngày 24/06/2026
 #### Hoàn thiện logic phân tích Git Diff cho Migration Detection
 - **Mã khôi phục:** `d175ff5`

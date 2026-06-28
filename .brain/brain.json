@@ -1,13 +1,51 @@
-﻿{
-    "meta":  {
-                 "schema_version":  "1.0.0",
-                 "awf_version":  "4.0.2",
-                 "created_at":  "2026-02-27T15:45:00+07:00"
-             },
-    "project":  {
-                    "name":  "AI content factory - v3.7B",
-                    "type":  null,
-                    "status":  "not_started"
-                },
-    "updated_at":  "2026-02-27T15:45:00+07:00"
+{
+    "meta": {
+        "schema_version": "1.1.0",
+        "awf_version": "4.0.2",
+        "created_at": "2026-02-27T15:45:00+07:00"
+    },
+    "project": {
+        "name": "AI content factory - v3.7B",
+        "type": "Agentic Content Production Pipeline",
+        "status": "completed"
+    },
+    "tech_stack": {
+        "language": "PowerShell 5.1+, Python 3.10+",
+        "database": "Flat file Obsidian Vault Atoms (Insights, Solutions, Concepts, Stories, Quotes, Data-Points)",
+        "indexing": "Flat nodes & relational edges JSON index (vault_index.json)"
+    },
+    "knowledge_items": {
+        "gotchas": [
+            {
+                "gotcha": "PowerShell CLI argument binding array bug",
+                "impact": "Truyền mảng CLI qua powershell -File khiến phần tử thứ hai bị bind nhầm sang positional argument tiếp theo",
+                "solution": "Nối mảng bằng dấu phẩy ở CLI: -Audience ($audienceArr -join ',') và split chuỗi bên trong script."
+            },
+            {
+                "gotcha": "Agent skip Bước 1.5 Semantic Dedup khi parse Good Inside (BUG-REPORT-GI-Topic-Skip.md)",
+                "impact": "Tạo ra atomizer_context.json sai format và trùng lặp topics, khiến toàn bộ good-inside atoms bị ẩn khỏi rổ nguyên liệu khi viết bài tự do",
+                "solution": "Chạy script migration generate_gi_resolved_topics.py và backfill-topics.py để cập nhật chuẩn 178 atoms qua regex fallback, đồng thời đề xuất bổ sung Poka-Yoke Gate chặn cứng trước Phase 2 của book-parser."
+            },
+            {
+                "gotcha": "Python os.path.dirname Trailing Slash Bug",
+                "impact": "Khi truyền đường dẫn thư mục có dấu / ở cuối vào os.path.dirname, kết quả trả về sẽ bị sai lệch so với kỳ vọng.",
+                "solution": "Luôn bọc đường dẫn bằng os.path.abspath() trước khi dùng dirname: os.path.dirname(os.path.abspath(path))"
+            },
+            {
+                "gotcha": "Agent AI lười biếng và bypass (Anti-Bypass Poka-Yoke)",
+                "impact": "Khi được giao xử lý lặp lại nhiều vòng, Agent có xu hướng tự viết Python script để sinh ra file thay vì dùng IDE, dẫn đến JSON sai lệch cấu trúc hoặc ghi nhầm file.",
+                "solution": "Cấm dùng từ 'Tạo file'. Bắt buộc backend sinh sẵn Pre-filled Template, và ra lệnh 'File ĐÃ ĐƯỢC TẠO SẴN, hãy mở ra điền vào chỗ trống'."
+            },
+            {
+                "gotcha": "Đứt gãy luồng xử lý do rác thư mục chung (Macro-Session Isolation)",
+                "impact": "Quá nhiều vòng lặp sinh ra file rác (log, temp batch) tràn ngập run_folder, làm các tác vụ đọc Handoff state (parsed_metadata, report) bị lỗi hoặc lấy nhầm file.",
+                "solution": "Nhốt toàn bộ I/O tạm vào session_1/, session_2/, session_4/. Chỉ để lại các file có tính kế thừa (Handoff) ở thư mục Root."
+            }
+        ],
+        "conventions": [
+            "YAML Frontmatter bắt buộc phải chứa siêu dữ liệu Global Rule 7 ở đầu file",
+            "Chỉ commit git các thay đổi thuộc Content Factory"
+        ]
+    },
+    "updated_at": "2026-06-01T11:15:00+07:00"
 }

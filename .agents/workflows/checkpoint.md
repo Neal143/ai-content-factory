@@ -53,14 +53,25 @@ Bạn là **Antigravity Security Guard**. Nhiệm vụ: Tạo một điểm sao 
 
 ## Giai đoạn 3: Báo cáo & Đề xuất Push
 1. Báo cáo ngắn gọn cho User: "✅ Đã lưu checkpoint thành công! Mã khôi phục: `[hash]`".
-2. HỎI User xem có muốn push code lên GitHub không: "Bạn có muốn push bản cập nhật của `.agents` này lên GitHub không?". Dừng và đợi câu trả lời từ User.
+2. **Phân tích cập nhật:** AI đánh giá các thay đổi vừa commit để phân loại quy mô:
+   - *Patch*: Sửa bug, update prompt/tài liệu.
+   - *Minor*: Thêm workflow/skill mới.
+   - *Major*: Thay đổi kiến trúc, flow chính.
+3. **Xác định phiên bản mới:** Đọc phiên bản hiện tại từ dòng 1 của file `Content Factory/.agents/README.md` (định dạng `# 🏭 AI Content Factory vX.Y.Z`) và tính toán phiên bản mới phù hợp với phân loại trên.
+4. **HỎI User:** *"Dựa trên các thay đổi, tôi đề xuất cập nhật hệ thống lên bản **v[Phiên bản mới]** (Lý do: ...). Bạn có muốn ghi nhận phiên bản này và push cập nhật lên GitHub không?"* Dừng và đợi câu trả lời từ User.
 
-## Giai đoạn 4: Push lên GitHub (Chỉ khi User đồng ý)
+## Giai đoạn 4: Đóng gói và Push lên GitHub (Chỉ khi User đồng ý)
 1. Nếu User trả lời "Có": 
-   - Đảm bảo lệnh được chạy tại thư mục GỐC (Cwd): `d:\AI\AI content factory - v3.7B` (lưu ý: KHÔNG phải Content Factory).
-   - Chạy lệnh 1 (Dọn nhánh cũ + Tách nhánh siêu tốc): `git branch -D agents-only 2>$null; git subtree split --prefix="Content Factory/.agents" --rejoin -b agents-only`
-   - Chạy lệnh 2 (Đẩy lên mạng): `git push agents-origin agents-only:master`
-   - Báo cáo: "✅ Đã push thành công thư mục `.agents` lên GitHub."
+   - **Cập nhật mã phiên bản:**
+     - TỰ ĐỘNG đọc nội dung file `Content Factory/.agents/README.md`, thay thế dòng 1 thành `# 🏭 AI Content Factory v[Phiên bản mới]` và lưu file.
+     - Đảm bảo lệnh được chạy tại thư mục: `d:\AI\AI content factory - v3.7B\Content Factory`.
+     - Chạy lệnh commit: `git add ".agents/README.md" ; git commit -m "chore: bump version to v[Phiên bản mới]"`
+   - **Tách nhánh và Push:**
+     - Đảm bảo lệnh tiếp theo chạy tại thư mục GỐC (Cwd): `d:\AI\AI content factory - v3.7B` (lưu ý: KHÔNG phải Content Factory).
+     - Chạy lệnh 1 (Dọn nhánh cũ + Tách nhánh siêu tốc): `git branch -D agents-only 2>$null; git subtree split --prefix="Content Factory/.agents" --rejoin -b agents-only`
+     - Chạy lệnh 2 (Gắn tag bản phát hành): `git tag -f v[Phiên bản mới] agents-only`
+     - Chạy lệnh 3 (Đẩy lên mạng): `git push agents-origin agents-only:master v[Phiên bản mới]`
+   - Báo cáo: "✅ Đã push thành công thư mục `.agents` lên GitHub với phiên bản `v[Phiên bản mới]`."
 2. Nếu User trả lời "Không" hoặc từ chối: Bỏ qua và kết thúc.
 
 ---
