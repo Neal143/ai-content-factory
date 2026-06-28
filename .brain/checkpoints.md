@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 29/06/2026
+#### Cập nhật lại thư mục lưu File A và quy tắc tên File B
+- **Mã khôi phục:** `338f2e5`
+- **Thẻ (Tag):** `v3.8.2-patch-1`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Làm rõ và chốt cứng thư mục lưu của nguyên liệu nội dung theo loại (Knowledge hay Concept).
+  - **🛠️ Kỹ thuật (Tech):** Xóa bảng category cũ rác trong `SKILL.md`. Bổ sung rule Poka-Yoke rẽ nhánh if/else cho script tự động nhận diện folder `Solutions/` hoặc `Concepts/` trong `output-schema.md`.
+
 ### 📅 Ngày 28/06/2026
 #### Cập nhật Story Architect SKILL và Output Schema
 - **Mã khôi phục:** `7d7862a`
