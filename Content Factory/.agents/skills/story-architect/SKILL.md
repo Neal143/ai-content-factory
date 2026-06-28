@@ -87,28 +87,12 @@ Hỏi user:
   + `supports_insight: "[[Tên_File_Insight_Đã_Chốt]]"` (Trỏ lên Tầng 2).
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
   + `vivid_knowledges`: biến `vivid_knowledge` (đã lưu ở Bước 3). Nếu mảng rỗng thì không ghi trường này.
-  + Lưu vào `vault/01-Atomic/Solutions/` nếu type = solution.
-  + Lưu vào `vault/01-Atomic/Concepts/` nếu type = concept.
-  + Tên file: `{slug}.md`.
-- **File B (Node Tầng 4 - Story):** Nguyên trạng 5 phần. Lưu vào `vault/01-Atomic/Stories/` với tên `{category}-story-{slug}.md`. BẮT BUỘC cấy biến:
+  + **Tên file & Nơi lưu:** Tuân thủ mục 9.1 trong `output-schema.md`.
+- **File B (Node Tầng 4 - Story):** Nguyên trạng 5 phần. BẮT BUỘC cấy biến:
   + `type: "story"`.
   + `supports_knowledge: "[[Tên_File_A]]"` (Trỏ lên Tầng 3).
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
-
-**Bảng 11 categories để chọn `{category}`:**
-| Category | Chủ đề |
-|----------|--------|
-| `career` | Sự nghiệp, công việc |
-| `content` | Viết bài, content creation |
-| `productivity` | Năng suất, tập trung |
-| `mindset` | Tư duy, tâm lý |
-| `relationship` | Quan hệ, networking |
-| `decision` | Ra quyết định |
-| `learning` | Học tập |
-| `business` | Kinh doanh |
-| `marketing` | Marketing, bán hàng |
-| `writing` | Viết lách |
-| `life` | Cuộc sống, trải nghiệm cá nhân |
+  + **Tên file & Nơi lưu:** Tuân thủ mục 9.2 trong `output-schema.md`.
 
 ### Bước 5: Đóng gói YAML KCS
 Tạo YAML frontmatter cho cả 2 file tuân thủ triệt để cấu trúc KCS uy tín.

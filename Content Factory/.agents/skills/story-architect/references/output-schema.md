@@ -132,3 +132,24 @@ Bảng xếp hạng ưu tiên khi inject story vào bài viết:
 
 ## 8. Duplicate Check
 Trước khi lưu, quét `vault/01-Atomic/Stories/` xem có story nào cùng protagonist + cùng turning point không. Nếu trùng → Skip.
+
+---
+
+## 9. Naming & Storage Convention
+
+Tất cả các file do Story Architect tạo ra bắt buộc phải tuân thủ chuẩn Tiếng Việt không dấu, viết thường, thay khoảng trắng bằng dấu gạch ngang (`kebab-case`). Tiền tố mặc định là `USER_` do nguồn dữ liệu được khai thác từ cuộc hội thoại với người dùng.
+
+### 9.1. File A (Lesson / Knowledge - Tầng 3)
+- **Cấu trúc:** `USER_[knowledge_name].md`
+- **Thư mục lưu trữ:** BẮT BUỘC map theo giá trị thẻ `type` trong YAML Frontmatter:
+  - Nếu `type: solution` ➔ Lưu vào thư mục `vault/01-Atomic/Solutions/`
+  - Nếu `type: concept` ➔ Lưu vào thư mục `vault/01-Atomic/Concepts/`
+- **Ví dụ:** `USER_chien-luoc-tiep-thi-du-kich.md`
+
+### 9.2. File B (Story - Tầng 4)
+- **Cấu trúc:** `USER_story-[protagonist]-[core_event].md`
+- **Thư mục:** `vault/01-Atomic/Stories/`
+- **Quy ước `[protagonist]`:**
+  - Nếu User tự kể (Personal): Dùng tên của User (Ví dụ: `neal`).
+  - Nếu câu chuyện của người khác / danh nhân: Dùng tên nhân vật đó (Ví dụ: `steve-jobs`).
+- **Ví dụ:** `USER_story-neal-bi-cat-giam-nhan-su-2019.md`
