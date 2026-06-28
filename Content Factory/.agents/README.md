@@ -1,4 +1,4 @@
-# 🏭 AI Content Factory v3.8.1
+# 🏭 AI Content Factory v3.8.2
 
 Chào mừng đến với **AI Content Factory** – hệ thống dây chuyền tự động hóa sáng tạo nội dung thế hệ mới, vận hành bằng mô hình các tác nhân trí tuệ nhân tạo (Agentic AI Orchestration).
 
