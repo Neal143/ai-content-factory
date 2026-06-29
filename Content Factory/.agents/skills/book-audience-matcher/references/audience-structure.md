@@ -17,7 +17,7 @@ File Audience đóng vai trò là "Cái Phễu" hứng dữ liệu, nó KHÔNG p
 Để tránh rủi ro "bảo trì 2 nơi" (Phải sửa song song template khi mở rộng hệ thống), hệ thống áp dụng cơ chế kế thừa khối động (Dynamic Chunk Inheritance):
 
 **Bước 1: Trích xuất Dữ liệu gốc**
-Truy xuất trực tiếp tệp lưu trữ trung tâm: `.agents/skills/persona-interviewer/assets/persona-template/audience.yaml`.
+Truy xuất trực tiếp tệp lưu trữ trung tâm: `.agents/assets/persona-template/audience.yaml`.
 - **Cắt lấy ĐÚNG phần `# --- JTBD ROUTING CHUNK ---`**. Bỏ qua hoàn toàn phần `# --- PHYSICAL & HABITS CHUNK ---`.
 
 **Bước 2: Nạp dữ liệu nội suy (Payload Output)**

@@ -8,8 +8,10 @@
 #       replacing .agents/ folder.
 # Output: Console messages indicating migration status.
 #         Exit 0 = success, Exit 1 = failure.
-# Logic: Read version -> find pending -> if none: exit 0 ->
-#        backup vault/ + personas/ (check robocopy exit code) ->
+# Logic: Read version -> find pending ->
+#        if has pending: backup vault/ + personas/ ->
+#        sync factory scaffold (always) ->
+#        if no pending: exit 0 ->
 #        run each migration -> update version.
 #        Backup is NEVER auto-deleted.
 # ------------------------------------------------------------------
@@ -58,48 +60,60 @@ if (Test-Path $migrationsDir) {
     )
 }
 
-# --- No pending migrations ---
-if ($migrationFiles.Count -eq 0) {
+# --- Determine if backup needed ---
+$hasPending = $migrationFiles.Count -gt 0
+
+# --- Backup user data (ONLY if pending migrations exist) ---
+if ($hasPending) {
+    if (-not $BackupDir) {
+        $timestamp = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId(
+            (Get-Date), 'SE Asia Standard Time'
+        ).ToString('yyyy-MM-dd_HHmmss')
+        $BackupDir = Join-Path $FactoryRoot ".update_backups\backup_$timestamp"
+    }
+
+    New-Item -Path $BackupDir -ItemType Directory -Force | Out-Null
+
+    $vaultPath = Join-Path $FactoryRoot "vault"
+    $personasPath = Join-Path $FactoryRoot "personas"
+
+    if (Test-Path $vaultPath) {
+        Write-Host "Backing up vault/ ..."
+        robocopy $vaultPath (Join-Path $BackupDir "vault") /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
+        if ($LASTEXITCODE -ge 8) {
+            Write-Host "ERROR: Failed to backup vault/. Robocopy exit code: $LASTEXITCODE"
+            Write-Host "Migrations NOT executed. No data was changed."
+            exit 1
+        }
+    }
+
+    if (Test-Path $personasPath) {
+        Write-Host "Backing up personas/ ..."
+        robocopy $personasPath (Join-Path $BackupDir "personas") /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
+        if ($LASTEXITCODE -ge 8) {
+            Write-Host "ERROR: Failed to backup personas/. Robocopy exit code: $LASTEXITCODE"
+            Write-Host "Migrations NOT executed. No data was changed."
+            exit 1
+        }
+    }
+
+    Write-Host "Data backup saved to: $BackupDir"
+}
+
+# --- Sync factory scaffold (ALWAYS — idempotent, creation-only) ---
+$syncScript = Join-Path $FactoryRoot ".agents\scripts\sync-factory-scaffold.ps1"
+if (Test-Path $syncScript) {
+    powershell -ExecutionPolicy Bypass -File $syncScript -FactoryRoot $FactoryRoot
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "WARNING: Factory scaffold sync encountered issues." -ForegroundColor Yellow
+    }
+}
+
+# --- No pending migrations: exit early ---
+if (-not $hasPending) {
     Write-Host "Already up to date. Current version: $currentVersion"
     exit 0
 }
-
-# --- Backup user data before running migrations ---
-# BackupDir is passed by /update-agents workflow.
-# If not provided (standalone run), create a timestamped folder.
-if (-not $BackupDir) {
-    $timestamp = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId(
-        (Get-Date), 'SE Asia Standard Time'
-    ).ToString('yyyy-MM-dd_HHmmss')
-    $BackupDir = Join-Path $FactoryRoot ".update_backups\backup_$timestamp"
-}
-
-New-Item -Path $BackupDir -ItemType Directory -Force | Out-Null
-
-$vaultPath = Join-Path $FactoryRoot "vault"
-$personasPath = Join-Path $FactoryRoot "personas"
-
-if (Test-Path $vaultPath) {
-    Write-Host "Backing up vault/ ..."
-    robocopy $vaultPath (Join-Path $BackupDir "vault") /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
-    if ($LASTEXITCODE -ge 8) {
-        Write-Host "ERROR: Failed to backup vault/. Robocopy exit code: $LASTEXITCODE"
-        Write-Host "Migrations NOT executed. No data was changed."
-        exit 1
-    }
-}
-
-if (Test-Path $personasPath) {
-    Write-Host "Backing up personas/ ..."
-    robocopy $personasPath (Join-Path $BackupDir "personas") /E /NJH /NJS /NDL /NFL /NC /NS /NP | Out-Null
-    if ($LASTEXITCODE -ge 8) {
-        Write-Host "ERROR: Failed to backup personas/. Robocopy exit code: $LASTEXITCODE"
-        Write-Host "Migrations NOT executed. No data was changed."
-        exit 1
-    }
-}
-
-Write-Host "Data backup saved to: $BackupDir"
 
 # --- Execute pending migrations sequentially ---
 Write-Host "Found $($migrationFiles.Count) pending migration(s). Current version: $currentVersion"
