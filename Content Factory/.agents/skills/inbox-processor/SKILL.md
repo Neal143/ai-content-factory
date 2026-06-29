@@ -1,6 +1,6 @@
 ---
 name: Inbox Processor
-description: Skill tự động dọn dẹp thư mục thô (00-Inbox) và gán nhãn, cấu trúc hóa thành 1 trong 7 loại Atoms.
+description: Skill xử lý và cấu trúc hóa nội dung thô thành 1 trong 5 loại Atoms (Insights, Solutions, Concepts, Quotes, Data-Points). Nhận dữ liệu đã routing từ process-inbox hoặc trực tiếp từ user. Stories do story-architect xử lý.
 ---
 
 # Inbox Processor Skill
@@ -9,72 +9,109 @@ Bạn là công nhân phân loại. Hàng ngày user sẽ vứt rất nhiều gh
 
 ## Hướng dẫn hoạt động
 
-### Bước 1: Quét Inbox
-Quét toàn bộ file trong `vault/00-Inbox/` xem có file nào đang ở trạng thái `status: pending` không.
+### Bước 0: Tiếp nhận Dữ liệu (Input Routing)
+Tuyệt đối KHÔNG hỏi user nếu không cần thiết. Xử lý đầu vào theo các trường hợp:
+1. **Được gọi ngầm từ `process-inbox`:** Nhận raw data + type đã routing (tên file giỏ = type). Chuyển thẳng đến Bước 1, **tuyệt đối không dừng lại hỏi user** làm gãy tự động hóa.
+2. **User gọi trực tiếp:** Nhận text trực tiếp từ user → tự suy luận type ở Bước 1.
 
-### Bước 2: Phân loại
-Đọc file `.agents/skills/inbox-processor/references/atom-classification.md` để hiểu định nghĩa 7 loại. Đọc nội dung file pending. Quyết định phân vào 1 (hoặc max 2) loại phù hợp nhất. Nếu mơ hồ → chọn type có DIKW cao hơn (W > K > I > D). Nếu 1 file chứa nhiều loại → tách thành nhiều atoms riêng.
+### Bước 1: Phân loại
+Đọc file `.agents/skills/inbox-processor/references/atom-classification.md` để hiểu định nghĩa các loại. Nếu type đã được routing từ process-inbox → dùng trực tiếp. Nếu chưa → đọc nội dung, quyết định phân vào 1 (hoặc max 2) loại phù hợp nhất. Nếu mơ hồ → chọn type có DIKW cao hơn (W > K > I > D). Nếu 1 nội dung chứa nhiều loại → tách thành nhiều atoms riêng.
 
-### Bước 3: Tiền xử lý Dữ liệu (Sinh Topic & Reverse-Sync)
-> ⚠️ **Quy tắc Vòng lặp:** Phải lặp lại toàn bộ Bước 3 này cho **từng mẩu nội dung** riêng biệt. Tuyệt đối không gom/trộn lẫn Topics của nhiều mẩu nội dung vào chung một lần thực thi phân tích.
+### Bước 1.5: Resolve Persona Path
+Mỗi factory chỉ có **duy nhất 1 persona**. Quét thư mục `personas/` → lấy thư mục con duy nhất → đọc 3 file cấu hình:
+- `personas/[tên-persona]/pillars.yaml` → danh sách Pillar + Insights
+- `personas/[tên-persona]/audience.yaml` → `file_ref` của Big Audience (dùng cho `belongs_to_audience`)
+- `personas/[tên-persona]/topic_map.yaml` → dùng khi dedup Topic ở Phase 3 Negotiation
 
-Trước khi định tuyến hay lưu file, BẮT BUỘC phải thực hiện tuần tự để có cơ sở dữ liệu:
-1. **Chọn Pillar gốc:** Đọc cấu trúc `pillars.yaml`, dựa trên `name` và `description` của mỗi Pillar, chọn đúng **01 Pillar** đang tồn tại phù hợp nhất với nội dung của Atom.
-2. **Sinh 2-3 topics đa tầng (Gán làm biến `[id]` và `[label]`):** Dựa vào Pillar vừa chọn, sinh ra 2-3 cặp `(id, label)` phản ánh nội dung theo phổ độ rộng: **1 rộng + 1 trung  + 1 hẹp (tùy chọn)**.
-   - **`id`**: BẮT BUỘC tra `pillars.yaml` lấy key Pillar đã chọn ở Bước 1 (VD: `pillar_1` → `p1`), gắn làm tiền tố: `pN_english_snake_case`, 2-4 từ (ví dụ: `p1_attachment_root_of_suffering`).
-   - **`label`**: Tiếng Việt đầy đủ dấu, đọc tự nhiên như tên một bài viết ngắn (ví dụ: `Attachment là gốc rễ của khổ đau`).
-   - **Topic rộng (Broad):** Chủ đề bao quát mà ≥5 nội dung khác nhau trong cùng Pillar có thể dùng.
-   - **Topic trung (Medium/Central) :** Luận điểm cốt lõi của nội dung — bắt buộc 100%, quan trọng nhất.
-   - **Topic hẹp (Narrow/optional):** Trigger context đặc thù. Chỉ sinh khi nội dung có sự kiện/tình huống rõ ràng. Nếu không có, chỉ sinh 2 topics.
-   - Tất cả topics thuộc cùng 1 Pillar đã chọn ở Bước 1.
-3. **Semantic Dedup (Topic Manager):** 
-   Trước khi đọc module quản lý topic, BẮT BUỘC phải chuẩn bị sẵn 4 biến tương ứng trong working memory cho Atom này:
-   - `id`: `[pN_id_rong] [pN_id_trung] ([pN_id_hep])`.
-   - `label`: `"[label rộng]" "[label trung]" ("[label hẹp]")`.
-   - `pillar`: `[Tên Pillar đã match ở Bước 1]`
-   - `audience`: Wikilink trỏ duy nhất vào file Big Audience gốc (file có `audience_level: big` nằm trong thư mục `vault/01-Atomic/Audiences/`).
-   
-   👉 **HÀNH ĐỘNG:** Đọc và thực thi ngay file `.agents/references/topic_manager/topic_manager.md` tại chỗ. 
-   
-   Thu thập mảng `[resolved_id]` sau dedup để điền vào phần `topics:` trong YAML frontmatter của Atom. (Biến `belongs_to_audience` ghi vào Atom vẫn dùng lại cái link Big Audience trên).
+Lưu path persona vào biến `persona_path` để dùng lại ở các Bước sau.
 
-### Bước 4: Ánh xạ DIKW (Graph Routing)
-Sau khi chốt rễ Pillar ở Bước 3, hệ thống sẽ ánh xạ Atom vào sâu trong Đồ thị để chống file mồ côi:
-- **Tầng 2 (Insights):** Biến `belongs_to_audience` MẶC ĐỊNH trỏ link thẳng về **Big Audience** gốc.
-- **Tầng 3 (Solutions, Concepts):** Vì đã có Pillar ở Bước 3 → Lựa chọn **01 Insight** phù hợp nhất từ danh sách của Pillar đó để cắm Link. Gán `supports_insight: "[Tên_Insight]"`.
-- **Tầng 4 (Stories, Quotes, Data-Points):** Suy luận đồ thị 2 nấc rễ sâu: Dùng Pillar ở Bước 3 → Chọn 01 Insight phù hợp → Tiếp tục trỏ Link xuyên suốt về **01 Solution/Concept** đặc trị trực thuộc nhánh Insight đó. Gán `supports_knowledge: "[Tên_Solution_Hoặc_Concept]"`.
+### Bước 2: Dedup — Kiểm tra trùng lặp
+> ⚠️ **Quy tắc Vòng lặp:** Phải lặp lại toàn bộ Bước 2-3 này cho **từng mẩu nội dung** riêng biệt. Tuyệt đối không gom/trộn lẫn dữ liệu của nhiều mẩu nội dung vào chung một lần thực thi.
 
-### Bước 5: Tạo Atom file theo template chuẩn
+Quét vault kiểm tra trùng lặp theo tầng DIKW tương ứng với type đã phân loại:
+
+- **Insight (Tầng 2):** Đọc `pillars.yaml` → lấy toàn bộ insight (`raw` + `llm_explain`) của mỗi Pillar → so sánh ngữ nghĩa nội dung mới vs danh sách insight.
+- **Solution/Concept (Tầng 3):** Đọc `pillars.yaml` → lấy danh sách insight → quét `vault/01-Atomic/Solutions/` + `vault/01-Atomic/Concepts/` → lọc file có `supports_insight` trỏ về insight thuộc Pillar → so sánh ngữ nghĩa nội dung mới vs danh sách solution/concept đã lọc.
+- **Quote/Data-Point (Tầng 4):** Tương tự Tầng 3 nhưng thêm 1 nấc: quét `vault/01-Atomic/Quotes/` + `vault/01-Atomic/Data-Points/` → lọc file có `supports_knowledge` trỏ về solution/concept thuộc nhánh insight → so sánh.
+
+**Kết quả Dedup:**
+- **Tìm thấy trùng:** Báo user: *"Nội dung này tương tự [atom X]. Bỏ qua?"* → User đồng ý → SKIP. User nói khác → tiếp Bước 3.
+- **Không tìm thấy trùng:** Báo user: *"Không tìm thấy [type] tương tự."* → tiếp Bước 3.
+
+### Bước 3: Đề xuất Combo & Negotiation (USER INTERACTION)
+Agent tự phân tích nội dung → đề xuất combo đầy đủ cùng lúc cho user xác nhận.
+
+**3.1. Chọn Combo (theo type):**
+
+| Type | Agent tự chọn & đề xuất |
+|---|---|
+| **Insight** | {Pillar, Topic} — Đọc `pillars.yaml` chọn Pillar → kế thừa Topic từ insight gần nhất trong Pillar đó |
+| **Solution/Concept** | {Pillar, Insight cha, Topic} — Chọn Pillar → chọn Insight phù hợp nhất từ `pillars.yaml` → kế thừa Topic từ file insight vật lý (đọc trường `topics`) |
+| **Quote/Data-Point** | {Pillar, Insight, Solution/Concept cha, Topic} — Chọn Pillar → chọn Insight → quét vault chọn Solution/Concept phù hợp nhất thuộc nhánh Insight đó → kế thừa Topic từ file Solution/Concept vật lý |
+
+**3.2. Đề xuất cho user:**
+```
+Combo đề xuất:
+- Pillar: [Tên Pillar]
+- Insight: [file_ref]         (chỉ cho Tầng 3, 4)
+- Solution/Concept: [file_ref] (chỉ cho Tầng 4)
+- Topic: [topic_id]
+Bạn muốn thay đổi gì không?
+```
+
+**3.3. Xử lý phản hồi user:**
+- **User đồng ý:** Chốt combo → sang Bước 4.
+- **User muốn thay đổi:** Áp dụng negotiation giống `combo-negotiation.md` (Bước 2 mục 4 trong `story-architect`):
+  - Phase 1: Chốt Pillar (đề xuất combo cho các Pillar khác)
+  - Phase 2: Chốt Insight (3 tầng escalation: insight hiện có → đề xuất mới → user tự đề xuất)
+  - Phase 3: Chốt Topic (kế thừa từ insight, hoặc user tự đề xuất + dedup với `topic_map.yaml`)
+  - Phase 4: Nếu có Insight/Topic MỚI → tạm dừng, sinh prompt `persona-interviewer`, user chạy conversation mới rồi quay lại
+- **Tầng 4 không tìm thấy Solution/Concept phù hợp:** Escalation 3 tầng tương tự Phase 2 nhưng cho Solution/Concept. Nếu cần tạo mới → chạy Luồng 2 (tạo Solution/Concept) trước, rồi quay lại tạo Quote/Data-Point.
+
+**3.4. Topic Resolution (sau khi Combo chốt):**
+- **Primary:** Topic kế thừa từ node cha đã chốt.
+- **Bổ sung:** Agent tự động thêm topic khác từ node cha nếu phù hợp (tối đa 3 topics tổng cộng).
+- Lưu danh sách `topic_ids` đã chốt vào biến `resolved_topics`.
+
+### Bước 4: Tạo Atom file theo template chuẩn
 Mỗi atom tạo ra PHẢI theo format trong `.agents/skills/inbox-processor/references/atom-classification.md` → Section "Atom file (01-Atomic)".
 Format 4 phần: YAML frontmatter + Nội dung + Giải thích + Liên kết.
-- **The Librarian (Đóng dấu Topic):** 100% Atom tạo ra BẮT BUỘC phải chèn mảng `topics` vào YAML Frontmatter. Giá trị của mảng này là danh sách `[resolved_id]` sau khi chạy Semantic Dedup (Tuyệt đối không dùng `id` gốc chưa qua kiểm duyệt). Cú pháp bắt buộc:
-  ```yaml
-  topics: ["id_rong", "id_trung"]
-  # hoặc nếu có topic hẹp:
-  topics: ["id_rong", "id_trung", "id_hep"]
-  ```
-  *(Lưu ý: Chỉ lưu `id` tiếng Anh vào frontmatter, bỏ qua `label` tiếng Việt. Thứ tự mảng: rộng → trung → hẹp)*
+
+**YAML Frontmatter cần cấy (theo tầng DIKW):**
+- **Tầng 2 (Insights):** `belongs_to_audience: "[[Big_Audience]]"` (đọc `audience.yaml` → `file_ref`).
+- **Tầng 3 (Solutions, Concepts):** `supports_insight: "[[Tên_Insight_Đã_Chốt]]"` + `knowledge_type` (tra bảng 8 Knowledge Type trong `atom-classification.md`).
+- **Tầng 4 (Quotes, Data-Points):** `supports_knowledge: "[[Tên_Solution_Hoặc_Concept_Đã_Chốt]]"`.
+- **Topics:** `topics: [resolved_topics]` — giá trị từ Bước 3.4.
+- **Source Tagging:** `source_type: "User"`, `source_name: "Inbox Processor"` (mặc định).
 
 **Lưu ý cho từng type:**
-- **Stories** → PHẢI có 5 phần S-P-T-O-L (xem `.agents/skills/story-architect/references/story-schema.md`). Thêm fields: `subtype`, `protagonist`, `timeline`, `outcome_measurable`.
 - **Solutions** → Phần Nội dung phải có ≥ 3 bước/thành phần.
 - **Quotes** → Phải ghi rõ nguồn (speaker + context).
 - **Data-Points** → Phải ghi năm và nguồn nghiên cứu.
 
-### Bước 6: Cập nhật file gốc
-Sau khi extract xong, update frontmatter file gốc trong `00-Inbox/` theo format trong `.agents/skills/inbox-processor/references/atom-classification.md` → Section "File gốc — sau khi xử lý".
+### Bước 5: Di chuyển & Lưu
+Di chuyển atom files sang `vault/01-Atomic/[Type]/`. Tất cả atoms đều dùng tiền tố `USER_`.
 
-### Bước 7: Di chuyển & Lưu
-Di chuyển atom files sang `vault/01-Atomic/[Type]/`. Đặt tên file theo slug: `[keyword-keyword].md`.
+**Quy tắc đặt tên (Naming Convention):**
 
-### Bước 7.5: Cập nhật Personal Atoms Queue
+| Type | Pattern | Ví dụ |
+|---|---|---|
+| **Insight** | `USER_[insight-name].md` | `USER_attachment-goc-re-kho-dau.md` |
+| **Solution** | `USER_[knowledge-name].md` | `USER_3-buoc-vuot-qua-bat-an.md` |
+| **Concept** | `USER_[concept-name].md` | `USER_deliberate-practice.md` |
+| **Quote** | `USER_[speaker]-[quote-keyword].md` | `USER_charlie-munger-invert.md` |
+| **Data-Point** | `USER_[evidence-keyword].md` | `USER_harvard-stress-2019.md` |
+
+- Slug: kebab-case, tiếng Việt không dấu, viết thường, 2-5 từ mô tả nội dung cốt lõi.
+
+### Bước 5.5: Cập nhật Personal Atoms Queue
 Sau khi atom files đã lưu, chạy script đăng ký vào hàng đợi (script tự bỏ qua nếu atom không có `source_type: "User"`):
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".agents/scripts/Update-PersonalAtomsQueue.ps1" -Action "append" -AtomPathsRaw "[path_atom_1],[path_atom_2],..."
 ```
 *(Truyền TẤT CẢ đường dẫn atoms vừa tạo, phân cách bằng dấu phẩy KHÔNG có khoảng trắng.)*
 
-### Bước 8: Báo cáo
+### Bước 6: Báo cáo
 Report cho user:
 - Số files đã xử lý
 - Số atoms đã tạo (chia theo type)
@@ -82,14 +119,12 @@ Report cho user:
 
 ## Ví dụ
 
-**Input** (file trong `00-Inbox/`):
+**Input** (nội dung nhận từ process-inbox, đã loại Story):
 ```
-Sau lần mất hết dữ liệu năm 2023, tôi nhận ra rằng attachment là gốc rễ của khổ đau.
-Các nhà sư Tây Tạng mất 3 tháng vẽ bức tranh cát mandala rồi phá đi trong 1 phút.
-Theo nghiên cứu Harvard 2019, 73% stress đến từ việc bám víu vào quá khứ.
+Ghi chú 1: Attachment là gốc rễ của khổ đau — khi ta bám víu, ta tạo ra kỳ vọng, kỳ vọng tạo ra thất vọng.
+Ghi chú 2: Theo nghiên cứu Harvard 2019, 73% stress đến từ việc bám víu vào quá khứ.
 ```
 
-**Output** (3 atoms tạo ra):
-1. `01-Atomic/Insights/attachment-root-of-suffering.md` (type: insight)
-2. `01-Atomic/Stories/tibetan-sand-mandala.md` (type: story, subtype: historical)
-3. `01-Atomic/Data-Points/harvard-stress-attachment-2019.md` (type: data-point)
+**Output** (2 atoms tạo ra):
+1. `01-Atomic/Insights/USER_attachment-root-of-suffering.md` (type: insight)
+2. `01-Atomic/Data-Points/USER_harvard-stress-2019.md` (type: data-point)
