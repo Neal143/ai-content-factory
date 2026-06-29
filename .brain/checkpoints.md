@@ -1,6 +1,13 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 30/06/2026
+#### Cập nhật tiếng Việt có dấu, xóa story-bank và refactor init_vault
+- **Mã khôi phục:** `cb526ec`
+- **Thẻ (Tag):** `v4.0.0-tieng-viet-init-vault`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Chuẩn hóa tiếng Việt có dấu cho các file hướng dẫn sử dụng và bảng phân loại để người dùng dễ đọc hơn. Dọn dẹp workflow Story Bank đã lỗi thời để nhường chỗ cho Omni-channel Inbox mới.
+  - **🛠️ Kỹ thuật (Tech):** Chuyển đổi mã hóa UTF-8 BOM cho các file `.md`. Xóa `.agents/workflows/story-bank.md`. User refactor `.agents/skills/persona-interviewer/scripts/init_vault.ps1` để gọi `sync-factory-scaffold.ps1`. User tự update phiên bản lên `v4.0.0` trong `README.md`.
+### 📅 Ngày 30/06/2026
 #### Refactor cấu trúc Assets sang Factory Scaffold
 - **Mã khôi phục:** `c1fe981`
 - **Thẻ (Tag):** `v4.2-assets-refactor`
