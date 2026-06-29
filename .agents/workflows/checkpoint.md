@@ -35,21 +35,26 @@ Bạn là **Antigravity Security Guard**. Nhiệm vụ: Tạo một điểm sao 
 
 ## Giai đoạn 2.5: Kiểm tra Migration (Chỉ áp dụng cho Content Factory)
 
-1. Chạy script detect để tự động quét `git diff HEAD~1` tìm các thay đổi về cấu trúc thư mục hoặc manifest:
+1. Chạy script detect để tự động quét `git diff HEAD~1` tìm các thay đổi về cấu trúc thư mục/file hoặc factory-scaffold template:
    ```powershell
    powershell -ExecutionPolicy Bypass -File ".agents\scripts\detect-structure-changes.ps1" -FactoryRoot "Content Factory"
    ```
 2. Nếu output là `[OK]` (exit code 0): Bỏ qua, không cần migration.
-3. Nếu output là `[WARNING]` (exit code 1): BẮT BUỘC HỎI User:
-   "Phát hiện code mới vừa tạo/đổi tên folder, hoặc manifest vừa được cập nhật. Có cần tạo migration script cho user cũ không?"
-4. Nếu User trả lời "Có":
+3. Nếu output là `[WARNING]` (exit code 1): Phân tích kết quả và BẮT BUỘC HỎI User:
+   - Nếu phát hiện **thay đổi trong factory-scaffold/**: "Đã phát hiện thay đổi trong factory-scaffold template. Folder/file MỚI sẽ tự động được sync cho user cũ khi họ chạy /update-agents — không cần migration. Chỉ cần tạo migration nếu có thao tác ĐỔI TÊN hoặc DI CHUYỂN. Có cần tạo migration script không?"
+   - Nếu phát hiện **code tạo/di chuyển folder/file trong .ps1**: "Phát hiện code thao tác folder/file. Nếu đây là folder/file hệ thống mới, cần thêm vào `Content Factory/.agents/assets/factory-scaffold/` tại đúng vị trí để sync tự động tạo cho user cũ. Có cần thêm vào factory-scaffold không?"
+4. Nếu User yêu cầu tạo migration:
    - Đọc file `Content Factory/.agents/migrations/README.md` để nắm quy tắc viết migration.
    - Quét các file `*.ps1` trong `Content Factory/.agents/migrations/` để xác định số thứ tự tiếp theo.
-   - Tạo file migration mới (VD: `002_add-content-plan.ps1`) theo đúng quy tắc trong README.md.
-   - CẬP NHẬT `Content Factory/.agents/migrations/structure-manifest.txt` với tên folder mới.
-   - Commit bổ sung: `git add "Content Factory/.agents/migrations/" ; git commit -m "migration: [mô tả ngắn]"`
-   - Cập nhật lại mã khôi phục trong checkpoints.md bằng hash của commit migration (commit cuối cùng).
-5. Nếu User trả lời "Không": Bỏ qua.
+   - Tạo file migration mới (VD: `003_rename-content-folder.ps1`) theo đúng quy tắc trong README.md.
+   - Commit bổ sung: `git add "Content Factory/.agents/" ; git commit -m "migration: [mô tả ngắn]"`
+   - Cập nhật lại mã khôi phục trong checkpoints.md bằng hash của commit cuối cùng.
+5. Nếu User yêu cầu thêm vào factory-scaffold:
+   - Thêm folder/file vào `Content Factory/.agents/assets/factory-scaffold/` tại đúng vị trí.
+   - Folder rỗng cần `.gitkeep`.
+   - Commit bổ sung: `git add "Content Factory/.agents/" ; git commit -m "scaffold: [mô tả ngắn]"`
+   - Cập nhật lại mã khôi phục trong checkpoints.md bằng hash của commit cuối cùng.
+6. Nếu User trả lời "Không": Bỏ qua.
 
 ## Giai đoạn 3: Báo cáo & Đề xuất Push
 1. Báo cáo ngắn gọn cho User: "✅ Đã lưu checkpoint thành công! Mã khôi phục: `[hash]`".
