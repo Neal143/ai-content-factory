@@ -1,6 +1,13 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 29/06/2026
+#### Nâng cấp Inbox Processor thành Omni-channel Router
+- **Mã khôi phục:** `b499a6c`
+- **Thẻ (Tag):** `v3.9.0`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Tái cấu trúc Inbox Processor thành Omni-channel Router, tự động định tuyến dữ liệu thô từ 3 nguồn (Chat, Extract, Tĩnh) và áp dụng cơ chế Reverse-Chronological Logging. Bổ sung bảng 8 Knowledge Type cho Solutions/Concepts.
+  - **🛠️ Kỹ thuật (Tech):** Ghi đè toàn diện `process-inbox.md`, `inbox-processor/SKILL.md` và `atom-classification.md`. Tạo mới `_Huong-dan.md`, update `structure-manifest.txt` và `init_vault.ps1`.
+### 📅 Ngày 29/06/2026
 #### Cập nhật lại thư mục lưu File A và quy tắc tên File B
 - **Mã khôi phục:** `338f2e5`
 - **Thẻ (Tag):** `v3.8.2-patch-1`
