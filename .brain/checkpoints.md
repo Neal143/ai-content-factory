@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 30/06/2026
+#### Refactor cấu trúc Assets sang Factory Scaffold
+- **Mã khôi phục:** `c1fe981`
+- **Thẻ (Tag):** `v4.2-assets-refactor`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Chuyển đổi toàn bộ hệ thống quản lý thư mục, file mẫu (template) sang một thư mục trung tâm (factory-scaffold). Đảm bảo không bao giờ bị mất/ghi đè dữ liệu của user khi cập nhật hệ thống, đồng thời đồng bộ tự động tài nguyên mới.
+  - **🛠️ Kỹ thuật (Tech):** Thay thế `structure-manifest.txt` bằng `factory-scaffold/` system. Xóa các tài nguyên cũ, viết mới script `sync-factory-scaffold.ps1`, và cấu trúc lại `init_vault.ps1`, `run-migrations.ps1` (thêm bước đồng bộ và kiểm tra an toàn) cùng `detect-structure-changes.ps1`.
+
 ### 📅 Ngày 29/06/2026
 #### Nâng cấp Inbox Processor thành Omni-channel Router
 - **Mã khôi phục:** `b499a6c`
