@@ -137,7 +137,19 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
              ```
     - **Bước 2 (Mở rộng Insights)**: 
       + ⛔ **CẤM LƯU FILE SAU KHI USER TRẢ LỜI:** Khi nhận được đáp án cho câu hỏi dưới đây, TUYỆT ĐỐI KHÔNG ghi các Seed Insights (nỗi sợ, khao khát...) vào `audience.yaml` hay bất kỳ file nào. Bạn bắt buộc phải GIỮ NGUYÊN ở bộ nhớ chat (Context) để chờ thực thi ở Câu 11.
-      + **Hành động của AI:** **Tuyệt đối chỉ sử dụng các biến insight sau, không được bịa thêm bất cứ biến nào khác**Đặt câu hỏi Menu-style: *"Để hiểu sâu về họ, bạn thử gạch đầu dòng những khía cạnh nào dưới đây mà bạn nắm rõ nhất: 1. Khao khát (desire) / 2. Nỗi sợ (fear) / 3. Nỗi đau (pain_point) / 4. Rào cản (barrier) / 5. Niềm tin (belief) / 6. Thích (likes) / 7. Ghét (dislikes) / 8. Cạm bẫy (pitfall) / 9. Lầm tưởng (myth)? Nhớ gì kể nấy nhé."*
+      + ⛔ **BẢNG MÃ INSIGHT_TYPE BẮT BUỘC** (Nguồn: `.agents/knowledge/insight_types.md`). Khi phân loại, TUYỆT ĐỐI CHỈ ĐƯỢC dùng 1 trong 9 mã sau (không tự tạo mã mới):
+        | Mã (insight_type) | Mô tả |
+        |---|---|
+        | `desire` | Tham vọng, khao khát, động lực tiến tới |
+        | `fear` | Nỗi sợ hãi |
+        | `pain_point` | Nỗi đau, bế tắc hiện tại |
+        | `barrier` | Rào cản (Tâm lý, vật lý, thời gian...) |
+        | `belief` | Niềm tin cốt lõi |
+        | `likes` | Sở thích, điều ưa chuộng |
+        | `dislikes` | Điều ghét, muốn tránh xa |
+        | `pitfall` | Cạm bẫy, cách làm sai lầm/độc hại |
+        | `myth` | Lầm tưởng, huyền thoại sáo rỗng/sai lệch |
+      + **Hành động của AI:** Đặt câu hỏi Menu-style: *"Để hiểu sâu về họ, bạn thử gạch đầu dòng những khía cạnh nào dưới đây mà bạn nắm rõ nhất: 1. Khao khát (desire) / 2. Nỗi sợ (fear) / 3. Nỗi đau (pain_point) / 4. Rào cản (barrier) / 5. Niềm tin (belief) / 6. Thích (likes) / 7. Ghét (dislikes) / 8. Cạm bẫy (pitfall) / 9. Lầm tưởng (myth)? Nhớ gì kể nấy nhé."*
 
 11. **3-4 chủ đề chính (Pillars) bạn hay viết là gì?**
     *Lưu ý: Hỏi tách biệt 2 bước sau, đợi User trả lời bước 1 xong mới đưa bước 2.*
@@ -159,10 +171,11 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       - 
       ```
       *User chỉ cần copy template và điền sau dấu `:` hoặc sau dấu `-`.*
-      + ⛔ Khi nhận câu trả lời, **BẮT BUỘC** ghi các Topics ngách vào thẻ mảng `topics: []` trong `topic_map.yaml` ngay lập tức. **TUYỆT ĐỐI CẤM ghi vào `pillars.yaml`** ở bước này. Mỗi entry PHẢI tuân thủ đúng schema 3 trường — **điền đầy đủ cả `pillar_parents`** bằng tên Pillar cha mà User vừa cung cấp (đây KHÔNG phải là ghi vào `pillars.yaml`):
+      + ⛔ Khi nhận câu trả lời, **BẮT BUỘC** ghi các Topics ngách vào thẻ mảng `topics: []` trong `topic_map.yaml` ngay lập tức. **TUYỆT ĐỐI CẤM ghi vào `pillars.yaml`** ở bước này. Mỗi entry PHẢI tuân thủ đúng schema 4 trường (`id`, `label`, `pillar_parents`, `belongs_to_audience`) — **điền đầy đủ cả `pillar_parents`** bằng tên Pillar cha mà User vừa cung cấp (đây KHÔNG phải là ghi vào `pillars.yaml`):
       + ⛔ **BẮT BUỘC tiền tố Pillar:** Tra `pillars.yaml` lấy key của Pillar (VD: `pillar_1` → `p1`, `pillar_3` → `p3`). Nối tiền tố `pN_` vào trước `id`. Mục đích: phân biệt topic cùng tên nhưng khác ngữ cảnh Pillar.
       ```yaml
-      - id: "pN_[slug_không_dấu_dùng_gạch_dưới]" # VD: p1_quan_ly_thoi_gian. KHÔNG dùng dấu gạch ngang
+      - id: "pN_[english_snake_case]" # Tiếng Anh snake_case (VD: p1_time_management). KHÔNG dùng dấu gạch ngang.
+        label: "[Tên_Topic_Nguyên_Bản_Tiếng_Việt_Có_Dấu]" # Lưu giữ chính xác tiếng Việt có dấu user nhập (VD: Quản lý thời gian).
         pillar_parents: ["[Tên_Pillar_cha_user_vừa_khai]"]
         belongs_to_audience: ["[[Tên_file_Audience_vừa_tạo_ở_Câu_10]]"]
       ```
@@ -177,7 +190,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
           description: "[Mô tả lấy từ Bước 1]"
           target_emotion: "[AI tự phân tích và suy luận 1 cảm xúc mục tiêu duy nhất]"
           insights:
-            - type: "[loại_insight_ánh_xạ_từ_Câu_10]" # VD: fear, desire, pain_point...
+            - insight_type: "[mã_từ_Bảng_Mã_Insight_Type]" # BẮT BUỘC dùng 1 trong 9 mã chuẩn (Câu 10 Bước 2)
               # 1. Nguồn từ User
               raw: >
                 [nội_dung_nguyên_bản_từ_Câu_10]
@@ -192,10 +205,10 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       > ⛔ **QUY TẮC ĐÁNH SỐ PENDING:** Đánh số `PENDING_N` bắt đầu từ `0`, tăng dần theo đúng thứ tự insight trong payload JSON array. Insight đầu tiên trong payload = `PENDING_0`, insight thứ hai = `PENDING_1`, v.v. **Thứ tự phải KHỚP HOÀN TOÀN** giữa pillars.yaml và payload. Script sẽ tự động thay thế placeholder thành link thật sau khi tạo file.
       Đồng thời AI dùng Tool In Đè (Overwrite) toàn bộ array JSON tổng hợp Insight vào file tĩnh có sẵn: `.agents/skills/persona-interviewer/scripts/insights_payload.json`, bắt buộc chứa 5 biến chính xác sau:
       + `headline`: Đặt tên tối giản, loại bỏ stop words, chỉ lấy cụm danh từ/động từ chính. Script sẽ tự chuyển thành **Slug Naming** chuẩn: `[slug-keyword-tieng-viet-khong-dau].md` (chữ thường, không dấu, nối bằng gạch ngang).
-      + `insight_type`: Phân loại nhóm Insight (ví dụ: desire, pain_point...).
+      + `insight_type`: BẮT BUỘC dùng chính xác 1 trong 9 mã chuẩn ở Bảng Mã Insight_Type (Câu 10 Bước 2). Không được tự tạo mã mới.
       + `raw_payload`: Nguyên văn phần text thô do User gợi mở.
       + `llm_explain`: Phân tích chuyên sâu đúc rút từ AI (Insightful explain).
-      + `topics`: Mảng `id` topics đã resolve ở Bước 2 (VD: `["dieu_hoa_cam_xuc", "gan_ket_an_toan"]`).
+      + `topics`: Mảng `id` topics đã resolve ở Bước 2 (Lưu ý: phải dùng chính xác mã `id` english_snake_case đã tạo ở topic_map.yaml. VD: `["p1_emotion_regulation", "p2_safe_attachment"]`).
       Sau đó AI tự động GỌI GÓI LỆNH TERMINAL bọc sẵn dưới đây để hệ thống tự xuất mẻ file vật lý cuối cùng: 
       ```powershell
       powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scripts/run_insights.ps1 -UserName "[Tên_User_không_khoảng_trắng]" -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"
