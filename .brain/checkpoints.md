@@ -1,6 +1,22 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 30/06/2026
+#### Cập nhật Persona Interviewer & SSOT Insight Types
+- **Mã khôi phục:** `d443e11`
+- **Thẻ (Tag):** `v4.1.0-persona-interviewer-ssot`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo dữ liệu Persona được sinh ra chuẩn xác hơn, hỗ trợ kiểm tra lỗi gõ sai và cấu trúc thiếu ngay lập tức, tự động sửa dữ liệu cũ của Vuon-ong-steiner về đúng chuẩn tiếng Việt có dấu.
+  - **🛠️ Kỹ thuật (Tech):** Thêm file `insight_types.md` làm SSOT (Single Source of Truth). Cập nhật `SKILL.md` và `validate_outputs.ps1` để tự động parse Enum từ SSOT và áp dụng regex cho `topic_map.yaml`. Migrate format của `Vuon-ong-steiner` persona.
+
+### 📅 Ngày 30/06/2026
+#### Cập nhật workflow /checkpoint sang git add .
+- **Mã khôi phục:** `42da3fe`
+- **Thẻ (Tag):** `update-checkpoint-workflow`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo toàn bộ dự án (bao gồm dữ liệu cá nhân như vault, personas) đều được lưu trữ an toàn chống lỡ tay xóa ở máy local, trong khi vẫn giữ nguyên thiết kế riêng tư khi đưa luồng code lõi lên GitHub.
+  - **🛠️ Kỹ thuật (Tech):** Sửa đổi lệnh `git add .agents/` thành `git add .` trong `checkpoint.md` Giai đoạn 2.
+
+### 📅 Ngày 30/06/2026
 #### Cập nhật tiếng Việt có dấu, xóa story-bank và refactor init_vault
 - **Mã khôi phục:** `cb526ec`
 - **Thẻ (Tag):** `v4.0.0-tieng-viet-init-vault`
