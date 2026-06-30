@@ -1,0 +1,42 @@
+# Persona Pack Template — Authority Library
+# Version: v18.0
+
+# Expert registry — chuyên gia phù hợp với niche giáo dục mầm non Steiner
+experts:
+  - name: "Tiến sĩ Rudolf Steiner"
+    field: "Triết lý giáo dục Waldorf"
+    credentials: "Tiến sĩ triết học (Đại học Rostock, 1891), nhà triết học, nhà giáo dục người Áo, người sáng lập phong trào Anthroposophy"
+    cascade: "Sáng lập trường Waldorf đầu tiên năm 1919, nền tảng cho hơn 1.300 trường Waldorf và 2.000 trung tâm mầm non trên toàn cầu"
+    topics: ["p1_steiner_va_khoa_hoc_phat_trien_toan_dien", "p1_cua_so_vang_phat_trien_tre_0_7_tuoi", "p1_xay_dung_y_chi_cho_tre", "p4_gia_tri_chua_lanh_va_nuoi_duong_cua_nhung_cau_chuyen"]
+    used_count: 0
+
+  - name: "Yuval Noah Harari"
+    field: "Lịch sử nhân loại và tương lai AI"
+    credentials: "Tiến sĩ lịch sử (Đại học Oxford), Giáo sư Khoa Lịch sử Đại học Hebrew Jerusalem"
+    cascade: "Tác giả best-seller toàn cầu Sapiens, Homo Deus, 21 Lessons for the 21st Century — bán hơn 45 triệu bản, dịch ra 65 ngôn ngữ"
+    topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the", "p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
+    used_count: 0
+
+  - name: "Bác sĩ Daniel J. Siegel"
+    field: "Thần kinh học phát triển trẻ em"
+    credentials: "Bác sĩ Y khoa (Harvard Medical School), Giáo sư Lâm sàng Khoa Tâm thần học tại UCLA School of Medicine, Đồng sáng lập Mindful Awareness Research Center (MARC) tại UCLA"
+    cascade: "Tác giả The Whole-Brain Child và No-Drama Discipline — best-seller NYT, người khai sinh lĩnh vực Thần kinh học Liên cá nhân (Interpersonal Neurobiology)"
+    topics: ["p1_cua_so_vang_phat_trien_tre_0_7_tuoi", "p1_steiner_va_khoa_hoc_phat_trien_toan_dien", "p3_su_hinh_thanh_va_phat_trien_cua_cac_giac_quan", "p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh"]
+    used_count: 0
+
+  - name: "Tiến sĩ Tina Payne Bryson"
+    field: "Tâm lý học phát triển và nuôi dạy con"
+    credentials: "Tiến sĩ Tâm lý học (University of Southern California), Nhà trị liệu lâm sàng, Sáng lập The Center for Connection và Play Strong Institute"
+    cascade: "Đồng tác giả cùng Daniel Siegel các cuốn best-seller NYT: The Whole-Brain Child, No-Drama Discipline, The Yes Brain, The Power of Showing Up"
+    topics: ["p1_cua_so_vang_phat_trien_tre_0_7_tuoi", "p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh", "p2_thiet_lap_moi_truong_giao_duc_tai_nha_giai_doan_1_3_tuoi", "p3_phat_trien_van_dong_tho"]
+    used_count: 0
+
+citation_patterns:
+  - "full_intro_cascade"     # Tên + credentials + cascade
+  - "soft_name_drop"         # "Có ông giáo sư..."
+  - "achievement_first"      # Achievement trước, tên sau
+  - "story_based"            # "Tôi nhớ có đọc bài..."
+
+diversity_rule: "Không dùng cùng 1 expert quá 2 lần trong 5 bài liên tiếp"
+
+# FILE_KEY:

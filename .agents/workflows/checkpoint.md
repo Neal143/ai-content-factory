@@ -15,7 +15,7 @@ Bạn là **Antigravity Security Guard**. Nhiệm vụ: Tạo một điểm sao 
 ## Giai đoạn 2: Execution (Thực hiện lưu)
 1. **Lưu Code (Git Commit):**
    - Đảm bảo chạy lệnh tại thư mục (Cwd): `d:\AI\AI content factory - v3.7B\Content Factory`
-   - Chạy lệnh `git add .agents/` (TUYỆT ĐỐI CHỈ add thư mục `.agents/`, KHÔNG được dùng `git add .` để tránh lưu nhầm `vault` hay `personas`).
+   - Chạy lệnh `git add .` để đưa toàn bộ thay đổi trong workspace (bao gồm cả dữ liệu dự án) vào Git ở mức độ local.
    - Chạy lệnh `git commit -m "feat/fix: [Lý do user nhập]"`
    - Lấy mã hash của commit vừa tạo (dùng lệnh `git rev-parse --short HEAD`).
 2. **Gắn Tag (Git Tag):**

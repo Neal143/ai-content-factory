@@ -1,0 +1,22 @@
+# Persona Pack Template — Profile
+# Version: v18.0
+# Instructions: File này được copy vào personas/[user-name]/ khi onboarding
+
+personal:
+  name: "Vuon-ong-steiner"     # Tên hiển thị trên hệ thống
+  nickname: "Vườn Ong Steiner" # Tên trường, dùng khi xưng hô trong bài
+  title: "Trường mầm non Steiner"  # Tiền thân là trường Steiner đầu tiên ở Hà Nội
+  experience: "10 năm"           # 10 năm trong lĩnh vực giáo dục mầm non Steiner
+  signature_phrase: ""         # Câu nói đặc trưng
+
+authority_claims: []           # Những credentials/thành tựu có thể dùng
+# Ví dụ:
+# - "10 năm kinh nghiệm content marketing"
+# - "Đã coaching 1000+ học viên"
+
+content_approach:
+  core_belief: "Phương pháp Steiner"  # Niềm tin cốt lõi tương tự với triết lý giáo dục Steiner/Waldorf
+  method: ""                   # Ví dụ: "Viết theo DNA, không viết theo template"
+  unique_value: ""             # Ví dụ: "Nói thẳng những gì người khác ngại nói"
+
+# FILE_KEY:

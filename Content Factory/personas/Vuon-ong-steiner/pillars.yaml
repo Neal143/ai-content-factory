@@ -1,0 +1,176 @@
+pillars:
+  pillar_1:
+    name: Xác định triết lý giáo dục cho con
+    description: Tìm hiểu về tâm lý học phát triển của trẻ, các phương pháp giáo dục
+      cho trẻ trong giai đoạn 0-7 tuổi
+    insights:
+    - type: '[DESIRE]'
+      raw: Bố mẹ và con cái đều được tự do
+      file_ref: '[[tu-do-bo-me-con-cai]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ctu-do-bo-me-con-cai.md
+      llm_explain: Phụ huynh khao khát một gia đình nơi mọi thành viên đều được tự
+        do phát triển bản thân, không bị ràng buộc bởi áp lực xã hội hay kỳ vọng không
+        phù hợp.
+    - type: '[DESIRE]'
+      raw: Gia đình được tự do tài chính
+      file_ref: '[[tu-do-tai-chinh-gia-dinh]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ctu-do-tai-chinh-gia-dinh.md
+      llm_explain: Tự do tài chính là nền tảng để phụ huynh có thể dành thời gian
+        và nguồn lực cho việc nuôi dạy con theo triết lý mình tin tưởng, thay vì bị
+        cuốn vào vòng xoáy mưu sinh.
+    - type: '[DESIRE]'
+      raw: Con yêu gia đình, phát triển lành mạnh, độc lập với công nghệ/AI
+      file_ref: '[[con-doc-lap-cong-nghe-ai]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ccon-doc-lap-cong-nghe-ai.md
+      llm_explain: Phụ huynh mong muốn con phát triển toàn diện về thể chất và tinh
+        thần, có khả năng tự chủ thay vì phụ thuộc vào công nghệ và AI.
+    - type: '[DESIRE]'
+      raw: Con được hạnh phúc, có ý chí, nội tâm vững vàng
+      file_ref: '[[con-hanh-phuc-y-chi-vung-vang]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ccon-hanh-phuc-y-chi-vung-vang.md
+      llm_explain: Khao khát sâu nhất là con có đời sống nội tâm phong phú, ý chí
+        mạnh mẽ và cảm nhận hạnh phúc từ bên trong.
+    - type: '[FEAR]'
+      raw: Sợ con bị phụ thuộc vào công nghệ, bị AI thay thế
+      file_ref: '[[so-con-phu-thuoc-cong-nghe-ai-thay-the]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cso-con-phu-thuoc-cong-nghe-ai-thay-the.md
+      llm_explain: Nỗi sợ con trở thành nạn nhân của công nghệ, mất đi khả năng tư
+        duy độc lập và sáng tạo.
+    - type: '[FEAR]'
+      raw: Sợ con không tìm được hạnh phúc như chính họ
+      file_ref: '[[so-con-khong-tim-duoc-hanh-phuc]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cso-con-khong-tim-duoc-hanh-phuc.md
+      llm_explain: Phụ huynh chiếu xạ nỗi bất hạnh của chính mình lên con, sợ con
+        cũng sẽ lớn lên mà không hiểu hạnh phúc thật sự là gì.
+    - type: '[FEAR]'
+      raw: Sợ bỏ lỡ giai đoạn vàng từ 0-7 tuổi
+      file_ref: '[[so-bo-lo-giai-doan-vang-0-7]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cso-bo-lo-giai-doan-vang-0-7.md
+      llm_explain: Nhận thức rằng 0-7 tuổi là cửa sổ phát triển không thể quay lại
+        tạo ra áp lực lớn cho phụ huynh.
+    - type: '[FEAR]'
+      raw: Sợ mất việc, thiếu tài chính nuôi con do AI thay thế
+      file_ref: '[[so-mat-viec-thieu-tai-chinh-do-ai]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cso-mat-viec-thieu-tai-chinh-do-ai.md
+      llm_explain: 'Nỗi sợ kép: vừa sợ bản thân bị AI thay thế trong công việc, vừa
+        sợ mất nguồn lực tài chính để đầu tư cho giáo dục con.'
+    - type: '[PAIN_POINT]'
+      raw: Bản thân không hạnh phúc, không hiểu hạnh phúc là gì, làm sao để trở thành
+        chính mình
+      file_ref: '[[ban-than-khong-hanh-phuc]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cban-than-khong-hanh-phuc.md
+      llm_explain: 'Nỗi đau gốc rễ: phụ huynh chưa bao giờ được hướng dẫn về hạnh
+        phúc và bản sắc cá nhân.'
+    - type: '[PAIN_POINT]'
+      raw: Không được dạy về điều đó từ bé nên tâm lý luôn "chênh vênh"
+      file_ref: '[[khong-duoc-day-tu-be-tam-ly-chenh-venh]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ckhong-duoc-day-tu-be-tam-ly-chenh-venh.md
+      llm_explain: Hệ quả của việc thế hệ trước không có nền tảng giáo dục cảm xúc,
+        khiến phụ huynh hiện tại thiếu công cụ nội tâm để dạy con.
+    - type: '[BARRIER]'
+      raw: 'Rào cản kiến thức: Không biết cách để bản thân và con không bị AI thay
+        thế, không biết cách đạt hạnh phúc'
+      file_ref: '[[rao-can-kien-thuc]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Crao-can-kien-thuc.md
+      llm_explain: Phụ huynh thiếu kiến thức về giáo dục toàn diện, không biết bắt
+        đầu từ đâu để bảo vệ con trước kỷ nguyên AI.
+    - type: '[BARRIER]'
+      raw: 'Rào cản xã hội: Xung quanh tin rằng con phải học môi trường công nghệ,
+        hiện đại nhất mới là thời thượng, trí tuệ'
+      file_ref: '[[rao-can-xa-hoi]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Crao-can-xa-hoi.md
+      llm_explain: Áp lực xã hội đẩy phụ huynh vào guồng quay công nghệ, khiến họ
+        nghi ngờ lựa chọn giáo dục tự nhiên của mình.
+    - type: '[BELIEF]'
+      raw: 0-7 tuổi là giai đoạn vàng phát triển cho con
+      file_ref: '[[giai-doan-vang-0-7-tuoi]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cgiai-doan-vang-0-7-tuoi.md
+      llm_explain: Niềm tin vào giai đoạn vàng 0-7 tuổi là động lực chính khiến phụ
+        huynh tìm kiếm phương pháp giáo dục có chiều sâu.
+    - type: '[BELIEF]'
+      raw: Niềm tin vào khoa học
+      file_ref: '[[niem-tin-vao-khoa-hoc]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cniem-tin-vao-khoa-hoc.md
+      llm_explain: Phụ huynh tin tưởng vào cơ sở khoa học làm nền tảng cho mọi quyết
+        định giáo dục, thay vì chạy theo xu hướng.
+    - type: '[LIKES]'
+      raw: Bố mẹ được mọi người đánh giá là trí tuệ
+      file_ref: '[[duoc-danh-gia-tri-tue]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cduoc-danh-gia-tri-tue.md
+      llm_explain: Phụ huynh muốn được nhìn nhận là những người có hiểu biết, có chiều
+        sâu trong cách nuôi dạy con.
+    - type: '[DISLIKES]'
+      raw: Spam, quá dụ dỗ, lôi kéo, quá thân mật ban đầu khi tìm hiểu phương pháp
+        học/tìm hiểu trường
+      file_ref: '[[ghet-spam-du-do-loi-keo]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cghet-spam-du-do-loi-keo.md
+      llm_explain: Phụ huynh nhóm này có xu hướng lý trí và cảnh giác với các hình
+        thức marketing quá mức.
+    - type: '[PITFALL]'
+      raw: Quát mắng, đánh con theo thói quen "thương cho roi cho vọt" vì áp lực hoặc
+        vì muốn thể hiện sự nghiêm khắc với người ngoài
+      file_ref: '[[cam-bay-thuong-cho-roi-cho-vot]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ccam-bay-thuong-cho-roi-cho-vot.md
+      llm_explain: Cạm bẫy quay về bạo lực truyền thống xuất phát từ việc thiếu nền
+        tảng triết lý giáo dục vững chắc.
+    - type: '[PITFALL]'
+      raw: Cạm bẫy công nghệ tiện nghi khiến phụ huynh ảo tưởng mình "hợp thời"
+      file_ref: '[[cam-bay-cong-nghe-tien-nghi]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ccam-bay-cong-nghe-tien-nghi.md
+      llm_explain: Chạy theo công nghệ hiện đại khiến phụ huynh ảo tưởng rằng mình
+        đang làm đúng cho con trong khi thực tế đang tạo phụ thuộc.
+    - type: '[MYTH]'
+      raw: Khi con sai phải giải thích logic ngay lúc đó để con hiểu
+      file_ref: '[[giai-thich-logic-khi-con-sai]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cgiai-thich-logic-khi-con-sai.md
+      llm_explain: Lầm tưởng phổ biến rằng trẻ nhỏ có thể tiếp nhận logic như người
+        lớn. Não bộ trẻ dưới 7 tuổi chưa phát triển đầy đủ vùng tư duy trừu tượng.
+    target_emotion: empowerment
+  pillar_2:
+    name: Thiết lập môi trường giáo dục tại nhà
+    description: Ngoài việc đi học ở trường thì con cũng sẽ phát triển từng giờ từng
+      phút ở nhà nên cần thiết lập môi trường giáo dục tại nhà cho con theo triết
+      lý giáo dục đã chọn
+    insights:
+    - type: '[FEAR]'
+      raw: Sợ bản thân nổi nóng, đánh con trong bối cảnh hiện tại
+      file_ref: '[[so-noi-nong-danh-con]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cso-noi-nong-danh-con.md
+      llm_explain: Phụ huynh nhận thức được rằng áp lực cuộc sống hiện đại khiến họ
+        dễ mất bình tĩnh và lặp lại những mô hình bạo lực.
+    - type: '[BARRIER]'
+      raw: 'Rào cản thời gian: Đi làm 8 tiếng/ngày, phụ thuộc ông bà/người giúp việc/nhà
+        trường. Bố mẹ phải tự học thêm để giữ việc trong kỷ nguyên AI'
+      file_ref: '[[rao-can-thoi-gian-phu-thuoc-nguoi-khac]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Crao-can-thoi-gian-phu-thuoc-nguoi-khac.md
+      llm_explain: Thời gian là tài nguyên khan hiếm nhất. Phụ huynh vừa phải làm
+        việc, vừa tự học, vừa muốn đồng hành cùng con.
+    - type: '[MYTH]'
+      raw: Trẻ con không hiểu người lớn làm gì (Thực tế trẻ hấp thu như bọt biển cả
+        hành vi sai trái của bố mẹ)
+      file_ref: '[[tre-khong-hieu-nguoi-lon]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Ctre-khong-hieu-nguoi-lon.md
+      llm_explain: 'Lầm tưởng nguy hiểm nhất: phụ huynh nghĩ rằng trẻ không quan sát
+        và không bị ảnh hưởng bởi hành vi của người lớn.'
+    target_emotion: empowerment
+  pillar_3:
+    name: Thiết lập nền tảng cho con trong giai đoạn 0-24 tháng
+    description: Đây là giai đoạn trẻ hoàn toàn ở nhà với gia đình, chưa đi học nên
+      việc thiết lập nền tảng cho con trong giai đoạn 0-24 tháng cực kỳ quan trọng
+    insights:
+    - type: '[MYTH]'
+      raw: Chỉ nói là con hiểu, ra lệnh là con nghe, không cần đồng hành
+      file_ref: '[[chi-noi-la-con-hieu-ra-lenh-la-con-nghe]]'
+      file_link: file:///d:%5CAI%5CAI%20content%20factory%20-%20v3.7B%5CContent%20Factory%5Cvault%5C01-Atomic%5CInsights%5Cchi-noi-la-con-hieu-ra-lenh-la-con-nghe.md
+      llm_explain: Lầm tưởng rằng giáo dục chỉ cần truyền đạt một chiều. Trẻ cần sự
+        đồng hành, làm mẫu và trải nghiệm trực tiếp để phát triển.
+    target_emotion: connection
+  pillar_4:
+    name: Kể chuyện cho con
+    description: Câu chuyện là công cụ giáo dục cổ xưa nhất nhưng cũng mạnh mẽ nhất
+      để vừa giáo dục, vừa nuôi dưỡng tâm hồn, trí tưởng tượng cho trẻ
+    insights: []
+    target_emotion: connection
+rotation_rules:
+  weekly: Mỗi tuần ít nhất 2 pillars khác nhau
+  consecutive_limit: 2
