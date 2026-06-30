@@ -1,19 +1,19 @@
 ﻿<#
 .SYNOPSIS
 Tên file: validate_outputs.ps1
-Last update: 26/06/2026 01:03 (GMT+7)
+Last update: 30/06/2026 15:35 (GMT+7)
 Vai trò: Kiểm định Output BẮT BUỘC do SKILL.md quy định (không kiểm tra trường tùy chọn/placeholder).
 Khi nào dùng: Cuối vòng đời persona-interviewer hoặc User chạy thủ công.
 Output: Log Terminal (Xanh = OK, Đỏ = FAIL, Vàng = WARN).
 Logic:
 - Kiểm tra 7 file YAML tồn tại (init_vault.ps1).
-- Nội soi CHỈ Tier 1 (name, pronouns, tone) + Tier 2 Nhóm C (JTBD, Pillars, Insights, Topics, Authorities).
+- Noi soi Tier 1 + Tier 2 Nhom C + Enum Check insight_type (doc tu .agents/knowledge/) + Count Match topic id/label.
 - Bỏ qua Nhóm A, B (user có quyền skip) và template placeholders.
 - Xác thực file vật lý Insight và Audience (chống Link Mồ côi).
 #>
 
 Write-Host "=============================================" -ForegroundColor Cyan
-Write-Host " PERSONA INTERVIEWER - OUTPUT VALIDATOR (V6) " -ForegroundColor Cyan
+Write-Host " PERSONA INTERVIEWER - OUTPUT VALIDATOR (V7) " -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 
 # ==============================================================================
@@ -37,6 +37,21 @@ function Test-RequiredField {
     param([string]$Content, [string]$Key)
     # Negative lookahead chặn: null, "", '', [], và dòng chỉ có whitespace/comment
     return ($Content -match "(?m)^\s*(?:-\s+)?${Key}:\s*(?!null\b)(?!""""\s*(#.*)?$)(?!''\s*(#.*)?$)(?!\[\s*\]\s*(#.*)?$)(?!\s*(#.*)?$)")
+}
+
+# ==============================================================================
+# KHOI 2B: DOC INSIGHT_TYPES TU KNOWLEDGE FILE (Single Source of Truth)
+# Y nghia: Doc danh sach insight_type hop le tu .agents/knowledge/insight_types.md
+# Script parse cot dau tien cua bang Markdown de lay ma enum.
+# ==============================================================================
+$knowledgePath = Join-Path $RootPath ".agents\knowledge\insight_types.md"
+if (Test-Path $knowledgePath) {
+    $ktContent = Get-Content $knowledgePath -Raw -Encoding UTF8
+    $validTypes = (([regex]::Matches($ktContent, '(?m)^\|\s*`(\w+)`\s*\|') | ForEach-Object { $_.Groups[1].Value }) -join '|')
+    Write-Host "[*] Insight types loaded: $($validTypes -replace '\|', ', ')" -ForegroundColor DarkGray
+} else {
+    Write-Host "[WARN] Khong tim thay .agents/knowledge/insight_types.md, bo qua enum check" -ForegroundColor Yellow
+    $validTypes = ""
 }
 
 # ==============================================================================
@@ -101,9 +116,16 @@ foreach ($userFolder in $userFolders) {
             if (Test-RequiredField $c $key) { Write-Host "[OK] pillars -> $key" -ForegroundColor Green }
             else { Write-Host "[FAIL] pillars -> $key (RỖNG)" -ForegroundColor Red }
         }
-        foreach ($key in @("type","raw","file_ref","file_link","llm_explain")) {
+        foreach ($key in @("insight_type","raw","file_ref","file_link","llm_explain")) {
             if (Test-RequiredField $c $key) { Write-Host "[OK] pillars -> insight.$key" -ForegroundColor Green }
             else { Write-Host "[FAIL] pillars -> insight.$key (RONG)" -ForegroundColor Red }
+        }
+        if ($validTypes) {
+            $totalInsights = ([regex]::Matches($c, "(?m)^\s*-\s*insight_type:\s*")).Count
+            $validTypeCount = ([regex]::Matches($c, "(?m)^\s*-\s*insight_type:\s*""?($validTypes)""?\s*(#.*)?$")).Count
+            if ($totalInsights -gt 0 -and $validTypeCount -lt $totalInsights) {
+                Write-Host "[FAIL] pillars.yaml chua insight_type sai chuan hoac bi rong" -ForegroundColor Red
+            }
         }
         # Kiem tra khong con PENDING placeholder (Script chua chay hoac bi loi)
         if ($c -match "PENDING_\d+") {
@@ -133,8 +155,14 @@ foreach ($userFolder in $userFolders) {
     $topicPath = Join-Path $userFolder.FullName "topic_map.yaml"
     if (Test-Path $topicPath) {
         $c = Get-Content $topicPath -Raw
-        if (Test-RequiredField $c "id") { Write-Host "[OK] topic_map.yaml có topic entries" -ForegroundColor Green }
-        else { Write-Host "[FAIL] topic_map.yaml không có topic nào" -ForegroundColor Red }
+        $totalEntries = ([regex]::Matches($c, "(?m)^\s*-\s*id:\s*")).Count
+        $validIdCount = ([regex]::Matches($c, "(?m)^\s*-\s*id:\s*(?!null\b)(?!""""\s*(#.*)?$)(?!''\s*(#.*)?$)(?!\[\s*\]\s*(#.*)?$)(?!\s*(#.*)?$).+")).Count
+        $validLabelCount = ([regex]::Matches($c, "(?m)^\s*label:\s*(?!null\b)(?!""""\s*(#.*)?$)(?!''\s*(#.*)?$)(?!\[\s*\]\s*(#.*)?$)(?!\s*(#.*)?$).+")).Count
+        if ($totalEntries -gt 0 -and $validIdCount -eq $totalEntries -and $validLabelCount -eq $totalEntries) {
+            Write-Host "[OK] topic_map.yaml co du id va label hop le cho moi entries" -ForegroundColor Green
+        } else {
+            Write-Host "[FAIL] topic_map.yaml bi thieu hoac rong id/label o mot so entries" -ForegroundColor Red
+        }
     }
 
     # --- CHECK 7: Authorities (Câu 12, BẮT BUỘC) ---
@@ -181,6 +209,13 @@ if (Test-Path $payloadPath) {
     $miss = @()
     foreach ($k in @("headline","insight_type","raw_payload","llm_explain","topics")) {
         if (-not ($jc -match "(?m)^\s*""${k}""\s*:\s*(?!null\b)(?!""""\s*(#.*)?$)(?!\[\s*\]\s*(#.*)?$)(?!\s*$).+")) { $miss += $k }
+    }
+    if ($validTypes) {
+        $totalPayload = ([regex]::Matches($jc, "(?m)""insight_type""\s*:")).Count
+        $validPayloadCount = ([regex]::Matches($jc, "(?m)""insight_type""\s*:\s*""($validTypes)""")).Count
+        if ($totalPayload -gt 0 -and $validPayloadCount -lt $totalPayload) {
+            Write-Host "[FAIL] Payload chua insight_type sai chuan hoac bi rong" -ForegroundColor Red
+        }
     }
     if ($miss.Count -eq 0) { Write-Host "[OK] Payload đủ 5/5 trường." -ForegroundColor Green }
     else { Write-Host "[FAIL] Payload THIẾU/RỖNG: $($miss -join ', ')" -ForegroundColor Red }
