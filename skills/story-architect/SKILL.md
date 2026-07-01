@@ -1,4 +1,4 @@
-﻿---
+---
 name: Story Architect
 description: Skill chuyên phân tích, bóc tách và cấu trúc hóa câu chuyện (Story Atom) thành mô hình 5 phần chuẩn mực. Tự động kích hoạt khi user yêu cầu "xử lý câu chuyện", "kể chuyện", "extract truyện cũ".
 ---
@@ -58,8 +58,20 @@ Agent phân tích story, sau đó đề xuất 1 Combo duy nhất cho user xác 
    - **Bổ sung:** Agent tự động thêm các topics khác từ `insight.topics` nếu phù hợp với story (tối đa 3 topics tổng cộng).
    - Lưu danh sách topic_ids đã chốt vào biến `resolved_topics`.
 
-### Bước 3: Đánh giá Lesson & Khách quan hóa (BẮT BUỘC HỎI USER)
-Sợi dây DIKW (Tầng 4 -> Tầng 3 -> Tầng 2) bắt buộc phải thông suốt. File A (Lesson) LUÔN LUÔN được tạo. Lesson phải được đảm bảo tính khách quan trước khi lưu.
+### Bước 2.5: Dedup — Kiểm tra trùng lặp Knowledge (File A)
+Trước khi sang Bước 3, Agent tự động kiểm tra xem bài học của câu chuyện đã có sẵn chưa:
+1. **Quét cục bộ:** Đọc `vault/01-Atomic/Solutions/` và `vault/01-Atomic/Concepts/` → lọc các file có chứa `supports_insight: "[[Tên_Insight_Đã_Chốt]]"` (Insight lấy từ Bước 2).
+2. **So sánh:** Đánh giá độ tương đồng ngữ nghĩa giữa Lesson thô (đã rút ra ở Bước 2.1) và danh sách Knowledge đã lọc.
+3. **Xử lý kết quả:**
+   - **Tìm thấy trùng lặp (Tương đồng cao):** Báo user: *"Bài học rút ra từ câu chuyện này tương đồng với Knowledge đã có: `[Tên_Knowledge_Cũ]`. Bạn muốn trỏ câu chuyện này vào Knowledge có sẵn, hay tạo mới Knowledge?"*
+     - Nếu User chọn "Trỏ vào có sẵn": Lưu `Tên_Knowledge_Cũ` vào biến `reused_knowledge`. **BỎ QUA HOÀN TOÀN BƯỚC 3**, chuyển thẳng xuống Bước 4.
+     - Nếu User chọn "Tạo mới": Chuyển sang Bước 3 (không lưu `reused_knowledge`).
+   - **Không tìm thấy trùng lặp:** Chuyển sang Bước 3.
+
+### Bước 3: Đánh giá Lesson & Khách quan hóa (Chỉ chạy khi tạo mới Knowledge)
+*(Nếu biến `reused_knowledge` đã được kích hoạt ở Bước 2.5, BỎ QUA toàn bộ Bước 3 này và nhảy thẳng xuống Bước 4).*
+
+Sợi dây DIKW (Tầng 4 -> Tầng 3 -> Tầng 2) bắt buộc phải thông suốt. File A (Lesson) MẶC ĐỊNH được tạo (trừ khi dùng Knowledge cũ). Lesson phải được đảm bảo tính khách quan trước khi lưu.
 
 Hỏi user:
 *"Bài học rút ra từ câu chuyện này là: [Lesson đã suy luận].
@@ -82,7 +94,9 @@ Hỏi user:
 
 **Kiến thức bắt buộc (8 `knowledge_type`):** `framework`, `principle`, `mental_model`, `actionable_rule`, `typology`, `trend`, `concept`, `philosophy`.
 
-- **File A (Node Tầng 3 - Lesson):** Lesson đã khách quan hóa. Chọn 1 trong 8 `knowledge_type`. BẮT BUỘC cấy biến:
+- **File A (Node Tầng 3 - Lesson):** 
+  + **NẾU có biến `reused_knowledge` (User chọn tái sử dụng ở Bước 2.5):** BỎ QUA KHÔNG tạo File A.
+  + **NẾU KHÔNG có `reused_knowledge`:** Tạo File A bình thường. Lesson đã khách quan hóa. Chọn 1 trong 8 `knowledge_type`. BẮT BUỘC cấy biến:
   + `type: "solution"` nếu knowledge_type = framework, principle, mental_model, actionable_rule, typology, trend. `type: "concept"` nếu knowledge_type = concept, philosophy.
   + `supports_insight: "[[Tên_File_Insight_Đã_Chốt]]"` (Trỏ lên Tầng 2).
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
@@ -90,12 +104,12 @@ Hỏi user:
   + **Tên file & Nơi lưu:** Tuân thủ mục 9.1 trong `output-schema.md`.
 - **File B (Node Tầng 4 - Story):** Nguyên trạng 5 phần. BẮT BUỘC cấy biến:
   + `type: "story"`.
-  + `supports_knowledge: "[[Tên_File_A]]"` (Trỏ lên Tầng 3).
+  + `supports_knowledge: "[[Tên_File_A]]"` (Trỏ lên Tầng 3). NẾU có biến `reused_knowledge`, trỏ về `supports_knowledge: "[[Tên_Knowledge_Cũ]]"`.
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
   + **Tên file & Nơi lưu:** Tuân thủ mục 9.2 trong `output-schema.md`.
 
 ### Bước 5: Đóng gói YAML KCS
-Tạo YAML frontmatter cho cả 2 file tuân thủ triệt để cấu trúc KCS uy tín.
+Tạo YAML frontmatter cho các file được khởi tạo, tuân thủ triệt để cấu trúc KCS uy tín. *(LƯU Ý: Nếu có biến `reused_knowledge`, CHỈ đóng gói YAML cho File B mới tạo. TUYỆT ĐỐI KHÔNG mở hay chỉnh sửa metadata YAML của File Knowledge cũ để tránh làm hỏng dữ liệu gốc).*
 - **Source Type Tagging (Đóng dấu Nguồn):** Đã gán mặc định `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"` ở Bước 4.
 - **The Librarian (Đóng dấu Topic):** 100% Atom BẮT BUỘC phải chèn mảng `topics` vào YAML Frontmatter. Giá trị = biến `resolved_topics` (lưu ở Bước 2 mục 5). Cú pháp:
   ```yaml
@@ -104,15 +118,15 @@ Tạo YAML frontmatter cho cả 2 file tuân thủ triệt để cấu trúc KCS
   *(Chỉ lưu `id` tiếng Anh, bỏ `label` tiếng Việt)*
 
 ### Bước 6: Cập nhật Personal Atoms Queue
-Sau khi cả File A và File B đã được lưu vào `vault/01-Atomic/`, chạy script đăng ký atoms mới vào hàng đợi:
+Sau khi các Atom được lưu vào `vault/01-Atomic/`, chạy script đăng ký atoms mới vào hàng đợi:
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".agents/scripts/Update-PersonalAtomsQueue.ps1" -Action "append" -AtomPathsRaw "[đường_dẫn_File_A],[đường_dẫn_File_B]"
 ```
-*(Thay `[đường_dẫn_File_A]` và `[đường_dẫn_File_B]` bằng đường dẫn tương đối thực tế, phân cách bằng dấu phẩy KHÔNG có khoảng trắng. Ví dụ: `vault/01-Atomic/Solutions/ten-a.md,vault/01-Atomic/Stories/ten-b.md`)*
+*(Thay thế bằng đường dẫn tương đối thực tế, phân cách bằng dấu phẩy KHÔNG có khoảng trắng. **Lưu ý quan trọng:** Nếu File A được tái sử dụng (không tạo mới), CHỈ truyền `[đường_dẫn_File_B]`, tuyệt đối không truyền đường dẫn rỗng hay đường dẫn của File A cũ).*
 
 ### Bước 7: Báo cáo
 Báo cáo cho user:
-- **File đã tạo:** File A path + File B path.
+- **File đã tạo:** File A path (nếu tạo mới) + File B path. Nếu tái sử dụng File A, ghi chú rõ: *"Đã trỏ File B về Knowledge có sẵn: [Tên_Knowledge_Cũ]"*.
 - **Phân loại:** SubType, Category, Knowledge Type.
 - **Topics:** Danh sách topic_ids đã gán.
 - **Lesson:** Tóm tắt 1 dòng.
