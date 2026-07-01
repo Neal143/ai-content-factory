@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 01/07/2026
+#### Nâng cấp logic Semantic Deduplication cho story-architect
+- **Mã khôi phục:** `9dcad8d`
+- **Thẻ (Tag):** `v3.7-story-architect-dedup`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Ngăn chặn tình trạng tái tạo Lesson trùng lặp (Phân mảnh Graph) qua cơ chế Zero-waste, bảo vệ metadata của Knowledge cũ và tối ưu trải nghiệm người dùng.
+  - **🛠️ Kỹ thuật (Tech):** Cập nhật `story-architect/SKILL.md`: bổ sung Bước 2.5 để Semantic Dedup theo Insight branch, áp dụng logic bypass Bước 3, điều hướng sinh File B trỏ link về Knowledge cũ ở Bước 4 và thêm rào chắn an toàn (Safeguard) ở Bước 5.
+
 ### 📅 Ngày 30/06/2026
 #### Cập nhật Persona Interviewer & SSOT Insight Types
 - **Mã khôi phục:** `d443e11`
