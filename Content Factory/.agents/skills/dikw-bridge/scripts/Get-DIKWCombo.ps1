@@ -61,7 +61,7 @@ $Story_Subtype_Weights = @{
 # ==========================================
 # NHÓM 2: HÀM TRỢ GIÚP (HELPERS)
 # ==========================================
-function Clean-Wikilink ([string]$val) {
+function Format-Wikilink ([string]$val) {
     if ([string]::IsNullOrEmpty($val)) { return $null }
     $clean = $val.Trim().Trim("'").Trim('"')
     $clean = $clean.Replace("[[", "").Replace("]]", "")
@@ -121,8 +121,8 @@ if (Test-Path $ProductionLog) {
     $recentPosts = $posts | Select-Object -Last 3
     
     # Quét tất cả các path .md trong 3 bài viết này
-    $matches = [regex]::Matches($recentPosts, 'vault/01-Atomic/[\w\-\/]+\.md')
-    foreach ($m in $matches) {
+    $foundMatches = [regex]::Matches($recentPosts, 'vault/01-Atomic/[\w\-\/]+\.md')
+    foreach ($m in $foundMatches) {
         $usedAtoms += $m.Value
     }
     $usedAtoms = $usedAtoms | Select-Object -Unique
@@ -195,11 +195,11 @@ if ($Topics -is [Array]) {
 
 $targetAudienceClean = @()
 if ($Audience -is [Array]) {
-    foreach ($aud in $Audience) { $targetAudienceClean += Clean-Wikilink $aud }
+    foreach ($aud in $Audience) { $targetAudienceClean += Format-Wikilink $aud }
 } elseif ($Audience -is [String]) {
-    foreach ($aud in $Audience.Split(",")) { $targetAudienceClean += Clean-Wikilink $aud }
+    foreach ($aud in $Audience.Split(",")) { $targetAudienceClean += Format-Wikilink $aud }
 } else {
-    $targetAudienceClean = @(Clean-Wikilink $Audience)
+    $targetAudienceClean = @(Format-Wikilink $Audience)
 }
 
 $Anchors = @() # Danh sách các Insight paths thỏa mãn
@@ -220,8 +220,19 @@ foreach ($key in $validNodes.Keys) {
     if (-not $hasTopicOverlap) { continue }
     
     # 2. Check Audience Match
-    $audNodeClean = Clean-Wikilink $node.belongs_to_audience
-    if ($audNodeClean -notin $targetAudienceClean) { continue }
+    $hasAudienceMatch = $false
+    if ($node.belongs_to_audience) {
+        if ($node.belongs_to_audience -is [Array]) {
+            foreach ($aud in $node.belongs_to_audience) {
+                $audClean = Format-Wikilink $aud
+                if ($audClean -in $targetAudienceClean) { $hasAudienceMatch = $true; break }
+            }
+        } else {
+            $audClean = Format-Wikilink $node.belongs_to_audience
+            if ($audClean -in $targetAudienceClean) { $hasAudienceMatch = $true }
+        }
+    }
+    if (-not $hasAudienceMatch) { continue }
     
     $Anchors += $key
 }
@@ -240,8 +251,10 @@ foreach ($key in $validNodes.Keys) {
     
     # Check edges trỏ về Anchors
     $supportsInsight = $index.edges.supports_insight.$key
-    if ($supportsInsight -and $supportsInsight -in $Anchors) {
-        $T3_Nodes += $key
+    if ($supportsInsight) {
+        foreach ($si in $supportsInsight) {
+            if ($si -in $Anchors) { $T3_Nodes += $key; break }
+        }
     }
 }
 
@@ -260,8 +273,10 @@ foreach ($key in $validNodes.Keys) {
     
     # Check edges trỏ về Tầng 3
     $supportsKnowledge = $index.edges.supports_knowledge.$key
-    if ($supportsKnowledge -and $supportsKnowledge -in $T3_Nodes) {
-        $T4_Nodes += $key
+    if ($supportsKnowledge) {
+        foreach ($sk in $supportsKnowledge) {
+            if ($sk -in $T3_Nodes) { $T4_Nodes += $key; break }
+        }
     }
 }
 
@@ -298,10 +313,10 @@ foreach ($insPath in $Anchors) {
     # Downstream count (phục vụ tiebreaker)
     $downstreamCount = 0
     foreach ($t3 in $T3_Nodes) {
-        if ($index.edges.supports_insight.$t3 -eq $insPath) {
+        if ($insPath -in $index.edges.supports_insight.$t3) {
             $downstreamCount++
             foreach ($t4 in $T4_Nodes) {
-                if ($index.edges.supports_knowledge.$t4 -eq $t3) { $downstreamCount++ }
+                if ($t3 -in $index.edges.supports_knowledge.$t4) { $downstreamCount++ }
             }
         }
     }
@@ -324,7 +339,7 @@ foreach ($anchor in $sortedAnchors) {
     # Lọc Tầng 3 trỏ về Insight này
     $viableT3 = @()
     foreach ($t3 in $T3_Nodes) {
-        if ($index.edges.supports_insight.$t3 -eq $insPath) {
+        if ($insPath -in $index.edges.supports_insight.$t3) {
             $nodeData = $validNodes[$t3]
             $score = Get-RelevanceScore $t3 $nodeData
             $viableT3 += [pscustomobject]@{ Path = $t3; Data = $nodeData; Score = $score }
@@ -344,7 +359,7 @@ foreach ($anchor in $sortedAnchors) {
         foreach ($t4 in $T4_Nodes) {
             $isSource24 = ($t4 -like "*Posted*" -or $t4 -like "*Viral*")
             
-            if ($isSource24 -or $index.edges.supports_knowledge.$t4 -eq $solPath) {
+            if ($isSource24 -or $solPath -in $index.edges.supports_knowledge.$t4) {
                 $nodeData = $validNodes[$t4]
                 $score = Get-RelevanceScore $t4 $nodeData
                 
@@ -423,7 +438,6 @@ if (-not $Selected_Insight) {
     
     # 3. Stories
     foreach ($st in $Selected_Stories) {
-        $stData = $validNodes[$st.Path]
         $isSource24 = ($st.Path -like "*Posted*" -or $st.Path -like "*Viral*")
         $targetLink = if ($isSource24) { "[Nguon 2-4]" } else { $Selected_Solution }
         Write-Host "$($st.Path) | Story | 10 | $($st.Score) | $targetLink"
@@ -459,9 +473,19 @@ if ($Selected_Insight) {
             
             # Trích xuất vivid_circumstances
             if ($rawContent -match 'belongs_to_audience:\s*(.+)') {
-                $aud = Clean-Wikilink $Matches[1]
-                if ($aud -and $aud -notin $vividPayload.vivid_circumstances) {
-                    $vividPayload.vivid_circumstances += $aud
+                $rawAud = $Matches[1]
+                if ($rawAud.StartsWith("[") -and $rawAud.EndsWith("]")) {
+                    $rawAud.Trim("[", "]").Split(",").ForEach({
+                        $aud = Format-Wikilink $_
+                        if ($aud -and $aud -notin $vividPayload.vivid_circumstances) {
+                            $vividPayload.vivid_circumstances += $aud
+                        }
+                    })
+                } else {
+                    $aud = Format-Wikilink $rawAud
+                    if ($aud -and $aud -notin $vividPayload.vivid_circumstances) {
+                        $vividPayload.vivid_circumstances += $aud
+                    }
                 }
             }
             
@@ -521,7 +545,7 @@ Write-Host "==================================================" -ForegroundColor
 
 if ($Selected_Insight) {
     $insNode = $validNodes[$Selected_Insight]
-    $audienceId = Clean-Wikilink $insNode.belongs_to_audience
+    $audienceId = Format-Wikilink $insNode.belongs_to_audience
     $audienceFile = "vault/01-Atomic/Audiences/$audienceId.md"
     
     if (Test-Path $audienceFile) {

@@ -1,9 +1,10 @@
----
+﻿---
 type: insight
 insight_type: "{{type}}"
 topics: {{topics}}
 source_id: "persona-interview"
-belongs_to_audience: "[[{{target_audience}}]]"
+keywords: []
+belongs_to_audience: ["[[{{target_audience}}]]"]
 status: processed
 created: "{{date}}"
 source_type: "User"

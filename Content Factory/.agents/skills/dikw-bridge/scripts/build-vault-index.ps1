@@ -1,4 +1,4 @@
-<#
+﻿<#
 Tên file: build-vault-index.ps1
 Last update: 27/05/2026 00:35 (GMT+7)
 Vai trò: Script PowerShell quét toàn bộ Data Vault nguyên tố DIKW và xây dựng Index dạng JSON (nodes và edges).
@@ -188,18 +188,23 @@ foreach ($folderName in $DIKW_Folders.Keys) {
         
         # Lưu các raw edges để resolve sau bằng Generic List Add
         $remainingLines = $lines | Select-Object -Skip ($i + 1)
-        if (($remainingLines -join "`n") -match 'supports_insight:\s*(.+)') {
-            $target = Clean-Wikilink $Matches[1]
-            if (-not [string]::IsNullOrEmpty($target)) {
-                $RawEdges.Add(@{ Source = $relativeCwdPath; Type = "insight"; Target = $target })
-            }
-        }
+        $bodyText = $remainingLines -join " " -replace '#+', '' -replace '\*', ''
+        $frontmatterData["excerpt"] = if ($bodyText.Trim().Length -gt 150) { $bodyText.Trim().Substring(0, 150) + "..." } else { $bodyText.Trim() }
+        
         # Nếu đã parse được trong YAML properties
         if ($frontmatterData.ContainsKey("supports_insight") -and $frontmatterData["supports_insight"]) {
-            $RawEdges.Add(@{ Source = $relativeCwdPath; Type = "insight"; Target = $frontmatterData["supports_insight"] })
+            foreach ($target in $frontmatterData["supports_insight"]) {
+                if (-not [string]::IsNullOrEmpty($target)) {
+                    $RawEdges.Add(@{ Source = $relativeCwdPath; Type = "insight"; Target = $target })
+                }
+            }
         }
         if ($frontmatterData.ContainsKey("supports_knowledge") -and $frontmatterData["supports_knowledge"]) {
-            $RawEdges.Add(@{ Source = $relativeCwdPath; Type = "knowledge"; Target = $frontmatterData["supports_knowledge"] })
+            foreach ($target in $frontmatterData["supports_knowledge"]) {
+                if (-not [string]::IsNullOrEmpty($target)) {
+                    $RawEdges.Add(@{ Source = $relativeCwdPath; Type = "knowledge"; Target = $target })
+                }
+            }
         }
     }
 }
@@ -227,9 +232,11 @@ foreach ($edge in $RawEdges) {
     
     if ($targetPath) {
         if ($edge.Type -eq "insight") {
-            $Edges_SupportsInsight[$source] = $targetPath
+            if (-not $Edges_SupportsInsight.Contains($source)) { $Edges_SupportsInsight[$source] = @() }
+            if ($targetPath -notin $Edges_SupportsInsight[$source]) { $Edges_SupportsInsight[$source] += $targetPath }
         } else {
-            $Edges_SupportsKnowledge[$source] = $targetPath
+            if (-not $Edges_SupportsKnowledge.Contains($source)) { $Edges_SupportsKnowledge[$source] = @() }
+            if ($targetPath -notin $Edges_SupportsKnowledge[$source]) { $Edges_SupportsKnowledge[$source] += $targetPath }
         }
     } else {
         Write-Host "[WARN] Orphan link! Khong tim thay path cho atom: '$targetName' (tu file: $source)" -ForegroundColor Yellow

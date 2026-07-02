@@ -1,4 +1,4 @@
----
+﻿---
 name: Atom File Structure Standard
 description: Tiêu chuẩn kỹ thuật vật lý thiết lập cấu trúc 4 phần và khuôn đúc YAML Frontmatter cho 100% File Atom được tuồn vào Vault.
 ---
@@ -46,9 +46,10 @@ source_type: book
 source_name: "<Tên Sách> (bởi <Tên Tác Giả, Năm xuất bản>)" # Kế thừa từ META_BOOK. VD: "Atomic Habits (bởi James Clear, 2018)"
 confidence: 0.9 # Sách xuất bản độ tin cậy mặc định là cao
 # ----- CÁC BIẾN CHẶN MỒ CÔI (Định tuyến Graph) -----
-belongs_to_audience: "[[Link_Audience]]" # Bắt buộc đối với Insight (Tầng 2)
-supports_insight: "[[Link_Insight]]"     # Bắt buộc đối với Solution, Concept (Tầng 3)
-supports_knowledge: "[[Link_Solution]]"  # Bắt buộc đối với Story, Quote, Data-Points (Tầng 4)
+keywords: []                             # Thẻ từ khóa nội suy (Inbox RAG)
+belongs_to_audience: [] # Bắt buộc đối với Insight (Tầng 2)
+supports_insight: []     # Bắt buộc đối với Solution, Concept (Tầng 3)
+supports_knowledge: []  # Bắt buộc đối với Story, Quote, Data-Points (Tầng 4)
 # ----- DỮ LIỆU KÝ SINH (Vivid — Script tự động gắn, Agent KHÔNG tự điền) -----
 vivid_insights: []                       # Chỉ cho Insight (Tầng 2): mảng canonical, Hard Cap 3
 vivid_insights_reserve: []               # Chỉ cho Insight (Tầng 2): mảng dự bị vượt cap

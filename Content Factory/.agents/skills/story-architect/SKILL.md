@@ -1,4 +1,4 @@
----
+﻿---
 name: Story Architect
 description: Skill chuyên phân tích, bóc tách và cấu trúc hóa câu chuyện (Story Atom) thành mô hình 5 phần chuẩn mực. Tự động kích hoạt khi user yêu cầu "xử lý câu chuyện", "kể chuyện", "extract truyện cũ".
 ---
@@ -60,8 +60,8 @@ Agent phân tích story, sau đó đề xuất 1 Combo duy nhất cho user xác 
 
 ### Bước 2.5: Dedup — Kiểm tra trùng lặp Knowledge (File A)
 Trước khi sang Bước 3, Agent tự động kiểm tra xem bài học của câu chuyện đã có sẵn chưa:
-1. **Quét cục bộ:** Đọc `vault/01-Atomic/Solutions/` và `vault/01-Atomic/Concepts/` → lọc các file có chứa `supports_insight: "[[Tên_Insight_Đã_Chốt]]"` (Insight lấy từ Bước 2).
-2. **So sánh:** Đánh giá độ tương đồng ngữ nghĩa giữa Lesson thô (đã rút ra ở Bước 2.1) và danh sách Knowledge đã lọc.
+1. **Dùng RAG cục bộ:** Gọi lệnh `powershell .agents/scripts/Search-SemanticAtom.ps1 -Keywords "[Lesson_thô]" -TypeFilter "solution|concept"`
+2. **So sánh:** **BẮT BUỘC ĐỌC FILE TẠM** `.agents/temp/rag_results.json` để đánh giá độ tương đồng ngữ nghĩa giữa các Excerpt trả về với Lesson thô (đã rút ra ở Bước 2.1).
 3. **Xử lý kết quả:**
    - **Tìm thấy trùng lặp (Tương đồng cao):** Báo user: *"Bài học rút ra từ câu chuyện này tương đồng với Knowledge đã có: `[Tên_Knowledge_Cũ]`. Bạn muốn trỏ câu chuyện này vào Knowledge có sẵn, hay tạo mới Knowledge?"*
      - Nếu User chọn "Trỏ vào có sẵn": Lưu `Tên_Knowledge_Cũ` vào biến `reused_knowledge`. **BỎ QUA HOÀN TOÀN BƯỚC 3**, chuyển thẳng xuống Bước 4.
@@ -98,13 +98,16 @@ Hỏi user:
   + **NẾU có biến `reused_knowledge` (User chọn tái sử dụng ở Bước 2.5):** BỎ QUA KHÔNG tạo File A.
   + **NẾU KHÔNG có `reused_knowledge`:** Tạo File A bình thường. Lesson đã khách quan hóa. Chọn 1 trong 8 `knowledge_type`. BẮT BUỘC cấy biến:
   + `type: "solution"` nếu knowledge_type = framework, principle, mental_model, actionable_rule, typology, trend. `type: "concept"` nếu knowledge_type = concept, philosophy.
-  + `supports_insight: "[[Tên_File_Insight_Đã_Chốt]]"` (Trỏ lên Tầng 2).
+  + `keywords: []`
+  + Gọi lệnh `powershell .agents/scripts/Search-SemanticAtom.ps1 -Keywords "[Lesson_đã_khách_quan]" -TypeFilter "insight"` -> ĐỌC FILE `.agents/temp/rag_results.json` -> Đánh giá ngữ nghĩa để trích xuất thêm 1-2 Insight liên quan.
+  + `supports_insight: ["[[Tên_File_Insight_Đã_Chốt]]", "[[Insight_Liên_Quan_1]]", ...]` (Trỏ lên Tầng 2. Insight chốt bắt buộc đứng đầu, tiếp theo là các Insight liên quan chéo nếu có).
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
   + `vivid_knowledges`: biến `vivid_knowledge` (đã lưu ở Bước 3). Nếu mảng rỗng thì không ghi trường này.
   + **Tên file & Nơi lưu:** Tuân thủ mục 9.1 trong `output-schema.md`.
 - **File B (Node Tầng 4 - Story):** Nguyên trạng 5 phần. BẮT BUỘC cấy biến:
   + `type: "story"`.
-  + `supports_knowledge: "[[Tên_File_A]]"` (Trỏ lên Tầng 3). NẾU có biến `reused_knowledge`, trỏ về `supports_knowledge: "[[Tên_Knowledge_Cũ]]"`.
+  + `keywords: []`
+  + `supports_knowledge: ["[[Tên_File_A]]"]` (Trỏ lên Tầng 3). NẾU có biến `reused_knowledge`, trỏ về `supports_knowledge: ["[[Tên_Knowledge_Cũ]]"]`.
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
   + **Tên file & Nơi lưu:** Tuân thủ mục 9.2 trong `output-schema.md`.
 

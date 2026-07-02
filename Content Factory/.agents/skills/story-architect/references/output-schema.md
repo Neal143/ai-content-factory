@@ -88,8 +88,9 @@ created: "<Ngày_hôm_nay>"                       # Ngày tạo atom (VD: 2026-0
 # --- FIELDS RIÊNG FILE B (Story) ---
 protagonist: "<Tên_nhân_vật_chính>"          # BẮT BUỘC File B
 # --- ĐỊNH TUYẾN GRAPH (Chặn mồ côi) ---
-supports_insight: "[[Link_Insight_Tầng_2]]"  # CHỈ File A — trỏ lên Insight đã chốt
-supports_knowledge: "[[Link_File_A_Tầng_3]]" # CHỈ File B — trỏ lên File A vừa tạo
+keywords: []                                 # Khởi tạo mảng trống cho RAG Index
+supports_insight: ["[[Link_Insight_Tầng_2]]"]  # CHỈ File A — trỏ lên Insight đã chốt
+supports_knowledge: ["[[Link_File_A_Tầng_3]]"] # CHỈ File B — trỏ lên File A vừa tạo
 # --- DỮ LIỆU VIVID ---
 vivid_knowledges: ["<Câu ẩn dụ>"]            # CHỈ File A — hỏi user ở Bước 3. Hard Cap 3. Bỏ qua nếu rỗng.
 # --- TÙY CHỌN THEO SUBTYPE (File B) ---
