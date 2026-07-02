@@ -31,8 +31,8 @@ Lưu path persona vào biến `persona_path` để dùng lại ở các Bước 
 Quét vault kiểm tra trùng lặp theo tầng DIKW tương ứng với type đã phân loại:
 
 - **Insight (Tầng 2):** Đọc `pillars.yaml` → lấy toàn bộ insight (`raw` + `llm_explain`) của mỗi Pillar → so sánh ngữ nghĩa nội dung mới vs danh sách insight.
-- **Solution/Concept (Tầng 3):** Đọc `pillars.yaml` → lấy danh sách insight → quét `vault/01-Atomic/Solutions/` + `vault/01-Atomic/Concepts/` → lọc file có `supports_insight` trỏ về insight thuộc Pillar → so sánh ngữ nghĩa nội dung mới vs danh sách solution/concept đã lọc.
-- **Quote/Data-Point (Tầng 4):** Tương tự Tầng 3 nhưng thêm 1 nấc: quét `vault/01-Atomic/Quotes/` + `vault/01-Atomic/Data-Points/` → lọc file có `supports_knowledge` trỏ về solution/concept thuộc nhánh insight → so sánh.
+- **Solution/Concept (Tầng 3):** Dùng lệnh: `powershell .agents/scripts/Search-SemanticAtom.ps1 -Keywords "[từ_khóa]" -TypeFilter "solution|concept"` → **BẮT BUỘC ĐỌC FILE TẠM** `.agents/temp/rag_results.json` để lấy Excerpt → Đánh giá ngữ nghĩa.
+- **Quote/Data-Point (Tầng 4):** Dùng lệnh: `powershell .agents/scripts/Search-SemanticAtom.ps1 -Keywords "[từ_khóa]" -TypeFilter "quote|data-point"` → **BẮT BUỘC ĐỌC FILE TẠM** `.agents/temp/rag_results.json` để lấy Excerpt → Đánh giá ngữ nghĩa.
 
 **Kết quả Dedup:**
 - **Tìm thấy trùng:** Báo user: *"Nội dung này tương tự [atom X]. Bỏ qua?"* → User đồng ý → SKIP. User nói khác → tiếp Bước 3.
@@ -46,8 +46,8 @@ Agent tự phân tích nội dung → đề xuất combo đầy đủ cùng lúc
 | Type | Agent tự chọn & đề xuất |
 |---|---|
 | **Insight** | {Pillar, Topic} — Đọc `pillars.yaml` chọn Pillar → kế thừa Topic từ insight gần nhất trong Pillar đó |
-| **Solution/Concept** | {Pillar, Insight cha, Topic} — Chọn Pillar → chọn Insight phù hợp nhất từ `pillars.yaml` → kế thừa Topic từ file insight vật lý (đọc trường `topics`) |
-| **Quote/Data-Point** | {Pillar, Insight, Solution/Concept cha, Topic} — Chọn Pillar → chọn Insight → quét vault chọn Solution/Concept phù hợp nhất thuộc nhánh Insight đó → kế thừa Topic từ file Solution/Concept vật lý |
+| **Solution/Concept** | Chạy lệnh `Search-SemanticAtom.ps1 -TypeFilter "insight"` → ĐỌC FILE `.agents/temp/rag_results.json` → Tự đánh giá Excerpt để đề xuất **1 HOẶC NHIỀU** Insight thực sự liên quan (Semantic Alignment) → Kế thừa Topic |
+| **Quote/Data-Point** | Chạy lệnh `Search-SemanticAtom.ps1 -TypeFilter "solution|concept"` → ĐỌC FILE `.agents/temp/rag_results.json` → Tự đánh giá Excerpt để đề xuất **1 HOẶC NHIỀU** Node cha thực sự liên quan → Kế thừa Topic |
 
 **3.2. Đề xuất cho user:**
 ```
@@ -78,9 +78,9 @@ Mỗi atom tạo ra PHẢI theo format trong `.agents/skills/inbox-processor/ref
 Format 4 phần: YAML frontmatter + Nội dung + Giải thích + Liên kết.
 
 **YAML Frontmatter cần cấy (theo tầng DIKW):**
-- **Tầng 2 (Insights):** `belongs_to_audience: "[[Big_Audience]]"` (đọc `audience.yaml` → `file_ref`).
-- **Tầng 3 (Solutions, Concepts):** `supports_insight: "[[Tên_Insight_Đã_Chốt]]"` + `knowledge_type` (tra bảng 8 Knowledge Type trong `atom-classification.md`).
-- **Tầng 4 (Quotes, Data-Points):** `supports_knowledge: "[[Tên_Solution_Hoặc_Concept_Đã_Chốt]]"`.
+- **Tầng 2 (Insights):** `keywords: []` + `belongs_to_audience: ["[[Big_Audience]]"]` (đọc `audience.yaml` → `file_ref`).
+- **Tầng 3 (Solutions, Concepts):** `keywords: []` + `supports_insight: ["[[Tên_Insight_Đã_Chốt]]"]` + `knowledge_type` (tra bảng 8 Knowledge Type trong `atom-classification.md`).
+- **Tầng 4 (Quotes, Data-Points):** `keywords: []` + `supports_knowledge: ["[[Tên_Solution_Hoặc_Concept_Đã_Chốt]]"]`.
 - **Topics:** `topics: [resolved_topics]` — giá trị từ Bước 3.4.
 - **Source Tagging:** `source_type: "User"`, `source_name: "Inbox Processor"` (mặc định).
 

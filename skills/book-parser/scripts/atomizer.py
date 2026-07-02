@@ -272,11 +272,15 @@ def build_frontmatter(atom):
 
     # Graph links (chỉ field áp dụng cho type tương ứng)
     if atom["type"] == "insight":
-        lines.append(f'belongs_to_audience: "{atom["belongs_to_audience"]}"')
+        val = atom.get("belongs_to_audience", "")
+        lines.append(f'belongs_to_audience: ["{val}"]' if val else 'belongs_to_audience: []')
     elif atom["type"] in ("solution", "concept"):
-        lines.append(f'supports_insight: "{atom["supports_insight"]}"')
+        val = atom.get("supports_insight", "")
+        lines.append(f'supports_insight: ["{val}"]' if val else 'supports_insight: []')
     elif atom["type"] in ("story", "quote", "data-point"):
-        lines.append(f'supports_knowledge: "{atom["supports_knowledge"]}"')
+        val = atom.get("supports_knowledge", "")
+        lines.append(f'supports_knowledge: ["{val}"]' if val else 'supports_knowledge: []')
+    lines.append('keywords: []')
 
     # Vivid arrays: canonical + reserve (xếp theo cặp để dễ đọc trong Obsidian)
     if atom.get("vivid_insights"):
