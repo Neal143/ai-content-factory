@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: philosophy
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_two_things_are_true", "p1_escaping_power_struggle"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"
+supports_insight: ["[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Khả năng chứa đựng và chấp nhận nhiều sự thật, suy nghĩ, cảm xúc, hoặc góc nhìn đối lập cùng lúc tồn tại mà không cần phải triệt tiêu hay phủ nhận bất kỳ điều nào.

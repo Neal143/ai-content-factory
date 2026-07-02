@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: tái lập sự gắn kết và loại bỏ các hành vi chống đối của con
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh gắn kết lại với con
 - cha mẹ thoát khỏi vòng lặp la mắng
+keywords: []
 ---
 # 🎯 Cha mẹ muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày
 

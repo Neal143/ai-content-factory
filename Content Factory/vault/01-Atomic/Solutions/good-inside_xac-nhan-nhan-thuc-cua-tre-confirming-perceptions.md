@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_confirming_perceptions", "p1_delivering_hard_truths"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_so-tre-ton-thuong-hoac-chua-san-sang]]"
+supports_insight: ["[[good-inside_so-tre-ton-thuong-hoac-chua-san-sang]]"]
 vivid_knowledges: ["Cha mẹ, Xác nhận: \"Bố mẹ vừa dùng giọng rất to. Con đã nhận ra điều đó\", Bình tĩnh, chân thành"]
+keywords: []
 ---
 
 * **Bản chất:** Là việc thừa nhận và gọi tên một cách trung thực, đơn giản nhất những gì trẻ đang thấy hoặc cảm nhận, thay vì lờ đi hay phủ nhận thực tế.

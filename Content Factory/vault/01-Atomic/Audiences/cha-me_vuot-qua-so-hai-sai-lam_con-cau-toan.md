@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con vượt qua sự sợ hãi khi mắc sai lầm
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh trị chứng cầu toàn của con
 - cha mẹ giúp trẻ sợ sai
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con vượt qua sự sợ hãi khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo
 

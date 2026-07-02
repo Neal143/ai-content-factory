@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_division_of_responsibility_food", "p1_minimizing_anxiety_over_consumption"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_so-lam-cha-me-toi-qua-bua-an]]"
+supports_insight: ["[[good-inside_so-lam-cha-me-toi-qua-bua-an]]"]
 vivid_knowledges: ["Cha mẹ đóng vai trò như một \"chiếc hộp\" thiết lập các cạnh bên ngoài, Trẻ được tự do khám phá và thể hiện bản thân ở bên trong chiếc hộp đó"]
+keywords: []
 ---
 
 - **Mục đích:** Giúp cha mẹ thoát khỏi lo âu về lượng thức ăn của trẻ, thiết lập ranh giới rõ ràng và hỗ trợ sự tự điều chỉnh, quyền tự quyết cơ thể của trẻ trong bữa ăn.

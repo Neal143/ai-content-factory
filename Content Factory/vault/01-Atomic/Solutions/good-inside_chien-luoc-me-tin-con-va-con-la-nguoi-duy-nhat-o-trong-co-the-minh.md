@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"
+supports_insight: ["[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Đây là các phản hồi giao tiếp mang tính xác thực, nhằm xây dựng mạch đồng thuận và sự tự tin cho trẻ thông qua việc công nhận tuyệt đối các tín hiệu cơ thể của chúng.

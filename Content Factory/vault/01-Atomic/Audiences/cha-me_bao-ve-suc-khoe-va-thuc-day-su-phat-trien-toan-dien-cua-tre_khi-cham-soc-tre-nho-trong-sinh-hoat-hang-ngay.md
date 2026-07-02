@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ
@@ -9,6 +9,7 @@ aliases:
 - chăm sóc thể chất và tinh thần cho con
 - nuôi dưỡng trẻ lớn khôn mỗi ngày
 vivid_circumstances: ["Mùa đông hoặc khi trời lạnh | Trẻ nói không lạnh dù chạm vào da thấy lạnh | Trẻ chưa phát triển hoàn toàn cảm nhận nhiệt độ bên trong"]
+keywords: []
 ---
 # 🎯 cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày
 

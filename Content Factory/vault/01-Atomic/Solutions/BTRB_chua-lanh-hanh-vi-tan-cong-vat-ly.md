@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_healing_action", "p1_real_work_for_violent_play"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_lam-tuong-ve-cach-xa-nang-luong-bao-luc]]"
+supports_insight: ["[[BTRB_lam-tuong-ve-cach-xa-nang-luong-bao-luc]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Phương pháp xử lý các hành vi tiêu cực (đánh, cắn, cào, nhổ bọt) bằng các hành động chăm sóc thể chất dựa trên sự quan tâm và định hướng, thay vì trừng phạt.

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_healing", "p1_name_to_tame_strategy"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood]]"
+supports_insight: ["[[WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood]]"]
+keywords: []
 ---
 
 * Mục đích: Giúp trẻ kết hợp sức mạnh của não trái (logic, ngôn ngữ) và não phải (cảm xúc, ký ức) để hiểu và xử lý những trải nghiệm tồi tệ, từ đó xoa dịu các cảm xúc tiêu cực và xua tan nỗi sợ hãi.

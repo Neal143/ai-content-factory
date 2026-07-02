@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]"
+supports_insight: ["[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]"]
 vivid_knowledges: ["Mẹ nói thay lời xin lỗi giúp con mà không dùng ánh mắt hình viên đạn hay bài giảng đạo đức\n\n*   **②-3. PRINCIPLE: Nguyên lý Kết nối là thuốc giải độc của sự xấu hổ**"]
+keywords: []
 ---
 
 *   **Mục đích:** Giúp trẻ thoát khỏi trạng thái "đóng băng" do xấu hổ, phá vỡ bế tắc hành vi, khôi phục sự an toàn cảm xúc để trẻ có thể tự nguyện thay đổi từ bên trong.

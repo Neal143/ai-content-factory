@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_use_of_may", "p1_illusion_of_choice"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_bay-dan-chu-gia-tao]]"
+supports_insight: ["[[BTRB_bay-dan-chu-gia-tao]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Một "từ ngữ nhiệm màu" (magic word) nằm ở điểm cân bằng, không độc đoán cũng không quá dễ dãi, mang hàm ý trao cho trẻ một đặc quyền (privilege) thay vì một mệnh lệnh.

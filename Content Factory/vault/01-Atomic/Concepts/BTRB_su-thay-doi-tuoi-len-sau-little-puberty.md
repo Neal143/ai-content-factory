@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_little_puberty", "p1_dangers_of_early_intellectualism"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_boi-roi-truoc-su-thay-doi-tam-ly-tuoi-len-sau]]"
+supports_insight: ["[[BTRB_boi-roi-truoc-su-thay-doi-tam-ly-tuoi-len-sau]]"]
 vivid_knowledges: ["Trẻ cùng người lớn gọt trái cây hoặc chà nhám đồ gỗ cho đến khi một ý tưởng chơi mới lóe sáng."]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự thay đổi tuổi lên sáu là một bước ngoặt lớn từ bên trong, khi thế giới nội tâm bắt đầu truyền cảm hứng cho hoạt động vui chơi sáng tạo của trẻ, thay thế cho sự kích thích thụ động từ các đồ chơi xung quanh.

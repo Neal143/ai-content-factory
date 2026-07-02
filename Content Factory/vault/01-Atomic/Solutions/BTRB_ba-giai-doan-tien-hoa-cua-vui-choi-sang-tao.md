@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: typology
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_creative_play_stages", "p1_archetypal_toys"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_bay-do-choi-dinh-hinh-san-va-du-thua]]"
+supports_insight: ["[[BTRB_bay-do-choi-dinh-hinh-san-va-du-thua]]"]
 vivid_knowledges: ["Đứa trẻ bắt đầu từ việc chạy nhảy thuần túy, chuyển sang biến khúc gỗ thành ổ bánh mì, và cuối cùng lên kế hoạch phân vai người thợ làm bánh."]
+keywords: []
 ---
 
 *   **Nội dung:** Vui chơi của trẻ mầm non tiến hóa qua 3 giai đoạn:

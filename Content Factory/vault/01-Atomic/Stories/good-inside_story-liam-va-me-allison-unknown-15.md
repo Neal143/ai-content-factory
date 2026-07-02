@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_contain_the_fire", "p1_i_wont_let_you"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_chien-luoc-co-lap-dam-chay-contain-the-fire]]"
+supports_knowledge: ["[[good-inside_chien-luoc-co-lap-dam-chay-contain-the-fire]]"]
+keywords: []
 ---
 
 <situation>Cậu bé Liam 4 tuổi nhìn thấy chị gái 6 tuổi Charlotte lấy chiếc bình nước màu xanh trong bếp. Liam hét lên: "Không, con muốn cái đó! Màu xanh là màu yêu thích của con." Người mẹ, Allison, giữ ranh giới: "Charlotte đã lấy cái đó rồi. Ôi, mẹ biết. Hôm nay con có thể dùng cái màu đỏ hoặc xanh lá cây."</situation>

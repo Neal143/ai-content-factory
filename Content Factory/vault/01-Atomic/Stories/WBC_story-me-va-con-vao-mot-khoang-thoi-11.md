@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_self_awareness", "p1_sift_method"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_knowledge: "[[WBC_phuong-phap-sift-sensations-images-feelings-thoughts]]"
+supports_knowledge: ["[[WBC_phuong-phap-sift-sensations-images-feelings-thoughts]]"]
+keywords: []
 ---
 
 <situation>Vào một khoảng thời gian rảnh rỗi trên chuyến xe ô tô, người mẹ quyết định chơi trò SIFT cùng con để giúp con làm quen với việc chú ý đến nội tâm [8].</situation>

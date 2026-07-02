@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: mental_model
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sturdy_leader_self_care", "p1_avp_strategy"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_nuoi-con-tan-hien-selfless-parenting]]"
+supports_insight: ["[[good-inside_nuoi-con-tan-hien-selfless-parenting]]"]
 vivid_knowledges: ["Không thể rót nước cho con khi chiếc cốc của mình đã cạn khô\n\n*   **②-2. framework: 5 Chiến lược Tự chăm sóc dành cho cha mẹ bận rộn**"]
+keywords: []
 ---
 
 *   **Bản chất:** Trẻ em cần cha mẹ thiết lập ranh giới vững chắc xung quanh việc chăm sóc bản thân. "Nuôi con tận hiến" thực chất là tạo ra một người lãnh đạo không có bản ngã (leader without a self).

@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_jump_into_the_hole", "p1_fear_resolution_script"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_nhay-xuong-ho-cung-con-jump-into-the-hole-with-them]]"
+supports_knowledge: ["[[good-inside_nhay-xuong-ho-cung-con-jump-into-the-hole-with-them]]"]
+keywords: []
 ---
 
 <situation>Năm tuổi Blake sợ lửa. Cô bé thường khóc ở các buổi tiệc sinh nhật khi nến được thắp. Tại một chuyến cắm trại cùng bạn bè, Blake cùng bố Leo quay lại khu trại và thấy gia đình kia đã đốt một đống lửa trại lớn.</situation>

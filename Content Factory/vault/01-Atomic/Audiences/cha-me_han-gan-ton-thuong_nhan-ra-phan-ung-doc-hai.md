@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh muốn chuộc lỗi với con
 - cha mẹ sửa sai sau khi quát mắng con
+keywords: []
 ---
 # 🎯 Cha mẹ muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái
 

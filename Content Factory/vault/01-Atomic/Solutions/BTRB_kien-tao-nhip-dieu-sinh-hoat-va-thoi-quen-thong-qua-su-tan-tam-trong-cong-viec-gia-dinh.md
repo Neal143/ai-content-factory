@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_family_rhythm"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_su-lam-guong-va-nhip-dieu-gia-dinh-la-giao-duc-tot-nhat]]"
+supports_insight: ["[[BTRB_su-lam-guong-va-nhip-dieu-gia-dinh-la-giao-duc-tot-nhat]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Đây là quy tắc biến các công việc nội trợ hàng ngày thành những hoạt động có tính nghệ thuật và nhịp điệu nhất quán nhằm nuôi dưỡng sự trật tự, kỷ luật trong nội tâm của trẻ.

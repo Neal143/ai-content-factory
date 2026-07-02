@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_true_confidence_concept", "p1_validate_and_empower_shyness"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_phan-tu-ve-ban-than-check-in-with-yourself]]"
+supports_knowledge: ["[[good-inside_phan-tu-ve-ban-than-check-in-with-yourself]]"]
+keywords: []
 ---
 
 <situation>Jai is a six-year-old who doesn’t enjoy playing in large groups. At a gymnastics birthday party, Jai hides behind his mom, Nala, while the other kids separate and start playing on the equipment.</situation>

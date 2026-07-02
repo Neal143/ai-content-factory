@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giải thích những vấn đề phức tạp, nhạy cảm
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh trả lời câu hỏi khó của con
 - cha mẹ giải thích chuyện nhạy cảm cho trẻ
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối
 

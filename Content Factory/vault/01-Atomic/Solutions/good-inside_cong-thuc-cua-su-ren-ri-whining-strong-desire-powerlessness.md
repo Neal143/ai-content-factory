@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_whining_formula", "p1_humor_response"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri]]"
+supports_insight: ["[[good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri]]"]
+keywords: []
 ---
 
 - Định nghĩa/Phát biểu luật: Trẻ rên rỉ khi chúng cảm thấy bất lực. Công thức là: Rên rỉ = Khao khát mãnh liệt + Sự bất lực. Rên rỉ cũng là tín hiệu trẻ đang tìm kiếm sự kết nối hoặc cần một giới hạn vững chắc để giải tỏa cảm xúc dồn nén.

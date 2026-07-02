@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_spiritual_work_in_discipline"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_be-tac-trong-viec-tim-phuong-phap-ky-luat]]"
+supports_insight: ["[[BTRB_be-tac-trong-viec-tim-phuong-phap-ky-luat]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Sự trợ giúp lớn nhất trong việc kỷ luật (discipline) đến từ công việc tâm linh (spiritual work) và sự tự giáo dục của chính người nuôi dạy trẻ.

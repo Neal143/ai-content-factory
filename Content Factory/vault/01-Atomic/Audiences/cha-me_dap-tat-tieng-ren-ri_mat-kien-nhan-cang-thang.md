@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: dập tắt tiếng rên rỉ đòi hỏi của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh xử lý khi con mè nheo
 - cha mẹ kiềm chế khi con nhõng nhẽo
+keywords: []
 ---
 # 🎯 Cha mẹ muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ
 

@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_chien-luoc-me-tin-con-va-con-la-nguoi-duy-nhat-o-trong-co-the-minh]]"
+supports_knowledge: ["[[good-inside_chien-luoc-me-tin-con-va-con-la-nguoi-duy-nhat-o-trong-co-the-minh]]"]
+keywords: []
 ---
 
 <situation>Bé Kiki bốn tuổi và anh trai Lex bảy tuổi đang đến thăm ông bà ngoại. Khi họ đến nơi, ông ngoại của Kiki ôm Lex rồi tiến về phía Kiki.</situation>

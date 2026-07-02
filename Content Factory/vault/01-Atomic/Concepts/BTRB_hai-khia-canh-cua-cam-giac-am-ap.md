@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_smell_and_memory", "p1_color_therapy"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]"
+supports_insight: ["[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]"]
 vivid_knowledges: ["Trẻ em quan sát người lớn cẩn thận sửa lại những món đồ chơi bị hỏng và lau dọn lớp học để học cách chăm sóc mọi thứ."]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Cảm giác ấm áp không chỉ đơn thuần là sự nhận biết về nhiệt độ vật lý (nóng/lạnh) mà còn là sự cảm nhận nhạy bén về "hơi ấm tâm hồn" (soul warmth) tỏa ra từ những người xung quanh.

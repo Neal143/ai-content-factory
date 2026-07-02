@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: người chăm sóc trẻ
 audience_main_job: tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động
@@ -9,6 +9,7 @@ parent_audience:
 aliases:
 - tổ chức hoạt động cho trẻ mầm non
 - hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu
+keywords: []
 ---
 # 🎯 người chăm sóc trẻ muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học
 

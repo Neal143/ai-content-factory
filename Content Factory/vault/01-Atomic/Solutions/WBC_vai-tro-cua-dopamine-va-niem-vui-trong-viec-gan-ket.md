@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"
+supports_insight: ["[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Vui chơi và sự tận hưởng lẫn nhau là một trong những cách tốt nhất để chuẩn bị cho trẻ bước vào các mối quan hệ, bởi nó mang lại cho trẻ những trải nghiệm tích cực với những người mà trẻ dành nhiều thời gian nhất.

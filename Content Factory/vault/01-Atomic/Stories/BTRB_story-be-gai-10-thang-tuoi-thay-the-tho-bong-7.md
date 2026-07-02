@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_creative_play_stages", "p1_archetypal_toys"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_knowledge: "[[BTRB_nguyen-tac-su-dung-do-choi-mo-va-nguyen-mau]]"
+supports_knowledge: ["[[BTRB_nguyen-tac-su-dung-do-choi-mo-va-nguyen-mau]]"]
+keywords: []
 ---
 
 <situation>Trong một trường hợp đáng chú ý khác được giáo sư tâm lý trị liệu trẻ em Alfred Nitschke mô tả, một bé gái mười tháng tuổi đã nhập viện trong tình trạng hôn mê cực độ. Bé không thể ngồi dậy, người gập đôi lại như một con dao gấp; bé có biểu cảm bơ phờ và ánh nhìn trống rỗng.</situation>

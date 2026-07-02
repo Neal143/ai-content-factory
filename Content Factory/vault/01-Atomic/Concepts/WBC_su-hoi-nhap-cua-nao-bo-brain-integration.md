@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_brain_development"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]"
+supports_insight: ["[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]"]
 vivid_knowledges: ["Dàn đồng ca hòa quyện giọng hát, Các phần não bộ liên kết và hoạt động phối hợp"]
+keywords: []
 ---
 
 - Định nghĩa/Phát biểu luật: Hội nhập là quá trình mang đến cho trẻ những trải nghiệm nhằm tạo ra và củng cố các sợi liên kết giữa các phần khác nhau của não bộ, giúp chúng hợp tác và làm việc cùng nhau. Quá trình này bao gồm hội nhập ngang (kết nối não trái logic với não phải cảm xúc) và hội nhập dọc (kết nối não trên chuyên suy nghĩ thấu đáo với não dưới mang tính bản năng, sinh tồn).

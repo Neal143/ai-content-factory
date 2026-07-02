@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_move_it_or_lose_it"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_knowledge: "[[WBC_thay-doi-trang-thai-the-chat-de-thay-doi-trang-thai-cam-xuc-move-it-or-lose-it]]"
+supports_knowledge: ["[[WBC_thay-doi-trang-thai-the-chat-de-thay-doi-trang-thai-cam-xuc-move-it-or-lose-it]]"]
+keywords: []
 ---
 
 <situation>Liam, một cậu bé mười tuổi, đang bị mất bình tĩnh và tuyệt vọng khi giải quyết bài tập về nhà.</situation>

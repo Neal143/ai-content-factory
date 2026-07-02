@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_family_system_roles", "p1_boundary_validation_empathy"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]"
+supports_insight: ["[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Xử lý những hành vi khó khăn, phản kháng của trẻ mà vẫn duy trì được sự lãnh đạo vững chắc cùng sự kết nối sâu sắc.

@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thấu hiểu tâm lý và hành vi của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người làm cha mẹ
+keywords: []
 ---
 # 🎯 cha mẹ muốn thấu hiểu tâm lý và hành vi của con khi đối mặt với những thử thách nuôi dạy hàng ngày
 

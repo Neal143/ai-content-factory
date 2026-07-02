@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ
@@ -8,6 +8,7 @@ parent_audience:
 aliases:
 - bảo vệ trẻ khỏi ô nhiễm thông tin và cảm xúc
 - chăm sóc đời sống tinh thần cho trẻ giữa thời đại số
+keywords: []
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo
 

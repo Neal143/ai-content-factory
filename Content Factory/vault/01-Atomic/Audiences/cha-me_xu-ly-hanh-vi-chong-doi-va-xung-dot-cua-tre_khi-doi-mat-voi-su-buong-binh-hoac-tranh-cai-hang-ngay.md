@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: xử lý hành vi chống đối và xung đột của trẻ
@@ -8,6 +8,7 @@ parent_audience:
 aliases:
 - đối phó với tính bướng bỉnh của con
 - giải quyết xung đột với trẻ nhỏ
+keywords: []
 ---
 # 🎯 cha mẹ muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày
 

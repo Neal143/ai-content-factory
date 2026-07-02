@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_khung-hoang-vong-lap-hanh-vi]]"
+supports_insight: ["[[good-inside_khung-hoang-vong-lap-hanh-vi]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Nguyên lý tập trung đầu tư xây dựng kết nối ở những thời điểm "chất lượng cao" khi cả cha mẹ và con cái đều ở trạng thái bình tĩnh, thay vì cố gắng kết nối hay sửa đổi hành vi trong lúc khủng hoảng.

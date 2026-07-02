@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_play_as_imitation"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_do-choi-cang-nhieu-va-cau-ky-cang-tot]]"
+supports_insight: ["[[BTRB_do-choi-cang-nhieu-va-cau-ky-cang-tot]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Đối với trẻ mới biết đi, trò chơi chính là việc hiện diện gần gũi và sao chép lại thái độ, thói quen làm việc của người lớn.

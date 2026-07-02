@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_perfectionism_nature", "p1_reframe_perfectionism"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_logic-giai-quyet-hoan-hao]]"
+supports_insight: ["[[good-inside_logic-giai-quyet-hoan-hao]]"]
+keywords: []
 ---
 
 * **Bản chất:** Giúp trẻ có một mối quan hệ tốt hơn với chủ nghĩa hoàn hảo thay vì cố gắng loại bỏ nó.

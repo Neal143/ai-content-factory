@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung]]"
+supports_insight: ["[[good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Giúp trẻ DFK bình tĩnh lại, cảm thấy an toàn và không bị xấu hổ khi đang trong trạng thái bùng nổ (fight or flight).

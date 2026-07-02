@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_parenting_foundations"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_noi-so-nuoi-day-con-sai-cach-trong-the-gioi-hien-dai]]"
+supports_insight: ["[[BTRB_noi-so-nuoi-day-con-sai-cach-trong-the-gioi-hien-dai]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Mọi thành tựu vĩ đại của trẻ trong giai đoạn đầu đời (nói, đi đứng, tư duy bản năng) đều được xây dựng dựa trên sự bắt chước môi trường xung quanh. Trẻ học nói từ tiếng bập bẹ vô nghĩa tiến dần đến âm tiết, danh từ, động từ và câu hoàn chỉnh thông qua việc mô phỏng người lớn.

@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_will_senses"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_knowledge: "[[BTRB_nguyen-tac-nuoi-duong-cac-giac-quan-y-chi]]"
+supports_knowledge: ["[[BTRB_nguyen-tac-nuoi-duong-cac-giac-quan-y-chi]]"]
+keywords: []
 ---
 
 <situation>I once boiled it down into a few words for a first-time mom.</situation>

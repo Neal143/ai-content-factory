@@ -1,9 +1,9 @@
----
+﻿---
 type: insight
 insight_type: "PITFALL"
 topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"]
 source_id: "persona-interview"
-belongs_to_audience: "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
 status: processed
 created: "2026-06-21"
 source_type: "User"
@@ -11,6 +11,7 @@ source_name: "Persona Interview"
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
+keywords: []
 ---
 
 # PITFALL: cam bay cong nghe tien nghi
@@ -32,7 +33,7 @@ VÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER
 type: insight
 insight_type: "PAIN_POINT"
 insight_name: "Sợ bị công nghệ AI cướp mất miếng cơm"
-belongs_to_audience: "[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]"
+belongs_to_audience: ["[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]"]
 status: processed
 created: "2026-03-30"
 source_type: "User"

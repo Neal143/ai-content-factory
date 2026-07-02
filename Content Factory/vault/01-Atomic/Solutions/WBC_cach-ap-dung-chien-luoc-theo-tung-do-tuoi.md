@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_emotional_cloud_model"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait]]"
+supports_insight: ["[[WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Cung cấp các công cụ và cách giao tiếp cụ thể để cha mẹ hướng dẫn trẻ vượt qua cảm xúc tiêu cực tùy thuộc vào giai đoạn phát triển và nhận thức của trẻ.

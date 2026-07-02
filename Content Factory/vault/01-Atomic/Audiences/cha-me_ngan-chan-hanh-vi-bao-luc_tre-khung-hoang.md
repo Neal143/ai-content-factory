@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: ngăn chặn và kiểm soát hành vi bạo lực của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh trị hành vi bạo lực của con
 - cha mẹ xử lý khi con đánh người
+keywords: []
 ---
 # 🎯 Cha mẹ muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh
 

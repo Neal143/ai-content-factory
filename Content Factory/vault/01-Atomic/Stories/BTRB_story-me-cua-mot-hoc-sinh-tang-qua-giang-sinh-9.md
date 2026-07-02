@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_knowledge: "[[BTRB_cung-cap-do-choi-mo-open-ended-toys]]"
+supports_knowledge: ["[[BTRB_cung-cap-do-choi-mo-open-ended-toys]]"]
+keywords: []
 ---
 
 <situation>Tôi nhớ mẹ của một học sinh trong lớp đã gọi cho tôi vào đầu tháng Mười hai, không biết nên mua gì cho con trai dịp Giáng sinh.</situation>

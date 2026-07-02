@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_parental_tolerance_for_resilience", "p1_frustration_tolerance_strategies"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_be-tac-khi-con-de-dang-tu-bo]]"
+supports_insight: ["[[good-inside_be-tac-khi-con-de-dang-tu-bo]]"]
 vivid_knowledges: ["Cha mẹ bình tĩnh để con tự giải quyết khó khăn thay vì chỉ ngay ra giải pháp"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Nếu muốn con mình phát triển khả năng chịu đựng sự thất vọng, cha mẹ phải phát triển sự bao dung đối với sự thất vọng của con.

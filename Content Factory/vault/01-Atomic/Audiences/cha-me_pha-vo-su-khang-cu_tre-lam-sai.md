@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh đối phó khi con bướng bỉnh
 - cha mẹ xử lý khi con cố chấp
+keywords: []
 ---
 # 🎯 Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó
 

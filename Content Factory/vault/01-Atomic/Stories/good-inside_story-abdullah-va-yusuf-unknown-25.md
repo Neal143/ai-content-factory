@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_tears_as_attachment_signal", "p1_normalize_crying"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_nuoc-mat-la-tin-hieu-cua-he-thong-gan-ket-tears-as-attachment-signal]]"
+supports_knowledge: ["[[good-inside_nuoc-mat-la-tin-hieu-cua-he-thong-gan-ket-tears-as-attachment-signal]]"]
+keywords: []
 ---
 
 <situation>Abdullah, cha của Yusuf 7 tuổi, vừa nhận được email thông báo rằng Yusuf không được chọn vào đội bóng chày đi thi đấu giao hữu.</situation>

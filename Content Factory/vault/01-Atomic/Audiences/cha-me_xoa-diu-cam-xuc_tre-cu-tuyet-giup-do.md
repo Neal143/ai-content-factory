@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: xoa dịu và điều chỉnh cảm xúc của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh dỗ trẻ khóc thét
 - cha mẹ xử lý khi con từ chối giúp đỡ
+keywords: []
 ---
 # 🎯 Cha mẹ muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ
 

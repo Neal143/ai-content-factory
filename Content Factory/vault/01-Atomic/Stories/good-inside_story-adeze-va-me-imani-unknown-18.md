@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_whining_formula", "p1_humor_response"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_phan-hoi-bang-su-hai-huoc-humor]]"
+supports_knowledge: ["[[good-inside_phan-hoi-bang-su-hai-huoc-humor]]"]
+keywords: []
 ---
 
 <situation>Adeze đang làm bài tập bên cạnh mẹ (Imani) - người đang bận rộn trả lời email trên điện thoại và phải để mắt tới em trai nhỏ đang bò quanh phòng khách.</situation>

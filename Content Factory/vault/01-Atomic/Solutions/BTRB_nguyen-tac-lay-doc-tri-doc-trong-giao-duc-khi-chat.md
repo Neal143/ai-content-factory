@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_four_temperaments", "p1_like_heals_like"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]"
+supports_insight: ["[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]"]
 vivid_knowledges: ["Để một cậu bé đang hừng hực cơn giận dữ chạy ra vườn leo trèo đến khi thấm mệt và tự bình tĩnh lại thay vì la mắng."]
+keywords: []
 ---
 
 *   **Bản chất:** Quy tắc vàng trong giáo dục khí chất theo phương pháp Waldorf: "Giống nhau nhận ra nhau; giống nhau có thể chữa lành cho nhau" (Like recognizes like; like can heal like).

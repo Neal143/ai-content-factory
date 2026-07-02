@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_not_listening_nature", "p1_connect_before_asking"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_bat-luc-vi-con-khong-nghe-loi]]"
+supports_insight: ["[[good-inside_bat-luc-vi-con-khong-nghe-loi]]"]
 vivid_knowledges: ["La hét hỏi \"Có nghe không?\" khiến cơ thể trẻ bật chế độ động vật phòng vệ, hoàn toàn đóng băng không thể tiếp thu lời nói.\n\n*   **②-2. framework: Chiến lược \"Kết nối trước khi yêu cầu\" (Connect Before You Ask)**"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Việc "không lắng nghe" (not listening) thực chất là sự từ chối hợp tác. Lắng nghe chính là phong vũ biểu đo lường sức mạnh của một mối quan hệ trong bất kỳ khoảnh khắc nào.

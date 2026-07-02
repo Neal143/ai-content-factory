@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_positive_discipline", "p1_harm_of_criticism"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_chi-trich-khi-tre-met-moi]]"
+supports_insight: ["[[BTRB_chi-trich-khi-tre-met-moi]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Phương pháp điều chỉnh hành vi dựa trên việc đáp ứng nhu cầu nghỉ ngơi về thể chất của trẻ và sử dụng ngôn từ mang tính khích lệ, tích cực [1, 2].

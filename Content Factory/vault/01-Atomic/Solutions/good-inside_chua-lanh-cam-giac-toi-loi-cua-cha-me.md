@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_two_things_are_true", "p1_escaping_power_struggle"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"
+supports_insight: ["[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Sử dụng "Hai điều đều đúng" để tự xoa dịu nội tâm, tách biệt hành vi sai lầm (những gì chúng ta làm) khỏi bản sắc con người (chúng ta là ai).

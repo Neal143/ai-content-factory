@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_warmth_and_health"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]"
+supports_insight: ["[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]"]
 vivid_knowledges: ["Trẻ sơ sinh không được quấn ủ ấm ngay sau khi sinh có thể phải nằm lồng ấp vì không thể tự duy trì thân nhiệt."]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự ấm áp hỗ trợ sự sống và là nền tảng cốt lõi của mọi sức khỏe cũng như sự phát triển.

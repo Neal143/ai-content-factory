@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và giao tiếp hiệu quả
@@ -9,6 +9,7 @@ aliases:
 - ra lệnh cho con một cách hiệu quả
 - giao tiếp kỷ luật với trẻ nhỏ
 vivid_circumstances: ["Tại hội chợ trường học | Người mẹ liên tục hỏi con muốn ăn ở đâu | Đứa trẻ hai tuổi bật khóc vì áp lực"]
+keywords: []
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ
 

@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: case_study
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_behavior_is_a_window", "p1_connection_capital"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_behavior-is-a-window-hanh-vi-la-mot-o-cua-so]]"
+supports_knowledge: ["[[good-inside_behavior-is-a-window-hanh-vi-la-mot-o-cua-so]]"]
+keywords: []
 ---
 
 <situation>Đây là một gia đình mà thời thơ ấu của đứa trẻ được định hình bởi các phương pháp sửa đổi hành vi: phạt, thưởng, bảng dán nhãn, góc phạt (time-out) và các hình thức kiểm soát khác. Cha mẹ chia sẻ với tôi rằng con trai họ luôn là một "đứa trẻ khó bảo", và họ đã tham khảo ý kiến của nhiều chuyên gia, những người khuyến khích các lịch trình thưởng, phạt và hậu quả khác nhau.</situation>

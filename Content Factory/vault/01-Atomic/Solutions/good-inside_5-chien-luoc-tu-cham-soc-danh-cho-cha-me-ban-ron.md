@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sturdy_leader_self_care", "p1_avp_strategy"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_nuoi-con-tan-hien-selfless-parenting]]"
+supports_insight: ["[[good-inside_nuoi-con-tan-hien-selfless-parenting]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Giúp cha mẹ lấy lại sự cân bằng, tự xoa dịu và phục hồi năng lượng thông qua các bước thực hành nhỏ gọn, thay vì coi self-care như một gánh nặng phải hoàn thành.

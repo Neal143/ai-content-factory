@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sibling_attachment_security", "p1_focus_on_needs_not_fairness"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me]]"
+supports_insight: ["[[good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Xoa dịu sự ghen tị từ gốc rễ, tạo không gian an toàn để xả cảm xúc, đồng thời bảo vệ sự an toàn vật lý của trẻ khi xung đột nổ ra mà không biến cha mẹ thành thẩm phán.

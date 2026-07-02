@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_resilience_over_happiness", "p1_support_not_solve"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_cam-bay-giai-cuu-cam-xuc]]"
+supports_insight: ["[[good-inside_cam-bay-giai-cuu-cam-xuc]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Nguyên tắc hành động khi trẻ gặp khủng hoảng: Giúp trẻ dung nạp và làm việc xuyên qua sự khó chịu, thay vì khuyến khích trẻ lảng tránh hoặc chạy trốn khỏi nó.

@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh hòa giải khi các con đánh nhau
 - cha mẹ xử lý khi anh chị em ghen tị
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự chú ý
 

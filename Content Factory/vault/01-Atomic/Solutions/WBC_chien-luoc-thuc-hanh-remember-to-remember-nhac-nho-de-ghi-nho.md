@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_memory_development", "p1_remember_to_remember"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa]]"
+supports_insight: ["[[WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Các cách thức cụ thể được lồng ghép vào sinh hoạt hàng ngày để cha mẹ giúp con rèn luyện trí nhớ và khả năng kể chuyện, thay vì ép buộc trẻ phải trả lời theo kiểu tra khảo.

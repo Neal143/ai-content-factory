@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_family_system_roles", "p1_boundary_validation_empathy"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_lang-kinh-hoan-thanh-cong-viec-job-fulfillment]]"
+supports_knowledge: ["[[good-inside_lang-kinh-hoan-thanh-cong-viec-job-fulfillment]]"]
+keywords: []
 ---
 
 <situation>Tác giả nói với con trai rằng mẹ phải bắt đầu làm việc và lập tức nghe thấy tiếng con la hét gọi mình.</situation>

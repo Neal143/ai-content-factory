@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_khung-hoang-vong-lap-hanh-vi]]"
+supports_knowledge: ["[[good-inside_khung-hoang-vong-lap-hanh-vi]]"]
+keywords: []
 ---
 
 <situation>During a recent consult, the parents of two young children opened our conversation with a plea. “Dr. Becky, we don’t know where to start,” they said. “Our house is a mess. There’s so much yelling, and we’re always making empty threats because we don’t know what else to do.</situation>

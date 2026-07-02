@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_protect_hearing", "p1_human_interaction_language"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_lam-dung-thiet-bi-may-moc-de-day-tre-giao-tiep]]"
+supports_insight: ["[[BTRB_lam-dung-thiet-bi-may-moc-de-day-tre-giao-tiep]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Đây là những giác quan giúp trẻ có khả năng hình dung ý tưởng đằng sau lời nói của người khác và nhận biết được tính cá nhân (cái "Tôi") hay bản chất chân thực của những người xung quanh.

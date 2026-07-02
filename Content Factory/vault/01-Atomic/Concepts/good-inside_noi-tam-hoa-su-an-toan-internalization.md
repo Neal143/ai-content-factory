@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo]]"
+supports_insight: ["[[good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Nội tâm hóa là quá trình trẻ "thu nhận" và lưu giữ những khía cạnh xoa dịu từ mối quan hệ cha mẹ - con cái vào bên trong tâm trí, để chúng có thể tiếp cận được cảm giác an toàn, an tâm và tin tưởng ngay cả khi cha mẹ không xuất hiện ở ngay trước mắt.

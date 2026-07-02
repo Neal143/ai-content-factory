@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: philosophy
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_good_inside_core_belief", "p1_most_generous_interpretation"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi]]"
+supports_insight: ["[[good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi]]"]
 vivid_knowledges: ["\"Bên dưới hành vi 'Gửi em bé trở lại bệnh viện đi! Con ghét em!' là một đứa trẻ đang đau khổ với nỗi sợ bị bỏ rơi.\""]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Dù hành vi bên ngoài có tồi tệ đến đâu, thì tận sâu thẳm cốt lõi, tất cả chúng ta (cả cha mẹ lẫn con cái) đều là những người từ bi, yêu thương và rộng lượng. Sự tốt đẹp luôn hiện diện ở bên trong.

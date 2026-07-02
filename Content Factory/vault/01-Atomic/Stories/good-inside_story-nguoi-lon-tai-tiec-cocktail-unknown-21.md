@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_true_confidence_concept", "p1_validate_and_empower_shyness"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_cong-nhan-con-se-biet-khi-nao-con-san-sang-validate-youll-know-when-youre-ready]]"
+supports_knowledge: ["[[good-inside_cong-nhan-con-se-biet-khi-nao-con-san-sang-validate-youll-know-when-youre-ready]]"]
+keywords: []
 ---
 
 <situation>Let’s think about shyness in an adult context: You go to a cocktail party with your partner, you feel nervous, and so you say, “I want to stay near you for a bit, okay?”</situation>

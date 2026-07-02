@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: duy trì kỷ luật và sự hòa hợp trong gia đình
@@ -10,6 +10,7 @@ aliases:
 - quản lý hành vi của con lúc chiều tối
 - giữ không khí gia đình yên bình cuối ngày
 vivid_circumstances: ["Cuối ngày tại nhà | Trẻ bướng bỉnh, chạy nhảy bật nảy khắp tường | Cha mẹ đối mặt với tiếng ồn và sự lộn xộn."]
+keywords: []
 ---
 # 🎯 cha mẹ muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày
 

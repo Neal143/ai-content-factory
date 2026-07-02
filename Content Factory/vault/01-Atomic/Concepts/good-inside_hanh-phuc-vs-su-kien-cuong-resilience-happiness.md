@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: philosophy
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_resilience_over_happiness", "p1_support_not_solve"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_cam-bay-giai-cuu-cam-xuc]]"
+supports_insight: ["[[good-inside_cam-bay-giai-cuu-cam-xuc]]"]
 vivid_knowledges: ["Trẻ dung nạp được sự thất vọng sẽ tạo ra một lớp đệm mềm mại bao quanh những cảm xúc khó khăn trong chiếc lọ nội tâm\n\n*   **②-2. actionable_rule: Hỗ trợ thay vì Giải quyết (Support, not solve)**"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự kiên cường (resilience) là khả năng trải nghiệm nhiều loại cảm xúc khác nhau mà vẫn giữ được bản ngã của chính mình; nó giúp con người phục hồi sau căng thẳng, thất bại và nghịch cảnh. Sự kiên cường là tiền đề cho phép hạnh phúc nảy nở (Regulation first, happiness second).

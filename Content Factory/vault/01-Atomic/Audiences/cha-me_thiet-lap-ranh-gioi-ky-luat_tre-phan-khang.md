@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thiết lập ranh giới kỷ luật với con cái
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - người nuôi con muốn giữ kỷ luật khi con cãi lại
 - phụ huynh cần đặt quy tắc khi con hỗn láo
+keywords: []
 ---
 # 🎯 Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ
 

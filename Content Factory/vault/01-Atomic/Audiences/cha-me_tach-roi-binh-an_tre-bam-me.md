@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con tách rời khỏi cha mẹ một cách bình an
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh xử lý hội chứng bám mẹ
 - cha mẹ giúp con quen đi học
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt
 

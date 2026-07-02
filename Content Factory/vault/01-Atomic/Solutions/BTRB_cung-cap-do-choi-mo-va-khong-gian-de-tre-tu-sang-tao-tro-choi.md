@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_mua-do-choi-qua-hoan-thien-lam-thui-chot-tri-tuong-tuong]]"
+supports_insight: ["[[BTRB_mua-do-choi-qua-hoan-thien-lam-thui-chot-tri-tuong-tuong]]"]
 vivid_knowledges: ["Những khúc gỗ lúc thì tạo thành một ngôi làng, lúc sau lại biến thành điện thoại trong trò chơi của trẻ."]
+keywords: []
 ---
 
 *   **Bản chất:** Là việc phụ huynh và giáo viên cung cấp không gian chơi phù hợp cùng những món đồ chơi đơn giản, chưa hoàn thiện (open-ended toys) như búp bê vải tối giản chi tiết, giỏ mây, khối gỗ cắt từ cành cây, vải lụa, quả thông... để kích thích trẻ tự sáng tạo và làm chủ nội dung trò chơi.

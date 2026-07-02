@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_neuroplasticity_repair", "p1_the_power_of_repair"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_ky-nang-sua-chua-the-power-of-repair]]"
+supports_knowledge: ["[[good-inside_ky-nang-sua-chua-the-power-of-repair]]"]
+keywords: []
 ---
 
 <situation>Một người mẹ nhận ra trước đây mình đã áp dụng sai phương pháp, cô bước vào phòng con gái 15 tuổi vào buổi sáng.</situation>

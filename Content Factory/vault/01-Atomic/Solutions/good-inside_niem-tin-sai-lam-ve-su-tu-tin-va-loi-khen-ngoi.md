@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]"
+supports_insight: ["[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Chuyển hướng sự chú ý của trẻ từ việc tìm kiếm sự công nhận bên ngoài (external validation) sang việc tự đánh giá và khám phá bản thân (internal validation).

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_parenting_foundations"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_noi-so-nuoi-day-con-sai-cach-trong-the-gioi-hien-dai]]"
+supports_insight: ["[[BTRB_noi-so-nuoi-day-con-sai-cach-trong-the-gioi-hien-dai]]"]
 vivid_knowledges: ["Những ấn tượng giác quan gợn sóng và dội vang đi sâu vào việc kiến tạo các cơ quan nội tạng của đứa trẻ"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Trẻ sơ sinh tiếp nhận môi trường xung quanh một cách hoàn toàn không phân biệt. Mọi ấn tượng từ âm thanh, màu sắc, cách bế ẵm đến thái độ của người mẹ đều đi sâu vào bên trong trẻ mà chúng không hề có khả năng phán xét hay lọc bỏ.

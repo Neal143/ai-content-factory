@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con cái xử lý sự nhút nhát
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh giúp trẻ nhút nhát
 - cha mẹ rèn tự tin cho con rụt rè
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông
 

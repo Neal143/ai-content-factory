@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_body_memory", "p1_internal_working_model"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]"
+supports_insight: ["[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Bộ não con người có tính dẻo dai đáng kinh ngạc, có khả năng tái thiết lập (rewire), học lại, xóa bỏ cái cũ (unlearn) và thay đổi. Do đó, việc mắc sai lầm không phải là dấu chấm hết.

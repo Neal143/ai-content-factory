@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con tự đi vào giấc ngủ và ngủ xuyên đêm
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh luyện ngủ cho con
 - cha mẹ giúp trẻ tự ngủ
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ
 

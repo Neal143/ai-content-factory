@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: điều chỉnh hành vi của trẻ
@@ -9,6 +9,7 @@ aliases:
 - uốn nắn trẻ khi chơi đùa quá khích
 - xử lý hành vi sai lệch của con lúc chơi
 vivid_circumstances: ["Giờ chơi tại lớp học mầm non | Hai bé gái liên tục tung những con thú len lên không trung | Giáo viên muốn can thiệp nhưng không muốn phá vỡ không khí"]
+keywords: []
 ---
 # 🎯 cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực
 

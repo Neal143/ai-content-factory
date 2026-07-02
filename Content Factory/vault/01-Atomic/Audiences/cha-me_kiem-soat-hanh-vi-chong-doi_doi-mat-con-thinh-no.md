@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: kiểm soát những hành vi chống đối của con cái mà không làm tổn
@@ -12,6 +12,7 @@ parent_audience:
 aliases:
 - phụ huynh muốn trị thói chống đối của con
 - cha mẹ cần xử lý khi con nổi giận vô cớ
+keywords: []
 ---
 # 🎯 Cha mẹ muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ
 

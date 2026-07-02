@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_consequent_action", "p1_listen_and_redirect"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot]]"
+supports_insight: ["[[BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Phương pháp tránh đối đầu trực diện với sự phản kháng của trẻ bằng cách giữ vững hành động nhất quán, kiên định và thể hiện sự tin tưởng vào sự phát triển của trẻ.

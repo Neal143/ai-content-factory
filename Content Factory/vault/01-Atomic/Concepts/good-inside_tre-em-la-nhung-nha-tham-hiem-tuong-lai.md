@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: philosophy
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_three_pillars_of_change", "p1_children_as_explorers"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_chan-ly-ve-tuoi-tho]]"
+supports_insight: ["[[good-inside_chan-ly-ve-tuoi-tho]]"]
 vivid_knowledges: ["Không gian của các khả năng, Thấy nhà thám hiểm ở rìa xa nhất, Hình dáng giống những đứa trẻ"]
+keywords: []
 ---
 
 * **Định nghĩa/Phát biểu luật:** Trẻ em không chỉ là tương lai của chúng ta vì chúng mang theo hệ gen di truyền, mà bởi vì sự tồn tại của chúng gắn liền trực tiếp với những giới hạn xa nhất của các khả năng loài người [2].

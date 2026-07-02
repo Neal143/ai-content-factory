@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_conflict_resolution", "p1_connect_through_conflict"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]"
+supports_insight: ["[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Kích thích trẻ dừng lại và đánh giá tình huống, suy nghĩ về cảm xúc và góc nhìn của người đối diện khi có xung đột xảy ra.

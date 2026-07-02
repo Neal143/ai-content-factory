@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_khung-hoang-vong-lap-hanh-vi]]"
+supports_insight: ["[[good-inside_khung-hoang-vong-lap-hanh-vi]]"]
 vivid_knowledges: ["Tài khoản ngân hàng cảm xúc, Nạp vốn bằng sự thấu hiểu/Rút vốn bằng các mệnh lệnh, Sự hợp tác bên ngoài/Sự chống đối bề mặt"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Mỗi đứa trẻ sở hữu một "tài khoản ngân hàng cảm xúc" trong đó loại tiền tệ được lưu thông chính là sự kết nối. Hành vi của trẻ ở bất kỳ thời điểm nào cũng phản ánh trực tiếp trạng thái của tài khoản này, cho thấy nó đang được nạp đầy hay đang cạn kiệt.

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_neuroplasticity_repair", "p1_the_power_of_repair"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_noi-so-su-ton-thuong-khong-the-van-hoi]]"
+supports_insight: ["[[good-inside_noi-so-su-ton-thuong-khong-the-van-hoi]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Tính dẻo dai của hệ thần kinh (neuroplasticity) đề cập đến khả năng của não bộ trong việc học lại và biến đổi khi nhận thấy cần sự thích nghi mới. 

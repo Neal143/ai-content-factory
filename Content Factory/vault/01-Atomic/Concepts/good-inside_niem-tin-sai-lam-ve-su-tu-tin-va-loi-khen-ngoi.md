@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]"
+supports_insight: ["[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự tự tin không phải là cảm thấy "tốt", mà là tin tưởng: "Mình biết mình đang cảm thấy gì. Cảm xúc này là có thật, được phép tồn tại, và mình vẫn là một người tốt khi cảm thấy như vậy". Sự tự tin là khả năng tự thấy thoải mái với bản thân trong dải cảm xúc rộng nhất có thể.

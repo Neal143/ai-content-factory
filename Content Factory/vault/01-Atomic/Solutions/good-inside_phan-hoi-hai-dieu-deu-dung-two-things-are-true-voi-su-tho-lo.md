@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"
+supports_insight: ["[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Khung giao tiếp giúp cha mẹ duy trì uy quyền lãnh đạo, thiết lập ranh giới rõ ràng đối với ngôn từ thô lỗ, nhưng đồng thời vẫn xác nhận và chứa đựng được cảm xúc khó khăn của con.

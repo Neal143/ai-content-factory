@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"
+supports_insight: ["[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"]
+keywords: []
 ---
 
 *   **Định nghĩa:** Sự đồng thuận cốt lõi là niềm tin rằng chỉ có chúng ta mới biết điều gì đang xảy ra với mình, điều gì ta muốn và điều gì tạo ra sự thoải mái trong từng khoảnh khắc. Ở trẻ em, nó bao gồm mọi vấn đề về quyền tự quyết cơ thể: từ việc ngần ngại tham gia tiệc, từ chối ăn thêm khi đã no, hay sợ hãi bóng tối.

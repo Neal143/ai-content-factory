@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_two_things_are_true", "p1_escaping_power_struggle"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"
+supports_insight: ["[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"]
 vivid_knowledges: ["Trận chiến trước cửa: Mẹ khăng khăng bắt mặc áo khoác vì trời lạnh, con cự tuyệt vì không thấy lạnh."]
+keywords: []
 ---
 
 *   **Mục đích:** Chuyển đổi trạng thái từ đối đầu "Tôi chống lại con" sang "Tôi và con cùng chống lại vấn đề", giúp gỡ rối khi trẻ khăng khăng chống đối ranh giới của cha mẹ.

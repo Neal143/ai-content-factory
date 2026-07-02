@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp trẻ đối mặt và tích hợp các ký ức đau buồn
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người chăm sóc
+keywords: []
 ---
 # 🎯 cha mẹ muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ
 

@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_tears_as_attachment_signal", "p1_normalize_crying"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"
+supports_insight: ["[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"]
 vivid_knowledges: ["Chất lỏng trào ra từ mắt nhằm buộc đối phương phải dừng lại và chú ý đến một điều lớn lao đang diễn ra bên trong.\n\n*   **②-2. actionable_rule: Bình thường hóa việc khóc (Talk About Tears)**"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Nước mắt hoạt động trong hệ thống gắn kết của con người như một tín hiệu cho thấy chúng ta đang cần sự hỗ trợ cảm xúc và sự kết nối từ người khác. Nó là biểu hiện vật lý chân thực nhất cho sự yếu đuối và cảm xúc sâu thẳm.

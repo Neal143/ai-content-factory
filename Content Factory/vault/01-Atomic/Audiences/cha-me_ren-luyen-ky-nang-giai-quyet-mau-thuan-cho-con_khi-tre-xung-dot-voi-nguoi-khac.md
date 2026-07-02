@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: rèn luyện kỹ năng giải quyết mâu thuẫn cho con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người phân xử mâu thuẫn
+keywords: []
 ---
 # 🎯 cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác
 

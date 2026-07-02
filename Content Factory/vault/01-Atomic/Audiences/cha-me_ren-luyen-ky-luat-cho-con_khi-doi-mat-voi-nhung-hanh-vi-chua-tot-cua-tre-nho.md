@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: rèn luyện kỷ luật cho con
@@ -8,6 +8,7 @@ parent_audience:
 aliases:
 - uốn nắn hành vi chưa ngoan của con
 - dạy con tính kỷ luật thông qua làm gương
+keywords: []
 ---
 # 🎯 cha mẹ muốn rèn luyện kỷ luật cho con khi đối mặt với những hành vi chưa tốt của trẻ nhỏ
 

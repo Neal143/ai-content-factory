@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"
+supports_insight: ["[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Sử dụng các vật liệu tự nhiên, đơn giản và không có hình thù cố định (như vỏ sò, quả thông, gỗ, lụa và vải cotton) làm đồ chơi.

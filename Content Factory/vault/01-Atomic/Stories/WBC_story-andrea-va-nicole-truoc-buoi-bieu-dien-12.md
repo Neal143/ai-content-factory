@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_mindfulness", "p1_mindsight_practice"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_knowledge: "[[WBC_thuc-hanh-mindsight-tam-tri-de-quay-ve-truc-banh-xe]]"
+supports_knowledge: ["[[WBC_thuc-hanh-mindsight-tam-tri-de-quay-ve-truc-banh-xe]]"]
+keywords: []
 ---
 
 <situation>Trước buổi biểu diễn (recital) của Nicole.</situation>

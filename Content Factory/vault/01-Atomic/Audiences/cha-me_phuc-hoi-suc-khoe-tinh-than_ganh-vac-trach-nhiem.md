@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh muốn lấy lại năng lượng
 - cha mẹ chăm sóc bản thân khi nuôi con
+keywords: []
 ---
 # 🎯 Cha mẹ muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày
 

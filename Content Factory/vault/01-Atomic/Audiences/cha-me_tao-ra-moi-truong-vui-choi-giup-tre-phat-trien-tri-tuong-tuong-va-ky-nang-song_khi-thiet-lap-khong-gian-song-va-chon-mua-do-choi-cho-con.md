@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng
@@ -9,6 +9,7 @@ parent_audience:
 aliases:
 - sắp xếp góc chơi tự do cho bé
 - mua sắm đồ chơi kích thích sáng tạo
+keywords: []
 ---
 # 🎯 cha mẹ muốn tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng và kỹ năng sống khi thiết lập không gian sống và chọn mua đồ chơi cho con
 

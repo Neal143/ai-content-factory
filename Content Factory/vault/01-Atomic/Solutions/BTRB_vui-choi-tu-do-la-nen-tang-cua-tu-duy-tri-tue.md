@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_creative_play_stages", "p1_archetypal_toys"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_bay-do-choi-dinh-hinh-san-va-du-thua]]"
+supports_insight: ["[[BTRB_bay-do-choi-dinh-hinh-san-va-du-thua]]"]
 vivid_knowledges: ["Trẻ sẽ học được định luật vật lý về đòn bẩy một cách tự nhiên thông qua việc thay đổi vị trí ngồi trên một chiếc bập bênh."]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Vui chơi tự do (self-directed play) không có mục đích bên ngoài chính là nền tảng tốt nhất cho sự phát triển trí tuệ (intellectual growth) và sức sáng tạo của trẻ sau này.

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_fairy_tales_by_age"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop]]"
+supports_insight: ["[[BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop]]"]
+keywords: []
 ---
 
 * Bản chất: Những hướng dẫn phân loại độ tuổi kể trên chỉ là những gợi ý nhẹ nhàng (light indications), không phải là các quy tắc cứng nhắc (hard and fast rules).

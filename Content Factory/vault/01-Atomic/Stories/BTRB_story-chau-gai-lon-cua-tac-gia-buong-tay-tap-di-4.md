@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_parenting_foundations"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_knowledge: "[[BTRB_ho-tro-phat-trien-ngon-ngu-thong-qua-su-bat-chuoc-chuan-muc]]"
+supports_knowledge: ["[[BTRB_ho-tro-phat-trien-ngon-ngu-thong-qua-su-bat-chuoc-chuan-muc]]"]
+keywords: []
 ---
 
 <situation>Tác giả quan sát quá trình phát triển của đứa cháu gái lớn thông qua một bức ảnh khi cô bé đang chập chững bước đi.</situation>

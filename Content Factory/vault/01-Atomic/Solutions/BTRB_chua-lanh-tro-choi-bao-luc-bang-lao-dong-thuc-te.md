@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_healing_action", "p1_real_work_for_violent_play"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_lam-tuong-ve-cach-xa-nang-luong-bao-luc]]"
+supports_insight: ["[[BTRB_lam-tuong-ve-cach-xa-nang-luong-bao-luc]]"]
 vivid_knowledges: ["Trẻ tham gia làm vườn, đào hố, chuyển những tảng đá hoặc khuân vác gỗ để biến ý chí hỗn loạn trở nên hài hòa."]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Công việc thực tế (Real work) mới chính là phương thuốc chữa lành thực sự cho những trò chơi bạo lực của trẻ.

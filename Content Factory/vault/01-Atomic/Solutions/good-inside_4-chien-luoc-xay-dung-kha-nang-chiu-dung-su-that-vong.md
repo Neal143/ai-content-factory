@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_parental_tolerance_for_resilience", "p1_frustration_tolerance_strategies"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_be-tac-khi-con-de-dang-tu-bo]]"
+supports_insight: ["[[good-inside_be-tac-khi-con-de-dang-tu-bo]]"]
 vivid_knowledges: ["Tự lẩm bẩm \"Mọi thứ mới mẻ đều khó khăn... mình có thể làm những việc khó\" cho con nghe thấy"]
+keywords: []
 ---
 
 *   **Mục đích:** Giúp trẻ học cách điều tiết cảm xúc, đối phó với khó khăn và duy trì sự nỗ lực khi gặp trở ngại.

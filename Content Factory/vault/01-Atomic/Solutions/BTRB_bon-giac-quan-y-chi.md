@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: typology
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_will_senses"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_ep-chin-ep-su-phat-trien-van-dong]]"
+supports_insight: ["[[BTRB_ep-chin-ep-su-phat-trien-van-dong]]"]
+keywords: []
 ---
 
 *   **Nội dung:** Nhóm giác quan ý chí (Will Senses) là các giác quan vật lý hướng chủ yếu vào chính cơ thể con người, bao gồm 4 loại: Xúc giác (Touch), Sự sống (Life), Vận động (Movement), và Thăng bằng (Balance).

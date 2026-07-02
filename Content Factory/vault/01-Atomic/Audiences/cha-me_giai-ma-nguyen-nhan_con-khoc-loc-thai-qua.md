@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh xử lý khi con hay khóc
 - cha mẹ dỗ trẻ khóc nhè
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá
 

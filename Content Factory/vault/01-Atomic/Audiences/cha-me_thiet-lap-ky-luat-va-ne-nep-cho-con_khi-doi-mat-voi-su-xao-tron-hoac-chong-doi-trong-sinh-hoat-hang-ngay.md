@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và nề nếp cho con
@@ -9,6 +9,7 @@ parent_audience:
 aliases:
 - rèn nề nếp sinh hoạt cho trẻ khó bảo
 - dạy con kỷ luật qua sinh hoạt hàng ngày
+keywords: []
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày
 

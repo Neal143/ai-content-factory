@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_chien-luoc-tiep-can-dfks-khi-bung-no]]"
+supports_knowledge: ["[[good-inside_chien-luoc-tiep-can-dfks-khi-bung-no]]"]
+keywords: []
 ---
 
 <situation>Six-year-old Maura is playing near her four-year-old sister, Isla. She starts tickling Isla’s toes and then escalates to pinching and light pushing;</situation>

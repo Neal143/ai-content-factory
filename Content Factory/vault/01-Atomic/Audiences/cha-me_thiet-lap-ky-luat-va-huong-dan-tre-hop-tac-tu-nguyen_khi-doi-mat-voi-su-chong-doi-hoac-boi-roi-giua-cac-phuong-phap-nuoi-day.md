@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện
@@ -9,6 +9,7 @@ parent_audience:
 aliases:
 - dạy con tính tự giác kỷ luật
 - xử lý khi trẻ chống đối hợp tác
+keywords: []
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy
 

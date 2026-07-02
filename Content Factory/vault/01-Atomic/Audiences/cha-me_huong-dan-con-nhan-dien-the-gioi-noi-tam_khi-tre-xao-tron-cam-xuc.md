@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người giáo dục con
+keywords: []
 ---
 # 🎯 cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc
 

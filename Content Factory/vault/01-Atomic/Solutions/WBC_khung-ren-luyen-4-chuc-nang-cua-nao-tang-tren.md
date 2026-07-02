@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_upstairs_brain_development", "p1_use_or_lose_principle"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]"
+supports_insight: ["[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Cung cấp phương pháp giao tiếp và tương tác hàng ngày giúp trẻ tập thể dục 4 chức năng điều hành quan trọng nhất của bộ não tầng trên.

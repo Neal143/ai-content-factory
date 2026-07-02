@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh muốn hiểu tại sao con hư
 - cha mẹ tìm hiểu lý do con chống đối
+keywords: []
 ---
 # 🎯 Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát
 

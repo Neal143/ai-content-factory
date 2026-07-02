@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_perfectionism_nature", "p1_reframe_perfectionism"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_ban-chat-cua-chu-nghia-hoan-hao]]"
+supports_knowledge: ["[[good-inside_ban-chat-cua-chu-nghia-hoan-hao]]"]
+keywords: []
 ---
 
 <situation>Five-year-old Freya is working on a kindergarten writing task; she is supposed to write a four-sentence “How To” story to the best of her ability. Freya’s mom, Aislyn, watches as her daughter writes a word; says to herself, “No, that’s not how you spell it!”; then erases, tries again, and erases it again.</situation>

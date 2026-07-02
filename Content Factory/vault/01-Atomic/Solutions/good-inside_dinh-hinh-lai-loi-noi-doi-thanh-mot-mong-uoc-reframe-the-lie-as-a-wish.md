@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_lying_as_defense", "p1_reframe_lie_as_wish"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]"
+supports_insight: ["[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]"]
 vivid_knowledges: ["Một câu ẩn dụ chân thực không chứa ngoặc vuông\nMẹ nhẹ nhàng gật đầu thấu hiểu, Trò chuyện về mong ước tòa tháp không bị đổ"]
+keywords: []
 ---
 
 *   **Mục đích:** Thay đổi hướng đi của cuộc đối thoại, tạo ra một vùng đệm an toàn giữa hai thái cực "nói thật" và "nói dối", từ đó làm giảm cường độ căng thẳng của tình huống và giúp cha mẹ kết nối với đứa trẻ đang bối rối bên trong.

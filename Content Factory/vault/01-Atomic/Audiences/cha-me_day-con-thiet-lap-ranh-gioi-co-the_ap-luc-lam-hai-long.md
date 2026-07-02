@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh dạy con bảo vệ cơ thể
 - cha mẹ dạy con biết nói không
+keywords: []
 ---
 # 🎯 Cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác
 

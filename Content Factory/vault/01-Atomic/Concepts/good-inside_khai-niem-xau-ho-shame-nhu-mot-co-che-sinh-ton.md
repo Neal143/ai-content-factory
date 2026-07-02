@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]"
+supports_insight: ["[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]"]
 vivid_knowledges: ["Trẻ đông cứng lại như một lớp màng bảo vệ để che giấu phần tồi tệ của bản thân khỏi nguy cơ bị bỏ rơi\n\n*   **②-2. FRAMEWORK: Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)**"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự xấu hổ là cảm giác tin rằng "phần này trong tôi không thể kết nối được—không ai muốn biết hoặc ở cạnh phần này". Nó kích hoạt nỗi sợ hãi tột cùng của trẻ: "Mình xấu xa, mình không xứng đáng, mình không thể gắn kết... mình sẽ bị bỏ lại một mình".

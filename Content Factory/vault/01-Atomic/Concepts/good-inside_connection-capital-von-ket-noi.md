@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_behavior_is_a_window", "p1_connection_capital"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_behavior-first-uu-tien-hanh-vi-be-mat]]"
+supports_insight: ["[[good-inside_behavior-first-uu-tien-hanh-vi-be-mat]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Nguồn dự trữ những cảm xúc tích cực, sự thấu hiểu và lòng tin được xây dựng vững chắc giữa cha mẹ và con cái, có thể được "rút ra" để sử dụng trong những thời điểm đấu tranh khó khăn hoặc khi mối quan hệ trở nên căng thẳng.

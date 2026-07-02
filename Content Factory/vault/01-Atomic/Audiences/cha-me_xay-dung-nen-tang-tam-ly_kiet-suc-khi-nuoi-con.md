@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - người nuôi con nhỏ muốn xây dựng cảm xúc cho trẻ
 - phụ huynh kiệt sức khi chăm con nhỏ
+keywords: []
 ---
 # 🎯 Cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ
 

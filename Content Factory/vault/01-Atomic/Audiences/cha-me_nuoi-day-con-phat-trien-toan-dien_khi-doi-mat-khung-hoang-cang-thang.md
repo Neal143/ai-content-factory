@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: nuôi dạy con cái phát triển toàn diện
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh mệt mỏi
 - người nuôi dạy con
+keywords: []
 ---
 # 🎯 cha mẹ muốn nuôi dạy con cái phát triển toàn diện khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày
 

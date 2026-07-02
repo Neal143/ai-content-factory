@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_brain_development"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]"
+supports_insight: ["[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]"]
+keywords: []
 ---
 
 - Định nghĩa/Phát biểu luật: Bộ não của trẻ liên tục được "kết nối và tái kết nối" (wired and rewired) thông qua các trải nghiệm hàng ngày. Mặc dù gen di truyền có vai trò nhất định, chính những trải nghiệm mà cha mẹ cung cấp mới là yếu tố quyết định sâu sắc đến cấu trúc phát triển của não bộ.

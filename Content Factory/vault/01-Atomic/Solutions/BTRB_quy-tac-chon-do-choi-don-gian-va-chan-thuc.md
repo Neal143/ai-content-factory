@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_play_as_imitation"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_do-choi-cang-nhieu-va-cau-ky-cang-tot]]"
+supports_insight: ["[[BTRB_do-choi-cang-nhieu-va-cau-ky-cang-tot]]"]
 vivid_knowledges: ["Một em bé cầm chiếc búp bê làm từ sợi tự nhiên và đặt cho nó chính tên gọi của mình."]
+keywords: []
 ---
 
 *   **Bản chất:** Nguyên tắc cung cấp cho trẻ những món đồ chơi thô sơ, mô phỏng chân thực hình dáng con người hoặc động vật (ví dụ: búp bê có tỷ lệ đầu bằng 1/4 cơ thể, thú bông tự nhiên) thay vì các nhân vật hoạt họa phóng đại.

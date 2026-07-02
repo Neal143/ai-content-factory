@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con xây dựng kỹ năng điều chỉnh cảm xúc
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh xử lý khi con ăn vạ
 - cha mẹ rèn cảm xúc cho trẻ hay cáu gắt
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối
 

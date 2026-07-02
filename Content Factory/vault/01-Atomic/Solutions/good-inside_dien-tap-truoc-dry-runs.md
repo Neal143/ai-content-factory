@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_jump_into_the_hole", "p1_fear_resolution_script"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_dung-logic-de-tran-an-noi-so]]"
+supports_insight: ["[[good-inside_dung-logic-de-tran-an-noi-so]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Là phương pháp chủ động luyện tập các phản ứng trước khi một tình huống gây lo âu thực sự diễn ra.

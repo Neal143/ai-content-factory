@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_neuroplasticity_repair", "p1_the_power_of_repair"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_noi-so-su-ton-thuong-khong-the-van-hoi]]"
+supports_insight: ["[[good-inside_noi-so-su-ton-thuong-khong-the-van-hoi]]"]
 vivid_knowledges: ["Phủ một lớp trải nghiệm mới lên trên để viết lại phần kết cho một câu chuyện cũ."]
+keywords: []
 ---
 
 *   **Mục đích:** Viết lại phần kết cho các trải nghiệm tồi tệ để biến những ký ức sợ hãi, cô đơn của trẻ thành cảm giác an toàn, được thấu hiểu. Giúp trẻ ngừng tự đổ lỗi cho bản thân và làm hình mẫu cho trẻ về cách nhận trách nhiệm.

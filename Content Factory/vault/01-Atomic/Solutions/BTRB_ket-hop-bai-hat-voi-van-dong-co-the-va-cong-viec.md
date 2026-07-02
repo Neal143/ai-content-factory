@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_songs_for_routines"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_kho-khan-khi-chuyen-tiep-hoat-dong]]"
+supports_insight: ["[[BTRB_kho-khan-khi-chuyen-tiep-hoat-dong]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Gắn liền vần điệu âm nhạc với các hoạt động thể chất cụ thể hoặc các công việc nhà để trẻ thực hành bắt chước và rèn luyện kỹ năng vận động.

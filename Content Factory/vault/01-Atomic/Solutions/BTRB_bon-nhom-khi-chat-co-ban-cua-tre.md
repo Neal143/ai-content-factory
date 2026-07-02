@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: typology
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_four_temperaments", "p1_like_heals_like"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]"
+supports_insight: ["[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]"]
+keywords: []
 ---
 
 *   **Nội dung:** Hệ thống phân loại tính cách con người thành 4 nhóm khí chất đặc trưng: Choleric (Nóng nảy), Phlegmatic (Điềm tĩnh/Chậm chạp), Sanguine (Lạc quan/Bay bổng), và Melancholic (U sầu).

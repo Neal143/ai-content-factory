@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"
+supports_insight: ["[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Khuyến khích trẻ cùng tham gia dọn dẹp đồ chơi một cách vui vẻ và tự nguyện thay vì cảm thấy bị ép buộc như một công việc nặng nhọc.

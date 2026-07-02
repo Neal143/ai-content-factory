@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp con bình tĩnh và lấy lại khả năng tự kiểm soát
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người xoa dịu trẻ
+keywords: []
 ---
 # 🎯 cha mẹ muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc
 

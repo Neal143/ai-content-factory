@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: mental_model
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_family_system_roles", "p1_boundary_validation_empathy"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]"
+supports_insight: ["[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Tái cấu trúc (reframe) những khoảnh khắc bùng nổ của con không phải là một sự thất bại của cha mẹ hay sự hư hỏng của con, mà là minh chứng cho việc cả hai đang "hoàn thành đúng công việc của mình".

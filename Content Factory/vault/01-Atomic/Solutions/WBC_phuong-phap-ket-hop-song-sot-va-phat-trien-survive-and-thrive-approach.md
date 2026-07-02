@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_crisis_management_in_parenting", "p1_survive_and_thrive_mindset"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_tach-roi-viec-song-sot-va-phat-trien]]"
+supports_insight: ["[[WBC_tach-roi-viec-song-sot-va-phat-trien]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Những khoảnh khắc mà cha mẹ chỉ đang cố gắng "sống sót" qua ngày thực chất lại là những cơ hội (thậm chí là những món quà) để giúp trẻ "phát triển".

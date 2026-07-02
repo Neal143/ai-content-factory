@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_true_confidence_concept", "p1_validate_and_empower_shyness"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]"
+supports_insight: ["[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]"]
 vivid_knowledges: ["Tự nhủ rằng việc con từ chối hùa theo đám đông thực chất là một sự kiên định, táo bạo và cực kỳ tự tin."]
+keywords: []
 ---
 
 *   **Bản chất:** Quá trình tự nhận thức và quản lý những "điểm kích hoạt" (trigger) cảm xúc của chính cha mẹ khi đối diện với sự ngập ngừng của con cái.

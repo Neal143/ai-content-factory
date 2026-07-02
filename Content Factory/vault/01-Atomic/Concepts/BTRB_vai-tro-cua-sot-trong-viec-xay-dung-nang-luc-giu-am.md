@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_warmth_and_health"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]"
+supports_insight: ["[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Các bệnh thời thơ ấu (chủ yếu liên quan đến sốt) có vai trò hỗ trợ sự phát triển khả năng duy trì mức độ ấm áp khỏe mạnh của trẻ.

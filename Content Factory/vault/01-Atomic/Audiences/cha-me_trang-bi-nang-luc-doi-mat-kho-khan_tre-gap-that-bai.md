@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: trang bị năng lực đối mặt với khó khăn cho con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh muốn dạy con kiên cường
 - cha mẹ giúp con đối mặt thất bại
+keywords: []
 ---
 # 🎯 Cha mẹ muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực
 

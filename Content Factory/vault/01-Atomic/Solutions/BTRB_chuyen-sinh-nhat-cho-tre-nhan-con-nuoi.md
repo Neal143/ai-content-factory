@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_rainbow_bridge_story"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_ky-niem-sinh-nhat-tam-linh]]"
+supports_insight: ["[[BTRB_ky-niem-sinh-nhat-tam-linh]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Giải thích nguồn gốc và hành trình của trẻ nhận con nuôi một cách đầy tình yêu thương, giúp trẻ thấu hiểu và trân trọng cả cha mẹ ruột (người cho sự sống) và cha mẹ nuôi (người trao mái ấm).

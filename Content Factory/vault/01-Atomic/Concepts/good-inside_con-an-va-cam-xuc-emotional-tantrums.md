@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_bung-no-do-qua-tai-cam-xuc-that-vong]]"
+supports_insight: ["[[good-inside_bung-no-do-qua-tai-cam-xuc-that-vong]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Ăn vạ là trạng thái mất điều chỉnh sinh lý bình thường và khỏe mạnh, xảy ra khi một cảm xúc, thôi thúc hoặc cảm giác vượt quá khả năng điều tiết của trẻ [1]. Nó hoàn toàn không phải là hành vi chống đối hay bất tuân cố ý [1].

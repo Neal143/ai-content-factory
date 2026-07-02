@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_tears_as_attachment_signal", "p1_normalize_crying"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"
+supports_insight: ["[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Dạy trẻ hiểu rằng nước mắt là cách cơ thể báo hiệu một điều gì đó quan trọng đang xảy ra, ngay cả khi não bộ chưa kịp hiểu rõ lý do.

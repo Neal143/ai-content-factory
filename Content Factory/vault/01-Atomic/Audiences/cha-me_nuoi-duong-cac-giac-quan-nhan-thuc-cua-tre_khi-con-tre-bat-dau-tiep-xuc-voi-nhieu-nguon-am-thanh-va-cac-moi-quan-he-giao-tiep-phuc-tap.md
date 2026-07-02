@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: nuôi dưỡng các giác quan nhận thức của trẻ
@@ -9,6 +9,7 @@ parent_audience:
 aliases:
 - giúp con phát triển khả năng nghe và hiểu ngôn ngữ
 - hỗ trợ trẻ nhận thức và giao tiếp trong môi trường xã hội
+keywords: []
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp
 

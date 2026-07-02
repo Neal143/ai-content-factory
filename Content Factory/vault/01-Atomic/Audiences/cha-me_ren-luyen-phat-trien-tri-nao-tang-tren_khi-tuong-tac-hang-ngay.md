@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: rèn luyện và phát triển trí não tầng trên của con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người dạy dỗ con
+keywords: []
 ---
 # 🎯 cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày
 

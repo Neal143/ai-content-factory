@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: principle
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_discipline_through_self_education", "p1_harm_of_anger_and_preaching"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_dung-su-tuc-gian-va-thuyet-giao-de-ran-de-tre]]"
+supports_insight: ["[[BTRB_dung-su-tuc-gian-va-thuyet-giao-de-ran-de-tre]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Nếu người lớn nổi cơn thịnh nộ hoặc ra sức thuyết giáo trước mặt trẻ, trẻ sẽ ghi nhận hình ảnh đó vào toàn bộ sự hiện hữu của mình, ngăn cản việc tiếp thu thông điệp và gây tổn hại đến thể chất.

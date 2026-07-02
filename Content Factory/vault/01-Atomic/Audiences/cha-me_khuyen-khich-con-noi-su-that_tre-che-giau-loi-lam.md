@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: khuyến khích con cái nói sự thật
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh dạy con tính trung thực
 - cha mẹ xử lý khi trẻ nói dối
+keywords: []
 ---
 # 🎯 Cha mẹ muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm
 

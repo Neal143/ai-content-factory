@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: concept
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_positive_discipline", "p1_end_of_day_reflection"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_kiet-suc-va-thieu-tu-ky-luat]]"
+supports_insight: ["[[BTRB_kiet-suc-va-thieu-tu-ky-luat]]"]
+keywords: []
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Kỷ luật đích thực (true discipline) là quá trình hướng dẫn trẻ nhỏ thoát khỏi việc chỉ biết bắt chước để tiến tới sự tự kỷ luật (self-discipline).

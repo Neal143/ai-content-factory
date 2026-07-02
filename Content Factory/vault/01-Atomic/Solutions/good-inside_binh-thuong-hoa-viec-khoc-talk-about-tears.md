@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_tears_as_attachment_signal", "p1_normalize_crying"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"
+supports_insight: ["[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Chiến lược chủ động trò chuyện về những giọt nước mắt với trẻ vào những lúc bình yên (khi trẻ KHÔNG khóc), nhằm giải phóng sự xấu hổ (de-shaming) xung quanh việc khóc.

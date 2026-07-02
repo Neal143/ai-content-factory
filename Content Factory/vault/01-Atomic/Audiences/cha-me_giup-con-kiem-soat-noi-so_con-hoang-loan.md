@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con kiểm soát nỗi sợ hãi
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh trấn an khi con hoảng sợ
 - cha mẹ giúp con vượt qua nỗi sợ
+keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể
 

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_environmental_absorption"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_nham-lan-giua-binh-thuong-va-lanh-manh]]"
+supports_insight: ["[[BTRB_nham-lan-giua-binh-thuong-va-lanh-manh]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Là việc cha mẹ đóng vai trò làm lá chắn bảo vệ trẻ khỏi môi trường độc hại và trở thành hình mẫu chuẩn mực để trẻ bắt chước.

@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con
@@ -9,6 +9,7 @@ aliases:
 - chăm sóc thể chất và giác quan cho trẻ mầm non
 - hỗ trợ phát triển giác quan 7 năm đầu đời
 vivid_circumstances: ["Trẻ chập chững khám phá trong nhà | Va vấp vào các đồ vật xung quanh | Khát khao mãnh liệt được chạm vào mọi thứ"]
+keywords: []
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi
 

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"
+supports_insight: ["[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Tránh việc phản ứng trực tiếp vào các từ ngữ bề mặt của trẻ, mà hãy tập trung nỗ lực vào việc kết nối và tái thiết lập sự thấu hiểu sau khi cơn bão cảm xúc đã qua đi.

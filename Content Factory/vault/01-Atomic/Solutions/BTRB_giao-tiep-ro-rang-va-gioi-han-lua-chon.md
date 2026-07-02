@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_bong-ma-cua-su-dan-chu-gia-tao]]"
+supports_insight: ["[[BTRB_bong-ma-cua-su-dan-chu-gia-tao]]"]
 vivid_knowledges: ["Cảnh tượng đứa trẻ liên tục gào thét đòi bánh kẹo hay món đồ chơi ngũ cốc giữa siêu thị đông người."]
+keywords: []
 ---
 
 *   **Bản chất:** Đưa ra thông điệp và chỉ dẫn trực tiếp, rõ ràng cho trẻ thay vì dùng câu hỏi tu từ, đồng thời giới hạn các lựa chọn để tránh làm trẻ quá tải.

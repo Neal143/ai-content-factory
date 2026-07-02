@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: xây dựng sự tự tin thực sự cho con
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh rèn tự tin cho con
 - cha mẹ giúp trẻ tự ti
+keywords: []
 ---
 # 🎯 Cha mẹ muốn xây dựng sự tự tin thực sự cho con khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân
 

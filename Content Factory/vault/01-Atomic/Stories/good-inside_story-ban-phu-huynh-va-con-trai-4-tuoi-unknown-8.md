@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_behavior_is_a_window", "p1_connection_capital"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_mgi-most-generous-interpretation-dien-dich-rong-luong-nhat]]"
+supports_knowledge: ["[[good-inside_mgi-most-generous-interpretation-dien-dich-rong-luong-nhat]]"]
+keywords: []
 ---
 
 <situation>Bạn vừa bảo cậu con trai bốn tuổi của mình rằng bạn cần con giữ im lặng trong khi bạn hoàn thành một cuộc gọi công việc. Nhưng thay vì giữ im lặng, cậu bé lại ném đồ đạc từ bàn làm việc của bạn và la hét.</situation>

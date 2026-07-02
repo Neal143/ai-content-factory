@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_bat-luc-va-tu-trach-ban-than-khi-con-an-va]]"
+supports_insight: ["[[good-inside_bat-luc-va-tu-trach-ban-than-khi-con-an-va]]"]
+keywords: []
 ---
 
 *   **Bản chất:** Tách biệt sự hoảng loạn của con khỏi giá trị của người làm cha mẹ bằng cách sử dụng những lời tự nhủ (mantra) tích cực trước khi hành động [3].

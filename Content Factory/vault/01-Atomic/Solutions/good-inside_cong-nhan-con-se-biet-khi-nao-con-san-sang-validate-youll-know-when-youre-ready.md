@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_true_confidence_concept", "p1_validate_and_empower_shyness"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]"
+supports_insight: ["[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Xây dựng mạch kết nối, giảm thiểu sự tự ti của trẻ, và trao quyền để trẻ tự quyết định thời điểm hòa nhập.

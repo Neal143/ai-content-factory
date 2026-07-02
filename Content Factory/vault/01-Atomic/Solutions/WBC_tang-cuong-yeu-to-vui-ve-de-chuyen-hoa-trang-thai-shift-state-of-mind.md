@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_insight: "[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"
+supports_insight: ["[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Sử dụng sự vui vẻ, ngớ ngẩn để kết nối và thay đổi trạng thái tâm trí của trẻ khi trẻ đang bị mắc kẹt trong sự tức giận hoặc bướng bỉnh.

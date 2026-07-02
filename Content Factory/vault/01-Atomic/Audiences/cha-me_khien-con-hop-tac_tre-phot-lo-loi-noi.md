@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: khiến con cái hợp tác thực hiện các yêu cầu
@@ -10,6 +10,7 @@ parent_audience:
 aliases:
 - phụ huynh muốn con nghe lời
 - cha mẹ trị tính không chịu nghe lời của con
+keywords: []
 ---
 # 🎯 Cha mẹ muốn khiến con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ
 

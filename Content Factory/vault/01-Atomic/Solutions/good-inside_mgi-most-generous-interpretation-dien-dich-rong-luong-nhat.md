@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: framework
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_behavior_is_a_window", "p1_connection_capital"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_behavior-first-uu-tien-hanh-vi-be-mat]]"
+supports_insight: ["[[good-inside_behavior-first-uu-tien-hanh-vi-be-mat]]"]
+keywords: []
 ---
 
 *   **Mục đích:** Khung tư duy giúp cha mẹ chuyển từ trạng thái phán xét/phản ứng tức thời sang trạng thái thấu cảm và tò mò sau khi trẻ có hành vi tồi tệ, thông qua việc tìm ra cách lý giải tích cực và bao dung nhất cho hành vi đó.

@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: mental_model
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_lying_as_defense", "p1_reframe_lie_as_wish"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]"
+supports_insight: ["[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]"]
 vivid_knowledges: ["Một câu ẩn dụ chân thực không chứa ngoặc vuông\nSợ hãi bị mẹ ghét bỏ, Bật ra lời nói dối \"Con đang chơi trong phòng\" để tự vệ"]
+keywords: []
 ---
 
 *   **Bản chất:** Lời nói dối của trẻ gần như không bao giờ mang tính chất chống đối hay thao túng, mà nó là sản phẩm phụ của quá trình tiến hóa: một cơ chế tự vệ để bảo vệ sự an toàn, bảo vệ mối quan hệ gắn kết với cha mẹ, hoặc để khẳng định sự độc lập của bản thân.

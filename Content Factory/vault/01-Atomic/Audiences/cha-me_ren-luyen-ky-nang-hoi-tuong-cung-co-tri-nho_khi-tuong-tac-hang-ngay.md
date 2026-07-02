@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người trò chuyện cùng con
+keywords: []
 ---
 # 🎯 cha mẹ muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày
 

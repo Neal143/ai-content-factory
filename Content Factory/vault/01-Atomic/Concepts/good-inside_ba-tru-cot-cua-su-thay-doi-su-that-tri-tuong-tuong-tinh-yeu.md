@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 knowledge_type: philosophy
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_three_pillars_of_change", "p1_children_as_explorers"]
@@ -7,7 +7,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_chan-ly-ve-tuoi-tho]]"
+supports_insight: ["[[good-inside_chan-ly-ve-tuoi-tho]]"]
+keywords: []
 ---
 
 * **Định nghĩa/Phát biểu luật:** Sự thay đổi của con người được dệt nên từ ba sợi dây: sự học hỏi (learning), những giả định phản thực tế (counterfactuals) và sự chăm sóc (caregiving) [1]. Nói một cách thi vị, đó là sự thật, trí tưởng tượng và tình yêu [1].

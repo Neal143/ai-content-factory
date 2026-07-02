@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_not_listening_nature", "p1_connect_before_asking"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_chien-luoc-ket-noi-truoc-khi-yeu-cau-connect-before-you-ask]]"
+supports_knowledge: ["[[good-inside_chien-luoc-ket-noi-truoc-khi-yeu-cau-connect-before-you-ask]]"]
+keywords: []
 ---
 
 <situation>Sonia, một người mẹ có hai con nhỏ, đến văn phòng bác sĩ trong tình trạng bực bội và tuyệt vọng vì cậu con trai Felix liên tục phớt lờ mọi thứ cô nói và không làm theo bất cứ yêu cầu nào.</situation>

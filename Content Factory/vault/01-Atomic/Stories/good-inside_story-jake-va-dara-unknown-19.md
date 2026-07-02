@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_lying_as_defense", "p1_reframe_lie_as_wish"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_knowledge: "[[good-inside_loi-noi-doi-la-mot-co-che-tu-ve-va-mong-uoc-lying-as-a-wish-and-self-defense]]"
+supports_knowledge: ["[[good-inside_loi-noi-doi-la-mot-co-che-tu-ve-va-mong-uoc-lying-as-a-wish-and-self-defense]]"]
+keywords: []
 ---
 
 <situation>Khi Jake đi học về, mẹ cậu, Dara, nói với cậu: "Cô giáo của con gọi điện và nói rằng con đã đẩy Owen trên sân chơi. Chuyện gì đã xảy ra vậy?"</situation>

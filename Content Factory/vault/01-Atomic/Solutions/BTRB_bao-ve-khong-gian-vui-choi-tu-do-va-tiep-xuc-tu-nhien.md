@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: actionable_rule
 topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
 source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
 confidence: 0.9
-supports_insight: "[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"
+supports_insight: ["[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"]
 vivid_knowledges: ["Trẻ dồn toàn bộ thời gian ngoài trời để di chuyển từng con giun đất trên vỉa hè ướt sũng vào nơi trú ẩn dưới gốc cây."]
+keywords: []
 ---
 
 *   **Bản chất:** Tạo ra môi trường cho phép trẻ chơi đùa không bị gián đoạn và được trực tiếp tương tác dưới sự giám sát với 4 yếu tố tự nhiên: đất, nước, không khí và lửa.

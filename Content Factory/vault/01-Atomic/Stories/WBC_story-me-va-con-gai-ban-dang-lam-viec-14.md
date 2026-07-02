@@ -1,4 +1,4 @@
----
+﻿---
 type: story
 subtype: story
 topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_conflict_resolution", "p1_connect_through_conflict"]
@@ -8,7 +8,8 @@ source_type: book
 source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
 source_id: "the-whole-brain-child"
 confidence: 0.9
-supports_knowledge: "[[WBC_day-tre-nhin-qua-lang-kinh-cua-nguoi-khac]]"
+supports_knowledge: ["[[WBC_day-tre-nhin-qua-lang-kinh-cua-nguoi-khac]]"]
+keywords: []
 ---
 
 <situation>Bạn đang làm việc tại bàn và cô con gái bảy tuổi của bạn đến gần. Cô bé rõ ràng đang tức giận. Cô bé thông báo rằng cậu em trai, Mark, vừa gọi cô bé là đồ ngốc.</situation>

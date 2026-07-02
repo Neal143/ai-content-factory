@@ -1,4 +1,4 @@
----
+﻿---
 type: solution
 knowledge_type: mental_model
 topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_jump_into_the_hole", "p1_fear_resolution_script"]
@@ -7,8 +7,9 @@ source_type: book
 source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
 source_id: "unknown"
 confidence: 0.9
-supports_insight: "[[good-inside_dung-logic-de-tran-an-noi-so]]"
+supports_insight: ["[[good-inside_dung-logic-de-tran-an-noi-so]]"]
 vivid_knowledges: ["Trẻ đang ở dưới một cái hố nhỏ tượng trưng cho sự lo âu, Cha mẹ nhảy thẳng xuống hố để bầu bạn thay vì cố gắng kéo trẻ lên"]
+keywords: []
 ---
 
 *   **Bản chất:** Là tư duy đồng hành cùng trẻ trong sự khó chịu thay vì cố gắng loại bỏ cảm xúc lo âu đó ra khỏi trẻ.

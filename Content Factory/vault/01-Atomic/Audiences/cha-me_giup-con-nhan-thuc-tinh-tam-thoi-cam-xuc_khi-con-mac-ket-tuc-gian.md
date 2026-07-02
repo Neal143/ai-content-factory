@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp con nhận thức tính tạm thời của cảm xúc
@@ -11,6 +11,7 @@ parent_audience:
 aliases:
 - phụ huynh
 - người hướng dẫn con
+keywords: []
 ---
 # 🎯 cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã
 
