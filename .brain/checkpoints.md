@@ -1,5 +1,21 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 03/07/2026
+#### Gỡ bỏ Semantic Dedup và tối ưu RAG
+- **Mã khôi phục:** `95ee5df`
+- **Thẻ (Tag):** `v3.7B-refactor-ingestion`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đơn giản hóa quá trình tiếp nhận (Inbox Processor) và xử lý câu chuyện (Story Architect) bằng cách bỏ đi khâu kiểm tra trùng lặp rườm rà. Hệ thống sẽ tự động đưa vào kho kiến thức luôn.
+  - **🛠️ Kỹ thuật (Tech):** Xóa Bước 2 (Dedup) khỏi `inbox-processor` và `story-architect`. Thay thế RAG bằng cách đọc trực tiếp `pillars.yaml` cho Tầng 3 (Solutions/Concepts). Đánh lại index các bước.
+### 📅 Ngày 02/07/2026
+#### Nâng cấp lõi RAG, hỗ trợ Regex N:N
+- **Mã khôi phục:** `7fbb37d`
+- **Thẻ (Tag):** `v4.2.0`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Tách lõi RAG ra xử lý tập trung, chuẩn hóa hệ thống tìm kiếm chống trùng lặp, mở đường cho cấu trúc liên kết đa chiều N:N.
+  - **🛠️ Kỹ thuật (Tech):** Di chuyển và thiết kế lại `Search-SemanticAtom.ps1` (chuyển sang `.agents/scripts`), nâng cấp logic `-TypeFilter` hỗ trợ Regex. Cập nhật các references trong `inbox-processor/SKILL.md` và `story-architect/SKILL.md`.
+
+
 ### 📅 Ngày 01/07/2026
 #### Nâng cấp logic Semantic Deduplication cho story-architect
 - **Mã khôi phục:** `9dcad8d`
@@ -8,7 +24,7 @@
   - **📱 Sản phẩm / Business:** Ngăn chặn tình trạng tái tạo Lesson trùng lặp (Phân mảnh Graph) qua cơ chế Zero-waste, bảo vệ metadata của Knowledge cũ và tối ưu trải nghiệm người dùng.
   - **🛠️ Kỹ thuật (Tech):** Cập nhật `story-architect/SKILL.md`: bổ sung Bước 2.5 để Semantic Dedup theo Insight branch, áp dụng logic bypass Bước 3, điều hướng sinh File B trỏ link về Knowledge cũ ở Bước 4 và thêm rào chắn an toàn (Safeguard) ở Bước 5.
 
-### 📅 Ngày 30/06/2026
+### 📅 Ngày 30/06/2026 !!!
 #### Cập nhật Persona Interviewer & SSOT Insight Types
 - **Mã khôi phục:** `d443e11`
 - **Thẻ (Tag):** `v4.1.0-persona-interviewer-ssot`
@@ -543,3 +559,4 @@
 - **Nội dung chính:**
   - **📱 Sản phẩm / Business:** Hoàn tất việc định cấu hình không gian làm việc mới cho AWF.
   - **🛠️ Kỹ thuật (Tech):** Cập nhật cấu trúc thư mục dự án vào `brain.json`, `preferences.json` và rules của `GEMINI.md`, lưu lại trạng thái mới nhất vào Git.
+
