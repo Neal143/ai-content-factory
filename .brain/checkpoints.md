@@ -1,6 +1,17 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 13/07/2026
+#### Tích hợp Vault Curator vào 3 Workflows chính
+- **Mã khôi phục:** `6d5c612`
+- **Thẻ (Tag):** `v1.0.0-anti20-handoff`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** 
+    - Nâng cấp cả 3 workflows tạo content (Xử lý Inbox, Phỏng vấn Persona, Trích xuất Sách) để chính thức hỗ trợ "Antigravity 2.0 Handoff".
+    - User giờ đây có 2 lựa chọn: (A) Chạy tự động khép kín toàn bộ quá trình Curation mà không cần theo dõi, hoặc (B) Tiếp tục handoff thủ công tại IDE theo cách cũ. Hệ thống thông minh tự nhận diện file data để thực thi chính xác.
+  - **🛠️ Kỹ thuật (Tech):** 
+    - Đổi vị trí `docs/vault-curator-anti20.md` về lại `workflows/` và viết lại nội dung theo format "Self-contained": tích hợp thẳng routing table và script `--init` vào workflow prompt. Bổ sung rule cấm subagent chạy double-init để chống mất data.
+    - Sửa `process-inbox.md`, `onboarding-persona.md`, `book-extractor.md` để bổ sung nhánh Option A.
+    - Xử lý resolution cho biến `[run_folder]` và cảnh báo trạng thái báo cáo (thiếu curation info do async) cho `book-extractor.md`. Sửa header file này từ 4 thành 5 sessions.### 📅 Ngày 13/07/2026
 #### Hoàn thiện curation pipeline và Workflow Anti 2.0
 - **Mã khôi phục:** `6ff7d30`
 - **Thẻ (Tag):** `v1.0.0-vault-curator-anti20`
