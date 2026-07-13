@@ -50,7 +50,19 @@ Quy trình ghi log:
 ### Bước 4: Vault Curation — Chuẩn hóa Atoms mới
 Sau khi Bước 3 hoàn tất (đã ghi log + xóa nội dung gốc):
 1. Đọc danh sách đường dẫn atom từ file `vault/.tmp/pending_curation_atoms.txt` (file này đã được tạo tự động khi gọi Update-PersonalAtomsQueue.ps1 ở Bước 2).
-2. Triệu hồi **VaultCuratorAgent** với tham số:
+2. Hỏi User chọn cách thực thi:
+
+**Lựa chọn A — Chạy tự động trên Antigravity 2.0 (Khuyến nghị):**
+In prompt sau để User copy sang Antigravity 2.0:
+```
+Đọc workflow `.agents/workflows/vault-curator-anti20.md` và thực thi:
+- Mode: full-pipeline
+- Atoms file: vault/.tmp/pending_curation_atoms.txt
+- Output dir: vault/.curation_temp/
+```
+
+**Lựa chọn B — Chạy tại đây (cần handoff mỗi 5 batch):**
+Triệu hồi **VaultCuratorAgent** (đọc `.agents/agents/vault-curator/AGENT.md`):
    - Mode: `full-pipeline` (cần alignment để gán `belongs_to_audience` cho Insight mới + cross-audience clone; dedup trên 1-5 atoms miễn phí)
    - Atoms: Danh sách đường dẫn file Atom (ví dụ: `vault/01-Atomic/Solutions/BTRB_xxx.md`).
    - Output-dir: `vault/.curation_temp/`

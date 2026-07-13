@@ -1,18 +1,19 @@
-﻿---
-description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 4 Session độc lập để giải phóng Token Context Window)
-last_update: 30/05/2026 06:15 (GMT+7)
+---
+description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 5 Session độc lập để giải phóng Token Context Window)
+last_update: 13/07/2026 15:37 (GMT+7)
 ---
 
-# 📖 Workflow: Book Extractor Pipeline (4-Session Architecture)
+# 📖 Workflow: Book Extractor Pipeline (5-Session Architecture)
 
 - **Tên**: .agents/workflows/book-extractor.md
-- **Vai trò**: Điều phối bóc tách sách qua 4 sessions độc lập.
+- **Vai trò**: Điều phối bóc tách sách qua 5 sessions độc lập.
 - **Sử dụng**: `/book-extractor [Sách] trong [Notebook]`
 - **Logic**:
   - S1 (P1): Trích xuất thô → Handoff 1
   - S2 (P2): Vivid Curation & Niêm phong → Handoff 2
   - S3 (P3): Phân giải Audience → Handoff 3
-  - S4 (P4): Batch Topics & Rã Atoms → Báo cáo
+  - S4 (P4): Batch Topics & Rã Atoms → Handoff 4
+  - S5 (P5): Vault Curation (Tag & Dedup) → Báo cáo
 
 ---
 
@@ -183,7 +184,21 @@ last_update: 30/05/2026 06:15 (GMT+7)
   4. Chuyển tiếp sang Bước 10.
 
 ### Bước 10 (Phase 5): Vault Curation — Chuẩn hóa Atoms mới
-- **Sub-Agent**: VaultCuratorAgent
+Hỏi User chọn cách thực thi:
+
+**Lựa chọn A — Chạy tự động trên Antigravity 2.0 (Khuyến nghị):**
+In prompt sau để User copy sang Antigravity 2.0 (**BẮT BUỘC resolve `[run_folder]` thành đường dẫn thực tế** — VD: `vault/.content-pipeline/runs/2026-07-13_103000_parenting/`):
+```
+Đọc workflow `.agents/workflows/vault-curator-anti20.md` và thực thi:
+- Mode: tag-and-dedup
+- Atoms file: <đường dẫn thực tế>/created_atoms.json
+- Output dir: <đường dẫn thực tế>/session_5/
+```
+Sau khi User xác nhận đã paste xong, cập nhật `current_phase: completed` → chuyển Bước 11 (Báo cáo).
+> **Lưu ý**: Khi chọn Option A, Bước 11 (Báo cáo) sẽ KHÔNG bao gồm kết quả curation (tag/dedup) vì curation đang chạy async trên Anti 2.0. Chỉ báo cáo số atoms đã tạo.
+
+**Lựa chọn B — Chạy tại đây (cần handoff mỗi 5 batch):**
+- **Sub-Agent**: VaultCuratorAgent (đọc `.agents/agents/vault-curator/AGENT.md`)
 - **Input**:
   - Mode: `tag-and-dedup` (atoms đã có supports_insight link từ atomizer.py, không cần alignment)
   - Atoms: Đọc danh sách đường dẫn atom từ file `[run_folder]/created_atoms.json` (do atomizer.py sinh ra ở Phase 4).

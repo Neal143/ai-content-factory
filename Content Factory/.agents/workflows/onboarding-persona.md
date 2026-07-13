@@ -29,7 +29,19 @@ powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scri
 ### Vault Curation — Chuẩn hóa Atoms mới (nếu có)
 Nếu quy trình onboarding có sinh Atom mới (Insight/Solution từ data phỏng vấn):
 1. Đọc danh sách đường dẫn atom từ file `vault/.tmp/pending_curation_atoms.txt` (do script run_insights.ps1 tự động ghi nhận).
-2. Triệu hồi **VaultCuratorAgent** với tham số:
+2. Hỏi User chọn cách thực thi:
+
+**Lựa chọn A — Chạy tự động trên Antigravity 2.0 (Khuyến nghị):**
+In prompt sau để User copy sang Antigravity 2.0:
+```
+Đọc workflow `.agents/workflows/vault-curator-anti20.md` và thực thi:
+- Mode: full-pipeline
+- Atoms file: vault/.tmp/pending_curation_atoms.txt
+- Output dir: vault/.curation_temp/
+```
+
+**Lựa chọn B — Chạy tại đây (cần handoff mỗi 5 batch):**
+Triệu hồi **VaultCuratorAgent** (đọc `.agents/agents/vault-curator/AGENT.md`):
    - Mode: `full-pipeline` (cần alignment để gán `belongs_to_audience` + tìm parent node cho Insight mới)
    - Atoms: Danh sách đường dẫn file Atom.
    - Output-dir: `vault/.curation_temp/`
