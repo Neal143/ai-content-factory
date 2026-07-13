@@ -25,3 +25,13 @@ powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scri
 ```
 
 > Sau khi script chạy xong, hiển thị **nguyên văn** kết quả Terminal cho User (không tóm tắt, không diễn giải). Nếu có bất kỳ dòng `[FAIL]` nào, thông báo cho User biết vị trí lỗi cần xử lý.
+
+### Vault Curation — Chuẩn hóa Atoms mới (nếu có)
+Nếu quy trình onboarding có sinh Atom mới (Insight/Solution từ data phỏng vấn):
+1. Đọc danh sách đường dẫn atom từ file `vault/.tmp/pending_curation_atoms.txt` (do script run_insights.ps1 tự động ghi nhận).
+2. Triệu hồi **VaultCuratorAgent** với tham số:
+   - Mode: `full-pipeline` (cần alignment để gán `belongs_to_audience` + tìm parent node cho Insight mới)
+   - Atoms: Danh sách đường dẫn file Atom.
+   - Output-dir: `vault/.curation_temp/`
+
+> Nếu chỉ tạo file Audience (không sinh Atom nội dung), bỏ qua bước này.

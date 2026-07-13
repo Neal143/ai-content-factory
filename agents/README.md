@@ -29,7 +29,7 @@ graph TD
 
 ---
 
-## Danh sách 15 Specialized Sub-Agents
+## Danh sách 16 Specialized Sub-Agents
 
 | Tên Agent | Thư mục định nghĩa | Vai trò cốt lõi |
 |-----------|--------------------|-----------------|
@@ -48,3 +48,4 @@ graph TD
 | **VividCuratorAgent** | `curate-vivids/` | Đánh giá, tinh lọc vivid metadata chất lượng cao và niêm phong dữ liệu |
 | **BookAudienceMatcherAgent** | `book-audience-matcher/` | Phân giải JTBD của sách và so khớp Semantic với thư viện Audiences |
 | **BookParserAgent** | `book-parser/` | Phân rã cấu trúc sách thành Atoms vật lý theo mô hình DIKW |
+| **VaultCuratorAgent** | `vault-curator/` | Điều phối Pipeline bảo dưỡng Vault: auto-tagging, dedup và alignment |

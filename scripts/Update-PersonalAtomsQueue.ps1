@@ -1,4 +1,4 @@
-<#
+﻿<#
 Ten file: Update-PersonalAtomsQueue.ps1
 Last update: 27/06/2026 17:16 (GMT+7)
 Vai tro: Quan ly file trang thai personal-atoms-queue.md — theo doi atoms ca nhan chua duoc su dung.
@@ -182,8 +182,8 @@ if ($Action -eq "init") {
     if (-not $personaUser) { Write-Error "[ERR] Khong tim thay persona trong thu muc personas/"; exit 1 }
 
     # Rebuild vault index
-    $buildScript = ".agents/skills/dikw-bridge/scripts/build-vault-index.ps1"
-    $indexPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
+    $buildScript = ".agents/scripts/build-vault-index.ps1"
+    $indexPath = ".agents/assets/vault_index.json"
     if (Test-Path $buildScript) {
         powershell -ExecutionPolicy Bypass -File $buildScript -VaultPath "vault/01-Atomic" -OutputPath $indexPath | Out-Null
     }
@@ -291,6 +291,16 @@ elseif ($Action -eq "append") {
         $updatedContent = Get-Content -Path $QueueFile -Raw -Encoding utf8
         $updatedContent = $updatedContent -replace 'Last updated: .+?\)', "Last updated: $ts (GMT+7)"
         [System.IO.File]::WriteAllText($QueueFile, $updatedContent, $utf8NoBom)
+
+        # Ghi handoff file pending_curation_atoms.txt cho process-inbox va onboarding-persona
+        $tmpDir = "vault/.tmp"
+        if (-not (Test-Path $tmpDir)) { New-Item -ItemType Directory -Path $tmpDir -Force | Out-Null }
+        $handoffPath = "$tmpDir/pending_curation_atoms.txt"
+        foreach ($path in $AtomPaths) {
+            # Chuan hoa duong dan va luu tung dong de VaultCuratorAgent doc duoc de dang
+            $cleanPath = $path -replace '\\', '/'
+            [System.IO.File]::AppendAllText($handoffPath, "$cleanPath`r`n", $utf8NoBom)
+        }
     }
     Write-Host "[SUCCESS] Appended $appendedCount atom(s) vao queue." -ForegroundColor Green
 }
@@ -340,3 +350,6 @@ elseif ($Action -eq "remove") {
     }
     Write-Host "[SUCCESS] Removed $removedCount atom(s) tu queue." -ForegroundColor Green
 }
+
+
+

@@ -35,8 +35,8 @@ Agent tự phân tích nội dung → đề xuất combo đầy đủ cùng lúc
 | Type | Agent tự chọn & đề xuất |
 |---|---|
 | **Insight** | {Pillar, Topic} — Đọc `pillars.yaml` chọn Pillar → kế thừa Topic từ insight gần nhất trong Pillar đó |
-| **Solution/Concept** | Đọc `pillars.yaml` → duyệt toàn bộ insights (`raw` + `llm_explain`) xuyên suốt các Pillar → dùng LLM reasoning đánh giá ngữ nghĩa để chọn **01** Insight phù hợp nhất (Semantic Alignment) → Kế thừa Topic từ file insight vật lý (dùng `file_ref` → đọc trường `topics`) |
-| **Quote/Data-Point** | Chạy lệnh `Search-SemanticAtom.ps1 -TypeFilter "solution|concept"` → ĐỌC FILE `.agents/temp/rag_results.json` → Tự đánh giá Excerpt để đề xuất **01** Node cha thực sự liên quan → Kế thừa Topic |
+| **Solution/Concept** | Chạy `Search-SemanticAtom.ps1 -Mode "alignment" -SourceAtomPath <atom>` → ĐỌC FILE `vault/.curation_temp/rag_results.json` → Đánh giá ngữ nghĩa để chọn **01** Insight phù hợp nhất → Kế thừa Topic từ file insight vật lý (đọc trường `topics`) |
+| **Quote/Data-Point** | Chạy `Search-SemanticAtom.ps1 -Mode "alignment" -SourceAtomPath <atom>` → ĐỌC FILE `vault/.curation_temp/rag_results.json` → Đánh giá ngữ nghĩa để đề xuất **01** Node cha (Solution/Concept) thực sự liên quan → Kế thừa Topic |
 
 **2.2. Đề xuất cho user:**
 ```

@@ -1,4 +1,4 @@
----
+﻿---
 name: SKILL.md (DIKW Bridge)
 last_update: 27/05/2026 00:45 (GMT+7)
 role: Skill đóng vai trò cầu nối, gọi tool Get-DIKWCombo để tìm nguyên liệu liên quan đến topic trong Vault và xếp thứ hạng theo mô hình DIKW.
@@ -73,3 +73,4 @@ powershell -ExecutionPolicy Bypass -File ".agents/skills/dikw-bridge/scripts/bun
 ```
 
 ⛔ File này là bản sao vật lý của Gói nguyên liệu DIKW, phục vụ resume dự phòng khi pipeline cần khôi phục. Output trong context memory vẫn được sử dụng bình thường bởi các Phase tiếp theo.
+

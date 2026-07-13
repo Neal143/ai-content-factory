@@ -1,4 +1,4 @@
----
+﻿---
 description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 4 Session độc lập để giải phóng Token Context Window)
 last_update: 30/05/2026 06:15 (GMT+7)
 ---
@@ -156,15 +156,52 @@ last_update: 30/05/2026 06:15 (GMT+7)
   ```powershell
   python .agents/scripts/patch_source_metadata.py --run-folder "[run-folder]"
   ```
-- **Agent chính**: Sau khi lệnh chạy thành công, chuyển sang Bước 9.
+- **Agent chính (BREAKPOINT 4)**:
+  1. **Cập nhật Blackboard**: Ghi đè `current_phase: 5`.
+  2. **DỪNG TIẾN TRÌNH**. Yêu cầu user mở New Chat và dán Handoff Prompt:
+     ```text
+     **[Hệ thống] Handoff 4**
+     Workflow: `/book-extractor` (Phase 5: Vault Curation)
+     Sách: [Tên Sách] | Run: [run_folder] | Slug: [slug]
+     Trạng thái: Phase 4 PASS. `current_phase: 5`.
+     Yêu cầu:
+     1. Đọc `.agents\workflows\book-extractor.md`.
+     2. Nạp cấu hình từ `00-blackboard.yaml` trong [run_folder].
+     3. Khởi chạy **SESSION 5: VAULT CURATION** ngay lập tức.
+     ```
+
+---
+
+## 🧹 SESSION 5: VAULT CURATION (PHASE 5)
+
+### Bước 9: Tiếp nhận Handoff 4 & Khôi phục Context
+- **Tác nhân thực hiện**: Agent chính điều phối.
+- **Hành động**:
+  1. Đọc `00-blackboard.yaml`, nạp `slug`, `run_folder`.
+  2. Đảm bảo `current_phase: 5`.
+  3. Tạo thư mục session: `[run_folder]/session_5/`.
+  4. Chuyển tiếp sang Bước 10.
+
+### Bước 10 (Phase 5): Vault Curation — Chuẩn hóa Atoms mới
+- **Sub-Agent**: VaultCuratorAgent
+- **Input**:
+  - Mode: `tag-and-dedup` (atoms đã có supports_insight link từ atomizer.py, không cần alignment)
+  - Atoms: Đọc danh sách đường dẫn atom từ file `[run_folder]/created_atoms.json` (do atomizer.py sinh ra ở Phase 4).
+  - Output-dir: `[run_folder]/session_5/`
+- **Run folder**: VaultCuratorAgent ghi log tiến trình vào `[run_folder]/session_5/`:
+  - `curation_progress.json`: Batch nào đã xong, batch nào pending.
+  - `dedup_log.json`: Danh sách cặp đã merge (survivor + loser).
+  - `tag_log.json`: Danh sách atoms đã tag.
+- **Output**: Atoms đã chuẩn hóa metadata + loại bỏ trùng lặp.
+- **Agent chính**: Sau khi VaultCuratorAgent hoàn tất, cập nhật `current_phase: completed` → chuyển Bước 11 (Báo cáo).
 
 ---
 
 ## 🏁 BÁO CÁO NGHIỆM THU
 
-### Bước 9: Báo cáo Nghiệm thu (Agent chính thực hiện)
+### Bước 11: Báo cáo Nghiệm thu (Agent chính thực hiện)
 
-Khi Phase 4 hoàn tất thành công:
+Khi Phase 5 hoàn tất thành công:
 1. Đọc nội dung tệp tin báo cáo `pipeline_report.md` từ run-folder.
 2. In ra báo cáo tổng kết chi tiết cho người dùng bao gồm:
    - Tổng quan số lượng Atoms/Vivids thực tế đã lưu đĩa so với Baseline ban đầu.
