@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: principle
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_whining_formula", "p1_humor_response"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_whining_formula
+- p1_humor_response
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri]]'
+description: Nguyên lý cốt lõi giải thích bản chất tiếng rên rỉ của trẻ là kết quả của sự bất lực và khao khát mãnh liệt, đồng thời lý giải nguyên nhân phản ứng gay gắt của cha mẹ bắt nguồn từ những tổn thương trong quá khứ.
+keywords: [Nuôi dạy con, Tâm lý học, Tiếng rên rỉ, Hành vi mè nheo, Tổn thương quá khứ, Công thức tiếng rên rỉ, Khao khát và bất lực, Giải mã thái độ mè nheo, Phản xạ tự vệ của cha mẹ, Cơ chế kìm nén cảm xúc]
 ---
 
 - Định nghĩa/Phát biểu luật: Trẻ rên rỉ khi chúng cảm thấy bất lực. Công thức là: Rên rỉ = Khao khát mãnh liệt + Sự bất lực. Rên rỉ cũng là tín hiệu trẻ đang tìm kiếm sự kết nối hoặc cần một giới hạn vững chắc để giải tỏa cảm xúc dồn nén.

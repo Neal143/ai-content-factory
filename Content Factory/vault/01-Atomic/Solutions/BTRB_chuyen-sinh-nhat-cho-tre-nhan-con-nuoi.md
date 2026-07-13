@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_rainbow_bridge_story"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_rainbow_bridge_story
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_ky-niem-sinh-nhat-tam-linh]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_ky-niem-sinh-nhat-tam-linh]]'
+description: Một câu chuyện mang màu sắc thần thoại giúp trẻ nhận con nuôi thấu hiểu nguồn gốc của mình, trân trọng cả cha mẹ ruột lẫn cha mẹ nuôi qua hình ảnh hai đầu cầu vồng.
+keywords: [Giáo dục mầm non, Nuôi dạy con, Câu chuyện cầu vồng, Giải thích nguồn gốc, Nhận con nuôi, Cha mẹ phương Đông, Cha mẹ phương Tây, Cánh cửa sự sống, Mái ấm tình thương]
 ---
 
 *   **Mục đích:** Giải thích nguồn gốc và hành trình của trẻ nhận con nuôi một cách đầy tình yêu thương, giúp trẻ thấu hiểu và trân trọng cả cha mẹ ruột (người cho sự sống) và cha mẹ nuôi (người trao mái ấm).

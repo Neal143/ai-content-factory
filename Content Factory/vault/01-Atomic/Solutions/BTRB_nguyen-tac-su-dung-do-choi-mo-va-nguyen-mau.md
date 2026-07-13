@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_creative_play_stages", "p1_archetypal_toys"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_creative_play_stages
+- p1_archetypal_toys
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_bay-do-choi-dinh-hinh-san-va-du-thua]]"]
-vivid_knowledges: ["Một chiếc khăn cũ gập lại làm búp bê kích hoạt sức mạnh sáng tạo của não bộ mạnh mẽ hơn một cô búp bê nhựa có thể nhắm mở mắt."]
-keywords: []
+supports_insight:
+- '[[BTRB_bay-do-choi-dinh-hinh-san-va-du-thua]]'
+vivid_knowledges:
+- Một chiếc khăn cũ gập lại làm búp bê kích hoạt sức mạnh sáng tạo của não bộ mạnh mẽ hơn một cô búp bê nhựa có thể nhắm mở mắt.
+description: Ưu tiên sử dụng đồ chơi nguyên mẫu không chi tiết rõ ràng để tạo không gian cho não bộ trẻ tự do điền khuyết bằng sức mạnh của trí tưởng tượng.
+keywords: [Giáo dục mầm non, Đồ chơi trẻ em, Đồ chơi nguyên mẫu, Kích thích não bộ, Điền khuyết chi tiết, Búp bê vải, Trí tưởng tượng, Hình dáng hoạt họa, Vật liệu thiên nhiên]
 ---
 
 *   **Bản chất:** Những món đồ chơi càng ít hình khối, càng mang tính nguyên mẫu (như những khối gỗ từ cành cây, vỏ sò, lụa, quả thông, hoặc một chiếc khăn gập làm búp bê) thì càng để lại nhiều không gian cho trí tưởng tượng của trẻ.

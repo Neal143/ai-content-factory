@@ -1,17 +1,14 @@
 ﻿---
 audience_level: big
 audience_Job_performer: Cha mẹ
-audience_main_job: nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình
-  gắn kết
-audience_circumstance: khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng
-  nổ của con trẻ
+audience_main_job: nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết
+audience_circumstance: khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ
 vivid_circumstances: []
 vivid_circumstances_reserve: []
 parent_audience: []
 aliases:
 - phụ huynh muốn con tự lập và gắn kết gia đình
 - người làm cha mẹ muốn rèn tính kiên cường cho con
-keywords: []
 ---
 # 🎯 Cha mẹ muốn nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ
 

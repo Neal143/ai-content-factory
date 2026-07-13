@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: principle
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_body_memory", "p1_internal_working_model"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_body_memory
+- p1_internal_working_model
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]'
+description: Nguyên lý khẳng định tính dẻo dai của não bộ mang đến hy vọng rằng những sai lầm trong nuôi dạy không bao giờ là dấu chấm hết, giúp cha mẹ giải phóng bản thân khỏi sự dằn vặt để tập trung sửa chữa.
+keywords: [Nuôi dạy con, Tâm lý học, Tính dẻo dai não bộ, Lòng trắc ẩn cha mẹ, Brain malleability, Giải phóng cảm giác tội lỗi, Sức mạnh của sự sửa chữa, Thay đổi khuôn mẫu cũ, Khả năng học hỏi lại, Tái thiết lập hệ thần kinh]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Bộ não con người có tính dẻo dai đáng kinh ngạc, có khả năng tái thiết lập (rewire), học lại, xóa bỏ cái cũ (unlearn) và thay đổi. Do đó, việc mắc sai lầm không phải là dấu chấm hết.

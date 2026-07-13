@@ -1,15 +1,23 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_body_memory", "p1_internal_working_model"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_body_memory
+- p1_internal_working_model
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]"]
-vivid_knowledges: ["Bản thiết kế (blueprint) mà trẻ mang theo bước vào thế giới"]
-keywords: []
+supports_insight:
+- '[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]'
+vivid_knowledges:
+- Bản thiết kế (blueprint) mà trẻ mang theo bước vào thế giới
+description: Trước khi biết nói, trẻ ghi nhớ trải nghiệm an toàn hay nguy hiểm thông qua cơ thể. Tương tác của cha mẹ ở giai đoạn này tạo bản thiết kế định hình khả năng điều chỉnh cảm xúc của con.
+keywords: [phát triển não bộ, ký ức cơ thể, trẻ sơ sinh, trải nghiệm an toàn, bản thiết kế tâm lý, điều chỉnh cảm xúc, tương tác cha mẹ, chăm sóc đầu đời]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Mặc dù trẻ dưới 3 tuổi không thể ghi nhớ trải nghiệm bằng ngôn từ (để kể lại), nhưng chúng hoàn toàn có khả năng ghi nhớ bằng một thứ mạnh mẽ hơn: cơ thể của chúng.

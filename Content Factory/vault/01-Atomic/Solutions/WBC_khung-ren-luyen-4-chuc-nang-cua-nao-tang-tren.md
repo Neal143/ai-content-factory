@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_upstairs_brain_development", "p1_use_or_lose_principle"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_upstairs_brain_development
+- p1_use_or_lose_principle
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]"]
-keywords: []
+supports_insight:
+- '[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]'
+description: 'Cung cấp một khung phương pháp giao tiếp hàng ngày giúp trẻ thực hành hiệu quả 4 chức năng điều hành quan trọng nhất của bộ não tầng trên bao gồm: khả năng ra quyết định, sự thấu hiểu bản thân, lòng thấu cảm và nền tảng đạo đức.'
+keywords: [nuôi dạy con, khoa học thần kinh, phát triển não bộ, chức năng điều hành, não tầng trên, ra quyết định, thấu hiểu bản thân, thấu cảm, đạo đức, tình huống phản tư]
 ---
 
 *   **Mục đích:** Cung cấp phương pháp giao tiếp và tương tác hàng ngày giúp trẻ tập thể dục 4 chức năng điều hành quan trọng nhất của bộ não tầng trên.

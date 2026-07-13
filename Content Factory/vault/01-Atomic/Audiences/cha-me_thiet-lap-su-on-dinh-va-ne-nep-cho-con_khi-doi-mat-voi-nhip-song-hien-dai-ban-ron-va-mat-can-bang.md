@@ -8,7 +8,6 @@ parent_audience:
 aliases:
 - tạo dựng nhịp điệu sinh hoạt cho trẻ
 - rèn nề nếp cho con giữa lối sống bận rộn
-keywords: []
 ---
 # 🎯 cha mẹ muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng
 

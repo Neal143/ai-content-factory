@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con tách rời khỏi cha mẹ một cách bình an
 audience_circumstance: khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt
-vivid_circumstances: ["Tại cửa lớp mầm non | Trẻ khóc thét, ôm chặt lấy chân cha mẹ không chịu buông | Cha mẹ bối rối, không biết làm sao để dứt ra.", "Tại cửa lớp mầm non | Trẻ khóc thét, ôm chặt lấy chân cha mẹ không chịu buông | Cha mẹ bối rối, không biết làm sao để dứt ra."]
+vivid_circumstances:
+- Tại cửa lớp mầm non | Trẻ khóc thét, ôm chặt lấy chân cha mẹ không chịu buông | Cha mẹ bối rối, không biết làm sao để dứt ra.
+- Tại cửa lớp mầm non | Trẻ khóc thét, ôm chặt lấy chân cha mẹ không chịu buông | Cha mẹ bối rối, không biết làm sao để dứt ra.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh xử lý hội chứng bám mẹ
 - cha mẹ giúp con quen đi học
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt
 

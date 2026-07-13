@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_family_system_roles", "p1_boundary_validation_empathy"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_family_system_roles
+- p1_boundary_validation_empathy
 status: processed
-protagonist: "Tác giả (Dr. Becky) và con trai"
+protagonist: Tác giả (Dr. Becky) và con trai
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_lang-kinh-hoan-thanh-cong-viec-job-fulfillment]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_lang-kinh-hoan-thanh-cong-viec-job-fulfillment]]'
+description: Câu chuyện về sự phản đối kịch liệt của cậu bé khi mẹ phải làm việc và cách người mẹ giữ vững ranh giới bằng sự đồng cảm, thể hiện tầm quan trọng của việc hoàn thành tốt vai trò thay vì sa vào chu kỳ tự trách.
+keywords: [nuôi dạy con, tâm lý học trẻ em, ranh giới an toàn, sự thấu cảm, lăng kính hoàn thành công việc, trẻ la hét phản đối, tránh tự đổ lỗi, vai trò của cha mẹ]
 ---
 
 <situation>Tác giả nói với con trai rằng mẹ phải bắt đầu làm việc và lập tức nghe thấy tiếng con la hét gọi mình.</situation>

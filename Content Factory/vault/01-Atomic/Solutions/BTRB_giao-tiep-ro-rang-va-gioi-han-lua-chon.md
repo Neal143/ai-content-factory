@@ -1,15 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_bong-ma-cua-su-dan-chu-gia-tao]]"]
-vivid_knowledges: ["Cảnh tượng đứa trẻ liên tục gào thét đòi bánh kẹo hay món đồ chơi ngũ cốc giữa siêu thị đông người."]
-keywords: []
+supports_insight:
+- '[[BTRB_bong-ma-cua-su-dan-chu-gia-tao]]'
+vivid_knowledges:
+- Cảnh tượng đứa trẻ liên tục gào thét đòi bánh kẹo hay món đồ chơi ngũ cốc giữa siêu thị đông người.
+description: Giới hạn lựa chọn và đưa ra các chỉ dẫn rõ ràng thay vì câu hỏi tu từ, giúp trẻ không bị quá tải trước những quyết định lớn và ngăn chặn thói quen đòi hỏi ích kỷ.
+keywords: [Giáo dục mầm non, Giao tiếp với trẻ, Giới hạn lựa chọn, Thông điệp trực tiếp, Tránh quá tải, Câu hỏi tu từ, Quyền từ chối giả tạo, Gánh nặng quyết định, Ngăn chặn nổi loạn]
 ---
 
 *   **Bản chất:** Đưa ra thông điệp và chỉ dẫn trực tiếp, rõ ràng cho trẻ thay vì dùng câu hỏi tu từ, đồng thời giới hạn các lựa chọn để tránh làm trẻ quá tải.

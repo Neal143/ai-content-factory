@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_smell_and_memory", "p1_color_therapy"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_smell_and_memory
+- p1_color_therapy
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]"]
-vivid_knowledges: ["Trẻ em say sưa vẽ bằng màu nước để tự mình trải nghiệm ánh sáng đang tỏa ra xuyên qua những lớp màu trong trẻo."]
-keywords: []
+supports_insight:
+- '[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]'
+vivid_knowledges:
+- Trẻ em say sưa vẽ bằng màu nước để tự mình trải nghiệm ánh sáng đang tỏa ra xuyên qua những lớp màu trong trẻo.
+description: Đây là phương pháp ứng dụng liệu pháp màu sắc tự nhiên, dựa trên cơ chế tự sinh ra màu tương phản bên trong đôi mắt trẻ, nhằm mục đích cân bằng và điều chỉnh lại tâm trạng cũng như khí chất của từng cá nhân.
+keywords: [Giáo dục mầm non, Chăm sóc nội tâm, Liệu pháp màu sắc, Màu sắc tương phản, Điều chỉnh tâm trạng, Quần áo trị liệu, Trẻ thu mình, Trẻ hiếu động, Màu nước xuyên thấu]
 ---
 
 *   **Bản chất:** Mắt người có khả năng tự biến đổi trải nghiệm màu sắc bên trong để tạo ra màu tương phản (complementary color) với màu sắc khách quan mà nó nhìn thấy bên ngoài.

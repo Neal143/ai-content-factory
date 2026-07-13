@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_move_it_or_lose_it"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_regulation
+- p1_move_it_or_lose_it
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_bat-luc-khi-con-mat-kiem-soat-cam-xuc]]"]
-vivid_knowledges: ["Dạ dày cồn cào và đôi vai căng cứng gửi thông điệp lo âu lên não."]
-keywords: []
+supports_insight:
+- '[[WBC_bat-luc-khi-con-mat-kiem-soat-cam-xuc]]'
+vivid_knowledges:
+- Dạ dày cồn cào và đôi vai căng cứng gửi thông điệp lo âu lên não.
+description: Chiến lược sử dụng các hoạt động thể chất và vận động để tác động trực tiếp đến não bộ, từ đó giúp thay đổi trạng thái cảm xúc tiêu cực và khôi phục lại sự bình tĩnh.
+keywords: [nuôi dạy con, khoa học thần kinh, điều chỉnh cảm xúc, vận động cơ thể, thay đổi trạng thái, move it or lose it, giải phóng năng lượng, kết nối não bộ, khôi phục bình tĩnh]
 ---
 
 *   **Bản chất:** Là chiến lược sử dụng các hoạt động thể chất (vận động, thư giãn) để tác động trực tiếp đến trạng thái cảm xúc, giúp não dưới (cảm xúc, phản xạ) và não trên (tư duy, lý trí) kết nối lại với nhau.

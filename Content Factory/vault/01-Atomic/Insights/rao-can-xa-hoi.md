@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "BARRIER"
-topics: ["p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: BARRIER
+topics:
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Áp lực đám đông đang đẩy cha mẹ vào guồng quay chạy đua công nghệ vô tận. Quan niệm môi trường càng hiện đại càng tốt khiến nhiều người lung lay niềm tin vào các phương pháp giáo dục thuận tự nhiên.
+keywords: [áp lực đám đông, chạy đua công nghệ, môi trường hiện đại, giáo dục tự nhiên, lung lay niềm tin, rào cản xã hội, so sánh con cái, xu hướng thời thượng]
 ---
 
 # BARRIER: rao can xa hoi

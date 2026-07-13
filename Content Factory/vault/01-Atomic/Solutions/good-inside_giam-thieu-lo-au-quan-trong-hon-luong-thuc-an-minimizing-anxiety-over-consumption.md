@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_division_of_responsibility_food", "p1_minimizing_anxiety_over_consumption"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_division_of_responsibility_food
+- p1_minimizing_anxiety_over_consumption
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_so-lam-cha-me-toi-qua-bua-an]]"]
-vivid_knowledges: ["Phục vụ một phần nhỏ đồ tráng miệng ngay trên cùng một chiếc đĩa bên cạnh bông cải xanh, thịt gà và mì ống"]
-keywords: []
+supports_insight:
+- '[[good-inside_so-lam-cha-me-toi-qua-bua-an]]'
+vivid_knowledges:
+- Phục vụ một phần nhỏ đồ tráng miệng ngay trên cùng một chiếc đĩa bên cạnh bông cải xanh, thịt gà và mì ống
+description: Chiến lược quản lý bữa ăn ưu tiên trạng thái tâm lý thoải mái thay vì đong đếm lượng thức ăn, thông qua việc phân chia trách nhiệm rõ ràng và phục vụ tráng miệng cùng bữa chính để giảm bớt sự thèm khát đồ ngọt.
+keywords: [Nuôi dạy con, Tâm lý học, Biếng ăn ở trẻ, Quản lý bữa ăn, Tâm lý ăn uống, Giảm thiểu loâu bữa ăn, Phân chia trách nhiệm thức ăn, Phục vụ tráng miệng cùng lúc, Từ bỏ ép buộc ăn uống, Câu thần chú tự trấn an]
 ---
 
 - **Bản chất:** Nguyên tắc ưu tiên trạng thái tâm lý thoải mái và cảm xúc tích cực của cả cha mẹ và trẻ trong bữa ăn thay vì đong đếm lượng thức ăn trẻ tiêu thụ.

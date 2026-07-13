@@ -1,15 +1,26 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sturdy_leader_self_care", "p1_avp_strategy"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_sturdy_leader_self_care
+- p1_avp_strategy
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_nuoi-con-tan-hien-selfless-parenting]]"]
-vivid_knowledges: ["Không thể rót nước cho con khi chiếc cốc của mình đã cạn khô\n\n*   **②-2. framework: 5 Chiến lược Tự chăm sóc dành cho cha mẹ bận rộn**"]
-keywords: []
+supports_insight:
+- '[[good-inside_nuoi-con-tan-hien-selfless-parenting]]'
+vivid_knowledges:
+- 'Không thể rót nước cho con khi chiếc cốc của mình đã cạn khô
+
+
+  *   **②-2. framework: 5 Chiến lược Tự chăm sóc dành cho cha mẹ bận rộn**'
+description: Giải pháp xóa bỏ tư duy nuôi con tận hiến độc hại, khuyến khích cha mẹ trở thành nhà lãnh đạo vững chãi bằng cách thiết lập ranh giới tự chăm sóc bản thân để truyền đạt cảm giác an toàn cho trẻ.
+keywords: [Nuôi dạy con, Tâm lý học, Lãnh đạo vững chãi, Tự chăm sóc bản thân, Tư duy nuôi con tận hiến, Thiết lập ranh giới cha mẹ, The sturdy leader, Xóa bỏ cảm giác tội lỗi, Ngăn chặn sự kiệt quệ, Quyền tự yêu thương]
 ---
 
 *   **Bản chất:** Trẻ em cần cha mẹ thiết lập ranh giới vững chắc xung quanh việc chăm sóc bản thân. "Nuôi con tận hiến" thực chất là tạo ra một người lãnh đạo không có bản ngã (leader without a self).

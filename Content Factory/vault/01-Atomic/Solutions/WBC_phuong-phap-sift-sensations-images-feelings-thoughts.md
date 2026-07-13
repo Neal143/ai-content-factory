@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_self_awareness", "p1_sift_method"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_self_awareness
+- p1_sift_method
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_tre-thieu-tu-vung-de-goi-ten-va-nhan-dien-cac-sac-thai-cam-xuc-phuc-tap]]"]
-vivid_knowledges: ["Hệ thần kinh, Hoạt động như những chiếc ăng-ten mạnh mẽ, Đọc các cảm giác vật lý từ năm giác quan để định hình cảm xúc"]
-keywords: []
+supports_insight:
+- '[[WBC_tre-thieu-tu-vung-de-goi-ten-va-nhan-dien-cac-sac-thai-cam-xuc-phuc-tap]]'
+vivid_knowledges:
+- Hệ thần kinh, Hoạt động như những chiếc ăng-ten mạnh mẽ, Đọc các cảm giác vật lý từ năm giác quan để định hình cảm xúc
+description: Khung phương pháp rà soát tâm trí giúp trẻ tập trung gọi tên và phân tích các luồng thông tin bên trong cơ thể để từ đó thấu hiểu và giành lại quyền kiểm soát cảm xúc.
+keywords: [nuôi dạy con, giáo dục cảm xúc, nhận thức bản thân, phương pháp SIFT, cảm giác cơ thể, hình ảnh tâm trí, gọi tên cảm xúc, kiểm soát suy nghĩ, tâm nhãn mindsight]
 ---
 
 *   **Mục đích:** Hỗ trợ trẻ rà soát (SIFT) qua những hoạt động của tâm trí để gọi tên và phân tích các luồng thông tin đang diễn ra bên trong, từ đó thấu hiểu và giành lại quyền kiểm soát cuộc sống, kiểm soát cảm xúc của chính mình [2, 4].

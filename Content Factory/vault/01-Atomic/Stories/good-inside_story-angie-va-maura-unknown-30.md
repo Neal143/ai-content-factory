@@ -1,15 +1,20 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
-protagonist: "Angie và Maura"
+protagonist: Angie và Maura
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_chien-luoc-tiep-can-dfks-khi-bung-no]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_chien-luoc-tiep-can-dfks-khi-bung-no]]'
+description: Câu chuyện về người mẹ kiên định duy trì sự bình tĩnh và giữ vai trò lãnh đạo vững vàng để xoa dịu cơn bùng nổ giận dữ đầy bạo lực của cô con gái sáu tuổi.
+keywords: [nuôi dạy con, xử lý khủng hoảng, mẹ và con gái, cơn bùng nổ, trẻ đánh người, người mẹ kiên định, lãnh đạo vững vàng, kiểm soát không gian, sự hiện diện]
 ---
 
 <situation>Six-year-old Maura is playing near her four-year-old sister, Isla. She starts tickling Isla’s toes and then escalates to pinching and light pushing;</situation>

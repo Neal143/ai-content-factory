@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: principle
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_biological_rhythm", "p1_cosmic_rhythms"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_biological_rhythm
+- p1_cosmic_rhythms
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_can-kiet-sinh-luc-do-mat-nhip-dieu-song]]"]
-vivid_knowledges: ["Dịch tiêu hóa của trẻ bắt đầu tiết ra một cách tự nhiên khi giờ ăn tối quen thuộc đang đến gần."]
-keywords: []
+supports_insight:
+- '[[BTRB_can-kiet-sinh-luc-do-mat-nhip-dieu-song]]'
+vivid_knowledges:
+- Dịch tiêu hóa của trẻ bắt đầu tiết ra một cách tự nhiên khi giờ ăn tối quen thuộc đang đến gần.
+description: Thiết lập các nhịp điệu sinh hoạt bên ngoài ổn định sẽ giúp hình thành chu kỳ sinh học đồng bộ bên trong cơ thể, tạo nền tảng cho sự kỷ luật tự nhiên.
+keywords: [Giáo dục mầm non, Nhịp điệu sinh hoạt, Nhịp điệu sinh học, Chu kỳ đồng bộ, Kỷ luật tự nhiên, Dịch tiêu hóa, Cơn buồn ngủ, Tín hiệu cơ thể, Trình tự công việc]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Nếu trẻ em được sống trong những nhịp điệu bên ngoài đều đặn, thì các nhịp điệu sinh học bên trong cơ thể chúng cũng sẽ bắt đầu phát triển đồng bộ.

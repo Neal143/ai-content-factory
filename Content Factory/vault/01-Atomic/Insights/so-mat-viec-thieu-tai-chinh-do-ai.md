@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "FEAR"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: FEAR
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Phụ huynh hiện nay đang phải đối mặt với nỗi sợ kép đầy áp lực. Họ vừa lo sợ bản thân bị AI cướp mất công việc, vừa hoang mang vì thiếu hụt tài chính để đầu tư cho tương lai giáo dục của con cái.
+keywords: [nỗi sợ kép, mất việc vì AI, thiếu hụt tài chính, áp lực kinh tế, đầu tư giáo dục, hoang mang tương lai, khủng hoảng nghề nghiệp, sinh kế gia đình]
 ---
 
 # FEAR: so mat viec thieu tai chinh do AI

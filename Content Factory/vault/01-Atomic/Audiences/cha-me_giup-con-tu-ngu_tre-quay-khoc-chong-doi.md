@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con tự đi vào giấc ngủ và ngủ xuyên đêm
 audience_circumstance: khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ
-vivid_circumstances: ["Đêm khuya | Trẻ khóc lóc bám víu đòi cha mẹ ở lại ngủ cùng | Phụ huynh bối rối, kiệt sức và tuyệt vọng", "Đêm khuya | Trẻ khóc lóc bám víu đòi cha mẹ ở lại ngủ cùng | Phụ huynh bối rối, kiệt sức và tuyệt vọng"]
+vivid_circumstances:
+- Đêm khuya | Trẻ khóc lóc bám víu đòi cha mẹ ở lại ngủ cùng | Phụ huynh bối rối, kiệt sức và tuyệt vọng
+- Đêm khuya | Trẻ khóc lóc bám víu đòi cha mẹ ở lại ngủ cùng | Phụ huynh bối rối, kiệt sức và tuyệt vọng
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh luyện ngủ cho con
 - cha mẹ giúp trẻ tự ngủ
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ
 

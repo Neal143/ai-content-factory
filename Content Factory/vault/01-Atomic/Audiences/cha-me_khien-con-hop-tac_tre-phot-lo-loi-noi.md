@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: khiến con cái hợp tác thực hiện các yêu cầu
 audience_circumstance: khi trẻ đang phớt lờ lời nói của họ
-vivid_circumstances: ["Trong nhà | Mẹ bực tức hét lên \"Con có đang nghe mẹ nói không?\" vì con phớt lờ yêu cầu | Trẻ đóng băng phòng thủ, mẹ tức giận và kiệt sức.", "Trong nhà | Mẹ bực tức hét lên \"Con có đang nghe mẹ nói không?\" vì con phớt lờ yêu cầu | Trẻ đóng băng phòng thủ, mẹ tức giận và kiệt sức."]
+vivid_circumstances:
+- Trong nhà | Mẹ bực tức hét lên "Con có đang nghe mẹ nói không?" vì con phớt lờ yêu cầu | Trẻ đóng băng phòng thủ, mẹ tức giận và kiệt sức.
+- Trong nhà | Mẹ bực tức hét lên "Con có đang nghe mẹ nói không?" vì con phớt lờ yêu cầu | Trẻ đóng băng phòng thủ, mẹ tức giận và kiệt sức.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh muốn con nghe lời
 - cha mẹ trị tính không chịu nghe lời của con
-keywords: []
 ---
 # 🎯 Cha mẹ muốn khiến con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ
 

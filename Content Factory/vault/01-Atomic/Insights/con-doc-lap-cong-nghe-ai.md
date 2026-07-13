@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "DESIRE"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the", "p1_steiner_va_khoa_hoc_phat_trien_toan_dien"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: DESIRE
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+- p1_steiner_va_khoa_hoc_phat_trien_toan_dien
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Khát khao của cha mẹ là con cái được phát triển toàn diện, yêu thương gia đình và có đủ sự tự chủ. Họ mong muốn con luôn độc lập, không bị phụ thuộc vào các thiết bị công nghệ hay trí tuệ nhân tạo.
+keywords: [sự tự chủ, phát triển toàn diện, trí tuệ nhân tạo, phụ thuộc công nghệ, độc lập tư duy, giáo dục thời đại số, mong muốn cha mẹ, tình yêu gia đình]
 ---
 
 # DESIRE: con doc lap cong nghe AI

@@ -2,15 +2,14 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con
-audience_circumstance: khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới
-  hiện đại
+audience_circumstance: khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại
 parent_audience:
 - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
 aliases:
 - tìm kiếm định hướng giáo dục trẻ tự tin
 - xây dựng hạnh phúc cho con giữa nhiều phương pháp bủa vây
-vivid_circumstances: ["Ngay sau những giây phút chào đón đứa trẻ ra đời | Đứa trẻ sơ sinh đang đói quẫy đạp chân tay loạn xạ | Cha mẹ cảm thấy niềm vui trào dâng xen lẫn nỗi sợ hãi sâu sắc"]
-keywords: []
+vivid_circumstances:
+- Ngay sau những giây phút chào đón đứa trẻ ra đời | Đứa trẻ sơ sinh đang đói quẫy đạp chân tay loạn xạ | Cha mẹ cảm thấy niềm vui trào dâng xen lẫn nỗi sợ hãi sâu sắc
 ---
 # 🎯 cha mẹ muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại
 

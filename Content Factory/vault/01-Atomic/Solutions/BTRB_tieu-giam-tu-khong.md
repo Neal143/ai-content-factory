@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_reduce_the_word_no", "p1_energy_redirection"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_reduce_the_word_no
+- p1_energy_redirection
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_lam-dung-tu-khong]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_lam-dung-tu-khong]]'
+description: Theo nguyên tắc này, người lớn cần hạn chế tối đa việc sử dụng từ không trong giao tiếp hàng ngày, chỉ dành riêng nó cho những tình huống đặc biệt thực sự cần thiết để bảo vệ sự an toàn và tài sản cá nhân.
+keywords: [Giáo dục mầm non, Kỷ luật tích cực, Hạn chế từ không, Ranh giới an toàn, Lời nói hiệu quả, Lạm dụng cấm đoán, Sự phớt lờ, Thái độ nhờn, Bảo vệ tài sản]
 ---
 
 *   **Bản chất:** Nguyên tắc hạn chế tối đa việc sử dụng những từ ngữ cấm đoán và chỉ giữ lại từ "không" cho những giới hạn thực sự cần thiết.

@@ -1,13 +1,12 @@
 ﻿---
-audience_level: "big"
-audience_Job_performer: "Phu huynh sap co con hoac co con tu 0-7 tuoi"
-audience_main_job: "Thiet lap nen tang phat trien cho con"
-audience_circumstance: "Sap co con hoac co con tu 0-7 tuoi, song o Viet Nam"
+audience_level: big
+audience_Job_performer: Phu huynh sap co con hoac co con tu 0-7 tuoi
+audience_main_job: Thiet lap nen tang phat trien cho con
+audience_circumstance: Sap co con hoac co con tu 0-7 tuoi, song o Viet Nam
 vivid_circumstances: []
 vivid_circumstances_reserve: []
 parent_audience: []
 aliases: []
-keywords: []
 ---
 
 # 🎯 Phu huynh co con 0-7 tuoi muon Thiet lap nen tang phat trien cho con trong boi canh sap co con hoac co con 0-7 tuoi tai Viet Nam

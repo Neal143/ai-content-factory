@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_handling_child_defiance", "p1_engage_not_enrage"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_handling_child_defiance
+- p1_engage_not_enrage
 status: processed
-protagonist: "Người bố và con trai"
+protagonist: Người bố và con trai
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_knowledge: ["[[WBC_thu-hut-thay-vi-choc-gian-engage-dont-enrage]]"]
-keywords: []
+supports_knowledge:
+- '[[WBC_thu-hut-thay-vi-choc-gian-engage-dont-enrage]]'
+description: Câu chuyện về sự đối đầu giữa người cha và cậu con trai tức giận vì bị ép ăn, minh chứng cho lợi ích của việc thu hút não tầng trên để đàm phán thay vì chọc giận não tầng dưới bằng sự áp đặt.
+keywords: [nuôi dạy con, khoa học thần kinh, thu hút não trên, đàm phán thương lượng, tránh chọc giận, phản ứng chống đối, kiểm soát cơn giận, kết nối chuyển hướng, tránh tranh giành quyền lực]
 ---
 
 <situation>Or option #2: I could tap into his upstairs brain in an effort to get more of a thinking—as opposed to a fighting/ reacting—response. Now, I make plenty of mistakes as I parent my boys (as they’ll freely tell you). But just the day before, I had given a lecture to a group of parents about the upstairs and downstairs brain, and about using everyday challenges—the survival moments—as opportunities to help our kids thrive. So, luckily for my son, all of that was fresh in my mind. I decided to choose option #2.</situation>

@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con
 audience_circumstance: khi trẻ vừa làm sai một việc gì đó
-vivid_circumstances: ["Con giấu đồ chơi của em khiến em khóc nhưng kiên quyết từ chối xin lỗi, hoặc con nói dối trắng trợn về việc bị loại khỏi đội bóng", "Con giấu đồ chơi của em khiến em khóc nhưng kiên quyết từ chối xin lỗi, hoặc con nói dối trắng trợn về việc bị loại khỏi đội bóng"]
+vivid_circumstances:
+- Con giấu đồ chơi của em khiến em khóc nhưng kiên quyết từ chối xin lỗi, hoặc con nói dối trắng trợn về việc bị loại khỏi đội bóng
+- Con giấu đồ chơi của em khiến em khóc nhưng kiên quyết từ chối xin lỗi, hoặc con nói dối trắng trợn về việc bị loại khỏi đội bóng
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh đối phó khi con bướng bỉnh
 - cha mẹ xử lý khi con cố chấp
-keywords: []
 ---
 # 🎯 Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó
 

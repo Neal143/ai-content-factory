@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_healing", "p1_name_to_tame_strategy"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_healing
+- p1_name_to_tame_strategy
 status: processed
-protagonist: "Katie"
+protagonist: Katie
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_knowledge: ["[[WBC_name-it-to-tame-it-goi-ten-de-lam-diu]]"]
-keywords: []
+supports_knowledge:
+- '[[WBC_name-it-to-tame-it-goi-ten-de-lam-diu]]'
+description: Câu chuyện về cô bé Katie sợ hãi đến trường sau lần bị ốm và cách người cha giúp con kể lại sự việc, minh chứng cho sức mạnh của việc gọi tên cảm xúc để xoa dịu và kết nối hai bán cầu não của trẻ.
+keywords: [nuôi dạy con, khoa học thần kinh, nỗi sợ đến trường, gọi tên để làm dịu, kể lại câu chuyện, hội nhập não bộ, cảm xúc lấn át, sắp xếp sự kiện, vượt qua ám ảnh]
 ---
 
 <situation>Katie, một cô bé mầm non, đang gào thét về việc mình sẽ chết nếu người cha (Thomas) bỏ lại cô bé ở trường học.</situation>

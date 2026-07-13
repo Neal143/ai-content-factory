@@ -3,14 +3,16 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con xây dựng kỹ năng điều chỉnh cảm xúc
 audience_circumstance: khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối
-vivid_circumstances: ["Bếp vào buổi sáng | Trẻ ngã lăn ra sàn, khóc lóc và la hét không ngừng đòi ăn kem | Tức giận, mất kiểm soát cảm xúc", "Nửa đêm tại phòng khách | Trẻ 7 tuổi xuất hiện, than vãn liên tục \"Mẹ không bao giờ để lại giấy nhắn, con ghét bài tập!\" | Trẻ bực bội, bất mãn, phụ huynh bất ngờ, mệt mỏi", "Bếp vào buổi sáng | Trẻ ngã lăn ra sàn, khóc lóc và la hét không ngừng đòi ăn kem | Tức giận, mất kiểm soát cảm xúc"]
+vivid_circumstances:
+- Bếp vào buổi sáng | Trẻ ngã lăn ra sàn, khóc lóc và la hét không ngừng đòi ăn kem | Tức giận, mất kiểm soát cảm xúc
+- Nửa đêm tại phòng khách | Trẻ 7 tuổi xuất hiện, than vãn liên tục "Mẹ không bao giờ để lại giấy nhắn, con ghét bài tập!" | Trẻ bực bội, bất mãn, phụ huynh bất ngờ, mệt mỏi
+- Bếp vào buổi sáng | Trẻ ngã lăn ra sàn, khóc lóc và la hét không ngừng đòi ăn kem | Tức giận, mất kiểm soát cảm xúc
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh xử lý khi con ăn vạ
 - cha mẹ rèn cảm xúc cho trẻ hay cáu gắt
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối
 

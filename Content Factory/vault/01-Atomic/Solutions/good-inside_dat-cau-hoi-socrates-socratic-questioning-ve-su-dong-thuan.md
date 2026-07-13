@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_consent_circuitry
+- p1_trusting_bodily_signals
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]'
+description: Phương pháp sử dụng bộ câu hỏi Socrates trong những khoảnh khắc bình tĩnh để kích thích tư duy logic của trẻ, giúp chúng tự nhận thức sâu sắc về ranh giới cá nhân và vượt qua áp lực phải làm hài lòng người khác.
+keywords: [Nuôi dạy con, Tâm lý học, Giao tiếp định hướng, Tư duy phản biện, Ranh giới cá nhân, Phương pháp câu hỏi Socrates, Giáo dục sự đồng thuận, Vượt qua áp lực nhượng bộ, Kích thích suy ngẫm, Xây dựng tư duy logic]
 ---
 
 *   **Mục đích:** Kích thích tư duy sâu sắc, khiến trẻ tự nhìn nhận, cân nhắc về ranh giới cá nhân và năng lực chịu đựng sự phật ý của người khác.

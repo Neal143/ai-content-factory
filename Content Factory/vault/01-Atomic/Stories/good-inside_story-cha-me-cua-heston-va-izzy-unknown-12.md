@@ -1,15 +1,20 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
-protagonist: "Cha mẹ của Heston và Izzy"
+protagonist: Cha mẹ của Heston và Izzy
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_khung-hoang-vong-lap-hanh-vi]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_khung-hoang-vong-lap-hanh-vi]]'
+description: Câu chuyện về sự bế tắc của một cặp cha mẹ khi đối diện với các hành vi chống đối của hai con, và giải pháp tập trung vào sự kết nối thay vì trừng phạt.
+keywords: [nuôi dạy con, giải quyết khủng hoảng, cha mẹ bế tắc, trẻ chống đối, khủng hoảng vòng lặp, trẻ ăn vạ, thái độ hỗn xược, xây dựng kết nối, không trừng phạt]
 ---
 
 <situation>During a recent consult, the parents of two young children opened our conversation with a plea. “Dr. Becky, we don’t know where to start,” they said. “Our house is a mess. There’s so much yelling, and we’re always making empty threats because we don’t know what else to do.</situation>

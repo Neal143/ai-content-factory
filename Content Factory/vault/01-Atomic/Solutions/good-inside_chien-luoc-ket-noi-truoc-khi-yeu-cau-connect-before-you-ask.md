@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_not_listening_nature", "p1_connect_before_asking"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_not_listening_nature
+- p1_connect_before_asking
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_bat-luc-vi-con-khong-nghe-loi]]"]
-vivid_knowledges: ["Nhẹ nhàng bước tới chỗ con đang chơi khối gỗ: \"Chơi khối vui quá nhỉ! Con muốn dọn dẹp bây giờ hay 2 phút nữa?\""]
-keywords: []
+supports_insight:
+- '[[good-inside_bat-luc-vi-con-khong-nghe-loi]]'
+vivid_knowledges:
+- 'Nhẹ nhàng bước tới chỗ con đang chơi khối gỗ: "Chơi khối vui quá nhỉ! Con muốn dọn dẹp bây giờ hay 2 phút nữa?"'
+description: Chiến lược ưu tiên sự kết nối trước khi đưa ra bất kỳ yêu cầu nào giúp trẻ em cảm thấy bản thân luôn được thấu hiểu, từ đó tăng cường sự gắn kết và tinh thần tự nguyện hợp tác.
+keywords: [Giáo dục trẻ em, Giao tiếp với trẻ, Kết nối trước yêu cầu, Tự nguyện hợp tác, Thấu hiểu trẻ, Công nhận hành động, Đồng cảm chuyển đổi, Đưa ra lựa chọn]
 ---
 
 *   **Mục đích:** Giúp trẻ cảm thấy được nhìn nhận và thấu hiểu trong thế giới của chúng, từ đó tạo ra động lực và sự gắn kết để trẻ tự nguyện hợp tác thực hiện yêu cầu của cha mẹ.

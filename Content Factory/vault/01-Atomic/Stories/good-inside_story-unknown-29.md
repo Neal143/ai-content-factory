@@ -1,14 +1,19 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_quy-trinh-xay-dung-giac-ngu-an-toan-building-sleep-safety]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_quy-trinh-xay-dung-giac-ngu-an-toan-building-sleep-safety]]'
+description: Câu chuyện về bé Cora bốn tuổi bỗng nhiên phản kháng giờ đi ngủ và cách cha mẹ giải quyết bằng các chiến lược ban ngày, chứng minh rằng việc xây dựng cảm giác an toàn hiệu quả hơn nhiều so với việc trừng phạt hay phớt lờ.
+keywords: [nuôi dạy con, tâm lý học trẻ em, giấc ngủ an toàn, phản kháng giờ ngủ, nỗi sợ hãi ban đêm, nút bấm ghi âm, chiến lược ban ngày, tránh dùng hình phạt]
 ---
 
 (Building Sleep Safety) | protagonist=Cora, Ben và Matt | timeline=Gần đây (khi Cora 4 tuổi) | core_event=unknown | outcome_measurable=unknown

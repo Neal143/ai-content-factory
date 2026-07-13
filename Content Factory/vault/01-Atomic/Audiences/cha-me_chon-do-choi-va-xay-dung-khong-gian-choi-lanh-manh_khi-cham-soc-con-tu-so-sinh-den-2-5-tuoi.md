@@ -8,8 +8,8 @@ parent_audience:
 aliases:
 - mua đồ chơi an toàn cho trẻ sơ sinh
 - thiết kế góc chơi cho bé dưới 3 tuổi
-vivid_circumstances: ["Trong nhà bếp | Trẻ liên tục lôi xoong nồi và bát ra khỏi tủ | Trẻ say sưa chơi quanh quẩn bên chân cha mẹ"]
-keywords: []
+vivid_circumstances:
+- Trong nhà bếp | Trẻ liên tục lôi xoong nồi và bát ra khỏi tủ | Trẻ say sưa chơi quanh quẩn bên chân cha mẹ
 ---
 # 🎯 cha mẹ muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi
 

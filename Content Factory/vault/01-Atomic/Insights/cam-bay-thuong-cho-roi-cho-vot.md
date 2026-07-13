@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "PITFALL"
-topics: ["p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: PITFALL
+topics:
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Vì thiếu nền tảng triết lý giáo dục, nhiều cha mẹ dễ dàng quay lại cạm bẫy 'thương cho roi cho vọt'. Việc quát mắng hay đánh đòn thường xuất phát từ áp lực hoặc để chứng tỏ sự nghiêm khắc với người ngoài.
+keywords: [thương cho roi cho vọt, đánh đòn trẻ, quát mắng con, áp lực làm cha mẹ, thể diện gia đình, bạo lực giáo dục, triết lý giáo dục, kỷ luật tích cực]
 ---
 
 # PITFALL: cam bay thuong cho roi cho vot

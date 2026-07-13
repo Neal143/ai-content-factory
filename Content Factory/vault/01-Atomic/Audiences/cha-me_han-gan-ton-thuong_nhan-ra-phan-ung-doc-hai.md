@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con
 audience_circumstance: khi nhận ra bản thân đã có những phản ứng độc hại với con cái
-vivid_circumstances: ["Cuối ngày tồi tệ ở nhà | Nghe con la hét chống đối lại quyết định của mình | Nổi cơn thịnh nộ và hét lên mắng nhiếc con xối xả.", "Cuối ngày tồi tệ ở nhà | Nghe con la hét chống đối lại quyết định của mình | Nổi cơn thịnh nộ và hét lên mắng nhiếc con xối xả."]
+vivid_circumstances:
+- Cuối ngày tồi tệ ở nhà | Nghe con la hét chống đối lại quyết định của mình | Nổi cơn thịnh nộ và hét lên mắng nhiếc con xối xả.
+- Cuối ngày tồi tệ ở nhà | Nghe con la hét chống đối lại quyết định của mình | Nổi cơn thịnh nộ và hét lên mắng nhiếc con xối xả.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh muốn chuộc lỗi với con
 - cha mẹ sửa sai sau khi quát mắng con
-keywords: []
 ---
 # 🎯 Cha mẹ muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái
 

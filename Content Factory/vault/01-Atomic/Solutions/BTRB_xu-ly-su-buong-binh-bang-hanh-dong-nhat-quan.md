@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_consequent_action", "p1_listen_and_redirect"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_consequent_action
+- p1_listen_and_redirect
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot]]'
+description: Chiến lược thông minh để xử lý sự bướng bỉnh ở trẻ em thông qua việc liên tục duy trì sự nhất quán, kiên định trong hành động và khéo léo tránh sa đà vào những cuộc tranh luận vô ích hay nhượng bộ dễ dãi.
+keywords: [Giáo dục mầm non, Quản lý hành vi, Trẻ bướng bỉnh, Hành động nhất quán, Sự kiên định, Tránh tranh luận, Phớt lờ tiêu cực, Không nhượng bộ, Bám sát yêu cầu]
 ---
 
 *   **Bản chất:** Phương pháp tránh đối đầu trực diện với sự phản kháng của trẻ bằng cách giữ vững hành động nhất quán, kiên định và thể hiện sự tin tưởng vào sự phát triển của trẻ.

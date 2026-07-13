@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_handling_child_defiance", "p1_engage_not_enrage"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_handling_child_defiance
+- p1_engage_not_enrage
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_bay-quyen-uy-khi-tre-chong-doi]]"]
-keywords: []
+supports_insight:
+- '[[WBC_bay-quyen-uy-khi-tre-chong-doi]]'
+description: Chiến lược tiếp cận tập trung kêu gọi sự tham gia của não tầng trên bằng cách khuyến khích trẻ cùng thương lượng thay vì dùng quyền uy kích hoạt phản ứng chống đối của não tầng dưới.
+keywords: [nuôi dạy con, khoa học thần kinh, xử lý chống đối, kết nối não tầng trên, engage don't enrage, thương lượng hợp tác, không dùng quyền uy, không kích động, tìm kiếm giải pháp]
 ---
 
 - Bản chất: Là chiến lược tiếp cận tập trung vào việc kêu gọi sự tham gia của não tầng trên (upstairs brain) thay vì kích hoạt phản ứng bản năng của não tầng dưới (downstairs brain) trong các tình huống căng thẳng.

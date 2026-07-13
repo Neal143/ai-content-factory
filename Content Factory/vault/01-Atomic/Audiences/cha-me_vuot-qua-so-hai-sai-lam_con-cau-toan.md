@@ -2,16 +2,16 @@
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con vượt qua sự sợ hãi khi mắc sai lầm
-audience_circumstance: khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay
-  khi không đạt được kết quả hoàn hảo
-vivid_circumstances: ["Khi bé Freya (5 tuổi) viết sai chính tả | Bé liên tục tẩy xóa, tức giận và hét lên \"Con ghét viết\" | Mẹ bối rối không biết làm sao", "Khi bé Freya (5 tuổi) viết sai chính tả | Bé liên tục tẩy xóa, tức giận và hét lên \"Con ghét viết\" | Mẹ bối rối không biết làm sao"]
+audience_circumstance: khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo
+vivid_circumstances:
+- Khi bé Freya (5 tuổi) viết sai chính tả | Bé liên tục tẩy xóa, tức giận và hét lên "Con ghét viết" | Mẹ bối rối không biết làm sao
+- Khi bé Freya (5 tuổi) viết sai chính tả | Bé liên tục tẩy xóa, tức giận và hét lên "Con ghét viết" | Mẹ bối rối không biết làm sao
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh trị chứng cầu toàn của con
 - cha mẹ giúp trẻ sợ sai
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con vượt qua sự sợ hãi khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo
 

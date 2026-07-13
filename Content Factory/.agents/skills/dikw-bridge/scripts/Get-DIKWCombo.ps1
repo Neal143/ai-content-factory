@@ -1,4 +1,4 @@
-﻿<#
+<#
 Tên file: Get-DIKWCombo.ps1
 Last update: 27/05/2026 00:35 (GMT+7)
 Vai trò: Script công cụ thực hiện truy vấn và lắp ghép tổ hợp DIKW Combo tối ưu từ Data Vault.
@@ -72,8 +72,8 @@ function Format-Wikilink ([string]$val) {
 # PHASE 0: REBUILD & LOAD VAULT INDEX
 # ==========================================
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$buildScript = Join-Path $scriptDir "build-vault-index.ps1"
-$indexPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
+$buildScript = ".agents/scripts/build-vault-index.ps1"
+$indexPath = ".agents/assets/vault_index.json"
 
 # Rebuild index tự động
 if (Test-Path $buildScript) {
@@ -570,3 +570,6 @@ if ($Selected_Insight) {
     Write-Host "[WARN] Khong co resolved JTBD do khong co Combo."
 }
 Write-Host "==================================================" -ForegroundColor Magenta
+
+
+

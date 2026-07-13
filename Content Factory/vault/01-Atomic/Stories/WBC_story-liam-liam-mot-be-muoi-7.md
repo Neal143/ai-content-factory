@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_move_it_or_lose_it"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_regulation
+- p1_move_it_or_lose_it
 status: processed
-protagonist: "Liam"
+protagonist: Liam
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_knowledge: ["[[WBC_thay-doi-trang-thai-the-chat-de-thay-doi-trang-thai-cam-xuc-move-it-or-lose-it]]"]
-keywords: []
+supports_knowledge:
+- '[[WBC_thay-doi-trang-thai-the-chat-de-thay-doi-trang-thai-cam-xuc-move-it-or-lose-it]]'
+description: Câu chuyện về cậu bé Liam mười tuổi bế tắc với bài tập về nhà và quyết định chạy bộ quanh nhà, khẳng định tác dụng của việc vận động thể chất trong việc cân bằng cảm xúc và kết nối lại não bộ khi bị căng thẳng.
+keywords: [nuôi dạy con, khoa học thần kinh, thay đổi trạng thái thể chất, vận động cơ thể, giải tỏa căng thẳng, hội nhập não bộ, cảm xúc choáng ngợp, não tầng dưới, phục hồi bình tĩnh]
 ---
 
 <situation>Liam, một cậu bé mười tuổi, đang bị mất bình tĩnh và tuyệt vọng khi giải quyết bài tập về nhà.</situation>

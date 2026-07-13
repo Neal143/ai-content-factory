@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_mindfulness", "p1_mindsight_practice"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_mindfulness
+- p1_mindsight_practice
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_bat-luc-khi-con-bi-cam-xuc-tieu-cuc-nuot-chung]]"]
-vivid_knowledges: ["Hình ảnh cho trẻ nằm ngửa, đặt một chiếc thuyền đồ chơi lên bụng và hít thở sâu để thuyền nhấp nhô lên xuống."]
-keywords: []
+supports_insight:
+- '[[WBC_bat-luc-khi-con-bi-cam-xuc-tieu-cuc-nuot-chung]]'
+vivid_knowledges:
+- Hình ảnh cho trẻ nằm ngửa, đặt một chiếc thuyền đồ chơi lên bụng và hít thở sâu để thuyền nhấp nhô lên xuống.
+description: Cung cấp các bài tập tĩnh lặng và hình dung định hướng để trẻ tự làm dịu bản thân, tập trung tâm trí và kết nối sâu sắc với cảm giác bình yên bên trong.
+keywords: [nuôi dạy con, sức khỏe tinh thần, chánh niệm cho trẻ, thực hành mindsight, tâm nhãn, bài tập tĩnh lặng, trục bánh xe, tập trung tâm trí, hình dung định hướng]
 ---
 
 *   **Mục đích:** Cung cấp cho trẻ các công cụ và chiến lược để tự làm dịu bản thân, tích hợp những cảm xúc, mong muốn khác nhau và đưa sự tập trung trở lại "trục" (hub) của tâm trí - nơi chứa đựng sự bình yên.

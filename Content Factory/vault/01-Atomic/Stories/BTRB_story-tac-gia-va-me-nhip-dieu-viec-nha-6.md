@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_biological_rhythm", "p1_cosmic_rhythms"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_biological_rhythm
+- p1_cosmic_rhythms
 status: processed
-protagonist: "Tác giả và mẹ"
+protagonist: Tác giả và mẹ
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_su-hinh-thanh-nhip-dieu-noi-tai-tu-nhip-dieu-ngoai-tai]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_su-hinh-thanh-nhip-dieu-noi-tai-tu-nhip-dieu-ngoai-tai]]'
+description: Câu chuyện so sánh giữa nhịp điệu sinh hoạt truyền thống và lối sống hiện đại, nhấn mạnh việc duy trì các thói quen lặp lại giúp mang đến cho trẻ em cảm giác an toàn và trật tự.
+keywords: [giáo dục sớm, nhịp điệu gia đình, tác giả và mẹ, nhịp điệu truyền thống, tiện nghi hiện đại, biến mất cấu trúc, thói quen lặp lại, cảm giác an toàn, trật tự cuộc sống]
 ---
 
 <situation>Trước đây, khi con người phụ thuộc trực tiếp vào thiên nhiên để sinh tồn, cuộc sống của họ bắt buộc phải có nhịp điệu. Công việc được phân chia theo ngày: thứ Hai là ngày giặt giũ, thứ Ba là ngày ủi đồ, thứ Bảy là ngày nướng bánh, và Chủ nhật dành cho việc đi nhà thờ và nghỉ ngơi.</situation>

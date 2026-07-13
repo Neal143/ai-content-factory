@@ -2,14 +2,12 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: cá nhân hóa phương pháp giáo dục
-audience_circumstance: khi đối mặt với những tính cách và hành vi khác biệt của từng
-  đứa trẻ
+audience_circumstance: khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ
 parent_audience:
 - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
 aliases:
 - dạy con theo tính cách riêng
 - giáo dục thuận tự nhiên theo khí chất của trẻ
-keywords: []
 ---
 # 🎯 cha mẹ muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ
 

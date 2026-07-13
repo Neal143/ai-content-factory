@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_neuroplasticity_repair", "p1_the_power_of_repair"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_neuroplasticity_repair
+- p1_the_power_of_repair
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-so-su-ton-thuong-khong-the-van-hoi]]"]
-vivid_knowledges: ["Phủ một lớp trải nghiệm mới lên trên để viết lại phần kết cho một câu chuyện cũ."]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-so-su-ton-thuong-khong-the-van-hoi]]'
+vivid_knowledges:
+- Phủ một lớp trải nghiệm mới lên trên để viết lại phần kết cho một câu chuyện cũ.
+description: Phương pháp sửa chữa sai lầm 3 bước giúp cha mẹ viết lại phần kết cho những trải nghiệm tồi tệ, khôi phục cảm giác an toàn cho trẻ và làm hình mẫu tích cực về tinh thần nhận trách nhiệm.
+keywords: [Nuôi dạy con, Tâm lý học, Sửa chữa sai lầm, Khôi phục tổn thương, Sức mạnh của sự sửa chữa, Kỹ năng xin lỗi trẻ, The power of repair, Nhận trách nhiệm làm cha mẹ, Làm mẫu tinh thần trách nhiệm, Hàn gắn mối quan hệ]
 ---
 
 *   **Mục đích:** Viết lại phần kết cho các trải nghiệm tồi tệ để biến những ký ức sợ hãi, cô đơn của trẻ thành cảm giác an toàn, được thấu hiểu. Giúp trẻ ngừng tự đổ lỗi cho bản thân và làm hình mẫu cho trẻ về cách nhận trách nhiệm.

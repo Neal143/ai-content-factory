@@ -1,15 +1,21 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_parenting_foundations"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_parenting_foundations
 status: processed
-protagonist: "Cháu gái lớn của tác giả"
+protagonist: Cháu gái lớn của tác giả
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_ho-tro-phat-trien-ngon-ngu-thong-qua-su-bat-chuoc-chuan-muc]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_ho-tro-phat-trien-ngon-ngu-thong-qua-su-bat-chuoc-chuan-muc]]'
+description: Câu chuyện quan sát hình ảnh cô cháu gái của tác giả đầy tự hào khi dũng cảm buông tay để tìm kiếm sự thăng bằng trong không gian ở giai đoạn chập chững tập đi.
+keywords: [giáo dục sớm, phát triển vận động, cháu gái nhỏ, chập chững tập đi, tự tìm thăng bằng, buông tay hỗ trợ, động lực nội tại, không bỏ cuộc, bám víu thiên đường]
 ---
 
 <situation>Tác giả quan sát quá trình phát triển của đứa cháu gái lớn thông qua một bức ảnh khi cô bé đang chập chững bước đi.</situation>

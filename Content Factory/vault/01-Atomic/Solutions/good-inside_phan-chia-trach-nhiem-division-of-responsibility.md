@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_division_of_responsibility_food", "p1_minimizing_anxiety_over_consumption"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_division_of_responsibility_food
+- p1_minimizing_anxiety_over_consumption
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_so-lam-cha-me-toi-qua-bua-an]]"]
-vivid_knowledges: ["Cha mẹ đóng vai trò như một \"chiếc hộp\" thiết lập các cạnh bên ngoài, Trẻ được tự do khám phá và thể hiện bản thân ở bên trong chiếc hộp đó"]
-keywords: []
+supports_insight:
+- '[[good-inside_so-lam-cha-me-toi-qua-bua-an]]'
+vivid_knowledges:
+- Cha mẹ đóng vai trò như một "chiếc hộp" thiết lập các cạnh bên ngoài, Trẻ được tự do khám phá và thể hiện bản thân ở bên trong chiếc hộp đó
+description: Khung giải pháp chia nhỏ trách nhiệm trong bữa ăn nhằm loại bỏ lo âu và tranh giành quyền lực, trong đó cha mẹ thiết lập khuôn khổ còn trẻ được toàn quyền tự quyết định lượng thức ăn nạp vào cơ thể.
+keywords: [Nuôi dạy con, Tâm lý học, Tâm lý ăn uống, Phân chia trách nhiệm, Quyền tự quyết cơ thể, Division of responsibility, Loại bỏ lo âu bữa ăn, Từ chối ép buộc ăn uống, Thiết lập ranh giới bữa ăn, Vai trò của cha mẹ]
 ---
 
 - **Mục đích:** Giúp cha mẹ thoát khỏi lo âu về lượng thức ăn của trẻ, thiết lập ranh giới rõ ràng và hỗ trợ sự tự điều chỉnh, quyền tự quyết cơ thể của trẻ trong bữa ăn.

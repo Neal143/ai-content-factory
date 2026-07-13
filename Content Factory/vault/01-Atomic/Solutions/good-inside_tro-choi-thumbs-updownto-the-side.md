@@ -1,15 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung]]"]
-vivid_knowledges: ["Trẻ trốn dưới gầm giường và giao tiếp qua ngón tay cái"]
-keywords: []
+supports_insight:
+- '[[good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung]]'
+vivid_knowledges:
+- Trẻ trốn dưới gầm giường và giao tiếp qua ngón tay cái
+description: Trò chơi giao tiếp phi ngôn ngữ bằng ngón tay giúp những đứa trẻ nhạy cảm sâu sắc (DFK) dễ dàng bộc lộ cảm xúc an toàn bằng cách loại bỏ áp lực từ việc giao tiếp bằng mắt hay dùng lời nói trực tiếp.
+keywords: [Nuôi dạy con, Tâm lý học, Trẻ nhạy cảm sâu sắc, Giao tiếp phi ngôn ngữ, Trò chơi ngón tay cái, Loại bỏ áp lực ánh mắt, Giải tỏa sự phòng thủ, Phương pháp tiếp cận DFK, Thấu hiểu trẻ tổn thương, Không gian cảm xúc an toàn]
 ---
 
 *   **Bản chất:** Một trò chơi giao tiếp phi ngôn ngữ, giúp trẻ DFK thể hiện cảm xúc mà không bị ép buộc hay soi xét.

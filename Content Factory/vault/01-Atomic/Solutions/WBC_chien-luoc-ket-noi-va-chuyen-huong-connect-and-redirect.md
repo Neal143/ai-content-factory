@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_connect_and_redirect_strategy"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_regulation
+- p1_connect_and_redirect_strategy
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_bat-luc-va-bi-cuon-theo-con-lu-cam-xuc-vo-ly-cua-con]]"]
-vivid_knowledges: ["Nhân viên cứu hộ ôm lấy trẻ đang chới với đưa vào bờ an toàn trước khi dặn đừng bơi xa"]
-keywords: []
+supports_insight:
+- '[[WBC_bat-luc-va-bi-cuon-theo-con-lu-cam-xuc-vo-ly-cua-con]]'
+vivid_knowledges:
+- Nhân viên cứu hộ ôm lấy trẻ đang chới với đưa vào bờ an toàn trước khi dặn đừng bơi xa
+description: 'Chiến lược 2 bước cốt lõi quản lý lũ lụt cảm xúc: bắt đầu bằng việc dùng tín hiệu phi ngôn ngữ để kết nối với bán cầu não phải trước khi dùng logic não trái thiết lập kỷ luật và chuyển hướng hành vi.'
+keywords: [Nuôi dạy con, Tâm lý học, Kết nối và chuyển hướng, Quản lý lũ lụt cảm xúc, Tích hợp não trái não phải, Connect and redirect, Giao tiếp phi ngôn ngữ, Thiết lập ranh giới kỷ luật, Dung hòa logic và cảm xúc, Quy trình làm dịu thần kinh]
 ---
 
 *   **Mục đích:** Giúp trẻ bình tĩnh lại khi bị "lũ lụt cảm xúc" lấn át bằng cách kết nối với não phải (cảm xúc) trước khi dùng não trái (logic) để giải quyết vấn đề và dạy dỗ [1] [2].

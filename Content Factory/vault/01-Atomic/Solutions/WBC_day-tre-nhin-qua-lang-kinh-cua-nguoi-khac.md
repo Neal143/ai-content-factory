@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_conflict_resolution", "p1_connect_through_conflict"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_conflict_resolution
+- p1_connect_through_conflict
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]"]
-keywords: []
+supports_insight:
+- '[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]'
+description: Chiến lược hướng dẫn cha mẹ sử dụng những câu hỏi gợi mở khéo léo để giúp trẻ có thể dừng lại, tự đánh giá tình huống, thấu hiểu cảm xúc và đặt mình vào góc nhìn của người khác mỗi khi xảy ra mâu thuẫn trong cuộc sống.
+keywords: [nuôi dạy con, não bộ trẻ em, xung đột của trẻ, phát triển sự đồng cảm, góc nhìn của người khác, thấu hiểu cảm xúc, câu hỏi gợi mở, giảm sự phòng thủ, não tầng trên]
 ---
 
 *   **Bản chất:** Kích thích trẻ dừng lại và đánh giá tình huống, suy nghĩ về cảm xúc và góc nhìn của người đối diện khi có xung đột xảy ra.

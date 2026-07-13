@@ -1,15 +1,13 @@
 ﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
-audience_main_job: tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết
-  thiêng liêng
+audience_main_job: tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng
 audience_circumstance: khi trẻ bước sang tuổi mới
 parent_audience:
 - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
 aliases:
 - chuẩn bị sinh nhật ý nghĩa cho con
 - tổ chức sinh nhật kiểu Waldorf cho bé
-keywords: []
 ---
 # 🎯 cha mẹ muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới
 

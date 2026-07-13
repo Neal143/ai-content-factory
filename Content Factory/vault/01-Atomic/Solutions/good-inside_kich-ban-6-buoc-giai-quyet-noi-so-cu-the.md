@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_jump_into_the_hole", "p1_fear_resolution_script"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_jump_into_the_hole
+- p1_fear_resolution_script
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_dung-logic-de-tran-an-noi-so]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_dung-logic-de-tran-an-noi-so]]'
+description: Khung 6 bước giúp cha mẹ trò chuyện và đồng hành mang tính xây dựng khi trẻ đối mặt với những nỗi sợ cụ thể, từ việc công nhận cảm xúc đến việc cùng tạo ra câu thần chú để đương đầu.
+keywords: [Nuôi dạy con, Tâm lý học, Nỗi sợ cụ thể, Vượt qua sợ hãi, Khung 6 bước đối mặt nỗi sợ, Công nhận cảm xúc lo âu, Câu thần chú trấn an, Giải quyết vấn đề cùng con, Kịch bản trò chuyện nỗi sợ, Chia sẻ trải nghiệm cha mẹ]
 ---
 
 *   **Mục đích:** Giúp cha mẹ đối mặt và trò chuyện trực tiếp về những nỗi sợ cụ thể của trẻ một cách mang tính xây dựng, giúp trẻ dũng cảm đối mặt với chúng.

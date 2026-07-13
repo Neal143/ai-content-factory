@@ -2,14 +2,12 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và nề nếp cho con
-audience_circumstance: khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt
-  hàng ngày
+audience_circumstance: khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày
 parent_audience:
 - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
 aliases:
 - rèn nề nếp sinh hoạt cho trẻ khó bảo
 - dạy con kỷ luật qua sinh hoạt hàng ngày
-keywords: []
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày
 

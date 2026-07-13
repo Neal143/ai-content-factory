@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_emotional_cloud_model"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_regulation
+- p1_emotional_cloud_model
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait]]"]
-vivid_knowledges: ["Những đám mây cảm xúc cuốn đến rồi trôi đi trên bầu trời tâm trí"]
-keywords: []
+supports_insight:
+- '[[WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait]]'
+vivid_knowledges:
+- Những đám mây cảm xúc cuốn đến rồi trôi đi trên bầu trời tâm trí
+description: Áp dụng mô hình thời tiết tâm trí giúp trẻ nhận thức rõ ràng rằng các cảm xúc tiêu cực mạnh mẽ chỉ là những trạng thái nhất thời giống như một đám mây trôi qua, chứ hoàn toàn không phải là những đặc điểm tính cách trường tồn.
+keywords: [nuôi dạy con, tâm lý học trẻ em, điều chỉnh cảm xúc, nhận thức bản thân, mô hình đám mây, thời tiết tâm trí, tính tạm thời, tách biệt cảm xúc, trạng thái nhất thời]
 ---
 
 *   **Bản chất:** Nhìn nhận các cảm xúc của con người giống như thời tiết. Những cảm xúc tiêu cực như sợ hãi, thất vọng và cô đơn chỉ là những trạng thái tạm thời (temporary states), không phải là những đặc điểm trường tồn (enduring traits).

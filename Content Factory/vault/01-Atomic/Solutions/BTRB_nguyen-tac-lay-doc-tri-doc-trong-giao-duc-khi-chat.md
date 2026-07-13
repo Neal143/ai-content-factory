@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_four_temperaments", "p1_like_heals_like"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_four_temperaments
+- p1_like_heals_like
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]"]
-vivid_knowledges: ["Để một cậu bé đang hừng hực cơn giận dữ chạy ra vườn leo trèo đến khi thấm mệt và tự bình tĩnh lại thay vì la mắng."]
-keywords: []
+supports_insight:
+- '[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]'
+vivid_knowledges:
+- Để một cậu bé đang hừng hực cơn giận dữ chạy ra vườn leo trèo đến khi thấm mệt và tự bình tĩnh lại thay vì la mắng.
+description: Nguyên tắc giáo dục khí chất theo phương pháp Waldorf dựa trên quy luật 'lấy độc trị độc', sử dụng môi trường cùng tần số để kích hoạt cơ chế tự cân bằng.
+keywords: [Giáo dục mầm non, Phương pháp Waldorf, Giáo dục khí chất, Lấy độc trị độc, Kích hoạt đề kháng, Tần số tính cách, Cơ chế tự cân bằng, Tính cách u sầu, Vận động cường độ cao]
 ---
 
 *   **Bản chất:** Quy tắc vàng trong giáo dục khí chất theo phương pháp Waldorf: "Giống nhau nhận ra nhau; giống nhau có thể chữa lành cho nhau" (Like recognizes like; like can heal like).

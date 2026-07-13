@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_songs_for_routines"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_songs_for_routines
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_kho-khan-khi-chuyen-tiep-hoat-dong]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_kho-khan-khi-chuyen-tiep-hoat-dong]]'
+description: Gắn kết các bài hát nhịp điệu với vận động cơ thể để biến những công việc nhà hàng ngày thành trò chơi thú vị, giúp trẻ hào hứng tham gia và rèn luyện kỹ năng.
+keywords: [Giáo dục mầm non, Vui chơi trẻ em, Bài hát nhịp điệu, Vận động cơ thể, Công việc hàng ngày, Thay lời bài hát, Thực hành bắt chước, Rèn luyện linh hoạt, Trò chơi thú vị]
 ---
 
 *   **Bản chất:** Gắn liền vần điệu âm nhạc với các hoạt động thể chất cụ thể hoặc các công việc nhà để trẻ thực hành bắt chước và rèn luyện kỹ năng vận động.

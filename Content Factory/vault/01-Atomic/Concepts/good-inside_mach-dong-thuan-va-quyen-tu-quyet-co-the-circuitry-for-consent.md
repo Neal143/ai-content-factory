@@ -1,14 +1,21 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_consent_circuitry
+- p1_trusting_bodily_signals
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]'
+description: Sự đồng thuận bắt nguồn từ việc tin tưởng tín hiệu cơ thể. Gạt bỏ cảm giác của trẻ sẽ gieo rắc sự hoài nghi bản thân. Tôn trọng quyền tự quyết giúp trẻ xây dựng nền tảng vững chắc.
+keywords: [sự đồng thuận, quyền tự quyết, tín hiệu cơ thể, tâm lý học hành vi, hoài nghi bản thân, tôn trọng cảm giác, kỹ năng quyết định, nuôi dạy trẻ]
 ---
 
 *   **Định nghĩa:** Sự đồng thuận cốt lõi là niềm tin rằng chỉ có chúng ta mới biết điều gì đang xảy ra với mình, điều gì ta muốn và điều gì tạo ra sự thoải mái trong từng khoảnh khắc. Ở trẻ em, nó bao gồm mọi vấn đề về quyền tự quyết cơ thể: từ việc ngần ngại tham gia tiệc, từ chối ăn thêm khi đã no, hay sợ hãi bóng tối.

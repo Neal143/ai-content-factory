@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "BELIEF"
-topics: ["p1_cua_so_vang_phat_trien_tre_0_7_tuoi"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: BELIEF
+topics:
+- p1_cua_so_vang_phat_trien_tre_0_7_tuoi
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Niềm tin mãnh liệt rằng 0-7 tuổi là 'giai đoạn vàng' vô giá cho sự phát triển của trẻ nhỏ. Đây là động lực thúc đẩy cha mẹ không ngừng tìm kiếm những phương pháp giáo dục bài bản và có chiều sâu.
+keywords: [giai đoạn vàng, phát triển sớm, giáo dục mầm non, động lực cha mẹ, cơ hội vô giá, đầu tư giáo dục, nuôi dạy con bài bản, khoa học phát triển]
 ---
 
 # BELIEF: giai doan vang 0-7 tuoi

@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_whining_formula", "p1_humor_response"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_whining_formula
+- p1_humor_response
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri]]'
+description: Phương pháp dùng sự hài hước và diễn kịch để hóa giải những tiếng rên rỉ, đòi hỏi của trẻ, giúp tái thiết lập sự kết nối nhẹ nhàng và đẩy lùi cảm giác bất lực mà không rơi vào cạm bẫy chế giễu.
+keywords: [Nuôi dạy con, Tâm lý học, Quản lý hành vi, Phản hồi bằng sự hài hước, Giải quyết tiếng rên rỉ, Humor response, Tái thiết lập kết nối, Tránh nhầm lẫn chế giễu, Làm dịu sự bất lực, Nghệ thuật giao tiếp]
 ---
 
 - Bản chất: Sử dụng sự vui vẻ và hài hước để đối trọng lại với tiếng rên rỉ của trẻ.

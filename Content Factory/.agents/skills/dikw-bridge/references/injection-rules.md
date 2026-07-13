@@ -1,4 +1,4 @@
----
+﻿---
 name: injection-rules.md (DIKW Injection Rules)
 last_update: 27/05/2026 00:45 (GMT+7)
 role: Tài liệu hướng dẫn quy chuẩn tiêm DIKW và giao diện gọi Tool Get-DIKWCombo.
@@ -43,3 +43,4 @@ Toàn bộ logic Bước 1-4 được đóng gói trong script:
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".agents/skills/dikw-bridge/scripts/Get-DIKWCombo.ps1" -Topics "[topic]" -Audience "[audience]" -PersonaUser "[user]" [-TargetSourceIds @("source1")]
 ```
+

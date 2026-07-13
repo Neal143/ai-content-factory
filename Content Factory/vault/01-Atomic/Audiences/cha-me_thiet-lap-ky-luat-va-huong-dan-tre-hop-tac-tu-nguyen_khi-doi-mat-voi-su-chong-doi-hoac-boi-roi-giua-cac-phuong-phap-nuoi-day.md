@@ -2,14 +2,12 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện
-audience_circumstance: khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp
-  nuôi dạy
+audience_circumstance: khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy
 parent_audience:
 - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
 aliases:
 - dạy con tính tự giác kỷ luật
 - xử lý khi trẻ chống đối hợp tác
-keywords: []
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy
 

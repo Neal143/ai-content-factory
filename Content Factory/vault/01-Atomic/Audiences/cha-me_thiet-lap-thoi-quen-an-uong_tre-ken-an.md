@@ -2,16 +2,16 @@
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thiết lập ranh giới và thói quen ăn uống lành mạnh
-audience_circumstance: khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng
-  trong bữa ăn
-vivid_circumstances: ["Lúc 4 giờ chiều ở nhà | Trẻ kêu đói lả và nằng nặc đòi ăn bánh Goldfish thay vì chờ bữa tối | Cha mẹ cảm thấy bất lực, nhượng bộ và sau đó bực tức vì trẻ bỏ bữa tối", "Lúc 4 giờ chiều ở nhà | Trẻ kêu đói lả và nằng nặc đòi ăn bánh Goldfish thay vì chờ bữa tối | Cha mẹ cảm thấy bất lực, nhượng bộ và sau đó bực tức vì trẻ bỏ bữa tối"]
+audience_circumstance: khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn
+vivid_circumstances:
+- Lúc 4 giờ chiều ở nhà | Trẻ kêu đói lả và nằng nặc đòi ăn bánh Goldfish thay vì chờ bữa tối | Cha mẹ cảm thấy bất lực, nhượng bộ và sau đó bực tức vì trẻ bỏ bữa tối
+- Lúc 4 giờ chiều ở nhà | Trẻ kêu đói lả và nằng nặc đòi ăn bánh Goldfish thay vì chờ bữa tối | Cha mẹ cảm thấy bất lực, nhượng bộ và sau đó bực tức vì trẻ bỏ bữa tối
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh trị chứng biếng ăn của con
 - cha mẹ xử lý khi con kén ăn
-keywords: []
 ---
 # 🎯 Cha mẹ muốn thiết lập ranh giới và thói quen ăn uống lành mạnh khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn
 

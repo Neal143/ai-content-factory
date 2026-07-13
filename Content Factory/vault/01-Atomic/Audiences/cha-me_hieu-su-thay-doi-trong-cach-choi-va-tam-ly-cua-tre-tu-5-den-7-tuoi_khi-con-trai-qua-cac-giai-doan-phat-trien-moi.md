@@ -8,7 +8,6 @@ parent_audience:
 aliases:
 - nắm bắt tâm lý vui chơi của trẻ tiền tiểu học
 - đồng hành cùng sự biến đổi tâm lý của bé 5-7 tuổi
-keywords: []
 ---
 # 🎯 cha mẹ muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới
 

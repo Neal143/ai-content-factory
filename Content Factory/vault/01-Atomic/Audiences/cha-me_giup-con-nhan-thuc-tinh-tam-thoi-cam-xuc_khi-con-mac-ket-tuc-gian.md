@@ -2,16 +2,15 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp con nhận thức tính tạm thời của cảm xúc
-audience_circumstance: khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ
-  hãi hoặc buồn bã
-vivid_circumstances: ["Khi trẻ đang khóc lóc ỉ ôi vì một chuyện tồi tệ vừa xảy ra | Bố mẹ ngồi cạnh an ủi | Trẻ đinh ninh rằng mình sẽ mãi buồn bã và ghét bỏ mọi thứ xung quanh"]
+audience_circumstance: khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã
+vivid_circumstances:
+- Khi trẻ đang khóc lóc ỉ ôi vì một chuyện tồi tệ vừa xảy ra | Bố mẹ ngồi cạnh an ủi | Trẻ đinh ninh rằng mình sẽ mãi buồn bã và ghét bỏ mọi thứ xung quanh
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh
 - người hướng dẫn con
-keywords: []
 ---
 # 🎯 cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã
 

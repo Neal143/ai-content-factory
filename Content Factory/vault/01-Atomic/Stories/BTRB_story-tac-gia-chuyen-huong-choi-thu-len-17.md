@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_reduce_the_word_no", "p1_energy_redirection"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_reduce_the_word_no
+- p1_energy_redirection
 status: processed
-protagonist: "Tác giả"
+protagonist: Tác giả
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_chuyen-huong-nang-luong]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_chuyen-huong-nang-luong]]'
+description: Câu chuyện kể về sự khéo léo của tác giả khi chuyển hướng năng lượng chơi đùa của các bé gái bằng cách gợi ý và cung cấp đồ vật để các em tự xây nhà cho thú len.
+keywords: [giáo dục sớm, phương pháp giáo dục, giáo viên mầm non, bé gái tung đồ, chuyển hướng năng lượng, gợi ý đồ vật, xây nhà cho thú len, trò chơi hòa hợp, không cấm đoán]
 ---
 
 <situation>Một ngày nọ trong lớp học mầm non của tôi, tôi đang ủi những tấm trải bàn ăn nhẹ của chúng tôi trong giờ chơi của các em. Hai bé gái đang chơi với một vài con thú được đan bằng len.</situation>

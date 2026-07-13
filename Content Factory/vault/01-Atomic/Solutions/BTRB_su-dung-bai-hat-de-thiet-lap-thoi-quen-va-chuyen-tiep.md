@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_songs_for_routines"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_songs_for_routines
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_kho-khan-khi-chuyen-tiep-hoat-dong]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_kho-khan-khi-chuyen-tiep-hoat-dong]]'
+description: Sử dụng âm nhạc và vần điệu quen thuộc làm tín hiệu dẫn dắt thay cho mệnh lệnh, giúp trẻ tự nguyện và vui vẻ bước vào các thói quen sinh hoạt.
+keywords: [Giáo dục mầm non, Quản lý sinh hoạt, Bài hát chuyển tiếp, Tín hiệu thói quen, Thay thế mệnh lệnh, Rửa tay ăn nhẹ, Vần thơ chúc phúc, Khép lại ngày trọn vẹn, Tự động tham gia]
 ---
 
 *   **Bản chất:** Dùng âm nhạc và vần điệu (thay vì mệnh lệnh) để đánh dấu các mốc thời gian và dẫn dắt trẻ vào các thói quen sinh hoạt cơ bản.

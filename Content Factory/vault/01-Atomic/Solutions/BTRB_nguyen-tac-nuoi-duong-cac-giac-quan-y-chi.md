@@ -1,15 +1,22 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_will_senses"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_will_senses
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_ep-chin-ep-su-phat-trien-van-dong]]"]
-vivid_knowledges: ["Đứa trẻ chập chững tự tìm được thăng bằng trong không gian bằng cách vươn cả hai tay lên chới với tóm lấy bầu trời."]
-keywords: []
+supports_insight:
+- '[[BTRB_ep-chin-ep-su-phat-trien-van-dong]]'
+vivid_knowledges:
+- Đứa trẻ chập chững tự tìm được thăng bằng trong không gian bằng cách vươn cả hai tay lên chới với tóm lấy bầu trời.
+description: Nuôi dưỡng các giác quan hướng nội và ý chí của trẻ bằng cách tôn trọng nhịp độ phát triển tự nhiên, loại bỏ các thiết bị ép buộc như xe tập đi.
+keywords: [Giáo dục mầm non, Phát triển thể chất, Giác quan hướng nội, Tôn trọng nhịp độ, Nuôi dưỡng ý chí, Xe tập đi, Chuyển động tự do, Sợi tự nhiên, Giác quan thăng bằng]
 ---
 
 *   **Bản chất:** Phương pháp bảo vệ và phát triển các giác quan hướng nội của trẻ bằng cách tôn trọng nhịp độ tự nhiên của cơ thể và cung cấp một môi trường tương tác chân thực, an toàn.

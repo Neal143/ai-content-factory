@@ -10,7 +10,6 @@ parent_audience:
 aliases:
 - phụ huynh
 - người dạy dỗ con
-keywords: []
 ---
 # 🎯 cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày
 

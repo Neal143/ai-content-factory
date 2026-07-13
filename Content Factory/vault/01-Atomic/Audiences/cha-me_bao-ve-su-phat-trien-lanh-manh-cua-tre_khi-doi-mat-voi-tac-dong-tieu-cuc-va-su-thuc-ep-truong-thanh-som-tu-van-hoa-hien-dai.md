@@ -2,14 +2,12 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: bảo vệ sự phát triển lành mạnh của trẻ
-audience_circumstance: khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành
-  sớm từ văn hóa hiện đại
+audience_circumstance: khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại
 parent_audience:
 - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
 aliases:
 - giữ gìn tuổi thơ cho con trước áp lực xã hội
 - nuôi dạy con chậm lại giữa thế giới vội vã
-keywords: []
 ---
 # 🎯 cha mẹ muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại
 

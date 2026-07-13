@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_family_rhythm"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_family_rhythm
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_su-lam-guong-va-nhip-dieu-gia-dinh-la-giao-duc-tot-nhat]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_su-lam-guong-va-nhip-dieu-gia-dinh-la-giao-duc-tot-nhat]]'
+description: Nuôi dưỡng tính trật tự và kỷ luật nội tâm cho trẻ bằng cách thiết lập nhịp điệu sinh hoạt ổn định và thực hiện các công việc gia đình với sự tận tâm, chăm chút.
+keywords: [Giáo dục mầm non, Nuôi dạy con, Nhịp điệu sinh hoạt, Công việc gia đình, Sự tận tâm, Hấp thụ vô thức, Tính trật tự nội tâm, Năng lực kỷ luật, Lịch trình đều đặn]
 ---
 
 *   **Bản chất:** Đây là quy tắc biến các công việc nội trợ hàng ngày thành những hoạt động có tính nghệ thuật và nhịp điệu nhất quán nhằm nuôi dưỡng sự trật tự, kỷ luật trong nội tâm của trẻ.

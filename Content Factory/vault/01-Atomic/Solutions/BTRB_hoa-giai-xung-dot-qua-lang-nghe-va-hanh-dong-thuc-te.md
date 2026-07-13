@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_consequent_action", "p1_listen_and_redirect"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_consequent_action
+- p1_listen_and_redirect
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot]]'
+description: Phương pháp hòa giải xung đột và mách lẻo ở trẻ nhỏ thông qua sự lắng nghe trọn vẹn, đồng thời chuyển hướng năng lượng tiêu cực vào các hành động thực tế và sáng tạo.
+keywords: [Giáo dục mầm non, Quản lý hành vi, Hòa giải xung đột, Lắng nghe trọn vẹn, Hành động thực tế, Thói quen mách lẻo, Xin phép lịch sự, Chuyển hướng năng lượng, Giải quyết vấn đề]
 ---
 
 *   **Bản chất:** Phương pháp thay đổi cách thức tương tác của trẻ khi có xung đột (tranh giành, mách lẻo) bằng sự lắng nghe trọn vẹn và chuyển hướng năng lượng tiêu cực vào các công việc sáng tạo thực tế.

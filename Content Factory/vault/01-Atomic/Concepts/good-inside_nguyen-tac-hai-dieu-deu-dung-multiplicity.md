@@ -1,14 +1,21 @@
 ﻿---
 type: concept
 knowledge_type: philosophy
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_two_things_are_true", "p1_escaping_power_struggle"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_two_things_are_true
+- p1_escaping_power_struggle
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]'
+description: Nguyên tắc 'Hai điều đều đúng' là khả năng chấp nhận nhiều cảm xúc và góc nhìn đối lập cùng lúc. Việc này giúp trẻ cảm thấy được tôn trọng, đồng thời duy trì sự rõ ràng trong ranh giới giáo dục của cha mẹ.
+keywords: [tâm lý học hành vi, hai điều đều đúng, góc nhìn đối lập, tôn trọng cảm xúc, ranh giới giáo dục, chấp nhận khác biệt, giải quyết xung đột, nuôi dạy con]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Khả năng chứa đựng và chấp nhận nhiều sự thật, suy nghĩ, cảm xúc, hoặc góc nhìn đối lập cùng lúc tồn tại mà không cần phải triệt tiêu hay phủ nhận bất kỳ điều nào.

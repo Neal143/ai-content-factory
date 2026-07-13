@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_biological_rhythm", "p1_cosmic_rhythms"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_biological_rhythm
+- p1_cosmic_rhythms
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_can-kiet-sinh-luc-do-mat-nhip-dieu-song]]"]
-vivid_knowledges: ["Sau khi ùa ra sân chơi như một nhịp thở ra, trẻ quây quần lại hát múa tĩnh tâm như một nhịp thở vào."]
-keywords: []
+supports_insight:
+- '[[BTRB_can-kiet-sinh-luc-do-mat-nhip-dieu-song]]'
+vivid_knowledges:
+- Sau khi ùa ra sân chơi như một nhịp thở ra, trẻ quây quần lại hát múa tĩnh tâm như một nhịp thở vào.
+description: Thiết kế lịch trình hoạt động luân phiên nhịp nhàng giữa trạng thái tập trung và trạng thái bung tỏa năng lượng để duy trì sự cân bằng nội tâm cho trẻ.
+keywords: [Giáo dục mầm non, Nhịp điệu sinh hoạt, Mô hình hơi thở, Luân phiên hoạt động, Cân bằng năng lượng, Thở vào tập trung, Thở ra thư giãn, Giờ vòng tròn, Chạy nhảy ngoài trời]
 ---
 
 *   **Bản chất:** Là việc thiết kế các hoạt động trong ngày luân phiên giữa trạng thái co lại, tập trung ("thở vào") và trạng thái mở rộng, thư giãn ("thở ra").

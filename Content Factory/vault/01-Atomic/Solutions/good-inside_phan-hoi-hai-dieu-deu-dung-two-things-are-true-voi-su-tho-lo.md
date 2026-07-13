@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]'
+description: Cấu trúc phản hồi 4 bước giúp cha mẹ thiết lập ranh giới kiên quyết với ngôn từ thô lỗ nhưng vẫn xác nhận được những cảm xúc tiêu cực đang che giấu bên trong trẻ, tránh làm đứt gãy mối quan hệ.
+keywords: [Nuôi dạy con, Tâm lý học, Khung giao tiếp 4 bước, Quản lý ngôn từ thô lỗ, Nguyên lý hai điều đều đúng, Two things are true, Thiết lập ranh giới vững chắc, Chứa đựng cảm xúc tiêu cực, Tạo khoảng dừng an toàn, Bảo vệ mối quan hệ]
 ---
 
 *   **Mục đích:** Khung giao tiếp giúp cha mẹ duy trì uy quyền lãnh đạo, thiết lập ranh giới rõ ràng đối với ngôn từ thô lỗ, nhưng đồng thời vẫn xác nhận và chứa đựng được cảm xúc khó khăn của con.

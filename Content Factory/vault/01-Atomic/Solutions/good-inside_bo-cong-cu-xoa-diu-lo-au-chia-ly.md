@@ -1,15 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo]]"]
-vivid_knowledges: ["Trẻ mang theo bức ảnh gia đình ép nhựa, nhìn vào đó và nhẩm nhiều lần: \"Gia đình mình đang ở gần\"."]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo]]'
+vivid_knowledges:
+- 'Trẻ mang theo bức ảnh gia đình ép nhựa, nhìn vào đó và nhẩm nhiều lần: "Gia đình mình đang ở gần".'
+description: Cung cấp một bộ công cụ thực hành cụ thể và chi tiết giúp làm dịu đi cảm giác lo âu của trẻ nhỏ khi phải chia ly cha mẹ để bước vào trong các môi trường học tập mới.
+keywords: [Giáo dục trẻ em, Sức khỏe tinh thần, Xóa dịu lo âu, Chia ly cha mẹ, Kỹ năng tách rời, Thói quen chia ly, Vật thể chuyển tiếp, Kể lại câu chuyện]
 ---
 
 *   **Mục đích:** Các bước thực tiễn giúp trẻ mang theo sự kết nối của cha mẹ vào môi trường mới, làm dịu hệ thần kinh và làm quen với việc xa cách.

@@ -2,16 +2,15 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp trẻ đối mặt và tích hợp các ký ức đau buồn
-audience_circumstance: khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện
-  cũ
-vivid_circumstances: ["Đang chế tạo xe đua gỗ | Khuôn mặt hiện lên vẻ sợ hãi khi được yêu cầu đối mặt | Từ chối, né tránh nhắc lại chuyện ở công viên"]
+audience_circumstance: khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ
+vivid_circumstances:
+- Đang chế tạo xe đua gỗ | Khuôn mặt hiện lên vẻ sợ hãi khi được yêu cầu đối mặt | Từ chối, né tránh nhắc lại chuyện ở công viên
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh
 - người chăm sóc
-keywords: []
 ---
 # 🎯 cha mẹ muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ
 

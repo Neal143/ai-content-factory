@@ -1,14 +1,21 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_perfectionism_nature", "p1_reframe_perfectionism"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_perfectionism_nature
+- p1_reframe_perfectionism
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_logic-giai-quyet-hoan-hao]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_logic-giai-quyet-hoan-hao]]'
+description: Chủ nghĩa hoàn hảo thực chất là sự khó khăn trong việc điều hòa cảm xúc. Trẻ tự gắn giá trị bản thân với thành tích, dễ dàng sụp đổ khi kết quả không hoàn mỹ vì chúng cảm thấy bất an chứ không xuất phát từ sự bướng bỉnh.
+keywords: [tâm lý học hành vi, điều hòa cảm xúc, chủ nghĩa hoàn hảo, giá trị bản thân, áp lực thành tích, cảm giác an toàn, giáo dục con cái, khủng hoảng tâm lý]
 ---
 
 * **Định nghĩa/Phát biểu luật:** Chủ nghĩa hoàn hảo luôn là một sự chật vật trong việc điều chỉnh cảm xúc (emotion regulation struggle).

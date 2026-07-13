@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "DESIRE"
-topics: ["p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con", "p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: DESIRE
+topics:
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Phụ huynh hiện đại luôn khao khát xây dựng một tổ ấm mà ở đó mọi thành viên đều được tự do phát triển bản thân. Họ mong muốn thoát khỏi những ràng buộc khắt khe từ áp lực xã hội và kỳ vọng sai lệch.
+keywords: [tự do phát triển, ràng buộc xã hội, áp lực kỳ vọng, tự do gia đình, triết lý giáo dục, phát triển bản thân, khao khát nuôi dạy, quyền tự quyết]
 ---
 
 # DESIRE: tu do bo me con cai

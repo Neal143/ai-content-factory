@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_two_things_are_true", "p1_escaping_power_struggle"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_two_things_are_true
+- p1_escaping_power_struggle
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]'
+description: Phương pháp bẻ gãy vòng lặp xấu hổ và dằn vặt của cha mẹ thông qua nguyên lý "Hai điều đều đúng", giúp tách biệt hành vi sai lầm nhất thời khỏi bản chất tốt đẹp để lấy lại bình tĩnh và động lực sửa sai.
+keywords: [Nuôi dạy con, Tâm lý học, Chữa lành nội tâm, Cảm giác tội lỗi, Nguyên lý hai điều đều đúng, Tách biệt hành vi và bản chất, Bẻ gãy vòng lặp xấu hổ, Cách xoa dịu bản thân, Quản lý cảm xúc cha mẹ, Từ bỏ dán nhãn tiêu cực]
 ---
 
 *   **Bản chất:** Sử dụng "Hai điều đều đúng" để tự xoa dịu nội tâm, tách biệt hành vi sai lầm (những gì chúng ta làm) khỏi bản sắc con người (chúng ta là ai).

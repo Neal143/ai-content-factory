@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_not_listening_nature", "p1_connect_before_asking"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_not_listening_nature
+- p1_connect_before_asking
 status: processed
-protagonist: "Sonia và con trai Felix"
+protagonist: Sonia và con trai Felix
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_chien-luoc-ket-noi-truoc-khi-yeu-cau-connect-before-you-ask]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_chien-luoc-ket-noi-truoc-khi-yeu-cau-connect-before-you-ask]]'
+description: Câu chuyện về cậu bé Felix liên tục phớt lờ lời mẹ và sự thay đổi kỳ diệu khi người mẹ áp dụng chiến lược kết nối trước khi đưa ra yêu cầu, nhấn mạnh sự hợp tác luôn khởi nguồn từ sự gắn kết sâu sắc.
+keywords: [nuôi dạy con, tâm lý học trẻ em, kết nối trước yêu cầu, trẻ phớt lờ lời nói, thái độ thiếu tôn trọng, xây dựng sự hợp tác, trò chơi đổi vai, thấu hiểu cảm xúc, từ bỏ la hét]
 ---
 
 <situation>Sonia, một người mẹ có hai con nhỏ, đến văn phòng bác sĩ trong tình trạng bực bội và tuyệt vọng vì cậu con trai Felix liên tục phớt lờ mọi thứ cô nói và không làm theo bất cứ yêu cầu nào.</situation>

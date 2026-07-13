@@ -1,15 +1,21 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_family_rhythm"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_family_rhythm
 status: processed
-protagonist: "Mẹ của tác giả"
+protagonist: Mẹ của tác giả
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_kien-tao-nhip-dieu-sinh-hoat-va-thoi-quen-thong-qua-su-tan-tam-trong-cong-viec-gia-dinh]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_kien-tao-nhip-dieu-sinh-hoat-va-thoi-quen-thong-qua-su-tan-tam-trong-cong-viec-gia-dinh]]'
+description: Câu chuyện cảm động về người mẹ đã biến công việc ủi đồ tẻ nhạt hàng tuần thành một tác phẩm nghệ thuật, qua đó vô thức truyền lại cho con gái ý thức về trật tự và nhịp điệu.
+keywords: [giáo dục sớm, nhiệm vụ gia đình, người mẹ cần mẫn, nhịp điệu việc nhà, ủi đồ hàng tuần, tác phẩm nghệ thuật, trật tự sinh hoạt, truyền cảm hứng, sức mạnh nội tại]
 ---
 
 <situation>Là một đứa trẻ, tôi biết rằng Thứ Hai là ngày giặt giũ. Tôi biết giường sẽ được thay ga và tất cả khăn trong phòng tắm sẽ được lấy đi và thay bằng những chiếc khăn mới. Tôi biết Thứ Ba là ngày ủi đồ.</situation>

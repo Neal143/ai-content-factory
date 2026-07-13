@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "DESIRE"
-topics: ["p1_xay_dung_y_chi_cho_tre", "p1_steiner_va_khoa_hoc_phat_trien_toan_dien"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: DESIRE
+topics:
+- p1_xay_dung_y_chi_cho_tre
+- p1_steiner_va_khoa_hoc_phat_trien_toan_dien
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Khao khát sâu sắc nhất của cha mẹ là nuôi dưỡng một đứa trẻ có ý chí mạnh mẽ. Họ mong con sở hữu đời sống nội tâm phong phú, vững vàng và có khả năng tự cảm nhận hạnh phúc từ bên trong.
+keywords: [ý chí mạnh mẽ, hạnh phúc tự thân, đời sống nội tâm, khả năng tự cảm nhận, nuôi dưỡng tinh thần, mục tiêu giáo dục, sự vững vàng, phát triển tâm hồn]
 ---
 
 # DESIRE: con hanh phuc y chi vung vang

@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sibling_attachment_security", "p1_focus_on_needs_not_fairness"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_sibling_attachment_security
+- p1_focus_on_needs_not_fairness
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me]]'
+description: Nguyên tắc phá vỡ tư duy chia đều toán học giữa các con, hướng dẫn cha mẹ phản hồi tiếng kêu không công bằng bằng cách xác nhận giá trị riêng và tập trung đáp ứng nhu cầu thực tế của từng cá nhân.
+keywords: [Nuôi dạy con, Tâm lý học, Xung đột anh chị em, Quản lý sự ghen tị, Tư duy nhu cầu cá nhân, Từ bỏ chia đều toán học, Ghi nhận giá trị bản thân, Xác lập quy tắc gia đình, Ngăn chặn sự so đo, Đáp ứng nhu cầu thực sự]
 ---
 
 *   **Bản chất:** Chuyển dịch tư duy nuôi dạy con từ việc chia đều mọi thứ ("Fairness orientation") sang việc đáp ứng những gì mỗi cá nhân thực sự cần.

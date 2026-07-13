@@ -1,54 +1,201 @@
-param(
-    [string]$Keywords,
-    [string]$TypeFilter
-)
-$ErrorActionPreference = "Stop"
+<#
+.SYNOPSIS
+Search-SemanticAtom.ps1
+Last update: 13/07/2026 10:44 (GMT+7)
 
-# 1. Update Index (có cooldown 15s) để chống Stale Index & tối ưu hiệu năng
-$indexerPath = ".agents/skills/dikw-bridge/scripts/build-vault-index.ps1"
-$indexPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
-$idxStats = Get-Item $indexPath -ErrorAction SilentlyContinue
-if (-not $idxStats -or (Get-Date) -gt $idxStats.LastWriteTime.AddSeconds(15)) {
-    if (Test-Path $indexerPath) { & powershell $indexerPath }
+.DESCRIPTION
+Vai tro: Script PowerShell da che do (alignment/dedup) de tim kiem cac Atom trong Vault, chay Local Zero-API.
+Khi nao su dung: Goi tu cac skill nhu atom-dedup, atom-linker, inbox-processor.
+Output: rag_results.json (danh sach candidates) hoac dedup_pairs.json (danh sach cac cap trung lap).
+Tom tat logic: 
+ - Luong A (alignment/dedup incremental): Loc theo Scope -> Cham diem Keyword -> Loc nguong -> Lay Top-K.
+ - Luong B (dedup full): Gom nhom theo (Audience x Type) -> So sanh tung cap (Pairwise) -> Loc nguong -> Xuat ra danh sach.
+#>
+
+param(
+    [Parameter(Mandatory = $true)]
+    [ValidateSet("alignment", "dedup")]
+    [string]$Mode,
+
+    [Parameter(Mandatory = $false)]
+    [ValidateSet("incremental", "full")]
+    [string]$Scope = "incremental",
+
+    [Parameter(Mandatory = $false)]
+    [string]$SourceAtomPath,
+
+    [Parameter(Mandatory = $false)]
+    [string[]]$NewAtoms,
+
+    [Parameter(Mandatory = $false)]
+    [ValidateSet("insight", "solution", "evidence", "")]
+    [string]$Layer = "",
+
+    [Parameter(Mandatory = $false)]
+    [string]$IndexPath = ".agents/assets/vault_index.json"
+)
+
+$THRESHOLD_ALIGNMENT = 4
+$THRESHOLD_DEDUP = 6
+$TOPK_ALIGNMENT = 15
+$TOPK_DEDUP = 10
+
+$DAG_PARENT_MAP = @{
+    "solution" = @("insight")
+    "concept" = @("insight")
+    "story" = @("solution","concept")
+    "quote" = @("solution","concept")
+    "data_point" = @("solution","concept")
 }
 
-# 2. Đọc DB
-$indexPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
-if (-not (Test-Path $indexPath)) { Write-Error "Khong tim thay vault_index.json"; exit }
+$TempDir = "vault/.curation_temp"
+if (-not (Test-Path $TempDir)) {
+    New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
+}
 
-$index = Get-Content -Path $indexPath -Raw -Encoding utf8 | ConvertFrom-Json
-$keywordArray = $Keywords.Split(",").ForEach({$_.Trim().ToLower()}) | Where-Object { $_ }
+if (-not (Test-Path $IndexPath)) {
+    Write-Host "[ERR] Khong tim thay vault_index.json tai $IndexPath" -ForegroundColor Red
+    exit 1
+}
 
-# 3. Chấm điểm Semantics
-$results = @()
-foreach ($key in $index.nodes.psobject.properties.name) {
-    $node = $index.nodes.$key
-    if ($TypeFilter -and $node.type -notmatch "(?i)^($TypeFilter)$") { continue }
+$IndexContent = Get-Content $IndexPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$Nodes = $IndexContent.nodes
+
+function Get-OverlapScore($kw1, $kw2) {
+    if (-not $kw1 -or -not $kw2) { return 0 }
+    $set1 = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($k in $kw1) { $set1.Add($k.Trim()) | Out-Null }
     
     $score = 0
-    foreach ($kw in $keywordArray) {
-        $kwSafe = [regex]::Escape($kw)
-        if ($key.ToLower() -match $kwSafe) { $score += 10 }
-        
-        if ($null -ne $node.topics) {
-            foreach ($t in $node.topics) {
-                if ($t.ToLower() -match $kwSafe) { $score += 5 }
-            }
-        }
-        if ($null -ne $node.excerpt) {
-            $score += [regex]::Matches($node.excerpt.ToLower(), $kwSafe).Count
-        }
+    foreach ($k in $kw2) {
+        if ($set1.Contains($k.Trim())) { $score++ }
     }
-    if ($score -gt 0) {
-        $results += [pscustomobject]@{ Path = $key; Score = $score; Excerpt = $node.excerpt }
-    }
+    return $score
 }
 
-# 4. Xuất file JSON Tạm (Poka-Yoke chống Agent lười)
-$outDir = ".agents/temp"
-if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
-$outPath = "$outDir/rag_results.json"
-$jsonStr = $results | Sort-Object Score -Descending | Select-Object -First 5 | ConvertTo-Json -Compress
-[System.IO.File]::WriteAllText((Resolve-Path $outDir).Path + "\rag_results.json", $jsonStr, [System.Text.Encoding]::UTF8)
+function Get-TypeGroup($type) {
+    if ($type -eq "insight") { return "insight" }
+    if ($type -match "^(solution|concept)$") { return "solution" }
+    if ($type -match "^(story|quote|data_point)$") { return "evidence" }
+    return ""
+}
 
-Write-Host "Success. Agent bat buoc doc file: $outPath de danh gia Semantics."
+if (($Mode -eq "alignment") -or ($Mode -eq "dedup" -and $Scope -eq "incremental")) {
+    if (-not $SourceAtomPath) {
+        Write-Host "[ERR] Yeu cau SourceAtomPath" -ForegroundColor Red
+        exit 1
+    }
+    if (-not $Nodes.psobject.properties.match($SourceAtomPath)) {
+        Write-Host "[ERR] Source atom khong co trong index: $SourceAtomPath" -ForegroundColor Red
+        exit 1
+    }
+    
+    $sourceNode = $Nodes.$SourceAtomPath
+    $sourceType = $sourceNode.type
+    $sourceAudience = $sourceNode.resolved_audience
+    $sourceKeywords = $sourceNode.keywords
+    
+    $candidates = @()
+    
+    foreach ($prop in $Nodes.psobject.properties) {
+        $path = $prop.Name
+        if ($path -eq $SourceAtomPath) { continue }
+        
+        $node = $prop.Value
+        
+        # Scope Filter
+        if ($Mode -eq "alignment") {
+            $allowedParents = $DAG_PARENT_MAP[$sourceType]
+            if (-not $allowedParents -or $node.type -notin $allowedParents) { continue }
+        } else {
+            # Dedup incremental
+            if ($node.type -ne $sourceType) { continue }
+            if ($sourceAudience -eq "CONFLICT" -or $node.resolved_audience -eq "CONFLICT") { continue }
+            if ($sourceAudience) {
+                if (-not $node.resolved_audience -or $node.resolved_audience.id -ne $sourceAudience.id) { continue }
+            } else {
+                if ($node.resolved_audience) { continue }
+            }
+        }
+        
+        $score = Get-OverlapScore $sourceKeywords $node.keywords
+        $threshold = if ($Mode -eq "alignment") { $THRESHOLD_ALIGNMENT } else { $THRESHOLD_DEDUP }
+        
+        if ($score -ge $threshold) {
+            $candidates += @{
+                "path" = $path
+                "score" = $score
+                "description" = $node.description
+                "resolved_audience" = $node.resolved_audience
+                "keywords" = $node.keywords
+            }
+        }
+    }
+    
+    $topK = if ($Mode -eq "alignment") { $TOPK_ALIGNMENT } else { $TOPK_DEDUP }
+    $sorted = $candidates | Sort-Object -Property @{Expression="score"; Descending=$true} | Select-Object -First $topK
+    
+    $outFile = "$TempDir/rag_results.json"
+    $sorted | ConvertTo-Json -Depth 5 | Out-File $outFile -Encoding UTF8
+    Write-Host "Da ghi ket qua vao $outFile ($($sorted.Count) candidates)"
+    
+} elseif ($Mode -eq "dedup" -and $Scope -eq "full") {
+    if (-not $Layer) {
+        Write-Host "[ERR] Dedup full yeu cau -Layer" -ForegroundColor Red
+        exit 1
+    }
+    
+    $groups = @{} # "audienceId_type" -> @(paths)
+    
+    foreach ($prop in $Nodes.psobject.properties) {
+        $path = $prop.Name
+        $node = $prop.Value
+        
+        if ((Get-TypeGroup $node.type) -ne $Layer) { continue }
+        if ($node.resolved_audience -eq "CONFLICT") { continue }
+        
+        $audId = if ($node.resolved_audience) { $node.resolved_audience.id } else { "NONE" }
+        $groupKey = "${audId}_$($node.type)"
+        
+        if (-not $groups.ContainsKey($groupKey)) {
+            $groups[$groupKey] = @()
+        }
+        $groups[$groupKey] += $path
+    }
+    
+    $pairs = @()
+    
+    foreach ($group in $groups.Values) {
+        for ($i = 0; $i -lt $group.Count; $i++) {
+            for ($j = $i + 1; $j -lt $group.Count; $j++) {
+                $path1 = $group[$i]
+                $path2 = $group[$j]
+                $node1 = $Nodes.$path1
+                $node2 = $Nodes.$path2
+                
+                $score = Get-OverlapScore $node1.keywords $node2.keywords
+                if ($score -ge $THRESHOLD_DEDUP) {
+                    $pairs += @{
+                        "score" = $score
+                        "resolved_audience" = $node1.resolved_audience
+                        "atom1" = @{
+                            "path" = $path1
+                            "description" = $node1.description
+                            "keywords" = $node1.keywords
+                        }
+                        "atom2" = @{
+                            "path" = $path2
+                            "description" = $node2.description
+                            "keywords" = $node2.keywords
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    $sortedPairs = $pairs | Sort-Object -Property @{Expression="score"; Descending=$true}
+    $outFile = "$TempDir/dedup_pairs.json"
+    $sortedPairs | ConvertTo-Json -Depth 6 | Out-File $outFile -Encoding UTF8
+    Write-Host "Da ghi ket qua vao $outFile ($($sortedPairs.Count) pairs)"
+}

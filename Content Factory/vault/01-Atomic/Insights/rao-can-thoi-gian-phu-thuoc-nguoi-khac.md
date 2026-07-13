@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "BARRIER"
-topics: ["p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh", "p2_thiet_lap_moi_truong_giao_duc_tai_nha_giai_doan_1_3_tuoi"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: BARRIER
+topics:
+- p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh
+- p2_thiet_lap_moi_truong_giao_duc_tai_nha_giai_doan_1_3_tuoi
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Thời gian đang trở thành tài nguyên khan hiếm nhất của cha mẹ hiện đại. Việc đi làm cả ngày và phải không ngừng tự học khiến họ buộc phải giao phó con cái cho ông bà hoặc người giúp việc chăm sóc.
+keywords: [khan hiếm thời gian, áp lực công việc, phụ thuộc người khác, ông bà trông cháu, người giúp việc, tự học nâng cao, đồng hành cùng con, cân bằng cuộc sống]
 ---
 
 # BARRIER: rao can thoi gian phu thuoc nguoi khac

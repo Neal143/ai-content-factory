@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]'
+description: Khung tư duy hướng dẫn cha mẹ nhìn nhận những lời thô lỗ của trẻ là tín hiệu của sự rối loạn cảm xúc bên trong thay vì coi đó là thái độ thiếu tôn trọng, từ đó ngừng phản ứng trừng phạt.
+keywords: [Nuôi dạy con, Tâm lý học, Rối loạn cảm xúc, Hành vi thô lỗ, Lăng kính mất kiểm soát, Từ chối cá nhân hóa, Dysregulation, Đồng cảm nỗi thất vọng, Chấm dứt vòng lặp thù địch, Thay đổi góc nhìn hành vi]
 ---
 
 *   **Bản chất:** Thay vì coi những lời nói hỗn hào ("Con ghét mẹ", "Mẹ là người tồi tệ nhất") là sự thiếu tôn trọng có chủ ý, hãy nhìn nhận đó là tín hiệu cho thấy trẻ đang cảm thấy mất kiểm soát và bị rối loạn cảm xúc nghiêm trọng bên trong.

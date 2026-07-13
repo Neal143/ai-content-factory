@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_memory_development", "p1_remember_to_remember"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_memory_development
+- p1_remember_to_remember
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa]]"]
-keywords: []
+supports_insight:
+- '[[WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa]]'
+description: Các cách thức thực hành vô cùng hiệu quả và cụ thể như đặt những câu hỏi mở, cùng nhau chơi trò suy đoán và làm sổ lưu niệm giúp trẻ rèn luyện khả năng nhớ lại các sự kiện diễn ra hàng ngày một cách tự nhiên.
+keywords: [nuôi dạy con, não bộ trẻ em, trí nhớ của trẻ, rèn luyện trí nhớ, trò chơi suy đoán, câu hỏi gợi mở, sổ lưu niệm, remember to remember, nhắc nhớ để ghi nhớ]
 ---
 
 *   **Bản chất:** Các cách thức cụ thể được lồng ghép vào sinh hoạt hàng ngày để cha mẹ giúp con rèn luyện trí nhớ và khả năng kể chuyện, thay vì ép buộc trẻ phải trả lời theo kiểu tra khảo.

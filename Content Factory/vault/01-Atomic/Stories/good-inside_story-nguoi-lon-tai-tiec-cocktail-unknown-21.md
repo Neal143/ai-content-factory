@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_true_confidence_concept", "p1_validate_and_empower_shyness"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_true_confidence_concept
+- p1_validate_and_empower_shyness
 status: processed
-protagonist: "Người lớn tại tiệc cocktail"
+protagonist: Người lớn tại tiệc cocktail
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_cong-nhan-con-se-biet-khi-nao-con-san-sang-validate-youll-know-when-youre-ready]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_cong-nhan-con-se-biet-khi-nao-con-san-sang-validate-youll-know-when-youre-ready]]'
+description: Câu chuyện so sánh cảm giác nhút nhát của trẻ em với người lớn tại một bữa tiệc cocktail, nhấn mạnh rằng sự công nhận và thấu hiểu cảm xúc ẩn sau sự rụt rè sẽ giúp con người cảm thấy an toàn và thoải mái với chính mình.
+keywords: [nuôi dạy con, tâm lý học hành vi, cảm giác nhút nhát, rụt rè nơi đông người, công nhận cảm xúc, cảm giác an toàn, thấu hiểu sự sợ hãi, bối cảnh người lớn]
 ---
 
 <situation>Let’s think about shyness in an adult context: You go to a cocktail party with your partner, you feel nervous, and so you say, “I want to stay near you for a bit, okay?”</situation>

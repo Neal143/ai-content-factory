@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_mindfulness", "p1_mindsight_practice"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_mindfulness
+- p1_mindsight_practice
 status: processed
-protagonist: "Andrea và Nicole"
+protagonist: Andrea và Nicole
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_knowledge: ["[[WBC_thuc-hanh-mindsight-tam-tri-de-quay-ve-truc-banh-xe]]"]
-keywords: []
+supports_knowledge:
+- '[[WBC_thuc-hanh-mindsight-tam-tri-de-quay-ve-truc-banh-xe]]'
+description: Câu chuyện về cô bé Nicole lo âu trước buổi biểu diễn đàn và cách người mẹ giúp con tập trung vào hơi thở, cho thấy thực hành Mindsight không chỉ giải quyết lo âu mà còn đưa tâm trí trở về trạng thái tĩnh tại.
+keywords: [nuôi dạy con, khoa học thần kinh, cảm giác lo âu, thực hành Mindsight, bài tập tâm trí, tập trung hơi thở, trạng thái cân bằng, trục bánh xe, hội nhập não bộ]
 ---
 
 <situation>Trước buổi biểu diễn (recital) của Nicole.</situation>

@@ -1,4 +1,4 @@
-"""
+﻿"""
 TÊN SCRIPT: atomizer.py
 VAI TRÒ: Script deterministic thay thế Agent tạo file Atom thủ công.
          Parse JSON metadata → Phân loại DIKW → Sinh Atom in-memory →
@@ -873,6 +873,18 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
                 skipped_exist += 1
         for atom in quarantine_atoms:
             write_dlq_file(atom, vault_root)
+
+        # MỚI: Ghi file handoff created_atoms.json cho book-extractor workflow
+        if report_path:
+            run_folder = os.path.dirname(report_path)
+            handoff_path = os.path.join(run_folder, "created_atoms.json")
+            # Lay relative path (tu thu muc goc) thay vi full path
+            created_paths = [
+                os.path.join("vault", atom["folder"], atom["filename"]).replace("\\", "/")
+                for atom in valid_atoms
+            ]
+            with open(handoff_path, "w", encoding="utf-8") as f:
+                json.dump(created_paths, f, ensure_ascii=False, indent=2)
 
     # ── Bước 5: Báo cáo ──
     print("=" * 50)

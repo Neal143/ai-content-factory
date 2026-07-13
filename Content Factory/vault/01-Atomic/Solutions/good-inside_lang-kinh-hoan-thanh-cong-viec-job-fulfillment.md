@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_family_system_roles", "p1_boundary_validation_empathy"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_family_system_roles
+- p1_boundary_validation_empathy
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]'
+description: Nguyên tắc tư duy giúp cha mẹ loại bỏ cảm giác tội lỗi bằng cách tái định hình khoảnh khắc bùng nổ của trẻ là minh chứng cho việc cả hai bên đều đang hoàn thành tốt vai trò tự nhiên của mình.
+keywords: [Nuôi dạy con, Tâm lý học, Quản lý kỳ vọng, Bùng nổ cảm xúc, Lăng kính hoàn thành công việc, Tái cấu trúc tư duy, Loại bỏ cảm giác tội lỗi, Vai trò của cha mẹ, Giữ vững ranh giới, Chấp nhận sự phản kháng]
 ---
 
 *   **Bản chất:** Tái cấu trúc (reframe) những khoảnh khắc bùng nổ của con không phải là một sự thất bại của cha mẹ hay sự hư hỏng của con, mà là minh chứng cho việc cả hai đang "hoàn thành đúng công việc của mình".

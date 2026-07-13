@@ -8,7 +8,6 @@ parent_audience:
 aliases:
 - tìm phương pháp giáo dục con phù hợp
 - thay đổi cách kỷ luật trẻ mầm non
-keywords: []
 ---
 # 🎯 cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ
 

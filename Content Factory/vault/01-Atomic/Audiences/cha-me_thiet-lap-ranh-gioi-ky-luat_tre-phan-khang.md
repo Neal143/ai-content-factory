@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thiết lập ranh giới kỷ luật với con cái
 audience_circumstance: khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ
-vivid_circumstances: ["Phòng khách/Cửa ra vào | Trẻ hét lên \"Con không lạnh, con không mặc áo khoác\", cha mẹ khăng khăng ép buộc | Căng thẳng, đối đầu, bực tức", "Phòng khách/Cửa ra vào | Trẻ hét lên \"Con không lạnh, con không mặc áo khoác\", cha mẹ khăng khăng ép buộc | Căng thẳng, đối đầu, bực tức"]
+vivid_circumstances:
+- Phòng khách/Cửa ra vào | Trẻ hét lên "Con không lạnh, con không mặc áo khoác", cha mẹ khăng khăng ép buộc | Căng thẳng, đối đầu, bực tức
+- Phòng khách/Cửa ra vào | Trẻ hét lên "Con không lạnh, con không mặc áo khoác", cha mẹ khăng khăng ép buộc | Căng thẳng, đối đầu, bực tức
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - người nuôi con muốn giữ kỷ luật khi con cãi lại
 - phụ huynh cần đặt quy tắc khi con hỗn láo
-keywords: []
 ---
 # 🎯 Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ
 

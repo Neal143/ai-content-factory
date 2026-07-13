@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_body_memory", "p1_internal_working_model"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_body_memory
+- p1_internal_working_model
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]"]
-vivid_knowledges: ["Thu thập dữ liệu từ môi trường để tự thiết lập mạng lưới thần kinh (wire themselves)"]
-keywords: []
+supports_insight:
+- '[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]'
+vivid_knowledges:
+- Thu thập dữ liệu từ môi trường để tự thiết lập mạng lưới thần kinh (wire themselves)
+description: Khái niệm tâm lý học nền tảng giải thích cách trẻ liên tục thu thập dữ liệu từ phản ứng của cha mẹ để tự xây dựng mạng lưới thần kinh và định hình hệ thống niềm tin cốt lõi về bản thân.
+keywords: [Nuôi dạy con, Tâm lý học, Phát triển nhận thức, Niềm tin cốt lõi, Mô hình hoạt động nội tâm, Internal working model, Thu thập dữ liệu môi trường, Thiết lập mạng lưới thần kinh, Cơ chế thích nghi tâm lý, Đánh giá sự an toàn]
 ---
 
 *   **Bản chất:** Là tập hợp những suy nghĩ, ký ức, niềm tin, kỳ vọng, cảm xúc và hành vi ảnh hưởng đến cách trẻ tương tác với bản thân và người khác, định hình những mối quan hệ mà chúng sẽ tìm kiếm trong tương lai.

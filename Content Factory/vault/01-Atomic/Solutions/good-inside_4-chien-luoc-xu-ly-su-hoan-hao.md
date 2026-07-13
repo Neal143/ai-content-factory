@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_perfectionism_nature", "p1_reframe_perfectionism"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_perfectionism_nature
+- p1_reframe_perfectionism
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_logic-giai-quyet-hoan-hao]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_logic-giai-quyet-hoan-hao]]'
+description: Hướng dẫn cha mẹ các chiến lược thiết thực và tinh tế để giúp trẻ vượt qua tâm lý theo đuổi sự hoàn hảo, học cách chấp nhận sai lầm tự nhiên và tách biệt giá trị cá nhân.
+keywords: [Giáo dục trẻ em, Tâm lý học, Xử lý sự hoàn hảo, Chấp nhận sai lầm, Giá trị bản thân, Tự tạo sai lầm, Cảm xúc bên dưới, Giọng nói hoàn hảo]
 ---
 
 * **Mục đích:** Giúp trẻ điều chỉnh cảm xúc, chấp nhận sai lầm và tách biệt giá trị bản thân khỏi kết quả.

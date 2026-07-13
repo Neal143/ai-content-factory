@@ -19,7 +19,10 @@ param (
     [string]$VaultPath = "vault/01-Atomic",
 
     [Parameter(Mandatory = $false)]
-    [string]$OutputPath = ".agents/skills/dikw-bridge/assets/vault_index.json"
+    [string]$OutputPath = ".agents/assets/vault_index.json",
+
+    [Parameter(Mandatory = $false)]
+    [string]$AudienceIndexPath = "vault/01-Atomic/Audiences/_audience_index.yaml"
 )
 
 # ==========================================
@@ -43,6 +46,28 @@ $Edges_SupportsInsight = [ordered]@{ }
 $Edges_SupportsKnowledge = [ordered]@{ }
 $FilenameLookup = @{ } # Tra cứu nhanh: "GI_filename" -> "vault/01-Atomic/Insights/GI_filename.md"
 $RawEdges = New-Object System.Collections.Generic.List[System.Object] # Lưu tạm: @{ Source = "path"; Type = "insight/knowledge"; Target = "filename" }
+
+# Doc _audience_index.yaml va build lookup table
+$AudienceLookup = @{}
+if (Test-Path $AudienceIndexPath) {
+    $audContent = Get-Content $AudienceIndexPath -Raw -Encoding utf8
+    # Parse YAML array bang regex: moi block bat dau bang "- id:"
+    $audBlocks = $audContent -split '(?m)(?=^- id:)' | Where-Object { $_.Trim() }
+    foreach ($block in $audBlocks) {
+        $audId = if ($block -match 'file_ref:\s*''\[\[(.+?)\]\]''') { $Matches[1] } else { $null }
+        $audLevel = if ($block -match 'audience_level:\s*(.+)') { $Matches[1].Trim() } else { $null }
+        $audPerformer = if ($block -match 'audience_Job_performer:\s*(.+)') { $Matches[1].Trim() } else { $null }
+        $audJob = if ($block -match 'audience_main_job:\s*(.+)') { $Matches[1].Trim() } else { $null }
+        $audCirc = if ($block -match 'audience_circumstance:\s*(.+)') { $Matches[1].Trim() } else { $null }
+        if ($audId) {
+            $AudienceLookup[$audId] = @{
+                "level" = $audLevel; "performer" = $audPerformer
+                "job" = $audJob; "circumstance" = $audCirc
+            }
+        }
+    }
+    Write-Host ">>> Da load $($AudienceLookup.Count) audiences tu index." -ForegroundColor Cyan
+}
 
 # ==========================================
 # NHÓM 2: HÀM TRỢ GIÚP (HELPERS)
@@ -153,6 +178,8 @@ foreach ($folderName in $DIKW_Folders.Keys) {
             "insight_type"        = $null
             "subtype"             = $null
             "knowledge_type"      = $null
+            "description"         = $null
+            "keywords"            = @()
         }
         
         $inFrontmatter = $true
@@ -187,9 +214,9 @@ foreach ($folderName in $DIKW_Folders.Keys) {
         $FilenameLookup[$filenameKey] = $relativeCwdPath
         
         # Lưu các raw edges để resolve sau bằng Generic List Add
-        $remainingLines = $lines | Select-Object -Skip ($i + 1)
-        $bodyText = $remainingLines -join " " -replace '#+', '' -replace '\*', ''
-        $frontmatterData["excerpt"] = if ($bodyText.Trim().Length -gt 150) { $bodyText.Trim().Substring(0, 150) + "..." } else { $bodyText.Trim() }
+        
+        # Excerpt lay tu truong description trong YAML (da duoc parse o buoc tren)
+        $frontmatterData["excerpt"] = if ($frontmatterData["description"]) { $frontmatterData["description"] } else { "[MISSING]" }
         
         # Nếu đã parse được trong YAML properties
         if ($frontmatterData.ContainsKey("supports_insight") -and $frontmatterData["supports_insight"]) {
@@ -244,6 +271,56 @@ foreach ($edge in $RawEdges) {
 }
 
 # ==========================================
+# NHOM 4.5: TINH RESOLVED_AUDIENCE CHO MOI NODE
+# ==========================================
+Write-Host ">>> Bat dau tinh resolved_audience..." -ForegroundColor Cyan
+
+function Resolve-Audience ([string]$nodePath, [hashtable]$allNodes, [hashtable]$edgesInsight, [hashtable]$edgesKnowledge, [System.Collections.Generic.HashSet[string]]$visited = $null) {
+    # Chong vong lap de quy (bao ve du lieu ban co cycle)
+    if ($null -eq $visited) { $visited = [System.Collections.Generic.HashSet[string]]::new() }
+    if (-not $visited.Add($nodePath)) { return $null }
+
+    # Neu node la insight -> lay truc tiep belongs_to_audience (strip wikilink)
+    $node = $allNodes[$nodePath]
+    if ($node -and $node["type"] -eq "insight") {
+        $aud = $node["belongs_to_audience"]
+        $rawAud = if ($aud -is [Array]) { $aud[0] } else { $aud }
+        return ($rawAud -replace '^\[\[', '' -replace '\]\]$', '')
+    }
+    # Nguoc lai, di nguoc DAG qua supports_insight hoac supports_knowledge
+    $parentPaths = @()
+    if ($edgesInsight.Contains($nodePath)) { $parentPaths += $edgesInsight[$nodePath] }
+    if ($edgesKnowledge.Contains($nodePath)) { $parentPaths += $edgesKnowledge[$nodePath] }
+    $resolvedAudiences = @()
+    foreach ($pp in $parentPaths) {
+        $res = Resolve-Audience $pp $allNodes $edgesInsight $edgesKnowledge $visited
+        if ($res) { $resolvedAudiences += $res }
+    }
+    $unique = $resolvedAudiences | Select-Object -Unique
+    if ($unique.Count -eq 1) { return $unique[0] }
+    if ($unique.Count -gt 1) { return "CONFLICT" }
+    return $null
+}
+
+foreach ($nodePath in $Nodes.Keys) {
+    $audId = Resolve-Audience $nodePath $Nodes $Edges_SupportsInsight $Edges_SupportsKnowledge
+    if ($audId -eq "CONFLICT") {
+        Write-Host "[WARN] CONFLICT audience cho: $nodePath" -ForegroundColor Yellow
+        $Nodes[$nodePath]["resolved_audience"] = "CONFLICT"
+    } elseif ($audId -and $AudienceLookup.ContainsKey($audId)) {
+        $Nodes[$nodePath]["resolved_audience"] = @{
+            "id" = $audId
+            "level" = $AudienceLookup[$audId]["level"]
+            "performer" = $AudienceLookup[$audId]["performer"]
+            "job" = $AudienceLookup[$audId]["job"]
+            "circumstance" = $AudienceLookup[$audId]["circumstance"]
+        }
+    } else {
+        $Nodes[$nodePath]["resolved_audience"] = $null
+    }
+}
+
+# ==========================================
 # NHÓM 5: TỔNG HỢP VÀ XUẤT FILE JSON CẤU TRÚC
 # ==========================================
 $IndexData = [ordered]@{
@@ -271,3 +348,6 @@ $jsonString = ConvertTo-Json -InputObject $IndexData -Depth 100
 
 Write-Host "[SUCCESS] Da build thanh cong index voi $($Nodes.Count) nodes va $($IndexData.metadata.edge_count) edges!" -ForegroundColor Green
 Write-Host "[SUCCESS] File index duoc ghi tai: $OutputPath" -ForegroundColor Green
+
+
+

@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: principle
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_smell_and_memory", "p1_color_therapy"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_smell_and_memory
+- p1_color_therapy
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]"]
-vivid_knowledges: ["Mùi thơm của gạo, táo hay bánh mì đang nướng lan tỏa khiến dịch vị tiêu hóa của trẻ lập tức bắt đầu tiết ra."]
-keywords: []
+supports_insight:
+- '[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]'
+vivid_knowledges:
+- Mùi thơm của gạo, táo hay bánh mì đang nướng lan tỏa khiến dịch vị tiêu hóa của trẻ lập tức bắt đầu tiết ra.
+description: Vai trò của khứu giác trong việc định hình ký ức và sự phát triển nội tâm, trong đó những mùi hương tự nhiên giúp trẻ mở lòng thay vì khép kín tự bảo vệ.
+keywords: [Giáo dục mầm non, Giác quan trẻ nhỏ, Phát triển khứu giác, Định hình ký ức, Khả năng mở lòng, Mùi hương dễ chịu, Hương liệu hóa học, Cơ thể ête, Kỹ năng xã hội]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Khứu giác cho phép con người trải nghiệm chất lượng của sự vật và có mối liên hệ mật thiết với ký ức, tác động trực tiếp đến quá trình xây dựng cơ thể vật lý của trẻ nhỏ.

@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sturdy_leader_self_care", "p1_avp_strategy"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_sturdy_leader_self_care
+- p1_avp_strategy
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_nuoi-con-tan-hien-selfless-parenting]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_nuoi-con-tan-hien-selfless-parenting]]'
+description: Giới thiệu năm chiến lược nhỏ gọn và hiệu quả giúp các bậc cha mẹ bận rộn có thể dễ dàng tự chăm sóc bản thân mỗi ngày, phục hồi năng lượng sống và tự xoa dịu tổn thương.
+keywords: [Chăm sóc cha mẹ, Phát triển bản thân, Chiến lược tự chăm sóc, Phục hồi năng lượng, Cha mẹ bận rộn, Hít thở sâu, Ghi nhận cảm xúc, Tự hàn gắn]
 ---
 
 *   **Mục đích:** Giúp cha mẹ lấy lại sự cân bằng, tự xoa dịu và phục hồi năng lượng thông qua các bước thực hành nhỏ gọn, thay vì coi self-care như một gánh nặng phải hoàn thành.

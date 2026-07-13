@@ -1,15 +1,20 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
-protagonist: "Irha và mẹ"
+protagonist: Irha và mẹ
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_khung-nhan-dien-va-giam-thieu-xau-ho-shame-detection-and-reduction]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_khung-nhan-dien-va-giam-thieu-xau-ho-shame-detection-and-reduction]]'
+description: Câu chuyện về bé Irha từ chối xin lỗi vì cảm giác xấu hổ và cách người mẹ thay vì ép buộc đã chủ động làm mẫu lời xin lỗi, nhấn mạnh tầm quan trọng của việc giảm thiểu sự xấu hổ trước khi sửa chữa hành vi.
+keywords: [nuôi dạy con, tâm lý học trẻ em, cảm xúc xấu hổ, ép buộc xin lỗi, làm mẫu xin lỗi, nỗi sợ bị bỏ rơi, kết nối cảm xúc, thoát khỏi trạng thái đóng băng]
 ---
 
 <situation>Irha giấu món đồ chơi yêu thích của em gái. Em gái khóc lóc không ngừng.</situation>

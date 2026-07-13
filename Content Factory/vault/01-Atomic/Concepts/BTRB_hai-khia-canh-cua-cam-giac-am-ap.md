@@ -1,15 +1,23 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_smell_and_memory", "p1_color_therapy"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_smell_and_memory
+- p1_color_therapy
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]"]
-vivid_knowledges: ["Trẻ em quan sát người lớn cẩn thận sửa lại những món đồ chơi bị hỏng và lau dọn lớp học để học cách chăm sóc mọi thứ."]
-keywords: []
+supports_insight:
+- '[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]'
+vivid_knowledges:
+- Trẻ em quan sát người lớn cẩn thận sửa lại những món đồ chơi bị hỏng và lau dọn lớp học để học cách chăm sóc mọi thứ.
+description: Cảm giác ấm áp bao gồm nhiệt độ vật lý và hơi ấm tâm hồn. Trong giáo dục, thái độ chân thành và ân cần của người lớn sẽ khuyến khích trẻ cởi mở, tự tin và tăng cường khả năng tương tác tích cực với thế giới xung quanh.
+keywords: [giáo dục sớm, tâm lý học, hơi ấm tâm hồn, phản ứng cảm xúc, sự chân thành, tương tác tích cực, trí tuệ cảm xúc, làm gương cho trẻ]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Cảm giác ấm áp không chỉ đơn thuần là sự nhận biết về nhiệt độ vật lý (nóng/lạnh) mà còn là sự cảm nhận nhạy bén về "hơi ấm tâm hồn" (soul warmth) tỏa ra từ những người xung quanh.

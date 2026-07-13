@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_upstairs_brain_development", "p1_use_or_lose_principle"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_upstairs_brain_development
+- p1_use_or_lose_principle
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]"]
-keywords: []
+supports_insight:
+- '[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]'
+description: Nguyên lý nền tảng quan trọng này nhấn mạnh việc cha mẹ phải liên tục tạo cơ hội cho trẻ sử dụng bộ não tầng trên để nó phát triển, thay vì thường xuyên đứng ra giải cứu hay tự mình giải quyết mọi vấn đề thay cho con cái.
+keywords: [nuôi dạy con, khoa học thần kinh, phát triển não bộ, não tầng trên, use it or lose it, dùng nó hay mất nó, tự đưa ra quyết định, vận động não bộ, không giải cứu]
 ---
 
 *   **Bản chất:** Là nguyên lý cốt lõi trong sự phát triển não bộ, khẳng định rằng khi bộ não tầng trên được sử dụng, nó sẽ phát triển mạnh mẽ hơn, và ngược lại, nếu bị phớt lờ, nó sẽ mất đi sức mạnh và khả năng hoạt động.

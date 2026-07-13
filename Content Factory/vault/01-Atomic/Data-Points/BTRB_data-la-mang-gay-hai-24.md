@@ -1,14 +1,21 @@
 ﻿---
 type: data-point
 data_type: shocking_fact
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_positive_discipline", "p1_end_of_day_reflection"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_positive_discipline
+- p1_end_of_day_reflection
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_ky-luat-dich-thuc]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_ky-luat-dich-thuc]]'
+description: La mắng luôn gây hại vì nó khiến trẻ tạo ra lớp vỏ tâm lý cứng nhắc để tự bảo vệ. Điều này dựng lên rào cản vĩnh viễn, ngăn cản cha mẹ và giáo viên thấu hiểu nội tâm trẻ.
+keywords: [la mắng trẻ em, tâm lý học hành vi, rào cản tâm lý, cơ chế tự bảo vệ, giáo dục gia đình, kỷ luật tích cực, tổn thương nội tâm, giao tiếp với con]
 ---
 
 *   Nội dung: La mắng luôn gây hại cho bất kỳ đứa trẻ nào; nó khiến trẻ phải làm lớp vỏ tâm hồn cứng lại để tự bảo vệ, dẫn đến việc cha mẹ và giáo viên không thể chạm tới nội tâm để giáo dục trẻ nữa.

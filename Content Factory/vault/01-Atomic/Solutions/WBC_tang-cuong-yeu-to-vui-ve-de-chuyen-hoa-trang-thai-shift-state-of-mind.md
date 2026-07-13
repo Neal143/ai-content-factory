@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"]
-keywords: []
+supports_insight:
+- '[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]'
+description: Khung phương pháp hướng dẫn cha mẹ sử dụng sự ngẫu hứng và các trò chơi vui vẻ để nhanh chóng kết nối và thay đổi trạng thái tâm trí khi trẻ đang bướng bỉnh hay tức giận.
+keywords: [nuôi dạy con, kết nối với trẻ, xử lý bướng bỉnh, thay đổi trạng thái, gia tăng niềm vui, trò chơi ngẫu hứng, phá vỡ bế tắc, chuyển hóa tâm trí, không tranh giành]
 ---
 
 *   **Mục đích:** Sử dụng sự vui vẻ, ngớ ngẩn để kết nối và thay đổi trạng thái tâm trí của trẻ khi trẻ đang bị mắc kẹt trong sự tức giận hoặc bướng bỉnh.

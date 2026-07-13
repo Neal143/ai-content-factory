@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "FEAR"
-topics: ["p1_cua_so_vang_phat_trien_tre_0_7_tuoi"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: FEAR
+topics:
+- p1_cua_so_vang_phat_trien_tre_0_7_tuoi
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Việc nhận thức được 0-7 tuổi là cửa sổ phát triển vô giá mang lại áp lực nặng nề cho cha mẹ. Nỗi sợ vô tình bỏ lỡ giai đoạn vàng này khiến họ luôn trong trạng thái lo âu và căng thẳng.
+keywords: [giai đoạn vàng, cửa sổ phát triển, nỗi sợ bỏ lỡ, áp lực nặng nề, giáo dục sớm, phát triển não bộ, lo âu nuôi dạy, cơ hội vô giá]
 ---
 
 # FEAR: so bo lo giai doan vang 0-7

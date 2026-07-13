@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân
 audience_circumstance: khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày
-vivid_circumstances: ["Thời điểm cuối ngày mệt mỏi | Trẻ phản đối, khóc lóc, vòi vĩnh khi cha mẹ muốn đi bộ một mình hoặc đi ăn cùng bạn bè | Cha mẹ cảm thấy kiệt sức, tội lỗi và chịu áp lực phải hy sinh toàn bộ thời gian cho con", "Thời điểm cuối ngày mệt mỏi | Trẻ phản đối, khóc lóc, vòi vĩnh khi cha mẹ muốn đi bộ một mình hoặc đi ăn cùng bạn bè | Cha mẹ cảm thấy kiệt sức, tội lỗi và chịu áp lực phải hy sinh toàn bộ thời gian cho con"]
+vivid_circumstances:
+- Thời điểm cuối ngày mệt mỏi | Trẻ phản đối, khóc lóc, vòi vĩnh khi cha mẹ muốn đi bộ một mình hoặc đi ăn cùng bạn bè | Cha mẹ cảm thấy kiệt sức, tội lỗi và chịu áp lực phải hy sinh toàn bộ thời gian cho con
+- Thời điểm cuối ngày mệt mỏi | Trẻ phản đối, khóc lóc, vòi vĩnh khi cha mẹ muốn đi bộ một mình hoặc đi ăn cùng bạn bè | Cha mẹ cảm thấy kiệt sức, tội lỗi và chịu áp lực phải hy sinh toàn bộ thời gian cho con
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh muốn lấy lại năng lượng
 - cha mẹ chăm sóc bản thân khi nuôi con
-keywords: []
 ---
 # 🎯 Cha mẹ muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày
 

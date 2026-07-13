@@ -2,16 +2,16 @@
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con
-audience_circumstance: khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái
-  quá
-vivid_circumstances: ["Ngay tại nhà | Cha báo tin con trượt đội bóng chày và thấy con rơm rớm nước mắt | Người cha bối rối, lưỡng lự không biết nên nói gì hay đánh lạc hướng để xoa dịu nỗi đau của con.", "Ngay tại nhà | Cha báo tin con trượt đội bóng chày và thấy con rơm rớm nước mắt | Người cha bối rối, lưỡng lự không biết nên nói gì hay đánh lạc hướng để xoa dịu nỗi đau của con."]
+audience_circumstance: khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá
+vivid_circumstances:
+- Ngay tại nhà | Cha báo tin con trượt đội bóng chày và thấy con rơm rớm nước mắt | Người cha bối rối, lưỡng lự không biết nên nói gì hay đánh lạc hướng để xoa dịu nỗi đau của con.
+- Ngay tại nhà | Cha báo tin con trượt đội bóng chày và thấy con rơm rớm nước mắt | Người cha bối rối, lưỡng lự không biết nên nói gì hay đánh lạc hướng để xoa dịu nỗi đau của con.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh xử lý khi con hay khóc
 - cha mẹ dỗ trẻ khóc nhè
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá
 

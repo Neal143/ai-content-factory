@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_archetypal_toys
+- p1_natural_elements_play
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"]
-vivid_knowledges: ["Trẻ dồn toàn bộ thời gian ngoài trời để di chuyển từng con giun đất trên vỉa hè ướt sũng vào nơi trú ẩn dưới gốc cây."]
-keywords: []
+supports_insight:
+- '[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]'
+vivid_knowledges:
+- Trẻ dồn toàn bộ thời gian ngoài trời để di chuyển từng con giun đất trên vỉa hè ướt sũng vào nơi trú ẩn dưới gốc cây.
+description: Cuốn sách đề xuất bảo vệ không gian vui chơi tự do và cho trẻ tiếp xúc trực tiếp với đất, nước, không khí, lửa nhằm củng cố lực sống và khả năng tập trung sâu sắc.
+keywords: [giáo dục sớm, phương pháp waldorf, vui chơi tự do, tiếp xúc tự nhiên, bốn yếu tố, củng cố lực sống, barbara j. patterson, pamela bradley, beyond the rainbow bridge]
 ---
 
 *   **Bản chất:** Tạo ra môi trường cho phép trẻ chơi đùa không bị gián đoạn và được trực tiếp tương tác dưới sự giám sát với 4 yếu tố tự nhiên: đất, nước, không khí và lửa.

@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: typology
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_fairy_tales_by_age"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_fairy_tales_by_age
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop]]'
+description: Hệ thống phân loại truyện cổ tích thành 4 nhóm tuổi dựa trên sự gia tăng từ từ về độ phức tạp của cốt truyện và mức độ thử thách.
+keywords: [Giáo dục mầm non, Truyện kể trẻ em, Phân loại cổ tích, Mức độ thử thách, Sự tiếp nhận an toàn, Truyện tuần tự, Yếu tố đấu tranh, Nỗi buồn ác quỷ, Cốt truyện phức tạp]
 ---
 
 * Nội dung: Danh sách phân loại truyện cổ tích thành 4 nhóm tuổi chính:

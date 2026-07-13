@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "DESIRE"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: DESIRE
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Sự tự do tài chính là nền tảng vững chắc để cha mẹ có thể toàn tâm toàn ý nuôi dạy con cái. Nó giúp phụ huynh thoát khỏi vòng xoáy mưu sinh và tự do lựa chọn triết lý giáo dục mà mình tin tưởng.
+keywords: [tự do tài chính, nền tảng gia đình, vòng xoáy mưu sinh, triết lý giáo dục, đầu tư tương lai, nguồn lực nuôi dạy, an toàn kinh tế, toàn tâm toàn ý]
 ---
 
 # DESIRE: tu do tai chinh gia dinh

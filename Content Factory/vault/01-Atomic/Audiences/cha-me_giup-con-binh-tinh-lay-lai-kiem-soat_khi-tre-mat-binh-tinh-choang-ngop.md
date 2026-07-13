@@ -3,14 +3,14 @@ audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp con bình tĩnh và lấy lại khả năng tự kiểm soát
 audience_circumstance: khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc
-vivid_circumstances: ["Khi làm bài tập về nhà | trẻ bực tức, la hét | căng thẳng, choáng ngợp và không thể tiếp thu."]
+vivid_circumstances:
+- Khi làm bài tập về nhà | trẻ bực tức, la hét | căng thẳng, choáng ngợp và không thể tiếp thu.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh
 - người xoa dịu trẻ
-keywords: []
 ---
 # 🎯 cha mẹ muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc
 

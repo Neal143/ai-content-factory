@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_fairy_tales_by_age"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_fairy_tales_by_age
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop]]'
+description: Việc lựa chọn truyện kể cho trẻ cần linh hoạt dựa trên sự quan sát mức độ trưởng thành tâm lý thực tế thay vì áp dụng cứng nhắc các phân loại độ tuổi.
+keywords: [Giáo dục mầm non, Truyện kể trẻ em, Lựa chọn truyện, Mức độ trưởng thành, Linh hoạt độ tuổi, Trưởng thành tâm lý, Nhu cầu thực tế, Gợi ý phân loại, Khung tuổi tham khảo]
 ---
 
 * Bản chất: Những hướng dẫn phân loại độ tuổi kể trên chỉ là những gợi ý nhẹ nhàng (light indications), không phải là các quy tắc cứng nhắc (hard and fast rules).

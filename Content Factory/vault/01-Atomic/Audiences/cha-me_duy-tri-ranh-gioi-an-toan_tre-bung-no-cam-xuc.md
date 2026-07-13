@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: duy trì ranh giới an toàn và sự kết nối
 audience_circumstance: khi con cái phản kháng và bùng nổ cảm xúc
-vivid_circumstances: ["Buổi chiều tối tại nhà | Con la hét khóc lóc đòi mẹ khi mẹ phải bắt đầu làm việc | Bề ngoài có vẻ hỗn loạn, mẹ dễ hoang mang và tự trách mình", "Buổi chiều tối tại nhà | Con la hét khóc lóc đòi mẹ khi mẹ phải bắt đầu làm việc | Bề ngoài có vẻ hỗn loạn, mẹ dễ hoang mang và tự trách mình"]
+vivid_circumstances:
+- Buổi chiều tối tại nhà | Con la hét khóc lóc đòi mẹ khi mẹ phải bắt đầu làm việc | Bề ngoài có vẻ hỗn loạn, mẹ dễ hoang mang và tự trách mình
+- Buổi chiều tối tại nhà | Con la hét khóc lóc đòi mẹ khi mẹ phải bắt đầu làm việc | Bề ngoài có vẻ hỗn loạn, mẹ dễ hoang mang và tự trách mình
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh muốn giữ nguyên tắc nhưng không mất kết nối
 - cha mẹ muốn thiết lập kỷ luật trong lúc con khóc lóc
-keywords: []
 ---
 # 🎯 Cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc
 

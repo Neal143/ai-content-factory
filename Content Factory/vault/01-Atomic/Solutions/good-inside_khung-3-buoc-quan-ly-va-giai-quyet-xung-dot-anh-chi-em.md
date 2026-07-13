@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_sibling_attachment_security", "p1_focus_on_needs_not_fairness"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_sibling_attachment_security
+- p1_focus_on_needs_not_fairness
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me]]'
+description: Khung giải pháp toàn diện gồm 3 bước giúp xoa dịu sự ghen tị từ gốc rễ, tạo không gian xả cảm xúc an toàn và trực tiếp can thiệp làm chậm nhịp độ xung đột giữa các anh chị em mà không biến cha mẹ thành người phân xử.
+keywords: [Nuôi dạy con, Tâm lý học, Xung đột anh chị em, Quản lý ghen tị, Khung 3 bước quản lý xung đột, Nguyên tắc không phân xử, Thời gian PNP cá nhân, Can thiệp làm chậm nhịp độ, Cấm bạo lực ngôn từ, Cho phép xả cảm xúc an toàn]
 ---
 
 *   **Mục đích:** Xoa dịu sự ghen tị từ gốc rễ, tạo không gian an toàn để xả cảm xúc, đồng thời bảo vệ sự an toàn vật lý của trẻ khi xung đột nổ ra mà không biến cha mẹ thành thẩm phán.

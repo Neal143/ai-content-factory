@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "FEAR"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: FEAR
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Cha mẹ mang nỗi sợ hãi sâu sắc về tương lai khi con cái trở thành nạn nhân của công nghệ số. Họ lo lắng việc phụ thuộc vào AI sẽ bào mòn khả năng tư duy độc lập và sức sáng tạo của trẻ.
+keywords: [phụ thuộc công nghệ, nạn nhân kỷ nguyên số, trí tuệ nhân tạo, bào mòn tư duy, sự sáng tạo, tư duy độc lập, nỗi sợ tương lai, cai nghiện màn hình]
 ---
 
 # FEAR: so con phu thuoc cong nghe AI thay the

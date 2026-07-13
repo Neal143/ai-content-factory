@@ -1,17 +1,16 @@
 ﻿---
 audience_level: little
 audience_Job_performer: cha mẹ
-audience_main_job: rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu
-  cảm xúc cho con
+audience_main_job: rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con
 audience_circumstance: khi tương tác cùng con hằng ngày
-vivid_circumstances: ["Trong xe ô tô hoặc trên bàn ăn | Cha mẹ đặt câu hỏi khơi gợi chuyện ở trường | Trẻ ngập ngừng hoặc chỉ kể lể ngắn gọn"]
+vivid_circumstances:
+- Trong xe ô tô hoặc trên bàn ăn | Cha mẹ đặt câu hỏi khơi gợi chuyện ở trường | Trẻ ngập ngừng hoặc chỉ kể lể ngắn gọn
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh
 - người trò chuyện cùng con
-keywords: []
 ---
 # 🎯 cha mẹ muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày
 

@@ -1,15 +1,24 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]"]
-vivid_knowledges: ["Trẻ đông cứng lại như một lớp màng bảo vệ để che giấu phần tồi tệ của bản thân khỏi nguy cơ bị bỏ rơi\n\n*   **②-2. FRAMEWORK: Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)**"]
-keywords: []
+supports_insight:
+- '[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]'
+vivid_knowledges:
+- 'Trẻ đông cứng lại như một lớp màng bảo vệ để che giấu phần tồi tệ của bản thân khỏi nguy cơ bị bỏ rơi
+
+
+  *   **②-2. FRAMEWORK: Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)**'
+description: Sự xấu hổ là cơ chế sinh tồn nguyên thủy cảnh báo trẻ về nguy cơ bị bỏ rơi. Trẻ sẽ đóng băng che giấu phần tồi tệ để tự vệ, khiến việc nói xin lỗi trở nên rất khó khăn.
+keywords: [tâm lý học tiến hóa, cảm giác xấu hổ, cơ chế sinh tồn, nguy cơ bỏ rơi, hệ thống cảnh báo, phản ứng đóng băng, tự vệ tâm lý, khó khăn xin lỗi]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự xấu hổ là cảm giác tin rằng "phần này trong tôi không thể kết nối được—không ai muốn biết hoặc ở cạnh phần này". Nó kích hoạt nỗi sợ hãi tột cùng của trẻ: "Mình xấu xa, mình không xứng đáng, mình không thể gắn kết... mình sẽ bị bỏ lại một mình".

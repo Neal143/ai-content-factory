@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_archetypal_toys
+- p1_natural_elements_play
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon]]'
+description: Phương pháp biến công việc dọn dẹp thành một trò chơi đóng vai vui vẻ và nhẹ nhàng, loại bỏ áp lực mệnh lệnh để khuyến khích trẻ tự nguyện tham gia.
+keywords: [Giáo dục mầm non, Nuôi dạy con, Dọn dẹp đồ chơi, Trò chơi đóng vai, Khuyến khích tự nguyện, Bảng dọn dẹp, Tránh mệnh lệnh ép buộc, Người giao hàng, Ghi nhận nỗ lực]
 ---
 
 *   **Mục đích:** Khuyến khích trẻ cùng tham gia dọn dẹp đồ chơi một cách vui vẻ và tự nguyện thay vì cảm thấy bị ép buộc như một công việc nặng nhọc.

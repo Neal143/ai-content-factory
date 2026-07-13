@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "MYTH"
-topics: ["p3_trang_bi_ky_nang_giao_tiep_khong_loi_va_co_loi_cho_con", "p3_phat_trien_van_dong_tho"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: MYTH
+topics:
+- p3_trang_bi_ky_nang_giao_tiep_khong_loi_va_co_loi_cho_con
+- p3_phat_trien_van_dong_tho
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: 'Lầm tưởng phổ biến cho rằng giáo dục chỉ cần truyền đạt một chiều: nói là con hiểu, ra lệnh là con nghe. Thực tế, trẻ cần sự đồng hành, làm mẫu và trải nghiệm trực tiếp để có thể tiếp thu và phát triển.'
+keywords: [giáo dục một chiều, ra lệnh cho con, giao tiếp với trẻ, sự đồng hành, làm gương cho trẻ, trải nghiệm thực tế, sai lầm nuôi dạy, kỹ năng truyền đạt]
 ---
 
 # MYTH: chi noi la con hieu ra lenh la con nghe

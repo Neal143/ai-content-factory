@@ -1,14 +1,20 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_warmth_and_health"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_warmth_and_health
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]'
+description: Hệ thống toàn diện các biện pháp giữ ấm cho trẻ bằng cách kết hợp mặc quần áo sợi tự nhiên nhiều lớp, giữ ấm đầu, chân và sử dụng dinh dưỡng, thảo mộc có tính nhiệt.
+keywords: [Chăm sóc trẻ nhỏ, Sức khỏe mầm non, Giữ ấm cơ thể, Quần áo sợi tự nhiên, Dinh dưỡng tính nhiệt, Mặc nhiều lớp, Đội mũ giữ nhiệt, Trà thảo mộc nóng, Thảm cách nhiệt sàn]
 ---
 
 *   **Bản chất:** Các phương pháp thực hành trong đời sống hàng ngày nhằm cung cấp và duy trì nhiệt lượng cho cơ thể trẻ từ bên ngoài (quần áo, môi trường) lẫn bên trong (dinh dưỡng).

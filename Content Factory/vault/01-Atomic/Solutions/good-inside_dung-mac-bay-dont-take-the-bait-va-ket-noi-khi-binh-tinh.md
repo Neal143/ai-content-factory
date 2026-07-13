@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]'
+description: Phương pháp bỏ qua các từ ngữ thô lỗ bề mặt để nhìn thấu nhu cầu kết nối sâu sắc của trẻ, từ đó tái thiết lập sự gắn kết bằng các trò chơi tích cực thay vì sa đà vào đôi co đúng sai.
+keywords: [Nuôi dạy con, Tâm lý học, Kết nối sau xung đột, Hành vi thô lỗ, Giao tiếp bình tĩnh, Chiến lược đừng mắc bẫy, Trò chơi rót đầy, Thời gian PNP không điện thoại, Tái xây dựng vốn kết nối, Nhìn thấu nhu cầu ẩn giấu]
 ---
 
 *   **Bản chất:** Tránh việc phản ứng trực tiếp vào các từ ngữ bề mặt của trẻ, mà hãy tập trung nỗ lực vào việc kết nối và tái thiết lập sự thấu hiểu sau khi cơn bão cảm xúc đã qua đi.

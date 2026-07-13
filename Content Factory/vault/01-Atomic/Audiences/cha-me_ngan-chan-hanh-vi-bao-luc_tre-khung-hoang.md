@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: ngăn chặn và kiểm soát hành vi bạo lực của con
 audience_circumstance: khi trẻ đang trong cơn khủng hoảng mất bình tĩnh
-vivid_circumstances: ["Tại phòng bếp | Trẻ ném bình nước, lao vào đánh, véo mẹ và gào thét \"Con ghét mẹ!\" | Hoảng loạn, giận dữ, mất kiểm soát", "Tại phòng bếp | Trẻ ném bình nước, lao vào đánh, véo mẹ và gào thét \"Con ghét mẹ!\" | Hoảng loạn, giận dữ, mất kiểm soát"]
+vivid_circumstances:
+- Tại phòng bếp | Trẻ ném bình nước, lao vào đánh, véo mẹ và gào thét "Con ghét mẹ!" | Hoảng loạn, giận dữ, mất kiểm soát
+- Tại phòng bếp | Trẻ ném bình nước, lao vào đánh, véo mẹ và gào thét "Con ghét mẹ!" | Hoảng loạn, giận dữ, mất kiểm soát
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh trị hành vi bạo lực của con
 - cha mẹ xử lý khi con đánh người
-keywords: []
 ---
 # 🎯 Cha mẹ muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh
 

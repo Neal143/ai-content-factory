@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân
 audience_circumstance: khi đối mặt với áp lực phải làm hài lòng người khác
-vivid_circumstances: ["Khi Kiki (4 tuổi) chạy trốn không chịu ôm ông ngoại, ông liền chê trách và tạo cảm giác tội lỗi, khiến người mẹ đứng giữa cảm thấy vừa bực bội vừa áy náy.", "Khi Kiki (4 tuổi) chạy trốn không chịu ôm ông ngoại, ông liền chê trách và tạo cảm giác tội lỗi, khiến người mẹ đứng giữa cảm thấy vừa bực bội vừa áy náy."]
+vivid_circumstances:
+- Khi Kiki (4 tuổi) chạy trốn không chịu ôm ông ngoại, ông liền chê trách và tạo cảm giác tội lỗi, khiến người mẹ đứng giữa cảm thấy vừa bực bội vừa áy náy.
+- Khi Kiki (4 tuổi) chạy trốn không chịu ôm ông ngoại, ông liền chê trách và tạo cảm giác tội lỗi, khiến người mẹ đứng giữa cảm thấy vừa bực bội vừa áy náy.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh dạy con bảo vệ cơ thể
 - cha mẹ dạy con biết nói không
-keywords: []
 ---
 # 🎯 Cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác
 

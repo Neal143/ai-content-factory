@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "FEAR"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the", "p1_xay_dung_y_chi_cho_tre"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: FEAR
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+- p1_xay_dung_y_chi_cho_tre
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Nhiều bậc cha mẹ đang vô thức chiếu xạ nỗi bất hạnh của chính mình lên con cái. Họ mang trong mình nỗi sợ hãi tột cùng rằng con sẽ lớn lên và lặp lại vết xe đổ, không bao giờ tìm thấy hạnh phúc đích thực.
+keywords: [chiếu xạ tâm lý, nỗi sợ bất hạnh, vết xe đổ, hạnh phúc đích thực, tổn thương tuổi thơ, di truyền cảm xúc, kỳ vọng cha mẹ, nuôi dạy chữa lành]
 ---
 
 # FEAR: so con khong tim duoc hanh phuc

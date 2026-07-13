@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_bung-no-do-qua-tai-cam-xuc-that-vong]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_bung-no-do-qua-tai-cam-xuc-that-vong]]'
+description: Khung chiến lược ba bước thiết thực giúp cha mẹ phản hồi sự ăn vạ của trẻ ngay tại chỗ nhằm thấu hiểu sâu sắc, đảm bảo an toàn tuyệt đối và hỗ trợ điều chỉnh cảm xúc.
+keywords: [Giáo dục trẻ em, Xử lý khủng hoảng, Phản hồi tại chỗ, Điều chỉnh cảm xúc, Cơn ăn vạ, Hai điều đều đúng, Gọi tên mong muốn, Xác nhận cảm xúc]
 ---
 
 *   **Mục đích:** Giúp trẻ cảm thấy được thấu hiểu, an toàn và hỗ trợ xây dựng kỹ năng điều chỉnh cảm xúc ngay trong lúc cơn ăn vạ đang diễn ra [2].

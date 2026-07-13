@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_archetypal_toys", "p1_natural_elements_play"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_archetypal_toys
+- p1_natural_elements_play
 status: processed
-protagonist: "Mẹ của một học sinh"
+protagonist: Mẹ của một học sinh
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_cung-cap-do-choi-mo-open-ended-toys]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_cung-cap-do-choi-mo-open-ended-toys]]'
+description: Câu chuyện về người mẹ quyết định tặng con trai những món đồ chơi mở đơn giản như vải lụa, giỏ mây thay vì đồ chơi điện tử, mang lại niềm vui và sự say mê bất ngờ.
+keywords: [giáo dục sớm, đồ chơi của trẻ, mẹ của học sinh, lựa chọn quà tặng, đồ chơi mở, vật liệu tự nhiên, bé trai mẫu giáo, niềm vui bất ngờ, phát huy tưởng tượng]
 ---
 
 <situation>Tôi nhớ mẹ của một học sinh trong lớp đã gọi cho tôi vào đầu tháng Mười hai, không biết nên mua gì cho con trai dịp Giáng sinh.</situation>

@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_consent_circuitry
+- p1_trusting_bodily_signals
 status: processed
-protagonist: "Kiki, Tasha và ông ngoại"
+protagonist: Kiki, Tasha và ông ngoại
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_chien-luoc-me-tin-con-va-con-la-nguoi-duy-nhat-o-trong-co-the-minh]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_chien-luoc-me-tin-con-va-con-la-nguoi-duy-nhat-o-trong-co-the-minh]]'
+description: Câu chuyện về bé Kiki từ chối ôm ông ngoại và cách người mẹ tôn trọng quyết định của con, khẳng định tầm quan trọng của việc dạy trẻ tin tưởng vào cảm giác cơ thể và thiết lập ranh giới cá nhân ngay cả khi người khác phật ý.
+keywords: [nuôi dạy con, tâm lý học trẻ em, ranh giới cá nhân, sự đồng thuận, từ chối ôm người thân, tin tưởng cảm giác cơ thể, khẳng định mong muốn, mạch thần kinh đồng thuận]
 ---
 
 <situation>Bé Kiki bốn tuổi và anh trai Lex bảy tuổi đang đến thăm ông bà ngoại. Khi họ đến nơi, ông ngoại của Kiki ôm Lex rồi tiến về phía Kiki.</situation>

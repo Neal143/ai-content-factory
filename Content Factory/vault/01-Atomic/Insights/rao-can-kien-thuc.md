@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "BARRIER"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the", "p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: BARRIER
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Phụ huynh đang đối mặt với rào cản lớn về tri thức trong kỷ nguyên số. Họ thiếu hiểu biết về giáo dục toàn diện và hoang mang không biết làm sao để bảo vệ con khỏi sự đào thải của công nghệ AI.
+keywords: [rào cản tri thức, kỷ nguyên số, công nghệ AI, đào thải công việc, giáo dục toàn diện, bảo vệ tương lai, hoang mang nuôi dạy, kỹ năng thế kỷ 21]
 ---
 
 # BARRIER: rao can kien thuc

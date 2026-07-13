@@ -1,15 +1,20 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
-protagonist: "Farrah và mẹ Heather"
+protagonist: Farrah và mẹ Heather
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_lang-kinh-roi-loan-cam-xuc-dysregulation-thay-vi-thieu-ton-trong-disrespect]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_lang-kinh-roi-loan-cam-xuc-dysregulation-thay-vi-thieu-ton-trong-disrespect]]'
+description: Câu chuyện người mẹ kiềm chế trước lời nói vô lễ của con gái khi bị từ chối đi chơi, bằng cách nhận diện đó là sự rối loạn cảm xúc và phản hồi bằng sự đồng cảm.
+keywords: [nuôi dạy con, giáo dục cảm xúc, mẹ và con gái, bị từ chối, lời nói vô lễ, rối loạn cảm xúc, không thiếu tôn trọng, sự đồng cảm, hiện diện tĩnh lặng]
 ---
 
 <situation>Cô bé tám tuổi Farrah hỏi mẹ, Heather, liệu cô bé có thể đến nhà bạn chơi vào tối thứ Bảy không. "Con biết là chúng ta sẽ đi thăm bà nội vào thứ Bảy mà, nên không được đâu," Heather nói.</situation>

@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "MYTH"
-topics: ["p1_cua_so_vang_phat_trien_tre_0_7_tuoi", "p1_steiner_va_khoa_hoc_phat_trien_toan_dien"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: MYTH
+topics:
+- p1_cua_so_vang_phat_trien_tre_0_7_tuoi
+- p1_steiner_va_khoa_hoc_phat_trien_toan_dien
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Nhiều cha mẹ lầm tưởng có thể dùng lý luận logic ngay khi con làm sai để giảng giải. Thực tế, não bộ trẻ dưới 7 tuổi chưa phát triển đủ tư duy trừu tượng để tiếp nhận logic như một người lớn.
+keywords: [lý luận với trẻ, giảng giải logic, tư duy trừu tượng, phát triển não bộ, khi trẻ làm sai, sai lầm giao tiếp, tâm lý độ tuổi, kỷ luật độ tuổi mầm non]
 ---
 
 # MYTH: giai thich logic khi con sai

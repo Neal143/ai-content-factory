@@ -1,14 +1,17 @@
 ﻿---
 type: data-point
 data_type: shocking_fact
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_actionable-rule-khen-ngoi-qua-trinh-thay-vi-ket-qua]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_actionable-rule-khen-ngoi-qua-trinh-thay-vi-ket-qua]]'
 ---
 
 <!-- QUARANTINE: Lỗi Khóa Ngoại: Knowledge mục tiêu không tồn tại lọt vào tới Atomizer (good-inside_actionable-rule-khen-ngoi-qua-trinh-thay-vi-ket-qua) -->

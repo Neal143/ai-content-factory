@@ -8,7 +8,6 @@ parent_audience:
 aliases:
 - dỗ dành bé khi mệt
 - an ủi con lúc quấy khóc
-keywords: []
 ---
 # 🎯 cha mẹ muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc
 

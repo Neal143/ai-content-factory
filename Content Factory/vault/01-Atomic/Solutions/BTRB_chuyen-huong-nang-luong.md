@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_reduce_the_word_no", "p1_energy_redirection"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_reduce_the_word_no
+- p1_energy_redirection
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_lam-dung-tu-khong]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_lam-dung-tu-khong]]'
+description: Kỷ luật sáng tạo bằng cách chủ động cung cấp một hoạt động thay thế hấp dẫn, giúp chuyển hướng nhẹ nhàng năng lượng dư thừa của trẻ thay vì trực tiếp cấm đoán.
+keywords: [Giáo dục mầm non, Nuôi dạy con, Kỷ luật tích cực, Chuyển hướng năng lượng, Quản lý hành vi, Phân tâm bằng đồ chơi, Cung cấp hoạt động thay thế, Năng lượng dư thừa, Thu hút sự chú ý]
 ---
 
 *   **Bản chất:** Phương pháp kỷ luật sáng tạo bằng cách thu hút sự chú ý của trẻ vào một hoạt động mới tích cực hơn, thay vì trực tiếp chỉ trích hay cấm đoán hành vi cũ.

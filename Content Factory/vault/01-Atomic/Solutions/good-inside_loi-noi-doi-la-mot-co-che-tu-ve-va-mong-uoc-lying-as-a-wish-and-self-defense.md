@@ -1,15 +1,25 @@
 ﻿---
 type: solution
 knowledge_type: mental_model
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_lying_as_defense", "p1_reframe_lie_as_wish"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_lying_as_defense
+- p1_reframe_lie_as_wish
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]"]
-vivid_knowledges: ["Một câu ẩn dụ chân thực không chứa ngoặc vuông\nSợ hãi bị mẹ ghét bỏ, Bật ra lời nói dối \"Con đang chơi trong phòng\" để tự vệ"]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]'
+vivid_knowledges:
+- 'Một câu ẩn dụ chân thực không chứa ngoặc vuông
+
+  Sợ hãi bị mẹ ghét bỏ, Bật ra lời nói dối "Con đang chơi trong phòng" để tự vệ'
+description: Mô hình tư duy giải mã lời nói dối của trẻ như một cơ chế tự vệ bản năng và mong ước thay đổi thực tại, giúp cha mẹ thấu hiểu nhu cầu kết nối thay vì dán nhãn thao túng hay lươn lẹo.
+keywords: [Nuôi dạy con, Tâm lý học, Hành vi nói dối, Phân tích tâm lý, Cơ chế tự vệ bản năng, Mong ước thay đổi thực tại, Lying as self defense, Tín hiệu khao khát kết nối, Từ bỏ dán nhãn lươn lẹo, Nhu cầu kiểm soát độc lập]
 ---
 
 *   **Bản chất:** Lời nói dối của trẻ gần như không bao giờ mang tính chất chống đối hay thao túng, mà nó là sản phẩm phụ của quá trình tiến hóa: một cơ chế tự vệ để bảo vệ sự an toàn, bảo vệ mối quan hệ gắn kết với cha mẹ, hoặc để khẳng định sự độc lập của bản thân.

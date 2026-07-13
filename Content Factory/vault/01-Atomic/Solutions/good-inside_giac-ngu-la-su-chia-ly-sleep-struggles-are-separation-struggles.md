@@ -1,15 +1,26 @@
 ﻿---
 type: solution
 knowledge_type: principle
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-so-chia-ly-trong-bong-toi]]"]
-vivid_knowledges: ["(Sleep struggles are separation struggles)\nKhoảng trống chia ly cần được khỏa lấp bằng sự hiện diện của cha mẹ\n\n*   **②-2. framework: Quy trình xây dựng giấc ngủ an toàn (Building Sleep Safety)**"]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-so-chia-ly-trong-bong-toi]]'
+vivid_knowledges:
+- '(Sleep struggles are separation struggles)
+
+  Khoảng trống chia ly cần được khỏa lấp bằng sự hiện diện của cha mẹ
+
+
+  *   **②-2. framework: Quy trình xây dựng giấc ngủ an toàn (Building Sleep Safety)**'
+description: Nguyên lý định nghĩa những khó khăn về giấc ngủ của trẻ bản chất là sự vật lộn với nỗi sợ chia ly, đòi hỏi cha mẹ phải khỏa lấp khoảng trống bằng sự hiện diện an toàn thay vì sử dụng biện pháp trừng phạt.
+keywords: [Nuôi dạy con, Tâm lý học, Khó khăn giấc ngủ, Nỗi sợ chia ly, Hệ thống gắn bó, Nguyên lý giấc ngủ là chia ly, Xây dựng giấc ngủ an toàn, Khỏa lấp khoảng trống chia ly, Kỹ năng tự xoa dịu bản thân, Sự hiện diện trấn an]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Những khó khăn về giấc ngủ ở trẻ về bản chất chính là những khó khăn trong việc chia ly (separation struggles) [1].

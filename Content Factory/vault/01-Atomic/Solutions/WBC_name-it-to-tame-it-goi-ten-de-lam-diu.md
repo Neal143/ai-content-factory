@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_healing", "p1_name_to_tame_strategy"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_healing
+- p1_name_to_tame_strategy
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood]]"]
-keywords: []
+supports_insight:
+- '[[WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood]]'
+description: Triển khai chiến lược gọi tên cảm xúc và khuyến khích trẻ kể lại câu chuyện nhằm mục đích kết hợp sức mạnh của não trái logic với não phải cảm xúc, từ đó giúp xoa dịu những cảm xúc tiêu cực và xua tan nỗi sợ hãi ở trẻ.
+keywords: [nuôi dạy con, khoa học thần kinh, xoa dịu cảm xúc, xử lý tổn thương, name it to tame it, gọi tên để làm dịu, kết nối não bộ, kể lại câu chuyện, xoa dịu nỗi sợ]
 ---
 
 * Mục đích: Giúp trẻ kết hợp sức mạnh của não trái (logic, ngôn ngữ) và não phải (cảm xúc, ký ức) để hiểu và xử lý những trải nghiệm tồi tệ, từ đó xoa dịu các cảm xúc tiêu cực và xua tan nỗi sợ hãi.

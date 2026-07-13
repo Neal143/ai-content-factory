@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_use_of_may", "p1_illusion_of_choice"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_use_of_may
+- p1_illusion_of_choice
 status: processed
-protagonist: "Một người mẹ"
+protagonist: Một người mẹ
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_su-dung-tu-may-duoc-phepco-the-thay-vi-cau-hoi]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_su-dung-tu-may-duoc-phepco-the-thay-vi-cau-hoi]]'
+description: Câu chuyện về một người mẹ kiềm chế cơn tức giận khi con làm bẩn sàn nhà và áp dụng thành công nguyên tắc sử dụng từ 'may' để hướng dẫn trẻ dọn dẹp một cách ngoan ngoãn.
+keywords: [giáo dục sớm, giao tiếp với trẻ, người mẹ tức giận, sàn nhà vấy bẩn, thay đổi cách nói, sử dụng từ may, đứa trẻ nghe lời, không phản kháng, hòa hợp gia đình]
 ---
 
 <situation>Một phụ huynh chia sẻ kinh nghiệm áp dụng lời khuyên sau khi tham dự buổi diễn thuyết của tác giả về kỷ luật sáng tạo.</situation>

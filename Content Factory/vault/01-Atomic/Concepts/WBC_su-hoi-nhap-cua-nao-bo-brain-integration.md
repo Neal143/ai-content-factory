@@ -1,15 +1,22 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_brain_development"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_brain_development
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]"]
-vivid_knowledges: ["Dàn đồng ca hòa quyện giọng hát, Các phần não bộ liên kết và hoạt động phối hợp"]
-keywords: []
+supports_insight:
+- '[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]'
+vivid_knowledges:
+- Dàn đồng ca hòa quyện giọng hát, Các phần não bộ liên kết và hoạt động phối hợp
+description: Hội nhập não bộ là quá trình liên kết các vùng não trái, não phải, não trên và não dưới lại với nhau. Điều này giúp trẻ kiểm soát cảm xúc, ra quyết định đúng đắn và phát triển trí tuệ toàn diện.
+keywords: [khoa học thần kinh, hội nhập não bộ, kiểm soát cảm xúc, phát triển trí tuệ, não trái và não phải, tâm sinh lý trẻ, ra quyết định, hỗ trợ phát triển]
 ---
 
 - Định nghĩa/Phát biểu luật: Hội nhập là quá trình mang đến cho trẻ những trải nghiệm nhằm tạo ra và củng cố các sợi liên kết giữa các phần khác nhau của não bộ, giúp chúng hợp tác và làm việc cùng nhau. Quá trình này bao gồm hội nhập ngang (kết nối não trái logic với não phải cảm xúc) và hội nhập dọc (kết nối não trên chuyên suy nghĩ thấu đáo với não dưới mang tính bản năng, sinh tồn).

@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "LIKES"
-topics: ["p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: LIKES
+topics:
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Một mong muốn thầm kín nhưng mạnh mẽ của phụ huynh là được xã hội đánh giá cao. Họ thích được mọi người nhìn nhận như những người có trí tuệ, hiểu biết và có chiều sâu trong phương pháp nuôi dạy con cái.
+keywords: [sự công nhận, áp lực xã hội, hình ảnh cha mẹ, triết lý giáo dục, nuôi dạy thông thái, nhu cầu khẳng định, thể diện phụ huynh, sự hiểu biết]
 ---
 
 # LIKES: duoc danh gia tri tue

@@ -2,14 +2,12 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: chuyển hóa hành vi tiêu cực của trẻ
-audience_circumstance: khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ
-  nước bọt
+audience_circumstance: khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt
 parent_audience:
 - '[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]'
 aliases:
 - xử lý khi trẻ mầm non có hành vi bạo lực
 - ngăn chặn thói quen đánh cắn ở trẻ nhỏ
-keywords: []
 ---
 # 🎯 cha mẹ muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt
 

@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "DISLIKES"
-topics: ["p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: DISLIKES
+topics:
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Khi tìm hiểu về trường học hay phương pháp giáo dục, phụ huynh rất ác cảm với các hình thức spam, lôi kéo hoặc quá thân mật. Họ thường dùng lý trí và đề cao cảnh giác trước những lời quảng cáo quá mức.
+keywords: [marketing giáo dục, quảng cáo sai lệch, cảnh giác lôi kéo, tâm lý phụ huynh, chọn trường cho con, sự phản cảm, truyền thông trường học, tư duy lý trí]
 ---
 
 # DISLIKES: ghet spam du do loi keo

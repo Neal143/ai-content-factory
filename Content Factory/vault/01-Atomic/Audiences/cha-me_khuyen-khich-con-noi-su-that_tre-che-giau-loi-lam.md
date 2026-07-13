@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: khuyến khích con cái nói sự thật
 audience_circumstance: khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm
-vivid_circumstances: ["Phát hiện con làm sai hoặc che giấu sự thật | Nghe con liên tục chối bay chối biến | Trạng thái căng thẳng, sẵn sàng vạch trần lời nói dối của con", "Phát hiện con làm sai hoặc che giấu sự thật | Nghe con liên tục chối bay chối biến | Trạng thái căng thẳng, sẵn sàng vạch trần lời nói dối của con"]
+vivid_circumstances:
+- Phát hiện con làm sai hoặc che giấu sự thật | Nghe con liên tục chối bay chối biến | Trạng thái căng thẳng, sẵn sàng vạch trần lời nói dối của con
+- Phát hiện con làm sai hoặc che giấu sự thật | Nghe con liên tục chối bay chối biến | Trạng thái căng thẳng, sẵn sàng vạch trần lời nói dối của con
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh dạy con tính trung thực
 - cha mẹ xử lý khi trẻ nói dối
-keywords: []
 ---
 # 🎯 Cha mẹ muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm
 

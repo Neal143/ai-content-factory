@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]'
+description: Chiến lược chuyển hướng trẻ từ việc tìm kiếm sự công nhận bên ngoài sang việc tự đánh giá bản thân thông qua cách cha mẹ khen ngợi nỗ lực và quá trình thay vì tung hô kết quả cuối cùng.
+keywords: [Nuôi dạy con, Tâm lý học, Xây dựng sự tự tin, Nghệ thuật khen ngợi, Niềm tin sai lầm về lời khen, Khen ngợi nỗ lực quá trình, Chuyển hướng đánh giá nội tại, Internal validation, Từ bỏ khen ngợi kết quả, Phát triển tư duy tự khám phá]
 ---
 
 *   **Bản chất:** Chuyển hướng sự chú ý của trẻ từ việc tìm kiếm sự công nhận bên ngoài (external validation) sang việc tự đánh giá và khám phá bản thân (internal validation).

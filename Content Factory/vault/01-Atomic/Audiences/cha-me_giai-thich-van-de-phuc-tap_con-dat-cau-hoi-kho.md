@@ -2,16 +2,16 @@
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giải thích những vấn đề phức tạp, nhạy cảm
-audience_circumstance: khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối
-  rối
-vivid_circumstances: ["Phòng bếp | Bố mẹ cãi vã lớn tiếng, nét mặt giận dữ | Trẻ đang ăn trưa, im lặng nhưng mang nỗi sợ bên trong", "Phòng bếp | Bố mẹ cãi vã lớn tiếng, nét mặt giận dữ | Trẻ đang ăn trưa, im lặng nhưng mang nỗi sợ bên trong"]
+audience_circumstance: khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối
+vivid_circumstances:
+- Phòng bếp | Bố mẹ cãi vã lớn tiếng, nét mặt giận dữ | Trẻ đang ăn trưa, im lặng nhưng mang nỗi sợ bên trong
+- Phòng bếp | Bố mẹ cãi vã lớn tiếng, nét mặt giận dữ | Trẻ đang ăn trưa, im lặng nhưng mang nỗi sợ bên trong
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh trả lời câu hỏi khó của con
 - cha mẹ giải thích chuyện nhạy cảm cho trẻ
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối
 

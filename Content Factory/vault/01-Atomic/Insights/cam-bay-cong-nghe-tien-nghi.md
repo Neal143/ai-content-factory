@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "PITFALL"
-topics: ["p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: PITFALL
+topics:
+- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Nhiều cha mẹ rơi vào cạm bẫy của công nghệ tiện nghi và ảo tưởng rằng mình đang nuôi dạy con rất 'hợp thời'. Tuy nhiên, thực chất họ đang đẩy con vào sự phụ thuộc thụ động vào các thiết bị kỹ thuật số vô hồn.
+keywords: [công nghệ tiện nghi, ảo tưởng hợp thời, sự phụ thuộc, thiết bị kỹ thuật số, sự thụ động, sai lầm giáo dục, nuôi dạy con hiện đại, cai nghiện màn hình]
 ---
 
 # PITFALL: cam bay cong nghe tien nghi

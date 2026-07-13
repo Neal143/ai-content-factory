@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
 Ten file: run_insights.ps1
 Last update: 26/06/2026 15:16 (GMT+7)
@@ -25,7 +25,26 @@ $PayloadPath = ".agents/skills/persona-interviewer/scripts/insights_payload.json
 
 Write-Host "Processing Batch Insights..."
 
-# Goi Backend an (Tranh lam rac Prompt)
-python .agents/skills/persona-interviewer/scripts/generate_insights.py --payload $PayloadPath --template $TemplatePath --output $OutputPath --audience $Audience --username $UserName
+# 1. Goi Backend va capture output de trich xuat file moi (Stream Capture)
+$pythonOutput = python .agents/skills/persona-interviewer/scripts/generate_insights.py --payload $PayloadPath --template $TemplatePath --output $OutputPath --audience $Audience --username $UserName
+
+# 2. In lai output de khong mat log terminal cua User
+$pythonOutput | ForEach-Object { Write-Host $_ }
+
+# 3. Trich xuat cac duong dan file tu output cua Python (Regex Match)
+$newPaths = @()
+$pythonOutput | ForEach-Object {
+    if ($_ -match "\[OK\] Da tao file:\s*(.+)$") {
+        # Chuan hoa duong dan (thay \ thanh /) de phu hop voi Update-PersonalAtomsQueue.ps1
+        $newPaths += $Matches[1].Trim() -replace '\\', '/'
+    }
+}
+
+# 4. Day danh sach file vao Queue (Khong rebuild index)
+if ($newPaths.Count -gt 0) {
+    $pathStr = $newPaths -join ","
+    Write-Host "Dang cap nhat Personal Atoms Queue..." -ForegroundColor Cyan
+    powershell -ExecutionPolicy Bypass -File .agents/scripts/Update-PersonalAtomsQueue.ps1 -Action append -AtomPathsRaw $pathStr
+}
 
 Write-Host "Du lieu Payload da duoc nap xong. File Buffer rong san sang cho luot tiep theo."

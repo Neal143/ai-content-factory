@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_perfectionism_nature", "p1_reframe_perfectionism"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_perfectionism_nature
+- p1_reframe_perfectionism
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_logic-giai-quyet-hoan-hao]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_logic-giai-quyet-hoan-hao]]'
+description: Giải pháp giúp trẻ xây dựng mối quan hệ lành mạnh với chủ nghĩa hoàn hảo bằng cách mở rộng vùng xám chấp nhận thất bại và tách biệt giá trị bản thân khỏi kết quả, thay vì cố gắng vùi dập hay loại bỏ tính cách này.
+keywords: [Nuôi dạy con, Tâm lý học, Chủ nghĩa hoàn hảo, Tư duy phát triển, Định hướng lại sự hoàn hảo, Mở rộng vùng xám, Tách biệt kết quả và bản chất, Chấp nhận sự không hoàn hảo, Quản lý nỗi sợ thất bại, Khai thác mặt tích cực của hoàn hảo]
 ---
 
 * **Bản chất:** Giúp trẻ có một mối quan hệ tốt hơn với chủ nghĩa hoàn hảo thay vì cố gắng loại bỏ nó.

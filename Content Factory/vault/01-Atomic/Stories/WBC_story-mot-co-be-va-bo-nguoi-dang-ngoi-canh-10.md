@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_emotional_regulation", "p1_emotional_cloud_model"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_emotional_regulation
+- p1_emotional_cloud_model
 status: processed
-protagonist: "Một cô bé và bố"
+protagonist: Một cô bé và bố
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_knowledge: ["[[WBC_mo-hinh-dam-may-cam-xuc-thoi-tiet-cua-tam-tri]]"]
-keywords: []
+supports_knowledge:
+- '[[WBC_mo-hinh-dam-may-cam-xuc-thoi-tiet-cua-tam-tri]]'
+description: Câu chuyện về bé gái tức giận vì chú chó làm rách tranh và cách người bố nhắc nhở về tình yêu thương trước đó, giúp cô bé nhận ra tính chất tạm thời của cảm xúc và không bị chúng nhấn chìm.
+keywords: [nuôi dạy con, khoa học thần kinh, đám mây cảm xúc, tính chất tạm thời, xoa dịu tức giận, kiểm soát cảm xúc, nhận thức thay đổi, không bị nhấn chìm, thời tiết tâm trí]
 ---
 
 <situation>Người bố đang ngồi cạnh cô con gái nhỏ ngoài hiên nhà. Bức tranh đặc biệt mà cô bé mang về từ trường vừa bị con chó Moby làm rách.</situation>

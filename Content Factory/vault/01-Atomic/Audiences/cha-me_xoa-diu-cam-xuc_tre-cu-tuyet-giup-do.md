@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: xoa dịu và điều chỉnh cảm xúc của con
 audience_circumstance: khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ
-vivid_circumstances: ["Phòng chơi | Trẻ la hét \"Tránh ra, con ghét mẹ!\" khi bị nhắc nhở | Mẹ bực bội, bất lực", "Phòng chơi | Trẻ la hét \"Tránh ra, con ghét mẹ!\" khi bị nhắc nhở | Mẹ bực bội, bất lực"]
+vivid_circumstances:
+- Phòng chơi | Trẻ la hét "Tránh ra, con ghét mẹ!" khi bị nhắc nhở | Mẹ bực bội, bất lực
+- Phòng chơi | Trẻ la hét "Tránh ra, con ghét mẹ!" khi bị nhắc nhở | Mẹ bực bội, bất lực
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh dỗ trẻ khóc thét
 - cha mẹ xử lý khi con từ chối giúp đỡ
-keywords: []
 ---
 # 🎯 Cha mẹ muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ
 

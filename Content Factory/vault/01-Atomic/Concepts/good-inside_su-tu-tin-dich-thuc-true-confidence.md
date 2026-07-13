@@ -1,14 +1,21 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_true_confidence_concept", "p1_validate_and_empower_shyness"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_true_confidence_concept
+- p1_validate_and_empower_shyness
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]'
+description: Sự tự tin đích thực không phải là tham gia mọi hoạt động ngay lập tức, mà là biết rõ cảm xúc của chính mình. Cho phép trẻ tự quyết định khi nào sẵn sàng mới là cách nuôi dưỡng sự tự tin cốt lõi.
+keywords: [sự tự tin, kỹ năng quyết định, tâm lý trẻ em, quyền tự quyết, tôn trọng cảm xúc, sự nhút nhát, phát triển tính cách, giáo dục nhận thức]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Sự tự tin là trải nghiệm của việc biết rõ bản thân cảm thấy thế nào và tin rằng việc là chính mình trong cảm xúc đó, vào khoảnh khắc đó, là hoàn toàn ổn thỏa.

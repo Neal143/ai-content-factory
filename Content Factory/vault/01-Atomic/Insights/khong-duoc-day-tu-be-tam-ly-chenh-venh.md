@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "PAIN_POINT"
-topics: ["p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: PAIN_POINT
+topics:
+- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Phụ huynh hiện đại thường mang tâm lý chênh vênh khi làm cha mẹ. Đây là hệ quả của việc thế hệ trước thiếu nền tảng giáo dục cảm xúc, khiến họ không có đủ công cụ nội tâm để nuôi dạy con cái.
+keywords: [tâm lý chênh vênh, giáo dục cảm xúc, thiếu công cụ nội tâm, hệ quả thế hệ, làm cha mẹ, chữa lành đứa trẻ, khủng hoảng nuôi dạy, áp lực phụ huynh]
 ---
 
 # PAIN_POINT: khong duoc day tu be tam ly chenh venh

@@ -1,15 +1,21 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_will_senses"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_will_senses
 status: processed
-protagonist: "Bà mẹ lần đầu sinh con"
+protagonist: Bà mẹ lần đầu sinh con
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_nguyen-tac-nuoi-duong-cac-giac-quan-y-chi]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_nguyen-tac-nuoi-duong-cac-giac-quan-y-chi]]'
+description: Câu chuyện về lời khuyên của chuyên gia dành cho một bà mẹ lần đầu sinh con, nhấn mạnh nguyên tắc hãy để trẻ tự thể hiện sự sẵn sàng trước khi bắt đầu bất kỳ hoạt động vận động mới nào.
+keywords: [giáo dục sớm, phát triển vận động, bà mẹ trẻ, nuôi con lần đầu, băn khoăn thời điểm, chờ con sẵn sàng, quan sát tín hiệu, không ép buộc, tuân theo tự nhiên]
 ---
 
 <situation>I once boiled it down into a few words for a first-time mom.</situation>

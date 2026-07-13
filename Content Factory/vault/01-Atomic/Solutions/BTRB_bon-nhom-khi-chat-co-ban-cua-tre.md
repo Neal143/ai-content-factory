@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: typology
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_four_temperaments", "p1_like_heals_like"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_four_temperaments
+- p1_like_heals_like
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh]]'
+description: 'Các tác giả phân tích bốn nhóm khí chất cơ bản của trẻ em theo Waldorf: nóng nảy, điềm tĩnh, lạc quan và u sầu, giúp cha mẹ dễ dàng nhận diện và thấu hiểu đặc điểm cốt lõi của trẻ.'
+keywords: [giáo dục sớm, phương pháp waldorf, bốn khí chất, nhóm tính cách, đặc tính trẻ em, phân loại tâm lý, barbara j. patterson, pamela bradley, beyond the rainbow bridge]
 ---
 
 *   **Nội dung:** Hệ thống phân loại tính cách con người thành 4 nhóm khí chất đặc trưng: Choleric (Nóng nảy), Phlegmatic (Điềm tĩnh/Chậm chạp), Sanguine (Lạc quan/Bay bổng), và Melancholic (U sầu).

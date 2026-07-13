@@ -1,15 +1,25 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_lying_as_defense", "p1_reframe_lie_as_wish"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_lying_as_defense
+- p1_reframe_lie_as_wish
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]"]
-vivid_knowledges: ["Một câu ẩn dụ chân thực không chứa ngoặc vuông\nMẹ nhẹ nhàng gật đầu thấu hiểu, Trò chuyện về mong ước tòa tháp không bị đổ"]
-keywords: []
+supports_insight:
+- '[[good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung]]'
+vivid_knowledges:
+- 'Một câu ẩn dụ chân thực không chứa ngoặc vuông
+
+  Mẹ nhẹ nhàng gật đầu thấu hiểu, Trò chuyện về mong ước tòa tháp không bị đổ'
+description: Khung giao tiếp giúp hóa giải sự căng thẳng khi trẻ nói dối bằng cách định hình lại lời nói dối thành một mong ước chân thành, từ đó tạo ra vùng an toàn cảm xúc để duy trì kết nối thay vì dồn ép thú tội.
+keywords: [Nuôi dạy con, Tâm lý học, Hành vi nói dối, Quản lý xung đột, Định hình lời nói dối thành mong ước, Tạo vùng an toàn cảm xúc, Bỏ qua sự phản kháng, Chiến lược đồng cảm với mong muốn, Reframe the lie, Tránh dồn ép thú tội]
 ---
 
 *   **Mục đích:** Thay đổi hướng đi của cuộc đối thoại, tạo ra một vùng đệm an toàn giữa hai thái cực "nói thật" và "nói dối", từ đó làm giảm cường độ căng thẳng của tình huống và giúp cha mẹ kết nối với đứa trẻ đang bối rối bên trong.

@@ -2,8 +2,7 @@
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý
-audience_circumstance: khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc
-  lo âu
+audience_circumstance: khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu
 vivid_circumstances: []
 vivid_circumstances_reserve: []
 parent_audience:
@@ -11,7 +10,6 @@ parent_audience:
 aliases:
 - phụ huynh
 - người hỗ trợ con
-keywords: []
 ---
 # 🎯 cha mẹ muốn hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu
 

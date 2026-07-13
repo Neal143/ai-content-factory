@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con kiểm soát nỗi sợ hãi
 audience_circumstance: khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể
-vivid_circumstances: ["Tại một buổi cắm trại | Con la hét, khóc lóc và bám chặt lấy bố khi thấy đống lửa trại | Bố bực bội cố gắng dùng logic giải thích rằng ngọn lửa rất vui và không đáng sợ", "Tại một buổi cắm trại | Con la hét, khóc lóc và bám chặt lấy bố khi thấy đống lửa trại | Bố bực bội cố gắng dùng logic giải thích rằng ngọn lửa rất vui và không đáng sợ"]
+vivid_circumstances:
+- Tại một buổi cắm trại | Con la hét, khóc lóc và bám chặt lấy bố khi thấy đống lửa trại | Bố bực bội cố gắng dùng logic giải thích rằng ngọn lửa rất vui và không đáng sợ
+- Tại một buổi cắm trại | Con la hét, khóc lóc và bám chặt lấy bố khi thấy đống lửa trại | Bố bực bội cố gắng dùng logic giải thích rằng ngọn lửa rất vui và không đáng sợ
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh trấn an khi con hoảng sợ
 - cha mẹ giúp con vượt qua nỗi sợ
-keywords: []
 ---
 # 🎯 Cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể
 

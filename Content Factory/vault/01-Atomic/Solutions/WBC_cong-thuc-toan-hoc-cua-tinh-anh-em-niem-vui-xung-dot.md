@@ -1,14 +1,19 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"]
-keywords: []
+supports_insight:
+- '[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]'
+description: Mối quan hệ anh chị em thực sự bền chặt không phải là không có xung đột, mà được xây dựng bằng cách liên tục gia tăng những khoảnh khắc vui vẻ chung để lấn át đi các mâu thuẫn tất yếu thường xuyên xảy ra giữa chúng.
+keywords: [nuôi dạy con, tâm lý học gia đình, mối quan hệ anh em, xung đột anh chị em, gia tăng niềm vui, tận hưởng chung, cảm xúc tích cực, kết nối gia đình]
 ---
 
 *   **Bản chất:** Yếu tố dự báo tốt nhất cho mối quan hệ anh chị em tốt đẹp sau này là mức độ vui vẻ mà chúng có cùng nhau khi còn nhỏ.

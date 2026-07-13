@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_tears_as_attachment_signal", "p1_normalize_crying"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_tears_as_attachment_signal
+- p1_normalize_crying
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]'
+description: Đề xuất và khuyến khích việc chủ động bình thường hóa tiếng khóc của trẻ thông qua chia sẻ chân thực nhằm giúp trẻ rũ bỏ hoàn toàn sự xấu hổ vô lý về sự yếu đuối của mình.
+keywords: [Giáo dục trẻ em, Quản lý cảm xúc, Bình thường hóa việc khóc, Xóa bỏ xấu hổ, Cảm xúc tự nhiên, Chia sẻ câu chuyện, Phản ứng tự nhiên, Gánh nặng tâm lý]
 ---
 
 *   **Bản chất:** Chiến lược chủ động trò chuyện về những giọt nước mắt với trẻ vào những lúc bình yên (khi trẻ KHÔNG khóc), nhằm giải phóng sự xấu hổ (de-shaming) xung quanh việc khóc.

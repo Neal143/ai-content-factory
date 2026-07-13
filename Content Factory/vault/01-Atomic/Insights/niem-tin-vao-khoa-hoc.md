@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "BELIEF"
-topics: ["p1_steiner_va_khoa_hoc_phat_trien_toan_dien"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: BELIEF
+topics:
+- p1_steiner_va_khoa_hoc_phat_trien_toan_dien
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Nhiều phụ huynh hiện đại đặt niềm tin mãnh liệt vào các nghiên cứu khoa học. Họ dùng kiến thức chuyên môn làm kim chỉ nam vững chắc cho mọi quyết định nuôi dạy con thay vì mù quáng chạy theo các xu hướng.
+keywords: [niềm tin khoa học, nghiên cứu giáo dục, nuôi con khoa học, kim chỉ nam, kiến thức chuyên môn, phương pháp bài bản, tâm lý học trẻ em, xu hướng giáo dục]
 ---
 
 # BELIEF: niem tin vao khoa hoc

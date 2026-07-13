@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_consent_circuitry", "p1_trusting_bodily_signals"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_consent_circuitry
+- p1_trusting_bodily_signals
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"]
-keywords: []
+supports_insight:
+- '[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]'
+description: Chiến lược giao tiếp xác thực giúp cha mẹ xây dựng sự đồng thuận và tự tin cho trẻ thông qua việc công nhận tuyệt đối các tín hiệu cơ thể, từ đó trao quyền làm chủ và khẳng định cảm nhận bên trong của trẻ là hợp lệ.
+keywords: [Nuôi dạy con, Tâm lý học, Giao tiếp xác thực, Kết nối cảm xúc, Tín hiệu cơ thể, Chiến lược mẹ tin con, Trao quyền làm chủ cơ thể, Xây dựng sự đồng thuận, Công nhận cảm nhận bên trong, Cơ chế tin tưởng bản thân]
 ---
 
 *   **Bản chất:** Đây là các phản hồi giao tiếp mang tính xác thực, nhằm xây dựng mạch đồng thuận và sự tự tin cho trẻ thông qua việc công nhận tuyệt đối các tín hiệu cơ thể của chúng.

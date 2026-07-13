@@ -1,14 +1,21 @@
 ﻿---
 type: solution
 knowledge_type: actionable_rule
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_positive_discipline", "p1_end_of_day_reflection"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_positive_discipline
+- p1_end_of_day_reflection
 status: processed
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_insight: ["[[BTRB_kiet-suc-va-thieu-tu-ky-luat]]"]
-keywords: []
+supports_insight:
+- '[[BTRB_kiet-suc-va-thieu-tu-ky-luat]]'
+description: Thói quen phản tỉnh cuối ngày giúp cha mẹ tìm ra nguyên nhân cốt lõi của những lần bùng nổ để lên kế hoạch ngăn chặn sự việc tái diễn.
+keywords: [Giáo dục mầm non, Nuôi dạy con, Phản tỉnh cuối ngày, Rút kinh nghiệm, Ngăn chặn tái diễn, Phân tích bùng nổ, Khuôn mẫu hành vi, Lên kế hoạch trước, Rèn luyện tự kỷ luật]
 ---
 
 *   **Bản chất:** Dành thời gian nhìn lại các sự kiện trong ngày sau khi trẻ đã đi ngủ để rút kinh nghiệm và chuẩn bị cho các tình huống tương tự trong tương lai.

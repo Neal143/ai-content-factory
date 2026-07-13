@@ -1,17 +1,20 @@
 ﻿---
 type: insight
-insight_type: "FEAR"
-topics: ["p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: FEAR
+topics:
+- p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Áp lực cuộc sống hiện đại đang bào mòn sức chịu đựng của nhiều bậc cha mẹ. Dù rất sợ hãi việc nổi nóng và đánh đòn con, họ vẫn bất lực rơi vào vòng lặp lặp lại những mô hình giáo dục bạo lực.
+keywords: [nổi nóng với trẻ, đánh đòn con, áp lực cuộc sống, bào mòn sức chịu đựng, vòng lặp bạo lực, mất bình tĩnh, bất lực kỷ luật, kiểm soát cảm xúc]
 ---
 
 # FEAR: so noi nong danh con

@@ -3,14 +3,15 @@ audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: dập tắt tiếng rên rỉ đòi hỏi của con
 audience_circumstance: khi cảm thấy mất kiên nhẫn và căng thẳng tột độ
-vivid_circumstances: ["Chiều muộn 5h30 tại nhà | Trẻ kéo dài giọng rên rỉ đòi gọt bút chì \"Can you get me one?!?!\" | Mẹ căng thẳng, cảm thấy như sắp nổ tung.", "Chiều muộn 5h30 tại nhà | Trẻ kéo dài giọng rên rỉ đòi gọt bút chì \"Can you get me one?!?!\" | Mẹ căng thẳng, cảm thấy như sắp nổ tung."]
+vivid_circumstances:
+- Chiều muộn 5h30 tại nhà | Trẻ kéo dài giọng rên rỉ đòi gọt bút chì "Can you get me one?!?!" | Mẹ căng thẳng, cảm thấy như sắp nổ tung.
+- Chiều muộn 5h30 tại nhà | Trẻ kéo dài giọng rên rỉ đòi gọt bút chì "Can you get me one?!?!" | Mẹ căng thẳng, cảm thấy như sắp nổ tung.
 vivid_circumstances_reserve: []
 parent_audience:
 - '[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]'
 aliases:
 - phụ huynh xử lý khi con mè nheo
 - cha mẹ kiềm chế khi con nhõng nhẽo
-keywords: []
 ---
 # 🎯 Cha mẹ muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ
 

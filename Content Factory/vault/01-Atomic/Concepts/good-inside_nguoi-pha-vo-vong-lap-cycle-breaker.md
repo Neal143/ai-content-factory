@@ -1,15 +1,23 @@
 ﻿---
 type: concept
 knowledge_type: concept
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_good_inside_core_belief", "p1_most_generous_interpretation"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_good_inside_core_belief
+- p1_most_generous_interpretation
 status: processed
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_insight: ["[[good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi]]"]
-vivid_knowledges: ["Đặt tay lên ngực và nhắn nhủ: \"Mình ở đây vì mình muốn là điểm xoay chuyển. Mình muốn bắt đầu một điều gì đó khác biệt.\""]
-keywords: []
+supports_insight:
+- '[[good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi]]'
+vivid_knowledges:
+- 'Đặt tay lên ngực và nhắn nhủ: "Mình ở đây vì mình muốn là điểm xoay chuyển. Mình muốn bắt đầu một điều gì đó khác biệt."'
+description: Người phá vỡ vòng lặp là cha mẹ dám từ chối lặp lại những khuôn mẫu tổn thương liên thế hệ. Bằng cách bao dung bản thân, họ mở ra hướng đi tích cực mới cho thế hệ tương lai.
+keywords: [tâm lý gia đình, tổn thương liên thế hệ, phá vỡ vòng lặp, khuôn mẫu hành xử, sự bao dung, kết nối nội tâm, chữa lành tâm lý, nuôi dạy tích cực]
 ---
 
 *   **Định nghĩa/Phát biểu luật:** Là người chủ động chọn việc thay đổi, từ chối lặp lại những khuôn mẫu hành xử tổn thương được truyền từ các thế hệ trước và tạo ra một hướng đi mới cho thế hệ tương lai.

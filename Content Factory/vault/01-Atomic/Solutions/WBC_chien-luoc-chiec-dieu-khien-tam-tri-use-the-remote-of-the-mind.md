@@ -1,15 +1,23 @@
 ﻿---
 type: solution
 knowledge_type: framework
-topics: ["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity", "p1_child_trauma_recovery", "p1_remote_of_the_mind"]
+topics:
+- p1_neuroscience_parenting
+- p1_whole_brain_integration
+- p1_crisis_integration_opportunity
+- p1_child_trauma_recovery
+- p1_remote_of_the_mind
 status: processed
 source_type: book
-source_name: "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)"
-source_id: "the-whole-brain-child"
+source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
+source_id: the-whole-brain-child
 confidence: 0.9
-supports_insight: ["[[WBC_su-so-hai-khi-phai-doi-mat-voi-ky-uc-ton-thuong]]"]
-vivid_knowledges: ["Trẻ em bấm nút trên chiếc điều khiển tưởng tượng để tua nhanh qua những cảnh đáng sợ"]
-keywords: []
+supports_insight:
+- '[[WBC_su-so-hai-khi-phai-doi-mat-voi-ky-uc-ton-thuong]]'
+vivid_knowledges:
+- Trẻ em bấm nút trên chiếc điều khiển tưởng tượng để tua nhanh qua những cảnh đáng sợ
+description: Khung giải pháp chữa lành chấn thương tâm lý bằng cách trao cho trẻ một chiếc điều khiển tưởng tượng, cho phép trẻ tự kiểm soát nhịp độ khi kể lại những trải nghiệm đáng sợ để dần chuyển hóa ký ức ẩn thành ký ức rõ ràng.
+keywords: [Nuôi dạy con, Tâm lý học, Chữa lành chấn thương, Chiếc điều khiển tâm trí, Tích hợp ký ức ngầm, Quyền kiểm soát nỗi sợ, Kỹ thuật kể chuyện an toàn, Nút tua nhanh cảm xúc, Remote of the mind, Đối diện trải nghiệm sợ hãi]
 ---
 
 - Mục đích: Giúp trẻ tích hợp ký ức ngầm (implicit) thành ký ức rõ ràng (explicit) bằng cách cho trẻ kể lại những trải nghiệm khó khăn một cách an toàn, trao cho trẻ quyền kiểm soát tốc độ và mức độ đối mặt với nỗi sợ.

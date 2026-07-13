@@ -1,15 +1,22 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership", "p1_lying_as_defense", "p1_reframe_lie_as_wish"]
+topics:
+- p1_parenting_child_behavior
+- p1_connection_over_correction
+- p1_sturdy_leadership
+- p1_lying_as_defense
+- p1_reframe_lie_as_wish
 status: processed
-protagonist: "Jake và Dara"
+protagonist: Jake và Dara
 source_type: book
-source_name: "Unknown (bởi Dr. Becky Kennedy, 2022)"
-source_id: "unknown"
+source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
+source_id: unknown
 confidence: 0.9
-supports_knowledge: ["[[good-inside_loi-noi-doi-la-mot-co-che-tu-ve-va-mong-uoc-lying-as-a-wish-and-self-defense]]"]
-keywords: []
+supports_knowledge:
+- '[[good-inside_loi-noi-doi-la-mot-co-che-tu-ve-va-mong-uoc-lying-as-a-wish-and-self-defense]]'
+description: Câu chuyện về cậu bé Jake chối bỏ việc đẩy bạn và phản ứng gay gắt của người mẹ về sự dối trá, phản ánh sai lầm khi nhìn nhận lời nói dối là sự thiếu tôn trọng thay vì hiểu đó là một cơ chế phòng vệ của trẻ.
+keywords: [nuôi dạy con, tâm lý học trẻ em, nói dối phòng vệ, tranh giành quyền lực, thái độ thiếu tôn trọng, phản ứng gay gắt, thấu hiểu hành vi, cơ chế tự vệ]
 ---
 
 <situation>Khi Jake đi học về, mẹ cậu, Dara, nói với cậu: "Cô giáo của con gọi điện và nói rằng con đã đẩy Owen trên sân chơi. Chuyện gì đã xảy ra vậy?"</situation>

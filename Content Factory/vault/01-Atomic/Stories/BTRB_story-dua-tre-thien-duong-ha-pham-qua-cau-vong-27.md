@@ -1,15 +1,21 @@
 ﻿---
 type: story
 subtype: story
-topics: ["p1_early_childhood_education", "p1_rhythm_and_senses", "p1_imitation_and_play", "p1_rainbow_bridge_story"]
+topics:
+- p1_early_childhood_education
+- p1_rhythm_and_senses
+- p1_imitation_and_play
+- p1_rainbow_bridge_story
 status: processed
-protagonist: "Đứa trẻ thiên đường"
+protagonist: Đứa trẻ thiên đường
 source_type: book
-source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_id: "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven"
+source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
+source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
-supports_knowledge: ["[[BTRB_cau-chuyen-cau-vong-rainbow-bridge-story]]"]
-keywords: []
+supports_knowledge:
+- '[[BTRB_cau-chuyen-cau-vong-rainbow-bridge-story]]'
+description: Câu chuyện cổ tích tuyệt đẹp kể về hành trình đầy dũng cảm của một đứa trẻ thiên đường bước qua cầu vồng để hạ phàm và trở thành thành viên trong một gia đình ở trần gian.
+keywords: [giáo dục sớm, kể chuyện cho bé, đứa trẻ thiên đường, ngôi nhà mặt trăng, gia đình trần gian, ước mơ hạ phàm, bước qua cầu vồng, cuộc hành trình dài, em bé chào đời]
 ---
 
 <situation>Ngày xửa ngày xưa, ở một vùng đất xa xôi nhưng cũng thật gần, có một đứa trẻ thiên đường sinh sống. Cậu bé làm việc trong ngôi nhà của mặt trăng. Cậu làm việc trong những ngôi nhà của các vì sao và cậu làm việc một thời gian dài trong ngôi nhà của mặt trời. Khi hoàn thành công việc ở mỗi ngôi nhà, cậu nhận được một món quà.

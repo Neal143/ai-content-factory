@@ -1,17 +1,21 @@
 ﻿---
 type: insight
-insight_type: "MYTH"
-topics: ["p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh", "p2_thiet_lap_moi_truong_giao_duc_tai_nha_giai_doan_1_3_tuoi"]
-source_id: "persona-interview"
-belongs_to_audience: ["[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"]
+insight_type: MYTH
+topics:
+- p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh
+- p2_thiet_lap_moi_truong_giao_duc_tai_nha_giai_doan_1_3_tuoi
+source_id: persona-interview
+belongs_to_audience:
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 status: processed
-created: "2026-06-21"
-source_type: "User"
-source_name: "Persona Interview"
+created: '2026-06-21'
+source_type: User
+source_name: Persona Interview
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []
-keywords: []
+description: Nhiều phụ huynh mang lầm tưởng nguy hiểm rằng trẻ nhỏ không hề quan sát và không bị ảnh hưởng bởi những gì người lớn làm. Thực tế, trẻ hấp thu như bọt biển mọi hành vi từ môi trường xung quanh.
+keywords: [nhận thức sai lầm, trẻ quan sát, ảnh hưởng hành vi, hấp thu như bọt biển, gương mẫu cho con, nuôi dạy vô thức, hành vi sai trái, môi trường xung quanh]
 ---
 
 # MYTH: tre khong hieu nguoi lon
