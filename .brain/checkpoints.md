@@ -1,6 +1,20 @@
 # Lịch sử Checkpoints
 
-### 📅 Ngày 03/07/2026
+### 📅 Ngày 13/07/2026
+#### Hoàn thiện curation pipeline và Workflow Anti 2.0
+- **Mã khôi phục:** `6ff7d30`
+- **Thẻ (Tag):** `v1.0.0-vault-curator-anti20`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** 
+    1. **Hoàn thiện 100% Curation Pipeline**: Giải quyết triệt để vấn đề mất ngữ cảnh khi xử lý hàng loạt bằng cách cách ly nội dung (chỉ truyền data qua JSON batch, cấm Agent truy cập file gốc).
+    2. **Đồng bộ Format Dữ Liệu**: Tái định dạng toàn bộ 493 files Atom cũ trong Vault về chuẩn YAML mới (flow-style cho mảng, description không xuống dòng), đảm bảo tương thích hoàn hảo với các script đọc/index sau này.
+    3. **Tương thích Đa Nền tảng**: Hệ thống giờ đây có thể chạy mượt mà trên cả Antigravity IDE (User copy/paste handoff) lẫn Antigravity 2.0 (Orchestrator tự động spawn Subagent mới) mà không cần thay đổi bất kỳ code lõi nào. Tự động xuất báo cáo (Summary Report) rành mạch cho từng skill sau khi hoàn thành.
+  - **🛠️ Kỹ thuật (Tech):** 
+    1. **Quy hoạch kiến trúc**: Migrate toàn bộ thư mục tạm `temp/` từ `.agents/temp/` sang đúng phân vùng `vault/.curation_temp/`. Sửa lại reference đồng loạt trong `Search-SemanticAtom.ps1`, `prepare_curation_batches.py`, 3 SKILL files và 2 workflows.
+    2. **Script `prepare_curation_batches.py`**: Nâng cấp hàm ghi Markdown để xử lý YAML (`width=10000`, `default_flow_style`), bổ sung hàm `_print_skill_summary()` tự động parse các file `_log.json` để in report tại điểm `ALL_DONE`.
+    3. **Kiểm soát hành vi Agent**: Cập nhật toàn bộ 3 file SKILL (`auto-tagger`, `atom-dedup`, `atom-linker`) để CẤM TUYỆT ĐỐI việc dùng `view_file` lên Vault và cấm tạo script phụ. Sửa `AGENT.md` (Thêm Section 7 - Summary Report).
+    4. **Workflow Anti 2.0**: Tạo file mẫu `docs/vault-curator-anti20.md` quy định orchestration loop (define_subagent, parse SESSION_BREAK -> auto respawn, parse ALL_DONE -> next skill) dùng chung lõi với IDE.
+    5. **Migration**: Thực thi script một lần `reformat_atoms.py` để cập nhật 493 atoms, cam kết đồng bộ vào nhánh hiện tại.### 📅 Ngày 03/07/2026
 #### Gỡ bỏ Semantic Dedup và tối ưu RAG
 - **Mã khôi phục:** `95ee5df`
 - **Thẻ (Tag):** `v3.7B-refactor-ingestion`
