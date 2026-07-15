@@ -1,201 +1,58 @@
 {
-  "batch_id": 1,
-  "batch_key": "c3aae8d4",
+  "batch_id": 5,
+  "batch_key": "51150ee0",
   "atoms": [
-    "vault\\01-Atomic\\Concepts\\BTRB_ba-vien-da-tang-de-nuoi-day-tre.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_giac-quan-cam-nhan-tu-duy-va-cai-toi-cua-nguoi-khac.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_hai-khia-canh-cua-cam-giac-am-ap.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_ky-luat-dich-thuc.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_nhip-dieu-vu-tru-va-mua-vu.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_su-thay-doi-tuoi-len-sau-little-puberty.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_tro-choi-lap-lai-do-day-va-do-can.md",
-    "vault\\01-Atomic\\Concepts\\BTRB_vai-tro-cua-sot-trong-viec-xay-dung-nang-luc-giu-am.md",
-    "vault\\01-Atomic\\Concepts\\good-inside_ba-tru-cot-cua-su-thay-doi-su-that-tri-tuong-tuong-tinh-yeu.md",
-    "vault\\01-Atomic\\Concepts\\good-inside_ban-chat-cua-chu-nghia-hoan-hao.md"
+    "vault\\01-Atomic\\Data-Points\\BTRB_data-tieu-hoa-va-noi-tang-15.md",
+    "vault\\01-Atomic\\Data-Points\\BTRB_data-tre-hoa-than-nhan-vat-tivi-10.md",
+    "vault\\01-Atomic\\Data-Points\\BTRB_data-vi-giac-va-tam-ly-13.md",
+    "vault\\01-Atomic\\Data-Points\\BTRB_data-vui-choi-vuot-troi-hoc-thuat-7.md",
+    "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-11.md",
+    "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-12.md",
+    "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-13.md",
+    "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-15.md",
+    "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-16.md",
+    "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-17.md"
   ],
   "atoms_content": [
     {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_ba-vien-da-tang-de-nuoi-day-tre.md",
+      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-tieu-hoa-va-noi-tang-15.md",
       "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "philosophy",
+        "type": "data-point",
+        "data_type": "shocking_fact",
         "topics": [
           "p1_early_childhood_education",
           "p1_rhythm_and_senses",
           "p1_imitation_and_play",
-          "p1_parenting_foundations"
+          "p1_discipline_through_self_education",
+          "p1_harm_of_anger_and_preaching"
         ],
         "status": "processed",
         "source_type": "book",
         "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
         "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
         "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_noi-so-nuoi-day-con-sai-cach-trong-the-gioi-hien-dai]]"
+        "supports_knowledge": [
+          "[[BTRB_ban-chat-cua-su-bat-chuoc-o-tre-nho]]"
         ],
-        "description": "Ba nền tảng trong nuôi dạy trẻ gồm hiểu biết sự phát triển, duy trì hơi ấm và thiết lập nhịp điệu sinh hoạt. Điều này tạo cấu trúc an toàn, bảo vệ trẻ khỏi sự hỗn loạn hiện đại.",
+        "description": "Sự bắt chước ở trẻ nhỏ không chỉ là hành động bề ngoài mà còn định hình trực tiếp hệ tiêu hóa và cơ quan nội tạng. Trẻ hấp thụ hành vi của người lớn để chuyển hóa thành cấu trúc vật lý cơ thể.",
         "keywords": [
-          "giáo dục sớm",
-          "nhịp điệu sinh học",
-          "phát triển trẻ em",
-          "hơi ấm cơ thể",
-          "nhịp điệu cuộc sống",
-          "nuôi dạy con",
-          "cấu trúc an toàn",
-          "chăm sóc trẻ"
-        ]
-      },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Dù thế giới có biến đổi, cha mẹ vẫn có thể dựa vào 3 nền tảng cốt lõi và đáng tin cậy để nuôi dạy những đứa trẻ khỏe mạnh, hạnh phúc: (1) Hiểu biết về sự phát triển của trẻ, (2) Tầm quan trọng của hơi ấm đối với cơ thể, và (3) Nhận thức về món quà của nhịp điệu cuộc sống (ngày, tuần, tháng, năm).\n    *   **Diễn giải Core Logic:** Sự hoang mang của cha mẹ sinh ra từ việc thiếu bám víu. Khi thấu hiểu sự phát triển của trẻ, cha mẹ sẽ không đòi hỏi quá nhiều hay quá ít ở con. Khi duy trì hơi ấm, cơ thể trẻ có một nền tảng vững chắc để lớn lên. Khi tạo ra nhịp điệu, cha mẹ trao cho con một cấu trúc an toàn, bảo vệ trẻ khỏi sự hỗn loạn và nhịp sống gấp gáp của thời hiện đại."
-    },
-    {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_giac-quan-cam-nhan-tu-duy-va-cai-toi-cua-nguoi-khac.md",
-      "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
-        "topics": [
-          "p1_early_childhood_education",
-          "p1_rhythm_and_senses",
-          "p1_imitation_and_play",
-          "p1_protect_hearing",
-          "p1_human_interaction_language"
-        ],
-        "status": "processed",
-        "source_type": "book",
-        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
-        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
-        "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_lam-dung-thiet-bi-may-moc-de-day-tre-giao-tiep]]"
-        ],
-        "description": "Trẻ em có trực giác nhạy bén để cảm nhận bản chất của người khác. Người lớn phải luôn trung thực, hoàn thiện bản thân để làm gương, qua đó xây dựng niềm tin vững chắc và cảm giác an toàn cho trẻ.",
-        "keywords": [
+          "sự bắt chước",
+          "phát triển nội tạng",
+          "hệ tiêu hóa",
+          "cấu trúc vật lý",
+          "tâm lý trẻ sơ sinh",
+          "hấp thụ môi trường",
           "giáo dục mầm non",
-          "tâm lý học",
-          "trực giác trẻ em",
-          "hình mẫu người lớn",
-          "giao tiếp trung thực",
-          "cảm nhận cái tôi",
-          "niềm tin an toàn",
-          "giác quan con người",
-          "nhận thức xã hội"
+          "khoa học thần kinh"
         ]
       },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Đây là những giác quan giúp trẻ có khả năng hình dung ý tưởng đằng sau lời nói của người khác và nhận biết được tính cá nhân (cái \"Tôi\") hay bản chất chân thực của những người xung quanh.\n*   **Diễn giải Core Logic:** Trẻ em sống trong thế giới suy nghĩ của người lớn từ rất sớm và có khả năng cảm nhận trực giác về bản chất thực sự đằng sau một người (họ ấm áp, chân thành hay tư lợi). Nếu người lớn thiếu trung thực, sự tự tin và niềm tin của trẻ sẽ bị phá vỡ vì giác quan bên trong mách bảo chúng những điều trái ngược với những gì người đó tuyên bố. Do đó, người giáo viên và cha mẹ phải không ngừng tự giáo dục và hoàn thiện bản thân để trở thành những hình mẫu xứng đáng cho trẻ."
+      "body": "Sự bắt chước ở trẻ nhỏ ảnh hưởng trực tiếp đến quá trình tiêu hóa và sự phát triển của các cơ quan nội tạng. | Trẻ em hấp thụ hành vi của người lớn và chuyển hóa nó thành các quá trình định hình vật lý trong cơ thể chứ không chỉ là bắt chước hành động bề ngoài. | Bạn có biết rằng hành vi của bạn đang trực tiếp định hình hệ tiêu hóa và cơ quan nội tạng của con bạn?"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_hai-khia-canh-cua-cam-giac-am-ap.md",
+      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-tre-hoa-than-nhan-vat-tivi-10.md",
       "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
-        "topics": [
-          "p1_early_childhood_education",
-          "p1_rhythm_and_senses",
-          "p1_imitation_and_play",
-          "p1_smell_and_memory",
-          "p1_color_therapy"
-        ],
-        "status": "processed",
-        "source_type": "book",
-        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
-        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
-        "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre]]"
-        ],
-        "vivid_knowledges": [
-          "Trẻ em quan sát người lớn cẩn thận sửa lại những món đồ chơi bị hỏng và lau dọn lớp học để học cách chăm sóc mọi thứ."
-        ],
-        "description": "Cảm giác ấm áp bao gồm nhiệt độ vật lý và hơi ấm tâm hồn. Trong giáo dục, thái độ chân thành và ân cần của người lớn sẽ khuyến khích trẻ cởi mở, tự tin và tăng cường khả năng tương tác tích cực với thế giới xung quanh.",
-        "keywords": [
-          "giáo dục sớm",
-          "tâm lý học",
-          "hơi ấm tâm hồn",
-          "phản ứng cảm xúc",
-          "sự chân thành",
-          "tương tác tích cực",
-          "trí tuệ cảm xúc",
-          "làm gương cho trẻ"
-        ]
-      },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Cảm giác ấm áp không chỉ đơn thuần là sự nhận biết về nhiệt độ vật lý (nóng/lạnh) mà còn là sự cảm nhận nhạy bén về \"hơi ấm tâm hồn\" (soul warmth) tỏa ra từ những người xung quanh.\n    *   **Diễn giải Core Logic:** Trẻ nhỏ nhạy cảm với những phản ứng tâm hồn của người khác hơn người lớn rất nhiều. Khi trẻ mở lòng thông qua sự quan tâm để kết nối với ai đó, một phản ứng lạnh nhạt sẽ khiến trẻ chùn bước và thu mình vào vỏ bọc. Ngược lại, một phản ứng thân thiện, ấm áp sẽ lấp đầy sự nhiệt tình và kích thích sự tương tác sâu sắc hơn. Trong môi trường mầm non Waldorf, hơi ấm tâm hồn này được nuôi dưỡng giữa giáo viên với từng trẻ, và giữa các trẻ với nhau thông qua việc làm gương: khi người lớn nhẹ nhàng sửa chữa đồ chơi bị rách, lau chùi lớp học, hay chăm sóc cây cối động vật, trẻ sẽ tự động hấp thụ thái độ trân trọng đó và học cách trao đi hơi ấm tâm hồn cho vạn vật."
-    },
-    {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_ky-luat-dich-thuc.md",
-      "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
-        "topics": [
-          "p1_early_childhood_education",
-          "p1_rhythm_and_senses",
-          "p1_imitation_and_play",
-          "p1_positive_discipline",
-          "p1_end_of_day_reflection"
-        ],
-        "status": "processed",
-        "source_type": "book",
-        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
-        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
-        "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_kiet-suc-va-thieu-tu-ky-luat]]"
-        ],
-        "description": "Kỷ luật đích thực giúp trẻ chuyển đổi từ bắt chước sang tự kỷ luật. Thay vì ép buộc, phương pháp này sử dụng môi trường nhất quán, giao tiếp rõ ràng và công việc thực tế để điều hòa cảm xúc tiêu cực một cách tự nhiên.",
-        "keywords": [
-          "giáo dục trẻ em",
-          "phương pháp dạy con",
-          "kỷ luật đích thực",
-          "tự kỷ luật",
-          "điều hòa cảm xúc",
-          "môi trường nhất quán",
-          "thông điệp rõ ràng",
-          "công việc thực tế",
-          "kỷ luật tích cực"
-        ]
-      },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Kỷ luật đích thực (true discipline) là quá trình hướng dẫn trẻ nhỏ thoát khỏi việc chỉ biết bắt chước để tiến tới sự tự kỷ luật (self-discipline).\n    *   **Diễn giải Core Logic:** Kỷ luật này không đạt được qua sự ép buộc hay la mắng (la mắng chỉ khiến trẻ đóng băng tâm hồn để tự bảo vệ). Thay vào đó, nó được hình thành tự nhiên bằng cách thiết lập một môi trường tối ưu: duy trì không gian vui chơi nuôi dưỡng trí tưởng tượng, giao tiếp bằng các thông điệp rõ ràng với lựa chọn giới hạn, thiết lập nhịp điệu hàng ngày nhất quán, sử dụng công việc thực tế để xử lý cơn giận, và xây dựng lòng tự trọng cho trẻ thông qua sự tích cực."
-    },
-    {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_nhip-dieu-vu-tru-va-mua-vu.md",
-      "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
-        "topics": [
-          "p1_early_childhood_education",
-          "p1_rhythm_and_senses",
-          "p1_imitation_and_play",
-          "p1_biological_rhythm",
-          "p1_cosmic_rhythms"
-        ],
-        "status": "processed",
-        "source_type": "book",
-        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
-        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
-        "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_can-kiet-sinh-luc-do-mat-nhip-dieu-song]]"
-        ],
-        "vivid_knowledges": [
-          "Vào mùa thu, trẻ thu nhặt những quả sồi và lá rụng ngoài sân để tự tay tạo ra một chiếc bàn thiên nhiên nhỏ trong nhà."
-        ],
-        "description": "Việc mang nhịp điệu tự nhiên và chu kỳ mùa vụ vào sinh hoạt gia đình tạo nền tảng phát triển vững chắc. Các hoạt động lặp lại giúp trẻ cảm thấy an toàn, tự tin và luôn giữ được sự kết nối sâu sắc với thế giới tự nhiên.",
-        "keywords": [
-          "giáo dục gia đình",
-          "nhịp điệu sinh học",
-          "chu kỳ mùa vụ",
-          "kết nối thiên nhiên",
-          "cảm giác an toàn",
-          "hoạt động lặp lại",
-          "lễ hội gia đình",
-          "nhịp điệu vũ trụ"
-        ]
-      },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Những nhịp điệu vô thức của tự nhiên như bảy ngày trong tuần, sự mọc và lặn của mặt trời, các chu kỳ mặt trăng và sự thay đổi của các mùa là những món quà hỗ trợ mạnh mẽ cho sự phát triển của trẻ.\n    *   **Diễn giải Core Logic:** Mang nhịp điệu theo mùa vào đời sống gia đình (ví dụ: thu hoạch mùa thu, thắp nến mùa đông) giúp kết nối trẻ với thế giới tự nhiên. Các lễ hội lặp lại cung cấp cho trẻ sự tự tin và cảm giác an toàn rằng những thời khắc tuyệt vời và đặc biệt sẽ luôn luôn quay trở lại."
-    },
-    {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_su-thay-doi-tuoi-len-sau-little-puberty.md",
-      "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
+        "type": "data-point",
+        "data_type": "shocking_fact",
         "topics": [
           "p1_early_childhood_education",
           "p1_rhythm_and_senses",
@@ -208,36 +65,67 @@
         "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
         "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
         "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_boi-roi-truoc-su-thay-doi-tam-ly-tuoi-len-sau]]"
+        "supports_knowledge": [
+          "[[BTRB_tac-hai-cua-tu-duy-tri-thuc-som-va-man-hinh-doi-voi-suc-khoe]]"
         ],
-        "vivid_knowledges": [
-          "Trẻ cùng người lớn gọt trái cây hoặc chà nhám đồ gỗ cho đến khi một ý tưởng chơi mới lóe sáng."
-        ],
-        "description": "Tuổi lên sáu là bước ngoặt khi trẻ dùng nội tâm để sáng tạo thay vì kích thích ngoài. Làm công việc thực tế cùng người lớn giúp trẻ điều hướng năng lượng mới, kích thích ý tưởng và nuôi dưỡng trí tưởng tượng phong phú.",
+        "description": "Chỉ 1,5 giờ xem tivi mỗi tuần đã đủ để trẻ mang các nhân vật ảo vào trò chơi thực tế. Điều này minh chứng cho việc khả năng tưởng tượng và sáng tạo tự nhiên của trẻ đã bị suy giảm nghiêm trọng.",
         "keywords": [
-          "tâm lý học trẻ em",
-          "khủng hoảng tuổi lên sáu",
-          "bước ngoặt nội tâm",
-          "vui chơi sáng tạo",
-          "công việc thực tế",
+          "tác hại của tivi",
           "trí tưởng tượng",
-          "giáo dục mầm non",
-          "phát triển tư duy",
-          "điều hướng năng lượng"
+          "sự sáng tạo",
+          "giáo dục sớm",
+          "trẻ em và màn hình",
+          "vui chơi tự do",
+          "hạn chế thiết bị điện tử",
+          "tâm lý phát triển"
         ]
       },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Sự thay đổi tuổi lên sáu là một bước ngoặt lớn từ bên trong, khi thế giới nội tâm bắt đầu truyền cảm hứng cho hoạt động vui chơi sáng tạo của trẻ, thay thế cho sự kích thích thụ động từ các đồ chơi xung quanh.\n    *   **Diễn giải Core Logic:** Khi trẻ thốt lên \"Con chán\", điều đó có nghĩa là trẻ chưa biết cách vận dụng năng lực nội tâm mới mẻ này. Thay vì cung cấp thêm đồ chơi giải trí, người lớn nên kéo trẻ vào những công việc thực tế, có mục đích (ví dụ: gọt trái cây, chà nhám đồ chơi gỗ, may vá). Trải nghiệm sự chú tâm và cá tính của người lớn trong công việc thực tế sẽ từ từ giúp những hình ảnh tưởng tượng nảy sinh bên trong trẻ. Chỉ sau một thời gian trải qua quá trình này, trẻ sẽ lóe lên những ý tưởng mới và tự quay trở lại với việc vui chơi."
+      "body": "Trẻ em xem tivi hoặc băng đĩa hình chỉ hơn 1,5 giờ mỗi tuần sẽ mang các nhân vật trên truyền hình vào trò chơi ở trường. | Việc này cho thấy trí tưởng tượng của trẻ đã bị thui chột, mất đi khả năng sáng tạo trò chơi từ việc bắt chước cuộc sống thực. | Chỉ 1,5 tiếng xem TV mỗi tuần đã đủ để phá hủy khả năng sáng tạo tự nhiên của trẻ!"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_tro-choi-lap-lai-do-day-va-do-can.md",
+      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-vi-giac-va-tam-ly-13.md",
       "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
+        "type": "data-point",
+        "data_type": "shocking_fact",
         "topics": [
           "p1_early_childhood_education",
           "p1_rhythm_and_senses",
           "p1_imitation_and_play",
+          "p1_smell_and_memory",
+          "p1_color_therapy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_khuu-giac-dinh-hinh-ky-uc-va-kha-nang-mo-long]]"
+        ],
+        "description": "Mỗi hương vị thức ăn mang lại một hiệu ứng tâm lý riêng biệt: chua mặn giúp đánh thức, ngọt xoa dịu, đắng kích thích ý chí. Việc nêm nếm thức ăn thực chất là phương pháp trị liệu tâm hồn hiệu quả cho trẻ.",
+        "keywords": [
+          "vị giác và tâm lý",
+          "trị liệu tâm lý",
+          "dinh dưỡng cho trẻ",
+          "cảm xúc và thức ăn",
+          "sức khỏe tinh thần",
+          "kích thích ý chí",
+          "chăm sóc trẻ em",
+          "liệu pháp tự nhiên"
+        ]
+      },
+      "body": "Thức ăn chua và mặn có tác dụng đánh thức một đứa trẻ quá mơ màng, trong khi đồ ngọt mang lại cảm giác dễ chịu cho đứa trẻ buồn bã, và đồ ăn đắng giúp thu hút ý chí của những đứa trẻ thiếu động lực. | Các vùng khác nhau trên lưỡi cảm nhận những chất lượng thức ăn khác nhau, và những hương vị này tạo ra các hiệu ứng trị liệu khác biệt để cân bằng thể chất và tâm hồn của trẻ. | 🔥 BẠN CÓ BIẾT: Nêm nếm thức ăn không chỉ để ngon miệng mà còn là một phương pháp trị liệu tâm lý cho trẻ?"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-vui-choi-vuot-troi-hoc-thuat-7.md",
+      "frontmatter": {
+        "type": "data-point",
+        "data_type": "evidence",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_creative_play_stages",
           "p1_archetypal_toys"
         ],
         "status": "processed",
@@ -245,128 +133,222 @@
         "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
         "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
         "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_do-choi-cang-nhieu-va-cau-ky-cang-tot]]"
+        "supports_knowledge": [
+          "[[BTRB_vui-choi-tu-do-la-nen-tang-cua-tu-duy-tri-tue]]"
         ],
-        "vivid_knowledges": [
-          "Đứa trẻ ngồi trên ghế ăn dặm liên tục ném thức ăn hoặc thìa xuống sàn hết lần này đến lần khác."
-        ],
-        "description": "Trò chơi lặp lại của trẻ phản ánh chân thực quá trình trao đổi chất cơ thể. Hành động đổ đầy và làm trống tương ứng với chu trình xây dựng và phân hủy hữu cơ, giúp định hình sự tăng trưởng thể chất tự nhiên.",
+        "description": "Nghiên cứu cho thấy trẻ được vui chơi tự do ở tuổi lên năm sẽ phát triển vượt trội toàn diện so với nhóm bị ép học thuật sớm khi đạt 10 tuổi. Vui chơi chính là nền tảng trí tuệ vững chắc nhất.",
         "keywords": [
-          "phát triển thể chất",
-          "hoạt động vui chơi",
-          "trò chơi lặp lại",
-          "trao đổi chất",
-          "chu trình hữu cơ",
-          "lực lượng định hình",
-          "đổ đầy và làm trống",
-          "tâm sinh lý trẻ em"
+          "vui chơi tự do",
+          "ép học sớm",
+          "phát triển trí tuệ",
+          "giáo dục mầm non",
+          "thành tích học tập",
+          "nghiên cứu giáo dục",
+          "tâm lý học trẻ em",
+          "phương pháp dạy con"
         ]
       },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Những hành động vật lý liên tục lặp đi lặp lại của trẻ, như xúc đầy cát vào xô rồi đổ ra, hoặc liên tục nhặt rồi vứt đồ vật.\n*   **Diễn giải Core Logic:** Các trò chơi tưởng chừng vô nghĩa này lại là sự mở rộng của các \"lực lượng định hình\" (formative forces) đang hoạt động trong cơ thể trẻ. Việc lặp lại hành động lấp đầy và làm trống tương ứng chặt chẽ với các quá trình hữu cơ về sự tăng trưởng và trao đổi chất (quá trình xây dựng và phá vỡ - anabolism và catabolism) đang diễn ra bên trong cơ thể trẻ."
+      "body": "Nghiên cứu so sánh 100 lớp mẫu giáo ở Đức cho thấy trẻ được vui chơi tự do vượt trội về mọi mặt so với trẻ bị ép học sớm khi đến 10 tuổi. | Khi trẻ lên 10 tuổi, những trẻ được phép vui chơi ở tuổi lên 5 đã vượt qua bạn học cùng lứa (những trẻ phải học học thuật sớm ở mẫu giáo) ở mọi lĩnh vực được đo lường, khiến các nhà giáo dục lập tức chuyển đổi toàn bộ các chương trình học thuật về lại chương trình vui chơi."
     },
     {
-      "atom_path": "vault\\01-Atomic\\Concepts\\BTRB_vai-tro-cua-sot-trong-viec-xay-dung-nang-luc-giu-am.md",
+      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-11.md",
       "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
-        "topics": [
-          "p1_early_childhood_education",
-          "p1_rhythm_and_senses",
-          "p1_imitation_and_play",
-          "p1_warmth_and_health"
-        ],
-        "status": "processed",
-        "source_type": "book",
-        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
-        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
-        "confidence": 0.9,
-        "supports_insight": [
-          "[[BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh]]"
-        ],
-        "description": "Sốt tuổi ấu thơ giúp cơ thể rèn luyện điều hòa nhiệt độ. Quá trình tự nhiên này hỗ trợ trẻ phát triển năng lực duy trì sự ấm áp mạnh mẽ và ổn định về khía cạnh thể chất lẫn vững chãi trong cảm xúc tâm hồn.",
-        "keywords": [
-          "y tế nhi khoa",
-          "phát triển thể chất",
-          "vai trò của sốt",
-          "hệ miễn dịch",
-          "điều hòa nhiệt độ",
-          "hơi ấm tâm hồn",
-          "sức khỏe trẻ em",
-          "năng lực giữ ấm",
-          "chăm sóc tự nhiên"
-        ]
-      },
-      "body": "*   **Định nghĩa/Phát biểu luật:** Các bệnh thời thơ ấu (chủ yếu liên quan đến sốt) có vai trò hỗ trợ sự phát triển khả năng duy trì mức độ ấm áp khỏe mạnh của trẻ.\n    *   **Diễn giải Core Logic:** Không giống như các bệnh ở người lớn, bệnh của trẻ em thường đi kèm với sốt. Theo quan sát của bác sĩ Rentea, những đứa trẻ từng bị sốt nhiều lần trong thời thơ ấu khi lớn lên sẽ trở thành những người lớn có năng lực mạnh mẽ về cả sự ấm áp trong tâm hồn (soul warmth) lẫn sự ấm áp về thể chất (physical warmth). Do đó, những cơn sốt có thể được xem như một quá trình tập dượt tự nhiên của cơ thể để rèn luyện khả năng tạo và giữ nhiệt."
-    },
-    {
-      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_ba-tru-cot-cua-su-thay-doi-su-that-tri-tuong-tuong-tinh-yeu.md",
-      "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "philosophy",
+        "type": "data-point",
+        "data_type": "shocking_fact",
         "topics": [
           "p1_parenting_child_behavior",
           "p1_connection_over_correction",
           "p1_sturdy_leadership",
-          "p1_three_pillars_of_change",
-          "p1_children_as_explorers"
+          "p1_sturdy_leader_self_care",
+          "p1_avp_strategy"
         ],
         "status": "processed",
         "source_type": "book",
         "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
         "source_id": "unknown",
         "confidence": 0.9,
-        "supports_insight": [
-          "[[good-inside_chan-ly-ve-tuoi-tho]]"
+        "supports_knowledge": [
+          "[[good-inside_lanh-dao-vung-vang-the-sturdy-leader-thay-vi-nuoi-con-tan-hien]]"
         ],
-        "description": "Phát triển con người dựa trên ba trụ cột: sự thật, trí tưởng tượng và tình yêu. Với trẻ em, ba yếu tố này hòa quyện chặt chẽ, tạo nên nền tảng vững chắc nhằm thúc đẩy nhận thức và quá trình thay đổi tích cực.",
+        "description": "Trẻ thực chất cảm thấy an toàn khi cha mẹ thiết lập ranh giới kiên quyết để chăm sóc bản thân, dù trẻ có phản đối. Sự từ bỏ chính mình của người lớn chỉ làm trẻ hoảng sợ vì mất đi chỗ dựa vững chãi.",
         "keywords": [
-          "triết học giáo dục",
-          "tâm lý học",
-          "ba trụ cột",
-          "sự thật",
-          "trí tưởng tượng",
-          "tình yêu thương",
-          "phát triển nhận thức",
-          "khả năng tiến hóa",
-          "nền tảng tư duy"
-        ]
-      },
-      "body": "* **Định nghĩa/Phát biểu luật:** Sự thay đổi của con người được dệt nên từ ba sợi dây: sự học hỏi (learning), những giả định phản thực tế (counterfactuals) và sự chăm sóc (caregiving) [1]. Nói một cách thi vị, đó là sự thật, trí tưởng tượng và tình yêu [1].\n* **Diễn giải Core Logic:** Trong khoa học và triết học, ba khía cạnh này của trải nghiệm con người (nhận thức luận, mỹ học và đạo đức) thường được coi là các lĩnh vực hoàn toàn tách biệt với những truyền thống nghiên cứu khác nhau [1]. Tuy nhiên, đối với tâm trí của trẻ nhỏ, sự thật, trí tưởng tượng và tình yêu thương lại hòa quyện vào nhau một cách không thể tách rời, tạo thành nền tảng cốt lõi cho mọi khả năng tiến hóa và thay đổi của loài người [1]."
-    },
-    {
-      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_ban-chat-cua-chu-nghia-hoan-hao.md",
-      "frontmatter": {
-        "type": "concept",
-        "knowledge_type": "concept",
-        "topics": [
-          "p1_parenting_child_behavior",
-          "p1_connection_over_correction",
-          "p1_sturdy_leadership",
-          "p1_perfectionism_nature",
-          "p1_reframe_perfectionism"
-        ],
-        "status": "processed",
-        "source_type": "book",
-        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
-        "source_id": "unknown",
-        "confidence": 0.9,
-        "supports_insight": [
-          "[[good-inside_logic-giai-quyet-hoan-hao]]"
-        ],
-        "description": "Chủ nghĩa hoàn hảo thực chất là sự khó khăn trong việc điều hòa cảm xúc. Trẻ tự gắn giá trị bản thân với thành tích, dễ dàng sụp đổ khi kết quả không hoàn mỹ vì chúng cảm thấy bất an chứ không xuất phát từ sự bướng bỉnh.",
-        "keywords": [
-          "tâm lý học hành vi",
-          "điều hòa cảm xúc",
-          "chủ nghĩa hoàn hảo",
-          "giá trị bản thân",
-          "áp lực thành tích",
+          "ranh giới cá nhân",
+          "chăm sóc bản thân",
           "cảm giác an toàn",
-          "giáo dục con cái",
-          "khủng hoảng tâm lý"
+          "sự kiên quyết",
+          "vai trò lãnh đạo",
+          "tâm lý trẻ em",
+          "phản ứng chống đối",
+          "giáo dục gia đình"
         ]
       },
-      "body": "* **Định nghĩa/Phát biểu luật:** Chủ nghĩa hoàn hảo luôn là một sự chật vật trong việc điều chỉnh cảm xúc (emotion regulation struggle).\n* **Diễn giải Core Logic:** Trẻ hoàn hảo không thể chịu đựng được sắc thái (nuance) và có cảm nhận về bản thân rất mong manh. Chúng đánh đồng hành vi với bản sắc (ví dụ: làm đúng = mình thông minh; làm sai = mình ngu ngốc). Chúng chỉ cảm thấy an toàn trong một phạm vi rất hẹp của sự hoàn hảo; bất cứ thứ gì nằm ngoài phạm vi đó đều bị coi là tồi tệ. Sự \"sụp đổ\" (shutdown) không phải vì trẻ bướng bỉnh, mà vì chúng không thể tiếp cận được cảm giác tốt đẹp về bản thân trong khoảnh khắc đó."
+      "body": "Trẻ em thực chất lại cảm thấy được an ủi và an toàn khi cha mẹ vạch ra ranh giới kiên quyết cho việc chăm sóc cá nhân, bất chấp việc chúng có thể la hét và phản đối kịch liệt lúc đó. Việc cha mẹ từ bỏ bản thân sẽ khiến trẻ rơi vào trạng thái hoảng sợ vì mất đi người lãnh đạo vững chãi."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-12.md",
+      "frontmatter": {
+        "type": "data-point",
+        "data_type": "shocking_fact",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_tai-khoan-von-ket-noi-connection-capital]]"
+        ],
+        "description": "Hành vi tốt là hệ quả tự nhiên khi trẻ được thấu hiểu và cảm thấy tốt đẹp bên trong. Nếu cha mẹ ưu tiên sửa chữa hành vi trước, họ sẽ liên tục vấp phải sự kháng cự mạnh mẽ từ con cái.",
+        "keywords": [
+          "sửa chữa hành vi",
+          "sự kháng cự",
+          "vốn kết nối",
+          "tâm lý học hành vi",
+          "nuôi dạy tích cực",
+          "cảm xúc bên trong",
+          "giáo dục gia đình",
+          "hệ quả tự nhiên"
+        ]
+      },
+      "body": "Hành vi luôn luôn là thứ đến cuối cùng (Behavior comes last). Cha mẹ tuyệt đối không được bắt đầu từ việc sửa chữa hành vi. | Giải thích: Hành vi tốt chỉ là hệ quả tự nhiên khi trẻ đã được nạp đầy vốn kết nối và cảm thấy tốt đẹp ở bên trong. Nếu đảo ngược trình tự (sửa hành vi trước), cha mẹ sẽ liên tục vấp phải sự kháng cự. | 🔥 Hook: Lý do khiến mọi đòn roi và phần thưởng của bạn vô tác dụng: Bạn đang giải quyết sai điểm bắt đầu!"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-13.md",
+      "frontmatter": {
+        "type": "data-point",
+        "data_type": "shocking_fact",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_not_listening_nature",
+          "p1_connect_before_asking"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_ban-chat-thuc-su-cua-viec-khong-lang-nghe]]"
+        ],
+        "description": "Trẻ không bao giờ bỏ ngoài tai những lời mời gọi hấp dẫn như đi ăn kem. Sự phớt lờ hay 'không lắng nghe' chỉ thực sự xuất hiện khi yêu cầu của cha mẹ đi ngược lại với mong muốn hiện tại của trẻ.",
+        "keywords": [
+          "trẻ không nghe lời",
+          "sự phớt lờ",
+          "tâm lý chống đối",
+          "mong muốn cá nhân",
+          "giao tiếp với con",
+          "hành vi trẻ em",
+          "xung đột ý muốn",
+          "nuôi dạy trẻ"
+        ]
+      },
+      "body": "*   **Nội dung:** Không có phụ huynh nào phàn nàn việc con \"không lắng nghe\" khi họ nói \"Kem đang ở trên bàn kìa!\" hay \"Con có thể xem thêm một tập TV nữa!\".\n    *   **Giải thích bổ trợ:** Điều này chứng minh rằng thính giác của trẻ hoàn toàn bình thường và chúng không hề có chủ đích bỏ ngoài tai lời nói của cha mẹ. Sự phớt lờ chỉ xuất hiện khi các yêu cầu được đưa ra đi ngược lại với mong muốn hiện tại của trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-15.md",
+      "frontmatter": {
+        "type": "data-point",
+        "data_type": "evidence",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_contain_the_fire",
+          "p1_i_wont_let_you"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_ban-chat-thuc-su-cua-con-khung-hoang-bao-luc]]"
+        ],
+        "description": "Khi trẻ mất kiểm soát, việc cha mẹ dùng ngôn ngữ van nài hay cầu xin sẽ khiến trẻ càng hoảng loạn. Chúng nhận ra người lớn cũng đang bất lực và vô tình trao lại quyền kiểm soát cho một tâm trí đang rối loạn.",
+        "keywords": [
+          "sự mất kiểm soát",
+          "ngôn ngữ van nài",
+          "cảm giác hoảng loạn",
+          "quyền kiểm soát",
+          "vai trò cha mẹ",
+          "sự bất lực",
+          "khủng hoảng tâm lý",
+          "điều hòa cảm xúc"
+        ]
+      },
+      "body": "*   Khi trẻ không thể tự kiểm soát, việc cha mẹ dùng ngôn ngữ cầu xin (\"Xin con dừng lại\") khiến trẻ càng hoảng loạn hơn vì chúng nhận ra rằng cha mẹ cũng đang bất lực và trao quyền kiểm soát cho chính đứa trẻ đang rối loạn."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-16.md",
+      "frontmatter": {
+        "type": "data-point",
+        "data_type": "shocking_fact",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_sibling_attachment_security",
+          "p1_focus_on_needs_not_fairness"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_ban-chat-cua-xung-dot-su-an-toan-gan-bo-thu-tu-sinh]]"
+        ],
+        "description": "Việc có thêm em bé gây chấn động tâm lý cho trẻ lớn tựa như việc chấp nhận 'người thứ ba' trong hôn nhân. Ép trẻ nhường nhịn ngay lập tức là đi ngược lại tâm lý và nhu cầu gắn bó an toàn của trẻ.",
+        "keywords": [
+          "trẻ có em bé",
+          "chấn động tâm lý",
+          "sự ganh tị",
+          "nhu cầu gắn bó",
+          "cảm giác mất an toàn",
+          "giáo dục anh chị em",
+          "sự nhường nhịn",
+          "nuôi dạy con"
+        ]
+      },
+      "body": "Việc có thêm một em bé mới sinh đem lại chấn động tâm lý đối với trẻ lớn tương đương với việc người bạn đời của bạn dẫn một \"người vợ/chồng thứ hai\" về nhà. | Việc đòi hỏi đứa trẻ lớn phải ngay lập tức vui vẻ nhường nhịn và yêu thương người mới là trái với tâm lý tự nhiên. Nhu cầu gắn bó và nỗi sợ mất an toàn của chúng bị đe dọa nghiêm trọng."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-17.md",
+      "frontmatter": {
+        "type": "data-point",
+        "data_type": "shocking_fact",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_trung-phat-de-cham-dut-su-hon-lao]]"
+        ],
+        "description": "Bỏ qua sự trừng phạt đối với hành vi thô lỗ hoàn toàn không làm trẻ hư hỏng hơn. Thay vào đó, đáp lại bằng lòng thấu cảm chính là chìa khóa khiến trẻ cảm thấy an toàn và chủ động tự nguyện hợp tác.",
+        "keywords": [
+          "hành vi thô lỗ",
+          "sự trừng phạt",
+          "lòng thấu cảm",
+          "sự hợp tác",
+          "cảm giác an toàn",
+          "kỷ luật tích cực",
+          "giáo dục gia đình",
+          "nuôi dạy trẻ"
+        ]
+      },
+      "body": "Việc không trừng phạt hành vi thô lỗ KHÔNG HỀ củng cố hay làm cho hành vi đó dễ xảy ra hơn! | Cha mẹ thường lầm tưởng rằng nếu \"bỏ qua\" sự thô lỗ, trẻ sẽ học được cách cư xử tồi tệ. Thực chất, tư duy này xuất phát từ một góc nhìn rất tiêu cực về bản chất con người. Đáp lại sự thô lỗ bằng sự đồng cảm và tử tế mới là cách khiến trẻ cảm thấy được thấu hiểu, từ đó khơi dậy lòng tốt và sự hợp tác để đáp lại. | Bỏ trừng phạt không làm con hư hỏng hơn!"
     }
   ]
 }

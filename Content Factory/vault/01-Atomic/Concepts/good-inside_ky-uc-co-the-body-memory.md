@@ -7,7 +7,7 @@ topics:
 - p1_sturdy_leadership
 - p1_body_memory
 - p1_internal_working_model
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

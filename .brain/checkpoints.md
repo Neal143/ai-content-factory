@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 15/07/2026
+#### Vá lỗi đồng bộ cascade merge và cập nhật routing AGENT
+- **Mã khôi phục:** `536fac9`
+- **Thẻ (Tag):** `v4.0.2-hotfix-cascade-merge`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo toàn vẹn dữ liệu cho Taxonomy Management bằng cách fix lỗi không cập nhật file vật lý khi merge Audience. Chèn thêm bước gộp Topic và Audience vào luồng Pipeline tổng.
+  - **🛠️ Kỹ thuật (Tech):** Vá lỗi Regex trên `cascade_merge.py` xử lý trường hợp `aliases: []` trong YAML Frontmatter. Cập nhật `AGENT.md` (Routing Logic) cho `atoms-full-pipeline` thêm 2 skill vc-topic-dedup và vc-audience-curator vào trước atom-dedup.
+
 ### 📅 Ngày 13/07/2026
 #### Tích hợp Vault Curator vào 3 Workflows chính
 - **Mã khôi phục:** `6d5c612`
