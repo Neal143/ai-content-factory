@@ -1,0 +1,368 @@
+{
+  "batch_id": 36,
+  "batch_key": "b20e9849",
+  "atoms": [
+    "vault\\01-Atomic\\Solutions\\WBC_chien-luoc-thuc-hanh-remember-to-remember-nhac-nho-de-ghi-nho.md",
+    "vault\\01-Atomic\\Solutions\\WBC_cong-thuc-toan-hoc-cua-tinh-anh-em-niem-vui-xung-dot.md",
+    "vault\\01-Atomic\\Solutions\\WBC_day-tre-cach-sua-chua-va-han-gan.md",
+    "vault\\01-Atomic\\Solutions\\WBC_day-tre-nhin-qua-lang-kinh-cua-nguoi-khac.md",
+    "vault\\01-Atomic\\Solutions\\WBC_khung-ren-luyen-4-chuc-nang-cua-nao-tang-tren.md",
+    "vault\\01-Atomic\\Solutions\\WBC_lang-nghe-nhung-dieu-khong-duoc-noi-ra-giao-tiep-phi-ngon-ngu.md",
+    "vault\\01-Atomic\\Solutions\\WBC_mo-hinh-dam-may-cam-xuc-thoi-tiet-cua-tam-tri.md",
+    "vault\\01-Atomic\\Solutions\\WBC_name-it-to-tame-it-goi-ten-de-lam-diu.md",
+    "vault\\01-Atomic\\Solutions\\WBC_nguyen-ly-hoat-dong-cua-tri-nho-va-loi-ich-cua-viec-hoi-tuong.md",
+    "vault\\01-Atomic\\Solutions\\WBC_nguyen-ly-ren-luyen-dung-no-hay-mat-no-use-it-or-lose-it.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_chien-luoc-thuc-hanh-remember-to-remember-nhac-nho-de-ghi-nho.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "actionable_rule",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_memory_development",
+          "p1_remember_to_remember"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa]]"
+        ],
+        "description": "Các cách thức thực hành vô cùng hiệu quả và cụ thể như đặt những câu hỏi mở, cùng nhau chơi trò suy đoán và làm sổ lưu niệm giúp trẻ rèn luyện khả năng nhớ lại các sự kiện diễn ra hàng ngày một cách tự nhiên.",
+        "keywords": [
+          "nuôi dạy con",
+          "não bộ trẻ em",
+          "trí nhớ của trẻ",
+          "rèn luyện trí nhớ",
+          "trò chơi suy đoán",
+          "câu hỏi gợi mở",
+          "sổ lưu niệm",
+          "remember to remember",
+          "nhắc nhớ để ghi nhớ"
+        ]
+      },
+      "body": "*   **Bản chất:** Các cách thức cụ thể được lồng ghép vào sinh hoạt hàng ngày để cha mẹ giúp con rèn luyện trí nhớ và khả năng kể chuyện, thay vì ép buộc trẻ phải trả lời theo kiểu tra khảo.\n*   **Cách thức vận hành:** Sử dụng các câu hỏi gợi mở, trò chơi hóa quá trình nhớ lại, hoặc tạo ra các công cụ lưu trữ kỷ niệm để trẻ tự nhiên bộc lộ trải nghiệm của mình.\n*   **Ứng dụng thực tế:** \n    *   **Với trẻ nhỏ:** Đặt những câu hỏi đơn giản tập trung vào chi tiết trong ngày (Ví dụ: *\"Hôm nay con có đến nhà Carrie không? Có chuyện gì xảy ra khi chúng ta đến đó?\"*).\n    *   **Khuyến khích viết nhật ký (đối với trẻ lớn hơn):** Giúp trẻ thể hiện các sự kiện qua câu chữ.\n    *   **Chơi trò chơi suy đoán (Khi trẻ không chịu nói):** Nói với trẻ: *\"Hãy kể cho mẹ nghe 2 điều có thật đã xảy ra hôm nay, và 1 điều không có thật. Sau đó mẹ sẽ đoán xem 2 điều nào là thật.\"* Trò chơi này kích thích trẻ háo hức chia sẻ và quen với việc suy ngẫm lại các sự kiện trong ngày.\n    *   **Tạo lập các nghi thức gia đình:** Ví dụ, trên bàn ăn tối, yêu cầu trẻ kể về \"một điểm cao nhất (tốt nhất), một điểm thấp nhất (tồi tệ nhất) và một hành động tử tế\" trong ngày.\n    *   **Làm \"Sổ lưu niệm\" (Memory book) cho các sự kiện đặc biệt:** Khi trẻ đi trại hè về, hãy thu thập thư từ, kỷ vật, ảnh chụp và cùng trẻ làm một cuốn sổ. Cho phép trẻ viết những ghi chú nhỏ bên lề (Ví dụ: *\"Đây là cabin của con\"*). Việc này thúc đẩy trí nhớ về những chi tiết có thể bị lãng quên theo thời gian."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_cong-thuc-toan-hoc-cua-tinh-anh-em-niem-vui-xung-dot.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "actionable_rule",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui]]"
+        ],
+        "description": "Mối quan hệ anh chị em thực sự bền chặt không phải là không có xung đột, mà được xây dựng bằng cách liên tục gia tăng những khoảnh khắc vui vẻ chung để lấn át đi các mâu thuẫn tất yếu thường xuyên xảy ra giữa chúng.",
+        "keywords": [
+          "nuôi dạy con",
+          "tâm lý học gia đình",
+          "mối quan hệ anh em",
+          "xung đột anh chị em",
+          "gia tăng niềm vui",
+          "tận hưởng chung",
+          "cảm xúc tích cực",
+          "kết nối gia đình"
+        ]
+      },
+      "body": "*   **Bản chất:** Yếu tố dự báo tốt nhất cho mối quan hệ anh chị em tốt đẹp sau này là mức độ vui vẻ mà chúng có cùng nhau khi còn nhỏ.\n*   **Cách thức vận hành:** Xung đột giữa anh chị em là điều không thể tránh khỏi. Tuy nhiên, mối quan hệ sẽ bền chặt nếu lượng sự tận hưởng (niềm vui) mà chúng chia sẻ lớn hơn lượng xung đột. Mối nguy hiểm thực sự không phải là cãi vã, mà là khi những đứa trẻ phớt lờ nhau, dẫn đến một mối quan hệ lạnh nhạt và xa cách khi trưởng thành.\n*   **Ứng dụng thực tế:** Cha mẹ không cần cố gắng đưa xung đột về mức 0. Thay vào đó, hãy tập trung gia tăng vế \"niềm vui\" bằng cách tạo ra các hoạt động chung mang lại cảm xúc và kỷ niệm tích cực (ví dụ: cùng nhau vẽ quái vật bằng phấn trên vỉa hè, quay một bộ phim, hợp sức chống lại mẹ bằng súng nước)."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_day-tre-cach-sua-chua-va-han-gan.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "actionable_rule",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_conflict_resolution",
+          "p1_connect_through_conflict"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]"
+        ],
+        "description": "Phương pháp hướng dẫn trẻ không chỉ đơn thuần nói lời xin lỗi, mà còn phải biết thấu cảm sâu sắc và thực hiện những hành động cụ thể nhằm mục đích hàn gắn lại mối quan hệ ngay sau khi xảy ra xung đột với người khác.",
+        "keywords": [
+          "nuôi dạy con",
+          "giáo dục cảm xúc",
+          "xung đột của trẻ",
+          "giải quyết xung đột",
+          "lời xin lỗi chân thành",
+          "hàn gắn quan hệ",
+          "đồng cảm với người khác",
+          "chịu trách nhiệm"
+        ]
+      },
+      "body": "*   **Bản chất:** Hướng dẫn trẻ cách chịu trách nhiệm, đưa ra lời xin lỗi chân thành và có những hành động cụ thể để hàn gắn mối quan hệ sau xung đột.\n*   **Cách thức vận hành:** Một lời xin lỗi suông đôi khi là chưa đủ. Trẻ cần hiểu cảm giác của người bị tổn thương và chủ động tìm cách làm cho người đó cảm thấy tốt hơn. Mỗi nỗ lực thấu hiểu này sẽ tạo ra những kết nối mạnh mẽ hơn trong các mạch quan hệ của não bộ.\n*   **Ứng dụng thực tế:** Cha mẹ cần giúp trẻ vượt qua sự phòng thủ để nhận lỗi. Hãy hướng dẫn trẻ không chỉ xin lỗi chân thành (VD: \"Mình làm vậy vì ghen tị, mình xin lỗi\") mà còn đưa ra các câu hỏi khơi gợi: \"Nếu là con và món đồ yêu thích của con bị hỏng, điều gì sẽ giúp con cảm thấy tốt hơn?\". Khuyến khích trẻ thực hiện các bước cụ thể để hòa giải."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_day-tre-nhin-qua-lang-kinh-cua-nguoi-khac.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "actionable_rule",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_conflict_resolution",
+          "p1_connect_through_conflict"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]"
+        ],
+        "description": "Chiến lược hướng dẫn cha mẹ sử dụng những câu hỏi gợi mở khéo léo để giúp trẻ có thể dừng lại, tự đánh giá tình huống, thấu hiểu cảm xúc và đặt mình vào góc nhìn của người khác mỗi khi xảy ra mâu thuẫn trong cuộc sống.",
+        "keywords": [
+          "nuôi dạy con",
+          "não bộ trẻ em",
+          "xung đột của trẻ",
+          "phát triển sự đồng cảm",
+          "góc nhìn của người khác",
+          "thấu hiểu cảm xúc",
+          "câu hỏi gợi mở",
+          "giảm sự phòng thủ",
+          "não tầng trên"
+        ]
+      },
+      "body": "*   **Bản chất:** Kích thích trẻ dừng lại và đánh giá tình huống, suy nghĩ về cảm xúc và góc nhìn của người đối diện khi có xung đột xảy ra.\n*   **Cách thức vận hành:** Thay vì ngay lập tức phán xét hay vặn vẹo xem trẻ đã làm gì sai, cha mẹ kết nối với cảm xúc của trẻ trước để làm giảm sự phòng thủ. Sau đó, dùng các câu hỏi gợi mở để hướng trẻ tự suy nghĩ về lý do tại sao người kia lại có phản ứng như vậy, từ đó tạo ra sự đồng cảm.\n*   **Ứng dụng thực tế:** Tác giả khuyên cha mẹ không nên phản ứng kiểu: \"Thế con đã làm gì em? Chắc chắn không tự nhiên mà em lại nói vậy!\". Thay vào đó, hãy đồng cảm trước, rồi đặt câu hỏi như: \"Tại sao con nghĩ em lại nói như vậy?\", \"Đó có phải là bức tranh em đã rất cất công vẽ không?\", \"Đó có thể là lý do khiến em nổi giận không?\". Quá trình này trực tiếp kích hoạt bán cầu não phải và não tầng trên (upstairs brain) của trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_khung-ren-luyen-4-chuc-nang-cua-nao-tang-tren.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "framework",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_upstairs_brain_development",
+          "p1_use_or_lose_principle"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]"
+        ],
+        "description": "Cung cấp một khung phương pháp giao tiếp hàng ngày giúp trẻ thực hành hiệu quả 4 chức năng điều hành quan trọng nhất của bộ não tầng trên bao gồm: khả năng ra quyết định, sự thấu hiểu bản thân, lòng thấu cảm và nền tảng đạo đức.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "phát triển não bộ",
+          "chức năng điều hành",
+          "não tầng trên",
+          "ra quyết định",
+          "thấu hiểu bản thân",
+          "thấu cảm",
+          "đạo đức",
+          "tình huống phản tư"
+        ]
+      },
+      "body": "*   **Mục đích:** Cung cấp phương pháp giao tiếp và tương tác hàng ngày giúp trẻ tập thể dục 4 chức năng điều hành quan trọng nhất của bộ não tầng trên.\n*   **Các bước thực thi (Step-by-step):**\n    *   **Bước 1: Rèn luyện Khả năng ra quyết định (Sound Decision Making).** Đừng quyết định thay trẻ. Hãy cho trẻ thực hành cân nhắc các lựa chọn và dự đoán kết quả. Với trẻ nhỏ: Hỏi những lựa chọn đơn giản như \"Con muốn mặc áo xanh hay đỏ?\", \"Con uống sữa hay nước?\". Với trẻ lớn: Chơi trò \"Con sẽ làm gì?\" với các tình huống giả định như \"Nếu thấy bạn bị bắt nạt mà không có người lớn ở đó, con sẽ làm gì?\" hoặc \"Nếu mẹ của bạn uống rượu trước khi lái xe đưa con về, con sẽ xử lý thế nào?\".\n    *   **Bước 2: Rèn luyện Sự thấu hiểu bản thân (Self-understanding).** Khuyến khích trẻ nhìn sâu vào nội tâm bằng cách đặt các câu hỏi phản tư: \"Tại sao con nghĩ mình lại đưa ra lựa chọn đó?\", \"Điều gì khiến con cảm thấy như vậy?\", \"Tại sao con làm bài kiểm tra chưa tốt - do vội vàng hay do kiến thức quá khó?\".\n    *   **Bước 3: Rèn luyện Sự thấu cảm (Empathy).** Kéo sự chú ý của trẻ vào cảm xúc của người khác trong các tình huống đời thường để kích hoạt hệ thống tế bào thần kinh gương (mirror neurons). Hỏi trẻ: \"Tại sao em bé kia lại khóc?\", \"Lúc bạn chuyển nhà đi nơi khác, con nghĩ bạn ấy cảm thấy thế nào?\", hoặc \"Cô gái đó có vẻ không vui, con nghĩ có chuyện gì đã xảy ra khiến cô ấy buồn?\".\n    *   **Bước 4: Rèn luyện Đạo đức (Morality).** Cha mẹ làm gương bằng chính hành vi của mình. Việc trẻ quan sát cha mẹ sống trung thực, rộng lượng, tử tế và tôn trọng sẽ tác động đáng kể đến sự phát triển đạo đức ở não tầng trên của trẻ.\n*   **Điều kiện áp dụng:** Tùy thuộc vào độ tuổi mà cha mẹ thiết kế các tình huống và câu hỏi phù hợp. Cần thực hiện khi trẻ đang ở trạng thái bình tĩnh, sử dụng được não tầng trên chứ không phải lúc đang hoảng loạn, bùng nổ cảm xúc."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_lang-nghe-nhung-dieu-khong-duoc-noi-ra-giao-tiep-phi-ngon-ngu.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "actionable_rule",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_conflict_resolution",
+          "p1_connect_through_conflict"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con]]"
+        ],
+        "description": "Phương pháp dạy trẻ cách quan sát các tín hiệu giao tiếp phi ngôn ngữ quan trọng như nét mặt, tư thế và giọng điệu để hiểu chính xác cảm xúc của người đối diện thay vì chỉ lắng nghe lời nói.",
+        "keywords": [
+          "nuôi dạy con",
+          "giáo dục cảm xúc",
+          "giao tiếp của trẻ",
+          "kỹ năng quan sát",
+          "giao tiếp phi ngôn ngữ",
+          "ngôn ngữ cơ thể",
+          "nhận diện cảm xúc",
+          "sự đồng điệu",
+          "tín hiệu không lời"
+        ]
+      },
+      "body": "*   **Bản chất:** Dạy trẻ chú ý đến các tín hiệu giao tiếp phi ngôn ngữ (nét mặt, tư thế, giọng điệu) để hiểu đúng cảm xúc và thông điệp thực sự của người khác thay vì chỉ nghe lời nói.\n*   **Cách thức vận hành:** Trẻ em thường chỉ chú ý đến lời nói hoặc hành động bề mặt mà bỏ qua các tín hiệu phi ngôn ngữ, dẫn đến những hiểu lầm tai hại. Bằng cách dạy trẻ quan sát những điều \"không được nói ra\", trẻ học được cách đồng điệu với trạng thái nội tâm của người khác.\n*   **Ứng dụng thực tế:** Khi trẻ biện minh cho việc làm người khác khóc bằng câu: \"Nhưng em ấy thích trò đó mà! Tụi con đang chơi game\", cha mẹ cần chỉ cho trẻ cách đọc các tín hiệu phi ngôn ngữ. Hãy chủ động dạy trẻ cách quan sát các biểu cảm (nhíu mày, nhún vai, nhướn mày, v.v.) từ những người xung quanh ở nơi công cộng để rèn luyện kỹ năng này."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_mo-hinh-dam-may-cam-xuc-thoi-tiet-cua-tam-tri.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "mental_model",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_regulation",
+          "p1_emotional_cloud_model"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait]]"
+        ],
+        "vivid_knowledges": [
+          "Những đám mây cảm xúc cuốn đến rồi trôi đi trên bầu trời tâm trí"
+        ],
+        "description": "Áp dụng mô hình thời tiết tâm trí giúp trẻ nhận thức rõ ràng rằng các cảm xúc tiêu cực mạnh mẽ chỉ là những trạng thái nhất thời giống như một đám mây trôi qua, chứ hoàn toàn không phải là những đặc điểm tính cách trường tồn.",
+        "keywords": [
+          "nuôi dạy con",
+          "tâm lý học trẻ em",
+          "điều chỉnh cảm xúc",
+          "nhận thức bản thân",
+          "mô hình đám mây",
+          "thời tiết tâm trí",
+          "tính tạm thời",
+          "tách biệt cảm xúc",
+          "trạng thái nhất thời"
+        ]
+      },
+      "body": "*   **Bản chất:** Nhìn nhận các cảm xúc của con người giống như thời tiết. Những cảm xúc tiêu cực như sợ hãi, thất vọng và cô đơn chỉ là những trạng thái tạm thời (temporary states), không phải là những đặc điểm trường tồn (enduring traits).\n*   **Cách thức vận hành:** Khi trẻ đang trải qua một cảm xúc mạnh, não bộ của chúng bị kẹt lại ở cảm giác đó. Bằng cách giúp trẻ hiểu rằng cảm xúc trung bình chỉ kéo dài 90 giây, cha mẹ giúp trẻ nhận ra rằng sự khó chịu này sẽ trôi qua như một đám mây, giúp chúng tách biệt bản thân khỏi cảm xúc (Ví dụ: Chuyển từ \"Con là người nhút nhát\" sang \"Hiện tại con đang cảm thấy nhút nhát\").\n*   **Ứng dụng thực tế:** Tác giả yêu cầu cha mẹ KHÔNG gạt bỏ hay phủ nhận cảm xúc hiện tại của trẻ (kiểu \"Có gì đâu mà khóc\"). Thay vào đó, hãy xác nhận cơn mưa là có thật, an ủi trẻ, nhưng sau đó gợi nhắc lại những khoảnh khắc trẻ đã từng vui vẻ trước đây, hoặc hỏi trẻ nghĩ xem khi nào thì mình sẽ thấy khá hơn, để hướng sự chú ý của trẻ đến tính tạm thời của cảm xúc."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_name-it-to-tame-it-goi-ten-de-lam-diu.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "framework",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_healing",
+          "p1_name_to_tame_strategy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood]]"
+        ],
+        "description": "Triển khai chiến lược gọi tên cảm xúc và khuyến khích trẻ kể lại câu chuyện nhằm mục đích kết hợp sức mạnh của não trái logic với não phải cảm xúc, từ đó giúp xoa dịu những cảm xúc tiêu cực và xua tan nỗi sợ hãi ở trẻ.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "xoa dịu cảm xúc",
+          "xử lý tổn thương",
+          "name it to tame it",
+          "gọi tên để làm dịu",
+          "kết nối não bộ",
+          "kể lại câu chuyện",
+          "xoa dịu nỗi sợ"
+        ]
+      },
+      "body": "* Mục đích: Giúp trẻ kết hợp sức mạnh của não trái (logic, ngôn ngữ) và não phải (cảm xúc, ký ức) để hiểu và xử lý những trải nghiệm tồi tệ, từ đó xoa dịu các cảm xúc tiêu cực và xua tan nỗi sợ hãi.\n* Các bước thực thi (Step-by-step):\n- Bước 1: Khuyến khích trẻ kể lại câu chuyện. Khi trẻ bị choáng ngợp bởi cảm xúc, hãy giúp trẻ sử dụng não trái để sắp xếp và làm rõ chuyện gì đã xảy ra. Cha mẹ có thể chủ động bắt đầu câu chuyện và khuyến khích con điền thêm các chi tiết để ghép các sự kiện lại với nhau theo một trình tự hợp lý.\n- Bước 2: Gọi tên cảm xúc. Trong quá trình kể, hãy giúp trẻ gắn từ ngữ (tên gọi) cho những cảm giác to lớn và đáng sợ của não phải mà trẻ đã trải qua. Nghiên cứu khoa học chỉ ra rằng việc gọi tên cảm xúc sẽ làm dịu ngay lập tức các mạch cảm xúc đang bị kích động.\n- Bước 3: Lặp lại quá trình kể chuyện nhiều lần. Việc kể lại có thể cần thực hiện nhiều lần cho đến khi sự việc không còn đe dọa đến trẻ. Cha mẹ có thể cùng trẻ vẽ hình, viết thành một cuốn sách nhỏ tự làm về câu chuyện đó để trẻ tự do xem lại.\n* Điều kiện áp dụng: Tuyệt đối không ép buộc nếu trẻ chưa sẵn sàng nói chuyện. Nếu trẻ từ chối chia sẻ, hãy tôn trọng mong muốn của trẻ, cho trẻ không gian riêng, gợi ý viết nhật ký hoặc chờ đến một thời điểm thích hợp hơn.\n* 💡 Ẩn dụ: \"Không có\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_nguyen-ly-hoat-dong-cua-tri-nho-va-loi-ich-cua-viec-hoi-tuong.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "principle",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_memory_development",
+          "p1_remember_to_remember"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa]]"
+        ],
+        "description": "Nguyên lý về việc rèn luyện trí nhớ thường xuyên qua quá trình hồi tưởng và kể lại các sự kiện, không chỉ giúp trẻ củng cố khả năng tích hợp não bộ mà còn cải thiện đáng kể sức khỏe tổng thể và tinh thần.",
+        "keywords": [
+          "nuôi dạy con",
+          "phát triển trí não",
+          "hoạt động trí nhớ",
+          "tích hợp ký ức",
+          "hồi tưởng sự kiện",
+          "ký ức ẩn",
+          "ký ức hiện",
+          "rèn luyện não bộ",
+          "lợi ích sức khỏe"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Hành động nhớ lại diễn ra tự nhiên với hầu hết mọi người, nhưng trí nhớ giống như rất nhiều chức năng khác của não bộ: càng được tập thể dục (thực hành) nhiều, nó càng trở nên mạnh mẽ. \n*   **Diễn giải Core Logic:** Bằng cách cho trẻ thực hành nhiều lần việc nhớ lại – thông qua việc yêu cầu trẻ kể và kể lại các câu chuyện của chính mình – cha mẹ đang giúp trẻ cải thiện khả năng tích hợp giữa ký ức ẩn (implicit memory) và ký ức hiện (explicit memory). Việc hồi tưởng các sự kiện, đặc biệt là thông qua việc viết nhật ký, không chỉ giúp trẻ hiểu rõ các sự kiện trong quá khứ mà còn được khoa học chứng minh là giúp cải thiện chức năng miễn dịch, chức năng tim mạch cũng như sức khỏe tổng thể của trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Solutions\\WBC_nguyen-ly-ren-luyen-dung-no-hay-mat-no-use-it-or-lose-it.md",
+      "frontmatter": {
+        "type": "solution",
+        "knowledge_type": "actionable_rule",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_upstairs_brain_development",
+          "p1_use_or_lose_principle"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con]]"
+        ],
+        "description": "Nguyên lý nền tảng quan trọng này nhấn mạnh việc cha mẹ phải liên tục tạo cơ hội cho trẻ sử dụng bộ não tầng trên để nó phát triển, thay vì thường xuyên đứng ra giải cứu hay tự mình giải quyết mọi vấn đề thay cho con cái.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "phát triển não bộ",
+          "não tầng trên",
+          "use it or lose it",
+          "dùng nó hay mất nó",
+          "tự đưa ra quyết định",
+          "vận động não bộ",
+          "không giải cứu"
+        ]
+      },
+      "body": "*   **Bản chất:** Là nguyên lý cốt lõi trong sự phát triển não bộ, khẳng định rằng khi bộ não tầng trên được sử dụng, nó sẽ phát triển mạnh mẽ hơn, và ngược lại, nếu bị phớt lờ, nó sẽ mất đi sức mạnh và khả năng hoạt động.\n*   **Cách thức vận hành:** Việc liên tục sử dụng các chức năng của bộ não tầng trên sẽ giúp tăng cường sự gắn kết, tạo ra nền tảng vững chắc cho trí thông minh xã hội, trí tuệ cảm xúc và sức khỏe tinh thần.\n*   **Ứng dụng thực tế:** Cha mẹ cần có chủ đích cung cấp cho trẻ vô số cơ hội để tập thể dục não tầng trên. Hãy TỪ BỎ việc giải cứu hay liên tục giải quyết các tình huống khó khăn thay con (ngay cả khi trẻ mắc những sai lầm nhỏ). Hãy THỰC THI việc để trẻ tự vật lộn với những quyết định và tình huống phức tạp để não bộ được vận động.\n*   **💡 Ẩn dụ:** \"Bộ não tầng trên giống như một cơ bắp: khi được sử dụng, nó sẽ phát triển, trở nên mạnh mẽ hơn và hoạt động tốt hơn.\""
+    }
+  ]
+}

@@ -4,7 +4,7 @@ audience_Job_performer: cha mẹ
 audience_main_job: xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con
 audience_circumstance: khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
 - tìm kiếm định hướng giáo dục trẻ tự tin
 - xây dựng hạnh phúc cho con giữa nhiều phương pháp bủa vây

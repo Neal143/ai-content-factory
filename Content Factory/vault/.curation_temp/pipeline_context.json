@@ -1,0 +1,5 @@
+{
+  "mode": "atoms-full-pipeline",
+  "atoms_file": "vault/.curation_temp/atoms_list.txt",
+  "root_output_dir": "vault/.curation_temp"
+}

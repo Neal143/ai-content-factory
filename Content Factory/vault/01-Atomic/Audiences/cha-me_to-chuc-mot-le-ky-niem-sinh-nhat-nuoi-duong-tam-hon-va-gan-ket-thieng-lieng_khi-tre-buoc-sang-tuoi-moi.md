@@ -4,7 +4,7 @@ audience_Job_performer: cha mẹ
 audience_main_job: tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng
 audience_circumstance: khi trẻ bước sang tuổi mới
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
 - chuẩn bị sinh nhật ý nghĩa cho con
 - tổ chức sinh nhật kiểu Waldorf cho bé

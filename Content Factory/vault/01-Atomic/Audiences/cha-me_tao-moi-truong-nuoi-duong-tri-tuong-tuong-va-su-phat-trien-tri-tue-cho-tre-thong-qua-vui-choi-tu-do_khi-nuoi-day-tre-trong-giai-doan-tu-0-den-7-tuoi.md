@@ -4,8 +4,9 @@ audience_Job_performer: cha mẹ
 audience_main_job: tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do
 audience_circumstance: khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
+- cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con
 - khuyến khích trẻ vui chơi tự do
 - xây dựng không gian chơi mở cho trẻ mầm non
 ---

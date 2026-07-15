@@ -1,0 +1,373 @@
+{
+  "batch_id": 2,
+  "batch_key": "828e09d6",
+  "atoms": [
+    "vault\\01-Atomic\\Concepts\\good-inside_ban-chat-thuc-su-cua-viec-khong-lang-nghe.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_con-an-va-cam-xuc-emotional-tantrums.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_connection-capital-von-ket-noi.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_deeply-feeling-kids-dfks-va-co-che-xau-ho-shame.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_dinh-nghia-vai-tro-trong-he-thong-gia-dinh-family-system-roles.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_hanh-phuc-vs-su-kien-cuong-resilience-happiness.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_khai-niem-xau-ho-shame-nhu-mot-co-che-sinh-ton.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_ky-uc-co-the-body-memory.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_mach-dong-thuan-va-quyen-tu-quyet-co-the-circuitry-for-consent.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_nguoi-pha-vo-vong-lap-cycle-breaker.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_ban-chat-thuc-su-cua-viec-khong-lang-nghe.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_not_listening_nature",
+          "p1_connect_before_asking"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_bat-luc-vi-con-khong-nghe-loi]]"
+        ],
+        "vivid_knowledges": [
+          "La hét hỏi \"Có nghe không?\" khiến cơ thể trẻ bật chế độ động vật phòng vệ, hoàn toàn đóng băng không thể tiếp thu lời nói.\n\n*   **②-2. framework: Chiến lược \"Kết nối trước khi yêu cầu\" (Connect Before You Ask)**"
+        ],
+        "description": "Việc trẻ không lắng nghe thực chất là từ chối hợp tác. Cha mẹ la hét khiến trẻ rơi vào chế độ phòng thủ và đóng băng. Mấu chốt là cần kết nối trước khi đưa ra yêu cầu.",
+        "keywords": [
+          "tâm lý học trẻ em",
+          "phương pháp dạy con",
+          "sự phản kháng",
+          "không lắng nghe",
+          "chế độ phòng thủ",
+          "kết nối với con",
+          "thuyết phục trẻ",
+          "giao tiếp gia đình"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Việc \"không lắng nghe\" (not listening) thực chất là sự từ chối hợp tác. Lắng nghe chính là phong vũ biểu đo lường sức mạnh của một mối quan hệ trong bất kỳ khoảnh khắc nào.\n    *   **Diễn giải Core Logic:** Trẻ em không bao giờ \"điếc\" khi được gọi ra ăn kem hay xem TV, chúng chỉ phớt lờ khi bị yêu cầu làm việc chúng không thích. Việc cha mẹ bắt trẻ dừng một việc rất vui (như chơi đồ chơi) để làm một việc kém vui (như dọn dẹp) tự nhiên sẽ sinh ra sự phản kháng. Khi cha mẹ la hét, cơ thể trẻ sẽ rơi vào chế độ phòng thủ (threat mode) để sinh tồn, khiến trẻ thực sự \"đóng băng\" và không thể tiếp thu lời nói. Vì vậy, vấn đề không nằm ở sự bướng bỉnh của trẻ mà nằm ở việc mối quan hệ đang cần được kết nối và chăm sóc.\n    *   **💡 Ẩn dụ:** \"Giống như bạn đang ăn trưa vui vẻ với bạn bè thì một người khác đến bảo bạn hãy hủy bữa trưa và đi dọn dẹp nhà vệ sinh giúp họ. Chắc chắn bạn sẽ nói 'không' và tiếp tục ăn.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_con-an-va-cam-xuc-emotional-tantrums.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_bung-no-do-qua-tai-cam-xuc-that-vong]]"
+        ],
+        "description": "Ăn vạ là mất điều tiết sinh lý khi quá tải cảm xúc, không phải sự chống đối. Cha mẹ cần bình tĩnh, truyền sự ổn định giúp con trẻ phát triển kỹ năng tự điều chỉnh.",
+        "keywords": [
+          "giáo dục trẻ em",
+          "trẻ ăn vạ",
+          "quá tải cảm xúc",
+          "điều tiết sinh lý",
+          "kỹ năng điều chỉnh",
+          "giữ bình tĩnh",
+          "hỗ trợ cảm xúc",
+          "tâm lý phát triển"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Ăn vạ là trạng thái mất điều chỉnh sinh lý bình thường và khỏe mạnh, xảy ra khi một cảm xúc, thôi thúc hoặc cảm giác vượt quá khả năng điều tiết của trẻ [1]. Nó hoàn toàn không phải là hành vi chống đối hay bất tuân cố ý [1].\n    *   **Diễn giải Core Logic:** Trẻ bùng nổ vì \"hũ cảm xúc\" thất vọng, buồn bã, ghen tị đã tích tụ và đầy tràn [8]. Cơn ăn vạ là cách trẻ thể hiện rằng: \"Con vẫn biết mình muốn gì, ngay cả khi mẹ nói không\" [7]. Việc cha mẹ cố gắng dập tắt cơn ăn vạ chỉ khiến trẻ học được bài học sai lầm: cảm xúc của chúng thực sự rất tồi tệ và lấn át cả cha mẹ [2]. Mục tiêu cốt lõi không phải là ngăn chặn ăn vạ, mà là người lớn phải giữ bình tĩnh, giữ an toàn và truyền sự ổn định của mình sang cho con để giúp trẻ dần phát triển kỹ năng điều chỉnh cảm xúc [2]."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_connection-capital-von-ket-noi.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_behavior_is_a_window",
+          "p1_connection_capital"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_behavior-first-uu-tien-hanh-vi-be-mat]]"
+        ],
+        "description": "Vốn kết nối là kho dự trữ lòng tin giữa cha mẹ và con cái. Sửa đổi hành vi chỉ làm xói mòn lòng tin. Tích lũy vốn từ sớm giúp cha mẹ đồng hành tốt hơn khi con trưởng thành.",
+        "keywords": [
+          "xây dựng lòng tin",
+          "vốn kết nối",
+          "cảm xúc tích cực",
+          "sửa đổi hành vi",
+          "giáo dục gia đình",
+          "tuổi vị thành niên",
+          "nuôi dạy con",
+          "đồng hành cùng trẻ"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Nguồn dự trữ những cảm xúc tích cực, sự thấu hiểu và lòng tin được xây dựng vững chắc giữa cha mẹ và con cái, có thể được \"rút ra\" để sử dụng trong những thời điểm đấu tranh khó khăn hoặc khi mối quan hệ trở nên căng thẳng.\n*   **Diễn giải Core Logic:** Các biện pháp sửa đổi hành vi chỉ bào mòn chứ không tạo ra \"Vốn kết nối\". Đối với những trẻ thích làm hài lòng người khác (people-pleasing), sửa đổi hành vi dạy trẻ chối bỏ nhu cầu cá nhân. Với trẻ không thích làm hài lòng, hành vi chống đối sẽ càng leo thang vì trẻ cảm thấy không được thấu hiểu. Đặc biệt, nếu không chủ động tích lũy Vốn kết nối trong những năm tháng đầu đời, khi trẻ bước vào tuổi vị thành niên – giai đoạn trẻ to lớn hơn, độc lập hơn và có thể nổi loạn – cha mẹ sẽ không có bất kỳ nguồn vốn nào để dựa vào vì các hình phạt hay phần thưởng vật chất đã hoàn toàn mất đi tác dụng."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_deeply-feeling-kids-dfks-va-co-che-xau-ho-shame.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung]]"
+        ],
+        "vivid_knowledges": [
+          "Đứa trẻ như con thú bị nhốt trong lồng đang chiến đấu để sinh tồn"
+        ],
+        "description": "Trẻ cảm nhận sâu sắc rất nhạy cảm với sự xấu hổ. Nỗi sợ này đưa trẻ vào trạng thái phòng vệ. Khuyên bảo thông thường dễ làm trẻ thấy bị tấn công và chống trả kịch liệt.",
+        "keywords": [
+          "tâm lý học hành vi",
+          "cảm nhận sâu sắc",
+          "cảm giác xấu hổ",
+          "trạng thái phòng vệ",
+          "phản ứng chống trả",
+          "phương pháp tiếp cận",
+          "trẻ nhạy cảm",
+          "điều hòa tâm lý"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** DFKs là những đứa trẻ cảm nhận thế giới sâu sắc hơn, dễ bị kích động và cảm giác mãnh liệt kéo dài lâu hơn các trẻ khác. Ở DFK, sự tổn thương (vulnerability) nằm ngay sát với sự xấu hổ (shame).\n*   **Diễn giải Core Logic:** Sự xấu hổ đưa con người vào trạng thái phòng vệ nguyên thủy để bảo vệ bản thân (đóng băng, tấn công, hoặc nhốt người khác lại). Khi DFK thấy mất kiểm soát, chúng sợ hãi sự tồi tệ của chính mình và lo sợ rằng cảm xúc khổng lồ của chúng sẽ làm người khác hoảng sợ rồi bỏ rơi chúng. Vì vậy, chúng đẩy cha mẹ ra xa chính vào lúc cần được giúp đỡ nhất. Việc áp dụng các phương pháp thông thường (như khuyên bảo hay khơi gợi cảm xúc) khiến trẻ DFK cảm thấy như bị tấn công, dẫn đến phản ứng chống trả kịch liệt."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_dinh-nghia-vai-tro-trong-he-thong-gia-dinh-family-system-roles.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_family_system_roles",
+          "p1_boundary_validation_empathy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con]]"
+        ],
+        "vivid_knowledges": [
+          "Cha mẹ giống như một chiếc cầu thang (staircase), kết nối bộ não tầng dưới (cảm xúc bùng nổ) với bộ não tầng trên (nhận thức, quyết định) của trẻ."
+        ],
+        "description": "Mỗi thành viên gia đình có vai trò riêng. Việc cha mẹ là duy trì sự an toàn qua ranh giới, thay vì nhượng bộ chỉ để làm hài lòng trẻ. Điều này giúp con học cách tự điều chỉnh.",
+        "keywords": [
+          "hệ thống gia đình",
+          "vai trò cha mẹ",
+          "duy trì ranh giới",
+          "kỹ năng điều chỉnh",
+          "sự nhượng bộ",
+          "giáo dục nhận thức",
+          "trải nghiệm cảm xúc",
+          "môi trường an toàn"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Trong hệ thống gia đình, mỗi người có một công việc riêng và không được lấn làn (\"stay in our lanes\"). Công việc của cha mẹ là giữ an toàn (thể chất và tâm lý) thông qua ranh giới, sự xác thực (validation) và thấu cảm (empathy). Công việc của trẻ là khám phá, học hỏi thông qua việc trải nghiệm và thể hiện cảm xúc/mong muốn.\n*   **Diễn giải Core Logic:** Sự an toàn luôn phải đặt trước sự vui vẻ hay việc làm hài lòng trẻ. Trẻ em không nên là người quyết định ranh giới của cha mẹ, và cha mẹ cũng không được áp đặt cảm xúc của trẻ. Khi cha mẹ vì sợ con khóc mà lùi bước, trẻ sẽ nhận được thông điệp ngầm cực kỳ đáng sợ: \"Khi mình mất kiểm soát, sẽ không có ai đủ khả năng bước vào và giúp mình an toàn\". Điều này cản trở trẻ xây dựng kỹ năng điều chỉnh cảm xúc."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_hanh-phuc-vs-su-kien-cuong-resilience-happiness.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "philosophy",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_resilience_over_happiness",
+          "p1_support_not_solve"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_cam-bay-giai-cuu-cam-xuc]]"
+        ],
+        "vivid_knowledges": [
+          "Trẻ dung nạp được sự thất vọng sẽ tạo ra một lớp đệm mềm mại bao quanh những cảm xúc khó khăn trong chiếc lọ nội tâm\n\n*   **②-2. actionable_rule: Hỗ trợ thay vì Giải quyết (Support, not solve)**"
+        ],
+        "description": "Sự kiên cường là năng lực vượt qua khó khăn, tạo nền tảng cho hạnh phúc đích thực. Nếu chỉ tập trung loại bỏ thất vọng, trẻ sẽ mất khả năng đối mặt với nghịch cảnh sau này.",
+        "keywords": [
+          "sự kiên cường",
+          "triết lý giáo dục",
+          "hạnh phúc đích thực",
+          "đối mặt nghịch cảnh",
+          "điều chỉnh cảm xúc",
+          "chịu đựng thất vọng",
+          "vượt qua khó khăn",
+          "bảo bọc quá mức"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Sự kiên cường (resilience) là khả năng trải nghiệm nhiều loại cảm xúc khác nhau mà vẫn giữ được bản ngã của chính mình; nó giúp con người phục hồi sau căng thẳng, thất bại và nghịch cảnh. Sự kiên cường là tiền đề cho phép hạnh phúc nảy nở (Regulation first, happiness second).\n    *   **Diễn giải Core Logic:** Nếu cha mẹ luôn lấy \"hạnh phúc\" làm mục tiêu tối thượng, họ sẽ cố gắng giảm thiểu hoặc loại bỏ sự thất vọng để mang lại chiến thắng tức thời cho trẻ. Trẻ sẽ học được mạch thần kinh sai lệch: \"Sự khó chịu là sai trái và cần được loại bỏ ngay lập tức\". Ngược lại, sự kiên cường không liên quan đến kết quả thành công, mà nằm ở khoảng không gian *trước khi* đạt được thành công. Nó là năng lực chịu đựng sự đau khổ, đứng vững trong khoảnh khắc khó khăn mà không cần sự xác nhận của thành tựu. Công thức cốt lõi là: Căng thẳng + Cách đối phó = Trải nghiệm nội tâm (stress + coping = internal experience).\n    *   **💡 Ẩn dụ:** \"Chiếc lọ cảm xúc.\" Nếu không biết cách điều chỉnh sự đau khổ, những cảm giác sợ hãi và lo âu sẽ choán hết không gian của \"chiếc lọ\" nội tâm, khiến hạnh phúc bị chèn ép và không thể xuất hiện."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_khai-niem-xau-ho-shame-nhu-mot-co-che-sinh-ton.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con]]"
+        ],
+        "vivid_knowledges": [
+          "Trẻ đông cứng lại như một lớp màng bảo vệ để che giấu phần tồi tệ của bản thân khỏi nguy cơ bị bỏ rơi\n\n*   **②-2. FRAMEWORK: Khung Nhận diện và Giảm thiểu Xấu hổ (Shame Detection and Reduction)**"
+        ],
+        "description": "Sự xấu hổ là cơ chế sinh tồn nguyên thủy cảnh báo trẻ về nguy cơ bị bỏ rơi. Trẻ sẽ đóng băng che giấu phần tồi tệ để tự vệ, khiến việc nói xin lỗi trở nên rất khó khăn.",
+        "keywords": [
+          "tâm lý học tiến hóa",
+          "cảm giác xấu hổ",
+          "cơ chế sinh tồn",
+          "nguy cơ bỏ rơi",
+          "hệ thống cảnh báo",
+          "phản ứng đóng băng",
+          "tự vệ tâm lý",
+          "khó khăn xin lỗi"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Sự xấu hổ là cảm giác tin rằng \"phần này trong tôi không thể kết nối được—không ai muốn biết hoặc ở cạnh phần này\". Nó kích hoạt nỗi sợ hãi tột cùng của trẻ: \"Mình xấu xa, mình không xứng đáng, mình không thể gắn kết... mình sẽ bị bỏ lại một mình\".\n    *   **Diễn giải Core Logic:** Sự xấu hổ không phải là dấu hiệu của sự hư hỏng, mà là một cảm xúc thích nghi tiến hóa (evolutionarily adaptive feeling). Đối với một đứa trẻ, bị bỏ lại một mình đồng nghĩa với sự nguy hiểm đe dọa tính mạng. Do đó, sự xấu hổ hoạt động như một hệ thống cảnh báo, ra lệnh cho trẻ phải che giấu đi những phần tính cách/hành vi không thu hút được sự gắn kết (như việc vừa làm một điều tồi tệ). Nó \"đóng băng\" trẻ tại chỗ như một cơ chế tự vệ. Trẻ không thể xin lỗi vì để làm thế, trẻ phải nhìn nhận bản thân như một kẻ tồi tệ và đối mặt với nguy cơ bị từ chối tình yêu thương."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_ky-uc-co-the-body-memory.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_body_memory",
+          "p1_internal_working_model"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con]]"
+        ],
+        "vivid_knowledges": [
+          "Bản thiết kế (blueprint) mà trẻ mang theo bước vào thế giới"
+        ],
+        "description": "Trước khi biết nói, trẻ ghi nhớ trải nghiệm an toàn hay nguy hiểm thông qua cơ thể. Tương tác của cha mẹ ở giai đoạn này tạo bản thiết kế định hình khả năng điều chỉnh cảm xúc của con.",
+        "keywords": [
+          "phát triển não bộ",
+          "ký ức cơ thể",
+          "trẻ sơ sinh",
+          "trải nghiệm an toàn",
+          "bản thiết kế tâm lý",
+          "điều chỉnh cảm xúc",
+          "tương tác cha mẹ",
+          "chăm sóc đầu đời"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Mặc dù trẻ dưới 3 tuổi không thể ghi nhớ trải nghiệm bằng ngôn từ (để kể lại), nhưng chúng hoàn toàn có khả năng ghi nhớ bằng một thứ mạnh mẽ hơn: cơ thể của chúng.\n*   **Diễn giải Core Logic:** Trước khi biết nói, trẻ em học được những gì là an toàn/nguy hiểm, chấp nhận được/đáng xấu hổ, dễ chịu/quá tải thông qua cách cha mẹ tương tác với chúng. Cách tương tác này trở thành một \"bản thiết kế\" nền tảng cho sự điều chỉnh cảm xúc sau này. Một cảm xúc bị từ chối trong quá khứ (như khóc bị la mắng) sẽ khiến trẻ liên kết sự tổn thương với việc bị cự tuyệt, ngay cả khi lớn lên chúng không nhớ rõ sự kiện cụ thể đó.\n*   **💡 Ẩn dụ:** \"Bản thiết kế (blueprint) mà chúng mang theo bước vào thế giới\" và \"Những năm đầu đời tạo tiền đề cho một trăm năm tiếp theo.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_mach-dong-thuan-va-quyen-tu-quyet-co-the-circuitry-for-consent.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_consent_circuitry",
+          "p1_trusting_bodily_signals"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac]]"
+        ],
+        "description": "Sự đồng thuận bắt nguồn từ việc tin tưởng tín hiệu cơ thể. Gạt bỏ cảm giác của trẻ sẽ gieo rắc sự hoài nghi bản thân. Tôn trọng quyền tự quyết giúp trẻ xây dựng nền tảng vững chắc.",
+        "keywords": [
+          "sự đồng thuận",
+          "quyền tự quyết",
+          "tín hiệu cơ thể",
+          "tâm lý học hành vi",
+          "hoài nghi bản thân",
+          "tôn trọng cảm giác",
+          "kỹ năng quyết định",
+          "nuôi dạy trẻ"
+        ]
+      },
+      "body": "*   **Định nghĩa:** Sự đồng thuận cốt lõi là niềm tin rằng chỉ có chúng ta mới biết điều gì đang xảy ra với mình, điều gì ta muốn và điều gì tạo ra sự thoải mái trong từng khoảnh khắc. Ở trẻ em, nó bao gồm mọi vấn đề về quyền tự quyết cơ thể: từ việc ngần ngại tham gia tiệc, từ chối ăn thêm khi đã no, hay sợ hãi bóng tối.\n*   **Diễn giải Core Logic:** Trẻ em luôn ngầm định đặt ra các câu hỏi: liệu chúng có hiểu rõ tín hiệu trong cơ thể mình hơn người khác, hay người khác mới là người phán xét đúng? Khi cha mẹ gạt bỏ cảm giác của trẻ (ví dụ: \"Con làm quá lên rồi, có gì mà sợ\"), trẻ sẽ hình thành \"mạch nghi ngờ bản thân\" (circuitry for self-doubt) - tin rằng cảm xúc của mình là lố bịch và người khác biết rõ hơn bản thân mình. Ngược lại, khi cha mẹ tin tưởng cảm nhận của trẻ, trẻ sẽ xây dựng được \"mạch đồng thuận\", học được cách tin tưởng tuyệt đối vào chính mình để làm chủ các quyết định cá nhân trong suốt phần đời còn lại."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_nguoi-pha-vo-vong-lap-cycle-breaker.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_good_inside_core_belief",
+          "p1_most_generous_interpretation"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi]]"
+        ],
+        "vivid_knowledges": [
+          "Đặt tay lên ngực và nhắn nhủ: \"Mình ở đây vì mình muốn là điểm xoay chuyển. Mình muốn bắt đầu một điều gì đó khác biệt.\""
+        ],
+        "description": "Người phá vỡ vòng lặp là cha mẹ dám từ chối lặp lại những khuôn mẫu tổn thương liên thế hệ. Bằng cách bao dung bản thân, họ mở ra hướng đi tích cực mới cho thế hệ tương lai.",
+        "keywords": [
+          "tâm lý gia đình",
+          "tổn thương liên thế hệ",
+          "phá vỡ vòng lặp",
+          "khuôn mẫu hành xử",
+          "sự bao dung",
+          "kết nối nội tâm",
+          "chữa lành tâm lý",
+          "nuôi dạy tích cực"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Là người chủ động chọn việc thay đổi, từ chối lặp lại những khuôn mẫu hành xử tổn thương được truyền từ các thế hệ trước và tạo ra một hướng đi mới cho thế hệ tương lai.\n*   **Diễn giải Core Logic:** Cha mẹ không có lỗi với những khuôn mẫu hành xử liên thế hệ mà họ mang theo. Việc nhận lãnh vai trò \"Người phá vỡ vòng lặp\" là một cuộc chiến vĩ đại và dũng cảm. Để làm được điều này, cha mẹ phải bắt đầu từ việc kết nối lại với sự lành thiện bên trong chính mình, bao dung với bản thân khi mắc lỗi."
+    }
+  ]
+}

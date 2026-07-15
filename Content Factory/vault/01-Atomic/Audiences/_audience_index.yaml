@@ -1,8 +1,3 @@
-# _audience_index.yaml
-# Single Source of Truth — Toan bo Audience da ton tai trong Vault
-# Duoc tao lan dau boi: persona-interviewer (Cau 10 Buoc 1)
-# Duoc cap nhat boi: persona-interviewer, book-audience-matcher
-
 audiences:
 - id: phu_huynh_co_con_0_7_tuoi_day_con_tai_viet_nam
   file_ref: '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
@@ -11,17 +6,8 @@ audiences:
   audience_main_job: Thiet lap nen tang phat trien cho con
   audience_circumstance: Sap co con hoac co con tu 0-7 tuoi, song o Viet Nam
   parent_audience: []
-  aliases: []
-- id: cha_me_tao_lap_nen_tang_phat_trien_khoe_manh_va_toan_dien_cho_con_cai_khi_tre_dang_buoc_vao_giai_doan_tu_so_sinh_den_bay_tuoi
-  file_ref: '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
-  audience_level: big
-  audience_Job_performer: cha mẹ
-  audience_main_job: tạo lập nền tảng phát triển khỏe mạnh và toàn diện cho con cái
-  audience_circumstance: khi trẻ đang bước vào giai đoạn từ sơ sinh đến bảy tuổi
-  parent_audience: []
   aliases:
-  - nuôi dưỡng trẻ từ 0 đến 7 tuổi
-  - giúp con phát triển toàn diện những năm đầu đời
+  - cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi
 - id: cha_me_xay_dung_nen_tang_thoi_quen_va_nhip_dieu_song_lanh_manh_cho_con_khi_thiet_lap_cac_thoi_quen_sinh_hoat_hang_ngay_trong_gia_dinh
   file_ref: '[[cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh]]'
   audience_level: little
@@ -30,7 +16,7 @@ audiences:
   audience_circumstance: khi thiết lập các thói quen sinh hoạt hàng ngày trong gia
     đình
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - tạo lập nhịp điệu sinh hoạt cho trẻ
   - rèn luyện thói quen sống lành mạnh tại nhà
@@ -42,7 +28,7 @@ audiences:
   audience_circumstance: khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành
     sớm từ văn hóa hiện đại
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - giữ gìn tuổi thơ cho con trước áp lực xã hội
   - nuôi dạy con chậm lại giữa thế giới vội vã
@@ -54,7 +40,7 @@ audiences:
   audience_circumstance: khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế
     giới hiện đại
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - tìm kiếm định hướng giáo dục trẻ tự tin
   - xây dựng hạnh phúc cho con giữa nhiều phương pháp bủa vây
@@ -65,7 +51,7 @@ audiences:
   audience_main_job: bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ
   audience_circumstance: khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - chăm sóc thể chất và tinh thần cho con
   - nuôi dưỡng trẻ lớn khôn mỗi ngày
@@ -76,7 +62,7 @@ audiences:
   audience_main_job: thiết lập sự ổn định và nề nếp cho con
   audience_circumstance: khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - tạo dựng nhịp điệu sinh hoạt cho trẻ
   - rèn nề nếp cho con giữa lối sống bận rộn
@@ -88,8 +74,9 @@ audiences:
     tuệ cho trẻ thông qua vui chơi tự do
   audience_circumstance: khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
+  - cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con
   - khuyến khích trẻ vui chơi tự do
   - xây dựng không gian chơi mở cho trẻ mầm non
 - id: cha_me_chon_do_choi_va_xay_dung_khong_gian_choi_lanh_manh_khi_cham_soc_con_tu_so_sinh_den_2_5_tuoi
@@ -127,18 +114,6 @@ audiences:
   aliases:
   - nắm bắt tâm lý vui chơi của trẻ tiền tiểu học
   - đồng hành cùng sự biến đổi tâm lý của bé 5-7 tuổi
-- id: cha_me_tao_ra_moi_truong_vui_choi_giup_tre_phat_trien_tri_tuong_tuong_va_ky_nang_song_khi_thiet_lap_khong_gian_song_va_chon_mua_do_choi_cho_con
-  file_ref: '[[cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con]]'
-  audience_level: little
-  audience_Job_performer: cha mẹ
-  audience_main_job: tạo ra môi trường vui chơi giúp trẻ phát triển trí tưởng tượng
-    và kỹ năng sống
-  audience_circumstance: khi thiết lập không gian sống và chọn mua đồ chơi cho con
-  parent_audience:
-  - '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
-  aliases:
-  - sắp xếp góc chơi tự do cho bé
-  - mua sắm đồ chơi kích thích sáng tạo
 - id: cha_me_nuoi_duong_su_phat_trien_the_chat_va_cac_giac_quan_co_ban_cua_con_khi_tre_o_giai_doan_tu_so_sinh_den_bay_tuoi
   file_ref: '[[cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi]]'
   audience_level: little
@@ -147,7 +122,7 @@ audiences:
     con
   audience_circumstance: khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - chăm sóc thể chất và giác quan cho trẻ mầm non
   - hỗ trợ phát triển giác quan 7 năm đầu đời
@@ -158,7 +133,7 @@ audiences:
   audience_main_job: nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ
   audience_circumstance: khi môi trường xung quanh ngập tràn các kích thích nhân tạo
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - bảo vệ trẻ khỏi ô nhiễm thông tin và cảm xúc
   - chăm sóc đời sống tinh thần cho trẻ giữa thời đại số
@@ -170,7 +145,7 @@ audiences:
   audience_circumstance: khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và
     các mối quan hệ giao tiếp phức tạp
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - giúp con phát triển khả năng nghe và hiểu ngôn ngữ
   - hỗ trợ trẻ nhận thức và giao tiếp trong môi trường xã hội
@@ -181,7 +156,7 @@ audiences:
   audience_main_job: rèn luyện kỷ luật cho con
   audience_circumstance: khi đối mặt với những hành vi chưa tốt của trẻ nhỏ
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - uốn nắn hành vi chưa ngoan của con
   - dạy con tính kỷ luật thông qua làm gương
@@ -296,7 +271,7 @@ audiences:
   audience_circumstance: khi đối mặt với những tính cách và hành vi khác biệt của
     từng đứa trẻ
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - dạy con theo tính cách riêng
   - giáo dục thuận tự nhiên theo khí chất của trẻ
@@ -308,7 +283,7 @@ audiences:
     hàng ngày một cách nhẹ nhàng
   audience_circumstance: khi ở nhà hoặc trong lớp học
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - tổ chức hoạt động cho trẻ mầm non
   - hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu
@@ -320,7 +295,7 @@ audiences:
     thiêng liêng
   audience_circumstance: khi trẻ bước sang tuổi mới
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - chuẩn bị sinh nhật ý nghĩa cho con
   - tổ chức sinh nhật kiểu Waldorf cho bé
@@ -332,7 +307,7 @@ audiences:
   audience_circumstance: khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và
     mức độ trưởng thành tâm lý của con
   parent_audience:
-  - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
   aliases:
   - kể chuyện cổ tích cho con ngủ
   - chọn truyện đọc cho bé theo độ tuổi

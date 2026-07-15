@@ -4,7 +4,7 @@ audience_Job_performer: cha mẹ
 audience_main_job: bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ
 audience_circumstance: khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
 - chăm sóc thể chất và tinh thần cho con
 - nuôi dưỡng trẻ lớn khôn mỗi ngày

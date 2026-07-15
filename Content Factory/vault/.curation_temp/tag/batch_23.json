@@ -1,0 +1,354 @@
+{
+  "batch_id": 23,
+  "batch_key": "bcdc8b44",
+  "atoms": [
+    "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-28.md",
+    "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-5.md",
+    "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-6.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-cach-day-tre-sift-11.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-co-the-chua-day-7.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-hay-tim-cach-giup-12.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-healing-from-a-difficult-4.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-neu-ban-muon-phat-13.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-david-se-ke-qua-giong-8.md",
+    "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-chi-cach-dat-hoi-9.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-28.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_bo-cong-cu-xoa-diu-lo-au-chia-ly]]"
+        ],
+        "description": "Dr. Becky Kennedy giải thích rằng cách thiết thực nhất để xoa dịu lo âu chia ly ở trẻ nhỏ là giúp chúng học cách tự giữ lấy hình bóng của cha mẹ ngay cả khi chúng ta không ở bên cạnh.",
+        "keywords": [
+          "nuôi dạy con",
+          "tâm lý học trẻ em",
+          "lo âu chia ly",
+          "phương pháp xoa dịu",
+          "hình bóng cha mẹ",
+          "cảm giác an toàn",
+          "dr. becky kennedy",
+          "separation anxiety",
+          "hold on to us"
+        ]
+      },
+      "body": "\"Rốt cuộc, để xoa dịu lo âu chia ly, chúng ta phải giúp trẻ 'giữ lấy chúng ta' trong lúc chúng ta vắng mặt.\" *(After all, to ease separation anxiety, we have to help kids “hold on to us” in our absence.)*"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-5.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_body_memory",
+          "p1_internal_working_model"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_ky-uc-co-the-body-memory]]"
+        ],
+        "description": "Lời khẳng định súc tích từ Dr. Becky Kennedy về tầm quan trọng mang tính nền tảng của giai đoạn đầu đời đối với sự phát triển lâu dài của một cá nhân trong suốt hàng trăm năm tiếp theo.",
+        "keywords": [
+          "nuôi dạy con",
+          "tâm lý học trẻ em",
+          "giai đoạn đầu đời",
+          "nền tảng phát triển",
+          "tuổi thơ",
+          "tương lai lâu dài",
+          "dr. becky kennedy",
+          "first years of life",
+          "hundred years"
+        ]
+      },
+      "body": "\"Những năm đầu đời tạo tiền đề cho một trăm năm tiếp theo.\" (The first years of life set the stage for the next hundred.)"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-6.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_neuroplasticity_repair",
+          "p1_the_power_of_repair"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_ky-nang-sua-chua-the-power-of-repair]]"
+        ],
+        "description": "Dr. Becky Kennedy nhắc nhở các bậc cha mẹ rằng không ai có thể làm đúng mọi lúc, thay vào đó mục tiêu quan trọng và thực tế nhất là trở nên giỏi giang trong việc nhận sai và sửa chữa.",
+        "keywords": [
+          "nuôi dạy con",
+          "tâm lý học gia đình",
+          "không ai hoàn hảo",
+          "khả năng sửa chữa",
+          "kỹ năng hàn gắn",
+          "chấp nhận sai lầm",
+          "dr. becky kennedy",
+          "power of repair",
+          "xin lỗi con"
+        ]
+      },
+      "body": "\"Mục tiêu không bao giờ là làm đúng trong mọi lúc. Điều đó không tồn tại. [...] Mục tiêu xứng đáng nhất có lẽ là trở nên thực sự giỏi trong việc sửa chữa.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-cach-day-tre-sift-11.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_self_awareness",
+          "p1_sift_method"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_phuong-phap-sift-sensations-images-feelings-thoughts]]"
+        ],
+        "description": "Các tác giả The Whole-Brain Child lý giải phương pháp SIFT giúp trẻ nhận thức cảm xúc bên trong thông qua mô hình bánh xe nhận thức, từ đó tăng cường sự thấu hiểu và quyền kiểm soát cuộc sống.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "phương pháp sift",
+          "bánh xe nhận thức",
+          "kiểm soát cảm xúc",
+          "thấu hiểu bản thân",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Bằng cách dạy trẻ SIFT thông qua các hoạt động của tâm trí, chúng ta có thể giúp trẻ nhận ra các điểm khác nhau trên vành bánh xe đang hoạt động bên trong chúng, và giúp chúng có thêm sự thấu hiểu cũng như quyền kiểm soát trong cuộc sống của mình.\" [4]"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-co-the-chua-day-7.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_regulation",
+          "p1_move_it_or_lose_it"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_thay-doi-trang-thai-the-chat-de-thay-doi-trang-thai-cam-xuc-move-it-or-lose-it]]"
+        ],
+        "description": "Quyển sách The Whole-Brain Child giải thích rằng cơ thể luôn gửi các tín hiệu vật lý đến não bộ để thông báo về cảm xúc, thậm chí trước khi chúng ta ý thức rõ ràng về sự lo âu.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "tín hiệu cơ thể",
+          "cảm xúc bắt đầu",
+          "biểu hiện vật lý",
+          "nhận thức lo âu",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Cơ thể chứa đầy thông tin mà nó gửi đến não. Thực tế, rất nhiều cảm xúc chúng ta cảm nhận thực chất bắt đầu từ cơ thể. Cái dạ dày cồn cào và đôi vai căng cứng của chúng ta gửi những thông điệp vật lý của sự lo âu đến não trước cả khi chúng ta nhận thức được một cách có ý thức rằng mình đang lo lắng.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-hay-tim-cach-giup-12.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_mindfulness",
+          "p1_mindsight_practice"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_thuc-hanh-mindsight-tam-tri-de-quay-ve-truc-banh-xe]]"
+        ],
+        "description": "Trong The Whole-Brain Child, các tác giả khuyên cha mẹ nên dạy trẻ cách tĩnh tâm và tìm về trục bình yên bên trong mình để dễ dàng vượt qua những cơn bão cảm xúc đang cuộn trào.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "rèn luyện tĩnh tâm",
+          "trục bình yên",
+          "quản lý cảm xúc",
+          "cơn bão nội tâm",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Hãy tìm cách giúp con bạn học cách giữ sự tĩnh lặng, bình tâm đôi chút và tìm thấy sự bình yên như dưới đáy đại dương sâu thẳm ngay bên trong 'trục' (hub) của chúng. Từ đó, chúng sẽ có khả năng tốt hơn để sinh tồn qua những cơn bão đang nhen nhóm bên trong mình từ khoảnh khắc này sang khoảnh khắc khác...\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-healing-from-a-difficult-4.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_healing",
+          "p1_name_to_tame_strategy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_name-it-to-tame-it-goi-ten-de-lam-diu]]"
+        ],
+        "description": "Cuốn sách The Whole-Brain Child chỉ ra rằng việc não trái và não phải kết hợp để kể câu chuyện trải nghiệm sẽ giúp trẻ phục hồi tổn thương từ vết trầy xước nhỏ đến những biến cố lớn.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "kết hợp hai não",
+          "kể chuyện trải nghiệm",
+          "phục hồi tổn thương",
+          "phản ứng lành mạnh",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Healing from a difficult experience emerges when the left side works with the right to tell our life stories. When children learn to pay attention to and share their own stories, they can respond in healthy ways to everything from a scraped elbow to a major loss or trauma.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-neu-ban-muon-phat-13.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_cong-thuc-toan-hoc-cua-tinh-anh-em-niem-vui-xung-dot]]"
+        ],
+        "description": "The Whole-Brain Child đề xuất một công thức đơn giản để xây dựng tình cảm anh em gắn bó: cha mẹ cần đảm bảo lượng niềm vui trẻ cùng chia sẻ luôn lớn hơn mức độ xung đột xảy ra.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "tình cảm anh em",
+          "phương trình mối quan hệ",
+          "gia tăng niềm vui",
+          "giảm thiểu xung đột",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Nếu bạn muốn phát triển những mối quan hệ thân thiết, lâu dài giữa các con của mình, hãy nghĩ về nó như một phương trình toán học, nơi lượng sự tận hưởng mà chúng chia sẻ cùng nhau phải lớn hơn lượng xung đột mà chúng trải qua.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-david-se-ke-qua-giong-8.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_trauma_recovery",
+          "p1_remote_of_the_mind"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_chien-luoc-chiec-dieu-khien-tam-tri-use-the-remote-of-the-mind]]"
+        ],
+        "description": "Chiến lược chiếc điều khiển tâm trí trong The Whole-Brain Child khuyến khích trẻ tự tưởng tượng lại những trải nghiệm khó khăn thông qua lăng kính an toàn như đang xem lại một đĩa phim trong não bộ.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "chiếc điều khiển tâm trí",
+          "xem lại trải nghiệm",
+          "đối mặt khó khăn",
+          "tưởng tượng an toàn",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Bố sẽ kể qua câu chuyện, giống như cách con đã kể cho bố vào mùa hè năm ngoái. Và bố muốn con tưởng tượng câu chuyện trong đầu mình, như thể con đang xem một đĩa DVD bên trong não con vậy.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-chi-cach-dat-hoi-9.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_memory_development",
+          "p1_remember_to_remember"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[WBC_chien-luoc-thuc-hanh-remember-to-remember-nhac-nho-de-ghi-nho]]"
+        ],
+        "description": "Theo quyển The Whole-Brain Child, bằng cách khuyến khích việc hồi tưởng và đặt câu hỏi khéo léo, cha mẹ có thể giúp trẻ hiểu rõ các sự kiện quá khứ để đối mặt tốt hơn với hiện tại.",
+        "keywords": [
+          "nuôi dạy con",
+          "khoa học thần kinh",
+          "kỹ năng hồi tưởng",
+          "đặt câu hỏi",
+          "ghi nhớ sự kiện",
+          "hiểu rõ hiện tại",
+          "daniel j. siegel",
+          "tina payne bryson",
+          "the whole-brain child"
+        ]
+      },
+      "body": "\"Chỉ bằng cách đặt câu hỏi và khuyến khích việc nhớ lại, bạn có thể giúp con mình ghi nhớ và hiểu những sự kiện quan trọng từ quá khứ, điều này sẽ giúp chúng hiểu rõ hơn về những gì đang xảy ra với chúng ở hiện tại.\" [1]"
+    }
+  ]
+}

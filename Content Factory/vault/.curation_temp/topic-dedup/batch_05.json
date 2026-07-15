@@ -1,0 +1,178 @@
+{
+  "batch_id": 5,
+  "pillar_prefix": "p1",
+  "items": [
+    {
+      "id": "p1_energy_redirection",
+      "label": "Chuyển hướng năng lượng",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc]]"
+      ]
+    },
+    {
+      "id": "p1_use_of_may",
+      "label": "Sử dụng từ \"May\" (Được phép/Có thể) thay vì câu hỏi",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day]]"
+      ]
+    },
+    {
+      "id": "p1_illusion_of_choice",
+      "label": "Ảo tưởng về sự lựa chọn",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day]]"
+      ]
+    },
+    {
+      "id": "p1_rhythm_as_discipline",
+      "label": "Cơ chế kỷ luật tự nhiên của nhịp điệu",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay]]"
+      ]
+    },
+    {
+      "id": "p1_healing_action",
+      "label": "Chữa lành hành vi tấn công vật lý",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot]]"
+      ]
+    },
+    {
+      "id": "p1_real_work_for_violent_play",
+      "label": "Chữa lành trò chơi bạo lực bằng lao động thực tế",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot]]"
+      ]
+    },
+    {
+      "id": "p1_consequent_action",
+      "label": "Xử lý sự bướng bỉnh bằng hành động nhất quán",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay]]"
+      ]
+    },
+    {
+      "id": "p1_listen_and_redirect",
+      "label": "Hóa giải xung đột qua lắng nghe và hành động thực tế",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay]]"
+      ]
+    },
+    {
+      "id": "p1_positive_discipline",
+      "label": "Kỷ luật tích cực và thấu hiểu",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]",
+        "[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]"
+      ]
+    },
+    {
+      "id": "p1_harm_of_criticism",
+      "label": "Tác hại của sự chỉ trích",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]"
+      ]
+    },
+    {
+      "id": "p1_spiritual_work_in_discipline",
+      "label": "Thực hành tâm linh trong giấc ngủ để tìm giải pháp kỷ luật",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre]]"
+      ]
+    },
+    {
+      "id": "p1_end_of_day_reflection",
+      "label": "Phản tỉnh cuối ngày",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]"
+      ]
+    },
+    {
+      "id": "p1_four_temperaments",
+      "label": "Bốn nhóm khí chất cơ bản của trẻ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]"
+      ]
+    },
+    {
+      "id": "p1_like_heals_like",
+      "label": "Nguyên tắc Lấy độc trị độc trong giáo dục khí chất",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]"
+      ]
+    },
+    {
+      "id": "p1_songs_for_routines",
+      "label": "Sử dụng bài hát để thiết lập thói quen và chuyển tiếp",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]"
+      ]
+    },
+    {
+      "id": "p1_rainbow_bridge_story",
+      "label": "Câu chuyện Cầu Vồng (Rainbow Bridge Story)",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi]]"
+      ]
+    },
+    {
+      "id": "p1_fairy_tales_by_age",
+      "label": "Phân loại truyện cổ tích theo độ tuổi",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con]]"
+      ]
+    }
+  ],
+  "anchors": []
+}

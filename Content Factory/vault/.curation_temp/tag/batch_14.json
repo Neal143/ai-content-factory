@@ -1,0 +1,375 @@
+{
+  "batch_id": 14,
+  "batch_key": "3b75bad2",
+  "atoms": [
+    "vault\\01-Atomic\\Insights\\good-inside_so-con-mai-nhut-nhat-va-co-lap.md",
+    "vault\\01-Atomic\\Insights\\good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
+    "vault\\01-Atomic\\Insights\\good-inside_so-lam-cha-me-toi-qua-bua-an.md",
+    "vault\\01-Atomic\\Insights\\good-inside_so-tre-ton-thuong-hoac-chua-san-sang.md",
+    "vault\\01-Atomic\\Insights\\good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri.md",
+    "vault\\01-Atomic\\Insights\\good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung.md",
+    "vault\\01-Atomic\\Insights\\good-inside_su-giang-xe-giua-ky-luat-va-ket-noi.md",
+    "vault\\01-Atomic\\Insights\\good-inside_tre-co-tinh-hu-don-va-bao-luc.md",
+    "vault\\01-Atomic\\Insights\\good-inside_trung-phat-de-cham-dut-su-hon-lao.md",
+    "vault\\01-Atomic\\Insights\\good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-con-mai-nhut-nhat-va-co-lap.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_true_confidence_concept",
+          "p1_validate_and_empower_shyness"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi]]"
+        ],
+        "vivid_insights": [
+          "Trẻ là người duy nhất ngồi trên đùi cha mẹ trong một buổi tụ tập, cha mẹ trỗi dậy thôi thúc muốn đẩy con ra xa."
+        ],
+        "description": "Nhiều cha mẹ mang nỗi sợ hãi sâu sắc rằng con mình sẽ mãi nhút nhát và đơn độc. Sự lo âu này thúc đẩy họ ép buộc con hòa nhập, vô tình đẩy trẻ vào trạng thái bế tắc và ngày càng thu mình hơn.",
+        "keywords": [
+          "trẻ nhút nhát",
+          "nỗi sợ cô lập",
+          "ép buộc hòa nhập",
+          "áp lực xã hội",
+          "tâm lý phụ huynh",
+          "khủng hoảng giao tiếp",
+          "sự tự lập",
+          "vòng lặp tâm lý"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ (đặc biệt là những người hướng ngoại hoặc coi trọng sự tự lập) thường mang nỗi sợ hãi sâu sắc rằng con mình sẽ \"luôn luôn như thế này\" và \"không bao giờ cảm thấy thoải mái trong một nhóm\". Sự lo âu này thúc đẩy họ ép buộc con phải hòa nhập, vô tình tạo ra một vòng lặp tự ứng nghiệm khiến trẻ càng cảm thấy đơn độc, bế tắc trong cảm xúc của chính mình và ngày càng trở nên nhút nhát hơn."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_contain_the_fire",
+          "p1_i_wont_let_you"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang]]"
+        ],
+        "vivid_insights": [
+          "Ngọn lửa cảm xúc cháy bùng (emotional fire) cần được cô lập trong không gian nhỏ để không thiêu rụi cả ngôi nhà."
+        ],
+        "description": "Cha mẹ thường rơi vào trạng thái hoảng loạn và tổn thương sâu sắc khi đứa con nhỏ đột nhiên mất kiểm soát. Việc con cái la hét hay có hành vi tấn công thể chất khiến người lớn cảm thấy bối rối và bất lực tột độ.",
+        "keywords": [
+          "sự thù địch",
+          "trẻ mất kiểm soát",
+          "tấn công thể chất",
+          "la hét cha mẹ",
+          "tổn thương tâm lý",
+          "hoảng loạn nuôi dạy",
+          "bất lực kỷ luật",
+          "kiểm soát cơn giận"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ cảm thấy hoảng sợ, bối rối và tổn thương khi đối diện với cảnh đứa con nhỏ của mình bỗng dưng mất kiểm soát, tấn công thể chất và la hét những lời cay nghiệt như \"Con ghét mẹ!\"."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-lam-cha-me-toi-qua-bua-an.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_division_of_responsibility_food",
+          "p1_minimizing_anxiety_over_consumption"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an]]"
+        ],
+        "vivid_insights": [
+          "Nhìn con từ chối bữa tối đã cất công chuẩn bị, Cảm thấy như con đang nói: \"Con từ chối thức ăn và từ chối mẹ, mẹ là một người mẹ tồi!\", Lo âu, bất an về vai trò làm cha mẹ"
+        ],
+        "description": "Cha mẹ thường sai lầm khi lấy lượng thức ăn của con làm thước đo thành công trong việc nuôi dưỡng. Khi trẻ biếng ăn, họ dễ mang tâm lý bị từ chối và lo sợ mình là những người làm cha mẹ thất bại.",
+        "keywords": [
+          "áp lực bữa ăn",
+          "trẻ biếng ăn",
+          "thước đo thành công",
+          "cảm giác thất bại",
+          "tâm lý từ chối",
+          "nuôi dưỡng trẻ",
+          "khủng hoảng ăn dặm",
+          "làm cha mẹ tồi"
+        ]
+      },
+      "body": "- **Mô tả:** Cha mẹ thường gắn liền lượng thức ăn trẻ nạp vào với thước đo sự thành công của bản thân trong việc nuôi dưỡng. Khi trẻ từ chối thức ăn, cha mẹ cảm thấy bị từ chối và lo sợ mình đang thất bại trong nhiệm vụ cơ bản nhất là duy trì sự sống cho con."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-tre-ton-thuong-hoac-chua-san-sang.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_confirming_perceptions",
+          "p1_delivering_hard_truths"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]"
+        ],
+        "vivid_insights": [
+          "Người lớn, Dùng từ nói giảm nói tránh \"Ông đi ngủ một giấc dài\", Bối rối, né tránh sự thật"
+        ],
+        "description": "Nhiều cha mẹ thường né tránh hoặc che giấu các sự thật khó khăn vì sợ con chưa đủ sẵn sàng và sẽ bị tổn thương. Thực chất, đôi khi chính người lớn lại đang trốn tránh việc phải đối diện với những cảm xúc tiêu cực của mình.",
+        "keywords": [
+          "sợ trẻ tổn thương",
+          "che giấu sự thật",
+          "né tránh vấn đề",
+          "sự thật khó khăn",
+          "cảm xúc tiêu cực",
+          "trẻ chưa sẵn sàng",
+          "kỹ năng giao tiếp",
+          "tâm lý lẩn tránh"
+        ]
+      },
+      "body": "* **Mô tả:** Cha mẹ thường né tránh, nói giảm nói tránh hoặc che giấu sự thật (như cái chết, sự ra đời của em bé, mâu thuẫn gia đình) vì nghĩ rằng trẻ còn quá nhỏ, chưa sẵn sàng tiếp nhận hoặc sợ sự thật sẽ làm trẻ tổn thương. Bản thân cha mẹ cũng cảm thấy không thoải mái và e ngại khi phải đối diện với những cảm xúc tiêu cực của chính mình khi giải thích."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_whining_formula",
+          "p1_humor_response"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang]]"
+        ],
+        "vivid_insights": [
+          "Tiếng rên rỉ luồn lách dưới da thịt (gets under our skin), kích hoạt hệ thống phản xạ chối bỏ sự yếu đuối trong cơ thể cha mẹ."
+        ],
+        "description": "Tiếng rên rỉ dai dẳng của trẻ luôn là nỗi ám ảnh, dễ dàng chọc tức sự kiên nhẫn của cha mẹ. Thay vì tìm hiểu nguyên nhân, người lớn thường coi đó là sự vô ơn và chỉ muốn dập tắt âm thanh đó ngay lập tức.",
+        "keywords": [
+          "tiếng rên rỉ",
+          "nỗi ám ảnh",
+          "sự tức giận",
+          "mất kiên nhẫn",
+          "đòi hỏi vô lý",
+          "âm thanh chói tai",
+          "sự vô ơn",
+          "kiểm soát hành vi"
+        ]
+      },
+      "body": "- Mô tả: Cha mẹ thường coi sự rên rỉ là biểu hiện của sự vô ơn và đòi hỏi vô lý. Âm thanh chói tai và dai dẳng này dễ dàng chọc tức cha mẹ, khiến họ cảm thấy sôi máu, mất kiểm soát và muốn dập tắt nó ngay lập tức."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do]]"
+        ],
+        "vivid_insights": [
+          "Đứa trẻ như con thú bị nhốt trong lồng đang chiến đấu để sinh tồn"
+        ],
+        "description": "Cha mẹ thường rơi vào trạng thái bế tắc và tự trách khi những phương pháp an ủi thông thường lại phản tác dụng. Sự phản kháng dữ dội của trẻ lúc cần được giúp đỡ nhất khiến người lớn cảm thấy vô cùng bất lực.",
+        "keywords": [
+          "nuôi dạy phản tác dụng",
+          "sự bế tắc",
+          "tự trách bản thân",
+          "trẻ phản kháng",
+          "phương pháp an ủi",
+          "đổ thêm dầu",
+          "khủng hoảng giao tiếp",
+          "trẻ cần giúp đỡ"
+        ]
+      },
+      "body": "*   **Mô tả:** Phụ huynh cảm thấy thất vọng, bế tắc và tự trách mình khi các chiến lược như gọi tên cảm xúc hay an ủi thông thường lại như \"đổ thêm dầu vào lửa\". Đối với những trẻ DFK, những lời quan tâm này lại khiến trẻ phản ứng dữ dội và đẩy cha mẹ ra xa vào đúng lúc chúng cần sự giúp đỡ nhất."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_su-giang-xe-giua-ky-luat-va-ket-noi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_two_things_are_true",
+          "p1_escaping_power_struggle"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]"
+        ],
+        "vivid_insights": [
+          "Người mẹ kiệt sức vì liên tục phải đóng vai ác để giữ kỷ luật đến mức không còn giây phút vui vẻ nào bên con."
+        ],
+        "description": "Nhiều phụ huynh cảm thấy bế tắc vì cho rằng phải chọn lựa giữa việc làm cha mẹ nghiêm khắc hay ấm áp. Sự giằng xé giữa kỷ luật cứng nhắc và sự kết nối đã khiến những cuộc chiến quyền lực bào mòn niềm vui gia đình.",
+        "keywords": [
+          "sự giằng xé",
+          "kỷ luật và kết nối",
+          "cha mẹ nghiêm khắc",
+          "cha mẹ ấm áp",
+          "chiến tranh quyền lực",
+          "niềm vui gia đình",
+          "bế tắc nuôi dạy",
+          "thiết lập ranh giới"
+        ]
+      },
+      "body": "*   **Mô tả:** Phụ huynh thường cảm thấy bế tắc, mệt mỏi và tự trách bản thân khi tin rằng họ phải lựa chọn giữa việc làm một người cha/mẹ nghiêm khắc (để thiết lập luật lệ) và một người cha/mẹ vui vẻ, ấm áp (để duy trì mối quan hệ). Họ cảm thấy các cuộc chiến quyền lực với con cái đang bào mòn niềm vui gia đình."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_tre-co-tinh-hu-don-va-bao-luc.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "myth",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_contain_the_fire",
+          "p1_i_wont_let_you"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang]]"
+        ],
+        "description": "Nhiều người lầm tưởng rằng khi trẻ đánh cắn hay ném đồ là do bản tính bạo lực và sự cố tình hư đốn. Niềm tin này khiến cha mẹ tin rằng đòn roi hay trừng phạt là cách duy nhất để chấn chỉnh trẻ ngay lập tức.",
+        "keywords": [
+          "trẻ hư đốn",
+          "tính cách bạo lực",
+          "ném đồ vật",
+          "trẻ cắn người",
+          "đòn roi trừng phạt",
+          "sự chống đối",
+          "niềm tin sai lầm",
+          "chấn chỉnh hành vi"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường tin rằng khi trẻ đánh, cắn hoặc ném đồ vật, chúng đang cố tình hư đốn, chống đối, có tính cách bạo lực và cần phải bị trừng phạt hoặc thuyết giảng ngay lập tức để chấn chỉnh."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_trung-phat-de-cham-dut-su-hon-lao.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "belief",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+        ],
+        "description": "Cha mẹ thường đánh đồng sự hỗn láo của trẻ với việc cố tình thiếu tôn trọng người lớn. Nỗi sợ mất uy quyền khiến họ vội vàng dùng các hình phạt nghiêm khắc vì lo ngại con sẽ 'được đằng chân lân đằng đầu'.",
+        "keywords": [
+          "sự hỗn láo",
+          "thiếu tôn trọng",
+          "mất uy quyền",
+          "hình phạt nghiêm khắc",
+          "được đằng chân",
+          "sự tức giận",
+          "trừng phạt trẻ",
+          "kiểm soát quyền lực"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường tin rằng sự hỗn láo là biểu hiện rành rành của việc trẻ cố tình thiếu tôn trọng người lớn. Niềm tin này kích hoạt nỗi sợ bị mất uy quyền và sự tức giận tột độ, khiến cha mẹ cho rằng nếu không trừng phạt dứt điểm ngay lúc đó, hành vi xấu sẽ được củng cố và trẻ sẽ \"được đằng chân lân đằng đầu\"."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_family_system_roles",
+          "p1_boundary_validation_empathy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]"
+        ],
+        "description": "Trước sự mất kiểm soát của trẻ, cha mẹ thường rơi vào vòng lặp tự đổ lỗi hoặc trách móc con. Sự hoảng loạn này khiến họ lùi bước, không dám thiết lập các ranh giới an toàn và vô tình làm tình hình trở nên tồi tệ hơn.",
+        "keywords": [
+          "tự đổ lỗi",
+          "trách móc con",
+          "sợ phản ứng",
+          "sự lùi bước",
+          "thiết lập ranh giới",
+          "vòng lặp hoảng loạn",
+          "sự phản kháng",
+          "mất kiểm soát"
+        ]
+      },
+      "body": "*   **Mô tả:** Khi đối mặt với sự phản kháng, gào khóc hay mất kiểm soát của trẻ, cha mẹ thường rơi vào vòng lặp suy nghĩ hoang mang tự đổ lỗi (Mình làm sai gì?) hoặc trách móc con (Con bị sao vậy?). Sự hoảng loạn này khiến họ sợ hãi chính phản ứng của con, dẫn đến việc lùi bước và không dám thiết lập các ranh giới an toàn, vô tình làm tình hình trở nên tồi tệ hơn."
+    }
+  ]
+}

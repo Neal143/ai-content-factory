@@ -1,0 +1,257 @@
+{
+  "batch_id": 2,
+  "pillar_prefix": "p1",
+  "items": [
+    {
+      "id": "p1_child_self_awareness",
+      "label": "Nhận thức bản thân ở trẻ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc]]"
+      ]
+    },
+    {
+      "id": "p1_sift_method",
+      "label": "Phương pháp SIFT",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc]]"
+      ]
+    },
+    {
+      "id": "p1_child_mindfulness",
+      "label": "Chánh niệm cho trẻ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc]]"
+      ]
+    },
+    {
+      "id": "p1_mindsight_practice",
+      "label": "Thực hành tâm trí Mindsight",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc]]"
+      ]
+    },
+    {
+      "id": "p1_child_conflict_resolution",
+      "label": "Giải quyết mâu thuẫn ở trẻ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac]]"
+      ]
+    },
+    {
+      "id": "p1_connect_through_conflict",
+      "label": "Kết nối qua mâu thuẫn",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac]]"
+      ]
+    },
+    {
+      "id": "p1_parenting_child_behavior",
+      "label": "Hành vi của trẻ và cách ứng xử",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "p1_connection_over_correction",
+      "label": "Kết nối thay vì sửa chữa hành vi",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "p1_sturdy_leadership",
+      "label": "Lãnh đạo vững chãi trong gia đình",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "p1_good_inside_core_belief",
+      "label": "Niềm tin tốt đẹp bên trong",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+      ]
+    },
+    {
+      "id": "p1_most_generous_interpretation",
+      "label": "Góc nhìn bao dung nhất",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+      ]
+    },
+    {
+      "id": "p1_two_things_are_true",
+      "label": "Nguyên tắc hai điều đều đúng",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]"
+      ]
+    },
+    {
+      "id": "p1_escaping_power_struggle",
+      "label": "Thoát khỏi cuộc chiến quyền lực",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]"
+      ]
+    },
+    {
+      "id": "p1_family_system_roles",
+      "label": "Vai trò trong hệ thống gia đình",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]"
+      ]
+    },
+    {
+      "id": "p1_boundary_validation_empathy",
+      "label": "Ranh giới xác thực và thấu cảm",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]"
+      ]
+    },
+    {
+      "id": "p1_body_memory",
+      "label": "Ký ức cơ thể",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]"
+      ]
+    },
+    {
+      "id": "p1_internal_working_model",
+      "label": "Mô hình hoạt động nội tâm",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]"
+      ]
+    },
+    {
+      "id": "p1_neuroplasticity_repair",
+      "label": "Khả năng tái tạo của não bộ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]"
+      ]
+    },
+    {
+      "id": "p1_the_power_of_repair",
+      "label": "Kỹ năng Sửa chữa",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]"
+      ]
+    },
+    {
+      "id": "p1_resilience_over_happiness",
+      "label": "Sự kiên cường hơn hạnh phúc",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]"
+      ]
+    },
+    {
+      "id": "p1_support_not_solve",
+      "label": "Hỗ trợ thay vì giải quyết",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]"
+      ]
+    },
+    {
+      "id": "p1_behavior_is_a_window",
+      "label": "Hành vi là một ô cửa sổ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te]]"
+      ]
+    },
+    {
+      "id": "p1_connection_capital",
+      "label": "Vốn kết nối",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te]]"
+      ]
+    },
+    {
+      "id": "p1_confirming_perceptions",
+      "label": "Xác nhận nhận thức của trẻ",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]"
+      ]
+    },
+    {
+      "id": "p1_delivering_hard_truths",
+      "label": "Cách truyền đạt sự thật khó khăn",
+      "pillar_parents": [
+        "pillar_1"
+      ],
+      "belongs_to_audience": [
+        "[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]"
+      ]
+    }
+  ],
+  "anchors": []
+}

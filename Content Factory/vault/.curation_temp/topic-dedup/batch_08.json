@@ -1,0 +1,37 @@
+{
+  "batch_id": 8,
+  "pillar_prefix": "p4",
+  "items": [
+    {
+      "id": "p4_healing_and_nurturing_value_of_stories",
+      "label": "Giá trị chữa lành và nuôi dưỡng của những câu chuyện",
+      "pillar_parents": [
+        "Kể chuyện cho con"
+      ],
+      "belongs_to_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    },
+    {
+      "id": "p4_creating_custom_stories_to_solve_childrens_problems",
+      "label": "Sáng tác truyện dành riêng cho con để giải quyết vấn đề",
+      "pillar_parents": [
+        "Kể chuyện cho con"
+      ],
+      "belongs_to_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    },
+    {
+      "id": "p4_engaging_storytelling_skills",
+      "label": "Kỹ năng kể chuyện hấp dẫn",
+      "pillar_parents": [
+        "Kể chuyện cho con"
+      ],
+      "belongs_to_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    }
+  ],
+  "anchors": []
+}

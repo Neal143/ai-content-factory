@@ -1,0 +1,372 @@
+{
+  "batch_id": 39,
+  "batch_key": "385fab59",
+  "atoms": [
+    "vault\\01-Atomic\\Stories\\BTRB_story-tac-gia-va-nhung-dua-tre-don-cay-san-sau-24.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-abdullah-va-yusuf-unknown-25.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-adeze-va-me-imani-unknown-18.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-angie-va-maura-unknown-30.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-ban-phu-huynh-va-con-trai-4-tuoi-unknown-8.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-blake-va-leo-unknown-20.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-cha-me-cua-heston-va-izzy-unknown-12.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-cha-me-va-con-cai-unknown-7.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-dua-con-ut-younger-son-unknown-2.md",
+    "vault\\01-Atomic\\Stories\\good-inside_story-farrah-va-me-heather-unknown-17.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-tac-gia-va-nhung-dua-tre-don-cay-san-sau-24.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_positive_discipline",
+          "p1_end_of_day_reflection"
+        ],
+        "status": "processed",
+        "protagonist": "Tác giả và những đứa trẻ",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_cong-viec-thuc-te-chua-lanh-y-chi]]"
+        ],
+        "description": "Câu chuyện về việc tác giả kết hợp công việc đốn cây thực tế với các yếu tố nghệ thuật nhằm định hình năng lượng hỗn loạn và tạo ra ý thức kỷ luật cho trẻ mầm non.",
+        "keywords": [
+          "giáo dục sớm",
+          "phương pháp giáo dục",
+          "giáo viên mầm non",
+          "đốn cây sân sau",
+          "năng lượng hỗn loạn",
+          "công việc thực tế",
+          "yếu tố nghệ thuật",
+          "ý thức kỷ luật",
+          "sự thỏa mãn"
+        ]
+      },
+      "body": "<situation>Khi tôi điều hành một trường mầm non tại nhà, có một cái cây cũ ở sân sau cần được đốn bỏ.</situation>\n<problem>Trẻ nhỏ thường có năng lượng hỗn loạn cần được định hình và chuyển hóa thành những hoạt động có ý nghĩa thay vì chỉ vui chơi tự do.</problem>\n<turning_point>Những đứa trẻ rất vui sướng khi được phép hỗ trợ chồng tôi trong công việc đốn cây đó. Tôi giới thiệu cho chúng rất nhiều bài hát và vần thơ về thợ rèn gỗ vào vòng tròn buổi sáng mỗi ngày, điều này mang lại một chất lượng nghệ thuật cho công việc.</turning_point>\n<outcome>Việc dọn dẹp cây cối trở thành chủ đề của nhiều cuộc trò chuyện trên bàn ăn trong gia đình của các trẻ mẫu giáo và là một công việc cực kỳ thỏa mãn đối với những đứa trẻ.</outcome>\n<lesson>Công việc thực tế kết hợp với các yếu tố nghệ thuật (âm nhạc, thơ ca) không chỉ mang lại niềm vui mà còn giúp định hình ý chí và tạo ra ý thức kỷ luật sâu sắc cho trẻ.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-abdullah-va-yusuf-unknown-25.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_tears_as_attachment_signal",
+          "p1_normalize_crying"
+        ],
+        "status": "processed",
+        "protagonist": "Abdullah và Yusuf",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_nuoc-mat-la-tin-hieu-cua-he-thong-gan-ket-tears-as-attachment-signal]]"
+        ],
+        "description": "Câu chuyện về sự bối rối của người cha khi cố gắng an ủi cậu con trai thất vọng vì không lọt vào đội bóng chày, cho thấy nước mắt là tín hiệu cần được đồng cảm thay vì đánh lạc hướng.",
+        "keywords": [
+          "nuôi dạy con",
+          "giáo dục cảm xúc",
+          "cha và con trai",
+          "trượt đội thi đấu",
+          "sự bối rối",
+          "nước mắt của trẻ",
+          "tín hiệu gắn kết",
+          "sự đồng cảm",
+          "không đánh lạc hướng"
+        ]
+      },
+      "body": "<situation>Abdullah, cha của Yusuf 7 tuổi, vừa nhận được email thông báo rằng Yusuf không được chọn vào đội bóng chày đi thi đấu giao hữu.</situation>\n<problem>Abdullah đến gần Yusuf và nói: “Này con trai. Con không lọt vào đội thi đấu. Con vẫn ở đội cũ, thế cũng tuyệt mà đúng không? Con có thể chơi với tất cả những người bạn cũ của mình.” Abdullah nhận thấy Yusuf bắt đầu rơm rớm nước mắt. Anh ấy không chắc nên nói gì hay liệu có nên đánh lạc hướng Yusuf bằng một điều gì đó tích cực để xoa dịu nỗi đau hay không.</problem>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-adeze-va-me-imani-unknown-18.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_whining_formula",
+          "p1_humor_response"
+        ],
+        "status": "processed",
+        "protagonist": "Adeze và mẹ Imani",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_phan-hoi-bang-su-hai-huoc-humor]]"
+        ],
+        "description": "Câu chuyện hài hước về một người mẹ thông thái đã khéo léo dùng sự kịch tính để hóa giải cơn rên rỉ chói tai của cô con gái nhỏ, tránh được một cuộc cãi vã căng thẳng.",
+        "keywords": [
+          "nuôi dạy con",
+          "xử lý khủng hoảng",
+          "mẹ và con gái",
+          "tiếng rên rỉ",
+          "sự bực tức",
+          "phản hồi hài hước",
+          "hành động kịch tính",
+          "hóa giải bế tắc",
+          "không trừng phạt"
+        ]
+      },
+      "body": "<situation>Adeze đang làm bài tập bên cạnh mẹ (Imani) - người đang bận rộn trả lời email trên điện thoại và phải để mắt tới em trai nhỏ đang bò quanh phòng khách.</situation>\n<problem>Adeze làm gãy ngòi chì và rên rỉ bằng một giọng kéo dài chói tai: \"I need a sharp pencillllll! Can you get me one?!?!\" khiến Imani cảm thấy như sắp nổ tung.</problem>\n<turning_point>Imani nhận ra sự rên rỉ đang kích hoạt sự tức giận của mình, cô hít một hơi sâu và đáp lại bằng sự hài hước kịch tính: \"Làm thế nào mà tiếng rên rỉ lại lọt vào đây được nhỉ? Mẹ không thể tin được, chắc chúng ta đã quên đóng cửa! Được rồi, mẹ sẽ lấy những tiếng rên rỉ này... và ném chúng ra ngoài!\". Cô bước tới cửa sổ, mở ra, làm động tác ném và đóng lại.</turning_point>\n<outcome>Sau đó cô quay lại bình thường: \"Được rồi, xin lỗi, con vừa hỏi gì nhỉ? Một cây bút chì nhọn? Chắc chắn rồi, mẹ sẽ lấy cho con.\" Khi Imani mang bút chì tới, cô nhận thấy Adeze dường như nhẹ nhõm hơn hẳn. Họ đã có một bữa tối vui vẻ cùng nhau, tránh được một cuộc chiến quyền lực hay cãi vã.</outcome>\n<lesson>Sự hài hước và một trò đùa nhỏ đã mang lại sự kết nối, xua tan sự bế tắc và bất lực đằng sau tiếng rên rỉ của trẻ thay vì trừng phạt chúng.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-angie-va-maura-unknown-30.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "protagonist": "Angie và Maura",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_chien-luoc-tiep-can-dfks-khi-bung-no]]"
+        ],
+        "description": "Câu chuyện về người mẹ kiên định duy trì sự bình tĩnh và giữ vai trò lãnh đạo vững vàng để xoa dịu cơn bùng nổ giận dữ đầy bạo lực của cô con gái sáu tuổi.",
+        "keywords": [
+          "nuôi dạy con",
+          "xử lý khủng hoảng",
+          "mẹ và con gái",
+          "cơn bùng nổ",
+          "trẻ đánh người",
+          "người mẹ kiên định",
+          "lãnh đạo vững vàng",
+          "kiểm soát không gian",
+          "sự hiện diện"
+        ]
+      },
+      "body": "<situation>Six-year-old Maura is playing near her four-year-old sister, Isla. She starts tickling Isla’s toes and then escalates to pinching and light pushing;</situation>\n<problem>Maura’s mom, Angie, gets between her kids and says, “Maura, I won’t let you hit. You’re allowed to be mad, I get that, but I won’t let you hit.” This is all it takes for Maura to start yelling, “Stop saying that! Stop! Get away from me!” Angie reacts with frustration. “Why do you always freak out at everything?!?” she asks. Maura, meanwhile, continues to rage, kicking her mom and screaming, “I hate you! I hate you and I mean it!”</problem>\n<turning_point>Angie remembers, “Containment first.” She walks toward Maura and says, “I’m going to pick you up and bring you to your room. You’re not in trouble. I’ll sit with you there. You’re a good kid having a hard time and I love you.”</turning_point>\n<outcome>Maura is screaming, “No, no!” but Angie remembers that she is showing her child that she’s a sturdy leader who isn’t scared of her daughter in this moment. They get into her room; Angie closes the door and sits down, and remembers to focus on calming her own body rather than trying to change what’s happening with Maura’s.</outcome>\n<lesson>We have to show our kids that they aren’t “too much” for us, that they don’t overpower us. What all kids, and especially DFKs, need more than anything is our physical bodies there with them when they’re having a hard time.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-ban-phu-huynh-va-con-trai-4-tuoi-unknown-8.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_behavior_is_a_window",
+          "p1_connection_capital"
+        ],
+        "status": "processed",
+        "protagonist": "Bạn (Phụ huynh) và con trai 4 tuổi",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_mgi-most-generous-interpretation-dien-dich-rong-luong-nhat]]"
+        ],
+        "description": "Câu chuyện về việc áp dụng góc nhìn bao dung nhất để cha mẹ thấu hiểu rằng hành vi ném đồ la hét của con trai bốn tuổi thực chất là lời kêu gọi sự chú ý tuyệt vọng.",
+        "keywords": [
+          "nuôi dạy con",
+          "thấu hiểu trẻ",
+          "cha mẹ và con",
+          "trẻ la hét ném đồ",
+          "gây sự chú ý",
+          "góc nhìn bao dung",
+          "diễn dịch rộng lượng",
+          "ẩn sâu hành vi",
+          "xây dựng kết nối"
+        ]
+      },
+      "body": "<situation>Bạn vừa bảo cậu con trai bốn tuổi của mình rằng bạn cần con giữ im lặng trong khi bạn hoàn thành một cuộc gọi công việc. Nhưng thay vì giữ im lặng, cậu bé lại ném đồ đạc từ bàn làm việc của bạn và la hét.</situation>\n<problem>Khi cuộc gọi công việc kết thúc, thay vì khiển trách con trai, bạn tự nhắc nhở bản thân rằng hành vi của con là một ô cửa sổ và đưa ra diễn dịch MGI của bạn: con bạn thực sự muốn sự chú ý của bạn, cảm thấy không được nhìn nhận, và không thể quản lý những cảm xúc này trong cơ thể bé nhỏ của mình.</problem>\n<turning_point>Bạn phản tư lại khoảng thời gian bạn muốn sự chú ý của bạn đời khi anh ấy đang lướt điện thoại, và bạn cảm thấy bực bội ra sao, cuối cùng bạn đã hét vào mặt anh ấy như thế nào—không hoàn toàn khác với những gì đã xảy ra giữa bạn và con bạn!</turning_point>\n<outcome>Sau khi nhận ra điều này, bạn chú tâm vào bất cứ điều gì bạn vừa khám phá ra và dành sự chú ý để xây dựng mối quan hệ cho chính đứa trẻ vừa cư xử tồi tệ đó.</outcome>\n<lesson>Nếu tôi nhớ rằng con tôi là một đứa trẻ ngoan đang gặp khó khăn... thì con đang gặp khó khăn với điều gì? Những chủ đề sâu xa nào đang được phơi bày bên dưới hành vi này?</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-blake-va-leo-unknown-20.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_jump_into_the_hole",
+          "p1_fear_resolution_script"
+        ],
+        "status": "processed",
+        "protagonist": "Blake và Leo",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_nhay-xuong-ho-cung-con-jump-into-the-hole-with-them]]"
+        ],
+        "description": "Câu chuyện cảm động về cách người cha giúp cô con gái nhỏ vượt qua nỗi sợ hãi lửa trại bằng sự đồng cảm sâu sắc và sự hiện diện chân thành thay vì dùng lý lẽ thuyết phục.",
+        "keywords": [
+          "nuôi dạy con",
+          "xử lý nỗi sợ",
+          "bé gái sợ lửa",
+          "cắm trại gia đình",
+          "ngọn lửa trại",
+          "cha và con gái",
+          "sự đồng cảm",
+          "hiện diện chân thành",
+          "không dùng lý lẽ"
+        ]
+      },
+      "body": "<situation>Năm tuổi Blake sợ lửa. Cô bé thường khóc ở các buổi tiệc sinh nhật khi nến được thắp. Tại một chuyến cắm trại cùng bạn bè, Blake cùng bố Leo quay lại khu trại và thấy gia đình kia đã đốt một đống lửa trại lớn.</situation>\n<problem>Leo liên tục nói với Blake rằng cô bé an toàn và ngọn lửa sẽ được kiểm soát. Anh còn chỉ ra rằng lửa rất vui, không hề đáng sợ. Blake bám chặt lấy bố, la hét và khóc lóc, khiến Leo cảm thấy thất vọng và không biết phải làm sao.</problem>\n<turning_point>Leo tự nhắc nhở bản thân: \"Mình biết đống lửa này không đáng sợ đối với mình, nhưng nó đáng sợ đối với Blake. Mục tiêu của mình là giúp Blake hiểu và bớt cô đơn trong nỗi sợ này, chứ không phải thuyết phục con thoát khỏi nó.\" Anh kéo Blake sang một bên và nói, \"Có điều gì đó về ngọn lửa khiến con thấy sợ đúng không? Bố tin con. Bố ở ngay đây với con.\" Anh chia sẻ câu chuyện ngày bé mình cũng từng sợ hãi, rồi hướng dẫn con hít thở sâu để cùng điều chỉnh cảm xúc (co-regulating).</turning_point>\n<outcome>Leo ngay lập tức cảm thấy cơ thể con gái thả lỏng. Blake bình tĩnh lại và có thể tự quyết định việc ngồi từ xa hay tiến lại gần để nướng kẹo dẻo khi đã sẵn sàng.</outcome>\n<lesson>Dùng logic để thuyết phục trẻ không giải quyết được nỗi sợ. Đứa trẻ chỉ cần cha mẹ đồng hành, thấu hiểu và thừa nhận cảm xúc để cảm thấy an toàn và bớt cô đơn.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-cha-me-cua-heston-va-izzy-unknown-12.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "protagonist": "Cha mẹ của Heston và Izzy",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_khung-hoang-vong-lap-hanh-vi]]"
+        ],
+        "description": "Câu chuyện về sự bế tắc của một cặp cha mẹ khi đối diện với các hành vi chống đối của hai con, và giải pháp tập trung vào sự kết nối thay vì trừng phạt.",
+        "keywords": [
+          "nuôi dạy con",
+          "giải quyết khủng hoảng",
+          "cha mẹ bế tắc",
+          "trẻ chống đối",
+          "khủng hoảng vòng lặp",
+          "trẻ ăn vạ",
+          "thái độ hỗn xược",
+          "xây dựng kết nối",
+          "không trừng phạt"
+        ]
+      },
+      "body": "<situation>During a recent consult, the parents of two young children opened our conversation with a plea. “Dr. Becky, we don’t know where to start,” they said. “Our house is a mess. There’s so much yelling, and we’re always making empty threats because we don’t know what else to do.</situation>\n<problem>Our kids don’t listen to us, and it feels like we’re in an endless cycle of tantrums with our four-year-old and rudeness with our seven-year-old. Heston, our oldest, is suddenly saying he’s stupid and has no friends, and whenever we try to talk to him about it he says we don’t understand and slams his bedroom door. Izzy, our four-year-old, is hysterical every morning when we drop her at preschool. It’s so draining and such an awful way to start the day. PLEASE HELP!”</problem>\n<turning_point>At this point, these parents seemed to breathe easier. Just hearing someone identify an issue—one that truly resonated with their experience— and sound confident in a path forward was a relief. So instead of discussing yelling or empty threats, we began our conversation with connection. I presented these parents with a handful of what I call “bang-for-your-buck connection-builders.”</turning_point>\n<outcome>[Không đề cập]</outcome>\n<lesson>It doesn’t matter if the imbalance in your family is manifesting as rudeness, lying, sibling rivalry, tantrums, or any of the other specific behavioral issues... these strategies ignite positive change regardless of the surface issue, because they help parents reorient their efforts toward building connection and closeness with their kids, rather than correcting a behavior. Because, as we know by now, behavior is never the problem; it’s only the symptom.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-cha-me-va-con-cai-unknown-7.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_resilience_over_happiness",
+          "p1_support_not_solve"
+        ],
+        "status": "processed",
+        "protagonist": "Cha mẹ và Con cái",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_ho-tro-thay-vi-giai-quyet-support-not-solve]]"
+        ],
+        "description": "Câu chuyện cảnh tỉnh cha mẹ về việc vội vàng đánh lạc hướng hoặc an ủi để dập tắt nỗi buồn của trẻ sẽ vô tình tước đi cơ hội học cách chịu đựng sự khó chịu.",
+        "keywords": [
+          "nuôi dạy con",
+          "giáo dục cảm xúc",
+          "cha mẹ và con",
+          "trẻ buồn bã",
+          "đánh lạc hướng",
+          "vội vàng an ủi",
+          "sự khó chịu",
+          "tước cơ hội",
+          "xây dựng kiên cường"
+        ]
+      },
+      "body": "<situation>Khi con gái nói, \"Tất cả các bạn khác đều chạy nhanh hơn con,\" cha mẹ nhắc con nhớ rằng con rất xuất sắc môn toán; khi con trai có vẻ buồn bã và nói, \"Con không được mời đến tiệc sinh nhật của Anuj,\" cha mẹ thuyết phục con rằng bữa tiệc đó rất nhỏ và Anuj thực sự rất quý con.</situation>\n<problem>Cha mẹ nghĩ rằng mình đang giúp đỡ con vượt qua sự đau khổ bằng cách đánh lạc hướng và chỉ ra những điểm tích cực.</problem>\n<outcome>Nhưng những gì đứa trẻ thực sự nghe được là, \"Mình không nên cảm thấy buồn bã.\"</outcome>\n<lesson>Khi một đứa trẻ học được rằng \"Khi tôi cảm thấy không thoải mái, công việc của tôi là tìm đường đến với sự thoải mái càng sớm càng tốt\", trẻ sẽ mất đi cơ hội học cách chịu đựng và đối phó với sự khó chịu. Sự kiên cường không được hình thành thông qua việc trốn tránh sự thất vọng.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-dua-con-ut-younger-son-unknown-2.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_good_inside_core_belief",
+          "p1_most_generous_interpretation"
+        ],
+        "status": "processed",
+        "protagonist": "Đứa con út (younger son)",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_goc-nhin-bao-dung-nhat-the-most-generous-interpretation-mgi]]"
+        ],
+        "description": "Câu chuyện ứng dụng góc nhìn bao dung nhất (MGI) để thấu hiểu nỗi buồn và sự ghen tị ẩn sau những lời nói tổn thương của cậu con út khi không được đi ăn cùng bố mẹ.",
+        "keywords": [
+          "nuôi dạy con",
+          "thấu hiểu trẻ",
+          "cậu con út",
+          "bị bỏ lại",
+          "lời nói tổn thương",
+          "sự ghen tị",
+          "góc nhìn bao dung",
+          "nỗi đau ẩn giấu",
+          "thừa nhận cảm xúc"
+        ]
+      },
+      "body": "<situation>Bạn dự định đưa cậu con trai lớn đi ăn trưa riêng vào dịp sinh nhật, và bạn quyết định báo trước nhẹ nhàng cho cậu con trai út vài ngày. \"Mẹ muốn cho con biết về kế hoạch ngày thứ Bảy,\" bạn nói. \"Bố và mẹ sẽ đưa Nico đi ăn trưa nhân ngày sinh nhật anh. Bà nội sẽ đến chơi và ở nhà với con khoảng một tiếng trong lúc bố mẹ đi vắng.\"</situation>\n<problem>Cậu con trai út phản ứng lại: \"Mẹ và Bố sẽ đi chơi với anh Nico mà không có con á? Con ghét mẹ! Mẹ là người mẹ tồi tệ nhất trên đời!\"</problem>\n<turning_point>Thay vì phớt lờ hay mắng con là vô ơn, bạn áp dụng Góc nhìn Bao dung nhất (MGI).</turning_point>\n<outcome>Bạn nói: \"Chà, đó là những lời lẽ to tát đấy, để mẹ hít một hơi đã... Mẹ nghe thấy con đang rất buồn. Kể thêm cho mẹ nghe nào.\"</outcome>\n<lesson>Góc nhìn MGI cho thấy: \"Hmm. Con trai mình thực sự ước được tham gia vào bữa trưa đặc biệt này. Mình có thể hiểu điều đó. Thằng bé đang buồn. Và ghen tị. Những cảm xúc đó quá lớn lao trong một cơ thể nhỏ bé đến mức chúng bùng nổ ra khỏi con dưới hình thức những lời nói gây tổn thương to lớn, nhưng ẩn sâu bên dưới là một khối cảm xúc trần trụi, đau đớn.\" Giải pháp này thừa nhận lời nói của con là dấu hiệu của nỗi đau quá sức chịu đựng, chứ không phải là dấu hiệu cho thấy con là một đứa trẻ hư hỏng.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\good-inside_story-farrah-va-me-heather-unknown-17.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "protagonist": "Farrah và mẹ Heather",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[good-inside_lang-kinh-roi-loan-cam-xuc-dysregulation-thay-vi-thieu-ton-trong-disrespect]]"
+        ],
+        "description": "Câu chuyện người mẹ kiềm chế trước lời nói vô lễ của con gái khi bị từ chối đi chơi, bằng cách nhận diện đó là sự rối loạn cảm xúc và phản hồi bằng sự đồng cảm.",
+        "keywords": [
+          "nuôi dạy con",
+          "giáo dục cảm xúc",
+          "mẹ và con gái",
+          "bị từ chối",
+          "lời nói vô lễ",
+          "rối loạn cảm xúc",
+          "không thiếu tôn trọng",
+          "sự đồng cảm",
+          "hiện diện tĩnh lặng"
+        ]
+      },
+      "body": "<situation>Cô bé tám tuổi Farrah hỏi mẹ, Heather, liệu cô bé có thể đến nhà bạn chơi vào tối thứ Bảy không. \"Con biết là chúng ta sẽ đi thăm bà nội vào thứ Bảy mà, nên không được đâu,\" Heather nói.</situation>\n<problem>\"Con ghét cái gia đình này,\" Farrah lầm bầm trong miệng. \"Con vừa nói gì cơ?\" Heather hỏi. \"Gì cơ?\" Farrah bùng nổ: \"Con nói là con ghét mẹ và con ghét cái gia đình này! Mẹ là người mẹ tồi tệ nhất trên đời!\"</problem>\n<turning_point>Khi Farrah hét lên: \"Con ghét mẹ\", điều quan trọng là Heather phải nhớ lại: \"Đây là sự rối loạn cảm xúc, không phải sự thiếu tôn trọng\", và công nhận cảm xúc của Farrah. \"Mẹ hiểu... thật bực mình khi con không thể đến nhà Amina.\"</turning_point>\n<outcome>Điều này làm Farrah ngạc nhiên, nhưng cô bé vẫn giận dữ đáp lại: \"Mẹ không hiểu đâu! Mẹ sẽ không bao giờ hiểu!\" Sau đó, Heather nhớ ra rằng đôi khi sự hiện diện là đủ. Cô hít một hơi thật sâu, nhìn xuống sàn và gật đầu chậm rãi. \"Mẹ ở đây,\" cô nói.</outcome>\n<lesson>Như chúng ta đã biết, trẻ em không có kỹ năng điều chỉnh cảm xúc tốt... Việc đáp lại sự thô lỗ của trẻ bằng sự đồng cảm và tử tế sẽ khiến trẻ cảm thấy được thấu hiểu và giúp khơi dậy lòng tốt để đáp lại.</lesson>"
+    }
+  ]
+}

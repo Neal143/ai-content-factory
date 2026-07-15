@@ -1,0 +1,358 @@
+{
+  "batch_id": 16,
+  "batch_key": "c47d402f",
+  "atoms": [
+    "vault\\01-Atomic\\Insights\\tre-khong-hieu-nguoi-lon.md",
+    "vault\\01-Atomic\\Insights\\tu-do-bo-me-con-cai.md",
+    "vault\\01-Atomic\\Insights\\tu-do-tai-chinh-gia-dinh.md",
+    "vault\\01-Atomic\\Insights\\WBC_bat-luc-khi-con-bi-cam-xuc-tieu-cuc-nuot-chung.md",
+    "vault\\01-Atomic\\Insights\\WBC_bat-luc-khi-con-mat-kiem-soat-cam-xuc.md",
+    "vault\\01-Atomic\\Insights\\WBC_bat-luc-va-bi-cuon-theo-con-lu-cam-xuc-vo-ly-cua-con.md",
+    "vault\\01-Atomic\\Insights\\WBC_bay-quyen-uy-khi-tre-chong-doi.md",
+    "vault\\01-Atomic\\Insights\\WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood.md",
+    "vault\\01-Atomic\\Insights\\WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con.md",
+    "vault\\01-Atomic\\Insights\\WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\tre-khong-hieu-nguoi-lon.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "MYTH",
+        "topics": [
+          "p2_thiet_lap_nhip_dieu_thoi_quen_trong_gia_dinh",
+          "p2_thiet_lap_moi_truong_giao_duc_tai_nha_giai_doan_1_3_tuoi"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Nhiều phụ huynh mang lầm tưởng nguy hiểm rằng trẻ nhỏ không hề quan sát và không bị ảnh hưởng bởi những gì người lớn làm. Thực tế, trẻ hấp thu như bọt biển mọi hành vi từ môi trường xung quanh.",
+        "keywords": [
+          "nhận thức sai lầm",
+          "trẻ quan sát",
+          "ảnh hưởng hành vi",
+          "hấp thu như bọt biển",
+          "gương mẫu cho con",
+          "nuôi dạy vô thức",
+          "hành vi sai trái",
+          "môi trường xung quanh"
+        ]
+      },
+      "body": "# MYTH: tre khong hieu nguoi lon\n\n## 1. Nội dung text thô (Raw payload)\nTrẻ con không hiểu người lớn làm gì (Thực tế trẻ hấp thu như bọt biển cả hành vi sai trái của bố mẹ)\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nLầm tưởng nguy hiểm nhất: phụ huynh nghĩ rằng trẻ không quan sát và không bị ảnh hưởng bởi hành vi của người lớn.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\tu-do-bo-me-con-cai.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "DESIRE",
+        "topics": [
+          "p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con",
+          "p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Phụ huynh hiện đại luôn khao khát xây dựng một tổ ấm mà ở đó mọi thành viên đều được tự do phát triển bản thân. Họ mong muốn thoát khỏi những ràng buộc khắt khe từ áp lực xã hội và kỳ vọng sai lệch.",
+        "keywords": [
+          "tự do phát triển",
+          "ràng buộc xã hội",
+          "áp lực kỳ vọng",
+          "tự do gia đình",
+          "triết lý giáo dục",
+          "phát triển bản thân",
+          "khao khát nuôi dạy",
+          "quyền tự quyết"
+        ]
+      },
+      "body": "# DESIRE: tu do bo me con cai\n\n## 1. Nội dung text thô (Raw payload)\nBố mẹ và con cái đều được tự do\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nPhụ huynh khao khát một gia đình nơi mọi thành viên đều được tự do phát triển bản thân, không bị ràng buộc bởi áp lực xã hội hay kỳ vọng không phù hợp.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\tu-do-tai-chinh-gia-dinh.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "DESIRE",
+        "topics": [
+          "p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Sự tự do tài chính là nền tảng vững chắc để cha mẹ có thể toàn tâm toàn ý nuôi dạy con cái. Nó giúp phụ huynh thoát khỏi vòng xoáy mưu sinh và tự do lựa chọn triết lý giáo dục mà mình tin tưởng.",
+        "keywords": [
+          "tự do tài chính",
+          "nền tảng gia đình",
+          "vòng xoáy mưu sinh",
+          "triết lý giáo dục",
+          "đầu tư tương lai",
+          "nguồn lực nuôi dạy",
+          "an toàn kinh tế",
+          "toàn tâm toàn ý"
+        ]
+      },
+      "body": "# DESIRE: tu do tai chinh gia dinh\n\n## 1. Nội dung text thô (Raw payload)\nGia đình được tự do tài chính\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nTự do tài chính là nền tảng để phụ huynh có thể dành thời gian và nguồn lực cho việc nuôi dạy con theo triết lý mình tin tưởng, thay vì bị cuốn vào vòng xoáy mưu sinh.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_bat-luc-khi-con-bi-cam-xuc-tieu-cuc-nuot-chung.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_mindfulness",
+          "p1_mindsight_practice"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc]]"
+        ],
+        "description": "Trẻ em không tự nhiên có sẵn khả năng đưa sự chú ý trở lại trạng thái cân bằng. Cha mẹ thường cảm thấy vô cùng bất lực khi chứng kiến con bị mắc kẹt trong cơn bão của những cảm xúc tiêu cực mãnh liệt.",
+        "keywords": [
+          "mất cân bằng cảm xúc",
+          "cơn bão tiêu cực",
+          "trẻ mắc kẹt",
+          "bất lực kỷ luật",
+          "quản lý chú ý",
+          "hướng dẫn tĩnh tâm",
+          "giải quyết nỗi sợ",
+          "thần kinh học"
+        ]
+      },
+      "body": "*   **Mô tả:** Trẻ em không tự nhiên có sẵn khả năng đưa sự chú ý trở lại trạng thái cân bằng. Khi trẻ bị mắc kẹt ở \"vành bánh xe\" với những nỗi sợ hãi, bực bội hay tức giận dữ dội, cha mẹ thường cảm thấy bất lực vì không có công cụ cụ thể nào để hướng dẫn con tự tĩnh tâm và thoát khỏi cơn bão cảm xúc đó."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_bat-luc-khi-con-mat-kiem-soat-cam-xuc.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_regulation",
+          "p1_move_it_or_lose_it"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-con-binh-tinh-lay-lai-kiem-soat_khi-tre-mat-binh-tinh-choang-ngop]]"
+        ],
+        "description": "Cha mẹ thường cảm thấy bối rối và thất bại khi cố gắng dùng lý lẽ để thuyết phục một đứa trẻ đang mất bình tĩnh. Khi cơn giận dữ lấn át, những lời khuyên bảo đều trở nên vô ích do não trên của trẻ đã bị phong tỏa.",
+        "keywords": [
+          "thuyết phục vô ích",
+          "não trên phong tỏa",
+          "mất kiểm soát",
+          "bối rối kỷ luật",
+          "trẻ giận dữ",
+          "dùng lý lẽ",
+          "khủng hoảng cảm xúc",
+          "phản ứng bản năng"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường cảm thấy bất lực, bối rối và thất bại khi cố gắng dùng lời nói hay lý lẽ để thuyết phục một đứa trẻ đang bị cơn giận dữ hoặc sự thất vọng lấn át. Tại thời điểm đó, những lời khuyên bảo đều trở nên vô ích vì não trên của trẻ đã bị phong tỏa."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_bat-luc-va-bi-cuon-theo-con-lu-cam-xuc-vo-ly-cua-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_regulation",
+          "p1_connect_and_redirect_strategy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va]]"
+        ],
+        "vivid_insights": [
+          "Chìm nghỉm và vật lộn chống lại những cơn sóng cảm xúc khổng lồ của trẻ"
+        ],
+        "description": "Khi trẻ ăn vạ, cha mẹ thường phản xạ bằng cách dùng lý lẽ logic hoặc áp đặt uy quyền để tranh cãi. Tuy nhiên, điều này chỉ khiến cả hai bên thêm căng thẳng vì trẻ đang bị cảm xúc lấn át và không thể tiếp thu logic.",
+        "keywords": [
+          "đòi hỏi vô lý",
+          "áp đặt uy quyền",
+          "tranh cãi với trẻ",
+          "trẻ ăn vạ",
+          "cảm xúc lấn át",
+          "phản xạ tự động",
+          "tình trạng căng thẳng",
+          "tiếp thu logic"
+        ]
+      },
+      "body": "*   **Mô tả:** Khi trẻ có những đòi hỏi vô lý hoặc ăn vạ, cha mẹ thường phản xạ một cách tự động bằng cách dùng lý lẽ logic để tranh cãi hoặc áp đặt uy quyền (yêu cầu con nín và đi ngủ ngay). Điều này thường làm tình hình tệ hơn vì trẻ đang bị cảm xúc chi phối hoàn toàn và không thể tiếp thu logic, khiến cả cha mẹ lẫn con cái đều trở nên bực tức và căng thẳng hơn."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_bay-quyen-uy-khi-tre-chong-doi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pitfall",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_handling_child_defiance",
+          "p1_engage_not_enrage"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]"
+        ],
+        "description": "Việc sử dụng uy quyền hoặc đưa ra tối hậu thư khi trẻ chống đối thường là phản xạ tự nhiên của cha mẹ. Tuy nhiên, cách tiếp cận này chỉ kích ngòi cho những phản ứng chống đối mạnh mẽ hơn từ não tầng dưới.",
+        "keywords": [
+          "sử dụng uy quyền",
+          "tối hậu thư",
+          "kích ngòi chống đối",
+          "não tầng dưới",
+          "phản xạ cha mẹ",
+          "bùng nổ cảm xúc",
+          "rèn luyện não bộ",
+          "thái độ thù địch"
+        ]
+      },
+      "body": "Mô tả: Khi đối mặt với thái độ chống đối hoặc tức giận của trẻ, phản xạ tự nhiên của cha mẹ thường là đưa ra tối hậu thư hoặc dùng quyền uy để yêu cầu trẻ vâng lời ngay lập tức. Tuy nhiên, cách tiếp cận này sẽ \"chọc giận\" não tầng dưới, làm bùng nổ các phản ứng chống đối mạnh mẽ hơn và bỏ lỡ cơ hội rèn luyện não bộ cho trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_healing",
+          "p1_name_to_tame_strategy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan]]"
+        ],
+        "description": "Khi trẻ bị ngập lụt trong những cảm xúc tiêu cực lớn, cha mẹ thường lảng tránh nhắc lại sự việc tồi tệ vì mong con nhanh chóng quên đi. Thực chất, sự né tránh này khiến nỗi sợ hãi của trẻ mãi không được giải quyết triệt để.",
+        "keywords": [
+          "ngập lụt cảm xúc",
+          "lảng tránh sự việc",
+          "cảm xúc tiêu cực",
+          "sự việc tồi tệ",
+          "nỗi sợ tâm lý",
+          "chữa lành tổn thương",
+          "khóc lóc hoảng loạn",
+          "giải quyết triệt để"
+        ]
+      },
+      "body": "* Mô tả: Trẻ bị ngập lụt trong những cảm xúc tiêu cực lớn (sợ hãi, lo lắng, đau đớn) do một sự việc tồi tệ trong quá khứ, khiến trẻ phản ứng dữ dội và khóc lóc hoảng loạn khi đối mặt với tình huống tương tự. Cha mẹ thường có xu hướng tránh nhắc lại sự việc vì cho rằng nên để trẻ quên đi, nhưng thực chất sự lảng tránh này lại khiến nỗi sợ mãi không được giải quyết."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pitfall",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_upstairs_brain_development",
+          "p1_use_or_lose_principle"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_ren-luyen-phat-trien-tri-nao-tang-tren_khi-tuong-tac-hang-ngay]]"
+        ],
+        "description": "Nhiều bậc phụ huynh luôn muốn đưa ra quyết định thay cho trẻ để đảm bảo sự an toàn. Tuy nhiên, sự bảo bọc quá mức này vô tình kìm hãm sự phát triển của bộ não tầng trên và tước đi cơ hội rèn luyện tư duy.",
+        "keywords": [
+          "quyết định thay trẻ",
+          "sự bảo bọc",
+          "kìm hãm phát triển",
+          "não tầng trên",
+          "cơ hội rèn luyện",
+          "tránh rắc rối",
+          "kỹ năng tư duy",
+          "sự độc lập"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường có xu hướng muốn tự đưa ra quyết định thay cho trẻ để đảm bảo con luôn làm điều đúng đắn hoặc để tránh rắc rối. Tuy nhiên, sự bảo bọc này vô tình tước đoạt cơ hội thực hành kỹ năng tư duy và kìm hãm sự phát triển của bộ não tầng trên ở trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]"
+        ],
+        "description": "Nhiều bậc cha mẹ cảm thấy kiệt sức khi phải liên tục duy trì trạng thái kiểm soát để tránh sự hỗn loạn. Họ biến việc nuôi dạy con thành một chuỗi nhiệm vụ chịu đựng căng thẳng thay vì một hành trình tận hưởng niềm vui.",
+        "keywords": [
+          "trạng thái kiểm soát",
+          "tránh hỗn loạn",
+          "chuỗi nhiệm vụ",
+          "chịu đựng căng thẳng",
+          "chế độ sinh tồn",
+          "kiệt sức nuôi dạy",
+          "tận hưởng niềm vui",
+          "trách nhiệm phụ huynh"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường bị áp lực bởi việc thiết lập kỷ luật, theo dõi lịch trình và giải quyết xung đột hàng ngày. Điều này khiến họ quên mất việc tạo ra niềm vui, vô tình làm mất đi nền tảng quan trọng nhất để dạy trẻ về sự gắn kết và giá trị của các mối quan hệ gia đình."
+    }
+  ]
+}

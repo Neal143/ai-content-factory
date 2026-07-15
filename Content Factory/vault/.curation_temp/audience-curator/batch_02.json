@@ -1,0 +1,224 @@
+{
+  "batch_id": 2,
+  "items": [
+    {
+      "id": "cha_me_xoa_diu_cam_xuc_cua_tre_khi_tre_met_moi_hoac_quay_khoc",
+      "file_ref": "[[cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc]]",
+      "audience_level": "little",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "xoa dịu cảm xúc của trẻ",
+      "audience_circumstance": "khi trẻ mệt mỏi hoặc quấy khóc",
+      "parent_audience": [
+        "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+      ]
+    },
+    {
+      "id": "cha_me_tim_ra_cach_dieu_chinh_va_ky_luat_tre_dung_dan_khi_gap_kho_khan_trong_qua_trinh_giao_duc_tre",
+      "file_ref": "[[cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre]]",
+      "audience_level": "little",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn",
+      "audience_circumstance": "khi gặp khó khăn trong quá trình giáo dục trẻ",
+      "parent_audience": [
+        "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+      ]
+    },
+    {
+      "id": "cha_me_duy_tri_ky_luat_va_su_hoa_hop_trong_gia_dinh_khi_doi_mat_voi_nhung_hanh_vi_bung_no_bon_chon_cua_con_tre_vao_cuoi_ngay",
+      "file_ref": "[[cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay]]",
+      "audience_level": "little",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "duy trì kỷ luật và sự hòa hợp trong gia đình",
+      "audience_circumstance": "khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày",
+      "parent_audience": [
+        "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+      ]
+    },
+    {
+      "id": "cha_me_ca_nhan_hoa_phuong_phap_giao_duc_khi_doi_mat_voi_nhung_tinh_cach_va_hanh_vi_khac_biet_cua_tung_dua_tre",
+      "file_ref": "[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]",
+      "audience_level": "little",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "cá nhân hóa phương pháp giáo dục",
+      "audience_circumstance": "khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ",
+      "parent_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    },
+    {
+      "id": "nguoi_cham_soc_tre_tao_nhip_dieu_sinh_hoat_va_dan_dat_tre_mam_non_qua_cac_hoat_dong_hang_ngay_mot_cach_nhe_nhang_khi_o_nha_hoac_trong_lop_hoc",
+      "file_ref": "[[nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc]]",
+      "audience_level": "little",
+      "audience_Job_performer": "người chăm sóc trẻ",
+      "audience_main_job": "tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng",
+      "audience_circumstance": "khi ở nhà hoặc trong lớp học",
+      "parent_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    },
+    {
+      "id": "cha_me_to_chuc_mot_le_ky_niem_sinh_nhat_nuoi_duong_tam_hon_va_gan_ket_thieng_lieng_khi_tre_buoc_sang_tuoi_moi",
+      "file_ref": "[[cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi]]",
+      "audience_level": "little",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng",
+      "audience_circumstance": "khi trẻ bước sang tuổi mới",
+      "parent_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    },
+    {
+      "id": "cha_me_chon_dung_truyen_co_tich_phu_hop_cho_tre_nghe_khi_dang_tim_kiem_cac_cau_chuyen_tuong_ung_voi_do_tuoi_va_muc_do_truong_thanh_tam_ly_cua_con",
+      "file_ref": "[[cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con]]",
+      "audience_level": "little",
+      "audience_Job_performer": "cha mẹ",
+      "audience_main_job": "chọn đúng truyện cổ tích phù hợp cho trẻ nghe",
+      "audience_circumstance": "khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con",
+      "parent_audience": [
+        "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+      ]
+    },
+    {
+      "id": "cha_me_nuoi_day_tre_kien_cuong_doi_mat_hanh_vi_kho_khan",
+      "file_ref": "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]",
+      "audience_level": "big",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết",
+      "audience_circumstance": "khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ",
+      "parent_audience": []
+    },
+    {
+      "id": "cha_me_kiem_soat_hanh_vi_chong_doi_doi_mat_con_thinh_no",
+      "file_ref": "[[cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng",
+      "audience_circumstance": "khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_thiet_lap_ranh_gioi_ky_luat_tre_phan_khang",
+      "file_ref": "[[cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "thiết lập ranh giới kỷ luật với con cái",
+      "audience_circumstance": "khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_duy_tri_ranh_gioi_an_toan_tre_bung_no_cam_xuc",
+      "file_ref": "[[cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "duy trì ranh giới an toàn và sự kết nối",
+      "audience_circumstance": "khi con cái phản kháng và bùng nổ cảm xúc",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_xay_dung_nen_tang_tam_ly_kiet_suc_khi_nuoi_con",
+      "file_ref": "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con",
+      "audience_circumstance": "khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_han_gan_ton_thuong_nhan_ra_phan_ung_doc_hai",
+      "file_ref": "[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con",
+      "audience_circumstance": "khi nhận ra bản thân đã có những phản ứng độc hại với con cái",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_trang_bi_nang_luc_doi_mat_kho_khan_tre_gap_that_bai",
+      "file_ref": "[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "trang bị năng lực đối mặt với khó khăn cho con",
+      "audience_circumstance": "khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_thau_hieu_nguyen_nhan_tre_co_hanh_vi_toi_te",
+      "file_ref": "[[cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con",
+      "audience_circumstance": "khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_pha_vo_su_khang_cu_tre_lam_sai",
+      "file_ref": "[[cha-me_pha-vo-su-khang-cu_tre-lam-sai]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con",
+      "audience_circumstance": "khi trẻ vừa làm sai một việc gì đó",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_giai_thich_van_de_phuc_tap_con_dat_cau_hoi_kho",
+      "file_ref": "[[cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "giải thích những vấn đề phức tạp, nhạy cảm",
+      "audience_circumstance": "khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_phuc_hoi_suc_khoe_tinh_than_ganh_vac_trach_nhiem",
+      "file_ref": "[[cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân",
+      "audience_circumstance": "khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_tai_lap_su_gan_ket_mac_ket_vong_lap_la_mang",
+      "file_ref": "[[cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "tái lập sự gắn kết và loại bỏ các hành vi chống đối của con",
+      "audience_circumstance": "khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    },
+    {
+      "id": "cha_me_khien_con_hop_tac_tre_phot_lo_loi_noi",
+      "file_ref": "[[cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi]]",
+      "audience_level": "little",
+      "audience_Job_performer": "Cha mẹ",
+      "audience_main_job": "khiến con cái hợp tác thực hiện các yêu cầu",
+      "audience_circumstance": "khi trẻ đang phớt lờ lời nói của họ",
+      "parent_audience": [
+        "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+      ]
+    }
+  ],
+  "anchors": []
+}

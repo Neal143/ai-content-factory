@@ -36,7 +36,9 @@ SESSION_BATCH_LIMIT = 5
 SKILL_NAME_MAP = {
     "tag": "auto-tagger",
     "dedup": "atom-dedup",
-    "align": "atom-linker"
+    "align": "atom-linker",
+    "vc-topic-dedup": "vc-topic-dedup",
+    "vc-audience-curator": "vc-audience-curator"
 }
 
 def _read_manifest(output_dir):
@@ -67,7 +69,10 @@ def _print_skill_summary(output_dir, skill):
     """In summary cua skill sau khi tat ca batch da xu ly xong.
     Goi tu get_next() khi tat ca batch = done."""
     log_names = {"tag": "tag_log.json", "dedup": "dedup_log.json", "align": "align_log.json"}
-    log_file = os.path.join(output_dir, log_names.get(skill, ""))
+    log_name = log_names.get(skill)
+    if not log_name:
+        return
+    log_file = os.path.join(output_dir, log_name)
     if not os.path.exists(log_file):
         return
 
@@ -98,6 +103,9 @@ def _print_skill_summary(output_dir, skill):
         print(f"Total: {len(entries)} atoms | Linked: {linked} | Orphaned: {len(orphaned_list)} | Cloned: {cloned}")
         for o in orphaned_list:
             print(f"  [ORPHAN] {os.path.basename(o['atom_path'])}")
+
+    elif skill in ["vc-topic-dedup", "vc-audience-curator"]:
+        print(f"Total: {len(entries)} decisions processed.")
 
     print("=" * 35)
 
@@ -166,6 +174,120 @@ def _read_md_file(path):
         return {}, body
     fm_dict = yaml.safe_load(fm_str) or {}
     return fm_dict, body
+
+
+def init_meta_dedup_batches(skill, meta_source, batch_size, output_dir):
+    """Khoi tao batch cho vc-topic-dedup hoac vc-audience-curator"""
+    if not os.path.exists(meta_source):
+        print(f"Khong tim thay {meta_source}")
+        sys.exit(1)
+        
+    with open(meta_source, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f) or {}
+        
+    os.makedirs(output_dir, exist_ok=True)
+    batches_meta = []
+    
+    if skill == "vc-topic-dedup":
+        topics = data.get('topics', [])
+        groups = {}
+        for t in topics:
+            prefix = t.get('id', '').split('_')[0]
+            groups.setdefault(prefix, []).append(t)
+            
+        batch_id = 1
+        for prefix, items in groups.items():
+            for i in range(0, len(items), batch_size):
+                chunk = items[i:i+batch_size]
+                # Anti-hallucination: Xoa aliases khoi batch de LLM khong nham lan
+                for item in chunk:
+                    item.pop("aliases", None)
+                batch_file = os.path.join(output_dir, f"batch_{batch_id:02d}.json")
+                _write_json(batch_file, {
+                    "batch_id": batch_id,
+                    "pillar_prefix": prefix,
+                    "items": chunk,
+                    "anchors": []
+                })
+                batches_meta.append({"id": batch_id, "status": "pending"})
+                batch_id += 1
+                
+    elif skill == "vc-audience-curator":
+        audiences = data.get('audiences', [])
+        batch_id = 1
+        for i in range(0, len(audiences), batch_size):
+            chunk = audiences[i:i+batch_size]
+            # Anti-hallucination: Xoa aliases khoi batch de LLM khong nham lan
+            for item in chunk:
+                item.pop("aliases", None)
+            batch_file = os.path.join(output_dir, f"batch_{batch_id:02d}.json")
+            _write_json(batch_file, {
+                "batch_id": batch_id,
+                "items": chunk,
+                "anchors": []
+            })
+            batches_meta.append({"id": batch_id, "status": "pending"})
+            batch_id += 1
+            
+    manifest = {
+        "skill": skill,
+        "batch_size": batch_size,
+        "meta_source": meta_source,
+        "anchors": [],
+        "batches": batches_meta
+    }
+    _write_manifest(output_dir, manifest)
+    print(f"Initialized {len(batches_meta)} batches cho {skill}")
+
+def _validate_meta_dedup(entries):
+    """Validation meta dedup decisions"""
+    return True, ""
+
+def _execute_meta_dedup(entries, output_dir):
+    """Execute meta dedup bang subprocess goi cascade_merge.py"""
+    manifest = _read_manifest(output_dir)
+    skill = manifest.get("skill")
+    meta_source = manifest.get("meta_source", "vault/01-Atomic/Topics/topic_map.yaml")
+    script_path = os.path.join(".agents", "scripts", "cascade_merge.py")
+    
+    for entry in entries:
+        if entry.get("action") == "merge":
+            loser = entry.get("loser_id") or entry.get("loser_file")
+            survivor = entry.get("survivor_id") or entry.get("survivor_file")
+            
+            if loser:
+                loser = loser.replace("[[", "").replace("]]", "").replace(".md", "")
+            if survivor:
+                survivor = survivor.replace("[[", "").replace("]]", "").replace(".md", "")
+
+            if skill == "vc-topic-dedup":
+                cmd = [sys.executable, script_path, "--action", "merge-topic", "--loser-id", loser, "--survivor-id", survivor, "--topic-map", meta_source, "--vault-root", "vault/01-Atomic"]
+            else:
+                cmd = [sys.executable, script_path, "--action", "merge-audience", "--loser-file", loser, "--survivor-file", survivor, "--audience-index", meta_source, "--topic-map", "vault/01-Atomic/Topics/topic_map.yaml", "--vault-root", "vault/01-Atomic"]
+            
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            if res.returncode != 0:
+                print(f"[ERR] Cascade merge failed for {loser}: {res.stderr}")
+                sys.exit(1)
+            else:
+                try:
+                    out_data = json.loads(res.stdout)
+                    if "error" in out_data:
+                        print(f"[ERR] Cascade merge error logic for {loser}: {out_data['error']}")
+                        sys.exit(1)
+                    # Dong bo Auto-Swap vao Log de bao cao hien thi dung
+                    if "loser" in out_data:
+                        if skill != "vc-topic-dedup": entry["loser_file"] = out_data["loser"]
+                        else: entry["loser_id"] = out_data["loser"]
+                    if "survivor" in out_data:
+                        if skill != "vc-topic-dedup": entry["survivor_file"] = out_data["survivor"]
+                        else: entry["survivor_id"] = out_data["survivor"]
+                except Exception as e:
+                    print(f"[ERR] Cascade merge output invalid JSON for {loser}: {e}\nSTDOUT: {res.stdout}")
+                    sys.exit(1)
+            
+    log_name = "topic_dedup_log.json" if skill == "vc-topic-dedup" else "audience_curator_log.json"
+    _append_log(os.path.join(output_dir, log_name), entries)
 
 
 # === NHOM 1: INIT ===
@@ -274,8 +396,9 @@ def init_batches(atoms_list, batch_size, output_dir, skill):
 
 def _generate_template(batch_data, skill, output_dir):
     """Sinh file results_temp.json voi placeholder cho Agent dien"""
-    atoms = batch_data["atoms"]
-    batch_key = batch_data["batch_key"]
+    atoms = batch_data.get("atoms", [])
+    batch_key = batch_data.get("batch_key", "")
+    items = batch_data.get("items", [])
 
     if skill == "tag":
         results = [{
@@ -307,7 +430,22 @@ def _generate_template(batch_data, skill, output_dir):
             "reasoning": f"{PLACEHOLDER}: Giai thich quyet dinh — LLM-CAPTCHA]"
         } for a in atoms]
 
-    template = {"batch_key": batch_key, "results": results}
+    elif skill == "vc-topic-dedup":
+        results = [
+            {"action": "[ĐIỀN VÀO ĐÂY: keep | merge]", "topic_id": "[ĐIỀN VÀO ĐÂY: neu keep thi dien id, neu merge thi xoa dong nay]", "loser_id": "[ĐIỀN VÀO ĐÂY: neu merge]", "survivor_id": "[ĐIỀN VÀO ĐÂY: neu merge]"} 
+            for _ in items
+        ]
+    elif skill == "vc-audience-curator":
+        results = [
+            {"action": "[ĐIỀN VÀO ĐÂY: keep | merge]", "audience_file": "[ĐIỀN VÀO ĐÂY: neu keep thi dien id, neu merge thi xoa dong nay]", "loser_file": "[ĐIỀN VÀO ĐÂY: neu merge]", "survivor_file": "[ĐIỀN VÀO ĐÂY: neu merge]"} 
+            for _ in items
+        ]
+
+    if skill in ["vc-topic-dedup", "vc-audience-curator"]:
+        template = {"decisions": results}
+    else:
+        template = {"batch_key": batch_key, "results": results}
+        
     template_path = os.path.join(output_dir, "results_temp.json")
     _write_json(template_path, template)
 
@@ -506,8 +644,28 @@ def _execute_tag(entries, output_dir):
     print(f"[TAG] Da ghi metadata cho {sum(1 for e in entries if e.get('action') == 'tagged')} atom(s)")
 
 
+def _get_protected_atoms():
+    protected = []
+    personas_dir = os.path.join(os.getcwd(), "personas")
+    if os.path.exists(personas_dir):
+        for root, _, files in os.walk(personas_dir):
+            if 'pillars.yaml' in files:
+                try:
+                    with open(os.path.join(root, 'pillars.yaml'), 'r', encoding='utf-8') as f:
+                        data = yaml.safe_load(f) or {}
+                        for p_val in data.values():
+                            if isinstance(p_val, dict) and 'insights' in p_val:
+                                for insight in p_val['insights']:
+                                    ref = insight.get('file_ref', '')
+                                    if ref:
+                                        protected.append(ref.replace('[[', '').replace(']]', ''))
+                except:
+                    pass
+    return protected
+
 def _execute_dedup(entries, output_dir):
     """Thuc thi merge cho cac entry decision=merge"""
+    protected_atoms = _get_protected_atoms()
     merge_count = 0
     for e in entries:
         if e.get("decision") != "merge":
@@ -523,6 +681,18 @@ def _execute_dedup(entries, output_dir):
             continue
 
         loser = atom_path if survivor != atom_path else merge_with
+
+        # AUTO-SWAP logic for protected insights
+        loser_base = os.path.basename(loser).replace('.md', '')
+        survivor_base = os.path.basename(survivor).replace('.md', '')
+
+        if loser_base in protected_atoms:
+            if survivor_base in protected_atoms:
+                print(f"[ERR] Both atoms {loser_base} and {survivor_base} are Core Insights. Cannot merge.")
+                sys.exit(1)
+            print(f"[AUTO-SWAP] {loser_base} is protected. Swapping survivor.")
+            survivor, loser = loser, survivor
+            e["survivor"] = survivor
 
         # Buoc 1: Redirect links (an toan nhat — neu crash, chi link bi doi)
         subprocess.run([
@@ -641,9 +811,15 @@ def submit_results(output_dir, results_file):
         sys.exit(1)
 
     batch_data = _read_json(current_path)
-    expected_key = batch_data["batch_key"]
-    expected_atoms = batch_data["atoms"]
     batch_id = batch_data["batch_id"]
+    
+    is_meta_dedup = skill in ["vc-topic-dedup", "vc-audience-curator"]
+    if is_meta_dedup:
+        expected_key = None
+        expected_atoms = [item["id"] for item in batch_data.get("items", [])]
+    else:
+        expected_key = batch_data.get("batch_key")
+        expected_atoms = batch_data.get("atoms", [])
 
     # Doc results
     try:
@@ -652,12 +828,12 @@ def submit_results(output_dir, results_file):
         print(f"[ERR] Loi doc results file: {e}")
         sys.exit(1)
 
-    entries = results_data.get("results", [])
+    entries = results_data.get("results", []) if not is_meta_dedup else results_data.get("decisions", [])
 
     # === VALIDATE CHUNG ===
 
     # 1. Batch key
-    if results_data.get("batch_key") != expected_key:
+    if not is_meta_dedup and results_data.get("batch_key") != expected_key:
         print(f"FAIL: batch_key khong khop (expected={expected_key})")
         return
 
@@ -666,23 +842,30 @@ def submit_results(output_dir, results_file):
         print(f"FAIL: So entries ({len(entries)}) khac so atoms trong batch ({len(expected_atoms)})")
         return
 
-    submitted_paths = [e.get("atom_path", "") for e in entries]
+    if is_meta_dedup:
+        submitted_paths = [e.get("topic_id", e.get("loser_id", e.get("audience_file", e.get("loser_file", "")))) for e in entries]
+    else:
+        submitted_paths = [e.get("atom_path", "") for e in entries]
+        
     for atom in expected_atoms:
         if atom not in submitted_paths:
             print(f"FAIL: Thieu entry cho atom: {atom}")
             return
 
     # 3. Placeholder check
-    placeholder_err = _check_placeholder(entries)
-    if placeholder_err:
-        print(f"FAIL: {placeholder_err}")
-        return
+    if not is_meta_dedup:
+        placeholder_err = _check_placeholder(entries)
+        if placeholder_err:
+            print(f"FAIL: {placeholder_err}")
+            return
 
     # === VALIDATE RIENG THEO SKILL ===
     validators = {
         "tag": _validate_tag,
         "dedup": _validate_dedup,
-        "align": _validate_align
+        "align": _validate_align,
+        "vc-topic-dedup": _validate_meta_dedup,
+        "vc-audience-curator": _validate_meta_dedup
     }
     validator = validators.get(skill)
     if not validator:
@@ -698,7 +881,9 @@ def submit_results(output_dir, results_file):
     executors = {
         "tag": _execute_tag,
         "dedup": _execute_dedup,
-        "align": _execute_align
+        "align": _execute_align,
+        "vc-topic-dedup": _execute_meta_dedup,
+        "vc-audience-curator": _execute_meta_dedup
     }
     executor = executors[skill]
     executor(entries, output_dir)
@@ -791,8 +976,10 @@ if __name__ == '__main__':
     parser.add_argument('--submit', action='store_true', help="Submit ket qua (thay mark-done)")
     parser.add_argument('--status', action='store_true', help="Xem tien trinh")
 
-    parser.add_argument('--skill', choices=['tag', 'dedup', 'align'],
+    parser.add_argument('--skill', choices=['tag', 'dedup', 'align', 'vc-topic-dedup', 'vc-audience-curator'],
                         help="Loai skill (bat buoc cho --init)")
+    parser.add_argument('--meta-source', type=str,
+                        help="Duong dan den file topic_map hoac _audience_index")
     parser.add_argument('--atoms', type=str, default="",
                         help="Danh sach atom paths, phan tach bang dau phay")
     parser.add_argument('--atoms-file', type=str,
@@ -807,8 +994,15 @@ if __name__ == '__main__':
 
     if args.init:
         if not args.skill:
-            print("[ERR] --init requires --skill (tag | dedup | align)")
+            print("[ERR] --init requires --skill")
             sys.exit(1)
+            
+        if args.skill in ["vc-topic-dedup", "vc-audience-curator"]:
+            if not getattr(args, 'meta_source', None):
+                print("[ERR] --init cho skill nay requires --meta-source")
+                sys.exit(1)
+            init_meta_dedup_batches(args.skill, args.meta_source, args.batch_size, args.output_dir)
+            sys.exit(0)
         # Chon nguon atoms: --atoms-file uu tien hon --atoms
         if args.atoms_file:
             atoms_list = _load_atoms_from_file(args.atoms_file)

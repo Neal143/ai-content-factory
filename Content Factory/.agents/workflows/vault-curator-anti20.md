@@ -11,29 +11,20 @@ description: "Workflow Antigravity 2.0: Gọi VaultCuratorAgent qua subagents, u
 
 # Workflow: Vault Curation (Antigravity 2.0 – Sub-Agents)
 
-> **LỆNH**: `/vault-curate --mode <mode> --atoms <list> --output-dir <dir>`
+> **LỆNH**: `/vault-curate --mode <mode> [--atoms <list>] [--output-dir <dir>]`
+>
+> ⚠️ **LUẬT KHÔNG HỎI LẠI (NO PROMPTING RULE)**:
+> - Nếu User KHÔNG truyền tham số `--output-dir`, **TUYỆT ĐỐI KHÔNG ĐƯỢC HỎI LẠI**. Tự động lấy giá trị mặc định là: `vault/.curation_temp/`
 >
 > **Tham chiếu**: Toàn bộ routing logic, input/output specs, cleanup logic → đọc [AGENT.md](file:///.agents/agents/vault-curator/AGENT.md).
 
 ## Hướng dẫn thực thi
 
-### 1. Xác định Skill Queue
+### 1. Xác định Skill Queue từ não bộ VaultCurator
 
-Từ `MODE` trong prompt, xác định skill queue:
+Bạn (Orchestrator) hãy đọc phần **Kịch bản Routing Logic** trong file `.agents/agents/vault-curator/AGENT.md` để tự xác định danh sách các skill cần gọi cho `<MODE>` tương ứng. 
 
-| Mode | Skill Queue (theo thứ tự) |
-|---|---|
-| `full-pipeline` | tag → dedup → align |
-| `tag-and-dedup` | tag → dedup |
-| `tag-only` | tag |
-| `dedup-incremental` | dedup |
-| `dedup-full` | dedup |
-| `align-only` | align |
-
-Skill map (tên skill → SKILL.md path):
-- `tag` → `.agents/skills/auto-tagger/SKILL.md`
-- `dedup` → `.agents/skills/atom-dedup/SKILL.md`
-- `align` → `.agents/skills/atom-linker/SKILL.md`
+Ví dụ: Nếu trong AGENT.md ghi là `1. Gọi skill auto-tagger`, `2. Gọi skill atom-dedup`, thì bạn sẽ biết Skill Queue của mình là `[auto-tagger, atom-dedup]`.
 
 ### 2. Init + Tạo Pipeline Context
 
@@ -46,26 +37,20 @@ write_to_file("<OUTPUT_DIR>/pipeline_context.json", {
 })
 ```
 
-**2b. Init batches cho skill đầu tiên:**
-```powershell
-# Nếu có atoms file:
-python .agents/scripts/prepare_curation_batches.py --init --skill <skill> --batch-size 10 --atoms-file "<ATOMS_FILE>" --output-dir "<OUTPUT_DIR>/<skill>"
+**2b. Init batches cho từng skill:**
+Trước khi chạy subagent cho một skill, bạn (Orchestrator) PHẢI đọc `SKILL.md` của skill đó tại `.agents/skills/<tên_skill>/SKILL.md` để lấy lệnh `--init` (nằm ở Bước 1 của SKILL.md) và chạy nó trên terminal.
 
-# Nếu mode dedup-full (không cần atoms file):
-python .agents/scripts/prepare_curation_batches.py --init --skill dedup --batch-size 10 --scope full --layer <insight|solution|evidence> --output-dir "<OUTPUT_DIR>/dedup"
-```
+*Lưu ý: Bạn là một Agent thông minh. Nếu lệnh `--init` trong SKILL.md yêu cầu truyền đường dẫn persona (VD: `[persona-path]/topic_map.yaml`), hãy dùng lệnh hệ thống để tự động tìm tệp đó và thay thế vào tham số.*
 
-### 3. Skill Loop (Subagent)
+### 3. Skill Loop (Tạo Subagent qua Antigravity 2.0)
 
-Với mỗi skill trong queue:
+Với mỗi skill trong queue đã xác định ở Bước 1:
 
 **3a. Define subagent:**
 ```
-Đọc AGENT.md + SKILL.md tương ứng (auto-tagger | atom-dedup | atom-linker).
-
 define_subagent(
-  name: "VaultCurator",
-  system_prompt: nội dung AGENT.md + SKILL.md,
+  name: "VaultCurator_<tên_skill>",
+  system_prompt: Đọc và gộp nội dung của AGENT.md + SKILL.md tương ứng,
   enable_write_tools: true
 )
 ```
@@ -73,13 +58,13 @@ define_subagent(
 **3b. Invoke subagent:**
 ```
 invoke_subagent(
-  TypeName: "VaultCurator",
+  TypeName: "VaultCurator_<tên_skill>",
   Workspace: ".",
   Prompt: """
-    Skill: <skill_name>
-    Output dir: <OUTPUT_DIR>/<skill>
+    Skill: <tên_skill>
+    Output dir: <OUTPUT_DIR>/<tên_skill>
 
-    BỎ QUA Bước 1 trong SKILL.md (--init đã được orchestrator chạy). 
+    BỎ QUA Bước 1 trong SKILL.md (Orchestrator đã chạy --init). 
     Bắt đầu từ Bước 2: Thực thi vòng lặp get-next → xử lý → submit theo SKILL.md.
     Dừng khi stdout chứa "ALL_DONE" hoặc "SESSION_BREAK".
     Trả về nguyên văn stdout cuối cùng.
@@ -89,28 +74,18 @@ invoke_subagent(
 
 **3c. Parse response:**
 
-| Stdout chứa | Orchestrator hành động |
+| Stdout từ Subagent chứa | Orchestrator hành động |
 |---|---|
-| `ALL_DONE` | Đọc summary từ stdout. Nếu còn skill tiếp theo → chạy `--init` cho skill tiếp theo → quay lại 3a. Nếu hết → chuyển Bước 4. |
+| `ALL_DONE` | Đọc summary từ stdout. Nếu còn skill tiếp theo → thực hiện Bước 2b và 3a cho skill tiếp theo. Nếu hết → chuyển Bước 4. |
 | `SESSION_BREAK` | Extract handoff prompt (nội dung giữa `---` và `---`) → `invoke_subagent` lại với prompt đó → quay lại 3c. |
-
-Chi tiết ALL_DONE cho skill tiếp theo:
-```powershell
-python .agents/scripts/prepare_curation_batches.py --init --skill <next_skill> --batch-size 10 --atoms-file "<ATOMS_FILE>" --output-dir "<OUTPUT_DIR>/<next_skill>"
-```
-
-> ⚠️ **QUAN TRỌNG — Tránh double-init**: SKILL.md mỗi skill đều có "Bước 1: Khởi tạo Batch (--init)". Nhưng trong Anti 2.0, orchestrator đã chạy `--init` trước khi spawn subagent. Vì vậy, invoke prompt (Section 3b) PHẢI ghi rõ:
-> ```
-> BỎ QUA Bước 1 trong SKILL.md (--init đã chạy). Bắt đầu từ Bước 2 (get-next loop).
-> ```
-> Nếu thiếu chỉ dẫn này → subagent đọc SKILL.md → chạy lại --init → xóa sạch batches đã tạo → mất dữ liệu.
 
 ### 4. Pipeline hoàn tất
 
 Tất cả skills đã ALL_DONE:
-1. Tổng hợp summary từ tất cả skills
-2. Cleanup: Xóa atoms file nếu workflow truyền qua `--atoms-file` (VD: `pending_curation_atoms.txt`, `created_atoms.json`)
-3. Báo user kết quả tổng hợp.
+1. Tổng hợp summary từ tất cả skills và báo cáo kết quả tổng hợp cho User.
+2. Xóa atoms file nếu workflow truyền qua `--atoms-file` (VD: `pending_curation_atoms.txt`, `created_atoms.json`).
+3. **Dọn rác thư mục tạm**: Hỏi ý kiến User xem có muốn xóa toàn bộ thư mục lưu các file xử lý `<OUTPUT_DIR>` không (vì chúng không còn giá trị sử dụng). Ví dụ: *"Tiến trình đã hoàn tất. Thư mục tạm `<OUTPUT_DIR>` đang chứa các file log và batch xử lý. Bạn có muốn tôi xóa sạch thư mục này không?"*.
+4. Nếu User đồng ý, hãy dùng lệnh hệ thống (VD: `Remove-Item -Recurse -Force "<OUTPUT_DIR>"`) để dọn dẹp.
 
 ## Xử lý lỗi
 

@@ -1,0 +1,374 @@
+{
+  "batch_id": 13,
+  "batch_key": "d3230af9",
+  "atoms": [
+    "vault\\01-Atomic\\Insights\\good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con.md",
+    "vault\\01-Atomic\\Insights\\good-inside_khung-hoang-vong-lap-hanh-vi.md",
+    "vault\\01-Atomic\\Insights\\good-inside_logic-giai-quyet-hoan-hao.md",
+    "vault\\01-Atomic\\Insights\\good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
+    "vault\\01-Atomic\\Insights\\good-inside_noi-so-chia-ly-trong-bong-toi.md",
+    "vault\\01-Atomic\\Insights\\good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung.md",
+    "vault\\01-Atomic\\Insights\\good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me.md",
+    "vault\\01-Atomic\\Insights\\good-inside_noi-so-su-ton-thuong-khong-the-van-hoi.md",
+    "vault\\01-Atomic\\Insights\\good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo.md",
+    "vault\\01-Atomic\\Insights\\good-inside_nuoi-con-tan-hien-selfless-parenting.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "anxiety_guilt",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_body_memory",
+          "p1_internal_working_model"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con]]"
+        ],
+        "vivid_insights": [
+          "Cảm giác tội lỗi của bậc cha mẹ đang hoạt động quá mức (parental guilt is running on overdrive)"
+        ],
+        "description": "Phụ huynh thường lo sợ những sai lầm trong quá khứ đã vĩnh viễn làm hỏng tương lai của con. Đặc biệt ở giai đoạn 0-3 tuổi, khi nhận ra tầm quan trọng của những năm đầu đời, họ càng dễ rơi vào trạng thái mặc cảm tội lỗi.",
+        "keywords": [
+          "cảm giác tội lỗi",
+          "sai lầm quá khứ",
+          "nuôi dạy sai cách",
+          "giai đoạn 0-3 tuổi",
+          "nền tảng tâm lý",
+          "nỗi sợ tương lai",
+          "áp lực làm cha mẹ",
+          "sự tự trách"
+        ]
+      },
+      "body": "*   **Mô tả:** Phụ huynh thường băn khoăn liệu những nỗ lực rèn kỷ luật và thấu hiểu ở độ tuổi 0-3 có thực sự ý nghĩa khi trẻ không thể nhớ lại bằng lời nói. Khi nhận ra tầm quan trọng của những năm đầu đời, họ lại dễ rơi vào trạng thái mặc cảm tội lỗi tột độ, lo sợ rằng những sai lầm trong quá khứ đã vĩnh viễn làm hỏng tương lai của con mình."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_khung-hoang-vong-lap-hanh-vi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang]]"
+        ],
+        "description": "Cha mẹ thường cảm thấy bất lực và cạn kiệt năng lượng trước những chu kỳ ăn vạ, chống đối lặp đi lặp lại của trẻ. Việc lạm dụng đe dọa hay kỷ luật không phù hợp chỉ khiến không khí gia đình thêm hỗn loạn và tồi tệ.",
+        "keywords": [
+          "vòng lặp hành vi",
+          "chu kỳ chống đối",
+          "cơn ăn vạ",
+          "lạm dụng đe dọa",
+          "kỷ luật sáo rỗng",
+          "bất lực nuôi dạy",
+          "khủng hoảng gia đình",
+          "la mắng trẻ"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ cảm thấy bất lực, cạn kiệt năng lượng và dằn vặt khi liên tục phải đối mặt với các chu kỳ ăn vạ, chống đối và xa lánh của con. Việc lạm dụng những lời đe dọa sáo rỗng hay kỷ luật không mang lại hiệu quả mà chỉ làm tình hình tồi tệ hơn, khiến ngôi nhà trở nên hỗn loạn và đầy tiếng la hét."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_logic-giai-quyet-hoan-hao.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "myth",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_perfectionism_nature",
+          "p1_reframe_perfectionism"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan]]"
+        ],
+        "vivid_insights": [
+          "Cha mẹ cố giải thích \"Một cú ném hỏng không định nghĩa một vận động viên\", nhưng trẻ vẫn sụp đổ"
+        ],
+        "description": "Nhiều cha mẹ sai lầm khi dùng logic để khuyên can một đứa trẻ đang bế tắc vì áp lực hoàn hảo. Chủ nghĩa hoàn hảo bắt nguồn từ lo âu, do đó những lời lý luận bề mặt sẽ hoàn toàn trở nên vô tác dụng.",
+        "keywords": [
+          "chủ nghĩa hoàn hảo",
+          "áp lực hoàn hảo",
+          "giải thích logic",
+          "cảm xúc lo âu",
+          "sự bế tắc",
+          "trẻ cầu toàn",
+          "sai lầm giao tiếp",
+          "trấn an sai cách"
+        ]
+      },
+      "body": "* **Mô tả:** Cha mẹ thường tin rằng có thể dùng lý lẽ logic để thuyết phục trẻ (như \"ai cũng mắc sai lầm\" hay \"kết quả không quan trọng\") nhằm dập tắt sự hoàn hảo. Tuy nhiên, sự hoàn hảo bắt nguồn từ cảm xúc không thể điều chỉnh được, nên logic sẽ hoàn toàn vô tác dụng và không thể giúp trẻ bình tĩnh lại."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "belief",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti]]"
+        ],
+        "description": "Cha mẹ lầm tưởng rằng việc liên tục khen ngợi sẽ 'bơm' đầy sự tự tin cho trẻ. Thực tế, lạm dụng lời khen chỉ khiến trẻ phụ thuộc vào sự công nhận từ bên ngoài, làm thui chột khả năng tự tin tưởng vào bản thân.",
+        "keywords": [
+          "lời khen ngợi",
+          "sự tự tin",
+          "niềm tin sai lầm",
+          "sự công nhận",
+          "vững vàng nội tâm",
+          "khen sai cách",
+          "phụ thuộc đánh giá",
+          "nuôi dạy bản lĩnh"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường tin rằng sự tự tin đến từ việc cảm thấy \"tốt đẹp\" và liên tục dùng lời khen ngợi, sự công nhận từ bên ngoài để \"bơm\" sự tự tin cho con. Tuy nhiên, điều này lại khiến trẻ bị phụ thuộc vào đánh giá của người khác, thay vì hình thành sự vững vàng nội tâm và khả năng tự tin tưởng vào cảm xúc của chính mình."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-chia-ly-trong-bong-toi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi]]"
+        ],
+        "vivid_insights": [
+          "Đêm tối, sự cô đơn, cơ thể chậm lại và những suy nghĩ đáng sợ xuất hiện"
+        ],
+        "description": "Trẻ em thường mang nỗi sợ hãi bản năng với bóng tối vì nó gắn liền với sự cô đơn và nỗi lo mất cha mẹ. Những thay đổi trong môi trường càng làm trẻ bất an, khiến con liên tục tìm kiếm sự vỗ về thay vì tự ngủ.",
+        "keywords": [
+          "nỗi sợ bóng tối",
+          "sự chia ly",
+          "cảm giác cô đơn",
+          "bất an tâm lý",
+          "khủng hoảng ngủ",
+          "tìm kiếm vỗ về",
+          "tâm lý trẻ nhỏ",
+          "giấc ngủ của trẻ"
+        ]
+      },
+      "body": "*   **Mô tả:** Trẻ em coi ban đêm là mối đe dọa vì nó đi liền với bóng tối, sự cô đơn, và nỗi lo lắng về sự tồn tại vĩnh cửu của cha mẹ khi không được nhìn thấy họ [1]. Những thay đổi trong môi trường sống (như đi học, có em bé mới) càng làm tăng thêm sự bất an, khiến trẻ liên tục tìm kiếm sự gần gũi thay vì tự chìm vào giấc ngủ [1, 4]."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_lying_as_defense",
+          "p1_reframe_lie_as_wish"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam]]"
+        ],
+        "vivid_insights": [
+          "Nghe con chối tội rành rành, Tức giận mắng \"Đừng có nói dối vào mặt mẹ\", Đẩy trẻ vào thế phòng thủ và đóng sập giao tiếp"
+        ],
+        "description": "Khi phát hiện con nói dối, cha mẹ thường hoảng sợ và vội vàng quy kết trẻ đang có vấn đề nghiêm trọng về nhân cách. Phản ứng tức giận và kết tội gay gắt vô tình đẩy cả hai vào một cuộc chiến quyền lực đầy bế tắc.",
+        "keywords": [
+          "trẻ nói dối",
+          "kết tội con",
+          "vấn đề nhân cách",
+          "kẻ thao túng",
+          "phản ứng tức giận",
+          "cuộc chiến quyền lực",
+          "sự phòng thủ",
+          "giao tiếp bế tắc"
+        ]
+      },
+      "body": "*   **Mô tả:** Phụ huynh thường suy diễn theo hướng tồi tệ nhất khi con cái nói dối, cho rằng trẻ đang lươn lẹo, coi thường cha mẹ hoặc có vấn đề nghiêm trọng về nhân cách. Họ phản ứng bằng sự tức giận, kết tội và đe dọa trừng phạt vì sợ hãi rằng nếu không làm căng, con sẽ trở thành một kẻ dối trá thao túng, nhưng cách làm này lại vô tình đẩy cả hai vào cuộc chiến quyền lực bế tắc."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_sibling_attachment_security",
+          "p1_focus_on_needs_not_fairness"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau]]"
+        ],
+        "vivid_insights": [
+          "Tưởng tượng vợ/chồng bạn đưa một người mới về nhà, bắt bạn san sẻ mọi thứ và mắng bạn nếu bạn không nhường nhịn người đó"
+        ],
+        "description": "Khi các con cãi vã, cha mẹ thường mang áp lực phải duy trì sự hòa thuận nên hay ép buộc các con nhường nhịn một cách gượng ép. Họ bỏ qua nỗi sợ bản năng của trẻ về việc bị tước mất vị trí độc tôn trong gia đình.",
+        "keywords": [
+          "áp lực hòa thuận",
+          "anh chị em cãi vã",
+          "ép buộc nhường nhịn",
+          "sợ mất vị trí",
+          "ghen tị anh em",
+          "vị trí độc tôn",
+          "đối xử công bằng",
+          "nuôi dạy nhiều con"
+        ]
+      },
+      "body": "*   **Mô tả:** Trẻ mang nỗi sợ bản năng bị bỏ rơi và mất đi vị trí độc tôn khi phải san sẻ tình yêu thương của cha mẹ với anh chị em. Trong khi đó, cha mẹ mang nặng định kiến rằng \"anh chị em phải luôn yêu thương nhau\" nên thường hoảng sợ, bực bội và ép buộc sự công bằng một cách gượng ép mỗi khi các con cãi vã."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-su-ton-thuong-khong-the-van-hoi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "fear",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_neuroplasticity_repair",
+          "p1_the_power_of_repair"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai]]"
+        ],
+        "vivid_insights": [
+          "Bị gặm nhấm bởi suy nghĩ \"đây là lỗi của mình\", \"mình đã làm hỏng con mãi mãi\"."
+        ],
+        "description": "Nhiều bậc cha mẹ bị mắc kẹt trong nỗi dằn vặt khôn nguôi về những sai lầm giáo dục trong quá khứ. Họ mang theo nỗi sợ hãi tột cùng rằng mình đã làm hỏng con vĩnh viễn và giờ đây mọi nỗ lực bù đắp đều là quá muộn.",
+        "keywords": [
+          "tổn thương tâm lý",
+          "tự trách bản thân",
+          "sai lầm quá khứ",
+          "sự muộn màng",
+          "chữa lành tổn thương",
+          "mặc cảm cha mẹ",
+          "khủng hoảng niềm tin",
+          "sửa chữa lỗi lầm"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường bị chìm ngập trong sự tự trách, hoang mang và mang nỗi sợ tột cùng rằng những sai lầm trong quá khứ (hay cáu gắt, kỷ luật độc hại) đã làm hỏng con cái vĩnh viễn, và giờ đây mọi nỗ lực thay đổi đều là \"đã quá muộn\"."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_tach-roi-binh-an_tre-bam-me]]"
+        ],
+        "vivid_insights": [
+          "Trẻ gào thét \"Không không không, Bố ơi, ở lại! Ở lại!\" khiến cha mẹ chết lặng, không rõ tại sao mọi chuyện lại tồi tệ thế này."
+        ],
+        "description": "Mỗi khi phải rời đi, tiếng gào khóc níu kéo của con luôn khiến cha mẹ cảm thấy đau lòng và bối rối tột độ. Họ dễ hoang mang lo sợ rằng sự chia ly tạm thời này đang để lại vết thương tâm lý sâu sắc cho đứa trẻ.",
+        "keywords": [
+          "tiếng khóc níu kéo",
+          "sợ sự chia ly",
+          "trẻ bám mẹ",
+          "tổn thương tâm lý",
+          "đau lòng cha mẹ",
+          "khủng hoảng xa cách",
+          "tâm lý bối rối",
+          "cảm giác tội lỗi"
+        ]
+      },
+      "body": "*   **Mô tả:** Khi con bám chặt lấy chân, gào khóc không cho cha mẹ rời đi, người lớn thường rơi vào trạng thái bối rối, cảm thấy đau lòng và hoang mang không biết mình đã làm sai điều gì hoặc lo sợ sự chia ly này đang làm tổn thương tâm lý của đứa trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_nuoi-con-tan-hien-selfless-parenting.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "myth",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_sturdy_leader_self_care",
+          "p1_avp_strategy"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem]]"
+        ],
+        "vivid_insights": [
+          "Một nhà lãnh đạo mất hút, dễ dàng bị người khác lấn lướt, khiến những đứa trẻ đi theo cảm thấy hoảng sợ và lạc lối"
+        ],
+        "description": "Nhiều người lầm tưởng nuôi con tận hiến là phải hy sinh toàn bộ thời gian riêng tư. Suy nghĩ độc hại này khiến cha mẹ luôn cảm thấy tội lỗi khi muốn nghỉ ngơi, dẫn đến việc tự vắt kiệt sức lực của chính mình.",
+        "keywords": [
+          "nuôi con tận hiến",
+          "hy sinh bản sắc",
+          "vắt kiệt sức lực",
+          "sự ích kỷ",
+          "cảm giác tội lỗi",
+          "chăm sóc bản thân",
+          "sức khỏe tinh thần",
+          "áp lực làm mẹ"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường tin rằng làm cha mẹ nghĩa là phải hy sinh toàn bộ bản sắc cá nhân, xem việc dành thời gian cho bản thân là hành động \"ích kỷ\". Khi cố gắng tự chăm sóc mình và vấp phải sự phản đối của trẻ, họ nhanh chóng bị cảm giác tội lỗi xâm chiếm và tiếp tục vắt kiệt bản thân."
+    }
+  ]
+}

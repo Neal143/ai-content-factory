@@ -5,7 +5,6 @@ topics:
 - p1_rhythm_and_senses
 - p1_imitation_and_play
 - p1_archetypal_toys
-- p1_play_as_imitation
 status: processed
 source_type: book
 source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)

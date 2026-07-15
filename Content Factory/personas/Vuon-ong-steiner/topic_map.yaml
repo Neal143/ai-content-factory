@@ -1,105 +1,102 @@
-# BẢN ĐỒ TOPIC
-# id: English snake_case — dùng cho AI matching, script calls, frontmatter tags
-# label: Tiếng Việt đầy đủ dấu — CHỈ dùng cho human readability, KHÔNG dùng để match
 topics:
 - id: p1_current_state_of_finding_and_defining_educational_philosophy
-  label: "Hiện trạng việc đi tìm và xác định triết lý giáo dục cho con"
+  label: Hiện trạng việc đi tìm và xác định triết lý giáo dục cho con
   pillar_parents:
   - Xác định triết lý giáo dục cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p1_golden_window_for_child_development_0_7
-  label: "Cửa sổ vàng phát triển trẻ 0-7 tuổi"
+  label: Cửa sổ vàng phát triển trẻ 0-7 tuổi
   pillar_parents:
   - Xác định triết lý giáo dục cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p1_what_humans_need_to_prepare_to_be_happy_and_irreplaceable_by_ai
-  label: "Con người cần chuẩn bị gì để hạnh phúc và không bị AI thay thế"
+  label: Con người cần chuẩn bị gì để hạnh phúc và không bị AI thay thế
   pillar_parents:
   - Xác định triết lý giáo dục cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p1_steiner_and_holistic_development_science
-  label: "Steiner và khoa học phát triển toàn diện"
+  label: Steiner và khoa học phát triển toàn diện
   pillar_parents:
   - Xác định triết lý giáo dục cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p1_building_willpower_for_children
-  label: "Xây dựng ý chí cho trẻ"
+  label: Xây dựng ý chí cho trẻ
   pillar_parents:
   - Xác định triết lý giáo dục cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p2_establishing_family_rhythms_and_habits
-  label: "Thiết lập nhịp điệu thói quen trong gia đình"
+  label: Thiết lập nhịp điệu thói quen trong gia đình
   pillar_parents:
   - Thiết lập môi trường giáo dục tại nhà
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p2_establishing_home_educational_environment_1_3_years
-  label: "Thiết lập môi trường giáo dục tại nhà giai đoạn 1-3 tuổi"
+  label: Thiết lập môi trường giáo dục tại nhà giai đoạn 1-3 tuổi
   pillar_parents:
   - Thiết lập môi trường giáo dục tại nhà
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p2_establishing_home_educational_environment_4_7_years
-  label: "Thiết lập môi trường giáo dục tại nhà giai đoạn 4-7 tuổi"
+  label: Thiết lập môi trường giáo dục tại nhà giai đoạn 4-7 tuổi
   pillar_parents:
   - Thiết lập môi trường giáo dục tại nhà
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p2_toys_for_1_3_years
-  label: "Đồ chơi giai đoạn 1-3 tuổi"
+  label: Đồ chơi giai đoạn 1-3 tuổi
   pillar_parents:
   - Thiết lập môi trường giáo dục tại nhà
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p2_toys_for_4_7_years
-  label: "Đồ chơi giai đoạn 4-7 tuổi"
+  label: Đồ chơi giai đoạn 4-7 tuổi
   pillar_parents:
   - Thiết lập môi trường giáo dục tại nhà
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p3_gross_motor_development
-  label: "Phát triển vận động thô"
+  label: Phát triển vận động thô
   pillar_parents:
   - Thiết lập nền tảng cho con trong giai đoạn 0-24 tháng
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p3_equipping_children_with_verbal_and_non_verbal_communication_skills
-  label: "Trang bị kỹ năng giao tiếp không lời và có lời cho con"
+  label: Trang bị kỹ năng giao tiếp không lời và có lời cho con
   pillar_parents:
   - Thiết lập nền tảng cho con trong giai đoạn 0-24 tháng
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p3_nutrition_and_eating_sleeping_rhythms
-  label: "Dinh dưỡng và nhịp điệu ăn ngủ"
+  label: Dinh dưỡng và nhịp điệu ăn ngủ
   pillar_parents:
   - Thiết lập nền tảng cho con trong giai đoạn 0-24 tháng
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p3_formation_and_development_of_the_senses
-  label: "Sự hình thành và phát triển của các giác quan"
+  label: Sự hình thành và phát triển của các giác quan
   pillar_parents:
   - Thiết lập nền tảng cho con trong giai đoạn 0-24 tháng
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p4_healing_and_nurturing_value_of_stories
-  label: "Giá trị chữa lành và nuôi dưỡng của những câu chuyện"
+  label: Giá trị chữa lành và nuôi dưỡng của những câu chuyện
   pillar_parents:
   - Kể chuyện cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p4_creating_custom_stories_to_solve_childrens_problems
-  label: "Sáng tác truyện dành riêng cho con để giải quyết vấn đề"
+  label: Sáng tác truyện dành riêng cho con để giải quyết vấn đề
   pillar_parents:
   - Kể chuyện cho con
   belongs_to_audience:
   - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 - id: p4_engaging_storytelling_skills
-  label: "Kỹ năng kể chuyện hấp dẫn"
+  label: Kỹ năng kể chuyện hấp dẫn
   pillar_parents:
   - Kể chuyện cho con
   belongs_to_audience:
@@ -563,8 +560,12 @@ topics:
   pillar_parents:
   - pillar_1
   belongs_to_audience:
-  - '[[cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai]]'
+  - '[[cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi]]'
   - '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+  - '[[cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai]]'
+  aliases:
+  - Trẻ chơi thông qua việc bắt chước công việc
+  - p1_play_as_imitation
 - id: p1_family_rhythm
   label: Nhịp điệu sinh hoạt gia đình
   pillar_parents:
@@ -616,12 +617,6 @@ topics:
   - '[[cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi]]'
   - '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
   - '[[cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con]]'
-- id: p1_play_as_imitation
-  label: Trẻ chơi thông qua việc bắt chước công việc
-  pillar_parents:
-  - pillar_1
-  belongs_to_audience:
-  - '[[cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi]]'
 - id: p1_natural_elements_play
   label: Bảo vệ không gian vui chơi và tiếp xúc tự nhiên
   pillar_parents:

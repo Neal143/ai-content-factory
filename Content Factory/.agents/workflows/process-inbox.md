@@ -56,13 +56,13 @@ Sau khi Bước 3 hoàn tất (đã ghi log + xóa nội dung gốc):
 In prompt sau để User copy sang Antigravity 2.0:
 ```
 Đọc workflow `.agents/workflows/vault-curator-anti20.md` và thực thi:
-- Mode: full-pipeline
+- Mode: atoms-full-pipeline
 - Atoms file: vault/.tmp/pending_curation_atoms.txt
 - Output dir: vault/.curation_temp/
 ```
 
 **Lựa chọn B — Chạy tại đây (cần handoff mỗi 5 batch):**
 Triệu hồi **VaultCuratorAgent** (đọc `.agents/agents/vault-curator/AGENT.md`):
-   - Mode: `full-pipeline` (cần alignment để gán `belongs_to_audience` cho Insight mới + cross-audience clone; dedup trên 1-5 atoms miễn phí)
+   - Mode: `atoms-full-pipeline` (cần alignment để gắn `belongs_to_audience` cho Insight mới + cross-audience clone; dedup trên 1-5 atoms miễn phí)
    - Atoms: Danh sách đường dẫn file Atom (ví dụ: `vault/01-Atomic/Solutions/BTRB_xxx.md`).
    - Output-dir: `vault/.curation_temp/`

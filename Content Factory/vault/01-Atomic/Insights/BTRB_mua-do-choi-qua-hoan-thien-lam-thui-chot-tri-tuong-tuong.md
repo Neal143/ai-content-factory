@@ -12,7 +12,7 @@ source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to se
 source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
 confidence: 0.9
 belongs_to_audience:
-- '[[cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con]]'
+- '[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]'
 description: Cung cấp đồ chơi quá chi tiết và hiện đại là một cạm bẫy tước đoạt sự sáng tạo. Khi đồ chơi đã định hình sẵn mọi chức năng, trẻ không còn không gian để phát huy trí tưởng tượng và trở nên thụ động hơn.
 keywords: [đồ chơi hoàn thiện, trí tưởng tượng, sự sáng tạo, sự thụ động, giới hạn không gian, đồ chơi định hình, giáo dục mầm non, phát triển tư duy]
 ---

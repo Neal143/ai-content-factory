@@ -1,0 +1,366 @@
+{
+  "batch_id": 3,
+  "batch_key": "a77e2566",
+  "atoms": [
+    "vault\\01-Atomic\\Concepts\\good-inside_nguyen-tac-hai-dieu-deu-dung-multiplicity.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_niem-tin-tot-dep-o-ben-trong-good-inside.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_noi-tam-hoa-su-an-toan-internalization.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_nuoc-mat-la-tin-hieu-cua-he-thong-gan-ket-tears-as-attachment-signal.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_su-tu-tin-dich-thuc-true-confidence.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_tai-khoan-von-ket-noi-connection-capital.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_tre-em-la-nhung-nha-tham-hiem-tuong-lai.md",
+    "vault\\01-Atomic\\Concepts\\good-inside_tu-duy-phat-trien-growth-mindset-vs-tu-duy-co-dinh-fixed-mindset.md",
+    "vault\\01-Atomic\\Concepts\\WBC_su-hoi-nhap-cua-nao-bo-brain-integration.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_nguyen-tac-hai-dieu-deu-dung-multiplicity.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "philosophy",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_two_things_are_true",
+          "p1_escaping_power_struggle"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_su-giang-xe-giua-ky-luat-va-ket-noi]]"
+        ],
+        "description": "Nguyên tắc 'Hai điều đều đúng' là khả năng chấp nhận nhiều cảm xúc và góc nhìn đối lập cùng lúc. Việc này giúp trẻ cảm thấy được tôn trọng, đồng thời duy trì sự rõ ràng trong ranh giới giáo dục của cha mẹ.",
+        "keywords": [
+          "tâm lý học hành vi",
+          "hai điều đều đúng",
+          "góc nhìn đối lập",
+          "tôn trọng cảm xúc",
+          "ranh giới giáo dục",
+          "chấp nhận khác biệt",
+          "giải quyết xung đột",
+          "nuôi dạy con"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Khả năng chứa đựng và chấp nhận nhiều sự thật, suy nghĩ, cảm xúc, hoặc góc nhìn đối lập cùng lúc tồn tại mà không cần phải triệt tiêu hay phủ nhận bất kỳ điều nào.\n*   **Diễn giải Core Logic:** Trong bất kỳ mối quan hệ nào cũng luôn tồn tại hai tập hợp cảm xúc và góc nhìn. Việc chấp nhận sự đa nguyên (\"Hai điều đều đúng\") giúp cả hai cá nhân cảm thấy được nhìn nhận và tôn trọng, ngay cả khi họ đang có xung đột. Trẻ em cần cảm thấy cha mẹ thừa nhận và cho phép chúng có cảm xúc của riêng mình, nhưng những cảm xúc đó không được phép chi phối hay thay đổi quyết định của cha mẹ. Sự thật về mặt logic (lý do của cha mẹ) và sự thật về mặt cảm xúc (phản ứng của con) là hai đường song song cùng tồn tại.\n*   **💡 Ẩn dụ:** \"Khỏe mạnh là khả năng đứng ở những khoảng không gian giữa các thực tại mà không đánh mất bất kỳ thực tại nào—khả năng cảm thấy như một bản thể duy nhất trong khi đang là nhiều bản thể.\" (Trích lời nhà tâm lý học Philip Bromberg)."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[01-Atomic/Insights/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi|good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]"
+        ],
+        "description": "Sự tự tin đích thực không đến từ lời khen ngợi bên ngoài mà từ khả năng tự tin tưởng vào cảm xúc của chính mình. Khi trẻ được phép chấp nhận mọi cảm xúc, chúng sẽ hình thành sự vững vàng từ bên trong.",
+        "keywords": [
+          "sự tự tin đích thực",
+          "lời khen ngợi",
+          "tự tin tưởng",
+          "công nhận bản thân",
+          "giáo dục tâm lý",
+          "giá trị bên trong",
+          "phát triển nhân cách",
+          "cảm xúc tiêu cực"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Sự tự tin không phải là cảm thấy \"tốt\", mà là tin tưởng: \"Mình biết mình đang cảm thấy gì. Cảm xúc này là có thật, được phép tồn tại, và mình vẫn là một người tốt khi cảm thấy như vậy\". Sự tự tin là khả năng tự thấy thoải mái với bản thân trong dải cảm xúc rộng nhất có thể.\n    *   **Diễn giải Core Logic:** Tự tin xuất phát từ sự tự tin tưởng (self-trust). Khi trẻ được phép chấp nhận và sở hữu những cảm xúc tiêu cực hay bối rối thay vì cố gắng thuyết phục bản thân thoát khỏi chúng, trẻ sẽ hình thành được sự vững vàng từ bên trong. Việc liên tục dùng lời khen ngợi (external validation) chỉ tạo ra cảm giác trống rỗng vì nó nhanh chóng biến mất, khiến trẻ khao khát được khen ngợi thêm thay vì tự công nhận chính mình (internal validation)."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_niem-tin-tot-dep-o-ben-trong-good-inside.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "philosophy",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_good_inside_core_belief",
+          "p1_most_generous_interpretation"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi]]"
+        ],
+        "vivid_knowledges": [
+          "\"Bên dưới hành vi 'Gửi em bé trở lại bệnh viện đi! Con ghét em!' là một đứa trẻ đang đau khổ với nỗi sợ bị bỏ rơi.\""
+        ],
+        "description": "Dù hành vi bên ngoài có tồi tệ, sâu thẳm bên trong mỗi đứa trẻ luôn là sự tốt đẹp. Phân định rõ bản chất và hành vi giúp cha mẹ phản ứng bao dung hơn, xây dựng lòng tự tôn tích cực cho con.",
+        "keywords": [
+          "triết lý giáo dục",
+          "bản chất con người",
+          "hành vi tồi tệ",
+          "sự bao dung",
+          "tâm lý trẻ em",
+          "lòng tự tôn",
+          "niềm tin tốt đẹp",
+          "cốt lõi nhân cách"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Dù hành vi bên ngoài có tồi tệ đến đâu, thì tận sâu thẳm cốt lõi, tất cả chúng ta (cả cha mẹ lẫn con cái) đều là những người từ bi, yêu thương và rộng lượng. Sự tốt đẹp luôn hiện diện ở bên trong.\n*   **Diễn giải Core Logic:** Sự thấu hiểu này không tạo ra sự dễ dãi hay dung túng cho hành vi xấu, mà nó là chìa khóa để phân định rạch ròi giữa BẢN CHẤT (người đó là ai) và HÀNH VI (họ làm gì). Dưới mỗi hành vi tồi tệ luôn là một đứa trẻ tốt đẹp. Khi cha mẹ thường xuyên phản ứng gay gắt mà không nhận ra điều này, trẻ sẽ nội tâm hóa rằng chúng thực sự là người xấu. Ngược lại, nếu được nhìn nhận bằng lăng kính tốt đẹp, trẻ sẽ học được cách tự đối thoại tích cực với bản thân trong những lúc gặp khó khăn."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_noi-tam-hoa-su-an-toan-internalization.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo]]"
+        ],
+        "description": "Nội tâm hóa là quá trình trẻ thu nhận và lưu giữ cảm giác an toàn từ cha mẹ vào tâm trí. Điều này giúp trẻ có thể tự xoa dịu và cảm thấy an tâm ngay cả khi phải đối mặt với sự chia ly.",
+        "keywords": [
+          "nội tâm hóa",
+          "cảm giác an toàn",
+          "sự chia ly",
+          "tự xoa dịu",
+          "tâm lý học trẻ em",
+          "sự gắn kết",
+          "niềm tin gia đình",
+          "phát triển nhận thức"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Nội tâm hóa là quá trình trẻ \"thu nhận\" và lưu giữ những khía cạnh xoa dịu từ mối quan hệ cha mẹ - con cái vào bên trong tâm trí, để chúng có thể tiếp cận được cảm giác an toàn, an tâm và tin tưởng ngay cả khi cha mẹ không xuất hiện ở ngay trước mắt.\n*   **Diễn giải Core Logic:** Trẻ em luôn gắn liền sự hiện diện của cha mẹ với sự an toàn, vì cơ thể chúng mách bảo rằng: \"Chừng nào cha mẹ còn ở gần, mình sẽ được bảo vệ\". Trong những khoảnh khắc chia ly (ngay cả lúc đi ngủ), trẻ phải cố gắng tìm kiếm cảm giác an ninh ở một môi trường mới hoặc với một người chăm sóc mới. Tách rời sẽ trở nên dễ dàng kiểm soát hơn khi chúng ta thu hẹp khoảng trống này bằng cách truyền sự hiện diện của cha mẹ vào môi trường của trẻ, giúp trẻ tự kích hoạt được những cảm giác an toàn từ bên trong."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_nuoc-mat-la-tin-hieu-cua-he-thong-gan-ket-tears-as-attachment-signal.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_tears_as_attachment_signal",
+          "p1_normalize_crying"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears]]"
+        ],
+        "vivid_knowledges": [
+          "Chất lỏng trào ra từ mắt nhằm buộc đối phương phải dừng lại và chú ý đến một điều lớn lao đang diễn ra bên trong.\n\n*   **②-2. actionable_rule: Bình thường hóa việc khóc (Talk About Tears)**"
+        ],
+        "description": "Nước mắt không phải thao túng mà là tín hiệu cho thấy trẻ đang cần hỗ trợ cảm xúc. Cha mẹ cần thấu cảm nhận ra sự yếu đuối bên trong thay vì phán xét biểu hiện khóc lóc bên ngoài.",
+        "keywords": [
+          "tiếng khóc trẻ em",
+          "hệ thống gắn kết",
+          "hỗ trợ cảm xúc",
+          "tín hiệu sinh lý",
+          "sự thấu cảm",
+          "thao túng cảm xúc",
+          "giao tiếp tâm lý",
+          "nuôi dạy trẻ"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Nước mắt hoạt động trong hệ thống gắn kết của con người như một tín hiệu cho thấy chúng ta đang cần sự hỗ trợ cảm xúc và sự kết nối từ người khác. Nó là biểu hiện vật lý chân thực nhất cho sự yếu đuối và cảm xúc sâu thẳm.\n    *   **Diễn giải Core Logic:** Khóc không phải là thao túng mà là nỗ lực của cơ thể khi cố gắng phát đi thông điệp. Ngay cả những gì người lớn gọi là \"khóc giả\" thực chất là sự leo thang cường độ cảm xúc khi trẻ cảm thấy không được lắng nghe, không được thấu hiểu hoặc nhu cầu của mình đang bị phớt lờ. Khi trẻ khóc lóc thái quá, đó là sự tuyệt vọng để được nhìn nhận. Cha mẹ cần tò mò và thấu cảm để nhận ra sự yếu đuối bên trong thay vì phán xét biểu hiện bên ngoài.\n    *   **💡 Ẩn dụ:** \"Những giọt nước mắt đang nói chuyện với tôi, nói rằng: 'Có điều gì đó quá lớn lao đang xảy ra bên trong đến mức tôi thực sự hóa thành một chất lỏng trào ra từ mắt bạn để buộc bạn phải dừng lại và chú ý'.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_su-tu-tin-dich-thuc-true-confidence.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_true_confidence_concept",
+          "p1_validate_and_empower_shyness"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_so-con-mai-nhut-nhat-va-co-lap]]"
+        ],
+        "description": "Sự tự tin đích thực không phải là tham gia mọi hoạt động ngay lập tức, mà là biết rõ cảm xúc của chính mình. Cho phép trẻ tự quyết định khi nào sẵn sàng mới là cách nuôi dưỡng sự tự tin cốt lõi.",
+        "keywords": [
+          "sự tự tin",
+          "kỹ năng quyết định",
+          "tâm lý trẻ em",
+          "quyền tự quyết",
+          "tôn trọng cảm xúc",
+          "sự nhút nhát",
+          "phát triển tính cách",
+          "giáo dục nhận thức"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Sự tự tin là trải nghiệm của việc biết rõ bản thân cảm thấy thế nào và tin rằng việc là chính mình trong cảm xúc đó, vào khoảnh khắc đó, là hoàn toàn ổn thỏa.\n*   **Diễn giải Core Logic:** Sự tự tin không đồng nghĩa với việc phải nhảy ngay vào một nhóm hay tham gia một hoạt động tức thì. Nếu một đứa trẻ bị ép buộc phải tham gia, đó tuyệt đối không phải là tự tin. Ngược lại, một đứa trẻ chưa chắc chắn muốn tham gia và chọn đứng quan sát từ bên ngoài một lúc cũng có thể là một biểu hiện của sự tự tin. Tác giả lập luận rằng sự tự tin không phải là \"đã sẵn sàng\", mà là \"biết khi nào mình sẵn sàng\". Dạy trẻ tin vào chính mình mới là bản chất cốt lõi của sự tự tin."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_tai-khoan-von-ket-noi-connection-capital.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_khung-hoang-vong-lap-hanh-vi]]"
+        ],
+        "vivid_knowledges": [
+          "Tài khoản ngân hàng cảm xúc, Nạp vốn bằng sự thấu hiểu/Rút vốn bằng các mệnh lệnh, Sự hợp tác bên ngoài/Sự chống đối bề mặt"
+        ],
+        "description": "Trẻ em sở hữu một tài khoản cảm xúc được nạp đầy bằng sự kết nối, thấu hiểu và bị rút cạn bởi các mệnh lệnh. Việc chủ động tích lũy nguồn vốn này giúp ngăn chặn các hành vi chống đối bề mặt.",
+        "keywords": [
+          "tài khoản cảm xúc",
+          "nguồn vốn kết nối",
+          "hành vi chống đối",
+          "sự thấu hiểu",
+          "mệnh lệnh cha mẹ",
+          "giao tiếp gia đình",
+          "quản lý cảm xúc",
+          "kỹ năng làm cha mẹ"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** Mỗi đứa trẻ sở hữu một \"tài khoản ngân hàng cảm xúc\" trong đó loại tiền tệ được lưu thông chính là sự kết nối. Hành vi của trẻ ở bất kỳ thời điểm nào cũng phản ánh trực tiếp trạng thái của tài khoản này, cho thấy nó đang được nạp đầy hay đang cạn kiệt.\n*   **Diễn giải Core Logic:** Khi cha mẹ kết nối với con, ghi nhận trải nghiệm và cố gắng thấu hiểu, họ đang nạp \"vốn\" vào tài khoản này, giúp trẻ cảm thấy tự tin, an toàn và có giá trị, từ đó dẫn đến các hành vi tốt (hợp tác, linh hoạt, tự điều chỉnh). Ngược lại, những yêu cầu, quy định, hay mệnh lệnh (như yêu cầu dọn phòng, cất màn hình) chính là những lần \"rút vốn\". Do cha mẹ liên tục phải rút vốn mỗi ngày, nếu họ không chủ động bồi đắp nguồn vốn kết nối dự trữ (connection capital), mối quan hệ sẽ thâm hụt và trẻ sẽ thể hiện sự mất kết nối thông qua các hành vi chống đối.\n*   **💡 Ẩn dụ:** \"Tài khoản ngân hàng cảm xúc\" (emotional bank account)."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_tre-em-la-nhung-nha-tham-hiem-tuong-lai.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "philosophy",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_three_pillars_of_change",
+          "p1_children_as_explorers"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_chan-ly-ve-tuoi-tho]]"
+        ],
+        "vivid_knowledges": [
+          "Không gian của các khả năng, Thấy nhà thám hiểm ở rìa xa nhất, Hình dáng giống những đứa trẻ"
+        ],
+        "description": "Trẻ em không chỉ mang theo hệ gen di truyền mà còn là những nhà thám hiểm mở đường cho khả năng vô hạn của loài người. Sự tồn tại của chúng đại diện cho không gian phân nhánh khổng lồ của tương lai.",
+        "keywords": [
+          "triết lý giáo dục",
+          "năng lực tiềm ẩn",
+          "khả năng tiến hóa",
+          "nền tảng tương lai",
+          "phát triển tư duy",
+          "khám phá thế giới",
+          "tầm nhìn dài hạn",
+          "định hình tương lai"
+        ]
+      },
+      "body": "* **Định nghĩa/Phát biểu luật:** Trẻ em không chỉ là tương lai của chúng ta vì chúng mang theo hệ gen di truyền, mà bởi vì sự tồn tại của chúng gắn liền trực tiếp với những giới hạn xa nhất của các khả năng loài người [2].\n* **Diễn giải Core Logic:** Khả năng thay đổi liên tục của loài người đồng nghĩa với việc ta không thể thấu hiểu bản chất con người chỉ bằng cách nhìn vào thực tại [2]. Thay vào đó, ta phải nhìn về phía trước, vào một không gian phân nhánh khổng lồ của những khả năng chưa từng xảy ra [2]. Ở tận cùng của ranh giới đó, những \"nhà thám hiểm\" đang mở đường chính là những đứa trẻ [2].\n* **💡 Ẩn dụ:** \"Những nhà thám hiểm mà chúng ta nhìn thấy ngoài kia, ở tận cùng ranh giới xa xôi nhất, trông rất giống với những đứa trẻ của chúng ta\" [2]."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\good-inside_tu-duy-phat-trien-growth-mindset-vs-tu-duy-co-dinh-fixed-mindset.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_parental_tolerance_for_resilience",
+          "p1_frustration_tolerance_strategies"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[good-inside_be-tac-khi-con-de-dang-tu-bo]]"
+        ],
+        "description": "Tư duy phát triển là niềm tin rằng khả năng có thể được trau dồi qua nỗ lực, giúp trẻ dễ dàng chấp nhận thử thách. Ngược lại, tư duy cố định khiến trẻ coi thất bại là minh chứng cho sự bất tài.",
+        "keywords": [
+          "tư duy phát triển",
+          "tư duy cố định",
+          "chấp nhận thử thách",
+          "niềm tin bản thân",
+          "khả năng học hỏi",
+          "đối mặt thất bại",
+          "nỗ lực bền bỉ",
+          "giáo dục tư duy"
+        ]
+      },
+      "body": "*   **Định nghĩa/Phát biểu luật:** \"Tư duy phát triển\" là niềm tin rằng khả năng có thể được trau dồi thông qua nỗ lực, học hỏi và kiên trì; thất bại là yếu tố then chốt trên con đường học tập. \"Tư duy cố định\" là niềm tin rằng khả năng là bẩm sinh và thất bại là minh chứng cho sự bất tài.\n*   **Diễn giải Core Logic:** Khả năng chịu đựng sự thất vọng đòi hỏi chúng ta phải buông bỏ nhu cầu phải hoàn thành mọi thứ một cách nhanh chóng, chính xác. Trẻ em (và cả người lớn) có tư duy phát triển sẽ dễ dàng chấp nhận thử thách, học hỏi từ sai lầm và bám trụ với những việc khó khăn lâu hơn vì họ tin rằng nỗ lực làm việc sẽ dẫn đến sự tiến bộ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Concepts\\WBC_su-hoi-nhap-cua-nao-bo-brain-integration.md",
+      "frontmatter": {
+        "type": "concept",
+        "knowledge_type": "concept",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_brain_development"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "supports_insight": [
+          "[[WBC_thieu-hieu-biet-ve-nao-bo-tre-em]]"
+        ],
+        "vivid_knowledges": [
+          "Dàn đồng ca hòa quyện giọng hát, Các phần não bộ liên kết và hoạt động phối hợp"
+        ],
+        "description": "Hội nhập não bộ là quá trình liên kết các vùng não trái, não phải, não trên và não dưới lại với nhau. Điều này giúp trẻ kiểm soát cảm xúc, ra quyết định đúng đắn và phát triển trí tuệ toàn diện.",
+        "keywords": [
+          "khoa học thần kinh",
+          "hội nhập não bộ",
+          "kiểm soát cảm xúc",
+          "phát triển trí tuệ",
+          "não trái và não phải",
+          "tâm sinh lý trẻ",
+          "ra quyết định",
+          "hỗ trợ phát triển"
+        ]
+      },
+      "body": "- Định nghĩa/Phát biểu luật: Hội nhập là quá trình mang đến cho trẻ những trải nghiệm nhằm tạo ra và củng cố các sợi liên kết giữa các phần khác nhau của não bộ, giúp chúng hợp tác và làm việc cùng nhau. Quá trình này bao gồm hội nhập ngang (kết nối não trái logic với não phải cảm xúc) và hội nhập dọc (kết nối não trên chuyên suy nghĩ thấu đáo với não dưới mang tính bản năng, sinh tồn).\n- Diễn giải Core Logic: Khi các phần của não bộ vốn tách biệt được liên kết tốt và hợp tác hài hòa, bộ não có khả năng thực hiện những chức năng phức tạp hơn rất nhiều so với việc từng phần hoạt động độc lập. Một bộ não được hội nhập tốt sẽ mang lại cho trẻ khả năng ra quyết định đúng đắn hơn, kiểm soát được cơ thể và cảm xúc, thấu hiểu bản thân sâu sắc, xây dựng các mối quan hệ bền chặt và đạt được thành công trong học tập.\n- 💡 Ẩn dụ: \"Giống như những ca sĩ độc lập trong một dàn đồng ca có thể hòa quyện những giọng điệu riêng biệt của họ thành một bản hòa âm mà không một cá nhân nào có thể tự tạo ra được, một bộ não được hội nhập có khả năng làm được nhiều điều hơn rất nhiều so với việc các bộ phận của nó tự hoạt động một mình.\""
+    }
+  ]
+}

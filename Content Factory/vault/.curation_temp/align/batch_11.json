@@ -1,0 +1,355 @@
+{
+  "batch_id": 11,
+  "batch_key": "2e551519",
+  "atoms": [
+    "vault\\01-Atomic\\Insights\\cam-bay-thuong-cho-roi-cho-vot.md",
+    "vault\\01-Atomic\\Insights\\chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
+    "vault\\01-Atomic\\Insights\\con-doc-lap-cong-nghe-ai.md",
+    "vault\\01-Atomic\\Insights\\con-hanh-phuc-y-chi-vung-vang.md",
+    "vault\\01-Atomic\\Insights\\duoc-danh-gia-tri-tue.md",
+    "vault\\01-Atomic\\Insights\\ghet-spam-du-do-loi-keo.md",
+    "vault\\01-Atomic\\Insights\\giai-doan-vang-0-7-tuoi.md",
+    "vault\\01-Atomic\\Insights\\giai-thich-logic-khi-con-sai.md",
+    "vault\\01-Atomic\\Insights\\good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac.md",
+    "vault\\01-Atomic\\Insights\\good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\cam-bay-thuong-cho-roi-cho-vot.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "PITFALL",
+        "topics": [
+          "p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Vì thiếu nền tảng triết lý giáo dục, nhiều cha mẹ dễ dàng quay lại cạm bẫy 'thương cho roi cho vọt'. Việc quát mắng hay đánh đòn thường xuất phát từ áp lực hoặc để chứng tỏ sự nghiêm khắc với người ngoài.",
+        "keywords": [
+          "thương cho roi cho vọt",
+          "đánh đòn trẻ",
+          "quát mắng con",
+          "áp lực làm cha mẹ",
+          "thể diện gia đình",
+          "bạo lực giáo dục",
+          "triết lý giáo dục",
+          "kỷ luật tích cực"
+        ]
+      },
+      "body": "# PITFALL: cam bay thuong cho roi cho vot\n\n## 1. Nội dung text thô (Raw payload)\nQuát mắng, đánh con theo thói quen \"thương cho roi cho vọt\" vì áp lực hoặc vì muốn thể hiện sự nghiêm khắc với người ngoài\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nCạm bẫy quay về bạo lực truyền thống xuất phát từ việc thiếu nền tảng triết lý giáo dục vững chắc.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "MYTH",
+        "topics": [
+          "p3_trang_bi_ky_nang_giao_tiep_khong_loi_va_co_loi_cho_con",
+          "p3_phat_trien_van_dong_tho"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Lầm tưởng phổ biến cho rằng giáo dục chỉ cần truyền đạt một chiều: nói là con hiểu, ra lệnh là con nghe. Thực tế, trẻ cần sự đồng hành, làm mẫu và trải nghiệm trực tiếp để có thể tiếp thu và phát triển.",
+        "keywords": [
+          "giáo dục một chiều",
+          "ra lệnh cho con",
+          "giao tiếp với trẻ",
+          "sự đồng hành",
+          "làm gương cho trẻ",
+          "trải nghiệm thực tế",
+          "sai lầm nuôi dạy",
+          "kỹ năng truyền đạt"
+        ]
+      },
+      "body": "# MYTH: chi noi la con hieu ra lenh la con nghe\n\n## 1. Nội dung text thô (Raw payload)\nChỉ nói là con hiểu, ra lệnh là con nghe, không cần đồng hành\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nLầm tưởng rằng giáo dục chỉ cần truyền đạt một chiều. Trẻ cần sự đồng hành, làm mẫu và trải nghiệm trực tiếp để phát triển.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\con-doc-lap-cong-nghe-ai.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "DESIRE",
+        "topics": [
+          "p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the",
+          "p1_steiner_va_khoa_hoc_phat_trien_toan_dien"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Khát khao của cha mẹ là con cái được phát triển toàn diện, yêu thương gia đình và có đủ sự tự chủ. Họ mong muốn con luôn độc lập, không bị phụ thuộc vào các thiết bị công nghệ hay trí tuệ nhân tạo.",
+        "keywords": [
+          "sự tự chủ",
+          "phát triển toàn diện",
+          "trí tuệ nhân tạo",
+          "phụ thuộc công nghệ",
+          "độc lập tư duy",
+          "giáo dục thời đại số",
+          "mong muốn cha mẹ",
+          "tình yêu gia đình"
+        ]
+      },
+      "body": "# DESIRE: con doc lap cong nghe AI\n\n## 1. Nội dung text thô (Raw payload)\nCon yêu gia đình, phát triển lành mạnh, độc lập với công nghệ/AI\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nPhụ huynh mong muốn con phát triển toàn diện về thể chất và tinh thần, có khả năng tự chủ thay vì phụ thuộc vào công nghệ và AI.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\con-hanh-phuc-y-chi-vung-vang.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "DESIRE",
+        "topics": [
+          "p1_xay_dung_y_chi_cho_tre",
+          "p1_steiner_va_khoa_hoc_phat_trien_toan_dien"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Khao khát sâu sắc nhất của cha mẹ là nuôi dưỡng một đứa trẻ có ý chí mạnh mẽ. Họ mong con sở hữu đời sống nội tâm phong phú, vững vàng và có khả năng tự cảm nhận hạnh phúc từ bên trong.",
+        "keywords": [
+          "ý chí mạnh mẽ",
+          "hạnh phúc tự thân",
+          "đời sống nội tâm",
+          "khả năng tự cảm nhận",
+          "nuôi dưỡng tinh thần",
+          "mục tiêu giáo dục",
+          "sự vững vàng",
+          "phát triển tâm hồn"
+        ]
+      },
+      "body": "# DESIRE: con hanh phuc y chi vung vang\n\n## 1. Nội dung text thô (Raw payload)\nCon được hạnh phúc, có ý chí, nội tâm vững vàng\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nKhao khát sâu nhất là con có đời sống nội tâm phong phú, ý chí mạnh mẽ và cảm nhận hạnh phúc từ bên trong.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\duoc-danh-gia-tri-tue.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "LIKES",
+        "topics": [
+          "p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Một mong muốn thầm kín nhưng mạnh mẽ của phụ huynh là được xã hội đánh giá cao. Họ thích được mọi người nhìn nhận như những người có trí tuệ, hiểu biết và có chiều sâu trong phương pháp nuôi dạy con cái.",
+        "keywords": [
+          "sự công nhận",
+          "áp lực xã hội",
+          "hình ảnh cha mẹ",
+          "triết lý giáo dục",
+          "nuôi dạy thông thái",
+          "nhu cầu khẳng định",
+          "thể diện phụ huynh",
+          "sự hiểu biết"
+        ]
+      },
+      "body": "# LIKES: duoc danh gia tri tue\n\n## 1. Nội dung text thô (Raw payload)\nBố mẹ được mọi người đánh giá là trí tuệ\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nPhụ huynh muốn được nhìn nhận là những người có hiểu biết, có chiều sâu trong cách nuôi dạy con.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\ghet-spam-du-do-loi-keo.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "DISLIKES",
+        "topics": [
+          "p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Khi tìm hiểu về trường học hay phương pháp giáo dục, phụ huynh rất ác cảm với các hình thức spam, lôi kéo hoặc quá thân mật. Họ thường dùng lý trí và đề cao cảnh giác trước những lời quảng cáo quá mức.",
+        "keywords": [
+          "marketing giáo dục",
+          "quảng cáo sai lệch",
+          "cảnh giác lôi kéo",
+          "tâm lý phụ huynh",
+          "chọn trường cho con",
+          "sự phản cảm",
+          "truyền thông trường học",
+          "tư duy lý trí"
+        ]
+      },
+      "body": "# DISLIKES: ghet spam du do loi keo\n\n## 1. Nội dung text thô (Raw payload)\nSpam, quá dụ dỗ, lôi kéo, quá thân mật ban đầu khi tìm hiểu phương pháp học/tìm hiểu trường\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nPhụ huynh nhóm này có xu hướng lý trí và cảnh giác với các hình thức marketing quá mức.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\giai-doan-vang-0-7-tuoi.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "BELIEF",
+        "topics": [
+          "p1_cua_so_vang_phat_trien_tre_0_7_tuoi"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Niềm tin mãnh liệt rằng 0-7 tuổi là 'giai đoạn vàng' vô giá cho sự phát triển của trẻ nhỏ. Đây là động lực thúc đẩy cha mẹ không ngừng tìm kiếm những phương pháp giáo dục bài bản và có chiều sâu.",
+        "keywords": [
+          "giai đoạn vàng",
+          "phát triển sớm",
+          "giáo dục mầm non",
+          "động lực cha mẹ",
+          "cơ hội vô giá",
+          "đầu tư giáo dục",
+          "nuôi dạy con bài bản",
+          "khoa học phát triển"
+        ]
+      },
+      "body": "# BELIEF: giai doan vang 0-7 tuoi\n\n## 1. Nội dung text thô (Raw payload)\n0-7 tuổi là giai đoạn vàng phát triển cho con\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nNiềm tin vào giai đoạn vàng 0-7 tuổi là động lực chính khiến phụ huynh tìm kiếm phương pháp giáo dục có chiều sâu.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\giai-thich-logic-khi-con-sai.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "MYTH",
+        "topics": [
+          "p1_cua_so_vang_phat_trien_tre_0_7_tuoi",
+          "p1_steiner_va_khoa_hoc_phat_trien_toan_dien"
+        ],
+        "source_id": "persona-interview",
+        "belongs_to_audience": [
+          "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+        ],
+        "status": "processed",
+        "created": "2026-06-21",
+        "source_type": "User",
+        "source_name": "Persona Interview",
+        "confidence": 1.0,
+        "vivid_insights": [],
+        "vivid_insights_reserve": [],
+        "description": "Nhiều cha mẹ lầm tưởng có thể dùng lý luận logic ngay khi con làm sai để giảng giải. Thực tế, não bộ trẻ dưới 7 tuổi chưa phát triển đủ tư duy trừu tượng để tiếp nhận logic như một người lớn.",
+        "keywords": [
+          "lý luận với trẻ",
+          "giảng giải logic",
+          "tư duy trừu tượng",
+          "phát triển não bộ",
+          "khi trẻ làm sai",
+          "sai lầm giao tiếp",
+          "tâm lý độ tuổi",
+          "kỷ luật độ tuổi mầm non"
+        ]
+      },
+      "body": "# MYTH: giai thich logic khi con sai\n\n## 1. Nội dung text thô (Raw payload)\nKhi con sai phải giải thích logic ngay lúc đó để con hiểu\n\n## 2. Giải thích / Luận điểm (Insightful explain)\nLầm tưởng phổ biến rằng trẻ nhỏ có thể tiếp nhận logic như người lớn. Não bộ trẻ dưới 7 tuổi chưa phát triển đầy đủ vùng tư duy trừu tượng.\n\n## 3. Liên kết mở rộng\n\n\n<!-- ==========================================\nVÍ DỤ MINH HỌA 1 FILE INSIGHT HOÀN CHỈNH SAU KHI RENDER\n(Đoạn này được đưa vào trong thẻ comment để ẩn trên giao diện đọc của Obsidian)\n\n---\ntype: insight\ninsight_type: \"PAIN_POINT\"\ninsight_name: \"Sợ bị công nghệ AI cướp mất miếng cơm\"\nbelongs_to_audience: [\"[[Content_Creator_Bất_an_trước_làn_sóng_GenAI]]\"]\nstatus: processed\ncreated: \"2026-03-30\"\nsource_type: \"User\"\nsource_name: \"Persona Interview\"\nconfidence: 1.0\n---\n\n# PAIN_POINT: Sợ bị công nghệ AI cướp mất miếng cơm\n\n## 1. Nội dung text thô (Raw payload)\nDạo này tôi thấy ChatGPT với Claude viết lách mượt quá. Đọc xong tôi thực sự hoang mang, sợ rằng với tốc độ này thì 1-2 năm nữa nghề Content Creator truyền thống sẽ bị xóa sổ. Khách hàng giờ thà bỏ tiền cho công cụ AI giá rẻ thay vì trả lương cho mình...\n\n## 2. Giải thích / Luận điểm (Insightful explain)\n-> LUẬN ĐIỂM: Khủng hoảng niềm tin & Nỗi sợ bị đào thải (Career Obsolescence). \nNgười dùng không ghét công nghệ, mà họ sợ hãi vì cảm thấy AI đang từ vị thế \"công cụ hỗ trợ\" bước lên thành \"đối thủ cạnh tranh giá rẻ\" đe dọa sinh kế trực tiếp. Pain Point cốt lõi này dựng lên hàng rào phòng thủ tâm lý, khiến họ từ chối thích nghi với hệ sinh thái mới.\n\n## 3. Liên kết mở rộng\n========================================== -->\n\n<!--\nTên file: insight.md\nLast update: 27/05/2026 00:15 (GMT+7)\nVai trò: Template Markdown cho các file Atomic Insight của hệ thống DIKW\nĐược sử dụng khi nào: Khi script generate_insights.py thực hiện render các câu hỏi phỏng vấn Persona thành các file Atomic Insight\nOutput: File .md chứa đầy đủ frontmatter Schema B mới và thân bài của Insight\nTóm tắt logic hoạt động: Chứa cấu trúc Obsidian-ready frontmatter và các placeholder (type, topics, target_audience, raw_payload, llm_explain) để script tự động thay thế bằng dữ liệu thực tế thu được từ quá trình phỏng vấn persona.\n-->"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership",
+          "p1_consent_circuitry",
+          "p1_trusting_bodily_signals"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long]]"
+        ],
+        "description": "Vì muốn giữ thể diện trước người lớn, cha mẹ thường ép con phải thực hiện các cử chỉ giao tiếp âu yếm. Sự gượng ép này vô tình buộc trẻ phải phớt lờ đi cảm giác bất an của chính cơ thể mình.",
+        "keywords": [
+          "thể diện gia đình",
+          "ép buộc giao tiếp",
+          "cử chỉ âu yếm",
+          "ranh giới cơ thể",
+          "cảm giác bất an",
+          "tôn trọng trẻ em",
+          "vui lòng người khác",
+          "áp lực văn hóa"
+        ]
+      },
+      "body": "*   **Mô tả:** Phụ huynh thường cảm thấy áy náy, khó xử hoặc bối rối trước người lớn tuổi khi con cái từ chối các cử chỉ âu yếm giao tiếp thông thường. Để xoa dịu tình huống và giữ thể diện, họ có xu hướng bắt ép trẻ phải phớt lờ cảm giác không thoải mái của chính cơ thể mình nhằm làm vừa lòng người khác."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_parenting_child_behavior",
+          "p1_connection_over_correction",
+          "p1_sturdy_leadership"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Unknown (bởi Dr. Becky Kennedy, 2022)",
+        "source_id": "unknown",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_pha-vo-su-khang-cu_tre-lam-sai]]"
+        ],
+        "vivid_insights": [
+          "Đứa trẻ lạnh lùng, tê liệt và phớt lờ cha mẹ thay vì thể hiện sự hối lỗi"
+        ],
+        "description": "Cha mẹ thường tức giận tột độ khi con làm sai nhưng lại phản ứng lạnh lùng, từ chối nhận lỗi. Việc vội vàng dán nhãn con 'thiếu đồng cảm' thường dẫn đến đòn trừng phạt gay gắt khiến tình hình thêm tồi tệ.",
+        "keywords": [
+          "phản ứng lạnh lùng",
+          "từ chối nhận lỗi",
+          "dán nhãn trẻ",
+          "thiếu đồng cảm",
+          "đòn trừng phạt",
+          "tức giận nuôi dạy",
+          "sự chống đối",
+          "giao tiếp bế tắc"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường cảm thấy tức giận, thất vọng và bế tắc tột độ khi con cái làm sai nhưng lại phản ứng bằng thái độ lạnh lùng, vô cảm, từ chối nhận lỗi hoặc tiếp tục nói dối. Cha mẹ dễ rơi vào hố sâu diễn dịch sai lầm rằng con mình \"thiếu sự đồng cảm\" hoặc \"cố tình chống đối\", dẫn đến những phản ứng gay gắt và các biện pháp trừng phạt chỉ làm tình hình tệ đi."
+    }
+  ]
+}

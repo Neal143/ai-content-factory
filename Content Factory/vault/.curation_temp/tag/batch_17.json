@@ -1,0 +1,359 @@
+{
+  "batch_id": 17,
+  "batch_key": "79c2531f",
+  "atoms": [
+    "vault\\01-Atomic\\Insights\\WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con.md",
+    "vault\\01-Atomic\\Insights\\WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait.md",
+    "vault\\01-Atomic\\Insights\\WBC_su-so-hai-khi-phai-doi-mat-voi-ky-uc-ton-thuong.md",
+    "vault\\01-Atomic\\Insights\\WBC_tach-roi-viec-song-sot-va-phat-trien.md",
+    "vault\\01-Atomic\\Insights\\WBC_thieu-hieu-biet-ve-nao-bo-tre-em.md",
+    "vault\\01-Atomic\\Insights\\WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa.md",
+    "vault\\01-Atomic\\Insights\\WBC_tre-thieu-tu-vung-de-goi-ten-va-nhan-dien-cac-sac-thai-cam-xuc-phuc-tap.md",
+    "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md",
+    "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md",
+    "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_conflict_resolution",
+          "p1_connect_through_conflict"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac]]"
+        ],
+        "description": "Khi trẻ cãi vã, cha mẹ thường cảm thấy mệt mỏi và chỉ muốn phân xử đúng sai nhanh chóng. Sự né tránh này đã vô tình bỏ lỡ cơ hội biến mâu thuẫn thành bài học rèn luyện trí tuệ cảm xúc cho con.",
+        "keywords": [
+          "né tránh xung đột",
+          "phân xử đúng sai",
+          "trẻ cãi vã",
+          "mệt mỏi kỷ luật",
+          "bài học mâu thuẫn",
+          "trí tuệ cảm xúc",
+          "kỹ năng xã hội",
+          "giải quyết xung đột"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường mong muốn con cái tránh được mọi xung đột hoặc cảm thấy mệt mỏi, chỉ muốn nhanh chóng phân xử đúng sai và trừng phạt khi trẻ cãi vã. Điều này vô tình bỏ lỡ cơ hội biến những mâu thuẫn thành bài học để rèn luyện các kỹ năng xã hội và trí tuệ cảm xúc cho trẻ."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_emotional_regulation",
+          "p1_emotional_cloud_model"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cam-xuc_khi-con-mac-ket-tuc-gian]]"
+        ],
+        "vivid_insights": [
+          "Đứng dưới một cơn mưa tầm tã và hành xử như thể mặt trời sẽ không bao giờ xuất hiện lại nữa"
+        ],
+        "description": "Trẻ em thường gặp khó khăn khi nhận diện những cảm xúc tiêu cực chỉ mang tính tạm thời. Sự nhầm lẫn giữa trạng thái nhất thời và tính cách vĩnh viễn khiến trẻ dễ rơi vào bế tắc và không thể tự giải thoát.",
+        "keywords": [
+          "cảm xúc tạm thời",
+          "tính cách vĩnh viễn",
+          "nhầm lẫn trạng thái",
+          "bế tắc cảm xúc",
+          "nhận diện tâm lý",
+          "nỗi buồn nhất thời",
+          "tự giải thoát",
+          "thần kinh học"
+        ]
+      },
+      "body": "*   **Mô tả:** Trẻ em (và cả người lớn) thường gặp khó khăn trong việc nhận ra rằng nỗi buồn hay sự tức giận chỉ là tạm thời. Khi đối mặt với sự cố, trẻ dễ rơi vào bế tắc, đánh đồng một cảm xúc tiêu cực nhất thời (state) thành một đặc điểm tính cách vĩnh viễn của bản thân (trait), dẫn đến việc không thể thoát ra khỏi cảm xúc đó."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_su-so-hai-khi-phai-doi-mat-voi-ky-uc-ton-thuong.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "barrier",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_trauma_recovery",
+          "p1_remote_of_the_mind"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_giup-tre-doi-mat-tich-hop-ky-uc-dau-buon_khi-tre-ne-tranh-so-hai-chuyen-cu]]"
+        ],
+        "description": "Trẻ thường có xu hướng trốn tránh việc nhớ lại những trải nghiệm đau buồn do cảm giác hoảng loạn mang lại. Điều này vô tình tạo điều kiện cho các ký ức ngầm tiếp tục chi phối hành vi thông qua những nỗi ám ảnh.",
+        "keywords": [
+          "trốn tránh ký ức",
+          "trải nghiệm đau buồn",
+          "cảm giác hoảng loạn",
+          "ký ức ngầm",
+          "chi phối hành vi",
+          "nỗi ám ảnh",
+          "tổn thương tâm lý",
+          "chữa lành tuổi thơ"
+        ]
+      },
+      "body": "- Mô tả: Trẻ em thường trốn tránh việc nhớ lại hoặc kể lại những trải nghiệm đau buồn, đáng sợ trong quá khứ vì nó mang lại cảm giác mất kiểm soát và hoảng loạn. Điều này tạo ra một rào cản khiến ký ức ngầm tiếp tục chi phối hành vi hiện tại của trẻ dưới dạng các nỗi ám ảnh hoặc phản ứng thái quá."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_tach-roi-viec-song-sot-va-phat-trien.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_crisis_management_in_parenting",
+          "p1_survive_and_thrive_mindset"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang]]"
+        ],
+        "description": "Phụ huynh thường lầm tưởng việc nuôi dạy ý nghĩa chỉ có thể diễn ra trong những khoảnh khắc bình yên. Quan niệm sai lầm này khiến họ bỏ lỡ cơ hội giáo dục tuyệt vời ẩn giấu ngay trong những cuộc khủng hoảng của trẻ.",
+        "keywords": [
+          "nuôi dạy ý nghĩa",
+          "khoảnh khắc bình yên",
+          "quan niệm sai lầm",
+          "cơ hội giáo dục",
+          "khủng hoảng trẻ em",
+          "tách rời sinh tồn",
+          "phát triển toàn diện",
+          "tư duy kỷ luật"
+        ]
+      },
+      "body": "*   **Mô tả:** Cha mẹ thường bị cuốn vào những tình huống căng thẳng thường nhật và tin rằng những khoảnh khắc khó khăn, khủng hoảng của trẻ (survive) là những lúc chỉ cần vượt qua cho xong. Họ mang nỗi đau và niềm tin sai lệch rằng việc nuôi dưỡng và dạy dỗ những điều ý nghĩa (thrive) cần những khoảng thời gian đặc biệt, bình yên và phải được tách biệt hoàn toàn với những lúc trẻ quậy phá hay nổi loạn."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_thieu-hieu-biet-ve-nao-bo-tre-em.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_brain_development"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay]]"
+        ],
+        "description": "Dù rất am hiểu về việc chăm sóc cơ thể vật lý, nhiều cha mẹ lại thiếu kiến thức cơ bản về cách não bộ trẻ hoạt động. Sự thiếu hụt này khiến họ luôn lúng túng trước những hành vi phức tạp của con cái.",
+        "keywords": [
+          "thiếu kiến thức",
+          "não bộ trẻ em",
+          "cơ thể vật lý",
+          "hành vi phức tạp",
+          "sự lúng túng",
+          "phản ứng hiệu quả",
+          "khoa học thần kinh",
+          "chăm sóc trẻ"
+        ]
+      },
+      "body": "- Mô tả: Mặc dù các bậc cha mẹ thường rất sành sỏi và chuyên gia về cơ thể vật lý của con cái (như biết khi nào trẻ sốt hay cách làm sạch vết thương), họ lại thường thiếu những thông tin cơ bản về cách não bộ của trẻ hoạt động. Sự thiếu hụt này khiến họ lúng túng, khó khăn trong việc hiểu và phản ứng hiệu quả trước các tình huống hành vi phức tạp của con."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_memory_development",
+          "p1_remember_to_remember"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay]]"
+        ],
+        "description": "Những câu hỏi thăm của cha mẹ thường chỉ nhận lại sự lảng tránh và câu trả lời cụt lủn từ con. Điều này khiến phụ huynh gặp khó khăn trong việc thấu hiểu đời sống nội tâm và kịp thời giúp trẻ tích hợp ký ức.",
+        "keywords": [
+          "trả lời qua loa",
+          "sự lảng tránh",
+          "đời sống nội tâm",
+          "thấu hiểu trẻ",
+          "tích hợp ký ức",
+          "kết nối gia đình",
+          "kỹ năng kể chuyện",
+          "giao tiếp với con"
+        ]
+      },
+      "body": "*   **Mô tả:** Rất nhiều phụ huynh nỗ lực hỏi thăm về một ngày của con cái nhưng thường chỉ nhận lại sự im lặng, lảng tránh hoặc những câu trả lời cụt lủn như \"Bình thường\", \"Không có gì\". Điều này khiến cha mẹ khó nắm bắt được đời sống nội tâm và những trải nghiệm thực sự (đôi khi là khó khăn) mà trẻ đang trải qua để kịp thời hướng dẫn trẻ tích hợp ký ức."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Insights\\WBC_tre-thieu-tu-vung-de-goi-ten-va-nhan-dien-cac-sac-thai-cam-xuc-phuc-tap.md",
+      "frontmatter": {
+        "type": "insight",
+        "insight_type": "pain_point",
+        "topics": [
+          "p1_neuroscience_parenting",
+          "p1_whole_brain_integration",
+          "p1_crisis_integration_opportunity",
+          "p1_child_self_awareness",
+          "p1_sift_method"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)",
+        "source_id": "the-whole-brain-child",
+        "confidence": 0.9,
+        "belongs_to_audience": [
+          "[[cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc]]"
+        ],
+        "vivid_insights": [
+          "Cảm xúc nghèo nàn, Vẽ bức tranh nội tâm bằng màu đen trắng, Chỉ biết diễn tả cảm xúc bằng từ chung chung như 'ổn' hoặc 'tệ'"
+        ],
+        "description": "Do vốn từ vựng hạn chế, trẻ thường chỉ mô tả cảm xúc bằng những khái niệm chung chung như tốt hoặc tệ. Sự thiếu hụt năng lực nhận diện tâm trạng khiến trẻ dễ bị các cảm xúc tiêu cực đánh gục hoàn toàn.",
+        "keywords": [
+          "vốn từ vựng",
+          "mô tả cảm xúc",
+          "nhận diện tâm trạng",
+          "cảm xúc tiêu cực",
+          "bức tranh cảm xúc",
+          "khái niệm chung chung",
+          "năng lực tự điều chỉnh",
+          "gọi tên cảm xúc"
+        ]
+      },
+      "body": "*   **Mô tả:** Trẻ em thường gặp khó khăn trong việc tư duy về cảm xúc một cách sâu sắc. Các em thường chỉ dùng những từ ngữ chung chung, mù mờ như \"ổn\" (fine) hoặc \"tệ\" (bad) để mô tả tâm trạng của mình [5]. Việc thiếu năng lực nhận diện sự đa dạng của cảm xúc, cảm giác, hình ảnh và suy nghĩ khiến \"bức tranh cảm xúc\" của trẻ chỉ quanh quẩn ở hai màu đen và trắng, làm trẻ dễ bị các cảm xúc tiêu cực đánh gục mà không biết cách tự điều chỉnh [3, 5, 6]."
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_archetypal_toys",
+          "p1_natural_elements_play"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_cung-cap-do-choi-mo-open-ended-toys]]"
+        ],
+        "description": "Trẻ em sở hữu bản năng hấp thụ nguyên vẹn toàn bộ khung cảnh xung quanh. Thay vì phải dùng tư duy để sao chép như người lớn, trẻ phản ứng bằng sự bắt chước chính xác một cách đáng kinh ngạc và hoàn toàn tự nhiên.",
+        "keywords": [
+          "bản năng bắt chước",
+          "sao chép hành động",
+          "phản ứng tự nhiên",
+          "hấp thụ nguyên vẹn",
+          "khung cảnh xung quanh",
+          "trẻ nhỏ quan sát",
+          "tư duy người lớn",
+          "năng lực học hỏi"
+        ]
+      },
+      "body": "\"Nếu chúng ta, những người lớn, muốn sao chép hành động của ai đó một cách chính xác, chúng ta sẽ phải quan sát người đó cẩn thận theo thời gian và sử dụng tư duy của mình để đạt được kết quả mong muốn. Nhưng một đứa trẻ theo bản năng sẽ thu nhận một khung cảnh như một bức tranh tổng thể và phản ứng bằng một sự bắt chước chính xác hơn bất kỳ người lớn nào có thể đạt được.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_archetypal_toys"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_tre-choi-thong-qua-viec-bat-chuoc-cong-viec]]"
+        ],
+        "description": "Sự hiện diện của trẻ nhỏ có thể làm gián đoạn tiến độ công việc thường ngày. Tuy nhiên, thái độ và cách người lớn xử lý công việc mới thực sự mang lại bài học giá trị hơn hẳn những kết quả đạt được.",
+        "keywords": [
+          "gián đoạn công việc",
+          "thái độ làm việc",
+          "bài học giá trị",
+          "kết quả công việc",
+          "sự hiện diện",
+          "cách thức thực hiện",
+          "quan sát người lớn",
+          "giáo dục vô thức"
+        ]
+      },
+      "body": "\"Chúng ta có thể không hoàn thành được công việc khi có trẻ ở quanh, nhưng cách chúng ta làm việc quan trọng hơn là những gì chúng ta hoàn thành được.\""
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md",
+      "frontmatter": {
+        "type": "quote",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_little_puberty",
+          "p1_dangers_of_early_intellectualism"
+        ],
+        "status": "processed",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_tac-hai-cua-tu-duy-tri-thuc-som-va-man-hinh-doi-voi-suc-khoe]]"
+        ],
+        "description": "Trí tưởng tượng của trẻ em hoạt động với cơ chế tương tự như một khối cơ bắp. Nếu không được chú trọng rèn luyện và kích thích hàng ngày, nó sẽ dần trở nên thui chột và teo tóp theo thời gian.",
+        "keywords": [
+          "trí tưởng tượng",
+          "cơ chế cơ bắp",
+          "rèn luyện hàng ngày",
+          "kích thích phát triển",
+          "sự thui chột",
+          "teo tóp trí tuệ",
+          "não bộ sáng tạo",
+          "trẻ em phát triển"
+        ]
+      },
+      "body": "\"Trí tưởng tượng của trẻ teo tóp như một cơ bắp không được sử dụng nếu nó không được tập luyện hàng ngày.\""
+    }
+  ]
+}

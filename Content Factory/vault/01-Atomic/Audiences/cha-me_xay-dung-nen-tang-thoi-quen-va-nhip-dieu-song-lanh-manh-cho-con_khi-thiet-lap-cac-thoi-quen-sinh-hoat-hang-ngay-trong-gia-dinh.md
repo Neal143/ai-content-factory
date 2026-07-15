@@ -4,7 +4,7 @@ audience_Job_performer: cha mẹ
 audience_main_job: xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con
 audience_circumstance: khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
 - tạo lập nhịp điệu sinh hoạt cho trẻ
 - rèn luyện thói quen sống lành mạnh tại nhà

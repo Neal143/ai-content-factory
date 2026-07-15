@@ -4,7 +4,7 @@ audience_Job_performer: cha mẹ
 audience_main_job: rèn luyện kỷ luật cho con
 audience_circumstance: khi đối mặt với những hành vi chưa tốt của trẻ nhỏ
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
 - uốn nắn hành vi chưa ngoan của con
 - dạy con tính kỷ luật thông qua làm gương

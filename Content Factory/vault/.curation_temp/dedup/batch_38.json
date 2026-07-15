@@ -1,0 +1,373 @@
+{
+  "batch_id": 38,
+  "batch_key": "d8306b05",
+  "atoms": [
+    "vault\\01-Atomic\\Stories\\BTRB_story-be-gai-hai-tuoi-cau-hoi-gay-boi-roi-16.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-chau-gai-lon-cua-tac-gia-buong-tay-tap-di-4.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-dua-tre-thien-duong-ha-pham-qua-cau-vong-27.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-gia-dinh-tac-gia-tu-lanh-boc-mui-13.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-hai-be-gai-4-tuoi-va-be-gai-6-tuoi-hai-dua-tre-cai-nhau-21.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-me-cua-mot-hoc-sinh-tang-qua-giang-sinh-9.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-me-cua-tac-gia-ba-ui-21-chiec-ao-so-mi-1.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-mot-nguoi-me-thay-doi-cach-ra-lenh-18.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-tac-gia-chuyen-huong-choi-thu-len-17.md",
+    "vault\\01-Atomic\\Stories\\BTRB_story-tac-gia-va-me-nhip-dieu-viec-nha-6.md"
+  ],
+  "atoms_content": [
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-be-gai-hai-tuoi-cau-hoi-gay-boi-roi-16.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play"
+        ],
+        "status": "processed",
+        "protagonist": "Bé gái hai tuổi",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon]]"
+        ],
+        "description": "Câu chuyện về một bé gái hai tuổi bật khóc nức nở tại hội chợ khi bố mẹ liên tục lặp đi lặp lại câu hỏi để ép em phải tự đưa ra quyết định cho gia đình.",
+        "keywords": [
+          "giáo dục sớm",
+          "giao tiếp với trẻ",
+          "bé gái hai tuổi",
+          "hội chợ trường học",
+          "câu hỏi lựa chọn",
+          "ép buộc quyết định",
+          "gây bối rối",
+          "trẻ bật khóc",
+          "gánh nặng quyết định"
+        ]
+      },
+      "body": "<situation>Tôi đã nghe thấy một kiểu câu hỏi gây bối rối khác tại một hội chợ trường học vào kỳ nghỉ một vài năm trước. Một người mẹ đang nói chuyện với cô con gái nhỏ khoảng hai tuổi của mình.</situation>\n<problem>\"Con muốn ăn ở đây hay về nhà ăn?\" Cô bé không trả lời, nên người mẹ lặp lại câu hỏi: \"Con muốn ăn ở đây hay về nhà ăn?\" Cô bé vẫn không trả lời. Bố của đứa trẻ tham gia cùng họ, và người mẹ kể lại tình hình cho anh ấy. Người bố tiếp tục việc đặt câu hỏi ngay tại nơi người mẹ bỏ dở, \"Con muốn ăn ở đây, hay về nhà ăn?\"</problem>\n<outcome>Cô bé bắt đầu khóc. Sau đó người mẹ nói, \"Con bé mệt rồi. Chúng ta về nhà thôi.\"</outcome>\n<lesson>Đứa trẻ rõ ràng cảm thấy bị gánh nặng khi bị yêu cầu phải đưa ra những quyết định cho gia đình.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-chau-gai-lon-cua-tac-gia-buong-tay-tap-di-4.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_parenting_foundations"
+        ],
+        "status": "processed",
+        "protagonist": "Cháu gái lớn của tác giả",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_ho-tro-phat-trien-ngon-ngu-thong-qua-su-bat-chuoc-chuan-muc]]"
+        ],
+        "description": "Câu chuyện quan sát hình ảnh cô cháu gái của tác giả đầy tự hào khi dũng cảm buông tay để tìm kiếm sự thăng bằng trong không gian ở giai đoạn chập chững tập đi.",
+        "keywords": [
+          "giáo dục sớm",
+          "phát triển vận động",
+          "cháu gái nhỏ",
+          "chập chững tập đi",
+          "tự tìm thăng bằng",
+          "buông tay hỗ trợ",
+          "động lực nội tại",
+          "không bỏ cuộc",
+          "bám víu thiên đường"
+        ]
+      },
+      "body": "<situation>Tác giả quan sát quá trình phát triển của đứa cháu gái lớn thông qua một bức ảnh khi cô bé đang chập chững bước đi.</situation>\n<problem>Đứa trẻ đang trong giai đoạn cố gắng tìm kiếm sự thăng bằng trong không gian mà không có bất kỳ điểm tựa vật lý nào xung quanh.</problem>\n<outcome>Đứa trẻ tự hào bước đi với cả hai cánh tay giơ lên cao trong không khí.</outcome>\n<lesson>Đứa trẻ đã buông bỏ mọi sự hỗ trợ vật lý nhưng vẫn đang \"bám víu vào thiên đường\" - minh chứng cho động lực nội tại mãnh liệt (\"Tôi sẽ làm được!\") của trẻ sơ sinh trong việc học hỏi các kỹ năng sinh tồn mà không bao giờ bỏ cuộc.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-dua-tre-thien-duong-ha-pham-qua-cau-vong-27.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_rainbow_bridge_story"
+        ],
+        "status": "processed",
+        "protagonist": "Đứa trẻ thiên đường",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_cau-chuyen-cau-vong-rainbow-bridge-story]]"
+        ],
+        "description": "Câu chuyện cổ tích tuyệt đẹp kể về hành trình đầy dũng cảm của một đứa trẻ thiên đường bước qua cầu vồng để hạ phàm và trở thành thành viên trong một gia đình ở trần gian.",
+        "keywords": [
+          "giáo dục sớm",
+          "kể chuyện cho bé",
+          "đứa trẻ thiên đường",
+          "ngôi nhà mặt trăng",
+          "gia đình trần gian",
+          "ước mơ hạ phàm",
+          "bước qua cầu vồng",
+          "cuộc hành trình dài",
+          "em bé chào đời"
+        ]
+      },
+      "body": "<situation>Ngày xửa ngày xưa, ở một vùng đất xa xôi nhưng cũng thật gần, có một đứa trẻ thiên đường sinh sống. Cậu bé làm việc trong ngôi nhà của mặt trăng. Cậu làm việc trong những ngôi nhà của các vì sao và cậu làm việc một thời gian dài trong ngôi nhà của mặt trời. Khi hoàn thành công việc ở mỗi ngôi nhà, cậu nhận được một món quà.\n\nMột lần nọ, cậu đang ở cùng những người bạn đặc biệt của mình thì đột nhiên những đám mây hé mở và cậu nhìn thấy một viên ngọc tròn tuyệt đẹp bên dưới. Nhưng đúng lúc cậu muốn nhìn rõ hơn, những đám mây lại khép lại. Cậu kể điều này với một trong những vị Thiên thần mà cậu cảm thấy vô cùng gần gũi. \"Con đã nhìn thấy trái đất,\" Thiên thần nói. \"Con có thể xuống đó được không?\" đứa trẻ hỏi. \"Được, con có thể đi nhưng giờ chưa phải lúc thích hợp,\" Thiên thần trả lời, và thế là đứa trẻ thiên đường tiếp tục vui chơi cùng các bạn và làm công việc của mình trên thiên đường.\n\nMột thời gian sau, những đám mây lại hé mở nhưng lần này đứa trẻ thiên đường nhìn thấy tất cả các màu sắc cầu vồng trên trái đất. Cậu nhìn thấy những chú bướm đang ghé thăm những bông hoa và những chú chim đang bay lượn trên không trung. Chúng như đang vẫy gọi cậu: \"Hãy đến đây, nơi chúng tôi đang ở.\" Cậu nhìn thấy những con cá bơi lội dưới sông và rất nhiều loại đá và cây cỏ phủ khắp trái đất. Và cậu nhìn thấy những đứa trẻ trần gian đang trèo cây, chạy nhảy trên đồng cỏ và bước đi qua những chiếc lá khô xào xạc. Tất cả đều quá đỗi xinh đẹp!\n\nCậu nhìn thấy những người cha và người mẹ trần gian đang làm việc. Người thì làm nông, người làm thợ xây; và có những người là thợ làm bánh, thợ đóng giày và người bán hàng. Và cậu nhìn thấy những người mẹ và người cha đang chăm sóc những đứa con của họ. Rồi cậu nhìn thấy một người phụ nữ và một người đàn ông tràn đầy tình yêu thương và sự lương thiện. \"Ôi, con muốn đến với họ,\" cậu nói.</situation>\n<problem>Nhưng khi cậu nói với Thiên thần của mình, Người đáp: \"Vẫn chưa phải lúc thích hợp. Trước tiên con phải đi qua những vùng đất của giấc mơ.\"</problem>\n<turning_point>Và thế là đứa trẻ thiên đường bước vào một cuộc hành trình dài qua những vùng đất của giấc mơ. Ở đó, cậu đã có một giấc mơ tuyệt đẹp về người phụ nữ và người đàn ông đặc biệt này và cậu vô cùng yêu thương họ. Và trong giấc mơ, cậu nói: \"Con muốn trở thành một phần trong gia đình của hai người.\" Người phụ nữ mỉm cười với một nụ cười ấm áp và chào đón, còn người đàn ông gật đầu và trả lời từ tận đáy lòng: \"Đồng ý.\" Khi đứa trẻ thiên đường kể cho Thiên thần nghe về giấc mơ, Thiên thần nói: \"Giờ thì con đã sẵn sàng và ta sẽ đồng hành cùng con trong chuyến đi này. Những món quà con nhận được từ mặt trời, các vì sao và mặt trăng sẽ giúp con trong công việc con đã chọn làm trên trái đất.\" Và thế là họ cùng nhau du hành qua cây cầu vồng và bước xuống chiếc cầu thang xoắn ốc cho đến khi tới một cánh cổng lớn.</turning_point>\n<outcome>Đứa trẻ thiên đường cảm thấy đôi chút lo lắng khi phải rời bỏ ngôi nhà thiên đường tuyệt vời của mình, nhưng với lòng dũng cảm trong tim và có Thiên thần bên cạnh, cậu bước qua cánh cổng và... [ngập ngừng] một em bé nhỏ nhắn đã chào đời trên trái đất. Cậu mở mắt và nhìn thấy người phụ nữ và người đàn ông trong giấc mơ của mình. \"Đứa con bé bỏng của chúng ta,\" họ nói. \"Chúng ta sẽ đặt tên con là ____.\"</outcome>\n<lesson>Và thế là các con ạ, ____ năm trước vào ngày hôm nay, ____ đã ra đời trên trái đất. Khi hoàn thành những nhiệm vụ của mình ở đây trên trái đất, cậu bé/cô bé sẽ có một món quà để mang về cho mặt trăng, cho các vì sao và cho mặt trời.\nCầu mong phước lành từ Thiên thần đã dẫn lối con đến trái đất,\nTình yêu thương từ người Mẹ hiền đã sinh ra con.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-gia-dinh-tac-gia-tu-lanh-boc-mui-13.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_smell_and_memory",
+          "p1_color_therapy"
+        ],
+        "status": "processed",
+        "protagonist": "Gia đình tác giả",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_khuu-giac-dinh-hinh-ky-uc-va-kha-nang-mo-long]]"
+        ],
+        "description": "Câu chuyện gia đình tác giả trở về nhà sau kỳ nghỉ dài và phải đối mặt với chiếc tủ lạnh bốc mùi, minh chứng cho việc khứu giác gắn kết chặt chẽ với các ký ức khó quên.",
+        "keywords": [
+          "giáo dục sớm",
+          "giác quan trẻ em",
+          "gia đình tác giả",
+          "kỳ nghỉ dài ngày",
+          "tủ lạnh hỏng",
+          "thức ăn ôi thiu",
+          "mùi kinh khủng",
+          "gợi nhớ quá khứ",
+          "ký ức khứu giác"
+        ]
+      },
+      "body": "<situation>Gia đình tác giả trở về nhà sau một kỳ nghỉ dài ngày.</situation>\n<problem>Chiếc tủ lạnh đã bị hỏng trong lúc họ đi vắng, khiến toàn bộ thức ăn bên trong bị ôi thiu bốc mùi nồng nặc.</problem>\n<turning_point>Mặc dù một người bạn đã cố gắng lau chùi tủ lạnh thật sạch sẽ trước khi họ trở về nhà.</turning_point>\n<outcome>Cái mùi kinh khủng đó vẫn lưu lại trong tủ lạnh suốt nhiều tháng sau đó, và mỗi lần mở cửa tủ, họ lại bị gợi nhớ ngay đến ngày trở về từ kỳ nghỉ.</outcome>\n<lesson>Khứu giác gắn kết chặt chẽ với ký ức, những mùi hương khó chịu có thể để lại ấn tượng tiêu cực lâu dài trong tâm trí con người.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-hai-be-gai-4-tuoi-va-be-gai-6-tuoi-hai-dua-tre-cai-nhau-21.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_consequent_action",
+          "p1_listen_and_redirect"
+        ],
+        "status": "processed",
+        "protagonist": "Hai bé gái 4 tuổi và bé gái 6 tuổi",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_hoa-giai-xung-dot-qua-lang-nghe-va-hanh-dong-thuc-te]]"
+        ],
+        "description": "Câu chuyện về cách một bé gái sáu tuổi dễ dàng hòa giải cuộc cãi vã lớn tiếng giữa hai bé gái bốn tuổi chỉ bằng một câu nói bình tĩnh và giải pháp đơn giản.",
+        "keywords": [
+          "giáo dục sớm",
+          "giải quyết xung đột",
+          "bé gái mầm non",
+          "cãi vã lớn tiếng",
+          "khoe khoang cha mẹ",
+          "người lớn bối rối",
+          "bé gái sáu tuổi",
+          "lời khuyên bình tĩnh",
+          "hòa bình lập lại"
+        ]
+      },
+      "body": "<situation>The very next morning two four-year-old girls in my class were playing together in the little house area. Suddenly, a loud argument erupted.</situation>\n<problem>I heard, \"My father can build a better house than your father!\" ... \"No he can't, my father builds the best houses in the world.\" ... I felt paralyzed inside and knocked down a few pegs from the feeling I had had the evening before.</problem>\n<turning_point>Then, in a perfectly calm voice the six-year-old standing next to me said, \"Oh, just go start over.\"</turning_point>\n<outcome>The two little girls looked at each other, said, \"OK,\" turned around and walked back to the little house area and resumed their play.</outcome>\n<lesson>Apparently just being listened to allowed them to take in the simple solution from the six-year-old, and peace was restored.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-me-cua-mot-hoc-sinh-tang-qua-giang-sinh-9.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_archetypal_toys",
+          "p1_natural_elements_play"
+        ],
+        "status": "processed",
+        "protagonist": "Mẹ của một học sinh",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_cung-cap-do-choi-mo-open-ended-toys]]"
+        ],
+        "description": "Câu chuyện về người mẹ quyết định tặng con trai những món đồ chơi mở đơn giản như vải lụa, giỏ mây thay vì đồ chơi điện tử, mang lại niềm vui và sự say mê bất ngờ.",
+        "keywords": [
+          "giáo dục sớm",
+          "đồ chơi của trẻ",
+          "mẹ của học sinh",
+          "lựa chọn quà tặng",
+          "đồ chơi mở",
+          "vật liệu tự nhiên",
+          "bé trai mẫu giáo",
+          "niềm vui bất ngờ",
+          "phát huy tưởng tượng"
+        ]
+      },
+      "body": "<situation>Tôi nhớ mẹ của một học sinh trong lớp đã gọi cho tôi vào đầu tháng Mười hai, không biết nên mua gì cho con trai dịp Giáng sinh.</situation>\n<problem>Cô ấy không muốn tặng cậu bé mẫu giáo một trò chơi điện tử hay một mô hình hành động bằng nhựa, nhưng cô ấy không biết mua gì khác cho cậu.</problem>\n<turning_point>Tôi gợi ý cô ấy mua vài chiếc giỏ và lấp đầy chúng bằng lụa, tinh thể, kẹp quần áo bằng gỗ, và những mảnh vải cotton. Thêm vào đó, tôi gợi ý cô ấy thêm hai giá đỡ chơi bằng gỗ. Cô ấy bật cười, mường tượng cảnh con trai mình sẽ cảm thấy thế nào khi phát hiện ra những cậu bé hàng xóm nhận được máy chơi game, còn cậu thì nhận được những mảnh vải. Nhưng đó chính là thứ cô ấy đã mua cho cậu bé.</turning_point>\n<outcome>Cô ấy báo lại sau đó rằng đó là một Giáng sinh tuyệt vời nhất. Cậu bé và em gái đã chơi đùa không biết chán và hoàn toàn hạnh phúc với những món quà này.</outcome>\n<lesson>Đồ chơi tự nhiên, đơn giản mang lại niềm vui và sự say mê lâu dài cho trẻ nhờ vào việc kích thích trí tưởng tượng liên tục.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-me-cua-tac-gia-ba-ui-21-chiec-ao-so-mi-1.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_family_rhythm"
+        ],
+        "status": "processed",
+        "protagonist": "Mẹ của tác giả",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_kien-tao-nhip-dieu-sinh-hoat-va-thoi-quen-thong-qua-su-tan-tam-trong-cong-viec-gia-dinh]]"
+        ],
+        "description": "Câu chuyện cảm động về người mẹ đã biến công việc ủi đồ tẻ nhạt hàng tuần thành một tác phẩm nghệ thuật, qua đó vô thức truyền lại cho con gái ý thức về trật tự và nhịp điệu.",
+        "keywords": [
+          "giáo dục sớm",
+          "nhiệm vụ gia đình",
+          "người mẹ cần mẫn",
+          "nhịp điệu việc nhà",
+          "ủi đồ hàng tuần",
+          "tác phẩm nghệ thuật",
+          "trật tự sinh hoạt",
+          "truyền cảm hứng",
+          "sức mạnh nội tại"
+        ]
+      },
+      "body": "<situation>Là một đứa trẻ, tôi biết rằng Thứ Hai là ngày giặt giũ. Tôi biết giường sẽ được thay ga và tất cả khăn trong phòng tắm sẽ được lấy đi và thay bằng những chiếc khăn mới. Tôi biết Thứ Ba là ngày ủi đồ.</situation>\n<problem>Việc nhà lặp đi lặp lại với khối lượng lớn (như việc phải ủi 21 chiếc áo sơ mi mỗi tuần) dễ bị coi là công việc khô khan, mệt mỏi và tẻ nhạt đối với người lớn.</problem>\n<turning_point>Mẹ tôi luôn ủi những chiếc áo sơ mi đó. Bà gấp chúng lại và đặt lên bàn ăn theo cách mà chiếc áo thứ hai chạm đến đầu cổ của chiếc thứ nhất, rồi chiếc thứ ba chạm đến đầu cổ chiếc thứ hai, và cứ thế nối thành một hàng dài. Tương tự, khăn ăn và thậm chí cả khăn nhà bếp cũng được ủi và sắp xếp trật tự trên bàn.</turning_point>\n<outcome>Tất cả sự chăm chút trong công việc của mẹ, thứ trông như thể được vẽ bởi một nghệ sĩ, vẫn sống trong tôi và trong công việc của tôi. Tôi đặc biệt trân trọng món quà bà đã trao cho tôi. Tôi không phải học cách mang lại nhịp điệu và những thói quen tốt cho cuộc sống của chính các con tôi và của những đứa trẻ trong lớp học của tôi. Tôi đã có sẵn chúng ở bên trong. Tôi đã lớn lên cùng chúng.</outcome>\n<lesson>Khi cha mẹ biến các công việc hàng ngày thành một nghệ thuật với sự chăm chút, trật tự và nhịp điệu, họ đang gián tiếp trao cho con cái những thói quen tốt đẹp và sức mạnh nội tại đi theo chúng suốt đời.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-mot-nguoi-me-thay-doi-cach-ra-lenh-18.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_use_of_may",
+          "p1_illusion_of_choice"
+        ],
+        "status": "processed",
+        "protagonist": "Một người mẹ",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_su-dung-tu-may-duoc-phepco-the-thay-vi-cau-hoi]]"
+        ],
+        "description": "Câu chuyện về một người mẹ kiềm chế cơn tức giận khi con làm bẩn sàn nhà và áp dụng thành công nguyên tắc sử dụng từ 'may' để hướng dẫn trẻ dọn dẹp một cách ngoan ngoãn.",
+        "keywords": [
+          "giáo dục sớm",
+          "giao tiếp với trẻ",
+          "người mẹ tức giận",
+          "sàn nhà vấy bẩn",
+          "thay đổi cách nói",
+          "sử dụng từ may",
+          "đứa trẻ nghe lời",
+          "không phản kháng",
+          "hòa hợp gia đình"
+        ]
+      },
+      "body": "<situation>Một phụ huynh chia sẻ kinh nghiệm áp dụng lời khuyên sau khi tham dự buổi diễn thuyết của tác giả về kỷ luật sáng tạo.</situation>\n<problem>Sự bực tức và xung đột thường xảy ra khi sàn nhà vừa lau xong lại bị vấy bẩn, thường dẫn đến những câu nói đầy cảm xúc và tiêu cực như \"Làm sao con có thể làm thế với mẹ? Mẹ vừa mới lau cái sàn đó xong!\".</problem>\n<turning_point>Người mẹ quyết định kiềm chế và sử dụng từ \"may\" (có thể) theo đúng hướng dẫn: \"Con có thể dọn dẹp chỗ đó ngay bây giờ\" (\"You may clean that up now\").</turning_point>\n<outcome>Đứa trẻ đã làm theo lời yêu cầu một cách ngoan ngoãn mà không hề phản kháng.</outcome>\n<lesson>Việc sử dụng từ \"may\" giúp định hướng hành vi của trẻ một cách tích cực, tránh được sự phản kháng từ trẻ và cảm giác bực dọc từ cha mẹ, khôi phục lại sự hòa hợp trong gia đình.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-tac-gia-chuyen-huong-choi-thu-len-17.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_reduce_the_word_no",
+          "p1_energy_redirection"
+        ],
+        "status": "processed",
+        "protagonist": "Tác giả",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_chuyen-huong-nang-luong]]"
+        ],
+        "description": "Câu chuyện kể về sự khéo léo của tác giả khi chuyển hướng năng lượng chơi đùa của các bé gái bằng cách gợi ý và cung cấp đồ vật để các em tự xây nhà cho thú len.",
+        "keywords": [
+          "giáo dục sớm",
+          "phương pháp giáo dục",
+          "giáo viên mầm non",
+          "bé gái tung đồ",
+          "chuyển hướng năng lượng",
+          "gợi ý đồ vật",
+          "xây nhà cho thú len",
+          "trò chơi hòa hợp",
+          "không cấm đoán"
+        ]
+      },
+      "body": "<situation>Một ngày nọ trong lớp học mầm non của tôi, tôi đang ủi những tấm trải bàn ăn nhẹ của chúng tôi trong giờ chơi của các em. Hai bé gái đang chơi với một vài con thú được đan bằng len.</situation>\n<problem>Các em bắt đầu tung chúng lên không trung,</problem>\n<turning_point>vì vậy tôi lấy một quả bóng len cho các em chơi cùng. Điều đó làm các em phân tâm trong chốc lát, và các em bắt đầu tung quả bóng. Tôi quay lại với việc ủi đồ của mình. Chẳng bao lâu sau, các em đặt quả bóng xuống và lại bắt đầu tung những con thú lên. Tôi vẫn chú ý đến các em trong khi hoàn thành nốt công việc của mình và cất bàn ủi cùng cầu ủi đi. Sau đó, tôi lấy một cái chuồng bằng gỗ lớn từ trên kệ xuống và gợi ý rằng chúng tôi nên làm một ngôi nhà cho các con thú. Các bé gái đã giúp lắp ráp các mảnh của cái chuồng lại, và theo gợi ý của tôi, các em đã tìm thấy một số chiếc bát phù hợp cho thức ăn và nước uống. Các em cũng mang đến một số viên đá nhỏ và hạt dẻ để dùng làm thức ăn. Chúng tôi tiếp tục mở rộng khung cảnh với một mảnh vải xanh làm dòng sông và một vài con cá bằng nỉ. Tại thời điểm này, tôi rút lui khỏi sự can thiệp trực tiếp vào trò chơi của các em.</turning_point>\n<outcome>Tôi đã giúp các bé gái tạo ra một hình thức chơi tích cực với các con thú đan bằng len, mà không bao giờ nói rằng, \"Đừng chơi với các con thú như vậy.\" Tôi đã cho các em thấy những gì các em có thể làm với các con thú.</outcome>\n<lesson>Tôi cũng nhận thấy rằng tình huống này và cách giải quyết của nó đã ảnh hưởng đến những đứa trẻ đang chơi trong phần còn lại của căn phòng, và trò chơi của chúng trở nên hòa hợp hơn.</lesson>"
+    },
+    {
+      "atom_path": "vault\\01-Atomic\\Stories\\BTRB_story-tac-gia-va-me-nhip-dieu-viec-nha-6.md",
+      "frontmatter": {
+        "type": "story",
+        "subtype": "story",
+        "topics": [
+          "p1_early_childhood_education",
+          "p1_rhythm_and_senses",
+          "p1_imitation_and_play",
+          "p1_biological_rhythm",
+          "p1_cosmic_rhythms"
+        ],
+        "status": "processed",
+        "protagonist": "Tác giả và mẹ",
+        "source_type": "book",
+        "source_name": "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)",
+        "source_id": "beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven",
+        "confidence": 0.9,
+        "supports_knowledge": [
+          "[[BTRB_su-hinh-thanh-nhip-dieu-noi-tai-tu-nhip-dieu-ngoai-tai]]"
+        ],
+        "description": "Câu chuyện so sánh giữa nhịp điệu sinh hoạt truyền thống và lối sống hiện đại, nhấn mạnh việc duy trì các thói quen lặp lại giúp mang đến cho trẻ em cảm giác an toàn và trật tự.",
+        "keywords": [
+          "giáo dục sớm",
+          "nhịp điệu gia đình",
+          "tác giả và mẹ",
+          "nhịp điệu truyền thống",
+          "tiện nghi hiện đại",
+          "biến mất cấu trúc",
+          "thói quen lặp lại",
+          "cảm giác an toàn",
+          "trật tự cuộc sống"
+        ]
+      },
+      "body": "<situation>Trước đây, khi con người phụ thuộc trực tiếp vào thiên nhiên để sinh tồn, cuộc sống của họ bắt buộc phải có nhịp điệu. Công việc được phân chia theo ngày: thứ Hai là ngày giặt giũ, thứ Ba là ngày ủi đồ, thứ Bảy là ngày nướng bánh, và Chủ nhật dành cho việc đi nhà thờ và nghỉ ngơi.</situation>\n<problem>Với sự ra đời của máy giặt và máy sấy tự động, con người có thể làm việc bất cứ lúc nào, khiến nhịp điệu tuần tự từ lúc bắt đầu đến khi hoàn thành công việc bị biến mất. Trẻ em không còn được nhìn thấy cấu trúc của lao động.</problem>\n<turning_point>Mẹ của tác giả đã tự mình tạo ra những nhịp điệu và thói quen tốt đẹp xung quanh bà trong suốt thời thơ ấu, biến những công việc nhà thường ngày thành những tác phẩm nghệ thuật có trật tự.</turning_point>\n<outcome>Tác giả cảm nhận được sự an toàn tuyệt đối trong cuộc sống nhờ những nhịp điệu mà người mẹ đã tạo ra trong nhà.</outcome>\n<lesson>Dù có nhiều tiện nghi hiện đại, các nhịp điệu công việc lặp lại mang đến cho trẻ em cảm giác an toàn tuyệt vời và nhận thức sâu sắc rằng cuộc sống có những hình hài và trật tự thực sự.</lesson>"
+    }
+  ]
+}

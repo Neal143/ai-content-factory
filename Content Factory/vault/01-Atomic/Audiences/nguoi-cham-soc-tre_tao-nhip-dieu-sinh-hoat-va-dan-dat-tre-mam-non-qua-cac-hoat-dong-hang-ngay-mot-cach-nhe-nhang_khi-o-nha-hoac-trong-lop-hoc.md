@@ -4,7 +4,7 @@ audience_Job_performer: người chăm sóc trẻ
 audience_main_job: tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng
 audience_circumstance: khi ở nhà hoặc trong lớp học
 parent_audience:
-- '[[cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi]]'
+- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
 aliases:
 - tổ chức hoạt động cho trẻ mầm non
 - hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu
