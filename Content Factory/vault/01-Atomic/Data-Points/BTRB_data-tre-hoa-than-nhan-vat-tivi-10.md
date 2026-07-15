@@ -7,7 +7,7 @@ topics:
 - p1_imitation_and_play
 - p1_little_puberty
 - p1_dangers_of_early_intellectualism
-status: processed
+status: orphan
 source_type: book
 source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
 source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
