@@ -63,7 +63,7 @@ LLM lần lượt xử lý từng lô qua vòng lặp Get→Submit có khóa (xe
 
 ```text
 NEW id (EN)             ──so sánh với──→  EXISTING id (Tín hiệu Chính: Structural/Skeleton Match)
-NEW semantic_query (VN) ──so sánh với──→  EXISTING semantic_query (Tín hiệu Phụ: Semantic ngầm định)
+NEW semantic_query (VN) ──so sánh với──→  EXISTING semantic_query (và mảng aliases) (Tín hiệu Phụ: Semantic ngầm định)
                                                 ↓
                                             Verdict: IDENTICAL / DISTINCT / AMBIGUOUS
 ```

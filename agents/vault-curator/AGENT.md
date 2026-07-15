@@ -5,7 +5,7 @@
 > **Vai trò**: Tác nhân chuyên trách bảo dưỡng và chuẩn hóa Vault: điều phối auto-tagging, semantic dedup và semantic alignment.
 > **Sử dụng khi**: Kích hoạt tự động vào cuối quy trình tạo nội dung mới (Use-case A) hoặc kích hoạt thủ công để quét dọn toàn kho (Use-case B).
 > **Output**: Vault đã được chuẩn hóa + `vault_index.json` đã rebuild + Log thực thi tại output_dir.
-> **Tóm tắt logic hoạt động**: Chạy Pipeline tích hợp với 6 chế độ vận hành; Điều phối gọi các skill `auto-tagger`, `atom-dedup`, `atom-linker` để chuẩn hóa Metadata và liên kết DAG cho Atoms; Truyền tham số cho các script quản lý batch tự động.
+> **Tóm tắt logic hoạt động**: Chạy Pipeline tích hợp với 8 chế độ vận hành; Điều phối gọi các skill `auto-tagger`, `atom-dedup`, `atom-linker`, `vc-topic-dedup`, `vc-audience-curator` để chuẩn hóa Metadata và liên kết DAG cho Atoms; Truyền tham số cho các script quản lý batch tự động.
 
 ## 1. System Prompt & Directives
 
@@ -22,19 +22,21 @@ Bảng 6 chế độ vận hành tùy chỉnh theo context được gọi:
 
 | Chế độ | Ý nghĩa | Input từ Workflow |
 |---|---|---|
-| `full-pipeline` | Atoms mới chưa có parent link, cần đầy đủ Tag -> Dedup -> Align | `--mode full-pipeline --atoms <list> --output-dir <dir>` |
-| `tag-and-dedup` | Atoms đã có link sẵn, chỉ cần Tag -> Dedup | `--mode tag-and-dedup --atoms <list> --output-dir <dir>` |
-| `tag-only` | Chỉ cần chuẩn hóa metadata | `--mode tag-only --atoms <list> --output-dir <dir>` |
-| `dedup-incremental`| Chỉ cần dedup các atom mới | `--mode dedup-incremental --atoms <list> --output-dir <dir>` |
-| `dedup-full` | Dọn dẹp định kỳ toàn vault (Layer-by-layer) | `--mode dedup-full --output-dir <dir>` |
-| `align-only` | Chỉ cần chạy semantic alignment | `--mode align-only --atoms <list> --output-dir <dir>` |
+| `atoms-full-pipeline` | Atoms mới chưa có parent link, cần đầy đủ Tag -> Dedup -> Align | `--mode atoms-full-pipeline --atoms <list> --output-dir <dir>` |
+| `atoms-tag-and-dedup` | Atoms đã có link sẵn, chỉ cần Tag -> Dedup | `--mode atoms-tag-and-dedup --atoms <list> --output-dir <dir>` |
+| `atoms-tag-only` | Chỉ cần chuẩn hóa metadata | `--mode atoms-tag-only --atoms <list> --output-dir <dir>` |
+| `dedup-atoms-incremental`| Chỉ cần dedup các atom mới | `--mode dedup-atoms-incremental --atoms <list> --output-dir <dir>` |
+| `dedup-atoms-full` | Dọn dẹp định kỳ toàn vault (Layer-by-layer) | `--mode dedup-atoms-full --output-dir <dir>` |
+| `atoms-align-only` | Chỉ cần chạy semantic alignment | `--mode atoms-align-only --atoms <list> --output-dir <dir>` |
+| `dedup-topics` | Full dedup topics | `--mode dedup-topics --output-dir <dir>` |
+| `dedup-audiences` | Full dedup audiences | `--mode dedup-audiences --output-dir <dir>` |
 
 ## 3. Input & Output Specs
 
 - **Inputs**:
-  - `--mode <che_do>`: Chế độ vận hành đã cấu hình (VD: `tag-and-dedup`).
-  - `--atoms <danh_sach_file>`: Chuỗi đường dẫn tương đối các file Atom cần xử lý (phân tách bằng dấu phẩy). Không yêu cầu cho mode `dedup-full`.
-  - `--output-dir <thu_muc_log>`: Thư mục để batch script lưu log (VD: `[run_folder]/session_5/` hoặc `vault/.curation_temp/`).
+  - `--mode <che_do>`: Chế độ vận hành đã cấu hình (VD: `atoms-tag-and-dedup`).
+  - `--atoms <danh_sach_file>`: Chuỗi đường dẫn tương đối các file Atom cần xử lý (phân tách bằng dấu phẩy). Không yêu cầu cho mode `dedup-atoms-full`.
+  - `--output-dir <thu_muc_log>`: Thư mục (do caller chỉ định) để batch script lưu các file trạng thái và log thực thi.
 
 - **Outputs**:
   - Metadata `description` và `keywords` được chuẩn hóa.
@@ -44,11 +46,13 @@ Bảng 6 chế độ vận hành tùy chỉnh theo context được gọi:
 
 ## 4. Core Execution Skill References
 
-Để thực thi, bạn cần đọc và sử dụng bộ 3 skill chuyên sâu sau (tùy theo Routing Logic ở dưới):
+Để thực thi, bạn cần đọc và sử dụng bộ 5 skills chuyên sâu sau (tùy theo Routing Logic ở dưới):
 
 - [Auto-Tagger Skill](file:///.agents/skills/auto-tagger/SKILL.md)
 - [Atom-Dedup Skill](file:///.agents/skills/atom-dedup/SKILL.md)
 - [Atom-Linker Skill](file:///.agents/skills/atom-linker/SKILL.md)
+- [Topic-Dedup Skill](file:///.agents/skills/vc-topic-dedup/SKILL.md)
+- [Audience-Curator Skill](file:///.agents/skills/vc-audience-curator/SKILL.md)
 
 ## 5. Routing Logic
 
@@ -65,29 +69,37 @@ Dựa vào tham số `--mode`, hãy gọi các skill theo đúng kịch bản (L
 File này giúp script sinh resume prompt chính xác khi SESSION_BREAK.
 
 ```text
-IF mode == "full-pipeline":
+IF mode == "atoms-full-pipeline":
+  1. Gọi skill auto-tagger --atoms <list> --output-dir <output-dir>/tag
+  2. Gọi skill vc-topic-dedup --output-dir <output-dir>/topic-dedup
+  3. Gọi skill vc-audience-curator --output-dir <output-dir>/audience-curator
+  4. Gọi skill atom-dedup --scope incremental --atoms <list> --output-dir <output-dir>/dedup
+  5. Gọi skill atom-linker --atoms <list> --output-dir <output-dir>/align
+
+ELIF mode == "atoms-tag-and-dedup":
   1. Gọi skill auto-tagger --atoms <list> --output-dir <output-dir>/tag
   2. Gọi skill atom-dedup --scope incremental --atoms <list> --output-dir <output-dir>/dedup
-  3. Gọi skill atom-linker --atoms <list> --output-dir <output-dir>/align
 
-ELIF mode == "tag-and-dedup":
-  1. Gọi skill auto-tagger --atoms <list> --output-dir <output-dir>/tag
-  2. Gọi skill atom-dedup --scope incremental --atoms <list> --output-dir <output-dir>/dedup
-
-ELIF mode == "tag-only":
+ELIF mode == "atoms-tag-only":
   1. Gọi skill auto-tagger --atoms <list> --output-dir <output-dir>/tag
 
-ELIF mode == "dedup-incremental":
+ELIF mode == "dedup-atoms-incremental":
   1. Gọi skill atom-dedup --scope incremental --atoms <list> --output-dir <output-dir>/dedup
 
-ELIF mode == "dedup-full":
+ELIF mode == "dedup-atoms-full":
   1. Gọi skill atom-dedup --scope full --output-dir <output-dir>/dedup
 
-ELIF mode == "align-only":
+ELIF mode == "atoms-align-only":
   1. Gọi skill atom-linker --atoms <list> --output-dir <output-dir>/align
+
+ELIF mode == "dedup-topics":
+  1. Gọi skill vc-topic-dedup --output-dir <output-dir>/topic-dedup
+
+ELIF mode == "dedup-audiences":
+  1. Gọi skill vc-audience-curator --output-dir <output-dir>/audience-curator
 ```
 
-*`<output-dir>` do caller truyền vào (VD: `[run_folder]/session_5/` cho book-extractor, `vault/.curation_temp/` cho process-inbox).*
+*`<output-dir>` do caller truyền vào, đại diện cho workspace tạm thời của phiên làm việc.*
 
 ## 6. Cleanup Logic
 

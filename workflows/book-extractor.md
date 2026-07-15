@@ -189,20 +189,27 @@ Hỏi User chọn cách thực thi:
 **Lựa chọn A — Chạy tự động trên Antigravity 2.0 (Khuyến nghị):**
 In prompt sau để User copy sang Antigravity 2.0 (**BẮT BUỘC resolve `[run_folder]` thành đường dẫn thực tế** — VD: `vault/.content-pipeline/runs/2026-07-13_103000_parenting/`):
 ```
-Đọc workflow `.agents/workflows/vault-curator-anti20.md` và thực thi:
-- Mode: tag-and-dedup
-- Atoms file: <đường dẫn thực tế>/created_atoms.json
-- Output dir: <đường dẫn thực tế>/session_5/
+Đọc workflow `.agents/workflows/vault-curator-anti20.md` và thực thi tuần tự 3 tiến trình sau:
+1. Mode: atoms-tag-and-dedup | Atoms file: <đường dẫn thực tế>/created_atoms.json | Output dir: <đường dẫn thực tế>/session_5/
+2. Mode: dedup-topics | Output dir: <đường dẫn thực tế>/session_5/topic-dedup
+3. Mode: dedup-audiences | Output dir: <đường dẫn thực tế>/session_5/audience-curator
 ```
 Sau khi User xác nhận đã paste xong, cập nhật `current_phase: completed` → chuyển Bước 11 (Báo cáo).
 > **Lưu ý**: Khi chọn Option A, Bước 11 (Báo cáo) sẽ KHÔNG bao gồm kết quả curation (tag/dedup) vì curation đang chạy async trên Anti 2.0. Chỉ báo cáo số atoms đã tạo.
 
 **Lựa chọn B — Chạy tại đây (cần handoff mỗi 5 batch):**
 - **Sub-Agent**: VaultCuratorAgent (đọc `.agents/agents/vault-curator/AGENT.md`)
-- **Input**:
-  - Mode: `tag-and-dedup` (atoms đã có supports_insight link từ atomizer.py, không cần alignment)
-  - Atoms: Đọc danh sách đường dẫn atom từ file `[run_folder]/created_atoms.json` (do atomizer.py sinh ra ở Phase 4).
-  - Output-dir: `[run_folder]/session_5/`
+- **Yêu cầu thực thi tuần tự 3 tiến trình**:
+  1. **Tiến trình 1 (`atoms-tag-and-dedup`)**:
+     - Mode: `atoms-tag-and-dedup` (atoms đã có supports_insight link từ atomizer.py, không cần alignment)
+     - Atoms: Đọc danh sách đường dẫn atom từ file `[run_folder]/created_atoms.json` (do atomizer.py sinh ra ở Phase 4).
+     - Output-dir: `[run_folder]/session_5/`
+  2. **Tiến trình 2 (`dedup-topics`)**:
+     - Mode: `dedup-topics`
+     - Output-dir: `[run_folder]/session_5/topic-dedup`
+  3. **Tiến trình 3 (`dedup-audiences`)**:
+     - Mode: `dedup-audiences`
+     - Output-dir: `[run_folder]/session_5/audience-curator`
 - **Run folder**: VaultCuratorAgent ghi log tiến trình vào `[run_folder]/session_5/`:
   - `curation_progress.json`: Batch nào đã xong, batch nào pending.
   - `dedup_log.json`: Danh sách cặp đã merge (survivor + loser).

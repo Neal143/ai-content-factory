@@ -1,4 +1,4 @@
-﻿# Plugin Topic Manager — 2-Pass Semantic Dedup
+# Plugin Topic Manager — 2-Pass Semantic Dedup
 
 **Tên file:** `SKILL.md`
 **Last update:** 22/06/2026 15:42 (GMT+7)
@@ -42,7 +42,7 @@
 2. **Mở file làm bài:** View file `session_4/external_temp.json`.
 3. **Quyết định:** Đọc file `[Persona_Path]/topic_map.yaml`. Đối chiếu 5 unique topics:
    - `create`: Nếu khái niệm chưa tồn tại trong YAML toàn cục.
-   - `merge`: Nếu khái niệm đã tồn tại sẵn trong YAML. Điền `resolved_to` là ID gốc trong YAML.
+   - `merge`: Nếu khái niệm đã tồn tại sẵn trong YAML. Điền `resolved_to` là ID gốc trong YAML. (Chú ý: Kiểm tra cả mảng `aliases` (nếu có) của topic trong YAML để bắt các biến thể cũ).
 4. **Nộp bài:**
    ```bash
    python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.py --session-dir "[session_4_dir]" --map-path "[Persona_Path]/topic_map.yaml" --submit-external
