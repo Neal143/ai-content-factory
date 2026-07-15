@@ -41,11 +41,12 @@ $TOPK_ALIGNMENT = 15
 $TOPK_DEDUP = 10
 
 $DAG_PARENT_MAP = @{
-    "solution" = @("insight")
-    "concept" = @("insight")
-    "story" = @("solution","concept")
-    "quote" = @("solution","concept")
-    "data_point" = @("solution","concept")
+    "solution" = @("insight", "knowledge")
+    "concept" = @("insight", "knowledge")
+    "story" = @("solution", "concept", "insight", "knowledge")
+    "quote" = @("solution", "concept", "insight", "knowledge")
+    "data_point" = @("solution", "concept", "insight", "knowledge")
+    "data-point" = @("solution", "concept", "insight", "knowledge")
 }
 
 $TempDir = "vault/.curation_temp"
