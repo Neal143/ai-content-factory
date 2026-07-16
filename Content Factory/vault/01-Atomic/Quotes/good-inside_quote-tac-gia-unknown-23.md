@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_division_of_responsibility_food
 - p1_minimizing_anxiety_over_consumption
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

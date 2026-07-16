@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_sibling_attachment_security
 - p1_focus_on_needs_not_fairness
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

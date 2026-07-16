@@ -6,7 +6,7 @@ topics:
 source_id: persona-interview
 belongs_to_audience:
 - '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
-status: processed
+status: orphan
 created: '2026-06-21'
 source_type: User
 source_name: Persona Interview

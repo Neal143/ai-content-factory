@@ -1,55 +1,115 @@
 {
-  "batch_key": "51150ee0",
+  "batch_key": "33d88f1c",
   "results": [
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-tieu-hoa-va-noi-tang-15.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_chuyen-huong-nang-luong.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-tre-hoa-than-nhan-vat-tivi-10.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_chuyen-sinh-nhat-cho-tre-nhan-con-nuoi.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-vi-giac-va-tam-ly-13.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_co-che-ky-luat-tu-nhien-cua-nhip-dieu.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\BTRB_data-vui-choi-vuot-troi-hoc-thuat-7.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_co-che-tham-thau-khong-mang-loc-cua-tre-so-sinh.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-11.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_cong-viec-thuc-te-chua-lanh-y-chi.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-12.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_cung-cap-do-choi-mo-open-ended-toys.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-13.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_cung-cap-do-choi-mo-va-khong-gian-de-tre-tu-sang-tao-tro-choi.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-15.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_don-dep-do-choi-bang-tro-choi.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-16.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     },
     {
-      "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-17.md",
-      "decision": "orphan",
-      "reasoning": "Không tìm thấy parent node phù hợp có điểm Keyword Threshold >= 4."
+      "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_he-thong-bien-phap-bao-ve-su-am-ap-cho-tre.md",
+      "decision": "[ĐIỀN VÀO ĐÂY: linked | orphan | cloned]",
+      "parent_path": "[ĐIỀN VÀO ĐÂY neu linked/cloned: duong dan parent atom]",
+      "link_type": "[ĐIỀN VÀO ĐÂY neu linked/cloned: insight | knowledge]",
+      "audience": "[ĐIỀN VÀO ĐÂY neu linked: audience id]",
+      "clone_targets": [
+        "[ĐIỀN VÀO ĐÂY neu cloned: danh sach audience ids, toi da 3]"
+      ],
+      "reasoning": "[ĐIỀN VÀO ĐÂY: Giai thich quyet dinh — LLM-CAPTCHA]"
     }
   ]
 }

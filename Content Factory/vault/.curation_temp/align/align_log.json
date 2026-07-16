@@ -248,5 +248,1009 @@
     "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-17.md",
     "decision": "orphan",
     "reasoning": "0 match candidates from search"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-18.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-2.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-20.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-24.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-4.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-5.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-6.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-7.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-8.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\good-inside_data-unknown-9.md",
+    "decision": "orphan",
+    "reasoning": "Không tìm thấy node cha (solution/concept) có độ tương đồng keyword >= 4."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-cho-thay-viec-chi-4.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-da-chi-ra-ro-9.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-hang-gio-tiep-xuc-2.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-khi-mot-dua-tre-3.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-mot-cam-xuc-trung-10.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-nao-phai-xu-ly-4.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-nguy-hiem-thuc-giua-13.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-nha-khoa-hoc-ve-13.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-thay-doi-trang-thai-7.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-tuong-tac-hai-chieu-11.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp (0 match) theo Search-SemanticAtom."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Data-Points\\WBC_data-viec-tap-trung-chu-12.md",
+    "decision": "orphan",
+    "reasoning": "Không có candidate phù hợp."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\ban-than-khong-hanh-phuc.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node, không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_bat-luc-truoc-su-buong-binh-va-xung-dot.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_bay-dan-chu-gia-tao.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_bay-do-choi-dinh-hinh-san-va-du-thua.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_be-tac-trong-viec-tim-phuong-phap-ky-luat.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_be-tac-vi-ap-dung-sai-phuong-phap-cho-tung-ca-tinh.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_boi-roi-truoc-su-thay-doi-tam-ly-tuoi-len-sau.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_can-kiet-sinh-luc-do-mat-nhip-dieu-song.md",
+    "decision": "orphan",
+    "reasoning": "Insight là top-level node."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_chi-trich-khi-tre-met-moi.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_chu-quan-khong-giu-am-vi-tre-khong-thay-lanh.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_do-choi-cang-nhieu-va-cau-ky-cang-tot.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_dung-su-tuc-gian-va-thuyet-giao-de-ran-de-tre.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_ep-chin-ep-su-phat-trien-van-dong.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_kho-khan-khi-chuyen-tiep-hoat-dong.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_kho-khan-trong-viec-phan-loai-va-chon-truyen-phu-hop.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_kiet-suc-va-thieu-tu-ky-luat.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_kiet-suc-vi-thiet-lap-ky-luat-that-bai.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_ky-niem-sinh-nhat-tam-linh.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_lam-dung-thiet-bi-may-moc-de-day-tre-giao-tiep.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_lam-dung-tu-khong.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_lam-tuong-do-choi-dien-tu-lam-tre-vui-hon.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_lam-tuong-ve-cach-xa-nang-luong-bao-luc.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_mua-do-choi-qua-hoan-thien-lam-thui-chot-tri-tuong-tuong.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_nham-lan-giua-binh-thuong-va-lanh-manh.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_noi-so-nuoi-day-con-sai-cach-trong-the-gioi-hien-dai.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_su-lam-guong-va-nhip-dieu-gia-dinh-la-giao-duc-tot-nhat.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\BTRB_vo-tinh-lam-sai-lech-su-phat-trien-giac-quan-cua-tre.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\cam-bay-cong-nghe-tien-nghi.md",
+    "decision": "orphan",
+    "reasoning": "Insight không có parent."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\cam-bay-thuong-cho-roi-cho-vot.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\con-doc-lap-cong-nghe-ai.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\con-hanh-phuc-y-chi-vung-vang.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\duoc-danh-gia-tri-tue.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\ghet-spam-du-do-loi-keo.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\giai-doan-vang-0-7-tuoi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\giai-thich-logic-khi-con-sai.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_ap-luc-ep-con-lam-vui-long-nguoi-khac.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_bat-luc-truoc-su-buong-binh-va-vo-cam-cua-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_bat-luc-va-tu-trach-ban-than-khi-con-an-va.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_bat-luc-vi-con-khong-nghe-loi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_be-tac-khi-con-de-dang-tu-bo.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_behavior-first-uu-tien-hanh-vi-be-mat.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_bung-no-do-qua-tai-cam-xuc-that-vong.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_cam-bay-giai-cuu-cam-xuc.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_chan-ly-ve-tuoi-tho.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_coi-nuoc-mat-la-cong-cu-thao-tung-fake-tears.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_danh-dong-hanh-vi-voi-ban-chat-con-nguoi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_dung-logic-de-tran-an-noi-so.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_hoai-nghi-no-luc-toi-loi-lam-hong-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_khung-hoang-vong-lap-hanh-vi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_logic-giai-quyet-hoan-hao.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-chia-ly-trong-bong-toi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-con-tro-thanh-ke-doi-tra-thao-tung.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-mat-vi-tri-tre-ap-luc-hoa-thuan-cha-me.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-so-su-ton-thuong-khong-the-van-hoi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_noi-xot-xa-va-boi-roi-khi-con-gao-khoc-niu-keo.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_nuoi-con-tan-hien-selfless-parenting.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-con-mai-nhut-nhat-va-co-lap.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-lam-cha-me-toi-qua-bua-an.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_so-tre-ton-thuong-hoac-chua-san-sang.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_su-am-anh-va-tuc-dien-truoc-tieng-ren-ri.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_su-bat-luc-khi-cach-nuoi-day-thong-thuong-phan-tac-dung.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_su-giang-xe-giua-ky-luat-va-ket-noi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_tre-co-tinh-hu-don-va-bao-luc.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_trung-phat-de-cham-dut-su-hon-lao.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\good-inside_vong-lap-tu-trach-va-so-hai-phan-ung-cua-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\khong-duoc-day-tu-be-tam-ly-chenh-venh.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\niem-tin-vao-khoa-hoc.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\rao-can-kien-thuc.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\rao-can-thoi-gian-phu-thuoc-nguoi-khac.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\rao-can-xa-hoi.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\so-bo-lo-giai-doan-vang-0-7.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\so-con-khong-tim-duoc-hanh-phuc.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\so-con-phu-thuoc-cong-nghe-ai-thay-the.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\so-mat-viec-thieu-tai-chinh-do-ai.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\so-noi-nong-danh-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom này là type 'insight' (node gốc trong cấu trúc DAG), không có node cha để liên kết."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\tre-khong-hieu-nguoi-lon.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\tu-do-bo-me-con-cai.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\tu-do-tai-chinh-gia-dinh.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_bat-luc-khi-con-bi-cam-xuc-tieu-cuc-nuot-chung.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_bat-luc-khi-con-mat-kiem-soat-cam-xuc.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_bat-luc-va-bi-cuon-theo-con-lu-cam-xuc-vo-ly-cua-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_bay-quyen-uy-khi-tre-chong-doi.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_bi-cam-xuc-tieu-cuc-lan-at-emotional-flood.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_cam-do-tu-dua-ra-quyet-dinh-thay-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_kiet-suc-vi-nuoi-day-thieu-niem-vui.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_ne-tranh-va-met-moi-voi-cac-cuoc-xung-dot-cua-con.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_su-nham-lan-giua-cam-thay-va-la-state-vs-trait.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_su-so-hai-khi-phai-doi-mat-voi-ky-uc-ton-thuong.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_tach-roi-viec-song-sot-va-phat-trien.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_thieu-hieu-biet-ve-nao-bo-tre-em.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Insights\\WBC_tre-thieu-tu-vung-de-goi-ten-va-nhan-dien-cac-sac-thai-cam-xuc-phuc-tap.md",
+    "decision": "orphan",
+    "reasoning": "Atom type is insight, which is a root node in the DAG and does not have any parents."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md",
+    "decision": "linked",
+    "parent_path": "vault/01-Atomic/Solutions/BTRB_cung-cap-do-choi-mo-open-ended-toys.md",
+    "link_type": "knowledge",
+    "audience": "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]",
+    "reasoning": "Parent concept already specified in supports_knowledge."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md",
+    "decision": "linked",
+    "parent_path": "vault/01-Atomic/Solutions/BTRB_tre-choi-thong-qua-viec-bat-chuoc-cong-viec.md",
+    "link_type": "knowledge",
+    "audience": "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]",
+    "reasoning": "Parent concept already specified in supports_knowledge."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md",
+    "decision": "linked",
+    "parent_path": "vault/01-Atomic/Solutions/BTRB_tac-hai-cua-tu-duy-tri-thuc-som-va-man-hinh-doi-voi-suc-khoe.md",
+    "link_type": "knowledge",
+    "audience": "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]",
+    "reasoning": "Parent concept already specified in supports_knowledge."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-da-co-san-chung-o-ben-trong-1.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-j-patterson-trai-nghiem-mau-sac-13.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-patterson-ke-bang-tri-nho-27.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-patterson-ky-luat-khong-phai-tuc-gian-24.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-barbara-patterson-tu-ngu-nhiem-mau-18.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-bruno-bettelheim-nen-tang-tri-tue-7.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-dr-andrea-rentea-nam-long-ap-5.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-erich-gabert-giao-duc-va-tu-giao-duc-15.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-joseph-chilton-pearce-cong-cu-hoc-tap-cua-tre-11.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-martin-large-hoc-noi-qua-nguoi-that-14.md",
+    "decision": "orphan",
+    "reasoning": "Quotes already have supports_knowledge in frontmatter, keeping as orphan to avoid overwriting or broken links."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-rudolf-steiner-an-tuong-giac-quan-4.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-rudolf-steiner-quy-tac-chua-lanh-25.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-rudolf-steiner-tre-la-con-mat-15.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-cai-toi-cham-vao-12.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-chuyen-huong-nang-luong-17.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-cong-viec-thuc-te-la-phuong-thuoc-20.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-du-khach-lech-mui-gio-6.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-lua-chon-la-lieu-thuoc-doc-16.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-nhip-dieu-tao-can-bang-19.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-tac-hai-cua-chi-trich-22.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-tran-chien-y-chi-21.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-tac-gia-tro-giup-tu-cong-viec-tam-linh-23.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\BTRB_quote-walt-whitman-dua-tre-tro-thanh-doi-tuong-3.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-alison-gopnik-unknown-31.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-becky-kennedy-unknown-14.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-becky-kennedy-unknown-20.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-becky-kennedy-unknown-22.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-becky-kennedy-unknown-24.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-becky-kennedy-unknown-25.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-con-trai-lon-cua-dr-becky-unknown-13.md",
+    "decision": "orphan",
+    "reasoning": "Atom already has supports_knowledge set natively."
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-10.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-11.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-12.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-13.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-15.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-16.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-18.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-19.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-2.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-21.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-27.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-3.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-30.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-7.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-8.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-kennedy-unknown-9.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-dr-becky-unknown-4.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tac-gia-unknown-23.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-29.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-17.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-28.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-5.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\good-inside_quote-tien-si-becky-kennedy-unknown-6.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-cach-day-tre-sift-11.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-co-the-chua-day-7.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-hay-tim-cach-giup-12.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-healing-from-a-difficult-4.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-daniel-j-siegel-tina-payne-bryson-neu-ban-muon-phat-13.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-david-se-ke-qua-giong-8.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-chi-cach-dat-hoi-9.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-con-mua-la-co-10.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-daniel-j-siegel-tina-payne-bryson-giong-nhu-mot-nhan-3.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-daniel-j-siegel-tina-payne-bryson-khi-mot-dua-tre-3.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-every-time-we-say-5.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-nao-tang-tren-giong-6.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-nhung-cach-hieu-mot-2.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-qua-thuong-xuyen-ta-14.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tac-gia-so-hai-vong-va-10.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Quotes\\WBC_quote-tina-payne-bryson-daniel-j-siegel-neu-bat-ky-dieu-1.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_ao-tuong-ve-su-lua-chon.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_ba-giai-doan-tien-hoa-cua-vui-choi-sang-tao.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_ban-chat-cua-su-bat-chuoc-o-tre-nho.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_bao-ve-khong-gian-vui-choi-tu-do-va-tiep-xuc-tu-nhien.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_bao-ve-thinh-giac-khoi-tieng-on-vo-co.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_bo-loc-moi-truong-va-lam-guong.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_bon-giac-quan-y-chi.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_bon-nhom-khi-chat-co-ban-cua-tre.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_cau-chuyen-cau-vong-rainbow-bridge-story.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_chua-lanh-hanh-vi-tan-cong-vat-ly.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
+  },
+  {
+    "atom_path": "vault\\01-Atomic\\Solutions\\BTRB_chua-lanh-tro-choi-bao-luc-bang-lao-dong-thuc-te.md",
+    "decision": "orphan",
+    "reasoning": "0 candidates found for linking"
   }
 ]

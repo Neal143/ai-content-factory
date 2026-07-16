@@ -5,7 +5,7 @@ topics:
 - p1_neuroscience_parenting
 - p1_whole_brain_integration
 - p1_crisis_integration_opportunity
-status: processed
+status: orphan
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child

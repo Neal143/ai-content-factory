@@ -7,7 +7,7 @@ topics:
 - p1_sturdy_leadership
 - p1_neuroplasticity_repair
 - p1_the_power_of_repair
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

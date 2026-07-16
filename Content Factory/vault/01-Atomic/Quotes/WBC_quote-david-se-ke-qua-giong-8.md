@@ -6,7 +6,7 @@ topics:
 - p1_crisis_integration_opportunity
 - p1_child_trauma_recovery
 - p1_remote_of_the_mind
-status: processed
+status: orphan
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child

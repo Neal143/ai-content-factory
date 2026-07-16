@@ -41,12 +41,11 @@ $TOPK_ALIGNMENT = 15
 $TOPK_DEDUP = 10
 
 $DAG_PARENT_MAP = @{
-    "solution" = @("insight", "knowledge")
-    "concept" = @("insight", "knowledge")
-    "story" = @("solution", "concept", "insight", "knowledge")
-    "quote" = @("solution", "concept", "insight", "knowledge")
-    "data_point" = @("solution", "concept", "insight", "knowledge")
-    "data-point" = @("solution", "concept", "insight", "knowledge")
+    "solution"   = @("insight")
+    "concept"    = @("insight")
+    "story"      = @("solution", "concept")
+    "quote"      = @("solution", "concept")
+    "data-point" = @("solution", "concept")
 }
 
 $TempDir = "vault/.curation_temp"
@@ -86,10 +85,13 @@ if (($Mode -eq "alignment") -or ($Mode -eq "dedup" -and $Scope -eq "incremental"
         Write-Host "[ERR] Yeu cau SourceAtomPath" -ForegroundColor Red
         exit 1
     }
-    if (-not $Nodes.psobject.properties.match($SourceAtomPath)) {
+    $SourceAtomPath = $SourceAtomPath -replace '\\', '/'
+    
+    if (-not $Nodes.psobject.properties.match([regex]::Escape($SourceAtomPath))) {
         Write-Host "[ERR] Source atom khong co trong index: $SourceAtomPath" -ForegroundColor Red
         exit 1
     }
+
     
     $sourceNode = $Nodes.$SourceAtomPath
     $sourceType = $sourceNode.type
@@ -108,13 +110,15 @@ if (($Mode -eq "alignment") -or ($Mode -eq "dedup" -and $Scope -eq "incremental"
         if ($Mode -eq "alignment") {
             $allowedParents = $DAG_PARENT_MAP[$sourceType]
             if (-not $allowedParents -or $node.type -notin $allowedParents) { continue }
-        } else {
+        }
+        else {
             # Dedup incremental
             if ($node.type -ne $sourceType) { continue }
             if ($sourceAudience -eq "CONFLICT" -or $node.resolved_audience -eq "CONFLICT") { continue }
             if ($sourceAudience) {
                 if (-not $node.resolved_audience -or $node.resolved_audience.id -ne $sourceAudience.id) { continue }
-            } else {
+            }
+            else {
                 if ($node.resolved_audience) { continue }
             }
         }
@@ -124,23 +128,24 @@ if (($Mode -eq "alignment") -or ($Mode -eq "dedup" -and $Scope -eq "incremental"
         
         if ($score -ge $threshold) {
             $candidates += @{
-                "path" = $path
-                "score" = $score
-                "description" = $node.description
+                "path"              = $path
+                "score"             = $score
+                "description"       = $node.description
                 "resolved_audience" = $node.resolved_audience
-                "keywords" = $node.keywords
+                "keywords"          = $node.keywords
             }
         }
     }
     
     $topK = if ($Mode -eq "alignment") { $TOPK_ALIGNMENT } else { $TOPK_DEDUP }
-    $sorted = $candidates | Sort-Object -Property @{Expression="score"; Descending=$true} | Select-Object -First $topK
+    $sorted = $candidates | Sort-Object -Property @{Expression = "score"; Descending = $true } | Select-Object -First $topK
     
     $outFile = "$TempDir/rag_results.json"
     $sorted | ConvertTo-Json -Depth 5 | Out-File $outFile -Encoding UTF8
     Write-Host "Da ghi ket qua vao $outFile ($($sorted.Count) candidates)"
     
-} elseif ($Mode -eq "dedup" -and $Scope -eq "full") {
+}
+elseif ($Mode -eq "dedup" -and $Scope -eq "full") {
     if (-not $Layer) {
         Write-Host "[ERR] Dedup full yeu cau -Layer" -ForegroundColor Red
         exit 1
@@ -177,17 +182,17 @@ if (($Mode -eq "alignment") -or ($Mode -eq "dedup" -and $Scope -eq "incremental"
                 $score = Get-OverlapScore $node1.keywords $node2.keywords
                 if ($score -ge $THRESHOLD_DEDUP) {
                     $pairs += @{
-                        "score" = $score
+                        "score"             = $score
                         "resolved_audience" = $node1.resolved_audience
-                        "atom1" = @{
-                            "path" = $path1
+                        "atom1"             = @{
+                            "path"        = $path1
                             "description" = $node1.description
-                            "keywords" = $node1.keywords
+                            "keywords"    = $node1.keywords
                         }
-                        "atom2" = @{
-                            "path" = $path2
+                        "atom2"             = @{
+                            "path"        = $path2
                             "description" = $node2.description
-                            "keywords" = $node2.keywords
+                            "keywords"    = $node2.keywords
                         }
                     }
                 }
@@ -195,7 +200,7 @@ if (($Mode -eq "alignment") -or ($Mode -eq "dedup" -and $Scope -eq "incremental"
         }
     }
     
-    $sortedPairs = $pairs | Sort-Object -Property @{Expression="score"; Descending=$true}
+    $sortedPairs = $pairs | Sort-Object -Property @{Expression = "score"; Descending = $true }
     $outFile = "$TempDir/dedup_pairs.json"
     $sortedPairs | ConvertTo-Json -Depth 6 | Out-File $outFile -Encoding UTF8
     Write-Host "Da ghi ket qua vao $outFile ($($sortedPairs.Count) pairs)"

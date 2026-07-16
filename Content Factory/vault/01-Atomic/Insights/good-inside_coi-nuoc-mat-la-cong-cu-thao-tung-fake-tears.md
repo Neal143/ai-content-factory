@@ -7,7 +7,7 @@ topics:
 - p1_sturdy_leadership
 - p1_tears_as_attachment_signal
 - p1_normalize_crying
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

@@ -7,7 +7,7 @@ topics:
 - p1_sturdy_leadership
 - p1_three_pillars_of_change
 - p1_children_as_explorers
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

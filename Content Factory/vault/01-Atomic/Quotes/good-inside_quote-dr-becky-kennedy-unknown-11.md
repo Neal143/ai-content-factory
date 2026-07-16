@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_sturdy_leader_self_care
 - p1_avp_strategy
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

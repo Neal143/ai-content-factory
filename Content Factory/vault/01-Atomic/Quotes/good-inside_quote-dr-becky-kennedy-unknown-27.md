@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_perfectionism_nature
 - p1_reframe_perfectionism
-status: processed
+status: orphan
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

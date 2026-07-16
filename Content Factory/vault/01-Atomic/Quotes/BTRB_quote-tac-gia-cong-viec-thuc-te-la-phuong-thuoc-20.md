@@ -6,7 +6,7 @@ topics:
 - p1_imitation_and_play
 - p1_healing_action
 - p1_real_work_for_violent_play
-status: processed
+status: orphan
 source_type: book
 source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
 source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
