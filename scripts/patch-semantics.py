@@ -160,7 +160,7 @@ def cmd_add(args):
     # All checks passed, patch file
     target_basename = get_basename(args.target)
     if add_link_regex(args.source, args.link_type, target_basename):
-        print(f"[SUCCESS] Đã thêm liên kết vào {args.source}")
+        print(f"[SUCCESS] Da them lien ket vao {args.source}")
     else:
         print("[ERR] Lỗi ghi file")
         sys.exit(1)
@@ -182,7 +182,7 @@ def cmd_redirect(args):
             if redirect_link_regex(file_path, old_basename, new_basename):
                 updated_files.append(file_path)
                 
-    print(f"[SUCCESS] Đã chuyển hướng {len(updated_files)} file trỏ từ {old_basename} sang {new_basename}")
+    print(f"[SUCCESS] Da chuyen huong {len(updated_files)} file tro tu {old_basename} sang {new_basename}")
     for f in updated_files:
         print(f" - {f}")
 
