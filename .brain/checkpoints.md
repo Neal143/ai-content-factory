@@ -1,6 +1,14 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 16/07/2026
+#### Xóa bỏ hoàn toàn status orphan khỏi file vật lý và script
+- **Mã khôi phục:** `2576d88`
+- **Thẻ (Tag):** `v4.3.2-clean-orphan`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo toàn vẹn dữ liệu 100%. Quét và gỡ bỏ nhãn mồ côi (orphan) bị gán nhầm trên 246 file Atom.
+  - **🛠️ Kỹ thuật (Tech):** Cập nhật script `prepare_curation_batches.py` xóa hoàn toàn logic xử lý `orphan`, buộc hệ thống chỉ chấp nhận `pass`. Commit toàn bộ thay đổi và dọn dẹp các file rác trong `.curation_temp`.
+
+### 📅 Ngày 16/07/2026
 #### Loại bỏ lỗi logic orphan trong atom-linker
 - **Mã khôi phục:** `8db018c`
 - **Thẻ (Tag):** `v3.7.0-fix-atom-linker-orphan`
