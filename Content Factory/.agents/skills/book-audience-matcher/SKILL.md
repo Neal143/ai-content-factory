@@ -1,6 +1,6 @@
 ---
 name: Book Audience Matcher
-description: Nhận đường dẫn file cache sách từ book-extractor, trả về Audience Decision Map, Audience_index.yaml và các file Audience vật lý. Được gọi bởi /atomize-book (Bước 2).
+description: Nhận đường dẫn file cache sách từ book-extractor, trả về Audience Decision Map, Audience_index.yaml và các file Audience vật lý. Được gọi bởi /book-extractor (Session 3).
 ---
 
 # Book Audience Matcher Skill
@@ -11,25 +11,25 @@ Nhiệm vụ: **Audience Resolution toàn diện**. Parse file sách thô, hiệ
 
 ## QUY TẮC VỆ SINH (HYGIENE)
 
-Skill này chạy trong workflow `/atomize-book` (conversation riêng, SAU khi `/extract-book` đã hoàn tất). Run-folder đã được tạo sẵn — KHÔNG tạo mới.
+Skill này chạy trong workflow `/book-extractor` (Session 3 - conversation riêng, SAU khi Phase 2 đã hoàn tất). Run-folder đã được tạo sẵn — KHÔNG tạo mới.
 
 - **Thư mục dùng chung:** `[run-folder]`
-  *(Dùng run-folder path được /atomize-book truyền trực tiếp qua INPUT. KHÔNG tự derive.)*
+  *(Dùng run-folder path được /book-extractor truyền trực tiếp qua INPUT. KHÔNG tự derive.)*
 - File tạm (JSON output từ script, debug logs) → BẮT BUỘC ghi vào thư mục trên.
   Path đầy đủ bắt buộc: `[run-folder]/session_3/audiences_parsed.json`
   TUYỆT ĐỐI KHÔNG dùng `temp_audiences.json` hay bất kỳ tên file bare nào ở thư mục hiện tại.
 
 ---
 
-## Input (Nhận từ /atomize-book)
+## Input (Nhận từ /book-extractor Session 3)
 
-```
-INPUT (nhận từ /atomize-book):
+```text
+INPUT (nhận từ /book-extractor):
 - File cache path: `vault/02-sources/books/[Tên Sách].md`
 - Run folder path: `vault/.extraction_runs/books/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
   (Thư mục đã được book-extractor tạo sẵn và NIÊM PHONG dữ liệu)
 
-Bắt buộc phải có sẵn trong run-folder (từ Phase 1):
+Bắt buộc phải có sẵn trong run-folder (từ Phase 2):
 - `parsed_metadata.json` (Manifesto Metadata)
 - `extraction_baseline.csv` (Manifesto Tracking)
 
@@ -38,16 +38,16 @@ File cache tuân thủ `.agents/skills/book-extractor/references/raw-book-struct
 - N data_chunk: META_CHUNK_AUDIENCE — JTBD cấp chunk (level xác định SAU Semantic Match)
 ```
 
-## Output (Trả về cho /atomize-book)
+## Output (Trả về cho /book-extractor Session 3)
 
-Skill này sẽ trực tiếp tác động vào Vault và tạo các tài liệu nội bộ trả về cho `/atomize-book`:
+Skill này sẽ trực tiếp tác động vào Vault và tạo các tài liệu nội bộ trả về cho `/book-extractor`:
 
 1. **Các file Audience vật lý:** Được tạo/merge trong `vault/01-Atomic/Audiences/`
 2. **Sổ tay Audience Index:** Cập nhật file `_audience_index.yaml`
 3. **Audience Decision Map:** File JSON (`audience_decision_map.json`) chứa quyết định nối map và đã được enrich `jtbd_raw`.
 4. **Cập nhật Baseline:** Cột `status` của các row Audience trong `extraction_baseline.csv` được ghi đè thành `DONE` hoặc `MISSING`.
 
-Cấu trúc file `audience_decision_map.json` (dùng cho Bước 3 của Atomize):
+Cấu trúc file `audience_decision_map.json` (dùng cho Bước 8 (Phase 4) của /book-extractor):
 ```json
 [
   {
@@ -274,4 +274,4 @@ Script thực hiện 2 việc:
 ### Giai đoạn 4: Tổng Hợp & Trả Kết Quả
 
 - In tóm tắt ra Chat: book audience (merge/create + level), số chunk merge, số chunk create, danh sách file mới tạo.
-- Trả Audience Decision Map hoàn chỉnh về `/atomize-book` (entry `"book"` + N entries chunk) để làm đầu vào cho **Bước 3 (Topic Gate + Atomization):**
+- Trả Audience Decision Map hoàn chỉnh về `/book-extractor` (entry `"book"` + N entries chunk) để làm đầu vào cho **Bước 8 (Phase 4: Sinh Topics & Phân rã Atoms):**
