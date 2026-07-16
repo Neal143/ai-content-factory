@@ -1,12 +1,20 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 17/07/2026
+#### Khắc phục triệt để vi phạm Encoding Convention trên toàn bộ Python Scripts
+- **Mã khôi phục:** `542bed7`
+- **Thẻ (Tag):** `v4.3.2-encoding-audit`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Loại bỏ hoàn toàn mầm mống gây lỗi hiển thị ký tự và ngắt quãng tiến trình tự động hóa. Đảm bảo toàn bộ quy trình đọc/ghi nội dung (sách, bài viết) không còn tình trạng xuất hiện các ký tự lạ hoặc sập kịch bản giữa chừng.
+  - **🛠️ Kỹ thuật (Tech):** Xử lý nốt 5 vi phạm trên 2 file `.py`. Cụ thể: loại bỏ tiếng Việt có dấu trong lệnh `print()` và đổi sang đọc file `.md` bằng `utf-8-sig` (tại `patch_source_metadata.py`); sửa lệnh ghi `.md` thành chuẩn `utf-8` thay vì `utf-8-sig` để chống rác BOM (tại `prepare_curation_batches.py`). Toàn bộ scripts Python đã tuân thủ 100% Rule 15.
+
 ### 📅 Ngày 16/07/2026
 #### Chuẩn hóa Encoding & Fail-Fast cho Python Scripts
 - **Mã khôi phục:** `f436667`
 - **Thẻ (Tag):** `v4.3.2-encoding-fix`
 - **Nội dung chính:**
   - **📱 Sản phẩm / Business:** Đảm bảo tính ổn định của quy trình xử lý nội dung, loại trừ rủi ro ngắt quãng do mã hóa tiếng Việt có dấu. Bổ sung cơ chế cảnh báo sớm khi phân tích metadata lỗi để bảo vệ toàn vẹn dữ liệu.
-  - **🛠️ Kỹ thuật (Tech):** Loại bỏ tiếng Việt có dấu trong 12 lệnh `print()` tại `patch-semantics.py`. Chuyển đổi encoding ghi file sang `utf-8` (thay vì `utf-8-sig`) và thêm cơ chế Fail-Fast (log `[WARN]`) cho luồng đọc frontmatter tại `patch-semantics.py` và `cascade_merge.py`. Cập nhật rule số 15 tại Global GEMINI.md.
+  - **🛠️ Kỹ thuật (Tech):** Loại bỏ tiếng Việt có dấu trong 12 lệnh `print()` tại `patch-semantics.py`. Chuyển đổi encoding ghi file sang `utf-8` (thay vì `utf-8-sig`) và thêm cơ chế Fail-Fast (log `[WARN]`) cho luồng đọc frontmatter tại `patch-semantics.py` và `cascade_merge.py`. Tạo rule `encoding-convention.md` tại `.agents/rules/`.
 
 ### 📅 Ngày 16/07/2026
 #### Khắc phục triệt để lỗi mù Frontmatter do BOM và lỗi Unicode Console
