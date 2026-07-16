@@ -160,7 +160,7 @@ def _write_md_file(path, frontmatter_dict, body):
             fm_str += f"\nkeywords: {keywords}"
 
     content = f"---\n{fm_str}\n---\n{body}"
-    with codecs.open(path, 'w', 'utf-8-sig') as f:
+    with codecs.open(path, 'w', 'utf-8') as f:
         f.write(content)
 
 def _read_md_file(path):

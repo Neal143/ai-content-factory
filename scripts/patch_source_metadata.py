@@ -45,7 +45,7 @@ def main():
     
     cache_file = bb.get("cache_file")
     if not cache_file or not os.path.exists(cache_file):
-        print(f"File {cache_file} không tồn tại.")
+        print(f"File {cache_file} khong ton tai.")
         return
 
     # Hàm hỗ trợ tìm kiếm file trong cả thư mục gốc và thư mục con (hỗ trợ kiến trúc session mới)
@@ -86,13 +86,13 @@ def main():
                         chunk_audience_map[ci] = item.get("audience_filename", "")
 
     # Đọc file markdown
-    with open(cache_file, 'r', encoding='utf-8') as f:
+    with open(cache_file, 'r', encoding='utf-8-sig') as f:
         content = f.read()
 
     # Xử lý cấp Sách
     book_match = re.search(r'META_BOOK:.*?book_name=(.*?)\s*\|', content)
     if not book_match:
-        print("Không tìm thấy META_BOOK.")
+        print("Khong tim thay META_BOOK.")
         return
     
     book_name = book_match.group(1).strip()
@@ -130,7 +130,7 @@ def main():
     with open(tmp_file, 'w', encoding='utf-8') as f:
         f.write(content)
     os.replace(tmp_file, cache_file)
-    print(f"Đã đóng dấu metadata thành công vào {cache_file}")
+    print(f"Da dong dau metadata thanh cong vao {cache_file}")
 
 if __name__ == "__main__":
     main()
