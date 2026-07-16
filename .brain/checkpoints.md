@@ -1,6 +1,14 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 16/07/2026
+#### Đồng bộ SKILL.md với kiến trúc book-extractor mới
+- **Mã khôi phục:** `3773661`
+- **Thẻ (Tag):** `sync-book-extractor-skill`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đồng bộ hóa tài liệu hướng dẫn giúp hệ thống chạy ổn định, loại bỏ rủi ro Agent báo cáo sai hoặc ảo giác khi thực hiện pipeline trích xuất sách.
+  - **🛠️ Kỹ thuật (Tech):** Cập nhật `book-audience-matcher/SKILL.md`: đổi `/atomize-book` thành `/book-extractor (Session 3)`, cập nhật logic nhận file input từ Phase 1 thành Phase 2, và điều hướng output cho Bước 8 (Phase 4).
+
+### 📅 Ngày 16/07/2026
 #### Xóa bỏ hoàn toàn status orphan khỏi file vật lý và script
 - **Mã khôi phục:** `2576d88`
 - **Thẻ (Tag):** `v4.3.2-clean-orphan`
