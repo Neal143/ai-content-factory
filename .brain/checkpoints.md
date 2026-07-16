@@ -1,6 +1,14 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 16/07/2026
+#### Chuẩn hóa Encoding & Fail-Fast cho Python Scripts
+- **Mã khôi phục:** `f436667`
+- **Thẻ (Tag):** `v4.3.2-encoding-fix`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo tính ổn định của quy trình xử lý nội dung, loại trừ rủi ro ngắt quãng do mã hóa tiếng Việt có dấu. Bổ sung cơ chế cảnh báo sớm khi phân tích metadata lỗi để bảo vệ toàn vẹn dữ liệu.
+  - **🛠️ Kỹ thuật (Tech):** Loại bỏ tiếng Việt có dấu trong 12 lệnh `print()` tại `patch-semantics.py`. Chuyển đổi encoding ghi file sang `utf-8` (thay vì `utf-8-sig`) và thêm cơ chế Fail-Fast (log `[WARN]`) cho luồng đọc frontmatter tại `patch-semantics.py` và `cascade_merge.py`. Cập nhật rule số 15 tại Global GEMINI.md.
+
+### 📅 Ngày 16/07/2026
 #### Khắc phục triệt để lỗi mù Frontmatter do BOM và lỗi Unicode Console
 - **Mã khôi phục:** `ca2e5a8`
 - **Thẻ (Tag):** `v4.3.2-fix-bom-unicode`
