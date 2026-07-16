@@ -11,14 +11,10 @@
             "id": "a9f74cc956b25ec1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "01-Atomic/Solutions/BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Xem biểu đồ"
             }
           }
         ]
@@ -185,10 +181,10 @@
   },
   "active": "a9f74cc956b25ec1",
   "lastOpenFiles": [
-    "BTRB_bong-ma-cua-su-dan-chu-gia-tao.md",
-    "01-Atomic/Solutions/BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon.md",
-    "02-sources/books/Whats-Going-on-in-There.md",
     "01-Atomic/Audiences/cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho.md",
+    "01-Atomic/Solutions/BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon.md",
+    "BTRB_bong-ma-cua-su-dan-chu-gia-tao.md",
+    "02-sources/books/Whats-Going-on-in-There.md",
     "01-Atomic/Audiences/phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam.md",
     "01-Atomic/_DLQ/good-inside_chien-luoc-co-lap-dam-chay-contain-the-fire.md",
     "01-Atomic/Stories/good-inside_story-liam-va-me-allison-unknown-15.md",
