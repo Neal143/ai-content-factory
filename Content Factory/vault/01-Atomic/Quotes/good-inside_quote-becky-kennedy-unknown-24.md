@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_consent_circuitry
 - p1_trusting_bodily_signals
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

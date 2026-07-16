@@ -7,7 +7,7 @@ topics:
 - p1_sturdy_leadership
 - p1_whining_formula
 - p1_humor_response
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

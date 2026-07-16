@@ -7,7 +7,7 @@ topics:
 - p1_crisis_integration_opportunity
 - p1_child_emotional_regulation
 - p1_emotional_cloud_model
-status: orphan
+status: processed
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child

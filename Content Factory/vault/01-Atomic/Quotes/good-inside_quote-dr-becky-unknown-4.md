@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_family_system_roles
 - p1_boundary_validation_empathy
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

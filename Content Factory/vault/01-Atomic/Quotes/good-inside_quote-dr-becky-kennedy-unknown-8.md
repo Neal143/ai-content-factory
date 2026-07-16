@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_behavior_is_a_window
 - p1_connection_capital
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

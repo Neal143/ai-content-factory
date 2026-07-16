@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_confirming_perceptions
 - p1_delivering_hard_truths
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

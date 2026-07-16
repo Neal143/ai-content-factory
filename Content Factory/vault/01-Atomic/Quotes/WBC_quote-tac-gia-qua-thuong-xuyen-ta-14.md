@@ -6,7 +6,7 @@ topics:
 - p1_crisis_integration_opportunity
 - p1_child_conflict_resolution
 - p1_connect_through_conflict
-status: orphan
+status: processed
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child

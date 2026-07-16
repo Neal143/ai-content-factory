@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_not_listening_nature
 - p1_connect_before_asking
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

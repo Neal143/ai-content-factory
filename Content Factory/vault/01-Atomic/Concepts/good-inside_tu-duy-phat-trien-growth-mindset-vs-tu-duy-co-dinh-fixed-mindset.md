@@ -7,7 +7,7 @@ topics:
 - p1_sturdy_leadership
 - p1_parental_tolerance_for_resilience
 - p1_frustration_tolerance_strategies
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown

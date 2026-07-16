@@ -4,7 +4,7 @@ topics:
 - p1_early_childhood_education
 - p1_rhythm_and_senses
 - p1_imitation_and_play
-status: orphan
+status: processed
 source_type: book
 source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
 source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven

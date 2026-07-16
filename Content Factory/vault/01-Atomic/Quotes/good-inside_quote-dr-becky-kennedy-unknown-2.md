@@ -6,7 +6,7 @@ topics:
 - p1_sturdy_leadership
 - p1_good_inside_core_belief
 - p1_most_generous_interpretation
-status: orphan
+status: processed
 source_type: book
 source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
 source_id: unknown
