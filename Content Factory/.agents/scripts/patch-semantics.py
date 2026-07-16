@@ -25,7 +25,7 @@ DAG_PARENT_MAP = {
 
 def load_index(index_path):
     if not os.path.exists(index_path):
-        print(f"[ERR] Không tìm thấy index tại {index_path}")
+        print(f"[ERR] Khong tim thay index tai {index_path}")
         sys.exit(1)
     with open(index_path, 'r', encoding='utf-8-sig') as f:
         return json.load(f)
@@ -35,7 +35,7 @@ def get_basename(path):
 
 def add_link_regex(file_path, link_type, target_basename):
     if not os.path.exists(file_path):
-        print(f"[ERR] Không tìm thấy file {file_path}")
+        print(f"[ERR] Khong tim thay file {file_path}")
         return False
         
     with open(file_path, 'r', encoding='utf-8-sig') as f:
@@ -43,7 +43,7 @@ def add_link_regex(file_path, link_type, target_basename):
         
     match = re.search(r'^---\r?\n(.*?)\r?\n---', content, re.DOTALL)
     if not match:
-        print(f"[ERR] Không tìm thấy frontmatter trong {file_path}")
+        print(f"[ERR] Khong tim thay frontmatter trong {file_path}")
         return False
         
     frontmatter = match.group(1)
@@ -67,7 +67,7 @@ def add_link_regex(file_path, link_type, target_basename):
         new_frontmatter = frontmatter + f"\n{key}:\n{new_link}"
         
     new_content = content.replace(frontmatter, new_frontmatter, 1)
-    with open(file_path, 'w', encoding='utf-8-sig') as f:
+    with open(file_path, 'w', encoding='utf-8') as f:
         f.write(new_content)
     return True
 
@@ -80,6 +80,7 @@ def redirect_link_regex(file_path, old_target_basename, new_target_basename):
         
     match = re.search(r'^---\r?\n(.*?)\r?\n---', content, re.DOTALL)
     if not match:
+        print(f"[WARN] Frontmatter parse failed, bo qua: {file_path}")
         return False
         
     frontmatter = match.group(1)
@@ -89,7 +90,7 @@ def redirect_link_regex(file_path, old_target_basename, new_target_basename):
     new_frontmatter = frontmatter.replace(f"[[{old_target_basename}]]", f"[[{new_target_basename}]]")
     if new_frontmatter != frontmatter:
         new_content = content.replace(frontmatter, new_frontmatter, 1)
-        with open(file_path, 'w', encoding='utf-8-sig') as f:
+        with open(file_path, 'w', encoding='utf-8') as f:
             f.write(new_content)
         return True
     return False
@@ -122,10 +123,10 @@ def cmd_add(args):
     target = nodes.get(args.target)
     
     if not source:
-        print(f"[REJECT] Source {args.source} không có trong index")
+        print(f"[REJECT] Source {args.source} khong co trong index")
         sys.exit(1)
     if not target:
-        print(f"[REJECT] Target {args.target} không có trong index")
+        print(f"[REJECT] Target {args.target} khong co trong index")
         sys.exit(1)
         
     # 1. Audience Exact Match
@@ -133,7 +134,7 @@ def cmd_add(args):
     tgt_aud = target.get('resolved_audience')
     
     if src_aud == "CONFLICT" or tgt_aud == "CONFLICT":
-        print("[REJECT] Source hoặc Target có CONFLICT audience")
+        print("[REJECT] Source hoac Target co CONFLICT audience")
         sys.exit(1)
         
     if src_aud and tgt_aud:
@@ -141,7 +142,7 @@ def cmd_add(args):
             print(f"[REJECT] Audience Mismatch: Source ({src_aud.get('id')}) != Target ({tgt_aud.get('id')})")
             sys.exit(1)
     elif src_aud or tgt_aud:
-        print("[REJECT] Một bên có Audience, một bên không (mismatch)")
+        print("[REJECT] Mot ben co Audience, mot ben khong (mismatch)")
         sys.exit(1)
         
     # 2. Type Hierarchy Check
@@ -149,12 +150,12 @@ def cmd_add(args):
     tgt_type = target.get('type')
     allowed = DAG_PARENT_MAP.get(src_type, [])
     if tgt_type not in allowed:
-        print(f"[REJECT] Type Invalid: {src_type} không thể trỏ tới {tgt_type}")
+        print(f"[REJECT] Type Invalid: {src_type} khong the tro toi {tgt_type}")
         sys.exit(1)
         
     # 3. DAG Cycle Check
     if check_cycle(index_data, args.target, args.source):
-        print(f"[REJECT] DAG Cycle detected: Trỏ từ {args.source} tới {args.target} sẽ tạo vòng lặp")
+        print(f"[REJECT] DAG Cycle detected: Tro tu {args.source} toi {args.target} se tao vong lap")
         sys.exit(1)
         
     # All checks passed, patch file
@@ -162,7 +163,7 @@ def cmd_add(args):
     if add_link_regex(args.source, args.link_type, target_basename):
         print(f"[SUCCESS] Da them lien ket vao {args.source}")
     else:
-        print("[ERR] Lỗi ghi file")
+        print("[ERR] Loi ghi file")
         sys.exit(1)
 
 def cmd_redirect(args):
@@ -205,11 +206,11 @@ if __name__ == '__main__':
     
     if args.action == 'add':
         if not args.source or not args.target or not args.link_type:
-            print("[ERR] --action add yêu cầu --source, --target, và --link-type")
+            print("[ERR] --action add yeu cau --source, --target, va --link-type")
             sys.exit(1)
         cmd_add(args)
     elif args.action == 'redirect':
         if not args.old_target or not args.new_target:
-            print("[ERR] --action redirect yêu cầu --old-target và --new-target")
+            print("[ERR] --action redirect yeu cau --old-target va --new-target")
             sys.exit(1)
         cmd_redirect(args)
