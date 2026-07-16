@@ -1,6 +1,14 @@
 # Lịch sử Checkpoints
 
 ### 📅 Ngày 16/07/2026
+#### Khắc phục triệt để lỗi mù Frontmatter do BOM và lỗi Unicode Console
+- **Mã khôi phục:** `ca2e5a8`
+- **Thẻ (Tag):** `v4.3.2-fix-bom-unicode`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Vá lỗi không update link của tính năng Cascade Merge, đảm bảo toàn vẹn dữ liệu mạng lưới liên kết. Ngăn chặn lỗi script ngắt đột ngột khi hoàn thành.
+  - **🛠️ Kỹ thuật (Tech):** Thay thế `utf-8` bằng `utf-8-sig` trên mọi luồng đọc/ghi của `patch-semantics.py` để vượt qua lỗi BOM `\ufeff`. Xóa bỏ tiếng Việt có dấu trong các hàm `print()` để tránh lỗi `UnicodeEncodeError` trên PowerShell Console.
+
+### 📅 Ngày 16/07/2026
 #### Đồng bộ SKILL.md với kiến trúc book-extractor mới
 - **Mã khôi phục:** `3773661`
 - **Thẻ (Tag):** `sync-book-extractor-skill`
