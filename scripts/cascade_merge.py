@@ -25,7 +25,7 @@ def _read_md_file(filepath):
 
 def _write_md_file(filepath, content):
     try:
-        with codecs.open(filepath, 'w', encoding='utf-8-sig') as f:
+        with codecs.open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)
         return True
     except Exception as e:
@@ -103,6 +103,7 @@ def merge_topic(args):
             # Parse frontmatter
             match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
             if not match:
+                print(f"[WARN] Frontmatter parse failed, bo qua: {filepath}")
                 continue
                 
             frontmatter_text = match.group(1)
