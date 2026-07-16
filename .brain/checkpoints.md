@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 16/07/2026
+#### Loại bỏ lỗi logic orphan trong atom-linker
+- **Mã khôi phục:** `8db018c`
+- **Thẻ (Tag):** `v3.7.0-fix-atom-linker-orphan`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo toàn vẹn dữ liệu cho các mẩu nội dung (Atom) khi thực hiện quá trình liên kết chéo. Hệ thống không còn tự động dán nhãn "mồ côi" (orphan) sai lệch cho các file không tìm thấy liên kết mới.
+  - **🛠️ Kỹ thuật (Tech):** Cập nhật `atom-linker/SKILL.md` và `prepare_curation_batches.py` để chuyển đổi luồng từ `decision: "orphan"` sang `decision: "pass"`. Khắc phục lỗi slash path Windows trong `Search-SemanticAtom.ps1`.
+
 ### 📅 Ngày 15/07/2026
 #### Vá lỗi đồng bộ cascade merge và cập nhật routing AGENT
 - **Mã khôi phục:** `536fac9`
