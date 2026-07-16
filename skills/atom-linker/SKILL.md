@@ -9,7 +9,7 @@ last_update: 13/07/2026 09:38 (GMT+7)
 > **Tên file**: .agents/skills/atom-linker/SKILL.md
 > **Vai trò**: Tìm parent node cho Atom mới và liên kết vào cấu trúc DAG.
 > **Sử dụng khi**: Được gọi từ VaultCuratorAgent, hoặc thủ công khi cần align atoms.
-> **Output**: Atoms đã có supports_* link + belongs_to_audience. Orphans được tag `status: orphan`.
+> **Output**: Atoms được liên kết chéo (cross-link) thêm vào các node cha khác trong Vault nếu tìm thấy điểm giao thoa.
 > **Tóm tắt logic**: Nhận atoms → Script chia batch → Vòng lặp: Search alignment → LLM đánh giá → điền template → submit (script validate + patch link) → Reframe clones (nếu có) → Rebuild index.
 
 > ⛔ **CẤM TUYỆT ĐỐI**:
@@ -56,12 +56,12 @@ Nếu in `ALL_DONE` → chuyển Bước 3. Nếu không, mở `<output_dir>/ali
    ```
 2. Đọc `vault/.curation_temp/rag_results.json`.
 3. LLM đánh giá candidates → điền quyết định vào entry tương ứng trong `<output_dir>/align/results_temp.json`:
-   - **0 match**: `decision: "orphan"`, `reasoning` giải thích.
+   - **0 match**: `decision: "pass"`, `reasoning` giải thích (Không tìm thấy node cha nào khác ngoài node cha gốc).
    - **1 match (1 Audience)**: `decision: "linked"`, `parent_path`, `link_type` (`insight` hoặc `knowledge`), `audience`, `reasoning`.
    - **Nhiều match (nhiều Audience, tối đa 3)**: `decision: "cloned"`, `parent_path`, `link_type`, `clone_targets` (danh sách audience ids), `reasoning`.
 4. Lặp cho atom tiếp theo.
 
-> ⚠️ **KHÔNG** tự gọi `patch-semantics.py`, tự clone file, hay tự ghi `status: orphan`. Script sẽ thực hiện sau khi validate.
+> ⚠️ **KHÔNG** tự gọi `patch-semantics.py` hay tự clone file. Script sẽ thực hiện sau khi validate.
 > ⚠️ Dùng công cụ file (`write_to_file` với `Overwrite: true`) để ghi `results_temp.json`. **KHÔNG** truyền nội dung JSON qua terminal — sẽ lỗi encoding/quoting với tiếng Việt.
 
 **Bước 2c -- Submit kết quả:**

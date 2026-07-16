@@ -98,11 +98,9 @@ def _print_skill_summary(output_dir, skill):
 
     elif skill == "align":
         linked = sum(1 for e in entries if e.get("decision") == "linked")
-        orphaned_list = [e for e in entries if e.get("decision") == "orphan"]
+        passed = sum(1 for e in entries if e.get("decision") == "pass")
         cloned = sum(1 for e in entries if e.get("decision") == "cloned")
-        print(f"Total: {len(entries)} atoms | Linked: {linked} | Orphaned: {len(orphaned_list)} | Cloned: {cloned}")
-        for o in orphaned_list:
-            print(f"  [ORPHAN] {os.path.basename(o['atom_path'])}")
+        print(f"Total: {len(entries)} atoms | Linked: {linked} | Passed: {passed} | Cloned: {cloned}")
 
     elif skill in ["vc-topic-dedup", "vc-audience-curator"]:
         print(f"Total: {len(entries)} decisions processed.")
@@ -422,7 +420,7 @@ def _generate_template(batch_data, skill, output_dir):
     elif skill == "align":
         results = [{
             "atom_path": a,
-            "decision": f"{PLACEHOLDER}: linked | orphan | cloned]",
+            "decision": f"{PLACEHOLDER}: linked | pass | cloned]",
             "parent_path": f"{PLACEHOLDER} neu linked/cloned: duong dan parent atom]",
             "link_type": f"{PLACEHOLDER} neu linked/cloned: insight | knowledge]",
             "audience": f"{PLACEHOLDER} neu linked: audience id]",
@@ -587,8 +585,8 @@ def _validate_align(entries):
     """Validate ket qua atom-linker"""
     for i, e in enumerate(entries):
         decision = e.get("decision", "")
-        if decision not in ("linked", "orphan", "cloned"):
-            return False, f"Entry {i}: decision phai la 'linked', 'orphan', hoac 'cloned', nhan '{decision}'"
+        if decision not in ("linked", "pass", "cloned"):
+            return False, f"Entry {i}: decision phai la 'linked', 'pass', hoac 'cloned', nhan '{decision}'"
 
         reasoning = e.get("reasoning", "")
         if len(reasoning) < 15:
@@ -737,12 +735,8 @@ def _execute_align(entries, output_dir):
             ], check=False)
             print(f"[LINK] {os.path.basename(atom_path)} -> {os.path.basename(e['parent_path'])}")
 
-        elif decision == "orphan":
-            if os.path.exists(atom_path):
-                fm, body = _read_md_file(atom_path)
-                fm["status"] = "orphan"
-                _write_md_file(atom_path, fm, body)
-                print(f"[ORPHAN] {os.path.basename(atom_path)}")
+        elif decision == "pass":
+            print(f"[PASS] {os.path.basename(atom_path)}")
 
         elif decision == "cloned":
             # Link ban goc truoc
@@ -788,9 +782,9 @@ def _execute_align(entries, output_dir):
     log_path = os.path.join(output_dir, "align_log.json")
     _append_log(log_path, entries)
     linked = sum(1 for e in entries if e["decision"] == "linked")
-    orphaned = sum(1 for e in entries if e["decision"] == "orphan")
+    passed = sum(1 for e in entries if e["decision"] == "pass")
     cloned = sum(1 for e in entries if e["decision"] == "cloned")
-    print(f"[ALIGN] linked={linked}, orphan={orphaned}, cloned={cloned}")
+    print(f"[ALIGN] linked={linked}, passed={passed}, cloned={cloned}")
 
 
 # === NHOM 5: SUBMIT ===
