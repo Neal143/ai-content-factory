@@ -27,7 +27,7 @@ def load_index(index_path):
     if not os.path.exists(index_path):
         print(f"[ERR] Không tìm thấy index tại {index_path}")
         sys.exit(1)
-    with open(index_path, 'r', encoding='utf-8') as f:
+    with open(index_path, 'r', encoding='utf-8-sig') as f:
         return json.load(f)
 
 def get_basename(path):
@@ -38,7 +38,7 @@ def add_link_regex(file_path, link_type, target_basename):
         print(f"[ERR] Không tìm thấy file {file_path}")
         return False
         
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(file_path, 'r', encoding='utf-8-sig') as f:
         content = f.read()
         
     match = re.search(r'^---\r?\n(.*?)\r?\n---', content, re.DOTALL)
@@ -67,7 +67,7 @@ def add_link_regex(file_path, link_type, target_basename):
         new_frontmatter = frontmatter + f"\n{key}:\n{new_link}"
         
     new_content = content.replace(frontmatter, new_frontmatter, 1)
-    with open(file_path, 'w', encoding='utf-8') as f:
+    with open(file_path, 'w', encoding='utf-8-sig') as f:
         f.write(new_content)
     return True
 
@@ -75,7 +75,7 @@ def redirect_link_regex(file_path, old_target_basename, new_target_basename):
     if not os.path.exists(file_path):
         return False
         
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(file_path, 'r', encoding='utf-8-sig') as f:
         content = f.read()
         
     match = re.search(r'^---\r?\n(.*?)\r?\n---', content, re.DOTALL)
@@ -89,7 +89,7 @@ def redirect_link_regex(file_path, old_target_basename, new_target_basename):
     new_frontmatter = frontmatter.replace(f"[[{old_target_basename}]]", f"[[{new_target_basename}]]")
     if new_frontmatter != frontmatter:
         new_content = content.replace(frontmatter, new_frontmatter, 1)
-        with open(file_path, 'w', encoding='utf-8') as f:
+        with open(file_path, 'w', encoding='utf-8-sig') as f:
             f.write(new_content)
         return True
     return False
