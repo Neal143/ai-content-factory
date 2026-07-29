@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh gắn kết lại với con
 - cha mẹ thoát khỏi vòng lặp la mắng
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày
 

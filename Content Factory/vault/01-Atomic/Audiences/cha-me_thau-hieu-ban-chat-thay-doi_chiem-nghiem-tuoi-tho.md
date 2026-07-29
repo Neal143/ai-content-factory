@@ -10,6 +10,10 @@ parent_audience:
 aliases:
 - người chiêm nghiệm về tuổi thơ
 - cha mẹ nhìn lại quá khứ
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn thấu hiểu bản chất sự thay đổi của loài người khi chiêm nghiệm lại ý nghĩa của tuổi thơ
 

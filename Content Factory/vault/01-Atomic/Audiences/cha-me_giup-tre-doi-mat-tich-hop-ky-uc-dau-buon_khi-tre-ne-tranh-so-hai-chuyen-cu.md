@@ -11,6 +11,10 @@ parent_audience:
 aliases:
 - phụ huynh
 - người chăm sóc
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 cha mẹ muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ
 

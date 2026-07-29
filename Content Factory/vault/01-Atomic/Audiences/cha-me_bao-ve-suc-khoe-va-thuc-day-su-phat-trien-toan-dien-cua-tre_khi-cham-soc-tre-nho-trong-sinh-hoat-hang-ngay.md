@@ -10,6 +10,10 @@ aliases:
 - nuôi dưỡng trẻ lớn khôn mỗi ngày
 vivid_circumstances:
 - Mùa đông hoặc khi trời lạnh | Trẻ nói không lạnh dù chạm vào da thấy lạnh | Trẻ chưa phát triển hoàn toàn cảm nhận nhiệt độ bên trong
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày
 

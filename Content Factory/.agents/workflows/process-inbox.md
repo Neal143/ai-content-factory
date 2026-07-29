@@ -21,12 +21,22 @@ Tóm tắt logic: Hỗ trợ 3 syntax (Chat, Extract, Mặc định quét tĩnh)
 - **TH 2 (Extract):** Quét các file cũ chưa bóc tách trong Vault.
 - **TH 3 (Mặc định):** Quét đúng 7 file nạp liệu tĩnh trong thư mục `00-Inbox/`: `Concepts.md`, `Data-Points.md`, `Insights.md`, `Quotes.md`, `Solutions.md`, `Stories.md`, `Uncategorized.md`. Bỏ qua bất kỳ file nào khác. Bỏ qua logic YAML frontmatter.
 
+### Bước 1.5: Sinh Block ID
+Sinh một Block ID duy nhất cho batch xử lý lần này:
+- **Format:** `inbox-YYYYMMDD-HHMMSS` (GMT+7, viết liền không dấu phân cách)
+- **Ví dụ:** 28/07/2026 22:30:00 → `block_id = inbox-20260728-223000`
+- Lưu `block_id` vào biến context để truyền cho skills ở Bước 2.
+
 ### Bước 2: Phân tách & Định tuyến (Zero-Hallucination Routing)
 Ủy quyền toàn bộ thao tác xử lý cho Skills:
 1. **Chia nhỏ (nếu cần):** Tự động chẻ nhỏ nội dung trong file thành các khối độc lập dựa trên khoảng trắng hoặc dấu ngăn cách `---`.
 2. **Định tuyến tuyệt đối:** Dựa vào tên file (Ví dụ `Quotes.md`), hệ thống ngầm gán Type tương ứng cho toàn bộ các khối bên trong.
    - Giao toàn bộ khối từ `Stories.md` (hoặc text nạp trực tiếp được nhận diện là câu chuyện) cho skill `story-architect`.
    - Giao các khối từ 6 file còn lại cho skill `inbox-processor`. (File `Uncategorized.md` sẽ do AI tự suy luận Type).
+
+**Truyền thêm cho mỗi skill:**
+- `block_id`: Giá trị đã sinh ở Bước 1.5.
+- `processed_file`: Tên file Processed tương ứng với type (VD: `Processed/Insights` cho nội dung từ `Insights.md`, `Processed/Stories` cho nội dung từ `Stories.md`).
 
 ### Bước 3: Hoàn tất & Tái sinh (Reverse-Chronological Logging)
 Áp dụng cho **tất cả** các trường hợp đầu vào:
@@ -36,14 +46,15 @@ Tóm tắt logic: Hỗ trợ 3 syntax (Chat, Extract, Mặc định quét tĩnh)
 
 Quy trình ghi log:
 1. Đọc nội dung file lưu trữ tương ứng nằm trong thư mục `vault/00-Inbox/Processed/`.
-2. Ghi thêm nội dung khối Raw Data vừa xử lý **LÊN ĐẦU FILE** (Prepend) theo đúng format thời gian thực:
+2. Ghi thêm nội dung khối Raw Data vừa xử lý **LÊN ĐẦU FILE** (Prepend) theo đúng format:
    ```markdown
-   ## DD/MM/YYYY HH:MM:SS (GMT+7)
+   ## DD/MM/YYYY HH:MM:SS (GMT+7) ^inbox-YYYYMMDD-HHMMSS
    [Nội dung Raw Data nguyên bản của User]
    🔗 Đã xử lý thành Atom: [[Tên_File_Atom_Sinh_Ra]]
 
    ---
    ```
+   > **Block ID:** Chuỗi `^inbox-YYYYMMDD-HHMMSS` cuối heading là Obsidian Block Reference ID (sinh ở Bước 1.5). Giá trị PHẢI khớp chính xác với `block_id` đã truyền cho skills.
 3. Chỉ với TH 3 (Mặc định): Làm rỗng nội dung vừa nạp trong file gốc ở `00-Inbox/`. **Tuyệt đối không xóa file vật lý** — chỉ xóa nội dung bên trong.
 4. Báo cáo tổng số Atoms được bóc tách an toàn vào `vault/01-Atomic/`.
 

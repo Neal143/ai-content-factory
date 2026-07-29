@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - bảo vệ trẻ khỏi ô nhiễm thông tin và cảm xúc
 - chăm sóc đời sống tinh thần cho trẻ giữa thời đại số
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo
 

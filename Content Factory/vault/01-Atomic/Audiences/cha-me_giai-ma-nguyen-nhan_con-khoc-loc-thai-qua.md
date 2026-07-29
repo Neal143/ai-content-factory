@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh xử lý khi con hay khóc
 - cha mẹ dỗ trẻ khóc nhè
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá
 

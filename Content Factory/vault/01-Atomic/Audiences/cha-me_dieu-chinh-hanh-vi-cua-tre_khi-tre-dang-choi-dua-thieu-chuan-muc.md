@@ -10,6 +10,10 @@ aliases:
 - xử lý hành vi sai lệch của con lúc chơi
 vivid_circumstances:
 - Giờ chơi tại lớp học mầm non | Hai bé gái liên tục tung những con thú len lên không trung | Giáo viên muốn can thiệp nhưng không muốn phá vỡ không khí
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực
 

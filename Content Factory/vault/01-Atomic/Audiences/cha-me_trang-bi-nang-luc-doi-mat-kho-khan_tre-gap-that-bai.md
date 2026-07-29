@@ -14,6 +14,10 @@ parent_audience:
 aliases:
 - phụ huynh muốn dạy con kiên cường
 - cha mẹ giúp con đối mặt thất bại
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực
 

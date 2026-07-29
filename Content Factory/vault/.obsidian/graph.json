@@ -3,7 +3,7 @@
   "search": "path:01-Atomic -path:01-Atomic/_DLQ  ",
   "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": false,
+  "hideUnresolved": true,
   "showOrphans": false,
   "collapse-color-groups": false,
   "colorGroups": [
@@ -67,6 +67,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.13971940098572258,
+  "scale": 0.16605534829781407,
   "close": false
 }

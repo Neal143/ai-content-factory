@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - giữ gìn tuổi thơ cho con trước áp lực xã hội
 - nuôi dạy con chậm lại giữa thế giới vội vã
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại
 

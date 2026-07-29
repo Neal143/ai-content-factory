@@ -1,4 +1,4 @@
-﻿# Output Schema — Story Architect
+# Output Schema — Story Architect
 # Version: v19.0
 
 ## 1. Mô hình 5 phần Story (S-P-T-O-L)
@@ -83,6 +83,8 @@ status: processed
 source_type: "User"                         # Mặc định
 source_name: "Story Architect"               # Mặc định
 source_id: "story-architect"                 # Mặc định
+source_link: "[[Stories#^block_id]]"  # Chỉ khi gọi từ process-inbox. Bỏ qua nếu gọi trực tiếp.
+source_path: "00-Inbox/Processed/Stories.md#^block_id"  # Chỉ khi gọi từ process-inbox. Bỏ qua nếu gọi trực tiếp.
 confidence: <Theo_từng_subtype>              # File B phụ thuộc SubType. File A tuân theo độ chắc chắn của Lesson (thường 0.9)
 created: "<Ngày_hôm_nay>"                       # Ngày tạo atom (VD: 2026-06-28)
 # --- FIELDS RIÊNG FILE B (Story) ---

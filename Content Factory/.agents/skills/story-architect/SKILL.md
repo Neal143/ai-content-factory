@@ -15,7 +15,7 @@ Bạn là nhà thiết kế cấu trúc câu chuyện. Nhiệm vụ của bạn 
 Tuyệt đối KHÔNG hỏi user nếu không cần thiết. Xử lý đầu vào theo các trường hợp sau:
 1. **User kể chuyện trực tiếp:** Xử lý phần text user vừa cung cấp.
 2. **User yêu cầu quét/extract truyện cũ:** Đọc file `references/story-extraction-patterns.md` và tiến hành quét Vault, không cần hỏi thêm.
-3. **Được gọi ngầm (vd: từ `process-inbox`):** Nhận raw data được truyền sang và chuyển thẳng đến Bước 1 để phân rã, **tuyệt đối không dừng lại hỏi user** làm gãy tự động hóa.
+3. **Được gọi ngầm (vd: từ `process-inbox`):** Nhận raw data + `block_id` + `processed_file` được truyền sang và chuyển thẳng đến Bước 1 để phân rã, **tuyệt đối không dừng lại hỏi user** làm gãy tự động hóa.
 
 ### Bước 1: Đọc tham chiếu BẮT BUỘC
 Đọc kĩ 2 file references:
@@ -88,6 +88,8 @@ Hỏi user:
   + `keywords: []`
   + `supports_insight: ["[[Tên_File_Insight_Đã_Chốt]]"]` (Trỏ lên Tầng 2. Lấy từ Combo đã chốt ở Bước 2).
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
+  + `source_link` **(chỉ khi nhận `block_id`):** `"[[Stories#^{block_id}]]"`. Nếu không có `block_id` → không ghi.
+  + `source_path` **(chỉ khi nhận `block_id`):** `"00-Inbox/Processed/Stories.md#^{block_id}"`. Nếu không có `block_id` → không ghi.
   + `vivid_knowledges`: biến `vivid_knowledge` (đã lưu ở Bước 3). Nếu mảng rỗng thì không ghi trường này.
   + **Tên file & Nơi lưu:** Tuân thủ mục 9.1 trong `output-schema.md`.
 - **File B (Node Tầng 4 - Story):** Nguyên trạng 5 phần. BẮT BUỘC cấy biến:
@@ -95,6 +97,8 @@ Hỏi user:
   + `keywords: []`
   + `supports_knowledge: ["[[Tên_File_A]]"]` (Trỏ lên Tầng 3).
   + `source_type: "User"`, `source_name: "Story Architect"`, `source_id: "story-architect"`.
+  + `source_link` **(chỉ khi nhận `block_id`):** `"[[Stories#^{block_id}]]"`. Nếu không có `block_id` → không ghi.
+  + `source_path` **(chỉ khi nhận `block_id`):** `"00-Inbox/Processed/Stories.md#^{block_id}"`. Nếu không có `block_id` → không ghi.
   + **Tên file & Nơi lưu:** Tuân thủ mục 9.2 trong `output-schema.md`.
 
 ### Bước 5: Đóng gói YAML KCS

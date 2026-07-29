@@ -9,6 +9,10 @@ aliases:
 - cha-me_tao-ra-moi-truong-vui-choi-giup-tre-phat-trien-tri-tuong-tuong-va-ky-nang-song_khi-thiet-lap-khong-gian-song-va-chon-mua-do-choi-cho-con
 - khuyến khích trẻ vui chơi tự do
 - xây dựng không gian chơi mở cho trẻ mầm non
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi
 

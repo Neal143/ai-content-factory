@@ -1,4 +1,4 @@
-﻿---
+---
 type: insight
 insight_type: pain_point
 topics:
@@ -11,6 +11,8 @@ status: processed
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
+source_link: "[[The Whole-Brain Child]]"
+source_path: "02-sources/books/The Whole-Brain Child.md"
 confidence: 0.9
 belongs_to_audience:
 - '[[cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay]]'

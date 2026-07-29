@@ -8,7 +8,7 @@ description: Tiêu chuẩn kỹ thuật định dạng Dashboard tĩnh, cấu tr
 Bất cứ khi nào Sub-LLM quyết định Khởi tạo một tệp Audience mới, tệp vật lý này BẮT BUỘC phải được đổ khuôn theo định dạng Dashboard dưới đây để phục vụ cho luồng truy vấn động của hệ thống Dataview.
 
 ## 1. Lưu ý Định Danh Nguồn Cội
-File Audience đóng vai trò là "Cái Phễu" hứng dữ liệu, nó KHÔNG phải là một "Nguyên liệu nguyên thủy" trích xuất trực tiếp từ 1 đoạn text như Atom. Do đó, Audience Atom **Tuyệt đối KHÔNG có các biến số rác** như `source_name`, `confidence`, `status`, hay `topics`.
+File Audience đóng vai trò là "Cái Phễu" hứng dữ liệu, nó KHÔNG phải là một "Nguyên liệu nguyên thủy" trích xuất trực tiếp từ 1 đoạn text như Atom. Do đó, Audience Atom **KHÔNG có** `confidence`, `status`, hay `topics`. Tuy nhiên, Audience có `source_type`, `source_name` và `source_link` để truy vết nguồn gốc (data lineage).
 
 ## 2. Khuôn Đúc Mã Nguồn (Single Source of Truth)
 
@@ -33,6 +33,10 @@ parent_audience:
 ```yaml
 ---
 # [Toàn bộ khối JTBD ROUTING CHUNK lấy từ audience.yaml sau khi điền values]
+source_type: book | User
+source_name: "<Tên nguồn>"
+source_link: "[[<Display>]]"
+source_path: "02-sources/books/<Display>.md"
 ---
 ```
 

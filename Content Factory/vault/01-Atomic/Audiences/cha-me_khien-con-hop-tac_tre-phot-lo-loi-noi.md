@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh muốn con nghe lời
 - cha mẹ trị tính không chịu nghe lời của con
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn khiến con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ
 

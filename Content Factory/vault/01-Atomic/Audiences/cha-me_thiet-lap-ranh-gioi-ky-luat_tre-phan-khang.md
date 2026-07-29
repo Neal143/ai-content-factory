@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - người nuôi con muốn giữ kỷ luật khi con cãi lại
 - phụ huynh cần đặt quy tắc khi con hỗn láo
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ
 

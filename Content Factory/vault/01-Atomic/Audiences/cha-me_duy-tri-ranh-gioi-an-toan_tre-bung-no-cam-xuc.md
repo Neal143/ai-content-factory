@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh muốn giữ nguyên tắc nhưng không mất kết nối
 - cha mẹ muốn thiết lập kỷ luật trong lúc con khóc lóc
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc
 

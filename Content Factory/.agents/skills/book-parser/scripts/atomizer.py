@@ -1,10 +1,11 @@
-﻿"""
+"""
 TÊN SCRIPT: atomizer.py
 VAI TRÒ: Script deterministic thay thế Agent tạo file Atom thủ công.
          Parse JSON metadata → Phân loại DIKW → Sinh Atom in-memory →
          Vivid-Append → Gate Validation POKA-YOKE → Commit Write.
 KHI NÀO SỬ DỤNG: Được gọi bởi Agent trong book-parser Phase 2, Bước 2.2.
 OUTPUT: Atom files vật lý trong vault + stdout báo cáo + DLQ files nếu lỗi.
+        Mỗi atom chứa trường `source_link` (Obsidian Wikilink) trỏ về file source gốc.
 
 TÓM TẮT LOGIC:
   1. Đọc parsed_metadata.json + resolved_topics.json (Poka-Yoke Gate)
@@ -268,6 +269,10 @@ def build_frontmatter(atom):
     lines.append(f'source_name: {json.dumps(atom["source_name"], ensure_ascii=False)}')
     if atom.get("source_id"):
         lines.append(f'source_id: {json.dumps(atom["source_id"], ensure_ascii=False)}')
+    if atom.get("source_link"):
+        lines.append(f'source_link: {json.dumps(atom["source_link"], ensure_ascii=False)}')
+    if atom.get("source_path"):
+        lines.append(f'source_path: {json.dumps(atom["source_path"], ensure_ascii=False)}')
     lines.append('confidence: 0.9')
 
     # Graph links (chỉ field áp dụng cho type tương ứng)
@@ -812,6 +817,8 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
                 "topics": topics,
                 "source_name": source_name,
                 "source_id": source_id,  # Gán source_id đã slugify
+                "source_link": f'[[{context["source_link"]}]]' if context.get("source_link") else "",
+                "source_path": f'02-sources/books/{context["source_link"]}.md' if context.get("source_link") else "",
                 "folder": classification["folder"],
                 "filename": filename,
                 "body_text": body,
@@ -968,6 +975,8 @@ if __name__ == "__main__":
     parser.add_argument("--overwrite", action="store_true", help="Ghi đè file atom đã tồn tại")
     parser.add_argument("--baseline",  default=None, help="Đường dẫn extraction_baseline.csv")
     parser.add_argument("--report",    default=None, help="Đường dẫn pipeline_report.md")
+    parser.add_argument("--source-link", default=None,
+                        help="Tên file source (không extension). VD: Beyond the rainbow bridge")
 
     args = parser.parse_args()
 
@@ -988,6 +997,7 @@ if __name__ == "__main__":
     context = {}
     context["source_acronym"] = args.acronym
     context["book_meta"] = metadata.get("book", {})
+    context["source_link"] = args.source_link or ""
 
     # Nhóm 4: Đọc Decision Map trực tiếp từ file
     with open(args.decision_map, 'r', encoding='utf-8') as f:

@@ -1,4 +1,4 @@
-﻿# Atom Classification — Phân loại nguyên liệu
+# Atom Classification — Phân loại nguyên liệu
 
 ## 5 Atom Types (xử lý bởi Inbox Processor)
 
@@ -47,6 +47,8 @@ supports_knowledge: "[[Ten_Solution_Hoac_Concept]]" # Chỉ cho Tầng 4 (Quotes
 status: processed
 source_type: "User"                               # Mặc định — user tự viết/kể/trải nghiệm
 source_name: "Inbox Processor"                    # Mặc định — skill nào tạo atom
+source_link: "[[Type#^block_id]]"  # Chỉ khi gọi từ process-inbox. Bỏ qua nếu gọi trực tiếp.
+source_path: "00-Inbox/Processed/Type.md#^block_id"  # Chỉ khi gọi từ process-inbox. Bỏ qua nếu gọi trực tiếp.
 created: YYYY-MM-DD
 confidence: 0.0-1.0
 vivid_insights: []                                # Chỉ cho Insights - Agent tự suy luận điền vào

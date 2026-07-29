@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh giúp trẻ nhút nhát
 - cha mẹ rèn tự tin cho con rụt rè
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông
 

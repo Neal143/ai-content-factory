@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh xử lý khi con mè nheo
 - cha mẹ kiềm chế khi con nhõng nhẽo
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ
 

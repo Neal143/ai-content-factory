@@ -1,4 +1,4 @@
-﻿---
+---
 type: insight
 insight_type: "{{type}}"
 topics: {{topics}}
@@ -9,6 +9,8 @@ status: processed
 created: "{{date}}"
 source_type: "User"
 source_name: "Persona Interview"
+source_link: "{{source_link}}"
+source_path: "{{source_path}}"
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []

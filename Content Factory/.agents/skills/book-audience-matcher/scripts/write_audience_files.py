@@ -5,8 +5,8 @@ VAI TRÒ: Tạo file Audience vật lý (.md) và cập nhật _audience_index.y
          và Calibrated JTBD (performer/main_job/circumstance/aliases).
          Script join 2 nguồn bằng chunk_index (integer) hoặc scope="book".
 KHI NÀO SỬ DỤNG: Giai đoạn 3 của book-audience-matcher.
-INPUT:  --decision-map (JSON), --calibrated-jtbd (JSON), --vault-root (path)
-OUTPUT: File .md trong vault/01-Atomic/Audiences/, entries mới trong _audience_index.yaml
+INPUT:  --decision-map (JSON), --calibrated-jtbd (JSON), --vault-root (path), --source-name, --source-link
+OUTPUT: File .md trong vault/01-Atomic/Audiences/, entries mới trong _audience_index.yaml (có chứa source fields)
 
 TÓM TẮT LOGIC:
   1. Đọc 2 file JSON đầu vào
@@ -163,6 +163,10 @@ def build_frontmatter(entry):
         "vivid_circumstances_reserve": [],
         "parent_audience": entry["parent_audience"],
         "aliases": entry["aliases"],
+        "source_type": entry.get("source_type", ""),
+        "source_name": entry.get("source_name", ""),
+        "source_link": entry.get("source_link", ""),
+        "source_path": entry.get("source_path", ""),
     }
     yaml_str = yaml.dump(fm, default_flow_style=False, allow_unicode=True, sort_keys=False)
     return f"---\n{yaml_str}---"
@@ -291,6 +295,10 @@ def main():
                         help="Path tới jtbd_calibrated.json")
     parser.add_argument("--vault-root", required=True,
                         help="Path tới vault root")
+    parser.add_argument("--source-name", default=None,
+                        help="Tên nguồn đầy đủ. VD: 'Beyond the Rainbow Bridge (bởi Barbara J. Patterson, 2000)'")
+    parser.add_argument("--source-link", default=None,
+                        help="Tên file source (không extension). VD: Beyond the rainbow bridge")
     args = parser.parse_args()
 
     # ── Bước 1: Đọc inputs ──
@@ -311,6 +319,13 @@ def main():
 
     # ── Bước 3: Validate ──
     validate_entries(merged)
+
+    # Inject source info vào mỗi entry
+    for entry in merged:
+        entry["source_type"] = "book"
+        entry["source_name"] = args.source_name or ""
+        entry["source_link"] = f"[[{args.source_link}]]" if args.source_link else ""
+        entry["source_path"] = f"02-sources/books/{args.source_link}.md" if args.source_link else ""
 
     # ── Bước 4: Load dashboard template ──
     skill_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

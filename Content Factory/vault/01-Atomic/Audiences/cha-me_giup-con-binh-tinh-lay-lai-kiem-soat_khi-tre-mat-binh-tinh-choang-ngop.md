@@ -11,6 +11,10 @@ parent_audience:
 aliases:
 - phụ huynh
 - người xoa dịu trẻ
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 cha mẹ muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc
 

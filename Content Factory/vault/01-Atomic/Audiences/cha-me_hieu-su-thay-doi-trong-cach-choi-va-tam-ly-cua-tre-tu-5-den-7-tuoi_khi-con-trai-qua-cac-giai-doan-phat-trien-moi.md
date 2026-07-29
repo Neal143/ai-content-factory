@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - nắm bắt tâm lý vui chơi của trẻ tiền tiểu học
 - đồng hành cùng sự biến đổi tâm lý của bé 5-7 tuổi
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới
 

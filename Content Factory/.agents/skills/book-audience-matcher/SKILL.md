@@ -7,35 +7,30 @@ description: Nhận đường dẫn file cache sách từ book-extractor, trả 
 
 // turbo-all
 
-Nhiệm vụ: **Audience Resolution toàn diện**. Parse file sách thô, hiệu đính JTBD, so khớp LLM Semantic Match với kho `01-Atomic/Audiences/`, tạo file Audience vật lý nếu cần, và trả về Audience Decision Map đầy đủ `audience_filename`.
+Nhiệm vụ: **Audience Resolution**. Nhận JTBD đã chuẩn hóa từ skill jtbd-calibrator, so khớp LLM Semantic Match với kho `01-Atomic/Audiences/`, tạo file Audience vật lý nếu cần, và trả về Audience Decision Map đầy đủ `audience_filename`.
 
 ## QUY TẮC VỆ SINH (HYGIENE)
 
-Skill này chạy trong workflow `/book-extractor` (Session 3 - conversation riêng, SAU khi Phase 2 đã hoàn tất). Run-folder đã được tạo sẵn — KHÔNG tạo mới.
+Skill này chạy trong workflow `/book-extractor` (Session 3 - conversation riêng, SAU khi Skill 1 jtbd-calibrator đã hoàn tất). Run-folder đã được tạo sẵn — KHÔNG tạo mới.
 
 - **Thư mục dùng chung:** `[run-folder]`
-  *(Dùng run-folder path được /book-extractor truyền trực tiếp qua INPUT. KHÔNG tự derive.)*
-- File tạm (JSON output từ script, debug logs) → BẮT BUỘC ghi vào thư mục trên.
-  Path đầy đủ bắt buộc: `[run-folder]/session_3/audiences_parsed.json`
-  TUYỆT ĐỐI KHÔNG dùng `temp_audiences.json` hay bất kỳ tên file bare nào ở thư mục hiện tại.
+  *(Dùng run-folder path được Agent truyền trực tiếp qua INPUT. KHÔNG tự derive.)*
+- File tạm (JSON output từ script, debug logs) → BẮT BUỘC ghi vào thư mục `[run-folder]/session_3/`.
+  TUYỆT ĐỐI KHÔNG dùng bất kỳ tên file bare nào ở thư mục hiện tại.
 
 ---
 
-## Input (Nhận từ /book-extractor Session 3)
+## Input (Nhận từ Agent điều phối)
 
 ```text
-INPUT (nhận từ /book-extractor):
-- File cache path: `vault/02-sources/books/[Tên Sách].md`
+INPUT (nhận từ Agent):
 - Run folder path: `vault/.extraction_runs/books/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
-  (Thư mục đã được book-extractor tạo sẵn và NIÊM PHONG dữ liệu)
 
-Bắt buộc phải có sẵn trong run-folder (từ Phase 2):
+Bắt buộc phải có sẵn trong run-folder (từ các Phase/Skill trước):
 - `parsed_metadata.json` (Manifesto Metadata)
 - `extraction_baseline.csv` (Manifesto Tracking)
-
-File cache tuân thủ `.agents/skills/book-extractor/references/raw-book-structure.md`:
-- Header: META_BOOK_AUDIENCE — JTBD cấp sách (level xác định SAU Semantic Match)
-- N data_chunk: META_CHUNK_AUDIENCE — JTBD cấp chunk (level xác định SAU Semantic Match)
+- `session_3/jtbd_calibrated.json` (Được tạo ra bởi skill jtbd-calibrator)
+- `session_3/audiences_parsed.json` (Được tạo ra bởi skill jtbd-calibrator - dùng cho bước Verify)
 ```
 
 ## Output (Trả về cho /book-extractor Session 3)
@@ -76,54 +71,6 @@ Cấu trúc file `audience_decision_map.json` (dùng cho Bước 8 (Phase 4) c�
 
 ## Quy Trình Thực Thi
 
-### Giai đoạn 1: Parse File & JTBD Calibration
-
-> ⚠️ **Cách ly Rác (Warning Isolation):** Chunks chứa cờ `> [!warning]` được script `parse_book_audiences.py` tự động cách ly — không parse, không tạo JTBD entry. Không cần Agent xử lý.
-
-**Bước 1 — Gọi script (chống ảo giác):**
-```
-python .agents/skills/book-audience-matcher/scripts/parse_book_audiences.py
-       [đường dẫn file cache] --output_json "[run-folder]/session_3/audiences_parsed.json"
-```
-Đọc JSON output: `result["book"]` = JTBD thô cấp sách; `result["chunks"]` = list JTBD thô theo `CHUNK_index`.
-
-**Bước 2 — Phân Lô Dữ Liệu (Script):**
-```bash
-python .agents/skills/book-audience-matcher/scripts/prepare_calibration_batches.py \
-    --parsed-json "[run-folder]/session_3/audiences_parsed.json" \
-    --split-dir "[run-folder]/session_3/calib_batches" \
-    --batch-size 5
-```
-
-**Bước 3 — JTBD Calibration (Chu trình xử lý tịnh tiến):**
-Đọc `.agents/skills/book-audience-matcher/references/JTBD-base.md`. Lặp lại chu trình sau cho đến khi hệ thống báo hoàn thành:
-
-1. **Cấp phát dữ liệu:**
-```bash
-python .agents/skills/book-audience-matcher/scripts/prepare_calibration_batches.py \
-    --session-dir "[run-folder]/session_3/calib_batches" --get-next
-```
-> Dùng `view_file` đọc `[run-folder]/session_3/calib_batches/current_calib_batch.json` để lấy danh sách cần xử lý.
-
-2. **Nội suy dữ liệu:** Với mỗi mục, bóc tách 4 biến (Performer, Job, Circumstance, Aliases) theo quy tắc:
-   - `audience_main_job` & `audience_circumstance`: Giữ nguyên giá trị bóc được từ khối Main Job và Circumstance của dữ liệu gốc.
-   - `audience_Job_performer`: Input gốc thường để mặc định là "Người". **BẮT BUỘC** suy luận ra Danh xưng cụ thể dựa trên `audience_main_job` (VD: "nuôi con" → "bố mẹ"). Ngoại lệ: Nếu hành động chung chung (VD: "ăn cơm") → Giữ nguyên là "Người".
-   - `aliases`: Kết hợp `audience_main_job` + `audience_circumstance` và tự suy ra 2-3 cụm từ đồng nghĩa phổ biến (VD: "quản lý thời gian" + "khi bắt đầu công việc" → "tổ chức công việc cho lính mới").
-
-3. **Ghi tệp kết quả tạm:** Hệ thống đã tự động tạo sẵn tệp `[run-folder]/session_3/calib_batches/calib_eval_temp.json` điền sẵn mật khẩu và cấu trúc. Hãy mở tệp đó ra bằng công cụ chỉnh sửa tệp (hoặc overwrite bằng write_to_file), thay thế CÁC TRƯỜNG `[ĐIỀN VÀO ĐÂY]` bằng câu trả lời nội suy của bạn, lưu lại và gọi lệnh nộp bài.
-
-4. **Nộp bài:**
-```bash
-python .agents/skills/book-audience-matcher/scripts/prepare_calibration_batches.py \
-    --session-dir "[run-folder]/session_3/calib_batches" \
-    --submit-file "[run-folder]/session_3/calib_batches/calib_eval_temp.json"
-```
-
-5. Chờ phản hồi. Nếu có lỗi, sửa và nộp lại. Nếu script báo hoàn thành (đã tự động sinh `jtbd_calibrated.json`), tiến tới Giai đoạn 2.
-
-
-
----
 
 ### Giai đoạn 2: 3-Verdict Semantic Match (Map-Reduce)
 
@@ -232,8 +179,15 @@ Script tự động: Validate UID completeness, Reference Substitution, Expand c
 python .agents/skills/book-audience-matcher/scripts/write_audience_files.py \
     --decision-map "[run-folder]/audience_decision_map.json" \
     --calibrated-jtbd "[run-folder]/session_3/jtbd_calibrated.json" \
-    --vault-root "vault/"
+    --vault-root "vault/" \
+    --source-name "[Tên sách đầy đủ (bởi Tác giả, Năm)]" \
+    --source-link "[Tên-file-sách-trong-02-sources-không-extension]"
 ```
+
+> **Cách lấy giá trị `--source-name` và `--source-link`:**
+> 1. Đọc `[run-folder]/parsed_metadata.json` > `book` object → lấy `book_name`, `author`, `year`.
+> 2. `--source-name` = `"{book_name} (bởi {author}, {year})"`.
+> 3. `--source-link` = Quét thư mục `vault/02-sources/books/` → tìm file `.md` có tên chứa từ khóa chính của `book_name` → lấy tên file (không extension). Nếu không tìm thấy → để trống.
 
 Script tự động xử lý:
 - Join Audience Decision Map với Calibrated JTBD bằng `chunk_index` (integer) / `scope` (book)

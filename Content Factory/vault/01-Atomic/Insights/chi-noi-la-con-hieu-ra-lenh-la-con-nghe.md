@@ -1,4 +1,4 @@
-﻿---
+---
 type: insight
 insight_type: MYTH
 topics:
@@ -11,6 +11,8 @@ status: processed
 created: '2026-06-21'
 source_type: User
 source_name: Persona Interview
+source_link: "[[../../../personas/Vuon-ong-steiner/pillars.yaml]]"
+source_path: "../personas/Vuon-ong-steiner/pillars.yaml"
 confidence: 1.0
 vivid_insights: []
 vivid_insights_reserve: []

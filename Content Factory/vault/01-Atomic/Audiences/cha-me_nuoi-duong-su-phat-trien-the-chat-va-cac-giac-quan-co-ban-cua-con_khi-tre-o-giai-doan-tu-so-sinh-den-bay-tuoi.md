@@ -10,6 +10,10 @@ aliases:
 - hỗ trợ phát triển giác quan 7 năm đầu đời
 vivid_circumstances:
 - Trẻ chập chững khám phá trong nhà | Va vấp vào các đồ vật xung quanh | Khát khao mãnh liệt được chạm vào mọi thứ
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi
 

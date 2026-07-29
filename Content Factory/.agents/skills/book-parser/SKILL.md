@@ -1,4 +1,4 @@
-﻿---
+---
 name: Book Parser (The Atomizer)
 description: Skill phân rã sách thành Atom vật lý. Được gọi bởi book-extractor Session 4. Phase 1: Sinh Book Topics & Chunk Topics (batch processing) + Semantic Dedup. Phase 2: Atomization (tiếp ngay sau Phase 1 trong cùng 1 lần gọi).
 last_update: 22/06/2026 15:42 (GMT+7)
@@ -143,8 +143,11 @@ python .agents/skills/book-parser/scripts/atomizer.py \
     --decision-map    "[run_folder]/audience_decision_map.json" \
     --resolved-topics "[run_folder]/session_4/resolved_topics.json" \
     --baseline        "[run_folder]/extraction_baseline.csv" \
-    --report          "[run_folder]/pipeline_report.md"
+    --report          "[run_folder]/pipeline_report.md" \
+    --source-link     "[Tên-file-sách-trong-02-sources-không-extension]"
 ```
+
+> **Giá trị `--source-link`:** Lấy từ file cache path đã nhận ở INPUT Phase 1: `vault/02-sources/books/[Tên Sách].md` → strip path + extension → chỉ giữ tên file. VD: path `vault/02-sources/books/Beyond the rainbow bridge.md` → giá trị `Beyond the rainbow bridge`.
 
 > ⚠️ **LUẬT THÉP:** KHÔNG TỰ PHÂN RÃ FILE BẰNG TAY (Agent execution). 
 > - Toàn bộ logic phân mảng DIKW (Tầng 2, 3, 4), đóng dấu YAML Frontmatter, cấy Topics, xử lý Vivid (ký sinh), sinh File Name Slugify, và Gate Validation (POKA-YOKE) **đã được nhúng cứng vào script `atomizer.py`**.

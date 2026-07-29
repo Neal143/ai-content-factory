@@ -9,8 +9,10 @@ topics:
 - p1_connect_before_asking
 status: processed
 source_type: book
-source_name: Unknown (bởi Dr. Becky Kennedy, 2022)
-source_id: unknown
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_id: "good-inside-a-guide-to-becoming-the-parent-you-want-to-be"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 confidence: 0.9
 belongs_to_audience:
 - '[[cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi]]'

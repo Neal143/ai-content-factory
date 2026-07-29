@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh trấn an khi con hoảng sợ
 - cha mẹ giúp con vượt qua nỗi sợ
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể
 

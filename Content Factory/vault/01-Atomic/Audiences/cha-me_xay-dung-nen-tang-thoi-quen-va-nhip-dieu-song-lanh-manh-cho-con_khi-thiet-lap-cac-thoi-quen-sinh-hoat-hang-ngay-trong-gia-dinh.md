@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - tạo lập nhịp điệu sinh hoạt cho trẻ
 - rèn luyện thói quen sống lành mạnh tại nhà
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình
 

@@ -10,6 +10,10 @@ aliases:
 - xây dựng hạnh phúc cho con giữa nhiều phương pháp bủa vây
 vivid_circumstances:
 - Ngay sau những giây phút chào đón đứa trẻ ra đời | Đứa trẻ sơ sinh đang đói quẫy đạp chân tay loạn xạ | Cha mẹ cảm thấy niềm vui trào dâng xen lẫn nỗi sợ hãi sâu sắc
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại
 

@@ -12,6 +12,8 @@ protagonist: Người bố và con trai
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
+source_link: "[[The Whole-Brain Child]]"
+source_path: "02-sources/books/The Whole-Brain Child.md"
 confidence: 0.9
 supports_knowledge:
 - '[[WBC_thu-hut-thay-vi-choc-gian-engage-dont-enrage]]'

@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh dạy con bảo vệ cơ thể
 - cha mẹ dạy con biết nói không
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác
 

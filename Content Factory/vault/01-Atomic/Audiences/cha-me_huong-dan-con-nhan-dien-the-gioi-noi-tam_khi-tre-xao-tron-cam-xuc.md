@@ -10,6 +10,10 @@ parent_audience:
 aliases:
 - phụ huynh
 - người giáo dục con
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc
 

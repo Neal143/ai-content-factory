@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "232ce05790bb6833",
+        "id": "60567fbcfccec941",
         "type": "tabs",
         "children": [
           {
-            "id": "a9f74cc956b25ec1",
+            "id": "3066f80753f9cd89",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Xem biểu đồ"
+              "type": "markdown",
+              "state": {
+                "file": "01-Atomic/Insights/BTRB_nham-lan-giua-binh-thuong-va-lanh-manh.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "BTRB_nham-lan-giua-binh-thuong-va-lanh-manh"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "eb11591a2bc47106",
@@ -179,34 +183,34 @@
       "bases:Tạo cơ sở mới": false
     }
   },
-  "active": "a9f74cc956b25ec1",
+  "active": "3066f80753f9cd89",
   "lastOpenFiles": [
+    "01-Atomic/Insights/cam-bay-thuong-cho-roi-cho-vot.md",
+    "01-Atomic/Insights/chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
+    "01-Atomic/Insights/con-doc-lap-cong-nghe-ai.md",
+    "01-Atomic/Insights/WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa.md",
+    "01-Atomic/Insights/good-inside_so-tre-ton-thuong-hoac-chua-san-sang.md",
+    "01-Atomic/Insights/ban-than-khong-hanh-phuc.md",
+    "01-Atomic/Insights/good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
+    "01-Atomic/Audiences/phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam.md",
+    "01-Atomic/Audiences/cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con.md",
+    "01-Atomic/Audiences/cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre.md",
+    "01-Atomic/Audiences/cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay.md",
+    "01-Atomic/Audiences/cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai.md",
+    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-da-co-san-chung-o-ben-trong-1.md",
+    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md",
+    "02-sources/books/Beyond the rainbow bridge.md",
+    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md",
+    "03-Content/Content Plan/personal-atoms-queue.md",
+    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md",
     "01-Atomic/Audiences/cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho.md",
     "01-Atomic/Solutions/BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon.md",
     "BTRB_bong-ma-cua-su-dan-chu-gia-tao.md",
     "02-sources/books/Whats-Going-on-in-There.md",
-    "01-Atomic/Audiences/phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam.md",
     "01-Atomic/_DLQ/good-inside_chien-luoc-co-lap-dam-chay-contain-the-fire.md",
     "01-Atomic/Stories/good-inside_story-liam-va-me-allison-unknown-15.md",
     "01-Atomic/_DLQ/good-inside_chien-luoc-mebo-se-khong-de-con-i-wont-let-you.md",
     "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-15.md",
-    "01-Atomic/Audiences/cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti.md",
-    "01-Atomic/Insights/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
-    "01-Atomic/Concepts/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tina-payne-bryson-daniel-j-siegel-neu-bat-ky-dieu-1.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-so-hai-vong-va-10.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-qua-thuong-xuyen-ta-14.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-nhung-cach-hieu-mot-2.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-nao-tang-tren-giong-6.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-every-time-we-say-5.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-daniel-j-siegel-tina-payne-bryson-khi-mot-dua-tre-3.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/good-inside_quote-tien-si-becky-kennedy-unknown-6.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-daniel-j-siegel-tina-payne-bryson-giong-nhu-mot-nhan-3.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-con-mua-la-co-10.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-tac-gia-chi-cach-dat-hoi-9.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-david-se-ke-qua-giong-8.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-daniel-j-siegel-tina-payne-bryson-neu-ban-muon-phat-13.md",
-    "01-Atomic_Backup_20260702_160021/Quotes/WBC_quote-daniel-j-siegel-tina-payne-bryson-healing-from-a-difficult-4.md",
     "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml",
     "01-Atomic_Backup_20260702_160021/_DLQ",
     "01-Atomic_Backup_20260702_160021/Stories",

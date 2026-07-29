@@ -10,6 +10,10 @@ aliases:
 - giữ không khí gia đình yên bình cuối ngày
 vivid_circumstances:
 - Cuối ngày tại nhà | Trẻ bướng bỉnh, chạy nhảy bật nảy khắp tường | Cha mẹ đối mặt với tiếng ồn và sự lộn xộn.
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày
 

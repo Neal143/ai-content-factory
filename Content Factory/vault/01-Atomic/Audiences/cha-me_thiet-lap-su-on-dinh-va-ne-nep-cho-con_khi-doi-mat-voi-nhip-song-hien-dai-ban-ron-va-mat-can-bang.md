@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - tạo dựng nhịp điệu sinh hoạt cho trẻ
 - rèn nề nếp cho con giữa lối sống bận rộn
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng
 

@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - tổ chức hoạt động cho trẻ mầm non
 - hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 người chăm sóc trẻ muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học
 

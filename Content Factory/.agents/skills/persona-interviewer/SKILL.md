@@ -121,6 +121,14 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       -> **Tiếp theo, Khởi tạo Mỏ Neo Vật Lý (Single Source of Truth)**: Bắt buộc thực hiện tuần tự 3 hành động sau:
          - **Hành động 1 — Chuẩn hóa tên file:** Sinh tên file theo đúng quy tắc `[job_performer-slug]_[main_job-slug]_[circumstance-slug].md`. (Dấu gạch ngang `-` nối các từ trong cùng 1 thành phần JTBD. Dấu gạch dưới `_` phân tách 3 thành phần JTBD. Không dấu, viết thường toàn bộ).
          - **Hành động 2 — Tạo file vật lý:** AI tuân thủ nghiêm ngặt tiêu chuẩn kiến trúc định dạng được quy định tại `.agents/skills/book-audience-matcher/references/audience-structure.md`. Trích xuất toàn bộ dữ liệu thuộc khối `# --- JTBD ROUTING BLOCK ---` từ file `audience.yaml` (vừa lưu), sau đó bọc giữa hai ký tự phân cách `---` để thiết lập thành cấu trúc YAML Frontmatter hợp lệ. Đối với phần thân (Body) của file, kế thừa nguyên vẹn các khối truy vấn Dataview tĩnh theo đúng khuôn mẫu từ file tiêu chuẩn nói trên. Lưu trữ file hoàn chỉnh tại đường dẫn: `vault/01-Atomic/Audiences/[Tên-File-Chuẩn-Hóa-Ở-Hành-Động-1]`.
+           Ngoài các trường JTBD Routing, thêm 3 trường source vào cuối YAML Frontmatter (sau `aliases:`, trước `---`):
+           ```yaml
+           source_type: "User"
+           source_name: "Persona Interview"
+           source_link: "[[../../../personas/[Tên-Persona]/audience.yaml]]"
+           source_path: "../personas/[Tên-Persona]/audience.yaml"
+           ```
+           Trong đó `[Tên-Persona]` = tên thư mục persona đã tạo ở Tier 1 (VD: `Vuon-ong-steiner`).
          - **Hành động 3 — Khởi tạo Index:** Sau khi hoàn tất tạo file Audience vật lý, kiểm tra tệp tin `vault/01-Atomic/Audiences/_audience_index.yaml`:
            + Nếu **CHƯA tồn tại**: Khởi tạo từ template `.agents/skills/persona-interviewer/assets/_audience_index_template.yaml` và ghi nhận bản ghi (entry) đầu tiên.
            + Nếu **ĐÃ tồn tại**: Trích xuất và nối (append) bản ghi mới vào cuối giới hạn của cấu trúc mảng `audiences:`.
@@ -209,6 +217,8 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       + `raw_payload`: Nguyên văn phần text thô do User gợi mở.
       + `llm_explain`: Phân tích chuyên sâu đúc rút từ AI (Insightful explain).
       + `topics`: Mảng `id` topics đã resolve ở Bước 2 (Lưu ý: phải dùng chính xác mã `id` english_snake_case đã tạo ở topic_map.yaml. VD: `["p1_emotion_regulation", "p2_safe_attachment"]`).
+      + `source_link`: Wikilink trỏ đến file `pillars.yaml` của persona. Giá trị cố định cho toàn batch: `"[[../../../personas/[Tên-Persona]/pillars.yaml]]"`. Relative path tính từ vị trí atom sẽ nằm = `vault/01-Atomic/Insights/`.
+      + `source_path`: Vault-relative path trỏ đến file `pillars.yaml`. Giá trị: `"../personas/[Tên-Persona]/pillars.yaml"`.
       Sau đó AI tự động GỌI GÓI LỆNH TERMINAL bọc sẵn dưới đây để hệ thống tự xuất mẻ file vật lý cuối cùng: 
       ```powershell
       powershell -ExecutionPolicy Bypass -File .agents/skills/persona-interviewer/scripts/run_insights.ps1 -UserName "[Tên_User_không_khoảng_trắng]" -Audience "[Tên_file_Audience_vừa_tạo_ở_Câu_10_không_có_đuôi_.md]"

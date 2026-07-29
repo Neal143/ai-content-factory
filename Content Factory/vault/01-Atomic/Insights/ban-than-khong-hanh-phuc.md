@@ -1,21 +1,31 @@
-﻿---
+---
 type: insight
 insight_type: PAIN_POINT
 topics:
-- p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
-- p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
+  - p1_con_nguoi_can_chuan_bi_gi_de_hanh_phuc_va_khong_bi_ai_thay_the
+  - p1_hien_trang_viec_di_tim_va_xac_dinh_triet_ly_giao_duc_cho_con
 source_id: persona-interview
 belongs_to_audience:
-- '[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]'
+  - "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
 status: processed
-created: '2026-06-21'
+created: 2026-06-21
 source_type: User
 source_name: Persona Interview
-confidence: 1.0
+source_link: "[[../../../personas/Vuon-ong-steiner/pillars.yaml]]"
+source_path: "../personas/Vuon-ong-steiner/pillars.yaml"
+confidence: 1
 vivid_insights: []
 vivid_insights_reserve: []
 description: Nỗi đau sâu sắc của cha mẹ là sự thiếu vắng hạnh phúc và đánh mất bản sắc cá nhân. Họ phải chật vật nuôi dạy con trong khi bản thân chưa từng được giáo dục hay hướng dẫn về cách trở thành chính mình.
-keywords: [hạnh phúc cá nhân, bản sắc cá nhân, nỗi đau cha mẹ, áp lực làm mẹ, tự nhận thức, giáo dục tâm lý, sức khỏe tinh thần, khủng hoảng tuổi trung niên]
+keywords:
+  - hạnh phúc cá nhân
+  - bản sắc cá nhân
+  - nỗi đau cha mẹ
+  - áp lực làm mẹ
+  - tự nhận thức
+  - giáo dục tâm lý
+  - sức khỏe tinh thần
+  - khủng hoảng tuổi trung niên
 ---
 
 # PAIN_POINT: ban than khong hanh phuc

@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - phụ huynh đối phó khi con bướng bỉnh
 - cha mẹ xử lý khi con cố chấp
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó
 

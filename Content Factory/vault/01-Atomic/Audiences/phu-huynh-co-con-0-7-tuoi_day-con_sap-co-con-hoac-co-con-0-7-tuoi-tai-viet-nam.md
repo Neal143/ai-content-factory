@@ -1,4 +1,4 @@
----
+﻿---
 audience_level: big
 audience_Job_performer: Phu huynh sap co con hoac co con tu 0-7 tuoi
 audience_main_job: Thiet lap nen tang phat trien cho con
@@ -8,6 +8,10 @@ vivid_circumstances_reserve: []
 parent_audience: []
 aliases:
 - cha-me_tao-lap-nen-tang-phat-trien-khoe-manh-va-toan-dien-cho-con-cai_khi-tre-dang-buoc-vao-giai-doan-tu-so-sinh-den-bay-tuoi
+source_type: "User"
+source_name: "Persona Interview"
+source_link: "[[../../../personas/Vuon-ong-steiner/audience.yaml]]"
+source_path: "../personas/Vuon-ong-steiner/audience.yaml"
 ---
 
 # 🎯 Phu huynh co con 0-7 tuoi muon Thiet lap nen tang phat trien cho con trong boi canh sap co con hoac co con 0-7 tuoi tai Viet Nam

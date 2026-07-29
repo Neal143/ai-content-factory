@@ -11,6 +11,10 @@ parent_audience:
 aliases:
 - phụ huynh
 - người trò chuyện cùng con
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 cha mẹ muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày
 

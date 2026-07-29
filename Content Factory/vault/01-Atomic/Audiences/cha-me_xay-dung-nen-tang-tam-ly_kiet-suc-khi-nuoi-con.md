@@ -12,6 +12,10 @@ parent_audience:
 aliases:
 - người nuôi con nhỏ muốn xây dựng cảm xúc cho trẻ
 - phụ huynh kiệt sức khi chăm con nhỏ
+source_type: "book"
+source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
+source_link: "[[Good Inside]]"
+source_path: "02-sources/books/Good Inside.md"
 ---
 # 🎯 Cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ
 

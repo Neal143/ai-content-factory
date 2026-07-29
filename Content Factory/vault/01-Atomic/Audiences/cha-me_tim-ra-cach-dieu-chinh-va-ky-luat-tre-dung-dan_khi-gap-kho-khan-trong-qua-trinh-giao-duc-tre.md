@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - tìm phương pháp giáo dục con phù hợp
 - thay đổi cách kỷ luật trẻ mầm non
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ
 

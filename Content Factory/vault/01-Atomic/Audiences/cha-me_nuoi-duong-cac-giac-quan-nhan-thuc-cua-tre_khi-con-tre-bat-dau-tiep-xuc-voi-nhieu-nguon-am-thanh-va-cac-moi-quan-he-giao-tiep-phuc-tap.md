@@ -8,6 +8,10 @@ parent_audience:
 aliases:
 - giúp con phát triển khả năng nghe và hiểu ngôn ngữ
 - hỗ trợ trẻ nhận thức và giao tiếp trong môi trường xã hội
+source_type: "book"
+source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
+source_link: "[[Beyond the rainbow bridge]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md"
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp
 
