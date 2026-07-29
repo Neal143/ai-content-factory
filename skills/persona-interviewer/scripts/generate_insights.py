@@ -11,7 +11,7 @@ Tom tat logic hoat dong:
   3. Lap qua tung insight trong payload, sinh slug tieng Viet khong dau cho ten file tu headline.
   4. Giai quyet trung ten file bang cach them hau to so tang dan (-2, -3,...).
   5. Dinh dang truong topics thanh JSON array string tuong thich voi YAML.
-  6. Thay the cac placeholder trong template bang du lieu insight (bao gom ca topics).
+  6. Thay the cac placeholder trong template bang du lieu insight (bao gom ca topics va source_link).
   7. Ghi noi dung ra file vat ly.
   8. (Moi) Neu co --username: cap nhat file_ref va file_link trong pillars.yaml (thay PENDING + backfill).
   
@@ -241,6 +241,8 @@ def generate_insights(payload_path, template_path, output_dir, target_audience, 
         
         # Doc truong topics (bo sung cho Schema B)
         topics = item.get("topics", [])
+        source_link = item.get("source_link", "")
+        source_path = item.get("source_path", "")
         
         # Sinh ten file tu headline
         slug = slugify(headline)
@@ -269,7 +271,9 @@ def generate_insights(payload_path, template_path, output_dir, target_audience, 
                                .replace("{{topics}}", topics_yaml)\
                                .replace("{{target_audience}}", target_audience)\
                                .replace("{{raw_payload}}", raw_payload)\
-                               .replace("{{llm_explain}}", llm_explain)
+                               .replace("{{llm_explain}}", llm_explain)\
+                               .replace("{{source_link}}", source_link)\
+                               .replace("{{source_path}}", source_path)
                                
         # Ghi noi dung da render ra file vat ly
         with open(filepath, 'w', encoding='utf-8') as f:

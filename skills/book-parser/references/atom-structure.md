@@ -1,4 +1,4 @@
-﻿---
+---
 name: Atom File Structure Standard
 description: Tiêu chuẩn kỹ thuật vật lý thiết lập cấu trúc 4 phần và khuôn đúc YAML Frontmatter cho 100% File Atom được tuồn vào Vault.
 ---
@@ -44,6 +44,9 @@ status: processed
 protagonist: "<Tên_nhân_vật_chính>" # Bắt buộc đính kèm đối với Story (Tầng 4)
 source_type: book
 source_name: "<Tên Sách> (bởi <Tên Tác Giả, Năm xuất bản>)" # Kế thừa từ META_BOOK. VD: "Atomic Habits (bởi James Clear, 2018)"
+source_id: "<slug>"
+source_link: "[[<Tên Sách>]]"
+source_path: "02-sources/books/<Tên Sách>.md"
 confidence: 0.9 # Sách xuất bản độ tin cậy mặc định là cao
 # ----- CÁC BIẾN CHẶN MỒ CÔI (Định tuyến Graph) -----
 keywords: []                             # Thẻ từ khóa nội suy (Inbox RAG)

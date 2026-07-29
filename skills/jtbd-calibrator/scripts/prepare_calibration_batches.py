@@ -4,7 +4,7 @@ import uuid
 import argparse
 import os
 
-def create_calibration_batches(parsed_json_path, split_dir, batch_size):
+def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_file=None):
     try:
         with open(parsed_json_path, 'r', encoding='utf-8') as f:
             parsed_data = json.load(f)
@@ -53,6 +53,52 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size):
         "calibrated_items": []
     }
     
+    # === SINH CONTEXT FILE PER-BATCH (neu co source_file) ===
+    context_passwords = {}
+    if source_file and os.path.exists(source_file):
+        import re as _re
+        with open(source_file, 'r', encoding='utf-8') as f:
+            source_content = f.read()
+
+        # Parse header (truoc data_chunk dau tien) va tung chunk
+        header = source_content.split('<data_chunk>')[0]
+        chunks_raw = _re.findall(r'<data_chunk>(.*?)</data_chunk>', source_content, _re.DOTALL)
+
+        chunk_lookup = {}
+        for chunk_text in chunks_raw:
+            idx_match = _re.search(r'CHUNK_index=(\d+)', chunk_text)
+            if idx_match:
+                chunk_lookup[int(idx_match.group(1))] = chunk_text.strip()
+
+        for batch_idx, batch in enumerate(batches_data, 1):
+            ctx_password = uuid.uuid4().hex[:8]
+            context_passwords[str(batch_idx)] = ctx_password
+
+            lines = [
+                f"# Batch {batch_idx:02d} Context File",
+                f"> **Context Password**: `{ctx_password}`",
+                f"> Ghi `ctx_pwd:{ctx_password}` vao field reason khi sua loi #2 hoac #3.",
+                ""
+            ]
+            for item in batch:
+                uid = item.get("uid", "unknown")
+                if item.get("scope") == "book":
+                    lines.append(f"## {uid} -- BOOK HEADER")
+                    lines.append(header.strip())
+                else:
+                    c_idx = item.get("chunk_index")
+                    c_name = item.get("chunk_name", "Unknown")
+                    if c_idx is not None and c_idx in chunk_lookup:
+                        lines.append(f"## {uid} -- Chunk {c_idx}: {c_name}")
+                        lines.append(chunk_lookup[c_idx])
+                lines.append("---")
+
+            ctx_path = os.path.join(split_dir, f"batch_{batch_idx:02d}_context.md")
+            with open(ctx_path, 'w', encoding='utf-8') as f:
+                f.write("\n\n".join(lines))
+
+    session_state["context_passwords"] = context_passwords
+
     session_state_path = os.path.join(split_dir, "session_state.json")
     with open(session_state_path, 'w', encoding='utf-8') as f:
         json.dump(session_state, f, ensure_ascii=False, indent=2)
@@ -111,6 +157,9 @@ def get_next_calibration_batch(session_dir):
 
     print(f"Lô dữ liệu {current_batch}/{session_state['total_batches']} đã sẵn sàng tại: {batch_file_path}")
     print(f"📝 Tệp làm bài đã được tạo sẵn tại: {temp_file_path}. Vui lòng mở tệp này, thay thế các trường [ĐIỀN VÀO ĐÂY] bằng câu trả lời và gọi --submit-file.")
+    ctx_path = os.path.join(os.path.abspath(session_dir), f"batch_{current_batch:02d}_context.md")
+    if os.path.exists(ctx_path):
+        print(f"📁 Context file: {ctx_path} (doc khi can sua loi #2 hoac #3)")
 
 def validate_calibration_submission(session_dir, submit_file):
     session_state_path = os.path.join(session_dir, "session_state.json")
@@ -166,6 +215,33 @@ def validate_calibration_submission(session_dir, submit_file):
                         print(f"❌ LỖI: Entry {entry.get('uid')} chưa thay thế trường placeholder '[ĐIỀN VÀO ĐÂY]' trong mảng.")
                         sys.exit(1)
 
+    # === KIEM TRA CHAT LUONG JTBD (tu dong truoc khi merge) ===
+    import subprocess
+    validator_script = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "validate_jtbd_quality.py"
+    )
+    if os.path.exists(validator_script):
+        result = subprocess.run(
+            [sys.executable, validator_script, submit_file],
+            capture_output=True, text=True, encoding="utf-8"
+        )
+        if result.stdout.strip():
+            print(result.stdout)
+        if result.returncode != 0:
+            sys.exit(1)
+
+    # === KIEM TRA CONTEXT PASSWORD (khi reason chua #2 hoac #3) ===
+    current_batch = session_state["current_batch"]
+    ctx_password = session_state.get("context_passwords", {}).get(str(current_batch))
+    if ctx_password:
+        for entry in entries:
+            reason = entry.get("reason", "")
+            if "#2" in reason or "#3" in reason:
+                if f"ctx_pwd:{ctx_password}" not in reason:
+                    print(f"❌ Entry {entry.get('uid')}: reason chua #2/#3 nhung thieu/sai context password. "
+                          f"Doc context file batch_{current_batch:02d}_context.md va them ctx_pwd:[password] vao reason.")
+                    sys.exit(1)
+
     for entry in entries:
         uid = entry["uid"]
         merged_item = original_items_map[uid].copy()
@@ -207,10 +283,11 @@ if __name__ == "__main__":
     parser.add_argument("--session-dir", type=str, help="Thư mục session")
     parser.add_argument("--get-next", action="store_true", help="Cấp phát lô dữ liệu tiếp theo")
     parser.add_argument("--submit-file", type=str, help="File JSON kết quả để xác thực")
+    parser.add_argument("--source-file", type=str, help="File nguồn gốc (dùng sinh context file)")
     args = parser.parse_args()
 
     if args.split_dir and args.parsed_json:
-        create_calibration_batches(args.parsed_json, args.split_dir, args.batch_size)
+        create_calibration_batches(args.parsed_json, args.split_dir, args.batch_size, args.source_file)
     elif args.get_next and args.session_dir:
         get_next_calibration_batch(args.session_dir)
     elif args.submit_file and args.session_dir:

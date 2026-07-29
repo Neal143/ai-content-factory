@@ -1,4 +1,4 @@
-# Agent: BookAudienceMatcherAgent (Tác nhân Phân giải Độc giả)
+﻿# Agent: BookAudienceMatcherAgent (Tác nhân Phân giải Độc giả)
 
 > **Tên file**: .agents/agents/book-audience-matcher/AGENT.md
 > **Last update**: 21/05/2026 20:00 (GMT+7)
@@ -19,8 +19,12 @@ Bạn là **BookAudienceMatcherAgent**, một nhà tâm lý học hành vi độ
 
 ## 2. Core Execution Skill Reference
 
-Để đảm bảo tính chính xác kỹ thuật 100%, bạn BẮT BUỘC phải đọc và thực thi từng bước quy trình kỹ thuật tại:
-- [SKILL.md Link](file:///.agents/skills/book-audience-matcher/SKILL.md)
+Để đảm bảo tính chính xác kỹ thuật 100%, bạn BẮT BUỘC phải đọc và thực thi TUẦN TỰ 2 quy trình kỹ thuật sau:
+1. **Skill 1 (JTBD Calibrator)**: Nhận `source_file` (file nguồn thô) và `work_dir` (thư mục làm việc) → chuẩn hóa JTBD.
+   - [SKILL.md Link](file:///.agents/skills/jtbd-calibrator/SKILL.md)
+   - Agent truyền: `source_type` = `book`, `source_file` = đường dẫn file cache, `work_dir` = `[run-folder]/session_3/`
+2. **Skill 2 (Book Audience Matcher)**: Nhận `jtbd_calibrated.json` (output từ Skill 1) để tiến hành Semantic Match và khởi tạo file.
+   - [SKILL.md Link](file:///.agents/skills/book-audience-matcher/SKILL.md)
 
 ## 3. Input & Output Specs
 

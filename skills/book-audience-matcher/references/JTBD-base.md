@@ -52,7 +52,7 @@ Cấu trúc chuẩn của một Main Job: **Động từ (Verb) + Đối tượn
 
 **Những điều TUYỆT ĐỐI TRÁNH (Don'ts):**
 *   **KHÔNG nhắc đến công nghệ, giải pháp:** Không dùng các từ chỉ phương pháp cụ thể. (Sai: *"Tìm kiếm tài liệu trong database bằng từ khóa"* -> Đúng: *"Truy xuất nội dung"*).
-*   **KHÔNG chứa các từ chỉ nhu cầu:** Các tính từ như *nhanh, dễ dàng, rẻ* là Needs, không nằm trong Main Job. (Sai: *"Tìm vé máy bay rẻ một cách nhanh chóng"* -> Đúng: *"Tìm vé máy bay"*).
+*   **KHÔNG chứa các từ chỉ nhu cầu:** Các tính từ như *nhanh, dễ dàng, rẻ...* là Needs, không nằm trong Main Job. (Sai: *"Tìm vé máy bay rẻ một cách nhanh chóng"* -> Đúng: *"Tìm vé máy bay"*).
 *   **KHÔNG miêu tả hành vi vật lý:** (Sai: *"Nhìn vào bức tranh"* -> Đúng: *"Thấu hiểu tác phẩm nghệ thuật"*).
 *   **KHÔNG dùng khái niệm phức hợp:** Không dùng từ "VÀ" hoặc "HOẶC" để ghép nhiều ý tưởng.
 

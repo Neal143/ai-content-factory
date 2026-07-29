@@ -11,7 +11,7 @@ Bạn là công nhân phân loại. Hàng ngày user sẽ vứt rất nhiều gh
 
 ### Bước 0: Tiếp nhận Dữ liệu (Input Routing)
 Tuyệt đối KHÔNG hỏi user nếu không cần thiết. Xử lý đầu vào theo các trường hợp:
-1. **Được gọi ngầm từ `process-inbox`:** Nhận raw data + type đã routing (tên file giỏ = type). Chuyển thẳng đến Bước 1, **tuyệt đối không dừng lại hỏi user** làm gãy tự động hóa.
+1. **Được gọi ngầm từ `process-inbox`:** Nhận raw data + type đã routing + `block_id` + `processed_file`. Chuyển thẳng đến Bước 1, **tuyệt đối không dừng lại hỏi user** làm gãy tự động hóa.
 2. **User gọi trực tiếp:** Nhận text trực tiếp từ user → tự suy luận type ở Bước 1.
 
 ### Bước 1: Phân loại
@@ -72,6 +72,11 @@ Format 4 phần: YAML frontmatter + Nội dung + Giải thích + Liên kết.
 - **Tầng 4 (Quotes, Data-Points):** `keywords: []` + `supports_knowledge: ["[[Tên_Solution_Hoặc_Concept_Đã_Chốt]]"]`.
 - **Topics:** `topics: [resolved_topics]` — giá trị từ Bước 2.4.
 - **Source Tagging:** `source_type: "User"`, `source_name: "Inbox Processor"` (mặc định).
+- **Source Link (chỉ khi nhận `block_id` từ process-inbox):** Thêm trường:
+  `source_link: "[[{Type}#^{block_id}]]"`
+  `source_path: "00-Inbox/Processed/{Type}.md#^{block_id}"`
+  Trong đó `{Type}` = tên file Processed nhận ở Bước 0 (VD: `Insights`, `Quotes`). `{block_id}` = giá trị nhận ở Bước 0.
+  Nếu KHÔNG có `block_id` (user gọi trực tiếp) → không ghi trường `source_link`.
 
 **Lưu ý cho từng type:**
 - **Solutions** → Phần Nội dung phải có ≥ 3 bước/thành phần.
