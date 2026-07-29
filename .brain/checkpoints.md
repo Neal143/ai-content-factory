@@ -1,5 +1,12 @@
 # Lịch sử Checkpoints
 
+### 📅 Ngày 29/07/2026
+#### Thêm field source_path cho atoms và pipeline
+- **Mã khôi phục:** `297eeb5`
+- **Thẻ (Tag):** `v4.4.0-source-path`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Chuẩn hóa format liên kết nguồn (source link) thành chuẩn Wikilink hoàn toàn thân thiện trên giao diện Obsidian, giúp việc nhấp vào link dễ dàng hơn. Đồng thời thiết kế thêm cơ chế định tuyến ngầm (source path) để đảm bảo các tiến trình tự động hóa đằng sau luôn tìm chính xác file gốc mà không gặp lỗi.
+  - **🛠️ Kỹ thuật (Tech):** Đổi `source_link` thành format Wikilink trên toàn bộ 480 file vật lý hiện tại và 5 Python pipeline (atomizer, write_audience, persona-interviewer, inbox-processor, story-architect). Thêm trường mới `source_path` ở dạng Vault-relative path chứa chính xác đường dẫn đến file gốc. Sửa toàn bộ Schema, SKILL.md và scripts gen file để tuân thủ rule mới này. Đảm bảo deterministic resolution.
 ### 📅 Ngày 17/07/2026
 #### Khắc phục triệt để vi phạm Encoding Convention trên toàn bộ Python Scripts
 - **Mã khôi phục:** `542bed7`

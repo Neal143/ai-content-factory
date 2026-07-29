@@ -1,4 +1,4 @@
-﻿---
+---
 type: insight
 insight_type: myth
 topics:

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-Atomic/Insights/BTRB_nham-lan-giua-binh-thuong-va-lanh-manh.md",
+                "file": "03-Content/Content Plan/personal-atoms-queue.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "BTRB_nham-lan-giua-binh-thuong-va-lanh-manh"
+              "title": "personal-atoms-queue"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "3066f80753f9cd89",
   "lastOpenFiles": [
+    "01-Atomic/Insights/BTRB_nham-lan-giua-binh-thuong-va-lanh-manh.md",
     "01-Atomic/Insights/cam-bay-thuong-cho-roi-cho-vot.md",
     "01-Atomic/Insights/chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
     "01-Atomic/Insights/con-doc-lap-cong-nghe-ai.md",
@@ -210,7 +211,6 @@
     "01-Atomic/_DLQ/good-inside_chien-luoc-co-lap-dam-chay-contain-the-fire.md",
     "01-Atomic/Stories/good-inside_story-liam-va-me-allison-unknown-15.md",
     "01-Atomic/_DLQ/good-inside_chien-luoc-mebo-se-khong-de-con-i-wont-let-you.md",
-    "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-15.md",
     "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml",
     "01-Atomic_Backup_20260702_160021/_DLQ",
     "01-Atomic_Backup_20260702_160021/Stories",
