@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-Atomic/Concepts/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
+                "file": "02-sources/books/Beyond the rainbow bridge.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi"
+              "title": "Beyond the rainbow bridge"
             }
           }
         ]
@@ -185,7 +185,10 @@
   },
   "active": "3e75e7ba052c0e47",
   "lastOpenFiles": [
+    "01-Atomic/Stories/BTRB_story-chau-gai-lon-cua-tac-gia-buong-tay-tap-di-4.md",
     "02-sources/books/Good Inside.md",
+    "01-Atomic/Data-Points/good-inside_data-unknown-7.md",
+    "01-Atomic/Concepts/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
     "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-18.md",
     "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-16.md",
     "02-sources/books/Beyond the rainbow bridge.md",
@@ -209,9 +212,6 @@
     "01-Atomic/Insights/good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
     "01-Atomic/Audiences/phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam.md",
     "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-da-co-san-chung-o-ben-trong-1.md",
-    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md",
-    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md",
-    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md",
     "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml",
     "01-Atomic_Backup_20260702_160021/_DLQ",
     "01-Atomic_Backup_20260702_160021/Stories",
