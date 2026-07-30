@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ sửa sai sau khi quát mắng con
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-06]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-06"
 ---
 # 🎯 Cha mẹ muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái
 

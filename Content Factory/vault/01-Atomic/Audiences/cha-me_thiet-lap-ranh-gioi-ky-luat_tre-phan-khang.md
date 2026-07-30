@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thiết lập ranh giới kỷ luật với con cái
@@ -14,8 +14,8 @@ aliases:
 - phụ huynh cần đặt quy tắc khi con hỗn láo
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-03]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-03"
 ---
 # 🎯 Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ
 

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và nề nếp cho con
@@ -10,8 +10,8 @@ aliases:
 - dạy con kỷ luật qua sinh hoạt hàng ngày
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-19]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-19"
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày
 

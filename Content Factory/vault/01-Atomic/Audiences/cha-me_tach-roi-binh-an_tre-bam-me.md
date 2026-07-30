@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con tách rời khỏi cha mẹ một cách bình an
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ giúp con quen đi học
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-28]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-28"
 ---
 # 🎯 Cha mẹ muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt
 

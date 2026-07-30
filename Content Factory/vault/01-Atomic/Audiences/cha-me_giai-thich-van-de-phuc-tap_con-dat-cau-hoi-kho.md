@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giải thích những vấn đề phức tạp, nhạy cảm
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ giải thích chuyện nhạy cảm cho trẻ
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-10]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-10"
 ---
 # 🎯 Cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối
 

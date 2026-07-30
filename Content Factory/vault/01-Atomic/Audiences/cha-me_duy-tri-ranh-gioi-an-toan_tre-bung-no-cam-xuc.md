@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: duy trì ranh giới an toàn và sự kết nối
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ muốn thiết lập kỷ luật trong lúc con khóc lóc
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-04]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-04"
 ---
 # 🎯 Cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc
 

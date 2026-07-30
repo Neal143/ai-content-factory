@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: ngăn chặn và kiểm soát hành vi bạo lực của con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ xử lý khi con đánh người
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-15]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-15"
 ---
 # 🎯 Cha mẹ muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh
 

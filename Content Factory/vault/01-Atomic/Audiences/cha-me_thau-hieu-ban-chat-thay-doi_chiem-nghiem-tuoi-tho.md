@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thấu hiểu bản chất sự thay đổi của loài người
@@ -12,8 +12,8 @@ aliases:
 - cha mẹ nhìn lại quá khứ
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-31]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-31"
 ---
 # 🎯 Cha mẹ muốn thấu hiểu bản chất sự thay đổi của loài người khi chiêm nghiệm lại ý nghĩa của tuổi thơ
 

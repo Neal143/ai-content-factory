@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do
@@ -11,8 +11,8 @@ aliases:
 - xây dựng không gian chơi mở cho trẻ mầm non
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-07]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-07"
 ---
 # 🎯 cha mẹ muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi
 

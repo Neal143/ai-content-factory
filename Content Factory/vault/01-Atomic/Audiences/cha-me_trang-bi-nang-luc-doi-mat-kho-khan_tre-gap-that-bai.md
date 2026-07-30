@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: trang bị năng lực đối mặt với khó khăn cho con
@@ -16,8 +16,8 @@ aliases:
 - cha mẹ giúp con đối mặt thất bại
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-22]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-22"
 ---
 # 🎯 Cha mẹ muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực
 

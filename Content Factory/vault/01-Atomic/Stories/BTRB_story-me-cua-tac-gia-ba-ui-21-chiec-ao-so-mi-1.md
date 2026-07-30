@@ -1,4 +1,4 @@
-﻿---
+---
 type: story
 subtype: story
 topics:
@@ -11,8 +11,8 @@ protagonist: Mẹ của tác giả
 source_type: book
 source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
 source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-01]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-01"
 confidence: 0.9
 supports_knowledge:
 - '[[BTRB_kien-tao-nhip-dieu-sinh-hoat-va-thoi-quen-thong-qua-su-tan-tam-trong-cong-viec-gia-dinh]]'

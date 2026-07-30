@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con xây dựng kỹ năng điều chỉnh cảm xúc
@@ -15,8 +15,8 @@ aliases:
 - cha mẹ rèn cảm xúc cho trẻ hay cáu gắt
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-14]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-14"
 ---
 # 🎯 Cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối
 

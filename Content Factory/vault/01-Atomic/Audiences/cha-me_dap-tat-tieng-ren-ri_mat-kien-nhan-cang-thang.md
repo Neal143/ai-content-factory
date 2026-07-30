@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: dập tắt tiếng rên rỉ đòi hỏi của con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ kiềm chế khi con nhõng nhẽo
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-18]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-18"
 ---
 # 🎯 Cha mẹ muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ
 

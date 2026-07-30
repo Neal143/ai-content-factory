@@ -1,4 +1,4 @@
-﻿---
+---
 type: story
 subtype: story
 topics:
@@ -12,8 +12,8 @@ protagonist: Jake và Dara
 source_type: book
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
 source_id: "good-inside-a-guide-to-becoming-the-parent-you-want-to-be"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-19]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-19"
 confidence: 0.9
 supports_knowledge:
 - '[[good-inside_loi-noi-doi-la-mot-co-che-tu-ve-va-mong-uoc-lying-as-a-wish-and-self-defense]]'

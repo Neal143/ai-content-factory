@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: tái lập sự gắn kết và loại bỏ các hành vi chống đối của con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ thoát khỏi vòng lặp la mắng
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-12]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-12"
 ---
 # 🎯 Cha mẹ muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày
 

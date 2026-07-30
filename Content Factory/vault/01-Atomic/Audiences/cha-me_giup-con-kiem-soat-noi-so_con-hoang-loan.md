@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con kiểm soát nỗi sợ hãi
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ giúp con vượt qua nỗi sợ
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-20]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-20"
 ---
 # 🎯 Cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể
 

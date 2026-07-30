@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: khiến con cái hợp tác thực hiện các yêu cầu
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ trị tính không chịu nghe lời của con
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-13]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-13"
 ---
 # 🎯 Cha mẹ muốn khiến con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ
 

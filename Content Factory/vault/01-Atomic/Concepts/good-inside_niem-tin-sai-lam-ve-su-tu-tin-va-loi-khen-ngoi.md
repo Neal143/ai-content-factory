@@ -1,4 +1,4 @@
-﻿---
+---
 type: concept
 knowledge_type: concept
 topics:
@@ -9,11 +9,11 @@ status: processed
 source_type: book
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
 source_id: "good-inside-a-guide-to-becoming-the-parent-you-want-to-be"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-26]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-26"
 confidence: 0.9
 supports_insight:
-- '[[01-Atomic/Insights/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi|good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]'
+- '[[good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi]]'
 description: Sự tự tin đích thực không đến từ lời khen ngợi bên ngoài mà từ khả năng tự tin tưởng vào cảm xúc của chính mình. Khi trẻ được phép chấp nhận mọi cảm xúc, chúng sẽ hình thành sự vững vàng từ bên trong.
 keywords: [sự tự tin đích thực, lời khen ngợi, tự tin tưởng, công nhận bản thân, giáo dục tâm lý, giá trị bên trong, phát triển nhân cách, cảm xúc tiêu cực]
 ---

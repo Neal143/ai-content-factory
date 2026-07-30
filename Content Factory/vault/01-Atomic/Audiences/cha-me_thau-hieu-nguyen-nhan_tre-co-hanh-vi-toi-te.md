@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ tìm hiểu lý do con chống đối
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-08]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-08"
 ---
 # 🎯 Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát
 

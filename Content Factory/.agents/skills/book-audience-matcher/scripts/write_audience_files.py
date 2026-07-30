@@ -79,6 +79,8 @@ def join_data(decision_map, calibrated_jtbd):
             "audience_filename": entry["audience_filename"],
             "audience_level": entry["audience_level"],
             "parent_audience": entry.get("parent_audience", []),
+            "scope": entry.get("scope", "book"),
+            "chunk_index": entry.get("chunk_index"),
             "audience_Job_performer": jtbd["audience_Job_performer"],
             "audience_main_job": jtbd["audience_main_job"],
             "audience_circumstance": jtbd["audience_circumstance"],
@@ -324,8 +326,15 @@ def main():
     for entry in merged:
         entry["source_type"] = "book"
         entry["source_name"] = args.source_name or ""
-        entry["source_link"] = f"[[{args.source_link}]]" if args.source_link else ""
-        entry["source_path"] = f"02-sources/books/{args.source_link}.md" if args.source_link else ""
+        # Xác định fragment từ scope/chunk_index
+        scope = entry.get("scope", "book")
+        ci = entry.get("chunk_index")
+        if scope == "chunk" and ci is not None:
+            frag = f"#^chunk-{int(ci):02d}"
+        else:
+            frag = "#^book-overview"
+        entry["source_link"] = f"[[{args.source_link}{frag}]]" if args.source_link else ""
+        entry["source_path"] = f"02-sources/books/{args.source_link}.md{frag}" if args.source_link else ""
 
     # ── Bước 4: Load dashboard template ──
     skill_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: nuôi dưỡng các giác quan nhận thức của trẻ
@@ -10,8 +10,8 @@ aliases:
 - hỗ trợ trẻ nhận thức và giao tiếp trong môi trường xã hội
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-14]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-14"
 ---
 # 🎯 cha mẹ muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp
 

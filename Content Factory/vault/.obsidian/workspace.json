@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "60567fbcfccec941",
+        "id": "8fd8fa0eabb04696",
         "type": "tabs",
         "children": [
           {
-            "id": "3066f80753f9cd89",
+            "id": "3e75e7ba052c0e47",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-Content/Content Plan/personal-atoms-queue.md",
+                "file": "01-Atomic/Concepts/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "personal-atoms-queue"
+              "title": "good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi"
             }
           }
         ]
@@ -183,8 +183,22 @@
       "bases:Tạo cơ sở mới": false
     }
   },
-  "active": "3066f80753f9cd89",
+  "active": "3e75e7ba052c0e47",
   "lastOpenFiles": [
+    "02-sources/books/Good Inside.md",
+    "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-18.md",
+    "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-16.md",
+    "02-sources/books/Beyond the rainbow bridge.md",
+    "01-Atomic/Audiences/cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay.md",
+    "01-Atomic/Audiences/cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot.md",
+    "02-sources/books/Good Inside.md.tmp",
+    "01-Atomic/Audiences/cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang.md",
+    "01-Atomic/Audiences/cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con.md",
+    "01-Atomic/Audiences/cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi.md",
+    "01-Atomic/Audiences/cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre.md",
+    "01-Atomic/Audiences/cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay.md",
+    "01-Atomic/Audiences/cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai.md",
+    "03-Content/Content Plan/personal-atoms-queue.md",
     "01-Atomic/Insights/BTRB_nham-lan-giua-binh-thuong-va-lanh-manh.md",
     "01-Atomic/Insights/cam-bay-thuong-cho-roi-cho-vot.md",
     "01-Atomic/Insights/chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
@@ -194,23 +208,10 @@
     "01-Atomic/Insights/ban-than-khong-hanh-phuc.md",
     "01-Atomic/Insights/good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
     "01-Atomic/Audiences/phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam.md",
-    "01-Atomic/Audiences/cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con.md",
-    "01-Atomic/Audiences/cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre.md",
-    "01-Atomic/Audiences/cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay.md",
-    "01-Atomic/Audiences/cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai.md",
     "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-da-co-san-chung-o-ben-trong-1.md",
     "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-cach-chung-ta-lam-viec-8.md",
-    "02-sources/books/Beyond the rainbow bridge.md",
     "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-bat-chuoc-chinh-xac-9.md",
-    "03-Content/Content Plan/personal-atoms-queue.md",
     "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-co-bap-khong-duoc-dung-10.md",
-    "01-Atomic/Audiences/cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho.md",
-    "01-Atomic/Solutions/BTRB_giao-tiep-ro-rang-va-gioi-han-lua-chon.md",
-    "BTRB_bong-ma-cua-su-dan-chu-gia-tao.md",
-    "02-sources/books/Whats-Going-on-in-There.md",
-    "01-Atomic/_DLQ/good-inside_chien-luoc-co-lap-dam-chay-contain-the-fire.md",
-    "01-Atomic/Stories/good-inside_story-liam-va-me-allison-unknown-15.md",
-    "01-Atomic/_DLQ/good-inside_chien-luoc-mebo-se-khong-de-con-i-wont-let-you.md",
     "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml",
     "01-Atomic_Backup_20260702_160021/_DLQ",
     "01-Atomic_Backup_20260702_160021/Stories",
@@ -219,7 +220,6 @@
     "01-Atomic_Backup_20260702_160021/Insights",
     "01-Atomic_Backup_20260702_160021/Concepts",
     "01-Atomic_Backup_20260702_160021/Data-Points",
-    "01-Atomic_Backup_20260702_160021/Audiences",
-    "01-Atomic_Backup_20260702_160021"
+    "01-Atomic_Backup_20260702_160021/Audiences"
   ]
 }

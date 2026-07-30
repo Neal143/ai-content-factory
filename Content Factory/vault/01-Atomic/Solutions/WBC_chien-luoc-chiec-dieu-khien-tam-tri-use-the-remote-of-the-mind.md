@@ -1,4 +1,4 @@
-﻿---
+---
 type: solution
 knowledge_type: framework
 topics:
@@ -11,8 +11,8 @@ status: processed
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
-source_link: "[[The Whole-Brain Child]]"
-source_path: "02-sources/books/The Whole-Brain Child.md"
+source_link: "[[The Whole-Brain Child#^chunk-08]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-08"
 confidence: 0.9
 supports_insight:
 - '[[WBC_su-so-hai-khi-phai-doi-mat-voi-ky-uc-ton-thuong]]'

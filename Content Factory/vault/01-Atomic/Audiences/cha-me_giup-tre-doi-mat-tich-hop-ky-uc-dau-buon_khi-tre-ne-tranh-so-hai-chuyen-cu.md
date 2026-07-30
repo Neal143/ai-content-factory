@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp trẻ đối mặt và tích hợp các ký ức đau buồn
@@ -12,9 +12,9 @@ aliases:
 - phụ huynh
 - người chăm sóc
 source_type: "book"
-source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_name: "The Whole-Brain Child (bởi Daniel J. Siegel & Tina Payne Bryson, 2011)"
+source_link: "[[The Whole-Brain Child#^chunk-08]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-08"
 ---
 # 🎯 cha mẹ muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ
 

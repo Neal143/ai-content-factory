@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: big
 audience_Job_performer: Cha mẹ
 audience_main_job: nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết
@@ -11,8 +11,8 @@ aliases:
 - người làm cha mẹ muốn rèn tính kiên cường cho con
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^book-overview]]"
+source_path: "02-sources/books/Good Inside.md#^book-overview"
 ---
 # 🎯 Cha mẹ muốn nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ
 

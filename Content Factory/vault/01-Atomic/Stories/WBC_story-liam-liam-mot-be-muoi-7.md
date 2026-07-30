@@ -1,4 +1,4 @@
-﻿---
+---
 type: story
 subtype: story
 topics:
@@ -12,8 +12,8 @@ protagonist: Liam
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
-source_link: "[[The Whole-Brain Child]]"
-source_path: "02-sources/books/The Whole-Brain Child.md"
+source_link: "[[The Whole-Brain Child#^chunk-07]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-07"
 confidence: 0.9
 supports_knowledge:
 - '[[WBC_thay-doi-trang-thai-the-chat-de-thay-doi-trang-thai-cam-xuc-move-it-or-lose-it]]'

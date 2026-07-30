@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng
@@ -17,8 +17,8 @@ aliases:
 - cha mẹ cần xử lý khi con nổi giận vô cớ
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-17]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-17"
 ---
 # 🎯 Cha mẹ muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ
 

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ xử lý khi anh chị em ghen tị
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-16]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-16"
 ---
 # 🎯 Cha mẹ muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự chú ý
 

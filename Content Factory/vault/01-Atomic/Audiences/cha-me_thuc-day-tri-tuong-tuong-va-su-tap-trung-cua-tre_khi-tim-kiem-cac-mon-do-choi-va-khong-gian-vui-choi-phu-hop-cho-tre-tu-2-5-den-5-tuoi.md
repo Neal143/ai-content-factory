@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thúc đẩy trí tưởng tượng và sự tập trung của trẻ
@@ -12,8 +12,8 @@ vivid_circumstances:
 - Đầu tháng 12 tại nhà | Phụ huynh gọi điện hỏi giáo viên | Phân vân không biết nên mua quà gì cho con ngoài trò chơi điện tử hay mô hình nhựa
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-09]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-09"
 ---
 # 🎯 cha mẹ muốn thúc đẩy trí tưởng tượng và sự tập trung của trẻ khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi
 

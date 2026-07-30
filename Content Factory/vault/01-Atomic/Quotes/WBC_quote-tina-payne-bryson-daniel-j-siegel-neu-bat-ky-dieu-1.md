@@ -1,4 +1,4 @@
-﻿---
+---
 type: quote
 topics:
 - p1_neuroscience_parenting
@@ -10,8 +10,8 @@ status: processed
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
-source_link: "[[The Whole-Brain Child]]"
-source_path: "02-sources/books/The Whole-Brain Child.md"
+source_link: "[[The Whole-Brain Child#^chunk-01]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-01"
 confidence: 0.9
 supports_knowledge:
 - '[[WBC_phuong-phap-ket-hop-song-sot-va-phat-trien-survive-and-thrive-approach]]'

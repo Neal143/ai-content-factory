@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: khuyến khích con cái nói sự thật
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ xử lý khi trẻ nói dối
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-19]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-19"
 ---
 # 🎯 Cha mẹ muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm
 

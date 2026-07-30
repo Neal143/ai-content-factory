@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: chọn đúng truyện cổ tích phù hợp cho trẻ nghe
@@ -10,8 +10,8 @@ aliases:
 - chọn truyện đọc cho bé theo độ tuổi
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-28]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-28"
 ---
 # 🎯 cha mẹ muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con
 

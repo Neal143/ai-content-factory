@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thiết lập kỷ luật và giao tiếp hiệu quả
@@ -12,8 +12,8 @@ vivid_circumstances:
 - Tại hội chợ trường học | Người mẹ liên tục hỏi con muốn ăn ở đâu | Đứa trẻ hai tuổi bật khóc vì áp lực
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-16]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-16"
 ---
 # 🎯 cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ
 

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: thấu hiểu tâm lý và hành vi của con
@@ -11,9 +11,9 @@ aliases:
 - phụ huynh
 - người làm cha mẹ
 source_type: "book"
-source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_name: "The Whole-Brain Child (bởi Daniel J. Siegel & Tina Payne Bryson, 2011)"
+source_link: "[[The Whole-Brain Child#^chunk-02]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-02"
 ---
 # 🎯 cha mẹ muốn thấu hiểu tâm lý và hành vi của con khi đối mặt với những thử thách nuôi dạy hàng ngày
 

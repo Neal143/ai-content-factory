@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: thiết lập ranh giới và thói quen ăn uống lành mạnh
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ xử lý khi con kén ăn
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-23]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-23"
 ---
 # 🎯 Cha mẹ muốn thiết lập ranh giới và thói quen ăn uống lành mạnh khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn
 

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ xử lý khi con cố chấp
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-09]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-09"
 ---
 # 🎯 Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó
 

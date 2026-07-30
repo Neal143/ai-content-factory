@@ -1,4 +1,4 @@
-﻿---
+---
 type: insight
 insight_type: pain_point
 topics:
@@ -11,8 +11,8 @@ status: processed
 source_type: book
 source_name: Beyond the Rainbow Bridge - Nurturing our children from birth to seven (bởi Barbara J. Patterson, Pamela Bradley, 2000)
 source_id: beyond-the-rainbow-bridge-nurturing-our-children-from-birth-to-seven
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-25]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-25"
 confidence: 0.9
 belongs_to_audience:
 - '[[cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre]]'

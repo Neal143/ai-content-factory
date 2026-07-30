@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: chọn đồ chơi và xây dựng không gian chơi lành mạnh
@@ -12,8 +12,8 @@ vivid_circumstances:
 - Trong nhà bếp | Trẻ liên tục lôi xoong nồi và bát ra khỏi tủ | Trẻ say sưa chơi quanh quẩn bên chân cha mẹ
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-08]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-08"
 ---
 # 🎯 cha mẹ muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi
 

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: giúp con nhận thức tính tạm thời của cảm xúc
@@ -12,9 +12,9 @@ aliases:
 - phụ huynh
 - người hướng dẫn con
 source_type: "book"
-source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_name: "The Whole-Brain Child (bởi Daniel J. Siegel & Tina Payne Bryson, 2011)"
+source_link: "[[The Whole-Brain Child#^chunk-10]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-10"
 ---
 # 🎯 cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã
 

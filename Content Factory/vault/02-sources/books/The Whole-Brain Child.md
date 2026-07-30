@@ -1,5 +1,4 @@
-**TẦNG 1: TỔNG QUAN CUỐN SÁCH**
-
+﻿## TỔNG QUAN CUỐN SÁCH ^book-overview
 META_BOOK: book_name=The Whole-Brain Child | author=Daniel J. Siegel, MD & Tina Payne Bryson, PhD | year=Không đề cập | topics=Child psychology, Child development, Child rearing, Parenting, Parent and child | total_chunks=15
 RESOLVED_BOOK_META: source_id=[the-whole-brain-child] | topic_ids=["p1_neuroscience_parenting", "p1_whole_brain_integration", "p1_crisis_integration_opportunity"] | audience_filename=cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan
 
@@ -56,8 +55,7 @@ TOC_MASTER:
 
 <!-- HEADER_END -->
 
-## Chunk 1: Chunk 1: Introduction: SURVIVE AND THRIVE
-
+## Chunk 1: Introduction: SURVIVE AND THRIVE ^chunk-01
 > 🎯 Người muốn nuôi dạy con cái phát triển toàn diện (thrive) khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày (survive). | 🔥 Tách rời việc "Sống sót" và "Phát triển"
 
 <data_chunk>
@@ -96,8 +94,7 @@ META_QUOTE: content_type=quote | quote_keyword=neu-bat-ky-dieu | speaker=Tina Pa
 "Nếu bất kỳ điều nào trong số này nghe có vẻ quen thuộc, chúng tôi có một tin tuyệt vời cho bạn: những khoảnh khắc bạn chỉ đang cố gắng sống sót thực chất lại là những cơ hội để giúp con bạn phát triển."
 </data_chunk>
 
-## Chunk 2: Chunk 2: Chapter 1: PARENTING WITH THE BRAIN IN MIND
-
+## Chunk 2: Chapter 1: PARENTING WITH THE BRAIN IN MIND ^chunk-02
 > 🎯 Người làm cha mẹ muốn thấu hiểu tâm lý và hành vi của con khi đối mặt với những thử thách nuôi dạy hàng ngày. | 🔥 Thiếu hiểu biết về não bộ trẻ em
 
 <data_chunk>
@@ -146,8 +143,7 @@ META_QUOTE: content_type=quote | quote_keyword=nhung-cach-hieu-mot | speaker=Tá
 "Nhưng bằng cách hiểu một vài điều cơ bản đơn giản và dễ nắm bắt về cách bộ não hoạt động, bạn sẽ có thể hiểu con mình tốt hơn, phản ứng hiệu quả hơn trong các tình huống khó khăn, và xây dựng một nền tảng vững chắc cho sức khỏe xã hội, cảm xúc và tinh thần."
 </data_chunk>
 
-## Chunk 3: Chunk 3: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #1: Connect and Redirect: Surfing Emotional Waves
-
+## Chunk 3: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #1: Connect and Redirect: Surfing Emotional Waves ^chunk-03
 > 🎯 Người muốn xoa dịu cơn khủng hoảng của trẻ một cách hiệu quả khi đối mặt với những cảm xúc bùng nổ vô lý. | 🔥 Bất lực và bị cuốn theo cơn lũ cảm xúc vô lý của con
 
 <data_chunk>
@@ -194,8 +190,7 @@ META_QUOTE: content_type=quote | quote_keyword=giong-nhu-mot-nhan | speaker=Tác
 "Giống như một nhân viên cứu hộ bơi ra, vòng tay ôm lấy con bạn và giúp cậu bé vào bờ trước khi nói với cậu bé rằng lần sau đừng bơi ra quá xa." [4]
 </data_chunk>
 
-## Chunk 4: Chunk 4: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #2: Name It to Tame It: Telling Stories to Calm Big Emotions
-
+## Chunk 4: Chapter 2: TWO BRAINS ARE BETTER THAN ONE - Whole-Brain Strategy #2: Name It to Tame It: Telling Stories to Calm Big Emotions ^chunk-04
 > 🎯 Người muốn xoa dịu những cảm xúc tiêu cực và sự sợ hãi tột độ của trẻ khi trẻ vừa trải qua một biến cố đau đớn hoặc đáng sợ. | 🔥 Bị cảm xúc tiêu cực lấn át (Emotional flood)
 
 <data_chunk>
@@ -248,8 +243,7 @@ META_QUOTE: content_type=quote | quote_keyword=healing-from-a-difficult | speake
 "Healing from a difficult experience emerges when the left side works with the right to tell our life stories. When children learn to pay attention to and share their own stories, they can respond in healthy ways to everything from a scraped elbow to a major loss or trauma."
 </data_chunk>
 
-## Chunk 5: Chunk 5: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #3: Engage, Don't Enrage: Appealing to the Upstairs Brain
-
+## Chunk 5: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #3: Engage, Don't Enrage: Appealing to the Upstairs Brain ^chunk-05
 > 🎯 Người muốn giải quyết sự chống đối và xoa dịu trẻ khi trẻ đang trong trạng thái bùng nổ cảm xúc hoặc tức giận. | 🔥 Bẫy Quyền Uy Khi Trẻ Chống Đối
 
 <data_chunk>
@@ -295,8 +289,7 @@ META_QUOTE: content_type=quote | quote_keyword=every-time-we-say | speaker=Tác 
 "Every time we say “Convince me” or “Come up with a solution that works for both of us,” we give our kids the chance to practice problem solving and decision making. We help them consider appropriate behaviors and consequences, and we help them think about what another person feels and wants. All because we found a way to engage the upstairs, instead of enraging the downstairs."
 </data_chunk>
 
-## Chunk 6: Chunk 6: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #4: Use It or Lose It: Exercising the Upstairs Brain
-
+## Chunk 6: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #4: Use It or Lose It: Exercising the Upstairs Brain ^chunk-06
 > 🎯 Người làm cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày. | 🔥 Cám dỗ tự đưa ra quyết định thay con
 
 <data_chunk>
@@ -354,8 +347,7 @@ META_QUOTE: content_type=quote | quote_keyword=nao-tang-tren-giong | speaker=Tá
 "Bộ não tầng trên giống như một cơ bắp: khi được sử dụng, nó sẽ phát triển, trở nên mạnh mẽ hơn và hoạt động tốt hơn. Và khi bị phớt lờ, nó không phát triển tối ưu, mất đi một phần sức mạnh và khả năng hoạt động."
 </data_chunk>
 
-## Chunk 7: Chunk 7: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #5: Move It or Lose It: Moving the Body to Avoid Losing the Mind
-
+## Chunk 7: Chapter 3: BUILDING THE STAIRCASE OF THE MIND - Whole-Brain Strategy #5: Move It or Lose It: Moving the Body to Avoid Losing the Mind ^chunk-07
 > 🎯 Người muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc. | 🔥 Bất lực khi con mất kiểm soát cảm xúc
 
 <data_chunk>
@@ -404,8 +396,7 @@ META_QUOTE: content_type=quote | quote_keyword=co-the-chua-day | speaker=Daniel 
 "Cơ thể chứa đầy thông tin mà nó gửi đến não. Thực tế, rất nhiều cảm xúc chúng ta cảm nhận thực chất bắt đầu từ cơ thể. Cái dạ dày cồn cào và đôi vai căng cứng của chúng ta gửi những thông điệp vật lý của sự lo âu đến não trước cả khi chúng ta nhận thức được một cách có ý thức rằng mình đang lo lắng."
 </data_chunk>
 
-## Chunk 8: Chunk 8: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #6: Use the Remote of the Mind: Replaying Memories
-
+## Chunk 8: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #6: Use the Remote of the Mind: Replaying Memories ^chunk-08
 > 🎯 Người muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ. | 🔥 Sự sợ hãi khi phải đối mặt với ký ức tổn thương
 
 <data_chunk>
@@ -455,8 +446,7 @@ META_QUOTE: content_type=quote | quote_keyword=se-ke-qua-giong | speaker=David |
 "Bố sẽ kể qua câu chuyện, giống như cách con đã kể cho bố vào mùa hè năm ngoái. Và bố muốn con tưởng tượng câu chuyện trong đầu mình, như thể con đang xem một đĩa DVD bên trong não con vậy."
 </data_chunk>
 
-## Chunk 9: Chunk 9: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #7: Remember to Remember: Making Recollection a Part of Your Family's Daily Life
-
+## Chunk 9: Chapter 4: KILL THE BUTTERFLIES! - Whole-Brain Strategy #7: Remember to Remember: Making Recollection a Part of Your Family's Daily Life ^chunk-09
 > 🎯 Người muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày. | 🔥 Trẻ lảng tránh kể chuyện hoặc trả lời qua loa
 
 <data_chunk>
@@ -513,8 +503,7 @@ META_QUOTE: content_type=quote | quote_keyword=chi-cach-dat-hoi | speaker=Tác g
 "Chỉ bằng cách đặt câu hỏi và khuyến khích việc nhớ lại, bạn có thể giúp con mình ghi nhớ và hiểu những sự kiện quan trọng từ quá khứ, điều này sẽ giúp chúng hiểu rõ hơn về những gì đang xảy ra với chúng ở hiện tại." [1]
 </data_chunk>
 
-## Chunk 10: Chunk 10: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #8: Let the Clouds of Emotion Roll By: Teaching That Feelings Come and Go
-
+## Chunk 10: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #8: Let the Clouds of Emotion Roll By: Teaching That Feelings Come and Go ^chunk-10
 > 🎯 Người cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã. | 🔥 Sự nhầm lẫn giữa "Cảm thấy" và "Là" (State vs. Trait)
 
 <data_chunk>
@@ -576,8 +565,7 @@ META_QUOTE: content_type=quote | quote_keyword=con-mua-la-co | speaker=Tác gi�
 "Cơn mưa là có thật, và thật ngốc nghếch nếu chúng ta đứng dưới một trận mưa như trút nước và hành xử như thể trời không hề mưa. Nhưng cũng sẽ ngốc nghếch không kém nếu cho rằng mặt trời sẽ không bao giờ xuất hiện lại nữa."
 </data_chunk>
 
-## Chunk 11: Chunk 11: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #9: SIFT: Paying Attention to What's Going On Inside
-
+## Chunk 11: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #9: SIFT: Paying Attention to What's Going On Inside ^chunk-11
 > 🎯 Người cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc. | 🔥 Trẻ thiếu từ vựng để gọi tên và nhận diện các sắc thái cảm xúc phức tạp
 
 <data_chunk>
@@ -632,8 +620,7 @@ META_QUOTE: content_type=quote | quote_keyword=cach-day-tre-sift | speaker=Danie
 "Bằng cách dạy trẻ SIFT thông qua các hoạt động của tâm trí, chúng ta có thể giúp trẻ nhận ra các điểm khác nhau trên vành bánh xe đang hoạt động bên trong chúng, và giúp chúng có thêm sự thấu hiểu cũng như quyền kiểm soát trong cuộc sống của mình." [4]
 </data_chunk>
 
-## Chunk 12: Chunk 12: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #10: Exercise Mindsight: Getting Back to the Hub
-
+## Chunk 12: Chapter 5: THE UNITED STATES OF ME - Whole-Brain Strategy #10: Exercise Mindsight: Getting Back to the Hub ^chunk-12
 > 🎯 Người làm cha mẹ muốn hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu. | 🔥 Bất lực khi con bị cảm xúc tiêu cực nuốt chửng
 
 <data_chunk>
@@ -687,8 +674,7 @@ META_QUOTE: content_type=quote | quote_keyword=hay-tim-cach-giup | speaker=Danie
 "Hãy tìm cách giúp con bạn học cách giữ sự tĩnh lặng, bình tâm đôi chút và tìm thấy sự bình yên như dưới đáy đại dương sâu thẳm ngay bên trong 'trục' (hub) của chúng. Từ đó, chúng sẽ có khả năng tốt hơn để sinh tồn qua những cơn bão đang nhen nhóm bên trong mình từ khoảnh khắc này sang khoảnh khắc khác..."
 </data_chunk>
 
-## Chunk 13: Chunk 13: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #11: Increase the Family Fun Factor: Making a Point to Enjoy Each Other
-
+## Chunk 13: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #11: Increase the Family Fun Factor: Making a Point to Enjoy Each Other ^chunk-13
 > 🎯 Người làm cha mẹ muốn xây dựng nền tảng gắn kết và tình cảm tích cực cho con cái khi cảm thấy bị cuốn vào guồng quay mệt mỏi của việc kỷ luật và đưa đón con hàng ngày. | 🔥 Kiet Suc Vi Nuoi Day Thieu Niem Vui
 
 <data_chunk>
@@ -752,8 +738,7 @@ META_QUOTE: content_type=quote | quote_keyword=neu-ban-muon-phat | speaker=Danie
 "Nếu bạn muốn phát triển những mối quan hệ thân thiết, lâu dài giữa các con của mình, hãy nghĩ về nó như một phương trình toán học, nơi lượng sự tận hưởng mà chúng chia sẻ cùng nhau phải lớn hơn lượng xung đột mà chúng trải qua."
 </data_chunk>
 
-## Chunk 14: Chunk 14: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #12: Connect Through Conflict: Teach Kids to Argue with a "We" in Mind
-
+## Chunk 14: Chapter 6: THE ME-WE CONNECTION - Whole-Brain Strategy #12: Connect Through Conflict: Teach Kids to Argue with a "We" in Mind ^chunk-14
 > 🎯 Người làm cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác. | 🔥 Né tránh và mệt mỏi với các cuộc xung đột của con
 
 <data_chunk>

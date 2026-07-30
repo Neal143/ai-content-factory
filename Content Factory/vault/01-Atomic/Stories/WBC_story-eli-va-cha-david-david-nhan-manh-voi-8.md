@@ -1,4 +1,4 @@
-﻿---
+---
 type: story
 subtype: story
 topics:
@@ -12,8 +12,8 @@ protagonist: Eli và cha David
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
-source_link: "[[The Whole-Brain Child]]"
-source_path: "02-sources/books/The Whole-Brain Child.md"
+source_link: "[[The Whole-Brain Child#^chunk-08]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-08"
 confidence: 0.9
 supports_knowledge:
 - '[[WBC_chien-luoc-chiec-dieu-khien-tam-tri-use-the-remote-of-the-mind]]'

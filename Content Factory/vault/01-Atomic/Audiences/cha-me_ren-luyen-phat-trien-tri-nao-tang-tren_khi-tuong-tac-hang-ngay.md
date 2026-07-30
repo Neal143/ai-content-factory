@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: rèn luyện và phát triển trí não tầng trên của con
@@ -11,9 +11,9 @@ aliases:
 - phụ huynh
 - người dạy dỗ con
 source_type: "book"
-source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_name: "The Whole-Brain Child (bởi Daniel J. Siegel & Tina Payne Bryson, 2011)"
+source_link: "[[The Whole-Brain Child#^chunk-06]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-06"
 ---
 # 🎯 cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày
 

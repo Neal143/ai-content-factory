@@ -1,4 +1,4 @@
-﻿---
+---
 type: insight
 insight_type: pitfall
 topics:
@@ -11,8 +11,8 @@ status: processed
 source_type: book
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
 source_id: "good-inside-a-guide-to-becoming-the-parent-you-want-to-be"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-22]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-22"
 confidence: 0.9
 belongs_to_audience:
 - '[[cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai]]'

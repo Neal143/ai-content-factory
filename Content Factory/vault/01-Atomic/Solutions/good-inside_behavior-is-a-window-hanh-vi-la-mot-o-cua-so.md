@@ -1,4 +1,4 @@
-﻿---
+---
 type: solution
 knowledge_type: mental_model
 topics:
@@ -11,8 +11,8 @@ status: processed
 source_type: book
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
 source_id: "good-inside-a-guide-to-becoming-the-parent-you-want-to-be"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-08]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-08"
 confidence: 0.9
 supports_insight:
 - '[[good-inside_behavior-first-uu-tien-hanh-vi-be-mat]]'

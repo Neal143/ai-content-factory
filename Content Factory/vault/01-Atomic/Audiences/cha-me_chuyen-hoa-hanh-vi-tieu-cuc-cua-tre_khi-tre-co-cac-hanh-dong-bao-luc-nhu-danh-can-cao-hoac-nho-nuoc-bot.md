@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: chuyển hóa hành vi tiêu cực của trẻ
@@ -10,8 +10,8 @@ aliases:
 - ngăn chặn thói quen đánh cắn ở trẻ nhỏ
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-20]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-20"
 ---
 # 🎯 cha mẹ muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt
 

@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn
@@ -10,8 +10,8 @@ aliases:
 - thay đổi cách kỷ luật trẻ mầm non
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-23]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-23"
 ---
 # 🎯 cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ
 

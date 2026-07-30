@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ chăm sóc bản thân khi nuôi con
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-11]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-11"
 ---
 # 🎯 Cha mẹ muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày
 

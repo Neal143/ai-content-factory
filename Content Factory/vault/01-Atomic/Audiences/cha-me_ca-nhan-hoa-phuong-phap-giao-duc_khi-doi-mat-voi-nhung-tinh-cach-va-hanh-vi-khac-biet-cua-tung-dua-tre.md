@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: cá nhân hóa phương pháp giáo dục
@@ -10,8 +10,8 @@ aliases:
 - giáo dục thuận tự nhiên theo khí chất của trẻ
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-25]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-25"
 ---
 # 🎯 cha mẹ muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ
 

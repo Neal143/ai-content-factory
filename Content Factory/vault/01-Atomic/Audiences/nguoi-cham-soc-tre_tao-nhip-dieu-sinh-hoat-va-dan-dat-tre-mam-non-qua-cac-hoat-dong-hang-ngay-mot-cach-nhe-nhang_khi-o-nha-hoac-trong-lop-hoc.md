@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: người chăm sóc trẻ
 audience_main_job: tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng
@@ -10,8 +10,8 @@ aliases:
 - hướng dẫn trẻ mẫu giáo sinh hoạt theo nhịp điệu
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-26]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-26"
 ---
 # 🎯 người chăm sóc trẻ muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học
 

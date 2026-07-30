@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: giúp con cái xử lý sự nhút nhát
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ rèn tự tin cho con rụt rè
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-21]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-21"
 ---
 # 🎯 Cha mẹ muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông
 

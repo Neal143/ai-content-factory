@@ -1,4 +1,4 @@
-﻿---
+---
 type: data-point
 data_type: shocking_fact
 topics:
@@ -11,8 +11,8 @@ status: processed
 source_type: book
 source_name: The Whole-Brain Child (bởi Daniel J. Siegel, MD & Tina Payne Bryson, PhD, Không đề cập)
 source_id: the-whole-brain-child
-source_link: "[[The Whole-Brain Child]]"
-source_path: "02-sources/books/The Whole-Brain Child.md"
+source_link: "[[The Whole-Brain Child#^chunk-03]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-03"
 confidence: 0.9
 supports_knowledge:
 - '[[WBC_chien-luoc-ket-noi-va-chuyen-huong-connect-and-redirect]]'

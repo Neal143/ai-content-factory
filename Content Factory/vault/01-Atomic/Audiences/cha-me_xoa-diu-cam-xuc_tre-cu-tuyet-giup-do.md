@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: Cha mẹ
 audience_main_job: xoa dịu và điều chỉnh cảm xúc của con
@@ -14,8 +14,8 @@ aliases:
 - cha mẹ xử lý khi con từ chối giúp đỡ
 source_type: "book"
 source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_link: "[[Good Inside#^chunk-30]]"
+source_path: "02-sources/books/Good Inside.md#^chunk-30"
 ---
 # 🎯 Cha mẹ muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ
 

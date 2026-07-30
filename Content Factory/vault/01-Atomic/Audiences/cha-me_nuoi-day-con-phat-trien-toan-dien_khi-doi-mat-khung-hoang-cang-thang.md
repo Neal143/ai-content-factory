@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: nuôi dạy con cái phát triển toàn diện
@@ -12,9 +12,9 @@ aliases:
 - phụ huynh mệt mỏi
 - người nuôi dạy con
 source_type: "book"
-source_name: "Good Inside: A Guide to Becoming the Parent You Want to Be (bởi Dr. Becky Kennedy, 2022)"
-source_link: "[[Good Inside]]"
-source_path: "02-sources/books/Good Inside.md"
+source_name: "The Whole-Brain Child (bởi Daniel J. Siegel & Tina Payne Bryson, 2011)"
+source_link: "[[The Whole-Brain Child#^chunk-01]]"
+source_path: "02-sources/books/The Whole-Brain Child.md#^chunk-01"
 ---
 # 🎯 cha mẹ muốn nuôi dạy con cái phát triển toàn diện khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày
 

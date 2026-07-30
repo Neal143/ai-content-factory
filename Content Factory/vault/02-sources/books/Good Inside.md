@@ -1,5 +1,4 @@
-### 1. TẦNG 1: TỔNG QUAN CUỐN SÁCH
-
+## TỔNG QUAN CUỐN SÁCH ^book-overview
 **1.1. Tóm tắt META_BOOK:**
 META_BOOK: book_name=Good Inside: A Guide to Becoming the Parent You Want to Be | author=Dr. Becky Kennedy | year=2022 | topics=Parenting, Child Psychology, Connection, Resilience, Emotion Regulation | total_chunks=31
 RESOLVED_BOOK_META: source_id=[good-inside-a-guide-to-becoming-the-parent-you-want-to-be] | topic_ids=["p1_parenting_child_behavior", "p1_connection_over_correction", "p1_sturdy_leadership"] | audience_filename=cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan
@@ -35,7 +34,7 @@ Giá trị lớn nhất của cuốn sách là giúp các bậc phụ huynh tr�
 
 ---
 
-### 3. TẦNG 2: MỤC LỤC CONTENT CHUNK (TOC)
+
 
 **TOC_MASTER:**
 *   Chunk 1: Introduction
@@ -81,8 +80,7 @@ Giá trị lớn nhất của cuốn sách là giúp các bậc phụ huynh tr�
 [NO_JTBD_FOUND]
 </data_chunk>
 
-## Chunk 2: Chunk 2: Part I: Dr. Becky’s Parenting Principles - Chapter 1: Good Inside
-
+## Chunk 2: Part I: Dr. Becky’s Parenting Principles - Chapter 1: Good Inside ^chunk-02
 > 🎯 Người muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ. | 🔥 Đánh đồng hành vi với bản chất con người
 
 <data_chunk>
@@ -150,8 +148,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Tầm quan 
 "Differentiating who someone is from what they do is key to creating interventions that preserve your relationship while also leading to impactful change."
 </data_chunk>
 
-## Chunk 3: Chunk 3: Part I: Dr. Becky’s Parenting Principles - Chapter 2: Two Things Are True
-
+## Chunk 3: Part I: Dr. Becky’s Parenting Principles - Chapter 2: Two Things Are True ^chunk-03
 > 🎯 Người làm cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ. | 🔥 Sự giằng xé giữa kỷ luật và kết nối
 
 <data_chunk>
@@ -213,8 +210,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bàn về m
 "Trong khoảnh khắc tranh giành quyền lực này, mục tiêu hàng đầu của bạn không phải là giải quyết vấn đề. Mục tiêu đầu tiên là tìm lại tâm thế 'hai điều đều đúng', bởi vì ngay khi chúng ta cảm thấy được thực sự thấu hiểu trong trải nghiệm và mong muốn của mình, chúng ta có thể hạ sự phòng thủ xuống—suy cho cùng, là con người, chúng ta ít bận tâm đến một quyết định cụ thể nào đó hơn là việc cảm thấy mình được nhìn nhận."
 </data_chunk>
 
-## Chunk 4: Chunk 4: Part I: Dr. Becky’s Parenting Principles - Chapter 3: Know Your Job
-
+## Chunk 4: Part I: Dr. Becky’s Parenting Principles - Chapter 3: Know Your Job ^chunk-04
 > 🎯 Người làm cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc. | 🔥 Vòng lặp tự trách và sợ hãi phản ứng của con
 
 <data_chunk>
@@ -283,8 +279,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky | context=Thay đổi góc nh
 "Việc xem xét những cuộc vật lộn của con như là sự hoàn thành công việc sẽ giúp bạn nhớ rằng đây là những đứa trẻ tốt đang làm công việc của chúng, chứ không phải là những đứa trẻ tồi tệ đang làm những điều xấu xa."
 </data_chunk>
 
-## Chunk 5: Chunk 5: Part I: Dr. Becky’s Parenting Principles - Chapter 4: The Early Years Matter
-
+## Chunk 5: Part I: Dr. Becky’s Parenting Principles - Chapter 4: The Early Years Matter ^chunk-05
 > 🎯 Người làm cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ. | 🔥 Hoài nghi nỗ lực & Tội lỗi làm hỏng con
 
 <data_chunk>
@@ -347,8 +342,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Lờ
 "Công sức bạn bỏ ra luôn luôn, luôn luôn xứng đáng." (The work you put in is always, always worth it.)
 </data_chunk>
 
-## Chunk 6: Chunk 6: Part I: Dr. Becky’s Parenting Principles - Chapter 5: It’s Not Too Late
-
+## Chunk 6: Part I: Dr. Becky’s Parenting Principles - Chapter 5: It’s Not Too Late ^chunk-06
 > 🎯 Người muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái. | 🔥 Nỗi sợ sự tổn thương không thể vãn hồi
 
 <data_chunk>
@@ -404,8 +398,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Khuy
 "Mục tiêu không bao giờ là làm đúng trong mọi lúc. Điều đó không tồn tại. [...] Mục tiêu xứng đáng nhất có lẽ là trở nên thực sự giỏi trong việc sửa chữa."
 </data_chunk>
 
-## Chunk 7: Chunk 7: Part I: Dr. Becky’s Parenting Principles - Chapter 6: Resilience > Happiness
-
+## Chunk 7: Part I: Dr. Becky’s Parenting Principles - Chapter 6: Resilience > Happiness ^chunk-07
 > 🎯 Người muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực. | 🔥 Cạm bẫy giải cứu cảm xúc
 
 <data_chunk>
@@ -458,8 +451,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Đúc kết
 "Bạn là kiến trúc sư xây dựng sự kiên cường cho con mình, và đó là món quà tuyệt vời nhất bạn có thể trao cho chúng. Rốt cuộc, việc quản lý thành công nhiều thử thách của cuộc sống là con đường đáng tin cậy nhất dẫn đến hạnh phúc của một người."
 </data_chunk>
 
-## Chunk 8: Chunk 8: Part I: Dr. Becky’s Parenting Principles - Chapter 7: Behavior Is a Window
-
+## Chunk 8: Part I: Dr. Becky’s Parenting Principles - Chapter 7: Behavior Is a Window ^chunk-08
 > 🎯 Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát. | 🔥 Behavior-First (Ưu tiên hành vi bề mặt)
 
 <data_chunk>
@@ -534,8 +526,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bình luậ
 "Nó giống như việc dán băng keo lên một chỗ rò rỉ trên trần nhà thay vì tự hỏi nguồn gốc của vết rò rỉ đến từ đâu. Khi chúng ta giải quyết hành vi trước tiên, chúng ta bỏ lỡ cơ hội giúp con cái mình xây dựng kỹ năng, và vượt lên trên điều đó, chúng ta bỏ lỡ cơ hội nhìn nhận những đứa trẻ như những con người thực sự chứ không phải là một tập hợp các hành vi."
 </data_chunk>
 
-## Chunk 9: Chunk 9: Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection
-
+## Chunk 9: Part I: Dr. Becky’s Parenting Principles - Chapter 8: Reduce Shame, Increase Connection ^chunk-09
 > 🎯 Người muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó | 🔥 Bất lực trước sự bướng bỉnh và vô cảm của con
 
 <data_chunk>
@@ -605,8 +596,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Sự khác 
 "Sự xấu hổ thì bết dính; nó làm chúng ta đình trệ. Sự kết nối thì mở ra; nó cho phép sự di chuyển."
 </data_chunk>
 
-## Chunk 10: Chunk 10: Part I: Dr. Becky’s Parenting Principles - Chapter 9: Tell the Truth
-
+## Chunk 10: Part I: Dr. Becky’s Parenting Principles - Chapter 9: Tell the Truth ^chunk-10
 > 🎯 Người làm cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối. | 🔥 Sợ trẻ tổn thương hoặc chưa sẵn sàng
 
 <data_chunk>
@@ -670,8 +660,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Lời khuy�
 "Nói sự thật thường đòi hỏi việc truyền đạt phiên bản sự việc đơn giản và thẳng thắn nhất. Tôi thường phải tự nhắc nhở bản thân: 'Chỉ nói những gì đã xảy ra. Gọi tên sự thật, và không thêm thắt điều gì phức tạp hơn.'"
 </data_chunk>
 
-## Chunk 11: Chunk 11: Part I: Dr. Becky’s Parenting Principles - Chapter 10: Self-Care
-
+## Chunk 11: Part I: Dr. Becky’s Parenting Principles - Chapter 10: Self-Care ^chunk-11
 > 🎯 Người muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày. | 🔥 Nuôi con tận hiến (Selfless Parenting)
 
 <data_chunk>
@@ -729,8 +718,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Giải thí
 "Làm cha mẹ không có nghĩa là đánh mất chính mình. Làm cha mẹ có nghĩa là giúp con bạn phát triển và khôn lớn trong khi bản thân bạn cũng đang phát triển và khôn lớn cùng lúc." (Parenthood doesn’t mean losing yourself. Parenthood means helping your child develop and grow while you yourself are developing and growing at the same time.)
 </data_chunk>
 
-## Chunk 12: Chunk 12: Part II: Building Connection and Addressing Behaviors - Chapter 11: Building Connection Capital
-
+## Chunk 12: Part II: Building Connection and Addressing Behaviors - Chapter 11: Building Connection Capital ^chunk-12
 > 🎯 Người muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày. | 🔥 Khủng hoảng vòng lặp hành vi
 
 <data_chunk>
@@ -794,8 +782,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Chỉ ra c�
 "Khi cha mẹ gặp khó khăn với con cái, nguyên nhân hầu như luôn luôn tựu trung lại ở một trong hai vấn đề: trẻ không cảm thấy được gắn kết với cha mẹ nhiều như chúng muốn, hoặc trẻ đang có một cuộc đấu tranh hay nhu cầu chưa được đáp ứng mà chúng cảm thấy phải đơn độc chống chọi."
 </data_chunk>
 
-## Chunk 13: Chunk 13: Part II: Building Connection and Addressing Behaviors - Chapter 12: Not Listening
-
+## Chunk 13: Part II: Building Connection and Addressing Behaviors - Chapter 12: Not Listening ^chunk-13
 > 🎯 Người làm cha mẹ muốn con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ. | 🔥 Bất lực vì con không nghe lời
 
 <data_chunk>
@@ -859,8 +846,7 @@ META_QUOTE: content_type=quote | speaker=Con trai lớn của Dr. Becky | contex
 "Cha mẹ luôn yêu cầu trẻ ngừng làm một việc gì đó vui vẻ để làm một việc kém vui hơn. Đó là lý do tại sao trẻ không lắng nghe."
 </data_chunk>
 
-## Chunk 14: Chunk 14: Part II: Building Connection and Addressing Behaviors - Chapter 13: Emotional Tantrums
-
+## Chunk 14: Part II: Building Connection and Addressing Behaviors - Chapter 13: Emotional Tantrums ^chunk-14
 > 🎯 Người làm cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối. | 🔥 Bất lực và tự trách bản thân khi con ăn vạ
 
 <data_chunk>
@@ -917,8 +903,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Giải thích b
 "Hai điều đều đúng: Mẹ là người quyết định việc này và câu trả lời là không. Con là người làm chủ cảm xúc của mình và con được quyền tức giận." [4]
 </data_chunk>
 
-## Chunk 15: Chunk 15: Part II: Building Connection and Addressing Behaviors - Chapter 14: Aggressive Tantrums (Hitting, Biting, Throwing)
-
+## Chunk 15: Part II: Building Connection and Addressing Behaviors - Chapter 14: Aggressive Tantrums (Hitting, Biting, Throwing) ^chunk-15
 > 🎯 Người muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh. | 🔥 Trẻ cố tình hư đốn và bạo lực
 
 <data_chunk>
@@ -1011,8 +996,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Giải thí
 "Bởi vì chúng ta thường hay quên mất, trẻ em hoàn toàn không cảm thấy dễ chịu gì khi chúng bị mất kiểm soát. Chúng không hề tận hưởng việc cơ thể mình không thể đưa ra những quyết định an toàn và đúng đắn, giống như cách người lớn cũng chẳng thích thú gì khi tự nhìn thấy mình cư xử tồi tệ."
 </data_chunk>
 
-## Chunk 16: Chunk 16: Part II: Building Connection and Addressing Behaviors - Chapter 15: Sibling Rivalry
-
+## Chunk 16: Part II: Building Connection and Addressing Behaviors - Chapter 15: Sibling Rivalry ^chunk-16
 > 🎯 Người muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự chú ý. | 🔥 Nỗi sợ mất vị trí (Trẻ) & Áp lực hòa thuận (Cha mẹ)
 
 <data_chunk>
@@ -1081,8 +1065,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bản chấ
 "Khi trẻ em công kích lẫn nhau, chúng đang 'nói' với cha mẹ rằng chúng cảm thấy bất an, rằng anh chị em của chúng giống như một mối đe dọa đối với nhu cầu thiết yếu là cảm thấy an toàn trong gia đình."
 </data_chunk>
 
-## Chunk 17: Chunk 17: Part II: Building Connection and Addressing Behaviors - Chapter 16: Rudeness and Defiance
-
+## Chunk 17: Part II: Building Connection and Addressing Behaviors - Chapter 16: Rudeness and Defiance ^chunk-17
 > 🎯 Người muốn phản hồi lại thái độ chống đối của con một cách hiệu quả khi con la hét, cãi lời hoặc buông những lời tổn thương. | 🔥 Trừng phạt để chấm dứt sự hỗn láo
 
 <data_chunk>
@@ -1149,8 +1132,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Lý 
 "Cảm giác bị thiếu tôn trọng có thể rất dễ gây kích động, nên hầu hết chúng ta đều có thôi thúc muốn la mắng hoặc trừng phạt—không nhất thiết vì điều đó sẽ mang lại cho trẻ sự tôn trọng mới mẻ đối với chúng ta, mà bởi vì là người lớn, chúng ta không thể chịu đựng được những cảm giác khó chịu, bất lực trong chính cơ thể mình, vì vậy chúng ta khẳng định bản thân thông qua việc trừng phạt để làm cho chính mình cảm thấy tốt hơn."
 </data_chunk>
 
-## Chunk 18: Chunk 18: Part II: Building Connection and Addressing Behaviors - Chapter 17: Whining
-
+## Chunk 18: Part II: Building Connection and Addressing Behaviors - Chapter 17: Whining ^chunk-18
 > 🎯 Người muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ. | 🔥 Sự ám ảnh và tức điên trước tiếng rên rỉ
 
 <data_chunk>
@@ -1220,8 +1202,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Phân biệ
 "The first [playfulness] is intended to connect and add levity, the second [mockery] is distancing and adds shame."
 </data_chunk>
 
-## Chunk 19: Chunk 19: Part II: Building Connection and Addressing Behaviors - Chapter 18: Lying
-
+## Chunk 19: Part II: Building Connection and Addressing Behaviors - Chapter 18: Lying ^chunk-19
 > 🎯 Phụ huynh muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm. | 🔥 Nỗi sợ con trở thành kẻ dối trá thao túng
 
 <data_chunk>
@@ -1283,8 +1264,7 @@ META_STORY: content_type=story | supports_knowledge=Lời nói dối là một c
 META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Giải thích tại sao sự trừng phạt và ép cung không giải quyết được tật nói dối. | supports_knowledge=Lời nói dối là một cơ chế tự vệ và mong ước (Lying as a wish and self-defense) | quote_keyword=unknown
 "Chúng ta không thể thay đổi một hành vi mà chúng ta không hiểu, và sự trừng phạt, những lời đe dọa, cùng sự tức giận không bao giờ là các thành phần cấu tạo nên một môi trường nuôi dưỡng sự thấu hiểu hay sự thay đổi."
 </data_chunk>
-## Chunk 20: Chunk 20: Part II: Building Connection and Addressing Behaviors - Chapter 19: Fears and Anxiety
-
+## Chunk 20: Part II: Building Connection and Addressing Behaviors - Chapter 19: Fears and Anxiety ^chunk-20
 > 🎯 Người làm cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể. | 🔥 Dùng logic để trấn an nỗi sợ
 
 <data_chunk>
@@ -1356,8 +1336,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Bàn về việ
 "Bạn không thể chỉ đơn giản là "tống khứ" sự lo âu. Lo âu chỉ có thể được quản lý hiệu quả bằng cách tăng cường khả năng chịu đựng nó, cho phép nó tồn tại và hiểu được mục đích của nó."
 </data_chunk>
 
-## Chunk 21: Chunk 21: Part II: Building Connection and Addressing Behaviors - Chapter 20: Hesitation and Shyness
-
+## Chunk 21: Part II: Building Connection and Addressing Behaviors - Chapter 20: Hesitation and Shyness ^chunk-21
 > 🎯 Người muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông. | 🔥 Sợ con mãi nhút nhát và cô lập
 
 <data_chunk>
@@ -1429,8 +1408,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Định ngh
 "Confidence isn’t being ready—confidence is knowing when you’re ready."
 </data_chunk>
 
-## Chunk 22: Chunk 22: Part II: Building Connection and Addressing Behaviors - Chapter 21: Frustration Intolerance
-
+## Chunk 22: Part II: Building Connection and Addressing Behaviors - Chapter 21: Frustration Intolerance ^chunk-22
 > 🎯 Người muốn giúp con phát triển khả năng chịu đựng sự thất vọng khi con dễ dàng bỏ cuộc hoặc nổi cáu trước những thử thách khó khăn. | 🔥 Bế tắc khi con dễ dàng từ bỏ
 
 <data_chunk>
@@ -1493,8 +1471,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Lời khuyên c
 "Nếu chúng ta muốn con cái phát triển khả năng chịu đựng sự thất vọng, chúng ta phải phát triển sự bao dung đối với sự thất vọng của chúng."
 </data_chunk>
 
-## Chunk 23: Chunk 23: Part II: Building Connection and Addressing Behaviors - Chapter 22: Food and Eating Habits
-
+## Chunk 23: Part II: Building Connection and Addressing Behaviors - Chapter 22: Food and Eating Habits ^chunk-23
 > 🎯 Người muốn thiết lập ranh giới và thói quen ăn uống lành mạnh khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn. | 🔥 Sợ làm cha mẹ tồi qua bữa ăn
 
 <data_chunk>
@@ -1550,8 +1527,7 @@ META_QUOTE: content_type=quote | speaker=Tác giả | context=Khi định hình 
 "Việc giảm thiểu lo âu xung quanh vấn đề thức ăn quan trọng hơn là lượng thức ăn nạp vào."
 </data_chunk>
 
-## Chunk 24: Chunk 24: Part II: Building Connection and Addressing Behaviors - Chapter 23: Consent
-
+## Chunk 24: Part II: Building Connection and Addressing Behaviors - Chapter 23: Consent ^chunk-24
 > 🎯 Người làm cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác. | 🔥 Áp lực ép con làm vui lòng người khác
 
 <data_chunk>
@@ -1621,8 +1597,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Câu nói cốt
 "Con là người duy nhất ở trong cơ thể mình, nên chỉ con mới có thể biết con thích gì."
 </data_chunk>
 
-## Chunk 25: Chunk 25: Part II: Building Connection and Addressing Behaviors - Chapter 24: Tears
-
+## Chunk 25: Part II: Building Connection and Addressing Behaviors - Chapter 24: Tears ^chunk-25
 > 🎯 Người làm cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá. | 🔥 Coi nước mắt là công cụ thao túng (Fake tears)
 
 <data_chunk>
@@ -1683,8 +1658,7 @@ META_QUOTE: content_type=quote | speaker=Becky Kennedy | context=Khi giải thí
 "Cơ thể không bao giờ nói dối. Nước mắt là cách cơ thể gửi đi thông điệp về cảm xúc của một người. Tôi không nhất thiết phải thích những giọt nước mắt của mình hay của con... nhưng tôi phải tôn trọng chúng."
 </data_chunk>
 
-## Chunk 26: Chunk 26: Part II: Building Connection and Addressing Behaviors - Chapter 25: Building Confidence
-
+## Chunk 26: Part II: Building Connection and Addressing Behaviors - Chapter 25: Building Confidence ^chunk-26
 > 🎯 Người cha mẹ muốn xây dựng sự tự tin thực sự cho con khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân. | 🔥 Niềm tin sai lầm về sự tự tin và lời khen ngợi
 
 <data_chunk>
@@ -1747,8 +1721,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Bàn về s
 "Sự tự tin không thể được xây dựng từ sự công nhận hay khen ngợi bên ngoài. Chắc chắn, những lời nhận xét này mang lại cảm giác tốt, nhưng chúng không bao giờ đọng lại... Mục tiêu không phải là làm cho một đứa trẻ không bị ảnh hưởng bởi sự chấp thuận hay ý kiến của người khác, mà đúng hơn là xây dựng nội tâm của một đứa trẻ - nghĩa là chúng là ai ở bên trong - để chúng không cảm thấy trống rỗng và bối rối khi không có ý kiến đóng góp từ bên ngoài."
 </data_chunk>
 
-## Chunk 27: Chunk 27: Part II: Building Connection and Addressing Behaviors - Chapter 26: Perfectionism
-
+## Chunk 27: Part II: Building Connection and Addressing Behaviors - Chapter 26: Perfectionism ^chunk-27
 > 🎯 Cha mẹ muốn giúp con vượt qua sự sợ hãi khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo. | 🔥 Logic Giải Quyết Hoàn Hảo
 
 <data_chunk>
@@ -1814,8 +1787,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Lý giải 
 "Perfectionism steals a child’s (and adult’s) ability to feel good in the process of learning because it dictates that goodness only comes from successful outcomes. We need to show perfectionist kids how they can find their good-enough-ness and their worth outside success."
 </data_chunk>
 
-## Chunk 28: Chunk 28: Part II: Building Connection and Addressing Behaviors - Chapter 27: Separation Anxiety
-
+## Chunk 28: Part II: Building Connection and Addressing Behaviors - Chapter 27: Separation Anxiety ^chunk-28
 > 🎯 Người muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt. | 🔥 Nỗi xót xa và bối rối khi con gào khóc níu kéo
 
 <data_chunk>
@@ -1876,8 +1848,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Gi�
 "Rốt cuộc, để xoa dịu lo âu chia ly, chúng ta phải giúp trẻ 'giữ lấy chúng ta' trong lúc chúng ta vắng mặt." *(After all, to ease separation anxiety, we have to help kids “hold on to us” in our absence.)*
 </data_chunk>
 
-## Chunk 29: Chunk 29: Part II: Building Connection and Addressing Behaviors - Chapter 28: Sleep
-
+## Chunk 29: Part II: Building Connection and Addressing Behaviors - Chapter 28: Sleep ^chunk-29
 > 🎯 Người muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ. | 🔥 Nỗi sợ chia ly trong bóng tối
 
 <data_chunk>
@@ -1947,8 +1918,7 @@ META_QUOTE: content_type=quote | speaker=Tiến sĩ Becky Kennedy | context=Gi�
 "Khi xem xét các vấn đề về giấc ngủ của con bạn, điều quan trọng là phải nhớ sự thật này: những khó khăn về giấc ngủ về bản chất chính là những khó khăn trong việc chia ly, bởi vì trong suốt đêm trẻ phải làm nhiệm vụ ở một mình trong khoảng mười giờ(ish) đồng hồ và đồng thời phải cảm thấy đủ an toàn để cơ thể có thể chìm vào giấc ngủ."
 </data_chunk>
 
-## Chunk 30: Chunk 30: Part II: Building Connection and Addressing Behaviors - Chapter 29: Kids Who Don’t Like Talking About Feelings (Deeply Feeling Kids)
-
+## Chunk 30: Part II: Building Connection and Addressing Behaviors - Chapter 29: Kids Who Don’t Like Talking About Feelings (Deeply Feeling Kids) ^chunk-30
 > 🎯 Người muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ. | 🔥 Sự bất lực khi cách nuôi dạy thông thường phản tác dụng
 
 <data_chunk>
@@ -2009,8 +1979,7 @@ META_QUOTE: content_type=quote | speaker=Dr. Becky Kennedy | context=Nhắc nh�
 "There’s nothing wrong with your child and there’s nothing wrong with you." (Không có gì sai với con bạn và cũng không có gì sai với bạn cả.)
 </data_chunk>
 
-## Chunk 31: Chunk 31: Conclusion
-
+## Chunk 31: Conclusion ^chunk-31
 > 🎯 Người muốn thấu hiểu bản chất sự thay đổi của loài người khi chiêm nghiệm lại ý nghĩa của tuổi thơ. | 🔥 Chan ly ve tuoi tho
 
 <data_chunk>

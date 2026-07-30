@@ -1,4 +1,4 @@
-﻿---
+---
 audience_level: little
 audience_Job_performer: cha mẹ
 audience_main_job: tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng
@@ -10,8 +10,8 @@ aliases:
 - tổ chức sinh nhật kiểu Waldorf cho bé
 source_type: "book"
 source_name: "Beyond the Rainbow Bridge - Nurturing our children from birth to seven (boi Barbara J. Patterson, Pamela Bradley, 2000)"
-source_link: "[[Beyond the rainbow bridge]]"
-source_path: "02-sources/books/Beyond the rainbow bridge.md"
+source_link: "[[Beyond the rainbow bridge#^chunk-27]]"
+source_path: "02-sources/books/Beyond the rainbow bridge.md#^chunk-27"
 ---
 # 🎯 cha mẹ muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới
 
