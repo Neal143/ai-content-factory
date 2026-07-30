@@ -45,8 +45,8 @@ protagonist: "<Tên_nhân_vật_chính>" # Bắt buộc đính kèm đối với
 source_type: book
 source_name: "<Tên Sách> (bởi <Tên Tác Giả, Năm xuất bản>)" # Kế thừa từ META_BOOK. VD: "Atomic Habits (bởi James Clear, 2018)"
 source_id: "<slug>"
-source_link: "[[<Tên Sách>]]"
-source_path: "02-sources/books/<Tên Sách>.md"
+source_link: "[[<Tên Sách>#^chunk-{NN}]]"
+source_path: "02-sources/books/<Tên Sách>.md#^chunk-{NN}"
 confidence: 0.9 # Sách xuất bản độ tin cậy mặc định là cao
 # ----- CÁC BIẾN CHẶN MỒ CÔI (Định tuyến Graph) -----
 keywords: []                             # Thẻ từ khóa nội suy (Inbox RAG)

@@ -35,8 +35,8 @@ parent_audience:
 # [Toàn bộ khối JTBD ROUTING CHUNK lấy từ audience.yaml sau khi điền values]
 source_type: book | User
 source_name: "<Tên nguồn>"
-source_link: "[[<Display>]]"
-source_path: "02-sources/books/<Display>.md"
+source_link: "[[<Display>#^{fragment}]]"   # book-overview hoặc chunk-{NN}
+source_path: "02-sources/books/<Display>.md#^{fragment}"
 ---
 ```
 

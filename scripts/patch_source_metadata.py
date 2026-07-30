@@ -130,7 +130,14 @@ def main():
     with open(tmp_file, 'w', encoding='utf-8') as f:
         f.write(content)
     os.replace(tmp_file, cache_file)
-    print(f"Da dong dau metadata thanh cong vao {cache_file}")
+    print(f"Đã đóng dấu metadata cho {cache_file}")
+
+    # Format heading + block ID (idempotent, an toan neu script khong ton tai)
+    format_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "format_cache_file.py")
+    if os.path.exists(format_script):
+        import subprocess
+        subprocess.run([sys.executable, format_script, "--cache-file", cache_file], check=True)
+        print(f"Da format heading va block ID cho {cache_file}")
 
 if __name__ == "__main__":
     main()
