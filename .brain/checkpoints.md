@@ -1,4 +1,12 @@
-# Lịch sử Checkpoints
+﻿# Lịch sử Checkpoints
+### 📅 Ngày 31/07/2026
+#### Chuẩn hóa format cache, gắn block ID và backfill fragment cho toàn bộ atoms
+- **Mã khôi phục:** `5940fff`
+- **Thẻ (Tag):** `v1.0.3-format-cache-block-id`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Giải quyết triệt để lỗi mất vị trí scroll khi ấn vào các liên kết nguồn trong Atom. Chuẩn hóa format nội dung để đồng nhất cho tất cả các sách, tự động link chính xác tới từng đoạn văn gốc thay vì chỉ mở đầu trang sách.
+  - **🛠️ Kỹ thuật (Tech):** Cập nhật tomizer.py, write_audience_files.py, patch_source_metadata.py để ghi fragment #^chunk-NN vào field source_link / source_path. Bổ sung script ormat_cache_file.py để chuẩn hóa file sách & tạo block IDs. Backfill thành công 100% (469 files) bằng 3-hop trace logic.
+
 
 ### 📅 Ngày 29/07/2026
 #### Thêm field source_path cho atoms và pipeline
