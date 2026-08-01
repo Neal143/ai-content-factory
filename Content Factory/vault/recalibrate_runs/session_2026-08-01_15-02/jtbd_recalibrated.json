@@ -1,0 +1,1120 @@
+[
+  {
+    "original_filename": "phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam",
+    "jtbd_raw": "Phu huynh sap co con hoac co con tu 0-7 tuoi muốn Thiet lap nen tang phat trien cho con Sap co con hoac co con tu 0-7 tuoi, song o Viet Nam",
+    "audience_main_job": "Thiết lập nền tảng phát triển cho con",
+    "audience_circumstance": "Khi sắp có con hoặc có con từ 0-7 tuổi tại Việt Nam",
+    "audience_Job_performer": "Phụ huynh",
+    "audience_level": "big",
+    "parent_audience": [],
+    "source_type": "User",
+    "source_path": "../personas/Vuon-ong-steiner/audience.yaml",
+    "aliases": [
+      "Nuôi dạy trẻ nhỏ",
+      "Chuẩn bị làm cha mẹ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xay-dung-nen-tang-thoi-quen-va-nhip-dieu-song-lanh-manh-cho-con_khi-thiet-lap-cac-thoi-quen-sinh-hoat-hang-ngay-trong-gia-dinh",
+    "jtbd_raw": "cha mẹ muốn xây dựng nền tảng thói quen và nhịp điệu sống lành mạnh cho con khi thiết lập các thói quen sinh hoạt hàng ngày trong gia đình",
+    "audience_main_job": "Xây dựng nền tảng nề nếp sinh hoạt cho con",
+    "audience_circumstance": "Khi thiết lập thói quen sinh hoạt hàng ngày trong gia đình",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-01",
+    "aliases": [
+      "Rèn luyện nếp sống cho trẻ",
+      "Duy trì kỷ luật gia đình"
+    ]
+  },
+  {
+    "original_filename": "cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai",
+    "jtbd_raw": "cha mẹ muốn bảo vệ sự phát triển lành mạnh của trẻ khi đối mặt với tác động tiêu cực và sự thúc ép trưởng thành sớm từ văn hóa hiện đại",
+    "audience_main_job": "Thiết lập bộ lọc môi trường cho con",
+    "audience_circumstance": "Khi đối mặt với tác động tiêu cực từ văn hóa hiện đại",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-03",
+    "aliases": [
+      "Kiểm soát môi trường sống của trẻ",
+      "Bảo vệ con khỏi ấn tượng độc hại"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xay-dung-nen-tang-phat-trien-khoe-manh-va-hanh-phuc-cho-con_khi-doi-mat-voi-noi-hoang-mang-ve-cach-nuoi-day-trong-the-gioi-hien-dai",
+    "jtbd_raw": "cha mẹ muốn xây dựng nền tảng phát triển khỏe mạnh và hạnh phúc cho con khi đối mặt với nỗi hoang mang về cách nuôi dạy trong thế giới hiện đại",
+    "audience_main_job": "Xây dựng nền tảng phát triển cho con",
+    "audience_circumstance": "Khi đối mặt với nỗi hoang mang về cách nuôi dạy con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-04",
+    "aliases": [
+      "Nuôi dạy trẻ trong thế giới hiện đại",
+      "Tìm kiếm định hướng nuôi dạy con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay",
+    "jtbd_raw": "cha mẹ muốn bảo vệ sức khỏe và thúc đẩy sự phát triển toàn diện của trẻ khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày",
+    "audience_main_job": "Thiết lập hệ thống giữ ấm cho con",
+    "audience_circumstance": "Khi chăm sóc trẻ nhỏ trong sinh hoạt hàng ngày",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-05",
+    "aliases": [
+      "Bảo vệ thân nhiệt cho trẻ",
+      "Chăm sóc sức khỏe mùa lạnh cho con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thiet-lap-su-on-dinh-va-ne-nep-cho-con_khi-doi-mat-voi-nhip-song-hien-dai-ban-ron-va-mat-can-bang",
+    "jtbd_raw": "cha mẹ muốn thiết lập sự ổn định và nề nếp cho con khi đối mặt với nhịp sống hiện đại bận rộn và mất cân bằng",
+    "audience_main_job": "Thiết lập nhịp điệu sống cho con",
+    "audience_circumstance": "Khi đối mặt với nhịp sống hiện đại",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-06",
+    "aliases": [
+      "Tạo thói quen sinh hoạt cho trẻ",
+      "Duy trì lịch trình gia đình"
+    ]
+  },
+  {
+    "original_filename": "cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi",
+    "jtbd_raw": "cha mẹ muốn tạo môi trường nuôi dưỡng trí tưởng tượng và sự phát triển trí tuệ cho trẻ thông qua vui chơi tự do khi nuôi dạy trẻ trong giai đoạn từ 0 đến 7 tuổi",
+    "audience_main_job": "Thiết lập không gian vui chơi tự do cho con",
+    "audience_circumstance": "Khi nuôi dạy trẻ từ 0 đến 7 tuổi",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-07",
+    "aliases": [
+      "Tạo môi trường phát triển trí tưởng tượng",
+      "Xây dựng không gian vui chơi cho trẻ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi",
+    "jtbd_raw": "cha mẹ muốn chọn đồ chơi và xây dựng không gian chơi lành mạnh khi chăm sóc con từ sơ sinh đến 2,5 tuổi",
+    "audience_main_job": "Lựa chọn đồ chơi cho con",
+    "audience_circumstance": "Khi chăm sóc con từ sơ sinh đến 2.5 tuổi",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-08",
+    "aliases": [
+      "Mua sắm đồ chơi cho trẻ nhỏ",
+      "Tìm kiếm đồ chơi phù hợp cho trẻ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thuc-day-tri-tuong-tuong-va-su-tap-trung-cua-tre_khi-tim-kiem-cac-mon-do-choi-va-khong-gian-vui-choi-phu-hop-cho-tre-tu-2-5-den-5-tuoi",
+    "jtbd_raw": "cha mẹ muốn thúc đẩy trí tưởng tượng và sự tập trung của trẻ khi tìm kiếm các món đồ chơi và không gian vui chơi phù hợp cho trẻ từ 2.5 đến 5 tuổi",
+    "audience_main_job": "Chuẩn bị đồ chơi mở cho con",
+    "audience_circumstance": "Khi tìm kiếm đồ chơi cho con từ 2 đến 5 tuổi",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-09",
+    "aliases": [
+      "Tạo không gian chơi sáng tạo",
+      "Cung cấp vật liệu chơi tự do"
+    ]
+  },
+  {
+    "original_filename": "cha-me_hieu-su-thay-doi-trong-cach-choi-va-tam-ly-cua-tre-tu-5-den-7-tuoi_khi-con-trai-qua-cac-giai-doan-phat-trien-moi",
+    "jtbd_raw": "cha mẹ muốn hiểu sự thay đổi trong cách chơi và tâm lý của trẻ từ 5 đến 7 tuổi khi con trải qua các giai đoạn phát triển mới",
+    "audience_main_job": "Giải quyết tình trạng chán nản của con",
+    "audience_circumstance": "Khi con bước vào độ tuổi lên sáu",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_tao-moi-truong-nuoi-duong-tri-tuong-tuong-va-su-phat-trien-tri-tue-cho-tre-thong-qua-vui-choi-tu-do_khi-nuoi-day-tre-trong-giai-doan-tu-0-den-7-tuoi]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-10",
+    "aliases": [
+      "Xử lý thay đổi tâm lý tuổi lên sáu",
+      "Định hướng vui chơi cho trẻ lớn"
+    ]
+  },
+  {
+    "original_filename": "cha-me_nuoi-duong-su-phat-trien-the-chat-va-cac-giac-quan-co-ban-cua-con_khi-tre-o-giai-doan-tu-so-sinh-den-bay-tuoi",
+    "jtbd_raw": "cha mẹ muốn nuôi dưỡng sự phát triển thể chất và các giác quan cơ bản của con khi trẻ ở giai đoạn từ sơ sinh đến bảy tuổi",
+    "audience_main_job": "Xây dựng nền tảng giác quan ý chí cho con",
+    "audience_circumstance": "Khi nuôi dạy trẻ từ sơ sinh đến bảy tuổi",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-12",
+    "aliases": [
+      "Phát triển giác quan vận động",
+      "Bảo vệ các giác quan cơ bản của trẻ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_nuoi-duong-tam-hon-va-bao-ve-cac-giac-quan-cam-xuc-cua-tre_khi-moi-truong-xung-quanh-ngap-tran-cac-kich-thich-nhan-tao",
+    "jtbd_raw": "cha mẹ muốn nuôi dưỡng tâm hồn và bảo vệ các giác quan cảm xúc của trẻ khi môi trường xung quanh ngập tràn các kích thích nhân tạo",
+    "audience_main_job": "Thiết lập môi trường giác quan cho con",
+    "audience_circumstance": "Khi môi trường xung quanh ngập tràn kích thích nhân tạo",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-13",
+    "aliases": [
+      "Bảo vệ tâm hồn trẻ nhỏ",
+      "Phát triển giác quan cảm xúc"
+    ]
+  },
+  {
+    "original_filename": "cha-me_nuoi-duong-cac-giac-quan-nhan-thuc-cua-tre_khi-con-tre-bat-dau-tiep-xuc-voi-nhieu-nguon-am-thanh-va-cac-moi-quan-he-giao-tiep-phuc-tap",
+    "jtbd_raw": "cha mẹ muốn nuôi dưỡng các giác quan nhận thức của trẻ khi con trẻ bắt đầu tiếp xúc với nhiều nguồn âm thanh và các mối quan hệ giao tiếp phức tạp",
+    "audience_main_job": "Thiết lập môi trường phát triển giác quan nhận thức cho con",
+    "audience_circumstance": "Khi con tiếp xúc với môi trường giao tiếp phức tạp",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-14",
+    "aliases": [
+      "Phát triển ngôn ngữ cho trẻ",
+      "Bảo vệ thính giác và nhận thức xã hội"
+    ]
+  },
+  {
+    "original_filename": "cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho",
+    "jtbd_raw": "cha mẹ muốn rèn luyện kỷ luật cho con khi đối mặt với những hành vi chưa tốt của trẻ nhỏ",
+    "audience_main_job": "Thiết lập ranh giới hành vi cho con",
+    "audience_circumstance": "Khi xử lý hành vi chưa tốt của trẻ nhỏ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-15",
+    "aliases": [
+      "Rèn kỷ luật không nước mắt",
+      "Kiểm soát cảm xúc khi dạy con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thiet-lap-ky-luat-va-giao-tiep-hieu-qua_khi-dua-ra-cac-yeu-cau-hang-ngay-cho-tre",
+    "jtbd_raw": "cha mẹ muốn thiết lập kỷ luật và giao tiếp hiệu quả khi đưa ra các yêu cầu hàng ngày cho trẻ",
+    "audience_main_job": "Thiết lập giới hạn lựa chọn cho con",
+    "audience_circumstance": "Khi đưa ra yêu cầu hàng ngày cho trẻ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-16",
+    "aliases": [
+      "Giao tiếp rõ ràng với trẻ",
+      "Tránh cho trẻ quá nhiều lựa chọn"
+    ]
+  },
+  {
+    "original_filename": "cha-me_dieu-chinh-hanh-vi-cua-tre_khi-tre-dang-choi-dua-thieu-chuan-muc",
+    "jtbd_raw": "cha mẹ muốn điều chỉnh hành vi của trẻ khi trẻ đang chơi đùa thiếu chuẩn mực",
+    "audience_main_job": "Chuyển hướng năng lượng vui chơi của con",
+    "audience_circumstance": "Khi trẻ chơi đùa thiếu chuẩn mực",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-17",
+    "aliases": [
+      "Xử lý hành vi chơi sai cách",
+      "Dùng sự phân tâm để dạy trẻ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thiet-lap-ky-luat-va-huong-dan-tre-hop-tac-tu-nguyen_khi-doi-mat-voi-su-chong-doi-hoac-boi-roi-giua-cac-phuong-phap-nuoi-day",
+    "jtbd_raw": "cha mẹ muốn thiết lập kỷ luật và hướng dẫn trẻ hợp tác tự nguyện khi đối mặt với sự chống đối hoặc bối rối giữa các phương pháp nuôi dạy",
+    "audience_main_job": "Xây dựng sự hợp tác tự nguyện cho con",
+    "audience_circumstance": "Khi đối mặt với sự chống đối của trẻ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-18",
+    "aliases": [
+      "Khuyến khích trẻ vâng lời",
+      "Áp dụng kỷ luật tích cực"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay",
+    "jtbd_raw": "cha mẹ muốn thiết lập kỷ luật và nề nếp cho con khi đối mặt với sự xáo trộn hoặc chống đối trong sinh hoạt hàng ngày",
+    "audience_main_job": "Thiết lập trật tự sinh hoạt cho con",
+    "audience_circumstance": "Khi đối mặt với sự xáo trộn trong sinh hoạt",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-19",
+    "aliases": [
+      "Đưa trẻ vào nề nếp sinh hoạt",
+      "Giảm thiểu sự chống đối qua thói quen"
+    ]
+  },
+  {
+    "original_filename": "cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot",
+    "jtbd_raw": "cha mẹ muốn chuyển hóa hành vi tiêu cực của trẻ khi trẻ có các hành động bạo lực như đánh, cắn, cào hoặc nhổ nước bọt",
+    "audience_main_job": "Giải quyết hành vi bạo lực của con",
+    "audience_circumstance": "Khi con có hành vi tấn công vật lý",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-20",
+    "aliases": [
+      "Xử lý khi trẻ đánh bạn",
+      "Kỷ luật trẻ hay cắn và cào"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xu-ly-hanh-vi-chong-doi-va-xung-dot-cua-tre_khi-doi-mat-voi-su-buong-binh-hoac-tranh-cai-hang-ngay",
+    "jtbd_raw": "cha mẹ muốn xử lý hành vi chống đối và xung đột của trẻ khi đối mặt với sự bướng bỉnh hoặc tranh cãi hàng ngày",
+    "audience_main_job": "Hóa giải sự phản kháng của con",
+    "audience_circumstance": "Khi con tranh cãi hoặc bướng bỉnh",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-21",
+    "aliases": [
+      "Giải quyết trẻ hay mách lẻo",
+      "Xử lý khi trẻ không chịu nghe lời"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc",
+    "jtbd_raw": "cha mẹ muốn xoa dịu cảm xúc của trẻ khi trẻ mệt mỏi hoặc quấy khóc",
+    "audience_main_job": "Khôi phục trạng thái tích cực cho con",
+    "audience_circumstance": "Khi trẻ mệt mỏi hoặc quấy khóc",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-22",
+    "aliases": [
+      "Dùng lời nói tích cực để dạy con",
+      "Xử lý khi trẻ cáu gắt do mệt"
+    ]
+  },
+  {
+    "original_filename": "cha-me_tim-ra-cach-dieu-chinh-va-ky-luat-tre-dung-dan_khi-gap-kho-khan-trong-qua-trinh-giao-duc-tre",
+    "jtbd_raw": "cha mẹ muốn tìm ra cách điều chỉnh và kỷ luật trẻ đúng đắn khi gặp khó khăn trong quá trình giáo dục trẻ",
+    "audience_main_job": "Xác định giải pháp giáo dục cho con",
+    "audience_circumstance": "Khi bế tắc trong phương pháp giáo dục",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-23",
+    "aliases": [
+      "Tìm hướng đi khi dạy con",
+      "Áp dụng thực hành tâm linh trong giáo dục"
+    ]
+  },
+  {
+    "original_filename": "cha-me_duy-tri-ky-luat-va-su-hoa-hop-trong-gia-dinh_khi-doi-mat-voi-nhung-hanh-vi-bung-no-bon-chon-cua-con-tre-vao-cuoi-ngay",
+    "jtbd_raw": "cha mẹ muốn duy trì kỷ luật và sự hòa hợp trong gia đình khi đối mặt với những hành vi bùng nổ, bồn chồn của con trẻ vào cuối ngày",
+    "audience_main_job": "Khôi phục nề nếp gia đình",
+    "audience_circumstance": "Khi con bùng nổ cảm xúc vào cuối ngày",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_ren-luyen-ky-luat-cho-con_khi-doi-mat-voi-nhung-hanh-vi-chua-tot-cua-tre-nho]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-24",
+    "aliases": [
+      "Xử lý trẻ bồn chồn dư năng lượng",
+      "Phản tỉnh cuối ngày để dạy con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre",
+    "jtbd_raw": "cha mẹ muốn cá nhân hóa phương pháp giáo dục khi đối mặt với những tính cách và hành vi khác biệt của từng đứa trẻ",
+    "audience_main_job": "Lựa chọn phương pháp giáo dục theo khí chất của con",
+    "audience_circumstance": "Khi đối mặt với sự khác biệt tính cách của con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-25",
+    "aliases": [
+      "Nuôi dạy trẻ theo 4 nhóm khí chất",
+      "Thấu hiểu tính cách bẩm sinh của trẻ"
+    ]
+  },
+  {
+    "original_filename": "nguoi-cham-soc-tre_tao-nhip-dieu-sinh-hoat-va-dan-dat-tre-mam-non-qua-cac-hoat-dong-hang-ngay-mot-cach-nhe-nhang_khi-o-nha-hoac-trong-lop-hoc",
+    "jtbd_raw": "người chăm sóc trẻ muốn tạo nhịp điệu sinh hoạt và dẫn dắt trẻ mầm non qua các hoạt động hàng ngày một cách nhẹ nhàng khi ở nhà hoặc trong lớp học",
+    "audience_main_job": "Điều hướng quá trình chuyển tiếp sinh hoạt cho trẻ",
+    "audience_circumstance": "Khi trẻ gặp khó khăn chuyển tiếp hoạt động",
+    "audience_Job_performer": "Người chăm sóc trẻ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-26",
+    "aliases": [
+      "Dùng âm nhạc để chuyển tiếp hoạt động",
+      "Xây dựng thói quen sinh hoạt cho trẻ mầm non"
+    ]
+  },
+  {
+    "original_filename": "cha-me_to-chuc-mot-le-ky-niem-sinh-nhat-nuoi-duong-tam-hon-va-gan-ket-thieng-lieng_khi-tre-buoc-sang-tuoi-moi",
+    "jtbd_raw": "cha mẹ muốn tổ chức một lễ kỷ niệm sinh nhật nuôi dưỡng tâm hồn và gắn kết thiêng liêng khi trẻ bước sang tuổi mới",
+    "audience_main_job": "Tổ chức lễ kỷ niệm sinh nhật cho con",
+    "audience_circumstance": "Khi trẻ chuẩn bị đón tuổi mới",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-27",
+    "aliases": [
+      "Kể chuyện cầu vồng sinh nhật",
+      "Nuôi dưỡng tinh thần qua dịp sinh nhật"
+    ]
+  },
+  {
+    "original_filename": "cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con",
+    "jtbd_raw": "cha mẹ muốn chọn đúng truyện cổ tích phù hợp cho trẻ nghe khi đang tìm kiếm các câu chuyện tương ứng với độ tuổi và mức độ trưởng thành tâm lý của con",
+    "audience_main_job": "Lựa chọn truyện cổ tích cho con",
+    "audience_circumstance": "Khi tìm kiếm truyện kể tương ứng với độ tuổi của trẻ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Beyond the rainbow bridge.md#^chunk-28",
+    "aliases": [
+      "Phân loại truyện cổ tích theo lứa tuổi",
+      "Kể chuyện phù hợp với sự phát triển tâm lý"
+    ]
+  },
+  {
+    "original_filename": "cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan",
+    "jtbd_raw": "Cha mẹ muốn nuôi dạy những đứa trẻ kiên cường và xây dựng mối quan hệ gia đình gắn kết khi phải đối mặt với những hành vi khó khăn và cảm xúc bùng nổ của con trẻ",
+    "audience_main_job": "Xây dựng sự kiên cường cảm xúc cho con",
+    "audience_circumstance": "Khi đối mặt với sự bùng nổ cảm xúc của con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "big",
+    "parent_audience": [],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^book-overview",
+    "aliases": [
+      "Dạy trẻ kỹ năng điều chỉnh cảm xúc",
+      "Làm cha mẹ theo phương pháp Good Inside"
+    ]
+  },
+  {
+    "original_filename": "cha-me_kiem-soat-hanh-vi-chong-doi_doi-mat-con-thinh-no",
+    "jtbd_raw": "Cha mẹ muốn kiểm soát những hành vi chống đối của con cái mà không làm tổn thương lòng tự trọng của chúng khi đối mặt với những cơn thịnh nộ hoặc lời nói gây tổn thương từ trẻ",
+    "audience_main_job": "Hóa giải thái độ hỗn hào của con",
+    "audience_circumstance": "Khi con la hét và dùng lời nói gây tổn thương",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-17",
+    "aliases": [
+      "Đối phó với trẻ hay cãi bướng",
+      "Áp dụng lăng kính rối loạn cảm xúc"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thiet-lap-ranh-gioi-ky-luat_tre-phan-khang",
+    "jtbd_raw": "Cha mẹ muốn thiết lập ranh giới kỷ luật với con cái khi trẻ phản kháng, tức giận hoặc có thái độ thô lỗ",
+    "audience_main_job": "Giải quyết cuộc chiến quyền lực với con",
+    "audience_circumstance": "Khi trẻ phản kháng các quy tắc sinh hoạt",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-03",
+    "aliases": [
+      "Thoát khỏi cuộc chiến quyền lực với con",
+      "Áp dụng nguyên tắc hai điều đều đúng"
+    ]
+  },
+  {
+    "original_filename": "cha-me_duy-tri-ranh-gioi-an-toan_tre-bung-no-cam-xuc",
+    "jtbd_raw": "Cha mẹ muốn duy trì ranh giới an toàn và sự kết nối khi con cái phản kháng và bùng nổ cảm xúc",
+    "audience_main_job": "Thiết lập ranh giới cho con",
+    "audience_circumstance": "Khi con phản kháng và bùng nổ cảm xúc",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-04",
+    "aliases": [
+      "Giữ vai trò lãnh đạo khi con bùng nổ",
+      "Kết hợp ranh giới và thấu cảm"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xay-dung-nen-tang-tam-ly_kiet-suc-khi-nuoi-con",
+    "jtbd_raw": "Cha mẹ muốn xây dựng nền tảng tâm lý và cảm xúc vững chắc cho con khi đang cảm thấy kiệt sức và hoài nghi về ý nghĩa của việc nuôi dạy trẻ ở độ tuổi quá nhỏ",
+    "audience_main_job": "Kiến tạo nền tảng tâm lý cho con",
+    "audience_circumstance": "Khi kiệt sức và hoài nghi về việc nuôi con nhỏ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-05",
+    "aliases": [
+      "Hiểu về ký ức cơ thể của trẻ",
+      "Vượt qua cảm giác tội lỗi khi nuôi con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_han-gan-ton-thuong_nhan-ra-phan-ung-doc-hai",
+    "jtbd_raw": "Cha mẹ muốn hàn gắn tổn thương và sửa chữa những sai lầm nuôi dạy con khi nhận ra bản thân đã có những phản ứng độc hại với con cái",
+    "audience_main_job": "Hàn gắn tổn thương cho con",
+    "audience_circumstance": "Khi trót có những phản ứng tồi tệ với con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-06",
+    "aliases": [
+      "Áp dụng kỹ năng sửa chữa",
+      "Viết lại cái kết cho trải nghiệm tồi tệ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_trang-bi-nang-luc-doi-mat-kho-khan_tre-gap-that-bai",
+    "jtbd_raw": "Cha mẹ muốn trang bị năng lực đối mặt với khó khăn cho con khi trẻ gặp thất bại hoặc bộc lộ những cảm xúc tiêu cực",
+    "audience_main_job": "Rèn luyện khả năng vượt khó cho con",
+    "audience_circumstance": "Khi trẻ dễ nản lòng trước thử thách",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-22",
+    "aliases": [
+      "Giúp con phát triển tư duy cầu tiến",
+      "Xử lý khi trẻ dễ nổi cáu vì thất bại"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thau-hieu-nguyen-nhan_tre-co-hanh-vi-toi-te",
+    "jtbd_raw": "Cha mẹ muốn thấu hiểu nguyên nhân gốc rễ đằng sau hành vi chống đối của con khi trẻ liên tục có những hành vi tồi tệ, mất kiểm soát",
+    "audience_main_job": "Xác định nguyên nhân gốc rễ hành vi của con",
+    "audience_circumstance": "Khi trẻ liên tục mất kiểm soát hành vi",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-08",
+    "aliases": [
+      "Áp dụng diễn dịch rộng lượng nhất",
+      "Giải quyết tận gốc hành vi chống đối"
+    ]
+  },
+  {
+    "original_filename": "cha-me_pha-vo-su-khang-cu_tre-lam-sai",
+    "jtbd_raw": "Cha mẹ muốn phá vỡ sự kháng cự bướng bỉnh và thái độ xa lánh của con khi trẻ vừa làm sai một việc gì đó",
+    "audience_main_job": "Hóa giải sự xấu hổ của con",
+    "audience_circumstance": "Khi con từ chối nhận lỗi sau khi làm sai",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-09",
+    "aliases": [
+      "Khôi phục an toàn cảm xúc cho trẻ",
+      "Xử lý khi trẻ không chịu xin lỗi"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giai-thich-van-de-phuc-tap_con-dat-cau-hoi-kho",
+    "jtbd_raw": "Cha mẹ muốn giải thích những vấn đề phức tạp, nhạy cảm khi con cái đặt câu hỏi khó hoặc chứng kiến sự kiện gây bối rối",
+    "audience_main_job": "Truyền đạt sự thật cho con",
+    "audience_circumstance": "Khi con chứng kiến sự kiện gây bối rối",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-10",
+    "aliases": [
+      "Cách nói sự thật khó khăn với trẻ",
+      "Xác nhận nhận thức của con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_phuc-hoi-suc-khoe-tinh-than_ganh-vac-trach-nhiem",
+    "jtbd_raw": "Cha mẹ muốn phục hồi sức khỏe tinh thần và bảo vệ bản sắc cá nhân khi đang gánh vác trách nhiệm nuôi dạy con cái mỗi ngày",
+    "audience_main_job": "Phục hồi sức khỏe tinh thần",
+    "audience_circumstance": "Khi kiệt sức vì trách nhiệm nuôi dạy con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-11",
+    "aliases": [
+      "Thực hành chiến lược tự chăm sóc",
+      "Quản lý cảm giác tội lỗi khi làm cha mẹ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_tai-lap-su-gan-ket_mac-ket-vong-lap-la-mang",
+    "jtbd_raw": "Cha mẹ muốn tái lập sự gắn kết và loại bỏ các hành vi chống đối của con khi đang mắc kẹt trong vòng lặp la mắng và đe dọa vô ích hàng ngày",
+    "audience_main_job": "Xây dựng vốn kết nối với con",
+    "audience_circumstance": "Khi mắc kẹt trong vòng lặp la mắng mỗi ngày",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-12",
+    "aliases": [
+      "Nạp vốn vào tài khoản cảm xúc",
+      "Kết nối với con khi bình tĩnh"
+    ]
+  },
+  {
+    "original_filename": "cha-me_khien-con-hop-tac_tre-phot-lo-loi-noi",
+    "jtbd_raw": "Cha mẹ muốn khiến con cái hợp tác thực hiện các yêu cầu khi trẻ đang phớt lờ lời nói của họ",
+    "audience_main_job": "Thuyết phục con hợp tác",
+    "audience_circumstance": "Khi con phớt lờ lời nói của cha mẹ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-13",
+    "aliases": [
+      "Áp dụng kết nối trước khi yêu cầu",
+      "Xử lý khi trẻ không chịu nghe lời"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-con-dieu-chinh-cam-xuc_tre-bung-no-an-va",
+    "jtbd_raw": "Cha mẹ muốn giúp con xây dựng kỹ năng điều chỉnh cảm xúc khi trẻ bùng nổ, ăn vạ do những mong muốn bị từ chối",
+    "audience_main_job": "Rèn luyện kỹ năng điều chỉnh cảm xúc cho con",
+    "audience_circumstance": "Khi con ăn vạ vì mong muốn bị từ chối",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-14",
+    "aliases": [
+      "Phản hồi tại chỗ khi con ăn vạ",
+      "Giúp con thoát khỏi quá tải cảm xúc"
+    ]
+  },
+  {
+    "original_filename": "cha-me_ngan-chan-hanh-vi-bao-luc_tre-khung-hoang",
+    "jtbd_raw": "Cha mẹ muốn ngăn chặn và kiểm soát hành vi bạo lực của con khi trẻ đang trong cơn khủng hoảng mất bình tĩnh",
+    "audience_main_job": "Khống chế hành vi bạo lực của con",
+    "audience_circumstance": "Khi con khủng hoảng và mất bình tĩnh",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-15",
+    "aliases": [
+      "Cô lập đám cháy cảm xúc",
+      "Kiểm soát khi trẻ đánh, cắn, ném đồ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giam-bot-xung-dot_anh-chi-em-danh-nhau",
+    "jtbd_raw": "Cha mẹ muốn giảm bớt xung đột và xây dựng mối quan hệ hòa thuận giữa các con khi chúng tranh cãi, đánh nhau hoặc ghen tị tranh giành sự chú ý",
+    "audience_main_job": "Hòa giải xung đột giữa các con",
+    "audience_circumstance": "Khi các con ganh tị và tranh cãi",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-16",
+    "aliases": [
+      "Xử lý ghen tị giữa anh chị em",
+      "Quản lý xung đột mà không phân xử"
+    ]
+  },
+  {
+    "original_filename": "cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang",
+    "jtbd_raw": "Cha mẹ muốn dập tắt tiếng rên rỉ đòi hỏi của con khi cảm thấy mất kiên nhẫn và căng thẳng tột độ",
+    "audience_main_job": "Chấm dứt tình trạng rên rỉ của con",
+    "audience_circumstance": "Khi kiệt sức trước tiếng mè nheo của con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-18",
+    "aliases": [
+      "Phản hồi tiếng rên rỉ bằng hài hước",
+      "Giải quyết sự bất lực đằng sau tiếng mè nheo"
+    ]
+  },
+  {
+    "original_filename": "cha-me_khuyen-khich-con-noi-su-that_tre-che-giau-loi-lam",
+    "jtbd_raw": "Cha mẹ muốn khuyến khích con cái nói sự thật khi phát hiện trẻ có hành vi che giấu hoặc phủ nhận lỗi lầm",
+    "audience_main_job": "Thuyết phục con nói sự thật",
+    "audience_circumstance": "Khi phát hiện con che giấu lỗi lầm",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-19",
+    "aliases": [
+      "Xử lý khi con nói dối",
+      "Tạo không gian an toàn để con thú nhận"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-con-kiem-soat-noi-so_con-hoang-loan",
+    "jtbd_raw": "Cha mẹ muốn giúp con kiểm soát nỗi sợ hãi khi con hoảng loạn trước một tình huống hoặc sự vật cụ thể",
+    "audience_main_job": "Đồng hành cùng con đối mặt với nỗi sợ",
+    "audience_circumstance": "Khi con hoảng loạn trước một nỗi sợ cụ thể",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-20",
+    "aliases": [
+      "Nhảy xuống hố cảm xúc cùng con",
+      "Giải quyết nỗi sợ không dùng logic"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-con-xu-ly-nhut-nhat_tinh-huong-xa-hoi",
+    "jtbd_raw": "Cha mẹ muốn giúp con cái xử lý sự nhút nhát khi chúng ngập ngừng, trốn tránh trong các tình huống xã hội hoặc đám đông",
+    "audience_main_job": "Xử lý sự nhút nhát của con",
+    "audience_circumstance": "Khi con ngập ngừng trước đám đông",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-21",
+    "aliases": [
+      "Xây dựng sự tự tin đích thực",
+      "Trao quyền quyết định hòa nhập cho con"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thiet-lap-thoi-quen-an-uong_tre-ken-an",
+    "jtbd_raw": "Cha mẹ muốn thiết lập ranh giới và thói quen ăn uống lành mạnh khi trẻ có biểu hiện kén ăn, đòi đồ ăn vặt hoặc phản kháng trong bữa ăn",
+    "audience_main_job": "Thiết lập thói quen ăn uống cho con",
+    "audience_circumstance": "Khi con kén ăn và phản kháng trong bữa ăn",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-23",
+    "aliases": [
+      "Phân chia trách nhiệm bữa ăn",
+      "Giảm thiểu lo âu về lượng thức ăn"
+    ]
+  },
+  {
+    "original_filename": "cha-me_day-con-thiet-lap-ranh-gioi-co-the_ap-luc-lam-hai-long",
+    "jtbd_raw": "Cha mẹ muốn dạy con cách thiết lập ranh giới cơ thể và tin tưởng vào bản thân khi đối mặt với áp lực phải làm hài lòng người khác",
+    "audience_main_job": "Củng cố quyền tự quyết cơ thể cho con",
+    "audience_circumstance": "Khi con chịu áp lực phải làm hài lòng người lớn",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-24",
+    "aliases": [
+      "Xây dựng quyền tự quyết cơ thể",
+      "Bảo vệ mạch đồng thuận của trẻ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giai-ma-nguyen-nhan_con-khoc-loc-thai-qua",
+    "jtbd_raw": "Cha mẹ muốn giải mã nguyên nhân thực sự đằng sau những tiếng khóc của con khi trẻ bất ngờ rơi nước mắt hoặc có biểu hiện khóc lóc thái quá",
+    "audience_main_job": "Giải mã thông điệp đằng sau tiếng khóc của con",
+    "audience_circumstance": "Khi con khóc lóc thái quá và bất ngờ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-25",
+    "aliases": [
+      "Bình thường hóa việc khóc lóc",
+      "Nhận diện tiếng khóc như tín hiệu gắn kết"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xay-dung-su-tu-tin_tre-that-vong-tu-ti",
+    "jtbd_raw": "Cha mẹ muốn xây dựng sự tự tin thực sự cho con khi trẻ cảm thấy thất vọng, tự ti hoặc nghi ngờ bản thân",
+    "audience_main_job": "Củng cố sự tự tin nội tại cho con",
+    "audience_circumstance": "Khi con tự ti và nghi ngờ bản thân",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-26",
+    "aliases": [
+      "Công nhận cảm xúc khó khăn",
+      "Khen ngợi quá trình nỗ lực"
+    ]
+  },
+  {
+    "original_filename": "cha-me_vuot-qua-so-hai-sai-lam_con-cau-toan",
+    "jtbd_raw": "Cha mẹ muốn giúp con vượt qua sự sợ hãi khi mắc sai lầm khi con thể hiện thái độ cứng nhắc, cáu gắt hoặc sụp đổ ngay khi không đạt được kết quả hoàn hảo",
+    "audience_main_job": "Khắc phục tâm lý sợ sai của con",
+    "audience_circumstance": "Khi con sụp đổ vì kết quả không hoàn hảo",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-27",
+    "aliases": [
+      "Định hướng lại chủ nghĩa hoàn hảo",
+      "Tách biệt giá trị bản thân khỏi thành tích"
+    ]
+  },
+  {
+    "original_filename": "cha-me_tach-roi-binh-an_tre-bam-me",
+    "jtbd_raw": "Cha mẹ muốn giúp con tách rời khỏi cha mẹ một cách bình an khi trẻ khóc lóc, bám víu lúc đi học hoặc khi cha mẹ vắng mặt",
+    "audience_main_job": "Khắc phục hội chứng lo âu chia ly của con",
+    "audience_circumstance": "Khi con khóc lóc lúc chia tay cha mẹ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-28",
+    "aliases": [
+      "Nội tâm hóa sự an toàn",
+      "Khỏa lấp khoảng trống chia ly"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-con-tu-ngu_tre-quay-khoc-chong-doi",
+    "jtbd_raw": "Cha mẹ muốn giúp con tự đi vào giấc ngủ và ngủ xuyên đêm khi trẻ liên tục quấy khóc, chống đối và đòi ngủ cùng cha mẹ",
+    "audience_main_job": "Rèn thói quen tự ngủ cho con",
+    "audience_circumstance": "Khi con phản kháng giờ đi ngủ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-29",
+    "aliases": [
+      "Xây dựng giấc ngủ an toàn",
+      "Xử lý lo âu chia ly trong bóng tối"
+    ]
+  },
+  {
+    "original_filename": "cha-me_xoa-diu-cam-xuc_tre-cu-tuyet-giup-do",
+    "jtbd_raw": "Cha mẹ muốn xoa dịu và điều chỉnh cảm xúc của con khi trẻ bùng nổ dữ dội và cự tuyệt sự giúp đỡ",
+    "audience_main_job": "Khống chế cơn bùng nổ của con",
+    "audience_circumstance": "Khi con bùng nổ và cự tuyệt sự giúp đỡ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-30",
+    "aliases": [
+      "Kiểm soát an toàn cho trẻ DFK",
+      "Giao tiếp phi ngôn ngữ lúc bùng nổ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thau-hieu-ban-chat-thay-doi_chiem-nghiem-tuoi-tho",
+    "jtbd_raw": "Cha mẹ muốn thấu hiểu bản chất sự thay đổi của loài người khi chiêm nghiệm lại ý nghĩa của tuổi thơ",
+    "audience_main_job": "Thấu hiểu bản chất thay đổi của trẻ em",
+    "audience_circumstance": "Khi chiêm nghiệm ý nghĩa của tuổi thơ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/Good Inside.md#^chunk-31",
+    "aliases": [
+      "Hiểu 3 trụ cột của sự thay đổi",
+      "Nhìn nhận trẻ như nhà thám hiểm tương lai"
+    ]
+  },
+  {
+    "original_filename": "cha-me_nuoi-day-con-phat-trien-toan-dien_khi-doi-mat-khung-hoang-cang-thang",
+    "jtbd_raw": "cha mẹ muốn nuôi dạy con cái phát triển toàn diện khi phải đối mặt với những khoảnh khắc khủng hoảng, mệt mỏi và căng thẳng hàng ngày",
+    "audience_main_job": "Chuyển hóa khủng hoảng thành cơ hội phát triển cho con",
+    "audience_circumstance": "Khi đối mặt với khủng hoảng hàng ngày",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-01",
+    "aliases": [
+      "Phương pháp sống sót và phát triển",
+      "Biến căng thẳng thành cơ hội giáo dục"
+    ]
+  },
+  {
+    "original_filename": "cha-me_thau-hieu-tam-ly-va-hanh-vi-cua-con_khi-doi-mat-thu-thach-nuoi-day-hang-ngay",
+    "jtbd_raw": "cha mẹ muốn thấu hiểu tâm lý và hành vi của con khi đối mặt với những thử thách nuôi dạy hàng ngày",
+    "audience_main_job": "Thấu hiểu não bộ của con",
+    "audience_circumstance": "Khi đối mặt với thử thách nuôi dạy con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-02",
+    "aliases": [
+      "Áp dụng tính dẻo của não bộ",
+      "Xây dựng sự hội nhập của não bộ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_ren-luyen-phat-trien-tri-nao-tang-tren_khi-tuong-tac-hang-ngay",
+    "jtbd_raw": "cha mẹ muốn rèn luyện và phát triển trí não tầng trên của con khi tương tác với trẻ hàng ngày",
+    "audience_main_job": "Kích thích hoạt động não tầng trên của con",
+    "audience_circumstance": "Khi tương tác hàng ngày với con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-06",
+    "aliases": [
+      "Thực hành ra quyết định cùng con",
+      "Rèn luyện nguyên lý dùng nó hay mất nó"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-con-binh-tinh-lay-lai-kiem-soat_khi-tre-mat-binh-tinh-choang-ngop",
+    "jtbd_raw": "cha mẹ muốn giúp con bình tĩnh và lấy lại khả năng tự kiểm soát khi trẻ đang bị mất bình tĩnh hoặc choáng ngợp bởi cảm xúc",
+    "audience_main_job": "Khôi phục sự bình tĩnh của con",
+    "audience_circumstance": "Khi con mất bình tĩnh và choáng ngợp",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-07",
+    "aliases": [
+      "Thay đổi trạng thái thể chất của con",
+      "Sử dụng chiến lược vận động hay đánh mất"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-tre-doi-mat-tich-hop-ky-uc-dau-buon_khi-tre-ne-tranh-so-hai-chuyen-cu",
+    "jtbd_raw": "cha mẹ muốn giúp trẻ đối mặt và tích hợp các ký ức đau buồn khi trẻ có biểu hiện né tránh hoặc sợ hãi việc nhắc lại chuyện cũ",
+    "audience_main_job": "Xử lý ký ức đau buồn của con",
+    "audience_circumstance": "Khi con sợ hãi nhắc lại chuyện cũ",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-08",
+    "aliases": [
+      "Sử dụng chiếc điều khiển tâm trí",
+      "Tích hợp ký ức ngầm thành ký ức rõ ràng"
+    ]
+  },
+  {
+    "original_filename": "cha-me_ren-luyen-ky-nang-hoi-tuong-cung-co-tri-nho_khi-tuong-tac-hang-ngay",
+    "jtbd_raw": "cha mẹ muốn rèn luyện kỹ năng hồi tưởng để củng cố trí nhớ và sự thấu hiểu cảm xúc cho con khi tương tác cùng con hằng ngày",
+    "audience_main_job": "Phát triển khả năng hồi tưởng của con",
+    "audience_circumstance": "Khi tương tác hàng ngày với con",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-09",
+    "aliases": [
+      "Thực hành nguyên lý nhắc nhớ để ghi nhớ",
+      "Giúp con tích hợp ký ức ẩn và hiện"
+    ]
+  },
+  {
+    "original_filename": "cha-me_giup-con-nhan-thuc-tinh-tam-thoi-cam-xuc_khi-con-mac-ket-tuc-gian",
+    "jtbd_raw": "cha mẹ muốn giúp con nhận thức tính tạm thời của cảm xúc khi con đang bị mắc kẹt và choáng ngợp bởi sự tức giận, sợ hãi hoặc buồn bã",
+    "audience_main_job": "Chỉ ra tính tạm thời của cảm xúc cho con",
+    "audience_circumstance": "Khi con bị cảm xúc tiêu cực nhấn chìm",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-10",
+    "aliases": [
+      "Sử dụng mô hình đám mây cảm xúc",
+      "Phân biệt trạng thái và bản chất"
+    ]
+  },
+  {
+    "original_filename": "cha-me_huong-dan-con-nhan-dien-the-gioi-noi-tam_khi-tre-xao-tron-cam-xuc",
+    "jtbd_raw": "cha mẹ muốn hướng dẫn con nhận diện thế giới nội tâm để làm chủ bản thân khi trẻ đang bị xáo trộn cảm xúc",
+    "audience_main_job": "Hướng dẫn con gọi tên cảm xúc nội tâm",
+    "audience_circumstance": "Khi con bị xáo trộn cảm xúc",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-11",
+    "aliases": [
+      "Thực hành phương pháp SIFT",
+      "Phân tích cảm giác, hình ảnh, cảm xúc, suy nghĩ"
+    ]
+  },
+  {
+    "original_filename": "cha-me_huong-dan-con-tu-xoa-diu-kiem-soat-chu-y_khi-con-mac-ket-suy-nghi-tieu-cuc",
+    "jtbd_raw": "cha mẹ muốn hướng dẫn con cách tự xoa dịu và kiểm soát sự chú ý khi con bị mắc kẹt vào những suy nghĩ, cảm giác tiêu cực hoặc lo âu",
+    "audience_main_job": "Hướng dẫn con tự xoa dịu bản thân",
+    "audience_circumstance": "Khi con mắc kẹt trong suy nghĩ tiêu cực",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-12",
+    "aliases": [
+      "Thực hành tâm trí Mindsight",
+      "Đưa sự tập trung về trục bánh xe"
+    ]
+  },
+  {
+    "original_filename": "cha-me_ren-luyen-ky-nang-giai-quyet-mau-thuan-cho-con_khi-tre-xung-dot-voi-nguoi-khac",
+    "jtbd_raw": "cha mẹ muốn rèn luyện kỹ năng giải quyết mâu thuẫn cho con khi trẻ xảy ra xung đột với người khác",
+    "audience_main_job": "Hướng dẫn con hòa giải xung đột",
+    "audience_circumstance": "Khi con xảy ra xung đột với người khác",
+    "audience_Job_performer": "Cha mẹ",
+    "audience_level": "little",
+    "parent_audience": [
+      "[[cha-me_nuoi-day-tre-kien-cuong_doi-mat-hanh-vi-kho-khan]]"
+    ],
+    "source_type": "book",
+    "source_path": "02-sources/books/The Whole-Brain Child.md#^chunk-14",
+    "aliases": [
+      "Dạy con nhìn qua lăng kính người khác",
+      "Hướng dẫn con cách sửa chữa lỗi lầm"
+    ]
+  }
+]

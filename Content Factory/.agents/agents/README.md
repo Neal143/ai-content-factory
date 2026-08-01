@@ -46,6 +46,6 @@ graph TD
 | **FormatAgent** | `format-agent/` | Đóng gói sản phẩm cuối, dọn dẹp thẻ code, ghi nhật ký |
 | **BookExtractorAgent** | `book-extractor/` | Đào xúc, khai thác nội dung sách từ NotebookLM thành Raw Markdown có cấu trúc |
 | **VividCuratorAgent** | `curate-vivids/` | Đánh giá, tinh lọc vivid metadata chất lượng cao và niêm phong dữ liệu |
-| **BookAudienceMatcherAgent** | `book-audience-matcher/` | Phân giải JTBD của sách và so khớp Semantic với thư viện Audiences |
+| **AudienceResolverAgent** | `audience-resolver/` | Phân giải JTBD từ bất kỳ source nào (book, video, podcast...) và so khớp Semantic với thư viện Audiences |
 | **BookParserAgent** | `book-parser/` | Phân rã cấu trúc sách thành Atoms vật lý theo mô hình DIKW |
 | **VaultCuratorAgent** | `vault-curator/` | Điều phối Pipeline bảo dưỡng Vault: auto-tagging, dedup và alignment |

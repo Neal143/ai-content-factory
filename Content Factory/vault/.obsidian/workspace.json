@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3e75e7ba052c0e47",
+            "id": "04da52ce7ae1f3dc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-sources/books/Beyond the rainbow bridge.md",
+                "file": "recalibrate_runs/session_2026-08-01_15-02/calibration_audit.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Beyond the rainbow bridge"
+              "title": "calibration_audit"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Trình duyệt tệp"
@@ -78,7 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 246.83334350585938
   },
   "right": {
     "id": "eb11591a2bc47106",
@@ -183,43 +185,43 @@
       "bases:Tạo cơ sở mới": false
     }
   },
-  "active": "3e75e7ba052c0e47",
+  "active": "04da52ce7ae1f3dc",
   "lastOpenFiles": [
-    "01-Atomic/Stories/BTRB_story-chau-gai-lon-cua-tac-gia-buong-tay-tap-di-4.md",
-    "02-sources/books/Good Inside.md",
-    "01-Atomic/Data-Points/good-inside_data-unknown-7.md",
-    "01-Atomic/Concepts/good-inside_niem-tin-sai-lam-ve-su-tu-tin-va-loi-khen-ngoi.md",
-    "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-18.md",
-    "01-Atomic/Quotes/good-inside_quote-dr-becky-kennedy-unknown-16.md",
     "02-sources/books/Beyond the rainbow bridge.md",
-    "01-Atomic/Audiences/cha-me_thiet-lap-ky-luat-va-ne-nep-cho-con_khi-doi-mat-voi-su-xao-tron-hoac-chong-doi-trong-sinh-hoat-hang-ngay.md",
-    "01-Atomic/Audiences/cha-me_chuyen-hoa-hanh-vi-tieu-cuc-cua-tre_khi-tre-co-cac-hanh-dong-bao-luc-nhu-danh-can-cao-hoac-nho-nuoc-bot.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/session_state.json",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/current_calib_batch.json",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_065.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_066.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_064.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_056.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_063.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_062.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_061.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_060.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_059.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_058.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_057.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_055.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_054.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_053.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_052.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_051.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_050.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_049.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_048.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_047.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_046.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_045.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_044.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_043.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_042.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/calib_eval_temp.json",
+    "recalibrate_runs/session_2026-08-01_15-02/jtbd_recalibrated.json",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches",
+    "recalibrate_runs/session_2026-08-01_15-02/audiences_parsed.json",
+    "recalibrate_runs/session_2026-08-01_15-02",
+    "recalibrate_runs",
     "02-sources/books/Good Inside.md.tmp",
-    "01-Atomic/Audiences/cha-me_dap-tat-tieng-ren-ri_mat-kien-nhan-cang-thang.md",
-    "01-Atomic/Audiences/cha-me_chon-dung-truyen-co-tich-phu-hop-cho-tre-nghe_khi-dang-tim-kiem-cac-cau-chuyen-tuong-ung-voi-do-tuoi-va-muc-do-truong-thanh-tam-ly-cua-con.md",
-    "01-Atomic/Audiences/cha-me_chon-do-choi-va-xay-dung-khong-gian-choi-lanh-manh_khi-cham-soc-con-tu-so-sinh-den-2-5-tuoi.md",
-    "01-Atomic/Audiences/cha-me_ca-nhan-hoa-phuong-phap-giao-duc_khi-doi-mat-voi-nhung-tinh-cach-va-hanh-vi-khac-biet-cua-tung-dua-tre.md",
-    "01-Atomic/Audiences/cha-me_bao-ve-suc-khoe-va-thuc-day-su-phat-trien-toan-dien-cua-tre_khi-cham-soc-tre-nho-trong-sinh-hoat-hang-ngay.md",
-    "01-Atomic/Audiences/cha-me_bao-ve-su-phat-trien-lanh-manh-cua-tre_khi-doi-mat-voi-tac-dong-tieu-cuc-va-su-thuc-ep-truong-thanh-som-tu-van-hoa-hien-dai.md",
-    "03-Content/Content Plan/personal-atoms-queue.md",
-    "01-Atomic/Insights/BTRB_nham-lan-giua-binh-thuong-va-lanh-manh.md",
-    "01-Atomic/Insights/cam-bay-thuong-cho-roi-cho-vot.md",
-    "01-Atomic/Insights/chi-noi-la-con-hieu-ra-lenh-la-con-nghe.md",
-    "01-Atomic/Insights/con-doc-lap-cong-nghe-ai.md",
-    "01-Atomic/Insights/WBC_tre-lang-tranh-ke-chuyen-hoac-tra-loi-qua-loa.md",
-    "01-Atomic/Insights/good-inside_so-tre-ton-thuong-hoac-chua-san-sang.md",
-    "01-Atomic/Insights/ban-than-khong-hanh-phuc.md",
-    "01-Atomic/Insights/good-inside_so-hai-va-bat-luc-truoc-su-thu-dich-cua-con.md",
-    "01-Atomic/Audiences/phu-huynh-co-con-0-7-tuoi_day-con_sap-co-con-hoac-co-con-0-7-tuoi-tai-viet-nam.md",
-    "01-Atomic/Quotes/BTRB_quote-barbara-j-patterson-da-co-san-chung-o-ben-trong-1.md",
-    "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml",
-    "01-Atomic_Backup_20260702_160021/_DLQ",
-    "01-Atomic_Backup_20260702_160021/Stories",
-    "01-Atomic_Backup_20260702_160021/Solutions",
-    "01-Atomic_Backup_20260702_160021/Quotes",
-    "01-Atomic_Backup_20260702_160021/Insights",
-    "01-Atomic_Backup_20260702_160021/Concepts",
-    "01-Atomic_Backup_20260702_160021/Data-Points",
-    "01-Atomic_Backup_20260702_160021/Audiences"
+    "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml"
   ]
 }
