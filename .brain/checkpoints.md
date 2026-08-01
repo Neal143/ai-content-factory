@@ -1,4 +1,12 @@
-﻿# Lịch sử Checkpoints
+# Lịch sử Checkpoints
+### 📅 Ngày 02/08/2026
+#### Đổi tên thư mục recalibrate_runs và cập nhật định dạng link audit
+- **Mã khôi phục:** `5c66c22`
+- **Thẻ (Tag):** `v4.5.1-fix-recalibrate-runs`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo thư mục re-calibrate hiển thị bình thường trong Obsidian và sửa lỗi Obsidian không hiển thị popup xem trước nội dung cho các link trong file báo cáo (calibration_audit.md).
+  - **🛠️ Kỹ thuật (Tech):** Xóa tiền tố dấu chấm (`.recalibrate_runs` → `recalibrate_runs`) trong cấu hình script/workflow và sửa lại cách sinh markdown link cho file audit (sử dụng format hybrid: table + bullet list) để khắc phục lỗi không hỗ trợ hover preview đối với path có chứa angle brackets của Obsidian.
+
 ### 📅 Ngày 31/07/2026
 #### Chuẩn hóa format cache, gắn block ID và backfill fragment cho toàn bộ atoms
 - **Mã khôi phục:** `5940fff`
