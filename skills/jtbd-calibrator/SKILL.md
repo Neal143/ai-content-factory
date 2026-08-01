@@ -1,6 +1,6 @@
 ---
 name: JTBD Calibrator
-description: Nhận file nguồn thô, chuẩn hóa JTBD và hiệu đính (calibrate) các biến Performer, Job, Circumstance.
+description: Chuan hoa JTBD va hieu dinh (calibrate) cac bien Performer, Job, Circumstance. Ho tro 2 mode — calibrate (tu source tho) va re-calibrate (tu audiences da ton tai).
 ---
 
 # JTBD Calibrator Skill
@@ -14,6 +14,8 @@ description: Nhận file nguồn thô, chuẩn hóa JTBD và hiệu đính (cali
 
 // turbo-all
 
+> ⚠️ **BẮT BUỘC TIẾNG VIỆT CÓ DẤU**: Toàn bộ output JTBD (`audience_main_job`, `audience_circumstance`, `audience_Job_performer`, `aliases`, `reason`) **PHẢI viết tiếng Việt có dấu đầy đủ**. TUYỆT ĐỐI KHÔNG viết tiếng Việt không dấu (VD: "thiet lap" thay vì "thiết lập"). Vi phạm rule này sẽ làm hỏng toàn bộ pipeline downstream.
+
 ## 1. QUY TẮC VỆ SINH (HYGIENE)
 
 Skill này chạy trong thư mục làm việc (`work_dir`) do Agent cấp. KHÔNG tự tạo mới thư mục này.
@@ -23,20 +25,27 @@ Skill này chạy trong thư mục làm việc (`work_dir`) do Agent cấp. KHÔ
 ## 2. Input & Output
 
 **INPUT (nhận từ Agent điều phối):**
-- `source_type`: Loại nguồn dữ liệu (xác định parser sử dụng). Giá trị hợp lệ: `book`
-- `source_file`: Đường dẫn file nguồn cần parse JTBD (VD: `vault/02-sources/books/[Tên Sách].md`). Dùng cho parser (Bước 1) và sinh context file (Bước 2).
+- `mode`: `calibrate` (mặc định) hoặc `re-calibrate`
 - `work_dir`: Thư mục làm việc (tạo sẵn bởi Agent, mọi file tạm và output ghi vào đây)
 
+**INPUT bổ sung theo mode:**
+| Mode | Input | Ghi chú |
+|---|---|---|
+| `calibrate` | `source_type` (VD: `book`), `source_file` (path file nguồn) | Giữ nguyên flow hiện tại |
+| `re-calibrate` | `vault_root` (path tới vault root) | Đọc toàn bộ audiences từ `_audience_index.yaml` |
+
 **OUTPUT:**
-- `[work_dir]/jtbd_calibrated.json` (file chính, Skill tiếp theo tiêu thụ)
+- `[work_dir]/jtbd_calibrated.json` (chế độ parse_book, chuyển cho Skill 2)
+- `[work_dir]/jtbd_recalibrated.json` (chế độ re-calibrate, chuyển cho Skill 2)
 - `[work_dir]/audiences_parsed.json` (file phụ, dùng để enrich Decision Map ở các bước sau)
 
 ## 3. Quy Trình Thực Thi
 
 > ⚠️ **Cách ly Rác (Warning Isolation):** Chunks chứa cờ `> [!warning]` được parser tự động cách ly — không parse, không tạo JTBD entry. Không cần Agent xử lý.
 
-**Bước 1 — Gọi parser theo `source_type` (chống ảo giác):**
+**Bước 1 — Nạp dữ liệu thô:**
 
+**1A. Chế độ calibrate (tạo mới từ sách)**
 | `source_type` | Script | Ghi chú |
 |---|---|---|
 | `book` | `parse_book_audiences.py` | Parse file cache sách (META_BOOK_AUDIENCE / META_CHUNK_AUDIENCE) |
@@ -45,7 +54,14 @@ Skill này chạy trong thư mục làm việc (`work_dir`) do Agent cấp. KHÔ
 python .agents/skills/jtbd-calibrator/scripts/parse_[source_type]_audiences.py \
        [source_file] --output_json "[work_dir]/audiences_parsed.json"
 ```
-Đọc JSON output: `result["book"]` (hoặc key tương ứng với source_type) = JTBD thô cấp nguồn; `result["chunks"]` = list JTBD thô theo `CHUNK_index`.
+
+**1B. Chế độ re-calibrate (hiệu chỉnh lại kho hiện tại)**
+```bash
+python .agents/skills/jtbd-calibrator/scripts/extract_existing_audiences.py \
+       --audience-index "vault/01-Atomic/Audiences/_audience_index.yaml" \
+       --vault-root "[vault_root]" \
+       --output-json "[work_dir]/audiences_parsed.json"
+```
 
 **Bước 2 — Phân Lô Dữ Liệu & Sinh Context (Script):**
 ```bash
@@ -53,9 +69,10 @@ python .agents/skills/jtbd-calibrator/scripts/prepare_calibration_batches.py \
     --parsed-json "[work_dir]/audiences_parsed.json" \
     --split-dir "[work_dir]/calib_batches" \
     --batch-size 5 \
-    --source-file "[source_file]"
+    --source-file "[source_file_neu_co]" \
+    --source-link "[Ten_Sach_neu_co]"
 ```
-> Script tự động tạo `batch_XX_context.md` cho mỗi lô, chứa nội dung chunk tương ứng và **context password**. Chỉ mở file này khi cần sửa lỗi #2 hoặc #3.
+> Script tự động đọc `mode` từ JSON và sinh context file phù hợp. Bỏ qua `--source-file` và `--source-link` nếu chạy chế độ re-calibrate. Lệnh sinh `ctx_{uid}.md` riêng cho mỗi uid kèm **context password**. Đọc file context khi cần sửa lỗi #2, #3 hoặc #4.
 
 **Bước 3 — JTBD Calibration (Chu trình xử lý tịnh tiến):**
 
@@ -69,6 +86,8 @@ python .agents/skills/jtbd-calibrator/scripts/prepare_calibration_batches.py \
 > Dùng `view_file` đọc `[work_dir]/calib_batches/current_calib_batch.json` để lấy danh sách cần xử lý.
 
 2. **Hiệu chỉnh JTBD (Calibration):** Với mỗi mục trong batch, template `calib_eval_temp.json` có `audience_main_job` và `audience_circumstance` **rỗng**. Đọc `jtbd_raw` từ `current_calib_batch.json` (bước cấp phát), bóc tách thành Main Job và Circumstance, rồi hiệu chỉnh 4 biến theo **đúng thứ tự** sau:
+
+   > **Mode re-calibrate:** Template `calib_eval_temp.json` có `audience_main_job` và `audience_circumstance` **đã được pre-fill** với giá trị hiện tại (không rỗng). Không cần bóc tách từ `jtbd_raw`. Đọc giá trị pre-fill → chạy qua tiêu chuẩn → hiệu chỉnh nếu vi phạm, giữ nguyên nếu đạt chuẩn.
 
    **a. `audience_main_job` (Hiệu chỉnh đầu tiên):**
    Đọc giá trị raw pre-fill → Chạy qua tiêu chuẩn Main Job (Phần 4.1) và tiêu chuẩn Problem Space (Phần 4.3) → Ghi đè bằng bản đã hiệu chỉnh.
@@ -86,9 +105,9 @@ python .agents/skills/jtbd-calibrator/scripts/prepare_calibration_batches.py \
    **e. `reason`:**
    Liệt kê số thứ tự lỗi đã sửa (theo Checklist 4.1.2 #1-#7, 4.2 #8-#9, 4.3 #10-#12) + mô tả ngắn gọn.
    - Nếu giữ nguyên giá trị raw → ghi `"Đạt chuẩn, giữ nguyên"`.
-   - Nếu có lỗi #2 hoặc #3 → **BẮT BUỘC** đọc context file tương ứng (path do script thông báo ở bước cấp phát) và thêm `ctx_pwd:[password]` vào cuối reason.
-   - Ví dụ: `"Lỗi #1, #4: Bỏ 'Giúp tôi', thay 'quản lý' → 'tăng trưởng'"` (không cần password)
-   - Ví dụ: `"Lỗi #2: Gộp compound → 'Chuẩn bị bữa ăn'. ctx_pwd:abc12345"` (có password)
+   - Nếu có lỗi #2, #3 hoặc #4 → **BẮT BUỘC** đọc context file riêng của uid đó (trường `context_file` trong `current_calib_batch.json`) và thêm `ctx_pwd:[password]` vào cuối reason.
+   - Ví dụ: `"Lỗi #1: Bỏ 'Giúp tôi'"` (không cần password)
+   - Ví dụ: `"Lỗi #4: 'chăm sóc' → ongoing → context: tiêm chủng → 'Tiêm phòng cho con'. ctx_pwd:abc12345"` (có password)
 
 3. **Ghi tệp kết quả tạm:** Hệ thống đã tự động tạo sẵn tệp `[work_dir]/calib_batches/calib_eval_temp.json` điền sẵn mật khẩu và cấu trúc. Hãy mở tệp đó ra bằng công cụ chỉnh sửa tệp (hoặc overwrite bằng write_to_file), thay thế CÁC TRƯỜNG `[ĐIỀN VÀO ĐÂY]` bằng câu trả lời hiệu chỉnh của bạn và lưu lại.
 
@@ -102,7 +121,7 @@ python .agents/skills/jtbd-calibrator/scripts/prepare_calibration_batches.py \
 > - 🔴 Vi phạm → Submit bị từ chối. Đọc thông báo lỗi, sửa trực tiếp `calib_eval_temp.json`, lưu lại rồi gọi lệnh submit **lại cùng lệnh trên**. Lặp lại cho đến khi hết vi phạm.
 > - ✅ CLEAN → Chấp nhận.
 
-5. Chờ phản hồi. Nếu script báo hoàn thành (đã tự động sinh `jtbd_calibrated.json`), tiến trình hoàn tất. Hãy dừng thực thi và bàn giao `jtbd_calibrated.json` cho Agent chuyển sang Skill 2.
+5. Chờ phản hồi. Nếu script báo hoàn thành (đã tự động sinh `jtbd_calibrated.json` hoặc `jtbd_recalibrated.json`), tiến trình hoàn tất. Hãy dừng thực thi và bàn giao file output tương ứng cho Agent điều phối.
 
 ---
 
@@ -127,14 +146,16 @@ Ví dụ mẫu chuẩn:
 | # | Điều kiện | Hướng dẫn hiệu chỉnh | Ví dụ sai → đúng |
 | :--- | :--- | :--- | :--- |
 | 1 | **Bắt đầu bằng động từ** | Bỏ toàn bộ từ đệm/xưng hô ở đầu câu | "Giúp tôi lên kế hoạch kỳ nghỉ" → **"Lên kế hoạch kỳ nghỉ gia đình"** |
-| 2 | **Đơn trị** — không "và/hoặc/and/or" | ⚠️ **Đọc context file** (batch_XX_context.md) để hiểu domain → Hỏi "Why?" 1 lần → gộp thành 1 Big Job → ghi `ctx_pwd` vào reason | "Rửa rau và cắt thịt" → Why? → **"Chuẩn bị bữa ăn"** |
-| 3 | **Có chủ đích** — không hành vi cơ học | ⚠️ **Đọc context file** (phần chunk tương ứng) → thay verb cơ học bằng verb mang mục tiêu → ghi `ctx_pwd` vào reason | "Nhìn vào bức tranh" → **"Thấu hiểu tác phẩm nghệ thuật"** |
-| 4 | **Có trạng thái kết thúc** | Thay ongoing verb bằng verb có end state (suy từ tân ngữ) | "Quản lý danh mục đầu tư" → **"Tăng trưởng danh mục đầu tư"** |
+| 2 | **Đơn trị** — không "và/hoặc/and/or" | ⚠️ **Đọc context file** của uid để hiểu domain → Hỏi "Why?" 1 lần → gộp thành 1 Big Job → ghi `ctx_pwd` vào reason | "Rửa rau và cắt thịt" → Why? → **"Chuẩn bị bữa ăn"** |
+| 3 | **Có chủ đích** — không hành vi cơ học | ⚠️ **Đọc context file** của uid → thay verb cơ học bằng verb mang mục tiêu → ghi `ctx_pwd` vào reason | "Nhìn vào bức tranh" → **"Thấu hiểu tác phẩm nghệ thuật"** |
+| 4 | **Có trạng thái kết thúc** — verb phải telic (có điểm hoàn tất tự nhiên) | ⚠️ **Đọc context file** của uid. Áp dụng Litmus Test: *"[Tân ngữ] đã được [Verb]-ed → người thực hiện có thể dừng lại vì mục tiêu đã được giải quyết trọn vẹn?"* Nếu KHÔNG → verb ongoing → đọc context tìm hành động thay thế thỏa mãn CẢ HAI: (a) telic — pass litmus test, VÀ (b) có chủ đích — không rơi vào hành vi cơ học (#3). Ghi `ctx_pwd` vào reason. VD sai: "Nuôi dưỡng trẻ" → "Cho con ăn" (telic nhưng cơ học, fail #3). VD đúng: "Nuôi dưỡng trẻ" → context về dinh dưỡng → **"Thiết lập chế độ dinh dưỡng cho con"** (telic + có chủ đích) | "Quản lý tài chính" → "tài chính đã được quản lý?" → Không → context: lập ngân sách → **"Lập ngân sách gia đình"** |
 | 5 | **Góc nhìn cá nhân** | Bỏ lớp quan sát/sở thích, giữ nguyên action + object gốc | "Mọi người thích tham dự hội thảo" → **"Tham dự hội thảo"** |
 | 6 | **Không công nghệ/giải pháp** | Trừu tượng hóa: bỏ method/technology, giữ mục tiêu gốc (suy từ verb+object) | "Tìm kiếm bằng từ khóa trong CSDL" → **"Truy xuất nội dung"** |
-| 7 | **Kiểm tra ngược** | Nếu "Tân ngữ đã được Động từ-ed" không hợp lý → quay lại điều kiện 3-4 sửa lỗi gốc | "Sức khỏe đã được quản lý?" ✗ → sửa verb (#4) |
+| 7 | **Kiểm tra ngược (Litmus Test cuối cùng)** | Áp dụng: *"[Tân ngữ] đã được [Verb]-ed → người thực hiện có thể dừng lại?"* Nếu câu trả lời là KHÔNG (hành động vẫn phải tiếp tục ngày mai) → quay lại #4 sửa verb | "Sức khỏe đã được quản lý?" → Không, vẫn phải quản lý → sửa verb (#4) |
 
-> **Context file cho #2, #3:** Mỗi batch có file `batch_XX_context.md` (sinh tự động ở Bước 2), chứa nội dung chunk tương ứng cho từng entry và **context password**. Khi sửa lỗi #2 hoặc #3, **BẮT BUỘC** đọc file này, thêm `ctx_pwd:[password]` vào `reason`. Script sẽ reject nếu thiếu.
+> **Context file cho #2, #3, #4:** Mỗi uid có file context riêng (trường `context_file` trong `current_calib_batch.json`, sinh tự động ở Bước 2). Khi sửa lỗi #2, #3 hoặc #4, **BẮT BUỘC** đọc file context của uid đang xử lý, thêm `ctx_pwd:[password]` vào `reason`. Script sẽ reject nếu thiếu.
+>
+> **Re-validate bắt buộc:** Sau khi sửa bất kỳ lỗi nào, kiểm tra lại kết quả cuối cùng qua TOÀN BỘ 7 điều kiện. Đặc biệt: sửa #4 (telic) có thể tạo vi phạm #3 (cơ học); sửa #2 (gộp compound) có thể tạo vi phạm #4 (ongoing). Nếu kết quả vi phạm bất kỳ điều kiện nào → sửa lại cho đến khi thỏa mãn tất cả.
 >
 > **Need/Why:** Xử lý hoàn toàn ở Phần 4.3 Problem Space — áp dụng cho Main Job, Clarifier VÀ Circumstance.
 

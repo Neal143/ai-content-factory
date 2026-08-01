@@ -53,6 +53,13 @@ BANNED_MAIN_JOB = [
     (r"\bduy trì\b", "#4 Ongoing verb: 'duy tri'"),
     (r"\bhọc hỏi\b", "#4 Ongoing verb: 'hoc hoi'"),
     (r"\btheo kịp\b", "#4 Ongoing verb: 'theo kip'"),
+    (r"\bchăm sóc\b", "#4 Ongoing verb: 'cham soc'"),
+    (r"\bnuôi dưỡng\b", "#4 Ongoing verb: 'nuoi duong'"),
+    (r"\bkiểm soát\b", "#4 Ongoing verb: 'kiem soat'"),
+    (r"\bdạy\b", "#4 Ongoing verb: 'day'"),
+    (r"\bnuôi dạy\b", "#4 Ongoing verb: 'nuoi day'"),
+    (r"\bkhuyến khích\b", "#4 Ongoing verb: 'khuyen khich'"),
+    (r"\bkỷ luật\b", "#4 Ongoing verb: 'ky luat'"),
 ]
 
 # -- Circumstance: menh de muc dich, cam xuc, qualifying adj --

@@ -4,26 +4,33 @@ import uuid
 import argparse
 import os
 
-def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_file=None):
+# Fix Windows console encoding (cp1252 -> utf-8)
+# Tranh UnicodeEncodeError khi print tieng Viet co dau hoac emoji
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
+def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_file=None, source_link=None):
     try:
         with open(parsed_json_path, 'r', encoding='utf-8') as f:
             parsed_data = json.load(f)
     except Exception as e:
-        print(f"❌ Không thể đọc file audiences_parsed.json: {e}")
+        print(f"[ERR] Khong the doc file audiences_parsed.json: {e}")
         sys.exit(1)
 
     book_entry = parsed_data.get("book")
     chunk_entries = parsed_data.get("chunks", [])
     
     if not book_entry:
-        print("❌ Không tìm thấy thông tin Book trong audiences_parsed.json")
+        print("[ERR] Khong tim thay thong tin Book trong audiences_parsed.json")
         sys.exit(1)
         
     os.makedirs(split_dir, exist_ok=True)
     
     items_queue = []
     
-    # Xử lý Book
+    # Xu ly Book
     if isinstance(book_entry, str):
         book_payload = {"jtbd_raw": book_entry}
     else:
@@ -32,14 +39,20 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
     book_payload["chunk_index"] = None
     book_payload["chunk_name"] = None
     book_payload["uid"] = "uid_book"
+    if source_link:
+        book_payload["source_link"] = f"[[{source_link}#^book-overview]]"
+        book_payload["source_path"] = f"02-sources/books/{source_link}.md#^book-overview"
     items_queue.append(book_payload)
     
-    # Xử lý Chunks
+    # Xu ly Chunks
     for chunk in chunk_entries:
         idx = chunk.get("chunk_index", 0)
         chunk_payload = {k: v for k, v in chunk.items()}
         chunk_payload["scope"] = "chunk"
         chunk_payload["uid"] = f"uid_chunk_{idx:02d}"
+        if source_link:
+            chunk_payload["source_link"] = f"[[{source_link}#^chunk-{idx:02d}]]"
+            chunk_payload["source_path"] = f"02-sources/books/{source_link}.md#^chunk-{idx:02d}"
         items_queue.append(chunk_payload)
         
     batches_data = [items_queue[i:i + batch_size] for i in range(0, len(items_queue), batch_size)]
@@ -53,7 +66,7 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
         "calibrated_items": []
     }
     
-    # === SINH CONTEXT FILE PER-BATCH (neu co source_file) ===
+    # === SINH CONTEXT FILE PER-UID (neu co source_file) ===
     context_passwords = {}
     if source_file and os.path.exists(source_file):
         import re as _re
@@ -74,28 +87,28 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
             ctx_password = uuid.uuid4().hex[:8]
             context_passwords[str(batch_idx)] = ctx_password
 
-            lines = [
-                f"# Batch {batch_idx:02d} Context File",
-                f"> **Context Password**: `{ctx_password}`",
-                f"> Ghi `ctx_pwd:{ctx_password}` vao field reason khi sua loi #2 hoac #3.",
-                ""
-            ]
+            # Ghi 1 file context rieng cho moi uid trong batch
             for item in batch:
                 uid = item.get("uid", "unknown")
+                ctx_lines = [
+                    f"# Context: {uid}",
+                    f"> **Context Password**: `{ctx_password}`",
+                    f"> Ghi `ctx_pwd:{ctx_password}` vao field reason khi sua loi #2 hoac #3.",
+                    ""
+                ]
                 if item.get("scope") == "book":
-                    lines.append(f"## {uid} -- BOOK HEADER")
-                    lines.append(header.strip())
+                    ctx_lines.append(f"## {uid} -- BOOK HEADER")
+                    ctx_lines.append(header.strip())
                 else:
                     c_idx = item.get("chunk_index")
                     c_name = item.get("chunk_name", "Unknown")
                     if c_idx is not None and c_idx in chunk_lookup:
-                        lines.append(f"## {uid} -- Chunk {c_idx}: {c_name}")
-                        lines.append(chunk_lookup[c_idx])
-                lines.append("---")
+                        ctx_lines.append(f"## {uid} -- Chunk {c_idx}: {c_name}")
+                        ctx_lines.append(chunk_lookup[c_idx])
 
-            ctx_path = os.path.join(split_dir, f"batch_{batch_idx:02d}_context.md")
-            with open(ctx_path, 'w', encoding='utf-8') as f:
-                f.write("\n\n".join(lines))
+                ctx_path = os.path.join(split_dir, f"ctx_{uid}.md")
+                with open(ctx_path, 'w', encoding='utf-8') as f:
+                    f.write("\n\n".join(ctx_lines))
 
     session_state["context_passwords"] = context_passwords
 
@@ -103,19 +116,86 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
     with open(session_state_path, 'w', encoding='utf-8') as f:
         json.dump(session_state, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Đã phân tách 1 Book + {len(chunk_entries)} chunks thành {total_batches} lô (kích thước {batch_size}). Dữ liệu lưu tại: {split_dir}/")
+    print(f"[OK] Da phan tach 1 Book + {len(chunk_entries)} chunks thanh {total_batches} lo (kich thuoc {batch_size}). Du lieu luu tai: {split_dir}/")
+
+
+def create_recalibration_batches(parsed_json_path, split_dir, batch_size):
+    """Ham rieng biet cho mode re-calibrate. KHONG sua ham create_calibration_batches()."""
+    try:
+        with open(parsed_json_path, 'r', encoding='utf-8') as f:
+            parsed_data = json.load(f)
+    except Exception as e:
+        print(f"[ERR] Khong the doc file: {e}")
+        sys.exit(1)
+
+    entries = parsed_data.get("entries", [])
+    os.makedirs(split_dir, exist_ok=True)
+
+    # Tao items_queue — loai bo context_text va context_warning (tranh bloat output)
+    items_queue = []
+    for idx, entry in enumerate(entries, 1):
+        item = {k: v for k, v in entry.items() if k not in ('context_text', 'context_warning')}
+        item['uid'] = f'uid_recalib_{idx:03d}'
+        items_queue.append(item)
+
+    batches_data = [items_queue[i:i + batch_size] for i in range(0, len(items_queue), batch_size)]
+    total_batches = len(batches_data)
+
+    session_state = {
+        "mode": "re-calibrate",
+        "total_batches": total_batches,
+        "current_batch": 1,
+        "completed": False,
+        "batches_data": batches_data,
+        "calibrated_items": [],
+    }
+
+    # Sinh context file per-uid (lay context_text tu entries goc)
+    context_passwords = {}
+    for batch_idx, batch in enumerate(batches_data, 1):
+        ctx_password = uuid.uuid4().hex[:8]
+        context_passwords[str(batch_idx)] = ctx_password
+
+        # Ghi 1 file context rieng cho moi uid trong batch
+        for item in batch:
+            uid = item.get("uid")
+            recalib_idx = int(uid.split('_')[-1]) - 1
+            ctx_lines = [
+                f"# Context: {uid}",
+                f"> **Context Password**: `{ctx_password}`",
+                f"> Ghi `ctx_pwd:{ctx_password}` vao field reason khi sua loi #2 hoac #3.",
+                ""
+            ]
+            if 0 <= recalib_idx < len(entries):
+                original_entry = entries[recalib_idx]
+                context_text = original_entry.get("context_text", "")
+                original_filename = original_entry.get("original_filename", "Unknown")
+                ctx_lines.append(f"## {uid} -- {original_filename}")
+                ctx_lines.append(context_text)
+
+            ctx_path = os.path.join(split_dir, f"ctx_{uid}.md")
+            with open(ctx_path, 'w', encoding='utf-8') as f:
+                f.write("\n\n".join(ctx_lines))
+
+    session_state["context_passwords"] = context_passwords
+
+    session_state_path = os.path.join(split_dir, "session_state.json")
+    with open(session_state_path, 'w', encoding='utf-8') as f:
+        json.dump(session_state, f, ensure_ascii=False, indent=2)
+
+    print(f"[OK] Da phan tach {len(entries)} audiences thanh {total_batches} lo (kich thuoc {batch_size}). Du lieu luu tai: {split_dir}/")
 
 def get_next_calibration_batch(session_dir):
     session_state_path = os.path.join(session_dir, "session_state.json")
     if not os.path.exists(session_state_path):
-        print("❌ Không tìm thấy session_state.json")
+        print("[ERR] Khong tim thay session_state.json")
         sys.exit(1)
 
     with open(session_state_path, 'r', encoding='utf-8') as f:
         session_state = json.load(f)
 
     if session_state.get("completed"):
-        print("🎉 HOÀN THÀNH — Quá trình Calibration đã hoàn tất.")
+        print("[OK] HOAN THANH - Qua trinh Calibration da hoan tat.")
         sys.exit(0)
 
     current_batch = session_state["current_batch"]
@@ -125,6 +205,13 @@ def get_next_calibration_batch(session_dir):
     session_state["current_batch_password"] = batch_password
     with open(session_state_path, 'w', encoding='utf-8') as f:
         json.dump(session_state, f, ensure_ascii=False, indent=2)
+
+    # Them context_file path vao moi item truoc khi ghi batch output
+    for item in items_to_process:
+        uid = item.get("uid", "unknown")
+        ctx_path = os.path.join(os.path.abspath(session_dir), f"ctx_{uid}.md")
+        if os.path.exists(ctx_path):
+            item["context_file"] = ctx_path
 
     batch_output = {
         "batch_index": current_batch,
@@ -155,11 +242,9 @@ def get_next_calibration_batch(session_dir):
     with open(temp_file_path, 'w', encoding='utf-8') as f:
         json.dump(template_output, f, ensure_ascii=False, indent=2)
 
-    print(f"Lô dữ liệu {current_batch}/{session_state['total_batches']} đã sẵn sàng tại: {batch_file_path}")
-    print(f"📝 Tệp làm bài đã được tạo sẵn tại: {temp_file_path}. Vui lòng mở tệp này, thay thế các trường [ĐIỀN VÀO ĐÂY] bằng câu trả lời và gọi --submit-file.")
-    ctx_path = os.path.join(os.path.abspath(session_dir), f"batch_{current_batch:02d}_context.md")
-    if os.path.exists(ctx_path):
-        print(f"📁 Context file: {ctx_path} (doc khi can sua loi #2 hoac #3)")
+    print(f"Lo du lieu {current_batch}/{session_state['total_batches']} da san sang tai: {batch_file_path}")
+    print(f"[INFO] Tep lam bai da duoc tao san tai: {temp_file_path}. Vui long mo tep nay, thay the cac truong [DIEN VAO DAY] bang cau tra loi va goi --submit-file.")
+    print(f"[INFO] Context files: moi uid co 1 file ctx_<uid>.md rieng (doc khi can sua loi #2 hoac #3)")
 
 def validate_calibration_submission(session_dir, submit_file):
     session_state_path = os.path.join(session_dir, "session_state.json")
@@ -167,19 +252,19 @@ def validate_calibration_submission(session_dir, submit_file):
         session_state = json.load(f)
 
     if session_state.get("completed"):
-        print("❌ Quá trình đã hoàn thành, không nhận thêm kết quả.")
+        print("[ERR] Qua trinh da hoan thanh, khong nhan them ket qua.")
         sys.exit(1)
 
     try:
         with open(submit_file, 'r', encoding='utf-8') as f:
             submission = json.load(f)
     except Exception as e:
-        print(f"❌ File submit không hợp lệ: {e}")
+        print(f"[ERR] File submit khong hop le: {e}")
         sys.exit(1)
 
     expected_password = session_state.get("current_batch_password")
     if submission.get("password") != expected_password:
-        print("❌ ⛔ TỪ CHỐI TRUY CẬP: Mật khẩu không khớp.")
+        print("[ERR] TU CHOI TRUY CAP: Mat khau khong khop.")
         sys.exit(1)
 
     current_batch = session_state["current_batch"]
@@ -192,27 +277,27 @@ def validate_calibration_submission(session_dir, submit_file):
     submitted_uids = {e.get("uid") for e in entries}
 
     if expected_uids != submitted_uids:
-        print(f"❌ UID không khớp. Yêu cầu: {expected_uids}, Nhận được: {submitted_uids}")
+        print(f"[ERR] UID khong khop. Yeu cau: {expected_uids}, Nhan duoc: {submitted_uids}")
         sys.exit(1)
 
     req_fields = ["uid", "audience_Job_performer", "audience_main_job", "audience_circumstance", "aliases", "reason"]
     for entry in entries:
         if any(k not in entry for k in req_fields):
-            print(f"❌ Đối tượng {entry.get('uid')} thiếu trường dữ liệu bắt buộc.")
+            print(f"[ERR] Doi tuong {entry.get('uid')} thieu truong du lieu bat buoc.")
             sys.exit(1)
         if not isinstance(entry["aliases"], list):
-            print(f"❌ Trường 'aliases' của {entry.get('uid')} phải là một mảng (list).")
+            print(f"[ERR] Truong 'aliases' cua {entry.get('uid')} phai la mot mang (list).")
             sys.exit(1)
 
         # Anti-lazy validation
         for val in entry.values():
             if isinstance(val, str) and "[ĐIỀN VÀO ĐÂY]" in val:
-                print(f"❌ LỖI: Entry {entry.get('uid')} chưa thay thế trường placeholder '[ĐIỀN VÀO ĐÂY]'.")
+                print(f"[ERR] Entry {entry.get('uid')} chua thay the truong placeholder '[ĐIỀN VÀO ĐÂY]'.")
                 sys.exit(1)
             elif isinstance(val, list):
                 for sub_val in val:
                     if isinstance(sub_val, str) and "[ĐIỀN VÀO ĐÂY]" in sub_val:
-                        print(f"❌ LỖI: Entry {entry.get('uid')} chưa thay thế trường placeholder '[ĐIỀN VÀO ĐÂY]' trong mảng.")
+                        print(f"[ERR] Entry {entry.get('uid')} chua thay the truong placeholder '[ĐIỀN VÀO ĐÂY]' trong mang.")
                         sys.exit(1)
 
     # === KIEM TRA CHAT LUONG JTBD (tu dong truoc khi merge) ===
@@ -221,25 +306,27 @@ def validate_calibration_submission(session_dir, submit_file):
         os.path.dirname(os.path.abspath(__file__)), "validate_jtbd_quality.py"
     )
     if os.path.exists(validator_script):
+        env = os.environ.copy()
+        env["PYTHONIOENCODING"] = "utf-8"
         result = subprocess.run(
-            [sys.executable, validator_script, submit_file],
-            capture_output=True, text=True, encoding="utf-8"
+            [sys.executable, "-X", "utf8", validator_script, submit_file],
+            capture_output=True, text=True, encoding="utf-8", errors="replace", env=env
         )
         if result.stdout.strip():
             print(result.stdout)
         if result.returncode != 0:
             sys.exit(1)
 
-    # === KIEM TRA CONTEXT PASSWORD (khi reason chua #2 hoac #3) ===
+    # === KIEM TRA CONTEXT PASSWORD (khi reason chua #2, #3 hoac #4) ===
     current_batch = session_state["current_batch"]
     ctx_password = session_state.get("context_passwords", {}).get(str(current_batch))
     if ctx_password:
         for entry in entries:
             reason = entry.get("reason", "")
-            if "#2" in reason or "#3" in reason:
+            if "#2" in reason or "#3" in reason or "#4" in reason:
                 if f"ctx_pwd:{ctx_password}" not in reason:
-                    print(f"❌ Entry {entry.get('uid')}: reason chua #2/#3 nhung thieu/sai context password. "
-                          f"Doc context file batch_{current_batch:02d}_context.md va them ctx_pwd:[password] vao reason.")
+                    print(f"❌ Entry {entry.get('uid')}: reason chua #2/#3/#4 nhung thieu/sai context password. "
+                          f"Doc context file ctx_{entry.get('uid')}.md va them ctx_pwd:[password] vao reason.")
                     sys.exit(1)
 
     for entry in entries:
@@ -250,6 +337,81 @@ def validate_calibration_submission(session_dir, submit_file):
         merged_item["audience_circumstance"] = entry["audience_circumstance"]
         merged_item["aliases"] = entry["aliases"]
         session_state["calibrated_items"].append(merged_item)
+
+    # === GHI AUDIT LOG (append per-batch) ===
+    run_folder = os.path.dirname(os.path.abspath(session_dir))
+    
+    # Tìm vault root để tính relative path cho Source link
+    vault_root = run_folder
+    while vault_root and os.path.basename(vault_root) != 'vault':
+        parent = os.path.dirname(vault_root)
+        if parent == vault_root:
+            break
+        vault_root = parent
+
+    audit_path = os.path.join(run_folder, "calibration_audit.md")
+    is_new_file = not os.path.exists(audit_path)
+
+    with open(audit_path, 'a', encoding='utf-8') as af:
+        if is_new_file:
+            af.write("# Calibration Audit Log\n\n")
+            af.write("> Auto-generated. Ghi lai toan bo ket qua LLM hieu dinh JTBD.\n\n")
+
+        af.write(f"## Batch {current_batch:02d}\n\n")
+        for entry in entries:
+            uid = entry["uid"]
+            orig = original_items_map.get(uid, {})
+            # Thong tin cu
+            old_performer = orig.get("audience_Job_performer", "")
+            old_job = orig.get("audience_main_job", "")
+            old_circ = orig.get("audience_circumstance", "")
+            old_fn = orig.get("original_filename", uid)
+            # Thong tin moi
+            new_performer = entry["audience_Job_performer"]
+            new_job = entry["audience_main_job"]
+            new_circ = entry["audience_circumstance"]
+            new_aliases = ", ".join(entry.get("aliases", []))
+            reason = entry.get("reason", "")
+
+            # Xac dinh co thay doi khong
+            changed = (old_performer != new_performer or
+                       old_job != new_job or
+                       old_circ != new_circ)
+            status = "CHANGED" if changed else "KEPT"
+
+            af.write(f"### {uid} ({status})\n\n")
+            # Mini table cho Source + Context (Obsidian popup cho Context)
+            source_link = orig.get("source_link", "")
+            source_path = orig.get("source_path", "")
+            ctx_filename = f"ctx_{uid}.md"
+            ctx_abs = os.path.join(os.path.abspath(session_dir), ctx_filename)
+            has_source = bool(source_link and source_path)
+            has_ctx = os.path.exists(ctx_abs)
+            if has_source or has_ctx:
+                af.write("| Source | Context |\n|---|---|\n| ")
+                if has_source:
+                    link_text = source_link.strip("[]")
+                    abs_source = os.path.join(vault_root, source_path.split('#')[0])
+                    rel_source = os.path.relpath(abs_source, run_folder).replace('\\', '/')
+                    if '#' in source_path:
+                        rel_source += '#' + source_path.split('#', 1)[1]
+                    af.write(f"[{link_text}](<{rel_source}>)")
+                af.write(" | ")
+                if has_ctx:
+                    ctx_rel = os.path.relpath(ctx_abs, run_folder).replace('\\', '/')
+                    af.write(f"[{ctx_filename}]({ctx_rel})")
+                af.write(" |\n\n")
+            af.write(f"- **File**: `{old_fn}`\n")
+            if changed:
+                af.write(f"- **Performer**: `{old_performer}` -> `{new_performer}`\n")
+                af.write(f"- **Main Job**: `{old_job}` -> `{new_job}`\n")
+                af.write(f"- **Circumstance**: `{old_circ}` -> `{new_circ}`\n")
+            else:
+                af.write(f"- **Performer**: `{new_performer}`\n")
+                af.write(f"- **Main Job**: `{new_job}`\n")
+                af.write(f"- **Circumstance**: `{new_circ}`\n")
+            af.write(f"- **Aliases**: {new_aliases}\n")
+            af.write(f"- **Reason**: {reason}\n\n")
 
     session_state["current_batch"] += 1
     
@@ -263,14 +425,24 @@ def validate_calibration_submission(session_dir, submit_file):
                 del clean_item["uid"]
             final_output.append(clean_item)
             
-        run_folder = os.path.dirname(os.path.abspath(session_dir))
-        output_path = os.path.join(run_folder, "jtbd_calibrated.json")
+        mode = session_state.get("mode", "calibrate")
+        filename = "jtbd_recalibrated.json" if mode == "re-calibrate" else "jtbd_calibrated.json"
+        output_path = os.path.join(run_folder, filename)
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(final_output, f, ensure_ascii=False, indent=2)
+
+        # Ghi summary vao cuoi audit log
+        total_items = len(session_state["calibrated_items"])
+        with open(audit_path, 'a', encoding='utf-8') as af:
+            af.write(f"---\n\n## Summary\n\n")
+            af.write(f"- **Total entries**: {total_items}\n")
+            af.write(f"- **Total batches**: {session_state['total_batches']}\n")
+            af.write(f"- **Output file**: `{filename}`\n")
             
-        print(f"🎉 HOÀN THÀNH — File jtbd_calibrated.json đã được khởi tạo thành công tại: {os.path.abspath(output_path)}")
+        print(f"[OK] HOAN THANH - File {filename} da duoc khoi tao thanh cong tai: {os.path.abspath(output_path)}")
+        print(f"[INFO] Audit log: {os.path.abspath(audit_path)}")
     else:
-        print("✅ Hợp nhất thành công. Vui lòng gọi --get-next cho lô dữ liệu tiếp theo.")
+        print("[OK] Hop nhat thanh cong. Vui long goi --get-next cho lo du lieu tiep theo.")
 
     with open(session_state_path, 'w', encoding='utf-8') as f:
         json.dump(session_state, f, ensure_ascii=False, indent=2)
@@ -284,10 +456,17 @@ if __name__ == "__main__":
     parser.add_argument("--get-next", action="store_true", help="Cấp phát lô dữ liệu tiếp theo")
     parser.add_argument("--submit-file", type=str, help="File JSON kết quả để xác thực")
     parser.add_argument("--source-file", type=str, help="File nguồn gốc (dùng sinh context file)")
+    parser.add_argument("--source-link", type=str, help="Ten source cho Obsidian wikilink, VD: 'Beyond the rainbow bridge'")
     args = parser.parse_args()
 
     if args.split_dir and args.parsed_json:
-        create_calibration_batches(args.parsed_json, args.split_dir, args.batch_size, args.source_file)
+        # Auto-detect mode tu parsed JSON
+        with open(args.parsed_json, 'r', encoding='utf-8') as _f:
+            _peek = json.load(_f)
+        if _peek.get("mode") == "re-calibrate":
+            create_recalibration_batches(args.parsed_json, args.split_dir, args.batch_size)
+        else:
+            create_calibration_batches(args.parsed_json, args.split_dir, args.batch_size, args.source_file, args.source_link)
     elif args.get_next and args.session_dir:
         get_next_calibration_batch(args.session_dir)
     elif args.submit_file and args.session_dir:

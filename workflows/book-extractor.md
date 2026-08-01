@@ -106,11 +106,11 @@ last_update: 13/07/2026 15:37 (GMT+7)
   1. Sử dụng công cụ đọc tệp tin `00-blackboard.yaml` trong thư mục `run_folder` đã cung cấp.
   2. Nạp toàn bộ các tham số cấu hình (tên sách, notebook, cache file, run folder) vào Context làm việc của Session mới.
   3. Đảm bảo nạp đúng giá trị `current_phase: 3` từ Blackboard.
-  4. Tự động chuyển tiếp tiến trình sang **Bước 6 (Phase 3)** để gọi BookAudienceMatcherAgent.
+  4. Tự động chuyển tiếp tiến trình sang **Bước 6 (Phase 3)** để gọi AudienceResolverAgent.
 
 ### Bước 6 (Phase 3): Phân giải Đối tượng Độc giả
 
-- **Sub-Agent**: BookAudienceMatcherAgent
+- **Sub-Agent**: AudienceResolverAgent
 - **Input**: `cache_file`, `run_folder`, `parsed_metadata.json`
 - **Output**: `audience_decision_map.json`, các file Audience trong `01-Atomic/Audiences/`
 - **Agent chính (BREAKPOINT 3)**:
