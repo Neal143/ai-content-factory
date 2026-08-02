@@ -67,7 +67,7 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
     }
     
     # === SINH CONTEXT FILE PER-UID (neu co source_file) ===
-    context_passwords = {}
+
     if source_file and os.path.exists(source_file):
         import re as _re
         with open(source_file, 'r', encoding='utf-8') as f:
@@ -84,16 +84,12 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
                 chunk_lookup[int(idx_match.group(1))] = chunk_text.strip()
 
         for batch_idx, batch in enumerate(batches_data, 1):
-            ctx_password = uuid.uuid4().hex[:8]
-            context_passwords[str(batch_idx)] = ctx_password
-
             # Ghi 1 file context rieng cho moi uid trong batch
             for item in batch:
                 uid = item.get("uid", "unknown")
                 ctx_lines = [
                     f"# Context: {uid}",
-                    f"> **Context Password**: `{ctx_password}`",
-                    f"> Ghi `ctx_pwd:{ctx_password}` vao field reason khi sua loi #2 hoac #3.",
+                    "> Khi sua loi #2, #3 hoac #4: trich dan nguyen van >=20 ky tu tu phan <data_chunk> ben duoi vao truong `context_quote`.",
                     ""
                 ]
                 if item.get("scope") == "book":
@@ -110,7 +106,7 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
                 with open(ctx_path, 'w', encoding='utf-8') as f:
                     f.write("\n\n".join(ctx_lines))
 
-    session_state["context_passwords"] = context_passwords
+
 
     session_state_path = os.path.join(split_dir, "session_state.json")
     with open(session_state_path, 'w', encoding='utf-8') as f:
@@ -151,19 +147,14 @@ def create_recalibration_batches(parsed_json_path, split_dir, batch_size):
     }
 
     # Sinh context file per-uid (lay context_text tu entries goc)
-    context_passwords = {}
     for batch_idx, batch in enumerate(batches_data, 1):
-        ctx_password = uuid.uuid4().hex[:8]
-        context_passwords[str(batch_idx)] = ctx_password
-
         # Ghi 1 file context rieng cho moi uid trong batch
         for item in batch:
             uid = item.get("uid")
             recalib_idx = int(uid.split('_')[-1]) - 1
             ctx_lines = [
                 f"# Context: {uid}",
-                f"> **Context Password**: `{ctx_password}`",
-                f"> Ghi `ctx_pwd:{ctx_password}` vao field reason khi sua loi #2 hoac #3.",
+                "> Khi sua loi #2, #3 hoac #4: trich dan nguyen van >=20 ky tu tu phan <data_chunk> ben duoi vao truong `context_quote`.",
                 ""
             ]
             if 0 <= recalib_idx < len(entries):
@@ -177,7 +168,7 @@ def create_recalibration_batches(parsed_json_path, split_dir, batch_size):
             with open(ctx_path, 'w', encoding='utf-8') as f:
                 f.write("\n\n".join(ctx_lines))
 
-    session_state["context_passwords"] = context_passwords
+
 
     session_state_path = os.path.join(split_dir, "session_state.json")
     with open(session_state_path, 'w', encoding='utf-8') as f:
@@ -236,6 +227,7 @@ def get_next_calibration_batch(session_dir):
             "audience_main_job": item.get("audience_main_job", ""),
             "audience_circumstance": item.get("audience_circumstance", ""),
             "aliases": ["[ĐIỀN VÀO ĐÂY]", "[ĐIỀN VÀO ĐÂY]"],
+            "context_quote": "",
             "reason": "[ĐIỀN VÀO ĐÂY]"
         })
     temp_file_path = os.path.join(os.path.abspath(session_dir), "calib_eval_temp.json")
@@ -244,7 +236,7 @@ def get_next_calibration_batch(session_dir):
 
     print(f"Lo du lieu {current_batch}/{session_state['total_batches']} da san sang tai: {batch_file_path}")
     print(f"[INFO] Tep lam bai da duoc tao san tai: {temp_file_path}. Vui long mo tep nay, thay the cac truong [DIEN VAO DAY] bang cau tra loi va goi --submit-file.")
-    print(f"[INFO] Context files: moi uid co 1 file ctx_<uid>.md rieng (doc khi can sua loi #2 hoac #3)")
+    print(f"[INFO] Context files: moi uid co 1 file ctx_<uid>.md rieng (doc khi can sua loi #2, #3 hoac #4 — trich dan nguyen van vao truong context_quote)")
 
 def validate_calibration_submission(session_dir, submit_file):
     session_state_path = os.path.join(session_dir, "session_state.json")
@@ -317,16 +309,28 @@ def validate_calibration_submission(session_dir, submit_file):
         if result.returncode != 0:
             sys.exit(1)
 
-    # === KIEM TRA CONTEXT PASSWORD (khi reason chua #2, #3 hoac #4) ===
-    current_batch = session_state["current_batch"]
-    ctx_password = session_state.get("context_passwords", {}).get(str(current_batch))
-    if ctx_password:
-        for entry in entries:
-            reason = entry.get("reason", "")
-            if "#2" in reason or "#3" in reason or "#4" in reason:
-                if f"ctx_pwd:{ctx_password}" not in reason:
-                    print(f"❌ Entry {entry.get('uid')}: reason chua #2/#3/#4 nhung thieu/sai context password. "
-                          f"Doc context file ctx_{entry.get('uid')}.md va them ctx_pwd:[password] vao reason.")
+    # === KIEM TRA CONTEXT QUOTE (khi reason chua #2, #3 hoac #4) ===
+    for entry in entries:
+        reason = entry.get("reason", "")
+        if "#2" in reason or "#3" in reason or "#4" in reason:
+            quote = entry.get("context_quote", "").strip()
+            if len(quote) < 20:
+                print(f"❌ Entry {entry.get('uid')}: reason chua #2/#3/#4 nhung `context_quote` "
+                      f"thieu hoac qua ngan (<20 ky tu). Doc context file ctx_{entry.get('uid')}.md "
+                      f"va trich dan nguyen van >=20 ky tu tu phan <data_chunk>.")
+                sys.exit(1)
+            # Validate quote ton tai trong context file
+            ctx_file = os.path.join(os.path.abspath(session_dir), f"ctx_{entry.get('uid')}.md")
+            if os.path.exists(ctx_file):
+                with open(ctx_file, 'r', encoding='utf-8') as cf:
+                    ctx_content = cf.read()
+                # Chi validate trong phan data_chunk
+                import re as _re
+                chunks = _re.findall(r'<data_chunk>(.*?)</data_chunk>', ctx_content, _re.DOTALL)
+                chunk_text = '\n'.join(chunks) if chunks else ctx_content
+                if quote not in chunk_text:
+                    print(f"❌ Entry {entry.get('uid')}: `context_quote` khong tim thay trong noi dung "
+                          f"<data_chunk> cua file ctx_{entry.get('uid')}.md. Trich dan phai la nguyen van.")
                     sys.exit(1)
 
     for entry in entries:
