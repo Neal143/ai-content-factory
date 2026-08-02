@@ -105,11 +105,11 @@ python .agents/skills/jtbd-calibrator/scripts/prepare_calibration_batches.py \
    **e. `reason`:**
    Liệt kê số thứ tự lỗi đã sửa (theo Checklist 4.1.2 #1-#7, 4.2 #8-#9, 4.3 #10-#12) + mô tả ngắn gọn.
    - Nếu giữ nguyên giá trị raw → ghi `"Đạt chuẩn, giữ nguyên"`.
-   - Nếu có lỗi #2, #3 hoặc #4 → **BẮT BUỘC** đọc context file riêng của uid đó (trường `context_file` trong `current_calib_batch.json`) và thêm `ctx_pwd:[password]` vào cuối reason.
-   - Ví dụ: `"Lỗi #1: Bỏ 'Giúp tôi'"` (không cần password)
-   - Ví dụ: `"Lỗi #4: 'chăm sóc' → ongoing → context: tiêm chủng → 'Tiêm phòng cho con'. ctx_pwd:abc12345"` (có password)
+   - Nếu có lỗi #2, #3 hoặc #4 → **BẮT BUỘC** đọc context file riêng của uid đó (trường `context_file` trong `current_calib_batch.json`) và điền trích dẫn nguyên văn ≥20 ký tự từ phần `<data_chunk>` vào trường `context_quote`.
+   - Ví dụ: `"Lỗi #1: Bỏ 'Giúp tôi'"` (không cần context_quote)
+   - Ví dụ: `"Lỗi #4: 'chăm sóc' → ongoing → context: tiêm chủng → 'Tiêm phòng cho con'"` + `context_quote`: `"lịch tiêm chủng quốc gia cho trẻ từ 0-12 tháng tuổi"` (trích dẫn từ data_chunk)
 
-3. **Ghi tệp kết quả tạm:** Hệ thống đã tự động tạo sẵn tệp `[work_dir]/calib_batches/calib_eval_temp.json` điền sẵn mật khẩu và cấu trúc. Hãy mở tệp đó ra bằng công cụ chỉnh sửa tệp (hoặc overwrite bằng write_to_file), thay thế CÁC TRƯỜNG `[ĐIỀN VÀO ĐÂY]` bằng câu trả lời hiệu chỉnh của bạn và lưu lại.
+3. **Ghi tệp kết quả tạm:** Hệ thống đã tự động tạo sẵn tệp `[work_dir]/calib_batches/calib_eval_temp.json` điền sẵn cấu trúc. Hãy mở tệp đó ra bằng công cụ chỉnh sửa tệp (hoặc overwrite bằng write_to_file), thay thế CÁC TRƯỜNG `[ĐIỀN VÀO ĐÂY]` bằng câu trả lời hiệu chỉnh của bạn, điền `context_quote` khi sửa lỗi #2/#3/#4, và lưu lại.
 
 4. **Nộp bài:**
 ```bash
@@ -146,14 +146,14 @@ Ví dụ mẫu chuẩn:
 | # | Điều kiện | Hướng dẫn hiệu chỉnh | Ví dụ sai → đúng |
 | :--- | :--- | :--- | :--- |
 | 1 | **Bắt đầu bằng động từ** | Bỏ toàn bộ từ đệm/xưng hô ở đầu câu | "Giúp tôi lên kế hoạch kỳ nghỉ" → **"Lên kế hoạch kỳ nghỉ gia đình"** |
-| 2 | **Đơn trị** — không "và/hoặc/and/or" | ⚠️ **Đọc context file** của uid để hiểu domain → Hỏi "Why?" 1 lần → gộp thành 1 Big Job → ghi `ctx_pwd` vào reason | "Rửa rau và cắt thịt" → Why? → **"Chuẩn bị bữa ăn"** |
-| 3 | **Có chủ đích** — không hành vi cơ học | ⚠️ **Đọc context file** của uid → thay verb cơ học bằng verb mang mục tiêu → ghi `ctx_pwd` vào reason | "Nhìn vào bức tranh" → **"Thấu hiểu tác phẩm nghệ thuật"** |
-| 4 | **Có trạng thái kết thúc** — verb phải telic (có điểm hoàn tất tự nhiên) | ⚠️ **Đọc context file** của uid. Áp dụng Litmus Test: *"[Tân ngữ] đã được [Verb]-ed → người thực hiện có thể dừng lại vì mục tiêu đã được giải quyết trọn vẹn?"* Nếu KHÔNG → verb ongoing → đọc context tìm hành động thay thế thỏa mãn CẢ HAI: (a) telic — pass litmus test, VÀ (b) có chủ đích — không rơi vào hành vi cơ học (#3). Ghi `ctx_pwd` vào reason. VD sai: "Nuôi dưỡng trẻ" → "Cho con ăn" (telic nhưng cơ học, fail #3). VD đúng: "Nuôi dưỡng trẻ" → context về dinh dưỡng → **"Thiết lập chế độ dinh dưỡng cho con"** (telic + có chủ đích) | "Quản lý tài chính" → "tài chính đã được quản lý?" → Không → context: lập ngân sách → **"Lập ngân sách gia đình"** |
+| 2 | **Đơn trị** — không "và/hoặc/and/or" | ⚠️ **Đọc context file** của uid để hiểu domain → Hỏi "Why?" 1 lần → gộp thành 1 Big Job → điền `context_quote` | "Rửa rau và cắt thịt" → Why? → **"Chuẩn bị bữa ăn"** |
+| 3 | **Có chủ đích** — không hành vi cơ học | ⚠️ **Đọc context file** của uid → thay verb cơ học bằng verb mang mục tiêu → điền `context_quote` | "Nhìn vào bức tranh" → **"Thấu hiểu tác phẩm nghệ thuật"** |
+| 4 | **Có trạng thái kết thúc** — verb phải telic (có điểm hoàn tất tự nhiên) | ⚠️ **Đọc context file** của uid. Áp dụng Litmus Test: *"[Tân ngữ] đã được [Verb]-ed → người thực hiện có thể dừng lại vì mục tiêu đã được giải quyết trọn vẹn?"* Nếu KHÔNG → verb ongoing → đọc context tìm hành động thay thế thỏa mãn CẢ HAI: (a) telic — pass litmus test, VÀ (b) có chủ đích — không rơi vào hành vi cơ học (#3). Điền `context_quote`. VD sai: "Nuôi dưỡng trẻ" → "Cho con ăn" (telic nhưng cơ học, fail #3). VD đúng: "Nuôi dưỡng trẻ" → context về dinh dưỡng → **"Thiết lập chế độ dinh dưỡng cho con"** (telic + có chủ đích) | "Quản lý tài chính" → "tài chính đã được quản lý?" → Không → context: lập ngân sách → **"Lập ngân sách gia đình"** |
 | 5 | **Góc nhìn cá nhân** | Bỏ lớp quan sát/sở thích, giữ nguyên action + object gốc | "Mọi người thích tham dự hội thảo" → **"Tham dự hội thảo"** |
 | 6 | **Không công nghệ/giải pháp** | Trừu tượng hóa: bỏ method/technology, giữ mục tiêu gốc (suy từ verb+object) | "Tìm kiếm bằng từ khóa trong CSDL" → **"Truy xuất nội dung"** |
 | 7 | **Kiểm tra ngược (Litmus Test cuối cùng)** | Áp dụng: *"[Tân ngữ] đã được [Verb]-ed → người thực hiện có thể dừng lại?"* Nếu câu trả lời là KHÔNG (hành động vẫn phải tiếp tục ngày mai) → quay lại #4 sửa verb | "Sức khỏe đã được quản lý?" → Không, vẫn phải quản lý → sửa verb (#4) |
 
-> **Context file cho #2, #3, #4:** Mỗi uid có file context riêng (trường `context_file` trong `current_calib_batch.json`, sinh tự động ở Bước 2). Khi sửa lỗi #2, #3 hoặc #4, **BẮT BUỘC** đọc file context của uid đang xử lý, thêm `ctx_pwd:[password]` vào `reason`. Script sẽ reject nếu thiếu.
+> **Context file cho #2, #3, #4:** Mỗi uid có file context riêng (trường `context_file` trong `current_calib_batch.json`, sinh tự động ở Bước 2). Khi sửa lỗi #2, #3 hoặc #4, **BẮT BUỘC** đọc file context của uid đang xử lý, trích dẫn nguyên văn ≥20 ký tự từ phần `<data_chunk>` vào trường `context_quote`. Script sẽ reject nếu thiếu hoặc trích dẫn không tồn tại trong context file.
 >
 > **Re-validate bắt buộc:** Sau khi sửa bất kỳ lỗi nào, kiểm tra lại kết quả cuối cùng qua TOÀN BỘ 7 điều kiện. Đặc biệt: sửa #4 (telic) có thể tạo vi phạm #3 (cơ học); sửa #2 (gộp compound) có thể tạo vi phạm #4 (ongoing). Nếu kết quả vi phạm bất kỳ điều kiện nào → sửa lại cho đến khi thỏa mãn tất cả.
 >
