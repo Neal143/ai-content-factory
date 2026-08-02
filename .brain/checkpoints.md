@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 ### 📅 Ngày 02/08/2026
+#### Thay thế ctx_pwd bằng context_quote chống LLM cheat
+- **Mã khôi phục:** `21ad9c9`
+- **Thẻ (Tag):** `v4.5.1-context-quote`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đóng lỗ hổng bảo mật/quy trình cho phép AI lách luật khi hiệu đính dữ liệu. Bắt buộc hệ thống AI phải trích dẫn nguyên văn bằng chứng từ tài liệu gốc khi đưa ra quyết định, thay vì chỉ cần tìm chuỗi mật khẩu như trước.
+  - **🛠️ Kỹ thuật (Tech):** Thay đổi toàn bộ cơ chế từ `ctx_pwd` (Proof of Access) sang `context_quote` (Proof of Comprehension) trong `prepare_calibration_batches.py` và `SKILL.md`. Script validation giờ sẽ verify chuỗi string >= 20 ký tự phải tồn tại nguyên văn bên trong thẻ `<data_chunk>` của context file tương ứng.
+
+### 📅 Ngày 02/08/2026
 #### Cập nhật format calibration_audit và thêm bước xác nhận vào AGENT.md
 - **Mã khôi phục:** `bed3d64`
 - **Thẻ (Tag):** `v4.5.1-audit-review-gate`
