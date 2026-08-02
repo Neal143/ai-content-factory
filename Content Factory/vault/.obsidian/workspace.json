@@ -187,8 +187,8 @@
   },
   "active": "04da52ce7ae1f3dc",
   "lastOpenFiles": [
+    "recalibrate_runs/session_2026-08-01_15-02/jtbd_recalibrated.json",
     "recalibrate_runs/session_2026-08-01_15-02/calibration_audit.md",
-    "recalibrate_runs/session_2026-08-02_11-08/calibration_audit.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/session_state.json",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/current_calib_batch.json",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_066.md",
@@ -216,12 +216,12 @@
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_044.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_043.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/calib_eval_temp.json",
-    "recalibrate_runs/session_2026-08-01_15-02/jtbd_recalibrated.json",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches",
     "recalibrate_runs/session_2026-08-01_15-02/audiences_parsed.json",
     "recalibrate_runs/session_2026-08-01_15-02",
-    "recalibrate_runs/session_2026-08-02_11-08/recalibration_report.json",
-    "recalibrate_runs/session_2026-08-02_11-08/backup/01-Atomic/Audiences/_audience_index.yaml",
-    "recalibrate_runs/session_2026-08-02_11-08/backup/personas/Vuon-ong-steiner/topic_map.yaml"
+    "recalibrate_runs/session_2026-08-02_21-08/jtbd_recalibrated.json",
+    "recalibrate_runs/session_2026-08-02_21-08/calib_batches/calib_eval_temp.json",
+    "recalibrate_runs/session_2026-08-02_21-08/calib_batches/current_calib_batch.json",
+    "recalibrate_runs/session_2026-08-02_21-08/calib_batches/session_state.json"
   ]
 }
