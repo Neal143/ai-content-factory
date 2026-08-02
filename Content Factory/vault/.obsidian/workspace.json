@@ -187,13 +187,12 @@
   },
   "active": "04da52ce7ae1f3dc",
   "lastOpenFiles": [
-    "02-sources/books/Beyond the rainbow bridge.md",
+    "recalibrate_runs/session_2026-08-02_11-08/calibration_audit.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/session_state.json",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/current_calib_batch.json",
-    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_065.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_066.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_065.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_064.md",
-    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_056.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_063.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_062.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_061.md",
@@ -201,6 +200,7 @@
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_059.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_058.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_057.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_056.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_055.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_054.md",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/ctx_uid_recalib_053.md",
@@ -220,8 +220,8 @@
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches",
     "recalibrate_runs/session_2026-08-01_15-02/audiences_parsed.json",
     "recalibrate_runs/session_2026-08-01_15-02",
-    "recalibrate_runs",
-    "02-sources/books/Good Inside.md.tmp",
-    "01-Atomic_Backup_20260702_160021/Audiences/_audience_index.yaml"
+    "recalibrate_runs/session_2026-08-02_11-08/recalibration_report.json",
+    "recalibrate_runs/session_2026-08-02_11-08/backup/01-Atomic/Audiences/_audience_index.yaml",
+    "recalibrate_runs/session_2026-08-02_11-08/backup/personas/Vuon-ong-steiner/topic_map.yaml"
   ]
 }
