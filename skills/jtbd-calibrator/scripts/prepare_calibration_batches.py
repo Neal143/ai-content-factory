@@ -401,15 +401,12 @@ def validate_calibration_submission(session_dir, submit_file):
                     ctx_rel = os.path.relpath(ctx_abs, run_folder).replace('\\', '/')
                     af.write(f"[{ctx_filename}]({ctx_rel})")
                 af.write(" |\n\n")
+            # Before/After table cho JTBD fields
+            af.write("| Field | Before | After |\n|---|---|---|\n")
+            af.write(f"| **Performer** | {old_performer} | {new_performer} |\n")
+            af.write(f"| **Main Job** | {old_job} | {new_job} |\n")
+            af.write(f"| **Circumstance** | {old_circ} | {new_circ} |\n\n")
             af.write(f"- **File**: `{old_fn}`\n")
-            if changed:
-                af.write(f"- **Performer**: `{old_performer}` -> `{new_performer}`\n")
-                af.write(f"- **Main Job**: `{old_job}` -> `{new_job}`\n")
-                af.write(f"- **Circumstance**: `{old_circ}` -> `{new_circ}`\n")
-            else:
-                af.write(f"- **Performer**: `{new_performer}`\n")
-                af.write(f"- **Main Job**: `{new_job}`\n")
-                af.write(f"- **Circumstance**: `{new_circ}`\n")
             af.write(f"- **Aliases**: {new_aliases}\n")
             af.write(f"- **Reason**: {reason}\n\n")
 

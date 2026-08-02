@@ -59,6 +59,16 @@ Thực thi TUẦN TỰ:
    - Agent truyền: mode `re-calibrate`, `vault_root`, `work_dir` = work_dir đã tạo
    - Đảm bảo thực thi Bước 1B trong SKILL.md.
    - Output: `[work_dir]/jtbd_recalibrated.json`
+
+> ⛔ **CHECKPOINT — Dừng lại và chờ User xác nhận.**
+> Sau khi Skill 1 hoàn tất, Agent PHẢI:
+> 1. Gửi link clickable tới file audit trong chat bằng markdown format:
+>    `[calibration_audit.md](file:///[absolute_path_to_work_dir]/calibration_audit.md)`
+> 2. Thông báo cho User:
+>    - Bước tiếp theo sẽ chạy **Apply Recalibration** (áp dụng các thay đổi JTBD vào vault: đổi tên file audience, cập nhật nội dung JTBD, rebuild `_audience_index.yaml`) và **Audience Curator** (dọn dẹp các audiences trùng lặp ngữ nghĩa sau khi apply).
+>    - Yêu cầu User review file audit và xác nhận để tiếp tục, hoặc cho biết cần điều chỉnh audiences nào.
+> 3. **KHÔNG ĐƯỢC** chạy bước 2 cho đến khi User xác nhận rõ ràng.
+
 2. **Script (Apply Recalibration)**:
    ```bash
    python .agents/skills/jtbd-calibrator/scripts/apply_recalibration.py \
