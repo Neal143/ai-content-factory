@@ -1,5 +1,13 @@
 # Lịch sử Checkpoints
 ### 📅 Ngày 02/08/2026
+#### Cập nhật format calibration_audit và thêm bước xác nhận vào AGENT.md
+- **Mã khôi phục:** `bed3d64`
+- **Thẻ (Tag):** `v4.5.1-audit-review-gate`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Thêm chốt chặn (gate) yêu cầu người dùng xác nhận bản báo cáo audit trước khi hệ thống ghi đè các thay đổi lên dữ liệu thật (vault). Tái cấu trúc lại định dạng bảng báo cáo để người dùng dễ dàng đối chiếu thông tin Trước/Sau.
+  - **🛠️ Kỹ thuật (Tech):** Thay đổi format trong `prepare_calibration_batches.py` từ dạng danh sách liệt kê sang bảng so sánh 3 cột (Before/After) cho các trường JTBD. Bổ sung hướng dẫn dừng chờ xác nhận trong `audience-resolver/AGENT.md`.
+
+### 📅 Ngày 02/08/2026
 #### Đổi tên thư mục recalibrate_runs và cập nhật định dạng link audit
 - **Mã khôi phục:** `5c66c22`
 - **Thẻ (Tag):** `v4.5.1-fix-recalibrate-runs`
