@@ -338,11 +338,11 @@
 |---|---|
 | [Beyond the rainbow bridge#^chunk-22](<../../02-sources/books/Beyond the rainbow bridge.md#^chunk-22>) | [ctx_uid_recalib_021.md](calib_batches/ctx_uid_recalib_021.md) |
 
-| Field | Before | After |
-|---|---|---|
-| **Performer** | cha mẹ | Cha mẹ |
-| **Main Job** | xoa dịu cảm xúc của trẻ | Khôi phục trạng thái tích cực cho con |
-| **Circumstance** | khi trẻ mệt mỏi hoặc quấy khóc | Khi trẻ mệt mỏi hoặc quấy khóc |
+| Field            | Before                         | After                                 |
+| ---------------- | ------------------------------ | ------------------------------------- |
+| **Performer**    | cha mẹ                         | Cha mẹ                                |
+| **Main Job**     | xoa dịu cảm xúc của trẻ        | Khôi phục trạng thái tích cực cho con |
+| **Circumstance** | khi trẻ mệt mỏi hoặc quấy khóc | Khi trẻ mệt mỏi hoặc quấy khóc        |
 
 - **File**: `cha-me_xoa-diu-cam-xuc-cua-tre_khi-tre-met-moi-hoac-quay-khoc`
 - **Aliases**: Dùng lời nói tích cực để dạy con, Xử lý khi trẻ cáu gắt do mệt

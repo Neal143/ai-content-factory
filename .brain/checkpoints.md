@@ -1,4 +1,12 @@
 # Lịch sử Checkpoints
+### 📅 Ngày 03/08/2026
+#### Xóa triệt để các meta hint khỏi context file
+- **Mã khôi phục:** `1ae5131`
+- **Thẻ (Tag):** `v4.5.1-strip-meta-hints`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đảm bảo LLM không thể lách luật hay bị thiên lệch (bias) khi hiệu chỉnh JTBD do việc "nhìn trộm" các metadata từ phiên bản cũ (META_BOOK_AUDIENCE, META_CHUNK_AUDIENCE, v.v.).
+  - **🛠️ Kỹ thuật (Tech):** Cập nhật hàm `strip_meta_hints` trong `prepare_calibration_batches.py` với regex động `^[>\s\*\-]*(?:RESOLVED_[A-Z_]+_META|META_[A-Z_]+_AUDIENCE)\b.*$` để vượt qua các định dạng markdown prefix như blockquote hay in đậm, giúp lọc bỏ hoàn toàn các trường dữ liệu mang tính gợi ý khỏi `ctx_*.md` trước khi cấp phát cho model.
+
 ### 📅 Ngày 02/08/2026
 #### Thay thế ctx_pwd bằng context_quote chống LLM cheat
 - **Mã khôi phục:** `21ad9c9`

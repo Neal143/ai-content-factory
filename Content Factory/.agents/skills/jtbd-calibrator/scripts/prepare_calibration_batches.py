@@ -11,6 +11,17 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
+import re
+
+def strip_meta_hints(text):
+    if not text:
+        return text
+    # Remove lines containing RESOLVED_*_META or META_*_AUDIENCE, ignoring markdown prefixes like >, *, -
+    text = re.sub(r'^[>\s\*\-]*(?:RESOLVED_[A-Z_]+_META|META_[A-Z_]+_AUDIENCE)\b.*$', '', text, flags=re.MULTILINE)
+    # Remove any extra blank lines caused by the removal
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
 def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_file=None, source_link=None):
     try:
         with open(parsed_json_path, 'r', encoding='utf-8') as f:
@@ -93,14 +104,14 @@ def create_calibration_batches(parsed_json_path, split_dir, batch_size, source_f
                     ""
                 ]
                 if item.get("scope") == "book":
-                    ctx_lines.append(f"## {uid} -- BOOK HEADER")
-                    ctx_lines.append(header.strip())
+                    ctx_lines.append(f"## {uid} -- Toan tap {source_link}")
+                    ctx_lines.append(strip_meta_hints(header))
                 else:
                     c_idx = item.get("chunk_index")
                     c_name = item.get("chunk_name", "Unknown")
                     if c_idx is not None and c_idx in chunk_lookup:
                         ctx_lines.append(f"## {uid} -- Chunk {c_idx}: {c_name}")
-                        ctx_lines.append(chunk_lookup[c_idx])
+                        ctx_lines.append(strip_meta_hints(chunk_lookup[c_idx]))
 
                 ctx_path = os.path.join(split_dir, f"ctx_{uid}.md")
                 with open(ctx_path, 'w', encoding='utf-8') as f:
@@ -162,7 +173,7 @@ def create_recalibration_batches(parsed_json_path, split_dir, batch_size):
                 context_text = original_entry.get("context_text", "")
                 original_filename = original_entry.get("original_filename", "Unknown")
                 ctx_lines.append(f"## {uid} -- {original_filename}")
-                ctx_lines.append(context_text)
+                ctx_lines.append(strip_meta_hints(context_text))
 
             ctx_path = os.path.join(split_dir, f"ctx_{uid}.md")
             with open(ctx_path, 'w', encoding='utf-8') as f:
