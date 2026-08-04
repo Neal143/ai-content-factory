@@ -24,7 +24,7 @@ Skill này chạy trong workflow `/book-extractor` (Session 3 - conversation ri�
 
 ```text
 INPUT (nhận từ Agent):
-- Run folder path: `vault/.extraction_runs/books/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
+- Run folder path: `vault/extraction_runs/books/[ten-sach-slug-khong-dau]_[YYYY-MM-DD]/`
 
 Bắt buộc phải có sẵn trong run-folder (từ các Phase/Skill trước):
 - `parsed_metadata.json` (Manifesto Metadata)

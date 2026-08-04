@@ -4,17 +4,17 @@ BOOKS = [
     {
         "name": "Good Inside",
         "wikilink_match": "[[Good Inside",
-        "decision_map": "vault/.extraction_runs/books/good-inside_2026-05-21/audience_decision_map.json"
+        "decision_map": "vault/extraction_runs/books/good-inside_2026-05-21/audience_decision_map.json"
     },
     {
         "name": "Beyond the rainbow bridge",
         "wikilink_match": "[[Beyond the rainbow bridge",
-        "decision_map": "vault/.extraction_runs/books/beyond-the-rainbow-bridge_2026-05-27/audience_decision_map.json"
+        "decision_map": "vault/extraction_runs/books/beyond-the-rainbow-bridge_2026-05-27/audience_decision_map.json"
     },
     {
         "name": "The Whole-Brain Child",
         "wikilink_match": "[[The Whole-Brain Child",
-        "decision_map": "vault/.extraction_runs/books/the-whole-brain-child_2026-04-17/session_3/audience_decision_map.json"
+        "decision_map": "vault/extraction_runs/books/the-whole-brain-child_2026-04-17/session_3/audience_decision_map.json"
     }
 ]
 VAULT_ATOMIC = "vault/01-Atomic"
