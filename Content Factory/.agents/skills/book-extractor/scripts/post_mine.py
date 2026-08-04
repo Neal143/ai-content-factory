@@ -46,12 +46,12 @@ def log(phase, status, message):
 
 def find_run_folder(filepath):
     """Tim [run-folder] dua tren ten sach.
-    Scan cac source-type subdirs (books/, videos/, ...) ben trong .extraction_runs/
+    Scan cac source-type subdirs (books/, videos/, ...) ben trong extraction_runs/
     """
     search = filepath
     for _ in range(5):
         search = os.path.dirname(search)
-        runs_dir = os.path.join(search, '.extraction_runs')
+        runs_dir = os.path.join(search, 'extraction_runs')
         if os.path.isdir(runs_dir):
             # Collect run folders tu tat ca source-type subdirs (books/, videos/, ...)
             all_run_folders = []
@@ -439,7 +439,7 @@ def _write_report(filepath, lines, run_folder=None):
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage: python post_mine.py <path_to_markdown_file> [--run-folder <run_folder>]")
-        print('Example: python post_mine.py "vault/02-sources/books/Book.md" --run-folder ".extraction_runs/books/book_2026-04-11"')
+        print('Example: python post_mine.py "vault/02-sources/books/Book.md" --run-folder "extraction_runs/books/book_2026-04-11"')
         sys.exit(1)
 
     filepath = sys.argv[1]

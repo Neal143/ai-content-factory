@@ -1,8 +1,0 @@
-**[He thong] Handoff 1**
-Workflow: `/book-extractor` (Phase 2)
-Sach: Good Inside (ID: b699bad9-636e-45d4-8431-4ae264659c35) | Run: vault/.extraction_runs/books/good-inside_2026-05-21/ | Cache: vault/02-sources/books/Good Inside.md
-Trang thai: Phase 1 PASS. `current_phase: 2`.
-Yeu cau:
-1. Doc `.agents\workflows\book-extractor.md`.
-2. Nap cau hinh tu `00-blackboard.yaml` trong vault/.extraction_runs/books/good-inside_2026-05-21/.
-3. Kich chay **Buoc 3.5 (Phase 2: Vivid Curation)** ngay lap tuc.

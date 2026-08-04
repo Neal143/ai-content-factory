@@ -36,24 +36,24 @@ Các topic IDs này là **tiếng Anh dạng keyword** (`parenting`, `child-psyc
 
 ### 2.1. File `resolved_topics.json` — KHÔNG tồn tại
 
-**Vị trí kỳ vọng:** `.extraction_runs/good-inside_2026-05-21/resolved_topics.json`  
+**Vị trí kỳ vọng:** `extraction_runs/good-inside_2026-05-21/resolved_topics.json`  
 **Trạng thái thực tế:** Không tồn tại.
 
 File `resolved_topics.json` là output bắt buộc của Bước 1.5 Semantic Dedup (được tạo bởi `topic_manager.py batch-commit`). Việc file này vắng mặt chứng minh **Bước 1.5 chưa bao giờ được thực thi**.
 
 **So sánh với `the-whole-brain-child`:**  
-`.extraction_runs/the-whole-brain-child_2026-04-17/` — cần kiểm tra xem run folder này có `resolved_topics.json` không để xác nhận hệ thống `topic_manager` hoạt động đúng cho sách khác.
+`extraction_runs/the-whole-brain-child_2026-04-17/` — cần kiểm tra xem run folder này có `resolved_topics.json` không để xác nhận hệ thống `topic_manager` hoạt động đúng cho sách khác.
 
 ### 2.2. File `proposed_topics.json` — KHÔNG tồn tại
 
-**Vị trí kỳ vọng:** `.extraction_runs/good-inside_2026-05-21/proposed_topics.json`  
+**Vị trí kỳ vọng:** `extraction_runs/good-inside_2026-05-21/proposed_topics.json`  
 **Trạng thái thực tế:** Không tồn tại.
 
 File `proposed_topics.json` là input cho `topic_manager.py batch-commit` (Batch Bước 4-5 trong `topic_manager.md`). Việc file này vắng mặt xác nhận Agent **cũng chưa chạy Batch Bước 4** (ghi file dedup).
 
 ### 2.3. File `atomizer_context.json` — Dữ liệu bất thường
 
-**Vị trí:** `.extraction_runs/good-inside_2026-05-21/atomizer_context.json`
+**Vị trí:** `extraction_runs/good-inside_2026-05-21/atomizer_context.json`
 
 ```json
 {
@@ -159,5 +159,5 @@ Ngoài ra, có thể bổ sung validation trong `atomizer.py`: kiểm tra `chunk
 
 - **BRIEF:** `docs/BRIEF-DIKW-Index.md` → Nhóm C
 - **SKILL bị vi phạm:** `.agents/skills/book-parser/SKILL.md` (Bước 1.5, L59-61, L96)
-- **Run folder:** `.extraction_runs/good-inside_2026-05-21/`
+- **Run folder:** `extraction_runs/good-inside_2026-05-21/`
 - **Topic Manager:** `.agents/references/topic_manager/topic_manager.md`

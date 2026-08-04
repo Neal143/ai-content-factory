@@ -22,14 +22,14 @@ last_update: 13/07/2026 15:37 (GMT+7)
 ### Bước 1: Tiếp nhận Lệnh & Khởi tạo Blackboard (Agent chính thực hiện)
 
 1. **Khởi tạo Thư mục chạy**:
-   - Tạo thư mục chạy: `vault/.extraction_runs/books/[ten-sach-slug]_[YYYY-MM-DD]/` (với slug là tên sách viết thường, không dấu, ngăn cách bằng dấu gạch nối).
+   - Tạo thư mục chạy: `vault/extraction_runs/books/[ten-sach-slug]_[YYYY-MM-DD]/` (với slug là tên sách viết thường, không dấu, ngăn cách bằng dấu gạch nối).
 2. **Tạo Blackboard**:
    - Tạo tệp `00-blackboard.yaml` trong thư mục chạy để duy trì ngữ cảnh toàn pipeline:
      ```yaml
      book_name: "[Tên Sách]"
      notebook_name: "[Tên Notebook]"
      notebook_id: "" # Sẽ do BookExtractorAgent cập nhật ở Phase 1
-     run_folder: "vault/.extraction_runs/books/[slug]_[YYYY-MM-DD]/"
+     run_folder: "vault/extraction_runs/books/[slug]_[YYYY-MM-DD]/"
      cache_file: "vault/02-sources/books/[Tên Sách].md"
      slug: "[slug]"
      current_phase: 1

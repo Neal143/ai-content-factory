@@ -1,8 +1,0 @@
-**[He thong] Handoff 1**
-Workflow: `/book-extractor` (Phase 2)
-Sach: The Whole-Brain Child (ID: ) | Run: vault/.extraction_runs/books/the-whole-brain-child_2026-04-17/ | Cache: vault/02-sources/books/The Whole-Brain Child.md
-Trang thai: Phase 1 PASS. `current_phase: 2`.
-Yeu cau:
-1. Doc `.agents\workflows\book-extractor.md`.
-2. Nap cau hinh tu `00-blackboard.yaml` trong vault/.extraction_runs/books/the-whole-brain-child_2026-04-17/.
-3. Kich chay **Buoc 3.5 (Phase 2: Vivid Curation)** ngay lap tuc.

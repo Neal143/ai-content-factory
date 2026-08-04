@@ -19,7 +19,7 @@ logic: Re-run Phase 1 book-parser cho good-inside → sinh topics đúng → vi�
 
 **Mục tiêu:** Sinh topics đúng cho good-inside qua Semantic Dedup, tạo `resolved_topics.json`.
 
-**Input có sẵn trong run folder** `.extraction_runs/good-inside_2026-05-21/`:
+**Input có sẵn trong run folder** `extraction_runs/good-inside_2026-05-21/`:
 - `parsed_metadata.json` (332KB)
 - `audience_decision_map.json` (13KB)
 - File cache: `vault/02-sources/books/Good Inside.md`
@@ -32,7 +32,7 @@ logic: Re-run Phase 1 book-parser cho good-inside → sinh topics đúng → vi�
 4. **Bước 1.4 — Self-Check Gate:** Chạy Poka-Yoke checklist trong `topic-taxonomy.md`.
 5. **Bước 1.5 — Semantic Dedup (Batch Mode):** Đọc `topic_manager.md` → Chạy Batch Mode → Tạo `proposed_topics.json` → Chạy `topic_manager.py batch-commit` → Output `resolved_topics.json`.
 
-**Output kỳ vọng:** File `.extraction_runs/good-inside_2026-05-21/resolved_topics.json`:
+**Output kỳ vọng:** File `extraction_runs/good-inside_2026-05-21/resolved_topics.json`:
 ```json
 {
   "book": ["resolved_id_1", "resolved_id_2"],
@@ -52,7 +52,7 @@ logic: Re-run Phase 1 book-parser cho good-inside → sinh topics đúng → vi�
 
 ## Task 2.2: Tạo lại `atomizer_context.json`
 
-**File:** `.extraction_runs/good-inside_2026-05-21/atomizer_context.json`
+**File:** `extraction_runs/good-inside_2026-05-21/atomizer_context.json`
 
 **Thao tác:** Đọc `resolved_topics.json` (output Task 2.1) → tạo lại file theo SKILL.md L80-L96:
 
