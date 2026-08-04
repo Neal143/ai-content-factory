@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-sources/books/Beyond the rainbow bridge.md",
+                "file": "recalibrate_runs/session_2026-08-01_15-02/calibration_audit.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Beyond the rainbow bridge"
+              "title": "calibration_audit"
             }
           }
         ],
@@ -202,8 +202,8 @@
   },
   "active": "770e29d54709c8a9",
   "lastOpenFiles": [
-    "recalibrate_runs/session_2026-08-01_15-02/calibration_audit.md",
     "02-sources/books/Beyond the rainbow bridge.md",
+    "recalibrate_runs/session_2026-08-01_15-02/calibration_audit.md",
     "01-Atomic/Insights/BTRB_kiet-suc-vi-thiet-lap-ky-luat-that-bai.md",
     "recalibrate_runs/session_2026-08-01_15-02/jtbd_recalibrated.json",
     "recalibrate_runs/session_2026-08-01_15-02/calib_batches/session_state.json",
