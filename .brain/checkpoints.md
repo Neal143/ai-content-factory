@@ -1,4 +1,12 @@
 # Lịch sử Checkpoints
+### 📅 Ngày 04/08/2026
+#### Đổi tên thư mục .extraction_runs thành extraction_runs và sửa lỗi encoding
+- **Mã khôi phục:** `821164a`
+- **Thẻ (Tag):** `v4.5.1-rename-extraction-runs`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Đổi tên thư mục ẩn `.extraction_runs` thành thư mục hiển thị bình thường `extraction_runs` để tránh lỗi hệ điều hành và app.
+  - **🛠️ Kỹ thuật (Tech):** Thay thế toàn bộ hardcode liên quan đến `.extraction_runs` trong script/workflow. Khắc phục lỗi Double-Encoding (mojibake) trên PowerShell để tuân thủ UTF-8 BOM chuẩn.
+
 ### 📅 Ngày 03/08/2026
 #### Xóa triệt để các meta hint khỏi context file
 - **Mã khôi phục:** `1ae5131`
@@ -382,8 +390,8 @@
 - **Mã khôi phục:** `f7dbd26`
 - **Thẻ (Tag):** `v3.7.1-transfer-extraction`
 - **Nội dung chính:**
-  - **📱 Sản phẩm / Business:** Nâng cấp workflow export sách thành hệ thống 2 chiều (Export/Import). Đổi tên `/export-extraction` → `/transfer-extraction`. Tạo script import tự động đưa dữ liệu sách từ folder tạm về đúng vị trí trong factory mới, có cơ chế phát hiện conflict và báo cáo cụ thể. Migrate cấu trúc `vault/.extraction_runs/` flat → subfolder `books/`.
-  - **🛠️ Kỹ thuật (Tech):** Tạo `import_extraction_runs.ps1` (move cache file → `02-sources/books/`, move run folder → `.extraction_runs/books/`, conflict detection 2 loại, auto-cleanup). Xóa `export-extraction.md`, tạo `transfer-extraction.md` (dual-mode detection Export/Import). Fix `export_extraction_runs.ps1`: thêm `vault/` prefix cho `run_folder` (L112, L174, L199), sửa `pipeline_report.md` chỉ giữ phần Session 1. Commit cả `vault/.extraction_runs/books/` (trước đó chưa bao giờ tracked) và `vault/.extraction_runs_export/`.
+  - **📱 Sản phẩm / Business:** Nâng cấp workflow export sách thành hệ thống 2 chiều (Export/Import). Đổi tên `/export-extraction` → `/transfer-extraction`. Tạo script import tự động đưa dữ liệu sách từ folder tạm về đúng vị trí trong factory mới, có cơ chế phát hiện conflict và báo cáo cụ thể. Migrate cấu trúc `vault/extraction_runs/` flat → subfolder `books/`.
+  - **🛠️ Kỹ thuật (Tech):** Tạo `import_extraction_runs.ps1` (move cache file → `02-sources/books/`, move run folder → `extraction_runs/books/`, conflict detection 2 loại, auto-cleanup). Xóa `export-extraction.md`, tạo `transfer-extraction.md` (dual-mode detection Export/Import). Fix `export_extraction_runs.ps1`: thêm `vault/` prefix cho `run_folder` (L112, L174, L199), sửa `pipeline_report.md` chỉ giữ phần Session 1. Commit cả `vault/extraction_runs/books/` (trước đó chưa bao giờ tracked) và `vault/extraction_runs_export/`.
 
 ### 📅 Ngày 18/06/2026
 #### Bổ sung hướng dẫn đọc mapper_raw trước khi chọn Pillar
