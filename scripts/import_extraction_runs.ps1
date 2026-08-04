@@ -2,7 +2,7 @@
 # Last update: 19/06/2026 20:55 (GMT+7)
 # Vai tro: Import du lieu tu export folder ve dung vi tri trong factory hien tai.
 # Su dung khi nao: Duoc goi boi workflow /transfer-extraction (mode Import).
-# Output: Cac file duoc di chuyen tu export folder ve vault/.extraction_runs/books/ va vault/02-sources/books/.
+# Output: Cac file duoc di chuyen tu export folder ve vault/extraction_runs/books/ va vault/02-sources/books/.
 # Tom tat logic hoat dong:
 #   1. Khoi tao paths, kiem tra export folder ton tai.
 #   2. Lap qua tung sach trong export folder:
@@ -18,7 +18,7 @@ param(
 
     [string]$VaultPath = "vault",        # Path tuong doi toi vault
 
-    [string]$ExportPath = ""             # Default: vault/.extraction_runs_export
+    [string]$ExportPath = ""             # Default: vault/extraction_runs_export
 )
 
 # â”€â”€ Block 1: Khoi tao paths â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -27,13 +27,13 @@ $BaseDir = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $VaultDir = Join-Path $BaseDir $VaultPath
 
 if ([string]::IsNullOrEmpty($ExportPath)) {
-    $ExportDir = Join-Path $VaultDir ".extraction_runs_export"
+    $ExportDir = Join-Path $VaultDir "extraction_runs_export"
 } else {
     $ExportDir = $ExportPath
 }
 
 $ExportSourceDir = Join-Path $ExportDir $SourceType
-$TargetRunsDir = Join-Path (Join-Path $VaultDir ".extraction_runs") $SourceType
+$TargetRunsDir = Join-Path (Join-Path $VaultDir "extraction_runs") $SourceType
 $TargetBooksDir = Join-Path (Join-Path $VaultDir "02-sources") "books"
 
 # Kiem tra export folder ton tai

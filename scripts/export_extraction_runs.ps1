@@ -1,8 +1,8 @@
-# Ten file: export_extraction_runs.ps1
+﻿# Ten file: export_extraction_runs.ps1
 # Last update: 18/06/2026 23:30 (GMT+7)
 # Vai tro: Export du lieu Session 1 cua book-extractor sang folder rieng de chuyen sang factory khac.
 # Su dung khi nao: Duoc goi boi workflow /transfer-extraction (mode Export) hoac chay truc tiep tu command line.
-# Output: Folder vault/.extraction_runs_export/ chua du lieu S1 da normalize + cache files.
+# Output: Folder vault/extraction_runs_export/ chua du lieu S1 da normalize + cache files.
 # Tom tat logic hoat dong:
 #   1. Khoi tao paths, kiem tra output folder.
 #   2. Lap qua tung sach: doc blackboard, validate S1, copy S1 data (normalize flat->subfolder),
@@ -18,7 +18,7 @@ param(
 
     [string]$VaultPath = "vault",    # Path tuong doi toi vault (tuong doi voi Content Factory root)
 
-    [string]$OutputPath = "",        # Default: vault/.extraction_runs_export
+    [string]$OutputPath = "",        # Default: vault/extraction_runs_export
 
     [switch]$Force                   # Neu co, xoa output cu khong hoi
 )
@@ -27,11 +27,11 @@ param(
 
 $BaseDir = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $VaultDir = Join-Path $BaseDir $VaultPath
-$SourceRunsDir = Join-Path (Join-Path $VaultDir ".extraction_runs") $SourceType
+$SourceRunsDir = Join-Path (Join-Path $VaultDir "extraction_runs") $SourceType
 $BooksDir = Join-Path (Join-Path $VaultDir "02-sources") "books"
 
 if ([string]::IsNullOrEmpty($OutputPath)) {
-    $OutputDir = Join-Path $VaultDir ".extraction_runs_export"
+    $OutputDir = Join-Path $VaultDir "extraction_runs_export"
 } else {
     $OutputDir = $OutputPath
 }
@@ -109,7 +109,7 @@ foreach ($folder in $BookFolders) {
 
     # Derive run_folder (co prefix "vault/")
     if (-not $bb['run_folder']) {
-        $bb['run_folder'] = "vault/.extraction_runs/$SourceType/$folder/"
+        $bb['run_folder'] = "vault/extraction_runs/$SourceType/$folder/"
     }
 
     # notebook_id co the rong
@@ -185,7 +185,7 @@ foreach ($folder in $BookFolders) {
 book_name: "$($bb['book_name'])"
 notebook_name: ""
 notebook_id: "$($bb['notebook_id'])"
-run_folder: "vault/.extraction_runs/$SourceType/$folder/"
+run_folder: "vault/extraction_runs/$SourceType/$folder/"
 cache_file: "$($bb['cache_file'])"
 slug: "$($bb['slug'])"
 current_phase: 2
@@ -210,7 +210,7 @@ current_phase: 2
 
     # â”€â”€ Block 2.7: Sinh file HANDOFF_SESSION2.txt â”€â”€
     # File prompt san de user copy-paste vao chat moi tai factory dich
-    $runFolderVal = "vault/.extraction_runs/$SourceType/$folder/"
+    $runFolderVal = "vault/extraction_runs/$SourceType/$folder/"
     $handoffContent = @"
 **[He thong] Handoff 1**
 Workflow: ``/book-extractor`` (Phase 2)
@@ -251,7 +251,7 @@ if ($warnings.Count -gt 0) {
 
 Write-Host "HOW TO IMPORT:"
 Write-Host "  Voi moi folder sach trong $SourceType/:"
-Write-Host "  1. Copy folder [book-slug_date]/ vao vault/.extraction_runs/$SourceType/ cua factory moi"
+Write-Host "  1. Copy folder [book-slug_date]/ vao vault/extraction_runs/$SourceType/ cua factory moi"
 Write-Host "  2. Move file [Ten Sach].md tu trong run folder vao vault/02-sources/books/ cua factory moi"
 Write-Host "  3. Xoa file [Ten Sach].md khoi run folder sau khi da move"
 Write-Host "  4. Mo file HANDOFF_SESSION2.txt trong run folder, copy noi dung va dan vao chat moi"
