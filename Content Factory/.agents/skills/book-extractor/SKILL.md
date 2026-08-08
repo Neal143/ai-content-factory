@@ -144,11 +144,12 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 
 **Phase 1 — JTBD Identification:**
 
-**②-1a.** Agent gọi CLI cho JTBD:
-  `nlm notebook query <notebook_id> "Tham chiếu file prompt-jtbd-chunk-v1.md, hãy xác định JTBD audience cho Chunk N: [Tên Chunk]. JTBD cấp sách: [book_audience]." --json`
-  Agent parse JSON output → extract trường `answer`.
-  Agent lưu answer vào `[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt`.
+**②-1a.** Agent tạo file query cho JTBD:
+  Agent ghi nội dung query vào `[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd_query.txt`:
+  `Tham chiếu file prompt-jtbd-chunk-v1.md, hãy xác định JTBD audience cho Chunk N: [Tên Chunk]. JTBD cấp sách: [book_audience].`
   _(Tạo thư mục `jtbd_raw` nếu chưa tồn tại)_
+  Agent gọi:
+  `python .agents/skills/book-extractor/scripts/nlm_query.py <notebook_id> "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd_query.txt" "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt"`
 
 **②-1b.** Agent gọi gate_checker.py chế độ JTBD-only:
   `python .agents/skills/book-extractor/scripts/gate_checker.py "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt" [chunk_index] "[chunk_name]" --jtbd-only`
@@ -160,11 +161,15 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 
 **Phase 2 — Content Extraction:**
 
-**②-2a.** Agent gọi CLI cho Content (prompt ngắn gọn hơn do đã có JTBD ở Phase 1):
-  `nlm notebook query <notebook_id> "Tham chiếu file prompt-miner-v4.md, hãy trích xuất CHÍNH XÁC Content Chunk sau: Chunk N: [Tên Chunk]. Ghi chú: Sử dụng [audience] và [evidence] đã xác nhận từ trước." --json`
+**②-2a.** Agent tạo file query cho Content và gọi NLM:
+  Lấy đường dẫn file query từ trường `query_file` của `next_chunk.py`.
+  Agent ghi vào file đó nội dung BẮT BUỘC như sau (nhúng `audience` và `evidence` từ Phase 1):
+  `Tham chiếu file prompt-miner-v4.md, hãy trích xuất CHÍNH XÁC Content Chunk sau: Chunk N: [Tên Chunk]. Ghi chú: Sử dụng Audience: "[audience]" và Evidence: "[evidence]" để làm ngữ cảnh xác định Insight và Knowledge.`
+  Sau đó, Agent chạy trực tiếp lệnh lấy từ `cli_nlm_query` của `next_chunk.py`.
+  ⚠️ **KHÔNG** tự compose CLI command cho việc chạy `nlm_query.py`.
 
-**②-2b.** Agent lưu nội dung vào file path lấy từ trường `raw_file` (output `next_chunk.py`).
-  ⚠️ Nếu NLM trả exit code ≠ 0 → báo lỗi mạng, retry max 3 lần.
+**②-2b.** Agent kiểm tra file `[raw_file]` đã được `nlm_query.py` tạo ra hay chưa.
+  ⚠️ Nếu NLM trả error hoặc script return code ≠ 0 → báo lỗi mạng, retry max 3 lần.
 
 **②-2c.** Agent gọi inject_jtbd.py (đọc JTBD từ Phase 1 response file, không truyền tiếng Việt qua CLI args):
   `python .agents/skills/book-extractor/scripts/inject_jtbd.py "[raw_file]" --jtbd-response "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt"`

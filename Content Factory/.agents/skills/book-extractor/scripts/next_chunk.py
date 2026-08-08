@@ -94,8 +94,12 @@ def find_next_chunk(ledger_path, cache_path):
     # ── Derive paths ──
     run_folder = os.path.dirname(ledger_path)
     raw_file = os.path.join(run_folder, f"chunk_{chunk_nn}_raw.txt")
-    gate_script = ".agent/skills/book-extractor/scripts/gate_checker.py"
-    append_script = ".agent/skills/book-extractor/scripts/append_cache.py"
+    gate_script = ".agents/skills/book-extractor/scripts/gate_checker.py"
+    append_script = ".agents/skills/book-extractor/scripts/append_cache.py"
+    nlm_query_script = ".agents/skills/book-extractor/scripts/nlm_query.py"
+
+    # Agent se tu ghi noi dung vao query_file nay o Phase 2
+    query_file = os.path.join(run_folder, f"chunk_{chunk_nn}_query.txt")
 
     return {
         "done": False,
@@ -105,12 +109,12 @@ def find_next_chunk(ledger_path, cache_path):
         "chunk_nn": chunk_nn,
         "chunk_name": chunk_name,
         "raw_file": raw_file,
+        "query_file": query_file,
         "cache_file": cache_path,
         "progress": f"{done_count}/{total_chunks} done, {len(pending)} pending, {fatal_count} fatal",
         "cli_nlm_query": (
-            f'nlm notebook query {notebook_id} '
-            f'"Tham chiếu file prompt-miner-v4.md, hãy trích xuất CHÍNH XÁC '
-            f'Content Chunk sau: Chunk {next_idx}: {chunk_name}." --json'
+            f'python {nlm_query_script} '
+            f'{notebook_id} "{query_file}" "{raw_file}"'
         ),
         "cli_gate_checker": (
             f'python {gate_script} '
