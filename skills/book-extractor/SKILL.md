@@ -92,7 +92,7 @@ Bạn là chuyên gia điều phối trích xuất sách quy mô lớn. Nhiệm 
 
 - Agent gọi script Orchestrator: `python .agents/skills/book-extractor/scripts/run_mapper.py "[run-folder]"`
 - Lệnh tự động đọc data, gọi NLM và lưu kết quả vào `[run-folder]/session_1/mapper_raw.md`. 
-  ⚠️ Nếu script trả error code ≠ 0 → retry tối đa 2 lần.
+  ⚠️ Nếu script trả error code ≠ 0 → retry tối đa 2 lần. Đọc stderr để chẩn đoán.
 
 ### Bước 1.5: Mapper Validation Gate
 
@@ -147,7 +147,7 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 **②-1a.** Agent gọi script chạy JTBD:
   Agent chạy trực tiếp lệnh được cung cấp trong trường `cli_run_jtbd` của `next_chunk.py`.
   Script sẽ tự động đọc dữ liệu, gọi NLM và lưu kết quả vào thư mục `jtbd_raw`.
-  ⚠️ Nếu script trả error code ≠ 0 → báo lỗi mạng, retry max 3 lần.
+  ⚠️ Nếu script trả error code ≠ 0 → báo lỗi mạng, retry max 3 lần. Đọc stderr để chẩn đoán.
 
 **②-1b.** Agent gọi gate_checker.py chế độ JTBD-only:
   `python .agents/skills/book-extractor/scripts/gate_checker.py "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt" [chunk_index] "READ_FROM_CACHE" --jtbd-only`
@@ -163,7 +163,7 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 **②-2a.** Agent gọi script chạy Content:
   Agent chạy trực tiếp lệnh được cung cấp trong trường `cli_run_miner` của `next_chunk.py`.
   Script sẽ tự động ghép Audience, Evidence từ Phase 1, gọi NLM và lưu kết quả vào `raw_file`.
-  ⚠️ Nếu script trả error code ≠ 0 → báo lỗi mạng, retry max 3 lần.
+  ⚠️ Nếu script trả error code ≠ 0 → báo lỗi mạng, retry max 3 lần. Đọc stderr để chẩn đoán.
 
 **②-2c.** Agent gọi inject_jtbd.py (đọc JTBD từ Phase 1 response file, không truyền tiếng Việt qua CLI args):
   `python .agents/skills/book-extractor/scripts/inject_jtbd.py "[raw_file]" --jtbd-response "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt"`
