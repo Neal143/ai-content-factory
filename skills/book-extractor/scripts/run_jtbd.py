@@ -8,7 +8,7 @@ Tóm tắt logic: Đọc progress.yaml & cache -> Ghép query -> Gọi NLM -> L�
 """
 import sys, os, yaml, json, subprocess, re
 
-def run_jtbd(run_folder, chunk_index, cache_file):
+def run_jtbd(run_folder, chunk_index, cache_file, feedback=None):
     chunk_idx = int(chunk_index)
     ledger_path = os.path.join(run_folder, "session_1", "miner_progress.yaml")
     with open(ledger_path, 'r', encoding='utf-8') as f:
@@ -30,6 +30,8 @@ def run_jtbd(run_folder, chunk_index, cache_file):
         print("ERROR: Missing chunk_name or book_audience in cache")
         return False
     query = f"Tham chiếu file prompt-jtbd-chunk-v1.md, hãy xác định JTBD audience cho Chunk {chunk_idx}: {chunk_name}. JTBD cấp sách: {book_audience}."
+    if feedback:
+        query += f" CHU Y: Lan truoc vi pham: {feedback}. Hay viet lai theo dung quy trinh trong prompt-jtbd-chunk-v1.md."
     res = subprocess.run(['nlm', 'notebook', 'query', nb_id, query, '--json'], capture_output=True, text=True, encoding='utf-8')
     if res.returncode != 0:
         print(f"NLM ERROR: {res.stderr}")
@@ -49,6 +51,11 @@ def run_jtbd(run_folder, chunk_index, cache_file):
 
 if __name__ == '__main__':
     if len(sys.argv) < 4:
-        print("Usage: python run_jtbd.py <run_folder> <chunk_index> <cache_file>")
+        print("Usage: python run_jtbd.py <run_folder> <chunk_index> <cache_file> [--feedback \"...\"]")
         sys.exit(1)
-    sys.exit(0 if run_jtbd(sys.argv[1], sys.argv[2], sys.argv[3]) else 1)
+    fb = None
+    if '--feedback' in sys.argv:
+        fb_idx = sys.argv.index('--feedback')
+        if fb_idx + 1 < len(sys.argv):
+            fb = sys.argv[fb_idx + 1]
+    sys.exit(0 if run_jtbd(sys.argv[1], sys.argv[2], sys.argv[3], feedback=fb) else 1)

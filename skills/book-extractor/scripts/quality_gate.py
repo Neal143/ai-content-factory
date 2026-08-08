@@ -123,16 +123,17 @@ def check_gate_2(answer: str, expected_chunk_name: str, chunk_index: int = 0, ca
 
 def check_jtbd_keywords(jtbd_str: str) -> Optional[str]:
     """Quet tu khoa vi pham 6 loi JTBD. Tra ve violation string hoac None."""
+    BANNED_COMPOUND = [
+        (r'\b(và|hoặc|and|or)\b', 'Loi [2] CAM dung VA/HOAC gop nhieu y'),
+        (r'[,;]', 'Loi [2] CAM dung dau phay/cham phay (dong nghia VA)'),
+    ]
     BANNED_MAIN_JOB_PREFIX = [
         (r'^(giúp|help)', 'Loi [1] CAM prefix (Giup toi...)'),
     ]
     BANNED_MAIN_JOB_SUFFIX = [
         (r'\b(nhằm|để mà|sao cho)\b', 'Loi [6] CAM nhet menh de muc dich'),
-        (r'\b(hiệu quả|nhanh|dễ dàng|an toàn)\b', 'Loi [6] CAM tinh tu chi chat luong'),
+        (r'\b(hiệu quả|nhanh|dễ dàng|an toàn|toàn diện)\b', 'Loi [6] CAM tinh tu chi chat luong'),
         (r'\b(tận hưởng|mà không)\b', 'Loi [6] CAM ky vong cam xuc'),
-    ]
-    BANNED_CIRCUMSTANCE = [
-        (r'\b(và|hoặc|and|or)\b', 'Loi [2] CAM dung VA/HOAC gop nhieu y')
     ]
 
     if not jtbd_str.startswith('"Người" muốn'):
@@ -146,12 +147,15 @@ def check_jtbd_keywords(jtbd_str: str) -> Optional[str]:
     circumstance = parts[1].strip()
 
     violations = []
+    # Quet compound (VA/HOAC/,/;) cho CA HAI main_job va circumstance
+    for pattern, msg in BANNED_COMPOUND:
+        if re.search(pattern, main_job, re.IGNORECASE):
+            violations.append(f"main_job: {msg}")
+        if re.search(pattern, circumstance, re.IGNORECASE):
+            violations.append(f"circumstance: {msg}")
     for pattern, msg in BANNED_MAIN_JOB_PREFIX + BANNED_MAIN_JOB_SUFFIX:
         if re.search(pattern, main_job, re.IGNORECASE):
             violations.append(f"main_job: {msg}")
-    for pattern, msg in BANNED_CIRCUMSTANCE:
-        if re.search(pattern, circumstance, re.IGNORECASE):
-            violations.append(f"circumstance: {msg}")
     if violations:
         return "JTBD vi pham: " + "; ".join(violations)
     return None

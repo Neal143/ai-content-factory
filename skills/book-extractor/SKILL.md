@@ -155,7 +155,10 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 
 **②-1c.** Đọc kết quả từ file `[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd_gate.json` → lấy trường `type`:
 → `"JTBD_PASS"` → Lưu `audience` và `evidence` cho Phase 2. Chuyển Phase 2.
-→ `"JTBD_RETRY"` → Gửi NLM query JTBD lại (kèm `violation_detail` từ gate file), lưu đè file `chunk_NN_jtbd.txt`, chạy lại gate_checker.
+→ `"JTBD_RETRY"` → Agent đọc `violation_detail` từ gate file, rồi chạy lại `cli_run_jtbd` nhưng **nối thêm** `--feedback "[violation_detail]"`. Ví dụ:
+   `python .../run_jtbd.py "[run-folder]" [chunk_index] "[cache_file]" --feedback "main_job: Loi [2] CAM dung VA/HOAC gop nhieu y"`
+   Script sẽ nối feedback vào query gửi NLM → NLM biết lần trước sai gì → xác suất sửa đúng cao hơn.
+   Lưu đè file `chunk_NN_jtbd.txt`, chạy lại gate_checker.
    Hết `max_retry` (3 lần) → Dùng `[NO_JTBD_FOUND]` làm fallback. Chuyển Phase 2.
 
 **Phase 2 — Content Extraction:**

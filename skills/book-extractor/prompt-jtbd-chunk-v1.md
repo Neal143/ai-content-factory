@@ -1,9 +1,9 @@
 ---
-name: JTBD Chunk Audience Identifier v1
+name: JTBD Chunk Audience Identifier v2
 description: >
   Prompt chuyên biệt để NLM xác định JTBD audience cho từng chunk sách.
   Được sử dụng trong Phase 1 của 2-phase extraction flow.
-  Last update: 04/08/2026 (GMT+7)
+  Last update: 09/08/2026 (GMT+7)
 ---
 
 # JTBD Audience Identifier — Chunk Level
@@ -18,7 +18,7 @@ Xác định chính xác JTBD (Jobs-To-Be-Done) audience cho chunk sách đượ
 
 ## Output Format BẮT BUỘC
 ```
-META_CHUNK_AUDIENCE: chunk_audience=[Điền CHÍNH XÁC 1 câu JTBD theo công thức bên dưới]
+META_CHUNK_AUDIENCE: chunk_audience=[Điền CHÍNH XÁC 1 câu JTBD theo quy trình bên dưới]
 _Căn cứ:_ [Trích dẫn nguyên văn tối đa 5 câu từ chunk — TUYỆT ĐỐI KHÔNG tự sáng tác]
 ```
 
@@ -27,65 +27,96 @@ _Căn cứ:_ [Trích dẫn nguyên văn tối đa 5 câu từ chunk — TUYỆT 
 
 ---
 
-## Hướng dẫn chi tiết
+## Quy trình xác định Main Job
 
-### 1. Định nghĩa Main Job
+Main Job là **việc/nhiệm vụ chức năng cụ thể DUY NHẤT** mà người đọc muốn hoàn thành sau khi đọc chunk này.
 
-Main Job là **việc/nhiệm vụ chức năng cụ thể** mà người đọc muốn hoàn thành:
-- Phải có trạng thái "hoàn thành" rõ ràng
-- **Test:** "[Tân ngữ] đã được [Verb] → người đọc có thể dừng lại vì mục tiêu đã đạt?" Nếu KHÔNG (vẫn phải tiếp tục ngày mai) → verb ongoing.
-  - ✅ "Kế hoạch kỳ nghỉ đã được lên → dừng lại?" → Có → PASS
-  - ❌ "Tài chính đã được quản lý → dừng lại?" → Không, ngày mai vẫn phải quản lý → FAIL
-- Diễn đạt: _Động từ + Đối tượng_ cụ thể
+**Công thức phát biểu:** `Động từ + Tân ngữ + [Clarifier tùy chọn]`
 
-### 2. Cách tìm Main Job trong sách
+Ví dụ mẫu chuẩn:
+- "Thiết lập nếp sinh hoạt cho con" *(Verb + Object + Clarifier)*
+- "Lập ngân sách gia đình" *(Verb + Object)*
+- "Nhận diện dấu hiệu kiệt sức" *(Verb + Object)*
 
-Tác giả sách tri thức thường nhắc đến việc/nhiệm vụ muốn giải quyết cho người đọc rất ít (1-2 lần), không phải nội dung chính (so với giải pháp/cảm xúc). Tìm tín hiệu:
-- Đầu hoặc cuối chapter: "Chương này giúp bạn...", "Mục tiêu là...", "Sau khi đọc, bạn sẽ..."
+### Bước 1: Tìm tín hiệu Job trong chunk
+
+Tác giả sách tri thức thường nhắc đến việc/nhiệm vụ muốn giải quyết cho người đọc rất ít (1-2 lần). Tìm tín hiệu:
+- Đầu hoặc cuối chapter: "Chương này giúp bạn...", "Mục tiêu là..."
 - Suy từ nội dung: chunk dạy/hướng dẫn người đọc hoàn thành việc gì cụ thể?
 
 > **Lưu ý:** Không nhầm "vấn đề" (bao gồm cả nhu cầu/kỳ vọng) với "việc/nhiệm vụ".
 > - Vấn đề: "Cha mẹ muốn con 2 tuổi nghe lời nhưng con chống đối" (chứa cả Need/Why)
 > - Việc: "Đạt được sự hợp tác của trẻ trong các hoạt động hàng ngày" (chỉ Main Job)
 
-### 3. Ổn định qua thời gian
+### Bước 2: Kiểm tra tính ĐƠN TRỊ
 
-Viết sao cho câu lệnh vẫn đúng ngay cả khi công nghệ thay đổi.
+Main Job phải là DUY NHẤT 1 hành động. Nếu phát hiện nhiều hành động (tín hiệu: chứa "và", "hoặc", dấu phẩy "," hoặc chấm phẩy ";"):
+→ Hỏi "Why?" 1 lần để gộp thành 1 Big Job bao trùm.
 
-### 4. Tiêu chuẩn bắt buộc
-
-❌ **6 LỖI BỊ CẤM:**
-
-| # | Lỗi | Ví dụ sai → đúng |
+| Sai (compound) | Why? | Đúng (1 Big Job) |
 |---|---|---|
-| [1] | CẤM prefix/xưng hô | ❌ "Giúp tôi lên kế hoạch" → ✅ "Lên kế hoạch kỳ nghỉ" |
-| [2] | CẤM "VÀ"/"HOẶC" gộp nhiều ý | ❌ "Nấu ăn và dọn dẹp" → ✅ "Nấu bữa ăn gia đình" |
-| [3] | CẤM hành vi cơ học không mục tiêu | ❌ "Nhìn vào bức tranh" → ✅ "Thấu hiểu tác phẩm nghệ thuật" |
-| [4] | CẤM công nghệ/giải pháp | ❌ "Dùng ChatGPT viết email" → ✅ "Soạn email chuyên nghiệp" |
-| [5] | CẤM góc nhìn quan sát | ❌ "Mọi người thích tham dự..." → ✅ "Tham dự..." |
-| [6] | CẤM mệnh đề mục đích (ví dụ: "nhằm...", "sao cho...", "để mà..."...), tính từ/trạng từ chỉ chất lượng (ví dụ: "nhanh", "dễ dàng", "hiệu quả", "an toàn", "toàn diện"...), kỳ vọng cảm xúc (ví dụ: "tận hưởng", "mà không"...) | ❌ "Quản lý tài chính hiệu quả nhằm tự do" → ✅ "Lập ngân sách gia đình" |
+| "Rửa rau và cắt thịt" | Để chuẩn bị bữa ăn | "Chuẩn bị bữa ăn" |
+| "Điều chỉnh quần áo, mũ đội đầu cho trẻ" | Để bảo vệ thân nhiệt | "Bảo vệ thân nhiệt cho trẻ" |
+| "Sắp xếp thời gian ăn, ngủ và chơi" | Để thiết lập nếp sinh hoạt | "Thiết lập nếp sinh hoạt cho trẻ" |
 
-Lỗi [6] áp dụng cho cả Main Job và Circumstances.
+### Bước 3: Kiểm tra trạng thái kết thúc (Telic Test)
 
-### 5. Circumstances
+Áp dụng Litmus Test: "[Tân ngữ] đã được [Verb] → người đọc có thể dừng lại vì mục tiêu đã đạt?"
 
-- Circumstances là **bối cảnh/tình huống mà NGƯỜI ĐỌC thực hiện Main Job**, KHÔNG phải bối cảnh viết sách, bối cảnh tác giả, hay bối cảnh nội dung chapter.
-- BẮT BUỘC bắt đầu bằng _"Khi..."_
-- Mô tả tình huống khách quan (Thời gian / Địa điểm / Trạng thái thực hiện Main Job)
-- ⚠️ **QUY TẮC CHỦ NGỮ BẮT BUỘC:** Khi Circumstance liên quan đến hành vi/trạng thái của ai đó, BẮT BUỘC nêu rõ chủ thể.
-  - ❌ "Khi đối mặt với áp lực" → ✅ "Khi cha mẹ đối mặt với áp lực từ con"
-- ⚠️ **CẢNH BÁO:** Cấm tuyệt đối nhét Insight (nỗi đau, bế tắc, nỗi sợ) vào Circumstances.
-
-### 6. Ví dụ tổng hợp
-
-| ❌ Sai | Lý do | ✅ Đúng |
+| Sai (ongoing) | Test | Đúng (telic) |
 |---|---|---|
-| "Quản lý tài chính" | "tài chính đã được quản lý → dừng lại?" → Không → ongoing | "Lập ngân sách gia đình" |
-| "Giúp tôi nuôi dạy con" | prefix + "con đã được nuôi dạy → dừng lại?" → Không → ongoing | "Thiết lập kỷ luật cho con" |
-| "Nấu ăn hiệu quả và an toàn" | compound + qualifying adj | "Chuẩn bị bữa ăn cho gia đình" |
-| "Chăm sóc sức khỏe tâm thần nhằm sống hạnh phúc" | "sức khỏe đã được chăm sóc → dừng lại?" → Không → ongoing + mệnh đề mục đích | "Nhận diện dấu hiệu kiệt sức" |
+| "Quản lý tài chính" | "Tài chính đã được quản lý → dừng?" → Không | "Lập ngân sách gia đình" |
+| "Nuôi dạy con" | "Con đã được nuôi dạy → dừng?" → Không | "Thiết lập kỷ luật cho con" |
+| "Chăm sóc sức khỏe" | "Sức khỏe đã được chăm sóc → dừng?" → Không | "Nhận diện dấu hiệu kiệt sức" |
 
-### 7. Chống ảo giác
+### Bước 4: Trừu tượng hóa — Loại bỏ giải pháp/công cụ cụ thể
+
+Main Job phải ổn định qua thời gian, không gắn với công cụ hay phương pháp cụ thể. Nếu Main Job chứa tên công cụ, vật liệu, hoặc giải pháp cụ thể → trừu tượng hóa lên mục tiêu gốc.
+
+| Sai (chứa giải pháp) | Đúng (mục tiêu gốc) |
+|---|---|
+| "Chuẩn bị khối gỗ, vỏ sò và khăn vải" | "Trang bị không gian chơi cho trẻ" |
+| "Dùng ChatGPT viết email" | "Soạn email chuyên nghiệp" |
+| "Loại bỏ đồ chơi nhựa khỏi phòng" | "Chọn lọc đồ chơi phù hợp cho trẻ" |
+
+### Bước 5: Loại bỏ Need/Why
+
+Tách triệt để mục tiêu (Job) ra khỏi nhu cầu/thước đo thành công (Need/Why). Ba nhóm cần loại bỏ:
+
+1. **Tính từ chỉ chất lượng:** nhanh, dễ dàng, hiệu quả, an toàn, toàn diện...
+2. **Kỳ vọng cảm xúc:** tận hưởng, mà không, bớt lo lắng...
+3. **Mệnh đề mục đích:** nhằm..., sao cho..., để mà...
+
+| Sai | Loại lỗi | Đúng |
+|---|---|---|
+| "Quản lý tài chính **hiệu quả**" | Qualifying adj | "Lập ngân sách gia đình" |
+| "Kế hoạch kỳ nghỉ **mà gia đình tận hưởng**" | Emotional | "Lên kế hoạch kỳ nghỉ gia đình" |
+| "Nấu ăn **nhằm đảm bảo dinh dưỡng**" | Purpose clause | "Chuẩn bị bữa ăn cho gia đình" |
+
+---
+
+## Quy trình xác định Circumstances
+
+Circumstances là **bối cảnh/tình huống mà NGƯỜI ĐỌC thực hiện Main Job**, KHÔNG phải bối cảnh viết sách, bối cảnh tác giả, hay bối cảnh nội dung chapter.
+
+**Cấu trúc bắt buộc:** Bắt đầu bằng _"khi..."_
+
+**3 chiều kích bối cảnh hợp lệ:**
+1. **Thời gian:** Khi nào? (khi trẻ bước vào tuổi lên 3, khi mùa đông đến)
+2. **Địa điểm:** Ở đâu? (tại nhà, tại trường)
+3. **Trạng thái tình huống:** Ai đang làm gì? (khi cha mẹ thiết lập nếp sinh hoạt chung)
+
+**Quy tắc chủ ngữ:** Khi circumstance liên quan đến hành vi/trạng thái của ai đó, BẮT BUỘC nêu rõ chủ thể.
+- ❌ "Khi đối mặt với áp lực" → ✅ "Khi cha mẹ đối mặt với áp lực từ con"
+
+**CẤM TUYỆT ĐỐI:**
+- Cấm dùng "và", "hoặc", dấu phẩy "," hoặc chấm phẩy ";" gộp nhiều tình huống.
+- Cấm nhét Insight (nỗi đau, bế tắc, nỗi sợ) vào Circumstances.
+- Cấm tính từ chỉ chất lượng, kỳ vọng cảm xúc, mệnh đề mục đích (áp dụng Bước 5).
+
+---
+
+## Chống ảo giác
 
 Đọc kỹ TOÀN BỘ nội dung chunk. Nếu chunk thuần túy tả cảnh, dẫn nhập, chuyện phiếm và KHÔNG chứa "việc/nhiệm vụ" nào → TUYỆT ĐỐI KHÔNG cố nặn ra JTBD. Trả:
 ```
