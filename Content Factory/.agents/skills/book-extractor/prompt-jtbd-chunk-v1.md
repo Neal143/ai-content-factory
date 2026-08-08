@@ -17,7 +17,12 @@ Xác định chính xác JTBD (Jobs-To-Be-Done) audience cho chunk sách đượ
 - **JTBD Audience cấp sách:** `[BOOK_AUDIENCE]`
 
 ## Output Format BẮT BUỘC
+TUYỆT ĐỐI KHÔNG chào hỏi, KHÔNG giải thích lân la. Bạn CHỈ được phép xuất đúng định dạng sau:
+
 ```
+_Căn cứ phân tầng:_ [Phân tích ngắn gọn phạm vi của chunk để quyết định tầng Job phù hợp]
+_Phân tầng Job:_ [Điền chính xác "Big Job" hoặc "Little Job"]
+_Tự kiểm thử:_ [Trả lời NHANH 3 câu hỏi: 1. Main Job có Đơn trị không (có chứa "và/hoặc" không)? 2. Main Job đã sạch giải pháp cụ thể và tính từ chất lượng chưa? 3. Circumstance đã bắt đầu bằng "khi" và có chủ ngữ chưa?]
 META_CHUNK_AUDIENCE: chunk_audience=[Điền CHÍNH XÁC 1 câu JTBD theo quy trình bên dưới]
 _Căn cứ:_ [Trích dẫn nguyên văn tối đa 5 câu từ chunk — TUYỆT ĐỐI KHÔNG tự sáng tác]
 ```
