@@ -22,7 +22,7 @@ TUYỆT ĐỐI KHÔNG chào hỏi, KHÔNG giải thích lân la. Bạn CHỈ đ�
 ```
 _Căn cứ phân tầng:_ [Phân tích ngắn gọn phạm vi của chunk để quyết định tầng Job phù hợp]
 _Phân tầng Job:_ [Điền chính xác "Big Job" hoặc "Little Job"]
-_Tự kiểm thử:_ [Trả lời NHANH 3 câu hỏi: 1. Main Job có Đơn trị không (có chứa "và/hoặc" không)? 2. Main Job đã sạch giải pháp cụ thể và tính từ chất lượng chưa? 3. Circumstance đã bắt đầu bằng "khi" và có chủ ngữ chưa?]
+_Tự kiểm thử:_ [Trả lời NGẮN GỌN "Có/Không" kèm giải thích 1 câu cho 5 tiêu chí: 1. Đơn trị: Main Job có chứa "và/hoặc/,/;" không? 2. Telic: Tân ngữ đã được [Verb] thì có thể dừng lại chưa? 3. Trừu tượng: Đã loại bỏ hoàn toàn công cụ/giải pháp cụ thể chưa? 4. Need/Why: Đã vứt bỏ sạch tính từ chất lượng và mệnh đề mục đích chưa? 5. Circumstance: Đã bắt đầu bằng "Khi...", nêu RÕ chủ thể và KHÔNG chứa Insight chưa?]
 META_CHUNK_AUDIENCE: chunk_audience=[Điền CHÍNH XÁC 1 câu JTBD theo quy trình bên dưới]
 _Căn cứ:_ [Trích dẫn nguyên văn tối đa 5 câu từ chunk — TUYỆT ĐỐI KHÔNG tự sáng tác]
 ```
