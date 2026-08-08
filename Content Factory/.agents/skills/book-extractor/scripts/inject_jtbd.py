@@ -61,7 +61,7 @@ def inject_jtbd(raw_file, jtbd_file):
     with open(raw_file, 'w', encoding='utf-8') as f:
         f.write(new_content)
 
-    print(f'Injected JTBD into {os.path.basename(raw_file)}: {audience[:60]}...')
+    print(f'Injected JTBD into {os.path.basename(raw_file)} successfully.')
     return audience, evidence
 
 
