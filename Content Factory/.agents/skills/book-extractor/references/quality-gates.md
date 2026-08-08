@@ -6,7 +6,9 @@
 □ [2] CORRECT_CHUNK:   Giá trị `CHUNK=` trong response khớp tên chunk agent yêu cầu
 
 === NỘI DUNG BẮT BUỘC (①②) ===
-□ [3] HAS_AUDIENCE:    `chunk_audience=` tồn tại, giá trị không rỗng; hoặc `META_CHUNK_AUDIENCE:` tồn tại, giá trị `[NO_JTBD_FOUND]`
+□ [3] HAS_AUDIENCE:    Sub-1: `chunk_audience=` tồn tại, giá trị không rỗng; hoặc `[NO_JTBD_FOUND]`
+                        Sub-2: JTBD keyword scan (Phase 1 — `--jtbd-only` mode)
+                        Fail Sub-1 Phase 2 → SUPPLEMENT. Fail Sub-2 Phase 1 → JTBD_RETRY (max 3).
 □ [4] HAS_INSIGHT:     Mục ① có ít nhất 1 Insight với đủ: "insight_type=" và "insight_name="
 □ [5] HAS_KNOWLEDGE:   Mục ② có ít nhất 1 Tri thức với đủ: "knowledge_type=", "knowledge_name=", "stance=", "supports_insight="
 

@@ -31,7 +31,7 @@ import re
 # Import quality gate module
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
-from quality_gate import run_deterministic_gates
+from quality_gate import run_deterministic_gates, check_jtbd_keywords
 from normalizer import normalize_dikw_names
 
 
@@ -360,9 +360,60 @@ def _write_gate_json(gate_file, result):
 # ── CLI ────────────────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
+    # -- JTBD-only mode (Phase 1) --
+    if '--jtbd-only' in sys.argv:
+        if len(sys.argv) < 4:
+            print('Usage: python gate_checker.py <raw_file> <chunk_index> <chunk_name> --jtbd-only')
+            sys.exit(1)
+        raw_file = sys.argv[1]
+        chunk_index = int(sys.argv[2])
+        chunk_name = sys.argv[3]
+        chunk_nn = str(chunk_index).zfill(2)
+        run_folder = os.path.dirname(os.path.abspath(raw_file))
+        gate_file = os.path.join(run_folder, f'chunk_{chunk_nn}_jtbd_gate.json')
+
+        with open(raw_file, 'r', encoding='utf-8') as f:
+            raw_content = f.read()
+
+        audience_match = re.search(r'chunk_audience\s*=\s*(.+)', raw_content)
+        evidence_match = re.search(r'_Căn cứ:_\s*(.+)', raw_content)
+
+        if not audience_match or not audience_match.group(1).strip():
+            if '[NO_JTBD_FOUND]' in raw_content:
+                result = {'type': 'JTBD_PASS', 'audience': '[NO_JTBD_FOUND]', 'evidence': None}
+            else:
+                result = {'type': 'JTBD_RETRY', 'max_retry': 3,
+                          'violation_detail': 'Khong tim thay chunk_audience= trong response',
+                          'instruction': 'Gui lai NLM query JTBD, nhan manh output format.'}
+        else:
+            audience = audience_match.group(1).strip()
+            evidence = evidence_match.group(1).strip() if evidence_match else ''
+
+            # Check 1: evidence bat buoc (tru NO_JTBD_FOUND)
+            if not evidence:
+                result = {'type': 'JTBD_RETRY', 'max_retry': 3,
+                          'violation_detail': 'Thieu _Can cu:_ hoac noi dung rong',
+                          'instruction': 'Gui lai NLM query JTBD, nhan manh phai co dong _Can cu:_ '
+                                         'voi trich dan nguyen van tu chunk.'}
+            else:
+                # Check 2: keyword quality
+                violation = check_jtbd_keywords(audience)
+                if violation:
+                    result = {'type': 'JTBD_RETRY', 'max_retry': 3,
+                              'violation_detail': violation,
+                              'instruction': f'JTBD vi pham: {violation}. Gui NLM query JTBD lai, '
+                                             f'nhan manh tuan thu 6 loi cam trong prompt-jtbd-chunk-v1.md.'}
+                else:
+                    result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence}
+
+        _write_gate_json(gate_file, result)
+        print(f'  JTBD Gate: {result["type"]}')
+        sys.exit(0 if result['type'] == 'JTBD_PASS' else 1)
+
+    # -- Full mode (Phase 2 / normal) --
     if len(sys.argv) < 4:
         print("Usage: python gate_checker.py <raw_file> <chunk_index> <chunk_name> [--cache <cache_file>]")
-        print('Example: python gate_checker.py "chunk_05_raw.txt" 5 "Phần 2" --cache "vault/02-sources/books/Book.md"')
+        print('       python gate_checker.py <raw_file> <chunk_index> <chunk_name> --jtbd-only')
         sys.exit(1)
 
     raw_file = sys.argv[1]

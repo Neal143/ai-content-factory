@@ -85,6 +85,8 @@ Bạn là chuyên gia điều phối trích xuất sách quy mô lớn. Nhiệm 
     Gọi CLI: `nlm source add <notebook_id> --file "[Đường dẫn tuyệt đối tới .agents/skills/book-extractor/prompt-mapper-v4.md]" --wait`
   - Nếu chưa có source title chứa `prompt-miner-v4.md`:
     Gọi CLI: `nlm source add <notebook_id> --file "[Đường dẫn tuyệt đối tới .agents/skills/book-extractor/prompt-miner-v4.md]" --wait`
+  - Nếu chưa có source title chứa `prompt-jtbd-chunk-v1.md`:
+    Gọi CLI: `nlm source add <notebook_id> --file "[Đường dẫn tuyệt đối tới .agents/skills/book-extractor/prompt-jtbd-chunk-v1.md]" --wait`
 
 ### Bước 1: The Mapper (Sinh Tổng quan & Mục Lục)
 
@@ -138,26 +140,45 @@ Script trả JSON chứa: `chunk_index`, `chunk_nn`, `chunk_name`, `raw_file`, `
 ⚠️ Agent dùng **TRỰC TIẾP** các lệnh CLI và paths từ JSON. KHÔNG tự compose, KHÔNG sửa, KHÔNG dùng trí nhớ.
 Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
 
-**② Agent gọi NLM qua CLI + Script chạy Gate:**
+**② Agent gọi NLM qua CLI (2-Phase Extraction):**
 
-**②-a.** Agent gọi CLI:
-  `nlm notebook query <notebook_id> "Tham chiếu file prompt-miner-v4.md, hãy trích xuất CHÍNH XÁC Content Chunk sau: Chunk N: [Tên Chunk]." --json`
+**Phase 1 — JTBD Identification:**
+
+**②-1a.** Agent gọi CLI cho JTBD:
+  `nlm notebook query <notebook_id> "Tham chiếu file prompt-jtbd-chunk-v1.md, hãy xác định JTBD audience cho Chunk N: [Tên Chunk]. JTBD cấp sách: [book_audience]." --json`
   Agent parse JSON output → extract trường `answer`.
-  ⚠️ Nếu CLI trả exit code ≠ 0 → gọi `update_ledger.py` với `status: FATAL`, `error_code: NETWORK_ERROR`. Max 3 lần retry trước khi FATAL.
+  Agent lưu answer vào `[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt`.
+  _(Tạo thư mục `jtbd_raw` nếu chưa tồn tại)_
 
-**②-b.** Agent lưu nội dung `answer` vào file path lấy từ trường `raw_file` trong output JSON của `next_chunk.py`.
+**②-1b.** Agent gọi gate_checker.py chế độ JTBD-only:
+  `python .agents/skills/book-extractor/scripts/gate_checker.py "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt" [chunk_index] "[chunk_name]" --jtbd-only`
 
-**②-c.** Agent gọi script Gate (lệnh lấy từ `cli_gate_checker` của `next_chunk.py`):
-  - Script chạy `normalize_dikw_names` (Auto-Repair) + Gates [1-7] (Cấu trúc & Khóa ngoại xác định) → ghi kết quả vào `[run-folder]/session_1/chunk_NN_gate.json`.
-  ⚠️ Output JSON chứa trường `next_action` — Agent dùng trường này để quyết định bước tiếp theo.
+**②-1c.** Đọc kết quả từ file `[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd_gate.json` → lấy trường `type`:
+→ `"JTBD_PASS"` → Lưu `audience` và `evidence` cho Phase 2. Chuyển Phase 2.
+→ `"JTBD_RETRY"` → Gửi NLM query JTBD lại (kèm `violation_detail` từ gate file), lưu đè file `chunk_NN_jtbd.txt`, chạy lại gate_checker.
+   Hết `max_retry` (3 lần) → Dùng `[NO_JTBD_FOUND]` làm fallback. Chuyển Phase 2.
 
-**③ Đọc kết quả Gate [1-7]:**
+**Phase 2 — Content Extraction:**
+
+**②-2a.** Agent gọi CLI cho Content (prompt ngắn gọn hơn do đã có JTBD ở Phase 1):
+  `nlm notebook query <notebook_id> "Tham chiếu file prompt-miner-v4.md, hãy trích xuất CHÍNH XÁC Content Chunk sau: Chunk N: [Tên Chunk]. Ghi chú: Sử dụng [audience] và [evidence] đã xác nhận từ trước." --json`
+
+**②-2b.** Agent lưu nội dung vào file path lấy từ trường `raw_file` (output `next_chunk.py`).
+  ⚠️ Nếu NLM trả exit code ≠ 0 → báo lỗi mạng, retry max 3 lần.
+
+**②-2c.** Agent gọi inject_jtbd.py (đọc JTBD từ Phase 1 response file, không truyền tiếng Việt qua CLI args):
+  `python .agents/skills/book-extractor/scripts/inject_jtbd.py "[raw_file]" --jtbd-response "[run-folder]/session_1/jtbd_raw/chunk_NN_jtbd.txt"`
+
+**②-2d.** Agent gọi gate_checker.py (full mode — lệnh lấy từ `cli_gate_checker` của `next_chunk.py`):
+  → Gate [3] tự PASS (JTBD đã inject). Gates [1-2, 4-7] kiểm tra nội dung.
+
+**③ Đọc kết quả Gate [1-7] (từ Phase 2):**
 Đọc file `[run-folder]/session_1/chunk_NN_gate.json` → lấy trường `next_action`. Agent thực thi TRỰC TIẾP theo `next_action.type`:
 
 → `"AGENT_EVAL"` → Chuyển bước ④.
-→ `"RETRY"` → Gọi lại NLM query gốc (từ `next_chunk.py`), lưu đè raw file, chạy lại `gate_checker.py`.
+→ `"RETRY"` → Gọi lại NLM query Phase 2, lưu đè raw file, inject JTBD lại, chạy lại gate_checker.
    Hết `max_retry` → dùng `on_exhaust.ledger_update` gọi `update_ledger.py`. KHÔNG append. Tiếp chunk sau.
-→ `"SUPPLEMENT"` → Gọi NLM yêu cầu trích xuất LẠI TOÀN BỘ chunk (không phải chỉ phần thiếu), nhấn mạnh đảm bảo có đầy đủ phần bị thiếu (dựa vào `missing_detail`). Lưu đè raw file, chạy lại `gate_checker.py`.
+→ `"SUPPLEMENT"` → Gọi NLM yêu cầu trích xuất LẠI TOÀN BỘ chunk (không phải chỉ phần thiếu), nhấn mạnh đảm bảo có đầy đủ phần bị thiếu (dựa vào `missing_detail`). Lưu đè raw file, inject JTBD, chạy lại gate_checker.
    Hết `max_retry` → dùng `on_exhaust.cli_append` và `on_exhaust.ledger_update`.
 
 **④ Agent đánh giá Gate [8] (Semantic Alignment):**

@@ -51,19 +51,8 @@ META_CHUNK: CHUNK=[Tên Chunk gốc] | CHUNK_index=[Số thứ tự chunk đư�
 
 **① Toàn cảnh & Insight đối tượng**
 - **Tóm tắt Chunk:** (3-5 câu)
-- **🎯 Đối tượng Chunk này:** (BẮT BUỘC tuân thủ chuẩn JTBD: `"Người" muốn [Main job] khi [Circumstances]`. Chữ **"Người"** là hằng số cố định, KHÔNG được thay thế bằng bất kỳ chức danh nào khác).
-    META_CHUNK_AUDIENCE: chunk_audience=[Điền CHÍNH XÁC 1 câu theo công thức JTBD ở trên]
-    - _Hướng dẫn cho AI:_
-        - **Main Job:** Là mục tiêu chức năng cốt lõi (không dùng từ cảm xúc/xã hội) và có trạng thái "hoàn thành" rõ ràng (không dùng từ quản lý/duy trì). Phải bắt đầu bằng _Động từ + Đối tượng_ cụ thể (VD: Nghe nhạc). **Giữ nguyên tính ổn định qua thời gian:** Viết sao cho câu lệnh vẫn đúng ngay cả khi công nghệ thay đổi. **Chọn đúng độ lớn:** Job có 4 cấp: Khát vọng > Big Job > Little Job > Micro-Job. Ưu tiên chọn ở mức không quá nhỏ/chi tiết, không quá to/trừu tượng mà phải mô tả đúng bản chất Job của audience mà tác giả hướng đến trong CHUNK này. ❌ 4 LỖI BỊ CẤM: [1] CẤM nhắc đến công nghệ/giải pháp cụ thể. [2] CẤM dùng từ chỉ sự nhanh/rẻ/dễ. [3] CẤM tả hành vi vật lý trần trụi. [4] CẤM TUYỆT ĐỐI dùng chữ "VÀ" hoặc chữ "HOẶC" để gộp nhiều ý (Mỗi Audience chỉ được phép có duy nhất 1 Main Job).
-        - **Circumstances:** Mô tả tình huống khách quan ảnh hưởng đến Job (Thời gian/Địa điểm/Điều kiện). Bắt đầu bằng _"Khi..."_ (VD: Khi đang lái xe đi làm). ⚠️ **QUY TẮC CHỦ NGỮ BẮT BUỘC:** Bất kỳ khi nào Circumstance liên quan đến hành vi, trạng thái, hoặc cảm xúc của một ai đó, BẮT BUỘC phải nêu rõ chủ thể đó. NGHIÊM CẤM viết câu ẩn chủ ngữ. ❌ "Khi đối mặt với những cảm xúc bùng nổ vô lý" → Ai đối mặt? Cảm xúc của ai? ✅ "Khi cha mẹ đối mặt với những cảm xúc bùng nổ vô lý của con".
-        - 👁️ **Vivid Circumstances (Cảnh thực chứng):** Nếu trong sách có miêu tả cảnh ngộ thực tế (Show, don't tell) gắn với Circumstances này, HÃY chiết xuất theo cấu trúc Vector 3 chiều ngăn cách bởi dấu gạch đứng `|`. Rút gọn tối đa, chiều dài < 200 ký tự. ⚠️ **FORMAT BẮT BUỘC:** Chuỗi xuất ra PHẢI là văn bản trơn (plain text), ví dụ: `Nửa đêm tại phòng khách | Trẻ than vãn liên tục | Phụ huynh mệt mỏi bất ngờ`. TUYỆT ĐỐI KHÔNG bọc ngoặc vuông `[ ]` quanh từng thành phần. Xuất theo format (Micro-String nằm ở DÒNG RIÊNG ngay dưới thẻ META, KHÔNG nhét vào trong thẻ):
-            META_CHUNK_AUDIENCE: content_type=vivid_circumstance
-            Thời gian Không gian cụ thể | Hành động Thị giác hoặc Thính giác | Trạng thái Vật lý hoặc Cảm xúc
-          Nếu Không có trong sách, vẫn xuất thẻ META, dòng dưới ghi [NOT_FOUND]:
-            META_CHUNK_AUDIENCE: content_type=vivid_circumstance
-            [NOT_FOUND]
-        - ⚠️ **CẢNH BÁO TỐI QUAN TRỌNG:** Cấm tuyệt đối việc nhét Insight (nỗi đau, bế tắc, nỗi sợ, rào cản tâm lý) vào phần Circumstances.
-        - 🛑 **CƠ CHẾ CHỐNG ẢO GIÁC (ANTI-HALLUCINATION):** Đọc kỹ TOÀN BỘ nội dung chữ trong Chunk. Nếu đoạn văn thuần túy tả cảnh, dẫn nhập, chuyện phiếm và KHÔNG HỀ chứa đựng một "Vấn đề/Nhiệm vụ" (Job) nào mà người đọc cần giải quyết, bạn **TUYỆT ĐỐI KHÔNG ĐƯỢC CỐ TÌNH NẶN RA JTBD**. Hãy lập tức trả kết quả duy nhất là: `[NO_JTBD_FOUND]`.
+- **🎯 Đối tượng Chunk (Được cấp sẵn):** `chunk_audience=[TỪ HỆ THỐNG]`
+  - _Hướng dẫn cho AI:_ ĐÂY LÀ HẰNG SỐ, KHÔNG PHẢI NHIỆM VỤ CỦA BẠN. Khi xuất file, bạn BẮT BUỘC bỏ trống khu vực `META_CHUNK_AUDIENCE` (hệ thống sẽ tự động ghép nối sau). KHÔNG được tự ý sinh nội dung JTBD.
 - **🔥 Tử huyệt Cảm xúc chính:** Nhóm đối tượng JTBD trên đang có Insight gì?
     META_INSIGHT: insight_type=[mã] | insight_name=[ĐẶT TÊN NGẮN GỌN]
     - **Mô tả:** [Diễn giải Insight 2-3 câu]
