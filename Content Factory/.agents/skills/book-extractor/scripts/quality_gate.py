@@ -147,12 +147,10 @@ def check_jtbd_keywords(jtbd_str: str) -> Optional[str]:
     circumstance = parts[1].strip()
 
     violations = []
-    # Quet compound (VA/HOAC/,/;) cho CA HAI main_job va circumstance
+    # Quet compound (VA/HOAC/,/;) CHI cho main_job (circumstance duoc phep compound)
     for pattern, msg in BANNED_COMPOUND:
         if re.search(pattern, main_job, re.IGNORECASE):
             violations.append(f"main_job: {msg}")
-        if re.search(pattern, circumstance, re.IGNORECASE):
-            violations.append(f"circumstance: {msg}")
     for pattern, msg in BANNED_MAIN_JOB_PREFIX + BANNED_MAIN_JOB_SUFFIX:
         if re.search(pattern, main_job, re.IGNORECASE):
             violations.append(f"main_job: {msg}")

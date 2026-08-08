@@ -29,7 +29,7 @@ _Căn cứ:_ [Trích dẫn nguyên văn tối đa 5 câu từ chunk — TUYỆT 
 
 ## Quy trình xác định Main Job
 
-Main Job là **việc/nhiệm vụ chức năng cụ thể DUY NHẤT** mà người đọc muốn hoàn thành sau khi đọc chunk này.
+Main Job là **việc/nhiệm vụ chức năng cụ thể DUY NHẤT** mà tác giả viết nội dung của chunk này để giúp người đọc hoàn thành.
 
 **Công thức phát biểu:** `Động từ + Tân ngữ + [Clarifier tùy chọn]`
 
@@ -51,9 +51,9 @@ Tác giả sách tri thức thường nhắc đến việc/nhiệm vụ muốn g
 ### Bước 2: Kiểm tra tính ĐƠN TRỊ
 
 Main Job phải là DUY NHẤT 1 hành động. Nếu phát hiện nhiều hành động (tín hiệu: chứa "và", "hoặc", dấu phẩy "," hoặc chấm phẩy ";"):
-→ Hỏi "Why?" 1 lần để gộp thành 1 Big Job bao trùm.
+→ Hỏi "Why?" 1 lần để gộp thành 1 Bigger Job bao trùm.
 
-| Sai (compound) | Why? | Đúng (1 Big Job) |
+| Sai (compound) | Why? | Đúng (1 Bigger Job) |
 |---|---|---|
 | "Rửa rau và cắt thịt" | Để chuẩn bị bữa ăn | "Chuẩn bị bữa ăn" |
 | "Điều chỉnh quần áo, mũ đội đầu cho trẻ" | Để bảo vệ thân nhiệt | "Bảo vệ thân nhiệt cho trẻ" |
@@ -97,7 +97,7 @@ Tách triệt để mục tiêu (Job) ra khỏi nhu cầu/thước đo thành c�
 
 ## Quy trình xác định Circumstances
 
-Circumstances là **bối cảnh/tình huống mà NGƯỜI ĐỌC thực hiện Main Job**, KHÔNG phải bối cảnh viết sách, bối cảnh tác giả, hay bối cảnh nội dung chapter.
+Circumstances là **bối cảnh/tình huống của Main Job của người đọc đã được xác định trước đó**, KHÔNG phải bối cảnh viết sách, bối cảnh tác giả, hay bối cảnh nội dung chapter.
 
 **Cấu trúc bắt buộc:** Bắt đầu bằng _"khi..."_
 
@@ -109,8 +109,9 @@ Circumstances là **bối cảnh/tình huống mà NGƯỜI ĐỌC thực hiện
 **Quy tắc chủ ngữ:** Khi circumstance liên quan đến hành vi/trạng thái của ai đó, BẮT BUỘC nêu rõ chủ thể.
 - ❌ "Khi đối mặt với áp lực" → ✅ "Khi cha mẹ đối mặt với áp lực từ con"
 
+**Được phép:** Dùng "và", "hoặc", dấu phẩy "," hoặc chấm phẩy ";" để mô tả nhiều điều kiện đồng thời trong cùng 1 tình huống.
+
 **CẤM TUYỆT ĐỐI:**
-- Cấm dùng "và", "hoặc", dấu phẩy "," hoặc chấm phẩy ";" gộp nhiều tình huống.
 - Cấm nhét Insight (nỗi đau, bế tắc, nỗi sợ) vào Circumstances.
 - Cấm tính từ chỉ chất lượng, kỳ vọng cảm xúc, mệnh đề mục đích (áp dụng Bước 5).
 
