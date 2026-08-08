@@ -96,10 +96,8 @@ def find_next_chunk(ledger_path, cache_path):
     raw_file = os.path.join(run_folder, f"chunk_{chunk_nn}_raw.txt")
     gate_script = ".agents/skills/book-extractor/scripts/gate_checker.py"
     append_script = ".agents/skills/book-extractor/scripts/append_cache.py"
-    nlm_query_script = ".agents/skills/book-extractor/scripts/nlm_query.py"
-
-    # Agent se tu ghi noi dung vao query_file nay o Phase 2
-    query_file = os.path.join(run_folder, f"chunk_{chunk_nn}_query.txt")
+    run_jtbd_script = ".agents/skills/book-extractor/scripts/run_jtbd.py"
+    run_miner_script = ".agents/skills/book-extractor/scripts/run_miner.py"
 
     return {
         "done": False,
@@ -109,22 +107,12 @@ def find_next_chunk(ledger_path, cache_path):
         "chunk_nn": chunk_nn,
         "chunk_name": chunk_name,
         "raw_file": raw_file,
-        "query_file": query_file,
         "cache_file": cache_path,
         "progress": f"{done_count}/{total_chunks} done, {len(pending)} pending, {fatal_count} fatal",
-        "cli_nlm_query": (
-            f'python {nlm_query_script} '
-            f'{notebook_id} "{query_file}" "{raw_file}"'
-        ),
-        "cli_gate_checker": (
-            f'python {gate_script} '
-            f'"{raw_file}" {next_idx} "{chunk_name}" '
-            f'--cache "{cache_path}"'
-        ),
-        "cli_append_cache": (
-            f'python {append_script} '
-            f'"{raw_file}" "{cache_path}"'
-        )
+        "cli_run_jtbd": f'python {run_jtbd_script} "{run_folder}" {next_idx} "{cache_path}"',
+        "cli_run_miner": f'python {run_miner_script} "{run_folder}" {next_idx} "{cache_path}"',
+        "cli_gate_checker": f'python {gate_script} "{raw_file}" {next_idx} "READ_FROM_CACHE" --cache "{cache_path}"',
+        "cli_append_cache": f'python {append_script} "{raw_file}" "{cache_path}"'
     }
 
 
