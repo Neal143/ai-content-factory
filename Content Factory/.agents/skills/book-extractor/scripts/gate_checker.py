@@ -390,8 +390,12 @@ if __name__ == '__main__':
             audience = audience_match.group(1).strip()
             evidence = evidence_match.group(1).strip() if evidence_match else ''
 
-            # Check 1: evidence bat buoc (tru NO_JTBD_FOUND)
-            if not evidence:
+            # Check 0: NO_JTBD_FOUND → skip ngay, khong can evidence hay keyword check
+            if '[NO_JTBD_FOUND]' in audience:
+                result = {'type': 'JTBD_SKIP', 'audience': '[NO_JTBD_FOUND]', 'evidence': None,
+                          'instruction': 'Chunk khong co JTBD. Bo qua Phase 2, cap nhat ledger DONE, chuyen chunk sau.'}
+            # Check 1: evidence bat buoc
+            elif not evidence:
                 result = {'type': 'JTBD_RETRY', 'max_retry': 3,
                           'violation_detail': 'Thieu _Can cu:_ hoac noi dung rong',
                           'instruction': 'Gui lai NLM query JTBD, nhan manh phai co dong _Can cu:_ '
@@ -405,12 +409,7 @@ if __name__ == '__main__':
                               'instruction': f'JTBD vi pham: {violation}. Gui NLM query JTBD lai, '
                                              f'nhan manh tuan thu 6 loi cam trong prompt-jtbd-chunk-v1.md.'}
                 else:
-                    # Kiem tra NO_JTBD_FOUND trong audience value
-                    if '[NO_JTBD_FOUND]' in audience:
-                        result = {'type': 'JTBD_SKIP', 'audience': '[NO_JTBD_FOUND]', 'evidence': None,
-                                  'instruction': 'Chunk khong co JTBD. Bo qua Phase 2, cap nhat ledger DONE, chuyen chunk sau.'}
-                    else:
-                        result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence}
+                    result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence}
 
         _write_gate_json(gate_file, result)
         print(f'  JTBD Gate: {result["type"]}')
