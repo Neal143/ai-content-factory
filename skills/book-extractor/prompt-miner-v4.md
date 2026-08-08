@@ -51,9 +51,7 @@ META_CHUNK: CHUNK=[Tên Chunk gốc] | CHUNK_index=[Số thứ tự chunk đư�
 
 **① Toàn cảnh & Insight đối tượng**
 - **Tóm tắt Chunk:** (3-5 câu)
-- **🎯 Đối tượng Chunk (Được cấp sẵn):** `chunk_audience=[TỪ HỆ THỐNG]`
-  - _Hướng dẫn cho AI:_ ĐÂY LÀ HẰNG SỐ, KHÔNG PHẢI NHIỆM VỤ CỦA BẠN. Khi xuất file, bạn BẮT BUỘC bỏ trống khu vực `META_CHUNK_AUDIENCE` (hệ thống sẽ tự động ghép nối sau). KHÔNG được tự ý sinh nội dung JTBD.
-- **🔥 Tử huyệt Cảm xúc chính:** Nhóm đối tượng JTBD trên đang có Insight gì?
+- **🔥 Tử huyệt Cảm xúc chính:** Nhóm đối tượng Audience được chỉ định ở lệnh query đang có Insight gì?
     META_INSIGHT: insight_type=[mã] | insight_name=[ĐẶT TÊN NGẮN GỌN]
     - **Mô tả:** [Diễn giải Insight 2-3 câu]
     - 👁️ **Mỏ neo Hình ảnh & Ẩn dụ (Vivid Insights):** Có hình/ẩn dụ chân thực nào tác giả dùng để diễn họa trực tiếp cho đúng cái `insight_name` này không? Cô đọng thành ĐÚNG 1 CÂU văn liền mạch (< 80 ký tự, tập trung Nouns/Verbs). ⚠️ **FORMAT:** Viết 1 câu văn trơn tru, KHÔNG bọc ngoặc vuông `[ ]`, KHÔNG chia bằng dấu `|`. Xuất theo format:
