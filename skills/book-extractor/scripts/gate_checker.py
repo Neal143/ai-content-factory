@@ -380,7 +380,8 @@ if __name__ == '__main__':
 
         if not audience_match or not audience_match.group(1).strip():
             if '[NO_JTBD_FOUND]' in raw_content:
-                result = {'type': 'JTBD_PASS', 'audience': '[NO_JTBD_FOUND]', 'evidence': None}
+                result = {'type': 'JTBD_SKIP', 'audience': '[NO_JTBD_FOUND]', 'evidence': None,
+                          'instruction': 'Chunk khong co JTBD. Bo qua Phase 2, cap nhat ledger DONE, chuyen chunk sau.'}
             else:
                 result = {'type': 'JTBD_RETRY', 'max_retry': 3,
                           'violation_detail': 'Khong tim thay chunk_audience= trong response',
@@ -404,11 +405,16 @@ if __name__ == '__main__':
                               'instruction': f'JTBD vi pham: {violation}. Gui NLM query JTBD lai, '
                                              f'nhan manh tuan thu 6 loi cam trong prompt-jtbd-chunk-v1.md.'}
                 else:
-                    result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence}
+                    # Kiem tra NO_JTBD_FOUND trong audience value
+                    if '[NO_JTBD_FOUND]' in audience:
+                        result = {'type': 'JTBD_SKIP', 'audience': '[NO_JTBD_FOUND]', 'evidence': None,
+                                  'instruction': 'Chunk khong co JTBD. Bo qua Phase 2, cap nhat ledger DONE, chuyen chunk sau.'}
+                    else:
+                        result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence}
 
         _write_gate_json(gate_file, result)
         print(f'  JTBD Gate: {result["type"]}')
-        sys.exit(0 if result['type'] == 'JTBD_PASS' else 1)
+        sys.exit(0 if result['type'] in ('JTBD_PASS', 'JTBD_SKIP') else 1)
 
     # -- Full mode (Phase 2 / normal) --
     if len(sys.argv) < 4:
