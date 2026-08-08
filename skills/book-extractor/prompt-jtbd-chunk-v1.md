@@ -38,6 +38,17 @@ Ví dụ mẫu chuẩn:
 - "Lập ngân sách gia đình" *(Verb + Object)*
 - "Nhận diện dấu hiệu kiệt sức" *(Verb + Object)*
 
+### Phân tầng Job — Nhắm đúng mức trừu tượng
+
+Main Job có 4 tầng. Bạn **BẮT BUỘC** nhắm vào **Big Job** hoặc **Little Job**.
+
+| Tầng | Đặc điểm nhận dạng | Ví dụ | Phán định |
+|---|---|---|---|
+| Aspiration | Verb ongoing, không có điểm kết thúc, chứa Need/Why | "Nuôi dạy con", "Phát triển kỹ năng tự học", "Quản lý tài chính gia đình" | ❌ QUÁ CAO — tìm job cụ thể hơn |
+| **Big Job** | Nhiệm vụ bao trùm, telic, không chứa giải pháp cụ thể | "Thiết lập môi trường chơi cho trẻ tại nhà", "Thiết lập nếp sinh hoạt cho trẻ" | ✅ ĐẠT CHUẨN |
+| **Little Job** | Nhiệm vụ cụ thể hơn, vẫn telic, vẫn không chứa giải pháp | "Chọn lọc đồ chơi phù hợp cho trẻ", "Lập thời gian biểu hoạt động cho trẻ" | ✅ ĐẠT CHUẨN |
+| Micro Job | Task cơ học, hành vi trực tiếp có thể quan sát bằng mắt | "Mặc quần áo cho con", "Xếp khối gỗ vào kệ", "Đỗ xe" | ❌ QUÁ THẤP — tìm job tổng quát hơn |
+
 ### Bước 1: Tìm tín hiệu Job trong chunk
 
 Tác giả sách tri thức thường nhắc đến việc/nhiệm vụ muốn giải quyết cho người đọc rất ít (1-2 lần). Tìm tín hiệu:
@@ -119,7 +130,7 @@ Circumstances là **bối cảnh/tình huống của Main Job của người đ�
 
 ## Chống ảo giác
 
-Đọc kỹ TOÀN BỘ nội dung chunk. Nếu chunk thuần túy tả cảnh, dẫn nhập, chuyện phiếm và KHÔNG chứa "việc/nhiệm vụ" nào → TUYỆT ĐỐI KHÔNG cố nặn ra JTBD. Trả:
+Đọc kỹ TOÀN BỘ nội dung chunk. Nếu chunk thuần túy tả cảnh, dẫn nhập, chuyện phiếm và KHÔNG hướng đến giải quyết "việc/nhiệm vụ" nào của người đọc → TUYỆT ĐỐI KHÔNG cố nặn ra JTBD. Trả:
 ```
 META_CHUNK_AUDIENCE: chunk_audience=[NO_JTBD_FOUND]
 ```
