@@ -376,7 +376,7 @@ if __name__ == '__main__':
             raw_content = f.read()
 
         audience_match = re.search(r'chunk_audience\s*=\s*(.+)', raw_content)
-        evidence_match = re.search(r'_Căn cứ:_\s*(.+)', raw_content)
+        evidence_match = re.search(r'[\*_]*Căn cứ:[\*_]*\s*(.+)', raw_content, re.IGNORECASE)
 
         if not audience_match or not audience_match.group(1).strip():
             if '[NO_JTBD_FOUND]' in raw_content:
@@ -409,7 +409,24 @@ if __name__ == '__main__':
                               'instruction': f'JTBD vi pham: {violation}. Gui NLM query JTBD lai, '
                                              f'nhan manh tuan thu 6 loi cam trong prompt-jtbd-chunk-v1.md.'}
                 else:
-                    result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence}
+                    # Check 3: Phan tang Job bat buoc
+                    tier_match = re.search(r'[\*_]*Phân tầng Job:[\*_]*\s*(.+)', raw_content, re.IGNORECASE)
+                    if not tier_match:
+                        result = {'type': 'JTBD_RETRY', 'max_retry': 3,
+                                  'violation_detail': 'Thieu truong _Phan tang Job:_ trong output',
+                                  'instruction': 'Output THIEU truong "_Phan tang Job:_". Gui lai NLM, '
+                                                 'nhan manh TUAN THU DUNG output format trong prompt-jtbd-chunk-v1.md: '
+                                                 'phai co dong "_Phan tang Job:_ Big Job" hoac "_Phan tang Job:_ Little Job".'}
+                    else:
+                        tier_value = tier_match.group(1).strip().lower()
+                        if 'big job' not in tier_value and 'little job' not in tier_value:
+                            result = {'type': 'JTBD_RETRY', 'max_retry': 3,
+                                      'violation_detail': f'Phan tang Job sai: "{tier_match.group(1).strip()}". Phai la "Big Job" hoac "Little Job".',
+                                      'instruction': 'Gia tri _Phan tang Job:_ KHONG HOP LE. Chi chap nhan "Big Job" hoac "Little Job". '
+                                                     'Xem lai bang Phan tang Job trong prompt-jtbd-chunk-v1.md va xac dinh lai.'}
+                        else:
+                            result = {'type': 'JTBD_PASS', 'audience': audience, 'evidence': evidence,
+                                      'job_tier': 'Big Job' if 'big job' in tier_value else 'Little Job'}
 
         _write_gate_json(gate_file, result)
         print(f'  JTBD Gate: {result["type"]}')
