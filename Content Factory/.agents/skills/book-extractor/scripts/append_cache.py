@@ -1,15 +1,16 @@
 """
 TÊN SCRIPT: append_cache.py
 VAI TRÒ: Append data_chunk từ raw file vào cache file (vault).
-         Xử lý: extract, inject warning, chống duplicate, append.
+         Xu ly: extract, inject warning, chong duplicate (position-based), append.
 KHI NÀO SỬ DỤNG: Agent gọi sau khi Gate pass hoặc fallback trong vòng lặp Bước 2 (SKILL.md).
                   Thay thế việc Agent tự đọc/ghi file cache trực tiếp.
 CÁCH XỬ LÝ:
   1. Đọc raw file → extract tất cả <data_chunk>...</data_chunk>.
   2. Parse CHUNK_index từ mỗi data_chunk.
   3. Inject warning flags nếu có (--warnings).
-  4. Dedup: xóa chunk cũ cùng CHUNK_index khỏi cache (bao gồm heading Normalizer).
-  5. Append data_chunk mới vào cuối cache file.
+  4. Dedup (position-based): xoa tat ca block cu cung CHUNK_index khoi cache (xu ly ca truong hop thieu closing tag).
+  5. Validate: tu dong them </data_chunk> neu raw file thieu.
+  6. Append data_chunk mới vào cuối cache file.
 
 KHÔNG LÀM:
   ❌ Gọi NLM (Agent gọi CLI trực tiếp)
@@ -87,40 +88,53 @@ def inject_warnings(chunk_content, warnings):
 
 def strip_chunk_from_cache(cache_content, chunk_index):
     """
-    Xóa chunk cũ có cùng CHUNK_index khỏi cache content.
-    Bao gồm:
-      - <data_chunk>...</data_chunk> chứa CHUNK_index=N
-      - Heading `## Chunk N: ...` + summary line `> 🎯 ...` (nếu đã qua Normalizer)
-
-    Returns: (new_content, was_stripped: bool)
+    Xoa chunk cu co cung CHUNK_index khoi cache content.
+    Strategy: position-based (khong phu thuoc closing tag).
+      1. Tim tat ca vi tri <data_chunk> trong cache.
+      2. Voi moi block, xac dinh boundary: tu <data_chunk> nay → <data_chunk> ke tiep (hoac EOF).
+      3. Kiem tra block co chua CHUNK_index=N hoac BLOCK_index=N.
+      4. Xoa block match + heading Normalizer (neu co).
     """
-    # Strip <data_chunk> chứa CHUNK_index=N
-    pattern = re.compile(
-        r'<data_chunk>(?:(?!</data_chunk>).)*?CHUNK_index=' + str(chunk_index) + r'\b.*?</data_chunk>',
-        re.DOTALL
+    # Tim tat ca vi tri <data_chunk>
+    tag = '<data_chunk>'
+    positions = [m.start() for m in re.finditer(re.escape(tag), cache_content)]
+    
+    if not positions:
+        return cache_content, False
+    
+    # Xac dinh boundary cua tung block
+    blocks_to_remove = []
+    chunk_idx_str = str(chunk_index)
+    
+    for i, pos in enumerate(positions):
+        # End of block = start of next <data_chunk> hoac EOF
+        end_pos = positions[i + 1] if i + 1 < len(positions) else len(cache_content)
+        block = cache_content[pos:end_pos]
+        
+        # Kiem tra block co chua target CHUNK_index hoac BLOCK_index
+        if re.search(r'CHUNK_index=' + chunk_idx_str + r'\b', block) or \
+           re.search(r'BLOCK_index=' + chunk_idx_str + r'\b', block):
+            blocks_to_remove.append((pos, end_pos))
+    
+    if not blocks_to_remove:
+        return cache_content, False
+    
+    # Xoa cac blocks (tu cuoi len de giu dung index)
+    new_content = cache_content
+    for start, end in reversed(blocks_to_remove):
+        new_content = new_content[:start] + new_content[end:]
+    
+    # Xoa heading Normalizer: ## Chunk N: ...\n> 🎯 ...\n
+    heading_pattern = re.compile(
+        r'## Chunk ' + chunk_idx_str + r':.*?\n(?:>.*?\n)?',
+        re.MULTILINE
     )
-    new_content, count = pattern.subn('', cache_content)
-
-    if count == 0:
-        # Thử fallback BLOCK_index (source NLM chưa re-upload)
-        pattern_block = re.compile(
-            r'<data_chunk>(?:(?!</data_chunk>).)*?BLOCK_index=' + str(chunk_index) + r'\b.*?</data_chunk>',
-            re.DOTALL
-        )
-        new_content, count = pattern_block.subn('', new_content)
-
-    if count > 0:
-        # Xóa heading Normalizer: ## Chunk N: ...\n> 🎯 ...\n
-        heading_pattern = re.compile(
-            r'## Chunk ' + str(chunk_index) + r':.*?\n(?:>.*?\n)?',
-            re.MULTILINE
-        )
-        new_content = heading_pattern.sub('', new_content)
-
-        # Dọn blank lines thừa
-        new_content = re.sub(r'\n{3,}', '\n\n', new_content)
-
-    return new_content, count > 0
+    new_content = heading_pattern.sub('', new_content)
+    
+    # Don blank lines thua
+    new_content = re.sub(r'\n{3,}', '\n\n', new_content)
+    
+    return new_content, True
 
 
 def append_cache(raw_file, cache_file, warnings=None):
@@ -175,6 +189,15 @@ def append_cache(raw_file, cache_file, warnings=None):
     with open(raw_file, 'r', encoding='utf-8') as f:
         raw_content = f.read()
 
+    # --- Ensure raw content has closing tags ---
+    # Neu so luong <data_chunk> > </data_chunk> → tu dong them closing tag con thieu
+    open_count = raw_content.count('<data_chunk>')
+    close_count = raw_content.count('</data_chunk>')
+    if open_count > close_count:
+        for _ in range(open_count - close_count):
+            raw_content = raw_content.rstrip() + '\n</data_chunk>\n'
+        print(f"  ⚠️ Auto-added {open_count - close_count} missing </data_chunk> tag(s)")
+
     # ── Extract data_chunks ──
     chunks = extract_data_chunks(raw_content)
     if not chunks:
@@ -214,6 +237,17 @@ def append_cache(raw_file, cache_file, warnings=None):
     # ── Write cache ──
     with open(cache_file, 'w', encoding='utf-8') as f:
         f.write(cache_content)
+
+    # --- Post-append idempotency check ---
+    with open(cache_file, 'r', encoding='utf-8') as f:
+        verify_content = f.read()
+    for idx in appended_indices:
+        occurrences = len(re.findall(
+            r'CHUNK_index=' + str(idx) + r'\b', verify_content
+        ))
+        if occurrences > 1:
+            print(f"  ❌ IDEMPOTENCY VIOLATION: CHUNK_index={idx} appears {occurrences} times in cache!")
+            print(f"     Strip logic may have failed. Manual check required.")
 
     # ── Summary ──
     warning_str = f" (warnings: {','.join(warnings)})" if warnings else ""
