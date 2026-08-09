@@ -49,20 +49,35 @@ Main Job có 4 tầng. Bạn **BẮT BUỘC** nhắm vào **Big Job** hoặc **L
 
 | Tầng | Đặc điểm nhận dạng | Ví dụ | Phán định |
 |---|---|---|---|
-| Aspiration | Verb ongoing, không có điểm kết thúc, chứa Need/Why | "Nuôi dạy con", "Phát triển kỹ năng tự học", "Quản lý tài chính gia đình" | ❌ QUÁ CAO — tìm job cụ thể hơn |
+| Aspiration | Verb ongoing, không có điểm kết thúc, chứa Need/Why | "Nuôi dạy con", "Phát triển kỹ năng tự học", "Quản lý tài chính gia đình" | ❌ QUÁ CAO — tìm job cụ thể hơn ở cấp **Big Job** hoặc **Little Job**. |
 | **Big Job** | Nhiệm vụ bao trùm, telic, không chứa giải pháp cụ thể | "Thiết lập môi trường chơi cho trẻ tại nhà", "Thiết lập nếp sinh hoạt cho trẻ" | ✅ ĐẠT CHUẨN |
 | **Little Job** | Nhiệm vụ cụ thể hơn, vẫn telic, vẫn không chứa giải pháp | "Chọn lọc đồ chơi phù hợp cho trẻ", "Lập thời gian biểu hoạt động cho trẻ" | ✅ ĐẠT CHUẨN |
-| Micro Job | Task cơ học, hành vi trực tiếp có thể quan sát bằng mắt | "Mặc quần áo cho con", "Xếp khối gỗ vào kệ", "Đỗ xe" | ❌ QUÁ THẤP — tìm job tổng quát hơn |
+| Micro Job | Task cơ học, quá đơn giản, hành vi trực tiếp có thể quan sát bằng mắt | "Mặc quần áo cho con", "Xếp khối gỗ vào kệ", "Đỗ xe" | ❌ QUÁ THẤP — tìm job tổng quát hơn ở cấp **Big Job** hoặc **Little Job** |
 
-### Bước 1: Tìm tín hiệu Job trong chunk
+### Bước 1: Tìm Job trong chunk (2 giai đoạn)
 
-Tác giả sách tri thức thường nhắc đến việc/nhiệm vụ muốn giải quyết cho người đọc rất ít (1-2 lần). Tìm tín hiệu:
-- Đầu hoặc cuối chapter: "Chương này giúp bạn...", "Mục tiêu là..."
-- Suy từ nội dung: chunk dạy/hướng dẫn người đọc hoàn thành việc gì cụ thể?
+**Giai đoạn A — Quét tín hiệu tường minh:**
+Tìm câu trong chunk mà tác giả trực tiếp nêu mục tiêu/nhiệm vụ cho người đọc. Các dạng tín hiệu phổ biến:
+- EN: "This chapter will help you...", "The goal is...", "Here's how to...", "By the end of this section, you will...", "The purpose of...", "What you'll learn..."
+- VI: "Chương/Phần này giúp bạn...", "Mục tiêu là...", "Sau khi đọc xong, bạn sẽ...", "Chúng ta sẽ tìm hiểu cách..."
+
+Nếu tìm thấy → dùng nội dung đó làm tín hiệu chính. Chuyển Bước 2.
+
+**Giai đoạn B — Suy luận nếu không có tín hiệu tường minh:**
+Nếu chunk không có câu nào nêu mục tiêu trực tiếp, suy luận Job bằng câu hỏi: **"Tổng thể chunk này đang dạy/hướng dẫn/thuyết phục người đọc hoàn thành việc gì ở mức Big Job hoặc Little Job?"**
+
+⚠️ **Cảnh báo Micro Job:** Nếu câu trả lời ban đầu là hành động vật lý đơn giản có thể hoàn thành bằng 1 cử động trong vài phút (ví dụ: cất đồ, xếp đồ, mặc quần áo) → đây là Micro Job. Hỏi "Why?" để tìm job cao hơn:
+
+| Micro Job (ban đầu) | Why? | Big/Little Job (đúng) |
+|---|---|---|
+| "Cất xe tập đi" | Vì xe tập đi gây hại | "Loại bỏ thiết bị cưỡng ép vận động cho trẻ" (Little Job) |
+| "Xếp khối gỗ vào kệ" | Để trang bị đồ chơi | "Trang bị không gian chơi cho trẻ" (Little Job) |
+| "Mặc quần áo cho con" | Để bảo vệ thân nhiệt | "Bảo vệ thân nhiệt cho trẻ theo mùa" (Little Job) |
 
 > **Lưu ý:** Không nhầm "vấn đề" (bao gồm cả nhu cầu/kỳ vọng) với "việc/nhiệm vụ".
 > - Vấn đề: "Cha mẹ muốn con 2 tuổi nghe lời nhưng con chống đối" (chứa cả Need/Why)
 > - Việc: "Đạt được sự hợp tác của trẻ trong các hoạt động hàng ngày" (chỉ Main Job)
+
 
 ### Bước 2: Kiểm tra tính ĐƠN TRỊ
 
