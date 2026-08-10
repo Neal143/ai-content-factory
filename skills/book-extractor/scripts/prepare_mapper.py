@@ -53,6 +53,17 @@ def prepare_mapper(run_folder, book_name):
     text = re.sub(r'(?:\*\s*)?\*\*(META_BOOK(?:_AUDIENCE)?):\*\*(?:\s*`?)(.*?)(?:`?)$', clean_meta, text, flags=re.MULTILINE)
     text = text.replace('**META_BOOK:**', 'META_BOOK:')
 
+    # ── Defense: Strip "Can cu/Căn cứ" trailing from META_BOOK_AUDIENCE line ──
+    # NLM sometimes appends evidence text on the same line as META_BOOK_AUDIENCE.
+    # Example: "META_BOOK_AUDIENCE: book_audience=... *Căn cứ:* ..."
+    # This regex strips everything from the first formatting-marked "Căn cứ" onward.
+    text = re.sub(
+        r'^(META_BOOK_AUDIENCE:\s*.+?)\s*[_*]+C[aă]n c[uứ].*$',
+        r'\1',
+        text,
+        flags=re.MULTILINE
+    )
+
     # ── Ensure directory exists and write ──
     os.makedirs(os.path.dirname(vault_path), exist_ok=True)
 
@@ -201,6 +212,25 @@ if __name__ == '__main__':
 
     # Phase 2: Validate
     result = validate_mapper(cache_file)
+
+    # Phase 3: If passed, attach user_action for TOC review gate
+    if result['passed']:
+        mapper_raw_path = os.path.join(os.path.abspath(run_folder), 'session_1', 'mapper_raw.md')
+        result['user_action'] = {
+            'type': 'REVIEW_TOC',
+            'file': mapper_raw_path,
+            'agent_instruction': 'STOP: Mo file va gui message cho User. DUNG cho User phan hoi truoc khi tiep tuc Buoc 2.',
+            'message': (
+                "✅ Mapper Validation PASSED (4/4).\n\n"
+                "📋 Mời anh review phần TOC_MASTER trong file mapper_raw.md đang mở.\n\n"
+                "🔧 Nếu cần chỉnh sửa, anh có thể sửa TRỰC TIẾP trong file này:\n"
+                "- Sửa tên chunk (giữ đúng format: \"Chunk N: [Tên]\")\n"
+                "- Thêm/xóa chunk (cập nhật lại số thứ tự liên tục từ 1)\n"
+                "- Nếu thêm/xóa chunk: CẬP NHẬT total_chunks trong dòng META_BOOK cho khớp\n"
+                "- KHÔNG sửa cấu trúc các mục 1.1 → 1.8 hoặc dòng META_BOOK_AUDIENCE\n\n"
+                "Sau khi review xong, trả lời \"tiếp tục\" để chuyển sang Miner."
+            )
+        }
 
     # Output JSON verdict
     print(json.dumps(result, ensure_ascii=False, indent=2))

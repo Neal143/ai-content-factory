@@ -15,11 +15,11 @@ description: Kỹ năng chuyên môn giao tiếp với NotebookLM để trích x
 [B1]   MAPPER             → NLM query → lưu mapper_raw.md
 
 [B1.5] MAPPER GATE        → prepare_mapper.py → Kiểm tra 4 điểm
-         ├─ PASS 4/4      → B2
          ├─ Fail [1]      → NLM bổ sung → re-Gate
          ├─ Fail [2]      → DỪNG báo User
          ├─ Fail [3]      → Agent strip format → re-Gate
-         └─ Fail [4]      → Agent chèn sentinel → re-Gate
+         ├─ Fail [4]      → Agent chèn sentinel → re-Gate
+         └─ PASS 4/4      → User Review TOC Gate → User xác nhận → B2
 
 [B2]   LEDGER + MINER LOOP
        Khởi tạo: init_ledger.py → mở editor cho User
@@ -100,12 +100,17 @@ Agent gọi Core Script:
 `python .agents/skills/book-extractor/scripts/prepare_mapper.py "[run-folder]" "[Tên Sách]"`
 
 Script phân tích `mapper_raw.md`, làm sạch META, ghi file xương sống vào vault `vault/02-sources/books/[Tên Sách].md`, rồi chạy 4-point validation. Agent đọc JSON verdict từ stdout:
-- `"passed": true` → Bước 2
 - `"passed": false` → hành động theo `verdict` tương ứng từng check fail:
   - `header_complete` fail → Gửi NLM query bổ sung mục thiếu, chạy lại script
   - `toc_integrity` fail → DỪNG báo User
   - `format_clean` fail → Agent strip markdown formatting trong cache file, chạy lại script
   - `sentinel_exists` fail → Agent chèn `<!-- HEADER_END -->` vào đúng vị trí, chạy lại script
+- `"passed": true` → **User Review TOC Gate:**
+  1. Mở file `user_action.file` trong editor cho User.
+  2. Gửi nội dung `user_action.message` cho User.
+  3. **DỪNG** — Chờ User phản hồi (Tuân thủ `agent_instruction`).
+  4. Nếu User nói "tiếp tục" → Bước 2.
+  5. Nếu User nói "đã sửa xong" → chạy lại `prepare_mapper.py` để re-validate → PASS thì Bước 2, FAIL thì xử lý verdict rồi quay lại gate.
 
 ### Bước 2: Khởi tạo Ledger + The Miner (Vòng lặp Agent-Orchestrated)
 
