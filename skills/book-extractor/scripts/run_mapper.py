@@ -20,7 +20,7 @@ def run_mapper(run_folder):
     if not book_name or not nb_id:
         print("ERROR: book_name or notebook_id missing in 00-blackboard.yaml")
         return False
-    query = f"Tham chiếu file prompt-mapper-v4.md, hãy sinh Tổng quan và Mục lục cho sách {book_name}. TUYỆT ĐỐI KHÔNG TẠO NOTE HAY STUDIO. BẮT BUỘC IN TRỰC TIẾP TOÀN BỘ NỘI DUNG MARKDOWN RA ĐÂY."
+    query = f"Chỉ tham chiếu DUY NHẤT file prompt-mapper-v4.md (TUYỆT ĐỐI BỎ QUA prompt-miner-v4.md). Nhiệm vụ của bạn là đóng vai MAPPER, sinh Tổng quan (META_BOOK, META_BOOK_AUDIENCE) và Bảng Mục Lục (TOC_MASTER) chia thành các CHUNK cho sách {book_name}. BẮT BUỘC trả về ĐÚNG cấu trúc có trong prompt-mapper-v4.md. Không trả về data_chunk."
     print("Calling NLM...")
     res = subprocess.run(['nlm', 'notebook', 'query', nb_id, query, '--json'], capture_output=True, text=True, encoding='utf-8')
     if res.returncode != 0:

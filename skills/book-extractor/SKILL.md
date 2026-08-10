@@ -179,6 +179,20 @@ Nếu `"done": true` → thoát vòng lặp, chuyển Bước 3.
   → Gate [3] tự PASS (JTBD đã inject). Gates [1-2, 4-7] kiểm tra nội dung.
 
 **③ Đọc kết quả Gate [1-7] (từ Phase 2):**
+
+**Xử lý `filler_warning`:**
+
+NLM đôi khi hallucination loop — chèn các cụm từ có nghĩa nhưng KHÔNG liên quan nội dung
+vào nhiều câu khác nhau (ví dụ: "sùng kính" chèn vào câu nói về giày, áo, thức ăn).
+Script `gate_checker.py` dùng frequency analysis phát hiện bigrams lặp ≥6 lần/chunk.
+
+Nếu output `gate_checker.py` chứa `⚠️ Gate [1.5] WARNING`:
+1. Đọc bigrams bị flag cùng các câu ví dụ (context) được in ra ngay bên dưới.
+2. Đánh giá trực tiếp từ các câu ví dụ đó:
+   - Bigrams **chèn vô nghĩa** ở nhiều câu không liên quan → tự retry NLM
+   - Bigrams **là thuật ngữ chuyên môn** dùng nhất quán → bỏ qua, tiếp tục
+   - **Không chắc** → hỏi user
+
 Đọc file `[run-folder]/session_1/chunk_NN_gate.json` → lấy trường `next_action`. Agent thực thi TRỰC TIẾP theo `next_action.type`:
 
 → `"AGENT_EVAL"` → Chuyển bước ④.

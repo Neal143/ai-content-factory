@@ -26,6 +26,12 @@ import os
 import sys
 import json
 
+# Import shared NLM cleaner
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+from nlm_cleaner import clean_single_char_repeats
+
 
 # Fix Windows console encoding
 if sys.stdout.encoding != 'utf-8':
@@ -222,21 +228,41 @@ def append_cache(raw_file, cache_file, warnings=None):
         if warnings:
             chunk_content = inject_warnings(chunk_content, warnings)
 
+        # Safety net: strip NLM single-char repeats (loai 1)
+        chunk_content = clean_single_char_repeats(chunk_content)
+
         # Dedup: strip old chunk with same index
         cache_content, was_stripped = strip_chunk_from_cache(cache_content, chunk_index)
         if was_stripped:
             print(f"  🔄 Stripped old chunk {chunk_index} from cache (dedup)")
 
-        # Append
-        # Đảm bảo cache kết thúc bằng 2 newlines trước chunk mới
+        # Append new chunk to cache content
         cache_content = cache_content.rstrip('\n') + '\n\n'
         cache_content += f'<data_chunk>\n{chunk_content.strip()}\n</data_chunk>\n'
 
         appended_indices.append(chunk_index)
 
+    # ── Sort all chunks by CHUNK_index before writing ──
+    # Parse header (content before first <data_chunk>) and all chunks
+    first_tag_pos = cache_content.find('<data_chunk>')
+    if first_tag_pos > 0:
+        header = cache_content[:first_tag_pos].rstrip('\n')
+    else:
+        header = ''
+
+    all_chunks = extract_data_chunks(cache_content)
+    # Sort by parsed CHUNK_index (stable sort: chunks with same index keep last-added)
+    all_chunks.sort(key=lambda c: parse_chunk_index(c))
+
+    # Reassemble: header + sorted chunks
+    sorted_content = header + '\n\n' if header else ''
+    for c in all_chunks:
+        sorted_content += f'<data_chunk>\n{c.strip()}\n</data_chunk>\n\n'
+    sorted_content = sorted_content.rstrip('\n') + '\n'
+
     # ── Write cache ──
     with open(cache_file, 'w', encoding='utf-8') as f:
-        f.write(cache_content)
+        f.write(sorted_content)
 
     # --- Post-append idempotency check ---
     with open(cache_file, 'r', encoding='utf-8') as f:
@@ -252,6 +278,7 @@ def append_cache(raw_file, cache_file, warnings=None):
     # ── Summary ──
     warning_str = f" (warnings: {','.join(warnings)})" if warnings else ""
     print(f"  ✅ Appended chunk(s) {appended_indices} to cache{warning_str}")
+    print(f"  📋 Cache sorted: {len(all_chunks)} chunks in order")
     print(f"{'='*60}\n")
 
     return True

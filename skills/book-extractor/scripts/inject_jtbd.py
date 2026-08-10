@@ -51,11 +51,11 @@ def inject_jtbd(raw_file, jtbd_file):
     evidence_line = f'_Căn cứ:_ {evidence}' if evidence else ''
 
     # --- Strategy 1: REPLACE dong chunk_audience= cu (neu co) ---
-    existing_audience = re.search(r'^(META_CHUNK_AUDIENCE:[^\n]*chunk_audience=[^\n]*)', content, re.MULTILINE)
+    existing_audience = re.search(r'^([\s\*]*META_CHUNK_AUDIENCE:[^\n]*chunk_audience=[^\n]*)', content, re.MULTILINE)
     if existing_audience:
-        content = content.replace(existing_audience.group(0), jtbd_line)
+        content = content.replace(existing_audience.group(1), jtbd_line)
         # Replace hoac chen dong _Can cu:_
-        existing_evidence = re.search(r'^[\*_]*Căn cứ:[\*_]*[^\n]*', content, re.MULTILINE)
+        existing_evidence = re.search(r'^[\s\*]*_?Căn cứ:_?[^\n]*', content, re.MULTILINE)
         if existing_evidence and evidence_line:
             content = content.replace(existing_evidence.group(0), evidence_line)
         elif evidence_line:
@@ -63,7 +63,7 @@ def inject_jtbd(raw_file, jtbd_file):
             content = content.replace(jtbd_line, jtbd_line + '\n' + evidence_line)
     else:
         # --- Strategy 2: Chen TRUOC dong vivid_circumstance ---
-        vivid_match = re.search(r'^(META_CHUNK_AUDIENCE:\s*content_type=vivid_circumstance)', content, re.MULTILINE)
+        vivid_match = re.search(r'^([\s\*]*META_CHUNK_AUDIENCE:\s*content_type=vivid_circumstance)', content, re.MULTILINE)
         if vivid_match:
             insert_block = jtbd_line
             if evidence_line:
@@ -80,7 +80,7 @@ def inject_jtbd(raw_file, jtbd_file):
                 content = content[:end_pos] + '\n' + insert_block + content[end_pos:]
 
     # Xoa dong _Can cu:_ thua (neu co nhieu hon 1)
-    evidence_matches = list(re.finditer(r'^[\*_]*Căn cứ:[\*_]*[^\n]*', content, re.MULTILINE))
+    evidence_matches = list(re.finditer(r'^[\s\*]*_?Căn cứ:_?[^\n]*', content, re.MULTILINE))
     if len(evidence_matches) > 1:
         # Giu dong dau tien, xoa cac dong sau
         for m in reversed(evidence_matches[1:]):

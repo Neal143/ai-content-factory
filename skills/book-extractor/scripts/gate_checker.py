@@ -31,8 +31,9 @@ import re
 # Import quality gate module
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
-from quality_gate import run_deterministic_gates, check_jtbd_keywords
+from quality_gate import run_deterministic_gates, check_jtbd_keywords, check_filler_repeat
 from normalizer import normalize_dikw_names
+from nlm_cleaner import clean_single_char_repeats
 
 
 def check_chunk(raw_file, chunk_index, chunk_name, cache_file=None):
@@ -127,6 +128,9 @@ def check_chunk(raw_file, chunk_index, chunk_name, cache_file=None):
     # 2. Tự động nắn Khóa Ngoại (Substring Match)
     answer = normalize_dikw_names(answer)
     
+    # 3. [SHIFT-LEFT] Strip NLM single-char repeat artifacts (Loai 1)
+    answer = clean_single_char_repeats(answer)
+    
     if answer != original_answer:
         with open(raw_file, 'w', encoding='utf-8') as f:
             f.write(answer)
@@ -158,6 +162,24 @@ def check_chunk(raw_file, chunk_index, chunk_name, cache_file=None):
         print(f"  ❌ Gate [1] FAIL: {result['detail']}")
         return result
 
+    # ── Gate [1.5]: Filler Repeat WARNING (frequency analysis) ──
+    # CHI tra WARNING, KHONG reject. LLM Agent se danh gia semantic.
+    filler_warning = None
+    is_clean, fillers = check_filler_repeat(answer, threshold=6)
+    if not is_clean:
+        filler_warning = {
+            "type": "FILLER_WARNING",
+            "bigrams": [{"bigram": bg, "count": cnt, "contexts": ctx} for bg, cnt, ctx in fillers[:10]],
+            "message": "Frequency analysis detected abnormal bigram repeats. "
+                       "Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+        }
+        print(f"  ⚠️ Gate [1.5] WARNING: Abnormal bigram repeats detected")
+        for bg, cnt, ctx in fillers[:5]:
+            print(f'     → "{bg}" x{cnt}')
+            for c in ctx:
+                short_c = c if len(c) < 100 else c[:97] + "..."
+                print(f'         - {short_c}')
+
     # ── Gates [2-7]: Deterministic quality check ──
     gate_result = run_deterministic_gates(
         answer, f"Chunk {chunk_index}: {chunk_name}", chunk_index,
@@ -179,6 +201,9 @@ def check_chunk(raw_file, chunk_index, chunk_name, cache_file=None):
         detail=gate_result.detail,
         next_action=na
     )
+    # Chen filler_warning vao result TRUOC khi ghi JSON
+    if filler_warning:
+        result['filler_warning'] = filler_warning
     _write_gate_json(gate_file, result)
 
     if gate_result.passed:
