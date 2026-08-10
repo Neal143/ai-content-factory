@@ -1,0 +1,21 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn hỗ trợ con làm chủ các mốc vận động thể chất đầu đời khi con trẻ dưới ba tuổi đang tập lẫy, bò, đứng và đi.** [1]
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi trẻ tự mình hoàn thành và làm chủ các kỹ năng vận động lẫy, bò, đứng, đi một cách dẻo dai và tự lập; đồng thời hoàn toàn loại bỏ các phương pháp hay giải pháp cụ thể như sử dụng xe tập đi, ghế nhảy lò xo, hay các bài tập thể chất mầm non cưỡng ép trong phần mô tả công việc) [2].
+*   **Căn cứ:** "Then, we can follow her development during the first two years as she learns to sit, crawl, stand, and walk independently. She explores and discovers the world around her through movement..." *(Sau đó, chúng ta có thể theo dõi sự phát triển của trẻ trong hai năm đầu đời khi trẻ học cách ngồi, bò, đứng và đi một cách độc lập. Trẻ khám phá và nhận biết thế giới xung quanh thông qua vận động...)* [1]
+
+***
+
+### 🔍 Phân tích chi tiết và Kiểm thử chất lượng nghiêm ngặt (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể thực hiện hành động.
+2.  **Độ trừu tượng (Phân tầng Job):** Tránh được lỗi **Micro Job** mang tính kỹ thuật cơ học (*"đỡ đầu trẻ"*, *"cho con nằm sấp"* hay *"dìu con tập đi"*) và tránh lỗi **Big Job** quá rộng lớn mơ hồ (*"phát triển toàn diện cho con"* hay *"thấu hiểu sinh lý trẻ thơ"*). Đã định vị chính xác ở mức **Little Job**: **"hỗ trợ con làm chủ các mốc vận động thể chất đầu đời"** (vượt qua *Telic Test* thành công vì có trạng thái hoàn thành rõ rệt khi trẻ tự mình làm chủ các tư thế ngồi, bò, đứng, đi một cách vững vàng mà không cần hỗ trợ).
+3.  **Lọc sạch công cụ và giải pháp cụ thể (Rule 4):** Trong mô tả Main Job tuyệt đối không chứa các phương pháp hay công cụ xuất hiện trong tác phẩm như: *sử dụng xe tập đi (walkers), ghế nhảy (jumping seats), hay các bài tập kích thích eurythmy*.
+4.  **Tính đơn trị (Rule 2 - Khắc phục triệt để vi phạm cũ):** Main Job đơn trị hoàn toàn (**"hỗ trợ con làm chủ các mốc vận động thể chất đầu đời"**), tuyệt đối không chứa liên từ ghép nối phức tạp như **"VÀ/HOẶC"** hay các dấu phẩy phân tách nhiều đầu việc rời rạc, bảo toàn cấu trúc tối giản nhất.
+5.  **Tuân thủ ranh giới từ ngữ:** Loại bỏ hoàn toàn các từ ngữ mô tả không tự nhiên hoặc bị lạm dụng nhiều lần trước đây (như *hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*). Ngôn ngữ sử dụng tự nhiên, đúng trọng tâm và mang tính chuẩn mực sư phạm.
+6.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định rõ đối tượng (*con trẻ dưới ba tuổi*) và tình huống khách quan thực tế được trích xuất trực tiếp từ các mốc phát triển sinh học mầm non trong tác phẩm (*đang tập lẫy, bò, đứng và đi*). **Tuyệt đối không chứa bất kỳ Insight cảm xúc nào** (như nỗi sợ, nỗi lo, sự bối rối của cha mẹ) hay các tính từ định tính, giữ cho bối cảnh hoàn toàn thanh sạch và khách quan.
+
+***
+
+Chào bạn! Chân dung đối tượng JTBD cho **Chunk 5: Raising Healthy, Happy, and Capable Children - Growing into Life** đã được thiết lập vô cùng tự nhiên, đúng trọng tâm và bám sát triệt để quy trình kỹ thuật. Toàn bộ nội dung đã được in trực tiếp ngay tại đây theo đúng yêu cầu của bạn.
+
+Tiếp theo, bạn có muốn tôi đồng hành cùng bạn để tiến hành bóc tách toàn bộ dữ liệu tri thức chi tiết (Insight & Knowledge) cho **Chunk 5** này theo đúng cẩm nang của chúng ta không? Hãy để lại chỉ thị của bạn ngay tại đây nhé!

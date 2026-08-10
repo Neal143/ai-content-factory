@@ -1,0 +1,138 @@
+{
+  "chunk_index": 11,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_11_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 11,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_11_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_11_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_11_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "đồ chơi",
+        "count": 36,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một không gian chơi có khả năng biến đổi linh hoạt cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái thụ động và suy giảm khả năng tự định hình trò chơi trước sự bủa vây của các loại đồ chơi công nghiệp có công năng cố định.",
+          "Trong phòng chơi gia đình ngập tràn các hộp đồ chơi nhựa | Người mẹ nhìn đứa con trai năm tuổi đang thụ động bấm nút một chiếc xe cứu hỏa cơ khí phát nhạc rộn rã; nhưng chỉ sau chưa đầy năm phút, đứa trẻ đã chán nản vứt xe vào góc phòng và thốt lên \"con không biết chơi gì nữa\" [1] | Các kệ tủ xung quanh lấp đầy bởi những robot siêu nhân bọc nhựa và siêu xe pin sạc tinh xảo, nhưng căn phòng lại thiếu vắng hoàn toàn các mỏ neo tự nhiên mộc mạc giúp con tự mày mò lắp ghép [1] | Người mẹ bối rối lo âu hằng tuần khi thấy khả năng tự lập và tập trung tự chơi của con ngày càng suy giảm nghiêm trọng, khiến con liên tục đòi hỏi sự chú ý bày trò từ cha mẹ hoặc đòi bật tivi [1, 9]."
+        ]
+      },
+      {
+        "bigram": "trò chơi",
+        "count": 26,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một không gian chơi có khả năng biến đổi linh hoạt cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái thụ động và suy giảm khả năng tự định hình trò chơi trước sự bủa vây của các loại đồ chơi công nghiệp có công năng cố định.",
+          "* ②-1. philosophy: Khái niệm \"Đồ chơi có magic (phép mầu dở dang) và tư cách kiến tạo trò chơi tối thượng của trẻ mầm non\""
+        ]
+      },
+      {
+        "bigram": "kiến tạo",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này."
+        ]
+      },
+      {
+        "bigram": "năng lực",
+        "count": 14,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Đồ chơi có magic (phép mầu dở dang) và tư cách kiến tạo trò chơi tối thượng của trẻ mầm non | stance=support | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này."
+        ]
+      },
+      {
+        "bigram": "xã hội",
+        "count": 14,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng thế giới đồ chơi nhựa tinh xảo của thời đại số đang bòn rút và làm xơ cứng cơ bắp tưởng tượng tự nhiên của con trẻ [1, 9]. Họ lo âu rằng khi đồ chơi tự động vận hành mọi tính năng, trẻ mầm non không còn cơ hội để tự dồn nỗ lực ý chí đi tìm kiếm \"phép mầu\" biến hóa đồ vật [4]. Nỗi sợ lớn nhất của họ là con mình sẽ lớn lên trong sự nghèo nàn của thế giới ý tưởng nội tâm, mất đi khả năng tự lập, sự bền chí trước khó khăn và trở nên lúng túng, bấp bênh khi phải đối mặt với các vấn đề giao tiếp xã hội thực tế [6, 10].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này."
+        ]
+      },
+      {
+        "bigram": "học liệu",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và Barbara Patterson lý giải rằng sự vây hãm của các đồ chơi hoàn chỉnh từ nhà máy mang đến một sự \"trống rỗng nội tâm\" vĩ đại [12]. Khi đồ chơi đã quá hoàn hảo về hình dạng, nó cướp đi không gian tưởng tượng của bộ não mầm non và bòn rút sinh lực của con [13]. Ngược lại, những học liệu tự nhiên mộc mạc chưa định hình (khúc gỗ cắt thô từ cành cây, vỏ sò sông, dải lụa mỏng) là những đồ chơi \"chưa hoàn thành\" [3]. Chúng chứa đựng phép mầu dở dang [4]. Để chơi được với chúng, trẻ mầm non bắt buộc phải tự kích hoạt thế giới hình ảnh tinh thần nội tại để biến một khúc gỗ thành ngôi nhà, thành chiếc điện thoại hay toa tàu hỏa [4]. Tiến trình đi tìm kiếm và định hình phép mầu này chính là cơ chế điêu khắc tự nhiên cho hệ thần kinh thùy trán, giúp bảo toàn sinh lực mầm non và rèn giũa năng lực tư duy độc lập khi trưởng thành [13].",
+          "* **Diễn giải Core Logic:** Khác với các trò chơi điện tử hay đồ chơi công nghệ vận hành đơn lẻ mang tính ích kỷ cá nhân [14, 15], trò chơi đóng vai tự do bằng học liệu mở đòi hỏi sự tương tác và kiến thiết liên tục giữa nhóm trẻ [3]. Khi một ngôi nhà lều dựng bằng khung gỗ, kẹp quần áo và vải cotton bị đổ sập giữa giờ chơi, trẻ mầm non không thể ấn nút \"thiết lập lại\" cơ học [5]. Chúng bắt buộc phải đối mặt với thực tế, tự mình thương lượng, đưa ra các quan điểm sửa chữa khác nhau và học cách thỏa hiệp, lắng nghe bạn chơi để cùng mở rộng quy mô công trình [5]. Trải nghiệm thực tế phong phú này gieo những hạt mầm dẻo dai vào năng lực điều hành của não bộ, giúp con sau này lớn lên có thể nhìn nhận các khó khăn cuộc đời từ nhiều lăng kính khác nhau và bình thản tìm kiếm giải pháp tối ưu mà không rơi vào hoảng loạn [6]."
+        ]
+      },
+      {
+        "bigram": "giải quyết",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này."
+        ]
+      },
+      {
+        "bigram": "chơi công",
+        "count": 12,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một không gian chơi có khả năng biến đổi linh hoạt cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái thụ động và suy giảm khả năng tự định hình trò chơi trước sự bủa vây của các loại đồ chơi công nghiệp có công năng cố định.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này."
+        ]
+      },
+      {
+        "bigram": "dở dang",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* **Định nghĩa/Phát biểu luật:** Đồ chơi thực sự có ích cho trẻ mầm non dưới bảy tuổi là những vật liệu thô sơ dở dang sở hữu \"phép mầu\" biến đổi linh hoạt (magic of transformation); trẻ phải tự bỏ ra lực lượng ý chí và nỗ lực tinh thần tự thân để khám phá và đánh thức phép mầu ấy qua trò chơi đóng vai tự lập [4].",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và Barbara Patterson lý giải rằng sự vây hãm của các đồ chơi hoàn chỉnh từ nhà máy mang đến một sự \"trống rỗng nội tâm\" vĩ đại [12]. Khi đồ chơi đã quá hoàn hảo về hình dạng, nó cướp đi không gian tưởng tượng của bộ não mầm non và bòn rút sinh lực của con [13]. Ngược lại, những học liệu tự nhiên mộc mạc chưa định hình (khúc gỗ cắt thô từ cành cây, vỏ sò sông, dải lụa mỏng) là những đồ chơi \"chưa hoàn thành\" [3]. Chúng chứa đựng phép mầu dở dang [4]. Để chơi được với chúng, trẻ mầm non bắt buộc phải tự kích hoạt thế giới hình ảnh tinh thần nội tại để biến một khúc gỗ thành ngôi nhà, thành chiếc điện thoại hay toa tàu hỏa [4]. Tiến trình đi tìm kiếm và định hình phép mầu này chính là cơ chế điêu khắc tự nhiên cho hệ thần kinh thùy trán, giúp bảo toàn sinh lực mầm non và rèn giũa năng lực tư duy độc lập khi trưởng thành [13]."
+        ]
+      },
+      {
+        "bigram": "tạo trò",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Children as the Creators of Play\"** (Trẻ em là những người kiến tạo trò chơi) đúc kết triết lý sâu sắc nhất của toàn bộ chương Vui chơi trong giáo dục sớm Waldorf [1]. Tác phẩm cảnh báo thực trạng đáng báo động của thời đại hiện đại: trẻ em sở hữu ngày càng nhiều đồ chơi tinh xảo đúc sẵn từ nhà máy nhưng lại ngày càng ít biết cách chơi hay tự mình sáng tạo ra bất kỳ kịch bản trò chơi nào [1]. Bằng việc trích dẫn lời tác giả Joseph Chilton Pearce, chương này khẳng định vui chơi tự do chính là công cụ học tập vĩ đại nhất của tuổi thơ mầm non [2]. Nhờ các học liệu mở, thô sơ và dở dang dạt dào sức sống tự nhiên trong lớp học mầm non Waldorf (khúc gỗ, vỏ sò, dải lụa, kẹp gỗ), trẻ nhỏ được trao lại tư cách chủ thể tối cao để tự đi tìm kiếm phép mầu sinh học và biến hóa thế giới chơi theo dòng chảy tưởng tượng linh hoạt tự thân [3, 4]. Qua đó, con tự lập giải quyết các sự cố phát sinh một cách hòa hợp [5, 6]. Đồng thời, phần Hỏi - Đáp giữa phụ huynh và tác giả chỉ ra các quy tắc thực hành quan trọng: từ bỏ việc can thiệp bằng trí năng người lớn, duy trì thái độ can thiệp tĩnh lặng qua lao động việc nhà để con bắt chước vô thức và củng cố dũng khí tự lập [7, 8].",
+          "* ②-1. philosophy: Khái niệm \"Đồ chơi có magic (phép mầu dở dang) và tư cách kiến tạo trò chơi tối thượng của trẻ mầm non\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Đồ chơi có magic (phép mầu dở dang) và tư cách kiến tạo trò chơi tối thượng của trẻ mầm non | stance=support | supports_insight=Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

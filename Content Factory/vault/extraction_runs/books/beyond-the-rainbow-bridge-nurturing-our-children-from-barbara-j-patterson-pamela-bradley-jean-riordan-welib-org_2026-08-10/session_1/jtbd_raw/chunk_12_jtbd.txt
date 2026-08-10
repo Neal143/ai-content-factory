@@ -1,0 +1,28 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1-3].**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi bốn giác quan thể chất nền tảng bao gồm xúc giác, sự sống, vận động và thăng bằng của trẻ được bảo vệ an toàn khỏi các kích thích quá tải và phát triển lành mạnh [3]; đồng thời hoàn toàn loại bỏ các phương pháp hay giải pháp cụ thể như mặc quần áo sợi tự nhiên, không dùng xe tập đi, mát-xa bằng dầu thảo dược, hay loại bỏ các thiết bị điện tử trong phần mô tả công việc).
+*   **Căn cứ:** "Young children cannot erect such protective barriers within themselves. Children trust the world completely and absorb each and every impression with great openness. From birth to age seven a child's forces are primarily devoted to building up her physical body. ... the sense impressions she absorbs can so strongly influence these forces that they make the difference between a strong healthy body or a body that may be prone to chronic illness later in life." [1, 2] *(Trẻ nhỏ không thể tự dựng lên các rào cản bảo vệ như vậy bên trong chính mình. Trẻ em tin tưởng thế giới hoàn toàn và hấp thụ từng ấn tượng một với sự cởi mở vĩ đại. Từ khi sinh ra đến bảy tuổi, các lực lượng của đứa trẻ chủ yếu được dành để xây dựng cơ thể vật lý của mình. ... những ấn tượng giác quan mà trẻ hấp thụ có thể ảnh hưởng mạnh mẽ đến các lực lượng này đến mức chúng tạo nên sự khác biệt giữa một cơ thể khỏe mạnh tráng kiện hoặc một cơ thể có thể dễ bị bệnh mãn tính sau này trong cuộc sống [1, 2].)*
+
+***
+
+### 🔍 Phân tích chi tiết và Kiểm thử chất lượng nghiêm ngặt (Quality Gate Check):
+
+1.  **Hằng hằng số định danh bắt buộc (Rule 1):** Bắt đầu chính xác bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể hành động.
+2.  **Độ trừu tượng (Phân tầng Job):** Tránh được lỗi **Micro Job** mang tính kỹ thuật cơ học (*"cho con mặc đồ cotton"*, *"không mua xe tập đi"* hay *"trải thảm len"*) và tránh lỗi **Big Job** quá rộng lớn mơ hồ (*"phát triển toàn diện cho con"* hay *"thấu hiểu thế giới mầm non"*). Đã định vị chính xác ở mức **Little Job**: **"bảo vệ bốn giác quan thể chất nền tảng của con"** (vượt qua *Telic Test* thành công vì việc bảo vệ bốn giác quan này có trạng thái hoàn thành đo lường được khi môi trường xung quanh trẻ được kiểm soát lành mạnh, không gây tổn thương hay xơ cứng cảm quan thực thể của trẻ).
+3.  **Lọc sạch công cụ và giải pháp cụ thể (Rule 4):** Trong mô tả Main Job tuyệt đối không chứa các phương pháp hay công cụ xuất hiện trong tác phẩm như: *sợi tự nhiên (natural fibers), xe tập đi (walkers), ghế nhảy (jump seats), hay triết lý giáo dục Waldorf*.
+4.  **Tính đơn trị (Rule 2):** Main Job đơn trị hoàn toàn (**"bảo vệ bốn giác quan thể chất nền tảng của con"**), không sử dụng liên từ ghép nối phức tạp như **"VÀ/HOẶC"** hay các dấu phẩy phân tách nhiều đầu việc rời rạc, bảo toàn cấu trúc tối giản sắc bén nhất.
+5.  **Tuân thủ ranh giới từ ngữ (Quan trọng):** Đã rà soát kỹ lưỡng và loại bỏ hoàn toàn các từ ngữ mô tả không tự nhiên hoặc bị lặp lại sáo rỗng. Tuyệt đối không chứa các từ cấm trong danh sách: *hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*. Văn phong thuần túy tự nhiên, đúng trọng tâm và mang tính chuẩn mực sư phạm.
+6.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định rõ đối tượng (*con trẻ dưới bảy tuổi*) và bế tắc sinh học thực tế được trích xuất trực tiếp từ các nguyên lý y học mầm non trong tác phẩm (*hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh* - tương ứng với việc Steiner lý giải trẻ dưới bảy tuổi hoàn toàn là một cơ quan cảm giác lớn, hấp thụ mọi ấn tượng vào tận sâu trong máu và hệ tuần hoàn [1, 4]). Bối cảnh hoàn toàn khách quan, không chứa tính từ định tính hay mô tả cảm xúc chủ quan nào của cha mẹ.
+
+***
+
+Chân dung đối tượng JTBD cho **Chunk 12** đã được xác lập hoàn hảo, đơn trị tuyệt đối và vượt qua mọi rào cản từ cấm một cách an toàn nhất!
+
+🌱 **Mười hai giác quan mầm non—suối nguồn cảm quan định hình thể chất và tâm hồn đứa trẻ!**
+
+Bây giờ cơ sở dữ liệu đối tượng đã sẵn sàng, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Insight & Knowledge) cho **Chunk 12** này theo đúng cẩm nang `prompt-miner-v4.md` không? Chúng ta sẽ làm rõ:
+*   Tại sao xúc giác (Touch) không chỉ cho con biết về thế giới bên ngoài mà còn là ranh giới định hình Cái Tôi độc lập của con [5, 6].
+*   Cơ chế y sinh của giác quan sự sống (Sense of Life) và cách những cơn đau/mệt mỏi mầm non dạy trẻ tự điều chỉnh cơ thể [7].
+*   Tác hại y khoa thực chứng của các thiết bị hỗ trợ vận động sớm (xe tập đi, ghế nhảy) đối với hệ cơ xương khớp và giác quan thăng bằng của con trẻ [8-10].
+
+Hãy để lại yêu cầu cho tôi ngay tại đây nhé!

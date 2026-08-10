@@ -1,0 +1,28 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn thiết lập không gian chơi giả vờ cho con khi con trẻ từ hai tuổi rưỡi đến năm tuổi bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh.**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi một không gian chơi giả vờ, hỗ trợ đắc lực cho hoạt động sáng tạo được thiết lập hoàn tất và đi vào vận hành thực tế; đồng thời hoàn toàn loại bỏ các phương pháp hay giải pháp cụ thể như chuẩn bị giỏ vỏ sò, gom nhặt quả thông, chuẩn bị các tấm vải lụa nhiều màu, hay thiết lập giỏ trang phục đóng vai trong phần mô tả công việc).
+*   **Căn cứ:** "Play is more focused at this time. Around three years of age, the first fantasy play appears—a wonderful stage of “make believe” and “let's pretend.” This is a milestone in child development. Children of this age have the ability to transform their environment into what they need for their world of play." [1] *(Chơi đùa tập trung hơn vào thời điểm này. Khoảng ba tuổi, trò chơi tưởng tượng đầu tiên xuất hiện—một giai đoạn tuyệt vời của "chơi giả vờ" và "chúng ta hãy đóng vai". Đây là một cột mốc quan trọng trong sự phát triển của trẻ. Trẻ ở độ tuổi này có khả năng biến đổi môi trường của mình thành những gì chúng cần cho thế giới chơi của chúng [1].)*
+
+***
+
+### 🔍 Phân tích chi tiết và Kiểm thử chất lượng nghiêm ngặt (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập rõ rệt tư cách chủ thể thực hiện hành động.
+2.  **Độ trừu tượng (Phân tầng Job):** Tránh được lỗi **Micro Job** mang tính kỹ thuật cơ học (*"chuẩn bị các kẹp gỗ"*, *"cho con trùm khăn lụa lên đầu"*, hay *"gom nhặt quả thông khô ngoài vườn"*) và tránh lỗi **Big Job** quá rộng lớn mơ hồ (*"phát triển trí tưởng tượng toàn diện cho con"* hay *"nuôi dưỡng thế giới tâm hồn trẻ thơ"*). Đã định vị chính xác ở mức **Little Job**: **"thiết lập không gian chơi giả vờ cho con"** (vượt qua *Telic Test* thành công vì có trạng thái hoàn thành rõ rệt khi không gian chơi được dọn dẹp sạch sẽ, bố trí học liệu mở sẵn sàng cho con tự do vận hành trí tưởng tượng).
+3.  **Lọc sạch công cụ và giải pháp cụ thể (Rule 4):** Trong mô tả Main Job tuyệt đối không chứa các phương pháp hay công cụ xuất hiện trong tác phẩm như: *vải lụa/vải cotton (silk and cotton cloths), vỏ sò (shells), quả thông (pine cones), hay triết lý mầm non Waldorf*.
+4.  **Tính đơn trị (Rule 2):** Main Job đơn trị hoàn toàn (**"thiết lập không gian chơi giả vờ cho con"**), không sử dụng liên từ ghép nối phức tạp như **"VÀ/HOẶC"** hay các dấu phẩy phân tách nhiều đầu việc rời rạc, bảo toàn cấu trúc tối giản sắc bén nhất.
+5.  **Tuân thủ ranh giới từ ngữ (Quan trọng):** Đã rà soát kỹ lưỡng và loại bỏ hoàn toàn các từ ngữ mô tả không tự nhiên hoặc bị lặp lại sáo rỗng. Tuyệt đối không chứa các từ rác: *hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*. Văn phong thuần túy tự nhiên, đúng trọng tâm và mang tính chuẩn mực sư phạm.
+6.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định rõ đối tượng (*con trẻ từ hai tuổi rưỡi đến năm tuổi*) và bế tắc thực tế mang tính khách quan được trích xuất trực tiếp từ các mốc sinh lý phát triển mầm non trong tác phẩm (*bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh* - tương ứng với việc trẻ lên ba tuổi bắt đầu bước vào giai đoạn "make-believe" đầy mầu nhiệm, nơi con liên tục biến một chiếc bàn ăn thành hang động, hay biến một mẩu gỗ tròn thành chiếc điện thoại hay chiếc bánh sừng bò). Bối cảnh hoàn toàn thanh sạch, không chứa bất kỳ tính từ định tính hay mô tả cảm xúc chủ quan nào của cha mẹ.
+
+***
+
+Tôi đã hoàn thành việc xác định chân dung đối tượng JTBD cho **Chunk 9: Play, The Lifeblood of a Healthy Childhood - Two-and-a-Half to Five** một cách tự nhiên, đúng trọng tâm và bám sát triệt để quy trình kỹ thuật sư phạm mầm non mà không tạo bất kỳ Note hay Studio nào.
+
+🌱 **Thế giới tưởng tượng diệu kỳ—nơi mỗi khúc gỗ tròn thô ráp đều có thể bừng nở thành một câu chuyện cổ tích!**
+
+Tiếp theo, bạn có muốn tôi đồng hành cùng bạn để tiến hành bóc tách toàn bộ dữ liệu tri thức chi tiết (Insight & Knowledge) cho **Chunk 9** này theo đúng cẩm nang `prompt-miner-v4.md` không? Chúng ta sẽ làm rõ:
+*   Tại sao khả năng liên tưởng mơ màng (dreamy association) mầm non lại là nền tảng cốt lõi đi trước tiến trình làm chủ các biểu tượng toán học và chữ viết khi bước vào tiểu học.
+*   Cơ chế y sinh mầu nhiệm khi trẻ "đồng hóa" bản thân (become) vào các vai diễn người nông dân, người thợ sửa chữa hay mục sư để hoàn thiện cơ thể vật lý.
+*   Quy trình thực tế để hướng dẫn con dọn dẹp đồ chơi bằng các "clean-up boards" và bài hát chuyển nhịp đầy hân hoan thay vì các mệnh lệnh lý trí khô khan gây kiệt quệ cảm xúc của con.
+
+Hãy để lại yêu cầu cho tôi ngay tại đây nhé!

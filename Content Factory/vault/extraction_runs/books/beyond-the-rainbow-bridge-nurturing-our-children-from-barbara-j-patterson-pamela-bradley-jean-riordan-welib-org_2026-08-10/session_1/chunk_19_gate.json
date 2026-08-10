@@ -1,0 +1,138 @@
+{
+  "chunk_index": 19,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_19_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 19,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_19_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_19_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_19_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "nhịp điệu",
+        "count": 37,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một chu trình nhịp điệu sinh hoạt tuần hoàn nhất quán—giống như hơi thở hít vào và thở ra ôn hòa—để tự động hóa nếp sống tự giác, xoa dịu triệt để các phản ứng bướng bỉnh và mang lại cảm giác an tâm tuyệt đối cho con."
+        ]
+      },
+      {
+        "bigram": "sinh hoạt",
+        "count": 24,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "Trong phòng ngủ mờ ảo vào lúc chín giờ tối | Đứa trẻ bốn tuổi đang gào khóc bứt rứt, giãy nảy người và kiên quyết không chịu rời bỏ các thanh gỗ chơi để đi đánh răng | Người mẹ kiệt quệ, liên tục đứng bên cạnh hối thúc dồn dập: \"Con cất đồ chơi ngay để đi ngủ, muộn lắm rồi, OK?\" | Đứa trẻ phản ứng đầy giận dữ bằng cách ném các khối gỗ ra sàn, nằm sụp xuống khóc lóc bướng bỉnh và lờ đi mọi lời nói của mẹ | Người mẹ nhận ra sự bế tắc của mình mỗi tối khi không thể giúp con chuyển đổi trạng thái sinh hoạt một cách êm ái, phẳng lặng."
+        ]
+      },
+      {
+        "bigram": "chu trình",
+        "count": 23,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng sự thiếu nhất quán trong chu trình sinh hoạt và những khoảnh khắc chuyển tiếp đột ngột, cưỡng bức sẽ tàn phá hệ thần kinh nhạy cảm của con, gây ra các cuộc khủng hoảng bướng bỉnh triền miên và dập tắt trạng thái mộng mơ an lành của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "tuần hoàn",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một chu trình nhịp điệu sinh hoạt tuần hoàn nhất quán—giống như hơi thở hít vào và thở ra ôn hòa—để tự động hóa nếp sống tự giác, xoa dịu triệt để các phản ứng bướng bỉnh và mang lại cảm giác an tâm tuyệt đối cho con.",
+          "* ②-1. philosophy: Khái niệm \"Nhịp điệu tuần hoàn (Rhythmical Life) là người dẫn đường vô hình và chiếc kén bảo vệ tối thượng cho thể chất thực thể của trẻ dưới bảy tuổi\""
+        ]
+      },
+      {
+        "bigram": "dưới bảy",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng sự thiếu nhất quán trong chu trình sinh hoạt và những khoảnh khắc chuyển tiếp đột ngột, cưỡng bức sẽ tàn phá hệ thần kinh nhạy cảm của con, gây ra các cuộc khủng hoảng bướng bỉnh triền miên và dập tắt trạng thái mộng mơ an lành của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "điệu sinh",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một chu trình nhịp điệu sinh hoạt tuần hoàn nhất quán—giống như hơi thở hít vào và thở ra ôn hòa—để tự động hóa nếp sống tự giác, xoa dịu triệt để các phản ứng bướng bỉnh và mang lại cảm giác an tâm tuyệt đối cho con."
+        ]
+      },
+      {
+        "bigram": "hoạt động",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* **Mô tả:** Cha mẹ mong mỏi tìm thấy một người dẫn đường vô hình là nhịp điệu tự nhiên, giúp mỗi hoạt động thường nhật diễn ra phẳng lặng, tự nhiên như hơi thở mà không cần dùng đến uy quyền áp đặt hay những cuộc tranh biện bế tắc hằng tối. Họ khát khao chuyển hóa nếp nhà thành một chiếc kén bảo vệ an lành để nuôi dưỡng thể chất và bảo ôn hơi ấm tâm hồn mơ màng của con.",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và Barbara Patterson giải thích rằng trẻ mầm non sống trong trạng thái ý thức mộng mơ (dreamy consciousness) và hòa nhập trọn vẹn với môi trường xung quanh [1]. Cơ thể vật lý của con đang tập trung tối đa sinh lực tạo hình để dệt nên các cơ quan nội tạng [1]. Nhịp điệu tuần hoàn ổn định đóng vai trò như một chiếc kén bảo bọc, mang lại cảm giác an toàn tuyệt đối cho con [1]. Khi các hoạt động ăn, ngủ, chơi diễn ra vào những thời điểm nhất quán mỗi ngày, các cơ quan sinh học của con sẽ tự động điều hòa: dịch vị tiêu hóa tự động tiết ra trước giờ ăn, sự buồn ngủ tự động kéo đến trước giờ ngủ mà không cần người lớn phải nhắc nhở hay tranh luận lý trí [1]. Ngược lại, một lối sống thiếu nhịp điệu sẽ ép cơ thể trẻ phải tiêu tốn nguồn sinh mệnh lực quý giá để liên tục thích ứng với sự xáo trộn, dẫn đến mệt mỏi, bất an, bướng bỉnh bộc phát và làm thức tỉnh trí năng quá sớm [1]."
+        ]
+      },
+      {
+        "bigram": "trình nhịp",
+        "count": 13,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một chu trình nhịp điệu sinh hoạt tuần hoàn nhất quán—giống như hơi thở hít vào và thở ra ôn hòa—để tự động hóa nếp sống tự giác, xoa dịu triệt để các phản ứng bướng bỉnh và mang lại cảm giác an tâm tuyệt đối cho con.",
+          "* **Diễn giải Core Logic:** Chu trình nhịp điệu mầm non cần có sự luân phiên hài hòa giữa hai trạng thái: \"Hít vào\" (Inbreathing/contracting - hoạt động hướng nội, tập trung như ăn uống, nghe kể chuyện, nghỉ ngơi, vẽ màu nước) và \"Thở ra\" (Outbreathing/expanding - hoạt động hướng ngoại, mở rộng như chơi tự do, chạy nhảy ngoài trời, dạo chơi trong vườn) [1]. Nếu một chu trình sinh hoạt thiếu đi sự luân phiên hài hòa này (ví dụ: bắt trẻ tập trung quá lâu hoặc để trẻ chơi tự do quá đà không ranh giới), hệ thần kinh của con sẽ rơi vào trạng thái quá tải cảm giác, bộc phát sự cáu kỉnh, nổi loạn cảm xúc [1]. Việc thiết lập chu kỳ \"Hít - Thở\" đều đặn giúp xoa dịu thần kinh giao cảm, giải tỏa áp lực tinh thần và giúp trẻ tự động điều hòa hành vi một cách hòa hợp tự nhiên [1]."
+        ]
+      },
+      {
+        "bigram": "trẻ dưới",
+        "count": 13,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng sự thiếu nhất quán trong chu trình sinh hoạt và những khoảnh khắc chuyển tiếp đột ngột, cưỡng bức sẽ tàn phá hệ thần kinh nhạy cảm của con, gây ra các cuộc khủng hoảng bướng bỉnh triền miên và dập tắt trạng thái mộng mơ an lành của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng sự thiếu nhất quán trong chu trình sinh hoạt và những khoảnh khắc chuyển tiếp đột ngột, cưỡng bức sẽ tàn phá hệ thần kinh nhạy cảm của con, gây ra các cuộc khủng hoảng bướng bỉnh triền miên và dập tắt trạng thái mộng mơ an lành của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "sinh học",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rhythm\"** (Nhịp điệu) là trái tim sinh học và là nấc thang thực hành tối thượng của phần Kỷ luật sáng tạo [1]. Tác phẩm làm sáng tỏ một sự thật sinh học mầu nhiệm: nhịp điệu sinh hoạt ổn định chính là người dẫn đường ôn hòa nhất cho trẻ mầm non dưới bảy tuổi [1]. Vì trẻ nhỏ có ý thức mộng mơ và sống trọn vẹn trong khoảnh khắc, con cực kỳ khó tự mình \"chuyển số\" để đi từ hoạt động này sang hoạt động khác [1]. Những khoảnh khắc chuyển tiếp (transitions) thường nhật chính là nguồn cơn bùng phát của sự cáu kỉnh, khóc lóc và chống đối [1]. Thay vì dùng lời nói để hối thúc dồn dập hay giảng giải lý trí dông dài—vốn chỉ tàn phá hệ thần kinh giao cảm của trẻ—người lớn cần thiết lập một chu trình sinh hoạt tuần hoàn nhất quán, luân phiên nhịp nhàng như hơi thở hít vào và thở ra [1]. Bằng cách biến nhịp điệu thành thói quen hiển nhiên, cha mẹ có thể tự động hóa nếp sống tự giác, xoa dịu triệt để tới 80% các cuộc xung đột bế tắc hằng đêm về việc ăn uống và đi ngủ của con một cách êm ả nhất [1].",
+          "* **Mô tả:** Độc giả lo âu tột độ rằng nhịp sống vội vã, xáo trộn không có quy luật của gia đình đang vắt kiệt sinh lực của trẻ hằng tối. Họ sợ hãi trước những cảnh báo sinh học mầm non rằng việc ép con \"chuyển số\" đột ngột bằng sự giận dữ hay mệnh lệnh dồn dập sẽ khiến nhịp sinh học của nội tạng bị rối loạn, đẩy con vào trạng thái căng thẳng thần kinh giao cảm thường trực và làm suy yếu khả năng tự kiểm soát hành vi khi trưởng thành.",
+          "* **Định nghĩa/Phát biểu luật:** Tiến trình phát triển sinh học của trẻ mầm non luôn đòi hỏi một cấu trúc trật tự bên ngoài ổn định để làm nương tựa; nhịp điệu tuần hoàn nhất quán chính là chiếc kén che chở, giúp các cơ quan nội tạng của trẻ tự động thích nghi và vận hành một cách hài hòa, bảo toàn nguồn sinh lực dẻo dai cho cơ thể [1]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "chunk_index": 13,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_13_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 13,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_13_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_13_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_13_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "hơi ấm",
+        "count": 23,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "giác quan",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và nhà trị liệu Albert Soesman làm sáng tỏ bản chất hai chiều kỳ diệu của giác quan hơi ấm [1]. Khi trẻ nhỏ dưới bảy tuổi được bảo ôn nhiệt năng đầy đủ (mặc ấm bằng trang phục sợi tự nhiên, giữ ấm vùng đầu và bảo vệ các cơ quan tiêu hóa ở bụng), cơ thể vật lý của con không phải tiêu tốn sinh lực vô ích để tự sinh nhiệt chống chọi với các luồng gió lạnh hay khí lạnh từ sàn nhà [1, 4]. Nguồn năng lượng sống dồi dào ấy sẽ được giải phóng hoàn toàn để điêu khắc các cơ quan nội tạng khỏe mạnh và tích tụ lại để hóa thân thành \"hơi ấm tâm hồn\" [1, 5]. Trẻ lớn lên trong nôi hơi ấm thể chất và tình yêu thương vô điều kiện của cha mẹ sẽ tự động mở lòng, tràn đầy nhiệt huyết sống và thấu cảm sâu sắc với tha nhân [1, 6]. Ngược lại, những đứa trẻ bị bỏ mặc trong sự lạnh lẽo thể chất hay thái độ thờ ơ, lạnh lùng của người lớn sẽ dễ có xu hướng co rút cảm xúc, nghi ngờ thế giới và phát triển lối sống ích kỷ, phòng vệ lúc lớn khôn [1, 7].",
+          "* ②-3. actionable_rule: Quy chuẩn thiết kế môi trường cảm quan thanh lọc và nuôi dưỡng bốn giác quan cảm xúc cho trẻ dưới bảy tuổi"
+        ]
+      },
+      {
+        "bigram": "cảm quan",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",
+          "Một buổi chiều muộn tại phòng khách gia đình đầy bụi bặm và tiếng ồn xe cộ dội vào từ lòng đường hối hả | Đứa trẻ năm tuổi ngồi thẫn thờ trên thảm len sợi tổng hợp sặc sỡ, gương mặt bứt rứt bướng bỉnh khi liên tục ngửi thấy mùi nước xịt thơm hóa học nồng nặc và nhìn những dải đèn led nhấp nháy liên tục trên kệ tivi | Người mẹ mệt mỏi nhận ra sự xô bồ của môi trường cảm quan nhân tạo đang đẩy con vào trạng thái hoang mang, cáu gắt và dần khép kín lòng tin cậy đối với thế giới xung quanh hằng tuần."
+        ]
+      },
+      {
+        "bigram": "môi trường",
+        "count": 18,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",
+          "Một buổi chiều muộn tại phòng khách gia đình đầy bụi bặm và tiếng ồn xe cộ dội vào từ lòng đường hối hả | Đứa trẻ năm tuổi ngồi thẫn thờ trên thảm len sợi tổng hợp sặc sỡ, gương mặt bứt rứt bướng bỉnh khi liên tục ngửi thấy mùi nước xịt thơm hóa học nồng nặc và nhìn những dải đèn led nhấp nháy liên tục trên kệ tivi | Người mẹ mệt mỏi nhận ra sự xô bồ của môi trường cảm quan nhân tạo đang đẩy con vào trạng thái hoang mang, cáu gắt và dần khép kín lòng tin cậy đối với thế giới xung quanh hằng tuần.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "dưới bảy",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "trẻ dưới",
+        "count": 14,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "nhân tạo",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "Một buổi chiều muộn tại phòng khách gia đình đầy bụi bặm và tiếng ồn xe cộ dội vào từ lòng đường hối hả | Đứa trẻ năm tuổi ngồi thẫn thờ trên thảm len sợi tổng hợp sặc sỡ, gương mặt bứt rứt bướng bỉnh khi liên tục ngửi thấy mùi nước xịt thơm hóa học nồng nặc và nhìn những dải đèn led nhấp nháy liên tục trên kệ tivi | Người mẹ mệt mỏi nhận ra sự xô bồ của môi trường cảm quan nhân tạo đang đẩy con vào trạng thái hoang mang, cáu gắt và dần khép kín lòng tin cậy đối với thế giới xung quanh hằng tuần.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "bổ khuyết",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "* ②-2. principle: Nguyên lý \"Màu sắc bổ khuyết nội tại (Complementary Colors) và cơ chế tự điều hòa hành vi mầm non của hệ thần kinh thị giác\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Màu sắc bổ khuyết nội tại (Complementary Colors) và cơ chế tự điều hòa hành vi mầm non của hệ thần kinh thị giác | stance=support | supports_insight=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "đứa trẻ",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "Một buổi chiều muộn tại phòng khách gia đình đầy bụi bặm và tiếng ồn xe cộ dội vào từ lòng đường hối hả | Đứa trẻ năm tuổi ngồi thẫn thờ trên thảm len sợi tổng hợp sặc sỡ, gương mặt bứt rứt bướng bỉnh khi liên tục ngửi thấy mùi nước xịt thơm hóa học nồng nặc và nhìn những dải đèn led nhấp nháy liên tục trên kệ tivi | Người mẹ mệt mỏi nhận ra sự xô bồ của môi trường cảm quan nhân tạo đang đẩy con vào trạng thái hoang mang, cáu gắt và dần khép kín lòng tin cậy đối với thế giới xung quanh hằng tuần.",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và nhà trị liệu Albert Soesman làm sáng tỏ bản chất hai chiều kỳ diệu của giác quan hơi ấm [1]. Khi trẻ nhỏ dưới bảy tuổi được bảo ôn nhiệt năng đầy đủ (mặc ấm bằng trang phục sợi tự nhiên, giữ ấm vùng đầu và bảo vệ các cơ quan tiêu hóa ở bụng), cơ thể vật lý của con không phải tiêu tốn sinh lực vô ích để tự sinh nhiệt chống chọi với các luồng gió lạnh hay khí lạnh từ sàn nhà [1, 4]. Nguồn năng lượng sống dồi dào ấy sẽ được giải phóng hoàn toàn để điêu khắc các cơ quan nội tạng khỏe mạnh và tích tụ lại để hóa thân thành \"hơi ấm tâm hồn\" [1, 5]. Trẻ lớn lên trong nôi hơi ấm thể chất và tình yêu thương vô điều kiện của cha mẹ sẽ tự động mở lòng, tràn đầy nhiệt huyết sống và thấu cảm sâu sắc với tha nhân [1, 6]. Ngược lại, những đứa trẻ bị bỏ mặc trong sự lạnh lẽo thể chất hay thái độ thờ ơ, lạnh lùng của người lớn sẽ dễ có xu hướng co rút cảm xúc, nghi ngờ thế giới và phát triển lối sống ích kỷ, phòng vệ lúc lớn khôn [1, 7]."
+        ]
+      },
+      {
+        "bigram": "màu sắc",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Feeling Senses\"** (Các giác quan cảm xúc) đi sâu khảo sát nhóm bốn giác quan trung gian kết nối linh hồn con người với thế giới bên ngoài, bao gồm Khứu giác (Smell), Vị giác (Taste), Thị giác (Sight) và Giác quan Hơi ấm (Warmth) [1]. Khác với người lớn đã hình thành các màng lọc nhận thức kiên cố, trẻ mầm non dưới bảy tuổi tiếp nhận mọi ấn tượng cảm quan một cách hoàn toàn mở rỗng, không màng che chắn [1, 2]. Tác phẩm làm sáng tỏ cách các mùi hương hóa học nhân tạo tàn phá khứu giác mầm non, trong khi mùi bánh nướng thong thả hay hương cơm chín tự nhiên kích hoạt hoạt động tiết dịch vị và dệt nên dòng ký ức gia đình ấm áp [1]. Vị giác nguyên bản của con được mổ xẻ qua cơ chế sinh để điều hòa các tính khí lệch lạc (như dùng vị chua, mặn để đánh thức đứa trẻ quá dreamy, thu mình) [1]. Thông qua thị giác, trẻ trải nghiệm màu sắc và ánh sáng với một cường độ sống động gấp nhiều lần người lớn [1]. Cơ chế tự điều sắc bổ khuyết (complementary color) được ứng dụng therapeutically để cân bằng hành vi hiếu động hay khép kín [1, 3]. Cuối cùng, giác quan hơi ấm được định nghĩa như một tiến trình hóa thân mầu nhiệm: sự bảo ôn nhiệt năng thể chất dẻo dai bên ngoài chính là suối nguồn nuôi dưỡng hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm và tình yêu thương vô điều kiện của con người khi trưởng thành [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Màu sắc bổ khuyết nội tại (Complementary Colors) và cơ chế tự điều hòa hành vi mầm non của hệ thần kinh thị giác | stance=support | supports_insight=Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

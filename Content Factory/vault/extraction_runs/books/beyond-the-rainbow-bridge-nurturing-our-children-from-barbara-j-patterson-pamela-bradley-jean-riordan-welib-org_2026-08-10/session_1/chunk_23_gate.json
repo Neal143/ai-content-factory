@@ -1,0 +1,138 @@
+{
+  "chunk_index": 23,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_23_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 23,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_23_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_23_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_23_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "tâm linh",
+        "count": 23,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao khơi thông trực giác tâm linh để thấu cảm sâu sắc thế giới nội tâm của con, tìm thấy những giải pháp tự nhiên và dâng hiến cho con sự bảo hộ thiêng liêng nhất trong cuộc đời.",
+          "* ②-1. philosophy: Khái niệm \"Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác\""
+        ]
+      },
+      {
+        "bigram": "hành vi",
+        "count": 21,
+        "contexts": [
+          "Đây là nơi kỷ luật không còn là những kỹ thuật hành vi cơ học hay ranh giới ngôn từ bên ngoài, mà trở thành một công phu tu dưỡng nội tâm thầm lặng, nơi người bảo bọc học cách kết nối với thế giới tinh thần vô hình để tìm kiếm giải pháp giáo dục tự nhiên cho con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn tháo gỡ các trở ngại hành vi phức tạp của con khi con trẻ dưới bảy tuổi bộc lộ những khó khăn hành vi khó thấu hiểu bằng lý trí thông thường."
+        ]
+      },
+      {
+        "bigram": "tinh thần",
+        "count": 19,
+        "contexts": [
+          "Đây là nơi kỷ luật không còn là những kỹ thuật hành vi cơ học hay ranh giới ngôn từ bên ngoài, mà trở thành một công phu tu dưỡng nội tâm thầm lặng, nơi người bảo bọc học cách kết nối với thế giới tinh thần vô hình để tìm kiếm giải pháp giáo dục tự nhiên cho con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu."
+        ]
+      },
+      {
+        "bigram": "giấc ngủ",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* **Mô tả:** Cha mẹ khát khao mãnh liệt tìm thấy một sợi dây liên kết thiêng liêng vượt trên lý trí thông thường—một nội lực phẳng lặng giúp họ bình thản đi qua những cuộc khủng hoảng của con. Họ khao khát được tiếp thụ nguồn sinh lực trực giác mầu nhiệm từ giấc ngủ để thấu thấu hiểu con sâu sắc, làm dịu đi những bứt rứt tâm lý và che chở cho Cái Tôi của con lớn khôn tự do, an lành mỗi tuần.",
+          "* ②-1. philosophy: Khái niệm \"Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác\""
+        ]
+      },
+      {
+        "bigram": "hộ mệnh",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* ②-2. principle: Nguyên lý \"Sự dẫn dắt từ Thiên sứ hộ mệnh (Guardian Angel) và sức mạnh tâm linh nâng đỡ ranh giới nuôi dạy con\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Sự dẫn dắt từ Thiên sứ hộ mệnh (Guardian Angel) và sức mạnh tâm linh nâng đỡ ranh giới nuôi dạy con | stance=support | supports_insight=Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu."
+        ]
+      },
+      {
+        "bigram": "thế giới",
+        "count": 14,
+        "contexts": [
+          "Đây là nơi kỷ luật không còn là những kỹ thuật hành vi cơ học hay ranh giới ngôn từ bên ngoài, mà trở thành một công phu tu dưỡng nội tâm thầm lặng, nơi người bảo bọc học cách kết nối với thế giới tinh thần vô hình để tìm kiếm giải pháp giáo dục tự nhiên cho con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu."
+        ]
+      },
+      {
+        "bigram": "trực giác",
+        "count": 13,
+        "contexts": [
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao khơi thông trực giác tâm linh để thấu cảm sâu sắc thế giới nội tâm của con, tìm thấy những giải pháp tự nhiên và dâng hiến cho con sự bảo hộ thiêng liêng nhất trong cuộc đời.",
+          "* **Mô tả:** Cha mẹ khát khao mãnh liệt tìm thấy một sợi dây liên kết thiêng liêng vượt trên lý trí thông thường—một nội lực phẳng lặng giúp họ bình thản đi qua những cuộc khủng hoảng của con. Họ khao khát được tiếp thụ nguồn sinh lực trực giác mầu nhiệm từ giấc ngủ để thấu thấu hiểu con sâu sắc, làm dịu đi những bứt rứt tâm lý và che chở cho Cái Tôi của con lớn khôn tự do, an lành mỗi tuần.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác | stance=support | supports_insight=Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu."
+        ]
+      },
+      {
+        "bigram": "sống giấc",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* ②-1. philosophy: Khái niệm \"Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác | stance=support | supports_insight=Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu."
+        ]
+      },
+      {
+        "bigram": "sức mạnh",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Guidance\"** (Sự dẫn dắt/Hướng dẫn tâm linh) là đỉnh cao thiêng liêng nhất khép lại phần Kỷ luật sáng tạo. Tác phẩm hé mở một bí mật sư phạm sâu sắc: sự trợ giúp lớn lao nhất trong kỷ luật mầm non không đến từ các phương pháp can thiệp hành vi bên ngoài, mà bắt nguồn từ công phu tu dưỡng tinh thần và nỗ lực tự giáo dục nghiêm túc của người lớn [1]. Khi đối mặt với những trở ngại phức tạp của con, thay vì quát mắng hay bế tắc lý trí ban ngày, cha mẹ được hướng dẫn mang những trăn trở đó vào đời sống giấc ngủ (sleep life) và thầm lặng cầu nguyện xin thiên sứ hộ mệnh (guardian angel) của trẻ giúp đỡ [1]. Qua tiến trình kết nối tâm linh vô thức này, những suy nghĩ, ngôn từ và hành động giáo dục đúng đắn nhất sẽ tự động tìm đến với cha mẹ vào ngày hôm sau [1]. Lòng tin cậy vào thế giới bảo trợ tâm linh truyền dẫn một sức mạnh tinh thần mạnh mẽ giúp trẻ tự giác điều hòa hành vi và cảm nhận sự che chở an lành [2].",
+          "* ②-2. principle: Nguyên lý \"Sự dẫn dắt từ Thiên sứ hộ mệnh (Guardian Angel) và sức mạnh tâm linh nâng đỡ ranh giới nuôi dạy con\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Sự dẫn dắt từ Thiên sứ hộ mệnh (Guardian Angel) và sức mạnh tâm linh nâng đỡ ranh giới nuôi dạy con | stance=support | supports_insight=Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu."
+        ]
+      },
+      {
+        "bigram": "thiên thần",
+        "count": 12,
+        "contexts": [
+          "* **Định nghĩa/Phát biểu luật:** Mỗi đứa trẻ và người lớn đều được bảo trợ bởi một thiên thần hộ mệnh riêng biệt; việc thiết lập sự tin cậy thiêng liêng vào thế giới bảo trợ này truyền dẫn một sức mạnh tinh thần mạnh mẽ vào khí chất của cha mẹ, giúp con trẻ cảm nhận sự an tâm sâu sắc để tự điều hòa ý chí của mình [2].",
+          "* **Diễn giải Core Logic:** Tác phẩm khẳng định rằng mỗi cá nhân bước vào trần thế đều đi kèm với một sứ mệnh định mệnh và sự che chở của một thiên thần hộ mệnh [2]. Trẻ nhỏ dưới bảy tuổi sống trọn vẹn trong lòng tin cậy nguyên bản vào thế giới. Khi cha mẹ bế tắc trước hành vi của con và hướng lòng cầu xin thiên thần hộ mệnh của trẻ giúp đỡ, họ đang thực hiện một hành động kết nối tâm linh vô thức sâu sắc [1]. Sự tin cậy phẳng lặng này loại bỏ hoàn toàn sự tức giận, thất vọng hay lo âu ích kỷ của cái tôi người lớn. Trẻ nhỏ cảm nhận được sự vững chãi, phẳng lặng và sức mạnh tinh thần (spiritual strength) tỏa ra từ điệu bộ của cha mẹ [2]. Sự hiện diện phẳng lặng đầy dũng khí đó hoạt động như một lá chắn vô hình, bảo bọc Cái Tôi của con và xoa dịu triệt để các cơn bão giông cảm xúc.",
+          "Người cha điềm tĩnh thắp ngọn nến sáp ong vàng dịu bên nôi, anh thầm thầm cầu nguyện lời chúc lành gửi tới thiên thần bảo hộ của con trai nhỏ; không gian phòng ngủ bỗng trở nên êm ấm lạ kỳ, vỗ về giấc ngủ phẳng lặng của đứa trẻ thơ."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

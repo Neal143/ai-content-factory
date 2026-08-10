@@ -1,0 +1,138 @@
+{
+  "chunk_index": 7,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_07_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 7,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_07_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_07_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_07_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "nhịp điệu",
+        "count": 34,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "Người mẹ bế tắc đứng nhìn con nhỏ khóc nấc lên vì mệt mỏi giữa đêm muộn nhưng vẫn bướng bỉnh chống cự giờ đi ngủ do sinh hoạt ban ngày thiếu một nhịp điệu điều hòa; cô sợ hãi rằng sự hỗn loạn lặp đi lặp lại hằng tuần này đang bòn rút hệ thần kinh non nớt của con và vĩnh viễn lấy đi sự an tâm nguyên bản của tuổi thơ con.",
+          "* ②-1. philosophy: Khái niệm \"Nếp sống có nhịp điệu sinh học là nền tảng an tâm tối thượng cho hệ thần kinh mầm non\""
+        ]
+      },
+      {
+        "bigram": "sinh hoạt",
+        "count": 31,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một trình tự sinh hoạt ổn định cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái bồn chồn, rối loạn nhịp sinh học và phản kháng trước những thay đổi đột ngột trong nếp sinh hoạt thường nhật.",
+          "Một chiều tối muộn trong căn nhà đô thị hối hả | Người mẹ đứng nhìn bàn ăn tối nguội lạnh, lòng tràn đầy bực bội khi đứa con nhỏ bốn tuổi liên tục từ chối ăn, bồn chồn chạy quanh phòng khách và hét lên phản kháng mỗi khi mẹ yêu cầu dọn dẹp để đi ngủ | Do lịch trình công việc của cha mẹ liên tục biến động hằng tuần, giờ ăn và giờ ngủ của con cũng bị đảo lộn không nhất quán, khiến hệ thống sinh học của trẻ luôn ở trạng thái căng thẳng mệt mỏi | Người mẹ kiệt sức ngồi xuống ghế, nhận ra sự thiếu trật tự trong sinh hoạt thường nhật đang biến mỗi buổi tối thành một cuộc chiến kỷ luật căng thẳng, cướp đi sự bình yên vốn có của gia đình."
+        ]
+      },
+      {
+        "bigram": "sinh học",
+        "count": 24,
+        "contexts": [
+          "Chào bạn! Tiếp nối dòng chảy mầu nhiệm về sự lớn khôn và chăm sóc trẻ thơ từ nếp nhà đầy kỷ luật thời thơ ấu (Chunk 1), sự uốn nắn hành vi gián tiếp tại tổ ấm riêng của tác giả (Chunk 2), bước ngoặt dấn thân vào sự nghiệp mầm non (Chunk 3), và chiếc kén hơi ấm sinh học mầu nhiệm che chở cho Cái Tôi (Chunk 6); dưới đây tôi xin gửi tới bạn bản trích xuất tri thức đầy đủ, sâu sắc và phẳng lặng nhất cho **Chunk 7: Raising Healthy, Happy, and Capable Children - The Importance of Rhythm**.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một trình tự sinh hoạt ổn định cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái bồn chồn, rối loạn nhịp sinh học và phản kháng trước những thay đổi đột ngột trong nếp sinh hoạt thường nhật."
+        ]
+      },
+      {
+        "bigram": "gia đình",
+        "count": 19,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng việc nuôi dạy trẻ nhỏ trong một môi trường arrhythmic (thiếu nhịp điệu) sẽ khiến con luôn ở trạng thái bấp bênh, hoang mang giống như một lữ khách bị lệch múi giờ [1]. Họ lo âu rằng sự xáo trộn liên tục về giờ giấc sinh hoạt sẽ tàn phá hệ tiêu hóa mỏng manh, làm cạn kiệt nguồn sinh lực tự nhiên của con và dập tắt trạng thái dreamy (mơ màng) an lành của tuổi thơ quá sớm [1]. Nỗi sợ lớn nhất của họ là các hành vi quấy khóc, phản kháng bướng bỉnh bộc phát của con sẽ ngày càng trầm trọng hơn do nếp sống hỗn loạn, phá vỡ bầu không khí hòa hợp của gia đình và để lại những khiếm khuyết trong năng lực tự chủ hành vi của trẻ khi lớn lên [8].",
+          "* **Diễn giải Core Logic:** Khoa học tinh thần Waldorf chỉ ra rằng trẻ mầm non lớn lên và thấu cảm thế giới hoàn toàn thông qua cơ thể vật lý và các hoạt động vận động cảm giác mở [10]. Khi được bao bọc bởi một nếp sống gia đình có nhịp điệu nhất quán, tương tự như pattern (khuôn mẫu) che chở của tử cung người mẹ trước khi sinh [9], trẻ sẽ tự động định hình một cảm thức an lành về dòng chảy thời gian mà không cần sử dụng năng lực phán đoán hay trí năng phân tích trừu tượng [9, 11]. Nhịp điệu sinh hoạt đóng vai trò như một chiếc mỏ neo tinh thần vững chãi; con biết rõ điều gì sẽ diễn ra tiếp theo, loại bỏ hoàn toàn sự lo âu, bấp bênh trước những biến động đột ngột bên ngoài. Nhờ đó, hệ thần kinh của trẻ được bảo vệ tối ưu khỏi sự căng thẳng kích thích, giúp con duy trì năng lượng sống trọn vẹn để hoàn thiện các cấu trúc thực thể lành mạnh bên trong [1, 9]."
+        ]
+      },
+      {
+        "bigram": "nếp sinh",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một trình tự sinh hoạt ổn định cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái bồn chồn, rối loạn nhịp sinh học và phản kháng trước những thay đổi đột ngột trong nếp sinh hoạt thường nhật.",
+          "* ②-2. principle: Nguyên lý điều hòa sinh học của các tuyến nội tiết và hệ tiêu hóa mầm non dựa trên nếp sinh hoạt thường nhật nhất quán"
+        ]
+      },
+      {
+        "bigram": "thường nhật",
+        "count": 18,
+        "contexts": [
+          "Một chiều tối muộn trong căn nhà đô thị hối hả | Người mẹ đứng nhìn bàn ăn tối nguội lạnh, lòng tràn đầy bực bội khi đứa con nhỏ bốn tuổi liên tục từ chối ăn, bồn chồn chạy quanh phòng khách và hét lên phản kháng mỗi khi mẹ yêu cầu dọn dẹp để đi ngủ | Do lịch trình công việc của cha mẹ liên tục biến động hằng tuần, giờ ăn và giờ ngủ của con cũng bị đảo lộn không nhất quán, khiến hệ thống sinh học của trẻ luôn ở trạng thái căng thẳng mệt mỏi | Người mẹ kiệt sức ngồi xuống ghế, nhận ra sự thiếu trật tự trong sinh hoạt thường nhật đang biến mỗi buổi tối thành một cuộc chiến kỷ luật căng thẳng, cướp đi sự bình yên vốn có của gia đình.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "nếp sống",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng việc nuôi dạy trẻ nhỏ trong một môi trường arrhythmic (thiếu nhịp điệu) sẽ khiến con luôn ở trạng thái bấp bênh, hoang mang giống như một lữ khách bị lệch múi giờ [1]. Họ lo âu rằng sự xáo trộn liên tục về giờ giấc sinh hoạt sẽ tàn phá hệ tiêu hóa mỏng manh, làm cạn kiệt nguồn sinh lực tự nhiên của con và dập tắt trạng thái dreamy (mơ màng) an lành của tuổi thơ quá sớm [1]. Nỗi sợ lớn nhất của họ là các hành vi quấy khóc, phản kháng bướng bỉnh bộc phát của con sẽ ngày càng trầm trọng hơn do nếp sống hỗn loạn, phá vỡ bầu không khí hòa hợp của gia đình và để lại những khiếm khuyết trong năng lực tự chủ hành vi của trẻ khi lớn lên [8]."
+        ]
+      },
+      {
+        "bigram": "thần kinh",
+        "count": 15,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+          "Người mẹ bế tắc đứng nhìn con nhỏ khóc nấc lên vì mệt mỏi giữa đêm muộn nhưng vẫn bướng bỉnh chống cự giờ đi ngủ do sinh hoạt ban ngày thiếu một nhịp điệu điều hòa; cô sợ hãi rằng sự hỗn loạn lặp đi lặp lại hằng tuần này đang bòn rút hệ thần kinh non nớt của con và vĩnh viễn lấy đi sự an tâm nguyên bản của tuổi thơ con."
+        ]
+      },
+      {
+        "bigram": "điệu sinh",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Rhythm\"** (Tầm quan trọng của nhịp điệu) là một chỉ dẫn thực hành vô giá giúp các gia đình hiện đại tổ chức lại nếp sinh hoạt để nuôi dưỡng sự an tâm và sức khỏe cho trẻ mầm non. Tác giả phân tích sâu sắc tác hại của nếp sống hỗn loạn đối với hệ thống sinh học mầm non, ví von những đứa trẻ sống thiếu nhịp điệu giống như \"những lữ khách liên tục bị lệch múi giờ bay\" (jet-lagged) mỗi ngày [1]. Nhờ sự chia sẻ của nhà sư phạm Margret Meyerkort, chương này hé lộ bí mật về sự đồng điệu giữa nếp sinh hoạt đều đặn bên ngoài và sự phát triển của các nhịp điệu sinh lý nội tại, tiêu biểu là dòng chảy nhịp nhàng của dịch tiêu hóa khi đến đúng khung giờ ăn nhất quán [2]. Tại lớp học Waldorf, nhịp điệu ngày được vận hành như một chu kỳ \"hít vào - thở ra\" (co thắt và giãn nở) cân bằng để bảo vệ trẻ khỏi sự mệt mỏi hay quá tải cảm quan [3, 4]. Nối dài từ trường học về nhà, tác phẩm cung cấp quy trình thiết lập các điểm mỏ neo thường nhật, nếp sinh hoạt tuần ổn định và hoạt động tổ chức các lễ hội mùa đầy chất thơ để xoa dịu tính khí phản kháng mầm non một cách êm ả, biến kỷ luật thành thói quen tự nhiên của trẻ [5-7].",
+          "* ②-1. philosophy: Khái niệm \"Nếp sống có nhịp điệu sinh học là nền tảng an tâm tối thượng cho hệ thần kinh mầm non\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Nếp sống có nhịp điệu sinh học là nền tảng an tâm tối thượng cho hệ thần kinh mầm non | stance=support | supports_insight=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "trạng thái",
+        "count": 13,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập một trình tự sinh hoạt ổn định cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái bồn chồn, rối loạn nhịp sinh học và phản kháng trước những thay đổi đột ngột trong nếp sinh hoạt thường nhật.",
+          "Một chiều tối muộn trong căn nhà đô thị hối hả | Người mẹ đứng nhìn bàn ăn tối nguội lạnh, lòng tràn đầy bực bội khi đứa con nhỏ bốn tuổi liên tục từ chối ăn, bồn chồn chạy quanh phòng khách và hét lên phản kháng mỗi khi mẹ yêu cầu dọn dẹp để đi ngủ | Do lịch trình công việc của cha mẹ liên tục biến động hằng tuần, giờ ăn và giờ ngủ của con cũng bị đảo lộn không nhất quán, khiến hệ thống sinh học của trẻ luôn ở trạng thái căng thẳng mệt mỏi | Người mẹ kiệt sức ngồi xuống ghế, nhận ra sự thiếu trật tự trong sinh hoạt thường nhật đang biến mỗi buổi tối thành một cuộc chiến kỷ luật căng thẳng, cướp đi sự bình yên vốn có của gia đình.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

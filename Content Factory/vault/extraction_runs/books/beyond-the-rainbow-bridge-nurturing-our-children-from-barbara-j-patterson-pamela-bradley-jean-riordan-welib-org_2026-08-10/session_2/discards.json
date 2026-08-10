@@ -1,0 +1,202 @@
+[
+  {
+    "chunk_index": 1,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",
+    "body_fragment": "Người mẹ đứng lặng nhìn các con bồn chồn quấy khóc",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả cảnh thực tế, thiếu ẩn dụ"
+  },
+  {
+    "chunk_index": 2,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ.",
+    "body_fragment": "Người mẹ nằm thao thức giữa đêm muộn, dằn vặt lo â",
+    "disqualifier": "I-D1",
+    "reason": "Literal scene"
+  },
+  {
+    "chunk_index": 3,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi sợ rằng các môi trường mầm non mang tính học thuật công nghiệp và thiếu đi không gian sinh hoạt gia đình ấm áp sẽ làm biến dạng các giác quan mỏng manh, triệt tiêu trí tưởng tượng mơ màng và lấy đi cảm giác an tâm nguyên bản của trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ đứng quan sát căn phòng mầm non truyền th",
+    "disqualifier": "I-D1",
+    "reason": "Cảnh thực tế, không ẩn dụ"
+  },
+  {
+    "chunk_index": 5,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+    "body_fragment": "Người mẹ nằm thao thức giữa đêm muộn dằn vặt khi t",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, thiếu ẩn dụ"
+  },
+  {
+    "chunk_index": 6,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên.",
+    "body_fragment": "Người mẹ nằm thao thức giữa đêm đông lạnh giá, dằn",
+    "disqualifier": "I-D1",
+    "reason": "Trực quan thực tế, không có ẩn dụ"
+  },
+  {
+    "chunk_index": 7,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ bế tắc đứng nhìn con nhỏ khóc nấc lên vì",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, không có yếu tố ẩn dụ."
+  },
+  {
+    "chunk_index": 8,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi.",
+    "body_fragment": "Người mẹ nằm dằn vặt lo âu giữa đêm khuya khi nhìn",
+    "disqualifier": "I-D1",
+    "reason": "Literal scene, thiếu hình ảnh ẩn dụ."
+  },
+  {
+    "chunk_index": 9,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8].",
+    "body_fragment": "Người mẹ lo âu đứng nhìn con ngồi lặng lẽ trước đố",
+    "disqualifier": "I-D1",
+    "reason": "Thiếu tính ẩn dụ, mô tả thực tế."
+  },
+  {
+    "chunk_index": 10,
+    "vivid_type": "vivid_knowledge",
+    "parent": "Khái niệm \"Sự thay đổi năm sáu tuổi\" (six-year-old change / little puberty) và sự thức tỉnh của thế giới ý tưởng nội tâm tự thân của trẻ nhỏ",
+    "body_fragment": "tích của thế giới ý tưởng nội tâm tự thân của trẻ",
+    "disqualifier": "I-D1",
+    "reason": "Fragment bị lỗi cắt đầu, không thành câu hoàn chỉnh"
+  },
+  {
+    "chunk_index": 12,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",
+    "body_fragment": "Người mẹ nằm trằn trọc mất ngủ mỗi đêm, nhìn đứa c",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả literal, thiếu ẩn dụ sâu sắc"
+  },
+  {
+    "chunk_index": 13,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ đứng lặng nhìn đứa con nhỏ liên tục hắt h",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, không có ẩn dụ"
+  },
+  {
+    "chunk_index": 14,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc để con tiếp xúc với tiếng ồn cơ học, tiếng nói nhân tạo từ tivi và sự dối trá, thiếu chân thành của người lớn sẽ tàn phá hệ thần kinh cảm nhận, làm chai lì năng lực thấu cảm xã hội và vĩnh viễn hủy hoại lòng tin cậy nguyên bản của con đối với con người khi trưởng thành.",
+    "body_fragment": "Người mẹ đứng lặng bên nôi, nhìn đứa con nhỏ liên",
+    "disqualifier": "I-D1",
+    "reason": "Literal scene"
+  },
+  {
+    "chunk_index": 15,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ ngồi sụp xuống sàn phòng khách, lặng nhìn",
+    "disqualifier": "I-D1",
+    "reason": "Thiếu ẩn dụ, literal"
+  },
+  {
+    "chunk_index": 17,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành.",
+    "body_fragment": "Người mẹ đứng lặng nhìn cậu con trai nhỏ đang bướn",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, thiếu tính ẩn dụ"
+  },
+  {
+    "chunk_index": 18,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc liên tục lạm dụng từ \"Không\" hoặc can thiệp bạo lực bằng mệnh lệnh sẽ làm đứt gãy mạch chơi sáng tạo, tước đi năng lực tự chủ và gây ra sự bướng bỉnh, nổi loạn cảm xúc ở trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ đứng lặng lẽ ngoài hiên nhìn đứa con nhỏ",
+    "disqualifier": "I-D1",
+    "reason": "Cảnh quan sát trực quan"
+  },
+  {
+    "chunk_index": 19,
+    "vivid_type": "vivid_knowledge",
+    "parent": "Nguyên lý Cân bằng hơi thở tâm hồn qua chu trình Hít vào - Thở ra (Inbreathing and Outbreathing) và cơ chế tự điều hòa hành vi mầm non",
+    "body_fragment": "and cơ chế tự điều hòa hành vi mầm non",
+    "disqualifier": "I-D1",
+    "reason": "Lỗi fragment, không phải là một câu hoàn chỉnh"
+  },
+  {
+    "chunk_index": 21,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần.",
+    "body_fragment": "Người mẹ đứng bất lực nhìn con gái nhỏ đang ra sức",
+    "disqualifier": "I-D1",
+    "reason": "Literal scene"
+  },
+  {
+    "chunk_index": 22,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc thường xuyên phê bình, la mắng hay hạ thấp con sẽ gieo rắc sự tự ti, làm xơ cứng tâm hồn và buộc con phải dựng rào chắn bảo vệ, khép kín lòng hoặc bùng phát xu hướng hung hăng gây hấn mỗi tuần.",
+    "body_fragment": "Người mẹ đứng lặng nhìn cậu con trai nhỏ đang bướn",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, thiếu tính ẩn dụ."
+  },
+  {
+    "chunk_index": 23,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu.",
+    "body_fragment": "Người mẹ thẫn thờ nhìn đứa con nhỏ đang ngủ trằn t",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả trực quan, không có ẩn dụ"
+  },
+  {
+    "chunk_index": 24,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng sự kiệt sức sinh học và cảm giác bất lực trước những áp lực nuôi dạy con liên tục sẽ bộc lộ những yếu điểm cảm xúc, đẩy gia đình vào vòng xoáy xung đột bế tắc hằng đêm và tước đi sợi dây liên kết yêu thương với con trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ đứng lặng nhìn hai con nhỏ đã ngủ say phẳ",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả cảnh thực tế đơn thuần."
+  },
+  {
+    "chunk_index": 25,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng các lớp học nhóm tràn ngập kích thích nhân tạo, tiếng ồn xô bồ và áp lực bắt chước máy móc sẽ vắt kiệt sinh mệnh lực, tàn phá tế bào thần kinh nhạy cảm và gieo rắc sự bất an vào thể chất thực thể của trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ đứng lặng nhìn con trai nhỏ đang hoảng sợ",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, thiếu tính ẩn dụ."
+  },
+  {
+    "chunk_index": 26,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật.",
+    "body_fragment": "Người mẹ đứng lặng nhìn đứa con nhỏ đang bướng bỉn",
+    "disqualifier": "I-D1",
+    "reason": "Chỉ là mô tả trực quan, thiếu insight ẩn dụ."
+  },
+  {
+    "chunk_index": 27,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng những băn khoăn dồn nén về nguồn gốc ra đời và mặc cảm vô thức (nhất là ở trẻ nhận con nuôi) nếu không được hóa giải bằng hình ảnh nghệ thuật thiêng liêng sẽ làm suy yếu lòng tin cậy nguyên bản, khiến con luôn cảm thấy lạc lõng, bất an và thiếu đi cảm giác thuộc về gia đình trọn đời.",
+    "body_fragment": "Người mẹ đứng lặng lẽ ôm chặt đứa con nuôi bé bỏng",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế đơn thuần."
+  },
+  {
+    "chunk_index": 28,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",
+    "body_fragment": "giới.",
+    "disqualifier": "I-D1",
+    "reason": "Fragment bị lỗi, không đủ nghĩa."
+  },
+  {
+    "chunk_index": 29,
+    "vivid_type": "vivid_insight",
+    "parent": "Nỗi lo sợ rằng việc cho con tiếp xúc sớm với đồ chơi công nghiệp hoàn thiện quá mức và các thiết bị điện tử vô hồn sẽ bóp nghẹt lực lượng tưởng tượng dồi dào, làm xơ cứng các cơ quan thực thể bên trong và tước đi khả năng tự chơi độc lập dẻo dai của con trẻ dưới bảy tuổi.",
+    "body_fragment": "Người mẹ nhói lòng đứng nhìn đứa con nhỏ đang thẫn",
+    "disqualifier": "I-D1",
+    "reason": "Mô tả thực tế, thiếu tính ẩn dụ."
+  }
+]

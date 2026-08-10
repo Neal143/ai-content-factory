@@ -1,0 +1,138 @@
+{
+  "chunk_index": 16,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_16_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 16,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_16_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_16_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_16_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "không gian",
+        "count": 24,
+        "contexts": [
+          "Bản bóc tách dữ liệu tri thức mầu nhiệm, sâu sắc và phẳng lặng nhất cho **Chunk 16: Creative Discipline - Reforming the Space** (Cải tạo không gian sinh hoạt) [1] đã được thiết lập trọn vẹn theo đúng quy chuẩn nghiêm ngặt của cẩm nang `prompt-miner-v4.md` và in trực tiếp hoàn toàn ngay tại đây cho bạn:",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn cải tạo cấu trúc không gian vật lý cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi lệch khỏi khuôn mẫu sinh hoạt chung do sự thiếu trật tự của không gian xung quanh.",
+          "Trong góc phòng khách bừa bộn sau giờ chơi tự do hằng tuần | Đứa trẻ năm tuổi đang hăng hái ném mạnh các khối gỗ đồ chơi vào tường, cười đùa quá khích và liên tục xô ngã chiếc ghế đẩu gỗ thấp | Xung quanh con, những em búp bê vải nằm lăn lóc trên thảm bị dẫm đạp bừa bãi, các ngăn kệ trống rỗng lộn xộn và tã giấy chưa vứt gọn trong giỏ | Người mẹ mệt mỏi nhận ra sự bế tắc của mình khi liên tục lớn tiếng quát mắng \"Con dừng lại ngay!\" nhưng đứa trẻ hoàn toàn phớt lờ và càng tỏ ra kích động, nổi loạn hơn trước sự hỗn loạn của không gian xung quanh mỗi tối."
+        ]
+      },
+      {
+        "bigram": "vật lý",
+        "count": 24,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn cải tạo cấu trúc không gian vật lý cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi lệch khỏi khuôn mẫu sinh hoạt chung do sự thiếu trật tự của không gian xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung."
+        ]
+      },
+      {
+        "bigram": "hành vi",
+        "count": 23,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn cải tạo cấu trúc không gian vật lý cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi lệch khỏi khuôn mẫu sinh hoạt chung do sự thiếu trật tự của không gian xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung."
+        ]
+      },
+      {
+        "bigram": "xung quanh",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "Trong góc phòng khách bừa bộn sau giờ chơi tự do hằng tuần | Đứa trẻ năm tuổi đang hăng hái ném mạnh các khối gỗ đồ chơi vào tường, cười đùa quá khích và liên tục xô ngã chiếc ghế đẩu gỗ thấp | Xung quanh con, những em búp bê vải nằm lăn lóc trên thảm bị dẫm đạp bừa bãi, các ngăn kệ trống rỗng lộn xộn và tã giấy chưa vứt gọn trong giỏ | Người mẹ mệt mỏi nhận ra sự bế tắc của mình khi liên tục lớn tiếng quát mắng \"Con dừng lại ngay!\" nhưng đứa trẻ hoàn toàn phớt lờ và càng tỏ ra kích động, nổi loạn hơn trước sự hỗn loạn của không gian xung quanh mỗi tối.",
+          "* **Mô tả:** Độc giả lo âu sâu sắc rằng việc để phòng chơi của con luôn trong trạng thái lộn xộn, đồ chơi vứt lung tung sẽ kích hoạt sự bồn chồn thần kinh giao cảm của trẻ dưới bảy tuổi. Họ sợ hãi trước những phân tích sư phạm rằng việc dẫm đạp lên búp bê vải dưới sàn sẽ âm thầm gieo rắc một hình ảnh nhân cách méo mó, hỗn loạn vào sâu trong vô thức của con, khiến con lớn lên trong sự thiếu tôn trọng bản thân và những người xung quanh [1]."
+        ]
+      },
+      {
+        "bigram": "trật tự",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn cải tạo cấu trúc không gian vật lý cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi lệch khỏi khuôn mẫu sinh hoạt chung do sự thiếu trật tự của không gian xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung."
+        ]
+      },
+      {
+        "bigram": "búp bê",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "Trong góc phòng khách bừa bộn sau giờ chơi tự do hằng tuần | Đứa trẻ năm tuổi đang hăng hái ném mạnh các khối gỗ đồ chơi vào tường, cười đùa quá khích và liên tục xô ngã chiếc ghế đẩu gỗ thấp | Xung quanh con, những em búp bê vải nằm lăn lóc trên thảm bị dẫm đạp bừa bãi, các ngăn kệ trống rỗng lộn xộn và tã giấy chưa vứt gọn trong giỏ | Người mẹ mệt mỏi nhận ra sự bế tắc của mình khi liên tục lớn tiếng quát mắng \"Con dừng lại ngay!\" nhưng đứa trẻ hoàn toàn phớt lờ và càng tỏ ra kích động, nổi loạn hơn trước sự hỗn loạn của không gian xung quanh mỗi tối.",
+          "* **Mô tả:** Độc giả lo âu sâu sắc rằng việc để phòng chơi của con luôn trong trạng thái lộn xộn, đồ chơi vứt lung tung sẽ kích hoạt sự bồn chồn thần kinh giao cảm của trẻ dưới bảy tuổi. Họ sợ hãi trước những phân tích sư phạm rằng việc dẫm đạp lên búp bê vải dưới sàn sẽ âm thầm gieo rắc một hình ảnh nhân cách méo mó, hỗn loạn vào sâu trong vô thức của con, khiến con lớn lên trong sự thiếu tôn trọng bản thân và những người xung quanh [1]."
+        ]
+      },
+      {
+        "bigram": "of the",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "* ②-1. philosophy: Khái niệm \"Rơi ra ngoài khuôn mẫu\" (falling out of the form) và tác động điều hòa của cấu trúc vật lý xung quanh trẻ dưới bảy tuổi",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Rơi ra ngoài khuôn mẫu (falling out of the form) và tác động điều hòa của cấu trúc vật lý xung quanh trẻ dưới bảy tuổi | stance=support | supports_insight=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung."
+        ]
+      },
+      {
+        "bigram": "đồ chơi",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "Trong góc phòng khách bừa bộn sau giờ chơi tự do hằng tuần | Đứa trẻ năm tuổi đang hăng hái ném mạnh các khối gỗ đồ chơi vào tường, cười đùa quá khích và liên tục xô ngã chiếc ghế đẩu gỗ thấp | Xung quanh con, những em búp bê vải nằm lăn lóc trên thảm bị dẫm đạp bừa bãi, các ngăn kệ trống rỗng lộn xộn và tã giấy chưa vứt gọn trong giỏ | Người mẹ mệt mỏi nhận ra sự bế tắc của mình khi liên tục lớn tiếng quát mắng \"Con dừng lại ngay!\" nhưng đứa trẻ hoàn toàn phớt lờ và càng tỏ ra kích động, nổi loạn hơn trước sự hỗn loạn của không gian xung quanh mỗi tối.",
+          "* **Mô tả:** Độc giả lo âu sâu sắc rằng việc để phòng chơi của con luôn trong trạng thái lộn xộn, đồ chơi vứt lung tung sẽ kích hoạt sự bồn chồn thần kinh giao cảm của trẻ dưới bảy tuổi. Họ sợ hãi trước những phân tích sư phạm rằng việc dẫm đạp lên búp bê vải dưới sàn sẽ âm thầm gieo rắc một hình ảnh nhân cách méo mó, hỗn loạn vào sâu trong vô thức của con, khiến con lớn lên trong sự thiếu tôn trọng bản thân và những người xung quanh [1]."
+        ]
+      },
+      {
+        "bigram": "bừa bãi",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Reforming the Space\"** (Cải tạo không gian) mang lại một góc nhìn đột phá về cách giải quyết các hành vi lệch lạc của trẻ mầm non dưới bảy tuổi [1]. Tác giả làm sáng tỏ một nguyên lý sư phạm quan trọng: khi trẻ có biểu hiện ngỗ nghịch hay quá khích, điều đó thường có nghĩa là con đã \"rơi ra ngoài khuôn mẫu\" (fallen out of the form) của thời điểm đó [1]. Thay vì sử dụng những lời răn đe, quát mắng hay giải thích lý trí khô cứng—vốn chỉ đánh thức trí năng quá sớm và kích hoạt phản ứng kháng cự của trẻ [1]—người lớn cần thực hiện \"cải tạo không gian\" (re-forming the space) xung quanh con [1]. Phương pháp này được hiện thực hóa thông qua các hành động thầm lặng như chỉnh lại chiếc ghế, xếp lại thảm lót bát ăn, thu dọn các đồ chơi bừa bãi hoặc sắp xếp lại các kệ gỗ [1]. Đặc biệt, tác giả nhấn mạnh tầm quan trọng của việc không để búp bê hay con rối nằm lăn lóc dưới sàn nhà, tránh gieo rắc hình ảnh hỗn loạn về con người vào tâm thức non nớt của trẻ [1]. Bằng cách tái kiến thiết một môi trường vật lý ngăn nắp, hài hòa, người lớn có thể phục hồi sự bình an và trật tự cho trẻ một cách tự nhiên mà không cần can thiệp trực tiếp bằng lời nói [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung."
+        ]
+      },
+      {
+        "bigram": "điều hòa",
+        "count": 14,
+        "contexts": [
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao tái tạo một khuôn mẫu trật tự vật lý bình yên, nhất quán xung quanh con để tự động điều hòa lực lượng ý chí, khơi dậy tinh thần tự giác dọn dẹp và củng cố sự điềm tĩnh nội tâm của trẻ.",
+          "* ②-1. philosophy: Khái niệm \"Rơi ra ngoài khuôn mẫu\" (falling out of the form) và tác động điều hòa của cấu trúc vật lý xung quanh trẻ dưới bảy tuổi",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Rơi ra ngoài khuôn mẫu (falling out of the form) và tác động điều hòa của cấu trúc vật lý xung quanh trẻ dưới bảy tuổi | stance=support | supports_insight=Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

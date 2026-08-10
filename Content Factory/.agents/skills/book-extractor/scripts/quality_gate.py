@@ -336,3 +336,59 @@ def run_deterministic_gates(answer: str, chunk_name: str, chunk_index: int, cach
         needs_supplement=g345.needs_supplement or g6.needs_supplement or g7.needs_supplement,
         detail=combined_detail
     )
+
+
+# ── Filler Repeat Detection (Frequency Analysis) ──────────────────────
+
+VIET_STOPWORDS = {
+    'của', 'và', 'là', 'có', 'không', 'được', 'cho', 'với', 'trong',
+    'một', 'này', 'đó', 'các', 'những', 'để', 'từ', 'theo', 'về',
+    'khi', 'đã', 'sẽ', 'đang', 'bị', 'cũng', 'như', 'hay', 'hoặc',
+    'nếu', 'thì', 'mà', 'vì', 'do', 'bởi', 'nhưng', 'tuy', 'dù',
+    'ra', 'lên', 'xuống', 'vào', 'lại', 'đi', 'rằng', 'nên', 'phải',
+    'còn', 'đều', 'rất', 'quá', 'hơn', 'nhất', 'tất', 'mọi',
+    'lúc', 'nào', 'đây', 'kia', 'ấy', 'nó', 'họ', 'chúng',
+    'trẻ', 'con', 'em', 'bé', 'cha', 'mẹ', 'người', 'cô', 'giáo',
+    'mầm', 'non', 'dục', 'sự', 'việc', 'cách', 'đời', 'ngày',
+}
+
+
+def check_filler_repeat(text, threshold=6):
+    """
+    Frequency analysis phat hien bigram lap bat thuong.
+    Tra ve WARNING (khong reject) de LLM Agent danh gia semantic.
+
+    Returns: (is_clean: bool, fillers: list[tuple(bigram_str, count, list[context_lines])])
+    """
+    content_lines = []
+    for line in text.split('\n'):
+        stripped = line.strip()
+        if stripped.startswith('META_') or stripped.startswith('>') or stripped.startswith('#'):
+            continue
+        if stripped:
+            content_lines.append(stripped)
+
+    bigram_counts = {}
+    bigram_contexts = {}
+
+    for line in content_lines:
+        tokens = line.lower().split()
+        for i in range(len(tokens) - 1):
+            t1, t2 = tokens[i], tokens[i + 1]
+            if t1 in VIET_STOPWORDS and t2 in VIET_STOPWORDS:
+                continue
+            if len(t1) <= 1 or len(t2) <= 1:
+                continue
+            bigram = t1 + ' ' + t2
+            
+            bigram_counts[bigram] = bigram_counts.get(bigram, 0) + 1
+            
+            if bigram not in bigram_contexts:
+                bigram_contexts[bigram] = []
+            if len(bigram_contexts[bigram]) < 3 and line not in bigram_contexts[bigram]:
+                bigram_contexts[bigram].append(line)
+
+    fillers = [(bg, cnt, bigram_contexts[bg]) for bg, cnt in bigram_counts.items() if cnt >= threshold]
+    fillers.sort(key=lambda x: -x[1])
+
+    return len(fillers) == 0, fillers

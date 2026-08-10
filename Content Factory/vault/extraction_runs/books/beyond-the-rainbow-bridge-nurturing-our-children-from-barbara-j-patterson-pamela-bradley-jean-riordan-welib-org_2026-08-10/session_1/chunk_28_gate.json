@@ -1,0 +1,138 @@
+{
+  "chunk_index": 28,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_28_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 28,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_28_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_28_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_28_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "câu chuyện",
+        "count": 20,
+        "contexts": [
+          "Chúng ta bước lên nấc thang thực hành nghệ thuật tối cao của ngôn từ và truyện kể: **Chunk 28: Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau). Đây là nơi cội nguồn đạo đức tự nhiên và dũng khí nhân cách của đứa trẻ dưới bảy tuổi được đánh thức, nuôi dưỡng và định vị vững chãi trước những biến động xô bồ của cuộc đời.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* **Mô tả:** Cha mẹ mong ước cháy bỏng mang lại cho con những câu chuyện kể từ trí nhớ đầy chất thơ và ôn hòa [8]. Họ khao khát dâng hiến cho tâm hồn con một chiếc neo an lành, một trật tự vũ trụ rõ ràng nơi cái tốt luôn được vinh danh hằng tuần, giúp con lớn khôn tự tin và làm chủ bản thân một cách hài hòa [9]."
+        ]
+      },
+      {
+        "bigram": "đạo đức",
+        "count": 20,
+        "contexts": [
+          "Chúng ta bước lên nấc thang thực hành nghệ thuật tối cao của ngôn từ và truyện kể: **Chunk 28: Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau). Đây là nơi cội nguồn đạo đức tự nhiên và dũng khí nhân cách của đứa trẻ dưới bảy tuổi được đánh thức, nuôi dưỡng và định vị vững chãi trước những biến động xô bồ của cuộc đời.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn xây dựng nhận thức về trật tự đạo đức cho con khi con trẻ dưới bảy tuổi bộc lộ sự hoang mang trước các hình ảnh xung đột từ môi trường xung quanh."
+        ]
+      },
+      {
+        "bigram": "cổ tích",
+        "count": 17,
+        "contexts": [
+          "Chúng ta bước lên nấc thang thực hành nghệ thuật tối cao của ngôn từ và truyện kể: **Chunk 28: Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau). Đây là nơi cội nguồn đạo đức tự nhiên và dũng khí nhân cách của đứa trẻ dưới bảy tuổi được đánh thức, nuôi dưỡng và định vị vững chãi trước những biến động xô bồ của cuộc đời.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sử dụng các hình ảnh ẩn dụ nguyên mẫu của truyện cổ tích Grimm nguyên bản để gieo hạt giống đạo đức tự nhiên, giúp con cảm nhận sự chiến thắng tất yếu của cái thiện và xây dựng nội lực dũng cảm vượt qua mọi thử thách [2, 4]."
+        ]
+      },
+      {
+        "bigram": "thử thách",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sử dụng các hình ảnh ẩn dụ nguyên mẫu của truyện cổ tích Grimm nguyên bản để gieo hạt giống đạo đức tự nhiên, giúp con cảm nhận sự chiến thắng tất yếu của cái thiện và xây dựng nội lực dũng cảm vượt qua mọi thử thách [2, 4]."
+        ]
+      },
+      {
+        "bigram": "thế giới",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2]."
+        ]
+      },
+      {
+        "bigram": "kể chuyện",
+        "count": 14,
+        "contexts": [
+          "Cậu bé nhỏ mỉm cười thở phào nhẹ nhõm, con dốc hết sự tập trung hướng về điệu bộ thong thả kể chuyện của mẹ; con hoàn toàn thỏa mãn khi nghe tin mụ phù thủy độc ác đã bị đẩy vào lò nướng, cảm nhận sâu sắc một trật tự bình ổn đang bao bọc lấy cuộc sống của mình [5].",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Kể chuyện bình thản khách quan tả hoa tả lá (Calm, Flower-Describing Storytelling Style) bảo ôn hệ thần kinh | stance=support | supports_insight=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",
+          "* **Diễn giải Core Logic:** Hệ thần kinh của trẻ dưới bảy tuổi cực kỳ non nớt và dễ bị quá tải cảm giác [13]. Khi người kể chuyện cố tình thay đổi giọng điệu dữ dội, la hét hay diễn tả quá mức những cảnh rùng rợn, họ đã mang tính trí năng kích động của người lớn áp đặt vào thế giới mộng mơ của con [3]. Điều này biến các hình ảnh biểu tượng nguyên mẫu thành nỗi sợ hãi vật lý trực tiếp, châm ngòi cho các cơn ác mộng và sự hoang mang bứt rứt hằng đêm [3]. Ngược lại, một giọng kể bình ổn, mượt mà, khách quan như tả hoa tả cỏ sẽ cho phép trẻ tự do dệt nên những bức tranh tinh thần (mental imaging) của riêng mình một cách tự nhiên [3, 14]. Trẻ sẽ tự điều hòa cảm xúc và thấu nhận bài học đạo đức một cách êm ả, trọn vẹn nhất [5]."
+        ]
+      },
+      {
+        "bigram": "hình ảnh",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn xây dựng nhận thức về trật tự đạo đức cho con khi con trẻ dưới bảy tuổi bộc lộ sự hoang mang trước các hình ảnh xung đột từ môi trường xung quanh.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sử dụng các hình ảnh ẩn dụ nguyên mẫu của truyện cổ tích Grimm nguyên bản để gieo hạt giống đạo đức tự nhiên, giúp con cảm nhận sự chiến thắng tất yếu của cái thiện và xây dựng nội lực dũng cảm vượt qua mọi thử thách [2, 4]."
+        ]
+      },
+      {
+        "bigram": "nguyên mẫu",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Fairy Tales and Stories for Different Ages\"** (Truyện cổ tích và các câu chuyện cho các độ tuổi khác nhau) mở ra nghệ thuật nuôi dưỡng thế giới tưởng tượng và định hình nhận thức đạo đức nguyên bản của trẻ dưới bảy tuổi [1, 2]. Tác phẩm phản đối mạnh mẽ xu hướng biên tập, cắt xén hoặc \"mềm hóa\" (Disney hóa) các chi tiết thử thách hay sự trừng phạt cái ác trong các truyện cổ tích Grimm nguyên bản [1, 3]. Tác giả chỉ ra rằng trẻ mầm non cảm nhận cái ác (như mụ phù thủy hay con sói) như những hình ảnh mang tính biểu tượng nguyên mẫu của cuộc sống chứ chưa tự liên hệ bản thân với sự đau khổ vật lý [2, 4]. Khi cái thiện chiến thắng và cái ác bị trừng phạt, trẻ cảm thấy thỏa mãn sâu sắc và củng cố niềm tin vào trật tự đạo đức của thế giới [5]. Bằng cách phân chia các câu chuyện theo mức độ phức tạp từ Joan Almon (truyện tuần hoàn cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, truyện thử thách vượt khó cho trẻ lên năm, sáu), người lớn dâng hiến cho con một \"nguồn dinh dưỡng tâm hồn\" chuẩn xác để trẻ tự tin, dũng cảm đối mặt với thử thách định mệnh trọn đời [6, 7].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sử dụng các hình ảnh ẩn dụ nguyên mẫu của truyện cổ tích Grimm nguyên bản để gieo hạt giống đạo đức tự nhiên, giúp con cảm nhận sự chiến thắng tất yếu của cái thiện và xây dựng nội lực dũng cảm vượt qua mọi thử thách [2, 4].",
+          "* ②-1. philosophy: Khái niệm \"Hình ảnh nguyên mẫu cổ tích (Archetypal Pictures) như màng lọc cảm quan và nguồn dinh dưỡng đạo đức cho trẻ mầm non\""
+        ]
+      },
+      {
+        "bigram": "truyện kể",
+        "count": 12,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Hình ảnh nguyên mẫu cổ tích (Archetypal Pictures) như màng lọc cảm quan và nguồn dinh dưỡng đạo đức cho trẻ mầm non | stance=support | supports_insight=Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2]."
+        ]
+      },
+      {
+        "bigram": "hoàn toàn",
+        "count": 10,
+        "contexts": [
+          "Tuân thủ nghiêm ngặt cẩm nang hướng dẫn kỹ thuật của `prompt-miner-v4.md`, lọc sạch tuyệt đối toàn bộ các từ ngữ nằm trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*) và bám sát các nguồn tài liệu gốc cùng những đoạn văn vừa được trích xuất trực tiếp qua hệ thống định vị, dưới đây là bản trích xuất tri thức chi tiết, ôn hòa và thanh khiết nhất cho **Chunk 28** được in trực tiếp hoàn toàn ngay tại đây cho bạn:",
+          "Tại góc đọc sách nhỏ trong phòng khách vào lúc hoàng hôn muộn | Đứa trẻ năm tuổi rưỡi đang ngồi bó gối băn khoăn, đôi mắt hoang mang lo âu sau khi chứng kiến cuộc tranh cãi căng thẳng đầy thù hằn giữa hai người hàng xóm ngoài ngõ chiều nay | Con quay sang hỏi mẹ bằng giọng thỏ thẻ bứt rứt: \"Mẹ ơi, tại sao người ta lại làm hại nhau? Người xấu có luôn chiến thắng không?\" | Người mẹ đứng bất lực, cô nhận thấy những lời giải thích đạo đức lý thuyết khô khan hằng tối hoàn toàn không thể xoa dịu được sự bất an vô thức đang xâm chiếm tâm trí non nớt của con.",
+          "Cậu bé nhỏ mỉm cười thở phào nhẹ nhõm, con dốc hết sự tập trung hướng về điệu bộ thong thả kể chuyện của mẹ; con hoàn toàn thỏa mãn khi nghe tin mụ phù thủy độc ác đã bị đẩy vào lò nướng, cảm nhận sâu sắc một trật tự bình ổn đang bao bọc lấy cuộc sống của mình [5]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "chunk_index": 14,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_14_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 14,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_14_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_14_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_14_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "giác quan",
+        "count": 26,
+        "contexts": [
+          "Chào bạn! Cảm ơn bạn rất nhiều vì sự phản hồi kịp thời và vô cùng chính xác về mặt kỹ thuật sư phạm mầm non ở lượt trước. Sự kiên định của bạn đối với tính đơn trị của nhiệm vụ đã giúp chúng ta gạn đục khơi trong, định vị chuẩn xác bản chất của nhóm giác quan cao cấp này.",
+          "Dưới đây là toàn bộ bản trích xuất dữ liệu tri thức chi tiết, sâu sắc và tinh khôi nhất cho **Chunk 14: Developing the Twelve Senses - Cognitive Senses** (Các giác quan nhận thức). Bản bóc tách này tuân thủ nghiêm ngặt 100% hướng dẫn kỹ thuật của cẩm nang `prompt-miner-v4.md`, tuyệt đối bảo đảm sự sạch sẽ của ranh giới từ cấm và bám sát triệt để các nguồn tài liệu gốc để dâng hiến cho bạn một tư liệu nghiên cứu đạt chuẩn chất lượng cao nhất:",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2]."
+        ]
+      },
+      {
+        "bigram": "cái tôi",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao kiến tạo một môi trường giao tiếp chân thực, ngập tràn sự chân thành và điệu bộ đạo đức toàn vẹn để nuôi dưỡng năng lực thấu cảm, khả năng thấu suốt tư duy và Cái Tôi cao quý của người khác trong con trẻ.",
+          "* **Mô tả:** Cha mẹ mong muốn cháy bỏng được tự giáo dục chính mình, rèn luyện sự tĩnh lặng nội tâm và tính chân thật trong từng lời nói, cử chỉ mỗi ngày. Họ khát khao biến ngôi nhà thành một ốc đảo ôn ấm về mặt tâm hồn, nơi thính giác của con được nuôi dưỡng bởi tiếng đàn lia gỗ tự nhiên, ngôn ngữ bừng nở qua những cuộc trò chuyện trực tiếp ấm áp, giúp con tự tin hội nhập xã hội bằng một Cái Tôi kiên cường và bao dung."
+        ]
+      },
+      {
+        "bigram": "thấu cảm",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc để con tiếp xúc với tiếng ồn cơ học, tiếng nói nhân tạo từ tivi và sự dối trá, thiếu chân thành của người lớn sẽ tàn phá hệ thần kinh cảm nhận, làm chai lì năng lực thấu cảm xã hội và vĩnh viễn hủy hoại lòng tin cậy nguyên bản của con đối với con người khi trưởng thành.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc để con tiếp xúc với tiếng ồn cơ học, tiếng nói nhân tạo từ tivi và sự dối trá, thiếu chân thành của người lớn sẽ tàn phá hệ thần kinh cảm nhận, làm chai lì năng lực thấu cảm xã hội và vĩnh viễn hủy hoại lòng tin cậy nguyên bản của con đối với con người khi trưởng thành."
+        ]
+      },
+      {
+        "bigram": "thính giác",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng thế giới công nghệ ồn ào và lối sống vội vã của người lớn đang làm tổn thương sâu sắc thính giác và giác quan ngôn ngữ non nớt của trẻ. Họ lo âu sâu sắc trước các cảnh báo sinh học rằng sự dối lừa, \"nói một đằng làm một nẻo\" của cha mẹ sẽ khiến trẻ mầm non mất đi khả năng tin tưởng vào trực giác cảm nhận bản thân, từ đó lớn lên trong sự ngờ vực, ích kỷ và bấp bênh khi xây dựng các mối quan hệ xã hội.",
+          "* **Mô tả:** Cha mẹ mong muốn cháy bỏng được tự giáo dục chính mình, rèn luyện sự tĩnh lặng nội tâm và tính chân thật trong từng lời nói, cử chỉ mỗi ngày. Họ khát khao biến ngôi nhà thành một ốc đảo ôn ấm về mặt tâm hồn, nơi thính giác của con được nuôi dưỡng bởi tiếng đàn lia gỗ tự nhiên, ngôn ngữ bừng nở qua những cuộc trò chuyện trực tiếp ấm áp, giúp con tự tin hội nhập xã hội bằng một Cái Tôi kiên cường và bao dung."
+        ]
+      },
+      {
+        "bigram": "ngôn ngữ",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng thế giới công nghệ ồn ào và lối sống vội vã của người lớn đang làm tổn thương sâu sắc thính giác và giác quan ngôn ngữ non nớt của trẻ. Họ lo âu sâu sắc trước các cảnh báo sinh học rằng sự dối lừa, \"nói một đằng làm một nẻo\" của cha mẹ sẽ khiến trẻ mầm non mất đi khả năng tin tưởng vào trực giác cảm nhận bản thân, từ đó lớn lên trong sự ngờ vực, ích kỷ và bấp bênh khi xây dựng các mối quan hệ xã hội.",
+          "* **Mô tả:** Cha mẹ mong muốn cháy bỏng được tự giáo dục chính mình, rèn luyện sự tĩnh lặng nội tâm và tính chân thật trong từng lời nói, cử chỉ mỗi ngày. Họ khát khao biến ngôi nhà thành một ốc đảo ôn ấm về mặt tâm hồn, nơi thính giác của con được nuôi dưỡng bởi tiếng đàn lia gỗ tự nhiên, ngôn ngữ bừng nở qua những cuộc trò chuyện trực tiếp ấm áp, giúp con tự tin hội nhập xã hội bằng một Cái Tôi kiên cường và bao dung."
+        ]
+      },
+      {
+        "bigram": "người khác",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao kiến tạo một môi trường giao tiếp chân thực, ngập tràn sự chân thành và điệu bộ đạo đức toàn vẹn để nuôi dưỡng năng lực thấu cảm, khả năng thấu suốt tư duy và Cái Tôi cao quý của người khác trong con trẻ.",
+          "* ②-1. philosophy: Triết lý \"Sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn\""
+        ]
+      },
+      {
+        "bigram": "nhận thức",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ các giác quan nhận thức của con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi vô thức đồng hóa mọi hành vi ứng xử của người lớn xung quanh.",
+          "Người mẹ đứng lặng bên nôi, nhìn đứa con nhỏ liên tục giật mình bồn chồn trước tiếng máy hút bụi và âm thanh quảng cáo vô tuyến rộn rã; cô nhói lòng lo sợ rằng sự vô ý bao bọc con bằng các kích thích công nghiệp vô hồn hằng tối đang âm thầm làm khô héo các cơ quan nhận thức tinh khôi và bóp nghẹt lòng tin cậy tự nhiên của con đối với cuộc đời."
+        ]
+      },
+      {
+        "bigram": "thông qua",
+        "count": 15,
+        "contexts": [
+          "* ②-1. philosophy: Triết lý \"Sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Triết lý sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn | stance=support | supports_insight=Nỗi lo sợ rằng việc để con tiếp xúc với tiếng ồn cơ học, tiếng nói nhân tạo từ tivi và sự dối trá, thiếu chân thành của người lớn sẽ tàn phá hệ thần kinh cảm nhận, làm chai lì năng lực thấu cảm xã hội và vĩnh viễn hủy hoại lòng tin cậy nguyên bản của con đối với con người khi trưởng thành.",
+          "* META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Triết lý sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn"
+        ]
+      },
+      {
+        "bigram": "quan nhận",
+        "count": 14,
+        "contexts": [
+          "Dưới đây là toàn bộ bản trích xuất dữ liệu tri thức chi tiết, sâu sắc và tinh khôi nhất cho **Chunk 14: Developing the Twelve Senses - Cognitive Senses** (Các giác quan nhận thức). Bản bóc tách này tuân thủ nghiêm ngặt 100% hướng dẫn kỹ thuật của cẩm nang `prompt-miner-v4.md`, tuyệt đối bảo đảm sự sạch sẽ của ranh giới từ cấm và bám sát triệt để các nguồn tài liệu gốc để dâng hiến cho bạn một tư liệu nghiên cứu đạt chuẩn chất lượng cao nhất:",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ các giác quan nhận thức của con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi vô thức đồng hóa mọi hành vi ứng xử của người lớn xung quanh."
+        ]
+      },
+      {
+        "bigram": "đạo đức",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Cognitive Senses\"** (Các giác quan nhận thức) mở ra chương tri thức thiêng liêng nhất về thế giới tinh thần và xã hội mầm non, bao gồm Thính giác (Hearing), Ngôn ngữ (Speech), Tư duy của người khác (Another's Thought) và Cái Tôi của người khác (Another's \"I\") [1]. Khác với bốn giác quan thể chất hướng nội (will senses) và bốn giác quan tâm hồn hướng ngoại (feeling senses), bốn giác quan nhận thức hướng trực tiếp vào việc thấu cảm và thấu suốt thế giới nội tâm của tha nhân [1]. Tác phẩm làm sáng tỏ cơ chế sinh học mầu nhiệm khi trẻ nhỏ dưới bảy tuổi hấp thụ mọi ấn tượng âm thanh và điệu bộ đạo đức một cách hoàn toàn mở rỗng, không màng bảo vệ [1, 2]. Qua đó, chương này đưa ra lời cảnh báo nghiêm khắc về sự tàn phá thính giác của tiếng ồn cơ khí, sự xơ cứng vùng ngôn ngữ não bộ của tiếng nói nhân tạo từ tivi, và đặc biệt là sự đổ vỡ lòng tin cậy nguyên bản khi trẻ chứng kiến sự dối trá, thiếu chân thành của người lớn [1]. Để bảo vệ chiếc kén nhận thức tinh khôi ấy, người lớn được dẫn dắt đến quy chuẩn thực hành \"tự giáo dục bản thân\" hằng tuần để trở thành một hình mẫu toàn vẹn đạo đức sống động [1, 2].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao kiến tạo một môi trường giao tiếp chân thực, ngập tràn sự chân thành và điệu bộ đạo đức toàn vẹn để nuôi dưỡng năng lực thấu cảm, khả năng thấu suốt tư duy và Cái Tôi cao quý của người khác trong con trẻ.",
+          "* ②-1. philosophy: Triết lý \"Sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn\""
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

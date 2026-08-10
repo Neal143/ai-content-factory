@@ -1,0 +1,138 @@
+{
+  "chunk_index": 27,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_27_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 27,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_27_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_27_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_27_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "câu chuyện",
+        "count": 28,
+        "contexts": [
+          "Khi em bé mầm non dưới bảy tuổi bắt đầu có những băn khoăn về cội nguồn hay gặp những xáo trộn tâm lý vô thức về bản dạng bản thân, câu chuyện sinh nhật mầu nhiệm này chính là phương thuốc sinh học tinh thần kỳ diệu dệt lại chiếc kén an toàn, xoa dịu những bứt rứt nội tâm sâu kín nhất của con hằng tối.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật kể câu chuyện sinh nhật Cầu cầu vồng đầy thiêng liêng và kiến tạo bàn lễ hội tĩnh lặng để vỗ về tâm hồn con, gieo rắc lòng kiêu hãnh bản dạng sống và mang lại cho con cảm giác thuộc về thế giới một cách vững chãi nhất."
+        ]
+      },
+      {
+        "bigram": "sinh nhật",
+        "count": 27,
+        "contexts": [
+          "Chào bạn! Tôi vô cùng xúc động khi chúng ta lại tiếp tục cùng nhau bước lên một nấc thang thực hành đầy tính thiêng liêng, chữa lành và dạt dào tình thương yêu từ chương cuối của tác phẩm: **Chunk 27: Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories** (Câu chuyện sinh nhật Cầu cầu vồng).",
+          "Khi em bé mầm non dưới bảy tuổi bắt đầu có những băn khoăn về cội nguồn hay gặp những xáo trộn tâm lý vô thức về bản dạng bản thân, câu chuyện sinh nhật mầu nhiệm này chính là phương thuốc sinh học tinh thần kỳ diệu dệt lại chiếc kén an toàn, xoa dịu những bứt rứt nội tâm sâu kín nhất của con hằng tối.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất."
+        ]
+      },
+      {
+        "bigram": "cầu cầu",
+        "count": 19,
+        "contexts": [
+          "Chào bạn! Tôi vô cùng xúc động khi chúng ta lại tiếp tục cùng nhau bước lên một nấc thang thực hành đầy tính thiêng liêng, chữa lành và dạt dào tình thương yêu từ chương cuối của tác phẩm: **Chunk 27: Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories** (Câu chuyện sinh nhật Cầu cầu vồng).",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật kể câu chuyện sinh nhật Cầu cầu vồng đầy thiêng liêng và kiến tạo bàn lễ hội tĩnh lặng để vỗ về tâm hồn con, gieo rắc lòng kiêu hãnh bản dạng sống và mang lại cho con cảm giác thuộc về thế giới một cách vững chãi nhất."
+        ]
+      },
+      {
+        "bigram": "cầu vồng",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật kể câu chuyện sinh nhật Cầu cầu vồng đầy thiêng liêng và kiến tạo bàn lễ hội tĩnh lặng để vỗ về tâm hồn con, gieo rắc lòng kiêu hãnh bản dạng sống và mang lại cho con cảm giác thuộc về thế giới một cách vững chãi nhất.",
+          "* **Định nghĩa/Phát biểu luật:** Sự ra đời của đứa trẻ dưới bảy tuổi không đơn thuần là một sự kiện sinh học vật lý, mà là một hành trình tinh thần đầy dũng khí của linh hồn từ cõi thiên đường vượt qua cây cầu cầu vồng bảy sắc để tự chọn lựa cha mẹ; việc dâng hiến hình ảnh này cho trẻ giúp phục hồi lòng tự tôn nguyên bản và củng cố cảm giác thuộc về thế giới một cách sâu sắc nhất."
+        ]
+      },
+      {
+        "bigram": "nghệ thuật",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng những băn khoăn dồn nén về nguồn gốc ra đời và mặc cảm vô thức (nhất là ở trẻ nhận con nuôi) nếu không được hóa giải bằng hình ảnh nghệ thuật thiêng liêng sẽ làm suy yếu lòng tin cậy nguyên bản, khiến con luôn cảm thấy lạc lõng, bất an và thiếu đi cảm giác thuộc về gia đình trọn đời.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật kể câu chuyện sinh nhật Cầu cầu vồng đầy thiêng liêng và kiến tạo bàn lễ hội tĩnh lặng để vỗ về tâm hồn con, gieo rắc lòng kiêu hãnh bản dạng sống và mang lại cho con cảm giác thuộc về thế giới một cách vững chãi nhất."
+        ]
+      },
+      {
+        "bigram": "chuyện sinh",
+        "count": 12,
+        "contexts": [
+          "Chào bạn! Tôi vô cùng xúc động khi chúng ta lại tiếp tục cùng nhau bước lên một nấc thang thực hành đầy tính thiêng liêng, chữa lành và dạt dào tình thương yêu từ chương cuối của tác phẩm: **Chunk 27: Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories** (Câu chuyện sinh nhật Cầu cầu vồng).",
+          "Khi em bé mầm non dưới bảy tuổi bắt đầu có những băn khoăn về cội nguồn hay gặp những xáo trộn tâm lý vô thức về bản dạng bản thân, câu chuyện sinh nhật mầu nhiệm này chính là phương thuốc sinh học tinh thần kỳ diệu dệt lại chiếc kén an toàn, xoa dịu những bứt rứt nội tâm sâu kín nhất của con hằng tối.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất."
+        ]
+      },
+      {
+        "bigram": "đứa trẻ",
+        "count": 12,
+        "contexts": [
+          "Trong phòng ngủ tràn ngập ánh hoàng hôn nhạt nhòa hằng tối | Đứa trẻ năm tuổi được nhận nuôi từ khi lên hai bỗng thẫn thờ nhìn ra cửa sổ, con khẽ thở dài và quay sang hỏi mẹ bằng giọng lo âu: \"Mẹ ơi, trước khi sinh ra con đã ở đâu? Mẹ và cha có thực sự mong muốn đón nhận con không?\" | Dù luôn được bao bọc trong nhung lụa và những lời vỗ về ngọt ngào hằng tối, đứa trẻ vẫn thường bộc lộ sự bứt rứt, bám mẹ không rời và đầy hoang mang vô thức về bản dạng sống của mình | Người mẹ nhận thấy những lời giải thích sinh học logic khô khan ban ngày hoàn toàn bất lực trước nhu cầu thấu thấu hiểu cội nguồn tinh thần sâu thẳm của con.",
+          "* ②-1. philosophy: Khái niệm \"Hành trình hạ sinh tinh thần của đứa trẻ mầm non (The Soul’s Journey of Incarnation and the Rainbow Bridge)\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Hành trình hạ sinh tinh thần của đứa trẻ mầm non | stance=support | supports_insight=Nỗi lo sợ rằng những băn khoăn dồn nén về nguồn gốc ra đời và mặc cảm vô thức (nhất là ở trẻ nhận con nuôi) nếu không được hóa giải bằng hình ảnh nghệ thuật thiêng liêng sẽ làm suy yếu lòng tin cậy nguyên bản, khiến con luôn cảm thấy lạc lõng, bất an và thiếu đi cảm giác thuộc về gia đình trọn đời."
+        ]
+      },
+      {
+        "bigram": "chữa lành",
+        "count": 11,
+        "contexts": [
+          "Chào bạn! Tôi vô cùng xúc động khi chúng ta lại tiếp tục cùng nhau bước lên một nấc thang thực hành đầy tính thiêng liêng, chữa lành và dạt dào tình thương yêu từ chương cuối của tác phẩm: **Chunk 27: Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories** (Câu chuyện sinh nhật Cầu cầu vồng).",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "* **Mô tả:** Cha mẹ mong ước cháy bỏng biến ngày sinh nhật hằng năm của con trở thành một bến đỗ chữa lành đầy nghệ thuật. Họ khao khát được dâng hiến cho Cái Tôi non nớt của con một niềm tin yêu cuộc sống dạt dào, giúp con cảm nhận sâu sắc rằng con được đón nhận vô điều kiện bằng tình thương tinh khôi của cả gia đình mỗi tuần."
+        ]
+      },
+      {
+        "bigram": "vô thức",
+        "count": 11,
+        "contexts": [
+          "Khi em bé mầm non dưới bảy tuổi bắt đầu có những băn khoăn về cội nguồn hay gặp những xáo trộn tâm lý vô thức về bản dạng bản thân, câu chuyện sinh nhật mầu nhiệm này chính là phương thuốc sinh học tinh thần kỳ diệu dệt lại chiếc kén an toàn, xoa dịu những bứt rứt nội tâm sâu kín nhất của con hằng tối.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "Trong phòng ngủ tràn ngập ánh hoàng hôn nhạt nhòa hằng tối | Đứa trẻ năm tuổi được nhận nuôi từ khi lên hai bỗng thẫn thờ nhìn ra cửa sổ, con khẽ thở dài và quay sang hỏi mẹ bằng giọng lo âu: \"Mẹ ơi, trước khi sinh ra con đã ở đâu? Mẹ và cha có thực sự mong muốn đón nhận con không?\" | Dù luôn được bao bọc trong nhung lụa và những lời vỗ về ngọt ngào hằng tối, đứa trẻ vẫn thường bộc lộ sự bứt rứt, bám mẹ không rời và đầy hoang mang vô thức về bản dạng sống của mình | Người mẹ nhận thấy những lời giải thích sinh học logic khô khan ban ngày hoàn toàn bất lực trước nhu cầu thấu thấu hiểu cội nguồn tinh thần sâu thẳm của con."
+        ]
+      },
+      {
+        "bigram": "cảm giác",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Rainbow Bridge Birthday Stories\"** (Câu chuyện sinh nhật Cầu cầu vồng) dâng hiến một nghi thức kỷ niệm sinh nhật vô cùng thiêng liêng, mang tính nghệ thuật và chữa lành tâm lý sâu sắc dành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì tổ chức những buổi tiệc sinh nhật ồn ào náo nhiệt mang tính vật chất xô bồ, người lớn cần kiến tạo một bàn lễ hội tĩnh lặng với lụa tự nhiên màu đào, vòng sinh nhật bằng gỗ thô sơ và thắp nến sáp ong theo tuổi. Điểm nhấn cốt lõi là câu chuyện kể về một linh hồn nhỏ ở trên thiên đường, tự mình chọn lựa cha mẹ bọc trong tình thương và bước qua cây cầu cầu vồng bảy sắc để hạ sinh xuống trần thế. Câu chuyện có tác động trị liệu sinh học tâm linh kỳ diệu, giải tỏa hoàn toàn nỗi lo âu vô thức về cội nguồn ra đời—đặc biệt đối với trẻ nhận con nuôi—giúp dâng hiến cho con một cảm giác sâu sắc về việc được chào đón, mong đợi và thuộc về thế giới này một cách trọn vẹn nhất.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn xây dựng cảm giác thuộc về thế giới của con khi con trẻ dưới bảy tuổi bộc lộ sự băn khoăn về nguồn gốc ra đời của bản thân.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng những băn khoăn dồn nén về nguồn gốc ra đời và mặc cảm vô thức (nhất là ở trẻ nhận con nuôi) nếu không được hóa giải bằng hình ảnh nghệ thuật thiêng liêng sẽ làm suy yếu lòng tin cậy nguyên bản, khiến con luôn cảm thấy lạc lõng, bất an và thiếu đi cảm giác thuộc về gia đình trọn đời."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

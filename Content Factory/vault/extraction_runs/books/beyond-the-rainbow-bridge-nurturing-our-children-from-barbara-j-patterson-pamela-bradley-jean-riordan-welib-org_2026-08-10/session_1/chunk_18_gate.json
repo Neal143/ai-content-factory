@@ -1,0 +1,138 @@
+{
+  "chunk_index": 18,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_18_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 18,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_18_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_18_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_18_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "năng lượng",
+        "count": 22,
+        "contexts": [
+          "Chào bạn! Tiếp nối nấc thang thứ ba của kỷ luật sáng tạo đầy tính nghệ thuật, tác giả đưa chúng ta tiến đến **Chunk 18: Creative Discipline - The Magic Word: May** để giải mã năng lượng hoạt động không ngừng của con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Magic Word: May\"** (Từ ma thuật: Con có thể) là chương đúc kết tinh hoa của nghệ thuật điều hướng hành vi mầm non mà không rơi vào hai thái cực độc đoán hay buông thả [1]. Tác phẩm vạch trần thói quen lạm dụng những tiếng \"Không!\" dồn dập của người lớn—vốn chỉ khiến trẻ mầm non dưới bảy tuổi trơ lì thần kinh, ngừng chơi trong sự tự ti và phớt lờ chỉ dẫn [2, 3]. Thay vào đó, chương này đề xuất một giải pháp giao tiếp đầy dũng khí: sử dụng từ ma thuật \"may\" (con có thể) mang tính chất khẳng định dứt khoát [1]. Từ \"may\" chứa đựng phẩm chất của một đặc quyền tự hào, giúp dẫn dắt dòng năng lượng ý chí dở dang của trẻ vào các hoạt động phù hợp mà không làm đứt gãy thế giới mộng mị mơ màng của tuổi thơ [1, 4]. Thông qua các mốc sinh lý học mầm non và các chất liệu chơi thô thô tự nhiên, người lớn được trang bị một quy chuẩn thực hành ôn hòa để biến những trận chiến ý chí bế tắc thành sự tự giác hợp tác tự nguyện [3, 5].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động."
+        ]
+      },
+      {
+        "bigram": "cảm xúc",
+        "count": 13,
+        "contexts": [
+          "* **🔥 Tử huyệt Cảm xúc chính:**",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc liên tục lạm dụng từ \"Không\" hoặc can thiệp bạo lực bằng mệnh lệnh sẽ làm đứt gãy mạch chơi sáng tạo, tước đi năng lực tự chủ và gây ra sự bướng bỉnh, nổi loạn cảm xúc ở trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc liên tục lạm dụng từ \"Không\" hoặc can thiệp bạo lực bằng mệnh lệnh sẽ làm đứt gãy mạch chơi sáng tạo, tước đi năng lực tự chủ và gây ra sự bướng bỉnh, nổi loạn cảm xúc ở trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "hoạt động",
+        "count": 12,
+        "contexts": [
+          "Chào bạn! Tiếp nối nấc thang thứ ba của kỷ luật sáng tạo đầy tính nghệ thuật, tác giả đưa chúng ta tiến đến **Chunk 18: Creative Discipline - The Magic Word: May** để giải mã năng lượng hoạt động không ngừng của con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Magic Word: May\"** (Từ ma thuật: Con có thể) là chương đúc kết tinh hoa của nghệ thuật điều hướng hành vi mầm non mà không rơi vào hai thái cực độc đoán hay buông thả [1]. Tác phẩm vạch trần thói quen lạm dụng những tiếng \"Không!\" dồn dập của người lớn—vốn chỉ khiến trẻ mầm non dưới bảy tuổi trơ lì thần kinh, ngừng chơi trong sự tự ti và phớt lờ chỉ dẫn [2, 3]. Thay vào đó, chương này đề xuất một giải pháp giao tiếp đầy dũng khí: sử dụng từ ma thuật \"may\" (con có thể) mang tính chất khẳng định dứt khoát [1]. Từ \"may\" chứa đựng phẩm chất của một đặc quyền tự hào, giúp dẫn dắt dòng năng lượng ý chí dở dang của trẻ vào các hoạt động phù hợp mà không làm đứt gãy thế giới mộng mị mơ màng của tuổi thơ [1, 4]. Thông qua các mốc sinh lý học mầm non và các chất liệu chơi thô thô tự nhiên, người lớn được trang bị một quy chuẩn thực hành ôn hòa để biến những trận chiến ý chí bế tắc thành sự tự giác hợp tác tự nguyện [3, 5].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động."
+        ]
+      },
+      {
+        "bigram": "điều hướng",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Magic Word: May\"** (Từ ma thuật: Con có thể) là chương đúc kết tinh hoa của nghệ thuật điều hướng hành vi mầm non mà không rơi vào hai thái cực độc đoán hay buông thả [1]. Tác phẩm vạch trần thói quen lạm dụng những tiếng \"Không!\" dồn dập của người lớn—vốn chỉ khiến trẻ mầm non dưới bảy tuổi trơ lì thần kinh, ngừng chơi trong sự tự ti và phớt lờ chỉ dẫn [2, 3]. Thay vào đó, chương này đề xuất một giải pháp giao tiếp đầy dũng khí: sử dụng từ ma thuật \"may\" (con có thể) mang tính chất khẳng định dứt khoát [1]. Từ \"may\" chứa đựng phẩm chất của một đặc quyền tự hào, giúp dẫn dắt dòng năng lượng ý chí dở dang của trẻ vào các hoạt động phù hợp mà không làm đứt gãy thế giới mộng mị mơ màng của tuổi thơ [1, 4]. Thông qua các mốc sinh lý học mầm non và các chất liệu chơi thô thô tự nhiên, người lớn được trang bị một quy chuẩn thực hành ôn hòa để biến những trận chiến ý chí bế tắc thành sự tự giác hợp tác tự nguyện [3, 5].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao chuyển hóa các trận chiến ý chí bế tắc thành những khoảnh khắc hợp tác tự nguyện hân hoan hằng tuần thông qua việc làm chủ nghệ thuật điều hướng năng lượng hành động ôn hòa của con."
+        ]
+      },
+      {
+        "bigram": "hằng tuần",
+        "count": 12,
+        "contexts": [
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao chuyển hóa các trận chiến ý chí bế tắc thành những khoảnh khắc hợp tác tự nguyện hân hoan hằng tuần thông qua việc làm chủ nghệ thuật điều hướng năng lượng hành động ôn hòa của con.",
+          "* **Diễn giải Core Logic:** Nhà sư phạm Barbara Patterson làm sáng tỏ sức mạnh của từ \"may\". Khi người lớn nói \"Con có thể treo chiếc áo khoác của mình lên\" hoặc \"Con có thể cất đôi giày vào khay mây\", thông điệp này chứa đựng một sự tôn trọng và khẳng định rõ ràng, không có câu hỏi lấp lửng để trẻ từ chối hay lờ đi [1]. Từ \"may\" mang phẩm chất của một đặc quyền đầy tự hào cho trẻ nhỏ mầm non khi con được tin tưởng giao phó một nhiệm vụ tự lập [1, 4]. Ngược lại, nếu cha mẹ cố gắng giải thích đạo lý, tranh luận logic dông dài để thuyết phục con, họ vô tình đánh thức trí năng và tư duy phản biện của trẻ quá sớm, kéo con ra khỏi thế giới mộng mơ êm đềm của tuổi thơ [4]. Trẻ sẽ bắt đầu dùng lập luận bắt chước để tìm cách đối phó và từ chối các chỉ dẫn đạo đức hằng tuần [4].",
+          "* ②-3. actionable_rule: Quy chuẩn chuyển hướng năng lượng chơi dở dang và giao tiếp tích cực hằng tuần [1-7]"
+        ]
+      },
+      {
+        "bigram": "đặc quyền",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Magic Word: May\"** (Từ ma thuật: Con có thể) là chương đúc kết tinh hoa của nghệ thuật điều hướng hành vi mầm non mà không rơi vào hai thái cực độc đoán hay buông thả [1]. Tác phẩm vạch trần thói quen lạm dụng những tiếng \"Không!\" dồn dập của người lớn—vốn chỉ khiến trẻ mầm non dưới bảy tuổi trơ lì thần kinh, ngừng chơi trong sự tự ti và phớt lờ chỉ dẫn [2, 3]. Thay vào đó, chương này đề xuất một giải pháp giao tiếp đầy dũng khí: sử dụng từ ma thuật \"may\" (con có thể) mang tính chất khẳng định dứt khoát [1]. Từ \"may\" chứa đựng phẩm chất của một đặc quyền tự hào, giúp dẫn dắt dòng năng lượng ý chí dở dang của trẻ vào các hoạt động phù hợp mà không làm đứt gãy thế giới mộng mị mơ màng của tuổi thơ [1, 4]. Thông qua các mốc sinh lý học mầm non và các chất liệu chơi thô thô tự nhiên, người lớn được trang bị một quy chuẩn thực hành ôn hòa để biến những trận chiến ý chí bế tắc thành sự tự giác hợp tác tự nguyện [3, 5].",
+          "* **Mô tả:** Cha mẹ mong muốn cháy bỏng tìm thấy một chiếc chìa khóa ngôn từ kiên định giúp xoa dịu tính khí nổi loạn của con mà vẫn giữ được sự bình an trong tâm hồn. Họ khát khao biến những nhiệm vụ thường nhật thành những đặc quyền đầy tự hào để con tự nguyện tuân theo thông qua sự bắt chước điệu bộ điềm tĩnh của người lớn.",
+          "* ②-2. principle: Nguyên lý \"Từ ma thuật 'May' (Con có thể) kích hoạt cảm giác đặc quyền thay thế cho từ 'Không' phủ quyết\" [1, 4, 6]"
+        ]
+      },
+      {
+        "bigram": "hướng năng",
+        "count": 11,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao chuyển hóa các trận chiến ý chí bế tắc thành những khoảnh khắc hợp tác tự nguyện hân hoan hằng tuần thông qua việc làm chủ nghệ thuật điều hướng năng lượng hành động ôn hòa của con.",
+          "* **Định nghĩa/Phát biểu luật:** Năng lượng ý chí của trẻ mầm non là một dòng chảy sinh lực chuyển động liên tục; việc người lớn lạm dụng những tiếng \"Không\" khô khan để ngăn chặn bừa bãi sẽ tàn phá cảm quan chơi tự nhiên, trong khi sự chuyển hướng năng lượng ôn hòa giúp bảo vệ sự thâm nhập sâu của Cái Tôi vào các chi [2, 3]."
+        ]
+      },
+      {
+        "bigram": "tự do",
+        "count": 11,
+        "contexts": [
+          "* ②-1. philosophy: Khái niệm \"Năng lượng ý chí tự do và sự chuyển dịch hướng hoạt động thay vì đàn áp cảm xúc\" [2, 3]",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Năng lượng ý chí tự do và sự chuyển dịch hướng hoạt động thay vì đàn áp cảm xúc | stance=support | supports_insight=Nỗi lo sợ rằng việc liên tục lạm dụng từ \"Không\" hoặc can thiệp bạo lực bằng mệnh lệnh sẽ làm đứt gãy mạch chơi sáng tạo, tước đi năng lực tự chủ và gây ra sự bướng bỉnh, nổi loạn cảm xúc ở trẻ dưới bảy tuổi.",
+          "* META_KNOWLEDGE: content_type=vivid_knowledge | supports_knowledge=Khái niệm Năng lượng ý chí tự do và sự chuyển dịch hướng hoạt động thay vì đàn áp cảm xúc"
+        ]
+      },
+      {
+        "bigram": "dưới bảy",
+        "count": 10,
+        "contexts": [
+          "Chào bạn! Tiếp nối nấc thang thứ ba của kỷ luật sáng tạo đầy tính nghệ thuật, tác giả đưa chúng ta tiến đến **Chunk 18: Creative Discipline - The Magic Word: May** để giải mã năng lượng hoạt động không ngừng của con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Magic Word: May\"** (Từ ma thuật: Con có thể) là chương đúc kết tinh hoa của nghệ thuật điều hướng hành vi mầm non mà không rơi vào hai thái cực độc đoán hay buông thả [1]. Tác phẩm vạch trần thói quen lạm dụng những tiếng \"Không!\" dồn dập của người lớn—vốn chỉ khiến trẻ mầm non dưới bảy tuổi trơ lì thần kinh, ngừng chơi trong sự tự ti và phớt lờ chỉ dẫn [2, 3]. Thay vào đó, chương này đề xuất một giải pháp giao tiếp đầy dũng khí: sử dụng từ ma thuật \"may\" (con có thể) mang tính chất khẳng định dứt khoát [1]. Từ \"may\" chứa đựng phẩm chất của một đặc quyền tự hào, giúp dẫn dắt dòng năng lượng ý chí dở dang của trẻ vào các hoạt động phù hợp mà không làm đứt gãy thế giới mộng mị mơ màng của tuổi thơ [1, 4]. Thông qua các mốc sinh lý học mầm non và các chất liệu chơi thô thô tự nhiên, người lớn được trang bị một quy chuẩn thực hành ôn hòa để biến những trận chiến ý chí bế tắc thành sự tự giác hợp tác tự nguyện [3, 5].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động."
+        ]
+      },
+      {
+        "bigram": "hành vi",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Magic Word: May\"** (Từ ma thuật: Con có thể) là chương đúc kết tinh hoa của nghệ thuật điều hướng hành vi mầm non mà không rơi vào hai thái cực độc đoán hay buông thả [1]. Tác phẩm vạch trần thói quen lạm dụng những tiếng \"Không!\" dồn dập của người lớn—vốn chỉ khiến trẻ mầm non dưới bảy tuổi trơ lì thần kinh, ngừng chơi trong sự tự ti và phớt lờ chỉ dẫn [2, 3]. Thay vào đó, chương này đề xuất một giải pháp giao tiếp đầy dũng khí: sử dụng từ ma thuật \"may\" (con có thể) mang tính chất khẳng định dứt khoát [1]. Từ \"may\" chứa đựng phẩm chất của một đặc quyền tự hào, giúp dẫn dắt dòng năng lượng ý chí dở dang của trẻ vào các hoạt động phù hợp mà không làm đứt gãy thế giới mộng mị mơ màng của tuổi thơ [1, 4]. Thông qua các mốc sinh lý học mầm non và các chất liệu chơi thô thô tự nhiên, người lớn được trang bị một quy chuẩn thực hành ôn hòa để biến những trận chiến ý chí bế tắc thành sự tự giác hợp tác tự nguyện [3, 5].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động.",
+          "* **Mô tả:** Độc giả lo lắng tột cùng rằng những tiếng la mắng đe dọa thường nhật sẽ làm chai lì thính giác của con, khiến con trở nên lì lợm và xa cách cha mẹ. Họ lo sợ sâu sắc trước các cảnh báo sư phạm rằng việc ngăn chặn hành vi thô bạo bằng sự giận dữ sẽ chỉ dạy cho trẻ cách bộc lộ sự giận dữ ngược lại với người khác, làm xơ cứng sinh lực tạo hình và cướp đi dũng khí tự tin giao tiếp xã hội khi con lớn khôn."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

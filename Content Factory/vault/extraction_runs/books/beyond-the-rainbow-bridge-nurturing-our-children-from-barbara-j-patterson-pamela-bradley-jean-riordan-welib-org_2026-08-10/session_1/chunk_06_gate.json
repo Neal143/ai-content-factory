@@ -1,0 +1,138 @@
+{
+  "chunk_index": 6,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_06_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 6,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_06_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_06_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_06_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "hơi ấm",
+        "count": 37,
+        "contexts": [
+          "Chào bạn! Tiếp nối dòng chảy mầu nhiệm về sự lớn khôn của trẻ nhỏ, hơi ấm sinh học chính là chiếc nôi thiêng liêng che chở cho tiến trình hóa thân của Cái Tôi. Dưới đây là bản trích xuất tri thức chi tiết, sâu sắc của **Chunk 6: Raising Healthy, Happy, and Capable Children - The Importance of Warmth** được in trực tiếp ngay tại đây, bám sát các chỉ dẫn kỹ thuật của cẩm nang `prompt-miner-v4.md` dựa trên chân dung JTBD Audience và bằng chứng thực tế bạn cung cấp:",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Hơi ấm vật lý là chiếc kén bảo bọc tiến trình hóa thân của Cái Tôi | stance=support | supports_insight=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "thân nhiệt",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ thân nhiệt của con khi con trẻ dưới bảy tuổi chưa thể tự điều hòa hệ thống sinh lý trước sự thay đổi nhiệt độ của môi trường xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "cơ thể",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng nếu cơ thể trẻ nhỏ liên tục phải gồng mình tiêu hao năng lượng tự thân để chống chọi với cái lạnh từ môi trường, các cơ quan nội tạng bên trong (đặc biệt là hệ tiêu hóa và thận) sẽ bị suy yếu bẩm sinh và ngừng phát triển lành mạnh [3, 9]. Họ lo âu sâu sắc rằng việc lạm dụng thuốc hóa học để dập tắt các cơn sốt tự nhiên của con sẽ can thiệp thô bạo vào tiến trình tự điều chỉnh sinh học, khiến thể chất con trở nên yếu ớt và tâm hồn con trở nên lạnh lùng, vô cảm trước xã hội khi trưởng thành [5, 6].",
+          "* **Định nghĩa/Phát biểu luật:** Hơi ấm sinh học là nền tảng tối thượng của mọi sức khỏe và sự sống; Cái Tôi (the Ego)—phần tâm linh độc nhất vô nhị của con người—chỉ có thể thâm nhập, cư ngụ và làm chủ một cơ thể vật lý tràn đầy hơi ấm [1, 10]."
+        ]
+      },
+      {
+        "bigram": "năng lực",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "bảo vệ",
+        "count": 14,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ thân nhiệt của con khi con trẻ dưới bảy tuổi chưa thể tự điều hòa hệ thống sinh lý trước sự thay đổi nhiệt độ của môi trường xung quanh.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "cái tôi",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Hơi ấm vật lý là chiếc kén bảo bọc tiến trình hóa thân của Cái Tôi | stance=support | supports_insight=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên.",
+          "* **Định nghĩa/Phát biểu luật:** Hơi ấm sinh học là nền tảng tối thượng của mọi sức khỏe và sự sống; Cái Tôi (the Ego)—phần tâm linh độc nhất vô nhị của con người—chỉ có thể thâm nhập, cư ngụ và làm chủ một cơ thể vật lý tràn đầy hơi ấm [1, 10]."
+        ]
+      },
+      {
+        "bigram": "tự nhiên",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "Một buổi chiều mùa đông gió lạnh thổi qua khe cửa | Người mẹ đứng nhìn đứa con nhỏ năm tuổi đang mải mê chơi đùa trên sàn nhà gạch men lạnh giá | Khi mẹ chạm vào đôi bàn chân trần và bàn tay của con, chúng đã lạnh ngắt như đá, nhưng khi hỏi con có lạnh không, đứa trẻ vẫn lắc đầu cười tươi nói \"không lạnh\" và tiếp tục chạy nhảy | Đứng trước thời tiết chuyển mùa thất thường và những luồng không khí máy điều hòa lạnh lẽo trong các phòng mầm non, người mẹ bế tắc lo âu không biết làm sao để giữ ấm cho con đúng cách khi con hoàn toàn mất đi phản xạ tự vệ cảm giác tự nhiên này.",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng nếu cơ thể trẻ nhỏ liên tục phải gồng mình tiêu hao năng lượng tự thân để chống chọi với cái lạnh từ môi trường, các cơ quan nội tạng bên trong (đặc biệt là hệ tiêu hóa và thận) sẽ bị suy yếu bẩm sinh và ngừng phát triển lành mạnh [3, 9]. Họ lo âu sâu sắc rằng việc lạm dụng thuốc hóa học để dập tắt các cơn sốt tự nhiên của con sẽ can thiệp thô bạo vào tiến trình tự điều chỉnh sinh học, khiến thể chất con trở nên yếu ớt và tâm hồn con trở nên lạnh lùng, vô cảm trước xã hội khi trưởng thành [5, 6]."
+        ]
+      },
+      {
+        "bigram": "vật lý",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* ②-1. philosophy: Khái niệm \"Hơi ấm vật lý là chiếc kén bảo bọc tiến trình hóa thân của Cái Tôi\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Hơi ấm vật lý là chiếc kén bảo bọc tiến trình hóa thân của Cái Tôi | stance=support | supports_insight=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "ấm tâm",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* ②-2. principle: Nguyên lý liên hệ mật thiết giữa hơi ấm sinh học, phản ứng sốt và sự hình thành năng lực hơi ấm tâm hồn ở tuổi trưởng thành",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý liên hệ mật thiết giữa hơi ấm sinh học, phản ứng sốt và sự hình thành năng lực hơi ấm tâm hồn ở tuổi trưởng thành | stance=support | supports_insight=Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "trưởng thành",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"The Importance of Warmth\"** (Tầm quan trọng của hơi ấm) phác họa một trong những bí mật sinh học và tâm linh cốt lõi của giáo dục Waldorf: vai trò quyết định của hơi ấm đối với sự sinh trưởng toàn diện của trẻ dưới bảy tuổi [1]. Tác phẩm giải thích rằng trẻ mầm non chưa phát triển hoàn thiện hệ thống tự điều hòa thân nhiệt và không thể tự nhận biết cảm giác lạnh của cơ thể [1-3]. Do đó, việc bảo ôn thân nhiệt thông qua việc mặc đồ len tơ tằm, đội mũ che thóp nhạy cảm và sử dụng các loại dầu mát-xa tự nhiên là vô cùng khẩn thiết để bảo tồn sinh lực cho các cơ quan nội tạng phát triển [1-4]. Đặc biệt, chương này hé lộ bản chất mầu nhiệm của những cơn sốt mầm non như một phương thức hoạt hóa hệ miễn dịch tự thân, giải phóng thể chất khỏi các yếu tố di truyền để Cái Tôi của trẻ tự do kiến tạo cơ thể mới [5, 6]. Từ hơi ấm vật lý lành mạnh ban đầu, trẻ sẽ phát triển năng lực hơi ấm tâm hồn—sự thấu cảm, lòng vị tha và tình yêu thương con người sâu sắc khi trưởng thành [5, 7, 8].",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng nếu cơ thể trẻ nhỏ liên tục phải gồng mình tiêu hao năng lượng tự thân để chống chọi với cái lạnh từ môi trường, các cơ quan nội tạng bên trong (đặc biệt là hệ tiêu hóa và thận) sẽ bị suy yếu bẩm sinh và ngừng phát triển lành mạnh [3, 9]. Họ lo âu sâu sắc rằng việc lạm dụng thuốc hóa học để dập tắt các cơn sốt tự nhiên của con sẽ can thiệp thô bạo vào tiến trình tự điều chỉnh sinh học, khiến thể chất con trở nên yếu ớt và tâm hồn con trở nên lạnh lùng, vô cảm trước xã hội khi trưởng thành [5, 6].",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và các nhà giáo dục mầm non Waldorf lý giải rằng đứa trẻ sơ sinh khi đến Trái Đất là một tiến trình hóa thân (incarnation) diễn ra dần dần [11, 12]. Ở giai đoạn sơ sinh và mầm non dưới bảy tuổi, Cái Tôi của con đang nỗ lực từng ngày để điều hợp và xây dựng các cơ quan nội tạng bên trong thành ngôi nhà trú ngụ vững chãi của mình [1, 12, 13]. Tiến trình này đòi hỏi một lượng nhiệt năng khổng lồ [1]. Khác với người lớn có thể tự sản sinh và điều hòa nhiệt lượng nội tại, trẻ nhỏ có hệ thống sinh lý mỏng manh chưa trưởng thành nên rất dễ bị mất nhiệt ra môi trường xung quanh [1]. Nếu người lớn không chủ động bảo bọc hơi ấm cho con, trẻ buộc phải tiêu tán nguồn sinh lực quý giá lẽ ra dùng để xây dựng tim, gan, thận chỉ để phục vụ mục đích giữ ấm cơ thể cơ học [3]. Hơi ấm chính là chất xúc tác tâm linh giúp Cái Tôi liên kết hài hòa với thể chất, biến cơ thể vật lý thành một công cụ tự chủ, dẻo dai cho cuộc đời tự do sau này [1, 6, 10]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

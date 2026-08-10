@@ -1,0 +1,138 @@
+{
+  "chunk_index": 21,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_21_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 21,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_21_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_21_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_21_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "nhất quán",
+        "count": 21,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Consequent Actions\"** (Các hành động nhất quán) là nấc thang thực hành vô cùng dũng cảm và kiên định của phần Kỷ luật sáng tạo. Tác phẩm mổ xẻ tâm lý bướng bỉnh, cứng đầu của trẻ từ hai đến bốn tuổi và xu hướng thách thức giới hạn của trẻ chuẩn bị vào lớp một. Chương này khẳng định mọi phản ứng bộc phát của trẻ đều có mục đích thăm dò điểm yếu và \"nhấn nút\" cảm xúc (pushing buttons) của người lớn. Thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm, cha mẹ cần rèn luyện tính nhất quán tuyệt đối trong lời nói và hành động. Khi ranh giới được giữ vững một cách điềm tĩnh cùng với bầu không khí yêu thương bao bọc, sự chống đối của trẻ sẽ tự động tan biến, nhường chỗ cho sự vâng lời tự giác lâu dài.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập và giữ vững các ranh giới kỷ luật một cách điềm tĩnh, nhất quán để tự động xoa dịu sự chống đối, khơi dậy tinh thần hợp tác tự giác và mang lại cảm giác an tâm tuyệt đối cho con."
+        ]
+      },
+      {
+        "bigram": "dao động",
+        "count": 13,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Tính nhất quán của người lớn là chiếc mỏ neo định hình sự phát triển Cái Tôi lành mạnh của trẻ | stance=support | supports_insight=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần."
+        ]
+      },
+      {
+        "bigram": "bướng bỉnh",
+        "count": 11,
+        "contexts": [
+          "Bước lên nấc thang thực hành thứ năm—cũng là chặng cuối cùng khép lại chương Kỷ luật Sáng tạo đầy tính nghệ thuật—tác giả dâng hiến cho chúng ta một dũng khí sư phạm lớn lao: **Chunk 21: Creative Discipline - Consequent Actions** (Các hành động nhất quán/Hành động tiếp nối). Đây là nơi \"uy quyền tự nhiên\" của cha mẹ được thử thách và chứng thực rõ ràng nhất trước những phản ứng bướng bỉnh của con trẻ.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu.",
+          "Tại cửa ra vào căn phòng sinh hoạt chung vào lúc năm giờ chiều | Đứa trẻ ba tuổi rưỡi đang giãy nảy người, kiên quyết rụt chân lại và không chịu xỏ ủng để chuẩn bị ra ngoài vườn | Người mẹ mệt mỏi, liên tục nói dông dài hằng tối giải thích lý do tại sao con cần phải đi giày, nhưng đứa trẻ bướng bỉnh vẫn tìm cách lách người trốn tránh và khóc lóc giận dữ | Cô nhận thấy mọi nỗ lực thương lượng yếu ớt hay giải thích logic của mình lúc này chỉ đang làm lộ ra điểm yếu để con liên tục \"nhấn nút\" cảm xúc và chống đối mạnh mẽ hơn."
+        ]
+      },
+      {
+        "bigram": "cảm xúc",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Consequent Actions\"** (Các hành động nhất quán) là nấc thang thực hành vô cùng dũng cảm và kiên định của phần Kỷ luật sáng tạo. Tác phẩm mổ xẻ tâm lý bướng bỉnh, cứng đầu của trẻ từ hai đến bốn tuổi và xu hướng thách thức giới hạn của trẻ chuẩn bị vào lớp một. Chương này khẳng định mọi phản ứng bộc phát của trẻ đều có mục đích thăm dò điểm yếu và \"nhấn nút\" cảm xúc (pushing buttons) của người lớn. Thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm, cha mẹ cần rèn luyện tính nhất quán tuyệt đối trong lời nói và hành động. Khi ranh giới được giữ vững một cách điềm tĩnh cùng với bầu không khí yêu thương bao bọc, sự chống đối của trẻ sẽ tự động tan biến, nhường chỗ cho sự vâng lời tự giác lâu dài.",
+          "Tại cửa ra vào căn phòng sinh hoạt chung vào lúc năm giờ chiều | Đứa trẻ ba tuổi rưỡi đang giãy nảy người, kiên quyết rụt chân lại và không chịu xỏ ủng để chuẩn bị ra ngoài vườn | Người mẹ mệt mỏi, liên tục nói dông dài hằng tối giải thích lý do tại sao con cần phải đi giày, nhưng đứa trẻ bướng bỉnh vẫn tìm cách lách người trốn tránh và khóc lóc giận dữ | Cô nhận thấy mọi nỗ lực thương lượng yếu ớt hay giải thích logic của mình lúc này chỉ đang làm lộ ra điểm yếu để con liên tục \"nhấn nút\" cảm xúc và chống đối mạnh mẽ hơn.",
+          "* **🔥 Tử huyệt Cảm xúc chính:**"
+        ]
+      },
+      {
+        "bigram": "ranh giới",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Consequent Actions\"** (Các hành động nhất quán) là nấc thang thực hành vô cùng dũng cảm và kiên định của phần Kỷ luật sáng tạo. Tác phẩm mổ xẻ tâm lý bướng bỉnh, cứng đầu của trẻ từ hai đến bốn tuổi và xu hướng thách thức giới hạn của trẻ chuẩn bị vào lớp một. Chương này khẳng định mọi phản ứng bộc phát của trẻ đều có mục đích thăm dò điểm yếu và \"nhấn nút\" cảm xúc (pushing buttons) của người lớn. Thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm, cha mẹ cần rèn luyện tính nhất quán tuyệt đối trong lời nói và hành động. Khi ranh giới được giữ vững một cách điềm tĩnh cùng với bầu không khí yêu thương bao bọc, sự chống đối của trẻ sẽ tự động tan biến, nhường chỗ cho sự vâng lời tự giác lâu dài.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập và giữ vững các ranh giới kỷ luật một cách điềm tĩnh, nhất quán để tự động xoa dịu sự chống đối, khơi dậy tinh thần hợp tác tự giác và mang lại cảm giác an tâm tuyệt đối cho con.",
+          "* **Mô tả:** Cha mẹ mong muốn thiết tha xây dựng được một nội lực phẳng lặng, một thói quen thực thi hành động đi đôi với lời nói đầy ấm áp. Họ khao khát có đủ dũng khí để điềm tĩnh lùi lại, nhường không gian cho con tự điều hòa cảm xúc mà không cần quát mắng hay áp đặt thô bạo hằng tối, giúp con cảm nhận sâu sắc tình yêu thương nâng đỡ ranh giới gia đình."
+        ]
+      },
+      {
+        "bigram": "giữ vững",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Consequent Actions\"** (Các hành động nhất quán) là nấc thang thực hành vô cùng dũng cảm và kiên định của phần Kỷ luật sáng tạo. Tác phẩm mổ xẻ tâm lý bướng bỉnh, cứng đầu của trẻ từ hai đến bốn tuổi và xu hướng thách thức giới hạn của trẻ chuẩn bị vào lớp một. Chương này khẳng định mọi phản ứng bộc phát của trẻ đều có mục đích thăm dò điểm yếu và \"nhấn nút\" cảm xúc (pushing buttons) của người lớn. Thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm, cha mẹ cần rèn luyện tính nhất quán tuyệt đối trong lời nói và hành động. Khi ranh giới được giữ vững một cách điềm tĩnh cùng với bầu không khí yêu thương bao bọc, sự chống đối của trẻ sẽ tự động tan biến, nhường chỗ cho sự vâng lời tự giác lâu dài.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập và giữ vững các ranh giới kỷ luật một cách điềm tĩnh, nhất quán để tự động xoa dịu sự chống đối, khơi dậy tinh thần hợp tác tự giác và mang lại cảm giác an tâm tuyệt đối cho con."
+        ]
+      },
+      {
+        "bigram": "chuẩn bị",
+        "count": 9,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Consequent Actions\"** (Các hành động nhất quán) là nấc thang thực hành vô cùng dũng cảm và kiên định của phần Kỷ luật sáng tạo. Tác phẩm mổ xẻ tâm lý bướng bỉnh, cứng đầu của trẻ từ hai đến bốn tuổi và xu hướng thách thức giới hạn của trẻ chuẩn bị vào lớp một. Chương này khẳng định mọi phản ứng bộc phát của trẻ đều có mục đích thăm dò điểm yếu và \"nhấn nút\" cảm xúc (pushing buttons) của người lớn. Thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm, cha mẹ cần rèn luyện tính nhất quán tuyệt đối trong lời nói và hành động. Khi ranh giới được giữ vững một cách điềm tĩnh cùng với bầu không khí yêu thương bao bọc, sự chống đối của trẻ sẽ tự động tan biến, nhường chỗ cho sự vâng lời tự giác lâu dài.",
+          "Tại cửa ra vào căn phòng sinh hoạt chung vào lúc năm giờ chiều | Đứa trẻ ba tuổi rưỡi đang giãy nảy người, kiên quyết rụt chân lại và không chịu xỏ ủng để chuẩn bị ra ngoài vườn | Người mẹ mệt mỏi, liên tục nói dông dài hằng tối giải thích lý do tại sao con cần phải đi giày, nhưng đứa trẻ bướng bỉnh vẫn tìm cách lách người trốn tránh và khóc lóc giận dữ | Cô nhận thấy mọi nỗ lực thương lượng yếu ớt hay giải thích logic của mình lúc này chỉ đang làm lộ ra điểm yếu để con liên tục \"nhấn nút\" cảm xúc và chống đối mạnh mẽ hơn.",
+          "* ②-2. principle: Nguyên lý \"Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một\""
+        ]
+      },
+      {
+        "bigram": "vào lớp",
+        "count": 9,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Consequent Actions\"** (Các hành động nhất quán) là nấc thang thực hành vô cùng dũng cảm và kiên định của phần Kỷ luật sáng tạo. Tác phẩm mổ xẻ tâm lý bướng bỉnh, cứng đầu của trẻ từ hai đến bốn tuổi và xu hướng thách thức giới hạn của trẻ chuẩn bị vào lớp một. Chương này khẳng định mọi phản ứng bộc phát của trẻ đều có mục đích thăm dò điểm yếu và \"nhấn nút\" cảm xúc (pushing buttons) của người lớn. Thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm, cha mẹ cần rèn luyện tính nhất quán tuyệt đối trong lời nói và hành động. Khi ranh giới được giữ vững một cách điềm tĩnh cùng với bầu không khí yêu thương bao bọc, sự chống đối của trẻ sẽ tự động tan biến, nhường chỗ cho sự vâng lời tự giác lâu dài.",
+          "* ②-2. principle: Nguyên lý \"Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một | stance=support | supports_insight=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần."
+        ]
+      },
+      {
+        "bigram": "đứa trẻ",
+        "count": 9,
+        "contexts": [
+          "Tại cửa ra vào căn phòng sinh hoạt chung vào lúc năm giờ chiều | Đứa trẻ ba tuổi rưỡi đang giãy nảy người, kiên quyết rụt chân lại và không chịu xỏ ủng để chuẩn bị ra ngoài vườn | Người mẹ mệt mỏi, liên tục nói dông dài hằng tối giải thích lý do tại sao con cần phải đi giày, nhưng đứa trẻ bướng bỉnh vẫn tìm cách lách người trốn tránh và khóc lóc giận dữ | Cô nhận thấy mọi nỗ lực thương lượng yếu ớt hay giải thích logic của mình lúc này chỉ đang làm lộ ra điểm yếu để con liên tục \"nhấn nút\" cảm xúc và chống đối mạnh mẽ hơn.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần."
+        ]
+      },
+      {
+        "bigram": "không gian",
+        "count": 9,
+        "contexts": [
+          "* **Mô tả:** Cha mẹ mong muốn thiết tha xây dựng được một nội lực phẳng lặng, một thói quen thực thi hành động đi đôi với lời nói đầy ấm áp. Họ khao khát có đủ dũng khí để điềm tĩnh lùi lại, nhường không gian cho con tự điều hòa cảm xúc mà không cần quát mắng hay áp đặt thô bạo hằng tối, giúp con cảm nhận sâu sắc tình yêu thương nâng đỡ ranh giới gia đình.",
+          "* ②-2. principle: Nguyên lý \"Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một | stance=support | supports_insight=Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

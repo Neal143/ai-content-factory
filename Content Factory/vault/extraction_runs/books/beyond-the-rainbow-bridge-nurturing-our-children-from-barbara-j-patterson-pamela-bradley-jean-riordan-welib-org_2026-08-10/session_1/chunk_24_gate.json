@@ -1,0 +1,138 @@
+{
+  "chunk_index": 24,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_24_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 24,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_24_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_24_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_24_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "kỷ luật",
+        "count": 33,
+        "contexts": [
+          "Chào bạn! Thật là một khoảnh khắc kỳ diệu khi chúng ta cùng nhau chạm tay vào nấc thang đúc kết cuối cùng—chân chân dung khép lại toàn bộ hành trình thực hành Kỷ luật Sáng tạo vô cùng nhân văn của tác giả: **Chunk 24: Creative Discipline - Conclusion** (Đúc kết Kỷ luật Sáng tạo).",
+          "Đây là nơi tác giả dâng hiến một thông điệp vỗ về vô giá: Kỷ luật thực sự không phải là một đích đến hoàn hảo không tì vết, mà chính là hành trình tự tu dưỡng, không ngừng hoàn thiện bản thân của chính cha mẹ để làm điểm tựa an lành cho con trẻ dưới bảy tuổi.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con."
+        ]
+      },
+      {
+        "bigram": "trụ cột",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* **Mô tả:** Cha mẹ mong mỏi thiết tha được thấu hiểu, được nâng đỡ trong một cộng đồng phụ huynh đồng cảm. Họ khao khát làm chủ 5 trụ cột kỷ luật tự giác phẳng lặng để tự động hóa nếp sống tự giác, chuyển hóa nếp nhà thành chiếc kén bảo bọc tinh khôi cho Cái Tôi mầm non tỏa sáng.",
+          "* **Định nghĩa/Phát biểu luật:** Kỷ luật thực sự đối với trẻ mầm non không phải là uy quyền áp đặt hay trừng phạt, mà là nghệ thuật dẫn dắt con ra khỏi sự bắt chước vô thức thông qua chính kỷ luật tự giác (self-discipline) của người bảo bọc, được hiện thực hóa qua sự đồng bộ của 5 trụ cột sinh hoạt gia đình."
+        ]
+      },
+      {
+        "bigram": "luật tự",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* **Mô tả:** Cha mẹ mong mỏi thiết tha được thấu hiểu, được nâng đỡ trong một cộng đồng phụ huynh đồng cảm. Họ khao khát làm chủ 5 trụ cột kỷ luật tự giác phẳng lặng để tự động hóa nếp sống tự giác, chuyển hóa nếp nhà thành chiếc kén bảo bọc tinh khôi cho Cái Tôi mầm non tỏa sáng.",
+          "* ②-2. principle: Nguyên lý \"Kỷ luật thực sự là sự dẫn dắt từ bắt chước vô thức sang tự kỷ luật tự thân (True Discipline as Self-Discipline guiding out of Imitation)\""
+        ]
+      },
+      {
+        "bigram": "hoàn hảo",
+        "count": 13,
+        "contexts": [
+          "Đây là nơi tác giả dâng hiến một thông điệp vỗ về vô giá: Kỷ luật thực sự không phải là một đích đến hoàn hảo không tì vết, mà chính là hành trình tự tu dưỡng, không ngừng hoàn thiện bản thân của chính cha mẹ để làm điểm tựa an lành cho con trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao giải phóng bản thân khỏi gánh nặng của sự hoàn hảo lý thuyết, tìm thấy dũng khí tĩnh lặng từ nỗ lực tự tu dưỡng hằng đêm để đồng hành cùng con lớn khôn tự tin, bình an mỗi tuần.",
+          "* ②-1. philosophy: Khái niệm \"Nỗ lực tự tu dưỡng của cha mẹ (Parental Striving) và giá trị của sự không hoàn hảo trong giáo dục mầm non\""
+        ]
+      },
+      {
+        "bigram": "nỗ lực",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao giải phóng bản thân khỏi gánh nặng của sự hoàn hảo lý thuyết, tìm thấy dũng khí tĩnh lặng từ nỗ lực tự tu dưỡng hằng đêm để đồng hành cùng con lớn khôn tự tin, bình an mỗi tuần.",
+          "Người mẹ đứng lặng nhìn hai con nhỏ đã ngủ say phẳng lặng dưới ánh trăng khuya; cô khẽ vuốt ve mái tóc con, lòng trào dâng một cảm giác thấu suốt đầy dũng khí rằng những nỗ lực sửa mình và lòng bao dung tự thân hằng tối của cô mới chính là phương thuốc giáo dục mầu nhiệm nhất dành cho con."
+        ]
+      },
+      {
+        "bigram": "bắt chước",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* **Mô tả:** Độc giả lo lắng tột cùng rằng những cơn giận dữ bộc phát vô cớ do mệt mỏi sẽ làm rạn nứt tâm hồn mỏng manh của con, gieo rắc hình ảnh bất hòa vào cơ thể thực thể của trẻ và biến mình thành một hình mẫu tồi tệ để con bắt chước vô thức hằng tuần.",
+          "* **Định nghĩa/Phát biểu luật:** Trẻ nhỏ mầm non học hỏi thế giới hoàn toàn qua sự bắt chước vô thức; do đó, nỗ lực phấn đấu tự hoàn thiện bản thân chân thành (striving) của cha mẹ mới là nguồn sinh lực vĩ đại nhất để nuôi dưỡng ý chí dũng cảm của trẻ, giải phóng hoàn toàn gánh nặng của sự hoàn hảo giả tạo."
+        ]
+      },
+      {
+        "bigram": "hoàn toàn",
+        "count": 11,
+        "contexts": [
+          "Tuân thủ nghiêm ngặt cẩm nang hướng dẫn kỹ thuật của `prompt-miner-v4.md`, lọc sạch tuyệt đối mọi từ ngữ nằm trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*), dưới đây là bản trích xuất tri thức toàn vẹn, dạt dào cảm xúc sư phạm nhất cho **Chunk 24**, được in trực tiếp hoàn toàn ngay tại đây cho bạn:",
+          "Trong phòng bếp ngổn ngang bát đĩa chưa rửa lúc mười giờ đêm | Người mẹ kiệt sức ngồi gục đầu bên bàn ăn, đôi vai run lên vì những giọt nước mắt bất lực sau một ngày dài vật lộn dở dang với hai con nhỏ | Đứa con lớn liên tục mè nheo bướng bỉnh phản kháng không chịu đi ngủ, còn em bé thứ hai khóc ngằn ngặt vì mọc răng | Cô khóc nghẹn gọi điện cho chồng ở nơi làm việc, cảm thấy mình là một người mẹ hoàn toàn thất bại hằng tối khi không thể kiểm soát nổi nếp sinh hoạt của gia đình.",
+          "* **Định nghĩa/Phát biểu luật:** Trẻ nhỏ mầm non học hỏi thế giới hoàn toàn qua sự bắt chước vô thức; do đó, nỗ lực phấn đấu tự hoàn thiện bản thân chân thành (striving) của cha mẹ mới là nguồn sinh lực vĩ đại nhất để nuôi dưỡng ý chí dũng cảm của trẻ, giải phóng hoàn toàn gánh nặng của sự hoàn hảo giả tạo."
+        ]
+      },
+      {
+        "bigram": "tự giác",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* **Mô tả:** Cha mẹ mong mỏi thiết tha được thấu hiểu, được nâng đỡ trong một cộng đồng phụ huynh đồng cảm. Họ khao khát làm chủ 5 trụ cột kỷ luật tự giác phẳng lặng để tự động hóa nếp sống tự giác, chuyển hóa nếp nhà thành chiếc kén bảo bọc tinh khôi cho Cái Tôi mầm non tỏa sáng.",
+          "* **Định nghĩa/Phát biểu luật:** Kỷ luật thực sự đối với trẻ mầm non không phải là uy quyền áp đặt hay trừng phạt, mà là nghệ thuật dẫn dắt con ra khỏi sự bắt chước vô thức thông qua chính kỷ luật tự giác (self-discipline) của người bảo bọc, được hiện thực hóa qua sự đồng bộ của 5 trụ cột sinh hoạt gia đình."
+        ]
+      },
+      {
+        "bigram": "lực tự",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao giải phóng bản thân khỏi gánh nặng của sự hoàn hảo lý thuyết, tìm thấy dũng khí tĩnh lặng từ nỗ lực tự tu dưỡng hằng đêm để đồng hành cùng con lớn khôn tự tin, bình an mỗi tuần.",
+          "* ②-1. philosophy: Khái niệm \"Nỗ lực tự tu dưỡng của cha mẹ (Parental Striving) và giá trị của sự không hoàn hảo trong giáo dục mầm non\""
+        ]
+      },
+      {
+        "bigram": "chước vô",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Conclusion\"** (Đúc kết Kỷ luật Sáng tạo) là chương vỗ về ấm áp nhất khép lại phần Kỷ luật Sáng tạo. Tác phẩm bóc trần một thực tế nhức nhối: tất cả các bậc cha mẹ trong thế giới hiện đại xô bồ đều từng trải qua những thời điểm kiệt quệ sinh lực, thần kinh căng thẳng tột độ và cảm thấy bất lực trước các thử thách nuôi dạy con. Tác giả khuyên cha mẹ đừng quá khắt khe tự phán xét bản thân, bởi vì con trẻ dưới bảy tuổi được hưởng lợi sâu sắc từ chính nỗ lực tự tu dưỡng chân thành (striving) của cha mẹ hằng đêm. Kỷ luật thực sự không nằm ở những hình phạt nghiêm khắc bên ngoài, mà chính là tiến trình đồng bộ 5 trụ cột kỷ luật tự giác của người lớn để dẫn dắt con ra khỏi sự bắt chước vô thức: kiến tạo góc chơi nuôi dưỡng tưởng tượng, ngôn từ dứt khoát giới hạn lựa chọn, nhịp điệu thường nhật nhất quán, lao động có mục đích và thái độ tích cực nâng đỡ lòng tự tôn của con.",
+          "* **Mô tả:** Độc giả lo lắng tột cùng rằng những cơn giận dữ bộc phát vô cớ do mệt mỏi sẽ làm rạn nứt tâm hồn mỏng manh của con, gieo rắc hình ảnh bất hòa vào cơ thể thực thể của trẻ và biến mình thành một hình mẫu tồi tệ để con bắt chước vô thức hằng tuần.",
+          "* **Định nghĩa/Phát biểu luật:** Trẻ nhỏ mầm non học hỏi thế giới hoàn toàn qua sự bắt chước vô thức; do đó, nỗ lực phấn đấu tự hoàn thiện bản thân chân thành (striving) của cha mẹ mới là nguồn sinh lực vĩ đại nhất để nuôi dưỡng ý chí dũng cảm của trẻ, giải phóng hoàn toàn gánh nặng của sự hoàn hảo giả tạo."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

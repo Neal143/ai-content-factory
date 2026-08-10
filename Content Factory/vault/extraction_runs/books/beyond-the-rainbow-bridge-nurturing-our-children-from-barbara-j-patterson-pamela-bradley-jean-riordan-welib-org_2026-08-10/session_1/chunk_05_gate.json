@@ -1,0 +1,138 @@
+{
+  "chunk_index": 5,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_05_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 5,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_05_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_05_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_05_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "vận động",
+        "count": 30,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Growing into Life\"** (Lớn lên cùng cuộc sống) mở đầu chương hai của tác phẩm bằng việc định hình ba nền tảng đá tảng trong nuôi dạy trẻ mầm non: thấu hiểu sinh lý phát triển, bảo vệ hơi ấm thể chất và thiết lập nhịp điệu sinh hoạt gia đình [1]. Tác giả tập trung sâu sắc vào hai năm đầu đời của trẻ sơ sinh và trẻ tập đi thông qua tiến trình làm chủ thể chất từ đầu xuống chân (growing down) song song với sự thức tỉnh dần của ý thức (waking up) [2]. Giai đoạn này đánh dấu các cột mốc vận động tự nhiên bao gồm lật, ngồi, bò nhịp nhàng, đứng và đi độc lập [1, 2]. Tác phẩm chứng minh cơ chế mầu nhiệm khi trẻ bộc lộ ngôn ngữ thông qua sự bắt chước vô thức lời nói chuẩn mực từ người lớn, đồng thời đưa ra lời cảnh báo sinh học nghiêm khắc về tác hại lâu dài của các thiết bị cơ học ép buộc trẻ ngồi thẳng hoặc đứng thẳng sớm [1, 2].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn hỗ trợ con làm chủ các mốc vận động thể chất đầu đời khi con trẻ dưới ba tuổi đang tập lẫy, bò, đứng và đi.",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng sự nôn nóng thúc ép con ngồi, đứng, đi sớm sẽ làm biến dạng các khớp xương và dây chằng mỏng manh của trẻ [1, 2]. Họ lo âu rằng việc bỏ qua mốc vận động bò (crawling) nhịp nhàng sẽ tước đi cơ hội đấu nối liên hợp hai bán cầu não của trẻ mầm non, tạo ra các tổn hại chức năng thần kinh khó sửa chữa, ảnh hưởng trực tiếp đến năng lực ngôn ngữ, tư duy logic và sự tự tin thăng bằng trong cuộc sống tương lai của con [1, 2]."
+        ]
+      },
+      {
+        "bigram": "phát triển",
+        "count": 24,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Growing Down (Hạ mình xuống Trái Đất) và tiến trình myelin hóa hệ thần kinh vận động từ đầu xuống chân của trẻ nhỏ | stance=support | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời."
+        ]
+      },
+      {
+        "bigram": "[1, 2].",
+        "count": 23,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Growing into Life\"** (Lớn lên cùng cuộc sống) mở đầu chương hai của tác phẩm bằng việc định hình ba nền tảng đá tảng trong nuôi dạy trẻ mầm non: thấu hiểu sinh lý phát triển, bảo vệ hơi ấm thể chất và thiết lập nhịp điệu sinh hoạt gia đình [1]. Tác giả tập trung sâu sắc vào hai năm đầu đời của trẻ sơ sinh và trẻ tập đi thông qua tiến trình làm chủ thể chất từ đầu xuống chân (growing down) song song với sự thức tỉnh dần của ý thức (waking up) [2]. Giai đoạn này đánh dấu các cột mốc vận động tự nhiên bao gồm lật, ngồi, bò nhịp nhàng, đứng và đi độc lập [1, 2]. Tác phẩm chứng minh cơ chế mầu nhiệm khi trẻ bộc lộ ngôn ngữ thông qua sự bắt chước vô thức lời nói chuẩn mực từ người lớn, đồng thời đưa ra lời cảnh báo sinh học nghiêm khắc về tác hại lâu dài của các thiết bị cơ học ép buộc trẻ ngồi thẳng hoặc đứng thẳng sớm [1, 2].",
+          "Một buổi chiều yên tĩnh trong phòng khách gia đình [1] | Người mẹ lo lắng nhìn đứa con trai mười tháng tuổi của mình vẫn chưa chịu tập đi, trong khi các em bé cùng lứa hàng xóm đã chập chững bước đi nhanh nhẹn [1, 2] | Cô băn khoăn liệu có nên mua một chiếc xe tập đi cơ học có bánh lăn tròn hay chiếc ghế nhún lò xo treo ở cửa phòng để giúp con đứng thẳng và di chuyển nhanh hơn [1, 2] | Đứng trước những thông tin quảng cáo hấp dẫn về các khóa học thể chất mầm non thúc đẩy sự cứng cáp sớm, người mẹ bối rối không biết làm thế nào để đồng hành đúng cách mà không can thiệp thô bạo vào tiến trình tự nhiên của con [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng sự nôn nóng thúc ép con ngồi, đứng, đi sớm sẽ làm biến dạng các khớp xương và dây chằng mỏng manh của trẻ [1, 2]. Họ lo âu rằng việc bỏ qua mốc vận động bò (crawling) nhịp nhàng sẽ tước đi cơ hội đấu nối liên hợp hai bán cầu não của trẻ mầm non, tạo ra các tổn hại chức năng thần kinh khó sửa chữa, ảnh hưởng trực tiếp đến năng lực ngôn ngữ, tư duy logic và sự tự tin thăng bằng trong cuộc sống tương lai của con [1, 2]."
+        ]
+      },
+      {
+        "bigram": "cơ học",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Growing into Life\"** (Lớn lên cùng cuộc sống) mở đầu chương hai của tác phẩm bằng việc định hình ba nền tảng đá tảng trong nuôi dạy trẻ mầm non: thấu hiểu sinh lý phát triển, bảo vệ hơi ấm thể chất và thiết lập nhịp điệu sinh hoạt gia đình [1]. Tác giả tập trung sâu sắc vào hai năm đầu đời của trẻ sơ sinh và trẻ tập đi thông qua tiến trình làm chủ thể chất từ đầu xuống chân (growing down) song song với sự thức tỉnh dần của ý thức (waking up) [2]. Giai đoạn này đánh dấu các cột mốc vận động tự nhiên bao gồm lật, ngồi, bò nhịp nhàng, đứng và đi độc lập [1, 2]. Tác phẩm chứng minh cơ chế mầu nhiệm khi trẻ bộc lộ ngôn ngữ thông qua sự bắt chước vô thức lời nói chuẩn mực từ người lớn, đồng thời đưa ra lời cảnh báo sinh học nghiêm khắc về tác hại lâu dài của các thiết bị cơ học ép buộc trẻ ngồi thẳng hoặc đứng thẳng sớm [1, 2].",
+          "Một buổi chiều yên tĩnh trong phòng khách gia đình [1] | Người mẹ lo lắng nhìn đứa con trai mười tháng tuổi của mình vẫn chưa chịu tập đi, trong khi các em bé cùng lứa hàng xóm đã chập chững bước đi nhanh nhẹn [1, 2] | Cô băn khoăn liệu có nên mua một chiếc xe tập đi cơ học có bánh lăn tròn hay chiếc ghế nhún lò xo treo ở cửa phòng để giúp con đứng thẳng và di chuyển nhanh hơn [1, 2] | Đứng trước những thông tin quảng cáo hấp dẫn về các khóa học thể chất mầm non thúc đẩy sự cứng cáp sớm, người mẹ bối rối không biết làm thế nào để đồng hành đúng cách mà không can thiệp thô bạo vào tiến trình tự nhiên của con [1, 2].",
+          "Người mẹ nằm thao thức giữa đêm muộn dằn vặt khi thấy con quấy khóc mệt mỏi sau một ngày bị ép ngồi thẳng trên chiếc ghế ăn dặm nhựa đúc cứng nhắc [1, 2]; cô sợ hãi rằng nỗ lực thúc ép con học đi sớm bằng xe đẩy cơ học sẽ để lại những dị tật tiềm ẩn lên đôi chân và cản trở tiến trình phối hợp vận động tự lập của con [1, 2]."
+        ]
+      },
+      {
+        "bigram": "thần kinh",
+        "count": 16,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng sự nôn nóng thúc ép con ngồi, đứng, đi sớm sẽ làm biến dạng các khớp xương và dây chằng mỏng manh của trẻ [1, 2]. Họ lo âu rằng việc bỏ qua mốc vận động bò (crawling) nhịp nhàng sẽ tước đi cơ hội đấu nối liên hợp hai bán cầu não của trẻ mầm non, tạo ra các tổn hại chức năng thần kinh khó sửa chữa, ảnh hưởng trực tiếp đến năng lực ngôn ngữ, tư duy logic và sự tự tin thăng bằng trong cuộc sống tương lai của con [1, 2].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời."
+        ]
+      },
+      {
+        "bigram": "tự nhiên",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Growing into Life\"** (Lớn lên cùng cuộc sống) mở đầu chương hai của tác phẩm bằng việc định hình ba nền tảng đá tảng trong nuôi dạy trẻ mầm non: thấu hiểu sinh lý phát triển, bảo vệ hơi ấm thể chất và thiết lập nhịp điệu sinh hoạt gia đình [1]. Tác giả tập trung sâu sắc vào hai năm đầu đời của trẻ sơ sinh và trẻ tập đi thông qua tiến trình làm chủ thể chất từ đầu xuống chân (growing down) song song với sự thức tỉnh dần của ý thức (waking up) [2]. Giai đoạn này đánh dấu các cột mốc vận động tự nhiên bao gồm lật, ngồi, bò nhịp nhàng, đứng và đi độc lập [1, 2]. Tác phẩm chứng minh cơ chế mầu nhiệm khi trẻ bộc lộ ngôn ngữ thông qua sự bắt chước vô thức lời nói chuẩn mực từ người lớn, đồng thời đưa ra lời cảnh báo sinh học nghiêm khắc về tác hại lâu dài của các thiết bị cơ học ép buộc trẻ ngồi thẳng hoặc đứng thẳng sớm [1, 2].",
+          "Một buổi chiều yên tĩnh trong phòng khách gia đình [1] | Người mẹ lo lắng nhìn đứa con trai mười tháng tuổi của mình vẫn chưa chịu tập đi, trong khi các em bé cùng lứa hàng xóm đã chập chững bước đi nhanh nhẹn [1, 2] | Cô băn khoăn liệu có nên mua một chiếc xe tập đi cơ học có bánh lăn tròn hay chiếc ghế nhún lò xo treo ở cửa phòng để giúp con đứng thẳng và di chuyển nhanh hơn [1, 2] | Đứng trước những thông tin quảng cáo hấp dẫn về các khóa học thể chất mầm non thúc đẩy sự cứng cáp sớm, người mẹ bối rối không biết làm thế nào để đồng hành đúng cách mà không can thiệp thô bạo vào tiến trình tự nhiên của con [1, 2].",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và các nhà giáo dục Waldorf giải thích rằng đứa trẻ sơ sinh khi xuống Trái Đất là một thực thể tâm linh liên kết lỏng lẻo với cơ thể thể chất [2]. Sự hóa thân (incarnation) của cái Tôi (the I) diễn ra dần dần thông qua việc xâm nhập và làm chủ cơ thể vật lý [2]. Lúc mới sinh, sinh lực tập trung chủ yếu ở đầu để phát triển hệ thần kinh (đầu chiếm 1/4 chiều dài cơ thể) [1]. Trẻ làm chủ cơ mắt đầu tiên để định vị không gian, sau đó đến cơ cổ để nâng đầu (tầm 3 tháng), cơ vai ngực (lật, trườn), cơ lưng để ngồi vững (tầm 6-8 tháng), cơ mông đùi để bò nhịp nhàng và cuối cùng là đứng vững giải phóng đôi tay ở mốc một tuổi [1, 2]. Tiến trình này song song chặt chẽ với sự hình thành màng myelin bảo vệ sợi thần kinh từ đỉnh đầu chạy dọc xuống cột sống, đòi hỏi thời gian trưởng thành sinh học tự nhiên và tuyệt đối không thể ép buộc cơ học từ bên ngoài [1, 2]."
+        ]
+      },
+      {
+        "bigram": "tiến trình",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Growing into Life\"** (Lớn lên cùng cuộc sống) mở đầu chương hai của tác phẩm bằng việc định hình ba nền tảng đá tảng trong nuôi dạy trẻ mầm non: thấu hiểu sinh lý phát triển, bảo vệ hơi ấm thể chất và thiết lập nhịp điệu sinh hoạt gia đình [1]. Tác giả tập trung sâu sắc vào hai năm đầu đời của trẻ sơ sinh và trẻ tập đi thông qua tiến trình làm chủ thể chất từ đầu xuống chân (growing down) song song với sự thức tỉnh dần của ý thức (waking up) [2]. Giai đoạn này đánh dấu các cột mốc vận động tự nhiên bao gồm lật, ngồi, bò nhịp nhàng, đứng và đi độc lập [1, 2]. Tác phẩm chứng minh cơ chế mầu nhiệm khi trẻ bộc lộ ngôn ngữ thông qua sự bắt chước vô thức lời nói chuẩn mực từ người lớn, đồng thời đưa ra lời cảnh báo sinh học nghiêm khắc về tác hại lâu dài của các thiết bị cơ học ép buộc trẻ ngồi thẳng hoặc đứng thẳng sớm [1, 2].",
+          "Một buổi chiều yên tĩnh trong phòng khách gia đình [1] | Người mẹ lo lắng nhìn đứa con trai mười tháng tuổi của mình vẫn chưa chịu tập đi, trong khi các em bé cùng lứa hàng xóm đã chập chững bước đi nhanh nhẹn [1, 2] | Cô băn khoăn liệu có nên mua một chiếc xe tập đi cơ học có bánh lăn tròn hay chiếc ghế nhún lò xo treo ở cửa phòng để giúp con đứng thẳng và di chuyển nhanh hơn [1, 2] | Đứng trước những thông tin quảng cáo hấp dẫn về các khóa học thể chất mầm non thúc đẩy sự cứng cáp sớm, người mẹ bối rối không biết làm thế nào để đồng hành đúng cách mà không can thiệp thô bạo vào tiến trình tự nhiên của con [1, 2].",
+          "Người mẹ nằm thao thức giữa đêm muộn dằn vặt khi thấy con quấy khóc mệt mỏi sau một ngày bị ép ngồi thẳng trên chiếc ghế ăn dặm nhựa đúc cứng nhắc [1, 2]; cô sợ hãi rằng nỗ lực thúc ép con học đi sớm bằng xe đẩy cơ học sẽ để lại những dị tật tiềm ẩn lên đôi chân và cản trở tiến trình phối hợp vận động tự lập của con [1, 2]."
+        ]
+      },
+      {
+        "bigram": "sự phát",
+        "count": 13,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Growing Down (Hạ mình xuống Trái Đất) và tiến trình myelin hóa hệ thần kinh vận động từ đầu xuống chân của trẻ nhỏ | stance=support | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời."
+        ]
+      },
+      {
+        "bigram": "liên kết",
+        "count": 12,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm Growing Down (Hạ mình xuống Trái Đất) và tiến trình myelin hóa hệ thần kinh vận động từ đầu xuống chân của trẻ nhỏ | stance=support | supports_insight=Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời."
+        ]
+      },
+      {
+        "bigram": "động tự",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Growing into Life\"** (Lớn lên cùng cuộc sống) mở đầu chương hai của tác phẩm bằng việc định hình ba nền tảng đá tảng trong nuôi dạy trẻ mầm non: thấu hiểu sinh lý phát triển, bảo vệ hơi ấm thể chất và thiết lập nhịp điệu sinh hoạt gia đình [1]. Tác giả tập trung sâu sắc vào hai năm đầu đời của trẻ sơ sinh và trẻ tập đi thông qua tiến trình làm chủ thể chất từ đầu xuống chân (growing down) song song với sự thức tỉnh dần của ý thức (waking up) [2]. Giai đoạn này đánh dấu các cột mốc vận động tự nhiên bao gồm lật, ngồi, bò nhịp nhàng, đứng và đi độc lập [1, 2]. Tác phẩm chứng minh cơ chế mầu nhiệm khi trẻ bộc lộ ngôn ngữ thông qua sự bắt chước vô thức lời nói chuẩn mực từ người lớn, đồng thời đưa ra lời cảnh báo sinh học nghiêm khắc về tác hại lâu dài của các thiết bị cơ học ép buộc trẻ ngồi thẳng hoặc đứng thẳng sớm [1, 2].",
+          "Người mẹ nằm thao thức giữa đêm muộn dằn vặt khi thấy con quấy khóc mệt mỏi sau một ngày bị ép ngồi thẳng trên chiếc ghế ăn dặm nhựa đúc cứng nhắc [1, 2]; cô sợ hãi rằng nỗ lực thúc ép con học đi sớm bằng xe đẩy cơ học sẽ để lại những dị tật tiềm ẩn lên đôi chân và cản trở tiến trình phối hợp vận động tự lập của con [1, 2].",
+          "* ②-3. actionable_rule: Quy tắc tôn trọng nhịp độ phát triển vận động tự nhiên và dọn sạch các rào cản cơ học đối với trẻ dưới ba tuổi"
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

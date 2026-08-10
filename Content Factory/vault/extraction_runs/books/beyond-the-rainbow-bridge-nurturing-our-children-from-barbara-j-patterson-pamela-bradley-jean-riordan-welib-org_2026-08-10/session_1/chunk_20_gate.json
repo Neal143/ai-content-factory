@@ -1,0 +1,138 @@
+{
+  "chunk_index": 20,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_20_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 20,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_20_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_20_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_20_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "chữa lành",
+        "count": 12,
+        "contexts": [
+          "* **Mô tả:** Cha mẹ mong ước cháy bỏng tìm thấy những giải pháp can thiệp thể chất tĩnh lặng đầy dũng khí—những phương thuốc chữa lành ôn hòa dắt lối năng lượng ý chí mầm non quay về trạng thái cân bằng. Họ mong mỏi biến nếp nhà thành một ốc đảo yên ấm, nơi đôi bàn tay con được ủ ấm để làm việc nghĩa, đôi chân được tự do nhảy múa và nụ cười rạng rỡ của con tự giác lan tỏa sự hòa hợp tinh khôi cho cả gia đình.",
+          "* **Diễn giải Core Logic:** Tác giả dẫn dắt phương pháp chữa lành hành vi theo hướng tương đồng của Steiner: \"Like cures like\". Khi trẻ cắn bạn, hành động này giải phóng dòng ý chí thô bạo qua cơ hàm. Thay vì dùng lời mắng mỏ lý trí vốn vô hiệu trước ý thức mộng mơ của trẻ, người lớn lập tức đưa cho trẻ một miếng táo lớn hoặc củ cà rốt giòn để con ngồi nhai bên cạnh mình. Áp lực cơ học mạnh mẽ lên hàm khi nhai vật cứng đáp ứng và trung hòa hoàn hảo nhu cầu vận động cơ học của cơ hàm đang bị bứt rứt nội tại. Đồng thời, lời khẳng định rõ ràng: \"Chúng ta cắn táo, không cắn bạn\" giúp trẻ liên kết trực quan giữa cơ quan sinh học và mục tiêu hành động đúng đắn, lập tức giải tỏa cơn bế tắc cảm xúc bộc phát.",
+          "* ②-3. actionable_rule: Quy chuẩn chữa lành hành vi vật lý và thiết lập hậu quả nhân quả (Consequential Healing Actions Flow)"
+        ]
+      },
+      {
+        "bigram": "hành vi",
+        "count": 9,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "* **Định nghĩa/Phát biểu luật:** Hành vi thô bạo dở dang của trẻ mầm non không phải là biểu hiện của bản tính hư hỏng, mà là sự bộc phát của dòng ý chí hỗn loạn; lao động thực tế và có mục đích chính là phương thuốc chuyển hóa sinh học mầu nhiệm giúp tái lập sự hài hòa trong cấu trúc cơ thể vật lý và lực lượng ý chí của trẻ.",
+          "* **Diễn giải Core Logic:** Khoa học tinh thần Waldorf làm rõ rằng trẻ dưới bảy tuổi sống trong trạng thái ý chí hoạt động mạnh mẽ nhưng chưa có sự kiểm soát tự giác của Cái Tôi. Sự dồn nén năng lượng hoặc bắt chước các xung động bất hòa bên ngoài khiến lực lượng ý chí của trẻ bị phân tán, hỗn loạn, bộc phát thành hành vi đập phá, la hét hay thô bạo vật lý. Việc để trẻ chơi thô bạo (roughhousing) với lầm tưởng giúp giải tỏa năng lượng thực chất chỉ làm sâu sắc thêm thói quen bạo lực thần kinh. Thay vào đó, việc lôi cuốn trẻ vào lao động thực tế như đào đất, bê gỗ, dọn vườn sẽ dồn dòng năng lượng cơ bắp vào những chuyển động có mục đích cụ thể. Tiến trình này đồng hóa ý chí hỗn loạn vào cấu trúc trật tự sinh học khỏe mạnh, giúp xoa dịu hệ thần kinh giao cảm và tự động lập lại sự bình an nội tâm."
+        ]
+      },
+      {
+        "bigram": "bàn tay",
+        "count": 9,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "* **Mô tả:** Cha mẹ mong ước cháy bỏng tìm thấy những giải pháp can thiệp thể chất tĩnh lặng đầy dũng khí—những phương thuốc chữa lành ôn hòa dắt lối năng lượng ý chí mầm non quay về trạng thái cân bằng. Họ mong mỏi biến nếp nhà thành một ốc đảo yên ấm, nơi đôi bàn tay con được ủ ấm để làm việc nghĩa, đôi chân được tự do nhảy múa và nụ cười rạng rỡ của con tự giác lan tỏa sự hòa hợp tinh khôi cho cả gia đình.",
+          "Đứa trẻ nhỏ say sưa dùng chiếc xẻng gỗ nhỏ để xúc từng xô đất vun gốc cây trong vườn; đôi bàn tay lấm lem đất cát chuyển động nhịp nhàng dưới ánh nắng ôn hòa đầy tập trung tinh thần."
+        ]
+      },
+      {
+        "bigram": "lao động",
+        "count": 8,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "* ②-1. philosophy: Triết lý \"Sự chuyển hóa dòng ý chí hỗn loạn thông qua lao động thực tế (Purposeful Work as a Harmonizer of Chaotic Will)\"",
+          "* **Định nghĩa/Phát biểu luật:** Hành vi thô bạo dở dang của trẻ mầm non không phải là biểu hiện của bản tính hư hỏng, mà là sự bộc phát của dòng ý chí hỗn loạn; lao động thực tế và có mục đích chính là phương thuốc chuyển hóa sinh học mầu nhiệm giúp tái lập sự hài hòa trong cấu trúc cơ thể vật lý và lực lượng ý chí của trẻ."
+        ]
+      },
+      {
+        "bigram": "khăn lụa",
+        "count": 7,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "* **Bản chất:** Từ bỏ hoàn toàn mọi hình thức trừng phạt bằng lời la mắng, bạo lực thể chất và từ bỏ việc giải thích đạo lý dông dài khi con bộc phát hành vi thô bạo; thực thi dứt khoát quy trình can thiệp vật lý ôn hòa tương ứng với từng cơ quan gây tổn thương (như quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, nhai táo cho răng cắn, đưa vào nhà vệ sinh cho miệng nhổ nước bọt) kết hợp với lời khẳng định kiên định để dắt lối con trở lại nếp sinh hoạt chung hằng tuần.",
+          "* **Cách thức vận hành:** Chuẩn bị sẵn khăn lụa tự nhiên ấm; chuẩn bị sẵn giỏ chữa lành có bấm móng tay; chuẩn bị táo/cà rốt sạch; thực hiện quấn khăn lụa nhẹ nhàng lên tay trẻ và nói câu khẳng định; dứt khoát tách trẻ ra khỏi không gian chơi dở dang cho đến khi cơ thể con ấm lên và tĩnh lặng trở lại."
+        ]
+      },
+      {
+        "bigram": "hỗn loạn",
+        "count": 7,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "Trong căn phòng sinh hoạt ấm áp đầy nắng chiều dở dang | Đứa con trai nhỏ bốn tuổi đang gào khóc bộc phát, con ra sức cào cấu và đá mạnh vào người mẹ đứng đối diện để đòi giật lấy món đồ chơi | Người mẹ cảm thấy bất lực vô cùng khi cô liên tục quát mắng, dọa nạt bắt con ngồi im lặng một góc nhưng đứa trẻ càng nổi loạn, cắn mạnh vào tay mẹ và khóc lóc giãy nảy đầy thô bạo | Cô nhận thấy mọi nỗ lực đe dọa hay thương lượng bằng câu hỏi dông dài lúc này đều hoàn toàn bế tắc trước sự hỗn loạn của dòng năng lượng cơ bắp của con.",
+          "* ②-1. philosophy: Triết lý \"Sự chuyển hóa dòng ý chí hỗn loạn thông qua lao động thực tế (Purposeful Work as a Harmonizer of Chaotic Will)\""
+        ]
+      },
+      {
+        "bigram": "đứa trẻ",
+        "count": 7,
+        "contexts": [
+          "Trong căn phòng sinh hoạt ấm áp đầy nắng chiều dở dang | Đứa con trai nhỏ bốn tuổi đang gào khóc bộc phát, con ra sức cào cấu và đá mạnh vào người mẹ đứng đối diện để đòi giật lấy món đồ chơi | Người mẹ cảm thấy bất lực vô cùng khi cô liên tục quát mắng, dọa nạt bắt con ngồi im lặng một góc nhưng đứa trẻ càng nổi loạn, cắn mạnh vào tay mẹ và khóc lóc giãy nảy đầy thô bạo | Cô nhận thấy mọi nỗ lực đe dọa hay thương lượng bằng câu hỏi dông dài lúc này đều hoàn toàn bế tắc trước sự hỗn loạn của dòng năng lượng cơ bắp của con.",
+          "Đứa trẻ nhỏ say sưa dùng chiếc xẻng gỗ nhỏ để xúc từng xô đất vun gốc cây trong vườn; đôi bàn tay lấm lem đất cát chuyển động nhịp nhàng dưới ánh nắng ôn hòa đầy tập trung tinh thần.",
+          "Đứa trẻ bướng bỉnh im lặng ngồi trên chiếc ghế gỗ thấp, ra sức nhai miếng táo giòn ngọt sần sật một cách say mê; cơ hàm chuyển động dứt khoát giúp giải tỏa trọn vẹn dòng ý chí xung kích dữ dội của con."
+        ]
+      },
+      {
+        "bigram": "năng lượng",
+        "count": 7,
+        "contexts": [
+          "Trong căn phòng sinh hoạt ấm áp đầy nắng chiều dở dang | Đứa con trai nhỏ bốn tuổi đang gào khóc bộc phát, con ra sức cào cấu và đá mạnh vào người mẹ đứng đối diện để đòi giật lấy món đồ chơi | Người mẹ cảm thấy bất lực vô cùng khi cô liên tục quát mắng, dọa nạt bắt con ngồi im lặng một góc nhưng đứa trẻ càng nổi loạn, cắn mạnh vào tay mẹ và khóc lóc giãy nảy đầy thô bạo | Cô nhận thấy mọi nỗ lực đe dọa hay thương lượng bằng câu hỏi dông dài lúc này đều hoàn toàn bế tắc trước sự hỗn loạn của dòng năng lượng cơ bắp của con.",
+          "* **Mô tả:** Cha mẹ mong ước cháy bỏng tìm thấy những giải pháp can thiệp thể chất tĩnh lặng đầy dũng khí—những phương thuốc chữa lành ôn hòa dắt lối năng lượng ý chí mầm non quay về trạng thái cân bằng. Họ mong mỏi biến nếp nhà thành một ốc đảo yên ấm, nơi đôi bàn tay con được ủ ấm để làm việc nghĩa, đôi chân được tự do nhảy múa và nụ cười rạng rỡ của con tự giác lan tỏa sự hòa hợp tinh khôi cho cả gia đình.",
+          "* **Diễn giải Core Logic:** Khoa học tinh thần Waldorf làm rõ rằng trẻ dưới bảy tuổi sống trong trạng thái ý chí hoạt động mạnh mẽ nhưng chưa có sự kiểm soát tự giác của Cái Tôi. Sự dồn nén năng lượng hoặc bắt chước các xung động bất hòa bên ngoài khiến lực lượng ý chí của trẻ bị phân tán, hỗn loạn, bộc phát thành hành vi đập phá, la hét hay thô bạo vật lý. Việc để trẻ chơi thô bạo (roughhousing) với lầm tưởng giúp giải tỏa năng lượng thực chất chỉ làm sâu sắc thêm thói quen bạo lực thần kinh. Thay vào đó, việc lôi cuốn trẻ vào lao động thực tế như đào đất, bê gỗ, dọn vườn sẽ dồn dòng năng lượng cơ bắp vào những chuyển động có mục đích cụ thể. Tiến trình này đồng hóa ý chí hỗn loạn vào cấu trúc trật tự sinh học khỏe mạnh, giúp xoa dịu hệ thần kinh giao cảm và tự động lập lại sự bình an nội tâm."
+        ]
+      },
+      {
+        "bigram": "bạo lực",
+        "count": 6,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "* **Mô tả:** Độc giả lo lắng tột cùng rằng những biểu hiện cào cấu, cắn xé hay quát tháo bộc phát thường nhật của con nếu không được dập tắt đúng cách sẽ trở thành thói quen bạo lực thần kinh nguy hại. Họ lo sợ sâu sắc rằng việc can thiệp bằng đòn roi hay la hét sẽ chỉ gieo rắc thêm hình ảnh bất hòa vào cơ thể thực thể của trẻ mầm non, khiến con chai sạn tâm hồn và mất đi dũng khí giao tiếp hòa hợp với bạn bè đồng trang lứa.",
+          "* **Diễn giải Core Logic:** Khoa học tinh thần Waldorf làm rõ rằng trẻ dưới bảy tuổi sống trong trạng thái ý chí hoạt động mạnh mẽ nhưng chưa có sự kiểm soát tự giác của Cái Tôi. Sự dồn nén năng lượng hoặc bắt chước các xung động bất hòa bên ngoài khiến lực lượng ý chí của trẻ bị phân tán, hỗn loạn, bộc phát thành hành vi đập phá, la hét hay thô bạo vật lý. Việc để trẻ chơi thô bạo (roughhousing) với lầm tưởng giúp giải tỏa năng lượng thực chất chỉ làm sâu sắc thêm thói quen bạo lực thần kinh. Thay vào đó, việc lôi cuốn trẻ vào lao động thực tế như đào đất, bê gỗ, dọn vườn sẽ dồn dòng năng lượng cơ bắp vào những chuyển động có mục đích cụ thể. Tiến trình này đồng hóa ý chí hỗn loạn vào cấu trúc trật tự sinh học khỏe mạnh, giúp xoa dịu hệ thần kinh giao cảm và tự động lập lại sự bình an nội tâm."
+        ]
+      },
+      {
+        "bigram": "thực tế",
+        "count": 6,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Healing Actions\"** (Các hành động chữa lành) dâng hiến một giải pháp giáo dục mầm non vô cùng đột phá và nghệ thuật để đối phó với những hành vi lệch lạc thể chất của trẻ nhỏ dưới bảy tuổi. Thay vì quát tháo hay giảng giải logic vô ích, tác giả hướng dẫn cách can thiệp ôn hòa tương ứng với từng cơ quan gây tổn thương: quấn khăn lụa ấm lên bàn tay đánh, tỉa móng tay cho bàn tay cào, hay cho cắn táo hoặc cà rốt cứng khi trẻ cắn bạn. Đồng thời, đối với những trẻ có xu hướng chơi bạo lực dở dang, tác phẩm khẳng định lao động thực tế như đào hố, bê gỗ, dọn cỏ dại mới là phương thuốc đích thực để chuyển hóa dòng ý chí hỗn loạn trở nên hài hòa sâu sắc hằng tuần.",
+          "* ②-1. philosophy: Triết lý \"Sự chuyển hóa dòng ý chí hỗn loạn thông qua lao động thực tế (Purposeful Work as a Harmonizer of Chaotic Will)\"",
+          "* **Định nghĩa/Phát biểu luật:** Hành vi thô bạo dở dang của trẻ mầm non không phải là biểu hiện của bản tính hư hỏng, mà là sự bộc phát của dòng ý chí hỗn loạn; lao động thực tế và có mục đích chính là phương thuốc chuyển hóa sinh học mầu nhiệm giúp tái lập sự hài hòa trong cấu trúc cơ thể vật lý và lực lượng ý chí của trẻ."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

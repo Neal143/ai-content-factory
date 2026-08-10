@@ -1,0 +1,138 @@
+{
+  "chunk_index": 2,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_02_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 2,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_02_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_02_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_02_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "phát triển",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng việc đối đầu trực diện bằng những cuộc tranh cãi lý trí hoặc la mắng sẽ đẩy mối quan hệ giữa cha mẹ và con vào bế tắc, khiến trẻ ngày càng bướng bỉnh khó bảo. Họ cũng lo âu sâu sắc rằng môi trường sống thiếu nhất quán và quá nhiều kích thích mạnh sẽ gây quá tải cho các giác quan non nớt của con, làm tổn hại đến sự phát triển sinh lý tự nhiên của các cơ quan thực thể bên trong.",
+          "* ②-1. philosophy: Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời"
+        ]
+      },
+      {
+        "bigram": "nhạy cảm",
+        "count": 17,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn uốn nắn hành vi của con khi con trẻ dưới bảy tuổi bộc lộ tính khí nhạy cảm dễ phản kháng bướng bỉnh khiến các nỗ lực kiểm soát thông thường thất bại.",
+          "Trong ánh hoàng hôn buông xuống căn phòng nhỏ | Một người mẹ bế tắc đứng nhìn cô con gái nhỏ đang tức giận ném đồ đạc xuống sàn và hét lên phản kháng | Mỗi lần mẹ dùng uy quyền ép buộc hay quát mắng để thiết lập trật tự, đứa trẻ lại càng bùng nổ dữ dội và khóc lóc dai dẳng | Nhìn sang góc phòng, người con trai nhạy cảm đang bị giật mình bởi những âm thanh quá lớn, thu người lại đầy lo âu | Người mẹ mệt mỏi nhận ra rằng các phương pháp áp đặt kỷ luật thép thông thường không chỉ gây phản tác dụng với cô con gái mạnh mẽ mà còn làm tổn thương hệ thống cảm quan mỏng manh của người con trai.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ."
+        ]
+      },
+      {
+        "bigram": "không thể",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "* ②-1. philosophy: Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời | stance=support | supports_insight=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ."
+        ]
+      },
+      {
+        "bigram": "giác quan",
+        "count": 16,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ.",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng việc đối đầu trực diện bằng những cuộc tranh cãi lý trí hoặc la mắng sẽ đẩy mối quan hệ giữa cha mẹ và con vào bế tắc, khiến trẻ ngày càng bướng bỉnh khó bảo. Họ cũng lo âu sâu sắc rằng môi trường sống thiếu nhất quán và quá nhiều kích thích mạnh sẽ gây quá tải cho các giác quan non nớt của con, làm tổn hại đến sự phát triển sinh lý tự nhiên của các cơ quan thực thể bên trong.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ."
+        ]
+      },
+      {
+        "bigram": "kỷ luật",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "Trong ánh hoàng hôn buông xuống căn phòng nhỏ | Một người mẹ bế tắc đứng nhìn cô con gái nhỏ đang tức giận ném đồ đạc xuống sàn và hét lên phản kháng | Mỗi lần mẹ dùng uy quyền ép buộc hay quát mắng để thiết lập trật tự, đứa trẻ lại càng bùng nổ dữ dội và khóc lóc dai dẳng | Nhìn sang góc phòng, người con trai nhạy cảm đang bị giật mình bởi những âm thanh quá lớn, thu người lại đầy lo âu | Người mẹ mệt mỏi nhận ra rằng các phương pháp áp đặt kỷ luật thép thông thường không chỉ gây phản tác dụng với cô con gái mạnh mẽ mà còn làm tổn thương hệ thống cảm quan mỏng manh của người con trai.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ."
+        ]
+      },
+      {
+        "bigram": "thể chất",
+        "count": 14,
+        "contexts": [
+          "* ②-1. philosophy: Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời | stance=support | supports_insight=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ.",
+          "* **Diễn giải Core Logic:** Giai đoạn bảy năm đầu đời là thời kỳ cơ thể etheric (thể sống) của trẻ dồn toàn bộ năng lượng tăng trưởng vào việc kiến tạo và hoàn thiện các cơ quan nội tạng. Trường hợp của cô bé Wanda—bị tổn thương gan vĩnh viễn do chất cồn từ người mẹ ruột nghiện rượu trước khi sinh—khiến cô bé không thể tiếp nhận hay cho đi tình yêu thương một cách bình thường khi lớn lên. Dù nhận được sự chăm sóc tận tụy và môi trường gia đình tràn đầy tình thương của Barbara, Wanda cũng chỉ có thể hồi phục đến một giới hạn nhất định. Điều này củng cố chân lý sư phạm rằng có những thứ chúng ta không thể bù đắp hoặc lấy lại về sau; việc bảo vệ tuyệt đối thể chất và tinh thần của trẻ trong giai đoạn vàng này là trách nhiệm tối thượng của người lớn."
+        ]
+      },
+      {
+        "bigram": "bảo vệ",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "* **Diễn giải Core Logic:** Giai đoạn bảy năm đầu đời là thời kỳ cơ thể etheric (thể sống) của trẻ dồn toàn bộ năng lượng tăng trưởng vào việc kiến tạo và hoàn thiện các cơ quan nội tạng. Trường hợp của cô bé Wanda—bị tổn thương gan vĩnh viễn do chất cồn từ người mẹ ruột nghiện rượu trước khi sinh—khiến cô bé không thể tiếp nhận hay cho đi tình yêu thương một cách bình thường khi lớn lên. Dù nhận được sự chăm sóc tận tụy và môi trường gia đình tràn đầy tình thương của Barbara, Wanda cũng chỉ có thể hồi phục đến một giới hạn nhất định. Điều này củng cố chân lý sư phạm rằng có những thứ chúng ta không thể bù đắp hoặc lấy lại về sau; việc bảo vệ tuyệt đối thể chất và tinh thần của trẻ trong giai đoạn vàng này là trách nhiệm tối thượng của người lớn.",
+          "* ②-3. actionable_rule: Quy tắc bảo vệ giác quan và điều hòa năng lượng phát triển trí năng sớm cho trẻ nhạy cảm"
+        ]
+      },
+      {
+        "bigram": "nhất quán",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng việc đối đầu trực diện bằng những cuộc tranh cãi lý trí hoặc la mắng sẽ đẩy mối quan hệ giữa cha mẹ và con vào bế tắc, khiến trẻ ngày càng bướng bỉnh khó bảo. Họ cũng lo âu sâu sắc rằng môi trường sống thiếu nhất quán và quá nhiều kích thích mạnh sẽ gây quá tải cho các giác quan non nớt của con, làm tổn hại đến sự phát triển sinh lý tự nhiên của các cơ quan thực thể bên trong.",
+          "Người mẹ nằm thao thức giữa đêm muộn, dằn vặt lo âu khi nghĩ đến hình ảnh đứa con nhỏ khóc nấc lên vì tức giận sau cuộc tranh cãi căng thẳng tối qua; cô sợ hãi rằng những vết rạn nứt cảm xúc này và sự thiếu nhất quán trong cách nuôi dạy của mình sẽ để lại những ảnh hưởng tiêu cực lâu dài lên tính cách của con."
+        ]
+      },
+      {
+        "bigram": "nhịp điệu",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "* ②-2. principle: Nguyên lý điều hợp hành vi gián tiếp thông qua sự nhất quán và nhịp điệu sinh hoạt gia đình",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý điều hợp hành vi gián tiếp thông qua sự nhất quán và nhịp điệu sinh hoạt gia đình | stance=support | supports_insight=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ."
+        ]
+      },
+      {
+        "bigram": "đối đầu",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Home\"** (Mái ấm của tôi) ghi lại những bài học thực tế đầy giá trị khi bà Barbara J. Patterson áp dụng triết lý giáo dục mầm non vào chính gia đình mình. Bà quan sát sự khác biệt rõ rệt giữa hai người con ruột: cô con gái hoạt bát, thích giao thiệp đòi hỏi một kỷ luật nhất quán bằng nhịp điệu sinh hoạt thay vì đối đầu trực diện; người con trai nhạy cảm, có xu hướng phát triển trí năng sớm đòi hỏi sự bảo vệ nghiêm ngặt đối với các giác quan. Đặc biệt, câu chuyện về Wanda—đứa con nuôi mang tổn thương thực thể ở gan do người mẹ ruột nghiện rượu—đã để lại một bài học sâu sắc mang tính cảnh báo: những tổn hại và thiếu hụt trong giai đoạn mầm non đầu đời sẽ để lại di chứng sâu sắc, không thể bù đắp hay đảo ngược hoàn toàn bằng các phương pháp trị liệu về sau.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ.",
+          "* **Mô tả:** Độc giả lo sợ tột cùng rằng việc đối đầu trực diện bằng những cuộc tranh cãi lý trí hoặc la mắng sẽ đẩy mối quan hệ giữa cha mẹ và con vào bế tắc, khiến trẻ ngày càng bướng bỉnh khó bảo. Họ cũng lo âu sâu sắc rằng môi trường sống thiếu nhất quán và quá nhiều kích thích mạnh sẽ gây quá tải cho các giác quan non nớt của con, làm tổn hại đến sự phát triển sinh lý tự nhiên của các cơ quan thực thể bên trong."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

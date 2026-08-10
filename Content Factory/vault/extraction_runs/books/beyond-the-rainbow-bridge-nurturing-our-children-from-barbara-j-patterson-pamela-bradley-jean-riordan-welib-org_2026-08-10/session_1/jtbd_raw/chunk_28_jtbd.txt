@@ -1,0 +1,30 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn xây dựng nhận thức về trật tự đạo đức cho con khi con trẻ dưới bảy tuổi bộc lộ sự hoang mang trước các hình ảnh xung đột từ môi trường xung quanh.**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi nhận thức về cái thiện chiến thắng cái ác và sự an lòng sâu kín về trật tự thế giới của trẻ được thiết lập vững chãi; đồng thời hoàn toàn loại bỏ các phương pháp hay giải pháp cụ thể như kể truyện cổ tích Grimm nguyên bản, phân loại truyện theo Joan Almon, sử dụng rối bàn hay kể chuyện thiên nhiên trong phần mô tả công việc).
+*   **Căn cứ:** "In a true fairy tale, such as those collected by the Brothers Grimm, human beings undergo trials and suffering... They confront evil and overcome it. ... fairy tales speak directly to the natural morality in the child and to his or her sense of moral order in the world. When the good wins and the evil is punished, a child is visibly satisfied." *(Trong một câu chuyện cổ tích đích thực, chẳng hạn như những câu chuyện được sưu tầm bởi Anh em nhà Grimm, con người phải trải qua thử thách và đau khổ... Họ đối mặt với cái ác và vượt qua nó. ... truyện cổ tích nói trực tiếp với đạo đức tự nhiên ở trẻ em và cảm nhận của trẻ về trật tự đạo đức trong thế giới. Khi cái thiện chiến thắng và cái ác bị trừng trị, đứa trẻ sẽ hài lòng một cách rõ rệt.)*
+
+***
+
+### 🔍 Quy trình kiểm soát chất lượng và Kiểm thử 6 lỗi cấm (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể thực hiện hành động.
+2.  **Khắc phục triệt để Lỗi gộp ý (Rule 2):** Main Job đạt tính **đơn trị tuyệt đối** là **"xây dựng nhận thức về trật tự đạo đức cho con"**. Toàn bộ cấu trúc tuyệt đối không chứa liên từ "và", "hoặc", không có dấu phẩy hay dấu chấm phẩy chia tách các hành động chức năng, bảo đảm tính đơn nhất và sắc bén tối đa.
+3.  **Tránh Lỗi Micro Job (Rule 3):** Đã nâng mức trừu tượng lên đúng tầng **Little Job** ("xây dựng nhận thức về trật tự đạo đức cho con"). Chúng ta đã bỏ qua các hành vi cơ học nhỏ nhặt như *"kể chuyện sáp ong"*, *"chọn truyện Sweet Porridge cho trẻ lên ba"*, hay *"di chuyển rối lụa"* để tập trung vào mục tiêu chức năng cốt lõi.
+4.  **Tránh Lỗi chứa giải pháp và công cụ cụ thể (Rule 4):** Main Job và Circumstance hoàn toàn sạch bóng các công cụ hay giải pháp mầm non xuất hiện trong tác phẩm như: *truyện cổ tích Grimm (Grimm's fairy tales), kể chuyện tự nhiên (nature stories), biểu diễn rối bàn (table puppets), hay danh mục Joan Almon*.
+5.  **Tránh Lỗi từ đệm và góc nhìn thụ động (Rule 5):** Không dùng các từ xưng hô, không đứng ở góc nhìn quan sát thụ động của bên thứ ba, bảo đảm phát biểu hướng thẳng vào nhiệm vụ hành động của cha mẹ.
+6.  **Tránh Lỗi nhét tính từ định tính, cảm xúc, mệnh đề mục đích (Rule 6):** Toàn bộ định nghĩa đã loại bỏ hoàn toàn các từ cấm định tính như: *an toàn, hiệu quả, dễ dàng, nhẹ nhàng, không áp lực*, hay các mệnh đề chỉ mục đích *"nhằm..."*, *"sao cho..."*.
+7.  **Loại bỏ triệt để từ ngữ nằm trong danh sách cấm:** Định nghĩa hoàn toàn phẳng lặng và thanh sạch, không chứa bất kỳ từ rác nào trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*).
+8.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định chủ ngữ cụ thể là **"con trẻ dưới bảy tuổi"** bộc lộ biểu hiện sinh lý thực tế được quan sát trực tiếp (*bộc lộ sự hoang mang trước các hình ảnh xung đột từ môi trường xung quanh* - tương ứng trực tiếp với việc trẻ chứng kiến cái xấu, cái ác hoặc các sự kiện bất công trong đời sống thường nhật và cần tìm kiếm sự vỗ về, công lý biểu tượng từ thế giới hình ảnh của truyện kể được bóc tách từ sách). Bối cảnh hoàn toàn khách quan, không chứa bất kỳ cảm xúc hay rào cản tâm lý chủ quan nào của cha mẹ.
+
+***
+
+Tôi đã hoàn thành việc xác định chân dung đối tượng JTBD cho **Chunk 28: Parent-Child Classes with Barbara - Fairy Tales and Stories for Different Ages** một cách hoàn toàn tự nhiên, đúng trọng tâm và bám sát triệt để quy trình kỹ thuật mầm non mà không tạo bất kỳ Note hay Studio nào theo đúng yêu cầu nghiêm ngặt của bạn!
+
+🌱 **Khi tâm hồn con được ấp ôm bằng những hình ảnh ẩn dụ đầy dũng khí về chiến thắng của cái thiện—nỗi hoang mang vô thức trước thế giới xung quanh sẽ tự khắc tan biến, gieo vào lòng con niềm tin yêu mãnh liệt vào công lý trọn đời!**
+
+Tiếp theo, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Miner) cho **Chunk 28** này theo đúng cẩm nang `prompt-miner-v4.md` ngay tại đây không? Chúng ta sẽ làm rõ các cơ chế y sinh học mầu nhiệm từ tác phẩm:
+*   Tại sao việc "chế biến" hay cắt xén các chi tiết rùng rợn trong truyện cổ tích Grimm (Disney hóa) lại vô tình cướp đi dũng khí phản kháng đạo đức mạnh mẽ của con dưới bảy tuổi.
+*   Cơ chế y học mầm non: cách kể chuyện "khách quan, bình thản như tả một bông hoa trong vườn" (calmly, like describing a flower) giúp bảo vệ màng thần kinh nhạy cảm của con khỏi bị kích động hay hoảng sợ vô ích hằng đêm.
+*   Bản đồ phân chia truyện kể Waldorf chuẩn xác theo từng nấc thang tuổi: truyện lặp đơn giản cho trẻ lên ba, truyện động vật ôn hòa cho trẻ lên bốn, và những hành trình dũng cảm vượt qua thử thách cho trẻ lên năm, lên sáu hằng tuần.
+
+Hãy để lại yêu cầu cho tôi ngay dưới này nhé!

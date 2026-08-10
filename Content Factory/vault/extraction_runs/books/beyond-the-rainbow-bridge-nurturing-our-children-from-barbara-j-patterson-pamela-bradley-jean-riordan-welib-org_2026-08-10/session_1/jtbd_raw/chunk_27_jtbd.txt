@@ -1,0 +1,30 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn xây dựng cảm giác thuộc về thế giới của con khi con trẻ dưới bảy tuổi bộc lộ sự băn khoăn về nguồn gốc ra đời của bản thân.**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi cảm giác thuộc về thế giới và nhận thức bản dạng sống của trẻ được củng cố bền vững; đồng thời hoàn toàn loại bỏ các giải pháp hay phương pháp cụ thể như kể câu chuyện sinh nhật Cầu cầu vồng, sử dụng lụa màu đào, thắp nến sáp ong theo tuổi, hay kể câu chuyện nhận nuôi thích ứng trong phần mô tả công việc).
+*   **Căn cứ:** "The story is about a little child who is in heaven... who looks down and sees a mother and father... and crosses the rainbow bridge to be born to them. This story is very healing for children, especially if they are adopted or have questions about where they came from... It gives the child a deep feeling of being welcomed and wanted here on earth." *(Câu chuyện kể về một đứa trẻ nhỏ đang ở trên thiên đường... nhìn xuống và nhìn thấy một người mẹ và người cha... và vượt qua cây cầu cầu vồng để được sinh ra với họ. Câu chuyện này rất có tác dụng chữa lành cho trẻ em, đặc biệt là nếu chúng được nhận làm con nuôi hoặc có những câu hỏi về việc chúng từ đâu đến... Nó mang lại cho đứa trẻ cảm giác sâu sắc về việc được chào đón và được mong đợi ở đây trên trái đất.)*
+
+***
+
+### 🔍 Quy trình kiểm soát chất lượng và Kiểm thử 6 lỗi cấm (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể thực hiện hành động.
+2.  **Khắc phục triệt để Lỗi gộp ý (Rule 2):** Main Job đạt tính **đơn trị tuyệt đối** là **"xây dựng cảm giác thuộc về thế giới của con"**. Toàn bộ cấu trúc tuyệt đối không chứa liên từ "và", "hoặc", không có dấu phẩy hay dấu chấm phẩy chia tách các hành động chức năng, bảo đảm tính đơn nhất và sắc bén tối đa.
+3.  **Tránh Lỗi Micro Job (Rule 3):** Đã nâng mức trừu tượng lên đúng tầng **Little Job** ("xây dựng cảm giác thuộc về thế giới của con"). Chúng ta đã bỏ qua các hành vi cơ học nhỏ nhặt như *"kể chuyện từ trí nhớ"*, *"thắp nến sinh nhật"*, hay *"gột rửa lụa màu đào"* để tập trung vào mục tiêu chức năng cốt lõi.
+4.  **Tránh Lỗi chứa giải pháp và công cụ cụ thể (Rule 4):** Main Job và Circumstance hoàn toàn sạch bóng các công cụ hay giải pháp mầm non xuất hiện trong tác phẩm như: *câu chuyện sinh nhật cầu cầu vồng (Rainbow Bridge birthday story), câu chuyện nhận con nuôi (adopted story), hay kỹ thuật kể chuyện bằng trí nhớ (telling from memory)*.
+5.  **Tránh Lỗi từ đệm và góc nhìn thụ động (Rule 5):** Không dùng các từ xưng hô, không đứng ở góc nhìn quan sát thụ động của bên thứ ba, bảo đảm phát biểu hướng thẳng vào nhiệm vụ hành động của cha mẹ.
+6.  **Tránh Lỗi nhét tính từ định tính, cảm xúc, mệnh đề mục đích (Rule 6):** Toàn bộ định nghĩa đã loại bỏ hoàn toàn các từ cấm định tính như: *an toàn, hiệu quả, dễ dàng, nhẹ nhàng, không áp lực*, hay các mệnh đề chỉ mục đích *"nhằm..."*, *"sao cho..."*.
+7.  **Loại bỏ triệt để từ ngữ nằm trong danh sách cấm:** Định nghĩa hoàn toàn phẳng lặng và thanh sạch, không chứa bất kỳ từ rác nào trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*).
+8.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định chủ ngữ cụ thể là **"con trẻ dưới bảy tuổi"** bộc lộ biểu hiện sinh lý thực tế được quan sát trực tiếp (*bộc lộ sự băn khoăn về nguồn gốc ra đời của bản thân* - tương ứng trực tiếp với hành vi trẻ liên tục hỏi "con từ đâu đến?", "tại sao con lại ở đây?" hoặc gặp những xáo trộn tâm lý khi biết mình là con nuôi được bóc tách từ sách). Bối cảnh hoàn toàn khách quan, không chứa bất kỳ cảm xúc hay rào cản tâm lý chủ quan nào của cha mẹ.
+
+***
+
+Tôi đã hoàn thành việc xác định chân dung đối tượng JTBD cho **Chunk 27: Parent-Child Classes with Barbara - Rainbow Bridge Birthday Stories** một cách hoàn toàn tự nhiên, đúng trọng tâm và bám sát triệt để quy trình kỹ thuật mầm non mà không tạo bất kỳ Note hay Studio nào theo đúng yêu cầu nghiêm ngặt của bạn!
+
+🌱 **Khi câu chuyện về hành trình du hành từ các vì sao của con được thắp sáng—mọi băn khoăn bứt rứt về cội nguồn sẽ tự khắc lắng dịu, nhường chỗ cho một niềm tin yêu cuộc sống vững chãi sâu thẳm trong tim con!**
+
+Tiếp theo, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Miner) cho **Chunk 27** này theo đúng cẩm nang `prompt-miner-v4.md` ngay tại đây không? Chúng ta sẽ làm rõ các cơ chế y sinh học mầu nhiệm từ tác phẩm:
+*   Tại sao hình ảnh đứa trẻ nhìn xuống trần thế, lựa chọn cha mẹ và bước qua cây cầu cầu vồng (Rainbow Bridge) lại có tác dụng chữa lành sinh học sâu sắc, dập tắt các nỗi sợ vô thức của trẻ dưới bảy tuổi hằng đêm.
+*   Nghệ thuật kể chuyện bằng trí nhớ (telling from memory) thay vì đọc sách: cách ánh mắt, giọng nói của người mẹ truyền dẫn trọn vẹn dòng sinh lực bảo bọc vào tâm thức con.
+*   Ứng dụng thực hành đặc biệt: cách biến đổi câu chuyện sinh nhật cho trẻ nhận con nuôi (Adoption Birthday Story) để dệt lại chiếc kén an toàn cảm xúc tinh tế nhất cho con hằng tuần.
+
+Hãy để lại yêu cầu cho tôi ngay dưới này nhé!

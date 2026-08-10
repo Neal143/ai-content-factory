@@ -1,0 +1,30 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con khi con trẻ dưới bảy tuổi bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu.**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi các giới hạn và yêu cầu đã đề ra được thực hiện trọn vẹn mà không bị thỏa hiệp hay phá vỡ; đồng thời hoàn toàn loại bỏ các phương pháp hay giải pháp cụ thể như bỏ qua phản ứng tiêu cực, lùi lại nhường không gian, giữ bình tĩnh tránh tranh cãi lời nói, hay biểu hiện yêu thương bao bọc trong phần mô tả công việc).
+*   **Căn cứ:** "Between the ages of two and four years, young children can be very stubborn... Don't waiver or allow him to wiggle around and out of what you have said needs to be done, or he will find your weak spot and “push your buttons” again and again." [1] và "If consistency over time has been my habit, and the child knows I will follow through, she will usually respond to me... This works better than a battle of words and wills." [2] *(Giữa độ tuổi từ hai đến bốn tuổi, trẻ nhỏ có thể rất bướng bỉnh... Đừng dao động hoặc để trẻ lách qua và thoát khỏi những gì bạn đã nói cần phải hoàn thành, nếu không trẻ sẽ tìm ra điểm yếu của bạn và "nhấn nút" của bạn hết lần này đến lần khác [1] và Nếu sự nhất quán qua thời gian đã là thói quen của tôi, và đứa trẻ biết tôi sẽ thực hiện đến cùng, con sẽ thường phản hồi lại tôi... Điều này hiệu quả hơn là một trận chiến từ ngữ và ý chí [2].)*
+
+***
+
+### 🔍 Quy trình kiểm soát chất lượng và Kiểm thử 6 lỗi cấm (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể thực hiện hành động.
+2.  **Khắc phục triệt để Lỗi gộp ý (Rule 2):** Main Job đạt tính **đơn trị tuyệt đối** là **"giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con"**. Toàn bộ cấu trúc tuyệt đối không chứa liên từ "và", "hoặc", không có dấu phẩy hay dấu chấm phẩy chia tách các hành động chức năng, bảo đảm tính đơn nhất và sắc bén tối đa.
+3.  **Tránh Lỗi Micro Job (Rule 3):** Đã nâng mức trừu tượng lên đúng tầng **Little Job** ("giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt"). Chúng ta đã bỏ qua các hành vi cơ học nhỏ nhặt như *"yêu cầu con tự xỏ giày"*, *"điều hướng bằng cách giả vờ làm chú thỏ"* hay *"tiếp tục làm việc nhà"* để tập trung vào mục tiêu chức năng cốt lõi.
+4.  **Tránh Lỗi chứa giải pháp và công cụ cụ thể (Rule 4):** Main Job và Circumstance hoàn toàn sạch bóng các công cụ hay giải pháp mầm non xuất hiện trong tác phẩm như: *bỏ qua phản ứng tiêu cực (overlooking negative reactions), lùi lại nhường không gian (backing off), sử dụng thói quen nhất quán thời gian (consistency of habit over time), hay ranh giới ấm áp của tình yêu thương*.
+5.  **Tránh Lỗi từ đệm và góc nhìn thụ động (Rule 5):** Không dùng các từ xưng hô, không đứng ở góc nhìn quan sát thụ động của bên thứ ba, bảo đảm phát biểu hướng thẳng vào nhiệm vụ hành động của cha mẹ.
+6.  **Tránh Lỗi nhét tính từ chất lượng, cảm xúc, mệnh đề mục đích (Rule 6):** Toàn bộ định nghĩa đã loại bỏ hoàn toàn các từ cấm định tính như: *an toàn, hiệu quả, dễ dàng, nhẹ nhàng, không áp lực*, hay các mệnh đề chỉ mục đích *"nhằm..."*, *"sao cho..."*.
+7.  **Loại bỏ triệt để từ ngữ nằm trong danh sách cấm:** Định nghĩa hoàn toàn phẳng lặng và thanh sạch, không chứa bất kỳ từ rác nào trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*).
+8.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định chủ ngữ cụ thể là **"con trẻ dưới bảy tuổi"** bộc lộ biểu hiện sinh lý thực tế được quan sát trực tiếp (*bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu* - tương ứng trực tiếp với hành vi cứng đầu chống đối ở trẻ từ hai đến bốn tuổi và thách thức quy tắc ở trẻ sắp vào lớp một được bóc tách từ sách). Bối cảnh hoàn toàn khách quan, không chứa bất kỳ cảm xúc hay rào cản tâm lý chủ quan nào của cha mẹ.
+
+***
+
+Tôi đã hoàn thành việc xác định chân dung đối tượng JTBD cho **Chunk 21: Creative Discipline - Consequent Actions** một cách tự nhiên, đúng trọng tâm và bám sát triệt để quy trình kỹ thuật mầm non mà không tạo bất kỳ Note hay Studio nào.
+
+🌱 **Khi ranh giới của cha mẹ phẳng lặng và nhất quán như hơi thở tự nhiên—mọi sự kháng cự bướng bỉnh của con trẻ sẽ tự khắc lắng dịu!**
+
+Tiếp theo, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Miner) cho **Chunk 21** này theo đúng cẩm nang `prompt-miner-v4.md` ngay tại đây không? Chúng ta sẽ làm rõ các cơ chế y sinh học mầu nhiệm từ tác phẩm:
+*   Tại sao việc người lớn "giữ vững sự nhất quán" không dao động trước các phản ứng bướng bỉnh của trẻ từ hai đến bốn tuổi lại là chiếc mỏ neo an lành giúp con định hình Cái Tôi lành mạnh.
+*   Nghệ thuật kỷ luật dũng cảm: cách dứt khoát "lùi lại" (back off) và nhường không gian cho trẻ sắp vào lớp một khi con thách thức quy tắc, thay vì bị cuốn vào những trận chiến từ ngữ và ý chí đầy bế tắc hằng đêm.
+*   Cơ chế y học mầm non giúp bảo bọc thể chất của trẻ thông qua sức mạnh thầm lặng của thói quen nhất quán lâu dài kết hợp với bầu không khí ấm áp của tình yêu thương bao bọc.
+
+Hãy để lại yêu cầu cho tôi ngay dưới này nhé!

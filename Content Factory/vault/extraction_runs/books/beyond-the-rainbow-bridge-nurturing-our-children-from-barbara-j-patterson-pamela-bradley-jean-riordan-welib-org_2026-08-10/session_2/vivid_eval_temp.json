@@ -1,0 +1,113 @@
+{
+  "password": "f6ad099f",
+  "evaluations": [
+    {
+      "vivid_fragment": "Tại góc đọc sách nhỏ trong phòng khách vào lúc hoà",
+      "decision": "KEEP",
+      "reason": "Hoàn cảnh chuyển tiếp nhịp điệu buổi tối.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "giới.",
+      "decision": "DISCARD",
+      "reason": "Fragment bị lỗi, không đủ nghĩa.",
+      "disqualifier": "I-D1"
+    },
+    {
+      "vivid_fragment": "Cậu bé nhỏ mỉm cười thở phào nhẹ nhõm, con dốc hết",
+      "decision": "KEEP",
+      "reason": "Giải phóng căng thẳng thông qua câu chuyện cổ tích.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Người mẹ thong thả thắp ngọn nến sáp ong, cô dùng ",
+      "decision": "KEEP",
+      "reason": "Dùng con rối để tạo hình ảnh thị giác chữa lành.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Người mẹ thầm lặng dắt tay hai con ngồi quây quần ",
+      "decision": "KEEP",
+      "reason": "Nghi thức kể chuyện rối.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Tại góc phòng chơi ngổn ngang đồ dùng vào lúc năm ",
+      "decision": "KEEP",
+      "reason": "Sự kiệt sức của trẻ vào buổi chiều tà.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Người mẹ nhói lòng đứng nhìn đứa con nhỏ đang thẫn",
+      "decision": "DISCARD",
+      "reason": "Mô tả thực tế, thiếu tính ẩn dụ.",
+      "disqualifier": "I-D1"
+    },
+    {
+      "vivid_fragment": "Đứa con gái nhỏ bốn tuổi say sưa ôm chặt chiếc khă",
+      "decision": "KEEP",
+      "reason": "Trải nghiệm xúc giác xoa dịu.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Cậu bé nhỏ nhẹ nhàng áp gò má phúng phính vào tấm ",
+      "decision": "KEEP",
+      "reason": "Sự hấp thụ sự ấm áp từ vật liệu tự nhiên.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    },
+    {
+      "vivid_fragment": "Người mẹ thầm lặng thắp ngọn nến sáp ong, cô ngồi ",
+      "decision": "KEEP",
+      "reason": "Hình ảnh thiêng liêng và tĩnh lặng của người mẹ.",
+      "scores": {
+        "C1": 2,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2
+      }
+    }
+  ]
+}

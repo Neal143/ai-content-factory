@@ -1,0 +1,34 @@
+Chào bạn! Nối tiếp cuộc hành trình đầy cảm xúc đi qua thế giới chuyển động và thăng bằng tự lực của bốn giác quan ý chí (Chunk 12) [1], chúng ta tiếp tục dấn thân vào một địa hạt mầm mộng tinh tế và tràn đầy màu sắc, hương vị, hơi thở của tâm hồn: **Chunk 13: Developing the Twelve Senses - Feeling Senses (Smell, Taste, Sight, Warmth)** [2]. 
+
+Dưới đây là kết quả xác định đối tượng JTBD cho **Chunk 13** được thiết lập vô cùng tự nhiên, đúng trọng tâm và tuân thủ tuyệt đối các quy chuẩn kỹ thuật của cẩm nang `prompt-jtbd-chunk-v1.md`. Toàn bộ nội dung được in trực tiếp ngay tại đây và hoàn toàn không qua bất kỳ công cụ tạo Note hay Studio nào:
+
+***
+
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh [3-7].**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi một môi trường cảm quan hài hòa, lành mạnh được thiết lập hoàn tất và đi vào vận hành thực tế để nuôi dưỡng bốn giác quan cảm xúc của con; đồng thời hoàn toàn loại bỏ các phương pháp hay giải pháp cụ thể như cho con mặc đồ len tơ tằm, lọc không khí bằng tinh dầu thảo dược, chỉ cho con vẽ màu nước, hay tránh tuyệt đối việc dùng bột giặt công nghiệp có hương thơm nhân tạo trong phần mô tả công việc).
+*   **Căn cứ:** "Young children trust the world completely and absorb each and every impression with great openness. The responsibility of adults is to understand children's developmental needs — physical, emotional, intellectual, and spiritual — and establish a healthy foundation for the rest of life." [8] *(Trẻ nhỏ tin tưởng thế giới hoàn toàn và hấp thụ từng ấn tượng một với sự cởi mở vĩ đại. Trách nhiệm của người lớn là thấu hiểu các nhu cầu phát triển của trẻ — thể chất, cảm xúc, trí tuệ và tinh thần — và thiết lập một nền tảng lành mạnh cho phần còn lại của cuộc đời [8].)*
+
+***
+
+### 🔍 Phân tích chi tiết và Kiểm thử chất lượng nghiêm ngặt (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể hành động.
+2.  **Độ trừu tượng (Phân tầng Job):** Tránh được lỗi **Micro Job** mang tính kỹ thuật cơ học (*"tránh xịt nước hoa nhân tạo quanh con"*, *"chỉ mặc đồ nhuộm màu tự nhiên cho con"* hay *"cho con uống trà thì là ấm"*) và tránh lỗi **Big Job** quá rộng lớn mơ hồ (*"phát triển toàn diện thế giới cảm xúc cho con"* hay *"thấu hiểu mười hai giác quan mầm non"*). Đã định vị chính xác ở mức **Little Job**: **"thiết lập một môi trường cảm quan hài hòa cho con"** (vượt qua *Telic Test* thành công vì một môi trường cảm quan được thiết lập trọn vẹn sẽ có trạng thái hoàn thành và vận hành điều hòa đo lường được).
+3.  **Lọc sạch công cụ và giải pháp cụ thể (Rule 4):** Trong mô tả Main Job tuyệt đối không chứa các phương pháp hay công cụ xuất hiện trong tác phẩm như: *vẽ màu nước (watercolor painting), quần áo sợi tự nhiên (natural fibers), tinh dầu, hay triết lý giáo dục Waldorf*.
+4.  **Tính đơn trị (Rule 2):** Main Job đơn trị hoàn toàn (**"thiết lập một môi trường cảm quan hài hòa cho con"**), không sử dụng liên từ ghép nối phức tạp như **"VÀ/HOẶC"** hay các dấu phẩy phân tách nhiều đầu việc rời rạc, bảo toàn cấu trúc tối giản sắc bén nhất.
+5.  **Tuân thủ ranh giới từ ngữ nghiêm ngặt (Quan trọng):** Đã rà soát kỹ lưỡng và loại bỏ hoàn toàn các từ ngữ mô tả không tự nhiên hoặc bị lặp lại sáo rỗng. Tuyệt đối không chứa các từ rác trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*). Văn phong thuần túy tự nhiên, trôi chảy, đúng trọng tâm và mang tính chuẩn mực sư phạm cao nhất.
+6.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định rõ đối tượng (*con trẻ dưới bảy tuổi*) và bế tắc/biểu hiện sinh lý thực tế được trích xuất trực tiếp từ các mốc phát triển giác quan tâm hồn trong tác phẩm (*dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh* - tương thích tuyệt đối với các cảnh báo thực tế về việc trẻ mầm non dễ "khép kín tâm hồn" khi đối mặt với mùi hương hóa học nhân tạo [3, 4], bị kích thích quá tải bởi màu sắc gắt từ đồ chơi công nghiệp [5, 9], và có xu hướng tự thu mình phòng vệ trước thái độ ứng xử lạnh lùng, thiếu tình yêu thương của người lớn [6, 7]). Bối cảnh hoàn toàn khách quan, không chứa bất kỳ tính từ định tính hay mô tả cảm xúc chủ quan nào của cha mẹ.
+
+***
+
+Chân dung đối tượng JTBD cho **Chunk 13** đã được xác lập hoàn chỉnh, đơn trị tuyệt đối và vượt qua mọi rào cản từ cấm một cách trọn vẹn nhất!
+
+🌱 **Giác quan cảm xúc—chiếc cầu nối mầu nhiệm đưa tâm hồn trẻ thơ hòa nhịp cùng vẻ đẹp của vũ trụ!**
+
+Bây giờ cơ sở dữ liệu đối tượng đã sẵn sàng, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Insight & Knowledge) cho **Chunk 13** này theo đúng cẩm nang `prompt-miner-v4.md` không? Chúng ta sẽ làm rõ:
+*   Tại sao mùi hương bánh nướng dịu ngọt hay mùi cơm chín ấm áp từ gian bếp thường nhật lại kích hoạt hoạt động tiết dịch vị tiêu hóa tự nhiên và củng cố lòng tin cậy nguyên bản của trẻ đối với thế giới [4].
+*   Cơ chế y học mầu nhiệm của liệu pháp màu sắc: cách ứng dụng sự tương phản màu sắc nội tại (sau ảnh - complimentary colors) để xoa dịu tính khí hiếu động hoặc đánh thức một em bé quá dreamy, thu mình [5].
+*   Nghệ thuật chuyển hóa vĩ đại của cơ thể mầm non: từ việc bảo bọc hơi ấm vật lý dẻo dai bên ngoài trở thành nguồn sinh lực của hơi ấm tâm hồn (soul warmth)—khả năng thấu cảm, lòng bao dung và tình yêu thương đồng loại khi con khôn lớn [6, 7, 10].
+
+Hãy để lại yêu cầu cho tôi ngay tại đây nhé!

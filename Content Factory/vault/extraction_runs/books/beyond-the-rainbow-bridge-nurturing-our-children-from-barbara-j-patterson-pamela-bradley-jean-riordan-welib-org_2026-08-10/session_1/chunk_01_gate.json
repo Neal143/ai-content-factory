@@ -1,0 +1,138 @@
+{
+  "chunk_index": 1,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_01_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 1,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_01_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_01_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_01_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "gia đình",
+        "count": 32,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Parents' Home\"** mở đầu tác phẩm bằng những hồi tưởng đầy lòng biết ơn của tác giả Barbara J. Patterson về thời thơ ấu của mình [1]. Bà khắc họa chân dung người mẹ—một người nội trợ xuất sắc, người đã khéo léo biến những công việc thường nhật thành các tác phẩm nghệ thuật sống động [1]. Những thói quen nề nếp được lặp đi lặp lại một cách có chu kỳ và nhất quán (như ngày giặt giũ cố định vào thứ Hai, ngày là ủi vào thứ Ba) đã thấm nhuần sâu sắc vào tâm hồn bà từ sớm, mang lại tính nhịp điệu và kỷ luật tự thân vững chắc khi bà trưởng thành [2, 3]. Hoạt động chơi búp bê, tự may vá khâu khuyết áo, kết hợp với sự tận tụy trị liệu tật mắt hằng tối của người cha và những câu chuyện kể ấm áp trong bữa ăn gia đình đã tạo nên một hình mẫu lành mạnh để bắt chước [4-8]. Tất cả những trải nghiệm hạnh phúc này đã trở thành bệ đỡ tinh thần vô giá, tiếp thêm sức mạnh cho bà trong sự nghiệp dạy dỗ trẻ thơ hằng ngày [8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các thói quen sinh hoạt nề nếp cho con khi lo sợ rằng sự thiếu ổn định và mất nhất quán trong nếp sống gia đình hiện đại sẽ ảnh hưởng tiêu cực đến sự phát triển lâu dài của trẻ dưới bảy tuổi.",
+          "Một buổi tối muộn trong căn nhà hiện đại bận rộn | Người mẹ kiệt sức dọn dẹp đống đồ chơi vứt bừa bộn trên sàn, trong khi lịch sinh hoạt của các con liên tục bị xáo trộn do giờ giấc làm việc biến động của cha mẹ | Đứa con nhỏ bốn tuổi bồn chồn, quấy khóc và khó ngủ vì thiếu một trình tự thư giãn quen thuộc trước giờ lên giường | Người mẹ thở dài tự trách mình, cô nhận ra nếp sống gia đình đang thiếu đi một nhịp điệu ổn định để giúp con cảm thấy an tâm và tự giác hình thành những thói quen tốt."
+        ]
+      },
+      {
+        "bigram": "thói quen",
+        "count": 25,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Parents' Home\"** mở đầu tác phẩm bằng những hồi tưởng đầy lòng biết ơn của tác giả Barbara J. Patterson về thời thơ ấu của mình [1]. Bà khắc họa chân dung người mẹ—một người nội trợ xuất sắc, người đã khéo léo biến những công việc thường nhật thành các tác phẩm nghệ thuật sống động [1]. Những thói quen nề nếp được lặp đi lặp lại một cách có chu kỳ và nhất quán (như ngày giặt giũ cố định vào thứ Hai, ngày là ủi vào thứ Ba) đã thấm nhuần sâu sắc vào tâm hồn bà từ sớm, mang lại tính nhịp điệu và kỷ luật tự thân vững chắc khi bà trưởng thành [2, 3]. Hoạt động chơi búp bê, tự may vá khâu khuyết áo, kết hợp với sự tận tụy trị liệu tật mắt hằng tối của người cha và những câu chuyện kể ấm áp trong bữa ăn gia đình đã tạo nên một hình mẫu lành mạnh để bắt chước [4-8]. Tất cả những trải nghiệm hạnh phúc này đã trở thành bệ đỡ tinh thần vô giá, tiếp thêm sức mạnh cho bà trong sự nghiệp dạy dỗ trẻ thơ hằng ngày [8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các thói quen sinh hoạt nề nếp cho con khi lo sợ rằng sự thiếu ổn định và mất nhất quán trong nếp sống gia đình hiện đại sẽ ảnh hưởng tiêu cực đến sự phát triển lâu dài của trẻ dưới bảy tuổi.",
+          "Một buổi tối muộn trong căn nhà hiện đại bận rộn | Người mẹ kiệt sức dọn dẹp đống đồ chơi vứt bừa bộn trên sàn, trong khi lịch sinh hoạt của các con liên tục bị xáo trộn do giờ giấc làm việc biến động của cha mẹ | Đứa con nhỏ bốn tuổi bồn chồn, quấy khóc và khó ngủ vì thiếu một trình tự thư giãn quen thuộc trước giờ lên giường | Người mẹ thở dài tự trách mình, cô nhận ra nếp sống gia đình đang thiếu đi một nhịp điệu ổn định để giúp con cảm thấy an tâm và tự giác hình thành những thói quen tốt."
+        ]
+      },
+      {
+        "bigram": "nhịp điệu",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Parents' Home\"** mở đầu tác phẩm bằng những hồi tưởng đầy lòng biết ơn của tác giả Barbara J. Patterson về thời thơ ấu của mình [1]. Bà khắc họa chân dung người mẹ—một người nội trợ xuất sắc, người đã khéo léo biến những công việc thường nhật thành các tác phẩm nghệ thuật sống động [1]. Những thói quen nề nếp được lặp đi lặp lại một cách có chu kỳ và nhất quán (như ngày giặt giũ cố định vào thứ Hai, ngày là ủi vào thứ Ba) đã thấm nhuần sâu sắc vào tâm hồn bà từ sớm, mang lại tính nhịp điệu và kỷ luật tự thân vững chắc khi bà trưởng thành [2, 3]. Hoạt động chơi búp bê, tự may vá khâu khuyết áo, kết hợp với sự tận tụy trị liệu tật mắt hằng tối của người cha và những câu chuyện kể ấm áp trong bữa ăn gia đình đã tạo nên một hình mẫu lành mạnh để bắt chước [4-8]. Tất cả những trải nghiệm hạnh phúc này đã trở thành bệ đỡ tinh thần vô giá, tiếp thêm sức mạnh cho bà trong sự nghiệp dạy dỗ trẻ thơ hằng ngày [8].",
+          "Một buổi tối muộn trong căn nhà hiện đại bận rộn | Người mẹ kiệt sức dọn dẹp đống đồ chơi vứt bừa bộn trên sàn, trong khi lịch sinh hoạt của các con liên tục bị xáo trộn do giờ giấc làm việc biến động của cha mẹ | Đứa con nhỏ bốn tuổi bồn chồn, quấy khóc và khó ngủ vì thiếu một trình tự thư giãn quen thuộc trước giờ lên giường | Người mẹ thở dài tự trách mình, cô nhận ra nếp sống gia đình đang thiếu đi một nhịp điệu ổn định để giúp con cảm thấy an tâm và tự giác hình thành những thói quen tốt.",
+          "* ②-1. philosophy: Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu"
+        ]
+      },
+      {
+        "bigram": "sinh hoạt",
+        "count": 20,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các thói quen sinh hoạt nề nếp cho con khi lo sợ rằng sự thiếu ổn định và mất nhất quán trong nếp sống gia đình hiện đại sẽ ảnh hưởng tiêu cực đến sự phát triển lâu dài của trẻ dưới bảy tuổi.",
+          "Một buổi tối muộn trong căn nhà hiện đại bận rộn | Người mẹ kiệt sức dọn dẹp đống đồ chơi vứt bừa bộn trên sàn, trong khi lịch sinh hoạt của các con liên tục bị xáo trộn do giờ giấc làm việc biến động của cha mẹ | Đứa con nhỏ bốn tuổi bồn chồn, quấy khóc và khó ngủ vì thiếu một trình tự thư giãn quen thuộc trước giờ lên giường | Người mẹ thở dài tự trách mình, cô nhận ra nếp sống gia đình đang thiếu đi một nhịp điệu ổn định để giúp con cảm thấy an tâm và tự giác hình thành những thói quen tốt.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời."
+        ]
+      },
+      {
+        "bigram": "quen tốt",
+        "count": 16,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",
+          "* ②-1. philosophy: Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu"
+        ]
+      },
+      {
+        "bigram": "thời thơ",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Parents' Home\"** mở đầu tác phẩm bằng những hồi tưởng đầy lòng biết ơn của tác giả Barbara J. Patterson về thời thơ ấu của mình [1]. Bà khắc họa chân dung người mẹ—một người nội trợ xuất sắc, người đã khéo léo biến những công việc thường nhật thành các tác phẩm nghệ thuật sống động [1]. Những thói quen nề nếp được lặp đi lặp lại một cách có chu kỳ và nhất quán (như ngày giặt giũ cố định vào thứ Hai, ngày là ủi vào thứ Ba) đã thấm nhuần sâu sắc vào tâm hồn bà từ sớm, mang lại tính nhịp điệu và kỷ luật tự thân vững chắc khi bà trưởng thành [2, 3]. Hoạt động chơi búp bê, tự may vá khâu khuyết áo, kết hợp với sự tận tụy trị liệu tật mắt hằng tối của người cha và những câu chuyện kể ấm áp trong bữa ăn gia đình đã tạo nên một hình mẫu lành mạnh để bắt chước [4-8]. Tất cả những trải nghiệm hạnh phúc này đã trở thành bệ đỡ tinh thần vô giá, tiếp thêm sức mạnh cho bà trong sự nghiệp dạy dỗ trẻ thơ hằng ngày [8].",
+          "* ②-1. philosophy: Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu | stance=support | supports_insight=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời."
+        ]
+      },
+      {
+        "bigram": "thơ ấu",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Parents' Home\"** mở đầu tác phẩm bằng những hồi tưởng đầy lòng biết ơn của tác giả Barbara J. Patterson về thời thơ ấu của mình [1]. Bà khắc họa chân dung người mẹ—một người nội trợ xuất sắc, người đã khéo léo biến những công việc thường nhật thành các tác phẩm nghệ thuật sống động [1]. Những thói quen nề nếp được lặp đi lặp lại một cách có chu kỳ và nhất quán (như ngày giặt giũ cố định vào thứ Hai, ngày là ủi vào thứ Ba) đã thấm nhuần sâu sắc vào tâm hồn bà từ sớm, mang lại tính nhịp điệu và kỷ luật tự thân vững chắc khi bà trưởng thành [2, 3]. Hoạt động chơi búp bê, tự may vá khâu khuyết áo, kết hợp với sự tận tụy trị liệu tật mắt hằng tối của người cha và những câu chuyện kể ấm áp trong bữa ăn gia đình đã tạo nên một hình mẫu lành mạnh để bắt chước [4-8]. Tất cả những trải nghiệm hạnh phúc này đã trở thành bệ đỡ tinh thần vô giá, tiếp thêm sức mạnh cho bà trong sự nghiệp dạy dỗ trẻ thơ hằng ngày [8].",
+          "* ②-1. philosophy: Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu | stance=support | supports_insight=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời."
+        ]
+      },
+      {
+        "bigram": "hoạt gia",
+        "count": 12,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",
+          "* ②-1. philosophy: Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu"
+        ]
+      },
+      {
+        "bigram": "nhất quán",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"My Parents' Home\"** mở đầu tác phẩm bằng những hồi tưởng đầy lòng biết ơn của tác giả Barbara J. Patterson về thời thơ ấu của mình [1]. Bà khắc họa chân dung người mẹ—một người nội trợ xuất sắc, người đã khéo léo biến những công việc thường nhật thành các tác phẩm nghệ thuật sống động [1]. Những thói quen nề nếp được lặp đi lặp lại một cách có chu kỳ và nhất quán (như ngày giặt giũ cố định vào thứ Hai, ngày là ủi vào thứ Ba) đã thấm nhuần sâu sắc vào tâm hồn bà từ sớm, mang lại tính nhịp điệu và kỷ luật tự thân vững chắc khi bà trưởng thành [2, 3]. Hoạt động chơi búp bê, tự may vá khâu khuyết áo, kết hợp với sự tận tụy trị liệu tật mắt hằng tối của người cha và những câu chuyện kể ấm áp trong bữa ăn gia đình đã tạo nên một hình mẫu lành mạnh để bắt chước [4-8]. Tất cả những trải nghiệm hạnh phúc này đã trở thành bệ đỡ tinh thần vô giá, tiếp thêm sức mạnh cho bà trong sự nghiệp dạy dỗ trẻ thơ hằng ngày [8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các thói quen sinh hoạt nề nếp cho con khi lo sợ rằng sự thiếu ổn định và mất nhất quán trong nếp sống gia đình hiện đại sẽ ảnh hưởng tiêu cực đến sự phát triển lâu dài của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời."
+        ]
+      },
+      {
+        "bigram": "và thói",
+        "count": 10,
+        "contexts": [
+          "* ②-1. philosophy: Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu | stance=support | supports_insight=Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",
+          "* **Định nghĩa/Phát biểu luật:** Những nhịp điệu sinh hoạt nhất quán và thói quen tốt được thiết lập trong những năm đầu đời sẽ đi sâu vào thế giới nội tâm của trẻ mầm non, trở thành nguồn lực tự thân nâng đỡ cuộc sống trưởng thành và công việc tương lai của trẻ mà không cần nỗ lực rèn luyện cơ học về sau [1, 3]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

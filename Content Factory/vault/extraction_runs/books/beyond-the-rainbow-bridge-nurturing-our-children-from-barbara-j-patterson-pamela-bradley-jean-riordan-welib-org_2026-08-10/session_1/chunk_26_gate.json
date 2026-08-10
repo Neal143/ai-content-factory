@@ -1,0 +1,138 @@
+{
+  "chunk_index": 26,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_26_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 26,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_26_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_26_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_26_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "nghệ thuật",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật sử dụng ngôn từ giàu chất nhạc, các điệu bộ cơ thể ôn hòa và những giai điệu ngũ âm để truyền đi thông điệp thường nhật, thu hút vô thức trẻ hợp tác tự giác một cách hân hoan.",
+          "* **Mô tả:** Cha mẹ khát khao sâu sắc biến mỗi hoạt động chuyển đổi thường nhật—từ dọn dẹp đồ chơi, rửa tay cho đến chuẩn bị đi ngủ—trở thành những khoảnh khắc nghệ thuật dịu kỳ. Họ mong mỏi dệt nên một nếp nhà phẳng lặng, nơi lời hát của mẹ và điệu bộ của cha hòa quyện làm một, tạo ra một chiếc kén che chở an lành và nuôi dưỡng thế giới tâm hồn dạt dào tưởng tượng của con yêu hằng tuần."
+        ]
+      },
+      {
+        "bigram": "ngôn ngữ",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật."
+        ]
+      },
+      {
+        "bigram": "bài ca",
+        "count": 14,
+        "contexts": [
+          "Bước sang một vùng trời tràn ngập giai điệu ngọt ngào và chất thơ tinh khôi—nơi ngôn từ không còn là những chỉ lệnh lý trí xơ cứng mà trở thành dòng suối mát lành tưới tắm cho màng cảm quan của con trẻ—tôi xin dâng hiến trực tiếp toàn bộ bản trích xuất tri thức phẳng lặng, thanh khiết và sạch bóng từ cấm cho **Chunk 26: Parent-Child Classes with Barbara - Sample of Songs and Verses** (Các bài ca và bài thơ mẫu) ngay dưới đây cho bạn:",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "Người cha thầm lặng cất tiếng hát bài ca dọn dẹp kết hợp với điệu bộ thong thả xếp gỗ vào rổ; cậu con trai nhỏ lập tức buông chiếc xe tải nhựa và hân hoan chạy lại phụ giúp cha dọn dẹp phòng chơi dở dang."
+        ]
+      },
+      {
+        "bigram": "chuyển nhịp",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* ②-2. principle: Nguyên lý \"Hài hòa hóa tiến trình chuyển nhịp thông qua âm điệu ngũ âm và cử chỉ vận động (Harmonizing Transitions via Pentatonic Songs and Gestures)\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Hài hòa hóa tiến trình chuyển nhịp thông qua âm điệu ngũ âm và cử chỉ vận động | stance=support | supports_insight=Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật."
+        ]
+      },
+      {
+        "bigram": "sử dụng",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật sử dụng ngôn từ giàu chất nhạc, các điệu bộ cơ thể ôn hòa và những giai điệu ngũ âm để truyền đi thông điệp thường nhật, thu hút vô thức trẻ hợp tác tự giác một cách hân hoan.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Triết lý Sử dụng Ngôn ngữ Nghệ thuật như phương tiện truyền dẫn tâm thức mầm non | stance=support | supports_insight=Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật."
+        ]
+      },
+      {
+        "bigram": "ngữ nghệ",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* ②-1. philosophy: Triết lý \"Sử dụng Ngôn ngữ Nghệ thuật (Artistic Use of Language) như phương tiện truyền dẫn tâm thức mầm non\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Triết lý Sử dụng Ngôn ngữ Nghệ thuật như phương tiện truyền dẫn tâm thức mầm non | stance=support | supports_insight=Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật."
+        ]
+      },
+      {
+        "bigram": "mệnh lệnh",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn truyền đạt các chỉ dẫn sinh hoạt thường nhật cho con khi con trẻ dưới bảy tuổi bộc lộ phản ứng thờ ơ trước các mệnh lệnh lời nói trực tiếp.",
+          "Tại khu vực bồn rửa tay của nhà bếp vào lúc mười một giờ trưa | Đứa trẻ ba tuổi rưỡi đang đứng bất động, con hoàn toàn lờ đi lời yêu cầu của người mẹ, đôi tay vẫn mải mê bôi bẩn sô-cô-la lên má | Người mẹ mệt mỏi, liên tục lặp lại mệnh lệnh khô khan: \"Con đi rửa tay ngay để chuẩn bị ăn nhẹ, mẹ bảo con có nghe thấy không?\" nhưng đứa trẻ vẫn đứng trơ ra thờ ơ | Cô nhận thấy mọi nỗ lực hối thúc lớn tiếng của mình chỉ đang đẩy con vào sự bướng bỉnh chống đối và làm rạn nứt bầu không khí gia đình trước giờ ăn."
+        ]
+      },
+      {
+        "bigram": "ngũ âm",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật sử dụng ngôn từ giàu chất nhạc, các điệu bộ cơ thể ôn hòa và những giai điệu ngũ âm để truyền đi thông điệp thường nhật, thu hút vô thức trẻ hợp tác tự giác một cách hân hoan.",
+          "* **Diễn giải Core Logic:** Rudolf Steiner giải thích rằng việc giáo dục sớm không nằm ở việc giải thích ý nghĩa từ vựng, mà nằm ở âm thanh và âm điệu (sound, harmony and consonance) của ngôn từ. Đối với trẻ nhỏ, âm thanh mang tính nghệ thuật của ngôn từ tác động trực tiếp vào cơ thể vật lý và thể etheric—nơi lưu trữ các thói quen và ký ức cơ bắp. Khi người lớn sử dụng các câu hát ngũ âm ôn hòa, các bài đồng dao cổ xưa giàu nhạc tính, trẻ sẽ hấp thụ trọn vẹn \"khí chất tinh thần\" của ngôn từ. Tiến trình này giúp xoa dịu hệ thần kinh giao cảm, kích hoạt cơ chế bắt chước vô thức tự nhiên, giúp con tự giác tuân theo chỉ dẫn mà không cần đến sự giải thích logic dông dài của trí năng người lớn [1]."
+        ]
+      },
+      {
+        "bigram": "điệu ngũ",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao làm chủ nghệ thuật sử dụng ngôn từ giàu chất nhạc, các điệu bộ cơ thể ôn hòa và những giai điệu ngũ âm để truyền đi thông điệp thường nhật, thu hút vô thức trẻ hợp tác tự giác một cách hân hoan.",
+          "* ②-2. principle: Nguyên lý \"Hài hòa hóa tiến trình chuyển nhịp thông qua âm điệu ngũ âm và cử chỉ vận động (Harmonizing Transitions via Pentatonic Songs and Gestures)\""
+        ]
+      },
+      {
+        "bigram": "lệnh khô",
+        "count": 9,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Sample of Songs and Verses\"** (Các bài ca và bài thơ mẫu) là kho tàng thực hành nghệ thuật ngôn từ đầy sống động và chữa lành cho trẻ nhỏ dưới bảy tuổi. Tác phẩm chỉ ra rằng thay vì dùng mệnh lệnh khô khan lý trí vốn luôn vấp phải phản ứng thờ ơ, bướng bỉnh ở trẻ mầm non, người bảo bọc cần chuyển dịch sang sử dụng ngôn ngữ nghệ thuật giàu hình ảnh, điệu bộ lớn nhỏ cùng những giai điệu ngũ âm tự nhiên. Việc ngân nga các câu hát, đọc các bài đồng dao ngón tay (fingerplays) hay bài thơ theo mùa hằng tuần hoạt động như một làn hơi thở ôn hòa, tự động thu hút vô thức trẻ tuân theo các chỉ dẫn thường nhật một cách tự nguyện. Từ bài ca rửa tay, bài thơ cầu chúc ngon miệng cho đến bài hát tạm biệt vòng tròn, âm điệu nghệ thuật chính là chất bôi trơn vĩ đại giúp mỗi khoảnh khắc chuyển nhịp diễn ra phẳng lặng, trơn tru nhất.",
+          "Tại khu vực bồn rửa tay của nhà bếp vào lúc mười một giờ trưa | Đứa trẻ ba tuổi rưỡi đang đứng bất động, con hoàn toàn lờ đi lời yêu cầu của người mẹ, đôi tay vẫn mải mê bôi bẩn sô-cô-la lên má | Người mẹ mệt mỏi, liên tục lặp lại mệnh lệnh khô khan: \"Con đi rửa tay ngay để chuẩn bị ăn nhẹ, mẹ bảo con có nghe thấy không?\" nhưng đứa trẻ vẫn đứng trơ ra thờ ơ | Cô nhận thấy mọi nỗ lực hối thúc lớn tiếng của mình chỉ đang đẩy con vào sự bướng bỉnh chống đối và làm rạn nứt bầu không khí gia đình trước giờ ăn.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

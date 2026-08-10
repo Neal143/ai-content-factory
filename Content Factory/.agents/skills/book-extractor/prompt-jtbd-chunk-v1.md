@@ -66,7 +66,7 @@ Nếu tìm thấy → dùng nội dung đó làm tín hiệu chính. Chuyển B�
 **Giai đoạn B — Suy luận nếu không có tín hiệu tường minh:**
 Nếu chunk không có câu nào nêu mục tiêu trực tiếp, suy luận Job bằng câu hỏi: **"Tổng thể chunk này đang dạy/hướng dẫn/thuyết phục người đọc hoàn thành việc gì ở mức Big Job hoặc Little Job?"**
 
-⚠️ **Cảnh báo Micro Job:** Nếu câu trả lời ban đầu là hành động vật lý đơn giản có thể hoàn thành bằng 1 cử động trong vài phút (ví dụ: cất đồ, xếp đồ, mặc quần áo) → đây là Micro Job. Hỏi "Why?" để tìm job cao hơn:
+⚠️ **Cảnh báo Micro Job:** Nếu câu trả lời ban đầu là hành động vật lý đơn giản có thể hoàn thành bằng 1 hành động trong vài phút (ví dụ: cất đồ, xếp đồ, mặc quần áo) → đây là Micro Job. Hỏi "Why?" để tìm job cao hơn:
 
 | Micro Job (ban đầu) | Why? | Big/Little Job (đúng) |
 |---|---|---|
@@ -150,7 +150,7 @@ Circumstances là **bối cảnh/tình huống của Main Job của người đ�
 
 ## Chống ảo giác
 
-Đọc kỹ TOÀN BỘ nội dung chunk. Nếu chunk thuần túy tả cảnh, dẫn nhập, chuyện phiếm và KHÔNG hướng đến giải quyết "việc/nhiệm vụ" nào của người đọc → TUYỆT ĐỐI KHÔNG cố nặn ra JTBD. Trả:
+Đọc kỹ TOÀN BỘ nội dung chunk. Nếu chunk thuần túy tả cảnh, dẫn nhập, chuyện phiếm, tự sự kể về câu chuyện cuộc đời mà KHÔNG nói trực tiếp sẽ (giúp) giải quyết "việc/nhiệm vụ" nào của người đọc → TUYỆT ĐỐI KHÔNG cố nặn ra JTBD. Trả:
 ```
 META_CHUNK_AUDIENCE: chunk_audience=[NO_JTBD_FOUND]
 ```

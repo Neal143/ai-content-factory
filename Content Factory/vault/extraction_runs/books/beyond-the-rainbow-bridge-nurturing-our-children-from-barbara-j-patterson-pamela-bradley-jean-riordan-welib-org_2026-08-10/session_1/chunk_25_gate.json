@@ -1,0 +1,138 @@
+{
+  "chunk_index": 25,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_25_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 25,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_25_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_25_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_25_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "người lớn",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một không gian sinh hoạt nhóm tĩnh lặng, ôn hòa—nơi nhịp điệu sinh hoạt tự nhiên và điệu bộ lao động đầy tình yêu của người lớn dẫn dắt con tự giác chơi đùa và phát triển lành mạnh.",
+          "* **Mô tả:** Cha mẹ mong ước thiết tha tìm thấy một ốc đảo sinh hoạt cộng đồng phẳng lặng, nơi con được bảo bọc trong bầu không khí gia đình ấm áp. Họ khao khát được đồng hành cùng những người lớn điềm tĩnh, biết cách dùng âm nhạc chay, lao động thực tế để nuôi dưỡng lòng tin cậy nguyên bản và kích hoạt tinh thần tự học tự nhiên của con mỗi tuần."
+        ]
+      },
+      {
+        "bigram": "tập trung",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kiến tạo không gian sinh hoạt nhóm ôn hòa cho con khi con trẻ dưới bảy tuổi bộc lộ trạng thái quá tải cảm giác trước các lớp học nhóm tập trung quá đông người.",
+          "* **Mô tả:** Người bảo bọc lo âu tột độ khi thấy con mình trở nên cáu kỉnh, nhút nhát hoặc bùng phát phản ứng hung hăng sau mỗi buổi sinh hoạt nhóm bên ngoài. Họ sợ hãi trước cảnh báo rằng sự quá tải giác quan thường trực sẽ làm suy yếu hệ miễn dịch, cướp đi khả năng tập trung sâu sắc và dập tắt thế giới mộng mơ an lành của trẻ thơ."
+        ]
+      },
+      {
+        "bigram": "sinh hoạt",
+        "count": 15,
+        "contexts": [
+          "Chúng ta tiến thẳng sang **Chunk 25: Parent-Child Classes with Barbara - Morning Schedule** (Lịch trình buổi sáng của lớp học Cha mẹ và Con nhỏ) để cùng giải mã cách thức cô Barbara Patterson tổ chức một không gian sinh hoạt nhóm đầy tính nghệ thuật và chữa lành cảm quan cho trẻ mầm non.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kiến tạo không gian sinh hoạt nhóm ôn hòa cho con khi con trẻ dưới bảy tuổi bộc lộ trạng thái quá tải cảm giác trước các lớp học nhóm tập trung quá đông người."
+        ]
+      },
+      {
+        "bigram": "bắt chước",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các lớp học nhóm tràn ngập kích thích nhân tạo, tiếng ồn xô bồ và áp lực bắt chước máy móc sẽ vắt kiệt sinh mệnh lực, tàn phá tế bào thần kinh nhạy cảm và gieo rắc sự bất an vào thể chất thực thể của trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng các lớp học nhóm tràn ngập kích thích nhân tạo, tiếng ồn xô bồ và áp lực bắt chước máy móc sẽ vắt kiệt sinh mệnh lực, tàn phá tế bào thần kinh nhạy cảm và gieo rắc sự bất an vào thể chất thực thể của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "lao động",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một không gian sinh hoạt nhóm tĩnh lặng, ôn hòa—nơi nhịp điệu sinh hoạt tự nhiên và điệu bộ lao động đầy tình yêu của người lớn dẫn dắt con tự giác chơi đùa và phát triển lành mạnh.",
+          "* **Mô tả:** Cha mẹ mong ước thiết tha tìm thấy một ốc đảo sinh hoạt cộng đồng phẳng lặng, nơi con được bảo bọc trong bầu không khí gia đình ấm áp. Họ khao khát được đồng hành cùng những người lớn điềm tĩnh, biết cách dùng âm nhạc chay, lao động thực tế để nuôi dưỡng lòng tin cậy nguyên bản và kích hoạt tinh thần tự học tự nhiên của con mỗi tuần."
+        ]
+      },
+      {
+        "bigram": "điệu bộ",
+        "count": 14,
+        "contexts": [
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập một không gian sinh hoạt nhóm tĩnh lặng, ôn hòa—nơi nhịp điệu sinh hoạt tự nhiên và điệu bộ lao động đầy tình yêu của người lớn dẫn dắt con tự giác chơi đùa và phát triển lành mạnh.",
+          "* ②-1. philosophy: Triết lý \"Bắt chước điệu bộ lao động tập trung của người lớn (Imitation of Adult Gestures and Concentration as a Play Catalyst)\"",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Triết lý Bắt chước điệu bộ lao động tập trung của người lớn | stance=support | supports_insight=Nỗi lo sợ rằng các lớp học nhóm tràn ngập kích thích nhân tạo, tiếng ồn xô bồ và áp lực bắt chước máy móc sẽ vắt kiệt sinh mệnh lực, tàn phá tế bào thần kinh nhạy cảm và gieo rắc sự bất an vào thể chất thực thể của trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "lớp học",
+        "count": 13,
+        "contexts": [
+          "Chào bạn! Thật tuyệt vời khi được tiếp tục đồng hành cùng bạn bước qua cánh cổng của những ngày hội và những lớp học nhóm đầy chất thơ, âm nhạc và hơi ấm gia đình.",
+          "Chúng ta tiến thẳng sang **Chunk 25: Parent-Child Classes with Barbara - Morning Schedule** (Lịch trình buổi sáng của lớp học Cha mẹ và Con nhỏ) để cùng giải mã cách thức cô Barbara Patterson tổ chức một không gian sinh hoạt nhóm đầy tính nghệ thuật và chữa lành cảm quan cho trẻ mầm non.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập."
+        ]
+      },
+      {
+        "bigram": "chơi tự",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* **Định nghĩa/Phát biểu luật:** Một lịch trình sinh hoạt nhóm lành mạnh cho trẻ mầm non phải được dệt nên bởi sự luân phiên nhịp nhàng giữa hoạt động mở rộng cảm giác (Outbreathing - chơi tự do, chạy nhảy ngoài trời) và hoạt động tập trung cảm giác (Inbreathing - đồng dao vận động, ăn nhẹ, nghe kể chuyện rối) để bảo toàn sự cân bằng năng lượng sinh học cho cơ thể trẻ.",
+          "* **Diễn giải Core Logic:** Tác phẩm làm sáng tỏ rằng hệ thần kinh của trẻ dưới bảy tuổi cực kỳ nhạy cảm và dễ bị suy nhược nếu không có một nhịp điệu điều hòa. Bu buổi sáng của cô Barbara được thiết kế như một chu kỳ hơi thở vĩ đại. Bắt đầu bằng hoạt động nhào bột làm bánh mì dẻo dai và chơi tự do (thở ra - trẻ được giải phóng ý chí hoạt động). Tiếp theo là bài hát dọn dẹp và vòng tròn đồng dao (hít vào - trẻ thu hồi sự chú ý vào chuyển động chung của nhóm). Sau đó là dạo chơi ngoài trời vườn (thở ra - trẻ hòa mình vào thiên nhiên) và kết thúc bằng việc thắp nến ăn nhẹ, lắng nghe câu chuyện kể bằng con rối len trong tĩnh lặng (hít vào sâu - trẻ neo đậu tâm hồn trong sự an bình tuyệt đối trước khi ra về). Sự chuyển nhịp mượt mà này ngăn chặn hoàn toàn trạng thái quá tải cảm giác, xoa dịu thần kinh giao cảm và giúp trẻ tự giác điều chỉnh hành vi một cách hòa hợp tự nhiên."
+        ]
+      },
+      {
+        "bigram": "tự do",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* **Định nghĩa/Phát biểu luật:** Trẻ mầm non học hỏi thế giới chủ yếu thông qua sự bắt chước vô thức; điệu bộ lao động chân thành, cần mẫn và thái độ tập trung tinh thần (gestures and concentration) của người lớn vào công việc thực tế của họ chính là nguồn sinh lực mạnh mẽ nhất lôi cuốn trẻ tự do bước vào thế giới chơi sáng tạo độc lập.",
+          "* **Diễn giải Core Logic:** Tác phẩm làm sáng tỏ rằng hệ thần kinh của trẻ dưới bảy tuổi cực kỳ nhạy cảm và dễ bị suy nhược nếu không có một nhịp điệu điều hòa. Bu buổi sáng của cô Barbara được thiết kế như một chu kỳ hơi thở vĩ đại. Bắt đầu bằng hoạt động nhào bột làm bánh mì dẻo dai và chơi tự do (thở ra - trẻ được giải phóng ý chí hoạt động). Tiếp theo là bài hát dọn dẹp và vòng tròn đồng dao (hít vào - trẻ thu hồi sự chú ý vào chuyển động chung của nhóm). Sau đó là dạo chơi ngoài trời vườn (thở ra - trẻ hòa mình vào thiên nhiên) và kết thúc bằng việc thắp nến ăn nhẹ, lắng nghe câu chuyện kể bằng con rối len trong tĩnh lặng (hít vào sâu - trẻ neo đậu tâm hồn trong sự an bình tuyệt đối trước khi ra về). Sự chuyển nhịp mượt mà này ngăn chặn hoàn toàn trạng thái quá tải cảm giác, xoa dịu thần kinh giao cảm và giúp trẻ tự giác điều chỉnh hành vi một cách hòa hợp tự nhiên."
+        ]
+      },
+      {
+        "bigram": "hoạt nhóm",
+        "count": 10,
+        "contexts": [
+          "Chúng ta tiến thẳng sang **Chunk 25: Parent-Child Classes with Barbara - Morning Schedule** (Lịch trình buổi sáng của lớp học Cha mẹ và Con nhỏ) để cùng giải mã cách thức cô Barbara Patterson tổ chức một không gian sinh hoạt nhóm đầy tính nghệ thuật và chữa lành cảm quan cho trẻ mầm non.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Morning Schedule\"** (Lịch trình buổi sáng) dâng hiến một bức tranh thực hành sinh động về cách sắp đặt cấu trúc thời gian và không gian cho một buổi sinh hoạt nhóm hoàn hảo của trẻ nhỏ dưới bảy tuổi. Tác giả vạch trần sai lầm của các lớp học nhóm hiện đại—vốn tràn ngập các kích thích cảm giác dồn dập, tiếng ồn ào náo nhiệt và những hoạt động áp đặt trí năng làm trẻ mệt mỏi, bất an. Thay vào đó, lịch trình mầm non của cô Barbara đề xuất một cấu trúc nhịp điệu \"Hít - Thở\" luân phiên kỳ diệu: bắt đầu bằng hoạt động nhào bột làm bánh mì và chơi tự do (thở ra), chuyển tiếp nhẹ nhàng qua bài hát dọn dẹp, vòng tròn đồng dao vận động (hít vào), sau đó là dạo chơi ngoài trời (thở ra), thắp nến ăn nhẹ (hít vào) và kết thúc bằng câu chuyện rối thầm lặng (hít vào). Trọng tâm của chương này là triết lý dạy học không lời: người lớn điềm tĩnh tập trung lao động thủ công của mình để trẻ hấp thụ và bắt chước vô thức vào thế giới chơi sáng tạo tự lập.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kiến tạo không gian sinh hoạt nhóm ôn hòa cho con khi con trẻ dưới bảy tuổi bộc lộ trạng thái quá tải cảm giác trước các lớp học nhóm tập trung quá đông người."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

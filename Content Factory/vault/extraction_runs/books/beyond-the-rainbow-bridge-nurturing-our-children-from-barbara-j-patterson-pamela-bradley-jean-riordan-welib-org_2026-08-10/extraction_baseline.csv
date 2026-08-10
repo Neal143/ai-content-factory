@@ -1,0 +1,447 @@
+section,chunk,category,id,status
+audience,book,audience,"""Người"" muốn thiết lập nền tảng phát triển cho con trẻ khi trẻ đang trong độ tuổi từ sơ sinh đến bảy tuổi. *Căn cứ:* ""Young children trust the world completely and absorb each and every impression with great openness. The responsibility of adults is to understand children's developmental needs — physical, emotional, intellectual, and spiritual — and establish a healthy foundation for the rest of life.""",PENDING
+audience,1,audience,"""Người"" muốn thiết lập các thói quen sinh hoạt nề nếp cho con khi lo sợ rằng sự thiếu ổn định và mất nhất quán trong nếp sống gia đình hiện đại sẽ ảnh hưởng tiêu cực đến sự phát triển lâu dài của trẻ dưới bảy tuổi.",PENDING
+audience,2,audience,"""Người"" muốn uốn nắn hành vi của con khi con trẻ dưới bảy tuổi bộc lộ tính khí nhạy cảm dễ phản kháng bướng bỉnh khiến các nỗ lực kiểm soát thông thường thất bại.",PENDING
+audience,3,audience,"""Người"" muốn thiết lập một chương trình giáo dục mầm non quy mô gia đình khi các cơ sở mầm non truyền thống thiếu đi sự bảo bọc cảm quan và không gian sinh hoạt ấm áp của một mái ấm thực tế cho con trẻ dưới bảy tuổi.",PENDING
+audience,4,audience,"""Người"" muốn bảo vệ môi trường cảm quan của con khi con trẻ dưới bảy tuổi tiếp nhận vô điều kiện các kích thích nhân tạo từ môi trường hiện đại mà không có màng lọc tự thân.",PENDING
+audience,5,audience,"""Người"" muốn hỗ trợ con làm chủ các mốc vận động thể chất đầu đời khi con trẻ dưới ba tuổi đang tập lẫy, bò, đứng và đi.",PENDING
+audience,6,audience,"""Người"" muốn bảo vệ thân nhiệt của con khi con trẻ dưới bảy tuổi chưa thể tự điều hòa hệ thống sinh lý trước sự thay đổi nhiệt độ của môi trường xung quanh.",PENDING
+audience,7,audience,"""Người"" muốn thiết lập một trình tự sinh hoạt ổn định cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái bồn chồn, rối loạn nhịp sinh học và phản kháng trước những thay đổi đột ngột trong nếp sinh hoạt thường nhật.",PENDING
+audience,8,audience,"""Người"" muốn thiết lập không gian chơi phù hợp cho con khi con trẻ dưới hai tuổi rưỡi đang ở giai đoạn khám phá các bộ phận cơ thể và bắt đầu thao tác với các đồ vật xung quanh. [7, 8]",PENDING
+audience,9,audience,"""Người"" muốn thiết lập không gian chơi giả vờ cho con khi con trẻ từ hai tuổi rưỡi đến năm tuổi bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh [1].",PENDING
+audience,10,audience,"""Người"" muốn hỗ trợ con thực hiện các trò chơi có kế hoạch khi con trẻ từ năm đến bảy tuổi bắt đầu bộc lộ nhu cầu tạo ra các sản phẩm có mục đích rõ rệt [5].",PENDING
+audience,11,audience,"""Người"" muốn thiết lập một không gian chơi có khả năng biến đổi linh hoạt cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái thụ động và suy giảm khả năng tự định hình trò chơi trước sự bủa vây của các loại đồ chơi công nghiệp có công năng cố định.",PENDING
+audience,12,audience,"""Người"" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4].",PENDING
+audience,13,audience,"""Người"" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",PENDING
+audience,14,audience,"""Người"" muốn bảo vệ các giác quan nhận thức của con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi vô thức đồng hóa mọi hành vi ứng xử của người lớn xung quanh.",PENDING
+audience,15,audience,"""Người"" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",PENDING
+audience,16,audience,"""Người"" muốn cải tạo cấu trúc không gian vật lý cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi lệch khỏi khuôn mẫu sinh hoạt chung do sự thiếu trật tự của không gian xung quanh.",PENDING
+audience,17,audience,"""Người"" muốn thiết lập các ranh giới giao tiếp rõ ràng cho con khi con trẻ dưới bảy tuổi bộc lộ xu hướng vị kỷ trước các quyết định sinh hoạt vượt quá năng lực nhận thức.",PENDING
+audience,18,audience,"""Người"" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động.",PENDING
+audience,19,audience,"""Người"" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",PENDING
+audience,20,audience,"""Người"" muốn hóa giải hành vi thô bạo của con khi con trẻ dưới bảy tuổi bộc phát các phản ứng vật lý gây thương tích cho người đối diện.**",PENDING
+audience,21,audience,"""Người"" muốn giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu.",PENDING
+audience,22,audience,"""Người"" muốn xây dựng lòng tự trọng cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi phản kháng trước sự phê bình từ người xung quanh.",PENDING
+audience,23,audience,"""Người"" muốn tháo gỡ các trở ngại hành vi phức tạp của con khi con trẻ dưới bảy tuổi bộc lộ những khó khăn hành vi khó thấu hiểu bằng lý trí thông thường.",PENDING
+audience,24,audience,"""Người"" muốn tái thiết lập sự tự tin trong hành trình nuôi dạy con khi cha mẹ rơi vào trạng thái kiệt quệ năng lượng trước các áp lực chăm sóc con trẻ liên tục.",PENDING
+audience,25,audience,"""Người"" muốn kiến tạo không gian sinh hoạt nhóm ôn hòa cho con khi con trẻ dưới bảy tuổi bộc lộ trạng thái quá tải cảm giác trước các lớp học nhóm tập trung quá đông người.",PENDING
+audience,26,audience,"""Người"" muốn truyền đạt các chỉ dẫn sinh hoạt thường nhật cho con khi con trẻ dưới bảy tuổi bộc lộ phản ứng thờ ơ trước các mệnh lệnh lời nói trực tiếp.",PENDING
+audience,27,audience,"""Người"" muốn xây dựng cảm giác thuộc về thế giới của con khi con trẻ dưới bảy tuổi bộc lộ sự băn khoăn về nguồn gốc ra đời của bản thân.",PENDING
+audience,28,audience,"""Người"" muốn xây dựng nhận thức về trật tự đạo đức cho con khi con trẻ dưới bảy tuổi bộc lộ sự hoang mang trước các hình ảnh xung đột từ môi trường xung quanh.",PENDING
+audience,29,audience,"""Người"" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",PENDING
+vivid,1,vivid_circumstance,"""Người"" muốn thiết lập các thói quen sinh hoạt nề nếp cho con khi lo sợ rằng sự thiếu ổn định và mất nhất quán trong nếp sống gia đình hiện đại sẽ ảnh hưởng tiêu cực đến sự phát triển lâu dài của trẻ dưới bảy tuổi.",PENDING
+atom,1,insight,"Nỗi lo sợ rằng nhịp sống hỗn loạn và sự thiếu nhất quán trong sinh hoạt gia đình sẽ làm suy giảm cảm giác an toàn của con, khiến trẻ khó hình thành nề nếp và bỏ lỡ cơ hội bồi đắp những thói quen tốt từ những năm tháng đầu đời.",PENDING
+atom,1,knowledge,Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu,PENDING
+vivid,1,vivid_knowledge,Sức mạnh định hình nhân cách từ các nhịp điệu sinh hoạt gia đình và thói quen tốt trong thời thơ ấu,PENDING
+atom,1,knowledge,Giá trị bồi đắp ý chí và năng lực mô phỏng thông qua trò chơi búp bê có sự đồng hành gián tiếp của cha mẹ,PENDING
+vivid,1,vivid_knowledge,Giá trị bồi đắp ý chí và năng lực mô phỏng thông qua trò chơi búp bê có sự đồng hành gián tiếp của cha mẹ,PENDING
+atom,1,knowledge,Quy tắc xây dựng không gian gia đình gắn kết và hỗ trợ trị liệu thông qua tình yêu thương kiên trì của người cha,PENDING
+vivid,1,vivid_knowledge,Quy tắc xây dựng không gian gia đình gắn kết và hỗ trợ trị liệu thông qua tình yêu thương kiên trì của người cha,PENDING
+atom,1,evidence,household-chaos-and-early-childhood-self-regulation-development,PENDING
+atom,1,story,Tác giả Barbara J. Patterson và cha mẹ của bà-su_dung_nhip_dieu_va_thoi_quan_tot_thoi_tho_au_lam_nen_tang_su_pham_vung_chac,PENDING
+atom,1,quote,rhythms-and-good-habits-during-childhood-influenced-adult-life,PENDING
+atom,1,quote,gift-of-solid-happy-childhood-with-good-role-models-to-imitate,PENDING
+atom,1,quote,did-not-have-to-learn-rhythm-good-habits-had-them-inside,PENDING
+vivid,2,vivid_circumstance,"""Người"" muốn uốn nắn hành vi của con khi con trẻ dưới bảy tuổi bộc lộ tính khí nhạy cảm dễ phản kháng bướng bỉnh khiến các nỗ lực kiểm soát thông thường thất bại.",PENDING
+atom,2,insight,Nỗi lo sợ rằng việc áp dụng sai phương pháp kỷ luật đối đầu trực diện sẽ kích động sự phản kháng dữ dội ở con và phá vỡ sự cân bằng của hệ thống giác quan nhạy cảm ở trẻ.,PENDING
+atom,2,knowledge,Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời,PENDING
+vivid,2,vivid_knowledge,Tính bất biến và tầm quan trọng không thể đảo ngược của sự phát triển thể chất và tinh thần trong những năm tháng đầu đời,PENDING
+atom,2,knowledge,Nguyên lý điều hợp hành vi gián tiếp thông qua sự nhất quán và nhịp điệu sinh hoạt gia đình,PENDING
+vivid,2,vivid_knowledge,Nguyên lý điều hợp hành vi gián tiếp thông qua sự nhất quán và nhịp điệu sinh hoạt gia đình,PENDING
+atom,2,knowledge,Quy tắc bảo vệ giác quan và điều hòa năng lượng phát triển trí năng sớm cho trẻ nhạy cảm,PENDING
+vivid,2,vivid_knowledge,Quy tắc bảo vệ giác quan và điều hòa năng lượng phát triển trí năng sớm cho trẻ nhạy cảm,PENDING
+atom,2,evidence,prenatal-alcohol-exposure-liver-damage-and-emotional-dysregulation-in-children,PENDING
+atom,2,story,"Tác giả Barbara J. Patterson, cô con gái hoạt bát, cậu con trai nhạy cảm và cô bé nhận nuôi Wanda-ap_dung_nhip_dieu_bao_ve_giac_quan_va_nhan_nuoi_co_be_wanda_mang_ton_thuong_bam_sinh",PENDING
+atom,2,quote,learned-consistency-rhythm-own-daughter-confrontational-discipline,PENDING
+atom,2,quote,protect-child-senses-sensitive-early-intellectual-development,PENDING
+atom,2,quote,wanda-liver-damaged-early-years-cannot-undo,PENDING
+vivid,3,vivid_circumstance,"""Người"" muốn thiết lập một chương trình giáo dục mầm non quy mô gia đình khi các cơ sở mầm non truyền thống thiếu đi sự bảo bọc cảm quan và không gian sinh hoạt ấm áp của một mái ấm thực tế cho con trẻ dưới bảy tuổi.",PENDING
+atom,3,insight,"Nỗi sợ rằng các môi trường mầm non mang tính học thuật công nghiệp và thiếu đi không gian sinh hoạt gia đình ấm áp sẽ làm biến dạng các giác quan mỏng manh, triệt tiêu trí tưởng tượng mơ màng và lấy đi cảm giác an tâm nguyên bản của trẻ dưới bảy tuổi.",PENDING
+atom,3,knowledge,Khái niệm Giáo dục mầm non là nghệ thuật sống và giá trị cốt lõi của mô hình vườn trẻ quy mô gia đình (Home Program) đối với trẻ dưới bảy tuổi,PENDING
+vivid,3,vivid_knowledge,Khái niệm Giáo dục mầm non là nghệ thuật sống và giá trị cốt lõi của mô hình vườn trẻ quy mô gia đình (Home Program) đối với trẻ dưới bảy tuổi,PENDING
+atom,3,knowledge,Quy trình thiết kế và vận hành vườn trẻ tại gia lấy cảm hứng từ Waldorf đạt tiêu chuẩn sư phạm an toàn cho trẻ dưới bảy tuổi,PENDING
+vivid,3,vivid_knowledge,Quy trình thiết kế và vận hành vườn trẻ tại gia lấy cảm hứng từ Waldorf đạt tiêu chuẩn sư phạm an toàn cho trẻ dưới bảy tuổi,PENDING
+atom,3,evidence,early-childhood-institutional-stress-and-sensory-overload-anxiety-levels,PENDING
+atom,3,story,Nhà giáo dục mầm non Barbara J. Patterson và các gia đình tại Chicago-thanh_lap_va_van_hanh_vuon_tre_gia_dinh_river_park_childrens_garden_suot_tam_nam,PENDING
+atom,3,quote,these-early-experiences-led-me-into-my-career-as-a-teacher,PENDING
+atom,3,quote,realized-perfect-place-for-such-a-program-lower-floor-river-park,PENDING
+atom,3,quote,career-continues-to-evolve-in-sixties-parent-and-teacher,PENDING
+vivid,4,vivid_circumstance,"""Người"" muốn bảo vệ môi trường cảm quan của con khi con trẻ dưới bảy tuổi tiếp nhận vô điều kiện các kích thích nhân tạo từ môi trường hiện đại mà không có màng lọc tự thân.",PENDING
+atom,4,insight,"Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ ""xâm lấn"" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời.",PENDING
+vivid,4,vivid_insight,"Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ ""xâm lấn"" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời.",PENDING
+atom,4,knowledge,Khái niệm trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi,PENDING
+vivid,4,vivid_knowledge,Khái niệm trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi,PENDING
+atom,4,knowledge,Nguyên lý chuyển hóa sinh học của các ấn tượng cảm quan thành cấu trúc thể chất thực thể và mạng lưới thần kinh não bộ của trẻ,PENDING
+vivid,4,vivid_knowledge,Nguyên lý chuyển hóa sinh học của các ấn tượng cảm quan thành cấu trúc thể chất thực thể và mạng lưới thần kinh não bộ của trẻ,PENDING
+atom,4,knowledge,Quy tắc thanh lọc các kích thích cảm giác nhân tạo và thiết lập chiếc kén bảo vệ giác quan cho trẻ dưới bảy tuổi,PENDING
+vivid,4,vivid_knowledge,Quy tắc thanh lọc các kích thích cảm giác nhân tạo và thiết lập chiếc kén bảo vệ giác quan cho trẻ dưới bảy tuổi,PENDING
+atom,4,evidence,early-screen-exposure-and-frontal-lobe-myelination-damage-in-preschool-children,PENDING
+atom,4,story,Đứa trẻ mầm non bước ra thế giới hằng ngày và bài thơ của Walt Whitman-tre_nho_vô_thức_hấp_thụ_và_biến_mọi_ấn_tượng_môi_trường_thành_chính_thực_thể_mình,PENDING
+atom,4,quote,children-take-into-themselves-everything-experience-in-environment,PENDING
+atom,4,quote,up-to-seven-children-are-almost-entirely-sense-organ,PENDING
+atom,4,quote,there-was-a-child-went-forth-every-day-first-object-he-became,PENDING
+atom,4,quote,expressions-of-soul-transformed-into-organic-bodily-constitution,PENDING
+atom,4,quote,experiences-exert-dramatic-and-precise-impact-on-neural-circuits,PENDING
+vivid,5,vivid_circumstance,"""Người"" muốn hỗ trợ con làm chủ các mốc vận động thể chất đầu đời khi con trẻ dưới ba tuổi đang tập lẫy, bò, đứng và đi.",PENDING
+atom,5,insight,"Nỗi lo sợ rằng việc can thiệp thô bạo bằng các thiết bị hỗ trợ đứng hoặc đi sớm sẽ cản trở sự phát triển tự nhiên, gây lệch trục xương khớp non yếu và làm tổn hại đến liên kết thần kinh não bộ của con trong những năm đầu đời.",PENDING
+atom,5,knowledge,Khái niệm Growing Down (Hạ mình xuống Trái Đất) và tiến trình myelin hóa hệ thần kinh vận động từ đầu xuống chân của trẻ nhỏ,PENDING
+vivid,5,vivid_knowledge,Khái niệm Growing Down (Hạ mình xuống Trái Đất) và tiến trình myelin hóa hệ thần kinh vận động từ đầu xuống chân của trẻ nhỏ,PENDING
+atom,5,knowledge,"Nguyên lý liên kết hữu cơ giữa kỹ năng vận động chéo (crawling) nhịp nhàng và sự phát triển ngôn ngữ, tư duy của trẻ",PENDING
+vivid,5,vivid_knowledge,"Nguyên lý liên kết hữu cơ giữa kỹ năng vận động chéo (crawling) nhịp nhàng và sự phát triển ngôn ngữ, tư duy của trẻ",PENDING
+atom,5,knowledge,Quy tắc tôn trọng nhịp độ phát triển vận động tự nhiên và dọn sạch các rào cản cơ học đối với trẻ dưới ba tuổi,PENDING
+vivid,5,vivid_knowledge,Quy tắc tôn trọng nhịp độ phát triển vận động tự nhiên và dọn sạch các rào cản cơ học đối với trẻ dưới ba tuổi,PENDING
+atom,5,evidence,baby-walker-use-and-developmental-coordination-deficits-in-infants,PENDING
+atom,5,story,Cháu gái lớn của bà Barbara J. Patterson-tu_minh_tim_kiem_diem_can_bang_va_buoc_di_tu_lap_dau_tien,PENDING
+atom,5,quote,follow-development-during-first-two-years-learns-to-sit-crawl-stand-walk,PENDING
+atom,5,quote,walking-means-child-attains-equilibrium-within-cosmos-free-orientation,PENDING
+atom,5,quote,crawling-rhythmical-pattern-affects-brain-development-how-child-learns,PENDING
+atom,5,quote,best-not-to-use-mechanical-aids-to-produce-positions-child-cannot-attain,PENDING
+vivid,6,vivid_circumstance,"""Người"" muốn bảo vệ thân nhiệt của con khi con trẻ dưới bảy tuổi chưa thể tự điều hòa hệ thống sinh lý trước sự thay đổi nhiệt độ của môi trường xung quanh.",PENDING
+atom,6,insight,"Nỗi lo sợ rằng sự lơ là trong việc bảo vệ thân nhiệt sẽ bòn rút sinh lực tăng trưởng của con, làm suy giảm hệ miễn dịch thực thể và tước đi năng lực thấu cảm cảm xúc của trẻ khi lớn lên.",PENDING
+atom,6,knowledge,Khái niệm Hơi ấm vật lý là chiếc kén bảo bọc tiến trình hóa thân của Cái Tôi,PENDING
+vivid,6,vivid_knowledge,Khái niệm Hơi ấm vật lý là chiếc kén bảo bọc tiến trình hóa thân của Cái Tôi,PENDING
+atom,6,knowledge,"Nguyên lý liên hệ mật thiết giữa hơi ấm sinh học, phản ứng sốt và sự hình thành năng lực hơi ấm tâm hồn ở tuổi trưởng thành",PENDING
+vivid,6,vivid_knowledge,"Nguyên lý liên hệ mật thiết giữa hơi ấm sinh học, phản ứng sốt và sự hình thành năng lực hơi ấm tâm hồn ở tuổi trưởng thành",PENDING
+atom,6,knowledge,Quy tắc bảo vệ thân nhiệt chủ động và thanh lọc cảm lạnh giác quan cho trẻ mầm non dưới bảy tuổi,PENDING
+vivid,6,vivid_knowledge,Quy tắc bảo vệ thân nhiệt chủ động và thanh lọc cảm lạnh giác quan cho trẻ mầm non dưới bảy tuổi,PENDING
+atom,6,evidence,infant-heat-loss-energy-expenditure-and-growth-retardation,PENDING
+atom,6,story,Người mẹ và cô con gái nhỏ sáu tuổi-nguoi_me_giup_con_mac_quan_tuyet_khi_tre_khong_tu_nhan_biet_duoc_cai_lanh,PENDING
+atom,6,quote,warmth-supports-life-foundation-of-all-health-development,PENDING
+atom,6,quote,child-expend-own-energy-to-keep-warm-fewer-forces-for-growing,PENDING
+atom,6,quote,fever-illnesses-in-childhood-grow-up-capacity-soul-physical-warmth-strong,PENDING
+atom,6,quote,fever-acts-by-shaking-loosening-physical-body-help-Ego-form,PENDING
+atom,6,quote,soul-warmth-friendly-reaction-fills-enthusiasm-stimulates-interchange,PENDING
+vivid,7,vivid_circumstance,"""Người"" muốn thiết lập một trình tự sinh hoạt ổn định cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái bồn chồn, rối loạn nhịp sinh học và phản kháng trước những thay đổi đột ngột trong nếp sinh hoạt thường nhật.",PENDING
+atom,7,insight,"Nỗi lo sợ rằng nếp sống thiếu trật tự và sự xáo trộn lịch trình thường nhật sẽ hủy hoại nhịp sinh học nội tại, đẩy con vào trạng thái căng thẳng quá tải thần kinh kéo dài và triệt tiêu cảm giác tin cậy nguyên bản của trẻ dưới bảy tuổi.",PENDING
+atom,7,knowledge,Khái niệm Nếp sống có nhịp điệu sinh học là nền tảng an tâm tối thượng cho hệ thần kinh mầm non,PENDING
+vivid,7,vivid_knowledge,Khái niệm Nếp sống có nhịp điệu sinh học là nền tảng an tâm tối thượng cho hệ thần kinh mầm non,PENDING
+atom,7,knowledge,Nguyên lý điều hòa sinh học của các tuyến nội tiết và hệ tiêu hóa mầm non dựa trên nếp sinh hoạt thường nhật nhất quán,PENDING
+vivid,7,vivid_knowledge,Nguyên lý điều hòa sinh học của các tuyến nội tiết và hệ tiêu hóa mầm non dựa trên nếp sinh hoạt thường nhật nhất quán,PENDING
+atom,7,knowledge,Quy trình thiết kế và vận hành nếp sinh hoạt hít vào - thở ra (inhaling - exhaling) cân bằng tại gia đình cho trẻ mầm non,PENDING
+vivid,7,vivid_knowledge,Quy trình thiết kế và vận hành nếp sinh hoạt hít vào - thở ra (inhaling - exhaling) cân bằng tại gia đình cho trẻ mầm non,PENDING
+atom,7,evidence,household-arrhythmia-and-elevated-cortisol-stress-levels-in-young-children,PENDING
+atom,7,story,Người mẹ tham gia lớp học của Barbara Patterson-chia_se_giai_phap_bat_dau_nho_de_thiet_lap_nhip_dieu_gia_dinh,PENDING
+atom,7,quote,child-who-has-no-rhythm-traveler-constantly-jet-lagged,PENDING
+atom,7,quote,regular-external-rhythms-internal-rhythms-develop-digestive-juices,PENDING
+atom,7,quote,creating-rhythmical-home-life-eliminate-80-percent-discipline-problems,PENDING
+atom,7,quote,young-child-requirement-for-outer-structure-vital-to-growth,PENDING
+atom,7,quote,start-small-take-one-aspect-day-make-beautiful-rhythm,PENDING
+vivid,8,vivid_circumstance,"""Người"" muốn thiết lập không gian chơi phù hợp cho con khi con trẻ dưới hai tuổi rưỡi đang ở giai đoạn khám phá các bộ phận cơ thể và bắt đầu thao tác với các đồ vật xung quanh. [7, 8]",PENDING
+atom,8,insight,"Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi.",PENDING
+atom,8,knowledge,Triết lý về đồ chơi đơn giản chưa định hình và tác động kích hoạt tiến trình kiến tạo não bộ mầm non của trẻ nhỏ,PENDING
+vivid,8,vivid_knowledge,Triết lý về đồ chơi đơn giản chưa định hình và tác động kích hoạt tiến trình kiến tạo não bộ mầm non của trẻ nhỏ,PENDING
+atom,8,knowledge,Nguyên lý đồng điệu sinh học giữa trò chơi vận động thể chất đầu đời và quá trình trao đổi chất của cơ thể mầm non,PENDING
+vivid,8,vivid_knowledge,Nguyên lý đồng điệu sinh học giữa trò chơi vận động thể chất đầu đời và quá trình trao đổi chất của cơ thể mầm non,PENDING
+atom,8,knowledge,Quy tắc tổ chức không gian chơi cảm quan tối giản và lựa chọn học liệu tự nhiên mở cho trẻ dưới hai tuổi rưỡi,PENDING
+vivid,8,vivid_knowledge,Quy tắc tổ chức không gian chơi cảm quan tối giản và lựa chọn học liệu tự nhiên mở cho trẻ dưới hai tuổi rưỡi,PENDING
+atom,8,evidence,electronic-toys-decrease-parent-child-verbal-interactions-and-toddler-language-growth,PENDING
+atom,8,story,Bác sĩ trị liệu nhi khoa Alfred Nitschke và em bé mười tháng tuổi-thay_the_do_choi_bien_dang_de_phuc_hoi_the_chat_cho_em_be,PENDING
+atom,8,quote,giving-child-pretty-doll-brain-stunted-dried-up,PENDING
+atom,8,quote,small-child-piles-blocks-tumble-satisfaction-anabolic-catabolic,PENDING
+atom,8,quote,toddlers-love-play-with-baskets-fill-and-dump,PENDING
+atom,8,quote,infant-has-himself-observing-limbs-develops-no-toys,PENDING
+atom,8,quote,mechanical-creatures-toy-market-provoke-brother-open-look,PENDING
+vivid,9,vivid_circumstance,"""Người"" muốn thiết lập không gian chơi giả vờ cho con khi con trẻ từ hai tuổi rưỡi đến năm tuổi bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh [1].",PENDING
+atom,9,insight,"Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8].",PENDING
+atom,9,knowledge,Triết lý trí tưởng tượng bay bổng mầm non là hạt mầm chuyển hóa thành năng lực tư duy logic và sáng tạo của người trưởng thành,PENDING
+vivid,9,vivid_knowledge,Triết lý trí tưởng tượng bay bổng mầm non là hạt mầm chuyển hóa thành năng lực tư duy logic và sáng tạo của người trưởng thành,PENDING
+atom,9,knowledge,Nguyên lý biến đổi công năng vật lý (transformation) để thỏa mãn nhu cầu kiến tạo thế giới của trẻ mầm non,PENDING
+vivid,9,vivid_knowledge,Nguyên lý biến đổi công năng vật lý (transformation) để thỏa mãn nhu cầu kiến tạo thế giới của trẻ mầm non,PENDING
+atom,9,knowledge,Quy tắc kiến thiết không gian chơi đóng vai mở và điều hợp dọn dẹp chuyển nhịp giàu tính nghệ thuật cho trẻ dưới bảy tuổi,PENDING
+vivid,9,vivid_knowledge,Quy tắc kiến thiết không gian chơi đóng vai mở và điều hợp dọn dẹp chuyển nhịp giàu tính nghệ thuật cho trẻ dưới bảy tuổi,PENDING
+atom,9,evidence,imaginative-play-executive-function-and-prefrontal-cortex-development-in-children,PENDING
+atom,9,quote,around-three-first-fantasy-play-appears-make-believe-pretend-milestone,PENDING
+atom,9,quote,forces-of-fantasy-which-in-early-childhood-build-up-organs-become-thinking,PENDING
+atom,9,quote,unformed-toys-silks-wood-stands-encourage-imaginative-play-and-healthy-intellectual-growth,PENDING
+atom,9,quote,dress-up-basket-silks-clips-allow-child-to-become-any-character-freely,PENDING
+vivid,10,vivid_circumstance,"""Người"" muốn hỗ trợ con thực hiện các trò chơi có kế hoạch khi con trẻ từ năm đến bảy tuổi bắt đầu bộc lộ nhu cầu tạo ra các sản phẩm có mục đích rõ rệt [5].",PENDING
+atom,10,insight,"Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8].",PENDING
+atom,10,insight,"Khát vọng mãnh liệt muốn định hình một ý chí kiên định, dũng khí hành động và tính tự lập xã hội thông qua các hoạt động lao động thực tế có mục đích rõ rệt cùng người lớn [9, 10, 16].",PENDING
+vivid,10,vivid_insight,"Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8].",PENDING
+atom,10,knowledge,"Khái niệm ""Sự thay đổi năm sáu tuổi"" (six-year-old change / little puberty) và sự thức tỉnh của thế giới ý tưởng nội tâm tự thân của trẻ nhỏ",PENDING
+vivid,10,vivid_knowledge,"Khái niệm ""Sự thay đổi năm sáu tuổi"" (six-year-old change / little puberty) và sự thức tỉnh của thế giới ý tưởng nội tâm tự thân của trẻ nhỏ",PENDING
+atom,10,knowledge,Nguyên lý bảo toàn sinh lực thông qua mốc thay răng (change of teeth) của khoa học tinh thần Waldorf,PENDING
+vivid,10,vivid_knowledge,Nguyên lý bảo toàn sinh lực thông qua mốc thay răng (change of teeth) của khoa học tinh thần Waldorf,PENDING
+atom,10,knowledge,Quy tắc tích hợp lao động thực tế có mục đích và rèn luyện tính kiên trì (stick-to-itiveness) cho trẻ từ năm đến bảy tuổi,PENDING
+vivid,10,vivid_knowledge,Quy tắc tích hợp lao động thực tế có mục đích và rèn luyện tính kiên trì (stick-to-itiveness) cho trẻ từ năm đến bảy tuổi,PENDING
+atom,10,evidence,germany-longitudinal-study-play-versus-academics-kindergarten-longterm-benefits,PENDING
+atom,10,story,Nhà giáo mầm non Barbara J. Patterson và nhóm trẻ sáu tuổi-tre_dung_ghe_bap_benh_va_da_cuoi_den_de_tu_do_choi_co_ke_hoach_dung_xe_lua,PENDING
+atom,10,quote,around-age-of-five-milestone-reached-play-with-a-plan,PENDING
+atom,10,quote,previously-toys-stimulated-play-now-inner-world-inspires-creative-play,PENDING
+atom,10,quote,play-teaches-child-habits-needed-intellectual-growth-stick-to-itiveness,PENDING
+atom,10,quote,imaginative-play-objects-transform-ideal-foundation-for-symbol-manipulation,PENDING
+atom,10,quote,not-healthy-for-children-to-concentrate-on-cognitive-skills-until-body-matured,PENDING
+vivid,11,vivid_circumstance,"""Người"" muốn thiết lập một không gian chơi có khả năng biến đổi linh hoạt cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái thụ động và suy giảm khả năng tự định hình trò chơi trước sự bủa vây của các loại đồ chơi công nghiệp có công năng cố định.",PENDING
+atom,11,insight,"Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",PENDING
+vivid,11,vivid_insight,"Nỗi lo sợ rằng việc bao bọc con bằng các đồ chơi công nghiệp hoàn hảo đúc sẵn sẽ triệt tiêu năng lực tự kiến tạo của con, biến con thành người tiêu dùng thụ động và tước đi dũng khí tự giải quyết các thử thách xã hội sau này.",PENDING
+atom,11,knowledge,Khái niệm Đồ chơi có magic (phép mầu dở dang) và tư cách kiến tạo trò chơi tối thượng của trẻ mầm non,PENDING
+vivid,11,vivid_knowledge,Khái niệm Đồ chơi có magic (phép mầu dở dang) và tư cách kiến tạo trò chơi tối thượng của trẻ mầm non,PENDING
+atom,11,knowledge,Nguyên lý hình thành năng lực giải quyết vấn đề đa chiều từ các va chạm xã hội và sự cố đổ sập trong trò chơi tự do,PENDING
+vivid,11,vivid_knowledge,Nguyên lý hình thành năng lực giải quyết vấn đề đa chiều từ các va chạm xã hội và sự cố đổ sập trong trò chơi tự do,PENDING
+atom,11,knowledge,"Quy tắc kiến thiết không gian học liệu dở dang và thực hành ""can thiệp tĩnh lặng"" thông qua việc nhà của cha mẹ",PENDING
+vivid,11,vivid_knowledge,"Quy tắc kiến thiết không gian học liệu dở dang và thực hành ""can thiệp tĩnh lặng"" thông qua việc nhà của cha mẹ",PENDING
+atom,11,evidence,abundance-of-industrial-toys-atrophies-imagination-muscle-in-young-children,PENDING
+atom,11,story,Bà Barbara J. Patterson và nhóm trẻ mầm non năm tuổi-tre_nho_tu_do_dung_ban_go_va_kep_go_de_tu_minh_giai_quyet_su_co_sap_leul,PENDING
+atom,11,quote,all-children-want-to-do-is-learn-through-greatest-learning-tool-play,PENDING
+atom,11,quote,todays-children-have-more-to-play-with-but-do-less-and-less,PENDING
+atom,11,quote,children-have-to-work-to-find-magic-bring-it-out-in-play,PENDING
+atom,11,quote,just-sitting-next-to-them-mending-enough-to-feel-there,PENDING
+atom,11,quote,creation-of-play-spaces-requires-parent-to-be-present,PENDING
+vivid,12,vivid_circumstance,"""Người"" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4].",PENDING
+atom,12,insight,"Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",PENDING
+atom,12,knowledge,Khái niệm Trẻ dưới bảy tuổi hoạt động như một giác quan mở toàn diện và vai trò lá chắn của cha mẹ,PENDING
+vivid,12,vivid_knowledge,Khái niệm Trẻ dưới bảy tuổi hoạt động như một giác quan mở toàn diện và vai trò lá chắn của cha mẹ,PENDING
+atom,12,knowledge,Nguyên lý phân tách bản thể và làm chủ cơ thể thực thể thông qua bốn giác quan ý chí (The Will Senses),PENDING
+vivid,12,vivid_knowledge,Nguyên lý phân tách bản thể và làm chủ cơ thể thực thể thông qua bốn giác quan ý chí (The Will Senses),PENDING
+atom,12,knowledge,Quy chuẩn bảo vệ cảm quan tối giản và hỗ trợ vận động tự nhiên không cưỡng bức cho trẻ dưới bảy tuổi,PENDING
+vivid,12,vivid_knowledge,Quy chuẩn bảo vệ cảm quan tối giản và hỗ trợ vận động tự nhiên không cưỡng bức cho trẻ dưới bảy tuổi,PENDING
+atom,12,evidence,baby-walkers-hinder-motor-sensory-neurological-patterns-and-joint-development,PENDING
+atom,12,story,Người mẹ và cô con gái nhỏ bốn tuổi-co_be_tu_dong_luyen_tap_giac_quan_thang_bang_tren_thanh_go_ngoai_vuon,PENDING
+atom,12,quote,young-child-is-altogether-a-sense-organ,PENDING
+atom,12,quote,formative-forces-influence-by-sense-impressions-healthy-versus-illness,PENDING
+atom,12,quote,force-child-into-positions-early-strain-joints-compromise-movement,PENDING
+atom,12,quote,sense-of-touch-separating-connecting-defines-boundaries,PENDING
+vivid,13,vivid_circumstance,"""Người"" muốn thiết lập một môi trường cảm quan hài hòa cho con khi con trẻ dưới bảy tuổi dễ rơi vào trạng thái khép kín lòng tin cậy và phản ứng bất an trước các mùi hương hóa học, màu sắc sặc sỡ quá đà hay thái độ lạnh lùng từ người lớn xung quanh.",PENDING
+atom,13,insight,"Nỗi lo sợ rằng một môi trường ô nhiễm cảm quan—ngập tràn mùi hương hóa học, ánh sáng nhân tạo chói gắt và sự thiếu vắng hơi ấm tình thương—sẽ tàn phá hệ sinh học mỏng manh, làm xơ cứng cảm quan thực thể và dập tắt lòng tin cậy nguyên bản của trẻ dưới bảy tuổi.",PENDING
+atom,13,knowledge,Khái niệm Hơi ấm tâm hồn (Soul Warmth) là sự chuyển hóa vĩ đại từ việc bảo ôn hơi ấm thể chất (Physical Warmth) cho trẻ mầm non,PENDING
+vivid,13,vivid_knowledge,Khái niệm Hơi ấm tâm hồn (Soul Warmth) là sự chuyển hóa vĩ đại từ việc bảo ôn hơi ấm thể chất (Physical Warmth) cho trẻ mầm non,PENDING
+atom,13,knowledge,Nguyên lý Màu sắc bổ khuyết nội tại (Complementary Colors) và cơ chế tự điều hòa hành vi mầm non của hệ thần kinh thị giác,PENDING
+vivid,13,vivid_knowledge,Nguyên lý Màu sắc bổ khuyết nội tại (Complementary Colors) và cơ chế tự điều hòa hành vi mầm non của hệ thần kinh thị giác,PENDING
+atom,13,knowledge,Quy chuẩn thiết kế môi trường cảm quan thanh lọc và nuôi dưỡng bốn giác quan cảm xúc cho trẻ dưới bảy tuổi,PENDING
+vivid,13,vivid_knowledge,Quy chuẩn thiết kế môi trường cảm quan thanh lọc và nuôi dưỡng bốn giác quan cảm xúc cho trẻ dưới bảy tuổi,PENDING
+atom,13,evidence,synthetic-fragrances-and-neuro-behavioral-hyperactivity-in-young-children,PENDING
+atom,13,story,Cô giáo mầm non Waldorf và cậu bé sáu tuổi ngỗ nghịch-dung_ao_choang_lua_do_de_kich_hoat_mau_bo_khuyet_xanh_la_lam_lang_diu_tre,PENDING
+atom,13,quote,young-child-altogether-a-sense-organ-anger-affects-circulation-digestion,PENDING
+atom,13,quote,child-earnest-quiet-benefit-sombre-bluish-colors-lively-yellow-reddish,PENDING
+atom,13,quote,joy-of-child-builds-moulds-physical-organs-love-hatches-out-forms,PENDING
+atom,13,quote,sour-salty-awakening-dreamy-child-sweets-well-being-sad-child-bitter-will-unmotivated,PENDING
+vivid,14,vivid_circumstance,"""Người"" muốn bảo vệ các giác quan nhận thức của con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi vô thức đồng hóa mọi hành vi ứng xử của người lớn xung quanh.",PENDING
+atom,14,insight,"Nỗi lo sợ rằng việc để con tiếp xúc với tiếng ồn cơ học, tiếng nói nhân tạo từ tivi và sự dối trá, thiếu chân thành của người lớn sẽ tàn phá hệ thần kinh cảm nhận, làm chai lì năng lực thấu cảm xã hội và vĩnh viễn hủy hoại lòng tin cậy nguyên bản của con đối với con người khi trưởng thành.",PENDING
+atom,14,insight,"Khát khao kiến tạo một môi trường giao tiếp chân thực, ngập tràn sự chân thành và điệu bộ đạo đức toàn vẹn để nuôi dưỡng năng lực thấu cảm, khả năng thấu suốt tư duy và Cái Tôi cao quý của người khác trong con trẻ.",PENDING
+atom,14,knowledge,Triết lý sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn,PENDING
+vivid,14,vivid_knowledge,Triết lý sự hóa thân của Cái Tôi (Ego) thông qua sự thấu cảm bản thể người khác và vai trò điêu khắc đạo đức của người lớn,PENDING
+atom,14,knowledge,Nguyên lý học ngôn ngữ mầm non thông qua kết nối mặt-đối-mặt (person-to-person) và sự vô hồn của giọng nói cơ học từ thiết bị điện tử,PENDING
+vivid,14,vivid_knowledge,Nguyên lý học ngôn ngữ mầm non thông qua kết nối mặt-đối-mặt (person-to-person) và sự vô hồn của giọng nói cơ học từ thiết bị điện tử,PENDING
+atom,14,knowledge,"Quy chuẩn thanh lọc thính giác và thực hành ""tự giáo dục bản thân"" của cha mẹ để bảo vệ các giác quan nhận thức mầm non",PENDING
+vivid,14,vivid_knowledge,"Quy chuẩn thanh lọc thính giác và thực hành ""tự giáo dục bản thân"" của cha mẹ để bảo vệ các giác quan nhận thức mầm non",PENDING
+atom,14,evidence,television-deprives-young-children-of-live-conversation-and-retards-brain-development,PENDING
+atom,14,story,Người mẹ Helen và đứa con trai năm tuổi Lucas-me_tat_tivi_dien_thoai_de_tro_chuyen_chan_thanh_va_dung_dan_lia_phuc_hoi_cam_quan_cho_con,PENDING
+atom,14,quote,cognitive-senses-hearing-speech-another-thought-another-I-protecting-nourishing,PENDING
+atom,14,quote,children-learn-speak-imitating-conversing-real-live-people-television-no-substitute,PENDING
+atom,14,quote,young-child-experiencing-character-people-around-sincere-deceit-trust,PENDING
+atom,14,quote,teacher-parent-teaches-out-of-what-he-can-become-positive-role-model,PENDING
+vivid,15,vivid_circumstance,"""Người"" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",PENDING
+atom,15,insight,"Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi.",PENDING
+atom,15,insight,"Khát khao sâu sắc muốn tu dưỡng đạo đức, làm chủ điệu bộ ứng xử thường nhật và xây dựng năng lực tự kỷ luật kiên định của bản thân để trở thành một tấm gương toàn vẹn nâng đỡ sự tự giác của con.",PENDING
+atom,15,knowledge,Triết lý Giáo dục và Tự giáo dục là một,PENDING
+vivid,15,vivid_knowledge,Triết lý Giáo dục và Tự giáo dục là một,PENDING
+atom,15,knowledge,Nguyên lý Trẻ dưới bảy tuổi hoạt động như một con mắt lớn và tác động sinh học của sự tức giận,PENDING
+vivid,15,vivid_knowledge,Nguyên lý Trẻ dưới bảy tuổi hoạt động như một con mắt lớn và tác động sinh học của sự tức giận,PENDING
+atom,15,knowledge,Quy chuẩn tự kỷ luật cảm xúc và nghệ thuật điều hướng hành vi qua điệu bộ lao động của cha mẹ mầm non,PENDING
+vivid,15,vivid_knowledge,Quy chuẩn tự kỷ luật cảm xúc và nghệ thuật điều hướng hành vi qua điệu bộ lao động của cha mẹ mầm non,PENDING
+atom,15,evidence,fits-of-temper-affect-child-circulation-breathing-and-metabolism,PENDING
+atom,15,story,Người mẹ và đứa con trai ba tuổi dũng mãnh-me_tu_ren_luyen_su_diem_tinh_va_lam_viec_nha_de_tu_dong_lan_toa_ky_luat_tu_thao_sang_con,PENDING
+atom,15,quote,at-this-age-nothing-is-accomplished-through-admonition-commands-prohibitions-no-effect,PENDING
+atom,15,quote,most-effective-discipline-for-young-child-has-to-do-with-self-education-of-adults,PENDING
+atom,15,quote,growing-and-developing-in-child-listens-to-growing-and-developing-in-teacher,PENDING
+atom,15,quote,first-seven-years-is-really-an-eye-outburst-passes-into-circulation-breathing-metabolism,PENDING
+atom,15,quote,preach-at-child-does-not-hear-barrier-prevents-perceiving-message,PENDING
+vivid,16,vivid_circumstance,"""Người"" muốn cải tạo cấu trúc không gian vật lý cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi lệch khỏi khuôn mẫu sinh hoạt chung do sự thiếu trật tự của không gian xung quanh.",PENDING
+atom,16,insight,"Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung.",PENDING
+atom,16,insight,"Khát khao tái tạo một khuôn mẫu trật tự vật lý bình yên, nhất quán xung quanh con để tự động điều hòa lực lượng ý chí, khơi dậy tinh thần tự giác dọn dẹp và củng cố sự điềm tĩnh nội tâm của trẻ.",PENDING
+vivid,16,vivid_insight,"Nỗi lo sợ rằng một môi trường vật lý hỗn loạn, bừa bãi sẽ tàn phá cảm quan trật tự nguyên bản của con, dung túng cho các hành vi ngỗ ngược bộc phát và dần biến con thành một đứa trẻ thiếu tính tự chủ, khó thích nghi với nếp sinh hoạt chung.",PENDING
+atom,16,knowledge,Khái niệm Rơi ra ngoài khuôn mẫu (falling out of the form) và tác động điều hòa của cấu trúc vật lý xung quanh trẻ dưới bảy tuổi,PENDING
+vivid,16,vivid_knowledge,Khái niệm Rơi ra ngoài khuôn mẫu (falling out of the form) và tác động điều hòa của cấu trúc vật lý xung quanh trẻ dưới bảy tuổi,PENDING
+atom,16,knowledge,Nguyên lý Búp bê là hình ảnh của con người (The doll as an image of the human being) và tác động vô thức của đồ chơi bừa bãi dưới sàn nhà,PENDING
+vivid,16,vivid_knowledge,Nguyên lý Búp bê là hình ảnh của con người (The doll as an image of the human being) và tác động vô thức của đồ chơi bừa bãi dưới sàn nhà,PENDING
+atom,16,knowledge,Quy chuẩn cải tạo không gian vật lý và nghệ thuật can thiệp tĩnh lặng để điều hòa hành vi mầm non của cha mẹ,PENDING
+vivid,16,vivid_knowledge,Quy chuẩn cải tạo không gian vật lý và nghệ thuật can thiệp tĩnh lặng để điều hòa hành vi mầm non của cha mẹ,PENDING
+atom,16,evidence,orderly-play-spaces-nurture-self-regulation-and-prevent-behavioral-chaos-in-young-children,PENDING
+atom,16,story,Bà Barbara J. Patterson và hai cô bé mầm non-dung_chuong_ngua_go_va_da_cuoi_de_dieu_huong_tro_choi_nem_thu_len_cua_tre,PENDING
+atom,16,quote,children-misbehave-fallen-out-of-form-reforming-space,PENDING
+atom,16,quote,doll-image-of-human-being-floor-chaotic-picture,PENDING
+atom,16,quote,reforming-play-areas-restore-harmony-without-speaking,PENDING
+atom,16,quote,helped-girls-create-positive-play-without-saying-dont-play,PENDING
+vivid,17,vivid_circumstance,"""Người"" muốn thiết lập các ranh giới giao tiếp rõ ràng cho con khi con trẻ dưới bảy tuổi bộc lộ xu hướng vị kỷ trước các quyết định sinh hoạt vượt quá năng lực nhận thức.",PENDING
+atom,17,insight,"Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành.",PENDING
+atom,17,insight,"Khát khao thiết lập ranh giới giao tiếp phẳng lặng, làm chủ ngôn từ khẳng định ôn hòa và dũng cảm bảo bọc ý chí của con bằng những giới hạn lựa chọn dứt khoát.",PENDING
+atom,17,knowledge,Khái niệm Sự thức tỉnh Cái Tôi vị kỷ sớm (premature awakening of 'I want') và gánh nặng quyết định của trẻ mầm non,PENDING
+vivid,17,vivid_knowledge,Khái niệm Sự thức tỉnh Cái Tôi vị kỷ sớm (premature awakening of 'I want') và gánh nặng quyết định của trẻ mầm non,PENDING
+atom,17,knowledge,Nguyên lý Từ khẳng định điều hòa ý chí mầm non và mối liên kết sinh của sự nhất quán ngôn từ đối với sức khỏe thần kinh,PENDING
+vivid,17,vivid_knowledge,Nguyên lý Từ khẳng định điều hòa ý chí mầm non và mối liên kết sinh của sự nhất quán ngôn từ đối với sức khỏe thần kinh,PENDING
+atom,17,knowledge,Quy chuẩn giao tiếp phẳng lặng và giới hạn lựa chọn kép (Two-Option Limit) trong sinh hoạt mầm non,PENDING
+vivid,17,vivid_knowledge,Quy chuẩn giao tiếp phẳng lặng và giới hạn lựa chọn kép (Two-Option Limit) trong sinh hoạt mầm non,PENDING
+atom,17,evidence,overchoice-breeds-egotism-and-behavioral-hyperactivity-in-young-children,PENDING
+atom,17,story,Người mẹ Helen và cô con gái bốn tuổi-me_dung_van_phong_khang_dinh_va_gioi_han_lua_chon_de_hoa_giai_con_buong_binh_cua_con,PENDING
+atom,17,quote,our-communication-with-children-needs-to-be-clear-questions-create-confusion,PENDING
+atom,17,quote,offering-children-choices-breeds-egotism-poison-in-their-souls,PENDING
+atom,17,quote,no-child-is-more-insecure-and-dissatisfied-than-one-catered-to-this-way,PENDING
+atom,17,quote,no-greater-harm-than-giving-directions-then-reversing-them,PENDING
+atom,17,quote,children-confusion-from-unclear-adult-thinking-root-of-nervous-diseases,PENDING
+vivid,18,vivid_circumstance,"""Người"" muốn điều hướng năng lượng hoạt động của con khi con trẻ dưới bảy tuổi bộc lộ hành vi chưa phù hợp do thiếu định hướng giới hạn hành động.",PENDING
+atom,18,insight,"Nỗi lo sợ rằng việc liên tục lạm dụng từ ""Không"" hoặc can thiệp bạo lực bằng mệnh lệnh sẽ làm đứt gãy mạch chơi sáng tạo, tước đi năng lực tự chủ và gây ra sự bướng bỉnh, nổi loạn cảm xúc ở trẻ dưới bảy tuổi.",PENDING
+atom,18,insight,Khát khao chuyển hóa các trận chiến ý chí bế tắc thành những khoảnh khắc hợp tác tự nguyện hân hoan hằng tuần thông qua việc làm chủ nghệ thuật điều hướng năng lượng hành động ôn hòa của con.,PENDING
+atom,18,knowledge,Khái niệm Năng lượng ý chí tự do và sự chuyển dịch hướng hoạt động thay vì đàn áp cảm xúc,PENDING
+vivid,18,vivid_knowledge,Khái niệm Năng lượng ý chí tự do và sự chuyển dịch hướng hoạt động thay vì đàn áp cảm xúc,PENDING
+atom,18,knowledge,Nguyên lý Từ ma thuật 'May' (Con có thể) kích hoạt cảm giác đặc quyền thay thế cho từ 'Không' phủ quyết,PENDING
+vivid,18,vivid_knowledge,Nguyên lý Từ ma thuật 'May' (Con có thể) kích hoạt cảm giác đặc quyền thay thế cho từ 'Không' phủ quyết,PENDING
+atom,18,knowledge,Quy chuẩn chuyển hướng năng lượng chơi dở dang và giao tiếp tích cực hằng tuần,PENDING
+vivid,18,vivid_knowledge,Quy chuẩn chuyển hướng năng lượng chơi dở dang và giao tiếp tích cực hằng tuần,PENDING
+atom,18,evidence,play-and-neurocognitive-executive-functions-in-early-childhood,PENDING
+atom,18,story,Bà Barbara J. Patterson và hai cô bé mầm non-dung_chuong_ngua_go_va_dua_bong_len_de_huong_nguon_nang_luong_nghich_pha_cua_tre,PENDING
+atom,18,quote,if-we-use-word-no-too-often-children-learn-to-ignore-it,PENDING
+atom,18,quote,if-instead-we-say-what-they-may-do-with-toy-redirect-energy,PENDING
+atom,18,quote,word-may-is-quality-of-privilege-no-question-to-answer-or-ignore,PENDING
+atom,18,quote,explain-too-much-reason-prematurely-awaken-reason-intellect,PENDING
+vivid,19,vivid_circumstance,"""Người"" muốn thiết lập chu trình nhịp điệu sinh hoạt cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi chống đối trong các khoảnh khắc chuyển tiếp giữa các hoạt động.",PENDING
+atom,19,insight,"Nỗi lo sợ rằng sự thiếu nhất quán trong chu trình sinh hoạt và những khoảnh khắc chuyển tiếp đột ngột, cưỡng bức sẽ tàn phá hệ thần kinh nhạy cảm của con, gây ra các cuộc khủng hoảng bướng bỉnh triền miên và dập tắt trạng thái mộng mơ an lành của trẻ dưới bảy tuổi.",PENDING
+atom,19,insight,"Khát khao thiết lập một chu trình nhịp điệu sinh hoạt tuần hoàn nhất quán—giống như hơi thở hít vào và thở ra ôn hòa—để tự động hóa nếp sống tự giác, xoa dịu triệt để các phản ứng bướng bỉnh và mang lại cảm giác an tâm tuyệt đối cho con.",PENDING
+vivid,19,vivid_insight,"Nỗi lo sợ rằng sự thiếu nhất quán trong chu trình sinh hoạt và những khoảnh khắc chuyển tiếp đột ngột, cưỡng bức sẽ tàn phá hệ thần kinh nhạy cảm của con, gây ra các cuộc khủng hoảng bướng bỉnh triền miên và dập tắt trạng thái mộng mơ an lành của trẻ dưới bảy tuổi.",PENDING
+atom,19,knowledge,Khái niệm Nhịp điệu tuần hoàn (Rhythmical Life) là người dẫn đường vô hình và chiếc kén bảo vệ tối thượng cho thể chất thực thể của trẻ dưới bảy tuổi,PENDING
+vivid,19,vivid_knowledge,Khái niệm Nhịp điệu tuần hoàn (Rhythmical Life) là người dẫn đường vô hình và chiếc kén bảo vệ tối thượng cho thể chất thực thể của trẻ dưới bảy tuổi,PENDING
+atom,19,knowledge,Nguyên lý Cân bằng hơi thở tâm hồn qua chu trình Hít vào - Thở ra (Inbreathing and Outbreathing) và cơ chế tự điều hòa hành vi mầm non,PENDING
+vivid,19,vivid_knowledge,Nguyên lý Cân bằng hơi thở tâm hồn qua chu trình Hít vào - Thở ra (Inbreathing and Outbreathing) và cơ chế tự điều hòa hành vi mầm non,PENDING
+atom,19,knowledge,Quy chuẩn thiết kế chu trình nhịp điệu sinh hoạt và nghệ thuật chuyển nhịp (transitions) không dùng bạo lực lời nói cho cha mẹ mầm non,PENDING
+vivid,19,vivid_knowledge,Quy chuẩn thiết kế chu trình nhịp điệu sinh hoạt và nghệ thuật chuyển nhịp (transitions) không dùng bạo lực lời nói cho cha mẹ mầm non,PENDING
+atom,19,evidence,orderly-rhythm-stabilizes-child-heartbeat-and-reduces-cortisol,PENDING
+atom,19,story,Cô giáo Barbara J. Patterson và các em nhỏ mầm non-dung_bai_ca_chuyen_nhip_va_hanh_dong_la_lao_dong_de_tu_dong_thu_hut_tre_don_dep_do_choi,PENDING
+atom,19,quote,rhythm-is-guide-for-young-child-dreamy-consciousness-transitions-misbehavior,PENDING
+atom,19,quote,rhythm-becomes-habit-accepted-self-evident-eliminate-difficulties-eating-bedtime,PENDING
+atom,19,quote,rhythm-holds-sway-nature-chaos-man-must-give-birth-out-of-innermost-being,PENDING
+atom,19,quote,outer-structure-vital-growth-emotional-well-being-time-for-all-things,PENDING
+atom,19,quote,child-happiness-depends-success-conducting-daily-life-minimum-friction-pause,PENDING
+vivid,20,vivid_circumstance,"""Người"" muốn hóa giải hành vi thô bạo của con khi con trẻ dưới bảy tuổi bộc phát các phản ứng vật lý gây thương tích cho người đối diện.**",PENDING
+atom,20,insight,"Nỗi lo sợ rằng việc không thể hóa giải và kiểm soát các hành vi thô bạo vật lý của con sẽ làm rạn nứt nếp sinh hoạt chung, biến con thành một đứa trẻ ngỗ nghịch, hung hăng và bị cô lập xã hội khi trưởng thành.",PENDING
+atom,20,insight,"Khát khao chuyển hóa dòng ý chí hỗn loạn của con thành những hành động có mục đích đầy hữu ích, giúp khơi dậy lòng thấu cảm sâu sắc và nuôi dưỡng sự tự kiểm soát ôn hòa của trẻ.",PENDING
+vivid,20,vivid_insight,"Nỗi lo sợ rằng việc không thể hóa giải và kiểm soát các hành vi thô bạo vật lý của con sẽ làm rạn nứt nếp sinh hoạt chung, biến con thành một đứa trẻ ngỗ nghịch, hung hăng và bị cô lập xã hội khi trưởng thành.",PENDING
+atom,20,knowledge,Triết lý Sự chuyển hóa dòng ý chí hỗn loạn thông qua lao động thực tế,PENDING
+vivid,20,vivid_knowledge,Triết lý Sự chuyển hóa dòng ý chí hỗn loạn thông qua lao động thực tế,PENDING
+atom,20,knowledge,Nguyên lý Lấy độc trị độc học tương đồng trong hành vi trẻ nhỏ,PENDING
+vivid,20,vivid_knowledge,Nguyên lý Lấy độc trị độc học tương đồng trong hành vi trẻ nhỏ,PENDING
+atom,20,knowledge,Quy chuẩn chữa lành hành vi vật lý và thiết lập hậu quả nhân quả,PENDING
+vivid,20,vivid_knowledge,Quy chuẩn chữa lành hành vi vật lý và thiết lập hậu quả nhân quả,PENDING
+atom,20,story,Cô giáo Barbara Patterson và người chồng-dung-lao-dong-dao-dat-chay-xung-quanh-goc-cay-co-thu-chuyen-hoa-y-chi-tre,PENDING
+atom,20,quote,deal-with-unacceptable-behavior-consequential-way-chaotic-will-harmonious,PENDING
+atom,20,quote,real-work-is-cure-for-violent-play-gardening-wood,PENDING
+atom,20,quote,pedagogically-heal-like-cures-like-like-can-heal-like,PENDING
+vivid,21,vivid_circumstance,"""Người"" muốn giữ vững sự nhất quán đối với các chỉ dẫn sinh hoạt đã đề ra cho con khi con trẻ dưới bất kỳ hình thức nào dưới bảy tuổi bộc lộ sự bướng bỉnh hòng trốn tránh thực hiện các nhiệm vụ được yêu cầu.",PENDING
+atom,21,insight,"Nỗi lo sợ rằng việc bản thân thiếu nhất quán, thường xuyên dao động hoặc bị cuốn vào các trận chiến từ ngữ bế tắc sẽ bộc lộ điểm yếu cảm xúc và biến con thành một đứa trẻ ngang ngạnh, khó bảo và mất kiểm soát hành vi hằng tuần.",PENDING
+atom,21,insight,"Khát khao thiết lập và giữ vững các ranh giới kỷ luật một cách điềm tĩnh, nhất quán để tự động xoa dịu sự chống đối, khơi dậy tinh thần hợp tác tự giác và mang lại cảm giác an tâm tuyệt đối cho con.",PENDING
+atom,21,knowledge,Khái niệm Tính nhất quán của người lớn là chiếc mỏ neo định hình sự phát triển Cái Tôi lành mạnh của trẻ,PENDING
+vivid,21,vivid_knowledge,Khái niệm Tính nhất quán của người lớn là chiếc mỏ neo định hình sự phát triển Cái Tôi lành mạnh của trẻ,PENDING
+atom,21,knowledge,Nguyên lý Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một,PENDING
+vivid,21,vivid_knowledge,Nguyên lý Lùi lại nhường không gian và can thiệp không lời để hóa giải cuộc chiến ý chí ở trẻ chuẩn bị vào lớp một,PENDING
+atom,21,knowledge,Quy chuẩn giữ vững giới hạn và thực thi hành động nhất quán không dao động hằng tuần,PENDING
+vivid,21,vivid_knowledge,Quy chuẩn giữ vững giới hạn và thực thi hành động nhất quán không dao động hằng tuần,PENDING
+atom,21,quote,between-ages-two-and-four-stubborn-dont-waiver-wiggle-out-push-your-buttons,PENDING
+atom,21,quote,consistency-over-time-habit-respond-warmth-love-works-better-than-battle-of-words-wills,PENDING
+atom,21,quote,overlook-negative-reactions-help-him-do-without-anger-or-lots-of-explaining,PENDING
+atom,21,quote,older-child-challenge-rules-best-to-back-off-give-little-space,PENDING
+vivid,22,vivid_circumstance,"""Người"" muốn xây dựng lòng tự trọng cho con khi con trẻ dưới bảy tuổi bộc lộ hành vi phản kháng trước sự phê bình từ người xung quanh.",PENDING
+atom,22,insight,"Nỗi lo sợ rằng việc thường xuyên phê bình, la mắng hay hạ thấp con sẽ gieo rắc sự tự ti, làm xơ cứng tâm hồn và buộc con phải dựng rào chắn bảo vệ, khép kín lòng hoặc bùng phát xu hướng hung hăng gây hấn mỗi tuần.",PENDING
+atom,22,insight,"Khát khao dùng ngôn từ tích cực khích lệ và những can thiệp yêu thương dịu dàng để vỗ về tâm hồn, bảo bọc lòng tự trọng của con, giúp con tự tin dốc hết nguồn sinh lực vươn lên hòa hợp.",PENDING
+atom,22,knowledge,Khái niệm Sự xơ cứng bảo vệ tâm hồn (Soul Hardening) và phản ứng chống đối do bạo lực lời nói ở trẻ mầm non,PENDING
+vivid,22,vivid_knowledge,Khái niệm Sự xơ cứng bảo vệ tâm hồn (Soul Hardening) và phản ứng chống đối do bạo lực lời nói ở trẻ mầm non,PENDING
+atom,22,knowledge,Nguyên lý Ốc đảo tĩnh dưỡng và cơ chế tái hòa hợp trò chơi thông qua tình yêu chăm sóc đồng trang lứa,PENDING
+vivid,22,vivid_knowledge,Nguyên lý Ốc đảo tĩnh dưỡng và cơ chế tái hòa hợp trò chơi thông qua tình yêu chăm sóc đồng trang lứa,PENDING
+atom,22,knowledge,Quy chuẩn kiến tạo ngôn từ tích cực nâng đỡ tự chủ mầm non và quy trình can thiệp tĩnh dưỡng mỗi tuần,PENDING
+vivid,22,vivid_knowledge,Quy chuẩn kiến tạo ngôn từ tích cực nâng đỡ tự chủ mầm non và quy trình can thiệp tĩnh dưỡng mỗi tuần,PENDING
+atom,22,story,Cô giáo Barbara J. Patterson và các em nhỏ mầm non-thiet_lap_giuong_sofa_va_tro_choi_y_ta_chong_lai_su_met_moi_cua_tre,PENDING
+atom,22,quote,sometimes-child-needs-held-rocking-chair-sofa-bed-cotton-cloths-woven-play,PENDING
+atom,22,quote,criticizing-scolding-belittling-children-does-not-help-passive-aggressive-positive-encouraging-words,PENDING
+atom,22,quote,yelling-is-always-harmful-child-hardens-soul-protect-cannot-get-through,PENDING
+atom,22,quote,state-the-positive-pet-kitty-gently-dont-hurt-brain-not-process-every-word,PENDING
+vivid,23,vivid_circumstance,"""Người"" muốn tháo gỡ các trở ngại hành vi phức tạp của con khi con trẻ dưới bảy tuổi bộc lộ những khó khăn hành vi khó thấu hiểu bằng lý trí thông thường.",PENDING
+atom,23,insight,"Nỗi lo sợ rằng việc bất lực trước những tổn thương tâm lý và hành vi phức tạp của con sẽ đẩy mối quan hệ gia đình vào ngõ cụt bế tắc, khiến trẻ cô độc trong thế giới nội tâm và không thể giải phóng những rào cản tinh thần ẩn giấu.",PENDING
+atom,23,insight,"Khát khao khơi thông trực giác tâm linh để thấu cảm sâu sắc thế giới nội tâm của con, tìm thấy những giải pháp tự nhiên và dâng hiến cho con sự bảo hộ thiêng liêng nhất trong cuộc đời.",PENDING
+atom,23,knowledge,Khái niệm Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác,PENDING
+vivid,23,vivid_knowledge,Khái niệm Đời sống giấc ngủ (Sleep Life) như một tiến trình tu dưỡng sư phạm tâm linh và tiếp thụ trực giác,PENDING
+atom,23,knowledge,Nguyên lý Sự dẫn dắt từ Thiên sứ hộ mệnh (Guardian Angel) và sức mạnh tâm linh nâng đỡ ranh giới nuôi dạy con,PENDING
+vivid,23,vivid_knowledge,Nguyên lý Sự dẫn dắt từ Thiên sứ hộ mệnh (Guardian Angel) và sức mạnh tâm linh nâng đỡ ranh giới nuôi dạy con,PENDING
+atom,23,knowledge,Quy chuẩn thiền định phản tỉnh đêm muộn và liên kết tâm linh chữa lành hành vi mầm non mỗi tuần,PENDING
+vivid,23,vivid_knowledge,Quy chuẩn thiền định phản tỉnh đêm muộn và liên kết tâm linh chữa lành hành vi mầm non mỗi tuần,PENDING
+atom,23,quote,greatest-help-discipline-comes-spiritual-work-self-education,PENDING
+atom,23,quote,if-i-carry-child-difficulties-into-sleep-life-asking-angel-right-thoughts-come-next-day,PENDING
+atom,23,quote,each-child-adult-guardian-angel-spiritual-strength-parenting,PENDING
+atom,23,quote,child-angel-direct-meeting-with-mother-higher-being-well-of-mother-love,PENDING
+atom,23,quote,fundamental-thing-to-satisfy-spiritual-hunger-grownup-not-stop-working-on-himself,PENDING
+vivid,24,vivid_circumstance,"""Người"" muốn tái thiết lập sự tự tin trong hành trình nuôi dạy con khi cha mẹ rơi vào trạng thái kiệt quệ năng lượng trước các áp lực chăm sóc con trẻ liên tục.",PENDING
+atom,24,insight,"Nỗi lo sợ rằng sự kiệt sức sinh học và cảm giác bất lực trước những áp lực nuôi dạy con liên tục sẽ bộc lộ những yếu điểm cảm xúc, đẩy gia đình vào vòng xoáy xung đột bế tắc hằng đêm và tước đi sợi dây liên kết yêu thương với con trẻ dưới bảy tuổi.",PENDING
+atom,24,insight,"Khát khao giải phóng bản thân khỏi gánh nặng của sự hoàn hảo lý thuyết, tìm thấy dũng khí tĩnh lặng từ nỗ lực tự tu dưỡng hằng đêm để đồng hành cùng con lớn khôn tự tin, bình an mỗi tuần.",PENDING
+atom,24,knowledge,Khái niệm Nỗ lực tự tu dưỡng của cha mẹ (Parental Striving) và giá trị của sự không hoàn hảo trong giáo dục mầm non,PENDING
+vivid,24,vivid_knowledge,Khái niệm Nỗ lực tự tu dưỡng của cha mẹ (Parental Striving) và giá trị của sự không hoàn hảo trong giáo dục mầm non,PENDING
+atom,24,knowledge,Nguyên lý Kỷ luật thực sự là sự dẫn dắt từ bắt chước vô thức sang tự kỷ luật tự thân (True Discipline as Self-Discipline guiding out of Imitation),PENDING
+vivid,24,vivid_knowledge,Nguyên lý Kỷ luật thực sự là sự dẫn dắt từ bắt chước vô thức sang tự kỷ luật tự thân (True Discipline as Self-Discipline guiding out of Imitation),PENDING
+atom,24,knowledge,Quy chuẩn tự soi chiếu đêm muộn và đồng bộ hóa 5 trụ cột kỷ luật tự giác hằng tuần,PENDING
+vivid,24,vivid_knowledge,Quy chuẩn tự soi chiếu đêm muộn và đồng bộ hóa 5 trụ cột kỷ luật tự giác hằng tuần,PENDING
+atom,24,story,Người mẹ kiệt sức với hai con nhỏ-cuoc_khung_hoang_tai_thu_vien_va_su_nang_do_chua_lanh_tai_buoi_gap_go_phu_huynh_dem_muon,PENDING
+atom,24,quote,all-parents-nerves-frayed-energy-depleted-children-benefit-from-striving,PENDING
+atom,24,quote,true-discipline-guiding-out-of-imitation-through-self-discipline-rhythms-play-spaces,PENDING
+atom,24,quote,helpful-to-look-back-reflective-way-prevent-situation-next-time,PENDING
+vivid,25,vivid_circumstance,"""Người"" muốn kiến tạo không gian sinh hoạt nhóm ôn hòa cho con khi con trẻ dưới bảy tuổi bộc lộ trạng thái quá tải cảm giác trước các lớp học nhóm tập trung quá đông người.",PENDING
+atom,25,insight,"Nỗi lo sợ rằng các lớp học nhóm tràn ngập kích thích nhân tạo, tiếng ồn xô bồ và áp lực bắt chước máy móc sẽ vắt kiệt sinh mệnh lực, tàn phá tế bào thần kinh nhạy cảm và gieo rắc sự bất an vào thể chất thực thể của trẻ dưới bảy tuổi.",PENDING
+atom,25,insight,"Khát khao thiết lập một không gian sinh hoạt nhóm tĩnh lặng, ôn hòa—nơi nhịp điệu sinh hoạt tự nhiên và điệu bộ lao động đầy tình yêu của người lớn dẫn dắt con tự giác chơi đùa và phát triển lành mạnh.",PENDING
+atom,25,knowledge,Triết lý Bắt chước điệu bộ lao động tập trung của người lớn,PENDING
+vivid,25,vivid_knowledge,Triết lý Bắt chước điệu bộ lao động tập trung của người lớn,PENDING
+atom,25,knowledge,Nguyên lý Luân phiên nhịp thở hít vào - thở ra (Inbreathing and Outbreathing Rhythm) trong điều hòa cảm quan nhóm,PENDING
+vivid,25,vivid_knowledge,Nguyên lý Luân phiên nhịp thở hít vào - thở ra (Inbreathing and Outbreathing Rhythm) trong điều hòa cảm quan nhóm,PENDING
+atom,25,knowledge,Quy chuẩn thiết lập lịch trình sinh hoạt nhóm ôn hòa và quy trình chuyển nhịp không bạo lực lời nói mỗi tuần,PENDING
+vivid,25,vivid_knowledge,Quy chuẩn thiết lập lịch trình sinh hoạt nhóm ôn hòa và quy trình chuyển nhịp không bạo lực lời nói mỗi tuần,PENDING
+atom,25,story,Bà Barbara J. Patterson và các em nhỏ mầm non-dung_hoat_dong_nhao_bot_lam_banh_mi_va_su_tap_trung_cua_nguoi_lon_de_thu_hut_tre_choi_tu_do_on_hoa,PENDING
+atom,25,quote,young-children-learn-primarily-through-imitation-absorbing-mood-concentration-adults-inspires-play,PENDING
+atom,25,quote,morning-schedule-is-rhythm-inbreathing-outbreathing-bread-making-play-story,PENDING
+atom,25,quote,adults-work-crafts-let-children-play-free-not-interfere-unless-needed,PENDING
+vivid,26,vivid_circumstance,"""Người"" muốn truyền đạt các chỉ dẫn sinh hoạt thường nhật cho con khi con trẻ dưới bảy tuổi bộc lộ phản ứng thờ ơ trước các mệnh lệnh lời nói trực tiếp.",PENDING
+atom,26,insight,"Nỗi lo sợ rằng việc thường xuyên dùng mệnh lệnh khô khan, quát mắng hay hối thúc dồn dập sẽ làm thui chột khả năng tiếp thụ ngôn ngữ tự nhiên, gây xơ cứng hệ thần kinh nhạy cảm của con và đẩy mối quan hệ cha mẹ - con cái vào những cuộc chiến ý chí bế tắc thường nhật.",PENDING
+atom,26,insight,"Khát khao làm chủ nghệ thuật sử dụng ngôn từ giàu chất nhạc, các điệu bộ cơ thể ôn hòa và những giai điệu ngũ âm để truyền đi thông điệp thường nhật, thu hút vô thức trẻ hợp tác tự giác một cách hân hoan.",PENDING
+atom,26,knowledge,Triết lý Sử dụng Ngôn ngữ Nghệ thuật như phương tiện truyền dẫn tâm thức mầm non,PENDING
+vivid,26,vivid_knowledge,Triết lý Sử dụng Ngôn ngữ Nghệ thuật như phương tiện truyền dẫn tâm thức mầm non,PENDING
+atom,26,knowledge,Nguyên lý Hài hòa hóa tiến trình chuyển nhịp thông qua âm điệu ngũ âm và cử chỉ vận động,PENDING
+vivid,26,vivid_knowledge,Nguyên lý Hài hòa hóa tiến trình chuyển nhịp thông qua âm điệu ngũ âm và cử chỉ vận động,PENDING
+atom,26,knowledge,Quy chuẩn chuyển nhịp bằng bài ca và thực hành ngôn ngữ nghệ thuật hằng tuần cho cha mẹ mầm non,PENDING
+vivid,26,vivid_knowledge,Quy chuẩn chuyển nhịp bằng bài ca và thực hành ngôn ngữ nghệ thuật hằng tuần cho cha mẹ mầm non,PENDING
+atom,26,quote,artistic-use-of-language-circle-time-rhymes-poems-living-way,PENDING
+atom,26,quote,songs-can-ease-transitions-cleaning-up-nap,PENDING
+atom,26,quote,between-ages-one-and-seven-songs-sung-sound-harmony-consonance-pommerland,PENDING
+atom,26,quote,melodic-quality-language-lullaby-valuable-brain-development-pitch-A,PENDING
+vivid,27,vivid_circumstance,"""Người"" muốn xây dựng cảm giác thuộc về thế giới của con khi con trẻ dưới bảy tuổi bộc lộ sự băn khoăn về nguồn gốc ra đời của bản thân.",PENDING
+atom,27,insight,"Nỗi lo sợ rằng những băn khoăn dồn nén về nguồn gốc ra đời và mặc cảm vô thức (nhất là ở trẻ nhận con nuôi) nếu không được hóa giải bằng hình ảnh nghệ thuật thiêng liêng sẽ làm suy yếu lòng tin cậy nguyên bản, khiến con luôn cảm thấy lạc lõng, bất an và thiếu đi cảm giác thuộc về gia đình trọn đời.",PENDING
+atom,27,insight,"Khát khao làm chủ nghệ thuật kể câu chuyện sinh nhật Cầu cầu vồng đầy thiêng liêng và kiến tạo bàn lễ hội tĩnh lặng để vỗ về tâm hồn con, gieo rắc lòng kiêu hãnh bản dạng sống và mang lại cho con cảm giác thuộc về thế giới một cách vững chãi nhất.",PENDING
+atom,27,knowledge,Khái niệm Hành trình hạ sinh tinh thần của đứa trẻ mầm non,PENDING
+vivid,27,vivid_knowledge,Khái niệm Hành trình hạ sinh tinh thần của đứa trẻ mầm non,PENDING
+atom,27,knowledge,Nguyên lý Chuyển tải sinh mệnh lực thông qua nghệ thuật kể chuyện bằng trí nhớ,PENDING
+vivid,27,vivid_knowledge,Nguyên lý Chuyển tải sinh mệnh lực thông qua nghệ thuật kể chuyện bằng trí nhớ,PENDING
+atom,27,knowledge,Quy chuẩn thiết lập bàn lễ hội sinh nhật và quy trình kể câu chuyện Cầu cầu vồng chữa lành tâm thức hằng năm,PENDING
+vivid,27,vivid_knowledge,Quy chuẩn thiết lập bàn lễ hội sinh nhật và quy trình kể câu chuyện Cầu cầu vồng chữa lành tâm thức hằng năm,PENDING
+atom,27,quote,story-little-child-heaven-crosses-rainbow-bridge-born-to-them-healing-adopted,PENDING
+atom,27,quote,telling-story-from-memory-book-stands-between-us-gesture-respond,PENDING
+atom,27,quote,adopted-child-adapted-story-angel-tells-parents-where-to-find,PENDING
+vivid,28,vivid_circumstance,"""Người"" muốn xây dựng nhận thức về trật tự đạo đức cho con khi con trẻ dưới bảy tuổi bộc lộ sự hoang mang trước các hình ảnh xung đột từ môi trường xung quanh.",PENDING
+atom,28,insight,"Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",PENDING
+atom,28,insight,"Khát khao sử dụng các hình ảnh ẩn dụ nguyên mẫu của truyện cổ tích Grimm nguyên bản để gieo hạt giống đạo đức tự nhiên, giúp con cảm nhận sự chiến thắng tất yếu của cái thiện và xây dựng nội lực dũng cảm vượt qua mọi thử thách [2, 4].",PENDING
+vivid,28,vivid_insight,"Nỗi lo sợ rằng việc dập tắt hoặc biên tập méo mó các thử thách cuộc sống trong truyện kể sẽ cướp đi dũng khí phản kháng đạo đức, khiến con trở nên yếu ớt, hoang mang trước cái ác và mất đi lòng tin cậy nguyên bản vào trật tự công lý của thế giới [1, 2].",PENDING
+atom,28,knowledge,Khái niệm Hình ảnh nguyên mẫu cổ tích (Archetypal Pictures) như màng lọc cảm quan và nguồn dinh dưỡng đạo đức cho trẻ mầm non,PENDING
+vivid,28,vivid_knowledge,Khái niệm Hình ảnh nguyên mẫu cổ tích (Archetypal Pictures) như màng lọc cảm quan và nguồn dinh dưỡng đạo đức cho trẻ mầm non,PENDING
+atom,28,knowledge,"Nguyên lý Kể chuyện bình thản khách quan tả hoa tả lá (Calm, Flower-Describing Storytelling Style) bảo ôn hệ thần kinh",PENDING
+vivid,28,vivid_knowledge,"Nguyên lý Kể chuyện bình thản khách quan tả hoa tả lá (Calm, Flower-Describing Storytelling Style) bảo ôn hệ thần kinh",PENDING
+atom,28,knowledge,Quy chuẩn phân loại truyện kể theo Joan Almon và quy trình thắp nến kể chuyện chữa lành hằng tuần,PENDING
+vivid,28,vivid_knowledge,Quy chuẩn phân loại truyện kể theo Joan Almon và quy trình thắp nến kể chuyện chữa lành hằng tuần,PENDING
+atom,28,quote,children-experience-greed-wolf-witch-archetypal-pictures,PENDING
+atom,28,quote,unedited-fairy-tales-strengthen-moral-lives-seeds-challenges-life-brings,PENDING
+atom,28,quote,art-of-telling-calmly-describing-flower-garden,PENDING
+atom,28,quote,fairy-tales-speak-directly-natural-morality-moral-order-world,PENDING
+atom,28,quote,very-simplest-tales-sequential-sweet-porridge-three-bears-gingerbread,PENDING
+vivid,29,vivid_circumstance,"""Người"" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",PENDING
+atom,29,insight,"Nỗi lo sợ rằng việc cho con tiếp xúc sớm với đồ chơi công nghiệp hoàn thiện quá mức và các thiết bị điện tử vô hồn sẽ bóp nghẹt lực lượng tưởng tượng dồi dào, làm xơ cứng các cơ quan thực thể bên trong và tước đi khả năng tự chơi độc lập dẻo dai của con trẻ dưới bảy tuổi.",PENDING
+atom,29,insight,"Khát khao tự tay khâu vá những món đồ chơi thô sơ bằng chất liệu sợi tự nhiên dồi dào hơi ấm để chữa lành cảm quan, đánh thức sức mạnh cơ bắp của trí tưởng tượng và nuôi dưỡng sự tập trung chơi đùa bình an cho con mỗi tuần.",PENDING
+atom,29,knowledge,Triết lý Sự đồng bộ phát triển giữa cơ bắp bàn tay và tế bào não bộ thông qua hoạt động tưởng tượng chủ động,PENDING
+vivid,29,vivid_knowledge,Triết lý Sự đồng bộ phát triển giữa cơ bắp bàn tay và tế bào não bộ thông qua hoạt động tưởng tượng chủ động,PENDING
+atom,29,knowledge,Nguyên lý Khơi dậy thế giới nội tâm qua tính tối giản của biểu cảm và chất liệu đồ chơi,PENDING
+vivid,29,vivid_knowledge,Nguyên lý Khơi dậy thế giới nội tâm qua tính tối giản của biểu cảm và chất liệu đồ chơi,PENDING
+atom,29,knowledge,Quy chuẩn khâu vá búp bê thắt nút flannel và quy trình tổ chức giờ chơi tự do với đồ chơi thô sơ hằng tuần cho cha mẹ mầm non,PENDING
+vivid,29,vivid_knowledge,Quy chuẩn khâu vá búp bê thắt nút flannel và quy trình tổ chức giờ chơi tự do với đồ chơi thô sơ hằng tuần cho cha mẹ mầm non,PENDING
+atom,29,story,Bé gái mười tháng tuổi và chú thỏ bông công nghiệp-su_phuc_hoi_the_chat_ky_dieu_nho_thay_doi_hinh_the_do_choi_chua_lanh,PENDING
+atom,29,quote,folded-napkin-brain-unfolds-muscles-hand,PENDING
+atom,29,quote,dead-mathematical-forms-desolating-killing-effect-kindles-imagination,PENDING
+atom,29,quote,soft-cloth-doll-neutral-expression-companion-changes-provoke-mechanics,PENDING
+atom,29,quote,sitting-next-to-them-mending-enough-to-participate,PENDING

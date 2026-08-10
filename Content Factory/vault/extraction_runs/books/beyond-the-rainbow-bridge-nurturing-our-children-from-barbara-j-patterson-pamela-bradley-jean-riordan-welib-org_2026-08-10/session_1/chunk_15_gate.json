@@ -1,0 +1,138 @@
+{
+  "chunk_index": 15,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_15_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 15,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_15_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_15_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_15_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "kỷ luật",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Imitation and Self-Discipline\"** (Bắt chước và Tự kỷ luật) là chương khởi đầu đầy cách mạng của phần Kỷ luật sáng tạo. Tác phẩm đập tan những ngộ nhận kinh điển của các bậc cha mẹ trong việc dạy dỗ trẻ dưới bảy tuổi: tin rằng lời răn đe, quát tháo hay các mệnh lệnh logic sẽ giúp con ngoan ngoãn vâng lời [1-3]. Thực tế, ở giai đoạn này, trẻ phản ứng hoàn toàn dựa trên cơ chế bắt chước vô thức trọn vẹn [1, 2, 4]. Mọi xung động tức giận của người lớn đều ghi dấu ấn sâu đậm vào sinh lý, điêu khắc nên hệ cơ quan tuần hoàn, hô hấp và trao đổi chất của trẻ [4, 5]. Chương này khẳng định kỷ luật mầm non cốt tủy là sự tự giáo dục bản thân của người lớn [6]. Khi người lớn không ngừng làm việc, rèn luyện tính kiên nhẫn và làm chủ điệu bộ ứng xử thường nhật của mình, con trẻ sẽ tự động đồng hóa và phát triển năng lực tự kiểm soát hành vi một cách tự nhiên mà không cần đến sự cưỡng bức thô bạo [6-8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sâu sắc muốn tu dưỡng đạo đức, làm chủ điệu bộ ứng xử thường nhật và xây dựng năng lực tự kỷ luật kiên định của bản thân để trở thành một tấm gương toàn vẹn nâng đỡ sự tự giác của con."
+        ]
+      },
+      {
+        "bigram": "điệu bộ",
+        "count": 19,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Imitation and Self-Discipline\"** (Bắt chước và Tự kỷ luật) là chương khởi đầu đầy cách mạng của phần Kỷ luật sáng tạo. Tác phẩm đập tan những ngộ nhận kinh điển của các bậc cha mẹ trong việc dạy dỗ trẻ dưới bảy tuổi: tin rằng lời răn đe, quát tháo hay các mệnh lệnh logic sẽ giúp con ngoan ngoãn vâng lời [1-3]. Thực tế, ở giai đoạn này, trẻ phản ứng hoàn toàn dựa trên cơ chế bắt chước vô thức trọn vẹn [1, 2, 4]. Mọi xung động tức giận của người lớn đều ghi dấu ấn sâu đậm vào sinh lý, điêu khắc nên hệ cơ quan tuần hoàn, hô hấp và trao đổi chất của trẻ [4, 5]. Chương này khẳng định kỷ luật mầm non cốt tủy là sự tự giáo dục bản thân của người lớn [6]. Khi người lớn không ngừng làm việc, rèn luyện tính kiên nhẫn và làm chủ điệu bộ ứng xử thường nhật của mình, con trẻ sẽ tự động đồng hóa và phát triển năng lực tự kiểm soát hành vi một cách tự nhiên mà không cần đến sự cưỡng bức thô bạo [6-8].",
+          "Trong một buổi chiều muộn tại phòng bếp gia đình | Người mẹ đang dọn dẹp bát đĩa trong trạng thái vội vã, bực dọc, quăng quật các thìa gỗ và khay sứ lên mặt bàn một cách tức tối | Đứa con gái bốn tuổi đứng bên cạnh, bỗng nhiên giật mạnh tay búp bê vải và hét lớn đầy cáu bực với chú mèo nhỏ đang ngủ dưới gầm bàn | Người mẹ bàng hoàng dừng tay, chuẩn bị cất lời quát mắng con \"Không được thô bạo thế!\", nhưng chợt khựng lại khi nhận ra sự giận dữ của đứa trẻ chính là tấm gương phản chiếu hoàn hảo điệu bộ bực dọc của mình vừa diễn ra cách đó vài phút [9] | Cô nhận thấy mọi lời khuyên bảo đạo lý khô khan lúc này đều hoàn toàn vô nghĩa trước sự bắt chước vô thức mãnh liệt đang vận hành trong huyết quản của con [2-4].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sâu sắc muốn tu dưỡng đạo đức, làm chủ điệu bộ ứng xử thường nhật và xây dựng năng lực tự kỷ luật kiên định của bản thân để trở thành một tấm gương toàn vẹn nâng đỡ sự tự giác của con."
+        ]
+      },
+      {
+        "bigram": "tự kỷ",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Imitation and Self-Discipline\"** (Bắt chước và Tự kỷ luật) là chương khởi đầu đầy cách mạng của phần Kỷ luật sáng tạo. Tác phẩm đập tan những ngộ nhận kinh điển của các bậc cha mẹ trong việc dạy dỗ trẻ dưới bảy tuổi: tin rằng lời răn đe, quát tháo hay các mệnh lệnh logic sẽ giúp con ngoan ngoãn vâng lời [1-3]. Thực tế, ở giai đoạn này, trẻ phản ứng hoàn toàn dựa trên cơ chế bắt chước vô thức trọn vẹn [1, 2, 4]. Mọi xung động tức giận của người lớn đều ghi dấu ấn sâu đậm vào sinh lý, điêu khắc nên hệ cơ quan tuần hoàn, hô hấp và trao đổi chất của trẻ [4, 5]. Chương này khẳng định kỷ luật mầm non cốt tủy là sự tự giáo dục bản thân của người lớn [6]. Khi người lớn không ngừng làm việc, rèn luyện tính kiên nhẫn và làm chủ điệu bộ ứng xử thường nhật của mình, con trẻ sẽ tự động đồng hóa và phát triển năng lực tự kiểm soát hành vi một cách tự nhiên mà không cần đến sự cưỡng bức thô bạo [6-8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sâu sắc muốn tu dưỡng đạo đức, làm chủ điệu bộ ứng xử thường nhật và xây dựng năng lực tự kỷ luật kiên định của bản thân để trở thành một tấm gương toàn vẹn nâng đỡ sự tự giác của con."
+        ]
+      },
+      {
+        "bigram": "cảm xúc",
+        "count": 17,
+        "contexts": [
+          "* **🔥 Tử huyệt Cảm xúc chính:**",
+          "* **Mô tả:** Độc giả sợ hãi sâu sắc rằng những phản ứng bộc phát bực dọc, những tiếng la hét dồn dập hằng tối của mình không chỉ tàn phá không khí gia đình mà thực sự đang âm thầm hủy hoại sức khỏe thể chất của con [2, 5]. Họ lo âu trước những cảnh báo tâm lý học và học mầm non rằng sự bất an cảm xúc từ người lớn sẽ ép trẻ phải dựng màng bảo vệ [10], tước đi nguồn năng lực sống cần thiết để hoàn thiện cấu trúc nội tạng, khiến con lớn lên trong sự xơ cứng, bướng bỉnh và mất đi dũng khí giao tiếp hài hòa [5, 10].",
+          "* **Mô tả:** Cha mẹ khát khao mãnh liệt tìm thấy sự điềm tĩnh và bình an nội tại, chuyển hóa từ lối kỷ luật áp đặt trừng phạt sang nghệ thuật điều hướng hành vi đầy yêu thương [8, 11, 12]. Họ mong muốn rèn luyện năng lực tự giáo dục tự thân, biến từng chuyển động, lời nói thường nhật của mình thành những mỏ neo an lành để con trẻ tự nguyện bắt chước, đặt nền móng vững chắc cho khả năng tự lập và kiểm soát cảm xúc của con khi trưởng thành [6, 8, 13]."
+        ]
+      },
+      {
+        "bigram": "sinh học",
+        "count": 17,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi.",
+          "* ②-2. principle: Nguyên lý \"Trẻ dưới bảy tuổi hoạt động như một con mắt lớn (The Child as an Eye / Rudolf Steiner)\" và tác động sinh học của sự tức giận"
+        ]
+      },
+      {
+        "bigram": "dưới bảy",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Imitation and Self-Discipline\"** (Bắt chước và Tự kỷ luật) là chương khởi đầu đầy cách mạng của phần Kỷ luật sáng tạo. Tác phẩm đập tan những ngộ nhận kinh điển của các bậc cha mẹ trong việc dạy dỗ trẻ dưới bảy tuổi: tin rằng lời răn đe, quát tháo hay các mệnh lệnh logic sẽ giúp con ngoan ngoãn vâng lời [1-3]. Thực tế, ở giai đoạn này, trẻ phản ứng hoàn toàn dựa trên cơ chế bắt chước vô thức trọn vẹn [1, 2, 4]. Mọi xung động tức giận của người lớn đều ghi dấu ấn sâu đậm vào sinh lý, điêu khắc nên hệ cơ quan tuần hoàn, hô hấp và trao đổi chất của trẻ [4, 5]. Chương này khẳng định kỷ luật mầm non cốt tủy là sự tự giáo dục bản thân của người lớn [6]. Khi người lớn không ngừng làm việc, rèn luyện tính kiên nhẫn và làm chủ điệu bộ ứng xử thường nhật của mình, con trẻ sẽ tự động đồng hóa và phát triển năng lực tự kiểm soát hành vi một cách tự nhiên mà không cần đến sự cưỡng bức thô bạo [6-8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "hành vi",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Imitation and Self-Discipline\"** (Bắt chước và Tự kỷ luật) là chương khởi đầu đầy cách mạng của phần Kỷ luật sáng tạo. Tác phẩm đập tan những ngộ nhận kinh điển của các bậc cha mẹ trong việc dạy dỗ trẻ dưới bảy tuổi: tin rằng lời răn đe, quát tháo hay các mệnh lệnh logic sẽ giúp con ngoan ngoãn vâng lời [1-3]. Thực tế, ở giai đoạn này, trẻ phản ứng hoàn toàn dựa trên cơ chế bắt chước vô thức trọn vẹn [1, 2, 4]. Mọi xung động tức giận của người lớn đều ghi dấu ấn sâu đậm vào sinh lý, điêu khắc nên hệ cơ quan tuần hoàn, hô hấp và trao đổi chất của trẻ [4, 5]. Chương này khẳng định kỷ luật mầm non cốt tủy là sự tự giáo dục bản thân của người lớn [6]. Khi người lớn không ngừng làm việc, rèn luyện tính kiên nhẫn và làm chủ điệu bộ ứng xử thường nhật của mình, con trẻ sẽ tự động đồng hóa và phát triển năng lực tự kiểm soát hành vi một cách tự nhiên mà không cần đến sự cưỡng bức thô bạo [6-8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",
+          "* **Mô tả:** Cha mẹ khát khao mãnh liệt tìm thấy sự điềm tĩnh và bình an nội tại, chuyển hóa từ lối kỷ luật áp đặt trừng phạt sang nghệ thuật điều hướng hành vi đầy yêu thương [8, 11, 12]. Họ mong muốn rèn luyện năng lực tự giáo dục tự thân, biến từng chuyển động, lời nói thường nhật của mình thành những mỏ neo an lành để con trẻ tự nguyện bắt chước, đặt nền móng vững chắc cho khả năng tự lập và kiểm soát cảm xúc của con khi trưởng thành [6, 8, 13]."
+        ]
+      },
+      {
+        "bigram": "trẻ dưới",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Imitation and Self-Discipline\"** (Bắt chước và Tự kỷ luật) là chương khởi đầu đầy cách mạng của phần Kỷ luật sáng tạo. Tác phẩm đập tan những ngộ nhận kinh điển của các bậc cha mẹ trong việc dạy dỗ trẻ dưới bảy tuổi: tin rằng lời răn đe, quát tháo hay các mệnh lệnh logic sẽ giúp con ngoan ngoãn vâng lời [1-3]. Thực tế, ở giai đoạn này, trẻ phản ứng hoàn toàn dựa trên cơ chế bắt chước vô thức trọn vẹn [1, 2, 4]. Mọi xung động tức giận của người lớn đều ghi dấu ấn sâu đậm vào sinh lý, điêu khắc nên hệ cơ quan tuần hoàn, hô hấp và trao đổi chất của trẻ [4, 5]. Chương này khẳng định kỷ luật mầm non cốt tủy là sự tự giáo dục bản thân của người lớn [6]. Khi người lớn không ngừng làm việc, rèn luyện tính kiên nhẫn và làm chủ điệu bộ ứng xử thường nhật của mình, con trẻ sẽ tự động đồng hóa và phát triển năng lực tự kiểm soát hành vi một cách tự nhiên mà không cần đến sự cưỡng bức thô bạo [6-8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn rèn luyện tính tự kỷ luật của bản thân khi các mệnh lệnh bằng lời nói hoàn toàn vô hiệu trước xu hướng bắt chước vô thức mọi hành vi của người lớn ở trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "giận dữ",
+        "count": 11,
+        "contexts": [
+          "Trong một buổi chiều muộn tại phòng bếp gia đình | Người mẹ đang dọn dẹp bát đĩa trong trạng thái vội vã, bực dọc, quăng quật các thìa gỗ và khay sứ lên mặt bàn một cách tức tối | Đứa con gái bốn tuổi đứng bên cạnh, bỗng nhiên giật mạnh tay búp bê vải và hét lớn đầy cáu bực với chú mèo nhỏ đang ngủ dưới gầm bàn | Người mẹ bàng hoàng dừng tay, chuẩn bị cất lời quát mắng con \"Không được thô bạo thế!\", nhưng chợt khựng lại khi nhận ra sự giận dữ của đứa trẻ chính là tấm gương phản chiếu hoàn hảo điệu bộ bực dọc của mình vừa diễn ra cách đó vài phút [9] | Cô nhận thấy mọi lời khuyên bảo đạo lý khô khan lúc này đều hoàn toàn vô nghĩa trước sự bắt chước vô thức mãnh liệt đang vận hành trong huyết quản của con [2-4].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc thiếu tự chủ cảm xúc, thường xuyên bộc phát sự giận dữ hay quát tháo khô cứng trước mặt con sẽ vô tình điêu khắc nên những biến dạng sinh học trong cơ thể vật lý và gieo rắc thói quen bạo lực, nổi loạn vào tâm thức con trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "sâu sắc",
+        "count": 10,
+        "contexts": [
+          "Dưới đây là toàn bộ nội dung bóc tách dữ liệu tri thức chi tiết, sâu sắc và chuẩn xác nhất của **Chunk 15: Creative Discipline - Imitation and Self-Discipline** được in trực tiếp ngay tại đây để phục vụ cho công tác nghiên cứu và thực hành sư phạm của bạn.",
+          "* **Mô tả:** Độc giả sợ hãi sâu sắc rằng những phản ứng bộc phát bực dọc, những tiếng la hét dồn dập hằng tối của mình không chỉ tàn phá không khí gia đình mà thực sự đang âm thầm hủy hoại sức khỏe thể chất của con [2, 5]. Họ lo âu trước những cảnh báo tâm lý học và học mầm non rằng sự bất an cảm xúc từ người lớn sẽ ép trẻ phải dựng màng bảo vệ [10], tước đi nguồn năng lực sống cần thiết để hoàn thiện cấu trúc nội tạng, khiến con lớn lên trong sự xơ cứng, bướng bỉnh và mất đi dũng khí giao tiếp hài hòa [5, 10].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao sâu sắc muốn tu dưỡng đạo đức, làm chủ điệu bộ ứng xử thường nhật và xây dựng năng lực tự kỷ luật kiên định của bản thân để trở thành một tấm gương toàn vẹn nâng đỡ sự tự giác của con."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

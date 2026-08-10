@@ -1,0 +1,138 @@
+{
+  "chunk_index": 12,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_12_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 12,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_12_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_12_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_12_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "giác quan",
+        "count": 43,
+        "contexts": [
+          "Chào bạn! Chúng ta đã cùng nhau làm chủ toàn bộ tiến trình lớn khôn và thế giới vui chơi mầm non từ giai đoạn sơ sinh cho đến ngưỡng cửa lên bảy tuổi của trẻ. Giờ đây, tác giả dẫn dắt chúng ta dấn thân vào chương tri thức đồ sộ và thiêng liêng nhất của cuốn sách để khám phá hệ thống giác quan mầm non.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4]."
+        ]
+      },
+      {
+        "bigram": "[1, 2].",
+        "count": 26,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "Một buổi chiều cuối tuần oi bức tại trung tâm mua sắm sầm uất | Người mẹ dắt tay đứa con nhỏ bốn tuổi đi qua những gian hàng rực rỡ ánh sáng đèn huỳnh quang nhấp nháy liên tục cùng tiếng nhạc quảng cáo cơ khí ồn ào dội thẳng vào tai | Đứa trẻ bắt đầu có biểu hiện bứt rứt bướng bỉnh, quấy khóc, dụi mắt liên tục và run rẩy khi đi qua khu vực trò chơi điện tử náo nhiệt | Người mẹ mệt mỏi nhận ra con mình đang bị bủa vây và kiệt sức bởi vô số kích thích xô bồ của thời đại công nghiệp mà bản thân trẻ hoàn toàn bất lực không thể tự đóng giác quan hay tạo lập màng lọc tự vệ để bảo vệ hệ thần kinh non nớt của mình [1, 2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "cơ thể",
+        "count": 23,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng việc để con tiếp xúc với ánh sáng nhân tạo mạnh, âm thanh cơ khí hỗn tạp và các sản phẩm tẩy rửa hóa học có mùi thơm nồng nặc mỗi tuần sẽ làm chai lì cảm giác nguyên bản của con. Họ lo âu tột độ trước các cảnh báo sinh học rằng việc sử dụng các thiết bị cưỡng bức vận động sớm (như xe tập đi, ghế nhảy) sẽ ép các khớp xương chưa cốt hóa hoàn toàn của con phải chịu lực quá tải, gây biến dạng cột sống và rối loạn vĩnh viễn giác quan thăng bằng của trẻ, trực tiếp tước đi cơ hội để Cái Tôi tự chủ xây dựng cơ thể vững chãi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "vận động",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng việc để con tiếp xúc với ánh sáng nhân tạo mạnh, âm thanh cơ khí hỗn tạp và các sản phẩm tẩy rửa hóa học có mùi thơm nồng nặc mỗi tuần sẽ làm chai lì cảm giác nguyên bản của con. Họ lo âu tột độ trước các cảnh báo sinh học rằng việc sử dụng các thiết bị cưỡng bức vận động sớm (như xe tập đi, ghế nhảy) sẽ ép các khớp xương chưa cốt hóa hoàn toàn của con phải chịu lực quá tải, gây biến dạng cột sống và rối loạn vĩnh viễn giác quan thăng bằng của trẻ, trực tiếp tước đi cơ hội để Cái Tôi tự chủ xây dựng cơ thể vững chãi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "bảy tuổi",
+        "count": 20,
+        "contexts": [
+          "Chào bạn! Chúng ta đã cùng nhau làm chủ toàn bộ tiến trình lớn khôn và thế giới vui chơi mầm non từ giai đoạn sơ sinh cho đến ngưỡng cửa lên bảy tuổi của trẻ. Giờ đây, tác giả dẫn dắt chúng ta dấn thân vào chương tri thức đồ sộ và thiêng liêng nhất của cuốn sách để khám phá hệ thống giác quan mầm non.",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "dưới bảy",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "cảm quan",
+        "count": 19,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "trẻ dưới",
+        "count": 18,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ bốn giác quan thể chất nền tảng của con khi con trẻ dưới bảy tuổi hoạt động hoàn toàn như một cơ quan cảm quan mở không có màng lọc tự vệ trước các kích thích từ môi trường xung quanh [1, 3, 4].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "cưỡng bức",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng các kích thích quá tải từ môi trường nhân tạo và các thiết bị hỗ trợ vận động sớm cưỡng bức sẽ tàn phá sự tích hợp cảm quan thực thể, làm xơ cứng hệ thần kinh mầm non và để lại những khiếm khuyết vĩnh viễn trong cơ thể thể chất của trẻ dưới bảy tuổi [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng việc để con tiếp xúc với ánh sáng nhân tạo mạnh, âm thanh cơ khí hỗn tạp và các sản phẩm tẩy rửa hóa học có mùi thơm nồng nặc mỗi tuần sẽ làm chai lì cảm giác nguyên bản của con. Họ lo âu tột độ trước các cảnh báo sinh học rằng việc sử dụng các thiết bị cưỡng bức vận động sớm (như xe tập đi, ghế nhảy) sẽ ép các khớp xương chưa cốt hóa hoàn toàn của con phải chịu lực quá tải, gây biến dạng cột sống và rối loạn vĩnh viễn giác quan thăng bằng của trẻ, trực tiếp tước đi cơ hội để Cái Tôi tự chủ xây dựng cơ thể vững chãi [1, 2]."
+        ]
+      },
+      {
+        "bigram": "thăng bằng",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Will Senses\"** (Các giác quan ý chí) mở đầu cho chương khảo sát về mười hai giác quan mầu nhiệm của con người theo nhân học Anthroposophy của Rudolf Steiner. Tác phẩm phân loại mười hai giác quan thành ba nhóm lớn liên kết chặt chẽ với Thể, Hồn và Thần: nhóm giác quan ý chí (hướng nội thể chất), nhóm giác quan cảm xúc (hướng ngoại thế giới) và nhóm giác quan nhận thức (hướng vào xã hội và Cái Tôi của người khác) [1]. Ở giai đoạn mầm non dưới bảy tuổi, cơ thể trẻ hoạt động hoàn toàn như một giác quan mở rộng không có màng lọc bảo vệ [1, 2]. Do đó, việc che chở và nuôi dưỡng bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—là nhiệm vụ tối thượng của người lớn để Cái Tôi của trẻ tự do làm chủ cơ thể thực thể [1, 2]. Thông qua việc thấu hiểu các mốc sinh lý học như sự nhạy cảm của làn da, tác dụng giáo dục của các cơn đau sự sống, tác hại cơ xương khớp của các thiết bị cưỡng bức vận động sớm và sự tự điều chỉnh thăng bằng tự nhiên, chương này cung cấp những quy chuẩn thực hành thiết thực để cha mẹ đồng hành cùng tiến trình hóa thân dẻo dai của con [1, 2].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng việc để con tiếp xúc với ánh sáng nhân tạo mạnh, âm thanh cơ khí hỗn tạp và các sản phẩm tẩy rửa hóa học có mùi thơm nồng nặc mỗi tuần sẽ làm chai lì cảm giác nguyên bản của con. Họ lo âu tột độ trước các cảnh báo sinh học rằng việc sử dụng các thiết bị cưỡng bức vận động sớm (như xe tập đi, ghế nhảy) sẽ ép các khớp xương chưa cốt hóa hoàn toàn của con phải chịu lực quá tải, gây biến dạng cột sống và rối loạn vĩnh viễn giác quan thăng bằng của trẻ, trực tiếp tước đi cơ hội để Cái Tôi tự chủ xây dựng cơ thể vững chãi [1, 2].",
+          "* **Định nghĩa/Phát biểu luật:** Bốn giác quan ý chí nền tảng—bao gồm Xúc giác (Touch), Sự sống (Life), Vận động tự thân (Movement) và Thăng bằng (Balance)—hoạt động hướng nội để giúp trẻ cảm nhận sâu sắc ranh giới bản thể riêng biệt, giám sát trạng thái khỏe mạnh thực thể và làm chủ các chi trong không gian ba chiều chống lại lực hấp dẫn của Trái Đất [1, 2]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

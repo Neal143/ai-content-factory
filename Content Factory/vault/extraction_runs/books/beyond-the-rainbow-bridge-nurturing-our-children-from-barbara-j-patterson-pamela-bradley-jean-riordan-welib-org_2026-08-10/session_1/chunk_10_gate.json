@@ -1,0 +1,138 @@
+{
+  "chunk_index": 10,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_10_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 10,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_10_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_10_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_10_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "sinh lực",
+        "count": 19,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8].",
+          "* **Mô tả:** Cha mẹ khát khao nhìn thấy đứa con lên sáu tuổi của mình phát triển \"tính bền chí\" (stick-to-itiveness)—khả năng kiên trì vượt qua khó khăn để hoàn thành đến cùng những mục tiêu tự lập ra [16]. Họ mong muốn rèn giũa ý chí bùng nổ, có phần bướng bỉnh của giai đoạn biến động tuổi lên sáu thành một nguồn sinh lực có trật tự, hài hòa thông qua việc cùng con làm mộc, làm bánh, thêu thùa hay làm vườn hằng tuần, giúp con tự tin và dũng cảm bước qua ngưỡng cửa lớp một [9, 17-19]."
+        ]
+      },
+      {
+        "bigram": "thế giới",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "Trong góc phòng mầm non hoặc phòng khách gia đình ấm áp | Đứa con gái lớn sáu tuổi đang tỉ mỉ đo đạc các tấm ván gỗ và phủ những tấm vải ga giường lớn lên khung kệ để xây dựng một \"phòng khám bác sĩ\" [7, 11] | Con có một kịch bản rõ rệt trong tâm trí: gom nhặt các viên đá cuội nhỏ làm thuốc và nhờ em trai sắm vai tá ngồi viết tên bệnh nhân vào một cuốn sổ giấy tự chế trước khi cho vào khám [7, 12] | Người cha thong thả quan sát thấy con đã say sưa chuẩn bị công phu suốt gần một tiếng đồng hồ mà chưa thực sự tiến hành hoạt động \"khám bệnh\", nhưng con hoàn toàn thỏa mãn với tiến trình kiến thiết này [7] | Anh nhận ra hoạt động chơi của con không còn là những chuyển động ngẫu hứng của tuổi lên ba, mà đã được dẫn dắt bởi một bản thiết kế tư duy có chủ đích rõ rệt từ thế giới nội tâm của con [4, 5].",
+          "* **Mô tả:** Độc giả lo sợ tột cùng trước xu thế chạy đua giáo dục sớm của thời đại số, nơi trẻ mầm non bị ép buộc ngồi bàn học làm các phiếu bài tập worksheets khô cứng hoặc học thẻ từ ghi nhớ từ sớm [13]. Họ sợ rằng việc đánh thức trí năng quá sớm sẽ bòn rút nguồn năng lượng sống (sinh lực) lẽ ra đang dồn toàn lực để hoàn thiện các cơ quan nội tạng bên trong cơ thể con, gây ra những suy nhược thể chất vĩnh viễn và làm rỗng tuếch thế giới tưởng tượng đầy chất thơ của tuổi thơ con trước tuổi lên bảy [2, 8, 14, 15]."
+        ]
+      },
+      {
+        "bigram": "trò chơi",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn hỗ trợ con thực hiện các trò chơi có kế hoạch khi con trẻ từ năm đến bảy tuổi bắt đầu bộc lộ nhu cầu tạo ra các sản phẩm có mục đích rõ rệt [5].",
+          "* **Diễn giải Core Logic:** Rudolf Steiner và Barbara Patterson giải thích rằng trước mốc năm tuổi, các trò chơi của trẻ được kích hoạt trực tiếp từ các vật dụng giác quan trong môi trường (thấy món đồ gì sẽ lập tức chơi món đồ đó) [4]. Tuy nhiên, khi bước vào tuổi lên sáu, trẻ trải qua một cuộc \"dậy thì nhỏ\" (little puberty) [4]. Một sự thay đổi lớn đang diễn ra bên trong cơ thể thực thể của trẻ: các lực lượng định hình bắt đầu dịch chuyển ra các chi, giải phóng thùy trán để hình thành các liên kết cảm quan phức tạp [1, 3, 21]. Trẻ bắt đầu bộc lộ khả năng tự lập kế hoạch trước khi chơi (play with a plan), có hình ảnh rõ ràng về mục tiêu sáng tạo và chủ động đi tìm kiếm các vật dụng thô sơ trong phòng để biến hóa công năng theo ý mình [4, 5]. Biểu hiện \"con chán quá\" thực chất là trạng thái bơ vơ tạm thời khi con chưa biết cách vận hành năng lực tư duy nội tại mới mẻ này [4, 9]."
+        ]
+      },
+      {
+        "bigram": "mốc thay",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8]."
+        ]
+      },
+      {
+        "bigram": "thay răng",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ hãi rằng sự nôn nóng dồn ép con học các kỹ năng trí năng (đọc, viết, toán) quá sớm trước mốc thay răng sẽ bòn rút sinh lực tăng trưởng, làm biến dạng cấu trúc thể chất thực thể và dập tắt động lực sáng tạo vĩnh viễn của con [2, 8]."
+        ]
+      },
+      {
+        "bigram": "lao động",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát vọng mãnh liệt muốn định hình một ý chí kiên định, dũng khí hành động và tính tự lập xã hội thông qua các hoạt động lao động thực tế có mục đích rõ rệt cùng người lớn [9, 10, 16].",
+          "* ②-3. actionable_rule: Quy tắc tích hợp lao động thực tế có mục đích và rèn luyện tính kiên trì (stick-to-itiveness) cho trẻ từ năm đến bảy tuổi"
+        ]
+      },
+      {
+        "bigram": "giác quan",
+        "count": 13,
+        "contexts": [
+          "* **Diễn giải Core Logic:** Rudolf Steiner và Barbara Patterson giải thích rằng trước mốc năm tuổi, các trò chơi của trẻ được kích hoạt trực tiếp từ các vật dụng giác quan trong môi trường (thấy món đồ gì sẽ lập tức chơi món đồ đó) [4]. Tuy nhiên, khi bước vào tuổi lên sáu, trẻ trải qua một cuộc \"dậy thì nhỏ\" (little puberty) [4]. Một sự thay đổi lớn đang diễn ra bên trong cơ thể thực thể của trẻ: các lực lượng định hình bắt đầu dịch chuyển ra các chi, giải phóng thùy trán để hình thành các liên kết cảm quan phức tạp [1, 3, 21]. Trẻ bắt đầu bộc lộ khả năng tự lập kế hoạch trước khi chơi (play with a plan), có hình ảnh rõ ràng về mục tiêu sáng tạo và chủ động đi tìm kiếm các vật dụng thô sơ trong phòng để biến hóa công năng theo ý mình [4, 5]. Biểu hiện \"con chán quá\" thực chất là trạng thái bơ vơ tạm thời khi con chưa biết cách vận hành năng lực tư duy nội tại mới mẻ này [4, 9].",
+          "🌱 **Vượt qua thế giới trò chơi mầm non—chúng ta cùng bước sang hành trình đánh thức mười hai giác quan mầu nhiệm của con người!**",
+          "* Tại sao triết lý Waldorf lại đưa ra hệ thống mười hai giác quan (Twelve Senses) thay vì chỉ năm giác quan thông thường của khoa học duy vật."
+        ]
+      },
+      {
+        "bigram": "thông qua",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát vọng mãnh liệt muốn định hình một ý chí kiên định, dũng khí hành động và tính tự lập xã hội thông qua các hoạt động lao động thực tế có mục đích rõ rệt cùng người lớn [9, 10, 16].",
+          "* **Mô tả:** Cha mẹ khát khao nhìn thấy đứa con lên sáu tuổi của mình phát triển \"tính bền chí\" (stick-to-itiveness)—khả năng kiên trì vượt qua khó khăn để hoàn thành đến cùng những mục tiêu tự lập ra [16]. Họ mong muốn rèn giũa ý chí bùng nổ, có phần bướng bỉnh của giai đoạn biến động tuổi lên sáu thành một nguồn sinh lực có trật tự, hài hòa thông qua việc cùng con làm mộc, làm bánh, thêu thùa hay làm vườn hằng tuần, giúp con tự tin và dũng cảm bước qua ngưỡng cửa lớp một [9, 17-19]."
+        ]
+      },
+      {
+        "bigram": "động thực",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Five to Seven Years\"** (Từ năm đến bảy tuổi) là chương khép lại đầy ý nghĩa về thế giới trò chơi mầm non, đánh dấu ngưỡng cửa chuyển giao quan trọng nhất trước khi trẻ bước vào tiểu học [1, 2]. Tác giả và Rudolf Steiner làm sáng tỏ mốc biến đổi sinh học vĩ đại của trẻ ở giai đoạn này: sự tăng trưởng vượt bậc của đôi chân, sự tiêu biến của lớp mỡ sữa mầm non, và đặc biệt là mốc thay răng (change of teeth) [1, 3]. Song song với những thay đổi thể chất thực thể là sự chuyển dịch ý thức sâu sắc thông qua \"giai đoạn dậy thì nhỏ\" (little puberty) [4]. Trẻ không còn chơi theo lối ngẫu hứng, bị động kích thích bởi đồ chơi bên ngoài, mà bắt đầu \"chơi có kế hoạch\" (play with a plan) dựa trên các hình ảnh tinh thần tự thân phát khởi từ thế giới nội tâm [4, 5]. Trò chơi mầm non lúc này trở thành sự bắt chước lao động thực tế một cách phức tạp và có tính định hướng xã hội cao (nhập vai cô dâu chú rể, bác sĩ, người sửa chữa) [5-7]. Tác phẩm đưa ra lời cảnh báo nghiêm khắc về việc dồn ép trẻ học các kỹ năng trí năng (đọc, viết, toán) trước khi mốc thay răng giải phóng sinh lực tăng trưởng sang năng lực tư duy logic [2, 8]. Khi trẻ gặp khó khăn hoặc thốt lên \"con chán quá\", giải pháp khoa và sư phạm tối ưu không phải là học tập lý thuyết, mà là tích hợp con vào những công việc lao động thực tế có mục đích cùng người lớn [9, 10].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát vọng mãnh liệt muốn định hình một ý chí kiên định, dũng khí hành động và tính tự lập xã hội thông qua các hoạt động lao động thực tế có mục đích rõ rệt cùng người lớn [9, 10, 16].",
+          "* ②-3. actionable_rule: Quy tắc tích hợp lao động thực tế có mục đích và rèn luyện tính kiên trì (stick-to-itiveness) cho trẻ từ năm đến bảy tuổi"
+        ]
+      },
+      {
+        "bigram": "hoạt động",
+        "count": 11,
+        "contexts": [
+          "Trong góc phòng mầm non hoặc phòng khách gia đình ấm áp | Đứa con gái lớn sáu tuổi đang tỉ mỉ đo đạc các tấm ván gỗ và phủ những tấm vải ga giường lớn lên khung kệ để xây dựng một \"phòng khám bác sĩ\" [7, 11] | Con có một kịch bản rõ rệt trong tâm trí: gom nhặt các viên đá cuội nhỏ làm thuốc và nhờ em trai sắm vai tá ngồi viết tên bệnh nhân vào một cuốn sổ giấy tự chế trước khi cho vào khám [7, 12] | Người cha thong thả quan sát thấy con đã say sưa chuẩn bị công phu suốt gần một tiếng đồng hồ mà chưa thực sự tiến hành hoạt động \"khám bệnh\", nhưng con hoàn toàn thỏa mãn với tiến trình kiến thiết này [7] | Anh nhận ra hoạt động chơi của con không còn là những chuyển động ngẫu hứng của tuổi lên ba, mà đã được dẫn dắt bởi một bản thiết kế tư duy có chủ đích rõ rệt từ thế giới nội tâm của con [4, 5].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát vọng mãnh liệt muốn định hình một ý chí kiên định, dũng khí hành động và tính tự lập xã hội thông qua các hoạt động lao động thực tế có mục đích rõ rệt cùng người lớn [9, 10, 16].",
+          "* **Định nghĩa/Phát biểu luật:** Toàn bộ lực lượng tăng trưởng (etheric forces) của trẻ dưới bảy tuổi phải được bảo vệ tuyệt đối để thực hiện nhiệm vụ điêu khắc, hoàn thiện cấu trúc sinh học của các cơ quan nội tạng bên trong cơ thể vật lý; chỉ khi chiếc răng sữa cuối cùng lung lay và rụng đi (thay răng), nguồn năng lượng sống này mới được giải phóng một phần để phục vụ cho các hoạt động tư duy trí năng, ghi nhớ khái niệm và học tập học đường [2, 23]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

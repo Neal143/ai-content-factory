@@ -1,0 +1,138 @@
+{
+  "chunk_index": 9,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_09_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 9,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_09_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_09_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_09_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "tưởng tượng",
+        "count": 33,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi giả vờ cho con khi con trẻ từ hai tuổi rưỡi đến năm tuổi bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      },
+      {
+        "bigram": "đồ chơi",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "Một buổi chiều mưa rả rích trong phòng khách gia đình | Đứa trẻ bốn tuổi đang hăng say lật úp ba chiếc ghế ăn, phủ lên trên tấm ga trải giường màu xanh và dõng dạc tuyên bố đây là một chiếc tàu ngầm thám hiểm đại dương [1] | Người mẹ đi qua, ban đầu cảm thấy phiền lòng vì đồ đạc trong nhà bị đảo lộn, nhưng khi nhìn thấy đôi mắt lấp lánh sự sáng tạo và sự tập trung cao độ của con, cô chợt dừng lại [1] | Cô băn khoăn không biết nên dọn dẹp trật tự ngay lập tức hay nên bổ sung những vật dụng thô sơ nào để con tự do bay bổng trong thế giới đóng vai mà không bị giới hạn bởi các món đồ chơi nhựa đúc sẵn rập khuôn của thời đại số [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      },
+      {
+        "bigram": "tư duy",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng nếu họ dập tắt giai đoạn \"chơi giả vờ\" đầy mầu nhiệm bằng sự áp đặt trật tự cứng nhắc của người lớn hoặc dồn ép con chơi các món đồ chơi nhựa công nghệ có tính năng cố định, con sẽ mất đi khả năng tự chủ tư duy [1, 8]. Họ sợ rằng sự thiếu hụt không gian tưởng tượng mơ màng này sẽ cản trở sự phát triển của thùy trán, khiến não bộ con trở nên thụ động và gặp khó khăn lớn trong việc tiếp thu các khái niệm toán học, ngôn ngữ trừu tượng sau này [1, 8]."
+        ]
+      },
+      {
+        "bigram": "biến đổi",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi giả vờ cho con khi con trẻ từ hai tuổi rưỡi đến năm tuổi bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      },
+      {
+        "bigram": "tự do",
+        "count": 18,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "Một buổi chiều mưa rả rích trong phòng khách gia đình | Đứa trẻ bốn tuổi đang hăng say lật úp ba chiếc ghế ăn, phủ lên trên tấm ga trải giường màu xanh và dõng dạc tuyên bố đây là một chiếc tàu ngầm thám hiểm đại dương [1] | Người mẹ đi qua, ban đầu cảm thấy phiền lòng vì đồ đạc trong nhà bị đảo lộn, nhưng khi nhìn thấy đôi mắt lấp lánh sự sáng tạo và sự tập trung cao độ của con, cô chợt dừng lại [1] | Cô băn khoăn không biết nên dọn dẹp trật tự ngay lập tức hay nên bổ sung những vật dụng thô sơ nào để con tự do bay bổng trong thế giới đóng vai mà không bị giới hạn bởi các món đồ chơi nhựa đúc sẵn rập khuôn của thời đại số [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      },
+      {
+        "bigram": "năng lực",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8].",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      },
+      {
+        "bigram": "[1, 8].",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8].",
+          "* **Mô tả:** Độc giả lo sợ sâu sắc rằng nếu họ dập tắt giai đoạn \"chơi giả vờ\" đầy mầu nhiệm bằng sự áp đặt trật tự cứng nhắc của người lớn hoặc dồn ép con chơi các món đồ chơi nhựa công nghệ có tính năng cố định, con sẽ mất đi khả năng tự chủ tư duy [1, 8]. Họ sợ rằng sự thiếu hụt không gian tưởng tượng mơ màng này sẽ cản trở sự phát triển của thùy trán, khiến não bộ con trở nên thụ động và gặp khó khăn lớn trong việc tiếp thu các khái niệm toán học, ngôn ngữ trừu tượng sau này [1, 8]."
+        ]
+      },
+      {
+        "bigram": "sáng tạo",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "Một buổi chiều mưa rả rích trong phòng khách gia đình | Đứa trẻ bốn tuổi đang hăng say lật úp ba chiếc ghế ăn, phủ lên trên tấm ga trải giường màu xanh và dõng dạc tuyên bố đây là một chiếc tàu ngầm thám hiểm đại dương [1] | Người mẹ đi qua, ban đầu cảm thấy phiền lòng vì đồ đạc trong nhà bị đảo lộn, nhưng khi nhìn thấy đôi mắt lấp lánh sự sáng tạo và sự tập trung cao độ của con, cô chợt dừng lại [1] | Cô băn khoăn không biết nên dọn dẹp trật tự ngay lập tức hay nên bổ sung những vật dụng thô sơ nào để con tự do bay bổng trong thế giới đóng vai mà không bị giới hạn bởi các món đồ chơi nhựa đúc sẵn rập khuôn của thời đại số [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      },
+      {
+        "bigram": "thế giới",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "Một buổi chiều mưa rả rích trong phòng khách gia đình | Đứa trẻ bốn tuổi đang hăng say lật úp ba chiếc ghế ăn, phủ lên trên tấm ga trải giường màu xanh và dõng dạc tuyên bố đây là một chiếc tàu ngầm thám hiểm đại dương [1] | Người mẹ đi qua, ban đầu cảm thấy phiền lòng vì đồ đạc trong nhà bị đảo lộn, nhưng khi nhìn thấy đôi mắt lấp lánh sự sáng tạo và sự tập trung cao độ của con, cô chợt dừng lại [1] | Cô băn khoăn không biết nên dọn dẹp trật tự ngay lập tức hay nên bổ sung những vật dụng thô sơ nào để con tự do bay bổng trong thế giới đóng vai mà không bị giới hạn bởi các món đồ chơi nhựa đúc sẵn rập khuôn của thời đại số [1].",
+          "Người mẹ lo âu đứng nhìn con ngồi lặng lẽ trước đống đồ chơi nhựa đúc sẵn tinh xảo nhưng vô hồn, đứa trẻ nhanh chóng chán nản và đòi xem tivi; cô sợ hãi rằng việc thiếu đi các học liệu thô sơ mở và sự gò bó không gian chơi giả vờ đang dần làm cùn mòn lực lượng sáng tạo tự thân và dập tắt thế giới nội tâm phong phú của con mỗi tuần [1, 8]."
+        ]
+      },
+      {
+        "bigram": "công năng",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Two-and-a-Half to Five Years\"** (Từ hai tuổi rưỡi đến năm tuổi) làm sáng tỏ thời kỳ vàng son của hoạt động chơi mầm non—sự bùng nổ kỳ diệu của \"chơi giả vờ\" (make-believe) và \"trò chơi đóng vai\" (let's pretend) xuất hiện mạnh mẽ khi trẻ lên ba tuổi [1]. Đây là một cột mốc quan trọng trong sự phát triển của trẻ [1]. Trẻ ở độ tuổi này sở hữu khả năng mầu nhiệm để tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh thành những học liệu mở đáp ứng trọn vẹn cho thế giới chơi của mình [1]. Thay vì mua sắm những đồ chơi chuyên biệt hay hóa trang tinh xảo đúc sẵn từ nhà máy, tác phẩm khuyến khích người lớn cung cấp các học liệu thô sơ chưa định hình (vải lụa, vải cotton tự nhiên, kẹp gỗ, vỏ sò, quả thông) và một giỏ trang phục mầm non đơn giản để kích hoạt tối đa năng lực tưởng tượng bay bổng [1, 8]. Đồng thời, chương này hướng dẫn quy trình chuyển nhịp dọn dẹp đồ chơi bằng nghệ thuật hình ảnh và các điệu hát dịu dàng, chứng minh rằng sự tự do chơi tưởng tượng chính là hạt mầm mầu nhiệm tự động chuyển hóa thành năng lực tư duy logic và sáng tạo của trẻ khi trưởng thành [1, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi giả vờ cho con khi con trẻ từ hai tuổi rưỡi đến năm tuổi bắt đầu bộc lộ khả năng tưởng tượng và tự ý biến đổi công năng của các vật dụng sinh hoạt xung quanh [1].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi rằng việc ngăn cấm con tự do biến đổi công năng đồ vật hoặc áp đặt đồ chơi công nghiệp đúc sẵn sẽ bóp nghẹt năng lực tưởng tượng bay bổng, làm xơ cứng tư duy logic và cản trở sự tự tin sáng tạo của con khi bước vào tuổi học đường [1, 8]."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

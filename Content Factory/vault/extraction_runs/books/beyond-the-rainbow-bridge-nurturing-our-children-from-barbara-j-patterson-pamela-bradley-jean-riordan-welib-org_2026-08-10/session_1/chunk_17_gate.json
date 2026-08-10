@@ -1,0 +1,138 @@
+{
+  "chunk_index": 17,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_17_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 17,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_17_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_17_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_17_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "lựa chọn",
+        "count": 28,
+        "contexts": [
+          "**Chunk 17: Creative Discipline - Clear Messages and Limited Choices** vạch trần cạm bẫy của lối giáo dục trao quyền quá sớm cho con trẻ thông qua việc lạm dụng vô số lựa chọn bừa bãi [1, 2].",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "Tại quầy đồ ăn sáng của gia đình | Đứa trẻ ba tuổi đang cáu kỉnh gào khóc, ném phăng chiếc nĩa nhựa xuống sàn khi người mẹ bối rối hỏi dồn dập hằng tuần: \"Con yêu muốn uống nước cam, nước bưởi hay nước xoài? Con muốn ăn bánh mì nướng bơ tỏi hay ăn ngũ cốc organic với sữa ít béo?\" [9, 10] | Đứa trẻ hoàn toàn bế tắc trước danh sách câu hỏi dồn dập, con giãy nảy lên khóc và hét lớn đòi bật tivi [4, 11] | Người mẹ mệt mỏi nhận ra sự kiệt quệ cảm xúc của cả hai mẹ con hằng tối đang bắt nguồn từ chính thói quen liên tục đưa ra những lựa chọn mở vượt quá tầm nhận thức của con [3, 11]."
+        ]
+      },
+      {
+        "bigram": "quyết định",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các ranh giới giao tiếp rõ ràng cho con khi con trẻ dưới bảy tuổi bộc lộ xu hướng vị kỷ trước các quyết định sinh hoạt vượt quá năng lực nhận thức.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành."
+        ]
+      },
+      {
+        "bigram": "cái tôi",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành."
+        ]
+      },
+      {
+        "bigram": "khẳng định",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao thiết lập ranh giới giao tiếp phẳng lặng, làm chủ ngôn từ khẳng định ôn hòa và dũng cảm bảo bọc ý chí của con bằng những giới hạn lựa chọn dứt khoát.",
+          "* ②-2. principle: Nguyên lý \"Từ khẳng định điều hòa ý chí mầm non và mối liên kết sinh của sự nhất quán ngôn từ đối với sức khỏe thần kinh\""
+        ]
+      },
+      {
+        "bigram": "giao tiếp",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các ranh giới giao tiếp rõ ràng cho con khi con trẻ dưới bảy tuổi bộc lộ xu hướng vị kỷ trước các quyết định sinh hoạt vượt quá năng lực nhận thức.",
+          "* **Mô tả:** Độc giả lo lắng tột cùng rằng việc nuông chiều, đáp ứng mọi sở thích của con theo lối \"giáo dục lấy trẻ làm trung tâm\" lệch lạc đang vô tình dồn \"thuốc độc\" vào tâm hồn con hằng tối [4, 5]. Họ sợ hãi trước những phân tích sư phạm rằng sự thiếu ranh giới nhất quán trong giao tiếp sẽ biến con mình thành một thanh thiếu niên ngang ngược, ích kỷ, bất an sâu sắc và liên tục đối kháng thô bạo với cha mẹ trong tương lai [5]."
+        ]
+      },
+      {
+        "bigram": "nhất quán",
+        "count": 14,
+        "contexts": [
+          "* **Mô tả:** Độc giả lo lắng tột cùng rằng việc nuông chiều, đáp ứng mọi sở thích của con theo lối \"giáo dục lấy trẻ làm trung tâm\" lệch lạc đang vô tình dồn \"thuốc độc\" vào tâm hồn con hằng tối [4, 5]. Họ sợ hãi trước những phân tích sư phạm rằng sự thiếu ranh giới nhất quán trong giao tiếp sẽ biến con mình thành một thanh thiếu niên ngang ngược, ích kỷ, bất an sâu sắc và liên tục đối kháng thô bạo với cha mẹ trong tương lai [5].",
+          "Người mẹ đứng lặng nhìn cậu con trai nhỏ đang bướng bỉnh nằm ăn vạ giữa lối đi siêu thị để đòi mua hộp ngũ cốc có đồ chơi bên trong; cô nhói lòng nhận ra sự bất an dữ dội của con đang bắt nguồn từ chính những câu hỏi thăm dò mềm yếu, thiếu nhất quán của mình hằng tối [4, 7].",
+          "* ②-2. principle: Nguyên lý \"Từ khẳng định điều hòa ý chí mầm non và mối liên kết sinh của sự nhất quán ngôn từ đối với sức khỏe thần kinh\""
+        ]
+      },
+      {
+        "bigram": "vị kỷ",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập các ranh giới giao tiếp rõ ràng cho con khi con trẻ dưới bảy tuổi bộc lộ xu hướng vị kỷ trước các quyết định sinh hoạt vượt quá năng lực nhận thức.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành."
+        ]
+      },
+      {
+        "bigram": "đưa ra",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "Tại quầy đồ ăn sáng của gia đình | Đứa trẻ ba tuổi đang cáu kỉnh gào khóc, ném phăng chiếc nĩa nhựa xuống sàn khi người mẹ bối rối hỏi dồn dập hằng tuần: \"Con yêu muốn uống nước cam, nước bưởi hay nước xoài? Con muốn ăn bánh mì nướng bơ tỏi hay ăn ngũ cốc organic với sữa ít béo?\" [9, 10] | Đứa trẻ hoàn toàn bế tắc trước danh sách câu hỏi dồn dập, con giãy nảy lên khóc và hét lớn đòi bật tivi [4, 11] | Người mẹ mệt mỏi nhận ra sự kiệt quệ cảm xúc của cả hai mẹ con hằng tối đang bắt nguồn từ chính thói quen liên tục đưa ra những lựa chọn mở vượt quá tầm nhận thức của con [3, 11].",
+          "* **Định nghĩa/Phát biểu luật:** Việc ép buộc trẻ dưới bảy tuổi phải đưa ra các quyết định lựa chọn sinh hoạt hằng tuần là sự áp đặt trí năng quá sớm, bòn rút sinh lực tạo hình cơ thể thực thể và dồn Cái Tôi của trẻ vào trạng thái vị kỷ (egotism) cô độc, mất đi lòng thấu cảm tự nhiên đối với nhu cầu của người khác [2, 4]."
+        ]
+      },
+      {
+        "bigram": "gánh nặng",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành."
+        ]
+      },
+      {
+        "bigram": "nặng quyết",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Clear Messages and Limited Choices\"** (Thông điệp rõ ràng và Giới hạn lựa chọn) vạch trần cạm bẫy giáo dục phổ biến: nỗ lực trao quyền cho con quá sớm bằng cách dâng hiến vô số lựa chọn ngỏ [1, 2]. Tác giả mổ xẻ cơ chế tâm lý mầm non dưới bảy tuổi, khẳng định việc hỏi ý kiến con dưới dạng câu hỏi thăm dò (*\"Con treo áo khoác lên được không?\"*) chỉ dồn gánh nặng quyết định quá sức lên vai con, gây bối rối nội tâm và kích hoạt Cái Tôi (\"I want\") bộc phát non nớt [2, 3]. Về lâu dài, thói quen chiều chuộng này gieo \"thuốc độc\" vị kỷ (egotism) vào tâm hồn trẻ, biến con thành người tự phụ, kém nhạy cảm với người khác và là mầm mống cho những xung đột đối kháng thô bạo ở lứa tuổi dậy thì [4, 5]. Thay vào đó, chương này đề xuất quy chuẩn giao tiếp phẳng lặng: người lớn sử dụng ngôn từ khẳng định kiên định [3], áp dụng từ \"may\" (con có thể) mang tính đặc quyền [6], giới hạn tối đa các lựa chọn mở và dũng cảm gánh vác trách nhiệm đưa ra quyết định tốt nhất cho trẻ [7, 8].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc liên tục dâng hiến những lựa chọn ngỏ và gánh nặng quyết định vượt tuổi sẽ làm thức tỉnh Cái Tôi vị kỷ quá sớm, gây bối rối tâm lý sâu sắc và tước đi dũng khí vâng lời, hợp tác tự nhiên của con khi trưởng thành."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

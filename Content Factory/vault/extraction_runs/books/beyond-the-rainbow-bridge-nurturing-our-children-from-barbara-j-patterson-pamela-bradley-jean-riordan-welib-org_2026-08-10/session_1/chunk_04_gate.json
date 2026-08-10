@@ -1,0 +1,138 @@
+{
+  "chunk_index": 4,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_04_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 4,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_04_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_04_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_04_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "cảm giác",
+        "count": 22,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "Một chiều cuối tuần hối hả tại trung tâm thương mại đông đúc | Đèn neon lấp loáng chói mắt xen lẫn tiếng nhạc quảng cáo điện tử dồn dập vang lên từ các gian hàng | Đứa trẻ bốn tuổi ngơ ngác, đôi mắt mở to tiếp nhận dồn dập mọi kích thích hình ảnh hỗn tạp mà không thể tự mình ngắt dòng cảm giác ấy | Người mẹ nhận thấy con bắt đầu bồn chồn, mặt tái đi và bộc phát cơn quấy khóc dữ dội do hệ thần kinh bị quá tải cực độ bởi các tác nhân nhân tạo hằng ngày | Trở về nhà, cô nhìn chiếc vô tuyến đang bật dạt dào các hình ảnh hoạt hình tốc độ nhanh, lòng ngập tràn hối hận và bế tắc khi nhận ra con mình đang hoàn toàn trơ trọi, không có lá chắn bảo vệ trước những luồng kích thích dữ dội của thời đại số.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời."
+        ]
+      },
+      {
+        "bigram": "thế giới",
+        "count": 20,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời."
+        ]
+      },
+      {
+        "bigram": "kích thích",
+        "count": 19,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ môi trường cảm quan của con khi con trẻ dưới bảy tuổi tiếp nhận vô điều kiện các kích thích nhân tạo từ môi trường hiện đại mà không có màng lọc tự thân.",
+          "Một chiều cuối tuần hối hả tại trung tâm thương mại đông đúc | Đèn neon lấp loáng chói mắt xen lẫn tiếng nhạc quảng cáo điện tử dồn dập vang lên từ các gian hàng | Đứa trẻ bốn tuổi ngơ ngác, đôi mắt mở to tiếp nhận dồn dập mọi kích thích hình ảnh hỗn tạp mà không thể tự mình ngắt dòng cảm giác ấy | Người mẹ nhận thấy con bắt đầu bồn chồn, mặt tái đi và bộc phát cơn quấy khóc dữ dội do hệ thần kinh bị quá tải cực độ bởi các tác nhân nhân tạo hằng ngày | Trở về nhà, cô nhìn chiếc vô tuyến đang bật dạt dào các hình ảnh hoạt hình tốc độ nhanh, lòng ngập tràn hối hận và bế tắc khi nhận ra con mình đang hoàn toàn trơ trọi, không có lá chắn bảo vệ trước những luồng kích thích dữ dội của thời đại số."
+        ]
+      },
+      {
+        "bigram": "cấu trúc",
+        "count": 19,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời.",
+          "* **Mô tả:** Độc giả lo ngại sâu sắc rằng trẻ mầm non mỏng manh như một tờ giấy trắng, không có bất kỳ bộ lọc sinh học nào để chống chọi lại các tác nhân kích thích quá mạnh từ môi trường công nghiệp hằng ngày. Họ sợ rằng các hình ảnh bạo lực từ truyền hình, tiếng ồn cơ học, và sự xáo động cảm xúc của người lớn sẽ hằn sâu vào cơ thể thực thể của con, làm chai sạn năng lực tưởng tượng tự nhiên, suy nhược sinh lực tăng trưởng tự thân và làm suy yếu cấu trúc thần kinh não bộ của trẻ mầm non khi lớn lên.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời."
+        ]
+      },
+      {
+        "bigram": "thực thể",
+        "count": 19,
+        "contexts": [
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời.",
+          "* **Mô tả:** Độc giả lo ngại sâu sắc rằng trẻ mầm non mỏng manh như một tờ giấy trắng, không có bất kỳ bộ lọc sinh học nào để chống chọi lại các tác nhân kích thích quá mạnh từ môi trường công nghiệp hằng ngày. Họ sợ rằng các hình ảnh bạo lực từ truyền hình, tiếng ồn cơ học, và sự xáo động cảm xúc của người lớn sẽ hằn sâu vào cơ thể thực thể của con, làm chai sạn năng lực tưởng tượng tự nhiên, suy nhược sinh lực tăng trưởng tự thân và làm suy yếu cấu trúc thần kinh não bộ của trẻ mầm non khi lớn lên.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời."
+        ]
+      },
+      {
+        "bigram": "dưới bảy",
+        "count": 17,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ môi trường cảm quan của con khi con trẻ dưới bảy tuổi tiếp nhận vô điều kiện các kích thích nhân tạo từ môi trường hiện đại mà không có màng lọc tự thân.",
+          "* ②-1. philosophy: Khái niệm \"Trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn\" và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi"
+        ]
+      },
+      {
+        "bigram": "bảy tuổi",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn bảo vệ môi trường cảm quan của con khi con trẻ dưới bảy tuổi tiếp nhận vô điều kiện các kích thích nhân tạo từ môi trường hiện đại mà không có màng lọc tự thân.",
+          "* ②-1. philosophy: Khái niệm \"Trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn\" và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi"
+        ]
+      },
+      {
+        "bigram": "hoàn toàn",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "Một chiều cuối tuần hối hả tại trung tâm thương mại đông đúc | Đèn neon lấp loáng chói mắt xen lẫn tiếng nhạc quảng cáo điện tử dồn dập vang lên từ các gian hàng | Đứa trẻ bốn tuổi ngơ ngác, đôi mắt mở to tiếp nhận dồn dập mọi kích thích hình ảnh hỗn tạp mà không thể tự mình ngắt dòng cảm giác ấy | Người mẹ nhận thấy con bắt đầu bồn chồn, mặt tái đi và bộc phát cơn quấy khóc dữ dội do hệ thần kinh bị quá tải cực độ bởi các tác nhân nhân tạo hằng ngày | Trở về nhà, cô nhìn chiếc vô tuyến đang bật dạt dào các hình ảnh hoạt hình tốc độ nhanh, lòng ngập tràn hối hận và bế tắc khi nhận ra con mình đang hoàn toàn trơ trọi, không có lá chắn bảo vệ trước những luồng kích thích dữ dội của thời đại số.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi | stance=support | supports_insight=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời."
+        ]
+      },
+      {
+        "bigram": "thần kinh",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "Một chiều cuối tuần hối hả tại trung tâm thương mại đông đúc | Đèn neon lấp loáng chói mắt xen lẫn tiếng nhạc quảng cáo điện tử dồn dập vang lên từ các gian hàng | Đứa trẻ bốn tuổi ngơ ngác, đôi mắt mở to tiếp nhận dồn dập mọi kích thích hình ảnh hỗn tạp mà không thể tự mình ngắt dòng cảm giác ấy | Người mẹ nhận thấy con bắt đầu bồn chồn, mặt tái đi và bộc phát cơn quấy khóc dữ dội do hệ thần kinh bị quá tải cực độ bởi các tác nhân nhân tạo hằng ngày | Trở về nhà, cô nhìn chiếc vô tuyến đang bật dạt dào các hình ảnh hoạt hình tốc độ nhanh, lòng ngập tràn hối hận và bế tắc khi nhận ra con mình đang hoàn toàn trơ trọi, không có lá chắn bảo vệ trước những luồng kích thích dữ dội của thời đại số.",
+          "* **Mô tả:** Độc giả lo ngại sâu sắc rằng trẻ mầm non mỏng manh như một tờ giấy trắng, không có bất kỳ bộ lọc sinh học nào để chống chọi lại các tác nhân kích thích quá mạnh từ môi trường công nghiệp hằng ngày. Họ sợ rằng các hình ảnh bạo lực từ truyền hình, tiếng ồn cơ học, và sự xáo động cảm xúc của người lớn sẽ hằn sâu vào cơ thể thực thể của con, làm chai sạn năng lực tưởng tượng tự nhiên, suy nhược sinh lực tăng trưởng tự thân và làm suy yếu cấu trúc thần kinh não bộ của trẻ mầm non khi lớn lên."
+        ]
+      },
+      {
+        "bigram": "cơ quan",
+        "count": 15,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Our Children\"** (Những đứa trẻ của chúng ta) đóng vai trò là chiếc chìa khóa triết lý thiêng liêng nhất khép lại chương giới thiệu của cuốn sách. Nhóm tác giả Barbara J. Patterson và Pamela Bradley cùng nhà sáng lập giáo dục Waldorf Rudolf Steiner đưa ra một khẳng định mang tính cách mạng: trẻ mầm non dưới bảy tuổi không sở hữu màng lọc cảm quan bảo vệ tự thân, mà hoàn toàn là một cơ quan cảm giác mở, tiếp nhận vô điều kiện mọi kích thích từ thế giới xung quanh [1-4]. Từ các thông điệp hối hả trên truyền hình, hình ảnh xô bồ của những tấm biển quảng cáo ngoài phố, cho đến từng cử chỉ, lời nói, và thậm chí là những suy nghĩ âm thầm của người lớn xung quanh, trẻ đều hấp thụ trọn vẹn [1, 3, 5]. Toàn bộ những \"thức ăn cảm giác\" này không dừng lại ở mức độ ấn tượng tinh thần mơ hồ, mà được cơ thể vật lý của trẻ hấp thu trực tiếp để làm nguyên liệu xây đắp, \"điêu khắc\" nên gan, tim, hệ cơ xương khớp, và mạng lưới liên kết thần kinh não bộ vĩnh viễn suốt đời [2, 3, 6-8]. Trích dẫn bài thơ kinh điển của nhà thơ Walt Whitman *\"Có một đứa trẻ bước ra mỗi ngày...\"*, tác phẩm nhấn mạnh nhiệm vụ tối thượng của cha mẹ và giáo viên mầm non là trở thành \"người bảo hộ giác quan\", dũng cảm thanh lọc môi trường hiện đại xô bồ để kiến tạo cho con một thiên đường trong sáng, trọn vẹn niềm tin nguyên bản rằng \"Thế giới là tốt đẹp\" [2, 9-11].",
+          "* ②-1. philosophy: Khái niệm \"Trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn\" và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Khái niệm trẻ nhỏ là một cơ quan cảm giác mở hoàn toàn và cơ chế hấp thụ vô điều kiện thế giới xung quanh của trẻ dưới bảy tuổi | stance=support | supports_insight=Nỗi sợ hãi tột cùng rằng sự tràn ngập của các kích thích nhân tạo, thiết bị điện tử và nếp sống hối hả sẽ \"xâm lấn\" và hủy hoại thế giới cảm giác thuần khiết của con, để lại những dị tật ẩn giấu trong cấu trúc thể chất thực thể suốt đời."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

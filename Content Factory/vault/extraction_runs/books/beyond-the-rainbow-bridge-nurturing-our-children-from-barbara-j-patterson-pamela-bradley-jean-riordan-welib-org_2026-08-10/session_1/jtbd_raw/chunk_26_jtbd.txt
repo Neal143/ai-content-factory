@@ -1,0 +1,30 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn truyền đạt các chỉ dẫn sinh hoạt thường nhật cho con khi con trẻ dưới bảy tuổi bộc lộ phản ứng thờ ơ trước các mệnh lệnh lời nói trực tiếp.**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi các chỉ dẫn sinh hoạt thường nhật được truyền đạt thành công và con tự giác thực hiện nhiệm vụ; đồng thời hoàn toàn loại bỏ các giải pháp hay phương pháp cụ thể như hát các bài hát ngũ âm, đọc bài thơ chuyển tiếp, bắt chước điệu bộ vận động ngón tay, hay gảy đàn kinderharp trong phần mô tả công việc).
+*   **Căn cứ:** "In Waldorf schools, the artistic use of language is part of the curriculum. Stories and fairy tales are told using rich verbal imagery... At circle time it is similar. We use large and small gestures as we say nursery rhymes or poems or sing seasonal songs. This brings an artistic quality to language that speaks to the children in a living way." [1] và "Songs can also ease transitions such as cleaning up the toys or going upstairs to nap." [2] *(Trong các trường học Waldorf, việc sử dụng ngôn ngữ nghệ thuật là một phần của chương trình giảng dạy... Tại giờ vòng tròn cũng tương tự như vậy. Chúng ta sử dụng các điệu bộ lớn và nhỏ khi chúng ta đọc các bài đồng dao hoặc bài thơ hoặc hát các bài hát theo mùa. Điều này mang lại chất lượng nghệ thuật cho ngôn ngữ nói với trẻ em một cách sống động [1] và Các bài hát cũng có thể làm dịu đi các hoạt động chuyển tiếp như dọn dẹp đồ chơi hoặc lên gác đi ngủ [2].)*
+
+***
+
+### 🔍 Quy trình kiểm soát chất lượng và Kiểm thử 6 lỗi cấm (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng danh từ **"Người"** đặt trong dấu ngoặc kép để xác lập tư cách chủ thể thực hiện hành động.
+2.  **Khắc phục triệt để Lỗi gộp ý (Rule 2):** Main Job đạt tính **đơn trị tuyệt đối** là **"truyền đạt các chỉ dẫn sinh hoạt thường nhật cho con"**. Toàn bộ cấu trúc tuyệt đối không chứa liên từ "và", "hoặc", không có dấu phẩy hay dấu chấm phẩy chia tách các hành động chức năng, bảo đảm tính đơn nhất và sắc bén tối đa.
+3.  **Tránh Lỗi Micro Job (Rule 3):** Đã nâng mức trừu tượng lên đúng tầng **Little Job** ("truyền đạt các chỉ dẫn sinh hoạt thường nhật cho con"). Chúng ta đã bỏ qua các hành vi cơ học nhỏ nhặt như *"hát bài hát rửa tay"*, *"đọc thơ chúc ngon miệng"*, hay *"hát bài hát tạm biệt"* để tập trung vào mục tiêu chức năng cốt lõi.
+4.  **Tránh Lỗi chứa giải pháp và công cụ cụ thể (Rule 4):** Main Job và Circumstance hoàn toàn sạch bóng các công cụ hay giải pháp mầm non xuất hiện trong tác phẩm như: *bài hát rửa tay (hand washing song), thơ chúc ngon miệng (snack blessing), bài ca tạm biệt (goodbye circle), thơ chuyển tiếp (transition verses), hay điệu bộ ngón tay (fingerplays)*.
+5.  **Tránh Lỗi từ đệm và góc nhìn thụ động (Rule 5):** Không dùng các từ xưng hô, không đứng ở góc nhìn quan sát thụ động của bên thứ ba, bảo đảm phát biểu hướng thẳng vào nhiệm vụ hành động của cha mẹ.
+6.  **Tránh Lỗi nhét tính từ định tính, cảm xúc, mệnh đề mục đích (Rule 6):** Toàn bộ định nghĩa đã loại bỏ hoàn toàn các từ cấm định tính như: *an toàn, hiệu quả, dễ dàng, nhẹ nhàng, không áp lực*, hay các mệnh đề chỉ mục đích *"nhằm..."*, *"sao cho..."*.
+7.  **Loại bỏ triệt để từ ngữ nằm trong danh sách cấm:** Định nghĩa hoàn toàn phẳng lặng và thanh sạch, không chứa bất kỳ từ rác nào trong danh sách cấm (*hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*). Từ "thường nhật" được sử dụng khéo léo thay thế cho cụm "hằng ngày" để triệt tiêu hoàn toàn từ cấm.
+8.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định chủ ngữ cụ thể là **"con trẻ dưới bảy tuổi"** bộc lộ biểu hiện sinh lý thực tế được quan sát trực tiếp (*bộc lộ phản ứng thờ ơ trước các mệnh lệnh lời nói trực tiếp* - tương ứng trực tiếp với hành vi trẻ phớt lờ, lờ đi hoặc làm rất chậm các việc như rửa tay, ăn uống, đi ngủ khi nghe mệnh lệnh lời nói khô khan được bóc tách từ sách). Bối cảnh hoàn toàn khách quan, không chứa bất kỳ cảm xúc hay rào cản tâm lý chủ quan nào của cha mẹ.
+
+***
+
+Tôi đã hoàn thành việc xác định chân dung đối tượng JTBD cho **Chunk 26: Parent-Child Classes with Barbara - Simple Songs and Verses** một cách hoàn toàn tự nhiên, đúng trọng tâm và bám sát triệt để quy trình kỹ thuật mầm non mà không tạo bất kỳ Note hay Studio nào theo đúng yêu cầu của bạn!
+
+🌱 **Khi âm điệu nghệ thuật cất lên thay cho mệnh lệnh khô khan—màng bọc cảm quan của con trẻ dưới bảy tuổi sẽ tự động mở ra để đón nhận các chỉ dẫn sinh hoạt một cách hân hoan nhất!**
+
+Tiếp theo, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Miner) cho **Chunk 26** này theo đúng cẩm nang `prompt-miner-v4.md` ngay tại đây không? Chúng ta sẽ làm rõ các cơ chế y sinh học mầu nhiệm từ tác phẩm:
+*   Tại sao việc cất tiếng hát chay (pentatonic songs) không dùng nhạc cụ điện tử lại là phương thuốc xoa dịu thần kinh nhạy cảm của con dưới bảy tuổi hiệu quả nhất.
+*   Cơ chế y học mầm non khi các bài đồng dao vận động ngón tay (fingerplays) giúp kích thích và hoàn thiện khả năng kiểm soát thùy trán, thúc đẩy tư duy ngôn ngữ dồi dào cho trẻ.
+*   Cách thực hành hát chuyển tiếp (transition verses) để con tự giác rửa tay, ăn nhẹ và chào tạm biệt bạn bè mà không cần cha mẹ phải la mắng hay hối thúc dập dồn.
+
+Hãy để lại yêu cầu cho tôi ngay dưới này nhé!

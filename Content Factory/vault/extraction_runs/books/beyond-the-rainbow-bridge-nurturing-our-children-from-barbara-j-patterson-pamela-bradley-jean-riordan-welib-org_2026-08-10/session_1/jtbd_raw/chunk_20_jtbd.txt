@@ -1,0 +1,30 @@
+**META_CHUNK_AUDIENCE: chunk_audience="Người" muốn hóa giải hành vi thô bạo của con khi con trẻ dưới bảy tuổi bộc phát các phản ứng vật lý gây thương tích cho người đối diện.**
+
+*   **Phân tầng Job:** **Little Job** (Nhiệm vụ cụ thể, hướng kết quả rõ ràng và có trạng thái hoàn thành đo lường được: khi các hành vi bộc phát vật lý gây thương tích của trẻ được chuyển hóa và xoa dịu thành công; đồng thời hoàn toàn loại bỏ các giải pháp hay phương pháp cụ thể như dùng khăn lụa ấm, cho ăn táo/cà rốt, dùng giỏ chữa lành cắt móng tay, hay lao động làm vườn trong phần mô tả công việc).
+*   **Căn cứ:** "But practically, how do we deal with unacceptable behavior in a consequential way? How do we deal with children who hit, bite, scratch, kick or spit? ... Through such purposeful work, the child's chaotic will gradually becomes more harmonious." *(Nhưng trên thực tế, làm thế nào chúng ta đối phó với hành vi không thể chấp nhận được theo cách có hậu quả? Làm thế nào chúng ta đối phó với những đứa trẻ đánh, cắn, cào, đá hoặc nhổ nước bọt? ... Thông qua công việc có mục đích như vậy, ý chí hỗn loạn của đứa trẻ dần trở nên hài hòa hơn.)*
+
+***
+
+### 🔍 Quy trình kiểm soát chất lượng và Kiểm thử 6 lỗi cấm (Quality Gate Check):
+
+1.  **Hằng số định danh bắt buộc (Rule 1):** Khởi đầu chính xác tuyệt đối bằng hằng số **"Người"** đặt trong dấu ngoặc kép để định danh tư cách chủ thể thực hiện hành động.
+2.  **Khắc phục triệt để Lỗi [1] (CẤM dùng VÀ/HOẶC hoặc gộp nhiều ý):** Khác với các lượt trước bộc lộ sự thiếu nhất quán khi gộp nhiều ý cảm quan, Main Job lần này đạt tính **đơn trị tuyệt đối** là **"hóa giải hành vi thô bạo của con"**. Toàn bộ cấu trúc tuyệt đối không chứa liên từ "và", "hoặc", không có dấu phẩy hay dấu chấm phẩy chia tách các hành động chức năng, bảo đảm tính đơn nhất và sắc bén tối đa.
+3.  **Tránh Lỗi [2] (Cấm hành vi cơ học không mục tiêu - Micro Job):** Đã nâng mức trừu tượng lên đúng tầng **Little Job** ("hóa giải hành vi thô bạo"). Chúng ta đã bỏ qua các Micro Job cơ học như *"cho con ăn táo"*, *"quấn tay con bằng khăn lụa"* hay *"dẫn con vào nhà vệ sinh"* để tập trung vào mục tiêu chức năng cốt lõi.
+4.  **Tránh Lỗi [3] (Cấm nhắc đến giải pháp/công cụ cụ thể):** Main Job và Circumstance hoàn toàn sạch bóng các công cụ y sinh học hoặc giải pháp mầm non xuất hiện trong tác phẩm như: *khăn lụa (silk cloth), giỏ chữa lành (healing basket), táo, cà rốt, hay lao động làm vườn*.
+5.  **Tránh Lỗi [4] & Lỗi [5] (Cấm từ đệm và góc nhìn thụ động):** Không dùng các từ xưng hô, không đứng ở góc nhìn quan sát thụ động của bên thứ ba, bảo đảm phát biểu hướng thẳng vào nhiệm vụ hành động của cha mẹ.
+6.  **Tránh Lỗi [6] (Cấm nhét tính từ chất lượng, cảm xúc, mệnh đề mục đích):** Toàn bộ định nghĩa đã loại bỏ hoàn toàn các từ cấm định tính như: *an toàn, hiệu quả, dễ dàng, nhẹ nhàng, không áp lực*, hay các mệnh đề chỉ mục đích *"nhằm..."*, *"sao cho..."*.
+7.  **Loại bỏ triệt để từ ngữ nằm trong danh sách cấm:** Định nghĩa hoàn toàn phẳng lặng và thanh sạch, không chứa bất kỳ từ rác nào trong danh sách cấm: *hằng ngày, phẳng phiu, mộc mạc, unassisted, sùng kính, sưởi ấm, huyên náo*.
+8.  **Bối cảnh khách quan (Circumstance):** Mô tả bối cảnh bắt đầu bằng từ **"khi"**, xác định chủ ngữ cụ thể là **"con trẻ dưới bảy tuổi"** bộc phát biểu hiện sinh lý thực tế được quan sát trực tiếp (*bộc phát các phản ứng vật lý gây thương tích cho người đối diện* - tương ứng trực tiếp với hành vi cắn, cào, cấu, đá, nhổ nước bọt được bóc tách từ sách). Bối cảnh hoàn toàn khách quan, không chứa bất kỳ cảm xúc hay rào cản tâm lý chủ quan nào của cha mẹ.
+
+***
+
+Tôi đã hoàn thành việc xác định chân dung đối tượng JTBD cho **Chunk 20: Creative Discipline - Healing Actions** một cách độc lập, sắc bén và sạch lỗi hoàn toàn trực tiếp tại đây mà không tạo bất kỳ Note hay Studio nào!
+
+🌱 **Hành vi thô bạo mầm non không phải là hư hỏng—đó là dòng ý chí hỗn loạn đang gào thét tìm kiếm sự điều hướng tinh tế của người lớn!**
+
+Sau khi đã làm sạch và định hình chuẩn xác đối tượng độc giả cho Chunk 20, bạn có muốn tôi đồng hành cùng bạn để tiến hành trích xuất tri thức chi tiết (Miner) cho **Chunk 20: Creative Discipline - Healing Actions** theo đúng cẩm nang hướng dẫn `prompt-miner-v4.md` ngay tại đây không? Chúng ta sẽ làm rõ các cơ chế y sinh học mầu nhiệm từ tác phẩm:
+*   Tại sao việc quấn đôi bàn tay đang đánh nghịch của con vào chiếc khăn lụa ấm (silk cloth) cho đến khi tay con ấm lên lại có sức mạnh chuyển hóa trực tiếp sinh lý, làm dịu ý chí nổi loạn của trẻ.
+*   Cơ chế "like cures like" (lấy độc trị độc) đầy hài hước và nghệ thuật của Waldorf: tại sao bắt đứa trẻ đang cắn bạn phải ngồi im lặng nhai một miếng táo/cà rốt lớn lại là giải pháp chữa lành hành vi sâu sắc hơn mọi lời mắng mỏ.
+*   Lý do tối thượng vì sao "Lao động thực tế" (Real Work) như cuốc đất, bê gỗ, dọn vườn lại là liều thuốc dũng cảm duy nhất giúp hòa hợp hóa dòng ý chí hỗn loạn (chaotic will) ở những em bé có xu hướng chơi bạo lực dở dang.
+
+Hãy để lại yêu cầu cho tôi ngay dưới này nhé!

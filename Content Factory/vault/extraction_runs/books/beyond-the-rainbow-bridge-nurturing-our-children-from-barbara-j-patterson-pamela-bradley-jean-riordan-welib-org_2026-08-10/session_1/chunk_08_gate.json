@@ -1,0 +1,138 @@
+{
+  "chunk_index": 8,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_08_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 8,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_08_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_08_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_08_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "đồ chơi",
+        "count": 35,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "Trong góc phòng khách nhỏ | Người mẹ đứng nhìn đứa con mười tám tháng tuổi đang bò loanh quanh, tò mò kéo mọi cánh cửa tủ bếp để lôi xoong nồi và thìa gỗ ra ngoài sàn nhà [4] | Đứa trẻ liên tục đổ đầy đồ chơi vào chiếc rổ mây rồi lại dốc ngược đổ hết ra ngoài đầy phấn khích, miệng không ngừng ê a tự sự [5] | Người mẹ mệt mỏi dọn dẹp đống lộn xộn, băn khoăn không biết có nên mua những bộ đồ chơi nhựa phát nhạc hiện đại, rực rỡ sắc màu được quảng cáo giúp phát triển trí tuệ sớm để thu hút sự chú ý của con hay không | Cô loay hoay tìm kiếm một cách thức tổ chức góc chơi an toàn, đơn giản tại nhà để con tự do vận động mà không làm đảo lộn nếp sinh hoạt chung của gia đình.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "sinh học",
+        "count": 21,
+        "contexts": [
+          "Chào bạn! Tiếp nối hành trình thấu hiểu sâu sắc thế giới mầm non từ các mốc vận động cơ thể (Chunk 5), chiếc kén hơi ấm sinh học mầu nhiệm (Chunk 6) cho đến nghệ thuật kiến thiết nhịp sống gia đình bình yên (Chunk 7); dưới đây là bản bóc tách tri thức chi tiết, sắc bén và sâu sắc nhất cho **Chunk 8: Play, The Lifeblood of a Healthy Childhood - Newborn to Two-and-a-Half** được in trực tiếp hoàn toàn ngay tại đây cho công trình nghiên cứu sư phạm của bạn.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "cơ thể",
+        "count": 20,
+        "contexts": [
+          "Chào bạn! Tiếp nối hành trình thấu hiểu sâu sắc thế giới mầm non từ các mốc vận động cơ thể (Chunk 5), chiếc kén hơi ấm sinh học mầu nhiệm (Chunk 6) cho đến nghệ thuật kiến thiết nhịp sống gia đình bình yên (Chunk 7); dưới đây là bản bóc tách tri thức chi tiết, sắc bén và sâu sắc nhất cho **Chunk 8: Play, The Lifeblood of a Healthy Childhood - Newborn to Two-and-a-Half** được in trực tiếp hoàn toàn ngay tại đây cho công trình nghiên cứu sư phạm của bạn.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi phù hợp cho con khi con trẻ dưới hai tuổi rưỡi đang ở giai đoạn khám phá các bộ phận cơ thể và bắt đầu thao tác với các đồ vật xung quanh. [7, 8]"
+        ]
+      },
+      {
+        "bigram": "hai tuổi",
+        "count": 16,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi phù hợp cho con khi con trẻ dưới hai tuổi rưỡi đang ở giai đoạn khám phá các bộ phận cơ thể và bắt đầu thao tác với các đồ vật xung quanh. [7, 8]",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "dưới hai",
+        "count": 15,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi phù hợp cho con khi con trẻ dưới hai tuổi rưỡi đang ở giai đoạn khám phá các bộ phận cơ thể và bắt đầu thao tác với các đồ vật xung quanh. [7, 8]",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "tiến trình",
+        "count": 14,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "trẻ dưới",
+        "count": 14,
+        "contexts": [
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn thiết lập không gian chơi phù hợp cho con khi con trẻ dưới hai tuổi rưỡi đang ở giai đoạn khám phá các bộ phận cơ thể và bắt đầu thao tác với các đồ vật xung quanh. [7, 8]",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi.",
+          "* META_INSIGHT: content_type=vivid_insight | supports_insight=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "tự nhiên",
+        "count": 13,
+        "contexts": [
+          "Bản trích xuất này tuân thủ 100% các tiêu chí kỹ thuật khắt khe của cẩm nang `prompt-miner-v4.md` dựa trên chân dung JTBD Audience cùng bằng chứng thực tế đặc thù bạn yêu cầu, đồng thời dọn dẹp sạch sẽ hoàn toàn các từ ngữ không tự nhiên hay rập khuôn trước đây:",
+          "Người mẹ nằm dằn vặt lo âu giữa đêm khuya khi nhìn đứa con nhỏ thờ ơ ném con búp bê nhựa đắt tiền vào góc tường sau chưa đầy mười phút chơi; cô sợ hãi rằng sự tràn ngập của những món đồ công nghiệp lấp lánh nhưng vô hồn này đang làm chai sạn các cảm quan mỏng manh và dập tắt động lực tự học hỏi thế giới tự nhiên của con hằng tuần.",
+          "* **Diễn giải Core Logic:** Rudolf Steiner chỉ ra một bí mật sinh học thần kinh vĩ đại: khi trẻ chơi với một món đồ chơi quá hoàn hảo, tinh xảo (như một con búp bê nhựa có đầy đủ chi tiết mắt mũi hay một chiếc ô tô pin chuyển động), bộ não của trẻ hoàn toàn bị thụ động hóa vì không còn gì để tự bổ khuyết [9]. Ngược lại, một con búp bê đơn giản tự may bằng vải mềm tự nhiên chỉ với vài nút thắt chỉ khâu biểu thị mắt mũi [11] hay một khúc gỗ tròn đơn giản [12] sẽ đánh thức sinh lực tưởng tượng mạnh mẽ. Trẻ buộc phải sử dụng tâm hồn mơ màng của mình để dệt nên các hình ảnh sống động mỗi ngày: hôm nay búp bê vui, ngày mai búp bê khóc, hay khúc gỗ biến thành một lát bánh mì [11, 12]. Tiến trình hoạt hóa tưởng tượng liên tục này tạo ra các xung động vận động tinh tế trong hệ tuần hoàn và cơ quan nội tạng, gửi các tín hiệu sinh học kích thích sự tăng trưởng dẻo dai và tạo hình các nếp gấp mạch neuron ở thùy trán [9, 13]."
+        ]
+      },
+      {
+        "bigram": "đơn giản",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "Trong góc phòng khách nhỏ | Người mẹ đứng nhìn đứa con mười tám tháng tuổi đang bò loanh quanh, tò mò kéo mọi cánh cửa tủ bếp để lôi xoong nồi và thìa gỗ ra ngoài sàn nhà [4] | Đứa trẻ liên tục đổ đầy đồ chơi vào chiếc rổ mây rồi lại dốc ngược đổ hết ra ngoài đầy phấn khích, miệng không ngừng ê a tự sự [5] | Người mẹ mệt mỏi dọn dẹp đống lộn xộn, băn khoăn không biết có nên mua những bộ đồ chơi nhựa phát nhạc hiện đại, rực rỡ sắc màu được quảng cáo giúp phát triển trí tuệ sớm để thu hút sự chú ý của con hay không | Cô loay hoay tìm kiếm một cách thức tổ chức góc chơi an toàn, đơn giản tại nhà để con tự do vận động mà không làm đảo lộn nếp sinh hoạt chung của gia đình.",
+          "* META_KNOWLEDGE: knowledge_type=philosophy | knowledge_name=Triết lý về đồ chơi đơn giản chưa định hình và tác động kích hoạt tiến trình kiến tạo não bộ mầm non của trẻ nhỏ | stance=support | supports_insight=Nỗi lo sợ rằng việc bủa vây con bằng những món đồ chơi hoàn hảo, rực rỡ nhân tạo sẽ bóp nghẹt trí tưởng tượng non nớt, làm tê liệt năng lực tư duy sáng tạo tự thân và ngăn cản tiến trình tự khám phá cơ thể sinh học của trẻ dưới hai tuổi rưỡi."
+        ]
+      },
+      {
+        "bigram": "vận động",
+        "count": 12,
+        "contexts": [
+          "Chào bạn! Tiếp nối hành trình thấu hiểu sâu sắc thế giới mầm non từ các mốc vận động cơ thể (Chunk 5), chiếc kén hơi ấm sinh học mầu nhiệm (Chunk 6) cho đến nghệ thuật kiến thiết nhịp sống gia đình bình yên (Chunk 7); dưới đây là bản bóc tách tri thức chi tiết, sắc bén và sâu sắc nhất cho **Chunk 8: Play, The Lifeblood of a Healthy Childhood - Newborn to Two-and-a-Half** được in trực tiếp hoàn toàn ngay tại đây cho công trình nghiên cứu sư phạm của bạn.",
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Newborn to Two-and-a-Half Years\"** (Từ sơ sinh đến hai tuổi rưỡi) làm sáng tỏ giai đoạn khởi đầu của hoạt động chơi mầm non—một tiến trình vận động thể chất thuần túy gắn liền với sự tự khám phá cơ thể [1]. Trẻ sơ sinh chơi với đôi tay, đôi chân, mút ngón chân, trước khi tiến sang hoạt động cầm nắm các vật dụng đơn giản [1, 2]. Nhóm tác giả cùng Rudolf Steiner chỉ ra đồ chơi đầu đời tối thượng là một con búp bê vải mềm mại, đơn giản, có tỉ lệ đầu bằng một phần tư thân mình để làm người bạn đồng hành an ủi cho trẻ [2, 3]. Khi trẻ chập chững biết đi, các góc bếp biến thành thiên đường trò chơi kỳ diệu với những thìa gỗ, nồi, bát, đặc biệt là hoạt động đổ đầy và đổ ra khỏi giỏ [4, 5]. Trải nghiệm trốn dưới tấm vải cotton hay thả rơi thìa từ ghế cao không chỉ giúp con học hỏi thế giới mà còn là phản chiếu sinh động của các lực lượng tạo hình cơ thể sinh học bên trong [5, 6].",
+          "Trong góc phòng khách nhỏ | Người mẹ đứng nhìn đứa con mười tám tháng tuổi đang bò loanh quanh, tò mò kéo mọi cánh cửa tủ bếp để lôi xoong nồi và thìa gỗ ra ngoài sàn nhà [4] | Đứa trẻ liên tục đổ đầy đồ chơi vào chiếc rổ mây rồi lại dốc ngược đổ hết ra ngoài đầy phấn khích, miệng không ngừng ê a tự sự [5] | Người mẹ mệt mỏi dọn dẹp đống lộn xộn, băn khoăn không biết có nên mua những bộ đồ chơi nhựa phát nhạc hiện đại, rực rỡ sắc màu được quảng cáo giúp phát triển trí tuệ sớm để thu hút sự chú ý của con hay không | Cô loay hoay tìm kiếm một cách thức tổ chức góc chơi an toàn, đơn giản tại nhà để con tự do vận động mà không làm đảo lộn nếp sinh hoạt chung của gia đình."
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}

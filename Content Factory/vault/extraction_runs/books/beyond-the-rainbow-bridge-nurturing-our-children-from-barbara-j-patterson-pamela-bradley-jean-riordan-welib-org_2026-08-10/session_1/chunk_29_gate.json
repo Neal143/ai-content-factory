@@ -1,0 +1,138 @@
+{
+  "chunk_index": 29,
+  "chunk_name": "READ_FROM_CACHE",
+  "passed": true,
+  "skipped": false,
+  "failed_gates": [],
+  "error_code": null,
+  "needs_retry": false,
+  "needs_supplement": false,
+  "detail": "",
+  "raw_file": "chunk_29_raw.txt",
+  "next_action": {
+    "type": "AGENT_EVAL",
+    "instruction": "Đọc raw file, đánh giá Gate [8] (Semantic Score), ghi agent_gate.json rồi hành động theo on_pass/on_fail",
+    "agent_gate_template": {
+      "chunk_index": 29,
+      "gate_8_axis_1": null,
+      "gate_8_axis_2": null,
+      "gate_8_pass": null,
+      "verdict": ""
+    },
+    "agent_gate_file": "D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_29_agent_gate.json",
+    "on_pass": {
+      "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_29_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\"",
+      "ledger_update": {
+        "status": "DONE",
+        "error_code": null
+      }
+    },
+    "on_fail_axis": {
+      "max_retry": 1,
+      "action": "Gửi NLM query hiệu đính trục hỏng, lưu đè raw file, re-eval Gate [8]",
+      "fallback_template": {
+        "cli_append": "python .agent/skills/book-extractor/scripts/append_cache.py \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\extraction_runs\\books\\beyond-the-rainbow-bridge-nurturing-our-children-from-barbara-j-patterson-pamela-bradley-jean-riordan-welib-org_2026-08-10\\session_1\\chunk_29_raw.txt\" \"D:\\AI\\AI content factory - v3.7B\\Content Factory\\vault\\02-sources\\books\\Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md\" --warnings \"SEMANTIC_WARNING_AXIS_{N}\"",
+        "ledger_update": {
+          "status": "DONE",
+          "error_code": "SEMANTIC_ERROR_AXIS"
+        }
+      }
+    }
+  },
+  "filler_warning": {
+    "type": "FILLER_WARNING",
+    "bigrams": [
+      {
+        "bigram": "đồ chơi",
+        "count": 44,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",
+          "Tại góc phòng chơi ngổn ngang đồ dùng vào lúc năm giờ chiều | Đứa trẻ bốn tuổi đang cau có bứt rứt, con liên tục dùng chân đá văng những mô hình rô-bốt nhựa lắp ghép có pin phát âm thanh dồn dập và những nàng công chúa Barbie tóc nhựa bóng loáng vừa được mua tuần trước | Đồ chơi chất đống xung quanh nhưng con không chạm vào bất kỳ món nào, liên tục kêu khóc đòi hỏi sự chú ý và bám chặt lấy áo mẹ không rời | Người mẹ mệt mỏi đứng nhìn đống đồ đắt tiền dở dang, bất lực trước phản ứng nhanh chán và sự cáu kỉnh khó hiểu của con yêu mỗi tối."
+        ]
+      },
+      {
+        "bigram": "búp bê",
+        "count": 30,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* **Mô tả:** Cha mẹ mong ước thiết tha biến phòng chơi của con thành một không gian nghệ thuật tinh khôi. Họ khao khát được thấu hiểu sinh học cảm giác Waldorf, làm chủ quy trình khâu búp bê thắt nút và rèn luyện điệu bộ lao động điềm tĩnh mỗi tối để làm điểm tựa tinh thần vững chãi nâng đỡ Cái Tôi mầm non lớn khôn tự tin, hạnh phúc [1].",
+          "* **Diễn giải Core Logic:** Khoa học tinh thần Anthroposophy chỉ ra rằng não bộ của trẻ mầm non cực kỳ nhạy cảm trước mọi ấn tượng cảm giác từ môi trường. Khi trẻ chơi với một món đồ chơi tối giản (như chiếc khăn ăn gấp nếp hay búp bê thắt nút không có ngũ quan), tâm hồn trẻ buộc phải vận hành lực lượng tưởng tượng (mental imaging) một cách mạnh mẽ mỗi tối để tự hoàn thiện bức tranh tinh thần về hình ảnh con người [1]. Sự nỗ lực nội tâm này kích hoạt dòng chảy sinh lực (etheric forces), trực tiếp kiến tạo và xây dựng nên các nếp nhăn và cấu trúc tế bào thần kinh khỏe mạnh của não bộ [1]. Ngược lại, những con búp bê nhựa má hồng má phấn, có sẵn chi tiết tinh xảo hay âm thanh điện tử cơ học sẽ bóp nghẹt hoàn toàn khoảng trống tưởng tượng của con [1]. Bộ não trẻ không còn việc gì để làm, rơi vào trạng thái lười biếng tư duy, dẫn đến sự thui chột, xơ cứng và cằn cỗi lực lượng định hình tinh thần [1]."
+        ]
+      },
+      {
+        "bigram": "tưởng tượng",
+        "count": 21,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc cho con tiếp xúc sớm với đồ chơi công nghiệp hoàn thiện quá mức và các thiết bị điện tử vô hồn sẽ bóp nghẹt lực lượng tưởng tượng dồi dào, làm xơ cứng các cơ quan thực thể bên trong và tước đi khả năng tự chơi độc lập dẻo dai của con trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "món đồ",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao tự tay khâu vá những món đồ chơi thô sơ bằng chất liệu sợi tự nhiên dồi dào hơi ấm để chữa lành cảm quan, đánh thức sức mạnh cơ bắp của trí tưởng tượng và nuôi dưỡng sự tập trung chơi đùa bình an cho con mỗi tuần."
+        ]
+      },
+      {
+        "bigram": "thắt nút",
+        "count": 13,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* **Mô tả:** Cha mẹ mong ước thiết tha biến phòng chơi của con thành một không gian nghệ thuật tinh khôi. Họ khao khát được thấu hiểu sinh học cảm giác Waldorf, làm chủ quy trình khâu búp bê thắt nút và rèn luyện điệu bộ lao động điềm tĩnh mỗi tối để làm điểm tựa tinh thần vững chãi nâng đỡ Cái Tôi mầm non lớn khôn tự tin, hạnh phúc [1].",
+          "* **Diễn giải Core Logic:** Khoa học tinh thần Anthroposophy chỉ ra rằng não bộ của trẻ mầm non cực kỳ nhạy cảm trước mọi ấn tượng cảm giác từ môi trường. Khi trẻ chơi với một món đồ chơi tối giản (như chiếc khăn ăn gấp nếp hay búp bê thắt nút không có ngũ quan), tâm hồn trẻ buộc phải vận hành lực lượng tưởng tượng (mental imaging) một cách mạnh mẽ mỗi tối để tự hoàn thiện bức tranh tinh thần về hình ảnh con người [1]. Sự nỗ lực nội tâm này kích hoạt dòng chảy sinh lực (etheric forces), trực tiếp kiến tạo và xây dựng nên các nếp nhăn và cấu trúc tế bào thần kinh khỏe mạnh của não bộ [1]. Ngược lại, những con búp bê nhựa má hồng má phấn, có sẵn chi tiết tinh xảo hay âm thanh điện tử cơ học sẽ bóp nghẹt hoàn toàn khoảng trống tưởng tượng của con [1]. Bộ não trẻ không còn việc gì để làm, rơi vào trạng thái lười biếng tư duy, dẫn đến sự thui chột, xơ cứng và cằn cỗi lực lượng định hình tinh thần [1]."
+        ]
+      },
+      {
+        "bigram": "tự nhiên",
+        "count": 12,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao tự tay khâu vá những món đồ chơi thô sơ bằng chất liệu sợi tự nhiên dồi dào hơi ấm để chữa lành cảm quan, đánh thức sức mạnh cơ bắp của trí tưởng tượng và nuôi dưỡng sự tập trung chơi đùa bình an cho con mỗi tuần.",
+          "* **Định nghĩa/Phát biểu luật:** Đồ chơi cho trẻ nhỏ cần có biểu cảm trung tính tối giản để con tự do thay đổi trạng thái cảm xúc trong giờ chơi, kết hợp chất liệu sợi tự nhiên dồi dào sinh khí để xoa dịu giác quan xúc giác và củng cố ranh giới thể chất cho trẻ [1, 8]."
+        ]
+      },
+      {
+        "bigram": "công nghiệp",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",
+          "* META_INSIGHT: insight_type=fear | insight_name=Nỗi lo sợ rằng việc cho con tiếp xúc sớm với đồ chơi công nghiệp hoàn thiện quá mức và các thiết bị điện tử vô hồn sẽ bóp nghẹt lực lượng tưởng tượng dồi dào, làm xơ cứng các cơ quan thực thể bên trong và tước đi khả năng tự chơi độc lập dẻo dai của con trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "khâu vá",
+        "count": 11,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_INSIGHT: insight_type=desire | insight_name=Khát khao tự tay khâu vá những món đồ chơi thô sơ bằng chất liệu sợi tự nhiên dồi dào hơi ấm để chữa lành cảm quan, đánh thức sức mạnh cơ bắp của trí tưởng tượng và nuôi dưỡng sự tập trung chơi đùa bình an cho con mỗi tuần.",
+          "* ②-3. actionable_rule: Quy chuẩn khâu vá búp bê thắt nút flannel và quy trình tổ chức giờ chơi tự do với đồ chơi thô sơ hằng tuần cho cha mẹ mầm non"
+        ]
+      },
+      {
+        "bigram": "thế giới",
+        "count": 11,
+        "contexts": [
+          "Người mẹ nhói lòng đứng nhìn đứa con nhỏ đang thẫn thờ ngồi trước màn hình tivi nhấp nháy ánh sáng xanh dở dang mỗi tối; cô sợ hãi nhận ra những món đồ chơi nhựa sặc sỡ vô hồn cô mua đang dần biến thế giới nội tâm mộng mơ của con thành một khoảng trống rỗng cằn cỗi.",
+          "* ②-2. principle: Nguyên lý \"Khơi dậy thế giới nội tâm qua tính tối giản của biểu cảm và chất liệu đồ chơi (The Healing Power of Minimalist Expression and Natural Materials)\"",
+          "* META_KNOWLEDGE: knowledge_type=principle | knowledge_name=Nguyên lý Khơi dậy thế giới nội tâm qua tính tối giản của biểu cảm và chất liệu đồ chơi | stance=support | supports_insight=Nỗi lo sợ rằng việc cho con tiếp xúc sớm với đồ chơi công nghiệp hoàn thiện quá mức và các thiết bị điện tử vô hồn sẽ bóp nghẹt lực lượng tưởng tượng dồi dào, làm xơ cứng các cơ quan thực thể bên trong và tước đi khả năng tự chơi độc lập dẻo dai của con trẻ dưới bảy tuổi."
+        ]
+      },
+      {
+        "bigram": "hoạt động",
+        "count": 10,
+        "contexts": [
+          "* **Tóm tắt Chunk:** Phân đoạn **\"Handwork Instructions\"** (Các chỉ dẫn làm đồ thủ công) dâng hiến những chỉ dẫn thực hành nghệ thuật thủ công cốt tủy để khép lại tác phẩm [1]. Phân đoạn này bóc trần một sai lầm nghiêm trọng của thời đại công nghiệp hóa: việc cung cấp cho trẻ mầm non những món đồ chơi nhựa vô hồn sặc sỡ hoặc những búp bê xinh đẹp hoàn thiện quá mức (pretty dolls) có sẵn đầy đủ chi tiết cơ học [1]. Tác phẩm sinh học mầm non chỉ ra rằng những món đồ chơi quá hoàn hảo này \"tước đoạt\" hoàn toàn cơ hội hoạt động của trí tưởng tượng, làm xơ cứng tế bào thần kinh và khiến não bộ trẻ trở nên trì trệ, thui chột [1]. Ngược lại, một em búp bê thắt nút đơn sơ dở dang bằng flannel tự nhiên nhồi len cừu không có ngũ quan rõ ràng sẽ buộc trẻ phải tự dùng lực lượng tưởng tượng nội tâm để \"lấp đầy\" các chi tiết cảm xúc linh hoạt mỗi ngày [1]. Khi con ngồi bên cạnh quan sát cha mẹ miệt mài khâu vá bằng chiếc kim nhọn, trẻ sẽ tự động bắt chước vô thức điệu bộ lao động đầy tập trung đó, giúp chuyển hóa dòng ý chí hỗn loạn thành năng lực tự chủ dẻo dai và nuôi dưỡng sâu sắc mười hai giác quan trọn đời [1].",
+          "* META_CHUNK_AUDIENCE: chunk_audience=\"Người\" muốn kích hoạt trí tưởng tượng sáng tạo của con trong hoạt động chơi khi con trẻ dưới bảy tuổi bộc lộ phản ứng nhanh chán trước các món đồ chơi công nghiệp hoàn thiện quá mức.",
+          "* ②-1. philosophy: Triết lý \"Sự đồng bộ phát triển giữa cơ bắp bàn tay và tế bào não bộ thông qua hoạt động tưởng tượng chủ động (The Brain Unfolds as the Muscles of the Hand Unfold)\""
+        ]
+      }
+    ],
+    "message": "Frequency analysis detected abnormal bigram repeats. Agent should read raw chunk and evaluate: NLM filler or legitimate domain terms?"
+  }
+}
