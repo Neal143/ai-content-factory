@@ -1,4 +1,11 @@
 # Lịch sử Checkpoints
+### 📅 Ngày 05/08/2026
+#### Hoàn tất triển khai Plan A (Cơ chế JTBD_RETRY)
+- **Mã khôi phục:** `b82025f`
+- **Thẻ (Tag):** `v4.5.2-jtbd-plan-a`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Thắt chặt lại tiêu chuẩn chất lượng khi chiết xuất JTBD Audience. Nếu AI viết sai (như vi phạm từ cấm), hệ thống sẽ không chiết xuất lại toàn bộ nội dung mà chỉ yêu cầu AI viết lại duy nhất phần Audience để tiết kiệm tài nguyên và giữ nguyên chất lượng content.
+  - **🛠️ Kỹ thuật (Tech):** Bổ sung thuộc tính `needs_jtbd_retry` trong `quality_gate.py` và cập nhật Regex rules kiểm tra keyword cấm. Thêm nhánh `JTBD_RETRY` trong `gate_checker.py` để ghi đè dòng `META_CHUNK_AUDIENCE` mà không gọi lại toàn bộ chu trình NLM. Sửa đổi `prompt-mapper-v4.md` và `prompt-miner-v4.md` để tuân thủ 100% rules chặt chẽ.
 ### 📅 Ngày 04/08/2026
 #### Đổi tên thư mục .extraction_runs thành extraction_runs và sửa lỗi encoding
 - **Mã khôi phục:** `821164a`
@@ -695,4 +702,5 @@
 - **Nội dung chính:**
   - **📱 Sản phẩm / Business:** Hoàn tất việc định cấu hình không gian làm việc mới cho AWF.
   - **🛠️ Kỹ thuật (Tech):** Cập nhật cấu trúc thư mục dự án vào `brain.json`, `preferences.json` và rules của `GEMINI.md`, lưu lại trạng thái mới nhất vào Git.
+
 
