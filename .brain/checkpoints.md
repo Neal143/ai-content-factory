@@ -1,4 +1,11 @@
 # Lịch sử Checkpoints
+### 📅 Ngày 10/08/2026
+#### update version rồi push lên github
+- **Mã khôi phục:** `e03acd8` (và commit mới cập nhật version)
+- **Thẻ (Tag):** `v4.5.2`
+- **Nội dung chính:**
+  - **📱 Sản phẩm / Business:** Cập nhật phiên bản hệ thống lên v4.5.2 sau khi dọn dẹp sạch sẽ lỗi duplicate tags và gộp thành công luồng giải pháp dự phòng (Plan B) từ book-extractor.
+  - **🛠️ Kỹ thuật (Tech):** Sửa lỗi Regex, tự động hóa xử lý làm sạch raw chunks, tái cấu trúc MD cache file chuẩn xác. Cập nhật version README và lưu checkpoint đồng bộ lên GitHub (thông qua subtree agents-only).
 ### 📅 Ngày 05/08/2026
 #### Hoàn tất triển khai Plan A (Cơ chế JTBD_RETRY)
 - **Mã khôi phục:** `b82025f`
