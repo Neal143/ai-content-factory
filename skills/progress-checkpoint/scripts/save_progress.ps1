@@ -44,6 +44,11 @@ function Initialize-SaveRepo {
     # Init git repo with custom git-dir
     Invoke-SaveGit init 2>$null | Out-Null
 
+    # Remove core.worktree that git init auto-creates — prevents IDE from
+    # detecting .save-data/ as a separate repository (annoying repo picker popup).
+    # Our Invoke-SaveGit always passes --work-tree explicitly, so this is unnecessary.
+    Invoke-SaveGit config --unset core.worktree 2>$null | Out-Null
+
     # Set local git config (prevents commit failure on systems without global git config)
     Invoke-SaveGit config user.email "factory@local" 2>$null | Out-Null
     Invoke-SaveGit config user.name "Content Factory" 2>$null | Out-Null
@@ -186,14 +191,11 @@ function Invoke-Rollback {
         Invoke-SaveGit tag -a "snap/$autoLabel" -m "Auto-save before rolling back to $Label" 2>$null | Out-Null
     }
 
-    # --- Rollback: checkout files from snapshot ---
+    # --- Rollback: reset working tree to snapshot state ---
+    # git reset --hard restores old files AND deletes new files in one operation
+    # Ignored files (.agents/, .save-data/, progress-checkpoints.md) are NOT affected
     Write-Host "[INFO] Rolling back data to snap/$Label..."
-    Invoke-SaveGit checkout $tagName -- . 2>$null | Out-Null
-
-    # --- Clean up files created after the snapshot ---
-    # git clean -fd removes untracked files not in the snapshot
-    # Ignored files (.agents/, .save-data/, progress-checkpoints.md) are NOT removed
-    Invoke-SaveGit clean -fd 2>$null | Out-Null
+    Invoke-SaveGit reset --hard $tagName 2>$null | Out-Null
 
     Pop-Location
     Write-Host "[OK] Rolled back to snap/$Label."
