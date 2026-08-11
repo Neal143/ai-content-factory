@@ -1,7 +1,7 @@
 ---
 name: Book Parser (The Atomizer)
 description: Skill phân rã sách thành Atom vật lý. Được gọi bởi book-extractor Session 4. Phase 1: Sinh Book Topics & Chunk Topics (batch processing) + Semantic Dedup. Phase 2: Atomization (tiếp ngay sau Phase 1 trong cùng 1 lần gọi).
-last_update: 22/06/2026 15:42 (GMT+7)
+last_update: 12/08/2026 01:10 (GMT+7)
 ---
 
 # Book Parser Skill (The Atomizer)
@@ -74,7 +74,7 @@ python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
    python .agents/skills/book-parser/scripts/prepare_topic_batches.py \
        --session-dir "[run_folder]/session_4/topic_chunks" --get-next
    ```
-2. Mở file `[run_folder]/session_4/current_topic_batch.json` bằng `view_file` để xem nội dung chunk.
+2. Đọc nội dung từng chunk từ các file `current_batch_chunk_XX.txt` (đường dẫn được in ra stdout ở bước 1) bằng `view_file`.
 3. Với từng chunk trong batch:
    - Tham chiếu `topic-taxonomy.md` → Section "Chunk Topics" + "Quan hệ giữa Book và Chunk Topics".
    - Sinh 2-3 cặp `(id, label)` + `tier` + `evidence` (trích nguyên văn 1 đoạn từ nội dung chunk).

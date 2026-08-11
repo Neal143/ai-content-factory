@@ -69,8 +69,9 @@ def slugify_vi(text):
     text = re.sub(r'[\s]+', '-', text.strip())
     text = re.sub(r'-+', '-', text)
     slug = text.strip('-')
+    if len(slug) > 100:
+        slug = slug[:100].strip('-')
     return slug if slug else "untitled"
-
 
 # ══════════════════════════════════════════════════════════════
 # KIỂM TRA ĐIỀU KIỆN SKIP
@@ -465,6 +466,7 @@ def process_vivid_buffer(vivid_buffer, atoms_by_slug, acr, context, vault_root):
             adm = context.get("_adm_lookup", {})
             audience_entry = adm.get(chunk_idx, {})
             audience_filename = audience_entry.get("audience_filename", "")
+            audience_filename = audience_filename.strip("[]")
             if not audience_filename:
                 stats["orphan_dropped"] += 1
                 continue

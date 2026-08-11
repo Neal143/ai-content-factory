@@ -1,3 +1,4 @@
+import sys
 import os
 import json
 import glob
@@ -8,15 +9,22 @@ import shutil
 import subprocess
 from pathlib import Path
 
+# Fix Windows console encoding (cp1252 -> utf-8)
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 """
 Tên file: prepare_topic_batches.py
-Last update: 30/05/2026 06:15 (GMT+7)
+Last update: 12/08/2026 01:10 (GMT+7)
 Vai trò: Chia nội dung chunk sách thành batch, gatekeeper truy cập tuần tự, validate submission.
 Sử dụng khi: Phase 4 (Topic Gen) của book-extractor pipeline.
 Output:
   - [split-dir]/batch_NN.json (batch files)
   - [split-dir]/session_state.json (trạng thái batch)
   - [run_folder]/current_topic_batch.json (batch hiện tại cho Agent đọc)
+  - [run_folder]/current_batch_chunk_XX.txt (noi dung chunk tach rieng cho Agent doc bang view_file)
   - [run_folder]/collected_topics.json (danh sách topics thô gom từ tất cả batch)
 Tóm tắt logic:
   - --split-dir: Đọc chunk_XX_raw.txt + chunk_XX_gate.json → skip chunk passed=false
@@ -251,12 +259,26 @@ def get_next_batch(run_folder: str, session_dir: str):
         
     target_file = os.path.join(run_folder, "current_topic_batch.json")
     shutil.copy2(batch_file, target_file)
-    
-    # Sinh file template điền sẵn
-    temp_file_path = os.path.join(run_folder, "topic_eval_temp.json")
+
+    # --- Tach noi dung chunk ra file .txt de Agent doc duoc bang view_file ---
+    # Don file .txt cu tu batch truoc (tranh doc nham)
+    for old_txt in glob.glob(os.path.join(run_folder, "current_batch_chunk_*.txt")):
+        os.remove(old_txt)
+
     with open(batch_file, 'r', encoding='utf-8') as f:
         batch_data = json.load(f)
-        
+
+    chunk_txt_paths = []
+    for chunk in batch_data["chunks"]:
+        txt_filename = f"current_batch_chunk_{chunk['chunk_index']:02d}.txt"
+        txt_path = os.path.join(run_folder, txt_filename)
+        with open(txt_path, 'w', encoding='utf-8') as ct:
+            ct.write(chunk["content"])
+        chunk_txt_paths.append((chunk["chunk_index"], txt_path))
+    # --- Ket thuc tach file ---
+
+    # Sinh file template dien san
+    temp_file_path = os.path.join(run_folder, "topic_eval_temp.json")
     template_data = {
         "password": batch_data["batch_password"],
         "entries": [
@@ -284,9 +306,12 @@ def get_next_batch(run_folder: str, session_dir: str):
     with open(temp_file_path, 'w', encoding='utf-8') as tf:
         json.dump(template_data, tf, ensure_ascii=False, indent=2)
 
-    print(f"Batch {current_batch}/{state['total_batches']} đã sẵn sàng tại:\n{target_file}")
-    print(f"📝 Tệp làm bài ĐÃ ĐƯỢC TẠO SẴN tại: {temp_file_path}")
-    print(f"⚠️ Vui lòng mở tệp này ra và SỬA/THAY THẾ các trường [ĐIỀN VÀO ĐÂY], sau đó gọi --submit-file.")
+    print(f"Batch {current_batch}/{state['total_batches']} da san sang.")
+    print(f"Noi dung chunk (doc bang view_file):")
+    for cidx, cpath in chunk_txt_paths:
+        print(f"  Chunk {cidx}: {cpath}")
+    print(f"Tep lam bai DA DUOC TAO SAN tai: {temp_file_path}")
+    print(f"Vui long mo tep topic_eval_temp.json va SUA/THAY THE cac truong [DIEN VAO DAY], sau do goi --submit-file.")
 
 # === NHÓM 4: Submission validation ===
 def validate_submission(run_folder: str, session_dir: str, submit_file: str):

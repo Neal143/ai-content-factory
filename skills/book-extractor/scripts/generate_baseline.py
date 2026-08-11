@@ -76,8 +76,20 @@ def main():
 
         for item in chunk_data.get('items', []):
             meta = item.get('meta', {})
+            body = item.get('body_text', '').strip()
             if not meta:
                 continue
+            if not body or "[NOT_FOUND]" in body:
+                continue
+            
+            skip = False
+            for key, val in meta.items():
+                if "[NOT_FOUND]" in str(val):
+                    skip = True
+                    break
+            if skip:
+                continue
+
             ct = meta.get('content_type', '')
             kt = meta.get('knowledge_type', '')
             it = meta.get('insight_type', '')
