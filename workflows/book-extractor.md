@@ -1,6 +1,6 @@
 ---
 description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 5 Session độc lập để giải phóng Token Context Window)
-last_update: 13/07/2026 15:37 (GMT+7)
+last_update: 11/08/2026 17:09 (GMT+7)
 ---
 
 # 📖 Workflow: Book Extractor Pipeline (5-Session Architecture)
@@ -90,7 +90,7 @@ last_update: 13/07/2026 15:37 (GMT+7)
      Yêu cầu:
      1. Đọc `.agents\workflows\book-extractor.md`.
      2. Nạp cấu hình từ `00-blackboard.yaml` trong [run_folder].
-     3. Khởi chạy **Bước 5 (Phase 3: Audience Matcher)** ngay lập tức.
+     3. Khởi chạy **Bước 5 (Phase 3: Audience Resolver)** ngay lập tức.
      ```
 
 ---
@@ -110,8 +110,17 @@ last_update: 13/07/2026 15:37 (GMT+7)
 
 ### Bước 6 (Phase 3): Phân giải Đối tượng Độc giả
 
-- **Sub-Agent**: AudienceResolverAgent
-- **Input**: `cache_file`, `run_folder`, `parsed_metadata.json`
+- **Sub-Agent**: AudienceResolverAgent (đọc `.agents/agents/audience-resolver/AGENT.md`)
+- **Mode**: `calibrate`
+- **Input truyền cho Agent**:
+  - `mode`: `calibrate`
+  - `source_type`: `book`
+  - `source_file`: `cache_file` (lấy từ Blackboard)
+  - `run_folder`: `run_folder` (lấy từ Blackboard)
+  - `parsed_metadata.json`: `[run_folder]/parsed_metadata.json`
+- **Execution flow** (do AudienceResolverAgent điều phối, Agent chính KHÔNG can thiệp):
+  1. Skill 1 — JTBD Calibrator: Chuẩn hóa JTBD từ source file → `session_3/jtbd_calibrated.json`
+  2. Skill 2 — Book Audience Matcher: Semantic Match + tạo file Audience → `audience_decision_map.json`
 - **Output**: `audience_decision_map.json`, các file Audience trong `01-Atomic/Audiences/`
 - **Agent chính (BREAKPOINT 3)**:
   1. Đọc kết quả phân giải audience.
