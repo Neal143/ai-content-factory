@@ -259,9 +259,7 @@ Script thực hiện 2 việc:
 1. **Quality Audit**: Chạy Gates [1-6] trên từng chunk trong file vault đã normalize.
 2. **Mining Stats**: Đọc ledger → thống kê DONE/SKIPPED/FATAL + warning types.
 
-→ ALL PASS → Chạy format heading & block ID cho cache file:
-`python .agents/scripts/format_cache_file.py --cache-file "vault/02-sources/books/[Tên Sách].md"`
-→ Tiếp Bước 5.
+→ ALL PASS → Chuyển sang Bước 5 (Hệ thống đã tự động format cache ngầm).
 → Có FAIL → DỪNG. Báo user danh sách chunk FAIL kèm chi tiết gate.
   User quyết định: (1) Re-mine chunks đó, (2) Chấp nhận và tiếp tục.
 

@@ -32,6 +32,14 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 from nlm_cleaner import clean_single_char_repeats
 
+AGENTS_SCRIPTS_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '../../..', 'scripts'))
+if AGENTS_SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, AGENTS_SCRIPTS_DIR)
+try:
+    from format_cache_file import format_cache_content
+except ImportError:
+    format_cache_content = lambda x: x
+
 
 # Fix Windows console encoding
 if sys.stdout.encoding != 'utf-8':
@@ -257,8 +265,15 @@ def append_cache(raw_file, cache_file, warnings=None):
     # Reassemble: header + sorted chunks
     sorted_content = header + '\n\n' if header else ''
     for c in all_chunks:
-        sorted_content += f'<data_chunk>\n{c.strip()}\n</data_chunk>\n\n'
+        idx = parse_chunk_index(c)
+        title_match = re.search(r'CHUNK=([^|]+)', c)
+        title = title_match.group(1).strip() if title_match else f"Untitled {idx}"
+        heading = f"## Chunk {idx}: {title} ^chunk-{idx:02d}"
+        
+        sorted_content += f'{heading}\n<data_chunk>\n{c.strip()}\n</data_chunk>\n\n'
+    
     sorted_content = sorted_content.rstrip('\n') + '\n'
+    sorted_content = format_cache_content(sorted_content)
 
     # ── Write cache ──
     with open(cache_file, 'w', encoding='utf-8') as f:

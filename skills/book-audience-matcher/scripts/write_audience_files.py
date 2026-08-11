@@ -74,11 +74,21 @@ def join_data(decision_map, calibrated_jtbd):
         else:
             sys.exit(f"❌ Entry có scope không hợp lệ: '{scope}' (cần 'book' hoặc 'chunk')")
 
+        # Clean up audience_filename to prevent double brackets
+        raw_filename = entry["audience_filename"].replace("[[", "").replace("]]", "")
+        
+        # Ensure parent_audience is a list of proper wikilinks without nested brackets
+        raw_parents = entry.get("parent_audience", [])
+        clean_parents = []
+        for p in raw_parents:
+            clean_p = p.replace("[[", "").replace("]]", "")
+            clean_parents.append(f"[[{clean_p}]]")
+            
         # Merge 2 nguồn
         merged.append({
-            "audience_filename": entry["audience_filename"],
+            "audience_filename": raw_filename,
             "audience_level": entry["audience_level"],
-            "parent_audience": entry.get("parent_audience", []),
+            "parent_audience": clean_parents,
             "scope": entry.get("scope", "book"),
             "chunk_index": entry.get("chunk_index"),
             "audience_Job_performer": jtbd["audience_Job_performer"],

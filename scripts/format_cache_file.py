@@ -1,8 +1,6 @@
 import re, os, sys, argparse
 
-def format_cache(cache_file):
-    with open(cache_file, 'r', encoding='utf-8-sig') as f:
-        content = f.read()
+def format_cache_content(content):
     
     # 1. OVERVIEW HEADING
     # GI: "### 1. TẦNG 1: TỔNG QUAN CUỐN SÁCH"
@@ -42,31 +40,19 @@ def format_cache(cache_file):
     if '<!-- HEADER_END -->' not in content:
         # Chèn trước ## Chunk đầu tiên
         content = re.sub(
-            r'(\n)(## Chunk )',
-            r'\n<!-- HEADER_END -->\n\n\2',
+            r'(^|\n)(## Chunk )',
+            r'\1<!-- HEADER_END -->\n\n\2',
             content, count=1
         )
     
-    # 5. FORMAT CHUNK HEADINGS
-    def format_chunk_heading(m):
-        full_line = m.group(0)
-        n_str = m.group(1)  # chunk number hoặc "N"
-        title = m.group(2).strip()
-        
-        # Skip "Chunk N" (Unknown)
-        if not n_str.isdigit():
-            return full_line
-        
-        n = int(n_str)
-        return f"## Chunk {n}: {title} ^chunk-{n:02d}"
+    return content
+
+def format_cache(cache_file):
+    with open(cache_file, 'r', encoding='utf-8-sig') as f:
+        content = f.read()
     
-    content = re.sub(
-        r'^## Chunk (\w+):\s*(?:Chunk \d+:\s*)?(.+?)(?:\s*\^chunk-\d+)?\s*$',
-        format_chunk_heading,
-        content, flags=re.MULTILINE
-    )
+    content = format_cache_content(content)
     
-    # 6. ATOMIC WRITE
     tmp = cache_file + '.tmp'
     with open(tmp, 'w', encoding='utf-8') as f:
         f.write(content)
