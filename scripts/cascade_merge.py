@@ -1,10 +1,10 @@
 """
 Tên file: cascade_merge.py
-Last update: 14/07/2026 15:46 (GMT+7)
+Last update: 12/08/2026 22:50 (GMT+7)
 Vai trò: Xử lý các side-effect (cập nhật file YAML và file Markdown Atom) khi merge topic hoặc audience.
 Được sử dụng khi: Skill vc-topic-dedup hoặc vc-audience-curator ra quyết định merge và được submit.
 Output: Cập nhật topic_map.yaml hoặc _audience_index.yaml và cập nhật frontmatter các file Atoms liên quan.
-Tóm tắt logic hoạt động: Chạy cascade merge cho Topics (cộng dồn insight, đổi reference) hoặc Audiences (reparenting, redirect).
+Tóm tắt logic hoạt động: Chạy cascade merge cho Topics (cộng dồn insight, đổi reference) hoặc Audiences (reparenting, redirect, cascade level recalculation cho sub-tree bi anh huong).
 """
 
 import os
@@ -144,6 +144,114 @@ def merge_topic(args):
     print(json.dumps(result))
 
 
+# ==============================================================================
+# Cascade Level Recalculation: Tinh lai audience_level cho sub-tree
+# sau khi reparent (dam bao DAG rule: big -> little -> micro)
+# ==============================================================================
+
+def _get_level_from_audiences(file_ref, audiences):
+    """Tra cuu audience_level tu danh sach audiences theo file_ref."""
+    for a in audiences:
+        if a.get('file_ref') == file_ref:
+            return a.get('audience_level', 'big')
+    return 'big'
+
+def _recalculate_children_levels(audiences, affected_refs):
+    """
+    BFS recalculate level cho cac audience bi anh huong sau reparent.
+    Sua truc tiep in-memory. Tra ve list file_ref da bi thay doi level.
+    
+    DAG rule:
+    - parent rong -> big
+    - min parent level = big -> little
+    - min parent level = little hoac micro -> micro
+    """
+    rank = {"big": 0, "little": 1, "micro": 2}
+    changed_refs = []
+    queue = list(affected_refs)
+    visited = set()
+
+    while queue:
+        current_ref = queue.pop(0)
+        if current_ref in visited:
+            continue
+        visited.add(current_ref)
+
+        # Tim entry hien tai
+        current_entry = None
+        for a in audiences:
+            if a.get('file_ref') == current_ref:
+                current_entry = a
+                break
+        if not current_entry:
+            continue
+
+        # Tinh level moi tu toan bo parent_audience hien tai
+        parents = current_entry.get('parent_audience', [])
+        if not parents:
+            new_level = "big"
+        else:
+            parent_levels = [_get_level_from_audiences(p, audiences) for p in parents]
+            min_level = min(parent_levels, key=lambda x: rank.get(x, 0))
+            new_level = "little" if min_level == "big" else "micro"
+
+        old_level = current_entry.get('audience_level', 'big')
+        if new_level != old_level:
+            current_entry['audience_level'] = new_level
+            changed_refs.append(current_ref)
+
+            # Tim children tro vao current_ref va them vao queue de tiep tuc trace
+            for a in audiences:
+                if current_ref in a.get('parent_audience', []):
+                    queue.append(a.get('file_ref'))
+        # Neu level khong doi -> dung nhanh (sub-tree phia sau chac chan dung)
+
+    return changed_refs
+
+def _sync_level_to_md_files(changed_refs, audiences, vault_root):
+    """
+    Cap nhat audience_level trong frontmatter file .md vat ly
+    cho cac audience da bi thay doi level.
+    """
+    synced = 0
+    for ref in changed_refs:
+        filename = ref.strip("[]")
+        filepath = os.path.join(vault_root, 'Audiences', f"{filename}.md")
+        if not os.path.exists(filepath):
+            continue
+
+        content = _read_md_file(filepath)
+        if not content:
+            continue
+
+        # Normalize CRLF -> LF de regex hoat dong chinh xac
+        # (codecs.open khong tu dong translate newlines)
+        content = content.replace('\r\n', '\n')
+
+        # Parse frontmatter
+        match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+        if not match:
+            continue
+
+        fm_text = match.group(1)
+        new_level = _get_level_from_audiences(ref, audiences)
+
+        # Thay the audience_level trong frontmatter
+        new_fm = re.sub(
+            r'^(audience_level:\s*).*$',
+            f'\\1{new_level}',
+            fm_text,
+            flags=re.MULTILINE
+        )
+
+        if new_fm != fm_text:
+            new_content = content.replace(f"---\n{fm_text}\n---", f"---\n{new_fm}\n---", 1)
+            _write_md_file(filepath, new_content)
+            synced += 1
+
+    return synced
+
+
 def merge_audience(args):
     # Doc audience index
     if not os.path.exists(args.audience_index):
@@ -212,7 +320,9 @@ def merge_audience(args):
         survivor_aliases.insert(0, args.loser_file)
     survivor_entry['aliases'] = survivor_aliases[:5]
     
-    # Update parent_audience cho cac con cua loser
+    # Update parent_audience cho cac con cua loser + thu thap danh sach bi anh huong
+    reparented_refs = []
+    changed_refs = []
     for a in audiences:
         parents = a.get('parent_audience', [])
         if loser_link in parents:
@@ -220,6 +330,14 @@ def merge_audience(args):
                 parents.append(survivor_link)
             parents.remove(loser_link)
             a['parent_audience'] = parents
+            reparented_refs.append(a.get('file_ref'))
+
+    # Cascade Level Recalculation: tinh lai level cho sub-tree bi anh huong
+    # (chay ca dry_run de bao cao chinh xac so luong; chi skip ghi file .md)
+    if reparented_refs:
+        changed_refs = _recalculate_children_levels(audiences, reparented_refs)
+        if changed_refs and not args.dry_run:
+            _sync_level_to_md_files(changed_refs, audiences, args.vault_root)
             
     # Xoa loser entry
     audiences.remove(loser_entry)
@@ -300,6 +418,7 @@ def merge_audience(args):
         "loser": args.loser_file,
         "survivor": args.survivor_file,
         "files_updated": len(updated_files),
+        "levels_recalculated": len(changed_refs),
         "audience_index_updated": not args.dry_run
     }
     print(json.dumps(result))
