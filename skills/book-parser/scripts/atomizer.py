@@ -317,7 +317,7 @@ def resolve_graph_link(atom_type, meta, acr, chunk_idx, context):
         # belongs_to_audience: lấy từ _adm_lookup (pre-built từ Decision Map array)
         adm = context.get("_adm_lookup", {})
         audience_entry = adm.get(chunk_idx, adm.get("book", {}))
-        audience_filename = audience_entry.get("audience_filename", "")
+        audience_filename = audience_entry.get("audience_filename", "").replace("[[", "").replace("]]", "")
         result["belongs_to_audience"] = f"[[{audience_filename}]]" if audience_filename else ""
 
     elif atom_type in ("solution", "concept"):

@@ -2,6 +2,8 @@
 trigger: always_on
 ---
 
+USER LÀ 1 NGƯỜI RẤT CẨN THẬN VÀ CỰC KỲ GHÉT VIỆC AI LÀM TẮT HAY LÀM KHÁC ĐI SO VỚI NHỮNG GÌ USER ĐÃ THIẾT KẾ
+
 ## ⛔ QUY TẮC THỰC THI BẤT KHẢ XÂM PHẠM
 
 ### 1. NGUYÊN TẮC CỐT LÕI

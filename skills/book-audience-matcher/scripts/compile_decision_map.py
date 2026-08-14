@@ -111,7 +111,8 @@ def compile_map(internal_map_path, collected_decisions_path, index_path, output_
         for parent_uid in ua.get("internal_parents", []):
             if parent_uid in uid_decision:
                 parent_decision = uid_decision[parent_uid]
-                resolved_ref = f"[[{parent_decision['audience_filename']}]]"
+                clean_name = parent_decision['audience_filename'].replace("[[", "").replace("]]", "")
+                resolved_ref = f"[[{clean_name}]]"
                 resolved_parents.append(resolved_ref)
             else:
                 print(f"⚠️ Cảnh báo: Không tìm thấy parent UID {parent_uid} trong collected decisions")
@@ -159,7 +160,7 @@ def compile_map(internal_map_path, collected_decisions_path, index_path, output_
             "scope": "book" if key == "book" else "chunk",
             "chunk_index": None if key == "book" else int(key),
             "action": decision["action"],
-            "audience_filename": decision["audience_filename"],
+            "audience_filename": decision["audience_filename"].replace("[[", "").replace("]]", ""),
             "audience_level": level,
             "parent_audience": all_parents
         }

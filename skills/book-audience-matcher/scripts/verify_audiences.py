@@ -108,7 +108,7 @@ def main():
             continue
 
         entry = norm_map[lookup_key]
-        audience_filename = entry.get('audience_filename', '')
+        audience_filename = entry.get('audience_filename', '').replace("[[", "").replace("]]", "")
 
         if not audience_filename:
             row['status'] = 'MISSING'

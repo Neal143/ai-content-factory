@@ -256,6 +256,17 @@ def validate_submission(session_dir, submit_file_path):
     # Gom các quyết định đã được duyệt vào danh sách tích lũy của session (tự động loại bỏ trường reason)
     for entry in entries:
         clean_entry = {k: v for k, v in entry.items() if k != "reason"}
+        # Sanitize: strip wikilink brackets khoi audience_filename (LLM co the them [[]])
+        if "audience_filename" in clean_entry:
+            clean_entry["audience_filename"] = clean_entry["audience_filename"].replace("[[", "").replace("]]", "")
+        # Sanitize: normalize external_parents thanh [[slug]] chuan
+        if "external_parents" in clean_entry and isinstance(clean_entry["external_parents"], list):
+            normalized = []
+            for p in clean_entry["external_parents"]:
+                slug = p.replace("[[", "").replace("]]", "")
+                if slug:
+                    normalized.append(f"[[{slug}]]")
+            clean_entry["external_parents"] = normalized
         state["submitted_decisions"].append(clean_entry)
     
     # Tiến tới batch tiếp theo
