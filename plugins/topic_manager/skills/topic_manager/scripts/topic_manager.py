@@ -53,11 +53,17 @@ def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_au
 
     for i, raw_id in enumerate(new_topics):
         t_id = raw_id.replace('-', '_').lower()  # Poka-Yoke normalize
+        # Sanitize: normalize [[[[slug]]]] -> [[slug]] trong belongs_to_audience
+        clean_audiences = []
+        for aud in belongs_to_audience:
+            slug = aud.replace("[[", "").replace("]]", "")
+            if slug:
+                clean_audiences.append(f"[[{slug}]]")
         data["topics"].append({
             "id": t_id,
             "label": labels[i],
             "pillar_parents": [pillar_parent],
-            "belongs_to_audience": belongs_to_audience
+            "belongs_to_audience": clean_audiences
         })
 
     _write_topic_map(data, topic_map_path)
@@ -84,8 +90,11 @@ def update_audience(topic_map_path, resolved_id, new_audiences):
             if isinstance(existing, str):
                 existing = [existing]
             for aud in new_audiences:
-                if aud not in existing:
-                    existing.append(aud)
+                # Sanitize: normalize [[[[slug]]]] -> [[slug]]
+                slug = aud.replace("[[", "").replace("]]", "")
+                clean_aud = f"[[{slug}]]" if slug else ""
+                if clean_aud and clean_aud not in existing:
+                    existing.append(clean_aud)
                     updated = True
             topic["belongs_to_audience"] = existing
             break
