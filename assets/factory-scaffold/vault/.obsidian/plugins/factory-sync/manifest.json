@@ -1,0 +1,9 @@
+{
+  "id": "factory-sync",
+  "name": "Factory Sync",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Auto-sync file renames in Obsidian Vault with Personas and Index files across Content Factory",
+  "author": "Antigravity",
+  "isDesktopOnly": true
+}
