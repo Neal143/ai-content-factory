@@ -1,5 +1,5 @@
 # ── TEN SCRIPT: apply_recalibration.py ──
-# Last update: 31/07/2026 22:30 (GMT+7)
+# Last update: 15/08/2026 (GMT+7)
 # Vai tro: Ap dung JTBD da recalibrate vao vault.
 # Su dung khi: Sau khi jtbd-calibrator hoan thanh mode re-calibrate.
 # Output: Audience files updated/renamed, _audience_index.yaml updated,
@@ -216,6 +216,23 @@ def main():
             if os.path.isfile(tm):
                 topic_map_paths.append(tm)
                 file_contents[tm] = read_file(tm)
+
+    # Mo rong scope: doc them cac file .md/.yaml khac trong Content Factory/
+    # (bo sung nhung file chua co trong file_contents)
+    _scripts_dir = os.path.normpath(os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'scripts'))
+    if _scripts_dir not in sys.path:
+        sys.path.insert(0, _scripts_dir)
+    from safe_rename import collect_files_in_scope
+
+    _cf_root = os.path.normpath(os.path.abspath(
+        os.path.join(args.vault_root, '..')))
+    _existing_abs = {os.path.normpath(os.path.abspath(k)) for k in file_contents}
+    for _fpath in collect_files_in_scope(_cf_root):
+        _abs = os.path.normpath(os.path.abspath(_fpath))
+        if _abs not in _existing_abs:
+            file_contents[_fpath] = read_file(_fpath)
+            _existing_abs.add(_abs)
 
     # Buoc 4b: Update frontmatter + heading trong audience files (in-memory)
     for cm in change_map:

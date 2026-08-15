@@ -1,6 +1,6 @@
 """
 Tên file: cascade_merge.py
-Last update: 12/08/2026 22:50 (GMT+7)
+Last update: 15/08/2026 (GMT+7)
 Vai trò: Xử lý các side-effect (cập nhật file YAML và file Markdown Atom) khi merge topic hoặc audience.
 Được sử dụng khi: Skill vc-topic-dedup hoặc vc-audience-curator ra quyết định merge và được submit.
 Output: Cập nhật topic_map.yaml hoặc _audience_index.yaml và cập nhật frontmatter các file Atoms liên quan.
@@ -394,24 +394,15 @@ def merge_audience(args):
             with open(args.topic_map, 'w', encoding='utf-8') as f:
                 yaml.dump(topic_map, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
                 
-    # 2. Quet cac file markdown (Insights, Concepts, Solutions, Audiences)
-    for root, _, files in os.walk(args.vault_root):
-        if '_DLQ' in root:
-            continue
-        for file in files:
-            if not file.endswith('.md'):
-                continue
-            filepath = os.path.join(root, file)
-            content = _read_md_file(filepath)
-            if not content:
-                continue
-                
-            # Thay the noi dung
-            if loser_link in content:
-                new_content = content.replace(loser_link, survivor_link)
-                if not args.dry_run:
-                    _write_md_file(filepath, new_content)
-                updated_files.append(filepath)
+    # 2. Quet toan bo Content Factory (tru .agents/) de replace references
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    scan_root = os.path.normpath(os.path.join(script_dir, '..', '..'))
+    
+    from safe_rename import replace_refs
+    # Truyen [[name]] format — chi redirect wikilink, bao toan aliases
+    # (dong 363 da them loser_file vao aliases cua survivor dang plain text)
+    ref_results = replace_refs(scan_root, f"[[{args.loser_file}]]", f"[[{args.survivor_file}]]", dry_run=args.dry_run)
+    updated_files.extend([r['file'] for r in ref_results])
                 
     result = {
         "action": "merge-audience",

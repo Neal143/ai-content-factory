@@ -6,7 +6,7 @@ import argparse
 
 """
 patch-semantics.py
-Last update: 10/07/2026 (GMT+7)
+Last update: 15/08/2026 (GMT+7)
 Vai tro: Chot chan ky thuat (Poka-Yoke) cho moi thao tac ghi va sua supports_insight / supports_knowledge.
 Khi nao su dung: Goi tu cac skill nhu atom-linker (add) va atom-dedup (redirect).
 Output: Ghi vao file .md hoac tra ve loi.
@@ -71,29 +71,7 @@ def add_link_regex(file_path, link_type, target_basename):
         f.write(new_content)
     return True
 
-def redirect_link_regex(file_path, old_target_basename, new_target_basename):
-    if not os.path.exists(file_path):
-        return False
-        
-    with open(file_path, 'r', encoding='utf-8-sig') as f:
-        content = f.read()
-        
-    match = re.search(r'^---\r?\n(.*?)\r?\n---', content, re.DOTALL)
-    if not match:
-        print(f"[WARN] Frontmatter parse failed, bo qua: {file_path}")
-        return False
-        
-    frontmatter = match.group(1)
-    if old_target_basename not in frontmatter:
-        return False
-        
-    new_frontmatter = frontmatter.replace(f"[[{old_target_basename}]]", f"[[{new_target_basename}]]")
-    if new_frontmatter != frontmatter:
-        new_content = content.replace(frontmatter, new_frontmatter, 1)
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(new_content)
-        return True
-    return False
+
 
 def check_cycle(index_data, target_path, source_path):
     edges_i = index_data.get('edges', {}).get('supports_insight', {})
@@ -170,22 +148,15 @@ def cmd_redirect(args):
     old_basename = get_basename(args.old_target)
     new_basename = get_basename(args.new_target)
     
-    vault_dir = "vault/01-Atomic"
-    updated_files = []
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    scan_root = os.path.normpath(os.path.join(script_dir, '..', '..'))
     
-    for root, dirs, files in os.walk(vault_dir):
-        for file in files:
-            if not file.endswith('.md'):
-                continue
-            file_path = os.path.join(root, file)
-            # normalize path separator for regex
-            file_path = file_path.replace("\\", "/")
-            if redirect_link_regex(file_path, old_basename, new_basename):
-                updated_files.append(file_path)
-                
-    print(f"[SUCCESS] Da chuyen huong {len(updated_files)} file tro tu {old_basename} sang {new_basename}")
-    for f in updated_files:
-        print(f" - {f}")
+    from safe_rename import replace_refs
+    results = replace_refs(scan_root, f"[[{old_basename}]]", f"[[{new_basename}]]")
+    
+    print(f"[SUCCESS] Da chuyen huong {len(results)} file tro tu {old_basename} sang {new_basename}")
+    for r in results:
+        print(f" - {r['file']} ({r['count']} replacements)")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Poka-Yoke Guard for Semantic Links")
