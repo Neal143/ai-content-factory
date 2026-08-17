@@ -145,21 +145,13 @@ def _cmd_rename(args):
             print(json.dumps({"status": "ERR", "reason": f"Loi doi ten file vat ly: {e}"}))
             sys.exit(2)
 
-    # Trigger artifact refresh if available in scratch/
-    scratch_dir = os.path.expanduser(r"~\.gemini\antigravity-ide\brain\56331815-b28b-4fcf-a1c4-9b5a429978cd\scratch")
-    if os.path.exists(scratch_dir):
-        preview_script = os.path.join(scratch_dir, "generate_merged_preview.py")
-        canvas_script = os.path.join(scratch_dir, "generate_radial_canvas.py")
-        if os.path.exists(preview_script):
-            try:
-                subprocess.run([sys.executable, preview_script], cwd=scratch_dir, capture_output=True)
-            except Exception:
-                pass
-        if os.path.exists(canvas_script):
-            try:
-                subprocess.run([sys.executable, canvas_script], cwd=scratch_dir, capture_output=True)
-            except Exception:
-                pass
+    # Trigger preview table refresh dynamically
+    preview_script = os.path.join(scan_root, ".agents", "scripts", "generate_coverage_preview.py")
+    if os.path.exists(preview_script):
+        try:
+            subprocess.run([sys.executable, preview_script, "--factory-root", scan_root], cwd=scan_root, capture_output=True)
+        except Exception:
+            pass
 
     print(json.dumps(report, indent=2))
 

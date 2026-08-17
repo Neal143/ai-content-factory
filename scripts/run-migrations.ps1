@@ -100,7 +100,7 @@ if ($hasPending) {
     Write-Host "Data backup saved to: $BackupDir"
 }
 
-# --- Sync factory scaffold (ALWAYS — idempotent, creation-only) ---
+# --- Sync factory scaffold (ALWAYS — idempotent, managed sync) ---
 $syncScript = Join-Path $FactoryRoot ".agents\scripts\sync-factory-scaffold.ps1"
 if (Test-Path $syncScript) {
     powershell -ExecutionPolicy Bypass -File $syncScript -FactoryRoot $FactoryRoot
