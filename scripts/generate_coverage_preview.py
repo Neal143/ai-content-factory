@@ -1,24 +1,38 @@
 """
 generate_coverage_preview.py
-Last update: 17/08/2026 20:55 (GMT+7)
-Vai tro: Tu dong tao duy nhat bang Markdown preview audience-knowledge-coverage-preview.md.
-Su dung khi: Chay tu dong khi co thay doi Atoms tren Obsidian hoac duoc goi boi safe_rename / factory-sync.
-Output: File vault/03-Content/Content Plan/audience-knowledge-coverage-preview.md duoc cap nhat ngay lap tuc.
-Tom tat logic: Tu dong phat hien Persona dang hoat dong trong personas/ (0% hardcode), tinh toan va xuat bang Markdown.
+Last update: 18/08/2026 22:30 (GMT+7)
+Vai tro: Script me (Orchestrator & Data Aggregator) thu thap, chuan hoa toan bo du lieu Ma tran phu tri thuc tu Vault & Persona, sau do dieu phoi cac Renderer Modules con xuat file.
+Su dung khi:
+  - Duoc goi boi factory-sync Obsidian plugin (khi vault co file sua/tao/xoa hoac layout ready).
+  - Duoc goi boi safe_rename.py sau khi doi ten file xong de refresh toan bo artifacts.
+  - Chay doc lap qua CLI: python generate_coverage_preview.py [--factory-root <path>]
+Output:
+  - Goi renderers.render_coverage_markdown -> vault/03-Content/Content Plan/audience-knowledge-coverage-preview.md.
+Tom tat logic hoat dong:
+  1. Tu dong phat hien Workspace Root va Persona dang hoat dong trong personas/ (0% hardcode).
+  2. Doc va chuan hoa toan bo du lieu Audiences (kem aliases, parents, level), Topics tu topic_map.yaml va Insights, Knowledges, Evidences, va Production Log.
+  3. Dong goi thanh Data Context chuan va truyen cho cac Renderer Modules con thuc thi.
 """
 
 import os
 import sys
 import re
 import yaml
-import urllib.parse
 import argparse
 
+# Dam bao UTF-8 I/O tren Windows terminal
 if hasattr(sys.stdout, 'reconfigure'):
     try:
         sys.stdout.reconfigure(encoding='utf-8')
     except Exception:
         pass
+
+# Them thu muc hien tai vao sys.path de import renderers de dang
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+
+from renderers import render_coverage_markdown
 
 # -------------------------------------------------------------
 # DYNAMIC PATH & PERSONA DISCOVERY
@@ -64,15 +78,15 @@ def parse_frontmatter(file_path):
     return {}
 
 # -------------------------------------------------------------
-# MAIN BUILD LOGIC
+# CORE DATA COLLECTOR & AGGREGATOR
 # -------------------------------------------------------------
-def build_preview(factory_root):
+def collect_coverage_data(factory_root):
     vault_dir = os.path.join(factory_root, "vault")
     persona_dir = get_active_persona_dir(factory_root)
     
     if not persona_dir or not os.path.exists(persona_dir):
-        print(f"[ERR] Không tìm thấy thư mục Persona trong: {os.path.join(factory_root, 'personas')}")
-        return False
+        print(f"[ERR] Khong tim thay thu muc Persona trong: {os.path.join(factory_root, 'personas')}")
+        return None
 
     persona_name = os.path.basename(persona_dir)
     aud_dir = os.path.join(vault_dir, "01-Atomic", "Audiences")
@@ -85,67 +99,50 @@ def build_preview(factory_root):
     prod_log_path = os.path.join(vault_dir, ".content-pipeline", "logs", "production-log.md")
     topic_map_path = os.path.join(persona_dir, "topic_map.yaml")
     aud_index_path = os.path.join(aud_dir, "_audience_index.yaml")
-    
-    out_dir = os.path.join(vault_dir, "03-Content", "Content Plan")
-    os.makedirs(out_dir, exist_ok=True)
-    out_md_path = os.path.join(out_dir, "audience-knowledge-coverage-preview.md")
 
-    # 1. Load Audiences Index
-    audiences_index_data = []
+    # 1. Load Audiences Index Aliases
+    index_aliases_map = {}
     if os.path.exists(aud_index_path):
         try:
             with open(aud_index_path, "r", encoding="utf-8-sig", errors="ignore") as f:
                 idx_yaml = yaml.safe_load(f)
                 if isinstance(idx_yaml, dict) and "audiences" in idx_yaml:
-                    audiences_index_data = idx_yaml["audiences"]
+                    for a_item in idx_yaml["audiences"]:
+                        f_ref = clean_ref(a_item.get("file_ref", a_item.get("id", "")))
+                        a_id = clean_ref(a_item.get("id", ""))
+                        a_aliases = a_item.get("aliases") or []
+                        for k in [f_ref, a_id]:
+                            if k:
+                                index_aliases_map.setdefault(k, set()).update(a_aliases + [f_ref, a_id])
         except Exception:
             pass
 
-    # 2. Load Audiences Files
-    aud_files = {}
-    if os.path.exists(aud_dir):
-        for fname in os.listdir(aud_dir):
-            if fname.endswith(".md") and not fname.startswith("_"):
-                base = fname[:-3]
-                fpath = os.path.join(aud_dir, fname)
-                fm = parse_frontmatter(fpath)
-                parents = [clean_ref(p) for p in (fm.get("parent_audience") or [])]
-                level = fm.get("audience_level", "little")
-                aliases = fm.get("aliases") or []
-                aud_files[base] = {
-                    "parents": parents,
-                    "level": level,
-                    "aliases": aliases,
-                    "filename": fname,
-                    "rel_path": f"01-Atomic/Audiences/{fname}"
-                }
-
-    # 3. Load Topics
+    # 2. Load Topics from topic_map.yaml
     topics = []
+    topic_label_map = {}
     if os.path.exists(topic_map_path):
         try:
             with open(topic_map_path, "r", encoding="utf-8-sig", errors="ignore") as f:
                 t_yaml = yaml.safe_load(f)
                 if isinstance(t_yaml, dict):
                     topics = t_yaml.get("topics", [])
+                    topic_label_map = {t["id"]: t.get("label", t["id"]) for t in topics}
         except Exception:
             pass
 
-    # 4. Load Production Log
-    prod_counts = {}
-    if os.path.exists(prod_log_path):
-        try:
-            with open(prod_log_path, "r", encoding="utf-8-sig", errors="ignore") as f:
-                prod_text = f.read()
-            topic_matches = re.findall(r'-\s+\*\*Topic\*\*:\s*["\']?([^"\'\n\r]+)["\']?', prod_text)
-            for t in topic_matches:
-                t_clean = t.strip()
-                prod_counts[t_clean] = prod_counts.get(t_clean, 0) + 1
-        except Exception:
-            pass
+    tm_aud_to_topic = {}
+    for t in topics:
+        t_id = t.get("id")
+        t_label = t.get("label", t_id)
+        t_auds = t.get("belongs_to_audience", [])
+        if isinstance(t_auds, str):
+            t_auds = [t_auds]
+        for a in t_auds:
+            tm_aud_to_topic.setdefault(clean_ref(a), []).append({"id": t_id, "label": t_label})
 
-    # 5. Load Insights
+    # 3. Load Insights & map topic associations per audience
     insights = {}
+    aud_topic_ins_map = {} # aud -> set(topic_ids)
     if os.path.exists(ins_dir):
         for fname in os.listdir(ins_dir):
             if fname.endswith(".md"):
@@ -159,22 +156,104 @@ def build_preview(factory_root):
                     "topics": t_list,
                     "audiences": aud_list
                 }
+                for a in aud_list:
+                    for t in t_list:
+                        aud_topic_ins_map.setdefault(a, set()).add(t)
 
-    # 6. Load Knowledge (Concepts & Solutions)
+    # 4. Load Audience Files & match topics comprehensively
+    audiences = {}
+    if os.path.exists(aud_dir):
+        for fname in sorted(os.listdir(aud_dir)):
+            if fname.endswith(".md") and not fname.startswith("_"):
+                base = fname[:-3]
+                fpath = os.path.join(aud_dir, fname)
+                fm = parse_frontmatter(fpath)
+                
+                raw_parents = fm.get("parent_audience") or []
+                if isinstance(raw_parents, str):
+                    raw_parents = [raw_parents]
+                parents = [clean_ref(p) for p in raw_parents if clean_ref(p)]
+                
+                level = str(fm.get("audience_level", "little")).lower()
+                performer = fm.get("audience_Job_performer", "Cha mẹ")
+                main_job = fm.get("audience_main_job", "")
+                circumstance = fm.get("audience_circumstance", "")
+                aliases = list(fm.get("aliases") or [])
+                
+                if base in index_aliases_map:
+                    aliases.extend(list(index_aliases_map[base]))
+                
+                candidates = set([base, fname] + aliases)
+                
+                # Match from topic_map.yaml
+                matching_topics = []
+                for c in candidates:
+                    if c in tm_aud_to_topic:
+                        matching_topics.extend(tm_aud_to_topic[c])
+                
+                # Match from Insights
+                for c in candidates:
+                    if c in aud_topic_ins_map:
+                        for t_id in aud_topic_ins_map[c]:
+                            matching_topics.append({
+                                "id": t_id,
+                                "label": topic_label_map.get(t_id, t_id)
+                            })
+                        
+                unique_topics = []
+                seen_t = set()
+                for t in matching_topics:
+                    if t["id"] not in seen_t:
+                        seen_t.add(t["id"])
+                        unique_topics.append(t)
+
+                audiences[base] = {
+                    "base": base,
+                    "filename": fname,
+                    "level": level,
+                    "parents": parents,
+                    "performer": performer,
+                    "main_job": main_job,
+                    "circumstance": circumstance,
+                    "aliases": list(candidates),
+                    "matched_topics": unique_topics
+                }
+
+    # 5. Load Production Log
+    prod_counts = {}
+    if os.path.exists(prod_log_path):
+        try:
+            with open(prod_log_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+                prod_text = f.read()
+            topic_matches = re.findall(r'-\s+\*\*Topic\*\*:\s*["\']?([^"\'\n\r]+)["\']?', prod_text)
+            for t in topic_matches:
+                t_clean = t.strip()
+                prod_counts[t_clean] = prod_counts.get(t_clean, 0) + 1
+        except Exception:
+            pass
+
+    # 6. Load Knowledges (Concepts & Solutions)
     knowledges = {}
-    for d_path in [con_dir, sol_dir]:
+    for d_path, k_type in [(con_dir, "concept"), (sol_dir, "solution")]:
         if os.path.exists(d_path):
             for fname in os.listdir(d_path):
                 if fname.endswith(".md"):
                     fpath = os.path.join(d_path, fname)
                     fm = parse_frontmatter(fpath)
                     base = fname[:-3]
-                    supp_ins = [clean_ref(x) for x in (fm.get("supports_insight") or [])]
-                    knowledges[base] = {"supports_insight": supp_ins}
+                    raw_sup = fm.get("supports_insight") or fm.get("supports_to_insight") or []
+                    if isinstance(raw_sup, str):
+                        raw_sup = [raw_sup]
+                    sup_ins = [clean_ref(x) for x in raw_sup]
+                    knowledges[base] = {
+                        "filename": fname,
+                        "type": k_type,
+                        "supports_insight": sup_ins
+                    }
 
-    # 7. Load Evidences (Quotes, Stories, Data)
+    # 7. Load Evidences (Quotes, Stories, Data-Points)
     evidences = {}
-    for d_path in [quo_dir, sto_dir, dat_dir]:
+    for d_path, e_type in [(quo_dir, "quote"), (sto_dir, "story"), (dat_dir, "data_point")]:
         if os.path.exists(d_path):
             for fname in os.listdir(d_path):
                 if fname.endswith(".md"):
@@ -182,166 +261,45 @@ def build_preview(factory_root):
                     fm = parse_frontmatter(fpath)
                     base = fname[:-3]
                     supp_k = [clean_ref(x) for x in (fm.get("supports_knowledge") or [])]
-                    evidences[base] = {"supports_knowledge": supp_k}
+                    evidences[base] = {
+                        "filename": fname,
+                        "type": e_type,
+                        "supports_knowledge": supp_k
+                    }
 
-    aud_to_topics = {}
-    for t in topics:
-        t_id = t.get("id")
-        t_label = t.get("label", t_id)
-        t_auds = t.get("belongs_to_audience", [])
-        if isinstance(t_auds, str):
-            t_auds = [t_auds]
-        for a in t_auds:
-            aud_to_topics.setdefault(clean_ref(a), []).append({"id": t_id, "label": t_label})
+    return {
+        "factory_root": factory_root,
+        "persona_dir": persona_dir,
+        "persona_name": persona_name,
+        "audiences": audiences,
+        "topics": topics,
+        "aud_to_topics": tm_aud_to_topic,
+        "insights": insights,
+        "knowledges": knowledges,
+        "evidences": evidences,
+        "prod_counts": prod_counts
+    }
 
-    def format_aud_link(aud_ref):
-        if not aud_ref or aud_ref == "-":
-            return "-"
-        target_name = aud_ref
-        if not target_name.endswith(".md"):
-            target_name += ".md"
-        
-        matched_filename = None
-        if os.path.exists(os.path.join(aud_dir, target_name)):
-            matched_filename = target_name
-        else:
-            for b_name, info in aud_files.items():
-                if aud_ref == b_name or aud_ref in info["aliases"] or aud_ref == info["filename"]:
-                    matched_filename = info["filename"]
-                    break
-                    
-        if matched_filename:
-            base = matched_filename[:-3]
-            encoded_file = urllib.parse.quote(matched_filename)
-            return f"[{base}](../../01-Atomic/Audiences/{encoded_file})"
-            
-        encoded_ref = urllib.parse.quote(target_name)
-        return f"[{aud_ref}](../../01-Atomic/Audiences/{encoded_ref})"
-
-    rows = []
-    aud_idx = 1
-    aud_list_source = audiences_index_data if audiences_index_data else [{"id": k, "file_ref": k} for k in aud_files.keys()]
-
-    for item in aud_list_source:
-        file_ref = clean_ref(item.get("file_ref", item.get("id", "")))
-        aud_id = clean_ref(item.get("id", ""))
-        
-        aud_name = file_ref if file_ref in aud_files else aud_id
-        aud_data = aud_files.get(aud_name, aud_files.get(file_ref, {}))
-        
-        level = aud_data.get("level", item.get("audience_level", "little"))
-        parents = aud_data.get("parents", [])
-        if not parents:
-            parent_raw = item.get("parent_audience", [])
-            if isinstance(parent_raw, list):
-                parents = [clean_ref(p) for p in parent_raw]
-            elif parent_raw:
-                parents = [clean_ref(parent_raw)]
-                
-        parent_link = format_aud_link(parents[0]) if parents else "-"
-        aud_link = format_aud_link(aud_name)
-        
-        matching_topics = []
-        candidates = set([file_ref, aud_id, aud_name])
-        if aud_data.get("aliases"):
-            candidates.update(aud_data["aliases"])
-        if item.get("aliases"):
-            candidates.update(item["aliases"])
-            
-        for c in candidates:
-            if c in aud_to_topics:
-                matching_topics.extend(aud_to_topics[c])
-                
-        unique_topics = []
-        seen_t = set()
-        for t in matching_topics:
-            if t["id"] not in seen_t:
-                seen_t.add(t["id"])
-                unique_topics.append(t)
-                
-        if not unique_topics:
-            rows.append({
-                "stt": f"**{aud_idx}**",
-                "audience": aud_link,
-                "level": f"`{level}`",
-                "parent": parent_link,
-                "topic": "-",
-                "posts": 0,
-                "insights": 0,
-                "knowledges": 0,
-                "evidences": 0
-            })
-            aud_idx += 1
-            continue
-
-        for i, t in enumerate(unique_topics):
-            t_id = t["id"]
-            t_label = t["label"]
-            t_display = f"`{t_id}` (*{t_label}*)"
-            
-            p_count = prod_counts.get(t_id, 0)
-            ins_count = sum(1 for ins in insights.values() if t_id in ins.get("topics", []))
-            
-            ins_keys = [k for k, ins in insights.items() if t_id in ins.get("topics", [])]
-            matched_k = [k for k, kn in knowledges.items() if any(i in kn.get("supports_insight", []) for i in ins_keys)]
-            k_count = len(matched_k)
-            
-            e_count = sum(1 for ev in evidences.values() if any(k in ev.get("supports_knowledge", []) for k in matched_k))
-            
-            if i == 0:
-                rows.append({
-                    "stt": f"**{aud_idx}**",
-                    "audience": aud_link,
-                    "level": f"`{level}`",
-                    "parent": parent_link,
-                    "topic": t_display,
-                    "posts": p_count,
-                    "insights": ins_count,
-                    "knowledges": k_count,
-                    "evidences": e_count
-                })
-            else:
-                rows.append({
-                    "stt": "-",
-                    "audience": "-",
-                    "level": "-",
-                    "parent": "-",
-                    "topic": t_display,
-                    "posts": p_count,
-                    "insights": ins_count,
-                    "knowledges": k_count,
-                    "evidences": e_count
-                })
-        aud_idx += 1
-
-    md_content = f"""# 📊 Ma Trận Phủ Kiến Thức Persona ({persona_name})
-
-<!--
-- File name: audience-knowledge-coverage-preview.md
-- Last update: Auto-generated by generate_coverage_preview.py
-- Vai tro: Bang preview ma tran phu tri thuc giua Audiences, Topics va cac Atoms.
--->
-
-> [!NOTE]
-> - **Tổng số Audiences:** Đúng **{aud_idx - 1} Audiences** (đánh số thứ tự từ **1 đến {aud_idx - 1}** ở cột STT).
-> - **Mỗi dòng là 1 Topic:** Hiển thị số lượng bài viết, Insights, Concepts và Evidences.
-> - **Cột 2 & Cột 4:** Định dạng relative link để hover mở popup và chỉnh sửa trực tiếp nội dung trong Obsidian.
-
-| STT | Audience (Cột 1) | Level (Cột 2) | Parent Audience (Cột 3) | Topic (Cột 4) | Posts Count (Cột 5) | Insights (Cột 6) | Concepts & Solutions (Cột 7) | Evidences: Quotes, Stories, Data (Cột 8) |
-|:---:|---|:---:|---|---|:---:|:---:|:---:|:---:|
-"""
-    for r in rows:
-        md_content += f"| {r['stt']} | {r['audience']} | {r['level']} | {r['parent']} | {r['topic']} | {r['posts']} | {r['insights']} | {r['knowledges']} | {r['evidences']} |\n"
-
-    with open(out_md_path, "w", encoding="utf-8") as f:
-        f.write(md_content)
-    print(f"[OK] Generated Markdown Table: {out_md_path}")
-    return True
+# -------------------------------------------------------------
+# ORCHESTRATION PIPELINE
+# -------------------------------------------------------------
+def run_pipeline(factory_root=None):
+    root = get_factory_root(factory_root)
+    data_context = collect_coverage_data(root)
+    if not data_context:
+        return False
+    
+    # 1. Render Markdown Preview Table
+    success_md = render_coverage_markdown.render(data_context)
+    
+    # (San sang de goi them render_audience_canvas.render(data_context)...)
+    
+    return success_md
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate Audience Knowledge Coverage Markdown Table.")
+    parser = argparse.ArgumentParser(description="Coverage Engine Orchestrator")
     parser.add_argument("--factory-root", default=None, help="Path to Content Factory root directory")
     args = parser.parse_args()
     
-    root = get_factory_root(args.factory_root)
-    build_preview(root)
+    success = run_pipeline(args.factory_root)
+    sys.exit(0 if success else 1)
