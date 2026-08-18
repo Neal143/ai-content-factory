@@ -1,18 +1,35 @@
+/**
+ * factory-sync - main.js
+ * Last update: 18/08/2026 22:50 (GMT+7)
+ * Vai tro: Obsidian plugin quan ly dong bo du lieu theo thoi gian thuc (Live-Sync) va Safe-Rename.
+ * Su dung khi: Chay tu dong trong Obsidian khi vault duoc mo.
+ * Output: Tu dong cap nhat tham chieu khi doi ten file va goi generate_coverage_preview.py cap nhat ma tran phu tri thuc.
+ * Tom tat logic hoat dong:
+ *   1. Startup Hook: Tu dong goi preview script 1 lan khi khoi dong.
+ *   2. Vault Events: Bat su kien rename (goi safe_rename.py), create/modify/delete (goi preview refresh).
+ *   3. External Watcher: Su dung fs.watch theo doi thu muc personas/ de tu dong refresh khi sua topic_map.yaml tu ben ngoai.
+ *   4. Memory Management: Tu dong giai phong watcher khi unload plugin.
+ */
+
 const { Plugin, Notice } = require('obsidian');
 const { spawn } = require('child_process');
+const fs = require('fs');
 const path = require('path');
 
 module.exports = class FactorySyncPlugin extends Plugin {
     async onload() {
-        console.log('[FactorySync] Plugin loaded with Live-Sync support.');
+        console.log('[FactorySync] Plugin loaded with Live-Sync & Persona Watcher support.');
         
         let renameDebounceTimer = null;
         let previewDebounceTimer = null;
+        this.personasWatcher = null;
         
         const factoryRoot = path.resolve(this.app.vault.adapter.basePath, '..');
         const renameScript = path.join(factoryRoot, '.agents', 'scripts', 'safe_rename.py');
         const previewScript = path.join(factoryRoot, '.agents', 'scripts', 'generate_coverage_preview.py');
+        const personasDir = path.join(factoryRoot, 'personas');
 
+        // Bo loc kiem tra file thuoc pham vi can theo doi trong Vault
         const isAtomFile = (filePath) => {
             if (!filePath) return false;
             // Chống Infinite Loop: Bỏ qua chính file preview và cấu hình nội bộ
@@ -25,6 +42,7 @@ module.exports = class FactorySyncPlugin extends Plugin {
                    filePath.includes('production-log.md');
         };
 
+        // Ham kich hoat cap nhat Preview Table voi bo dem debounce 1.5 giay
         const triggerPreviewRefresh = () => {
             clearTimeout(previewDebounceTimer);
             previewDebounceTimer = setTimeout(() => {
@@ -45,7 +63,21 @@ module.exports = class FactorySyncPlugin extends Plugin {
             triggerPreviewRefresh();
         });
 
-        // 2. Lắng nghe sự kiện Đổi tên (Rename)
+        // 2. Theo dõi thư mục personas/ từ bên ngoài Vault (External fs.watch)
+        if (fs.existsSync(personasDir)) {
+            try {
+                this.personasWatcher = fs.watch(personasDir, { recursive: true }, (eventType, filename) => {
+                    if (filename && (filename.endsWith('.yaml') || filename.endsWith('.yml') || filename.endsWith('.json'))) {
+                        triggerPreviewRefresh();
+                    }
+                });
+                console.log('[FactorySync] Watching personas directory for external changes.');
+            } catch (err) {
+                console.error('[FactorySync] Failed to initialize personas watcher:', err);
+            }
+        }
+
+        // 3. Lắng nghe sự kiện Đổi tên (Rename) trong Vault
         this.registerEvent(
             this.app.vault.on('rename', (file, oldPath) => {
                 if (!file.path.endsWith('.md')) return;
@@ -74,7 +106,7 @@ module.exports = class FactorySyncPlugin extends Plugin {
             })
         );
 
-        // 3. Lắng nghe sự kiện Chỉnh sửa (Modify)
+        // 4. Lắng nghe sự kiện Chỉnh sửa (Modify) trong Vault
         this.registerEvent(
             this.app.vault.on('modify', (file) => {
                 if (isAtomFile(file.path)) {
@@ -83,7 +115,7 @@ module.exports = class FactorySyncPlugin extends Plugin {
             })
         );
 
-        // 4. Lắng nghe sự kiện Tạo mới (Create)
+        // 5. Lắng nghe sự kiện Tạo mới (Create) trong Vault
         this.registerEvent(
             this.app.vault.on('create', (file) => {
                 if (isAtomFile(file.path)) {
@@ -92,7 +124,7 @@ module.exports = class FactorySyncPlugin extends Plugin {
             })
         );
 
-        // 5. Lắng nghe sự kiện Xóa (Delete)
+        // 6. Lắng nghe sự kiện Xóa (Delete) trong Vault
         this.registerEvent(
             this.app.vault.on('delete', (file) => {
                 if (isAtomFile(file.path)) {
@@ -103,6 +135,14 @@ module.exports = class FactorySyncPlugin extends Plugin {
     }
 
     onunload() {
-        console.log('[FactorySync] Plugin unloaded.');
+        if (this.personasWatcher) {
+            try {
+                this.personasWatcher.close();
+                this.personasWatcher = null;
+            } catch (e) {
+                // Ignore cleanup errors
+            }
+        }
+        console.log('[FactorySync] Plugin unloaded and watcher closed.');
     }
 };
