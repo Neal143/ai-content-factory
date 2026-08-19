@@ -1,6 +1,6 @@
-﻿# ============================================================
+# ============================================================
 # File: .agents/skills/progress-checkpoint/scripts/save_progress.ps1
-# Last update: 19/08/2026 18:45 (GMT+7)
+# Last update: 19/08/2026 18:52 (GMT+7)
 # Role: Manage data snapshots for Content Factory using a separate git repository (.save-data/)
 # Usage: Called by agent via SKILL.md instructions.
 # Output: Git commits/tags in .save-data/, entries in progress-checkpoints.md
@@ -93,6 +93,7 @@ function Initialize-SaveRepo {
     # Set local git config (prevents commit failure on systems without global git config)
     Invoke-SaveGit config user.email "factory@local" 2>$null | Out-Null
     Invoke-SaveGit config user.name "Content Factory" 2>$null | Out-Null
+    Invoke-SaveGit config core.longpaths true 2>$null | Out-Null
 
     # Set up info/exclude (only affects this git repo, not parent git)
     $excludePath = Join-Path (Join-Path $GitDir "info") "exclude"
