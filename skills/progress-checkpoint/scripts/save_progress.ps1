@@ -101,6 +101,7 @@ function Initialize-SaveRepo {
         "# Excluded from progress-checkpoint snapshots",
         ".agents/",
         ".save-data/",
+        ".gitignore",
         "progress-checkpoints.md"
     )
     $excludeContent | Set-Content -Path $excludePath -Encoding UTF8
