@@ -1,6 +1,6 @@
-# ============================================================
+﻿# ============================================================
 # File: .agents/skills/progress-checkpoint/scripts/save_progress.ps1
-# Last update: 19/08/2026 18:52 (GMT+7)
+# Last update: 19/08/2026 18:58 (GMT+7)
 # Role: Manage data snapshots for Content Factory using a separate git repository (.save-data/)
 # Usage: Called by agent via SKILL.md instructions.
 # Output: Git commits/tags in .save-data/, entries in progress-checkpoints.md
@@ -35,10 +35,10 @@ function Get-VNTimestamp {
     return [System.TimeZoneInfo]::ConvertTime([System.DateTimeOffset]::Now, $tz)
 }
 
-# --- Helper: Rebuild progress-checkpoints.md from git tags ---
+# --- Helper: Restore progress-checkpoints.md from git tags ---
 # Source of truth: annotated tags snap/* in .save-data (immutable, survive rollback)
 # Called automatically when progress-checkpoints.md is missing or corrupted
-function Rebuild-ProgressLog {
+function Restore-ProgressLog {
     if (-not (Test-Path $GitDir)) { return }
 
     # Query all snap/* tags: label, date, commit hash, description
@@ -98,10 +98,10 @@ function Initialize-SaveRepo {
     # Set up info/exclude (only affects this git repo, not parent git)
     $excludePath = Join-Path (Join-Path $GitDir "info") "exclude"
     $excludeContent = @(
-        "# Excluded from progress-checkpoint snapshots",
-        ".agents/",
-        ".save-data/",
-        ".gitignore",
+        "# Excluded from progress-checkpoint snapshots"
+        ".agents/"
+        ".save-data/"
+        ".gitignore"
         "progress-checkpoints.md"
     )
     $excludeContent | Set-Content -Path $excludePath -Encoding UTF8
@@ -188,7 +188,7 @@ function Get-SaveList {
     # Auto-rebuild if file is missing or empty
     if (-not (Test-Path $SaveProgressFile) -or (Get-Item $SaveProgressFile).Length -eq 0) {
         Write-Host "[INFO] progress-checkpoints.md missing or empty. Rebuilding from tags..."
-        Rebuild-ProgressLog
+        Restore-ProgressLog
     }
 
     if (Test-Path $SaveProgressFile) {
