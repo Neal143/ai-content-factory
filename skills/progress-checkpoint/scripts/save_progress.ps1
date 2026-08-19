@@ -1,6 +1,6 @@
-# ============================================================
+﻿# ============================================================
 # File: .agents/skills/progress-checkpoint/scripts/save_progress.ps1
-# Last update: 11/08/2026 00:00 (GMT+7)
+# Last update: 19/08/2026 18:45 (GMT+7)
 # Role: Manage data snapshots for Content Factory using a separate git repository (.save-data/)
 # Usage: Called by agent via SKILL.md instructions.
 # Output: Git commits/tags in .save-data/, entries in progress-checkpoints.md
@@ -33,6 +33,47 @@ function Invoke-SaveGit {
 function Get-VNTimestamp {
     $tz = [System.TimeZoneInfo]::FindSystemTimeZoneById("SE Asia Standard Time")
     return [System.TimeZoneInfo]::ConvertTime([System.DateTimeOffset]::Now, $tz)
+}
+
+# --- Helper: Rebuild progress-checkpoints.md from git tags ---
+# Source of truth: annotated tags snap/* in .save-data (immutable, survive rollback)
+# Called automatically when progress-checkpoints.md is missing or corrupted
+function Rebuild-ProgressLog {
+    if (-not (Test-Path $GitDir)) { return }
+
+    # Query all snap/* tags: label, date, commit hash, description
+    $tagLines = Invoke-SaveGit for-each-ref --sort=-creatordate "refs/tags/snap/*" --format="%(refname:short)|%(creatordate:format:%d/%m/%Y %H:%M)|%(*objectname:short)|%(contents:subject)" 2>$null
+    if (-not $tagLines) {
+        Write-Host "[INFO] No tags found in .save-data. Nothing to rebuild."
+        return
+    }
+
+    $header = "# Progress Checkpoints"
+    $entries = @()
+
+    foreach ($line in $tagLines) {
+        if (-not $line) { continue }
+        $parts = $line -split '\|', 4
+        if ($parts.Count -lt 4) { continue }
+        $tagName = $parts[0]
+        $dateStr = $parts[1]
+        $hash    = $parts[2]
+        $desc    = $parts[3]
+        $label   = $tagName -replace '^snap/', ''
+
+        $entries += @"
+
+### $dateStr (GMT+7)
+#### $label
+- **Tag:** ``$tagName``
+- **Hash:** ``$hash``
+- **Description:** $desc
+"@
+    }
+
+    $content = @($header) + $entries
+    [System.IO.File]::WriteAllText($SaveProgressFile, ($content -join "`n"), [System.Text.Encoding]::UTF8)
+    Write-Host "[OK] Rebuilt progress-checkpoints.md from $($tagLines.Count) tags."
 }
 
 # --- Helper: Initialize .save-data/ git repo if not exists ---
@@ -142,14 +183,17 @@ function Get-SaveList {
         return
     }
 
-    # Prefer reading progress-checkpoints.md (user-friendly format)
+    # Auto-rebuild if file is missing or empty
+    if (-not (Test-Path $SaveProgressFile) -or (Get-Item $SaveProgressFile).Length -eq 0) {
+        Write-Host "[INFO] progress-checkpoints.md missing or empty. Rebuilding from tags..."
+        Rebuild-ProgressLog
+    }
+
     if (Test-Path $SaveProgressFile) {
         Get-Content $SaveProgressFile -Encoding UTF8
     }
     else {
-        # Fallback: list git tags directly
-        Write-Host "=== Save Points ==="
-        Invoke-SaveGit tag -l "snap/*" --sort=-creatordate -n1 2>$null
+        Write-Host "[INFO] No save points found."
     }
 }
 
