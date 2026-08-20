@@ -2,7 +2,7 @@
     "metadata":  {
                      "node_count":  326,
                      "edge_count":  5,
-                     "last_updated":  "2026-08-13T10:04:06Z"
+                     "last_updated":  "2026-08-20T12:10:26Z"
                  },
     "nodes":  {
                   "vault/01-Atomic/Insights/ban-than-khong-hanh-phuc.md":  {
@@ -708,13 +708,7 @@
                                                                                                                                                                                                                                                                                             "source_link":  "Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf#^chunk-01",
                                                                                                                                                                                                                                                                                             "description":  null,
                                                                                                                                                                                                                                                                                             "type":  "insight",
-                                                                                                                                                                                                                                                                                            "resolved_audience":  {
-                                                                                                                                                                                                                                                                                                                      "performer":  "Cha mẹ",
-                                                                                                                                                                                                                                                                                                                      "circumstance":  "Khi môi trường sinh hoạt gia đình thiếu ổn định đối với trẻ",
-                                                                                                                                                                                                                                                                                                                      "level":  "little",
-                                                                                                                                                                                                                                                                                                                      "id":  "cha-me_thiet-lap-thoi-quen-sinh-hoat_moi-truong-gia-dinh-thieu-on-dinh",
-                                                                                                                                                                                                                                                                                                                      "job":  "Thiết lập thói quen sinh hoạt cho con"
-                                                                                                                                                                                                                                                                                                                  },
+                                                                                                                                                                                                                                                                                            "resolved_audience":  null,
                                                                                                                                                                                                                                                                                             "source_path":  "02-sources/books/Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md#^chunk-01",
                                                                                                                                                                                                                                                                                             "subtype":  null,
                                                                                                                                                                                                                                                                                             "source_type":  "book",
@@ -723,13 +717,9 @@
                                                                                                                                                                                                                                                                                             "source_name":  "Beyond the Rainbow Bridge: Nurturing Our Children from Birth to Seven (bởi Barbara J. Patterson and Pamela Bradley, 2000)",
                                                                                                                                                                                                                                                                                             "knowledge_type":  null,
                                                                                                                                                                                                                                                                                             "excerpt":  "[MISSING]",
-                                                                                                                                                                                                                                                                                            "belongs_to_audience":  "cha-me_thiet-lap-thoi-quen-sinh-hoat_moi-truong-gia-dinh-thieu-on-dinh",
+                                                                                                                                                                                                                                                                                            "belongs_to_audience":  null,
                                                                                                                                                                                                                                                                                             "topics":  [
-                                                                                                                                                                                                                                                                                                           "p1_steiner_and_holistic_development_science",
-                                                                                                                                                                                                                                                                                                           "p1_rhythm_and_senses",
-                                                                                                                                                                                                                                                                                                           "p1_positive_discipline",
-                                                                                                                                                                                                                                                                                                           "p1_family_rhythm",
-                                                                                                                                                                                                                                                                                                           "p1_tro_choi_bup_be"
+
                                                                                                                                                                                                                                                                                                        ],
                                                                                                                                                                                                                                                                                             "confidence":  0.9,
                                                                                                                                                                                                                                                                                             "status":  "processed",
@@ -757,15 +747,7 @@
                                                                                                                                                                 "confidence":  0.9,
                                                                                                                                                                 "status":  "processed",
                                                                                                                                                                 "keywords":  [
-                                                                                                                                                                                 "tâm lý học nuôi dạy con",
-                                                                                                                                                                                 "giáo dục mầm non",
-                                                                                                                                                                                 "nếp sống gia đình",
-                                                                                                                                                                                 "kỷ luật học đường",
-                                                                                                                                                                                 "thói quen tự chủ",
-                                                                                                                                                                                 "bấp bênh mất phương hướng",
-                                                                                                                                                                                 "bướng bỉnh chống đối kỷ luật",
-                                                                                                                                                                                 "hệ quả thiếu nhất quán sinh hoạt",
-                                                                                                                                                                                 "lo sợ tổn thương tâm hồn"
+
                                                                                                                                                                              ]
                                                                                                                                                             },
                   "vault/01-Atomic/Insights/BTRB_noi-lo-so-rang-nhung-ban-khoan-don-nen-ve-nguon-goc-ra-doi-va-mac-cam-vo-thuc-nhat-la-o-tre-nhan-con.md":  {
@@ -893,13 +875,7 @@
                                                                                                                                                                                                                                      "source_link":  "Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf#^chunk-02",
                                                                                                                                                                                                                                      "description":  null,
                                                                                                                                                                                                                                      "type":  "insight",
-                                                                                                                                                                                                                                     "resolved_audience":  {
-                                                                                                                                                                                                                                                               "performer":  "Cha mẹ",
-                                                                                                                                                                                                                                                               "circumstance":  "Khi con dưới bảy tuổi bộc lộ sự bướng bỉnh và phản kháng",
-                                                                                                                                                                                                                                                               "level":  "little",
-                                                                                                                                                                                                                                                               "id":  "cha-me_uon-nan-hanh-vi_con-buong-binh-va-phan-khang",
-                                                                                                                                                                                                                                                               "job":  "Uốn nắn hành vi của con"
-                                                                                                                                                                                                                                                           },
+                                                                                                                                                                                                                                     "resolved_audience":  null,
                                                                                                                                                                                                                                      "source_path":  "02-sources/books/Beyond the rainbow bridge - nurturing our children from -- Barbara J. Patterson, Pamela Bradley, Jean Riordan -- ( WeLib.org ).pdf.md#^chunk-02",
                                                                                                                                                                                                                                      "subtype":  null,
                                                                                                                                                                                                                                      "source_type":  "book",
@@ -908,12 +884,9 @@
                                                                                                                                                                                                                                      "source_name":  "Beyond the Rainbow Bridge: Nurturing Our Children from Birth to Seven (bởi Barbara J. Patterson and Pamela Bradley, 2000)",
                                                                                                                                                                                                                                      "knowledge_type":  null,
                                                                                                                                                                                                                                      "excerpt":  "[MISSING]",
-                                                                                                                                                                                                                                     "belongs_to_audience":  "cha-me_uon-nan-hanh-vi_con-buong-binh-va-phan-khang",
+                                                                                                                                                                                                                                     "belongs_to_audience":  null,
                                                                                                                                                                                                                                      "topics":  [
-                                                                                                                                                                                                                                                    "p1_steiner_and_holistic_development_science",
-                                                                                                                                                                                                                                                    "p1_rhythm_and_senses",
-                                                                                                                                                                                                                                                    "p1_positive_discipline",
-                                                                                                                                                                                                                                                    "p1_energy_redirection"
+
                                                                                                                                                                                                                                                 ],
                                                                                                                                                                                                                                      "confidence":  0.9,
                                                                                                                                                                                                                                      "status":  "processed",
@@ -941,15 +914,7 @@
                                                                                                                                                                "confidence":  0.9,
                                                                                                                                                                "status":  "processed",
                                                                                                                                                                "keywords":  [
-                                                                                                                                                                                "tâm lý học nuôi dạy con",
-                                                                                                                                                                                "giáo dục mầm non",
-                                                                                                                                                                                "kỷ luật đối đầu",
-                                                                                                                                                                                "trẻ bướng bỉnh khó bảo",
-                                                                                                                                                                                "quá tải giác quan",
-                                                                                                                                                                                "khủng hoảng phương pháp kỷ luật",
-                                                                                                                                                                                "bế tắc trong giao tiếp cha mẹ và con",
-                                                                                                                                                                                "môi trường sống nhiều kích thích mạnh",
-                                                                                                                                                                                "tổn thương sinh lý tự nhiên"
+
                                                                                                                                                                             ]
                                                                                                                                                            },
                   "vault/01-Atomic/Insights/BTRB_noi-lo-so-rang-viec-ban-than-thieu-nhat-quan-thuong-xuyen-dao-dong-hoac-bi-cuon-vao-cac-tran-chien-t.md":  {
@@ -1526,14 +1491,7 @@
                                                                                   "confidence":  1,
                                                                                   "status":  "processed",
                                                                                   "keywords":  [
-                                                                                                   "công nghệ tiện nghi",
-                                                                                                   "ảo tưởng hợp thời",
-                                                                                                   "sự phụ thuộc",
-                                                                                                   "thiết bị kỹ thuật số",
-                                                                                                   "sự thụ động",
-                                                                                                   "sai lầm giáo dục",
-                                                                                                   "nuôi dạy con hiện đại",
-                                                                                                   "cai nghiện màn hình"
+
                                                                                                ],
                                                                                   "vivid_insights":  {
 
@@ -1563,14 +1521,7 @@
                                                                                      "confidence":  1,
                                                                                      "status":  "processed",
                                                                                      "keywords":  [
-                                                                                                      "thương cho roi cho vọt",
-                                                                                                      "đánh đòn trẻ",
-                                                                                                      "quát mắng con",
-                                                                                                      "áp lực làm cha mẹ",
-                                                                                                      "thể diện gia đình",
-                                                                                                      "bạo lực giáo dục",
-                                                                                                      "triết lý giáo dục",
-                                                                                                      "kỷ luật tích cực"
+
                                                                                                   ],
                                                                                      "vivid_insights":  {
 
@@ -1600,14 +1551,7 @@
                                                                                               "confidence":  1,
                                                                                               "status":  "processed",
                                                                                               "keywords":  [
-                                                                                                               "giáo dục một chiều",
-                                                                                                               "ra lệnh cho con",
-                                                                                                               "giao tiếp với trẻ",
-                                                                                                               "sự đồng hành",
-                                                                                                               "làm gương cho trẻ",
-                                                                                                               "trải nghiệm thực tế",
-                                                                                                               "sai lầm nuôi dạy",
-                                                                                                               "kỹ năng truyền đạt"
+
                                                                                                            ],
                                                                                               "vivid_insights":  {
 
@@ -1637,14 +1581,7 @@
                                                                                "confidence":  1,
                                                                                "status":  "processed",
                                                                                "keywords":  [
-                                                                                                "sự tự chủ",
-                                                                                                "phát triển toàn diện",
-                                                                                                "trí tuệ nhân tạo",
-                                                                                                "phụ thuộc công nghệ",
-                                                                                                "độc lập tư duy",
-                                                                                                "giáo dục thời đại số",
-                                                                                                "mong muốn cha mẹ",
-                                                                                                "tình yêu gia đình"
+
                                                                                             ],
                                                                                "vivid_insights":  {
 
@@ -1674,14 +1611,7 @@
                                                                                     "confidence":  1,
                                                                                     "status":  "processed",
                                                                                     "keywords":  [
-                                                                                                     "ý chí mạnh mẽ",
-                                                                                                     "hạnh phúc tự thân",
-                                                                                                     "đời sống nội tâm",
-                                                                                                     "khả năng tự cảm nhận",
-                                                                                                     "nuôi dưỡng tinh thần",
-                                                                                                     "mục tiêu giáo dục",
-                                                                                                     "sự vững vàng",
-                                                                                                     "phát triển tâm hồn"
+
                                                                                                  ],
                                                                                     "vivid_insights":  {
 
@@ -1711,14 +1641,7 @@
                                                                             "confidence":  1,
                                                                             "status":  "processed",
                                                                             "keywords":  [
-                                                                                             "sự công nhận",
-                                                                                             "áp lực xã hội",
-                                                                                             "hình ảnh cha mẹ",
-                                                                                             "triết lý giáo dục",
-                                                                                             "nuôi dạy thông thái",
-                                                                                             "nhu cầu khẳng định",
-                                                                                             "thể diện phụ huynh",
-                                                                                             "sự hiểu biết"
+
                                                                                          ],
                                                                             "vivid_insights":  {
 
@@ -1748,14 +1671,7 @@
                                                                               "confidence":  1,
                                                                               "status":  "processed",
                                                                               "keywords":  [
-                                                                                               "marketing giáo dục",
-                                                                                               "quảng cáo sai lệch",
-                                                                                               "cảnh giác lôi kéo",
-                                                                                               "tâm lý phụ huynh",
-                                                                                               "chọn trường cho con",
-                                                                                               "sự phản cảm",
-                                                                                               "truyền thông trường học",
-                                                                                               "tư duy lý trí"
+
                                                                                            ],
                                                                               "vivid_insights":  {
 
@@ -1785,14 +1701,7 @@
                                                                               "confidence":  1,
                                                                               "status":  "processed",
                                                                               "keywords":  [
-                                                                                               "giai đoạn vàng",
-                                                                                               "phát triển sớm",
-                                                                                               "giáo dục mầm non",
-                                                                                               "động lực cha mẹ",
-                                                                                               "cơ hội vô giá",
-                                                                                               "đầu tư giáo dục",
-                                                                                               "nuôi dạy con bài bản",
-                                                                                               "khoa học phát triển"
+
                                                                                            ],
                                                                               "vivid_insights":  {
 
@@ -1822,14 +1731,7 @@
                                                                                    "confidence":  1,
                                                                                    "status":  "processed",
                                                                                    "keywords":  [
-                                                                                                    "lý luận với trẻ",
-                                                                                                    "giảng giải logic",
-                                                                                                    "tư duy trừu tượng",
-                                                                                                    "phát triển não bộ",
-                                                                                                    "khi trẻ làm sai",
-                                                                                                    "sai lầm giao tiếp",
-                                                                                                    "tâm lý độ tuổi",
-                                                                                                    "kỷ luật độ tuổi mầm non"
+
                                                                                                 ],
                                                                                    "vivid_insights":  {
 
@@ -1859,14 +1761,7 @@
                                                                                              "confidence":  1,
                                                                                              "status":  "processed",
                                                                                              "keywords":  [
-                                                                                                              "tâm lý chênh vênh",
-                                                                                                              "giáo dục cảm xúc",
-                                                                                                              "thiếu công cụ nội tâm",
-                                                                                                              "hệ quả thế hệ",
-                                                                                                              "làm cha mẹ",
-                                                                                                              "chữa lành đứa trẻ",
-                                                                                                              "khủng hoảng nuôi dạy",
-                                                                                                              "áp lực phụ huynh"
+
                                                                                                           ],
                                                                                              "vivid_insights":  {
 
@@ -1896,14 +1791,7 @@
                                                                             "confidence":  1,
                                                                             "status":  "processed",
                                                                             "keywords":  [
-                                                                                             "niềm tin khoa học",
-                                                                                             "nghiên cứu giáo dục",
-                                                                                             "nuôi con khoa học",
-                                                                                             "kim chỉ nam",
-                                                                                             "kiến thức chuyên môn",
-                                                                                             "phương pháp bài bản",
-                                                                                             "tâm lý học trẻ em",
-                                                                                             "xu hướng giáo dục"
+
                                                                                          ],
                                                                             "vivid_insights":  {
 
@@ -1933,14 +1821,7 @@
                                                                         "confidence":  1,
                                                                         "status":  "processed",
                                                                         "keywords":  [
-                                                                                         "rào cản tri thức",
-                                                                                         "kỷ nguyên số",
-                                                                                         "công nghệ AI",
-                                                                                         "đào thải công việc",
-                                                                                         "giáo dục toàn diện",
-                                                                                         "bảo vệ tương lai",
-                                                                                         "hoang mang nuôi dạy",
-                                                                                         "kỹ năng thế kỷ 21"
+
                                                                                      ],
                                                                         "vivid_insights":  {
 
@@ -1970,14 +1851,7 @@
                                                                                              "confidence":  1,
                                                                                              "status":  "processed",
                                                                                              "keywords":  [
-                                                                                                              "khan hiếm thời gian",
-                                                                                                              "áp lực công việc",
-                                                                                                              "phụ thuộc người khác",
-                                                                                                              "ông bà trông cháu",
-                                                                                                              "người giúp việc",
-                                                                                                              "tự học nâng cao",
-                                                                                                              "đồng hành cùng con",
-                                                                                                              "cân bằng cuộc sống"
+
                                                                                                           ],
                                                                                              "vivid_insights":  {
 
@@ -2007,14 +1881,7 @@
                                                                      "confidence":  1,
                                                                      "status":  "processed",
                                                                      "keywords":  [
-                                                                                      "áp lực đám đông",
-                                                                                      "chạy đua công nghệ",
-                                                                                      "môi trường hiện đại",
-                                                                                      "giáo dục tự nhiên",
-                                                                                      "lung lay niềm tin",
-                                                                                      "rào cản xã hội",
-                                                                                      "so sánh con cái",
-                                                                                      "xu hướng thời thượng"
+
                                                                                   ],
                                                                      "vivid_insights":  {
 
@@ -2044,14 +1911,7 @@
                                                                                   "confidence":  1,
                                                                                   "status":  "processed",
                                                                                   "keywords":  [
-                                                                                                   "giai đoạn vàng",
-                                                                                                   "cửa sổ phát triển",
-                                                                                                   "nỗi sợ bỏ lỡ",
-                                                                                                   "áp lực nặng nề",
-                                                                                                   "giáo dục sớm",
-                                                                                                   "phát triển não bộ",
-                                                                                                   "lo âu nuôi dạy",
-                                                                                                   "cơ hội vô giá"
+
                                                                                                ],
                                                                                   "vivid_insights":  {
 
@@ -2081,14 +1941,7 @@
                                                                                       "confidence":  1,
                                                                                       "status":  "processed",
                                                                                       "keywords":  [
-                                                                                                       "chiếu xạ tâm lý",
-                                                                                                       "nỗi sợ bất hạnh",
-                                                                                                       "vết xe đổ",
-                                                                                                       "hạnh phúc đích thực",
-                                                                                                       "tổn thương tuổi thơ",
-                                                                                                       "di truyền cảm xúc",
-                                                                                                       "kỳ vọng cha mẹ",
-                                                                                                       "nuôi dạy chữa lành"
+
                                                                                                    ],
                                                                                       "vivid_insights":  {
 
@@ -2118,14 +1971,7 @@
                                                                                              "confidence":  1,
                                                                                              "status":  "processed",
                                                                                              "keywords":  [
-                                                                                                              "phụ thuộc công nghệ",
-                                                                                                              "nạn nhân kỷ nguyên số",
-                                                                                                              "trí tuệ nhân tạo",
-                                                                                                              "bào mòn tư duy",
-                                                                                                              "sự sáng tạo",
-                                                                                                              "tư duy độc lập",
-                                                                                                              "nỗi sợ tương lai",
-                                                                                                              "cai nghiện màn hình"
+
                                                                                                           ],
                                                                                              "vivid_insights":  {
 
@@ -2155,14 +2001,7 @@
                                                                                         "confidence":  1,
                                                                                         "status":  "processed",
                                                                                         "keywords":  [
-                                                                                                         "nỗi sợ kép",
-                                                                                                         "mất việc vì AI",
-                                                                                                         "thiếu hụt tài chính",
-                                                                                                         "áp lực kinh tế",
-                                                                                                         "đầu tư giáo dục",
-                                                                                                         "hoang mang tương lai",
-                                                                                                         "khủng hoảng nghề nghiệp",
-                                                                                                         "sinh kế gia đình"
+
                                                                                                      ],
                                                                                         "vivid_insights":  {
 
@@ -2192,14 +2031,7 @@
                                                                            "confidence":  1,
                                                                            "status":  "processed",
                                                                            "keywords":  [
-                                                                                            "nổi nóng với trẻ",
-                                                                                            "đánh đòn con",
-                                                                                            "áp lực cuộc sống",
-                                                                                            "bào mòn sức chịu đựng",
-                                                                                            "vòng lặp bạo lực",
-                                                                                            "mất bình tĩnh",
-                                                                                            "bất lực kỷ luật",
-                                                                                            "kiểm soát cảm xúc"
+
                                                                                         ],
                                                                            "vivid_insights":  {
 
@@ -2229,14 +2061,7 @@
                                                                                "confidence":  1,
                                                                                "status":  "processed",
                                                                                "keywords":  [
-                                                                                                "nhận thức sai lầm",
-                                                                                                "trẻ quan sát",
-                                                                                                "ảnh hưởng hành vi",
-                                                                                                "hấp thu như bọt biển",
-                                                                                                "gương mẫu cho con",
-                                                                                                "nuôi dạy vô thức",
-                                                                                                "hành vi sai trái",
-                                                                                                "môi trường xung quanh"
+
                                                                                             ],
                                                                                "vivid_insights":  {
 
@@ -2266,14 +2091,7 @@
                                                                           "confidence":  1,
                                                                           "status":  "processed",
                                                                           "keywords":  [
-                                                                                           "tự do phát triển",
-                                                                                           "ràng buộc xã hội",
-                                                                                           "áp lực kỳ vọng",
-                                                                                           "tự do gia đình",
-                                                                                           "triết lý giáo dục",
-                                                                                           "phát triển bản thân",
-                                                                                           "khao khát nuôi dạy",
-                                                                                           "quyền tự quyết"
+
                                                                                        ],
                                                                           "vivid_insights":  {
 
@@ -2303,14 +2121,7 @@
                                                                                "confidence":  1,
                                                                                "status":  "processed",
                                                                                "keywords":  [
-                                                                                                "tự do tài chính",
-                                                                                                "nền tảng gia đình",
-                                                                                                "vòng xoáy mưu sinh",
-                                                                                                "triết lý giáo dục",
-                                                                                                "đầu tư tương lai",
-                                                                                                "nguồn lực nuôi dạy",
-                                                                                                "an toàn kinh tế",
-                                                                                                "toàn tâm toàn ý"
+
                                                                                             ],
                                                                                "vivid_insights":  {
 
@@ -7809,14 +7620,7 @@
                                                                                                                                            "confidence":  0.9,
                                                                                                                                            "status":  "processed",
                                                                                                                                            "keywords":  [
-                                                                                                                                                            "Kỷ luật tích cực mầm non",
-                                                                                                                                                            "nghệ thuật điều hướng năng lượng",
-                                                                                                                                                            "từ bỏ tranh biện đạo lý",
-                                                                                                                                                            "loại bỏ tiếng không",
-                                                                                                                                                            "sử dụng học liệu mở",
-                                                                                                                                                            "kịch bản chơi đóng vai",
-                                                                                                                                                            "quy trình thầm lặng rút lui",
-                                                                                                                                                            "hiện diện tĩnh lặng làm gương"
+
                                                                                                                                                         ]
                                                                                                                                        },
                   "vault/01-Atomic/Solutions/BTRB_quy-chuan-chuyen-nhip-bang-bai-ca-va-thuc-hanh-ngon-ngu-nghe-thuat-hang-tuan-cho-cha-me-mam-non.md":  {
