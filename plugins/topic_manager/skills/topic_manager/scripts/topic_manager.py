@@ -1,11 +1,11 @@
 """
 Tên file: topic_manager.py
-Last update: 01/06/2026 23:55 (GMT+7)
+Last update: 21/08/2026 22:50 (GMT+7)
 Vai trò: Thư viện ghi nhận và lưu trữ topic mới / append audience vào topic_map.yaml.
 Sử dụng khi nào: Được gọi trực tiếp bởi dedup_engine.py ở Chặng 3 (Compile & Commit).
 Output: Cập nhật vật lý lên file topic_map.yaml.
 Tóm tắt logic hoạt động:
-  - confirm_new: Thêm các topics hoàn toàn mới vào YAML.
+  - confirm_new: Thêm các topics hoàn toàn mới vào YAML (tự động resolve pillar name chuẩn).
   - update_audience: Append mảng audiences vào topic đã tồn tại trong YAML (idempotent).
   - batch_commit: Batch commit từ file JSON (dành cho chế độ cũ).
 """
@@ -28,6 +28,44 @@ def _write_topic_map(data, path):
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
 
+# === NHÓM 1.5: Helper Chuẩn hóa & Ánh xạ Dữ liệu ===
+def _resolve_pillar_name(pillar_input, topic_map_path):
+    """
+    Poka-Yoke: Tự động ánh xạ key/prefix (vd: 'pillar_1', 'p1') sang trường 'name' trong pillars.yaml.
+    Nếu input đã là name hợp lệ hoặc không tìm thấy pillars.yaml, trả về chuỗi gốc an toàn.
+    """
+    if not pillar_input or not isinstance(pillar_input, str):
+        return pillar_input or ""
+    
+    clean_input = pillar_input.strip()
+    persona_dir = os.path.dirname(os.path.abspath(topic_map_path))
+    pillars_file = os.path.join(persona_dir, "pillars.yaml")
+    
+    if not os.path.exists(pillars_file):
+        return clean_input
+
+    try:
+        with open(pillars_file, 'r', encoding='utf-8') as f:
+            pillars_data = yaml.safe_load(f) or {}
+        pillars_dict = pillars_data.get("pillars", {})
+        
+        lookup = {}
+        for p_key, p_val in pillars_dict.items():
+            if not isinstance(p_val, dict):
+                continue
+            p_name = p_val.get("name", "").strip()
+            if p_name:
+                lookup[p_key.lower()] = p_name
+                # Hỗ trợ prefix rút gọn (vd: pillar_1 -> p1)
+                short_key = p_key.replace("pillar_", "p").replace("pillar", "p").lower()
+                lookup[short_key] = p_name
+                lookup[p_name.lower()] = p_name
+
+        return lookup.get(clean_input.lower(), clean_input)
+    except Exception:
+        return clean_input
+
+
 # === NHÓM 2: Tạo Mới Topic (confirm_new) ===
 def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_audience):
     """
@@ -42,6 +80,9 @@ def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_au
         if len(pillar_parent) > 1:
             raise ValueError(f"❌ Vi phạm One Pillar: {pillar_parent}")
         pillar_parent = pillar_parent[0] if pillar_parent else ""
+
+    # Poka-Yoke: Đảm bảo pillar_parent luôn là Tên tiếng Việt từ pillars.yaml
+    pillar_parent = _resolve_pillar_name(pillar_parent, topic_map_path)
 
     if not os.path.exists(topic_map_path):
         data = {"topics": []}
@@ -126,7 +167,8 @@ def batch_commit(topic_map_path, input_path, output_path):
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    pillar = data["pillar"]
+    # Poka-Yoke: Chuẩn hóa pillar sang Tên tiếng Việt
+    pillar = _resolve_pillar_name(data.get("pillar", ""), topic_map_path)
     entries = data["entries"]
 
     # ── Bước 1: Tách creates và merges ──

@@ -17,7 +17,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 """
 Tên file: prepare_topic_batches.py
-Last update: 12/08/2026 01:10 (GMT+7)
+Last update: 21/08/2026 22:50 (GMT+7)
 Vai trò: Chia nội dung chunk sách thành batch, gatekeeper truy cập tuần tự, validate submission.
 Sử dụng khi: Phase 4 (Topic Gen) của book-extractor pipeline.
 Output:
@@ -143,7 +143,7 @@ def prepare_book_topics(run_folder: str):
     
     template_data = {
         "password": batch_password,
-        "pillar": "[ĐIỀN VÀO ĐÂY: Tên Pillar]",
+        "pillar": "[ĐIỀN VÀO ĐÂY: Tên Pillar tiếng Việt chính xác từ trường name trong pillars.yaml (VD: Xác định triết lý giáo dục cho con)]",
         "book_topics": [
             {
                 "id": "[ĐIỀN VÀO ĐÂY: snake_case]", 
