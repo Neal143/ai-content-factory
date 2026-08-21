@@ -1,7 +1,7 @@
 ---
 name: Book Parser (The Atomizer)
 description: Skill phân rã sách thành Atom vật lý. Được gọi bởi book-extractor Session 4. Phase 1: Sinh Book Topics & Chunk Topics (batch processing) + Semantic Dedup. Phase 2: Atomization (tiếp ngay sau Phase 1 trong cùng 1 lần gọi).
-last_update: 12/08/2026 01:10 (GMT+7)
+last_update: 21/08/2026 22:50 (GMT+7)
 ---
 
 # Book Parser Skill (The Atomizer)
@@ -34,7 +34,7 @@ Ngay khi nhận INPUT, thực hiện tuần tự hoàn toàn tự động — **
 
 **Bước 1.1 — Đọc Tổng quan sách & Chọn Pillar gốc (duy nhất toàn book):**
 1. Đọc file `[run_folder]/session_1/mapper_raw.md` để nắm rõ nội dung tổng quan của cuốn sách (thesis, big idea, tóm tắt 1 trang).
-2. Xác định `[Persona_Path]`: Lấy thư mục con duy nhất trong `personas/` (VD: `personas/Vuon-ong-steiner`). Đọc `[Persona_Path]/pillars.yaml`. Dựa trên `name` và `description` của mỗi Pillar, đối chiếu với nội dung tổng quan sách vừa đọc để chọn **01 Pillar** phù hợp nhất. Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline. Giá trị `[Persona_Path]` cũng bất biến cho toàn bộ pipeline.
+2. Xác định `[Persona_Path]`: Lấy thư mục con duy nhất trong `personas/` (VD: `personas/Vuon-ong-steiner`). Đọc `[Persona_Path]/pillars.yaml`. Dựa trên `name` và `description` của mỗi Pillar, đối chiếu với nội dung tổng quan sách vừa đọc để chọn **01 Pillar** phù hợp nhất. Khi điền vào các mẫu form, BẮT BUỘC dùng chính xác trường `name` tiếng Việt của Pillar (VD: `Xác định triết lý giáo dục cho con`). Pillar này **bất biến** — dùng chung cho Book Topics và mọi Chunk Topics trong toàn bộ pipeline. Giá trị `[Persona_Path]` cũng bất biến cho toàn bộ pipeline.
 
 **Bước 1.2 — Sinh Book Topics (2-3 topics, phản ánh toàn bộ cuốn sách):**
 Dựa vào kiến thức tổng quan sách đã nắm được ở Bước 1.1, tham chiếu `.agents/skills/book-parser/references/topic-taxonomy.md` → Section **"Book Topics"** và **"Quy tắc chung"**.

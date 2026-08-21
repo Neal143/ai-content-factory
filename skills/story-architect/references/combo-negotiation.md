@@ -1,4 +1,4 @@
-﻿---
+---
 Mô tả file:
 - Tên file: combo-negotiation.md
 - Last update: 29/06/2026 05:57 (GMT+7)
@@ -62,6 +62,6 @@ Quay lại SKILL.md Bước 2 mục 5 (Topic Resolution).
 1. Agent **TẠM DỪNG** xử lý story.
 2. Agent sinh prompt cho user, gồm đầy đủ:
    - Insight mới (nếu có): type, raw (nguyên văn user đã chốt), pillar key cụ thể (vd: `pillar_1`).
-   - Topic mới (nếu có): id, label, pillar_parents (vd: `[pillar_1]`), belongs_to_audience (= Big Audience `file_ref` từ `audience.yaml`).
+   - Topic mới (nếu có): id, label, pillar_parents (vd: `["Xác định triết lý giáo dục cho con"]` — BẮT BUỘC dùng Tên tiếng Việt từ trường name trong pillars.yaml), belongs_to_audience (= Big Audience `file_ref` từ `audience.yaml`).
 3. Hướng dẫn: *"Mở conversation mới, paste prompt bên dưới và gọi persona-interviewer thực thi. Sau khi xong, quay lại conversation này để tiếp tục."*
 4. Khi user quay lại: Agent đọc file insight mới tạo trong `vault/01-Atomic/Insights/` → lấy `file_ref` chính xác → quay lại SKILL.md Bước 2 mục 5.
