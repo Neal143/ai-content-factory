@@ -265,15 +265,6 @@ def merge_audience(args):
     loser_entry = None
     survivor_entry = None
     
-    # Auto-mapping: Lookup file_ref neu LLM truyen vao ID (Anti-Fragile)
-    for a in audiences:
-        if a.get('id') == args.loser_file:
-            ref = a.get('file_ref', '')
-            args.loser_file = ref.replace('[[', '').replace(']]', '')
-        if a.get('id') == args.survivor_file:
-            ref = a.get('file_ref', '')
-            args.survivor_file = ref.replace('[[', '').replace(']]', '')
-
     # Auto-Swap Protected Personas
     protected_audiences = []
     personas_dir = os.path.join(args.vault_root, "..", "..", "personas")

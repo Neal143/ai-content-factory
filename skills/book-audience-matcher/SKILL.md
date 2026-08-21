@@ -104,7 +104,7 @@ python .agents/skills/book-audience-matcher/scripts/prepare_dedup_batches.py \
 > Script xuất `[run-folder]/session_3/dedup_batches/current_dedup_batch.json`. Đọc bằng `view_file`. File chứa `anchors` (những Audience đã chốt từ batch trước) và `items_to_process`.
 
 2. **Xử lý:** Với mỗi chunk trong `items_to_process`:
-   - Sinh `id`, `semantic_query`, `file_ref` (Quy tắc ở Phần 1 `semantic-match.md`).
+   - Sinh `semantic_query`, `file_ref` (Quy tắc ở Phần 1 `semantic-match.md`).
    - Đối chiếu với các `anchors` (IDENTICAL/DISTINCT/AMBIGUOUS).
    - Đối chiếu chéo với các chunks khác trong cùng `items_to_process`.
    - Ghi nhận parent (nội bộ batch hoặc từ anchors).
@@ -192,7 +192,7 @@ python .agents/skills/book-audience-matcher/scripts/write_audience_files.py \
 Script tự động xử lý:
 - Join Audience Decision Map với Calibrated JTBD bằng `chunk_index` (integer) / `scope` (book)
 - Tạo file `.md` cho mỗi entry `create` (YAML frontmatter bằng PyYAML + dashboard từ `audience-structure.md`)
-- Cập nhật `_audience_index.yaml` (PyYAML serialize, dedup by id)
+- Cập nhật `_audience_index.yaml` (PyYAML serialize, dedup by file_ref)
 - Skip nếu file hoặc index entry đã tồn tại
 - In báo cáo tóm tắt
 

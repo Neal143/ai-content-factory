@@ -51,8 +51,8 @@ $RawEdges = New-Object System.Collections.Generic.List[System.Object] # LÆ°u táº
 $AudienceLookup = @{}
 if (Test-Path $AudienceIndexPath) {
     $audContent = Get-Content $AudienceIndexPath -Raw -Encoding utf8
-    # Parse YAML array bang regex: moi block bat dau bang "- id:"
-    $audBlocks = $audContent -split '(?m)(?=^- id:)' | Where-Object { $_.Trim() }
+    # Parse YAML array bang regex: moi block bat dau bang "- file_ref:" hoac "- id:"
+    $audBlocks = $audContent -split '(?m)(?=^-\s+(?:file_ref|id):)' | Where-Object { $_.Trim() }
     foreach ($block in $audBlocks) {
         $audId = if ($block -match 'file_ref:\s*''\[\[(.+?)\]\]''') { $Matches[1] } else { $null }
         $audLevel = if ($block -match 'audience_level:\s*(.+)') { $Matches[1].Trim() } else { $null }

@@ -435,7 +435,7 @@ def _generate_template(batch_data, skill, output_dir):
         ]
     elif skill == "vc-audience-curator":
         results = [
-            {"action": "[ĐIỀN VÀO ĐÂY: keep | merge]", "audience_file": "[ĐIỀN VÀO ĐÂY: neu keep thi dien id, neu merge thi xoa dong nay]", "loser_file": "[ĐIỀN VÀO ĐÂY: neu merge]", "survivor_file": "[ĐIỀN VÀO ĐÂY: neu merge]"} 
+            {"action": "[ĐIỀN VÀO ĐÂY: keep | merge]", "audience_file": "[ĐIỀN VÀO ĐÂY: neu keep thi dien ten file (dau gach ngang), neu merge thi xoa dong nay]", "loser_file": "[ĐIỀN VÀO ĐÂY: neu merge]", "survivor_file": "[ĐIỀN VÀO ĐÂY: neu merge]"} 
             for _ in items
         ]
 
@@ -810,7 +810,10 @@ def submit_results(output_dir, results_file):
     is_meta_dedup = skill in ["vc-topic-dedup", "vc-audience-curator"]
     if is_meta_dedup:
         expected_key = None
-        expected_atoms = [item["id"] for item in batch_data.get("items", [])]
+        if skill == "vc-audience-curator":
+            expected_atoms = [item["file_ref"] for item in batch_data.get("items", [])]
+        else:
+            expected_atoms = [item["id"] for item in batch_data.get("items", [])]
     else:
         expected_key = batch_data.get("batch_key")
         expected_atoms = batch_data.get("atoms", [])

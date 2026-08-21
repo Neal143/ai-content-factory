@@ -313,7 +313,7 @@ def main():
                 # Derive correct current filename (post-rename)
                 current_fn = next((cm["new_filename"] for cm in change_map
                                   if cm["original_filename"] == orig_fn), orig_fn)
-                aud['id'] = current_fn.replace('-', '_')
+                aud.pop('id', None)
                 aud['file_ref'] = f"[[{current_fn}]]"
                 aud['audience_Job_performer'] = entry['audience_Job_performer']
                 aud['audience_main_job'] = entry['audience_main_job']

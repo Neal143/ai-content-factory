@@ -186,7 +186,7 @@ if (Test-Path $indexPath) {
     $lines = Get-Content $indexPath -Encoding UTF8
     $count = 0
     foreach ($line in $lines) {
-        if ($line -match "^\s*file_ref:\s*['""]?\[\[(.*?)\]\]['""]?") {
+        if ($line -match "^\s*-?\s*file_ref:\s*['""]?\[\[(.*?)\]\]['""]?") {
             $count++
             $fn = $matches[1] + ".md"
             $pp = Join-Path $RootPath "vault\01-Atomic\Audiences\$fn"

@@ -108,12 +108,10 @@ def collect_coverage_data(factory_root):
                 idx_yaml = yaml.safe_load(f)
                 if isinstance(idx_yaml, dict) and "audiences" in idx_yaml:
                     for a_item in idx_yaml["audiences"]:
-                        f_ref = clean_ref(a_item.get("file_ref", a_item.get("id", "")))
-                        a_id = clean_ref(a_item.get("id", ""))
+                        f_ref = clean_ref(a_item.get("file_ref", ""))
                         a_aliases = a_item.get("aliases") or []
-                        for k in [f_ref, a_id]:
-                            if k:
-                                index_aliases_map.setdefault(k, set()).update(a_aliases + [f_ref, a_id])
+                        if f_ref:
+                            index_aliases_map.setdefault(f_ref, set()).update(a_aliases + [f_ref])
         except Exception:
             pass
 

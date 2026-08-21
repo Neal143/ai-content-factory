@@ -224,7 +224,7 @@ def update_audience_index(entries, index_path):
     Logic:
     1. Đọc file, tách header comments khỏi body YAML
     2. Parse body bằng PyYAML
-    3. Dedup by id — skip entry đã tồn tại
+    3. Dedup by file_ref — skip entry đã tồn tại
     4. Append entries mới
     5. Full re-serialize body bằng PyYAML
     6. Ghép header + body, atomic write
@@ -251,19 +251,18 @@ def update_audience_index(entries, index_path):
     if not isinstance(audience_list, list):
         audience_list = []
 
-    existing_ids = {e.get("id") for e in audience_list}
+    existing_refs = {e.get("file_ref") for e in audience_list}
 
     # Append entries mới
     added = 0
     for entry in entries:
-        entry_id = entry["audience_filename"].replace("-", "_")
-        if entry_id in existing_ids:
-            print(f"  ⏭️ INDEX SKIP (đã tồn tại): {entry_id}")
+        file_ref = f"[[{entry['audience_filename']}]]"
+        if file_ref in existing_refs:
+            print(f"  ⏭️ INDEX SKIP (đã tồn tại): {file_ref}")
             continue
 
         index_entry = {
-            "id": entry_id,
-            "file_ref": f"[[{entry['audience_filename']}]]",
+            "file_ref": file_ref,
             "audience_level": entry["audience_level"],
             "audience_Job_performer": entry["audience_Job_performer"],
             "audience_main_job": entry["audience_main_job"],
@@ -272,7 +271,7 @@ def update_audience_index(entries, index_path):
             "aliases": entry["aliases"],
         }
         audience_list.append(index_entry)
-        existing_ids.add(entry_id)
+        existing_refs.add(file_ref)
         added += 1
 
     if added == 0:

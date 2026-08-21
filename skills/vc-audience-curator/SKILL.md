@@ -60,7 +60,7 @@ Với mỗi batch, LLM nhận `items` VÀ `anchors`, xác định:
 - MATCH: Hai audiences mô tả cùng JTBD (cùng performer + cùng main_job + circumstance chỉ khác cách diễn đạt). Áp dụng cho MỌI cặp level.
 - NO MATCH: Khác main_job, HOẶC khác circumstance cực đoan (2 trạng thái khác nhau).
 - Cascade khi merge sẽ tự động xử lý reparenting children, redirect references.
-- LƯU Ý ĐỊNH DẠNG: Tham số `loser_file` và `survivor_file` phải là **chính xác tên file (dùng dấu gạch ngang '-')**, tuyệt đối KHÔNG chứa đuôi `.md` và KHÔNG chứa dấu ngoặc vuông `[[ ]]`. Tuyệt đối không được nhầm lẫn với ID (dấu gạch dưới).
+- LƯU Ý ĐỊNH DẠNG: Tham số `loser_file` và `survivor_file` phải là **chính xác tên file (dùng dấu gạch ngang '-')**, tuyệt đối KHÔNG chứa đuôi `.md` và KHÔNG chứa dấu ngoặc vuông `[[ ]]`.
 
 Điền kết quả vào `<output_dir>/results_temp.json`:
 ```json

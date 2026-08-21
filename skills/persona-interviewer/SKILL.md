@@ -134,8 +134,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
            + Nếu **ĐÃ tồn tại**: Trích xuất và nối (append) bản ghi mới vào cuối giới hạn của cấu trúc mảng `audiences:`.
            + Định dạng dữ liệu của bản ghi (áp dụng cho cả 2 trường hợp):
              ```yaml
-               - id: "[job_performer]_[main_job]_[circumstance]"  # English snake_case từ 3 fields JTBD vừa lưu. VD: `new_employee_time_management_first_job`
-                 file_ref: "[[tên-file-ở-hành-động-1]]"           # Tham chiếu Wikilink trỏ trực tiếp đến Audience file vừa tạo ở hành động 2
+               - file_ref: "[[tên-file-ở-hành-động-1]]"           # Tham chiếu Wikilink trỏ trực tiếp đến Audience file vừa tạo ở hành động 2
                  audience_level: "big"                            # Thiết lập mặc định gán cấp độ "big" cho Audience khởi tạo qua quy trình phỏng vấn
                  audience_Job_performer: "[giá trị từ audience.yaml]"
                  audience_main_job: "[giá trị từ audience.yaml]"

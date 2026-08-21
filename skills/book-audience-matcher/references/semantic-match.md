@@ -16,10 +16,9 @@ Hệ thống quản lý cấu trúc phả hệ theo nguyên lý Vô Cấp (Level
 Để giảm tải Review mệt mỏi cho Human và giữ nguyên vẹn Mạng lưới Phả hệ, hệ thống ngăn chặn Duplicate qua cơ chế: Quét Nội Bộ (Internal Dedup), Quét Ngoại Biên (External Index 3-Verdict Semantic Match) và Nhánh Gộp Chéo (Parent Append).
 
 ## Phần 1: Chuẩn bị Query Variables
-Từ JTBD object đã được calibrate ở Giai đoạn 1, LLM tự sinh **3 giá trị** CHO TOÀN BỘ nhóm sách (Book + toàn bộ Chunks). Các giá trị này sẽ được ghi vào `internal_map.json` (Phần 2A) chứ KHÔNG giữ In-Memory:
-1. `id`: English snake_case, giữ nguyên chuẩn cấu trúc 3 phần JTBD: `[job_performer]_[main_job]_[circumstance]`. VD: `new_employee_time_management_first_job`
-2. `semantic_query`: Câu tiếng Việt ghép từ 3 field JTBD. VD: *"Người mới đi làm muốn quản lý thời gian khi bắt đầu công việc"*
-3. `file_ref`: Wikilink chứa tên file vật lý sẽ tạo (nếu action = create). BẮT BUỘC tuân thủ **Quy Tắc Đặt Tên File (Naming Convention)** sau:
+Từ JTBD object đã được calibrate ở Giai đoạn 1, LLM tự sinh **2 giá trị** CHO TOÀN BỘ nhóm sách (Book + toàn bộ Chunks). Các giá trị này sẽ được ghi vào `internal_map.json` (Phần 2A) chứ KHÔNG giữ In-Memory:
+1. `semantic_query`: Câu tiếng Việt ghép từ 3 field JTBD. VD: *"Người mới đi làm muốn quản lý thời gian khi bắt đầu công việc"*
+2. `file_ref`: Wikilink chứa tên file vật lý sẽ tạo (nếu action = create). BẮT BUỘC tuân thủ **Quy Tắc Đặt Tên File (Naming Convention)** sau:
    - Dấu gạch ngang (`-`) nối các từ trong cùng 1 thành phần JTBD.
    - Dấu gạch dưới (`_`) phân tách 3 thành phần JTBD với nhau.
    - Tiếng Việt không dấu, không ký tự đặc biệt, toàn bộ viết thường.
@@ -43,7 +42,6 @@ Schema submission (đối với mỗi lô dữ liệu):
   "entries": [
     {
       "uid": "uid_chunk_XX",
-      "id": "cha-me_xay-dung-thoi-quen_thiet-lap-sinh-hoat",
       "semantic_query": "Cha mẹ muốn xây dựng nền tảng thói quen...",
       "file_ref": "[[cha-me_xay-dung-thoi-quen_thiet-lap-sinh-hoat]]",
       "collapse_target": null,
@@ -62,7 +60,7 @@ LLM lần lượt xử lý từng lô qua vòng lặp Get→Submit có khóa (xe
 Áp dụng nghiêm ngặt lưới so khớp kép 1-1 Structural & Semantic khắt khe sau:
 
 ```text
-NEW id (EN)             ──so sánh với──→  EXISTING id (Tín hiệu Chính: Structural/Skeleton Match)
+NEW file_ref            ──so sánh với──→  EXISTING file_ref (Tín hiệu Chính: Structural/Naming Convention Match)
 NEW semantic_query (VN) ──so sánh với──→  EXISTING semantic_query (và mảng aliases) (Tín hiệu Phụ: Semantic ngầm định)
                                                 ↓
                                             Verdict: IDENTICAL / DISTINCT / AMBIGUOUS

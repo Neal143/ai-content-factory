@@ -55,7 +55,6 @@ def create_batches(internal_map_path, split_dir, batch_size):
         for item in batch_items:
             items_payload.append({
                 "uid": item.get("uid"),
-                "id": item.get("id"),
                 "semantic_query": item.get("semantic_query"),
                 "file_ref": item.get("file_ref")
             })

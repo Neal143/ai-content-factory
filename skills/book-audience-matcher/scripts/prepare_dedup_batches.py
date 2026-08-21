@@ -26,7 +26,6 @@ def create_dedup_batches(jtbd_path, split_dir, batch_size):
         internal_map = {
             "unique_audiences": [{
                 "uid": "uid_book",
-                "id": None,
                 "semantic_query": None,
                 "file_ref": None,
                 "internal_parents": []
@@ -103,7 +102,6 @@ def get_next_dedup_batch(session_dir):
     for a in anchors:
         compact_anchors.append({
             "uid": a["uid"],
-            "id": a["id"],
             "semantic_query": a["semantic_query"],
             "file_ref": a["file_ref"]
         })
@@ -128,7 +126,6 @@ def get_next_dedup_batch(session_dir):
     for item in items_to_process:
         template_output["entries"].append({
             "uid": item["uid"],
-            "id": "[ĐIỀN VÀO ĐÂY]",
             "semantic_query": "[ĐIỀN VÀO ĐÂY]",
             "file_ref": "[ĐIỀN VÀO ĐÂY]",
             "collapse_target": None,
@@ -189,7 +186,7 @@ def validate_dedup_submission(session_dir, submit_file):
 
     # Validate từng entry
     for entry in entries:
-        req_fields = ["uid", "id", "semantic_query", "file_ref", "collapse_target", "internal_parents", "reason"]
+        req_fields = ["uid", "semantic_query", "file_ref", "collapse_target", "internal_parents", "reason"]
         if any(k not in entry for k in req_fields):
             print(f"❌ Entry {entry.get('uid')} thiếu trường bắt buộc.")
             sys.exit(1)
@@ -232,7 +229,6 @@ def validate_dedup_submission(session_dir, submit_file):
         else:
             session_state["established_audiences"].append({
                 "uid": uid,
-                "id": entry["id"],
                 "semantic_query": entry["semantic_query"],
                 "file_ref": entry["file_ref"],
                 "internal_parents": entry["internal_parents"]
