@@ -1,6 +1,6 @@
 ---
-description: Workflow hợp nhất xử lý sách khép kín từ trích xuất thô, tinh lọc vivid đến phân rã DIKW (Chạy phân đoạn qua 5 Session độc lập để giải phóng Token Context Window)
-last_update: 11/08/2026 17:09 (GMT+7)
+description: Workflow xử lý sách khép kín: trích xuất thô → tinh lọc vivid → phân rã DIKW (5 Session độc lập, giải phóng Context Window)
+last_update: 22/08/2026 22:00 (GMT+7)
 ---
 
 # 📖 Workflow: Book Extractor Pipeline (5-Session Architecture)
@@ -43,17 +43,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
 - **Agent chính (BREAKPOINT 1)**:
   1. Chạy POKA-YOKE (dừng nếu FATAL/WARNING). Nếu PASS, in báo cáo.
   2. **Cập nhật Blackboard**: Ghi đè `current_phase: 2`.
-  3. **DỪNG TIẾN TRÌNH**. Yêu cầu user mở New Chat và dán Handoff Prompt:
-     ```text
-     **[Hệ thống] Handoff 1**
-     Workflow: `/book-extractor` (Phase 2)
-     Sách: [Tên Sách] (ID: [Notebook ID]) | Run: [run_folder] | Cache: [cache_file]
-     Trạng thái: Phase 1 PASS. `current_phase: 2`.
-     Yêu cầu:
-     1. Đọc `.agents\workflows\book-extractor.md`.
-     2. Nạp cấu hình từ `00-blackboard.yaml` trong [run_folder].
-     3. Kích chạy **Bước 3.5 (Phase 2: Vivid Curation)** ngay lập tức.
-     ```
+  3. **DỪNG TIẾN TRÌNH**. Script cuối session đã in `[HANDOFF PROMPT]` ra stdout. Copy nguyên văn gửi user để mở New Chat dán vào.
 
 ---
 
@@ -64,11 +54,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
 - **Tác nhân thực hiện**: Agent chính điều phối (khi nhận được Handoff Prompt 1 ở cuộc hội thoại mới).
 - **Mục đích**: Nạp lại trạng thái, khôi phục context từ Blackboard tĩnh trên đĩa để bắt đầu Session 2.
 - **Input**: Đường dẫn `run_folder` do người dùng cung cấp trong prompt bàn giao.
-- **Hành động của Agent chính**:
-  1. Sử dụng công cụ đọc tệp tin `00-blackboard.yaml` trong thư mục `run_folder` đã cung cấp.
-  2. Nạp toàn bộ các tham số cấu hình (tên sách, notebook, cache file, run folder) vào Context làm việc của Session mới.
-  3. Đảm bảo nạp đúng giá trị `current_phase: 2` từ Blackboard.
-  4. Tự động chuyển tiếp tiến trình sang **Bước 4 (Phase 2)** để gọi VividCuratorAgent.
+- **Hành động**: Đọc `00-blackboard.yaml` trong `run_folder`, nạp context (`current_phase: 2`) → chuyển sang **Bước 4 (Phase 2)**.
 
 ### Bước 4 (Phase 2): Tinh lọc & Niêm phong Dữ liệu
 
@@ -81,17 +67,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
 - **Agent chính (BREAKPOINT 2)**:
   1. In báo cáo từ `session_2/vivid_curation_log.json` (KEEP/DISCARD).
   2. **Cập nhật Blackboard**: Ghi đè `current_phase: 3`.
-  3. **DỪNG TIẾN TRÌNH**. Yêu cầu user mở New Chat và dán Handoff Prompt:
-     ```text
-     **[Hệ thống] Handoff 2**
-     Workflow: `/book-extractor` (Phase 3)
-     Sách: [Tên Sách] | Run: [run_folder] | Cache: [cache_file]
-     Trạng thái: Phase 2 PASS. `current_phase: 3`.
-     Yêu cầu:
-     1. Đọc `.agents\workflows\book-extractor.md`.
-     2. Nạp cấu hình từ `00-blackboard.yaml` trong [run_folder].
-     3. Khởi chạy **Bước 5 (Phase 3: Audience Resolver)** ngay lập tức.
-     ```
+  3. **DỪNG TIẾN TRÌNH**. Script cuối session đã in `[HANDOFF PROMPT]` ra stdout. Copy nguyên văn gửi user để mở New Chat dán vào.
 
 ---
 
@@ -102,11 +78,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
 - **Tác nhân thực hiện**: Agent chính điều phối (khi nhận được Handoff Prompt 2 ở cuộc hội thoại mới).
 - **Mục đích**: Nạp lại trạng thái, khôi phục context từ Blackboard tĩnh trên đĩa để bắt đầu Session 3 (Phase 3: Phân giải Đối tượng Độc giả).
 - **Input**: Đường dẫn `run_folder` do người dùng cung cấp trong prompt bàn giao.
-- **Hành động của Agent chính**:
-  1. Sử dụng công cụ đọc tệp tin `00-blackboard.yaml` trong thư mục `run_folder` đã cung cấp.
-  2. Nạp toàn bộ các tham số cấu hình (tên sách, notebook, cache file, run folder) vào Context làm việc của Session mới.
-  3. Đảm bảo nạp đúng giá trị `current_phase: 3` từ Blackboard.
-  4. Tự động chuyển tiếp tiến trình sang **Bước 6 (Phase 3)** để gọi AudienceResolverAgent.
+- **Hành động**: Đọc `00-blackboard.yaml` trong `run_folder`, nạp context (`current_phase: 3`) → chuyển sang **Bước 6 (Phase 3)**.
 
 ### Bước 6 (Phase 3): Phân giải Đối tượng Độc giả
 
@@ -125,17 +97,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
 - **Agent chính (BREAKPOINT 3)**:
   1. Đọc kết quả phân giải audience.
   2. **Cập nhật Blackboard**: Ghi đè `current_phase: 4`.
-  3. **DỪNG TIẾN TRÌNH**. Yêu cầu user mở New Chat và dán Handoff Prompt:
-     ```text
-     **[Hệ thống] Handoff 3**
-     Workflow: `/book-extractor` (Phase 4)
-     Sách: [Tên Sách] | Run: [run_folder] | Cache: [cache_file]
-     Trạng thái: Phase 3 PASS. `current_phase: 4`.
-     Yêu cầu:
-     1. Đọc `.agents\workflows\book-extractor.md`.
-     2. Nạp cấu hình từ `00-blackboard.yaml` trong [run_folder].
-     3. Khởi chạy **Bước 7 (Phase 4: Topic Gen & Atomize)** ngay lập tức.
-     ```
+  3. **DỪNG TIẾN TRÌNH**. Script cuối session đã in `[HANDOFF PROMPT]` ra stdout. Copy nguyên văn gửi user để mở New Chat dán vào.
 
 ---
 
@@ -146,11 +108,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
 - **Tác nhân thực hiện**: Agent chính điều phối (khi nhận được Handoff Prompt 3 ở cuộc hội thoại mới).
 - **Mục đích**: Nạp lại trạng thái, khôi phục context từ Blackboard tĩnh trên đĩa để bắt đầu Session 4 (Phase 4: Topic Gen & Atomize).
 - **Input**: Đường dẫn `run_folder` do người dùng cung cấp trong prompt bàn giao.
-- **Hành động của Agent chính**:
-  1. Sử dụng công cụ đọc tệp tin `00-blackboard.yaml` trong thư mục `run_folder` đã cung cấp.
-  2. Nạp toàn bộ các tham số cấu hình (tên sách, notebook, cache file, run folder) vào Context làm việc của Session mới.
-  3. Đảm bảo nạp đúng giá trị `current_phase: 4` từ Blackboard.
-  4. Tự động chuyển tiếp tiến trình sang **Bước 8 (Phase 4)** để gọi BookParserAgent.
+- **Hành động**: Đọc `00-blackboard.yaml` trong `run_folder`, nạp context (`current_phase: 4`) → chuyển sang **Bước 8 (Phase 4)**.
 
 ### Bước 8 (Phase 4): Sinh Topics (Batch) & Phân rã Atoms DIKW
 
@@ -168,17 +126,7 @@ last_update: 11/08/2026 17:09 (GMT+7)
   ```
 - **Agent chính (BREAKPOINT 4)**:
   1. **Cập nhật Blackboard**: Ghi đè `current_phase: 5`.
-  2. **DỪNG TIẾN TRÌNH**. Yêu cầu user mở New Chat và dán Handoff Prompt:
-     ```text
-     **[Hệ thống] Handoff 4**
-     Workflow: `/book-extractor` (Phase 5: Vault Curation)
-     Sách: [Tên Sách] | Run: [run_folder] | Slug: [slug]
-     Trạng thái: Phase 4 PASS. `current_phase: 5`.
-     Yêu cầu:
-     1. Đọc `.agents\workflows\book-extractor.md`.
-     2. Nạp cấu hình từ `00-blackboard.yaml` trong [run_folder].
-     3. Khởi chạy **SESSION 5: VAULT CURATION** ngay lập tức.
-     ```
+  2. **DỪNG TIẾN TRÌNH**. Script cuối session đã in `[HANDOFF PROMPT]` ra stdout. Copy nguyên văn gửi user để mở New Chat dán vào.
 
 ---
 
@@ -224,6 +172,7 @@ Sau khi User xác nhận đã paste xong, cập nhật `current_phase: completed
   - `dedup_log.json`: Danh sách cặp đã merge (survivor + loser).
   - `tag_log.json`: Danh sách atoms đã tag.
 - **Output**: Atoms đã chuẩn hóa metadata + loại bỏ trùng lặp.
+- **Parent context**: Khi tạo `pipeline_context.json` (AGENT.md Section 5), ghi: `"parent_workflow": {"name": "book-extractor", "run_folder": "[run_folder]", "return_step": "Bước 11 (Báo cáo Nghiệm thu)", "bb_update": "current_phase: completed"}`
 - **Agent chính**: Sau khi VaultCuratorAgent hoàn tất, cập nhật `current_phase: completed` → chuyển Bước 11 (Báo cáo).
 
 ---

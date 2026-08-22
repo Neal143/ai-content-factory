@@ -1,7 +1,7 @@
 # Agent: VaultCuratorAgent (Tác nhân Bảo dưỡng và Chuẩn hóa Vault)
 
 > **Tên file**: .agents/agents/vault-curator/AGENT.md
-> **Last update**: 13/07/2026 10:44 (GMT+7)
+> **Last update**: 22/08/2026 23:58 (GMT+7)
 > **Vai trò**: Tác nhân chuyên trách bảo dưỡng và chuẩn hóa Vault: điều phối auto-tagging, semantic dedup và semantic alignment.
 > **Sử dụng khi**: Kích hoạt tự động vào cuối quy trình tạo nội dung mới (Use-case A) hoặc kích hoạt thủ công để quét dọn toàn kho (Use-case B).
 > **Output**: Vault đã được chuẩn hóa + `vault_index.json` đã rebuild + Log thực thi tại output_dir.
@@ -63,10 +63,12 @@ Dựa vào tham số `--mode`, hãy gọi các skill theo đúng kịch bản (L
 {
   "mode": "<mode>",
   "atoms_file": "<đường dẫn file atoms nếu có>",
-  "root_output_dir": "<output-dir>"
+  "root_output_dir": "<output-dir>",
+  "parent_workflow": null
 }
 ```
 File này giúp script sinh resume prompt chính xác khi SESSION_BREAK.
+Nếu caller truyền thông tin parent workflow (VD: book-extractor Bước 10), ghi `parent_workflow` với format: `{"name": "...", "run_folder": "...", "return_step": "...", "bb_update": "..."}`. Nếu không có parent, để `null`.
 
 ```text
 IF mode == "atoms-full-pipeline":
@@ -109,3 +111,9 @@ Sau khi hoàn tất Routing Logic, Agent BẮT BUỘC phải thực hiện dọn
 ## 7. Summary Report
 
 Khi mỗi skill hoàn tất (script in `ALL_DONE`), script **tự động** in summary từ log file. Agent đọc stdout và gửi kết quả cho user. Sau khi tất cả skills trong pipeline xong, Agent tổng hợp summary các skills thành 1 báo cáo cuối cùng cho user.
+
+### Return to Parent Workflow
+Sau khi báo cáo tổng hợp xong, kiểm tra file `pipeline_context.json` (tại `root_output_dir`). Nếu trường `parent_workflow` không null:
+1. Đọc cấu hình từ `00-blackboard.yaml` trong `run_folder`.
+2. Cập nhật trạng thái Blackboard theo `bb_update` (VD: ghi đè `current_phase: completed`).
+3. **Tự động thực thi ngay `<return_step>`** của workflow `<name>.md` (đọc `pipeline_report.md` và in Báo cáo Nghiệm thu toàn diện cho User).

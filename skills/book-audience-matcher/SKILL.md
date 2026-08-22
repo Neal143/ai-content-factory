@@ -215,7 +215,8 @@ python .agents/skills/book-audience-matcher/scripts/verify_audiences.py \
     --decision-map      "[run-folder]/audience_decision_map.json" \
     --vault-root        "vault/" \
     --audiences-parsed  "[run-folder]/session_3/audiences_parsed.json" \
-    --report            "[run-folder]/pipeline_report.md"
+    --report            "[run-folder]/pipeline_report.md" \
+    --run-folder        "[run-folder]"
 ```
 
 Script thực hiện 2 việc:

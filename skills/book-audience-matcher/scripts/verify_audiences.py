@@ -23,6 +23,13 @@ import json
 import re
 import argparse
 
+# -- Fix Windows console encoding --
+if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
+# -- Auto Handoff: path toi .agents/scripts/ --
+_AGENTS_SCRIPTS = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'scripts'))
+
 # Fieldnames cố định — phải khớp với generate_baseline.py và verify_baseline() trong atomizer.py
 FIELDNAMES = ['section', 'chunk', 'category', 'id', 'status']
 
@@ -42,6 +49,8 @@ def main():
                         help="Path tới audiences_parsed.json (enrich Audience Decision Map với jtbd_raw)")
     parser.add_argument('--report',            default=None,
                         help="Path tới pipeline_report.md")
+    parser.add_argument('--run-folder',        default=None,
+                        help="Path toi run folder (de in handoff prompt tu dong)")
     args = parser.parse_args()
 
     # ── Đọc inputs ──
@@ -144,6 +153,15 @@ def main():
             if missing_ids:
                 for mid in missing_ids:
                     f.write(f"  ❌ MISSING audience: {mid}\n")
+
+    # -- Auto Handoff: in handoff prompt neu co run-folder --
+    if args.run_folder:
+        try:
+            sys.path.insert(0, _AGENTS_SCRIPTS)
+            from print_handoff import print_handoff
+            print_handoff(os.path.abspath(args.run_folder), next_phase=4)
+        except Exception:
+            pass
 
 
 if __name__ == '__main__':

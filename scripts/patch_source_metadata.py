@@ -132,5 +132,12 @@ def main():
     os.replace(tmp_file, cache_file)
     print(f"[INFO] Da dong dau metadata cho {cache_file}")
 
+    # -- Auto Handoff: in handoff prompt --
+    try:
+        from print_handoff import print_handoff
+        print_handoff(os.path.abspath(run_folder), next_phase=5)
+    except Exception:
+        pass
+
 if __name__ == "__main__":
     main()

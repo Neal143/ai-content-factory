@@ -8,6 +8,11 @@ import argparse
 import shutil
 import subprocess
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
 """
 Ten file: prepare_curation_batches.py
 Last update: 13/07/2026 09:38 (GMT+7)
@@ -930,6 +935,9 @@ def submit_results(output_dir, results_file):
             print(f"- Output dir skill: {output_dir}")
             print(f"- Root output dir: {root_dir}")
             print(f"- Atoms file: {atoms_file}")
+            parent_wf = pipeline_ctx.get("parent_workflow")
+            if parent_wf:
+                print(f"- Parent workflow: {parent_wf.get('name', '?')} (khi xong toan bo: {parent_wf.get('return_step', '?')})")
             print(f"- Trang thai: {done_count}/{total} batches done")
             print(f"")
             print(f"Dua vao Mode: {mode}, doc AGENT.md routing logic de biet buoc tiep theo sau ALL_DONE.")

@@ -25,6 +25,9 @@ import argparse
 import os
 import subprocess
 
+# -- Auto Handoff: path toi .agents/scripts/ --
+_AGENTS_SCRIPTS = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'scripts'))
+
 # Cấu hình UTF-8 cho stdout và stderr trên Windows để chống lỗi UnicodeEncodeError khi in emoji/tiếng Việt
 if sys.platform.startswith('win'):
     import io
@@ -350,6 +353,15 @@ def main():
     
     if sealing_success:
         print("✅ Niêm phong dữ liệu hoàn tất thành công (Sealing Completed).")
+
+        # -- Auto Handoff: in handoff prompt khi sealing thanh cong --
+        try:
+            sys.path.insert(0, _AGENTS_SCRIPTS)
+            from print_handoff import print_handoff
+            print_handoff(root_run_folder, next_phase=3)
+        except Exception:
+            pass
+
         sys.exit(0)
     else:
         print("❌ Quá trình niêm phong dữ liệu (Sealing) gặp lỗi. Vui lòng kiểm tra log lỗi phía trên.")

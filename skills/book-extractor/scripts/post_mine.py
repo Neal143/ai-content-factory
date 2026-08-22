@@ -33,6 +33,9 @@ if sys.stderr.encoding != 'utf-8':
 # Import normalizer từ cùng thư mục
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
+
+# -- Auto Handoff: path toi .agents/scripts/ --
+_AGENTS_SCRIPTS = os.path.normpath(os.path.join(SCRIPT_DIR, '..', '..', '..', 'scripts'))
 from normalizer import normalize_file
 
 
@@ -456,4 +459,14 @@ if __name__ == '__main__':
                 run_folder_arg = os.path.abspath(run_folder_arg)
 
     success = post_mine(filepath, run_folder=run_folder_arg)
+
+    # -- Auto Handoff: in handoff prompt neu pipeline thanh cong --
+    if success and run_folder_arg:
+        try:
+            sys.path.insert(0, _AGENTS_SCRIPTS)
+            from print_handoff import print_handoff
+            print_handoff(run_folder_arg, next_phase=2)
+        except Exception:
+            pass
+
     sys.exit(0 if success else 1)
