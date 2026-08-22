@@ -154,6 +154,17 @@ def main():
                 for mid in missing_ids:
                     f.write(f"  ❌ MISSING audience: {mid}\n")
 
+    # -- Auto Checkpoint: luu trang thai data truoc khi handoff --
+    if args.run_folder:
+        try:
+            sys.path.insert(0, _AGENTS_SCRIPTS)
+            from auto_checkpoint import auto_checkpoint
+            _rf = os.path.abspath(args.run_folder)
+            _rf_name = os.path.basename(_rf.rstrip("/\\"))
+            auto_checkpoint(f"{_rf_name}-phase3", f"Book Extractor (Phase 3: Audience Resolver) - {_rf_name}")
+        except Exception:
+            pass
+
     # -- Auto Handoff: in handoff prompt neu co run-folder --
     if args.run_folder:
         try:

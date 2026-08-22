@@ -1,8 +1,8 @@
 ﻿# ============================================================
-# File: .agents/skills/progress-checkpoint/scripts/save_progress.ps1
-# Last update: 19/08/2026 18:58 (GMT+7)
+# File: .agents/scripts/save_progress.ps1
+# Last update: 23/08/2026 00:52 (GMT+7)
 # Role: Manage data snapshots for Content Factory using a separate git repository (.save-data/)
-# Usage: Called by agent via SKILL.md instructions.
+# Usage: Called by agent (SKILL.md or /checkpoint), or auto by pipeline scripts (auto_checkpoint.py).
 # Output: Git commits/tags in .save-data/, entries in progress-checkpoints.md
 # Logic: Uses git --git-dir=.save-data --work-tree=<FactoryRoot> to isolate snapshot git
 #        from any parent git. 3 actions: save (commit+tag+log), list, rollback (checkout+clean)
@@ -17,8 +17,8 @@ param(
     [string]$Description
 )
 
-# --- Resolve Factory Root (4 levels up from scripts/) ---
-$FactoryRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..\..\.." )).Path
+# --- Resolve Factory Root (2 levels up from scripts/) ---
+$FactoryRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $GitDir = Join-Path $FactoryRoot ".save-data"
 $SaveProgressFile = Join-Path $FactoryRoot "progress-checkpoints.md"
 

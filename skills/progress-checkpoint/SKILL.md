@@ -1,7 +1,7 @@
 ---
 name: Progress Checkpoint
 description: "Lưu trạng thái dữ liệu Content Factory tại một thời điểm bất kỳ. Cho phép rollback về save point khi cần."
-last_update: 11/08/2026 00:20 (GMT+7)
+last_update: 23/08/2026 00:52 (GMT+7)
 ---
 
 # Progress Checkpoint Skill
@@ -18,7 +18,7 @@ last_update: 11/08/2026 00:20 (GMT+7)
 
 Agent chạy lệnh sau (CWD = Content Factory root):
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/skills/progress-checkpoint/scripts/save_progress.ps1" -Action save -Label "[label-slug]" -Description "[Mô tả ngắn gọn về trạng thái hiện tại]"
+powershell -ExecutionPolicy Bypass -File ".agents/scripts/save_progress.ps1" -Action save -Label "[label-slug]" -Description "[Mô tả ngắn gọn về trạng thái hiện tại]"
 ```
 
 **Params:**
@@ -32,7 +32,7 @@ powershell -ExecutionPolicy Bypass -File ".agents/skills/progress-checkpoint/scr
 
 Agent chạy:
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/skills/progress-checkpoint/scripts/save_progress.ps1" -Action list
+powershell -ExecutionPolicy Bypass -File ".agents/scripts/save_progress.ps1" -Action list
 ```
 
 Hoặc: Agent đọc file `progress-checkpoints.md` ở root Content Factory.
@@ -43,7 +43,7 @@ Hoặc: Agent đọc file `progress-checkpoints.md` ở root Content Factory.
 
 Agent chạy:
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".agents/skills/progress-checkpoint/scripts/save_progress.ps1" -Action rollback -Label "[label-slug]"
+powershell -ExecutionPolicy Bypass -File ".agents/scripts/save_progress.ps1" -Action rollback -Label "[label-slug]"
 ```
 
 Script tự động tạo save point `before-rollback-[timestamp]` trước khi rollback để đảm bảo an toàn.

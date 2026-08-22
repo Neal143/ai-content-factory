@@ -132,6 +132,14 @@ def main():
     os.replace(tmp_file, cache_file)
     print(f"[INFO] Da dong dau metadata cho {cache_file}")
 
+    # -- Auto Checkpoint: luu trang thai data truoc khi handoff --
+    try:
+        from auto_checkpoint import auto_checkpoint
+        _rf_name = os.path.basename(os.path.abspath(run_folder).rstrip("/\\"))
+        auto_checkpoint(f"{_rf_name}-phase4", f"Book Extractor (Phase 4: Atomize & Sealing) - {_rf_name}")
+    except Exception:
+        pass
+
     # -- Auto Handoff: in handoff prompt --
     try:
         from print_handoff import print_handoff

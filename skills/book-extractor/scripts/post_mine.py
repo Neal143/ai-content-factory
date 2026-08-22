@@ -460,6 +460,16 @@ if __name__ == '__main__':
 
     success = post_mine(filepath, run_folder=run_folder_arg)
 
+    # -- Auto Checkpoint: luu trang thai data truoc khi handoff --
+    if success and run_folder_arg:
+        try:
+            sys.path.insert(0, _AGENTS_SCRIPTS)
+            from auto_checkpoint import auto_checkpoint
+            _rf_name = os.path.basename(run_folder_arg.rstrip("/\\"))
+            auto_checkpoint(f"{_rf_name}-phase1", f"Book Extractor (Phase 1: Raw Mining) - {_rf_name}")
+        except Exception:
+            pass
+
     # -- Auto Handoff: in handoff prompt neu pipeline thanh cong --
     if success and run_folder_arg:
         try:

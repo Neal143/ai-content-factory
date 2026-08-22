@@ -354,6 +354,15 @@ def main():
     if sealing_success:
         print("✅ Niêm phong dữ liệu hoàn tất thành công (Sealing Completed).")
 
+        # -- Auto Checkpoint: luu trang thai data truoc khi handoff --
+        try:
+            sys.path.insert(0, _AGENTS_SCRIPTS)
+            from auto_checkpoint import auto_checkpoint
+            _rf_name = os.path.basename(root_run_folder.rstrip("/\\"))
+            auto_checkpoint(f"{_rf_name}-phase2", f"Book Extractor (Phase 2: Vivid Curation) - {_rf_name}")
+        except Exception:
+            pass
+
         # -- Auto Handoff: in handoff prompt khi sealing thanh cong --
         try:
             sys.path.insert(0, _AGENTS_SCRIPTS)
