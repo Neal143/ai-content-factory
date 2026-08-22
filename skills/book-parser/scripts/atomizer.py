@@ -500,7 +500,7 @@ def process_vivid_buffer(vivid_buffer, atoms_by_slug, acr, context, vault_root):
                 if not isinstance(existing_reserve, list):
                     existing_reserve = []
             except Exception as e:
-                print(f"⚠️ Lỗi parse YAML Audience {audience_filename}: {e}")
+                print(f"[WARN] Loi parse YAML Audience {audience_filename}: {e}")
                 stats["orphan_dropped"] += 1
                 continue
 
@@ -621,7 +621,7 @@ def write_atom_file(atom, vault_root, overwrite=False):
     filepath = os.path.join(folder_path, atom["filename"])
 
     if os.path.exists(filepath) and not overwrite:
-        print(f"  ⏭️ SKIP (đã tồn tại): {filepath}")
+        print(f"  [INFO] SKIP (da ton tai): {filepath}")
         return False
 
     frontmatter = build_frontmatter(atom)
@@ -857,7 +857,7 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
             # Lookup slug cho vivid-append (phát hiện collision)
             slug_key = filename.replace('.md', '')
             if slug_key in atoms_by_slug:
-                print(f"  ⚠️ COLLISION: filename '{filename}' trùng! Atom trước sẽ bị mất trong vivid-lookup.")
+                print(f"  [WARN] COLLISION: filename '{filename}' trung! Atom truoc se bi mat trong vivid-lookup.")
             atoms_by_slug[slug_key] = atom
 
             counts[atom_type] += 1
@@ -870,7 +870,7 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
 
     # ── Bước 4: Commit Write hoặc Dry-Run ──
     if dry_run:
-        print("\n🔍 DRY-RUN MODE — Không ghi file\n")
+        print("\n[INFO] DRY-RUN MODE - Khong ghi file\n")
     else:
         written = 0
         skipped_exist = 0
@@ -898,9 +898,9 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
     # ── Bước 5: Báo cáo ──
     print("=" * 50)
     if dry_run:
-        print("🔍 DRY-RUN REPORT")
+        print("[INFO] DRY-RUN REPORT")
     else:
-        print("✅ Atomization hoàn tất!")
+        print("[INFO] Atomization hoan tat!")
     print("=" * 50)
     print(f"  Insights:    {counts['insight']}")
     print(f"  Solutions:   {counts['solution']}")
@@ -908,27 +908,27 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
     print(f"  Stories:     {counts['story']}")
     print(f"  Data-Points: {counts['data-point']}")
     print(f"  Quotes:      {counts['quote']}")
-    print(f"  ──────────────────────")
+    print(f"  ----------------------")
     print(f"  Total Atoms: {sum(counts.values())}")
     print(f"  Skipped:     {skip_count}")
-    print(f"  ──────────────────────")
+    print(f"  ----------------------")
     print(f"  Vivid Appended:  {vivid_stats['appended']}")
     print(f"  Vivid Orphan Drop: {vivid_stats['orphan_dropped']}")
     print(f"  Vivid Cap Reserved: {vivid_stats['cap_reserved']}")
-    print(f"  ──────────────────────")
+    print(f"  ----------------------")
     print(f"  Quarantine:  {len(quarantine_atoms)}")
     if quarantine_atoms:
         for a in quarantine_atoms:
-            print(f"    ⚠️ {a['filename']}: {a.get('quarantine_reason','')}")
+            print(f"    [WARN] {a['filename']}: {a.get('quarantine_reason','')}")
 
     if not dry_run:
-        print(f"  ──────────────────────")
+        print(f"  ----------------------")
         print(f"  Written:     {written}")
         if skipped_exist:
             print(f"  Skipped (exists): {skipped_exist}")
 
     # In danh sách wikilinks
-    print(f"\n📋 Wikilinks ({len(valid_atoms)}):")
+    print(f"\n[INFO] Wikilinks ({len(valid_atoms)}):")
     for atom in valid_atoms:
         wl = atom['filename'].replace('.md', '')
         print(f"  [[{wl}]]")
@@ -944,11 +944,11 @@ def run_atomizer(metadata, context, vault_root, dry_run=False, overwrite=False,
             report_path,
         )
         if m > 0:
-            print(f"\n❌ BASELINE ALERT: {m} Atom/Vivid MISSING so với manifest!")
-            print("   → Kiểm tra pipeline_report.md để xem danh sách cụ thể.")
+            print(f"\n[ERR] BASELINE ALERT: {m} Atom/Vivid MISSING so voi manifest!")
+            print("   -> Kiem tra pipeline_report.md de xem danh sach cu the.")
             sys.exit(2)   # exit code 2 = data loss
         if d > 0:
-            print(f"\n⚠️ WARN: {d} Atom vào DLQ (broken link — kiểm tra quarantine_reason).")
+            print(f"\n[WARN] {d} Atom vao DLQ (broken link - kiem tra quarantine_reason).")
 
     return {
         "counts": counts,
@@ -988,7 +988,7 @@ if __name__ == "__main__":
         (args.decision_map, "decision-map"),
     ]:
         if not os.path.exists(fpath):
-            print(f"❌ Error: File {label} không tồn tại: {fpath}")
+            print(f"[ERR] File {label} khong ton tai: {fpath}")
             sys.exit(1)
 
     # Nhóm 2: Load dữ liệu Metadata gốc
@@ -1010,12 +1010,12 @@ if __name__ == "__main__":
         with open(args.resolved_topics, 'r', encoding='utf-8') as f:
             resolved_data = json.load(f)
     except FileNotFoundError:
-        print("\n❌ [FATAL ERROR - LLM INSTRUCTION]")
-        print("NGUYÊN NHÂN: Bạn đã KHÔNG THỰC THI Bước 1.5 (Semantic Dedup).")
-        print("HÀNH ĐỘNG BẮT BUỘC:")
-        print("1. TUYỆT ĐỐI KHÔNG tự tạo file này bằng lệnh bash (echo, cat, v.v.).")
-        print("2. DỪNG NGAY Phase 2.")
-        print("3. QUAY LẠI thực thi Bước 1.5 bằng cách gọi script `batch-commit`.")
+        print("\n[FATAL ERROR - LLM INSTRUCTION]")
+        print("NGUYEN NHAN: Ban da KHONG THUC THI Buoc 1.5 (Semantic Dedup).")
+        print("HANH DONG BAT BUOC:")
+        print("1. TUYET DOI KHONG tu tao file nay bang lenh bash (echo, cat, v.v.).")
+        print("2. DUNG NGAY Phase 2.")
+        print("3. QUAY LAI thuc thi Buoc 1.5 bang cach goi script `batch-commit`.")
         sys.exit(1)
 
     # Nhóm 6: Ánh xạ Topic đã được xử lý semantic dedup vào Context

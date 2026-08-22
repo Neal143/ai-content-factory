@@ -108,7 +108,7 @@ def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_au
         })
 
     _write_topic_map(data, topic_map_path)
-    print(f"✅ Đã ghi {len(new_topics)} topic mới vào {topic_map_path}")
+    print(f"[INFO] Da ghi {len(new_topics)} topic moi vao {topic_map_path}")
 
 
 # === NHÓM 3: Cập Nhật Audience (update_audience) ===
@@ -118,7 +118,7 @@ def update_audience(topic_map_path, resolved_id, new_audiences):
     Idempotent: chỉ append nếu audience chưa có trong list.
     """
     if not os.path.exists(topic_map_path):
-        print(f"❌ Không tìm thấy {topic_map_path}")
+        print(f"[ERR] Khong tim thay {topic_map_path}")
         return
 
     with open(topic_map_path, 'r', encoding='utf-8') as f:
@@ -142,9 +142,9 @@ def update_audience(topic_map_path, resolved_id, new_audiences):
 
     if updated:
         _write_topic_map(data, topic_map_path)
-        print(f"✅ Đã append audience vào topic '{resolved_id}'")
+        print(f"[INFO] Da append audience vao topic '{resolved_id}'")
     else:
-        print(f"ℹ️ Audience đã tồn tại trong '{resolved_id}', không cần cập nhật.")
+        print(f"[INFO] Audience da ton tai trong '{resolved_id}', khong can cap nhat.")
 
 
 # === NHÓM 4: Batch Commit (batch_commit) ===
@@ -232,7 +232,7 @@ def batch_commit(topic_map_path, input_path, output_path):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Batch commit hoàn tất:")
+    print("[INFO] Batch commit hoan tat:")
     print(f"   Created: {len(seen_ids)} topics")
     print(f"   Merged:  {len(merges)} entries")
     print(f"   Output:  {output_path}")

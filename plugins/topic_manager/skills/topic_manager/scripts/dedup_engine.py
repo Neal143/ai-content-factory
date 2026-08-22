@@ -34,7 +34,7 @@ def prepare_internal(session_dir, proposed_topics_path):
     # Nhóm 1.2: Khởi tạo trạng thái ban đầu từ proposed_topics.json nếu file state chưa tồn tại
     if not os.path.exists(state_file):
         if not os.path.exists(proposed_topics_path):
-            print(f"❌ Lỗi: Không tìm thấy file proposed_topics.json tại: {proposed_topics_path}")
+            print(f"[ERR] Khong tim thay file proposed_topics.json tai: {proposed_topics_path}")
             sys.exit(1)
         with open(proposed_topics_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -52,7 +52,7 @@ def prepare_internal(session_dir, proposed_topics_path):
             
     # Nhóm 1.4: Kiểm tra nếu chặng 1 đã hoàn tất thì thoát
     if state.get("completed"):
-        print("🎉 Chặng 1 (Internal Dedup) ĐÃ HOÀN THÀNH. Hãy bắt đầu Chặng 2.")
+        print("[INFO] Chang 1 (Internal Dedup) DA HOAN THANH. Hay bat dau Chang 2.")
         return
         
     pending = state.get("pending", [])
@@ -66,7 +66,7 @@ def prepare_internal(session_dir, proposed_topics_path):
             json.dump(state["unique_topics"], f, ensure_ascii=False, indent=2)
         with open(os.path.join(session_dir, "internal_map.json"), 'w', encoding='utf-8') as f:
             json.dump(state["resolved"], f, ensure_ascii=False, indent=2)
-        print("🎉 Chặng 1 (Internal Dedup) ĐÃ HOÀN THÀNH. Đã tạo unique_topics.json và internal_map.json.")
+        print("[INFO] Chang 1 (Internal Dedup) DA HOAN THANH. Da tao unique_topics.json va internal_map.json.")
         return
         
     # Nhóm 1.6: Lấy 5 raw topics đầu tiên trong danh sách pending để gộp thành lô batch
@@ -100,8 +100,8 @@ def prepare_internal(session_dir, proposed_topics_path):
     with open(temp_file, 'w', encoding='utf-8') as f:
         json.dump(template_data, f, ensure_ascii=False, indent=2)
         
-    print(f"📝 Tệp làm bài Chặng 1 ĐÃ SẴN SÀNG tại: {temp_file}")
-    print("⚠️ Hãy mở tệp trên trong IDE, điền form quyết định rồi chạy cờ --submit-internal.")
+    print(f"[INFO] Tep lam bai Chang 1 DA SAN SANG tai: {temp_file}")
+    print("[WARN] Hay mo tep tren trong IDE, dien form quyet dinh roi chay co --submit-internal.")
 
 
 def submit_internal(session_dir, submit_file):
@@ -109,14 +109,14 @@ def submit_internal(session_dir, submit_file):
     # Nhóm 1.10: Kiểm tra sự tồn tại của file internal_state.json trước khi submit
     state_file = os.path.join(session_dir, "internal_state.json")
     if not os.path.exists(state_file):
-        print("❌ Lỗi: Không tìm thấy internal_state.json. Hãy gọi --prepare-internal trước.")
+        print("[ERR] Khong tim thay internal_state.json. Hay goi --prepare-internal truoc.")
         sys.exit(1)
         
     with open(state_file, 'r', encoding='utf-8') as f:
         state = json.load(f)
         
     if state.get("completed"):
-        print("❌ Reject: Chặng 1 đã hoàn tất từ trước.")
+        print("[REJECT] Chang 1 da hoan tat tu truoc.")
         return
         
     # Nhóm 1.11: Đọc và phân tích file nộp bài JSON của Agent
@@ -124,12 +124,12 @@ def submit_internal(session_dir, submit_file):
         with open(submit_file, 'r', encoding='utf-8') as f:
             submit_data = json.load(f)
     except Exception as e:
-        print(f"❌ Reject: Lỗi đọc file submit: {str(e)}")
+        print(f"[REJECT] Loi doc file submit: {str(e)}")
         return
         
     # Nhóm 1.12: Xác thực Password Gate bảo mật xem có đúng phiên batch hiện tại không
     if submit_data.get("password") != state.get("password"):
-        print("❌ Reject: Sai password bảo mật")
+        print("[REJECT] Sai password bao mat")
         return
         
     pending = state.get("pending", [])
@@ -138,7 +138,7 @@ def submit_internal(session_dir, submit_file):
     
     # Nhóm 1.13: Kiểm tra số lượng items trong form có khớp với lô batch được cấp phát không
     if len(submit_topics) != len(batch):
-        print(f"❌ Reject: Số lượng items trong form ({len(submit_topics)}) khác với lô ({len(batch)})")
+        print(f"[REJECT] So luong items trong form ({len(submit_topics)}) khac voi lo ({len(batch)})")
         return
         
     resolved = state.setdefault("resolved", {})
@@ -153,17 +153,17 @@ def submit_internal(session_dir, submit_file):
         
         # Nhóm 1.14.1: Kiểm tra khớp đề xuất ID
         if proposed_id != batch[i]["id"]:
-            print(f"❌ Reject: Mismatch proposed_id ở vị trí {i} ('{proposed_id}' vs '{batch[i]['id']}')")
+            print(f"[REJECT] Mismatch proposed_id o vi tri {i} ('{proposed_id}' vs '{batch[i]['id']}')")
             return
             
         # Nhóm 1.14.2: Kiểm tra action hợp lệ (chỉ chấp nhận create hoặc merge)
         if action not in ["create", "merge"]:
-            print(f"❌ Reject: Action '{action}' tại topic '{proposed_id}' không hợp lệ")
+            print(f"[REJECT] Action '{action}' tai topic '{proposed_id}' khong hop le")
             return
             
         # Nhóm 1.14.3: Kiểm tra LLM-CAPTCHA (reasoning có thực sự được phân tích sâu sắc >= 15 ký tự không)
         if "[ĐIỀN VÀO ĐÂY" in reason or len(reason.strip()) < 15:
-            print(f"❌ Reject: Thiếu reasoning LLM-CAPTCHA tại topic '{proposed_id}'")
+            print(f"[REJECT] Thieu reasoning LLM-CAPTCHA tai topic '{proposed_id}'")
             return
             
         # Nhóm 1.14.4: Xử lý khi chọn create mới
@@ -185,15 +185,15 @@ def submit_internal(session_dir, submit_file):
             p_proposed = re.match(r'^(p\d+)_', proposed_id)
             p_resolved = re.match(r'^(p\d+)_', resolved_to)
             if p_proposed and p_resolved and p_proposed.group(1) != p_resolved.group(1):
-                print(f"❌ Reject: CROSS-PILLAR merge bị cấm. '{proposed_id}' và '{resolved_to}' thuộc Pillar khác nhau.")
+                print(f"[REJECT] CROSS-PILLAR merge bi cam. '{proposed_id}' va '{resolved_to}' thuoc Pillar khac nhau.")
                 return
             if not resolved_to or "[ĐIỀN VÀO ĐÂY" in resolved_to:
-                print(f"❌ Reject: Merge topic '{proposed_id}' nhưng thiếu trường resolved_to")
+                print(f"[REJECT] Merge topic '{proposed_id}' nhung thieu truong resolved_to")
                 return
             exists_in_unique = any(x["id"] == resolved_to for x in unique_topics)
             exists_in_batch = resolved_to in current_batch_created
             if not (exists_in_unique or exists_in_batch):
-                print(f"❌ Reject: resolved_to '{resolved_to}' không tồn tại trong tập hợp unique")
+                print(f"[REJECT] resolved_to '{resolved_to}' khong ton tai trong tap hop unique")
                 return
             resolved[proposed_id] = resolved_to
             
@@ -207,9 +207,9 @@ def submit_internal(session_dir, submit_file):
             json.dump(state["unique_topics"], f, ensure_ascii=False, indent=2)
         with open(os.path.join(session_dir, "internal_map.json"), 'w', encoding='utf-8') as f:
             json.dump(state["resolved"], f, ensure_ascii=False, indent=2)
-        print("🎉 Chặng 1 (Internal Dedup) ĐÃ HOÀN THÀNH. Đã tạo unique_topics.json và internal_map.json.")
+        print("[INFO] Chang 1 (Internal Dedup) DA HOAN THANH. Da tao unique_topics.json va internal_map.json.")
     else:
-        print(f"✅ Đã duyệt xong lô batch! Còn lại {len(state['pending'])} items. Vui lòng gọi tiếp --prepare-internal.")
+        print(f"[INFO] Da duyet xong lo batch! Con lai {len(state['pending'])} items. Vui long goi tiep --prepare-internal.")
         
     # Nhóm 1.17: Cập nhật lưu lại file trạng thái
     with open(state_file, 'w', encoding='utf-8') as f:
@@ -225,7 +225,7 @@ def prepare_external(session_dir, map_path):
     unique_topics_file = os.path.join(session_dir, "unique_topics.json")
     
     if not os.path.exists(unique_topics_file):
-        print(f"❌ Lỗi: Không tìm thấy unique_topics.json tại: {unique_topics_file}. Hãy hoàn tất Chặng 1 trước.")
+        print(f"[ERR] Khong tim thay unique_topics.json tai: {unique_topics_file}. Hay hoan tat Chang 1 truoc.")
         sys.exit(1)
         
     # Nhóm 2.2: Khởi tạo trạng thái external matcher nếu chưa có
@@ -244,7 +244,7 @@ def prepare_external(session_dir, map_path):
             
     # Nhóm 2.4: Kiểm tra trạng thái hoàn thành
     if state.get("completed"):
-        print("🎉 Chặng 2 (External Match) ĐÃ HOÀN THÀNH. Vui lòng chạy cờ --compile-and-commit.")
+        print("[INFO] Chang 2 (External Match) DA HOAN THANH. Vui long chay co --compile-and-commit.")
         return
         
     pending = state.get("pending", [])
@@ -256,7 +256,7 @@ def prepare_external(session_dir, map_path):
             json.dump(state, f, ensure_ascii=False, indent=2)
         with open(os.path.join(session_dir, "external_decisions.json"), 'w', encoding='utf-8') as f:
             json.dump(state["resolved"], f, ensure_ascii=False, indent=2)
-        print("🎉 Chặng 2 (External Match) ĐÃ HOÀN THÀNH. Đã tạo external_decisions.json.")
+        print("[INFO] Chang 2 (External Match) DA HOAN THANH. Da tao external_decisions.json.")
         return
         
     # Nhóm 2.6: Phân lô 5 unique topics tiếp theo
@@ -286,8 +286,8 @@ def prepare_external(session_dir, map_path):
     with open(temp_file, 'w', encoding='utf-8') as f:
         json.dump(template_data, f, ensure_ascii=False, indent=2)
         
-    print(f"📝 Tệp làm bài Chặng 2 ĐÃ SẴN SÀNG tại: {temp_file}")
-    print(f"⚠️ Hãy mở tệp trong IDE, đối chiếu với: {map_path}, điền form rồi chạy cờ --submit-external.")
+    print(f"[INFO] Tep lam bai Chang 2 DA SAN SANG tai: {temp_file}")
+    print(f"[WARN] Hay mo tep trong IDE, doi chieu voi: {map_path}, dien form roi chay co --submit-external.")
 
 
 def submit_external(session_dir, map_path, submit_file):
@@ -295,14 +295,14 @@ def submit_external(session_dir, map_path, submit_file):
     # Nhóm 2.9: Kiểm tra sự tồn tại của file external_state.json
     state_file = os.path.join(session_dir, "external_state.json")
     if not os.path.exists(state_file):
-        print("❌ Lỗi: Không tìm thấy external_state.json. Hãy gọi --prepare-external trước.")
+        print("[ERR] Khong tim thay external_state.json. Hay goi --prepare-external truoc.")
         sys.exit(1)
         
     with open(state_file, 'r', encoding='utf-8') as f:
         state = json.load(f)
         
     if state.get("completed"):
-        print("❌ Reject: Chặng 2 đã hoàn tất từ trước.")
+        print("[REJECT] Chang 2 da hoan tat tu truoc.")
         return
         
     # Nhóm 2.10: Đọc và phân tích file nộp bài external_temp.json
@@ -310,17 +310,17 @@ def submit_external(session_dir, map_path, submit_file):
         with open(submit_file, 'r', encoding='utf-8') as f:
             submit_data = json.load(f)
     except Exception as e:
-        print(f"❌ Reject: Lỗi đọc file submit: {str(e)}")
+        print(f"[REJECT] Loi doc file submit: {str(e)}")
         return
         
     # Nhóm 2.11: Kiểm tra khóa mật mã bảo vệ lô
     if submit_data.get("password") != state.get("password"):
-        print("❌ Reject: Sai password bảo mật")
+        print("[REJECT] Sai password bao mat")
         return
         
     # Nhóm 2.12: Đọc file topic_map.yaml toàn cục để phục vụ công tác xác thực ID tồn tại
     if not os.path.exists(map_path):
-        print(f"❌ Lỗi: Không tìm thấy file map toàn cục tại: {map_path}")
+        print(f"[ERR] Khong tim thay file map toan cuc tai: {map_path}")
         sys.exit(1)
         
     with open(map_path, 'r', encoding='utf-8') as f:
@@ -333,7 +333,7 @@ def submit_external(session_dir, map_path, submit_file):
     
     # Nhóm 2.13: Kiểm tra khớp số lượng đề xuất trong lô
     if len(submit_topics) != len(batch):
-        print(f"❌ Reject: Số lượng items trong form ({len(submit_topics)}) khác với lô ({len(batch)})")
+        print(f"[REJECT] So luong items trong form ({len(submit_topics)}) khac voi lo ({len(batch)})")
         return
         
     resolved = state.setdefault("resolved", {})
@@ -346,17 +346,17 @@ def submit_external(session_dir, map_path, submit_file):
         
         # Nhóm 2.14.1: Kiểm tra ID đề xuất khớp
         if proposed_id != batch[i]["id"]:
-            print(f"❌ Reject: Mismatch proposed_id ở vị trí {i} ('{proposed_id}' vs '{batch[i]['id']}')")
+            print(f"[REJECT] Mismatch proposed_id o vi tri {i} ('{proposed_id}' vs '{batch[i]['id']}')")
             return
             
         # Nhóm 2.14.2: Kiểm tra action
         if action not in ["create", "merge"]:
-            print(f"❌ Reject: Action '{action}' tại topic '{proposed_id}' không hợp lệ")
+            print(f"[REJECT] Action '{action}' tai topic '{proposed_id}' khong hop le")
             return
             
         # Nhóm 2.14.3: Kiểm tra LLM-CAPTCHA
         if "[ĐIỀN VÀO ĐÂY" in reason or len(reason.strip()) < 15:
-            print(f"❌ Reject: Thiếu reasoning LLM-CAPTCHA tại topic '{proposed_id}'")
+            print(f"[REJECT] Thieu reasoning LLM-CAPTCHA tai topic '{proposed_id}'")
             return
             
         # Nhóm 2.14.4: Lưu vết quyết định ghi mới
@@ -371,13 +371,13 @@ def submit_external(session_dir, map_path, submit_file):
             p_proposed = re.match(r'^(p\d+)_', proposed_id)
             p_resolved = re.match(r'^(p\d+)_', resolved_to)
             if p_proposed and p_resolved and p_proposed.group(1) != p_resolved.group(1):
-                print(f"❌ Reject: CROSS-PILLAR merge bị cấm. '{proposed_id}' và '{resolved_to}' thuộc Pillar khác nhau.")
+                print(f"[REJECT] CROSS-PILLAR merge bi cam. '{proposed_id}' va '{resolved_to}' thuoc Pillar khac nhau.")
                 return
             if not resolved_to or "[ĐIỀN VÀO ĐÂY" in resolved_to:
-                print(f"❌ Reject: Merge topic '{proposed_id}' nhưng thiếu trường resolved_to")
+                print(f"[REJECT] Merge topic '{proposed_id}' nhung thieu truong resolved_to")
                 return
             if resolved_to not in global_ids:
-                print(f"❌ Reject: resolved_to '{resolved_to}' không tồn tại trong file topic_map.yaml toàn cục")
+                print(f"[REJECT] resolved_to '{resolved_to}' khong ton tai trong file topic_map.yaml toan cuc")
                 return
             resolved[proposed_id] = resolved_to
             
@@ -389,9 +389,9 @@ def submit_external(session_dir, map_path, submit_file):
         state["completed"] = True
         with open(os.path.join(session_dir, "external_decisions.json"), 'w', encoding='utf-8') as f:
             json.dump(state["resolved"], f, ensure_ascii=False, indent=2)
-        print("🎉 Chặng 2 (External Match) ĐÃ HOÀN THÀNH. Đã tạo external_decisions.json.")
+        print("[INFO] Chang 2 (External Match) DA HOAN THANH. Da tao external_decisions.json.")
     else:
-        print(f"✅ Đã duyệt xong lô batch! Còn lại {len(state['pending'])} items. Vui lòng gọi tiếp --prepare-external.")
+        print(f"[INFO] Da duyet xong lo batch! Con lai {len(state['pending'])} items. Vui long goi tiep --prepare-external.")
         
     # Nhóm 2.17: Cập nhật file trạng thái external_state.json
     with open(state_file, 'w', encoding='utf-8') as f:
@@ -415,7 +415,7 @@ def compile_and_commit(session_dir, map_path):
     unique_topics_file = os.path.join(session_dir, "unique_topics.json")
     
     if not (os.path.exists(proposed_file) and os.path.exists(internal_map_file) and os.path.exists(external_decisions_file)):
-        print("❌ Lỗi: Không thể biên dịch! Thiếu file kết quả của Chặng 1 hoặc Chặng 2.")
+        print("[ERR] Khong the bien dich! Thieu file ket qua cua Chang 1 hoac Chang 2.")
         sys.exit(1)
         
     # Nhóm 3.2: Đọc dữ liệu từ đề xuất thô và các tệp ánh xạ quyết định
@@ -489,26 +489,26 @@ def compile_and_commit(session_dir, map_path):
     with open(out_file, 'w', encoding='utf-8') as f:
         json.dump(resolved_dict, f, ensure_ascii=False, indent=2)
         
-    print(f"🎉 BIÊN DỊCH VÀ COMMIT HOÀN TẤT!")
-    print(f"👉 Đã cập nhật file: {map_path}")
-    print(f"👉 Đã kết xuất file resolved_topics.json tại: {out_file}")
+    print("[INFO] BIEN DICH VA COMMIT HOAN TAT!")
+    print(f"-> Da cap nhat file: {map_path}")
+    print(f"-> Da ket xuat file resolved_topics.json tai: {out_file}")
 
 
 # ==================== CLI PARSER ====================
 
 if __name__ == "__main__":
     # Nhóm 4.1: Định nghĩa cấu trúc cờ lệnh CLI cho bộ điều phối dedup_engine
-    parser = argparse.ArgumentParser(description="Plugin Topic Manager - Trình điều phối 2-Pass Dedup Engine")
-    parser.add_argument("--session-dir", required=True, help="Thư mục session quản lý trạng thái làm bài")
-    parser.add_argument("--map-path", help="Đường dẫn đến file topic_map.yaml toàn cục")
-    parser.add_argument("--proposed-topics-path", help="Đường dẫn đến proposed_topics.json")
-    parser.add_argument("--submit-file", help="Đường dẫn đến file JSON nộp bài")
+    parser = argparse.ArgumentParser(description="Plugin Topic Manager - Trinh dieu phoi 2-Pass Dedup Engine")
+    parser.add_argument("--session-dir", required=True, help="Thu muc session quan ly trang thai lam bai")
+    parser.add_argument("--map-path", help="Duong dan den file topic_map.yaml toan cuc")
+    parser.add_argument("--proposed-topics-path", help="Duong dan den proposed_topics.json")
+    parser.add_argument("--submit-file", help="Duong dan den file JSON nop bai")
     
-    parser.add_argument("--prepare-internal", action="store_true", help="Chuẩn bị batch cho Chặng 1 (Internal)")
-    parser.add_argument("--submit-internal", action="store_true", help="Nộp bài cho Chặng 1 (Internal)")
-    parser.add_argument("--prepare-external", action="store_true", help="Chuẩn bị batch cho Chặng 2 (External)")
-    parser.add_argument("--submit-external", action="store_true", help="Nộp bài cho Chặng 2 (External)")
-    parser.add_argument("--compile-and-commit", action="store_true", help="Chạy tự động hóa Chặng 3 (Biên dịch)")
+    parser.add_argument("--prepare-internal", action="store_true", help="Chuan bi batch cho Chang 1 (Internal)")
+    parser.add_argument("--submit-internal", action="store_true", help="Nop bai cho Chang 1 (Internal)")
+    parser.add_argument("--prepare-external", action="store_true", help="Chuan bi batch cho Chang 2 (External)")
+    parser.add_argument("--submit-external", action="store_true", help="Nop bai cho Chang 2 (External)")
+    parser.add_argument("--compile-and-commit", action="store_true", help="Chay tu dong hoa Chang 3 (Bien dich)")
     
     args = parser.parse_args()
     
@@ -523,20 +523,20 @@ if __name__ == "__main__":
         
     elif args.prepare_external:
         if not args.map_path:
-            print("❌ Lỗi: Cần truyền tham số --map-path cho External Matcher")
+            print("[ERR] Can truyen tham so --map-path cho External Matcher")
             sys.exit(1)
         prepare_external(args.session_dir, args.map_path)
         
     elif args.submit_external:
         if not args.map_path:
-            print("❌ Lỗi: Cần truyền tham số --map-path cho External Matcher")
+            print("[ERR] Can truyen tham so --map-path cho External Matcher")
             sys.exit(1)
         submit_path = args.submit_file or os.path.join(args.session_dir, "external_temp.json")
         submit_external(args.session_dir, args.map_path, submit_path)
         
     elif args.compile_and_commit:
         if not args.map_path:
-            print("❌ Lỗi: Cần truyền tham số --map-path cho Compile & Commit")
+            print("[ERR] Can truyen tham so --map-path cho Compile & Commit")
             sys.exit(1)
         compile_and_commit(args.session_dir, args.map_path)
         
