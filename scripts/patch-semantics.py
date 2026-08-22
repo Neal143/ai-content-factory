@@ -6,7 +6,7 @@ import argparse
 
 """
 patch-semantics.py
-Last update: 15/08/2026 (GMT+7)
+Last update: 22/08/2026 15:36 (GMT+7)
 Vai tro: Chot chan ky thuat (Poka-Yoke) cho moi thao tac ghi va sua supports_insight / supports_knowledge.
 Khi nao su dung: Goi tu cac skill nhu atom-linker (add) va atom-dedup (redirect).
 Output: Ghi vao file .md hoac tra ve loi.
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     parser.add_argument('--old-target', help="Old target atom path (for redirect)")
     parser.add_argument('--new-target', help="New target atom path (for redirect)")
     
-    parser.add_argument('--index', default=".agents/assets/vault_index.json", help="Path to vault_index.json")
+    parser.add_argument('--index', default="vault/.content-pipeline/vault_index.json", help="Path to vault_index.json")
     
     args = parser.parse_args()
     

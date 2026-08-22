@@ -1,6 +1,6 @@
 ﻿<#
 Ten file: Update-PersonalAtomsQueue.ps1
-Last update: 27/06/2026 17:16 (GMT+7)
+Last update: 22/08/2026 15:36 (GMT+7)
 Vai tro: Quan ly file trang thai personal-atoms-queue.md — theo doi atoms ca nhan chua duoc su dung.
 Su dung khi nao:
   - init: Chay 1 lan de bootstrap tu vault scan (hoac re-sync). Idempotent.
@@ -183,7 +183,7 @@ if ($Action -eq "init") {
 
     # Rebuild vault index
     $buildScript = ".agents/scripts/build-vault-index.ps1"
-    $indexPath = ".agents/assets/vault_index.json"
+    $indexPath = "vault/.content-pipeline/vault_index.json"
     if (Test-Path $buildScript) {
         powershell -ExecutionPolicy Bypass -File $buildScript -VaultPath "vault/01-Atomic" -OutputPath $indexPath | Out-Null
     }

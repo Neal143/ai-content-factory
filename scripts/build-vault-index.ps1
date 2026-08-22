@@ -1,6 +1,6 @@
 ﻿<#
 Tên file: build-vault-index.ps1
-Last update: 27/05/2026 00:35 (GMT+7)
+Last update: 22/08/2026 15:36 (GMT+7)
 Vai trò: Script PowerShell quét toàn bộ Data Vault nguyên tố DIKW và xây dựng Index dạng JSON (nodes và edges).
 Sử dụng khi nào: Được gọi tự động trước mỗi truy vấn DIKW Combo để cung cấp cơ sở dữ liệu in-memory tốc độ cao O(1).
 Output: File vault_index.json chứa toàn bộ thông tin metadata của các atoms và các liên kết DAG.
@@ -19,7 +19,7 @@ param (
     [string]$VaultPath = "vault/01-Atomic",
 
     [Parameter(Mandatory = $false)]
-    [string]$OutputPath = ".agents/assets/vault_index.json",
+    [string]$OutputPath = "vault/.content-pipeline/vault_index.json",
 
     [Parameter(Mandatory = $false)]
     [string]$AudienceIndexPath = "vault/01-Atomic/Audiences/_audience_index.yaml"
@@ -72,7 +72,7 @@ if (Test-Path $AudienceIndexPath) {
 # ==========================================
 # NHÓM 2: HÀM TRỢ GIÚP (HELPERS)
 # ==========================================
-function Clean-Wikilink ([string]$val) {
+function Format-Wikilink ([string]$val) {
     <#
     Loại bỏ cặp dấu ngoặc vuông kép [[ ]] và dấu nháy đơn/kép bao quanh giá trị liên kết bằng so khớp literal.
     #>
@@ -82,7 +82,7 @@ function Clean-Wikilink ([string]$val) {
     return $clean.Trim()
 }
 
-function Parse-YAMLValue ([string]$key, [string]$val) {
+function ConvertFrom-YAMLValue ([string]$key, [string]$val) {
     <#
     Parse giá trị YAML thô sang kiểu dữ liệu phù hợp trong PowerShell.
     #>
@@ -102,7 +102,7 @@ function Parse-YAMLValue ([string]$key, [string]$val) {
             if ($arr -is [Array]) {
                 $cleanArr = New-Object System.Collections.ArrayList
                 foreach ($item in $arr) {
-                    [void]$cleanArr.Add((Clean-Wikilink $item))
+                    [void]$cleanArr.Add((Format-Wikilink $item))
                 }
                 return $cleanArr.ToArray()
             }
@@ -112,7 +112,7 @@ function Parse-YAMLValue ([string]$key, [string]$val) {
         $items = $val.Trim("[", "]").Split(",")
         $cleanArr = New-Object System.Collections.ArrayList
         foreach ($item in $items) {
-            $itemClean = Clean-Wikilink $item
+            $itemClean = Format-Wikilink $item
             if (![string]::IsNullOrEmpty($itemClean)) {
                 [void]$cleanArr.Add($itemClean)
             }
@@ -130,7 +130,7 @@ function Parse-YAMLValue ([string]$key, [string]$val) {
     
     # 4. Xử lý các liên kết wikilink thông thường
     if ($val.Contains("[[")) {
-        return Clean-Wikilink $val
+        return Format-Wikilink $val
     }
     
     # Mặc định trả về chuỗi đã strip nháy bao quanh
@@ -196,7 +196,7 @@ foreach ($folderName in $DIKW_Folders.Keys) {
                 $key = $Matches[1].ToLower()
                 $valRaw = $Matches[2]
                 
-                $parsedVal = Parse-YAMLValue $key $valRaw
+                $parsedVal = ConvertFrom-YAMLValue $key $valRaw
                 $frontmatterData[$key] = $parsedVal
             }
         }
@@ -275,13 +275,13 @@ foreach ($edge in $RawEdges) {
 # ==========================================
 Write-Host ">>> Bat dau tinh resolved_audience..." -ForegroundColor Cyan
 
-function Resolve-Audience ([string]$nodePath, [hashtable]$allNodes, [hashtable]$edgesInsight, [hashtable]$edgesKnowledge, [System.Collections.Generic.HashSet[string]]$visited = $null) {
+function Resolve-Audience ([string]$nodePath, [hashtable]$nodeMap, [hashtable]$edgesInsight, [hashtable]$edgesKnowledge, [System.Collections.Generic.HashSet[string]]$visited = $null) {
     # Chong vong lap de quy (bao ve du lieu ban co cycle)
     if ($null -eq $visited) { $visited = [System.Collections.Generic.HashSet[string]]::new() }
     if (-not $visited.Add($nodePath)) { return $null }
 
     # Neu node la insight -> lay truc tiep belongs_to_audience (strip wikilink)
-    $node = $allNodes[$nodePath]
+    $node = $nodeMap[$nodePath]
     if ($node -and $node["type"] -eq "insight") {
         $aud = $node["belongs_to_audience"]
         $rawAud = if ($aud -is [Array]) { $aud[0] } else { $aud }
@@ -293,7 +293,7 @@ function Resolve-Audience ([string]$nodePath, [hashtable]$allNodes, [hashtable]$
     if ($edgesKnowledge.Contains($nodePath)) { $parentPaths += $edgesKnowledge[$nodePath] }
     $resolvedAudiences = @()
     foreach ($pp in $parentPaths) {
-        $res = Resolve-Audience $pp $allNodes $edgesInsight $edgesKnowledge $visited
+        $res = Resolve-Audience $pp $nodeMap $edgesInsight $edgesKnowledge $visited
         if ($res) { $resolvedAudiences += $res }
     }
     $unique = $resolvedAudiences | Select-Object -Unique

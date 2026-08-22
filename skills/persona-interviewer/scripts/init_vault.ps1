@@ -1,6 +1,6 @@
-# ------------------------------------------------------------------
+﻿# ------------------------------------------------------------------
 # init_vault.ps1
-# Last update: 30/06/2026 00:55 (GMT+7)
+# Last update: 22/08/2026 15:36 (GMT+7)
 # Role: Khoi tao toan bo he sinh thai cho user moi: persona folder
 #       (tu .agents/assets/persona-template) va cau truc he thong
 #       (tu .agents/assets/factory-scaffold via sync script).
@@ -8,7 +8,7 @@
 # Output: Console messages. Exit 0 = success, Exit 1 = failure.
 # Logic: Validate template -> create persona dir (neu chua co) ->
 #        copy persona templates -> call sync-factory-scaffold ->
-#        cleanup stale .gitkeep.
+#        cleanup stale .gitkeep -> build initial vault index.
 # ------------------------------------------------------------------
 param(
     [Parameter(Mandatory = $true)]
@@ -56,5 +56,12 @@ if ($LASTEXITCODE -ne 0) {
 # === KHOI 3: Don dep .gitkeep thua (backward compat voi version cu) ===
 $gitkeep = Join-Path $workspaceRoot "vault\00-Inbox\.gitkeep"
 if (Test-Path $gitkeep) { Remove-Item $gitkeep -Force }
+
+# === KHOI 4: Khoi tao Vault Index ban dau ===
+$buildIndexScript = Join-Path $workspaceRoot ".agents\scripts\build-vault-index.ps1"
+if (Test-Path $buildIndexScript) {
+    powershell -ExecutionPolicy Bypass -File $buildIndexScript -OutputPath "vault/.content-pipeline/vault_index.json" | Out-Null
+    Write-Host "[OK] Da khoi tao vault index tai: vault/.content-pipeline/vault_index.json"
+}
 
 Write-Host ">>> HOAN TAT TAO LAP HE THONG!" -ForegroundColor Green

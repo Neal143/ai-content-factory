@@ -1,7 +1,7 @@
-<#
+﻿<#
 .SYNOPSIS
 Search-SemanticAtom.ps1
-Last update: 13/07/2026 10:44 (GMT+7)
+Last update: 22/08/2026 15:36 (GMT+7)
 
 .DESCRIPTION
 Vai tro: Script PowerShell da che do (alignment/dedup) de tim kiem cac Atom trong Vault, chay Local Zero-API.
@@ -32,7 +32,7 @@ param(
     [string]$Layer = "",
 
     [Parameter(Mandatory = $false)]
-    [string]$IndexPath = ".agents/assets/vault_index.json"
+    [string]$IndexPath = "vault/.content-pipeline/vault_index.json"
 )
 
 $THRESHOLD_ALIGNMENT = 4
@@ -51,6 +51,15 @@ $DAG_PARENT_MAP = @{
 $TempDir = "vault/.curation_temp"
 if (-not (Test-Path $TempDir)) {
     New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
+}
+
+# Self-healing: Tu dong rebuild index neu chua ton tai
+if (-not (Test-Path $IndexPath)) {
+    $buildScript = ".agents/scripts/build-vault-index.ps1"
+    if (Test-Path $buildScript) {
+        Write-Host "[INFO] vault_index.json chua ton tai, dang tu dong rebuild..." -ForegroundColor Yellow
+        powershell -ExecutionPolicy Bypass -File $buildScript -OutputPath $IndexPath | Out-Null
+    }
 }
 
 if (-not (Test-Path $IndexPath)) {
