@@ -1,13 +1,14 @@
 ﻿<#
 .SYNOPSIS
 Tên file: validate_outputs.ps1
-Last update: 30/06/2026 15:35 (GMT+7)
+Last update: 23/08/2026 23:16 (GMT+7)
 Vai trò: Kiểm định Output BẮT BUỘC do SKILL.md quy định (không kiểm tra trường tùy chọn/placeholder).
 Khi nào dùng: Cuối vòng đời persona-interviewer hoặc User chạy thủ công.
 Output: Log Terminal (Xanh = OK, Đỏ = FAIL, Vàng = WARN).
 Logic:
 - Kiểm tra 7 file YAML tồn tại (init_vault.ps1).
 - Noi soi Tier 1 + Tier 2 Nhom C + Enum Check insight_type (doc tu .agents/knowledge/) + Count Match topic id/label.
+- Cross-validate Topic IDs trong Insight files voi topic_map.yaml (Check 6B).
 - Bỏ qua Nhóm A, B (user có quyền skip) và template placeholders.
 - Xác thực file vật lý Insight và Audience (chống Link Mồ côi).
 #>
@@ -162,6 +163,47 @@ foreach ($userFolder in $userFolders) {
             Write-Host "[OK] topic_map.yaml co du id va label hop le cho moi entries" -ForegroundColor Green
         } else {
             Write-Host "[FAIL] topic_map.yaml bi thieu hoac rong id/label o mot so entries" -ForegroundColor Red
+        }
+    }
+
+    # --- CHECK 6B: INSIGHT <-> TOPIC MAP CROSS-VALIDATION ---
+    Write-Host "`n--- 6B. INSIGHT <-> TOPIC MAP CROSS-VALIDATION ---" -ForegroundColor Cyan
+    if (Test-Path $topicPath) {
+        # Doc danh sach Topic ID hop le tu topic_map.yaml
+        $tmContent = Get-Content $topicPath -Raw -Encoding UTF8
+        $validTopicIds = @()
+        [regex]::Matches($tmContent, "(?m)^\s*-\s*id:\s*[`"']?([^`"'#\s]+)") | ForEach-Object {
+            $validTopicIds += $_.Groups[1].Value
+        }
+
+        # Quet tat ca file Insight tren dia
+        $insightsDir = Join-Path $RootPath "vault\01-Atomic\Insights"
+        if (Test-Path $insightsDir) {
+            $totalChecked = 0
+            $totalInvalid = 0
+            $filesWithIssues = @()
+            foreach ($iFile in (Get-ChildItem $insightsDir -Filter "*.md")) {
+                $iContent = Get-Content $iFile.FullName -Raw -Encoding UTF8
+                # Trich xuat frontmatter (giua 2 marker ---)
+                if ($iContent -match "(?s)^---\r?\n(.+?)\r?\n---") {
+                    $fm = $matches[1]
+                    # Tim tat ca topic ID trong frontmatter (bat dau bang pN_)
+                    [regex]::Matches($fm, "(?m)^\s*-\s*(p\d+_[a-z0-9_]+)") | ForEach-Object {
+                        $tid = $_.Groups[1].Value
+                        $totalChecked++
+                        if ($tid -notin $validTopicIds) {
+                            $totalInvalid++
+                            if ($iFile.Name -notin $filesWithIssues) { $filesWithIssues += $iFile.Name }
+                            Write-Host "  [FAIL] $($iFile.Name): '$tid'" -ForegroundColor Red
+                        }
+                    }
+                }
+            }
+            if ($totalInvalid -eq 0) {
+                Write-Host "[OK] Cross-validation: $totalChecked topic ref(s) deu hop le" -ForegroundColor Green
+            } else {
+                Write-Host "[FAIL] $totalInvalid/$totalChecked topic ref(s) KHONG ton tai trong topic_map.yaml ($($filesWithIssues.Count) file(s))" -ForegroundColor Red
+            }
         }
     }
 

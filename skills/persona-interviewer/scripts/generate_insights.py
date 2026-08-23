@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Ten file: generate_insights.py
-Last update: 26/06/2026 15:16 (GMT+7)
+Last update: 23/08/2026 23:16 (GMT+7)
 Vai tro: Script Python tao file vat ly cho cac Insight tu cuoc phong van Persona.
 Khi nao dung: Chay tu command line hoac duoc goi tu workflow khi tao Insight.
 Output: Cac file Markdown cua Insight trong thu muc vault dau ra (01-Atomic/Insights) voi Schema B.
@@ -205,6 +205,23 @@ def backfill_audience(username, workspace_root):
     else:
         print(f"[INFO] audience.yaml [{username}] khong can cap nhat")
 
+def load_valid_topic_ids(username, workspace_root):
+    """
+    Doc topic_map.yaml cua Persona, tra ve set() cac Topic ID hop le.
+    Dung de doi soat Topic IDs trong payload truoc khi tao file.
+    Tra ve None neu khong tim thay file (bo qua validation).
+    """
+    topic_map_path = os.path.join(workspace_root, "personas", username, "topic_map.yaml")
+    if not os.path.exists(topic_map_path):
+        print(f"[WARN] Khong tim thay topic_map.yaml: {topic_map_path}")
+        return None
+    with open(topic_map_path, 'r', encoding='utf-8-sig') as f:
+        content = f.read()
+    ids = set()
+    for m in re.finditer(r'^\s*-\s*id:\s*["\']?([^"\'#\s]+)', content, re.MULTILINE):
+        ids.add(m.group(1))
+    return ids
+
 # ==========================================
 # NHOM 3: LOGIC CHINH XU LY GENERATE INSIGHTS
 # ==========================================
@@ -213,12 +230,12 @@ def generate_insights(payload_path, template_path, output_dir, target_audience, 
     Doc payload JSON, parse tung insight, render qua template va ghi file vat ly.
     Neu co username, tu dong cap nhat file_ref va file_link trong pillars.yaml.
     """
-    # Doc payload tu file JSON
-    with open(payload_path, 'r', encoding='utf-8') as f:
+    # Doc payload tu file JSON (dung utf-8-sig de tu dong xu ly ca BOM va non-BOM)
+    with open(payload_path, 'r', encoding='utf-8-sig') as f:
         payload = json.load(f)
         
     # Doc template Markdown
-    with open(template_path, 'r', encoding='utf-8') as f:
+    with open(template_path, 'r', encoding='utf-8-sig') as f:
         template = f.read()
         
     # Tao thu muc dau ra neu chua co
@@ -230,6 +247,24 @@ def generate_insights(payload_path, template_path, output_dir, target_audience, 
         insights_list = payload
     else:
         insights_list = payload.get("insights", [])
+
+    # === GUARDRAIL: Doi soat Topic IDs voi topic_map.yaml ===
+    if username:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        workspace_root = os.path.abspath(os.path.join(script_dir, "..", "..", "..", ".."))
+        valid_ids = load_valid_topic_ids(username, workspace_root)
+        if valid_ids is not None:
+            invalid_found = False
+            for ci, citem in enumerate(insights_list):
+                for tid in citem.get("topics", []):
+                    if tid not in valid_ids:
+                        print(f"[FAIL] Insight #{ci} ('{citem.get('headline', '?')}'): "
+                              f"Topic ID '{tid}' khong ton tai trong topic_map.yaml")
+                        invalid_found = True
+            if invalid_found:
+                print("[ABORT] Topic IDs khong hop le. Sua payload va chay lai.")
+                sys.exit(1)
+            print(f"[OK] Topic IDs validated: {len(insights_list)} insight(s) checked")
 
     slug_map = {}  # Map: index -> final_slug (sau khi xu ly trung ten)
 
