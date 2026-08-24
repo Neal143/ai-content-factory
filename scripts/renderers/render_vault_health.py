@@ -1,18 +1,19 @@
 """
 render_vault_health.py
-Last update: 24/08/2026 13:56 (GMT+7)
+Last update: 24/08/2026 14:45 (GMT+7)
 Vai tro: Micro-Renderer Module ket xuat Dashboard Bao Cao Suc Khoe Do Thi Tri Thuc (vault-health-report.md).
 Su dung khi: Duoc goi boi generate_coverage_preview.py (Orchestrator) trong luong Live-Sync hoac CLI refresh.
 Output: vault/03-Content/Content Plan/vault-health-report.md
 Tom tat logic hoat dong:
   1. Nhan data_context chuan hoa tu Orchestrator.
-  2. Tinh toan va kiem dinh 6 khoi du lieu do thi tri thuc:
+  2. Tinh toan va kiem dinh 7 khoi du lieu do thi tri thuc:
      - Khoi 1: Tong quan suc khoe do thi (He so toan ven, Badge trang thai).
      - Khoi 2: Doi soat Audience & Cay pha he (Index vs Dia, Lien ket Cha - Con).
      - Khoi 3: Doi soat Topic Map & Dinh tuyen (Active vs Seed vs Ghost Topics, belongs_to_audience, pillar_parents).
      - Khoi 4: Doi soat Kho Atoms & Phan tang DIKW (6 loai Atom, ASCII art, chuoi lien ket cha-con).
      - Khoi 5: Phan bo nguyen lieu theo 4 Tru cot Persona (Pillars balance & Content strategy insight).
      - Khoi 6: Thong ke do phu theo Topic & San sang san xuat (Top 5 topics & Seed topics cho nap sach).
+     - Khoi 7: Hang doi nguyen lieu ca nhan (Personal Atoms Queue) — loc source_type=User, doi soat production-log, map topic & pillar.
   3. Ghi de file Markdown vault-health-report.md theo chuan UTF-8.
 """
 
@@ -157,7 +158,10 @@ def compute_health_metrics(data_context):
             "topics": i_data.get("topics", []),
             "audiences": i_data.get("audiences", []),
             "supports_insight": [],
-            "supports_knowledge": []
+            "supports_knowledge": [],
+            "source_type": i_data.get("source_type", ""),
+            "insight_type": i_data.get("insight_type", "-"),
+            "created": i_data.get("created", "N/A")
         }
     for base, k_data in knowledges.items():
         k_cat = "Concepts" if k_data.get("type") == "concept" else "Solutions"
@@ -166,7 +170,10 @@ def compute_health_metrics(data_context):
             "topics": k_data.get("topics", []),
             "audiences": [],
             "supports_insight": k_data.get("supports_insight", []),
-            "supports_knowledge": []
+            "supports_knowledge": [],
+            "source_type": k_data.get("source_type", ""),
+            "insight_type": k_data.get("subtype", "-"),
+            "created": k_data.get("created", "N/A")
         }
     for base, e_data in evidences.items():
         e_type = e_data.get("type")
@@ -176,7 +183,10 @@ def compute_health_metrics(data_context):
             "topics": e_data.get("topics", []),
             "audiences": [],
             "supports_insight": [],
-            "supports_knowledge": e_data.get("supports_knowledge", [])
+            "supports_knowledge": e_data.get("supports_knowledge", []),
+            "source_type": e_data.get("source_type", ""),
+            "insight_type": e_data.get("subtype", "-"),
+            "created": e_data.get("created", "N/A")
         }
 
     # Resolve DIKW chains
@@ -257,6 +267,80 @@ def compute_health_metrics(data_context):
     top_5_topics = sorted_topics[:5]
     seed_topics_list = [t for t in topics if topic_atom_counts[t["id"]] == 0]
 
+    # 6. Personal Atoms Queue - Lọc atoms source_type=User chưa xuất bản
+    prod_log_path = os.path.join(vault_dir, ".content-pipeline", "logs", "production-log.md")
+    used_atom_paths = set()
+    if os.path.exists(prod_log_path):
+        try:
+            with open(prod_log_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+                prod_text = f.read()
+            for m_match in re.finditer(r'(?:vault/)?01-Atomic/([\w\-\/]+\.md)', prod_text):
+                used_atom_paths.add(m_match.group(1))
+        except Exception:
+            pass
+
+    personal_atoms_waiting = []
+    personal_atoms_published = 0
+
+    cat_to_dir = {
+        "Insights": "Insights", "Concepts": "Concepts", "Solutions": "Solutions",
+        "Data-Points": "Data-Points", "Quotes": "Quotes", "Stories": "Stories"
+    }
+
+    topic_label_map = {t["id"]: t.get("label", t["id"]) for t in topics}
+
+    for base, a_info in all_atoms.items():
+        if a_info.get("source_type") != "User":
+            continue
+
+        cat = a_info["cat"]
+        atom_dir_name = cat_to_dir.get(cat, "Insights")
+        atom_rel_path = f"{atom_dir_name}/{base}.md"
+
+        if atom_rel_path in used_atom_paths or f"01-Atomic/{atom_rel_path}" in used_atom_paths:
+            personal_atoms_published += 1
+            continue
+
+        raw_topics = a_info.get("topics", [])
+        mapped_topics_display = []
+        resolved_pillar = "N/A"
+
+        for t_id in raw_topics:
+            t_label = topic_label_map.get(t_id)
+            if not t_label:
+                clean_t = re.sub(r'^p\d+_', '', t_id)
+                for tid_k, tlbl_v in topic_label_map.items():
+                    if re.sub(r'^p\d+_', '', tid_k) == clean_t:
+                        t_label = tlbl_v
+                        break
+            if not t_label:
+                t_label = t_id
+
+            mapped_topics_display.append(f"{t_id} ({t_label})")
+            if resolved_pillar == "N/A":
+                for p_id in topic_to_pillars.get(t_id, []):
+                    p_info = pillars_data.get(p_id, {})
+                    p_name = p_info.get("name", p_id) if isinstance(p_info, dict) else p_id
+                    resolved_pillar = f"{p_id.replace('_', ' ').title()}: {p_name}"
+                    break
+            if len(mapped_topics_display) >= 3:
+                break
+
+        topic_display = ", ".join(mapped_topics_display) if mapped_topics_display else "Chua co topic trong map"
+        insight_type = a_info.get("insight_type", "-")
+        created = a_info.get("created", "N/A")
+        atom_type = cat.lower().rstrip("s") if cat != "Data-Points" else "data_point"
+
+        personal_atoms_waiting.append({
+            "base": base,
+            "cat": atom_dir_name,
+            "type": atom_type,
+            "insight_type": insight_type,
+            "topic_display": topic_display,
+            "pillar": resolved_pillar,
+            "created": str(created)
+        })
+
     # Tổng kết tình trạng sức khỏe
     is_healthy = (
         total_disk_audiences == total_index_audiences and
@@ -292,7 +376,10 @@ def compute_health_metrics(data_context):
         "pillar_cat_counts": pillar_cat_counts,
         "topic_atom_counts": topic_atom_counts,
         "top_5_topics": top_5_topics,
-        "seed_topics_list": seed_topics_list
+        "seed_topics_list": seed_topics_list,
+        "personal_atoms_waiting": personal_atoms_waiting,
+        "personal_atoms_published": personal_atoms_published,
+        "personal_atoms_total": len(personal_atoms_waiting) + personal_atoms_published
     }
 
 # -------------------------------------------------------------
@@ -325,7 +412,7 @@ def generate_markdown(m):
     lines.append(f"> - **Last update:** {now_str}")
     lines.append("> - **Vai trò:** Trung tâm giám sát và cảnh báo sớm tính toàn vẹn của đồ thị tri thức (Audiences ⟷ Topics ⟷ Atoms ⟷ Pillars), đồng thời đánh giá độ cân bằng nguyên liệu phục vụ kế hoạch sản xuất nội dung (Content Plan).")
     lines.append("> - **Được sử dụng khi nào:** Mở xem trực tiếp trên Obsidian bất cứ lúc nào để kiểm tra tính toàn vẹn dữ liệu; làm căn cứ lập kế hoạch sản xuất bài viết và chọn sách bóc tách tiếp theo.")
-    lines.append("> - **Output:** Báo cáo chi tiết 6 khối dữ liệu: Đối soát 3 tầng đồ thị (Audiences, Topics, Atoms), phân tích cân bằng 4 Trụ cột Persona và thống kê độ phủ nguyên liệu.")
+    lines.append("> - **Output:** Báo cáo chi tiết 7 khối dữ liệu: Đối soát 3 tầng đồ thị (Audiences, Topics, Atoms), phân tích cân bằng 4 Trụ cột Persona, thống kê độ phủ nguyên liệu và Hàng đợi nguyên liệu cá nhân.")
     lines.append("> - **Tóm tắt logic hoạt động:** Đối soát 2 chiều giữa Sổ mục lục, File vật lý, Topic Map, chuỗi phân tầng DIKW, Trụ cột Persona và Frontmatter của toàn bộ Atoms trong Vault.\n")
     lines.append("---\n")
     
@@ -424,7 +511,7 @@ def generate_markdown(m):
     lines.append(f"* **File quản lý:** [`personas/{m['persona_name']}/pillars.yaml`](file:///d:/AI/AI%20content%20factory%20-%20v3.7B/Content%20Factory/personas/{m['persona_name']}/pillars.yaml)")
     lines.append("* **Quy tắc xoay vòng nội dung:** *Mỗi tuần đăng bài từ ít nhất 2 Pillars khác nhau (không trùng quá 2 lần liên tiếp).*\n")
     lines.append("### Bảng phân bổ nguyên liệu theo từng Trụ cột:\n")
-    lines.append("| Trụ cột nội dung (Pillar) | Số Topics | Tổng Atoms | Insights | Solutions | Evidences (Data/Quote/Story) | Tỷ trọng nguyên liệu |")
+    lines.append("| Trụ cột nội dung (Pillar) | Số Topics | Tổng Atoms | Insights | Knowledges (Solutions/Concepts) | Evidences (Data/Quote/Story) | Tỷ trọng nguyên liệu |")
     lines.append("| :--- | :---: | :---: | :---: | :---: | :---: | :---: |")
     
     pillars_order = ["pillar_1", "pillar_2", "pillar_3", "pillar_4"]
@@ -435,17 +522,26 @@ def generate_markdown(m):
         a_cnt = m["pillar_atom_counts"].get(p_key, 0)
         i_cnt = m["pillar_cat_counts"][p_key].get("Insights", 0)
         s_cnt = m["pillar_cat_counts"][p_key].get("Solutions", 0)
+        c_cnt = m["pillar_cat_counts"][p_key].get("Concepts", 0)
         d_cnt = m["pillar_cat_counts"][p_key].get("Data-Points", 0)
         q_cnt = m["pillar_cat_counts"][p_key].get("Quotes", 0)
         st_cnt = m["pillar_cat_counts"][p_key].get("Stories", 0)
+        
+        kn_cnt = s_cnt + c_cnt
         ev_cnt = d_cnt + q_cnt + st_cnt
         
         ratio = f"{(a_cnt / m['total_atoms'] * 100):.1f}%" if m["total_atoms"] > 0 else "0.0%"
+        kn_detail = f"{kn_cnt} *({s_cnt} Solution, {c_cnt} Concept)*" if kn_cnt > 0 else "0"
         ev_detail = f"{ev_cnt} *({d_cnt} Data, {q_cnt} Quote, {st_cnt} Story)*" if ev_cnt > 0 else "0"
         
-        lines.append(f"| **{p_key.replace('_', ' ').title()}:** {p_name} | **{t_cnt}** | **{a_cnt}** | {i_cnt} | {s_cnt} | {ev_detail} | **{ratio}** |")
+        lines.append(f"| **{p_key.replace('_', ' ').title()}:** {p_name} | **{t_cnt}** | **{a_cnt}** | {i_cnt} | {kn_detail} | {ev_detail} | **{ratio}** |")
         
-    lines.append(f"| **TỔNG CỘNG** | **{m['total_topics']}** | **{m['total_atoms']}** | **{m['atom_counts']['Insights']}** | **{m['atom_counts']['Solutions']}** | **{m['atom_counts']['Data-Points'] + m['atom_counts']['Quotes'] + m['atom_counts']['Stories']}** | **100%** |\n")
+    kn_total = m['atom_counts']['Solutions'] + m['atom_counts']['Concepts']
+    kn_total_detail = f"{kn_total} *({m['atom_counts']['Solutions']} Solution, {m['atom_counts']['Concepts']} Concept)*" if kn_total > 0 else "0"
+    ev_total = m['atom_counts']['Data-Points'] + m['atom_counts']['Quotes'] + m['atom_counts']['Stories']
+    ev_total_detail = f"{ev_total} *({m['atom_counts']['Data-Points']} Data, {m['atom_counts']['Quotes']} Quote, {m['atom_counts']['Stories']} Story)*" if ev_total > 0 else "0"
+    
+    lines.append(f"| **TỔNG CỘNG** | **{m['total_topics']}** | **{m['total_atoms']}** | **{m['atom_counts']['Insights']}** | **{kn_total_detail}** | **{ev_total_detail}** | **100%** |\n")
     
     lines.append("> [!NOTE]")
     lines.append("> **Định hướng sản xuất (Content Strategy Insight):**")
@@ -468,6 +564,30 @@ def generate_markdown(m):
         tlabel = t_obj.get("label", tid)
         lines.append(f"{rank}. `{tid}` (*{tlabel}*)")
         
+    # Khối 7: Hàng đợi nguyên liệu cá nhân
+    lines.append("## 📥 7. HÀNG ĐỢI NGUYÊN LIỆU CÁ NHÂN (PERSONAL ATOMS QUEUE)\n")
+    lines.append("> [!TIP]")
+    lines.append("> **Hướng dẫn sản xuất:** Các atoms dưới đây có nguồn từ tác giả (`source_type: User`) và **chưa từng được sử dụng** trong bất kỳ bài viết nào. Hãy chọn một Atom có Topic tương ứng với Trụ cột đang thiếu để chạy lệnh `/content-post`.\n")
+    
+    waiting = m.get("personal_atoms_waiting", [])
+    published = m.get("personal_atoms_published", 0)
+    total_personal = m.get("personal_atoms_total", 0)
+    
+    lines.append("### Thống kê hàng đợi:")
+    lines.append(f"* **Tổng số nguyên liệu cá nhân:** {total_personal} atoms")
+    lines.append(f"* **Đang chờ viết bài:** {len(waiting)} atoms")
+    lines.append(f"* **Đã xuất bản:** {published} atoms\n")
+    
+    lines.append("| # | Atom | Type | Phân loại | Topic khả dụng | Trụ cột (Pillar) | Ngày tạo |")
+    lines.append("|---|------|------|-----------|----------------|------------------|---------|")
+    
+    if waiting:
+        for idx, atom in enumerate(waiting, 1):
+            link = f"[{atom['base']}](../../01-Atomic/{atom['cat']}/{atom['base']}.md)"
+            lines.append(f"| {idx} | {link} | {atom['type']} | {atom['insight_type']} | {atom['topic_display']} | {atom['pillar']} | {atom['created']} |")
+    else:
+        lines.append("| - | *Khong co atom personal nao dang cho* | - | - | - | - | - |")
+    
     lines.append("\n---\n*Dashboard này được thiết kế để theo dõi tính toàn vẹn thời gian thực của đồ thị tri thức Content Factory.*")
     
     return "\n".join(lines)

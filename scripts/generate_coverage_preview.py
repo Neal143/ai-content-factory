@@ -153,7 +153,10 @@ def collect_coverage_data(factory_root):
                 insights[base] = {
                     "filename": fname,
                     "topics": t_list,
-                    "audiences": aud_list
+                    "audiences": aud_list,
+                    "source_type": fm.get("source_type", ""),
+                    "insight_type": fm.get("insight_type") or fm.get("subtype") or "-",
+                    "created": fm.get("created", "N/A")
                 }
                 for a in aud_list:
                     for t in t_list:
@@ -252,7 +255,10 @@ def collect_coverage_data(factory_root):
                         "filename": fname,
                         "type": k_type,
                         "topics": t_list,
-                        "supports_insight": sup_ins
+                        "supports_insight": sup_ins,
+                        "source_type": fm.get("source_type", ""),
+                        "subtype": fm.get("subtype") or "-",
+                        "created": fm.get("created", "N/A")
                     }
 
     # 7. Load Evidences (Quotes, Stories, Data-Points)
@@ -273,7 +279,10 @@ def collect_coverage_data(factory_root):
                         "filename": fname,
                         "type": e_type,
                         "topics": t_list,
-                        "supports_knowledge": supp_k
+                        "supports_knowledge": supp_k,
+                        "source_type": fm.get("source_type", ""),
+                        "subtype": fm.get("subtype") or "-",
+                        "created": fm.get("created", "N/A")
                     }
 
     return {
