@@ -33,6 +33,7 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 
 from renderers import render_coverage_markdown
+from renderers import render_vault_health
 
 # -------------------------------------------------------------
 # DYNAMIC PATH & PERSONA DISCOVERY
@@ -243,9 +244,14 @@ def collect_coverage_data(factory_root):
                     if isinstance(raw_sup, str):
                         raw_sup = [raw_sup]
                     sup_ins = [clean_ref(x) for x in raw_sup]
+                    raw_topics = fm.get("topics") or []
+                    if isinstance(raw_topics, str):
+                        raw_topics = [raw_topics]
+                    t_list = [clean_ref(t) for t in raw_topics if clean_ref(t)]
                     knowledges[base] = {
                         "filename": fname,
                         "type": k_type,
+                        "topics": t_list,
                         "supports_insight": sup_ins
                     }
 
@@ -259,9 +265,14 @@ def collect_coverage_data(factory_root):
                     fm = parse_frontmatter(fpath)
                     base = fname[:-3]
                     supp_k = [clean_ref(x) for x in (fm.get("supports_knowledge") or [])]
+                    raw_topics = fm.get("topics") or []
+                    if isinstance(raw_topics, str):
+                        raw_topics = [raw_topics]
+                    t_list = [clean_ref(t) for t in raw_topics if clean_ref(t)]
                     evidences[base] = {
                         "filename": fname,
                         "type": e_type,
+                        "topics": t_list,
                         "supports_knowledge": supp_k
                     }
 
@@ -290,9 +301,10 @@ def run_pipeline(factory_root=None):
     # 1. Render Markdown Preview Table
     success_md = render_coverage_markdown.render(data_context)
     
-    # (San sang de goi them render_audience_canvas.render(data_context)...)
+    # 2. Render Vault Health Dashboard
+    success_health = render_vault_health.render(data_context)
     
-    return success_md
+    return success_md and success_health
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Coverage Engine Orchestrator")
