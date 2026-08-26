@@ -174,6 +174,7 @@ def build_frontmatter(entry):
         "vivid_circumstances": [],
         "vivid_circumstances_reserve": [],
         "parent_audience": entry["parent_audience"],
+        "next_job_step": [],
         "aliases": entry["aliases"],
         "source_type": entry.get("source_type", ""),
         "source_name": entry.get("source_name", ""),

@@ -34,6 +34,7 @@ if SCRIPT_DIR not in sys.path:
 
 from renderers import render_coverage_markdown
 from renderers import render_vault_health
+from renderers import render_audience_canvas
 
 # -------------------------------------------------------------
 # DYNAMIC PATH & PERSONA DISCOVERY
@@ -176,6 +177,11 @@ def collect_coverage_data(factory_root):
                     raw_parents = [raw_parents]
                 parents = [clean_ref(p) for p in raw_parents if clean_ref(p)]
                 
+                raw_next_steps = fm.get("next_job_step") or []
+                if isinstance(raw_next_steps, str):
+                    raw_next_steps = [raw_next_steps]
+                next_steps = [clean_ref(p) for p in raw_next_steps if clean_ref(p)]
+                
                 level = str(fm.get("audience_level", "little")).lower()
                 performer = fm.get("audience_Job_performer", "Cha mẹ")
                 main_job = fm.get("audience_main_job", "")
@@ -214,6 +220,7 @@ def collect_coverage_data(factory_root):
                     "filename": fname,
                     "level": level,
                     "parents": parents,
+                    "next_steps": next_steps,
                     "performer": performer,
                     "main_job": main_job,
                     "circumstance": circumstance,
@@ -313,7 +320,10 @@ def run_pipeline(factory_root=None):
     # 2. Render Vault Health Dashboard
     success_health = render_vault_health.render(data_context)
     
-    return success_md and success_health
+    # 3. Render Audience Hierarchy Canvas
+    success_canvas = render_audience_canvas.render(data_context)
+    
+    return success_md and success_health and success_canvas
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Coverage Engine Orchestrator")

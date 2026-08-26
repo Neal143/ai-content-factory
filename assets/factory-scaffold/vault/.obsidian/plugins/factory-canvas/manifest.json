@@ -1,0 +1,10 @@
+{
+  "id": "factory-canvas",
+  "name": "Factory Canvas Controller",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Smart Group Auto-Fit & Real-Time Reverse-Sync for Audience Canvas Hierarchy and JTBD Job Steps.",
+  "author": "Antigravity",
+  "authorUrl": "",
+  "isDesktopOnly": true
+}
