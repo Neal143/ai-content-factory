@@ -1,7 +1,7 @@
 /**
  * factory-canvas - main.js
- * Last update: 25/08/2026 23:32 (GMT+7)
- * Vai tro: Obsidian Micro-Plugin chuyên trách điều khiển giao diện Canvas: Smooth Auto-Fit (Không giật/nhảy màn hình), 100% Kiểm soát cho User, Strict Membership & 1-Click Re-arrange.
+ * Last update: 26/08/2026 23:35 (GMT+7)
+ * Vai tro: Obsidian Micro-Plugin chuyên trách điều khiển giao diện Canvas: Smooth Auto-Fit, Strict Membership, 1-Click Re-arrange & Flyout Auto-Center.
  * Su dung khi: Chạy tự động trong Obsidian khi người dùng mở và tương tác trên file audience-hierarchy.canvas.
  * Output: 
  *   1. Mượt Mà & Êm Ái (Zero Jumping): Thao tác kéo thả, nối mũi tên diễn ra mượt mà, không bao giờ tự ý giật hay đẩy các thẻ khác.
@@ -9,9 +9,10 @@
  *   3. Strict Membership: Chỉ thẻ có quan hệ phả hệ hợp pháp mới làm co giãn Khung Group.
  *   4. Silent Reverse-Sync: Cập nhật Frontmatter ngầm (Cạnh đáy -> Phả hệ, Cạnh bên -> Job Step) với khóa chống lặp tuyệt đối.
  *   5. 1-Click Re-arrange: Chỉ khi user chủ động bấm nút, toàn bộ sơ đồ mới được căn chỉnh lại theo lưới 5 cột.
+ *   6. Flyout Auto-Center: Click chuột phải vào nút "Thu phóng vừa khung" (⛶) sẽ hiện nút Auto-Center bên trái; click chuột phải để chọn.
  */
 
-const { Plugin, Notice } = require('obsidian');
+const { Plugin, Notice, setIcon } = require('obsidian');
 
 // -------------------------------------------------------------
 // NHÓM 1: CẤU HÌNH HÌNH HỌC & MÀU SẮC CHUẨN (CANVAS_CONFIG)
@@ -934,10 +935,211 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         };
 
         // -------------------------------------------------------------
+        // NHÓM 6.5: AUTO-CENTER VIEWPORT CONTROLLER & FLYOUT TRIGGER
+        // -------------------------------------------------------------
+        const getCanvasDiagramBBox = (canvasObj) => {
+            if (!canvasObj || !canvasObj.nodes || canvasObj.nodes.size === 0) return null;
+            let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+            for (const [, node] of canvasObj.nodes) {
+                const nx = node.x ?? 0;
+                const ny = node.y ?? 0;
+                const nw = node.width ?? 0;
+                const nh = node.height ?? 0;
+                if (nx < minX) minX = nx;
+                if (ny < minY) minY = ny;
+                if (nx + nw > maxX) maxX = nx + nw;
+                if (ny + nh > maxY) maxY = ny + nh;
+            }
+            if (minX === Infinity) return null;
+            return {
+                minX, minY, maxX, maxY,
+                width: Math.max(1, maxX - minX),
+                height: Math.max(1, maxY - minY),
+                cx: (minX + maxX) / 2,
+                cy: (minY + maxY) / 2
+            };
+        };
+
+        const centerCanvasDiagram = (canvasObj) => {
+            if (!canvasObj) return;
+            const bbox = getCanvasDiagramBBox(canvasObj);
+            if (!bbox) {
+                new Notice('⚠️ Không tìm thấy đối tượng nào trên Canvas để căn giữa.', 2500);
+                return;
+            }
+
+            if (typeof canvasObj.panTo === 'function') {
+                canvasObj.panTo(bbox.cx, bbox.cy);
+            } else if (typeof canvasObj.panToCoord === 'function') {
+                canvasObj.panToCoord({ x: bbox.cx, y: bbox.cy });
+            } else {
+                const container = canvasObj.containerEl || canvasObj.wrapperEl || canvasObj.view?.containerEl;
+                const vpW = container ? container.clientWidth : (window.innerWidth || 1200);
+                const vpH = container ? container.clientHeight : (window.innerHeight || 800);
+                const currentZoom = canvasObj.zoom || 1.0;
+                canvasObj.tx = (vpW / 2) - (bbox.cx * currentZoom);
+                canvasObj.ty = (vpH / 2) - (bbox.cy * currentZoom);
+                if (typeof canvasObj.requestFrame === 'function') canvasObj.requestFrame();
+            }
+            new Notice('🎯 [Factory Canvas] Đã đưa trọng tâm sơ đồ về chính giữa màn hình!', 2000);
+        };
+
+        const isZoomToFitButton = (el) => {
+            if (!el) return null;
+            const btn = el.closest('.canvas-control-item');
+            if (!btn) return null;
+
+            // 1. Kiểm tra aria-label của nút
+            const label = (btn.getAttribute('aria-label') || '').toLowerCase();
+            if (label.includes('fit') || label.includes('vừa') || label.includes('khung') || label.includes('zoom to fit')) {
+                return btn;
+            }
+
+            // 2. Kiểm tra class của Icon SVG
+            if (btn.querySelector('svg.lucide-maximize, svg.lucide-maximize-2, svg.lucide-expand, svg.lucide-focus, svg.lucide-scan, svg.lucide-shrink, [data-icon*="maximize"]')) {
+                return btn;
+            }
+
+            // 3. Fallback: Dò vị trí nút trong Control Group chứa Zoom
+            const group = btn.closest('.canvas-control-group');
+            if (group && group.querySelector('.lucide-plus, .lucide-minus, [aria-label*="zoom" i], [aria-label*="phóng" i], [aria-label*="thu" i]')) {
+                const items = Array.from(group.querySelectorAll('.canvas-control-item'));
+                // Nếu nhóm có 4 nút: [0: Zoom In, 1: Reset, 2: Zoom to Fit, 3: Zoom Out]
+                if (items.length >= 4 && items[2] === btn) {
+                    return btn;
+                }
+                // Nếu nhóm có 3 nút: [0: Zoom In, 1: Zoom to Fit, 2: Zoom Out]
+                if (items.length === 3 && items[1] === btn) {
+                    return btn;
+                }
+            }
+            return null;
+        };
+
+        const showAutoCenterFlyout = (anchorBtn, containerEl, canvasObj) => {
+            // 1. Dọn dẹp flyout cũ nếu đang mở
+            document.querySelectorAll('.factory-autocenter-flyout').forEach(el => el.remove());
+            if (!anchorBtn || !containerEl) return;
+
+            const btnRect = anchorBtn.getBoundingClientRect();
+            const containerRect = containerEl.getBoundingClientRect();
+
+            // 2. Tạo phần tử Flyout
+            const flyout = document.createElement('div');
+            flyout.className = 'factory-autocenter-flyout clickable-icon canvas-control-item';
+            flyout.setAttribute('aria-label', '🎯 Auto-Center sơ đồ (Click chuột phải để chọn)');
+            
+            // Đặt vị trí bên trái nút Zoom to Fit (gắn trực tiếp vào containerEl để tránh overflow: hidden)
+            const topOffset = btnRect.top - containerRect.top + (btnRect.height - 30) / 2;
+            const leftOffset = btnRect.left - containerRect.left - 38;
+
+            flyout.style.position = 'absolute';
+            flyout.style.top = `${topOffset}px`;
+            flyout.style.left = `${leftOffset}px`;
+            flyout.style.width = '30px';
+            flyout.style.height = '30px';
+            flyout.style.display = 'flex';
+            flyout.style.alignItems = 'center';
+            flyout.style.justifyContent = 'center';
+            flyout.style.zIndex = '9999';
+            flyout.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.35)';
+            flyout.style.borderRadius = 'var(--radius-s, 4px)';
+            flyout.style.background = 'var(--background-secondary, #202020)';
+            flyout.style.border = '1px solid var(--background-modifier-border, #444)';
+            flyout.style.cursor = 'pointer';
+            flyout.style.transition = 'transform 0.12s ease, opacity 0.12s ease';
+            flyout.style.transform = 'scale(0.85)';
+            flyout.style.opacity = '0';
+
+            if (typeof setIcon === 'function') {
+                setIcon(flyout, 'crosshair');
+            } else {
+                flyout.textContent = '🎯';
+            }
+
+            containerEl.appendChild(flyout);
+
+            // Animation xuất hiện mượt mà
+            requestAnimationFrame(() => {
+                flyout.style.transform = 'scale(1)';
+                flyout.style.opacity = '1';
+            });
+
+            const triggerAutoCenter = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (canvasObj) {
+                    centerCanvasDiagram(canvasObj);
+                }
+                flyout.remove();
+                cleanupListeners();
+            };
+
+            // Bắt sự kiện Click Chuột Phải hoặc Chuột Trái để chọn Auto-Center
+            flyout.addEventListener('contextmenu', triggerAutoCenter);
+            flyout.addEventListener('click', triggerAutoCenter);
+
+            // 3. Tự động đóng khi click ra ngoài
+            const onOutsideClick = (e) => {
+                if (!flyout.contains(e.target) && !anchorBtn.contains(e.target)) {
+                    flyout.remove();
+                    cleanupListeners();
+                }
+            };
+
+            const cleanupListeners = () => {
+                document.removeEventListener('pointerdown', onOutsideClick);
+                document.removeEventListener('contextmenu', onOutsideClick);
+            };
+
+            setTimeout(() => {
+                document.addEventListener('pointerdown', onOutsideClick);
+                document.addEventListener('contextmenu', onOutsideClick);
+            }, 60);
+        };
+
+        const attachCanvasControlsRightClickHook = (leaf) => {
+            if (!leaf?.view) return;
+            const containerEl = leaf.view.containerEl;
+            if (!containerEl || containerEl._hasFactoryFlyoutHook) return;
+            containerEl._hasFactoryFlyoutHook = true;
+
+            // Sử dụng Event Capture trên containerEl để bắt contextmenu trước các lớp xử lý của Canvas
+            containerEl.addEventListener('contextmenu', (evt) => {
+                const zoomToFitBtn = isZoomToFitButton(evt.target);
+                if (zoomToFitBtn) {
+                    evt.preventDefault();
+                    evt.stopPropagation();
+                    showAutoCenterFlyout(zoomToFitBtn, containerEl, leaf.view.canvas);
+                }
+            }, true);
+        };
+
+        const cleanupFloatingInjections = () => {
+            try {
+                document.querySelectorAll('.factory-zoom-badge, .factory-autocenter-control, .factory-autocenter-flyout').forEach(el => el.remove());
+            } catch (e) {}
+        };
+
+        // -------------------------------------------------------------
         // NHÓM 7: ĐĂNG KÝ CÁC ĐIỂM TRUY CẬP (CANVAS HEADER & COMMAND & CONTEXT MENU)
         // -------------------------------------------------------------
         
         // 1. Command Palette (Ctrl + P)
+        this.addCommand({
+            id: 'auto-center-audience-canvas',
+            name: '🎯 Đưa sơ đồ về chính giữa màn hình (Auto-Center)',
+            callback: () => {
+                const leaves = this.app.workspace.getLeavesOfType('canvas');
+                for (const leaf of leaves) {
+                    if (leaf.view?.canvas) {
+                        centerCanvasDiagram(leaf.view.canvas);
+                        return;
+                    }
+                }
+            }
+        });
+
         this.addCommand({
             id: 'rearrange-audience-canvas',
             name: '🪄 Căn chỉnh lại toàn bộ sơ đồ Audience Canvas (Re-arrange Layout)',
@@ -946,11 +1148,15 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             }
         });
 
-        // 2. Canvas View Header Action Button
-        const attachHeaderButton = () => {
+        // 2. Canvas View Header Action Buttons & Zoom to fit Right-click hook
+        const syncCanvasControlsUI = () => {
+            cleanupFloatingInjections();
             const leaves = this.app.workspace.getLeavesOfType('canvas');
             for (const leaf of leaves) {
-                if (leaf.view && !leaf.view._hasFactoryRearrangeBtn) {
+                if (!leaf.view) continue;
+
+                // 2.1. Nút Re-arrange Layout trên Header (sparkles)
+                if (!leaf.view._hasFactoryRearrangeBtn) {
                     leaf.view._hasFactoryRearrangeBtn = true;
                     if (typeof leaf.view.addAction === 'function') {
                         leaf.view.addAction('sparkles', 'Căn chỉnh sơ đồ Canvas (Re-arrange)', async () => {
@@ -958,16 +1164,27 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                         });
                     }
                 }
+
+                // 2.2. Gắn Hook Chuột Phải qua Capture Listener trên Canvas Container
+                attachCanvasControlsRightClickHook(leaf);
             }
         };
 
-        this.registerEvent(this.app.workspace.on('layout-change', attachHeaderButton));
-        this.registerEvent(this.app.workspace.on('active-leaf-change', attachHeaderButton));
-        attachHeaderButton();
+        this.registerEvent(this.app.workspace.on('layout-change', syncCanvasControlsUI));
+        this.registerEvent(this.app.workspace.on('active-leaf-change', syncCanvasControlsUI));
+        syncCanvasControlsUI();
+        setTimeout(syncCanvasControlsUI, 500);
 
         // 3. Right-Click Context Menu trên Canvas
         this.registerEvent(
             this.app.workspace.on('canvas:menu', (menu, canvas) => {
+                menu.addItem((item) => {
+                    item.setTitle('🎯 Đưa sơ đồ về giữa (Auto-Center)')
+                        .setIcon('crosshair')
+                        .onClick(() => {
+                            centerCanvasDiagram(canvas);
+                        });
+                });
                 menu.addItem((item) => {
                     item.setTitle('🪄 Căn chỉnh lại sơ đồ (Re-arrange Layout)')
                         .setIcon('sparkles')
@@ -1040,5 +1257,8 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
     onunload() {
         console.log('[FactoryCanvas] Plugin unloaded.');
+        try {
+            document.querySelectorAll('.factory-zoom-badge, .factory-autocenter-control, .factory-autocenter-flyout').forEach(el => el.remove());
+        } catch (e) {}
     }
 };

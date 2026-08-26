@@ -32,8 +32,11 @@ module.exports = class FactorySyncPlugin extends Plugin {
         // Bo loc kiem tra file thuoc pham vi can theo doi trong Vault
         const isAtomFile = (filePath) => {
             if (!filePath) return false;
-            // Chống Infinite Loop: Bỏ qua chính file preview và cấu hình nội bộ
-            if (filePath.includes('audience-knowledge-coverage-preview') || filePath.startsWith('.obsidian')) {
+            // Chống Infinite Loop: Bỏ qua các file báo cáo tự động và cấu hình nội bộ
+            if (filePath.includes('audience-knowledge-coverage-preview') || 
+                filePath.includes('vault-health-report') || 
+                filePath.includes('audience-hierarchy') || 
+                filePath.startsWith('.obsidian')) {
                 return false;
             }
             return filePath.startsWith('01-Atomic') || 
