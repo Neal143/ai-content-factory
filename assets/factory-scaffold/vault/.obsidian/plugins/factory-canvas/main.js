@@ -1,14 +1,14 @@
 /**
  * factory-canvas - main.js
- * Last update: 26/08/2026 23:35 (GMT+7)
+ * Last update: 28/08/2026 12:40 (GMT+7)
  * Vai tro: Obsidian Micro-Plugin chuyên trách điều khiển giao diện Canvas: Smooth Auto-Fit, Strict Membership, 1-Click Re-arrange & Flyout Auto-Center.
  * Su dung khi: Chạy tự động trong Obsidian khi người dùng mở và tương tác trên file audience-hierarchy.canvas.
  * Output: 
  *   1. Mượt Mà & Êm Ái (Zero Jumping): Thao tác kéo thả, nối mũi tên diễn ra mượt mà, không bao giờ tự ý giật hay đẩy các thẻ khác.
- *   2. Gentle Group Auto-Fit: Khung Group tự co giãn ôm khít các thẻ con hợp pháp mà không làm xê dịch vị trí thẻ.
- *   3. Strict Membership: Chỉ thẻ có quan hệ phả hệ hợp pháp mới làm co giãn Khung Group.
+ *   2. Gentle Group Auto-Fit: Khung Group tự co giãn ôm khít các thẻ con hợp pháp theo Graph Hierarchy mà không làm xê dịch vị trí thẻ.
+ *   3. Strict Membership: Chỉ thẻ có quan hệ phả hệ hợp pháp trong Frontmatter mới làm co giãn Khung Group.
  *   4. Silent Reverse-Sync: Cập nhật Frontmatter ngầm (Cạnh đáy -> Phả hệ, Cạnh bên -> Job Step) với khóa chống lặp tuyệt đối.
- *   5. 1-Click Re-arrange: Chỉ khi user chủ động bấm nút, toàn bộ sơ đồ mới được căn chỉnh lại theo lưới 5 cột.
+ *   5. 1-Click Re-arrange: Căn chỉnh lại toàn bộ sơ đồ phân cấp theo cấu trúc đồ thị (Root -> Children -> Sub-groups) và lưới 5 cột.
  *   6. Flyout Auto-Center: Click chuột phải vào nút "Thu phóng vừa khung" (⛶) sẽ hiện nút Auto-Center bên trái; click chuột phải để chọn.
  */
 
@@ -18,9 +18,12 @@ const { Plugin, Notice, setIcon } = require('obsidian');
 // NHÓM 1: CẤU HÌNH HÌNH HỌC & MÀU SẮC CHUẨN (CANVAS_CONFIG)
 // -------------------------------------------------------------
 const CANVAS_CONFIG = {
-    // Kích thước thẻ
+    // Kích thước thẻ chuẩn
     CARD_W: 540,
     CARD_H: 460,
+    ROOT_CARD_W: 640,
+    ROOT_CARD_H: 420,
+    // Alias tương thích ngược
     BIG_CARD_W: 640,
     BIG_CARD_H: 420,
     
@@ -39,7 +42,9 @@ const CANVAS_CONFIG = {
     TIER_GAP: 160,
     MOTHER_OFFSET_Y: 150,
     
-    // Bảng màu chuẩn
+    // Bảng màu chuẩn (Graph-driven colors)
+    COLOR_ROOT: '1',
+    COLOR_CHILD: '4',
     COLOR_BIG: '1',
     COLOR_LITTLE: '4',
     COLOR_GROUP_L1: '4',
@@ -222,10 +227,8 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             let canvasModified = false;
             const vaultParentMap = await getVaultParentMap();
 
-            const allLittleNodes = textNodes.filter(n => {
-                if (n.color === CANVAS_CONFIG.COLOR_BIG || (n.text && n.text.includes('#big'))) return false;
-                return n.slug && n.text && n.text.includes('#little');
-            });
+            // Nhận diện toàn bộ Audience Text Nodes có slug hợp lệ
+            const allAudienceNodes = textNodes.filter(n => n.slug);
 
             // Dọn dẹp các group rác như 'Chưa liên kết cha'
             const initialNodeCount = canvasData.nodes.length;
@@ -280,24 +283,27 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     continue;
                 }
 
-                const targetLabel = `📦 NHÓM CON (Little Audiences): [[${parentSlug}]]`;
+                const targetLabel = group.label && group.label.includes(`[[${parentSlug}]]`)
+                    ? group.label
+                    : `📦 NHÓM CON: [[${parentSlug}]]`;
+
                 if (group.label !== targetLabel) {
                     group.label = targetLabel;
                     canvasModified = true;
                     updateInMemoryCanvasNode(group.id, undefined, undefined, undefined, undefined, targetLabel);
                 }
 
-                // 2. Lọc danh sách thành viên hợp pháp theo Frontmatter
+                // 2. Lọc danh sách thành viên hợp pháp thuần túy theo Frontmatter
                 const isMember = (node) => {
                     if (!node.slug) return false;
                     const pSet = vaultParentMap[node.slug];
                     return pSet && pSet.has(parentSlug);
                 };
 
-                const legitimateMembers = allLittleNodes.filter(n => isMember(n));
+                const legitimateMembers = allAudienceNodes.filter(n => isMember(n));
 
                 // 3. AUTO-EJECT: CHỈ ĐẨY RA NGOÀI KHI THẺ NẰM TRONG KHUNG CỦA MẸ MÀ BỊ XÓA LIÊN KẾT
-                const nonMembers = allLittleNodes.filter(n => !isMember(n));
+                const nonMembers = allAudienceNodes.filter(n => !isMember(n) && n.slug !== parentSlug);
                 const currentGroupX = group.x;
                 const currentGroupY = group.y;
                 const currentGroupW = group.width;
@@ -341,15 +347,15 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                         canvasModified = true;
                         updateInMemoryCanvasNode(group.id, targetX, targetY, targetW, targetH);
 
-                        // Luôn bảo đảm Thẻ Mẹ Big Audience nằm ở chính giữa phía trên Khung Group 1
-                        const bigNode = textNodes.find(n => n.color === CANVAS_CONFIG.COLOR_BIG || (n.text && n.text.includes('#big')));
-                        if (bigNode && (!parentSlug || parentSlug === extractSlug(bigNode.text))) {
-                            const newBigX = targetX + targetW / 2 - bigNode.width / 2;
-                            const newBigY = targetY - bigNode.height - CANVAS_CONFIG.MOTHER_OFFSET_Y;
-                            if (Math.abs(bigNode.x - newBigX) > 5 || Math.abs(bigNode.y - newBigY) > 5) {
-                                bigNode.x = newBigX;
-                                bigNode.y = newBigY;
-                                updateInMemoryCanvasNode(bigNode.id, newBigX, newBigY);
+                        // Căn Thẻ Cha nằm ở chính giữa phía trên Khung Group
+                        const parentNode = textNodes.find(n => n.slug === parentSlug);
+                        if (parentNode) {
+                            const newParentX = targetX + targetW / 2 - parentNode.width / 2;
+                            const newParentY = targetY - parentNode.height - CANVAS_CONFIG.MOTHER_OFFSET_Y;
+                            if (Math.abs(parentNode.x - newParentX) > 5 || Math.abs(parentNode.y - newParentY) > 5) {
+                                parentNode.x = newParentX;
+                                parentNode.y = newParentY;
+                                updateInMemoryCanvasNode(parentNode.id, newParentX, newParentY);
                             }
                         }
                     }
@@ -410,14 +416,14 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 }
             }
 
-            const littleMemberNodes = textNodes.filter(n => n.color !== CANVAS_CONFIG.COLOR_BIG && n.slug && n.text.includes('#little'));
+            const audienceNodes = textNodes.filter(n => n.slug);
 
             // 1. Khởi tạo parentMap từ Frontmatter đĩa (Single Source of Truth) để không bị tọa độ kéo thả ghi đè
             const vaultParentMap = await getVaultParentMap();
             const parentMap = {};
             const nextStepMap = {};
 
-            for (const tn of littleMemberNodes) {
+            for (const tn of audienceNodes) {
                 parentMap[tn.slug] = new Set(vaultParentMap[tn.slug] || []);
                 nextStepMap[tn.slug] = new Set();
             }
@@ -449,7 +455,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     }
                     // B. Mũi tên trỏ vào Khung Group → Gán parent cho TẤT CẢ thẻ thành viên bên trong group đó
                     else if (toNode.type === 'group') {
-                        for (const tn of littleMemberNodes) {
+                        for (const tn of audienceNodes) {
                             if (fromSlug === tn.slug) continue;
                             // Kiểm tra thẻ có nằm bên trong bounding box của group không
                             const cX = tn.x + tn.width / 2;
@@ -584,9 +590,10 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             const textNodes = nodes.filter(n => n.type === 'text');
             const groupNodes = nodes.filter(n => n.type === 'group');
 
-            const bigNode = textNodes.find(n => n.color === CANVAS_CONFIG.COLOR_BIG || (n.text && n.text.includes('#big')));
-            const bigSlug = bigNode ? extractSlug(bigNode.text) : null;
-            const littleNodes = textNodes.filter(n => n.color !== CANVAS_CONFIG.COLOR_BIG && n.text && n.text.includes('#little'));
+            const audienceNodes = textNodes.filter(n => {
+                n.slug = extractSlug(n.text);
+                return Boolean(n.slug);
+            });
 
             const CARD_W = CANVAS_CONFIG.CARD_W;
             const CARD_H = CANVAS_CONFIG.CARD_H;
@@ -598,12 +605,24 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
             const vaultParentMap = await getVaultParentMap();
 
+            // Tìm Root Node: Thẻ có slug không có parent trong Frontmatter và có con, hoặc thẻ đầu tiên không có parent
+            let rootNode = audienceNodes.find(n => {
+                const pSet = vaultParentMap[n.slug];
+                return (!pSet || pSet.size === 0) && (n.color === CANVAS_CONFIG.COLOR_ROOT || (n.text && n.text.includes('#big')));
+            });
+            if (!rootNode) {
+                rootNode = audienceNodes.find(n => !vaultParentMap[n.slug] || vaultParentMap[n.slug].size === 0);
+            }
+            const rootSlug = rootNode ? rootNode.slug : null;
+
+            // Danh sách thẻ con cấp dưới
+            const childNodes = audienceNodes.filter(n => n !== rootNode);
+
             // 1. Phân nhóm thẻ theo Cây Phả Hệ thực tế trong Frontmatter
             const nodesByParent = {};
             const unlinkedNodes = [];
 
-            for (const node of littleNodes) {
-                node.slug = extractSlug(node.text);
+            for (const node of childNodes) {
                 const pSet = vaultParentMap[node.slug];
                 if (pSet && pSet.size > 0) {
                     for (const p of pSet) {
@@ -615,10 +634,10 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 }
             }
 
-            // Thẻ thuộc Level 1 (con của Big)
-            let level1Nodes = (bigSlug && nodesByParent[bigSlug]) ? nodesByParent[bigSlug] : [];
-            if (level1Nodes.length === 0) {
-                level1Nodes = littleNodes.filter(n => !unlinkedNodes.includes(n));
+            // Thẻ thuộc Level 1 (con trực tiếp của Root)
+            let level1Nodes = (rootSlug && nodesByParent[rootSlug]) ? nodesByParent[rootSlug] : [];
+            if (level1Nodes.length === 0 && !rootSlug) {
+                level1Nodes = childNodes.filter(n => !unlinkedNodes.includes(n));
             }
 
             // Tách Level 1: Leaf ở trên, Branching (có con) ở HÀNG ĐÁY
@@ -637,7 +656,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 node.height = CARD_H;
             }
 
-            // 3. Tính Bounding Box Group 1 & Căn Big Audience ở ĐƯỜNG CHÍNH TRỰC
+            // 3. Tính Bounding Box Group 1 & Căn Root Audience ở ĐƯỜNG CHÍNH TRỰC
             let l1_minX = START_X;
             let l1_minY = START_Y;
             let l1_maxRight = START_X + COLS * (CARD_W + GAP_X) - GAP_X;
@@ -656,7 +675,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
             const mainGroupNode = groupNodes.find(g => {
                 const ps = extractSlug(g.label);
-                return ps === bigSlug;
+                return ps === rootSlug;
             });
 
             if (mainGroupNode) {
@@ -666,18 +685,18 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 mainGroupNode.height = l1_groupH;
             }
 
-            if (bigNode) {
-                bigNode.width = CANVAS_CONFIG.BIG_CARD_W;
-                bigNode.height = CANVAS_CONFIG.BIG_CARD_H;
-                bigNode.x = l1_centerX - bigNode.width / 2;
-                bigNode.y = (l1_minY - CANVAS_CONFIG.PADDING_Y) - bigNode.height - CANVAS_CONFIG.MOTHER_OFFSET_Y;
+            if (rootNode) {
+                rootNode.width = CANVAS_CONFIG.ROOT_CARD_W || CANVAS_CONFIG.BIG_CARD_W;
+                rootNode.height = CANVAS_CONFIG.ROOT_CARD_H || CANVAS_CONFIG.BIG_CARD_H;
+                rootNode.x = l1_centerX - rootNode.width / 2;
+                rootNode.y = (l1_minY - CANVAS_CONFIG.PADDING_Y) - rootNode.height - CANVAS_CONFIG.MOTHER_OFFSET_Y;
             }
 
             // 4. Bố trí các Khung Group Level 2+ (Tầng dưới, căn chính trực theo thẻ cha)
             let currentTierY = (l1_minY - CANVAS_CONFIG.PADDING_Y) + l1_groupH + CANVAS_CONFIG.TIER_GAP;
 
             for (const [pSlug, children] of Object.entries(nodesByParent)) {
-                if (pSlug === bigSlug || children.length === 0) continue;
+                if (pSlug === rootSlug || children.length === 0) continue;
 
                 const parentCard = textNodes.find(n => n.slug === pSlug) || sortedLevel1[sortedLevel1.length - 1];
                 const parentCenterX = parentCard ? (parentCard.x + parentCard.width / 2) : l1_centerX;
@@ -703,11 +722,15 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 }
 
                 let subGroupNode = groupNodes.find(g => extractSlug(g.label) === pSlug);
+                const subGroupLabel = subGroupNode && subGroupNode.label.includes(`[[${pSlug}]]`)
+                    ? subGroupNode.label
+                    : `📦 NHÓM CON: [[${pSlug}]]`;
+
                 if (!subGroupNode && children.length > 1) {
                     subGroupNode = {
                         id: `group_sub_${pSlug}`,
                         type: "group",
-                        label: `📦 NHÓM CON (Little Audiences): [[${pSlug}]]`,
+                        label: subGroupLabel,
                         x: subGroupX,
                         y: subGroupY,
                         width: subGroupW,
@@ -721,7 +744,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     subGroupNode.y = subGroupY;
                     subGroupNode.width = subGroupW;
                     subGroupNode.height = subGroupH;
-                    subGroupNode.label = `📦 NHÓM CON (Little Audiences): [[${pSlug}]]`;
+                    subGroupNode.label = subGroupLabel;
                 }
 
                 currentTierY += (children.length > 1 ? subGroupH : CARD_H) + CANVAS_CONFIG.TIER_GAP;
@@ -774,13 +797,13 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             const newEdges = [];
             let edgeCounter = 1;
 
-            // A. Mũi tên Phả hệ Big Audience -> Group 1 (hoặc thẻ con đơn lẻ)
-            if (bigNode) {
+            // A. Mũi tên Phả hệ Root Audience -> Group 1 (hoặc thẻ con đơn lẻ)
+            if (rootNode) {
                 if (level1Nodes.length > 1 && mainGroupNode) {
-                    const pairKey = `${bigNode.id}->${mainGroupNode.id}`;
+                    const pairKey = `${rootNode.id}->${mainGroupNode.id}`;
                     newEdges.push({
                         id: "edge_root_to_group",
-                        fromNode: bigNode.id,
+                        fromNode: rootNode.id,
                         fromSide: "bottom",
                         toNode: mainGroupNode.id,
                         toSide: "top",
@@ -789,10 +812,10 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 } else if (level1Nodes.length === 1) {
                     const singleChildId = nodeIdBySlug[level1Nodes[0].slug];
                     if (singleChildId) {
-                        const pairKey = `${bigNode.id}->${singleChildId}`;
+                        const pairKey = `${rootNode.id}->${singleChildId}`;
                         newEdges.push({
                             id: "edge_root_to_single_child",
-                            fromNode: bigNode.id,
+                            fromNode: rootNode.id,
                             fromSide: "bottom",
                             toNode: singleChildId,
                             toSide: "top",
@@ -804,7 +827,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
             // B. Mũi tên Phả hệ Level 2+ Sub-groups
             for (const [pSlug, children] of Object.entries(nodesByParent)) {
-                if (pSlug === bigSlug || children.length === 0) continue;
+                if (pSlug === rootSlug || children.length === 0) continue;
                 const pNodeId = nodeIdBySlug[pSlug];
                 const sgNode = groupNodes.find(g => extractSlug(g.label) === pSlug);
 
