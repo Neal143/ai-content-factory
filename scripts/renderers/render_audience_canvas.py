@@ -1,6 +1,6 @@
 """
 render_audience_canvas.py
-Last update: 25/08/2026 23:25 (GMT+7)
+Last update: 05/10/2026 12:50 (GMT+7)
 Vai tro: Micro-renderer chuyên trách kết xuất Sơ đồ Phân cấp & Tiến trình Độc giả JTBD ra định dạng Obsidian Canvas (audience-hierarchy.canvas) với kiến trúc Phân Tầng Đa Cấp (Cascading Multi-Level Groups).
 Su dung khi: Được gọi tự động bởi Orchestrator generate_coverage_preview.py trong pipeline Live-Sync.
 Output: File vault/03-Content/Content Plan/audience-hierarchy.canvas chuẩn JSON UTF-8.
@@ -9,7 +9,7 @@ Tom tat logic hoat dong:
   2. Bố cục Level 1: Áp dụng Bottom Row Priority để xếp các thẻ có con cấp dưới ở hàng đáy của Group 1.
   3. Bố cục Level 2+: Sinh Khung Group riêng biệt cho từng nhánh con ở tầng dưới, căn chính trực theo thẻ cha.
   4. Cạnh ngữ nghĩa: Cạnh Đáy (bottom -> top) là Phả Hệ màu xanh lá (4); Cạnh Bên (right -> left) là Job Step màu tím (6). Không dùng nhãn chữ để giữ sơ đồ thanh thoát.
-  5. Smart Merge: Đọc và bảo toàn 100% tọa độ và màu sắc tùy chỉnh của người dùng từ Canvas cũ.
+  5. Smart Merge: Bao toan toa do, kich thuoc, mau cua the/edge user da dat; chi them the moi; khong ghi de neu canvas khong doi.
 """
 
 import os
@@ -92,7 +92,9 @@ def generate_node_text(aud_data, level_str):
     ]
     
     if matched_topics:
-        for t in matched_topics:
+        # Sap xep on dinh de tranh hash randomization cua Python set giua cac lan chay
+        sorted_topics = sorted(matched_topics, key=lambda x: (x.get("id", ""), x.get("label", "")))
+        for t in sorted_topics:
             t_id = t.get("id", "")
             t_label = t.get("label", t_id)
             lines.append(f"- **{t_label}** (`{t_id}`)")
@@ -242,7 +244,7 @@ def compute_bounding_box(node_list, pad_x=60, pad_y=80):
     gx = min_x - pad_x
     gy = min_y - pad_y
     gw = max_right - gx + pad_x
-    gh = max_bottom - gy + pad_y
+    gh = max_bottom - gy + pad_x
     return gx, gy, gw, gh
 
 def layout_card_nodes(audience_list, base_x, base_y, cols, existing_nodes_by_slug, created_slugs):
@@ -267,19 +269,25 @@ def layout_card_nodes(audience_list, base_x, base_y, cols, existing_nodes_by_slu
         
         old_color = CANVAS_CONFIG["COLOR_LITTLE"]
         node_id = f"node_aud_{slug}"
+        pos_x, pos_y, pos_w, pos_h = default_x, default_y, card_w, card_h
         if slug in existing_nodes_by_slug:
             old_n = existing_nodes_by_slug[slug]
             node_id = old_n.get("id", node_id)
             old_color = old_n.get("color", old_color)
+            # Smart Merge: giu nguyen toa do & kich thuoc user da dat trong canvas cu
+            pos_x = old_n.get("x", pos_x)
+            pos_y = old_n.get("y", pos_y)
+            pos_w = old_n.get("width", pos_w)
+            pos_h = old_n.get("height", pos_h)
 
         l_node = {
             "id": node_id,
             "type": "text",
             "text": l_text,
-            "x": default_x,
-            "y": default_y,
-            "width": card_w,
-            "height": card_h,
+            "x": pos_x,
+            "y": pos_y,
+            "width": pos_w,
+            "height": pos_h,
             "color": old_color
         }
         nodes.append(l_node)
@@ -411,6 +419,7 @@ def build_canvas_data(data_context, existing_canvas_path):
             })
 
     # 7. Xây dựng các Khung Group Level 2+ (Tầng dưới, căn chính trực theo thẻ cha)
+    pending_parent_edges = []  # (edge_id, parent_slug, target_node_id): resolve fromNode sau khi moi the da co node_id
     current_tier_y = calc_gy + calc_gh + CANVAS_CONFIG["TIER_GAP"]
     sub_group_idx = 1
     
@@ -425,6 +434,9 @@ def build_canvas_data(data_context, existing_canvas_path):
             
         parent_card_node_id = node_id_by_slug.get(p_slug)
         parent_card = next((n for n in nodes if n.get("id") == parent_card_node_id), None)
+        if parent_card is None:
+            # Cha chua duoc layout (vd: audience tu do) -> dung toa do user da dat trong canvas cu
+            parent_card = existing_nodes_by_slug.get(p_slug)
         parent_center_x = (parent_card.get("x", 100) + parent_card.get("width", card_w) / 2) if parent_card else 500
                 
         sub_group_id = f"group_sub_{p_slug[:20]}_{sub_group_idx}"
@@ -443,7 +455,6 @@ def build_canvas_data(data_context, existing_canvas_path):
         sub_rows = math.ceil(total_sub_cards / sub_cols) if sub_cols > 0 else 1
         sub_block_w = sub_cols * (card_w + gap_x) - gap_x
         sub_calc_gw = sub_block_w + 120
-        sub_calc_gh = sub_rows * (card_h + gap_y) - gap_y + 140
 
         sub_calc_gx = parent_center_x - sub_calc_gw / 2
         sub_calc_gy = current_tier_y
@@ -458,6 +469,7 @@ def build_canvas_data(data_context, existing_canvas_path):
         )
         nodes.extend(sub_nodes)
         node_id_by_slug.update(sub_id_map)
+        sg_x, sg_y, sg_w, sg_h = compute_bounding_box(sub_nodes, CANVAS_CONFIG["PADDING_X"], CANVAS_CONFIG["PADDING_Y"])
 
         if total_sub_cards > 1:
             old_sg_id = sub_group_id
@@ -471,35 +483,20 @@ def build_canvas_data(data_context, existing_canvas_path):
                 "id": old_sg_id,
                 "type": "group",
                 "label": sub_group_label,
-                "x": sub_calc_gx,
-                "y": sub_calc_gy,
-                "width": sub_calc_gw,
-                "height": sub_calc_gh,
+                "x": sg_x,
+                "y": sg_y,
+                "width": sg_w,
+                "height": sg_h,
                 "color": old_sg_color
             }
             nodes.insert(1, sub_group_node)
 
-            if parent_card_node_id:
-                edges.append({
-                    "id": f"edge_pha_he_sub_{sub_group_idx}",
-                    "fromNode": parent_card_node_id,
-                    "fromSide": "bottom",
-                    "toNode": sub_group_node["id"],
-                    "toSide": "top",
-                    "color": CANVAS_CONFIG["COLOR_EDGE_PHẢ_HỆ"]
-                })
-            current_tier_y += sub_calc_gh + CANVAS_CONFIG["TIER_GAP"]
+            pending_parent_edges.append((f"edge_pha_he_sub_{sub_group_idx}", p_slug, sub_group_node["id"]))
+            current_tier_y += sg_h + CANVAS_CONFIG["TIER_GAP"]
         elif total_sub_cards == 1:
             single_sub_child_id = node_id_by_slug.get(sorted_sub_children[0]["base"])
-            if parent_card_node_id and single_sub_child_id:
-                edges.append({
-                    "id": f"edge_pha_he_sub_single_{sub_group_idx}",
-                    "fromNode": parent_card_node_id,
-                    "fromSide": "bottom",
-                    "toNode": single_sub_child_id,
-                    "toSide": "top",
-                    "color": CANVAS_CONFIG["COLOR_EDGE_PHẢ_HỆ"]
-                })
+            if single_sub_child_id:
+                pending_parent_edges.append((f"edge_pha_he_sub_single_{sub_group_idx}", p_slug, single_sub_child_id))
             current_tier_y += card_h + CANVAS_CONFIG["TIER_GAP"]
             
         sub_group_idx += 1
@@ -508,12 +505,15 @@ def build_canvas_data(data_context, existing_canvas_path):
     if independent_audiences:
         uncreated_indep = [c for c in independent_audiences if c["base"] not in created_slugs]
         if uncreated_indep:
+            # The tu do moi (chua co trong canvas) dat duoi cung, khong de len the user da dat
+            max_bottom_all = max((n.get("y", 0) + n.get("height", 0) for n in nodes), default=0)
+            indep_base_y = max(current_tier_y, max_bottom_all + CANVAS_CONFIG["TIER_GAP"])
             indep_cols = min(len(uncreated_indep), CANVAS_CONFIG["COLS"])
             indep_rows = math.ceil(len(uncreated_indep) / indep_cols) if indep_cols > 0 else 1
             indep_nodes, indep_id_map = layout_card_nodes(
                 uncreated_indep,
                 CANVAS_CONFIG["START_X"],
-                current_tier_y,
+                indep_base_y,
                 indep_cols,
                 existing_nodes_by_slug,
                 created_slugs
@@ -521,6 +521,19 @@ def build_canvas_data(data_context, existing_canvas_path):
             nodes.extend(indep_nodes)
             node_id_by_slug.update(indep_id_map)
             current_tier_y += indep_rows * (card_h + gap_y) + CANVAS_CONFIG["TIER_GAP"]
+
+    # 7c. Sinh canh pha he cha -> con/group sau khi moi the (ke ca audience tu do) da co node_id
+    for edge_id, p_slug, target_id in pending_parent_edges:
+        parent_node_id = node_id_by_slug.get(p_slug)
+        if parent_node_id and parent_node_id != target_id:
+            edges.append({
+                "id": edge_id,
+                "fromNode": parent_node_id,
+                "fromSide": "bottom",
+                "toNode": target_id,
+                "toSide": "top",
+                "color": CANVAS_CONFIG["COLOR_EDGE_PHẢ_HỆ"]
+            })
 
     # 8. Sinh Cạnh Tiến Trình Ngang (Job Steps giữa các Audiences)
     edge_idx = 1
@@ -552,6 +565,36 @@ def build_canvas_data(data_context, existing_canvas_path):
 # -------------------------------------------------------------
 # NHÓM 7: ENTRY POINT RENDER FUNCTION
 # -------------------------------------------------------------
+def load_existing_edges(canvas_path):
+    """Doc edge tu canvas cu: key=(fromNode,fromSide,toNode,toSide) -> edge, de bao toan id/mau cua user."""
+    index = {}
+    if not os.path.exists(canvas_path):
+        return index
+    try:
+        with open(canvas_path, "r", encoding="utf-8") as f:
+            for e in json.load(f).get("edges", []):
+                index[(e.get("fromNode"), e.get("fromSide"), e.get("toNode"), e.get("toSide"))] = e
+    except Exception:
+        pass
+    return index
+
+def _normalize_canvas(data):
+    """Sap xep nodes/edges theo id de so sanh khong phu thuoc thu tu."""
+    return {
+        "nodes": sorted(data.get("nodes", []), key=lambda n: n.get("id", "")),
+        "edges": sorted(data.get("edges", []), key=lambda e: e.get("id", "")),
+    }
+
+def canvas_is_unchanged(new_data, canvas_path):
+    """True neu noi dung canvas moi tuong duong canvas tren dia (so sanh theo gia tri, 730 == 730.0)."""
+    if not os.path.exists(canvas_path):
+        return False
+    try:
+        with open(canvas_path, "r", encoding="utf-8") as f:
+            return _normalize_canvas(json.load(f)) == _normalize_canvas(new_data)
+    except Exception:
+        return False
+
 def render(data_context):
     """Entry point được gọi bởi generate_coverage_preview.py."""
     factory_root = data_context.get("factory_root")
@@ -564,15 +607,33 @@ def render(data_context):
     canvas_path = os.path.join(output_dir, "audience-hierarchy.canvas")
     
     try:
+        old_edges = load_existing_edges(canvas_path)
         canvas_json_data = build_canvas_data(data_context, canvas_path)
-        
+
+        # Giu id/mau edge cu (cung cap from/to/side) + dam bao id khong trung
+        seen_ids = set()
+        for e in canvas_json_data["edges"]:
+            old_e = old_edges.get((e["fromNode"], e["fromSide"], e["toNode"], e["toSide"]))
+            if old_e:
+                e["id"] = old_e.get("id", e["id"])
+                if old_e.get("color"):
+                    e["color"] = old_e["color"]
+            while e["id"] in seen_ids:
+                e["id"] += "_x"
+            seen_ids.add(e["id"])
+
+        # Khong ghi neu khong doi: tranh Obsidian reload canvas (mat Undo stack, kich hoat sync nguoc)
+        if canvas_is_unchanged(canvas_json_data, canvas_path):
+            print("  [OK] Audience Canvas khong thay doi, bo qua ghi de.")
+            return True
+
         # Atomic write
         tmp_path = canvas_path + ".tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(canvas_json_data, f, ensure_ascii=False, indent=2)
             
         os.replace(tmp_path, canvas_path)
-        print(f"  [OK] Đã xuất Audience Canvas (Cascading Multi-Level): {os.path.relpath(canvas_path, factory_root)}")
+        print(f"  [OK] Da xuat Audience Canvas (Cascading Multi-Level): {os.path.relpath(canvas_path, factory_root)}")
         return True
     except Exception as e:
         print(f"  [ERR] Loi khi xuat Audience Canvas: {e}")

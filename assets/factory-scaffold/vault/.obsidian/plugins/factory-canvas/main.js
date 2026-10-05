@@ -1,14 +1,14 @@
 /**
  * factory-canvas - main.js
- * Last update: 02/10/2026 15:40 (GMT+7)
+ * Last update: 05/10/2026 15:10 (GMT+7)
  * Vai tro: Obsidian Micro-Plugin chuyen trach dieu khien giao dien Canvas: Live RAM Data Extractor, Spatial Group Isolation, Gentle Auto-Fit, Bidirectional Edge Sync, Safe Undo Protection, Structured Debug Logging, 1-Click Re-arrange & Flyout Auto-Center.
  * Su dung khi: Chạy tự động trong Obsidian khi người dùng mở và tương tác trên file audience-hierarchy.canvas.
  * Output: 
- *   1. Mượt Mà & Êm Ái (Zero Jumping): Thao tác kéo thả, nối mũi tên diễn ra mượt mà, không bao giờ tự ý giật hay đẩy các thẻ khác.
- *   2. Spatial Group Auto-Fit: Khung Group chỉ co giãn ôm các thẻ con nằm trong phạm vi không gian nội bộ (y < 3400), tuyệt đối không phình to nuốt thẻ ngoại vi.
+ *   1. Smart Snap: Noi edge cha->con khi cha da co Group -> the con tu xep vao o trong ke tiep, Group chi no ra, node phia duoi bi day xuong deu; khong co Group -> giu nguyen vi tri. Gop vao 1 buoc Undo.
+ *   2. Member Fit: Vi tri the KHONG quyet dinh quan he cha-con. Tha the con o dau -> 400ms sau Group cua cha co gian om tron cac the con (theo FM), trung cong thuc renderer, gop vao 1 buoc Undo. Go quan he: xoa mui ten hoac sua FM.
  *   3. Time-Lock Cascade Suppress: Chốt chặn 1500ms dập tắt hoàn toàn vòng lặp đệ quy giữa requestSave và vault.on('modify').
  *   4. Safe Undo Protection: Bảo toàn 100% Undo Stack đơn nhất (chỉ cần 1 lần Ctrl+Z để hoàn tác quan hệ cha-con).
- *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/AUTOFIT/UNDO].
+ *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/SNAP/FIT/UNDO].
  *   6. 1-Click Re-arrange & Flyout Auto-Center: Căn chỉnh toàn diện sơ đồ và đưa trọng tâm về giữa màn hình.
  */
 
@@ -54,6 +54,150 @@ const CANVAS_CONFIG = {
     COLOR_EDGE_JOB_STEP: '6'
 };
 
+// -------------------------------------------------------------
+// NHÓM 1.5: SMART SNAP (HAM THUAN, KHONG PHU THUOC OBSIDIAN - TEST DUOC BANG NODE)
+// Xep the vua duoc noi cha vao o trong ke tiep trong luoi Group cua cha.
+// Cong thuc trung khop compute_bounding_box cua render_audience_canvas.py
+// (pad trai/phai/duoi = PADDING_X, pad tren = PADDING_Y) de renderer khong ghi de ket qua.
+// -------------------------------------------------------------
+const slugOfNode = (n) => {
+    const m = String((n && (n.text || n.label)) || '').match(/\[\[(.*?)\]\]/);
+    return m ? m[1].trim() : null;
+};
+
+const isNodeInsideGroup = (n, g, tol = 30) => (
+    n.x >= g.x - tol &&
+    n.x + n.width <= g.x + g.width + tol &&
+    n.y >= g.y - tol &&
+    n.y + n.height <= g.y + g.height + tol
+);
+
+/**
+ * computeGroupSnap(data, childId, parentSlug, directEdgeId)
+ * Input : data = canvas.getData(); childId = id the con; parentSlug = slug cha; directEdgeId = id mui ten cha->con user vua ve.
+ * Output: { data, moved, slot, shiftY } (ban sao da sua) hoac null neu cha chua co Group / khong tim thay the con.
+ */
+const computeGroupSnap = (data, childId, parentSlug, directEdgeId) => {
+    const out = JSON.parse(JSON.stringify(data));
+    const nodes = out.nodes || [];
+    const group = nodes.find(n => n.type === 'group' && slugOfNode(n) === parentSlug);
+    const child = nodes.find(n => n.id === childId);
+    if (!group || !child) return null;
+    const parent = nodes.find(n => n.type === 'text' && slugOfNode(n) === parentSlug) || null;
+
+    const { CARD_W, CARD_H, GAP_X, GAP_Y, COLS, PADDING_X, PADDING_Y } = CANVAS_CONFIG;
+    const stepX = CARD_W + GAP_X;
+    const stepY = CARD_H + GAP_Y;
+    let moved = false, slot = -1, shiftY = 0;
+
+    if (!isNodeInsideGroup(child, group)) {
+        // 1. Tim o trong dau tien (duyet theo hang, toi da COLS cot) trong luoi cua Group
+        const originX = group.x + PADDING_X;
+        const originY = group.y + PADDING_Y;
+        // O bi chiem = o chong lan (tinh ca nua khoang cach luoi) voi bat ky the nao dang nam trong Group.
+        // Kiem tra chong lan thay vi lam tron toa do: Group co the da no lech luoi (Member Fit / user keo the).
+        const blockers = nodes.filter(n => n.type === 'text' && n !== child && n !== parent && isNodeInsideGroup(n, group));
+        const isSlotFree = (sx, sy) => !blockers.some(n =>
+            n.x < sx + CARD_W + GAP_X / 2 && n.x + n.width > sx - GAP_X / 2 &&
+            n.y < sy + CARD_H + GAP_Y / 2 && n.y + n.height > sy - GAP_Y / 2
+        );
+        slot = 0;
+        while (!isSlotFree(originX + (slot % COLS) * stepX, originY + Math.floor(slot / COLS) * stepY)) slot++;
+        child.x = originX + (slot % COLS) * stepX;
+        child.y = originY + Math.floor(slot / COLS) * stepY;
+        child.width = CARD_W;
+        child.height = CARD_H;
+        moved = true;
+
+        // 2. Chi NOI Group (khong co) de om the moi
+        const oldWidth = group.width;
+        const oldBottom = group.y + group.height;
+        const newRight = Math.max(group.x + group.width, child.x + CARD_W + PADDING_X);
+        const newBottom = Math.max(oldBottom, child.y + CARD_H + PADDING_X);
+        group.width = newRight - group.x;
+        group.height = newBottom - group.y;
+
+        // 3. Group cao them -> day moi node nam duoi day cu xuong dung phan tang them (tranh chong lan tang duoi)
+        shiftY = newBottom - oldBottom;
+        if (shiftY > 0) {
+            for (const n of nodes) {
+                if (n !== group && n !== child && n.y >= oldBottom) n.y += shiftY;
+            }
+        }
+
+        // 4. Group rong ra va cha la Big Audience -> can giua the cha phia tren Group (giong renderer)
+        if (parent && group.width !== oldWidth && String(parent.text || '').includes('`#big`')) {
+            parent.x = group.x + group.width / 2 - parent.width / 2;
+        }
+
+        // 5. Dua the con xuong cuoi mang de importData nang zIndex len tren Group (khong bi Group che)
+        out.nodes = nodes.filter(n => n !== child).concat([child]);
+    }
+
+    // 6. Mui ten: da co Cha->Group thi bo Cha->The (renderer chi sinh Cha->Group); chua co thi thay bang edge moi Cha->Group
+    const edges = out.edges || [];
+    const directEdge = edges.find(e => e.id === directEdgeId);
+    if (directEdge) {
+        const hasGroupEdge = parent && edges.some(e => e.fromNode === parent.id && e.fromSide === 'bottom' && e.toNode === group.id);
+        out.edges = edges.filter(e => e !== directEdge);
+        if (!hasGroupEdge && parent) {
+            out.edges.push({ ...directEdge, id: `${directEdge.id}_grp`, toNode: group.id, toSide: 'top' });
+        }
+    }
+    return { data: out, moved, slot, shiftY };
+};
+
+/**
+ * computeGroupFit(data, membersByParent)
+ * Input : data = canvas.getData(); membersByParent = { slugCha: [slugCon, ...] } lay tu Frontmatter.
+ * Output: { data, fitted: [slugCha...] } (ban sao da sua) hoac null neu khong Group nao can doi.
+ * Logic : Khung Group cua cha P = bounding box cac the con (theo FM) tai vi tri thuc te, trung cong thuc
+ *         compute_bounding_box cua renderer (trai/phai/duoi = PADDING_X, tren = PADDING_Y).
+ *         Chi xu ly Group co >= 2 the con (renderer chi tao Group khi > 1 con).
+ *         Group cua Big Audience doi -> dat lai the Big chinh giua phia tren Group (giong renderer).
+ */
+const computeGroupFit = (data, membersByParent) => {
+    const out = JSON.parse(JSON.stringify(data));
+    const nodes = out.nodes || [];
+    const { PADDING_X, PADDING_Y, BIG_CARD_W, BIG_CARD_H, MOTHER_OFFSET_Y } = CANVAS_CONFIG;
+    const textBySlug = {};
+    for (const n of nodes) {
+        if (n.type !== 'text') continue;
+        const s = slugOfNode(n);
+        if (s) textBySlug[s] = n;
+    }
+    const fitted = [];
+    for (const group of nodes.filter(n => n.type === 'group')) {
+        const pSlug = slugOfNode(group);
+        const members = ((pSlug && membersByParent[pSlug]) || []).map(s => textBySlug[s]).filter(Boolean);
+        if (members.length < 2) continue;
+        const gx = Math.min(...members.map(n => n.x)) - PADDING_X;
+        const gy = Math.min(...members.map(n => n.y)) - PADDING_Y;
+        const gw = Math.max(...members.map(n => n.x + n.width)) - gx + PADDING_X;
+        const gh = Math.max(...members.map(n => n.y + n.height)) - gy + PADDING_X;
+        if (group.x === gx && group.y === gy && group.width === gw && group.height === gh) continue;
+        group.x = gx; group.y = gy; group.width = gw; group.height = gh;
+        fitted.push(pSlug);
+        const parent = textBySlug[pSlug];
+        if (parent && String(parent.text || '').includes('`#big`')) {
+            parent.width = BIG_CARD_W;
+            parent.height = BIG_CARD_H;
+            parent.x = gx + gw / 2 - BIG_CARD_W / 2;
+            parent.y = gy - BIG_CARD_H - MOTHER_OFFSET_Y;
+        }
+    }
+    return fitted.length ? { data: out, fitted } : null;
+};
+
+// Dao parentMap { slugCon: Set|Array<slugCha> } -> { slugCha: [slugCon, ...] }
+const buildMembersByParent = (parentMap) => {
+    const out = {};
+    for (const [child, parents] of Object.entries(parentMap || {})) {
+        for (const p of parents || []) (out[p] = out[p] || []).push(child);
+    }
+    return out;
+};
+
 module.exports = class FactoryCanvasPlugin extends Plugin {
     async onload() {
         console.log('[FactoryCanvas] Plugin loaded: Smooth & Jitter-Free Canvas Controller.');
@@ -69,6 +213,13 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         let isUndoRedoing = false;
         let undoDebounceTimer = null;
         let previousDirectEdges = {}; // slug_con -> slug_cha (theo doi canh truc tiep de bat Undo/Delete chinh xac 100%)
+
+        // --- MEMBER FIT & CANVAS SYNC SCHEDULER STATE ---
+        let isCanvasSyncRunning = false;     // chong 2 lan sync canvas chay chong nhau
+        let pendingCanvasFile = null;        // file canvas cua su kien modify gan nhat (dung khi sync bi hoan)
+        let lastUndoAt = 0;                  // thoi diem Ctrl+Z/Y gan nhat: Member Fit tam dung 1500ms de reconcile Undo chay truoc
+        let memberFitTimer = null;
+        const fitHookedEls = new WeakSet();  // containerEl da gan hook pointerup trong lan load plugin nay
 
         // -------------------------------------------------------------
         // NHÓM 2: HELPER FUNCTIONS (SLUG & YAML PARSER THEO DÒNG)
@@ -231,242 +382,50 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             return null;
         };
 
-        // -------------------------------------------------------------
-        // NHÓM 3: LIVE CANVAS IN-MEMORY SYNCHRONIZER (MƯỢT MÀ, 0 GIẬT DOM)
-        // -------------------------------------------------------------
-        const updateInMemoryCanvasNode = (nodeId, x, y, width, height, label) => {
+
+        // Lay leaf dang mo audience-hierarchy.canvas (null neu chua mo)
+        const getAudienceCanvasLeaf = () => this.app.workspace.getLeavesOfType('canvas')
+            .find(l => l.view?.file?.path?.includes('audience-hierarchy')) || null;
+
+        // Ghi canvas RAM xuong dia NGAY (neu dang dirty) TRUOC khi ghi Frontmatter,
+        // de renderer Python (chay sau khi md doi) doc dung trang thai hien tai, khong ghi de.
+        const flushCanvasToDisk = async () => {
+            const view = getAudienceCanvasLeaf()?.view;
+            if (!view || !view.dirty || typeof view.saveImmediately !== 'function') return;
+            lastPluginWriteTime = Date.now(); // chan vault.on('modify') do chinh plugin ghi
             try {
-                const leaves = this.app.workspace.getLeavesOfType('canvas');
-                for (const leaf of leaves) {
-                    const canvasObj = leaf.view?.canvas;
-                    if (!canvasObj || !canvasObj.nodes) continue;
-                    const nodeInst = canvasObj.nodes.get(nodeId);
-                    if (nodeInst) {
-                        if (x !== undefined) nodeInst.x = x;
-                        if (y !== undefined) nodeInst.y = y;
-                        if (width !== undefined) nodeInst.width = width;
-                        if (height !== undefined) nodeInst.height = height;
-                        if (label !== undefined && nodeInst.label !== undefined) nodeInst.label = label;
-                        if (typeof nodeInst.render === 'function') nodeInst.render();
-                    }
-
-                    // Re-render tất cả edges kết nối với node vừa di chuyển
-                    if (canvasObj.edges) {
-                        for (const [, edgeInst] of canvasObj.edges) {
-                            if (edgeInst.from?.node?.id === nodeId || edgeInst.to?.node?.id === nodeId) {
-                                if (typeof edgeInst.render === 'function') edgeInst.render();
-                            }
-                        }
-                    }
-                }
-            } catch (err) {
-                console.warn('[FactoryCanvas] In-memory update error:', err);
+                await view.saveImmediately();
+            } catch (e) {
+                console.warn('[FactoryCanvas] flushCanvasToDisk error:', e);
             }
         };
 
-        // -------------------------------------------------------------
-        // NHÓM 4: GENTLE AUTO-FIT (CHỈ CO GIÃN KHUNG GROUP, KHÔNG DỊCH THẺ KHÁC)
-        // -------------------------------------------------------------
-        const autoFitGroups = async (canvasData, file) => {
-            const groupNodes = (canvasData.nodes || []).filter(n => n.type === 'group');
-            const textNodes = (canvasData.nodes || []).filter(n => n.type === 'text');
-            const edges = canvasData.edges || [];
-            
-            const nodeById = {};
-            for (const n of canvasData.nodes || []) {
-                nodeById[n.id] = n;
-                if (n.type === 'text') {
-                    n.slug = extractSlug(n.text);
-                }
-            }
-            
-            let canvasModified = false;
+        // MEMBER FIT: Group cua moi cha om tron cac the con (theo FM) tai vi tri hien tai.
+        // getData -> compute -> importData chay dong bo trong 1 tick: khong lech voi RAM.
+        const applyGroupFit = (canvas, membersByParent, reason) => {
+            const res = computeGroupFit(canvas.getData(), membersByParent);
+            if (!res) return false;
+            canvas.importData(res.data, true);
+            logFC('FIT', `${reason}: Group của [${res.fitted.join(', ')}] co giãn ôm thẻ con.`);
+            return true;
+        };
+
+        // Goi 400ms sau pointerup (sau khi Obsidian push history 250ms) -> overrideHistory gop vao buoc Undo cua thao tac keo.
+        // Tam dung khi dang Undo/Redo: reconcile Undo phai doc vi tri the TRUOC khi Group bi co gian.
+        const fitGroupsInRam = async () => {
+            const isBlocked = () => isUndoRedoing || isInternalUpdating || (Date.now() - lastUndoAt < 1500);
+            if (isBlocked()) return;
+            const canvas = getAudienceCanvasLeaf()?.view?.canvas;
+            if (!canvas || typeof canvas.getData !== 'function' || typeof canvas.importData !== 'function') return;
             const vaultParentMap = await getVaultParentMap();
-
-            // Nhận diện toàn bộ Audience Text Nodes có slug hợp lệ
-            const allAudienceNodes = textNodes.filter(n => n.slug);
-
-            // Dọn dẹp các group rác như 'Chưa liên kết cha'
-            const initialNodeCount = canvasData.nodes.length;
-            canvasData.nodes = canvasData.nodes.filter(n => {
-                if (n.type === 'group' && (n.id === 'group_unlinked_audiences' || (n.label && n.label.includes('Chưa liên kết cha')))) {
-                    try {
-                        const leaves = this.app.workspace.getLeavesOfType('canvas');
-                        for (const leaf of leaves) {
-                            const canvasObj = leaf.view?.canvas;
-                            if (canvasObj) {
-                                const nodeInst = canvasObj.nodes?.get(n.id);
-                                if (nodeInst) {
-                                    if (typeof canvasObj.removeNode === 'function') {
-                                        canvasObj.removeNode(nodeInst);
-                                    } else {
-                                        canvasObj.nodes.delete(n.id);
-                                        if (nodeInst.nodeEl && typeof nodeInst.nodeEl.remove === 'function') {
-                                            nodeInst.nodeEl.remove();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    } catch (e) {}
-                    return false;
-                }
-                return true;
-            });
-            if (canvasData.nodes.length !== initialNodeCount) {
-                canvasModified = true;
-            }
-
-            for (const group of groupNodes) {
-                // 1. Xác định Cha của Group từ Mũi tên hoặc Label
-                const incomingEdge = edges.find(e => 
-                    e.toNode === group.id && e.fromSide === 'bottom'
-                );
-                
-                let parentSlug = null;
-                if (incomingEdge) {
-                    const fromNode = nodeById[incomingEdge.fromNode];
-                    if (fromNode) {
-                        parentSlug = extractSlug(fromNode.text || fromNode.label);
-                    }
-                }
-                if (!parentSlug) {
-                    parentSlug = extractSlug(group.label);
-                }
-
-                if (!parentSlug) {
-                    // Group không có cha hợp pháp - bỏ qua
-                    continue;
-                }
-
-                const targetLabel = group.label && group.label.includes(`[[${parentSlug}]]`)
-                    ? group.label
-                    : `📦 NHÓM CON: [[${parentSlug}]]`;
-
-                if (group.label !== targetLabel) {
-                    group.label = targetLabel;
-                    canvasModified = true;
-                    updateInMemoryCanvasNode(group.id, undefined, undefined, undefined, undefined, targetLabel);
-                }
-
-                // 2. Lọc danh sách thành viên hợp pháp (theo Frontmatter hoặc có mũi tên trực tiếp từ parentSlug)
-                const isMember = (node) => {
-                    if (!node.slug) return false;
-                    const pSet = vaultParentMap[node.slug];
-                    if (pSet && pSet.has(parentSlug)) return true;
-                    // Kiểm tra cả mũi tên trực tiếp từ parentSlug trên Canvas
-                    const hasDirectEdge = edges.some(e => {
-                        const fromN = nodeById[e.fromNode];
-                        return fromN && extractSlug(fromN.text || fromN.label) === parentSlug && e.toNode === node.id && (e.fromSide === 'bottom');
-                    });
-                    return hasDirectEdge;
-                };
-
-                // Khung Group CHỈ ôm các thẻ nội bộ nằm trong lưới chuẩn (y < 3400)
-                // Tuyệt đối loại trừ thẻ ngoại vi ở hàng dưới (y >= 3400)
-                const legitimateMembers = allAudienceNodes.filter(n => {
-                    if (!isMember(n)) return false;
-                    if (n.y >= 3400) return false;
-                    const isInsideCurrentGroup = (
-                        n.x >= (group.x - 30) &&
-                        (n.x + n.width) <= (group.x + group.width + 30) &&
-                        n.y >= (group.y - 30) &&
-                        (n.y + n.height) <= (group.y + group.height + 30)
-                    );
-                    return isInsideCurrentGroup;
-                });
-                logFC('AUTOFIT', `Khung Group "${group.label}": Xác định ${legitimateMembers.length} thành viên nội bộ hợp pháp.`);
-
-                // 3. AUTO-EJECT: CHỈ ĐẨY RA NGOÀI KHI THẺ NẰM TRONG KHUNG CỦA MẸ MÀ BỊ XÓA LIÊN KẾT
-                const nonMembers = allAudienceNodes.filter(n => !isMember(n) && n.slug !== parentSlug);
-                const currentGroupX = group.x;
-                const currentGroupY = group.y;
-                const currentGroupW = group.width;
-                const currentGroupH = group.height;
-
-                let ejectOffsetY = currentGroupY + currentGroupH + 60;
-
-                for (const nm of nonMembers) {
-                    const isInsideBox = nm.x >= (currentGroupX - 20) && (nm.x + nm.width) <= (currentGroupX + currentGroupW + 20) &&
-                                       nm.y >= (currentGroupY - 20) && (nm.y + nm.height) <= (currentGroupY + currentGroupH + 20);
-                    if (isInsideBox) {
-                        nm.y = ejectOffsetY;
-                        ejectOffsetY += (nm.height || CANVAS_CONFIG.CARD_H) + 60;
-                        canvasModified = true;
-                        updateInMemoryCanvasNode(nm.id, nm.x, nm.y);
-                    }
-                }
-
-                // 4. CO GIÃN VIỀN KHUNG GROUP ÔM CÁC THẺ HỢP PHÁP
-                if (legitimateMembers.length > 0) {
-                    const minX = Math.min(...legitimateMembers.map(n => n.x));
-                    const minY = Math.min(...legitimateMembers.map(n => n.y));
-                    const maxRight = Math.max(...legitimateMembers.map(n => n.x + n.width));
-                    const maxBottom = Math.max(...legitimateMembers.map(n => n.y + n.height));
-
-                    const targetX = minX - CANVAS_CONFIG.PADDING_X;
-                    const targetY = minY - CANVAS_CONFIG.PADDING_Y;
-                    const targetW = maxRight - targetX + CANVAS_CONFIG.PADDING_X;
-                    const targetH = maxBottom - targetY + CANVAS_CONFIG.PADDING_X;
-
-                    const diffX = Math.abs(group.x - targetX);
-                    const diffY = Math.abs(group.y - targetY);
-                    const diffW = Math.abs(group.width - targetW);
-                    const diffH = Math.abs(group.height - targetH);
-
-                    if (diffX > 5 || diffY > 5 || diffW > 5 || diffH > 5) {
-                        group.x = targetX;
-                        group.y = targetY;
-                        group.width = targetW;
-                        group.height = targetH;
-                        canvasModified = true;
-                        updateInMemoryCanvasNode(group.id, targetX, targetY, targetW, targetH);
-
-                        // Căn Thẻ Cha nằm ở chính giữa phía trên Khung Group
-                        const parentNode = textNodes.find(n => n.slug === parentSlug);
-                        if (parentNode) {
-                            const newParentX = targetX + targetW / 2 - parentNode.width / 2;
-                            const newParentY = targetY - parentNode.height - CANVAS_CONFIG.MOTHER_OFFSET_Y;
-                            if (Math.abs(parentNode.x - newParentX) > 5 || Math.abs(parentNode.y - newParentY) > 5) {
-                                parentNode.x = newParentX;
-                                parentNode.y = newParentY;
-                                updateInMemoryCanvasNode(parentNode.id, newParentX, newParentY);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (canvasModified) {
-                lastPluginWriteTime = Date.now();
-                // Lưu ngầm phi phá hủy thông qua API bản địa của Canvas, không reload view và bảo toàn 100% Undo Stack
-                try {
-                    const leaves = this.app.workspace.getLeavesOfType('canvas');
-                    for (const leaf of leaves) {
-                        const canvasObj = leaf.view?.canvas;
-                        if (!canvasObj) continue;
-
-                        if (typeof canvasObj.requestSave === 'function') {
-                            canvasObj.requestSave();
-                        }
-
-                        // Re-render từng edge trong bộ nhớ Canvas
-                        if (canvasObj.edges) {
-                            for (const [, edgeInst] of canvasObj.edges) {
-                                if (typeof edgeInst.render === 'function') edgeInst.render();
-                            }
-                        }
-
-                        // Yêu cầu Canvas vẽ lại toàn bộ frame
-                        if (typeof canvasObj.requestFrame === 'function') {
-                            canvasObj.requestFrame();
-                        }
-                    }
-                } catch (err) {
-                    console.warn('[FactoryCanvas] autoFitGroups: Error requesting save / re-rendering:', err);
-                }
+            if (isBlocked()) return; // kiem tra lai sau await (user co the vua Ctrl+Z)
+            if (applyGroupFit(canvas, buildMembersByParent(vaultParentMap), 'pointerup')) {
+                if (typeof canvas.overrideHistory === 'function') canvas.overrideHistory();
+                if (typeof canvas.requestFrame === 'function') canvas.requestFrame();
             }
         };
+
+
 
         // -------------------------------------------------------------
         // NHÓM 5: SILENT ORIGIN-SIDE REVERSE-SYNC (ĐỒNG BỘ NGẦM)
@@ -502,6 +461,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             }
 
             const activeDirectEdges = {}; // slug_con -> slug_cha (Mui ten day tro truc tiep vao the con)
+            const directEdgeInfo = {}; // slug_con -> { edgeId, childId, parentSlug } phuc vu Smart Snap
             const activeGroupParents = new Set(); // slug_cha (Mui ten day tro vao Khung Group)
             let canvasColorModified = false;
 
@@ -525,6 +485,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     if (toNode.type === 'text' && toNode.slug) {
                         if (fromSlug !== toNode.slug) {
                             activeDirectEdges[toNode.slug] = fromSlug;
+                            directEdgeInfo[toNode.slug] = { edgeId: edge.id, childId: toNode.id, parentSlug: fromSlug };
                             logFC('SYNC', `Phát hiện cạnh phả hệ: [${fromSlug}] -> [${toNode.slug}]`);
                         }
                     }
@@ -559,7 +520,9 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     parentMap[slug] = new Set([activeDirectEdges[slug]]);
                     logFC('SYNC', `Thẻ [${slug}] nhận cha trực tiếp từ mũi tên: [${activeDirectEdges[slug]}]`);
                 } else {
-                    // Thẻ không có mũi tên trực tiếp: CHỈ giữ lại cha p nếu thẻ thực sự nằm BÊN TRONG Khung Group của p
+                    // Thẻ không có mũi tên trực tiếp: giữ cha p nếu p có Group và có mũi tên p->Group.
+                    // Thao tác trực tiếp: VỊ TRÍ KHÔNG quyết định quan hệ (kéo thẻ ra ngoài -> Group nở ra ôm thẻ, Member Fit).
+                    // Undo/Redo (skipRearrange): vẫn yêu cầu thẻ nằm trong Group để gỡ quan hệ khi hoàn tác nối edge + Smart Snap.
                     const currentParents = vaultParentMap[slug] || new Set();
                     const retainedParents = new Set();
                     for (const p of currentParents) {
@@ -571,10 +534,12 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                             (tn.y + (tn.height || CANVAS_CONFIG.CARD_H)) <= (groupForP.y + groupForP.height + 30)
                         );
 
-                        if (isInsideGroupOfP && activeGroupParents.has(p)) {
+                        const hasGroupLink = Boolean(groupForP) && activeGroupParents.has(p);
+                        const keep = skipRearrange ? (hasGroupLink && isInsideGroupOfP) : hasGroupLink;
+                        if (keep) {
                             retainedParents.add(p);
                         } else {
-                            logFC('SYNC', `Xóa quan hệ phả hệ [${p}] khỏi thẻ [${slug}] do không có mũi tên trực tiếp và không nằm trong khung nhóm.`);
+                            logFC('SYNC', `Xóa quan hệ phả hệ [${p}] khỏi thẻ [${slug}] (không có mũi tên trực tiếp/mũi tên vào Group${skipRearrange ? ' hoặc nằm ngoài Group sau Undo/Redo' : ''}).`);
                         }
                     }
                     parentMap[slug] = retainedParents;
@@ -610,6 +575,37 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     console.warn('[FactoryCanvas] Error updating edge colors in RAM:', e);
                 }
             }
+
+            // 2.5 SMART SNAP: the vua duoc noi cha (thao tac truc tiep, KHONG ap dung cho Undo/Redo)
+            // duoc xep vao o trong ke tiep trong Group cua cha. Ap trong RAM + overrideHistory
+            // de gop vao chinh buoc Undo cua thao tac noi edge (1 lan Ctrl+Z hoan tac tat ca).
+            if (!skipRearrange && Date.now() - lastUndoAt >= 1500) {
+                const snapCanvas = getAudienceCanvasLeaf()?.view?.canvas;
+                if (snapCanvas && typeof snapCanvas.getData === 'function' && typeof snapCanvas.importData === 'function') {
+                    let snappedCount = 0;
+                    for (const [childSlug, info] of Object.entries(directEdgeInfo)) {
+                        const pSlug = activeDirectEdges[childSlug];
+                        if (!pSlug || pSlug !== info.parentSlug) continue;
+                        // Frontmatter da co cha nay -> khong phai thao tac moi (vd: vua reload plugin) -> khong snap
+                        if (vaultParentMap[childSlug] && vaultParentMap[childSlug].has(pSlug)) continue;
+                        const result = computeGroupSnap(snapCanvas.getData(), info.childId, pSlug, info.edgeId);
+                        if (!result) continue; // Cha chua co Group -> giu nguyen vi tri the (TC-11)
+                        snapCanvas.importData(result.data, true);
+                        snappedCount++;
+                        logFC('SNAP', `Xếp [${childSlug}] vào Group của [${pSlug}] (ô ${result.slot}, đẩy tầng dưới ${result.shiftY}px).`);
+                    }
+                    // Member Fit du phong (thao tac khong qua pointerup, vd: phim mui ten): Group om the con theo quan he sau sync
+                    const fitted = applyGroupFit(snapCanvas, buildMembersByParent(parentMap), 'sync');
+                    if (snappedCount > 0 || fitted) {
+                        if (typeof snapCanvas.overrideHistory === 'function') snapCanvas.overrideHistory();
+                        if (typeof snapCanvas.requestFrame === 'function') snapCanvas.requestFrame();
+                    }
+                }
+            }
+
+            // 2.6 FLUSH: ghi canvas RAM xuong dia TRUOC khi ghi Frontmatter (ap dung ca Undo/Redo),
+            // tranh renderer Python doc canvas cu roi ghi de trang thai vua thay doi.
+            await flushCanvasToDisk();
 
             const audienceFiles = this.app.vault.getFiles().filter(f => 
                 f.path.startsWith('01-Atomic/Audiences') && f.extension === 'md' && !f.name.startsWith('_')
@@ -1359,8 +1355,9 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
         const triggerUndoSuppress = () => {
             isUndoRedoing = true;
+            lastUndoAt = Date.now();
+            clearTimeout(memberFitTimer);
             clearTimeout(canvasSyncDebounceTimer);
-            clearTimeout(undoDebounceTimer);
             // Phản hồi nhanh sau 400ms để người dùng thấy Frontmatter xóa ngay sau Undo
             undoDebounceTimer = setTimeout(() => {
                 isUndoRedoing = false;
@@ -1402,10 +1399,27 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             }, true);
         };
 
+        // MEMBER FIT HOOK: user tha chuot tren canvas (keo the, keo canh...) -> 400ms sau co gian Group om the con.
+        // registerDomEvent tu go listener khi unload plugin (khong tich luy qua cac lan reload - TC-10).
+        const attachMemberFitHook = (leaf) => {
+            const containerEl = leaf?.view?.containerEl;
+            if (!containerEl || fitHookedEls.has(containerEl)) return;
+            fitHookedEls.add(containerEl);
+            this.registerDomEvent(containerEl, 'pointerup', (evt) => {
+                if (!leaf.view?.file?.path?.includes('audience-hierarchy')) return;
+                const t = evt.target;
+                if (t && typeof t.closest === 'function' &&
+                    t.closest('.canvas-controls, .canvas-control-item, .menu, .factory-autocenter-control, .factory-autocenter-flyout')) return;
+                clearTimeout(memberFitTimer);
+                memberFitTimer = setTimeout(() => { fitGroupsInRam(); }, 400);
+            }, true);
+        };
+
         const syncUndoHooks = () => {
             const leaves = this.app.workspace.getLeavesOfType('canvas');
             for (const leaf of leaves) {
                 attachUndoRedoToolbarHook(leaf);
+                attachMemberFitHook(leaf);
             }
         };
         this.registerEvent(this.app.workspace.on('layout-change', syncUndoHooks));
@@ -1437,34 +1451,45 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         // -------------------------------------------------------------
         const handleAudienceMdChange = async () => {
             // Khi file Audience Markdown bị sửa, Frontmatter đã lưu quan hệ phả hệ.
-            // KHÔNG tự động gọi autoFitGroups vì việc này sẽ kích hoạt cascade loop làm phình Group nuốt thẻ ngoại vi.
-            // Việc sắp xếp thẻ vào Group chỉ diễn ra khi người dùng bấm nút 1-Click Re-arrange.
+            // KHÔNG co giãn/sắp xếp Group tại đây: renderer Python vẽ lại canvas theo FM; Member Fit chỉ chạy theo thao tác trên canvas.
             return;
+        };
+
+        // CANVAS SYNC SCHEDULER: su kien canvas KHONG BAO GIO bi bo.
+        // Dang time-lock 1500ms sau lan plugin ghi / dang co sync khac chay -> hoan lai, khong return.
+        // syncCanvasToVault idempotent (khong ghi khi khong doi) nen hoan lai khong tao vong lap.
+        const scheduleCanvasSync = (delayMs) => {
+            clearTimeout(canvasSyncDebounceTimer);
+            canvasSyncDebounceTimer = setTimeout(runCanvasSync, delayMs);
+        };
+
+        const runCanvasSync = async () => {
+            if (isUndoRedoing || !pendingCanvasFile) return; // reconcileAfterUndo se doc RAM va dong bo
+            const lockLeft = lastPluginWriteTime + 1500 - Date.now();
+            if (isCanvasSyncRunning || isInternalUpdating || lockLeft > 0) {
+                scheduleCanvasSync(Math.max(300, lockLeft + 50));
+                return;
+            }
+            isCanvasSyncRunning = true;
+            try {
+                const file = pendingCanvasFile;
+                const canvasObj = getAudienceCanvasLeaf()?.view?.canvas;
+                const canvasData = await getLiveCanvasData(canvasObj, file);
+                await syncCanvasToVault(canvasData, file.path);
+            } catch (e) {
+                console.error('[FactoryCanvas] Error handling canvas modify:', e);
+            } finally {
+                isCanvasSyncRunning = false;
+            }
         };
 
         this.registerEvent(
             this.app.vault.on('modify', async (file) => {
-                // 1. Khi file Canvas bị sửa bởi thao tác của User
+                // 1. Khi file Canvas bị sửa (user, Obsidian autosave, renderer)
                 if (file.extension === 'canvas' && file.path.includes('audience-hierarchy')) {
-                    if (isInternalUpdating) return;
                     if (isUndoRedoing) return;
-                    // BỎ QUA nếu sự kiện xuất phát từ chính Plugin ghi đĩa trong vòng 1500ms
-                    if (Date.now() - lastPluginWriteTime < 1500) return;
-
-                    clearTimeout(canvasSyncDebounceTimer);
-                    canvasSyncDebounceTimer = setTimeout(async () => {
-                        try {
-                            const leaves = this.app.workspace.getLeavesOfType('canvas');
-                            const targetLeaf = leaves.find(l => l.view?.file?.path?.includes('audience-hierarchy'));
-                            const canvasObj = targetLeaf?.view?.canvas;
-                            const canvasData = await getLiveCanvasData(canvasObj, file);
-                            
-                            // Đồng bộ Mũi tên ngầm vào Frontmatter (TUYỆT ĐỐI KHÔNG tự ý gọi autoFitGroups tại đây để tránh cascade loop)
-                            await syncCanvasToVault(canvasData, file.path);
-                        } catch (e) {
-                            console.error('[FactoryCanvas] Error handling canvas modify:', e);
-                        }
-                    }, 300);
+                    pendingCanvasFile = file;
+                    scheduleCanvasSync(300);
                 }
                 // 2. Khi file Audience Markdown bị sửa frontmatter ngoài Canvas
                 else if (file.extension === 'md' && file.path.startsWith('01-Atomic/Audiences')) {
@@ -1494,3 +1519,8 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         }
     }
 };
+
+// Export ham thuan de kiem thu bang Node (Obsidian chi dung default export la class Plugin)
+module.exports.computeGroupSnap = computeGroupSnap;
+module.exports.computeGroupFit = computeGroupFit;
+module.exports.buildMembersByParent = buildMembersByParent;
