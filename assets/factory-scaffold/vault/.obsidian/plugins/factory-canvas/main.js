@@ -1,6 +1,6 @@
 /**
  * factory-canvas - main.js
- * Last update: 05/10/2026 15:10 (GMT+7)
+ * Last update: 06/10/2026 11:10 (GMT+7)
  * Vai tro: Obsidian Micro-Plugin chuyen trach dieu khien giao dien Canvas: Live RAM Data Extractor, Spatial Group Isolation, Gentle Auto-Fit, Bidirectional Edge Sync, Safe Undo Protection, Structured Debug Logging, 1-Click Re-arrange & Flyout Auto-Center.
  * Su dung khi: Chạy tự động trong Obsidian khi người dùng mở và tương tác trên file audience-hierarchy.canvas.
  * Output: 
@@ -8,8 +8,8 @@
  *   2. Member Fit: Vi tri the KHONG quyet dinh quan he cha-con. Tha the con o dau -> 400ms sau Group cua cha co gian om tron cac the con (theo FM), trung cong thuc renderer, gop vao 1 buoc Undo. Go quan he: xoa mui ten hoac sua FM.
  *   3. Time-Lock Cascade Suppress: Chốt chặn 1500ms dập tắt hoàn toàn vòng lặp đệ quy giữa requestSave và vault.on('modify').
  *   4. Safe Undo Protection: Bảo toàn 100% Undo Stack đơn nhất (chỉ cần 1 lần Ctrl+Z để hoàn tác quan hệ cha-con).
- *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/SNAP/FIT/UNDO].
- *   6. 1-Click Re-arrange & Flyout Auto-Center: Căn chỉnh toàn diện sơ đồ và đưa trọng tâm về giữa màn hình.
+ *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/SNAP/FIT/UNDO/ARRANGE].
+ *   6. 1-Click Re-arrange (Tree Layout) & Flyout Auto-Center: Khu cay (moi cay cha-con, nhanh ngang cap dat canh nhau cung tang, chuoi next step lien ke, ve tinh sat doi tac) + Khu tu do (luoi 5 cot) - xem buildArrangedCanvas; dua trong tam so do ve giua man hinh.
  */
 
 const { Plugin, Notice, setIcon } = require('obsidian');
@@ -41,6 +41,8 @@ const CANVAS_CONFIG = {
     PADDING_Y: 80,
     TIER_GAP: 160,
     MOTHER_OFFSET_Y: 150,
+    ZONE_GAP: 400,      // Re-arrange: khoang cach doc giua cac bang khoi va giua Khu cay - Khu tu do
+    BLOCK_GAP: 440,     // Re-arrange: khoang cach ngang giua cac khoi trong cung bang
     
     // Bảng màu chuẩn (Graph-driven colors)
     COLOR_ROOT: '1',
@@ -196,6 +198,307 @@ const buildMembersByParent = (parentMap) => {
         for (const p of parents || []) (out[p] = out[p] || []).push(child);
     }
     return out;
+};
+
+// -------------------------------------------------------------
+// NHÓM 1.6: RE-ARRANGE LAYOUT (HAM THUAN, KHONG PHU THUOC OBSIDIAN - TEST DUOC BANG NODE)
+// Thiet ke: factory-canvas-rearrange-design.md. Cha-con quyet dinh the nam o dau; next step quyet dinh
+// the nam canh ai (khi khong pha cha-con); the khong lien ket gom ve Khu tu do.
+// -------------------------------------------------------------
+/**
+ * computeArrangeLayout(cards, parentMap, nextStepMap)
+ * Input : cards = [{ id, slug, x, y, isBig }] (moi slug 1 the); parentMap/nextStepMap = { slug: Iterable<slug> } tu Frontmatter.
+ * Output: { pos: { id: {x, y, width, height} }, groups: [{ parentSlug, x, y, width, height }], primaryKids: { slugCha: [slugCon] }, bigSlug }
+ */
+const computeArrangeLayout = (cards, parentMap, nextStepMap) => {
+    const C = CANVAS_CONFIG;
+    const stepX = C.CARD_W + C.GAP_X, stepY = C.CARD_H + C.GAP_Y;
+    const bySlug = new Map(cards.map(c => [c.slug, c]));
+    const sizeOf = (s) => (bySlug.get(s).isBig ? [C.BIG_CARD_W, C.BIG_CARD_H] : [C.CARD_W, C.CARD_H]);
+
+    // 1. Khoa thu tu doc on dinh: hang luoi (theo tam the) -> x -> slug. Chay Re-arrange lan 2 cho cung ket qua.
+    const readKey = (s) => { const c = bySlug.get(s); return [Math.floor((c.y + sizeOf(s)[1] / 2) / stepY), c.x, s]; };
+    const cmp = (a, b) => {
+        const ka = readKey(a), kb = readKey(b);
+        for (let i = 0; i < 3; i++) { if (ka[i] < kb[i]) return -1; if (ka[i] > kb[i]) return 1; }
+        return 0;
+    };
+
+    // 2. Quan he chi tinh giua cac the dang co tren canvas
+    const parentsOf = {}, kidsAll = {}, nextOut = {}, nextIn = {};
+    for (const s of bySlug.keys()) { parentsOf[s] = []; kidsAll[s] = []; nextOut[s] = []; nextIn[s] = []; }
+    for (const s of bySlug.keys()) {
+        for (const p of (parentMap[s] || [])) if (bySlug.has(p) && p !== s && !parentsOf[s].includes(p)) { parentsOf[s].push(p); kidsAll[p].push(s); }
+        for (const t of (nextStepMap[s] || [])) if (bySlug.has(t) && t !== s && !nextOut[s].includes(t)) { nextOut[s].push(t); nextIn[t].push(s); }
+    }
+    for (const s of bySlug.keys()) { kidsAll[s].sort(cmp); nextOut[s].sort(cmp); nextIn[s].sort(cmp); }
+    const all = [...bySlug.keys()].sort(cmp);
+
+    // 3. Gan cha chinh: duyet tu goc (cha truoc con). The nhieu cha chi xep 1 lan, duoi cha duoc duyet toi dau tien.
+    const primaryKids = {}, inTree = new Set(), treeRoots = [];
+    const claim = (root) => {
+        inTree.add(root); treeRoots.push(root);
+        const queue = [root];
+        while (queue.length) {
+            const p = queue.shift();
+            for (const k of kidsAll[p]) {
+                if (inTree.has(k)) continue;
+                inTree.add(k); (primaryKids[p] = primaryKids[p] || []).push(k); queue.push(k);
+            }
+        }
+    };
+    const big = cards.find(c => c.isBig && parentsOf[c.slug].length === 0);
+    const bigSlug = big ? big.slug : null;
+    if (bigSlug) claim(bigSlug);
+    for (const s of all) if (!inTree.has(s) && parentsOf[s].length === 0 && kidsAll[s].length > 0) claim(s);
+    for (const s of all) if (!inTree.has(s) && parentsOf[s].length > 0) claim(s); // vong cha-con khong co goc: cat vong tai the dau tien
+    const kidsOf = (s) => primaryKids[s] || [];
+
+    // 4. Gom the thanh chuoi next step (chi xet lien ket trong tap members). Chuoi xep theo khoa doc cua the dau.
+    const toChains = (members) => {
+        const set = new Set(members), seen = new Set(), chains = [];
+        for (const s0 of [...members].sort(cmp)) {
+            if (seen.has(s0)) continue;
+            const compSet = new Set([s0]), stack = [s0];
+            while (stack.length) {
+                const u = stack.pop();
+                for (const v of [...nextOut[u], ...nextIn[u]]) if (set.has(v) && !compSet.has(v)) { compSet.add(v); stack.push(v); }
+            }
+            const comp = [...compSet].sort(cmp), chain = [];
+            const visit = (u) => { if (seen.has(u)) return; seen.add(u); chain.push(u); for (const v of nextOut[u]) if (compSet.has(v)) visit(v); };
+            for (const st of comp.filter(u => !nextIn[u].some(v => compSet.has(v)))) visit(st);
+            for (const u of comp) visit(u); // con sot do vong next step: cat vong tai the co khoa doc nho nhat
+            chains.push(chain);
+        }
+        return chains.sort((a, b) => cmp(a[0], b[0]));
+    };
+
+    // 5. The ngoai cay: ve tinh (next step toi the cay), chuoi doc lap, the tu do
+    const outside = all.filter(s => !inTree.has(s));
+    const freeCards = outside.filter(s => nextOut[s].length + nextIn[s].length === 0);
+    const satByAnchor = {}, soloChains = [];
+    for (const chain of toChains(outside.filter(s => nextOut[s].length + nextIn[s].length > 0))) {
+        let anchor = null;
+        for (const s of chain) {
+            const o = nextOut[s].find(t => inTree.has(t)); if (o) { anchor = { tree: o, side: 'left' }; break; }
+            const i = nextIn[s].find(t => inTree.has(t)); if (i) { anchor = { tree: i, side: 'right' }; break; }
+        }
+        if (!anchor) { soloChains.push(chain); continue; }
+        const slot = (satByAnchor[anchor.tree] = satByAnchor[anchor.tree] || { left: [], right: [] });
+        slot[anchor.side].push(chain);
+    }
+
+    // 6. Box cuc bo: items (the), groups (khung), bien minX/maxX/maxY, anchorX (diem mui ten di vao tu phia tren)
+    const newBox = () => ({ items: [], groups: [], minX: Infinity, maxX: -Infinity, maxY: -Infinity, anchorX: 0 });
+    const addItem = (b, s, x, y) => {
+        const [w, h] = sizeOf(s);
+        b.items.push({ s, x, y, w, h });
+        b.minX = Math.min(b.minX, x); b.maxX = Math.max(b.maxX, x + w); b.maxY = Math.max(b.maxY, y + h);
+    };
+    const addGroup = (b, g) => {
+        b.groups.push(g);
+        b.minX = Math.min(b.minX, g.x); b.maxX = Math.max(b.maxX, g.x + g.width); b.maxY = Math.max(b.maxY, g.y + g.height);
+    };
+    const merge = (b, o, dx, dy) => {
+        for (const it of o.items) addItem(b, it.s, it.x + dx, it.y + dy);
+        for (const g of o.groups) addGroup(b, { ...g, x: g.x + dx, y: g.y + dy });
+    };
+    // Chuoi ve tinh dat sat ben trai (xEdge = mep trai doi tac) hoac ben phai (xEdge = mep phai), cung hang y
+    const placeSats = (b, chains, side, xEdge, y) => {
+        let cursor = xEdge;
+        for (const chain of chains) {
+            const w = chain.length * stepX - C.GAP_X;
+            const x0 = side === 'left' ? cursor - C.GAP_X - w : cursor + C.GAP_X;
+            chain.forEach((s, i) => addItem(b, s, x0 + i * stepX, y));
+            cursor = side === 'left' ? x0 : x0 + w;
+        }
+    };
+
+    // 7. Khoi con cua p (y = 0 la dinh Group ao): 1 con -> the con dung rieng; >= 2 con -> Group luoi + tang nhanh con
+    const layoutKids = (p) => {
+        const kids = kidsOf(p);
+        if (kids.length === 0) return null;
+        if (kids.length === 1) {
+            const sb = layoutStanding(kids[0]);
+            const b = newBox(); merge(b, sb, 0, C.PADDING_Y); b.anchorX = sb.anchorX;
+            return b;
+        }
+        // 7.1 Luoi: chuoi la truoc, chuoi co the co con xuong cuoi; chuoi <= COLS khong bi cat ngang hang
+        const isBranch = (ch) => ch.some(s => kidsOf(s).length > 0);
+        const chains = toChains(kids);
+        const cell = {};
+        let idx = 0;
+        for (const ch of [...chains.filter(ch => !isBranch(ch)), ...chains.filter(isBranch)]) {
+            const col = idx % C.COLS;
+            if (col !== 0 && col + ch.length > C.COLS) idx += C.COLS - col; // chuoi khong vua phan con lai -> sang hang moi
+            for (const s of ch) { cell[s] = [idx % C.COLS, Math.floor(idx / C.COLS)]; idx++; }
+        }
+        const b = newBox();
+        for (const s of kids) addItem(b, s, C.PADDING_X + cell[s][0] * stepX, C.PADDING_Y + cell[s][1] * stepY);
+        const gW = Math.max(...b.items.map(it => it.x + it.w)) + C.PADDING_X;
+        const gH = Math.max(...b.items.map(it => it.y + it.h)) + C.PADDING_X;
+        addGroup(b, { parentSlug: p, x: 0, y: 0, width: gW, height: gH });
+        // 7.2 Ve tinh cua the trong Group: sat ngoai mep Group, cung hang voi doi tac
+        const rows = {};
+        for (const s of kids) if (satByAnchor[s]) (rows[cell[s][1]] = rows[cell[s][1]] || []).push(s);
+        for (const [r, list] of Object.entries(rows)) {
+            const y = C.PADDING_Y + Number(r) * stepY;
+            list.sort((a, c) => cell[a][0] - cell[c][0]);
+            placeSats(b, list.flatMap(s => satByAnchor[s].left), 'left', 0, y);
+            placeSats(b, [...list].reverse().flatMap(s => satByAnchor[s].right), 'right', gW, y);
+        }
+        // 7.3 Tang nhanh con: cac nhanh dat canh nhau duoi Group theo thu tu luoi, can giua duoi the cha neu con cho
+        let prevMaxX = null;
+        const branchKids = kids.filter(s => kidsOf(s).length > 0).sort((a, c) => (cell[a][1] - cell[c][1]) || (cell[a][0] - cell[c][0]));
+        for (const s of branchKids) {
+            const kb = layoutKids(s);
+            const it = b.items.find(i => i.s === s);
+            let dx = it.x + it.w / 2 - kb.anchorX;
+            if (prevMaxX !== null) dx = Math.max(dx, prevMaxX + C.GAP_X - kb.minX);
+            merge(b, kb, dx, gH + C.TIER_GAP);
+            prevMaxX = kb.maxX + dx;
+        }
+        b.anchorX = gW / 2;
+        return b;
+    };
+    // 8. The dung rieng: can giua tren khoi con (mui ten doc), dinh khoi con cach day the MOTHER_OFFSET_Y; ve tinh 2 ben
+    const layoutStanding = (s) => {
+        const b = newBox(), [w, h] = sizeOf(s);
+        const kb = layoutKids(s);
+        const x = kb ? kb.anchorX - w / 2 : 0;
+        addItem(b, s, x, 0);
+        if (kb) merge(b, kb, 0, h + C.MOTHER_OFFSET_Y);
+        const sats = satByAnchor[s];
+        if (sats) { placeSats(b, sats.left, 'left', x, 0); placeSats(b, sats.right, 'right', x + w, 0); }
+        b.anchorX = x + w / 2;
+        return b;
+    };
+
+    // 9. Dat khoi: bang 1 = cay Big (Group L1 tai START_X - PADDING_X nhu bo cuc cu); bang 2+ = cay khac + chuoi doc lap
+    const pos = {}, groups = [];
+    const put = (b, dx, dy) => {
+        for (const it of b.items) pos[bySlug.get(it.s).id] = { x: it.x + dx, y: it.y + dy, width: it.w, height: it.h };
+        for (const g of b.groups) groups.push({ ...g, x: g.x + dx, y: g.y + dy });
+    };
+    const left0 = C.START_X - C.PADDING_X;
+    let bandY = C.START_Y - C.PADDING_Y - C.BIG_CARD_H - C.MOTHER_OFFSET_Y;
+    let zoneBottom = null, maxBandW = C.COLS * stepX - C.GAP_X + 2 * C.PADDING_X;
+    if (bigSlug) {
+        const bb = layoutStanding(bigSlug);
+        const g1 = bb.groups.find(g => g.parentSlug === bigSlug);
+        const hasKids = kidsOf(bigSlug).length > 0;
+        // Big khong co con: renderer dat Big theo bbox rong mac dinh (50, 550, 2000, 1000) -> dat trung de renderer khong ghi de
+        const dx = hasKids ? left0 - (g1 ? g1.x : bb.minX) : 50 + 1000 - C.BIG_CARD_W / 2 - bb.items.find(it => it.s === bigSlug).x;
+        const dy = hasKids ? bandY : 550 - C.BIG_CARD_H - C.MOTHER_OFFSET_Y;
+        put(bb, dx, dy);
+        zoneBottom = dy + bb.maxY;
+        maxBandW = Math.max(maxBandW, bb.maxX - bb.minX);
+        bandY = zoneBottom + C.ZONE_GAP;
+    }
+    const soloBox = (ch) => { const b = newBox(); ch.forEach((s, i) => addItem(b, s, i * stepX, 0)); return b; };
+    const units = [
+        ...toChains(treeRoots.filter(s => s !== bigSlug)).map(ch => ({ head: ch[0], boxes: ch.map(layoutStanding) })),
+        ...soloChains.map(ch => ({ head: ch[0], boxes: [soloBox(ch)] }))
+    ].sort((a, b) => cmp(a.head, b.head));
+    let cursor = left0, bandBottom = null;
+    for (const u of units) for (const b of u.boxes) {
+        const w = b.maxX - b.minX;
+        if (cursor > left0 && cursor + w > left0 + maxBandW) { bandY = bandBottom + C.ZONE_GAP; cursor = left0; }
+        put(b, cursor - b.minX, bandY);
+        cursor += w + C.BLOCK_GAP;
+        bandBottom = Math.max(bandBottom === null ? -Infinity : bandBottom, bandY + b.maxY);
+        zoneBottom = Math.max(zoneBottom === null ? -Infinity : zoneBottom, bandBottom);
+    }
+
+    // 10. Khu tu do: luoi COLS cot lien mach theo thu tu doc, cach Khu cay ZONE_GAP
+    const freeY = zoneBottom === null ? C.START_Y : zoneBottom + C.ZONE_GAP;
+    freeCards.forEach((s, i) => {
+        pos[bySlug.get(s).id] = { x: C.START_X + (i % C.COLS) * stepX, y: freeY + Math.floor(i / C.COLS) * stepY, width: C.CARD_W, height: C.CARD_H };
+    });
+    return { pos, groups, primaryKids, bigSlug };
+};
+
+/**
+ * buildArrangedCanvas(canvasData, parentMap, nextStepMap)
+ * Input : canvasData doc tu file .canvas; parentMap/nextStepMap tu Frontmatter.
+ * Output: { data, directEdges } - data = ban sao canvas da Re-arrange (node, group, edge); directEdges = { slugCon: slugCha } cho mui ten Cha->The.
+ * Logic : dat vi tri theo computeArrangeLayout; cap nhat/tao/xoa Group theo cha co >= 2 con; sinh lai mui ten pha he + job step, giu mau user.
+ */
+const buildArrangedCanvas = (canvasData, parentMap, nextStepMap) => {
+    const data = JSON.parse(JSON.stringify(canvasData));
+    const nodes = data.nodes || [];
+    // 1. Chi muc the audience theo slug (bo truong 'slug' do phien ban cu ghi nham vao file -> renderer ghi de canvas)
+    const textBySlug = new Map();
+    for (const n of nodes) {
+        delete n.slug;
+        if (n.type !== 'text') continue;
+        const s = slugOfNode(n);
+        if (s && !textBySlug.has(s)) textBySlug.set(s, n);
+    }
+    const cards = [...textBySlug].map(([slug, n]) => ({ id: n.id, slug, x: n.x, y: n.y, isBig: String(n.text || '').includes('#big') }));
+    const layout = computeArrangeLayout(cards, parentMap, nextStepMap);
+    const nodeById = new Map(nodes.map(n => [n.id, n]));
+    for (const [id, p] of Object.entries(layout.pos)) Object.assign(nodeById.get(id), p);
+
+    // 2. Group: cap nhat theo layout; xoa group cha khong con >= 2 con, group trung lap, group rac 'Chua lien ket cha'
+    const wanted = new Map(layout.groups.map(g => [g.parentSlug, g]));
+    const groupIdBySlug = {};
+    data.nodes = nodes.filter(n => {
+        if (n.type !== 'group') return true;
+        const ps = slugOfNode(n);
+        if (!ps) return !(n.id === 'group_unlinked_audiences' || String(n.label || '').includes('Chưa liên kết cha'));
+        const g = wanted.get(ps);
+        if (!g || groupIdBySlug[ps]) return false;
+        Object.assign(n, { x: g.x, y: g.y, width: g.width, height: g.height });
+        groupIdBySlug[ps] = n.id;
+        return true;
+    });
+    for (const g of layout.groups) {
+        if (groupIdBySlug[g.parentSlug]) continue;
+        const isL1 = g.parentSlug === layout.bigSlug;
+        const id = isL1 ? 'group_little_audiences' : `group_sub_${g.parentSlug}`;
+        data.nodes.unshift({
+            id, type: 'group', label: `📦 NHÓM CON (Little Audiences): [[${g.parentSlug}]]`,
+            x: g.x, y: g.y, width: g.width, height: g.height,
+            color: isL1 ? CANVAS_CONFIG.COLOR_GROUP_L1 : CANVAS_CONFIG.COLOR_GROUP_L2
+        });
+        groupIdBySlug[g.parentSlug] = id;
+    }
+
+    // 3. Mui ten: pha he theo cha chinh (>= 2 con -> Cha->Group, 1 con -> Cha->The) + job step.
+    //    Giu id + mau cua edge cu cung (from, side, to, side) - giong renderer - de ket qua on dinh giua cac lan chay.
+    const idOf = (s) => (textBySlug.get(s) || {}).id;
+    const oldByKey = new Map((data.edges || []).map(e => [`${e.fromNode}|${e.fromSide}|${e.toNode}|${e.toSide}`, e]));
+    const edges = [], directEdges = {}, usedIds = new Set();
+    let counter = 1;
+    const pushEdge = (baseId, fromNode, fromSide, toNode, toSide, defColor) => {
+        const old = oldByKey.get(`${fromNode}|${fromSide}|${toNode}|${toSide}`);
+        let id = old ? old.id : baseId;
+        while (usedIds.has(id)) id = `${baseId}_${counter++}`;
+        usedIds.add(id);
+        edges.push({ id, fromNode, fromSide, toNode, toSide, color: (old && old.color) || defColor });
+    };
+    for (const [p, kids] of Object.entries(layout.primaryKids)) {
+        const fromId = idOf(p);
+        const toId = kids.length > 1 ? groupIdBySlug[p] : idOf(kids[0]);
+        if (!fromId || !toId) continue;
+        const baseId = p === layout.bigSlug
+            ? (kids.length > 1 ? 'edge_root_to_group' : 'edge_root_to_single_child')
+            : `edge_pha_he_sub_${kids.length > 1 ? '' : 'single_'}${counter++}`;
+        pushEdge(baseId, fromId, 'bottom', toId, 'top', CANVAS_CONFIG.COLOR_EDGE_PHA_HE);
+        if (kids.length === 1) directEdges[kids[0]] = p;
+    }
+    for (const [from, tos] of Object.entries(nextStepMap || {})) {
+        const fromId = idOf(from);
+        if (!fromId) continue;
+        for (const to of tos) {
+            const toId = idOf(to);
+            if (!toId || toId === fromId) continue;
+            pushEdge(`edge_job_step_${counter++}`, fromId, 'right', toId, 'left', CANVAS_CONFIG.COLOR_EDGE_JOB_STEP);
+        }
+    }
+    data.edges = edges;
+    return { data, directEdges };
 };
 
 module.exports = class FactoryCanvasPlugin extends Plugin {
@@ -689,326 +992,16 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
             const canvasFile = targetCanvasLeaf.view.file;
             const raw = await this.app.vault.read(canvasFile);
-            const canvasData = JSON.parse(raw);
 
-            // 0. Lọc bỏ triệt để các group rác không có cha hợp pháp hoặc group unlinked ngay từ đầu
-            canvasData.nodes = (canvasData.nodes || []).filter(n => {
-                if (n.type === 'group') {
-                    if (n.id === 'group_unlinked_audiences' || (n.label && n.label.includes('Chưa liên kết cha'))) {
-                        return false;
-                    }
-                }
-                return true;
-            });
+            // 1. Tinh bo cuc (Khu cay + Khu tu do), Group va mui ten bang ham thuan buildArrangedCanvas (NHOM 1.6)
+            const { parentMap: vParentMap, nextStepMap: vNextStepMap } = await getVaultAudienceData();
+            const { data: canvasData, directEdges } = buildArrangedCanvas(JSON.parse(raw), vParentMap, vNextStepMap);
 
-            const nodes = canvasData.nodes;
-            const textNodes = nodes.filter(n => n.type === 'text');
-            const groupNodes = nodes.filter(n => n.type === 'group');
+            // 2. Dong bo bo nho dem mui ten Cha->The (phuc vu bat Undo/Delete o lan sync tiep theo)
+            previousDirectEdges = directEdges;
+            logFC('ARRANGE', `Re-arrange: ${canvasData.nodes.length} node, ${canvasData.edges.length} edge.`);
 
-            const audienceNodes = textNodes.filter(n => {
-                n.slug = extractSlug(n.text);
-                return Boolean(n.slug);
-            });
-
-            const CARD_W = CANVAS_CONFIG.CARD_W;
-            const CARD_H = CANVAS_CONFIG.CARD_H;
-            const GAP_X = CANVAS_CONFIG.GAP_X;
-            const GAP_Y = CANVAS_CONFIG.GAP_Y;
-            const COLS = CANVAS_CONFIG.COLS;
-            const START_X = CANVAS_CONFIG.START_X;
-            const START_Y = CANVAS_CONFIG.START_Y;
-
-            const vaultParentMap = await getVaultParentMap();
-
-            // Tìm Root Node: Thẻ có slug không có parent trong Frontmatter và có con, hoặc thẻ đầu tiên không có parent
-            let rootNode = audienceNodes.find(n => {
-                const pSet = vaultParentMap[n.slug];
-                return (!pSet || pSet.size === 0) && (n.color === CANVAS_CONFIG.COLOR_ROOT || (n.text && n.text.includes('#big')));
-            });
-            if (!rootNode) {
-                rootNode = audienceNodes.find(n => !vaultParentMap[n.slug] || vaultParentMap[n.slug].size === 0);
-            }
-            const rootSlug = rootNode ? rootNode.slug : null;
-
-            // Danh sách thẻ con cấp dưới
-            const childNodes = audienceNodes.filter(n => n !== rootNode);
-
-            // 1. Phân nhóm thẻ theo Cây Phả Hệ thực tế trong Frontmatter
-            const nodesByParent = {};
-            const unlinkedNodes = [];
-
-            for (const node of childNodes) {
-                const pSet = vaultParentMap[node.slug];
-                if (pSet && pSet.size > 0) {
-                    for (const p of pSet) {
-                        if (!nodesByParent[p]) nodesByParent[p] = [];
-                        if (!nodesByParent[p].includes(node)) nodesByParent[p].push(node);
-                    }
-                } else {
-                    unlinkedNodes.push(node);
-                }
-            }
-
-            // Thẻ thuộc Level 1 (con trực tiếp của Root)
-            let level1Nodes = (rootSlug && nodesByParent[rootSlug]) ? nodesByParent[rootSlug] : [];
-            if (level1Nodes.length === 0 && !rootSlug) {
-                level1Nodes = childNodes.filter(n => !unlinkedNodes.includes(n));
-            }
-
-            // Tách Level 1: Leaf ở trên, Branching (có con) ở HÀNG ĐÁY
-            const leafNodes = level1Nodes.filter(n => !nodesByParent[n.slug] || nodesByParent[n.slug].length === 0);
-            const branchingNodes = level1Nodes.filter(n => nodesByParent[n.slug] && nodesByParent[n.slug].length > 0);
-            const sortedLevel1 = [...leafNodes, ...branchingNodes];
-
-            // 2. Bố trí Lưới 5 cột cho Level 1 (Group 1)
-            for (let idx = 0; idx < sortedLevel1.length; idx++) {
-                const node = sortedLevel1[idx];
-                const col = idx % COLS;
-                const row = Math.floor(idx / COLS);
-                node.x = START_X + col * (CARD_W + GAP_X);
-                node.y = START_Y + row * (CARD_H + GAP_Y);
-                node.width = CARD_W;
-                node.height = CARD_H;
-            }
-
-            // 3. Tính Bounding Box Group 1 & Căn Root Audience ở ĐƯỜNG CHÍNH TRỰC
-            let l1_minX = START_X;
-            let l1_minY = START_Y;
-            let l1_maxRight = START_X + COLS * (CARD_W + GAP_X) - GAP_X;
-            let l1_maxBottom = START_Y + Math.ceil(sortedLevel1.length / COLS) * (CARD_H + GAP_Y) - GAP_Y;
-
-            if (sortedLevel1.length > 0) {
-                l1_minX = Math.min(...sortedLevel1.map(n => n.x));
-                l1_minY = Math.min(...sortedLevel1.map(n => n.y));
-                l1_maxRight = Math.max(...sortedLevel1.map(n => n.x + n.width));
-                l1_maxBottom = Math.max(...sortedLevel1.map(n => n.y + n.height));
-            }
-
-            const l1_groupW = l1_maxRight - (l1_minX - CANVAS_CONFIG.PADDING_X) + CANVAS_CONFIG.PADDING_X;
-            const l1_groupH = l1_maxBottom - (l1_minY - CANVAS_CONFIG.PADDING_Y) + CANVAS_CONFIG.PADDING_X;
-            const l1_centerX = (l1_minX - CANVAS_CONFIG.PADDING_X) + l1_groupW / 2;
-
-            const mainGroupNode = groupNodes.find(g => {
-                const ps = extractSlug(g.label);
-                return ps === rootSlug;
-            });
-
-            if (mainGroupNode) {
-                mainGroupNode.x = l1_minX - CANVAS_CONFIG.PADDING_X;
-                mainGroupNode.y = l1_minY - CANVAS_CONFIG.PADDING_Y;
-                mainGroupNode.width = l1_groupW;
-                mainGroupNode.height = l1_groupH;
-            }
-
-            if (rootNode) {
-                rootNode.width = CANVAS_CONFIG.ROOT_CARD_W || CANVAS_CONFIG.BIG_CARD_W;
-                rootNode.height = CANVAS_CONFIG.ROOT_CARD_H || CANVAS_CONFIG.BIG_CARD_H;
-                rootNode.x = l1_centerX - rootNode.width / 2;
-                rootNode.y = (l1_minY - CANVAS_CONFIG.PADDING_Y) - rootNode.height - CANVAS_CONFIG.MOTHER_OFFSET_Y;
-            }
-
-            // 4. Bố trí các Khung Group Level 2+ (Tầng dưới, căn chính trực theo thẻ cha)
-            let currentTierY = (l1_minY - CANVAS_CONFIG.PADDING_Y) + l1_groupH + CANVAS_CONFIG.TIER_GAP;
-
-            for (const [pSlug, children] of Object.entries(nodesByParent)) {
-                if (pSlug === rootSlug || children.length === 0) continue;
-
-                const parentCard = textNodes.find(n => n.slug === pSlug) || sortedLevel1[sortedLevel1.length - 1];
-                const parentCenterX = parentCard ? (parentCard.x + parentCard.width / 2) : l1_centerX;
-
-                const subCols = Math.min(children.length, COLS);
-                const subRows = Math.ceil(children.length / subCols);
-                const subBlockW = subCols * (CARD_W + GAP_X) - GAP_X;
-                const subBlockH = subRows * (CARD_H + GAP_Y) - GAP_Y;
-
-                const subGroupW = subBlockW + 120;
-                const subGroupH = subBlockH + 140;
-                const subGroupX = parentCenterX - subGroupW / 2;
-                const subGroupY = currentTierY;
-
-                for (let cIdx = 0; cIdx < children.length; cIdx++) {
-                    const cNode = children[cIdx];
-                    const cCol = cIdx % subCols;
-                    const cRow = Math.floor(cIdx / subCols);
-                    cNode.x = subGroupX + 60 + cCol * (CARD_W + GAP_X);
-                    cNode.y = subGroupY + 80 + cRow * (CARD_H + GAP_Y);
-                    cNode.width = CARD_W;
-                    cNode.height = CARD_H;
-                }
-
-                let subGroupNode = groupNodes.find(g => extractSlug(g.label) === pSlug);
-                const subGroupLabel = subGroupNode && subGroupNode.label.includes(`[[${pSlug}]]`)
-                    ? subGroupNode.label
-                    : `📦 NHÓM CON: [[${pSlug}]]`;
-
-                if (!subGroupNode && children.length > 1) {
-                    subGroupNode = {
-                        id: `group_sub_${pSlug}`,
-                        type: "group",
-                        label: subGroupLabel,
-                        x: subGroupX,
-                        y: subGroupY,
-                        width: subGroupW,
-                        height: subGroupH,
-                        color: CANVAS_CONFIG.COLOR_GROUP_L2
-                    };
-                    canvasData.nodes.unshift(subGroupNode);
-                    groupNodes.push(subGroupNode);
-                } else if (subGroupNode) {
-                    subGroupNode.x = subGroupX;
-                    subGroupNode.y = subGroupY;
-                    subGroupNode.width = subGroupW;
-                    subGroupNode.height = subGroupH;
-                    subGroupNode.label = subGroupLabel;
-                }
-
-                currentTierY += (children.length > 1 ? subGroupH : CARD_H) + CANVAS_CONFIG.TIER_GAP;
-            }
-
-            // 5. Bố trí các thẻ Unlinked (nếu có) ở hàng dưới cùng dạng thẻ độc lập, KHÔNG TẠO KHUNG GROUP
-            if (unlinkedNodes.length > 0) {
-                const uCols = Math.min(unlinkedNodes.length, COLS);
-                const uRows = Math.ceil(unlinkedNodes.length / uCols);
-
-                for (let uIdx = 0; uIdx < unlinkedNodes.length; uIdx++) {
-                    const uNode = unlinkedNodes[uIdx];
-                    const uCol = uIdx % uCols;
-                    const uRow = Math.floor(uIdx / uCols);
-                    uNode.x = START_X + uCol * (CARD_W + GAP_X);
-                    uNode.y = currentTierY + uRow * (CARD_H + GAP_Y);
-                    uNode.width = CARD_W;
-                    uNode.height = CARD_H;
-                }
-
-                currentTierY += uRows * (CARD_H + GAP_Y) + CANVAS_CONFIG.TIER_GAP;
-            }
-
-            // Dọn dẹp bất kỳ group rác "Chưa liên kết cha" nào còn sót lại
-            canvasData.nodes = canvasData.nodes.filter(n => {
-                if (n.type === 'group') {
-                    if (n.id === 'group_unlinked_audiences' || (n.label && n.label.includes('Chưa liên kết cha'))) {
-                        return false;
-                    }
-                }
-                return true;
-            });
-
-            // 6. XÂY DỰNG & TÁI CẤU TRÚC TOÀN BỘ MŨI TÊN (RE-ARRANGE ALL EDGES)
-            const { nextStepMap: vNextStepMap } = await getVaultAudienceData();
-            const nodeIdBySlug = {};
-            for (const n of textNodes) {
-                if (n.slug) nodeIdBySlug[n.slug] = n.id;
-            }
-
-            // Ghi nhớ màu tùy biến của user nếu có
-            const oldEdges = canvasData.edges || [];
-            const userColorMap = {};
-            for (const oe of oldEdges) {
-                if (oe.fromNode && oe.toNode && oe.color) {
-                    userColorMap[`${oe.fromNode}->${oe.toNode}`] = oe.color;
-                }
-            }
-
-            const newEdges = [];
-            let edgeCounter = 1;
-
-            // A. Mũi tên Phả hệ Root Audience -> Group 1 (hoặc thẻ con đơn lẻ)
-            if (rootNode) {
-                if (level1Nodes.length > 1 && mainGroupNode) {
-                    const pairKey = `${rootNode.id}->${mainGroupNode.id}`;
-                    newEdges.push({
-                        id: "edge_root_to_group",
-                        fromNode: rootNode.id,
-                        fromSide: "bottom",
-                        toNode: mainGroupNode.id,
-                        toSide: "top",
-                        color: userColorMap[pairKey] || CANVAS_CONFIG.COLOR_EDGE_PHẢ_HỆ
-                    });
-                } else if (level1Nodes.length === 1) {
-                    const singleChildId = nodeIdBySlug[level1Nodes[0].slug];
-                    if (singleChildId) {
-                        const pairKey = `${rootNode.id}->${singleChildId}`;
-                        newEdges.push({
-                            id: "edge_root_to_single_child",
-                            fromNode: rootNode.id,
-                            fromSide: "bottom",
-                            toNode: singleChildId,
-                            toSide: "top",
-                            color: userColorMap[pairKey] || CANVAS_CONFIG.COLOR_EDGE_PHẢ_HỆ
-                        });
-                    }
-                }
-            }
-
-            // B. Mũi tên Phả hệ Level 2+ Sub-groups
-            for (const [pSlug, children] of Object.entries(nodesByParent)) {
-                if (pSlug === rootSlug || children.length === 0) continue;
-                const pNodeId = nodeIdBySlug[pSlug];
-                const sgNode = groupNodes.find(g => extractSlug(g.label) === pSlug);
-
-                if (children.length > 1 && pNodeId && sgNode) {
-                    const pairKey = `${pNodeId}->${sgNode.id}`;
-                    newEdges.push({
-                        id: `edge_pha_he_sub_${edgeCounter++}`,
-                        fromNode: pNodeId,
-                        fromSide: "bottom",
-                        toNode: sgNode.id,
-                        toSide: "top",
-                        color: userColorMap[pairKey] || CANVAS_CONFIG.COLOR_EDGE_PHẢ_HỆ
-                    });
-                } else if (children.length === 1 && pNodeId) {
-                    const singleChildId = nodeIdBySlug[children[0].slug];
-                    if (singleChildId) {
-                        const pairKey = `${pNodeId}->${singleChildId}`;
-                        newEdges.push({
-                            id: `edge_pha_he_sub_single_${edgeCounter++}`,
-                            fromNode: pNodeId,
-                            fromSide: "bottom",
-                            toNode: singleChildId,
-                            toSide: "top",
-                            color: userColorMap[pairKey] || CANVAS_CONFIG.COLOR_EDGE_PHẢ_HỆ
-                        });
-                    }
-                }
-            }
-
-            // C. Mũi tên Tiến trình Job Steps
-            for (const [fromSlug, toSlugs] of Object.entries(vNextStepMap)) {
-                const fromId = nodeIdBySlug[fromSlug];
-                if (!fromId) continue;
-
-                for (const toSlug of toSlugs) {
-                    const toId = nodeIdBySlug[toSlug];
-                    if (toId && toId !== fromId) {
-                        const pairKey = `${fromId}->${toId}`;
-                        newEdges.push({
-                            id: `edge_job_step_${edgeCounter++}`,
-                            fromNode: fromId,
-                            fromSide: "right",
-                            toNode: toId,
-                            toSide: "left",
-                            color: userColorMap[pairKey] || CANVAS_CONFIG.COLOR_EDGE_JOB_STEP
-                        });
-                    }
-                }
-            }
-
-            canvasData.edges = newEdges;
-
-            // Cập nhật lại previousDirectEdges theo các cạnh mới được sinh ra
-            const updatedDirectEdges = {};
-            for (const ne of newEdges) {
-                if (ne.fromSide === 'bottom') {
-                    const toNodeObj = textNodes.find(n => n.id === ne.toNode);
-                    const fromNodeObj = textNodes.find(n => n.id === ne.fromNode);
-                    if (toNodeObj && toNodeObj.slug && fromNodeObj && fromNodeObj.slug) {
-                        updatedDirectEdges[toNodeObj.slug] = fromNodeObj.slug;
-                    }
-                }
-            }
-            previousDirectEdges = updatedDirectEdges;
-
-            // 7. Ghi đĩa Canvas Data
+            // 3. Ghi đĩa Canvas Data
             isInternalUpdating = true;
             await this.app.vault.modify(canvasFile, JSON.stringify(canvasData, null, 2));
             isInternalUpdating = false;
@@ -1524,3 +1517,5 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 module.exports.computeGroupSnap = computeGroupSnap;
 module.exports.computeGroupFit = computeGroupFit;
 module.exports.buildMembersByParent = buildMembersByParent;
+module.exports.computeArrangeLayout = computeArrangeLayout;
+module.exports.buildArrangedCanvas = buildArrangedCanvas;

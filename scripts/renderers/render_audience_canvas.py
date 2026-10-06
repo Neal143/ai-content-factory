@@ -1,6 +1,6 @@
 """
 render_audience_canvas.py
-Last update: 05/10/2026 12:50 (GMT+7)
+Last update: 06/10/2026 11:10 (GMT+7)
 Vai tro: Micro-renderer chuyên trách kết xuất Sơ đồ Phân cấp & Tiến trình Độc giả JTBD ra định dạng Obsidian Canvas (audience-hierarchy.canvas) với kiến trúc Phân Tầng Đa Cấp (Cascading Multi-Level Groups).
 Su dung khi: Được gọi tự động bởi Orchestrator generate_coverage_preview.py trong pipeline Live-Sync.
 Output: File vault/03-Content/Content Plan/audience-hierarchy.canvas chuẩn JSON UTF-8.
@@ -535,9 +535,9 @@ def build_canvas_data(data_context, existing_canvas_path):
                 "color": CANVAS_CONFIG["COLOR_EDGE_PHẢ_HỆ"]
             })
 
-    # 8. Sinh Cạnh Tiến Trình Ngang (Job Steps giữa các Audiences)
+    # 8. Sinh Cạnh Tiến Trình Ngang (Job Steps giữa các Audiences, gồm cả Big Audience - khớp Re-arrange của plugin)
     edge_idx = 1
-    for aud in little_audiences:
+    for aud in big_audiences + little_audiences:
         from_slug = aud["base"]
         from_node_id = node_id_by_slug.get(from_slug)
         if not from_node_id:
