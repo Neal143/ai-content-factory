@@ -1,6 +1,6 @@
 /**
  * factory-sync - main.js
- * Last update: 18/08/2026 22:50 (GMT+7)
+ * Last update: 06/10/2026 14:35 (GMT+7)
  * Vai tro: Obsidian plugin quan ly dong bo du lieu theo thoi gian thuc (Live-Sync) va Safe-Rename.
  * Su dung khi: Chay tu dong trong Obsidian khi vault duoc mo.
  * Output: Tu dong cap nhat tham chieu khi doi ten file va goi generate_coverage_preview.py cap nhat ma tran phu tri thuc.
@@ -9,6 +9,7 @@
  *   2. Vault Events: Bat su kien rename (goi safe_rename.py), create/modify/delete (goi preview refresh).
  *   3. External Watcher: Su dung fs.watch theo doi thu muc personas/ de tu dong refresh khi sua topic_map.yaml tu ben ngoai.
  *   4. Memory Management: Tu dong giai phong watcher khi unload plugin.
+ *   5. Skip Canvas: thay doi chi gom file md do factory-canvas tu ghi (selfWrittenMd < 3s) -> goi preview voi --skip-canvas (tranh renderer ghi de canvas bang FM cu).
  */
 
 const { Plugin, Notice } = require('obsidian');
@@ -22,6 +23,7 @@ module.exports = class FactorySyncPlugin extends Plugin {
         
         let renameDebounceTimer = null;
         let previewDebounceTimer = null;
+        let previewNeedsCanvas = false; // true neu trong cua so debounce co thay doi KHONG do factory-canvas tu ghi
         this.personasWatcher = null;
         
         const factoryRoot = path.resolve(this.app.vault.adapter.basePath, '..');
@@ -45,11 +47,23 @@ module.exports = class FactorySyncPlugin extends Plugin {
                    filePath.includes('production-log.md');
         };
 
-        // Ham kich hoat cap nhat Preview Table voi bo dem debounce 1.5 giay
-        const triggerPreviewRefresh = () => {
+        // factory-canvas vua tu ghi FM file nay (< 3s)? -> canvas da dung, khong can render lai canvas
+        const isFactoryCanvasSelfWrite = (file) => {
+            const reg = this.app.plugins?.plugins?.['factory-canvas']?.selfWrittenMd;
+            const t = reg && typeof reg.get === 'function' ? reg.get(file.path) : undefined;
+            return typeof t === 'number' && Date.now() - t < 3000;
+        };
+
+        // Ham kich hoat cap nhat Preview Table voi bo dem debounce 1.5 giay.
+        // needCanvas=false: thay doi do factory-canvas tu ghi -> neu ca cua so debounce deu vay thi --skip-canvas.
+        const triggerPreviewRefresh = (needCanvas = true) => {
+            if (needCanvas) previewNeedsCanvas = true;
             clearTimeout(previewDebounceTimer);
             previewDebounceTimer = setTimeout(() => {
-                const proc = spawn('python', [previewScript, '--factory-root', factoryRoot], {
+                const args = [previewScript, '--factory-root', factoryRoot];
+                if (!previewNeedsCanvas) args.push('--skip-canvas');
+                previewNeedsCanvas = false;
+                const proc = spawn('python', args, {
                     cwd: factoryRoot,
                     windowsHide: true
                 });
@@ -113,7 +127,7 @@ module.exports = class FactorySyncPlugin extends Plugin {
         this.registerEvent(
             this.app.vault.on('modify', (file) => {
                 if (isAtomFile(file.path)) {
-                    triggerPreviewRefresh();
+                    triggerPreviewRefresh(!isFactoryCanvasSelfWrite(file));
                 }
             })
         );

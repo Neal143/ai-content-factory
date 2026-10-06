@@ -1,17 +1,18 @@
 """
 generate_coverage_preview.py
-Last update: 18/08/2026 22:30 (GMT+7)
+Last update: 06/10/2026 14:35 (GMT+7)
 Vai tro: Script me (Orchestrator & Data Aggregator) thu thap, chuan hoa toan bo du lieu Ma tran phu tri thuc tu Vault & Persona, sau do dieu phoi cac Renderer Modules con xuat file.
 Su dung khi:
   - Duoc goi boi factory-sync Obsidian plugin (khi vault co file sua/tao/xoa hoac layout ready).
   - Duoc goi boi safe_rename.py sau khi doi ten file xong de refresh toan bo artifacts.
-  - Chay doc lap qua CLI: python generate_coverage_preview.py [--factory-root <path>]
+  - Chay doc lap qua CLI: python generate_coverage_preview.py [--factory-root <path>] [--skip-canvas]
 Output:
   - Goi renderers.render_coverage_markdown -> vault/03-Content/Content Plan/audience-knowledge-coverage-preview.md.
 Tom tat logic hoat dong:
   1. Tu dong phat hien Workspace Root va Persona dang hoat dong trong personas/ (0% hardcode).
   2. Doc va chuan hoa toan bo du lieu Audiences (kem aliases, parents, level), Topics tu topic_map.yaml va Insights, Knowledges, Evidences, va Production Log.
   3. Dong goi thanh Data Context chuan va truyen cho cac Renderer Modules con thuc thi.
+  4. --skip-canvas: bo qua render_audience_canvas (factory-sync truyen khi thay doi chi do factory-canvas tu ghi FM tu canvas).
 """
 
 import os
@@ -308,7 +309,7 @@ def collect_coverage_data(factory_root):
 # -------------------------------------------------------------
 # ORCHESTRATION PIPELINE
 # -------------------------------------------------------------
-def run_pipeline(factory_root=None):
+def run_pipeline(factory_root=None, skip_canvas=False):
     root = get_factory_root(factory_root)
     data_context = collect_coverage_data(root)
     if not data_context:
@@ -320,15 +321,20 @@ def run_pipeline(factory_root=None):
     # 2. Render Vault Health Dashboard
     success_health = render_vault_health.render(data_context)
     
-    # 3. Render Audience Hierarchy Canvas
-    success_canvas = render_audience_canvas.render(data_context)
+    # 3. Render Audience Hierarchy Canvas (bo qua khi FM vua do factory-canvas ghi tu canvas: canvas da la nguon su that)
+    if skip_canvas:
+        print("  [SKIP] Audience Canvas: FM do factory-canvas ghi, khong render canvas.")
+        success_canvas = True
+    else:
+        success_canvas = render_audience_canvas.render(data_context)
     
     return success_md and success_health and success_canvas
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Coverage Engine Orchestrator")
     parser.add_argument("--factory-root", default=None, help="Path to Content Factory root directory")
+    parser.add_argument("--skip-canvas", action="store_true", help="Skip rendering audience-hierarchy.canvas")
     args = parser.parse_args()
     
-    success = run_pipeline(args.factory_root)
+    success = run_pipeline(args.factory_root, args.skip_canvas)
     sys.exit(0 if success else 1)

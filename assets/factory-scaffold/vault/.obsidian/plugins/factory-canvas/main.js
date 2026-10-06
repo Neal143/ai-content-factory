@@ -1,15 +1,17 @@
 /**
  * factory-canvas - main.js
- * Last update: 06/10/2026 11:10 (GMT+7)
+ * Last update: 06/10/2026 14:35 (GMT+7)
  * Vai tro: Obsidian Micro-Plugin chuyen trach dieu khien giao dien Canvas: Live RAM Data Extractor, Spatial Group Isolation, Gentle Auto-Fit, Bidirectional Edge Sync, Safe Undo Protection, Structured Debug Logging, 1-Click Re-arrange & Flyout Auto-Center.
  * Su dung khi: Chạy tự động trong Obsidian khi người dùng mở và tương tác trên file audience-hierarchy.canvas.
  * Output: 
- *   1. Smart Snap: Noi edge cha->con khi cha da co Group -> the con tu xep vao o trong ke tiep, Group chi no ra, node phia duoi bi day xuong deu; khong co Group -> giu nguyen vi tri. Gop vao 1 buoc Undo.
+ *   1. Smart Snap: Noi edge cha->con khi cha da co Group -> the con tu xep vao o trong ke tiep, Group chi no ra (no sang phai chi khi khong de len node ben canh, nguoc lai xuong hang moi), node phia duoi bi day xuong deu; khong co Group -> giu nguyen vi tri. Gop vao 1 buoc Undo.
  *   2. Member Fit: Vi tri the KHONG quyet dinh quan he cha-con. Tha the con o dau -> 400ms sau Group cua cha co gian om tron cac the con (theo FM), trung cong thuc renderer, gop vao 1 buoc Undo. Go quan he: xoa mui ten hoac sua FM.
  *   3. Time-Lock Cascade Suppress: Chốt chặn 1500ms dập tắt hoàn toàn vòng lặp đệ quy giữa requestSave và vault.on('modify').
  *   4. Safe Undo Protection: Bảo toàn 100% Undo Stack đơn nhất (chỉ cần 1 lần Ctrl+Z để hoàn tác quan hệ cha-con).
- *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/SNAP/FIT/UNDO/ARRANGE].
+ *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/SNAP/FIT/UNDO/ARRANGE/ADOPT].
  *   6. 1-Click Re-arrange (Tree Layout) & Flyout Auto-Center: Khu cay (moi cay cha-con, nhanh ngang cap dat canh nhau cung tang, chuoi next step lien ke, ve tinh sat doi tac) + Khu tu do (luoi 5 cot) - xem buildArrangedCanvas; dua trong tam so do ve giua man hinh.
+ *   7. Free Group Adoption: Noi edge Cha -> Group tu do (label khong co [[cha]]) -> moi the trong Group thanh con cua Cha va vao Group cua Cha (Cha chua co Group -> Group tu do thanh Group cua Cha). Gop vao 1 buoc Undo.
+ *   8. Self-Write Registry: this.selfWrittenMd ghi nhan file md do plugin tu ghi FM -> factory-sync chay preview voi --skip-canvas, renderer khong ghi de canvas bang FM cu (het nhay Group sau Ctrl+Z).
  */
 
 const { Plugin, Notice, setIcon } = require('obsidian');
@@ -103,8 +105,21 @@ const computeGroupSnap = (data, childId, parentSlug, directEdgeId) => {
             n.x < sx + CARD_W + GAP_X / 2 && n.x + n.width > sx - GAP_X / 2 &&
             n.y < sy + CARD_H + GAP_Y / 2 && n.y + n.height > sy - GAP_Y / 2
         );
+        // Group chi no sang phai khi phan no them khong de len the/group ben ngoai (vd nhanh ben canh sau Re-arrange).
+        // Khong du cho -> xuong hang moi (cot 0 luon hop le); node phia duoi duoc day xuong o buoc 3.
+        const outsiders = nodes.filter(n => n !== child && n !== parent && n !== group &&
+            !isNodeInsideGroup(n, group) && !(n.type === 'group' && isNodeInsideGroup(group, n)));
+        const canGrowTo = (sx, sy, col) => {
+            const right = sx + CARD_W + PADDING_X;
+            if (col === 0 || right <= group.x + group.width) return true;
+            const x0 = group.x + group.width, y0 = group.y;
+            const y1 = Math.max(group.y + group.height, sy + CARD_H + PADDING_X);
+            return !outsiders.some(n => n.x < right && n.x + n.width > x0 && n.y < y1 && n.y + n.height > y0);
+        };
+        const slotX = (s) => originX + (s % COLS) * stepX;
+        const slotY = (s) => originY + Math.floor(s / COLS) * stepY;
         slot = 0;
-        while (!isSlotFree(originX + (slot % COLS) * stepX, originY + Math.floor(slot / COLS) * stepY)) slot++;
+        while (!isSlotFree(slotX(slot), slotY(slot)) || !canGrowTo(slotX(slot), slotY(slot), slot % COLS)) slot++;
         child.x = originX + (slot % COLS) * stepX;
         child.y = originY + Math.floor(slot / COLS) * stepY;
         child.width = CARD_W;
@@ -198,6 +213,99 @@ const buildMembersByParent = (parentMap) => {
         for (const p of parents || []) (out[p] = out[p] || []).push(child);
     }
     return out;
+};
+
+// -------------------------------------------------------------
+// NHÓM 1.55: FREE GROUP ADOPTION (HAM THUAN - TEST DUOC BANG NODE)
+// User noi mui ten Cha -> Group tu do (label khong co [[slug]], vd "Nhóm chưa đặt tên"):
+// moi the thuoc Group tu do tro thanh con cua Cha va duoc dua vao Group cua Cha.
+// Group tu do khong co chu nen thanh vien chi xac dinh duoc theo vi tri (dinh nghia Group cua Obsidian).
+// -------------------------------------------------------------
+/**
+ * findFreeGroupMembers(nodes, group)
+ * Input : nodes = canvasData.nodes; group = node Group tu do.
+ * Output: [node text co slug] ma Group nho nhat chua the chinh la `group`
+ *         (the nam trong Group con long ben trong - vd nhom con cua 1 thanh vien - khong tinh).
+ */
+const findFreeGroupMembers = (nodes, group) => {
+    const groups = nodes.filter(n => n.type === 'group');
+    const area = (g) => g.width * g.height;
+    return nodes.filter(n => {
+        if (n.type !== 'text' || !slugOfNode(n) || !isNodeInsideGroup(n, group)) return false;
+        const innermost = groups.filter(g => isNodeInsideGroup(n, g)).sort((a, b) => area(a) - area(b))[0];
+        return innermost.id === group.id;
+    });
+};
+
+/**
+ * computeFreeGroupAdoption(data, parentSlug, groupId, edgeId, directKids, keepOut)
+ * Input : data = canvas.getData(); parentSlug = slug Cha; groupId = id Group tu do; edgeId = id mui ten Cha -> Group tu do;
+ *         directKids = [{ childId, edgeId }] cac the dang noi mui ten truc tiep Cha -> The;
+ *         keepOut = [id the] khong nhan Cha nay (vd the dang co mui ten truc tiep tu Cha khac) -> giu nguyen cho.
+ * Output: { data, mode, members: [slug] } (ban sao da sua) hoac null neu Group tu do khong co the nao.
+ * Logic : 'snap'   - Cha da co Group: xep tung the vao o trong cua Group Cha (computeGroupSnap), xoa Group tu do + mui ten.
+ *         'adopt'  - Cha chua co Group, tong so con >= 2: Group tu do thanh Group cua Cha (label/mau chuan renderer),
+ *                    the con dang noi truc tiep duoc xep vao, Group om khit cac con; Cha la Big -> can giua tren Group.
+ *         'single' - Cha chua co Group, chi 1 con: doi mui ten Cha -> Group thanh Cha -> The, xoa Group tu do.
+ */
+const computeFreeGroupAdoption = (data, parentSlug, groupId, edgeId, directKids = [], keepOut = []) => {
+    const C = CANVAS_CONFIG;
+    let out = JSON.parse(JSON.stringify(data));
+    out.nodes = out.nodes || [];
+    out.edges = out.edges || [];
+    const group = out.nodes.find(n => n.id === groupId && n.type === 'group' && !slugOfNode(n));
+    const parent = out.nodes.find(n => n.type === 'text' && slugOfNode(n) === parentSlug);
+    if (!group || !parent) return null;
+
+    // 1. The thuoc Group tu do (tru the Cha va keepOut), thu tu doc tren -> duoi, trai -> phai (giu bo cuc user da xep)
+    const members = findFreeGroupMembers(out.nodes, group)
+        .filter(n => n.id !== parent.id && !keepOut.includes(n.id))
+        .sort((a, b) => (a.y - b.y) || (a.x - b.x));
+    if (!members.length) return null;
+    const memberIds = members.map(n => n.id);
+    const memberSlugs = members.map(slugOfNode);
+    const dropFreeGroup = (d) => {
+        d.nodes = d.nodes.filter(n => n.id !== groupId);
+        d.edges = d.edges.filter(e => e.fromNode !== groupId && e.toNode !== groupId);
+        return d;
+    };
+
+    // 2. 'snap': Cha da co Group -> moi thanh vien vao o trong ke tiep (mui ten Cha -> Group tu do bi go o lan snap dau)
+    if (out.nodes.some(n => n.type === 'group' && slugOfNode(n) === parentSlug)) {
+        for (const id of memberIds) {
+            const res = computeGroupSnap(out, id, parentSlug, edgeId);
+            if (res) out = res.data;
+        }
+        return { data: dropFreeGroup(out), mode: 'snap', members: memberSlugs };
+    }
+
+    // 3. 'single': Cha chua co Group va tong cong chi 1 con -> noi thang Cha -> The (renderer khong tao Group cho 1 con)
+    const kids = directKids.filter(k => !memberIds.includes(k.childId));
+    const edge = out.edges.find(e => e.id === edgeId);
+    if (members.length + kids.length < 2) {
+        if (edge) Object.assign(edge, { toNode: memberIds[0], toSide: 'top', color: C.COLOR_EDGE_PHA_HE });
+        return { data: dropFreeGroup(out), mode: 'single', members: memberSlugs };
+    }
+
+    // 4. 'adopt': Group tu do thanh Group cua Cha; con dang noi truc tiep duoc xep vao Group (go mui ten truc tiep)
+    const isBig = String(parent.text || '').includes('#big');
+    Object.assign(group, { label: `📦 NHÓM CON (Little Audiences): [[${parentSlug}]]`, color: isBig ? C.COLOR_GROUP_L1 : C.COLOR_GROUP_L2 });
+    if (edge) Object.assign(edge, { toSide: 'top', color: C.COLOR_EDGE_PHA_HE });
+    for (const k of kids) {
+        const res = computeGroupSnap(out, k.childId, parentSlug, k.edgeId);
+        if (res) out = res.data;
+    }
+
+    // 5. Group om khit cac con (cong thuc renderer); Cha la Big -> dat chinh giua phia tren Group (renderer luon dat lai Big)
+    const ids = new Set([...memberIds, ...kids.map(k => k.childId)]);
+    const fit = computeGroupFit(out, { [parentSlug]: out.nodes.filter(n => ids.has(n.id)).map(slugOfNode) });
+    if (fit) out = fit.data;
+    if (isBig) {
+        const g = out.nodes.find(n => n.id === groupId);
+        const b = out.nodes.find(n => n.id === parent.id);
+        Object.assign(b, { width: C.BIG_CARD_W, height: C.BIG_CARD_H, x: g.x + g.width / 2 - C.BIG_CARD_W / 2, y: g.y - C.BIG_CARD_H - C.MOTHER_OFFSET_Y });
+    }
+    return { data: out, mode: 'adopt', members: memberSlugs };
 };
 
 // -------------------------------------------------------------
@@ -440,13 +548,13 @@ const buildArrangedCanvas = (canvasData, parentMap, nextStepMap) => {
     const nodeById = new Map(nodes.map(n => [n.id, n]));
     for (const [id, p] of Object.entries(layout.pos)) Object.assign(nodeById.get(id), p);
 
-    // 2. Group: cap nhat theo layout; xoa group cha khong con >= 2 con, group trung lap, group rac 'Chua lien ket cha'
+    // 2. Group: cap nhat theo layout; xoa group cha khong con >= 2 con, group trung lap, group khong co [[cha]] (Group tu do, group rac cu)
     const wanted = new Map(layout.groups.map(g => [g.parentSlug, g]));
     const groupIdBySlug = {};
     data.nodes = nodes.filter(n => {
         if (n.type !== 'group') return true;
         const ps = slugOfNode(n);
-        if (!ps) return !(n.id === 'group_unlinked_audiences' || String(n.label || '').includes('Chưa liên kết cha'));
+        if (!ps) return false; // Group khong co [[cha]] (Group tu do, group rac cu): renderer khong sinh -> xoa
         const g = wanted.get(ps);
         if (!g || groupIdBySlug[ps]) return false;
         Object.assign(n, { x: g.x, y: g.y, width: g.width, height: g.height });
@@ -523,6 +631,16 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         let lastUndoAt = 0;                  // thoi diem Ctrl+Z/Y gan nhat: Member Fit tam dung 1500ms de reconcile Undo chay truoc
         let memberFitTimer = null;
         const fitHookedEls = new WeakSet();  // containerEl da gan hook pointerup trong lan load plugin nay
+
+        // --- SELF-WRITE REGISTRY (doc boi plugin factory-sync) ---
+        // path md -> thoi diem plugin ghi FM. factory-sync thay modify cua file nay (< 3s) -> preview --skip-canvas:
+        // canvas da la nguon su that; renderer doc FM truoc/canvas sau ~3s se ghi de sai (Group no ra roi co lai sau Undo).
+        this.selfWrittenMd = new Map();
+        const markSelfWrite = (path) => {
+            const now = Date.now();
+            for (const [p, t] of this.selfWrittenMd) if (now - t > 10000) this.selfWrittenMd.delete(p); // don muc cu
+            this.selfWrittenMd.set(path, now);
+        };
 
         // -------------------------------------------------------------
         // NHÓM 2: HELPER FUNCTIONS (SLUG & YAML PARSER THEO DÒNG)
@@ -766,6 +884,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             const activeDirectEdges = {}; // slug_con -> slug_cha (Mui ten day tro truc tiep vao the con)
             const directEdgeInfo = {}; // slug_con -> { edgeId, childId, parentSlug } phuc vu Smart Snap
             const activeGroupParents = new Set(); // slug_cha (Mui ten day tro vao Khung Group)
+            const freeGroupLinks = []; // { parentSlug, groupId, edgeId }: mui ten Cha -> Group tu do (label khong co [[cha]])
             let canvasColorModified = false;
 
             for (const edge of edges) {
@@ -792,10 +911,22 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                             logFC('SYNC', `Phát hiện cạnh phả hệ: [${fromSlug}] -> [${toNode.slug}]`);
                         }
                     }
-                    // B. Mui ten tro vao Khung Group -> Ghi nhan Cha dang ket noi pha he voi nhom
+                    // B. Mui ten tro vao Khung Group CUA CHA ([[cha]] trong label) -> Ghi nhan Cha dang ket noi pha he voi nhom
                     // (TUYET DOI khong dung toa do Bounding Box de phong doan/gan thanh vien)
-                    else if (toNode.type === 'group') {
+                    else if (toNode.type === 'group' && extractSlug(toNode.label)) {
                         activeGroupParents.add(fromSlug);
+                    }
+                    // C. Mui ten tro vao Group TU DO (label khong co [[cha]]): moi the thuoc Group thanh con cua Cha.
+                    //    Group tu do khong co chu nen thanh vien xac dinh theo vi tri (findFreeGroupMembers).
+                    //    Mui ten truc tiep vao the uu tien hon (ghi de o nhanh A neu xu ly sau).
+                    else if (toNode.type === 'group') {
+                        freeGroupLinks.push({ parentSlug: fromSlug, groupId: toNode.id, edgeId: edge.id });
+                        for (const m of findFreeGroupMembers(nodes, toNode)) {
+                            if (m.slug && m.slug !== fromSlug && !activeDirectEdges[m.slug]) {
+                                activeDirectEdges[m.slug] = fromSlug;
+                                logFC('SYNC', `Thẻ [${m.slug}] thuộc Group tự do -> nhận cha [${fromSlug}]`);
+                            }
+                        }
                     }
                 } 
                 // QUY TAC 2: Xuat phat tu canh ben (right/left) -> QUAN HE JOB STEP
@@ -885,8 +1016,28 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             if (!skipRearrange && Date.now() - lastUndoAt >= 1500) {
                 const snapCanvas = getAudienceCanvasLeaf()?.view?.canvas;
                 if (snapCanvas && typeof snapCanvas.getData === 'function' && typeof snapCanvas.importData === 'function') {
+                    // 2.5a FREE GROUP ADOPTION: Cha -> Group tu do. Moi Group tu do chi nhan Cha cua mui ten dau tien.
+                    let adoptedCount = 0;
+                    const handledKids = new Set(); // con noi truc tiep da duoc xep vao Group o mode 'adopt' -> bo qua o Smart Snap
+                    const seenFreeGroups = new Set();
+                    for (const link of freeGroupLinks) {
+                        if (seenFreeGroups.has(link.groupId)) continue;
+                        seenFreeGroups.add(link.groupId);
+                        const kidEntries = Object.entries(directEdgeInfo)
+                            .filter(([c, info]) => info.parentSlug === link.parentSlug && activeDirectEdges[c] === link.parentSlug);
+                        const keepOut = nodes.filter(n => n.slug && activeDirectEdges[n.slug] !== link.parentSlug).map(n => n.id);
+                        const res = computeFreeGroupAdoption(snapCanvas.getData(), link.parentSlug, link.groupId, link.edgeId,
+                            kidEntries.map(([, info]) => ({ childId: info.childId, edgeId: info.edgeId })), keepOut);
+                        if (!res) continue;
+                        snapCanvas.importData(res.data, true);
+                        adoptedCount++;
+                        if (res.mode === 'adopt') kidEntries.forEach(([c]) => handledKids.add(c));
+                        logFC('ADOPT', `Group tự do [${link.groupId}] -> [${link.parentSlug}] (${res.mode}): ${res.members.join(', ')}`);
+                    }
+
                     let snappedCount = 0;
                     for (const [childSlug, info] of Object.entries(directEdgeInfo)) {
+                        if (handledKids.has(childSlug)) continue;
                         const pSlug = activeDirectEdges[childSlug];
                         if (!pSlug || pSlug !== info.parentSlug) continue;
                         // Frontmatter da co cha nay -> khong phai thao tac moi (vd: vua reload plugin) -> khong snap
@@ -899,7 +1050,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                     }
                     // Member Fit du phong (thao tac khong qua pointerup, vd: phim mui ten): Group om the con theo quan he sau sync
                     const fitted = applyGroupFit(snapCanvas, buildMembersByParent(parentMap), 'sync');
-                    if (snappedCount > 0 || fitted) {
+                    if (snappedCount > 0 || adoptedCount > 0 || fitted) {
                         if (typeof snapCanvas.overrideHistory === 'function') snapCanvas.overrideHistory();
                         if (typeof snapCanvas.requestFrame === 'function') snapCanvas.requestFrame();
                     }
@@ -957,6 +1108,7 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                         }
 
                         const newFullContent = `---${fm}---${body}`;
+                        markSelfWrite(file.path); // factory-sync: lan ghi nay khong render canvas
                         await this.app.vault.modify(file, newFullContent);
                         updatedCount++;
                     } catch (err) {
@@ -1519,3 +1671,5 @@ module.exports.computeGroupFit = computeGroupFit;
 module.exports.buildMembersByParent = buildMembersByParent;
 module.exports.computeArrangeLayout = computeArrangeLayout;
 module.exports.buildArrangedCanvas = buildArrangedCanvas;
+module.exports.findFreeGroupMembers = findFreeGroupMembers;
+module.exports.computeFreeGroupAdoption = computeFreeGroupAdoption;
