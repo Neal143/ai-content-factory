@@ -1,6 +1,6 @@
 /**
  * factory-canvas - main.js
- * Last update: 06/10/2026 14:35 (GMT+7)
+ * Last update: 09/10/2026 16:05 (GMT+7)
  * Vai tro: Obsidian Micro-Plugin chuyen trach dieu khien giao dien Canvas: Live RAM Data Extractor, Spatial Group Isolation, Gentle Auto-Fit, Bidirectional Edge Sync, Safe Undo Protection, Structured Debug Logging, 1-Click Re-arrange & Flyout Auto-Center.
  * Su dung khi: Chạy tự động trong Obsidian khi người dùng mở và tương tác trên file audience-hierarchy.canvas.
  * Output: 
@@ -10,6 +10,7 @@
  *   4. Safe Undo Protection: Bảo toàn 100% Undo Stack đơn nhất (chỉ cần 1 lần Ctrl+Z để hoàn tác quan hệ cha-con).
  *   5. Structured Debug Logging: Minh bạch hóa toàn bộ trạng thái hệ thống với các log có tiền tố [FactoryCanvas][SYNC/SNAP/FIT/UNDO/ARRANGE/ADOPT].
  *   6. 1-Click Re-arrange (Tree Layout) & Flyout Auto-Center: Khu cay (moi cay cha-con, nhanh ngang cap dat canh nhau cung tang, chuoi next step lien ke, ve tinh sat doi tac) + Khu tu do (luoi 5 cot) - xem buildArrangedCanvas; dua trong tam so do ve giua man hinh.
+ *      Re-arrange vung chon: nut 🪄 / chuot phai (canvas:selection-menu, canvas:node-menu) khi co vung chon -> chi the Audience duoc chon (Group -> the con) di chuyen: con trong Group / the tu do vao o trong dau tien, the khac di theo cha/doi tac (computePartialTargets); Command Palette luon toan bo.
  *   7. Free Group Adoption: Noi edge Cha -> Group tu do (label khong co [[cha]]) -> moi the trong Group thanh con cua Cha va vao Group cua Cha (Cha chua co Group -> Group tu do thanh Group cua Cha). Gop vao 1 buoc Undo.
  *   8. Self-Write Registry: this.selfWrittenMd ghi nhan file md do plugin tu ghi FM -> factory-sync chay preview voi --skip-canvas, renderer khong ghi de canvas bang FM cu (het nhay Group sau Ctrl+Z).
  */
@@ -316,7 +317,8 @@ const computeFreeGroupAdoption = (data, parentSlug, groupId, edgeId, directKids 
 /**
  * computeArrangeLayout(cards, parentMap, nextStepMap)
  * Input : cards = [{ id, slug, x, y, isBig }] (moi slug 1 the); parentMap/nextStepMap = { slug: Iterable<slug> } tu Frontmatter.
- * Output: { pos: { id: {x, y, width, height} }, groups: [{ parentSlug, x, y, width, height }], primaryKids: { slugCha: [slugCon] }, bigSlug }
+ * Output: { pos: { id: {x, y, width, height} }, groups: [{ parentSlug, x, y, width, height }], primaryKids: { slugCha: [slugCon] }, bigSlug,
+ *           freeSlugs: [slug the tu do], freeY: y hang dau Khu tu do, satAnchor: { slugVeTinh: slugTheCayDoiTac } }
  */
 const computeArrangeLayout = (cards, parentMap, nextStepMap) => {
     const C = CANVAS_CONFIG;
@@ -384,7 +386,7 @@ const computeArrangeLayout = (cards, parentMap, nextStepMap) => {
     // 5. The ngoai cay: ve tinh (next step toi the cay), chuoi doc lap, the tu do
     const outside = all.filter(s => !inTree.has(s));
     const freeCards = outside.filter(s => nextOut[s].length + nextIn[s].length === 0);
-    const satByAnchor = {}, soloChains = [];
+    const satByAnchor = {}, satAnchor = {}, soloChains = [];
     for (const chain of toChains(outside.filter(s => nextOut[s].length + nextIn[s].length > 0))) {
         let anchor = null;
         for (const s of chain) {
@@ -394,6 +396,7 @@ const computeArrangeLayout = (cards, parentMap, nextStepMap) => {
         if (!anchor) { soloChains.push(chain); continue; }
         const slot = (satByAnchor[anchor.tree] = satByAnchor[anchor.tree] || { left: [], right: [] });
         slot[anchor.side].push(chain);
+        for (const s of chain) satAnchor[s] = anchor.tree; // Re-arrange vung chon: ve tinh di theo doi tac
     }
 
     // 6. Box cuc bo: items (the), groups (khung), bien minX/maxX/maxY, anchorX (diem mui ten di vao tu phia tren)
@@ -523,16 +526,122 @@ const computeArrangeLayout = (cards, parentMap, nextStepMap) => {
     freeCards.forEach((s, i) => {
         pos[bySlug.get(s).id] = { x: C.START_X + (i % C.COLS) * stepX, y: freeY + Math.floor(i / C.COLS) * stepY, width: C.CARD_W, height: C.CARD_H };
     });
-    return { pos, groups, primaryKids, bigSlug };
+    return { pos, groups, primaryKids, bigSlug, freeSlugs: freeCards, freeY, satAnchor };
 };
 
 /**
- * buildArrangedCanvas(canvasData, parentMap, nextStepMap)
- * Input : canvasData doc tu file .canvas; parentMap/nextStepMap tu Frontmatter.
- * Output: { data, directEdges } - data = ban sao canvas da Re-arrange (node, group, edge); directEdges = { slugCon: slugCha } cho mui ten Cha->The.
- * Logic : dat vi tri theo computeArrangeLayout; cap nhat/tao/xoa Group theo cha co >= 2 con; sinh lai mui ten pha he + job step, giu mau user.
+ * computePartialTargets(nodes, layout, onlyIds, textBySlug)
+ * Input : nodes = node canvas (vi tri hien tai); layout = ket qua computeArrangeLayout tren toan bo the;
+ *         onlyIds = Set<id the Audience> duoc chon; textBySlug = Map<slug, node the Audience>.
+ * Output: { id: {x, y, width, height} } vi tri moi cua the duoc chon (the khong chon khong co trong ket qua -> dung yen).
+ * Logic : the khong chon = co dinh (vat can). The duoc chon xu ly theo thu tu vi tri dich toan cuc (tren -> duoi, trai -> phai):
+ *         R1 Con cua Group (cha >= 2 con) con it nhat 1 anh em khong chon -> o trong dau tien cua luoi Group
+ *            (goc luoi = goc tren-trai nhom anh em khong chon thang hang luoi dong nhat - bo qua the bi keo lac;
+ *             het o trong o cac hang hien co -> hang moi ben duoi).
+ *         R2 The tu do -> o trong dau tien cua luoi Khu tu do (START_X, layout.freeY).
+ *         R3 Con lai -> vi tri dich toan cuc + do lech cua the neo (cha chinh; ve tinh -> doi tac):
+ *            con duy nhat ve duoi cha, ca luoi Group (chon het con) ve duoi cha; khong co the neo -> vi tri dich toan cuc.
+ *         O trong = khong de (tinh ca nua khoang cach luoi) len node khong chon / the da dat; bo qua chinh Group do va Group chua no.
  */
-const buildArrangedCanvas = (canvasData, parentMap, nextStepMap) => {
+const computePartialTargets = (nodes, layout, onlyIds, textBySlug) => {
+    const C = CANVAS_CONFIG;
+    const stepX = C.CARD_W + C.GAP_X, stepY = C.CARD_H + C.GAP_Y;
+    // 1. Chi muc: slug <-> id, cha chinh, Khu tu do; the chon xep theo vi tri dich toan cuc
+    const slugById = new Map([...textBySlug].map(([s, n]) => [n.id, s]));
+    const idOf = (s) => textBySlug.get(s).id;
+    const parentOf = {};
+    for (const [p, kids] of Object.entries(layout.primaryKids)) for (const k of kids) parentOf[k] = p;
+    const freeSet = new Set(layout.freeSlugs);
+    const byGlobal = (a, b) => (layout.pos[a].y - layout.pos[b].y) || (layout.pos[a].x - layout.pos[b].x);
+    const selected = [...onlyIds].filter(id => slugById.has(id) && layout.pos[id]).sort(byGlobal);
+    const pending = new Set(selected); // the chon chua dat -> khong lam vat can
+    const out = {};
+    const place = (id, x, y) => { out[id] = { x, y, width: layout.pos[id].width, height: layout.pos[id].height }; pending.delete(id); };
+
+    // 2. O (sx, sy) trong: khong de len node khong chon / the da dat (tinh ca nua khoang cach luoi); skip(n) = node bo qua
+    const isFree = (sx, sy, skip) => !nodes.some(n => {
+        if (pending.has(n.id) || skip(n)) return false;
+        const r = out[n.id] || n;
+        return r.x < sx + C.CARD_W + C.GAP_X / 2 && r.x + r.width > sx - C.GAP_X / 2 &&
+               r.y < sy + C.CARD_H + C.GAP_Y / 2 && r.y + r.height > sy - C.GAP_Y / 2;
+    });
+
+    // 3. R1: lap o trong luoi Group cua cha p (sel = id the chon, un = node anh em khong chon).
+    //    Goc luoi lay tu nhom anh em cung phan du toa do theo buoc luoi dong nhat (the bi keo lac khong lam lech luoi).
+    const fillGroup = (p, sel, un) => {
+        const mod = (v, m) => Math.round(((v % m) + m) % m);
+        const keyOf = (n) => mod(n.x, stepX) + '|' + mod(n.y, stepY);
+        const count = {};
+        for (const n of un) count[keyOf(n)] = (count[keyOf(n)] || 0) + 1;
+        const best = [...un].sort((a, b) => (count[keyOf(b)] - count[keyOf(a)]) || (a.y - b.y) || (a.x - b.x))[0];
+        const aligned = un.filter(n => keyOf(n) === keyOf(best));
+        const ox = Math.min(...aligned.map(n => n.x)), oy = Math.min(...aligned.map(n => n.y));
+        const rows = Math.max(...aligned.map(n => Math.round((n.y - oy) / stepY))) + 1;
+        const grp = nodes.find(n => n.type === 'group' && slugOfNode(n) === p);
+        const skip = (n) => Boolean(grp) && (n === grp || (n.type === 'group' && isNodeInsideGroup(grp, n)));
+        let extra = 0;
+        for (const id of sel) {
+            let spot = null;
+            for (let k = 0; k < rows * C.COLS && !spot; k++) {
+                const sx = ox + (k % C.COLS) * stepX, sy = oy + Math.floor(k / C.COLS) * stepY;
+                if (isFree(sx, sy, skip)) spot = [sx, sy];
+            }
+            if (!spot) { spot = [ox + (extra % C.COLS) * stepX, oy + (rows + Math.floor(extra / C.COLS)) * stepY]; extra++; } // hang moi: co the de tang duoi
+            place(id, spot[0], spot[1]);
+        }
+    };
+
+    // 4. R2: lap o trong luoi Khu tu do (so node huu han -> luon tim duoc o trong)
+    let freeK = 0;
+    const fillFree = (sel) => {
+        for (const id of sel) {
+            let sx, sy;
+            do {
+                sx = C.START_X + (freeK % C.COLS) * stepX;
+                sy = layout.freeY + Math.floor(freeK / C.COLS) * stepY;
+                freeK++;
+            } while (!isFree(sx, sy, () => false));
+            place(id, sx, sy);
+        }
+    };
+
+    // 5. Do lech cua the neo = vi tri cuoi - vi tri dich toan cuc (the neo duoc chon -> dat truoc)
+    const shiftOf = (s) => {
+        const id = idOf(s);
+        resolve(id);
+        const cur = out[id] || textBySlug.get(s);
+        return [cur.x - layout.pos[id].x, cur.y - layout.pos[id].y];
+    };
+
+    // 6. Dat 1 the theo R1 / R2 / R3
+    const resolve = (id) => {
+        if (!pending.has(id)) return;
+        const s = slugById.get(id), p = parentOf[s];
+        if (p && layout.primaryKids[p].length >= 2) {
+            const sibs = layout.primaryKids[p].map(idOf);
+            const un = sibs.filter(x => !pending.has(x) && !out[x]).map(x => textBySlug.get(slugById.get(x)));
+            if (un.length) return fillGroup(p, selected.filter(x => sibs.includes(x)), un);
+        }
+        if (freeSet.has(s)) return fillFree(selected.filter(x => freeSet.has(slugById.get(x))));
+        const a = p || layout.satAnchor[s];
+        const [dx, dy] = a ? shiftOf(a) : [0, 0];
+        place(id, layout.pos[id].x + dx, layout.pos[id].y + dy);
+    };
+    for (const id of selected) resolve(id);
+    return out;
+};
+
+/**
+ * buildArrangedCanvas(canvasData, parentMap, nextStepMap, onlyIds = null)
+ * Input : canvasData = du lieu canvas; parentMap/nextStepMap tu Frontmatter;
+ *         onlyIds = Set<id the Audience> duoc di chuyen (null hoac chua het moi the = Re-arrange toan bo).
+ * Output: { data, directEdges } - data = ban sao canvas da Re-arrange (node, group, edge); directEdges = { slugCon: slugCha } cho mui ten Cha->The.
+ * Logic : cau truc (cha chinh, ve tinh, Khu tu do, vi tri dich) luon tinh tren TOAN BO canvas (computeArrangeLayout).
+ *         Toan bo: dat moi the; cap nhat/tao/xoa Group theo cha co >= 2 con; xoa Group tu do; sinh lai mui ten pha he + job step, giu mau user.
+ *         Vung chon: the khong chon dung yen; the trong onlyIds dat theo computePartialTargets (lap o trong / di theo the neo); Group tu do giu nguyen;
+ *                    Group cua cha co gian om con tai vi tri thuc te (computeGroupFit); the Big dat nhu renderer (chinh giua tren cac con L1).
+ */
+const buildArrangedCanvas = (canvasData, parentMap, nextStepMap, onlyIds = null) => {
     const data = JSON.parse(JSON.stringify(canvasData));
     const nodes = data.nodes || [];
     // 1. Chi muc the audience theo slug (bo truong 'slug' do phien ban cu ghi nham vao file -> renderer ghi de canvas)
@@ -544,9 +653,11 @@ const buildArrangedCanvas = (canvasData, parentMap, nextStepMap) => {
         if (s && !textBySlug.has(s)) textBySlug.set(s, n);
     }
     const cards = [...textBySlug].map(([slug, n]) => ({ id: n.id, slug, x: n.x, y: n.y, isBig: String(n.text || '').includes('#big') }));
+    const partial = Boolean(onlyIds) && cards.some(c => !onlyIds.has(c.id)); // chon het moi the = Re-arrange toan bo
     const layout = computeArrangeLayout(cards, parentMap, nextStepMap);
     const nodeById = new Map(nodes.map(n => [n.id, n]));
-    for (const [id, p] of Object.entries(layout.pos)) Object.assign(nodeById.get(id), p);
+    const targets = partial ? computePartialTargets(nodes, layout, onlyIds, textBySlug) : layout.pos;
+    for (const [id, p] of Object.entries(targets)) Object.assign(nodeById.get(id), p);
 
     // 2. Group: cap nhat theo layout; xoa group cha khong con >= 2 con, group trung lap, group khong co [[cha]] (Group tu do, group rac cu)
     const wanted = new Map(layout.groups.map(g => [g.parentSlug, g]));
@@ -554,10 +665,10 @@ const buildArrangedCanvas = (canvasData, parentMap, nextStepMap) => {
     data.nodes = nodes.filter(n => {
         if (n.type !== 'group') return true;
         const ps = slugOfNode(n);
-        if (!ps) return false; // Group khong co [[cha]] (Group tu do, group rac cu): renderer khong sinh -> xoa
+        if (!ps) return partial; // Group khong co [[cha]] (Group tu do, group rac cu): toan bo -> xoa (renderer khong sinh); vung chon -> giu
         const g = wanted.get(ps);
         if (!g || groupIdBySlug[ps]) return false;
-        Object.assign(n, { x: g.x, y: g.y, width: g.width, height: g.height });
+        if (!partial) Object.assign(n, { x: g.x, y: g.y, width: g.width, height: g.height }); // vung chon: kich thuoc tinh o buoc 4
         groupIdBySlug[ps] = n.id;
         return true;
     });
@@ -606,7 +717,52 @@ const buildArrangedCanvas = (canvasData, parentMap, nextStepMap) => {
         }
     }
     data.edges = edges;
-    return { data, directEdges };
+    if (!partial) return { data, directEdges };
+
+    // 4. Vung chon: Group om con tai vi tri thuc te (cung cong thuc Member Fit/renderer).
+    //    The Big dat nhu renderer: chinh giua phia tren bbox cac con L1 (>= 1 con); chua co con -> vi tri dich toan cuc.
+    const fit = computeGroupFit(data, layout.primaryKids);
+    const out = fit ? fit.data : data;
+    if (layout.bigSlug) {
+        const C = CANVAS_CONFIG;
+        const bigId = textBySlug.get(layout.bigSlug).id;
+        const l1Ids = new Set((layout.primaryKids[layout.bigSlug] || []).map(s => textBySlug.get(s).id));
+        const l1 = out.nodes.filter(n => l1Ids.has(n.id));
+        const big = out.nodes.find(n => n.id === bigId);
+        if (l1.length) {
+            const gx = Math.min(...l1.map(n => n.x)) - C.PADDING_X;
+            const gw = Math.max(...l1.map(n => n.x + n.width)) - gx + C.PADDING_X;
+            const gy = Math.min(...l1.map(n => n.y)) - C.PADDING_Y;
+            Object.assign(big, { width: C.BIG_CARD_W, height: C.BIG_CARD_H, x: gx + gw / 2 - C.BIG_CARD_W / 2, y: gy - C.BIG_CARD_H - C.MOTHER_OFFSET_Y });
+        } else {
+            Object.assign(big, layout.pos[bigId]);
+        }
+    }
+    return { data: out, directEdges };
+};
+
+/**
+ * resolveSelectionIds(canvasData, selectedIds, parentMap)
+ * Input : canvasData = du lieu canvas; selectedIds = id cac node user dang chon; parentMap tu Frontmatter.
+ * Output: Set<id the Audience> se duoc Re-arrange.
+ * Logic : the Audience (text co [[slug]]) -> chinh no; Group cua cha ([[cha]]) -> cac the con theo FM;
+ *         Group tu do -> cac the nam trong Group (findFreeGroupMembers); node khac (text thuong, file, link) -> bo qua.
+ */
+const resolveSelectionIds = (canvasData, selectedIds, parentMap) => {
+    const nodes = canvasData.nodes || [];
+    const picked = new Set(selectedIds);
+    const out = new Set();
+    for (const n of nodes) {
+        if (!picked.has(n.id)) continue;
+        if (n.type === 'text' && slugOfNode(n)) { out.add(n.id); continue; }
+        if (n.type !== 'group') continue;
+        const ps = slugOfNode(n);
+        const members = ps
+            ? nodes.filter(c => c.type === 'text' && [...((parentMap || {})[slugOfNode(c)] || [])].includes(ps))
+            : findFreeGroupMembers(nodes, n);
+        for (const c of members) out.add(c.id);
+    }
+    return out;
 };
 
 module.exports = class FactoryCanvasPlugin extends Plugin {
@@ -1133,7 +1289,8 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         // -------------------------------------------------------------
         // NHÓM 6: RE-ARRANGE CANVAS ENGINE (TỰ ĐỘNG HOẶC 1-CLICK MANUAL)
         // -------------------------------------------------------------
-        const reArrangeCanvasLayout = async (isManual = true) => {
+        // selectionOnly = true (nut 🪄, menu chuot phai): co vung chon -> chi Re-arrange the Audience trong vung chon; khong co -> toan bo.
+        const reArrangeCanvasLayout = async (isManual = true, selectionOnly = false) => {
             const leaves = this.app.workspace.getLeavesOfType('canvas');
             let targetCanvasLeaf = leaves.find(l => l.view?.file?.path?.includes('audience-hierarchy')) || leaves[0];
             
@@ -1143,15 +1300,28 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             }
 
             const canvasFile = targetCanvasLeaf.view.file;
-            const raw = await this.app.vault.read(canvasFile);
+            const canvasObj = targetCanvasLeaf.view?.canvas;
+
+            // 0. Doc FM (await) truoc; sau do doc canvas tu RAM + vung chon dong bo trong 1 tick.
+            //    Dia cham toi ~2s so voi RAM -> doc dia se keo the user vua di chuyen ve vi tri cu. Chua co canvas RAM -> doc dia.
+            const { parentMap: vParentMap, nextStepMap: vNextStepMap } = await getVaultAudienceData();
+            const source = (canvasObj && typeof canvasObj.getData === 'function')
+                ? canvasObj.getData()
+                : JSON.parse(await this.app.vault.read(canvasFile));
+            const selectedIds = (selectionOnly && canvasObj?.selection?.size) ? [...canvasObj.selection].map(n => n.id) : [];
+            const onlyIds = selectedIds.length ? resolveSelectionIds(source, selectedIds, vParentMap) : null;
+            if (onlyIds && onlyIds.size === 0) {
+                if (isManual) new Notice('⚠️ Vùng chọn không có thẻ Audience nào để căn chỉnh.', 4000);
+                return;
+            }
+            const modeLabel = onlyIds ? `vùng chọn ${onlyIds.size} thẻ` : 'toàn bộ';
 
             // 1. Tinh bo cuc (Khu cay + Khu tu do), Group va mui ten bang ham thuan buildArrangedCanvas (NHOM 1.6)
-            const { parentMap: vParentMap, nextStepMap: vNextStepMap } = await getVaultAudienceData();
-            const { data: canvasData, directEdges } = buildArrangedCanvas(JSON.parse(raw), vParentMap, vNextStepMap);
+            const { data: canvasData, directEdges } = buildArrangedCanvas(source, vParentMap, vNextStepMap, onlyIds);
 
             // 2. Dong bo bo nho dem mui ten Cha->The (phuc vu bat Undo/Delete o lan sync tiep theo)
             previousDirectEdges = directEdges;
-            logFC('ARRANGE', `Re-arrange: ${canvasData.nodes.length} node, ${canvasData.edges.length} edge.`);
+            logFC('ARRANGE', `Re-arrange (${modeLabel}): ${canvasData.nodes.length} node, ${canvasData.edges.length} edge.`);
 
             // 3. Ghi đĩa Canvas Data
             isInternalUpdating = true;
@@ -1160,7 +1330,6 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
 
             // 8. Tải lại toàn bộ View trong RAM: Xóa các node/edge không còn tồn tại
             try {
-                const canvasObj = targetCanvasLeaf.view?.canvas;
                 if (canvasObj) {
                     const validNodeIds = new Set(canvasData.nodes.map(n => n.id));
                     if (canvasObj.nodes) {
@@ -1217,7 +1386,10 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                         }
                     }, 100);
 
-                    if (isManual && typeof canvasObj.zoomToFit === 'function') {
+                    // Vung chon: setData giu instance node theo id -> selection con nguyen -> zoom vao vung chon; toan bo: zoomToFit
+                    if (isManual && onlyIds && typeof canvasObj.zoomToSelection === 'function') {
+                        setTimeout(() => canvasObj.zoomToSelection(), 250);
+                    } else if (isManual && typeof canvasObj.zoomToFit === 'function') {
                         setTimeout(() => canvasObj.zoomToFit(), 250);
                     }
                 }
@@ -1226,7 +1398,9 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
             }
 
             if (isManual) {
-                new Notice('✨ [Factory Canvas] Đã căn chỉnh sơ đồ theo trục chính trực và ngữ nghĩa chuẩn 100%!', 3000);
+                new Notice(onlyIds
+                    ? `✨ [Factory Canvas] Đã căn chỉnh ${onlyIds.size} thẻ Audience trong vùng chọn.`
+                    : '✨ [Factory Canvas] Đã căn chỉnh sơ đồ theo trục chính trực và ngữ nghĩa chuẩn 100%!', 3000);
             }
         };
 
@@ -1455,8 +1629,8 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
                 if (!leaf.view._hasFactoryRearrangeBtn) {
                     leaf.view._hasFactoryRearrangeBtn = true;
                     if (typeof leaf.view.addAction === 'function') {
-                        leaf.view.addAction('sparkles', 'Căn chỉnh sơ đồ Canvas (Re-arrange)', async () => {
-                            await reArrangeCanvasLayout(true);
+                        leaf.view.addAction('sparkles', 'Căn chỉnh sơ đồ Canvas (Re-arrange) - có vùng chọn: chỉ căn các thẻ được chọn', async () => {
+                            await reArrangeCanvasLayout(true, true);
                         });
                     }
                 }
@@ -1571,25 +1745,32 @@ module.exports = class FactoryCanvasPlugin extends Plugin {
         this.registerEvent(this.app.workspace.on('active-leaf-change', syncUndoHooks));
         syncUndoHooks();
 
-        // 3. Right-Click Context Menu trên Canvas
-        this.registerEvent(
-            this.app.workspace.on('canvas:menu', (menu, canvas) => {
+        // 3. Right-Click Context Menu tren Canvas. Obsidian 1.14.4 khong co su kien 'canvas:menu':
+        //    chuot phai vung chon >= 2 node -> 'canvas:selection-menu' (menu, canvas);
+        //    chuot phai 1 node -> Obsidian chon rieng node do roi ban 'canvas:node-menu' (menu, node). Hai su kien khong ban cung luc.
+        const addCanvasMenuItems = (menu, canvas) => {
+            if (!canvas) return;
+            const isAudienceCanvas = this.app.workspace.getLeavesOfType('canvas')
+                .some(l => l.view?.canvas === canvas && l.view?.file?.path?.includes('audience-hierarchy'));
+            if (isAudienceCanvas) {
                 menu.addItem((item) => {
-                    item.setTitle('🎯 Đưa sơ đồ về giữa (Auto-Center)')
-                        .setIcon('crosshair')
-                        .onClick(() => {
-                            centerCanvasDiagram(canvas);
-                        });
-                });
-                menu.addItem((item) => {
-                    item.setTitle('🪄 Căn chỉnh lại sơ đồ (Re-arrange Layout)')
+                    item.setTitle('🪄 Căn chỉnh vùng chọn (Re-arrange)')
                         .setIcon('sparkles')
                         .onClick(async () => {
-                            await reArrangeCanvasLayout(true);
+                            await reArrangeCanvasLayout(true, true);
                         });
                 });
-            })
-        );
+            }
+            menu.addItem((item) => {
+                item.setTitle('🎯 Đưa sơ đồ về giữa (Auto-Center)')
+                    .setIcon('crosshair')
+                    .onClick(() => {
+                        centerCanvasDiagram(canvas);
+                    });
+            });
+        };
+        this.registerEvent(this.app.workspace.on('canvas:selection-menu', (menu, canvas) => addCanvasMenuItems(menu, canvas)));
+        this.registerEvent(this.app.workspace.on('canvas:node-menu', (menu, node) => addCanvasMenuItems(menu, node?.canvas)));
 
         // -------------------------------------------------------------
         // NHÓM 8: OBSIDIAN CANVAS & VAULT REAL-TIME HOOKS (DEBOUNCED & SILENT)
@@ -1673,3 +1854,4 @@ module.exports.computeArrangeLayout = computeArrangeLayout;
 module.exports.buildArrangedCanvas = buildArrangedCanvas;
 module.exports.findFreeGroupMembers = findFreeGroupMembers;
 module.exports.computeFreeGroupAdoption = computeFreeGroupAdoption;
+module.exports.resolveSelectionIds = resolveSelectionIds;
