@@ -15,7 +15,8 @@ Hệ thống tương thích hoàn hảo với các IDE hỗ trợ AI mới nhấ
 - 🛤️ **`workflows/`**: Chứa các kịch bản thực thi vòng đời (Life-cycle). Ví dụ: quy trình từ ý tưởng thành bài đăng (`content-post`), quy trình bóc tách sách thô thành mạng lưới tri thức nguyên tử (`book-extractor`).
 - 🤖 **`agents/`**: Bộ định nghĩa về nhân dạng (Persona) và giới hạn quyền hạn của từng tác nhân trong nhà máy (Idea Curator, Hook Engineer, Format Agent...).
 - 🧠 **`skills/`**: Các bí kíp làm nghề (SOP) được biên soạn tinh gọn bằng Markdown (SKILL.md) nhằm "dạy" Agent cách xử lý tác vụ theo tiêu chuẩn khắt khe nhất của con người.
-- 🔌 **`plugins/`**: Công cụ mở rộng độc lập (ví dụ: `topic_manager` - hệ thống la bàn quản lý và định tuyến từ khóa tự động).
+- 🔌 **`plugins/`**: Công cụ mở rộng độc lập (ví dụ: `topic_manager` - hệ thống la bàn quản lý và định tuyến từ khóa tự động; `factory-canvas` - điều khiển sơ đồ độc giả trên Obsidian Canvas).
+- 🗺️ **Sơ đồ Chiến lược Độc giả (`audience-hierarchy.canvas`)**: Bản đồ trực quan hóa toàn bộ mạng lưới độc giả JTBD và hành trình Job Steps. Tích hợp đồng bộ hai chiều thời gian thực (Reverse-Sync), Smart Snap, Member Fit, Free Group Adoption và 2 chế độ Re-arrange (Toàn bộ / Vùng chọn lấp ô trống & bám neo). Xem chi tiết tại [SPECS.md](file:///d:/AI/AI%20content%20factory%20-%20v3.7B/Content%20Factory/docs/SPECS.md) và [AUDIENCE_HIERARCHY_GUIDE.md](file:///d:/AI/AI%20content%20factory%20-%20v3.7B/Content%20Factory/docs/AUDIENCE_HIERARCHY_GUIDE.md).
 - 📜 **`rules/`**: Bức tường lửa (Gatekeeper). Chứa các quy định tuyệt đối về văn phong, cấu trúc ngắt đoạn, chống dịch thuật rập khuôn và vượt qua các công cụ phát hiện AI.
 - ⚙️ **`scripts/`**: Cỗ máy vận hành ngầm dưới đáy. Gồm các mã nguồn PowerShell/Python đảm nhiệm việc I/O file, nối ghép các khâu, phân rã dữ liệu (batching) và phát hiện các Agent "lách luật" (Sentinel Error Logging).
 
