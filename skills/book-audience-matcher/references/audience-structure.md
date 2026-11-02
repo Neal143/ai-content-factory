@@ -21,7 +21,7 @@ Truy xuất trực tiếp tệp lưu trữ trung tâm: `.agents/assets/persona-t
 - **Cắt lấy ĐÚNG phần `# --- JTBD ROUTING CHUNK ---`**. Bỏ qua hoàn toàn phần `# --- PHYSICAL & HABITS CHUNK ---`.
 
 **Bước 2: Nạp dữ liệu nội suy (Payload Output)**
-Đối với khối JTBD vừa cắt ra, điền trực tiếp các giá trị bóc được (`audience_level`, `audience_Job_performer`, `audience_main_job`, `audience_circumstance`, `aliases`, và `parent_audience`) vào các field tương ứng để tạo thành `YAML Frontmatter` hoàn chỉnh. **Lưu ý: `parent_audience` và `aliases` nếu có phần tử thì BẮT BUỘC phải xuất định dạng YAML Chunk Array (xuống dòng, gạch đầu dòng) để chống lỗi mảng của Dataview.**
+Đối với khối JTBD vừa cắt ra, điền trực tiếp các giá trị bóc được (`audience_level`, `audience_Job_performer`, `audience_main_job`, `audience_circumstance`, `aliases`, `parent_audience`, và `is_buyer_job`) vào các field tương ứng để tạo thành `YAML Frontmatter` hoàn chỉnh. **Lưu ý: `parent_audience` và `aliases` nếu có phần tử thì BẮT BUỘC phải xuất định dạng YAML Chunk Array (xuống dòng, gạch đầu dòng) để chống lỗi mảng của Dataview.**
 Ví dụ:
 ```yaml
 parent_audience:

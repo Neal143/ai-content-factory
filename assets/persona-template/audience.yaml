@@ -11,6 +11,7 @@ file_link: ""                # Script tu dong dien URI clickable (VS Code)
 vivid_circumstances: []
 vivid_circumstances_reserve: []
 parent_audience: []          # Bắt buộc tạo mảng Block Array nếu có phần tử (xuống dòng, "- [[slug]]")
+is_buyer_job:                # true nếu job này trực tiếp liên quan đến sản phẩm. Bỏ trống = false
 aliases: []                  # Bắt buộc tạo mảng Block Array nếu có phần tử (xuống dòng, "- alias")
 
 # --- PHYSICAL & HABITS BLOCK ---

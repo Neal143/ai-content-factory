@@ -1,11 +1,16 @@
 ﻿# ============================================================
-# File: .agents/scripts/save_progress.ps1
-# Last update: 23/08/2026 00:52 (GMT+7)
-# Role: Manage data snapshots for Content Factory using a separate git repository (.save-data/)
-# Usage: Called by agent (SKILL.md or /checkpoint), or auto by pipeline scripts (auto_checkpoint.py).
-# Output: Git commits/tags in .save-data/, entries in progress-checkpoints.md
-# Logic: Uses git --git-dir=.save-data --work-tree=<FactoryRoot> to isolate snapshot git
-#        from any parent git. 3 actions: save (commit+tag+log), list, rollback (checkout+clean)
+# Ten file: .agents/scripts/save_progress.ps1
+# Last update: 30/10/2026 00:20 (GMT+7)
+# Vai tro: Quan ly snapshot du lieu cho Content Factory bang kho Git doc lap (.save-data/).
+# Duoc su dung khi: Goi boi Agent (SKILL.md hoac /checkpoint), hoac goi tu dong tu auto_checkpoint.py.
+# Output: Git commits/tags trong .save-data/ va cap nhat lich su trong progress-checkpoints.md.
+# Tom tat logic hoat dong:
+#   1. Thiet lap Console OutputEncoding UTF-8 de doc stdout cua Git khong bi loi font (CodePage 437).
+#   2. Dung git --git-dir=.save-data --work-tree=<FactoryRoot> de cach ly kho du lieu khoi Git goc.
+#   3. Dong bo danh sach info/exclude va go bo khoi index cac file tam/backup/workspace.
+#   4. Ho tro 3 hanh dong: save (tu dong xu ly trung nhan, phuc hoi log neu mat, commit+tag+log),
+#      list (xem hoac tai tao log tu Git tags), rollback (auto-save kem ghi log, bao toan workspace.json
+#      trong RAM qua reset --hard, goi lai Sync-SaveExclude va sync-factory-scaffold.ps1).
 # ============================================================
 
 param(
@@ -17,33 +22,70 @@ param(
     [string]$Description
 )
 
-# --- Resolve Factory Root (2 levels up from scripts/) ---
+# --- Nhom 1: Thiet lap UTF-8 Encoding va xac dinh duong dan goc Content Factory ---
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+
 $FactoryRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $GitDir = Join-Path $FactoryRoot ".save-data"
 $SaveProgressFile = Join-Path $FactoryRoot "progress-checkpoints.md"
 
-# --- Helper: Run git with custom --git-dir and --work-tree ---
-# NOTE: Does NOT redirect stderr. Callers use 2>$null where needed.
+# --- Nhom 2: Helper chay Git voi --git-dir va --work-tree rieng biet ---
 function Invoke-SaveGit {
     param([Parameter(ValueFromRemainingArguments)][string[]]$GitArgs)
     & git --git-dir="$GitDir" --work-tree="$FactoryRoot" @GitArgs
 }
 
-# --- Helper: Get current timestamp in GMT+7 ---
+# --- Nhom 3: Helper lay thoi gian hien tai theo mui gio GMT+7 ---
 function Get-VNTimestamp {
     $tz = [System.TimeZoneInfo]::FindSystemTimeZoneById("SE Asia Standard Time")
     return [System.TimeZoneInfo]::ConvertTime([System.DateTimeOffset]::Now, $tz)
 }
 
-# --- Helper: Restore progress-checkpoints.md from git tags ---
-# Source of truth: annotated tags snap/* in .save-data (immutable, survive rollback)
-# Called automatically when progress-checkpoints.md is missing or corrupted
+# --- Nhom 4: Helper dong bo info/exclude va go cache cac file tam da lo bi track ---
+function Sync-SaveExclude {
+    if (-not (Test-Path $GitDir)) { return }
+
+    $excludePath = Join-Path (Join-Path $GitDir "info") "exclude"
+    $excludeContent = @(
+        "# Excluded from progress-checkpoint snapshots"
+        ".agents/"
+        ".agents_update_temp/"
+        ".update_backups/"
+        ".save-data/"
+        ".gitignore"
+        "progress-checkpoints.md"
+        "__pycache__/"
+        "*.pyc"
+        "vault/.tmp/"
+        "vault/.curation_temp/"
+        "vault/.obsidian/workspace.json"
+        "vault/.obsidian/workspace-mobile.json"
+        "vault/.content-pipeline/fb_cache/"
+        "vault/.content-pipeline/fb-tracker-state.json"
+    )
+    [System.IO.File]::WriteAllLines($excludePath, $excludeContent, [System.Text.Encoding]::UTF8)
+
+    # Go khoi Git index cac file tam/workspace neu truoc day hoac sau reset --hard bi track lai
+    $cachedPathsToUntrack = @(
+        "vault/.obsidian/workspace.json",
+        "vault/.obsidian/workspace-mobile.json",
+        "vault/.curation_temp",
+        "vault/.tmp",
+        ".update_backups",
+        ".agents_update_temp",
+        "vault/.content-pipeline/fb_cache",
+        "vault/.content-pipeline/fb-tracker-state.json"
+    )
+    Invoke-SaveGit rm -r --cached --ignore-unmatch @cachedPathsToUntrack 2>$null | Out-Null
+}
+
+# --- Nhom 5: Helper phuc hoi file progress-checkpoints.md tu annotated tags ---
 function Restore-ProgressLog {
     if (-not (Test-Path $GitDir)) { return }
 
-    # Query all snap/* tags: label, date, commit hash, description
-    $tagLines = Invoke-SaveGit for-each-ref --sort=-creatordate "refs/tags/snap/*" --format="%(refname:short)|%(creatordate:format:%d/%m/%Y %H:%M)|%(*objectname:short)|%(contents:subject)" 2>$null
-    if (-not $tagLines) {
+    $tagLines = @(Invoke-SaveGit for-each-ref --sort=-creatordate "refs/tags/snap/*" --format="%(refname:short)|%(creatordate:format:%d/%m/%Y %H:%M)|%(*objectname:short)|%(contents:subject)" 2>$null)
+    if (-not $tagLines -or $tagLines.Count -eq 0) {
         Write-Host "[INFO] No tags found in .save-data. Nothing to rebuild."
         return
     }
@@ -61,56 +103,69 @@ function Restore-ProgressLog {
         $desc    = $parts[3]
         $label   = $tagName -replace '^snap/', ''
 
-        $entries += @"
-
-### $dateStr (GMT+7)
-#### $label
-- **Tag:** ``$tagName``
-- **Hash:** ``$hash``
-- **Description:** $desc
-"@
+        $entryBlock = @(
+            "",
+            "### $dateStr (GMT+7)",
+            "#### $label",
+            "- **Tag:** ``$tagName``",
+            "- **Hash:** ``$hash``",
+            "- **Description:** $desc"
+        ) -join "`r`n"
+        $entries += $entryBlock
     }
 
-    $content = @($header) + $entries
-    [System.IO.File]::WriteAllText($SaveProgressFile, ($content -join "`n"), [System.Text.Encoding]::UTF8)
-    Write-Host "[OK] Rebuilt progress-checkpoints.md from $($tagLines.Count) tags."
+    $content = (@($header) + $entries) -join "`r`n"
+    [System.IO.File]::WriteAllText($SaveProgressFile, $content + "`r`n", [System.Text.Encoding]::UTF8)
+    Write-Host "[OK] Rebuilt progress-checkpoints.md from $($entries.Count) tags."
 }
 
-# --- Helper: Initialize .save-data/ git repo if not exists ---
-function Initialize-SaveRepo {
-    if (Test-Path $GitDir) { return }
-
-    Write-Host "[INIT] Creating .save-data/ repository..."
-
-    # Init git repo with custom git-dir
-    Invoke-SaveGit init 2>$null | Out-Null
-
-    # Remove core.worktree that git init auto-creates — prevents IDE from
-    # detecting .save-data/ as a separate repository (annoying repo picker popup).
-    # Our Invoke-SaveGit always passes --work-tree explicitly, so this is unnecessary.
-    Invoke-SaveGit config --unset core.worktree 2>$null | Out-Null
-
-    # Set local git config (prevents commit failure on systems without global git config)
-    Invoke-SaveGit config user.email "factory@local" 2>$null | Out-Null
-    Invoke-SaveGit config user.name "Content Factory" 2>$null | Out-Null
-    Invoke-SaveGit config core.longpaths true 2>$null | Out-Null
-
-    # Set up info/exclude (only affects this git repo, not parent git)
-    $excludePath = Join-Path (Join-Path $GitDir "info") "exclude"
-    $excludeContent = @(
-        "# Excluded from progress-checkpoint snapshots"
-        ".agents/"
-        ".save-data/"
-        ".gitignore"
-        "progress-checkpoints.md"
+# --- Nhom 6: Helper chen 1 ban ghi moi len dau file progress-checkpoints.md (chong loi CRLF) ---
+function Add-ProgressLogEntry {
+    param(
+        [string]$EntryLabel,
+        [string]$EntryHash,
+        [string]$EntryDesc,
+        [System.DateTimeOffset]$EntryTime
     )
-    $excludeContent | Set-Content -Path $excludePath -Encoding UTF8
 
-    Write-Host "[INIT] Repository initialized."
+    $dateStr = $EntryTime.ToString("dd/MM/yyyy HH:mm")
+    $newLines = @(
+        "",
+        "### $dateStr (GMT+7)",
+        "#### $EntryLabel",
+        "- **Tag:** ``snap/$EntryLabel``",
+        "- **Hash:** ``$EntryHash``",
+        "- **Description:** $EntryDesc"
+    )
+
+    if (-not (Test-Path $SaveProgressFile) -or (Get-Item $SaveProgressFile).Length -eq 0) {
+        $header = "# Progress Checkpoints"
+        [System.IO.File]::WriteAllText($SaveProgressFile, $header, [System.Text.Encoding]::UTF8)
+    }
+
+    $lines = [System.IO.File]::ReadAllLines($SaveProgressFile, [System.Text.Encoding]::UTF8)
+    $headerLine = if ($lines.Length -gt 0) { $lines[0] } else { "# Progress Checkpoints" }
+    $restLines = if ($lines.Length -gt 1) { $lines[1..($lines.Length - 1)] } else { @() }
+    $allContent = @($headerLine) + $newLines + $restLines
+    [System.IO.File]::WriteAllLines($SaveProgressFile, $allContent, [System.Text.Encoding]::UTF8)
+}
+
+# --- Nhom 7: Helper khoi tao kho .save-data neu chua ton tai ---
+function Initialize-SaveRepo {
+    if (-not (Test-Path $GitDir)) {
+        Write-Host "[INIT] Creating .save-data/ repository..."
+        Invoke-SaveGit init 2>$null | Out-Null
+        Invoke-SaveGit config --unset core.worktree 2>$null | Out-Null
+        Invoke-SaveGit config user.email "factory@local" 2>$null | Out-Null
+        Invoke-SaveGit config user.name "Content Factory" 2>$null | Out-Null
+        Invoke-SaveGit config core.longpaths true 2>$null | Out-Null
+        Write-Host "[INIT] Repository initialized."
+    }
+    Sync-SaveExclude
 }
 
 # ============================================================
-# ACTION: SAVE
+# NHOM 8: ACTION SAVE — Luu trang thai du lieu hien tai
 # ============================================================
 function Save-State {
     if (-not $Label) {
@@ -118,66 +173,42 @@ function Save-State {
         exit 1
     }
 
-    # Auto-init if first run
     Initialize-SaveRepo
-
     Push-Location $FactoryRoot
 
-    # Check for duplicate tag BEFORE staging/committing
+    # Neu file progress-checkpoints.md bi xoa/rong truoc khi save, phuc hoi lich su cu tu tags truoc
+    if (-not (Test-Path $SaveProgressFile) -or (Get-Item $SaveProgressFile).Length -eq 0) {
+        Restore-ProgressLog
+    }
+
+    $ts = Get-VNTimestamp
+
+    # Tu dong gan hau to thoi gian neu nhan snap/$Label da ton tai de khong bao gio gay luong
     $tagName = "snap/$Label"
     $existingTag = Invoke-SaveGit tag -l $tagName 2>$null
     if ($existingTag) {
-        Write-Host "[ERROR] Tag '$tagName' already exists. Use a unique label."
-        Pop-Location
-        exit 1
+        $Label = "$Label-" + $ts.ToString("yyyyMMdd-HHmmss")
+        $tagName = "snap/$Label"
+        Write-Host "[INFO] Tag already exists. Auto-appended timestamp: $tagName"
     }
 
-    # Stage all data changes (info/exclude handles .agents/, .save-data/, progress-checkpoints.md)
     Invoke-SaveGit add --all . 2>$null | Out-Null
-
-    # Commit snapshot (allow-empty ensures a commit is always created even without file changes)
     Invoke-SaveGit commit --allow-empty -m "save: $Label" 2>$null | Out-Null
 
-    # Create annotated tag
     $tagMsg = if ($Description) { $Description } else { $Label }
     Invoke-SaveGit tag -a $tagName -m $tagMsg 2>$null | Out-Null
 
-    # Get commit hash for logging (2>$null prevents stderr from mixing into output)
     $hash = (Invoke-SaveGit rev-parse --short HEAD 2>$null) | Out-String
     $hash = $hash.Trim()
 
-    # --- Update progress-checkpoints.md ---
-    $ts = Get-VNTimestamp
-    $dateStr = $ts.ToString("dd/MM/yyyy HH:mm")
-
-    $newEntry = @"
-
-### $dateStr (GMT+7)
-#### $Label
-- **Tag:** ``snap/$Label``
-- **Hash:** ``$hash``
-- **Description:** $tagMsg
-"@
-
-    # Create file with header if not exists
-    if (-not (Test-Path $SaveProgressFile)) {
-        $header = "# Progress Checkpoints"
-        [System.IO.File]::WriteAllText($SaveProgressFile, $header, [System.Text.Encoding]::UTF8)
-    }
-
-    # Read current content, insert new entry after first line (header)
-    $lines = [System.IO.File]::ReadAllLines($SaveProgressFile, [System.Text.Encoding]::UTF8)
-    $headerLine = $lines[0]
-    $restLines = if ($lines.Length -gt 1) { $lines[1..($lines.Length - 1)] } else { @() }
-    $allContent = @($headerLine) + $newEntry.Split("`n") + $restLines
-    [System.IO.File]::WriteAllLines($SaveProgressFile, $allContent, [System.Text.Encoding]::UTF8)
+    Add-ProgressLogEntry -EntryLabel $Label -EntryHash $hash -EntryDesc $tagMsg -EntryTime $ts
 
     Pop-Location
     Write-Host "[OK] Saved: snap/$Label (hash: $hash)"
 }
 
 # ============================================================
-# ACTION: LIST
+# NHOM 9: ACTION LIST — Xem danh sach cac moc save points
 # ============================================================
 function Get-SaveList {
     if (-not (Test-Path $GitDir)) {
@@ -185,7 +216,6 @@ function Get-SaveList {
         return
     }
 
-    # Auto-rebuild if file is missing or empty
     if (-not (Test-Path $SaveProgressFile) -or (Get-Item $SaveProgressFile).Length -eq 0) {
         Write-Host "[INFO] progress-checkpoints.md missing or empty. Rebuilding from tags..."
         Restore-ProgressLog
@@ -200,7 +230,7 @@ function Get-SaveList {
 }
 
 # ============================================================
-# ACTION: ROLLBACK
+# NHOM 10: ACTION ROLLBACK — Khoi phuc du lieu, bao toan UI state & dong bo plugin he thong
 # ============================================================
 function Invoke-Rollback {
     if (-not $Label) {
@@ -213,10 +243,10 @@ function Invoke-Rollback {
         exit 1
     }
 
+    Sync-SaveExclude
     Push-Location $FactoryRoot
     $tagName = "snap/$Label"
 
-    # Verify tag exists
     $tagCheck = Invoke-SaveGit tag -l $tagName 2>$null
     if (-not $tagCheck) {
         Write-Host "[ERROR] Tag '$tagName' not found. Available save points:"
@@ -225,7 +255,7 @@ function Invoke-Rollback {
         exit 1
     }
 
-    # --- Safety net: auto-save current state before rollback ---
+    # --- Chot chan an toan: Auto-save trang thai hien tai va ghi vao progress-checkpoints.md ---
     $ts = Get-VNTimestamp
     $autoLabel = "before-rollback-" + $ts.ToString("yyyyMMdd-HHmmss")
 
@@ -233,15 +263,38 @@ function Invoke-Rollback {
     $status = Invoke-SaveGit status --porcelain 2>$null
     if ($status) {
         Write-Host "[INFO] Auto-saving current state as snap/$autoLabel..."
+        $autoMsg = "Auto-save before rolling back to $Label"
         Invoke-SaveGit commit -m "auto-save before rollback to $Label" 2>$null | Out-Null
-        Invoke-SaveGit tag -a "snap/$autoLabel" -m "Auto-save before rolling back to $Label" 2>$null | Out-Null
+        Invoke-SaveGit tag -a "snap/$autoLabel" -m $autoMsg 2>$null | Out-Null
+        $autoHash = (Invoke-SaveGit rev-parse --short HEAD 2>$null) | Out-String
+        $autoHash = $autoHash.Trim()
+        Add-ProgressLogEntry -EntryLabel $autoLabel -EntryHash $autoHash -EntryDesc $autoMsg -EntryTime $ts
     }
 
-    # --- Rollback: reset working tree to snapshot state ---
-    # git reset --hard restores old files AND deletes new files in one operation
-    # Ignored files (.agents/, .save-data/, progress-checkpoints.md) are NOT affected
+    # --- Sao luu workspace.json trong RAM truoc khi reset --hard ve cac tag cu co chua workspace.json ---
+    $wsPath = Join-Path $FactoryRoot "vault\.obsidian\workspace.json"
+    $wsBytes = if (Test-Path $wsPath) { [System.IO.File]::ReadAllBytes($wsPath) } else { $null }
+    $wsMobilePath = Join-Path $FactoryRoot "vault\.obsidian\workspace-mobile.json"
+    $wsMobileBytes = if (Test-Path $wsMobilePath) { [System.IO.File]::ReadAllBytes($wsMobilePath) } else { $null }
+
+    # --- Khoi phuc du lieu ve trang thai snapshot ---
     Write-Host "[INFO] Rolling back data to snap/$Label..."
     Invoke-SaveGit reset --hard $tagName 2>$null | Out-Null
+
+    # --- Khoi phuc ngay trang thai giao dien Obsidian tu RAM va go lai cache cac file tam ---
+    if ($null -ne $wsBytes) {
+        [System.IO.File]::WriteAllBytes($wsPath, $wsBytes)
+    }
+    if ($null -ne $wsMobileBytes) {
+        [System.IO.File]::WriteAllBytes($wsMobilePath, $wsMobileBytes)
+    }
+    Sync-SaveExclude
+
+    # --- Dong bo lai Factory Scaffold & Obsidian Plugins de khong bi downgrade plugin he thong ---
+    $syncScaffoldScript = Join-Path $FactoryRoot ".agents\scripts\sync-factory-scaffold.ps1"
+    if (Test-Path $syncScaffoldScript) {
+        & powershell -NoProfile -ExecutionPolicy Bypass -File $syncScaffoldScript -FactoryRoot $FactoryRoot 2>$null | Out-Null
+    }
 
     Pop-Location
     Write-Host "[OK] Rolled back to snap/$Label."
@@ -251,10 +304,10 @@ function Invoke-Rollback {
 }
 
 # ============================================================
-# MAIN: Route to action
+# NHOM 11: MAIN — Dieu huong hanh dong
 # ============================================================
 switch ($Action) {
-    "save"    { Save-State }
-    "list"    { Get-SaveList }
+    "save"     { Save-State }
+    "list"     { Get-SaveList }
     "rollback" { Invoke-Rollback }
 }

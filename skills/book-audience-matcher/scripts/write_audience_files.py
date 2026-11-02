@@ -175,6 +175,7 @@ def build_frontmatter(entry):
         "vivid_circumstances_reserve": [],
         "parent_audience": entry["parent_audience"],
         "next_job_step": [],
+        "is_buyer_job": None,
         "aliases": entry["aliases"],
         "source_type": entry.get("source_type", ""),
         "source_name": entry.get("source_name", ""),
@@ -269,6 +270,7 @@ def update_audience_index(entries, index_path):
             "audience_main_job": entry["audience_main_job"],
             "audience_circumstance": entry["audience_circumstance"],
             "parent_audience": entry["parent_audience"],
+            "is_buyer_job": None,
             "aliases": entry["aliases"],
         }
         audience_list.append(index_entry)

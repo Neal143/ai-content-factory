@@ -10,4 +10,5 @@ audiences:
     audience_main_job: ""
     audience_circumstance: ""
     parent_audience: []    # ← Mảng rỗng (đúng chuẩn DAG)
+    is_buyer_job:          # Bỏ trống = false. User tự xác định
     aliases: []

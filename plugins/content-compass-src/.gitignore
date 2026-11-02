@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Production output at root (if any)
+/styles.css
+/main.js
+manifest.json.bak
+*.tsbuildinfo
+*.log

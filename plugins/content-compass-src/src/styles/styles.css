@@ -1,0 +1,1826 @@
+/**
+ * Tên file: styles.css
+ * Last update: 02/11/2026 17:05 (GMT+7)
+ * Vai trò: Bảng định kiểu CSS chuẩn Apple Human Interface Guidelines (macOS Sequoia / iPadOS 18 Bento & Glass UI)
+ *          cho plugin Content Compass trong Obsidian.
+ * Được sử dụng khi nào?: Được Obsidian tự động nạp khi plugin content-compass kích hoạt.
+ * Output: Hệ thống giao diện đồng bộ gồm Bento Cards, UISegmentedControl, UISwitch, Vector Monoline Icons,
+ *         Unified Inset Grouped Tables (với Sticky Frosted Header) và Ghost Icon Action Buttons.
+ * Tóm tắt logic hoạt động: Sử dụng hệ thống biến CSS (--cc-*) tự động thích ứng với Light Mode và Dark Mode
+ *          của Obsidian, khóa độ ưu tiên (specificity) để không bị stylesheet mặc định của Obsidian ghi đè.
+ */
+
+/* ============================================================================
+   NHÓM 0: APPLE DESIGN TOKENS (Tự động thích ứng Light / Dark Mode của Obsidian)
+   ============================================================================ */
+.content-compass-container,
+.content-compass-fb-preview-modal {
+	--cc-font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+	--cc-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+	/* Apple System Colors (Light Mode) */
+	--cc-blue: #007aff;
+	--cc-blue-hover: #0062cc;
+	--cc-blue-soft: rgba(0, 122, 255, 0.11);
+	--cc-indigo: #5856d6;
+	--cc-green: #34c759;
+	--cc-green-soft: rgba(52, 199, 89, 0.13);
+	--cc-orange: #ff9500;
+	--cc-orange-soft: rgba(255, 149, 0, 0.13);
+	--cc-red: #ff3b30;
+	--cc-red-soft: rgba(255, 59, 48, 0.11);
+	--cc-pink: #ff2d55;
+
+	/* Bo góc chuẩn Apple HIG */
+	--cc-radius-card: 14px;
+	--cc-radius-group: 11px;
+	--cc-radius-control: 8px;
+	--cc-radius-pill: 999px;
+
+	/* Bề mặt phân tầng (Light Mode) */
+	--cc-bg-canvas: var(--background-primary);
+	--cc-bg-card: var(--background-secondary);
+	--cc-bg-header-sticky: rgba(245, 245, 247, 0.86);
+	--cc-bg-elevated: rgba(118, 118, 128, 0.07);
+	--cc-bg-input: var(--background-primary);
+	--cc-bg-segmented: rgba(118, 118, 128, 0.12);
+	--cc-bg-segmented-active: #ffffff;
+	--cc-bg-row-hover: rgba(0, 122, 255, 0.04);
+
+	/* Đường kẻ Hairline & Đổ bóng phân tầng */
+	--cc-border-subtle: rgba(60, 60, 67, 0.1);
+	--cc-border-strong: rgba(60, 60, 67, 0.18);
+	--cc-shadow-card: 0 2px 12px -2px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+	--cc-shadow-segmented: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0.5px 1px rgba(0, 0, 0, 0.06);
+	--cc-shadow-hover: 0 6px 18px -4px rgba(0, 0, 0, 0.09);
+}
+
+.theme-dark .content-compass-container,
+.theme-dark .content-compass-fb-preview-modal {
+	/* Apple System Colors (Dark Mode) */
+	--cc-blue: #0a84ff;
+	--cc-blue-hover: #409cff;
+	--cc-blue-soft: rgba(10, 132, 255, 0.16);
+	--cc-indigo: #5e5ce6;
+	--cc-green: #30d158;
+	--cc-green-soft: rgba(48, 209, 88, 0.16);
+	--cc-orange: #ff9f0a;
+	--cc-orange-soft: rgba(255, 159, 10, 0.16);
+	--cc-red: #ff453a;
+	--cc-red-soft: rgba(255, 69, 58, 0.16);
+	--cc-pink: #ff375f;
+
+	/* Bề mặt phân tầng (Dark Mode) */
+	--cc-bg-canvas: var(--background-primary);
+	--cc-bg-card: rgba(28, 28, 32, 0.82);
+	--cc-bg-header-sticky: rgba(32, 32, 37, 0.88);
+	--cc-bg-elevated: rgba(255, 255, 255, 0.045);
+	--cc-bg-input: rgba(0, 0, 0, 0.24);
+	--cc-bg-segmented: rgba(118, 118, 128, 0.24);
+	--cc-bg-segmented-active: rgba(255, 255, 255, 0.15);
+	--cc-bg-row-hover: rgba(255, 255, 255, 0.035);
+
+	--cc-border-subtle: rgba(255, 255, 255, 0.08);
+	--cc-border-strong: rgba(255, 255, 255, 0.15);
+	--cc-shadow-card: 0 8px 24px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+	--cc-shadow-segmented: 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+	--cc-shadow-hover: 0 10px 24px -4px rgba(0, 0, 0, 0.48);
+}
+
+/* ============================================================================
+   NHÓM 1: HỆ THỐNG VECTOR ICON ĐƠN SẮC (SF SYMBOLS / LUCIDE MONOLINE) & CONTROLS
+   ============================================================================ */
+.cc-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	line-height: 1;
+}
+
+.cc-icon svg {
+	width: 14px;
+	height: 14px;
+	stroke-width: 1.8px;
+}
+
+.content-compass-card-title .cc-icon svg {
+	width: 16px;
+	height: 16px;
+	color: var(--cc-blue);
+}
+
+@keyframes cc-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.cc-icon.is-spinning svg {
+	animation: cc-spin 1s linear infinite;
+}
+
+/* Chấm trạng thái Apple Status Indicator Dot */
+.cc-status-dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	background-color: var(--cc-green);
+	box-shadow: 0 0 0 2.5px var(--cc-green-soft);
+}
+
+.cc-status-dot.is-running {
+	background-color: var(--cc-blue);
+	box-shadow: 0 0 0 2.5px var(--cc-blue-soft);
+}
+
+.cc-status-dot.is-warning {
+	background-color: var(--cc-orange);
+	box-shadow: 0 0 0 2.5px var(--cc-orange-soft);
+}
+
+/* Công tắc gạt chuẩn Apple UISwitch */
+.content-compass-container input[type="checkbox"].content-compass-switch {
+	-webkit-appearance: none;
+	appearance: none;
+	position: relative;
+	width: 34px;
+	height: 20px;
+	border-radius: 999px;
+	background-color: rgba(120, 120, 128, 0.32);
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.22s var(--cc-ease-spring);
+	flex-shrink: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.content-compass-container input[type="checkbox"].content-compass-switch::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28), 0 0 1px rgba(0, 0, 0, 0.12);
+	transition: transform 0.22s var(--cc-ease-spring);
+}
+
+.content-compass-container input[type="checkbox"].content-compass-switch:checked {
+	background-color: var(--cc-green);
+}
+
+.content-compass-container input[type="checkbox"].content-compass-switch:checked::after {
+	transform: translateX(14px);
+}
+
+/* Checkbox chọn dòng trong bảng chuẩn Apple Rounded Selection */
+.content-compass-container input[type="checkbox"].content-compass-row-checkbox {
+	width: 15px;
+	height: 15px;
+	border-radius: 4.5px;
+	accent-color: var(--cc-blue);
+	cursor: pointer;
+	margin: 0;
+	vertical-align: middle;
+}
+
+/* ============================================================================
+   NHÓM 2: KHUNG CHÍNH DASHBOARD & APPLE SEGMENTED CONTROL
+   ============================================================================ */
+.content-compass-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--cc-bg-canvas);
+	color: var(--text-normal);
+	font-family: var(--cc-font-sans);
+	-webkit-font-smoothing: antialiased;
+	letter-spacing: -0.011em;
+}
+
+.content-compass-tab-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 24px;
+	border-bottom: 1px solid var(--cc-border-subtle);
+	background-color: var(--cc-bg-card);
+	backdrop-filter: blur(20px) saturate(180%);
+	z-index: 10;
+}
+
+/* Apple UISegmentedControl (Dùng cho Tab chính, Sub-tab và Bộ lọc thời gian Biểu đồ) */
+.content-compass-tabs-group,
+.content-compass-import-tabs,
+.content-compass-segmented-control {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 2.5px;
+	border-radius: 9.5px;
+	background-color: var(--cc-bg-segmented);
+	border: 1px solid var(--cc-border-subtle);
+}
+
+.content-compass-import-tabs {
+	align-self: flex-start;
+}
+
+.content-compass-tab-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.content-compass-container button.content-compass-tab-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: auto;
+	padding: 5px 14px;
+	border-radius: 7px;
+	border: none !important;
+	background: transparent !important;
+	color: var(--text-muted);
+	font-family: var(--cc-font-sans);
+	font-size: 12.5px;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	cursor: pointer;
+	transition: all 0.18s var(--cc-ease-spring);
+	box-shadow: none !important;
+}
+
+.content-compass-container button.content-compass-tab-btn:hover {
+	color: var(--text-normal);
+}
+
+.content-compass-container button.content-compass-tab-btn.is-active {
+	color: var(--text-normal);
+	background-color: var(--cc-bg-segmented-active) !important;
+	box-shadow: var(--cc-shadow-segmented) !important;
+	font-weight: 600;
+}
+
+.content-compass-segmented-control button.content-compass-tab-btn {
+	padding: 4px 11px;
+	font-size: 12px;
+}
+
+/* Nút bấm phụ chuẩn macOS Secondary Pill/Rounded Button */
+.content-compass-container button.content-compass-refresh-btn,
+.content-compass-fb-preview-modal button.content-compass-refresh-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: auto;
+	padding: 5.5px 12px;
+	border-radius: var(--cc-radius-control);
+	font-family: var(--cc-font-sans);
+	font-size: 12.5px;
+	font-weight: 500;
+	background: var(--cc-bg-elevated) !important;
+	border: 1px solid var(--cc-border-subtle) !important;
+	color: var(--text-normal);
+	cursor: pointer;
+	transition: all 0.16s var(--cc-ease-spring);
+	box-shadow: none !important;
+}
+
+.content-compass-container button.content-compass-refresh-btn:hover,
+.content-compass-fb-preview-modal button.content-compass-refresh-btn:hover {
+	background: var(--background-modifier-hover) !important;
+	border-color: var(--cc-border-strong) !important;
+}
+
+.content-compass-container button.content-compass-refresh-btn:active {
+	transform: scale(0.98);
+}
+
+.content-compass-container button.content-compass-refresh-btn.is-active {
+	background: var(--cc-blue-soft) !important;
+	color: var(--cc-blue) !important;
+	border-color: rgba(0, 122, 255, 0.28) !important;
+	font-weight: 600;
+}
+
+.content-compass-container button.content-compass-refresh-btn[disabled] {
+	opacity: 0.38;
+	cursor: not-allowed;
+	transform: none;
+}
+
+/* Nút hành động chính chuẩn Apple Filled Button */
+.content-compass-container button.content-compass-import-btn,
+.content-compass-fb-preview-modal button.content-compass-import-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: auto;
+	padding: 6px 14px;
+	border-radius: var(--cc-radius-control);
+	border: 1px solid rgba(255, 255, 255, 0.14) !important;
+	background: linear-gradient(180deg, var(--cc-blue) 0%, var(--cc-blue-hover) 100%) !important;
+	color: #ffffff !important;
+	font-family: var(--cc-font-sans);
+	font-size: 12.5px;
+	font-weight: 550;
+	letter-spacing: -0.01em;
+	cursor: pointer;
+	transition: all 0.16s var(--cc-ease-spring);
+	box-shadow: 0 1px 4px rgba(0, 122, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+}
+
+.content-compass-container button.content-compass-import-btn:hover,
+.content-compass-fb-preview-modal button.content-compass-import-btn:hover {
+	filter: brightness(1.06);
+	box-shadow: 0 3px 10px rgba(0, 122, 255, 0.3) !important;
+}
+
+.content-compass-container button.content-compass-import-btn:active {
+	transform: scale(0.98);
+}
+
+.content-compass-container button.content-compass-import-btn[disabled],
+.content-compass-fb-preview-modal button.content-compass-import-btn[disabled] {
+	opacity: 0.4;
+	cursor: not-allowed;
+	box-shadow: none !important;
+	transform: none;
+}
+
+/* Ghost Icon Button tối giản cho các thao tác cấp dòng (Finder / Mail Row Actions) */
+.content-compass-container button.content-compass-icon-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border-radius: 7px;
+	border: 1px solid transparent !important;
+	background: transparent !important;
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: all 0.15s var(--cc-ease-spring);
+	box-shadow: none !important;
+}
+
+.content-compass-container button.content-compass-icon-btn:hover {
+	background: var(--cc-bg-elevated) !important;
+	border-color: var(--cc-border-subtle) !important;
+	color: var(--text-normal);
+}
+
+.content-compass-container button.content-compass-icon-btn.is-danger:hover {
+	background: var(--cc-red-soft) !important;
+	border-color: rgba(255, 59, 48, 0.22) !important;
+	color: var(--cc-red) !important;
+}
+
+.content-compass-tab-content {
+	flex: 1;
+	overflow-y: auto;
+	padding: 20px 24px 32px 24px;
+}
+
+/* ============================================================================
+   NHÓM 3: BENTO CARDS & BỐ CỤC STRATEGY DASHBOARD
+   ============================================================================ */
+.content-compass-strategy-layout,
+.content-compass-analytics-layout {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	max-width: 1440px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.content-compass-top-section {
+	flex: 0 0 auto;
+}
+
+.content-compass-bottom-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 18px;
+	flex: 1;
+	min-height: 320px;
+}
+
+@media (max-width: 960px) {
+	.content-compass-bottom-section {
+		grid-template-columns: 1fr;
+	}
+}
+
+.content-compass-card {
+	background-color: var(--cc-bg-card);
+	backdrop-filter: blur(20px) saturate(180%);
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: var(--cc-radius-card);
+	padding: 18px 20px;
+	display: flex;
+	flex-direction: column;
+	overflow: visible;
+	box-shadow: var(--cc-shadow-card);
+	position: relative;
+}
+
+.content-compass-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 14px;
+	gap: 12px;
+}
+
+.content-compass-card-title {
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: -0.018em;
+	color: var(--text-normal);
+	margin-bottom: 14px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.content-compass-card-header .content-compass-card-title {
+	margin-bottom: 0;
+}
+
+.content-compass-card-subtitle {
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--text-normal);
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+}
+
+/* ============================================================================
+   NHÓM 4: PILLAR TREEMAP (BẢN ĐỒ TRỤ CỘT NỘI DUNG - BENTO TILES)
+   ============================================================================ */
+.content-compass-treemap {
+	position: relative;
+	width: 100%;
+	height: 420px;
+	border-radius: var(--cc-radius-group);
+}
+
+.content-compass-treemap-pillar {
+	position: absolute;
+	box-sizing: border-box;
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: 12px;
+	padding: 12px 14px;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.25s var(--cc-ease-spring);
+	overflow: hidden;
+	backdrop-filter: blur(12px);
+}
+
+.content-compass-treemap-pillar-title {
+	font-size: 13.5px;
+	font-weight: 650;
+	letter-spacing: -0.015em;
+	margin-bottom: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.content-compass-treemap-badge {
+	font-size: 11px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	padding: 2px 8px;
+	border-radius: var(--cc-radius-pill);
+	background: var(--cc-bg-card);
+	color: var(--text-muted);
+	border: 1px solid var(--cc-border-subtle);
+}
+
+.content-compass-treemap-cells {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	flex: 1;
+	align-content: flex-start;
+	overflow-y: auto;
+	padding: 2px;
+}
+
+.content-compass-treemap-cell {
+	padding: 6px 10px;
+	border-radius: 8px;
+	font-size: 12px;
+	font-weight: 500;
+	cursor: pointer;
+	border: 1px solid var(--cc-border-subtle);
+	background-color: var(--cc-bg-card);
+	color: var(--text-normal);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	transition: all 0.18s var(--cc-ease-spring);
+	min-width: 110px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.content-compass-treemap-cell:hover {
+	transform: translateY(-1.5px);
+	border-color: var(--cc-blue);
+	box-shadow: var(--cc-shadow-hover);
+}
+
+.content-compass-treemap-cell.is-buyer {
+	border-color: rgba(255, 149, 0, 0.4);
+	background-color: var(--cc-orange-soft);
+}
+
+.content-compass-treemap-cell-text {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.content-compass-cell-count {
+	font-size: 10.5px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted);
+	background: var(--cc-bg-elevated);
+	padding: 1.5px 6px;
+	border-radius: var(--cc-radius-pill);
+}
+
+.content-compass-buyer-pill {
+	font-size: 9.5px;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	color: var(--cc-orange);
+	background: var(--cc-orange-soft);
+	padding: 1.5px 6px;
+	border-radius: var(--cc-radius-pill);
+}
+
+/* ============================================================================
+   NHÓM 5: CÂY PHẢ HỆ KHÁN GIẢ (MACOS FINDER SIDEBAR OUTLINE)
+   ============================================================================ */
+.content-compass-tree-toolbar {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.content-compass-search-box {
+	position: relative;
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+
+.content-compass-search-box .cc-icon {
+	position: absolute;
+	left: 10px;
+	color: var(--text-muted);
+	pointer-events: none;
+}
+
+.content-compass-search-input,
+.content-compass-fb-search-input {
+	flex: 1;
+	width: 100%;
+	padding: 6px 12px;
+	font-family: var(--cc-font-sans);
+	font-size: 12.5px;
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: var(--cc-radius-control);
+	background: var(--cc-bg-input);
+	color: var(--text-normal);
+	transition: all 0.16s var(--cc-ease-spring);
+}
+
+.content-compass-search-box .content-compass-search-input,
+.content-compass-search-box .content-compass-fb-search-input {
+	padding-left: 30px;
+}
+
+.content-compass-search-input:focus,
+.content-compass-fb-search-input:focus {
+	outline: none;
+	border-color: var(--cc-blue);
+	box-shadow: 0 0 0 3px var(--cc-blue-soft);
+}
+
+.content-compass-filter-label {
+	font-size: 12.5px;
+	font-weight: 500;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	color: var(--text-normal);
+	user-select: none;
+}
+
+.content-compass-hierarchy {
+	overflow-y: auto;
+	flex: 1;
+	max-height: 420px;
+	padding-right: 4px;
+}
+
+.content-compass-tree-list {
+	list-style: none;
+	padding-left: 16px;
+	margin: 0;
+}
+
+.content-compass-hierarchy > .content-compass-tree-list {
+	padding-left: 0;
+}
+
+.content-compass-tree-item {
+	margin: 2px 0;
+}
+
+.content-compass-tree-node {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 450;
+	cursor: pointer;
+	padding: 5.5px 8px;
+	border-radius: 7px;
+	transition: background-color 0.14s ease;
+}
+
+.content-compass-tree-node:hover {
+	background-color: var(--cc-bg-row-hover);
+}
+
+.content-compass-tree-node.is-buyer-node {
+	background-color: var(--cc-orange-soft);
+}
+
+.content-compass-tree-toggle {
+	width: 16px;
+	height: 16px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: var(--text-muted);
+	user-select: none;
+	border-radius: 4px;
+	flex-shrink: 0;
+}
+
+.content-compass-tree-toggle svg {
+	width: 13px;
+	height: 13px;
+	transition: transform 0.18s var(--cc-ease-spring);
+}
+
+.content-compass-tree-toggle.is-expanded svg {
+	transform: rotate(90deg);
+}
+
+.content-compass-level-dot {
+	width: 7.5px;
+	height: 7.5px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.content-compass-level-dot.is-big {
+	background-color: var(--cc-red);
+}
+
+.content-compass-level-dot.is-little {
+	background-color: var(--cc-green);
+}
+
+.content-compass-level-dot.is-micro {
+	background-color: var(--cc-blue);
+}
+
+.content-compass-node-label {
+	flex: 1;
+}
+
+.content-compass-badge-buyer {
+	background-color: var(--cc-orange-soft);
+	color: var(--cc-orange);
+	border: 1px solid rgba(255, 149, 0, 0.28);
+	font-size: 9.5px;
+	font-weight: 700;
+	padding: 1.5px 6px;
+	border-radius: var(--cc-radius-pill);
+	letter-spacing: 0.03em;
+}
+
+.content-compass-step-badge {
+	font-size: 11px;
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted);
+	background: var(--cc-bg-elevated);
+	padding: 1.5px 7px;
+	border-radius: var(--cc-radius-pill);
+}
+
+/* ============================================================================
+   NHÓM 6: PILLAR HEALTH & APPLE INSET GROUPED TABLES (STICKY FROSTED HEADER)
+   ============================================================================ */
+.content-compass-health-list {
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	margin-bottom: 16px;
+}
+
+.content-compass-health-item {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.content-compass-health-label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 12.5px;
+}
+
+.content-compass-health-stats {
+	color: var(--text-muted);
+	font-variant-numeric: tabular-nums;
+	font-size: 12px;
+}
+
+.content-compass-health-track {
+	width: 100%;
+	height: 7px;
+	background-color: var(--cc-bg-elevated);
+	border-radius: var(--cc-radius-pill);
+	overflow: hidden;
+}
+
+.content-compass-health-fill {
+	height: 100%;
+	border-radius: var(--cc-radius-pill);
+	transition: width 0.4s var(--cc-ease-spring);
+}
+
+.content-compass-table-container {
+	margin-top: 8px;
+	border-top: 1px solid var(--cc-border-subtle);
+	padding-top: 10px;
+	overflow-x: auto;
+}
+
+/* Bảng dữ liệu chuẩn Apple Inset Table */
+.content-compass-data-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	font-size: 12.5px;
+	font-variant-numeric: tabular-nums;
+}
+
+.content-compass-data-table th {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	text-align: left;
+	padding: 9px 14px;
+	border-bottom: 1px solid var(--cc-border-subtle);
+	color: var(--text-muted);
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.035em;
+	background-color: var(--cc-bg-header-sticky);
+	backdrop-filter: blur(14px);
+}
+
+.content-compass-data-table td {
+	padding: 11px 14px;
+	border-bottom: 1px solid var(--cc-border-subtle);
+	color: var(--text-normal);
+	vertical-align: middle;
+	transition: background-color 0.12s ease;
+}
+
+.content-compass-data-table tbody tr:hover td {
+	background-color: var(--cc-bg-row-hover);
+}
+
+.content-compass-data-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.content-compass-data-table tfoot td {
+	font-weight: 650;
+	border-top: 1px solid var(--cc-border-strong);
+	border-bottom: none;
+	padding-top: 11px;
+}
+
+.content-compass-color-dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin-right: 8px;
+	vertical-align: middle;
+}
+
+.content-compass-placeholder {
+	padding: 28px 20px;
+	text-align: center;
+	color: var(--text-muted);
+	font-size: 13px;
+	background: var(--cc-bg-elevated);
+	border-radius: var(--cc-radius-group);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+/* ============================================================================
+   NHÓM 7: ANALYTICS FORMS & CHARTS HEADER CONTROLS
+   ============================================================================ */
+.content-compass-analytics-import,
+.content-compass-analytics-chart {
+	flex: 0 0 auto;
+}
+
+.content-compass-chart-controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+/* Dải bộ lọc đa chiều bên dưới Header biểu đồ */
+.content-compass-chart-filter-strip {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 10px 12px;
+	margin-bottom: 14px;
+	border-radius: var(--cc-radius-group);
+	background-color: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+}
+
+/* Lưới 4 Thẻ Tóm tắt KPI chuẩn Apple Health / Fitness */
+.content-compass-kpi-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	margin-bottom: 14px;
+}
+
+@media (max-width: 900px) {
+	.content-compass-kpi-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.content-compass-kpi-tile {
+	padding: 11px 14px;
+	border-radius: var(--cc-radius-group);
+	background-color: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	cursor: pointer;
+	transition: all 0.18s var(--cc-ease-spring);
+}
+
+.content-compass-kpi-tile:hover {
+	border-color: var(--cc-border-strong);
+	transform: translateY(-1px);
+}
+
+.content-compass-kpi-tile.is-selected {
+	background-color: var(--cc-bg-input);
+	border-color: var(--cc-blue);
+	box-shadow: 0 0 0 2.5px var(--cc-blue-soft);
+}
+
+.content-compass-kpi-title {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11.5px;
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+.content-compass-kpi-value {
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.25;
+}
+
+.content-compass-kpi-sub {
+	font-size: 11px;
+	color: var(--text-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.content-compass-canvas-wrap {
+	width: 100%;
+	overflow: hidden;
+}
+
+.content-compass-import-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px 16px;
+	font-size: 12.5px;
+	background: var(--cc-bg-input);
+	padding: 16px;
+	border-radius: var(--cc-radius-group);
+	border: 1px solid var(--cc-border-subtle);
+}
+
+.content-compass-import-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	color: var(--text-muted);
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.content-compass-container select,
+.content-compass-fb-preview-modal select,
+.content-compass-import-form input,
+.content-compass-fb-inline-input,
+.content-compass-fb-side-controls input {
+	height: auto;
+	padding: 5.5px 10px;
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: var(--cc-radius-control);
+	background-color: var(--cc-bg-input);
+	color: var(--text-normal);
+	font-family: var(--cc-font-sans);
+	font-size: 12.5px;
+	font-weight: 500;
+	transition: all 0.16s var(--cc-ease-spring);
+	box-shadow: none;
+}
+
+.content-compass-container select:focus,
+.content-compass-import-form input:focus,
+.content-compass-fb-inline-input:focus {
+	outline: none;
+	border-color: var(--cc-blue);
+	box-shadow: 0 0 0 3px var(--cc-blue-soft);
+}
+
+.content-compass-fb-inline-input {
+	width: 68px;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+
+.content-compass-import-actions {
+	grid-column: 1 / -1;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	margin-top: 4px;
+}
+
+.content-compass-import-status {
+	font-size: 12.5px;
+	color: var(--text-muted);
+}
+
+.content-compass-chart-canvas {
+	width: 100%;
+	border-radius: 10px;
+	display: block;
+}
+
+/* ============================================================================
+   NHÓM 8: FACEBOOK REALTIME TRACKER (UNIFIED APPLE INSET GROUPED CARDS)
+   ============================================================================ */
+.content-compass-fb-workspace {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/* Thanh trạng thái trên cùng chuẩn macOS Glass Control Bar */
+.content-compass-fb-statusbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 12px 18px;
+	border-radius: var(--cc-radius-card);
+	background-color: var(--cc-bg-card);
+	backdrop-filter: blur(20px) saturate(180%);
+	border: 1px solid var(--cc-border-subtle);
+	box-shadow: var(--cc-shadow-card);
+	font-size: 12.5px;
+}
+
+.content-compass-fb-status-text {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	font-weight: 500;
+}
+
+.content-compass-fb-status-line {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.content-compass-fb-error {
+	font-size: 12px;
+	color: var(--cc-red);
+	background: var(--cc-red-soft);
+	padding: 3px 9px;
+	border-radius: 6px;
+	font-weight: 500;
+	margin-top: 2px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.content-compass-fb-btn-group {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+/* Ngăn kéo nhập liệu & cài đặt (Apple Sheet Panel) */
+.content-compass-fb-settings-panel {
+	padding: 18px 20px;
+	border-radius: var(--cc-radius-card);
+	background-color: var(--cc-bg-card);
+	border: 1px solid var(--cc-border-subtle);
+	box-shadow: var(--cc-shadow-card);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.content-compass-fb-checkbox-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 10px 14px;
+	border-radius: var(--cc-radius-group);
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+}
+
+/* Thẻ phân vùng liền mạch (Unified Section Card - không lồng hộp chồng chéo) */
+.content-compass-fb-section-card {
+	background-color: var(--cc-bg-card);
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: var(--cc-radius-card);
+	box-shadow: var(--cc-shadow-card);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.content-compass-fb-section-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 14px 18px;
+	border-bottom: 1px solid var(--cc-border-subtle);
+}
+
+.content-compass-fb-toolbar-strip {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 9px 18px;
+	background-color: var(--cc-bg-elevated);
+	border-bottom: 1px solid var(--cc-border-subtle);
+}
+
+.content-compass-table-scroll {
+	max-height: 460px;
+	overflow-y: auto;
+	width: 100%;
+	scrollbar-gutter: stable;
+}
+
+/* Khóa cứng chiều cao khung cuộn và độ rộng cột cho bảng Bài viết để không bao giờ bị giật/nhảy khi lọc hoặc sắp xếp */
+.content-compass-posts-scroll {
+	height: 440px;
+	min-height: 440px;
+	max-height: 440px;
+	overflow-y: scroll;
+	scrollbar-gutter: stable;
+}
+
+.content-compass-posts-table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.content-compass-posts-table th:nth-child(1),
+.content-compass-posts-table td:nth-child(1) {
+	width: 56px;
+}
+
+.content-compass-posts-table th:nth-child(2),
+.content-compass-posts-table td:nth-child(2) {
+	width: auto;
+	word-break: break-word;
+}
+
+.content-compass-posts-table th:nth-child(3),
+.content-compass-posts-table td:nth-child(3) {
+	width: 185px;
+}
+
+.content-compass-posts-table th:nth-child(4),
+.content-compass-posts-table td:nth-child(4) {
+	width: 112px;
+}
+
+.content-compass-posts-table th:nth-child(5),
+.content-compass-posts-table td:nth-child(5) {
+	width: 138px;
+}
+
+.content-compass-posts-table th:nth-child(6),
+.content-compass-posts-table td:nth-child(6) {
+	width: 116px;
+}
+
+/* Khung chia 2 cột trong ngăn kéo Thêm nguồn */
+.content-compass-fb-split-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 14px;
+	align-items: stretch;
+}
+
+@media (max-width: 900px) {
+	.content-compass-fb-split-form {
+		grid-template-columns: 1fr;
+	}
+}
+
+.content-compass-fb-add-box {
+	padding: 16px;
+	border-radius: var(--cc-radius-group);
+	background-color: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+}
+
+.content-compass-fb-textarea-label {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-muted);
+}
+
+.content-compass-fb-textarea-label textarea {
+	width: 100%;
+	min-height: 68px;
+	padding: 9px 11px;
+	border-radius: var(--cc-radius-control);
+	border: 1px solid var(--cc-border-subtle);
+	background: var(--cc-bg-input);
+	color: var(--text-normal);
+	font-family: var(--cc-font-sans);
+	font-size: 12.5px;
+	line-height: 1.45;
+	resize: vertical;
+	transition: all 0.16s var(--cc-ease-spring);
+}
+
+.content-compass-fb-textarea-label textarea:focus {
+	outline: none;
+	border-color: var(--cc-blue);
+	box-shadow: 0 0 0 3px var(--cc-blue-soft);
+}
+
+.content-compass-fb-side-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
+.content-compass-fb-side-controls label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Tiêu đề bài viết & Metadata */
+.content-compass-fb-post-headline {
+	display: inline-block;
+	font-weight: 600;
+	font-size: 13px;
+	letter-spacing: -0.011em;
+	color: var(--text-normal);
+	line-height: 1.4;
+	margin-bottom: 4px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: color 0.14s ease;
+}
+
+.content-compass-fb-post-headline:hover {
+	color: var(--cc-blue);
+	text-decoration: none;
+}
+
+.content-compass-fb-post-title-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+	font-size: 11.5px;
+}
+
+.content-compass-source-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 1.5px 7px;
+	border-radius: var(--cc-radius-pill);
+	font-size: 10.5px;
+	font-weight: 600;
+	background: var(--cc-bg-elevated);
+	color: var(--text-muted);
+}
+
+.content-compass-source-pill.is-own {
+	background: var(--cc-blue-soft);
+	color: var(--cc-blue);
+}
+
+/* Apple Pill Badges cho Score và Metrics */
+.content-compass-fb-score-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-weight: 650;
+	font-size: 11.5px;
+	font-variant-numeric: tabular-nums;
+	color: var(--cc-blue);
+	background: var(--cc-blue-soft);
+	padding: 2.5px 9px;
+	border-radius: var(--cc-radius-pill);
+	margin-bottom: 5px;
+}
+
+.content-compass-fb-score-badge .cc-icon svg {
+	width: 12px;
+	height: 12px;
+}
+
+.content-compass-fb-metrics-row {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	flex-wrap: wrap;
+}
+
+.content-compass-fb-metric-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 11px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted);
+	background: var(--cc-bg-elevated);
+	padding: 2px 7px;
+	border-radius: 6px;
+}
+
+.content-compass-fb-metric-chip .cc-icon svg {
+	width: 11.5px;
+	height: 11.5px;
+	opacity: 0.78;
+}
+
+.content-compass-fb-auth-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--cc-green);
+	background: var(--cc-green-soft);
+	padding: 4px 11px;
+	border-radius: var(--cc-radius-pill);
+}
+
+.content-compass-fb-subtext {
+	font-size: 11.5px;
+	color: var(--text-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.content-compass-fb-row-actions {
+	display: inline-flex;
+	gap: 6px;
+	align-items: center;
+	white-space: nowrap;
+}
+
+/* ============================================================================
+   NHÓM 9: MODAL XEM TRƯỚC BÀI VIẾT (APPLE SHEET DIALOG)
+   ============================================================================ */
+.content-compass-fb-preview-modal {
+	max-width: 740px;
+	font-family: var(--cc-font-sans);
+}
+
+.content-compass-fb-modal-header h3 {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: 650;
+}
+
+.content-compass-fb-modal-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-muted);
+	margin-bottom: 14px;
+	padding: 8px 12px;
+	border-radius: 10px;
+	background: var(--cc-bg-elevated);
+}
+
+.content-compass-fb-modal-savebox {
+	padding: 14px 16px;
+	border-radius: var(--cc-radius-group);
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+	margin-bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.content-compass-fb-modal-field {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-muted);
+}
+
+.content-compass-fb-modal-field input {
+	width: 100%;
+	padding: 7px 11px;
+	border-radius: var(--cc-radius-control);
+	border: 1px solid var(--cc-border-subtle);
+	background: var(--cc-bg-input);
+	color: var(--text-normal);
+	font-family: var(--cc-font-sans);
+	font-size: 13px;
+}
+
+.content-compass-fb-modal-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.content-compass-fb-modal-body h4 {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 13.5px;
+	font-weight: 600;
+	margin: 14px 0 8px 0;
+}
+
+.content-compass-fb-modal-text {
+	white-space: pre-wrap;
+	padding: 14px 16px;
+	border-radius: var(--cc-radius-group);
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+	font-size: 13px;
+	line-height: 1.55;
+	max-height: 240px;
+	overflow-y: auto;
+}
+
+.content-compass-fb-modal-comments {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: 280px;
+	overflow-y: auto;
+	padding: 12px;
+	border-radius: var(--cc-radius-group);
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+}
+
+.content-compass-fb-comment-item {
+	font-size: 12.5px;
+	line-height: 1.45;
+	padding: 8px 10px;
+	border-radius: 8px;
+	background: var(--cc-bg-input);
+}
+
+.content-compass-fb-comment-replies {
+	margin-left: 14px;
+	margin-top: 6px;
+	padding-left: 10px;
+	border-left: 2px solid var(--cc-blue);
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
+/* ============================================================================
+   NHÓM 11: BỘ CHỌN KHOẢNG THỜI GIAN POPOVER 3 CỘT THU GỌN (DUAL CALENDAR + PRESETS)
+   ============================================================================ */
+.cc-daterange-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+/* Cụm điều khiển liền khối trên Header: [ Nút chọn ngày ▾ | Dropbox Xem theo: Ngày/Tuần/Tháng/Năm ] */
+.cc-daterange-bar {
+	display: inline-flex;
+	align-items: center;
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: 9px;
+	padding: 2px;
+	gap: 2px;
+}
+
+.content-compass-container button.cc-daterange-trigger {
+	gap: 6px;
+	height: 26px;
+	padding: 0 10px;
+	font-weight: 550;
+	font-size: 12px;
+	background: transparent !important;
+	border: none !important;
+	border-radius: 7px;
+	box-shadow: none !important;
+}
+
+.content-compass-container button.cc-daterange-trigger:hover {
+	background: var(--cc-bg-input) !important;
+}
+
+.cc-inline-group-wrap {
+	display: inline-flex;
+	align-items: center;
+	border-left: 1px solid var(--cc-border-hairline);
+	padding-left: 4px;
+}
+
+.content-compass-container select.cc-inline-group-select {
+	height: 26px;
+	padding: 0 22px 0 8px;
+	font-size: 12px;
+	font-weight: 550;
+	border: none !important;
+	background-color: transparent !important;
+	color: var(--cc-blue);
+	border-radius: 7px;
+	cursor: pointer;
+	box-shadow: none !important;
+}
+
+.content-compass-container select.cc-inline-group-select:hover {
+	background-color: var(--cc-blue-soft) !important;
+}
+
+/* Khung Popover 3 cột thu gọn chuẩn Apple macOS */
+.cc-daterange-popover {
+	position: absolute;
+	top: calc(100% + 6px);
+	right: 0;
+	z-index: 250;
+	width: 520px;
+	max-width: 92vw;
+	background: var(--background-primary);
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: 12px;
+	box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22), 0 3px 10px rgba(0, 0, 0, 0.08);
+	padding: 10px 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+/* Thanh trên cùng trong Popover: Từ ngày -> Đến ngày + Dropbox Gộp theo + Dropbox Mốc */
+.cc-daterange-top-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--cc-border-hairline);
+}
+
+.cc-daterange-inputs {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.cc-daterange-lbl {
+	font-size: 11px;
+	font-weight: 550;
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+
+.content-compass-container input.cc-daterange-date-input {
+	height: 24px;
+	width: 112px;
+	padding: 0 6px;
+	font-size: 11px;
+	font-family: var(--cc-font-sans);
+	border-radius: 6px;
+	border: 1px solid var(--cc-border-subtle);
+	background: var(--cc-bg-input);
+	color: var(--text-normal);
+}
+
+.content-compass-container select.cc-daterange-select {
+	height: 24px;
+	padding: 0 20px 0 6px;
+	font-size: 11px;
+	font-weight: 550;
+	border-radius: 6px;
+	border: 1px solid var(--cc-border-subtle);
+	background-color: var(--cc-bg-input);
+	color: var(--text-normal);
+}
+
+/* Lưới 3 cột thu gọn: [Cột 1: 118px] [Cột 2: 1fr] [Cột 3: 1fr] */
+.cc-daterange-columns {
+	display: grid;
+	grid-template-columns: 118px 1fr 1fr;
+	gap: 8px;
+	align-items: stretch;
+}
+
+@media (max-width: 680px) {
+	.cc-daterange-columns {
+		grid-template-columns: 1fr;
+	}
+	.cc-daterange-popover {
+		width: 310px;
+	}
+}
+
+.cc-daterange-presets {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	padding-right: 6px;
+	border-right: 1px solid var(--cc-border-hairline);
+	max-height: 196px;
+	overflow-y: auto;
+}
+
+.content-compass-container button.cc-preset-item {
+	-webkit-appearance: none;
+	appearance: none;
+	text-align: left;
+	justify-content: flex-start;
+	height: 21px;
+	min-height: 21px;
+	padding: 0 7px;
+	border-radius: 5px;
+	border: none !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	font-size: 11px;
+	font-weight: 500;
+	color: var(--text-normal);
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.content-compass-container button.cc-preset-item:hover {
+	background: var(--cc-bg-input) !important;
+}
+
+.content-compass-container button.cc-preset-item.is-active {
+	background: var(--cc-blue-soft) !important;
+	color: var(--cc-blue) !important;
+	font-weight: 600;
+}
+
+/* Cột Lịch thu gọn (Compact Dual Calendar) */
+.cc-daterange-calendar {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background: var(--cc-bg-input);
+	padding: 6px 8px;
+	border-radius: 8px;
+	border: 1px solid var(--cc-border-hairline);
+}
+
+.cc-cal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 20px;
+}
+
+.cc-cal-header button.content-compass-icon-btn {
+	width: 20px;
+	height: 20px;
+}
+
+.cc-cal-title {
+	font-size: 11.5px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.cc-cal-spacer {
+	width: 20px;
+	height: 20px;
+}
+
+.cc-cal-weekdays {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	text-align: center;
+}
+
+.cc-cal-weekdays span {
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--text-faint);
+	padding: 1px 0;
+}
+
+.cc-cal-days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	row-gap: 2px;
+	column-gap: 1px;
+}
+
+.cc-cal-day.is-empty {
+	height: 21px;
+}
+
+.content-compass-container button.cc-cal-day {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 21px;
+	min-height: 21px;
+	width: 100%;
+	padding: 0;
+	border: none !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	border-radius: 5px;
+	font-size: 11px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	color: var(--text-normal);
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content-compass-container button.cc-cal-day:hover {
+	background: var(--cc-bg-elevated) !important;
+}
+
+.content-compass-container button.cc-cal-day.is-in-range {
+	background: var(--cc-blue-soft) !important;
+	color: var(--cc-blue) !important;
+	border-radius: 3px;
+}
+
+.content-compass-container button.cc-cal-day.is-start,
+.content-compass-container button.cc-cal-day.is-end {
+	background: var(--cc-blue) !important;
+	color: #ffffff !important;
+	font-weight: 650;
+	border-radius: 5px;
+}
+
+/* Thanh chân Popover 1 dòng ngang gọn gàng */
+.cc-daterange-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 6px;
+	border-top: 1px solid var(--cc-border-hairline);
+}
+
+.cc-daterange-summary {
+	font-size: 11px;
+	color: var(--text-muted);
+	font-weight: 500;
+}
+
+.cc-daterange-footer-btns {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.content-compass-container button.cc-btn-sm {
+	height: 25px;
+	padding: 0 10px;
+	font-size: 11.5px;
+	border-radius: 6px;
+}
+
+

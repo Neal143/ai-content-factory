@@ -140,6 +140,7 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
                  audience_main_job: "[giá trị từ audience.yaml]"
                  audience_circumstance: "[giá trị từ audience.yaml]"
                  parent_audience: []                              # Bắt buộc khởi tạo định dạng mảng rỗng (Array) để đảm bảo đồng bộ kiến trúc DAG
+                 is_buyer_job:                                    # Bỏ trống = false. User tự xác định
                  aliases: []
              ```
     - **Bước 2 (Mở rộng Insights)**: 
