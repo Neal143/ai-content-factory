@@ -1,9 +1,9 @@
 /**
  * Tên file: HierarchyBrowserView.ts
- * Last update: 23/10/2026 20:10 (GMT+7)
+ * Last update: 03/11/2026 12:20 (GMT+7)
  * Vai trò: Renderer cho cây phả hệ Audience có thể thu gọn/mở rộng (collapsible tree).
  * Được sử dụng khi nào?: Trong tab Strategy để duyệt cấu trúc phân cấp Big/Little/Micro Job.
- * Output: Cây phả hệ tương tác với nút thu gọn/mở rộng, bộ lọc tìm kiếm tức thời và highlight Buyer Job.
+ * Output: Cây phả hệ tương tác với nút Hide/Show ở góc trên cùng bên phải, bộ lọc tìm kiếm tức thời và highlight Buyer Job.
  * Tóm tắt logic hoạt động: Duyệt đệ quy từ các root node của AudienceIndex, tạo phần tử DOM
  * hỗ trợ toggle đóng/mở chi nhánh, tìm kiếm theo tên và nhấp để mở ghi chú trong vault.
  */
@@ -18,6 +18,7 @@ export class HierarchyBrowserView {
 	private app: App;
 	private searchQuery: string = "";
 	private onlyBuyerJobs: boolean = false;
+	private isCollapsed: boolean = false;
 
 	constructor(container: HTMLElement, audienceIndex: AudienceIndex, app: App) {
 		this.container = container;
@@ -29,13 +30,14 @@ export class HierarchyBrowserView {
 	public render(): void {
 		this.container.empty();
 
-		const card = this.container.createDiv({ cls: "content-compass-card" });
+		const card = this.container.createDiv({
+			cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`,
+		});
 		
-		// Header tiêu đề và thống kê
+		// Header tiêu đề (Click để Hide/Show) và thống kê
 		const header = card.createDiv({ cls: "content-compass-card-header" });
-		const title = header.createDiv({ cls: "content-compass-card-title" });
+		const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
 		const titleIcon = title.createSpan({ cls: "cc-icon" });
-		setIcon(titleIcon, "git-branch");
 		title.createSpan({ text: "Cây Phả hệ Khán giả (Audience Hierarchy)" });
 
 		const buyerCount = this.audienceIndex.getBuyerJobCount();
@@ -43,8 +45,28 @@ export class HierarchyBrowserView {
 		const subtitle = header.createDiv({ cls: "content-compass-treemap-badge" });
 		subtitle.setText(`${totalCount} Audiences • ${buyerCount} Buyer Jobs`);
 
+		const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isCollapsed) {
+			cardBody.style.display = "none";
+		}
+		const syncCollapseTitle = () => {
+			titleIcon.empty();
+			setIcon(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+			title.setAttribute(
+				"title",
+				this.isCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+		};
+		syncCollapseTitle();
+		title.addEventListener("click", () => {
+			this.isCollapsed = !this.isCollapsed;
+			card.toggleClass("is-collapsed", this.isCollapsed);
+			cardBody.style.display = this.isCollapsed ? "none" : "";
+			syncCollapseTitle();
+		});
+
 		// Thanh công cụ: Tìm kiếm (với Icon Vector) và Công tắc UISwitch
-		const toolbar = card.createDiv({ cls: "content-compass-tree-toolbar" });
+		const toolbar = cardBody.createDiv({ cls: "content-compass-tree-toolbar" });
 		
 		const searchBox = toolbar.createDiv({ cls: "content-compass-search-box" });
 		const searchIcon = searchBox.createSpan({ cls: "cc-icon" });
@@ -72,7 +94,7 @@ export class HierarchyBrowserView {
 			this.renderTree(treeContainer);
 		});
 
-		const treeContainer = card.createDiv({ cls: "content-compass-hierarchy" });
+		const treeContainer = cardBody.createDiv({ cls: "content-compass-hierarchy" });
 		this.renderTree(treeContainer);
 	}
 

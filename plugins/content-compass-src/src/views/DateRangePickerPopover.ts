@@ -1,13 +1,13 @@
 /**
  * Tên file: DateRangePickerPopover.ts
- * Last update: 02/11/2026 17:50 (GMT+7)
+ * Last update: 03/11/2026 15:22 (GMT+7)
  * Vai trò: Component nút chọn khoảng thời gian tích hợp Popover 3 cột chuẩn Apple / Analytics
  *          (Cột 1: Chọn nhanh Presets, Cột 2 & 3: Lịch kép 2 tháng cho phép chọn Từ ngày -> Đến ngày,
  *          Thanh dưới: Dropdown chọn đơn vị xem Ngày/Tuần/Tháng/Năm và Mốc thời gian).
- * Được sử dụng khi nào?: Được gắn vào thanh Header của TimelineChartView và TagRankingView trong tab Analytics.
+ * Được sử dụng khi nào?: Được gắn vào thanh Header của TimelineChartView, TagRankingView và thanh lọc của Danh sách bài viết (ImportEngineView).
  * Output: Nút bấm gọn gàng hiển thị tóm tắt khoảng ngày + đơn vị xem, khi click mở Popover 3 cột tương tác.
  * Tóm tắt logic hoạt động: Quản lý trạng thái presetId, startDate, endDate, groupBy, dateBasis; tự động tính toán
- *          lưới lịch 2 tháng liền kề, tô sáng dải ngày được chọn và gọi callback onApply khi người dùng bấm Áp dụng.
+ *          lưới lịch 2 tháng liền kề, cập nhật nhãn nút tại chỗ (in-place) và gọi callback onApply khi người dùng bấm Áp dụng.
  */
 
 import { setIcon } from "obsidian";
@@ -136,36 +136,41 @@ export function renderDateRangePickerButton(
 		showDateBasis: boolean;
 	},
 	onApply: (next: DateRangeSelection) => void
-): void {
+): HTMLElement {
 	const wrapper = parentEl.createDiv({ cls: "cc-daterange-wrapper" });
+	let activeSelection: DateRangeSelection = { ...current };
 
-	// Cụm điều khiển liền khối trên Header: [ Nút chọn khoảng ngày ▾ | Dropbox Gộp theo: Ngày/Tuần/Tháng/Năm ]
+	// Cụm điều khiển liền khối: [ Nút chọn khoảng ngày ▾ | Dropbox Gộp theo: Ngày/Tuần/Tháng/Năm ]
 	const controlBar = wrapper.createDiv({ cls: "cc-daterange-bar" });
 
-	// Tạo nhãn tóm tắt ngắn gọn trên nút bấm mở lịch
-	const presetObj = PRESET_OPTIONS.find((p) => p.id === current.presetId);
-	const presetLabel = presetObj ? presetObj.label : "Tùy chỉnh";
-	let rangeText = presetLabel;
-	if (current.presetId === "custom" && current.startDate && current.endDate) {
-		rangeText = `${formatVnShort(current.startDate)} → ${formatVnShort(current.endDate)}`;
-	} else if (current.startDate && current.endDate) {
-		rangeText = `${presetLabel} (${formatVnShort(current.startDate).slice(0, 5)} – ${formatVnShort(current.endDate).slice(0, 5)})`;
-	}
+	const formatRangeText = (sel: DateRangeSelection): string => {
+		const presetObj = PRESET_OPTIONS.find((p) => p.id === sel.presetId);
+		const presetLabel = presetObj ? presetObj.label : "Tùy chỉnh";
+		if (sel.presetId === "custom" && sel.startDate && sel.endDate) {
+			return `${formatVnShort(sel.startDate)} → ${formatVnShort(sel.endDate)}`;
+		}
+		if (sel.startDate && sel.endDate) {
+			return `${presetLabel} (${formatVnShort(sel.startDate).slice(0, 5)} – ${formatVnShort(sel.endDate).slice(0, 5)})`;
+		}
+		return presetLabel;
+	};
 
 	const triggerBtn = controlBar.createEl("button", {
 		cls: "content-compass-refresh-btn cc-daterange-trigger",
+		attr: { type: "button" },
 	});
 	triggerBtn.setAttribute("title", "Bấm để mở bảng chọn khoảng thời gian 3 cột (Chọn nhanh + Lịch kép)");
 	const calIcon = triggerBtn.createSpan({ cls: "cc-icon" });
 	setIcon(calIcon, "calendar");
-	triggerBtn.createSpan({ text: rangeText });
+	const labelSpan = triggerBtn.createSpan({ text: formatRangeText(activeSelection) });
 	const chevIcon = triggerBtn.createSpan({ cls: "cc-icon" });
 	setIcon(chevIcon, "chevron-down");
 
 	// Dropbox Gộp dữ liệu theo Thời gian (Ngày / Tuần / Tháng / Năm) tích hợp ngay cạnh nút chọn lịch
+	let inlineGroupSelect: HTMLSelectElement | null = null;
 	if (options.showGroupBy) {
 		const inlineGroupWrap = controlBar.createDiv({ cls: "cc-inline-group-wrap" });
-		const inlineGroupSelect = inlineGroupWrap.createEl("select", {
+		inlineGroupSelect = inlineGroupWrap.createEl("select", {
 			cls: "cc-inline-group-select",
 		}) as HTMLSelectElement;
 		inlineGroupSelect.setAttribute("title", "Chọn đơn vị gộp dữ liệu theo thời gian (Ngày, Tuần, Tháng, Năm)");
@@ -173,13 +178,16 @@ export function renderDateRangePickerButton(
 		inlineGroupSelect.createEl("option", { value: "week", text: "Xem theo: Tuần" });
 		inlineGroupSelect.createEl("option", { value: "month", text: "Xem theo: Tháng" });
 		inlineGroupSelect.createEl("option", { value: "year", text: "Xem theo: Năm" });
-		inlineGroupSelect.value = current.groupBy || "day";
+		inlineGroupSelect.value = activeSelection.groupBy || "day";
 		inlineGroupSelect.addEventListener("change", (e) => {
 			e.stopPropagation();
-			onApply({
-				...current,
+			if (!inlineGroupSelect) return;
+			activeSelection = {
+				...activeSelection,
 				groupBy: inlineGroupSelect.value as TimelineGroupBy,
-			});
+			};
+			draftGroupBy = activeSelection.groupBy || "day";
+			onApply(activeSelection);
 		});
 	}
 
@@ -188,11 +196,11 @@ export function renderDateRangePickerButton(
 	popover.style.display = "none";
 
 	// Bản sao trạng thái tạm thời khi người dùng đang thao tác trong Popover
-	let draftPreset: DatePresetId = current.presetId;
-	let draftStart: string = current.startDate;
-	let draftEnd: string = current.endDate;
-	let draftGroupBy: TimelineGroupBy = current.groupBy || "day";
-	let draftBasis: "published" | "collected" = current.dateBasis || "published";
+	let draftPreset: DatePresetId = activeSelection.presetId;
+	let draftStart: string = activeSelection.startDate;
+	let draftEnd: string = activeSelection.endDate;
+	let draftGroupBy: TimelineGroupBy = activeSelection.groupBy || "day";
+	let draftBasis: "published" | "collected" = activeSelection.dateBasis || "published";
 	let pickingPhase: "start" | "end" = "start";
 
 	// Tháng gốc của Cột lịch bên phải (Mặc định là tháng hiện tại)
@@ -329,17 +337,23 @@ export function renderDateRangePickerButton(
 		const btnApply = footerBtns.createEl("button", {
 			cls: "content-compass-import-btn cc-btn-sm",
 			text: "Áp dụng",
+			attr: { type: "button" },
 		});
 		btnApply.addEventListener("click", (e) => {
 			e.stopPropagation();
 			popover.style.display = "none";
-			onApply({
+			activeSelection = {
 				presetId: draftPreset,
 				startDate: draftStart,
 				endDate: draftEnd,
 				groupBy: draftGroupBy,
 				dateBasis: draftBasis,
-			});
+			};
+			labelSpan.setText(formatRangeText(activeSelection));
+			if (inlineGroupSelect && activeSelection.groupBy) {
+				inlineGroupSelect.value = activeSelection.groupBy;
+			}
+			onApply(activeSelection);
 		});
 	};
 
@@ -450,27 +464,48 @@ export function renderDateRangePickerButton(
 		}
 	};
 
-	// Nhóm 6: Sự kiện đóng/mở Popover và click ra ngoài để đóng
+	// Nhóm 6: Sự kiện đóng/mở Popover, căn vị trí thông minh không tràn màn hình và click ra ngoài để đóng
 	triggerBtn.addEventListener("click", (e) => {
 		e.stopPropagation();
 		const isHidden = popover.style.display === "none";
 		if (isHidden) {
-			draftPreset = current.presetId;
-			draftStart = current.startDate;
-			draftEnd = current.endDate;
-			draftGroupBy = current.groupBy || "day";
-			draftBasis = current.dateBasis || "published";
+			draftPreset = activeSelection.presetId;
+			draftStart = activeSelection.startDate;
+			draftEnd = activeSelection.endDate;
+			draftGroupBy = activeSelection.groupBy || "day";
+			draftBasis = activeSelection.dateBasis || "published";
 			rebuildPopoverContent();
+
+			const btnRect = triggerBtn.getBoundingClientRect();
+			const popoverWidth = 520;
+			if (btnRect.left + popoverWidth <= window.innerWidth - 20) {
+				popover.style.left = "0";
+				popover.style.right = "auto";
+			} else {
+				popover.style.right = "0";
+				popover.style.left = "auto";
+			}
+
 			popover.style.display = "flex";
 		} else {
 			popover.style.display = "none";
 		}
 	});
 
+	(wrapper as any).syncSelection = (next: DateRangeSelection) => {
+		activeSelection = { ...next };
+		labelSpan.setText(formatRangeText(activeSelection));
+		if (inlineGroupSelect && activeSelection.groupBy) {
+			inlineGroupSelect.value = activeSelection.groupBy;
+		}
+	};
+
 	document.addEventListener("mousedown", (evt) => {
 		if (popover.style.display !== "none" && !wrapper.contains(evt.target as Node)) {
 			popover.style.display = "none";
 		}
 	});
+
+	return wrapper;
 }
 

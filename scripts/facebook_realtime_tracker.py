@@ -3,7 +3,7 @@
 THÔNG TIN MÔ TẢ FILE (RULE 7)
 ================================================================================
 - Tên file: facebook_realtime_tracker.py
-- Last update: 30/10/2026 16:30 (GMT+7)
+- Last update: 03/11/2026 10:06 (GMT+7)
 - Vai trò: Engine thu thập tự động nội dung bài viết, chỉ số tương tác (Reactions,
   Comments, Shares, Views) và bình luận phân nhánh (Threaded Comments) từ URL bài viết,
   Fanpage công khai và Trang cá nhân Facebook theo Kiến trúc Phân luồng Kép (Dual-Context:
@@ -950,6 +950,9 @@ class TrackerOrchestrator:
                 "page_scan_mins": 60,
                 "delay_seconds": 8,
                 "max_batch_size": 20,
+                "retention_mode": "max_days",
+                "retention_max_posts": 20,
+                "retention_max_days": 7,
                 "fetch_comments": True,
                 "expand_replies": False,
                 "background_task_enabled": False,
@@ -1045,6 +1048,108 @@ class TrackerOrchestrator:
         except Exception:
             return False
 
+    def apply_retention_policy(
+        self,
+        watchlist: Dict[str, Any],
+        state: Dict[str, Any],
+        latest_page_post_ids: Dict[str, set],
+    ) -> bool:
+        """
+        Áp dụng ngưỡng tự động ngừng quét bài cũ theo 1 trong 3 chế độ user chọn:
+        - 'latest_only': Chỉ quét N bài mới nhất ở thời điểm quét của từng Fanpage (không cộng dồn bài cũ).
+        - 'max_posts': Quét cộng dồn nhưng tối đa X bài đang bật theo dõi (vượt quá X thì tự động ngừng quét bài cũ nhất).
+        - 'max_days': Quét cộng dồn nhưng chỉ quét bài cách thời điểm quét tối đa X ngày.
+        Trả về True nếu có thay đổi trong watchlist/state cần lưu.
+        """
+        settings = watchlist.get("settings", {})
+        retention_mode = str(settings.get("retention_mode", "max_days"))
+        max_posts_limit = max(1, int(settings.get("retention_max_posts", 20)))
+        max_days_limit = max(1, int(settings.get("retention_max_days", 7)))
+        now_ts = time.time()
+        changed = False
+
+        discovered = state.get("discovered_posts", [])
+        posts_state = state.get("posts", {})
+
+        def get_post_sort_ts(item: Dict[str, Any]) -> float:
+            iid = item.get("id", "")
+            pst = posts_state.get(iid, {})
+            ctime = pst.get("creation_time")
+            if ctime:
+                try:
+                    return float(ctime)
+                except Exception:
+                    pass
+            added_str = item.get("added_at")
+            if added_str:
+                try:
+                    return datetime.fromisoformat(added_str).timestamp()
+                except Exception:
+                    pass
+            return 0.0
+
+        # 1. Chế độ 1 (latest_only): Chỉ giữ bật quét cho đúng N bài mới nhất của từng Fanpage
+        if retention_mode == "latest_only":
+            page_limits = {p.get("id"): max(1, int(p.get("limit", 5))) for p in watchlist.get("pages", [])}
+            by_page: Dict[str, List[Dict[str, Any]]] = {}
+            for dp in discovered:
+                pid = dp.get("from_page_id") or dp.get("from_page") or "_default"
+                by_page.setdefault(pid, []).append(dp)
+
+            for pid, dp_list in by_page.items():
+                fresh_ids = latest_page_post_ids.get(pid)
+                if fresh_ids:
+                    for dp in dp_list:
+                        should_enable = str(dp.get("fb_post_id")) in fresh_ids
+                        if dp.get("enabled", True) != should_enable:
+                            dp["enabled"] = should_enable
+                            dp["auto_paused_reason"] = None if should_enable else "latest_only"
+                            changed = True
+                else:
+                    limit_n = page_limits.get(pid, 5)
+                    sorted_dp = sorted(dp_list, key=get_post_sort_ts, reverse=True)
+                    for idx, dp in enumerate(sorted_dp):
+                        should_enable = idx < limit_n
+                        if dp.get("enabled", True) != should_enable:
+                            dp["enabled"] = should_enable
+                            dp["auto_paused_reason"] = None if should_enable else "latest_only"
+                            changed = True
+
+        # 2. Chế độ 2 (max_posts): Cộng dồn nhưng chỉ giữ bật quét tối đa X bài mới nhất
+        elif retention_mode == "max_posts":
+            all_refs: List[Dict[str, Any]] = list(watchlist.get("posts", [])) + list(discovered)
+            sorted_all = sorted(all_refs, key=get_post_sort_ts, reverse=True)
+            for idx, item in enumerate(sorted_all):
+                if idx >= max_posts_limit and item.get("enabled", True):
+                    item["enabled"] = False
+                    item["auto_paused_reason"] = "max_posts"
+                    changed = True
+                elif idx < max_posts_limit and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days"):
+                    item["enabled"] = True
+                    item["auto_paused_reason"] = None
+                    changed = True
+
+        # 3. Chế độ 3 (max_days): Cộng dồn nhưng chỉ quét bài trong vòng X ngày tính đến thời điểm quét
+        elif retention_mode == "max_days":
+            cutoff_ts = now_ts - (max_days_limit * 86400.0)
+            all_refs = list(watchlist.get("posts", [])) + list(discovered)
+            for item in all_refs:
+                pts = get_post_sort_ts(item)
+                if pts > 0 and pts < cutoff_ts:
+                    if item.get("enabled", True):
+                        item["enabled"] = False
+                        item["auto_paused_reason"] = "max_days"
+                        changed = True
+                elif pts >= cutoff_ts and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days"):
+                    item["enabled"] = True
+                    item["auto_paused_reason"] = None
+                    changed = True
+
+        if changed:
+            write_json_safe(self.watchlist_path, watchlist)
+            write_json_safe(self.state_path, state)
+        return changed
+
     def run(self, mode: str = "due", target_id: Optional[str] = None) -> None:
         if not self.acquire_lock():
             return
@@ -1054,7 +1159,7 @@ class TrackerOrchestrator:
             watchlist = self.load_watchlist()
             settings = watchlist.get("settings", {})
             delay_sec = max(6, int(settings.get("delay_seconds", 8)))
-            max_batch = max(1, int(settings.get("max_batch_size", 20)))
+            max_batch = max(1, min(100, int(settings.get("max_batch_size", 20))))
             fetch_comments = bool(settings.get("fetch_comments", True))
             expand_replies = bool(settings.get("expand_replies", False))
 
@@ -1064,6 +1169,7 @@ class TrackerOrchestrator:
 
             # 1. Xử lý danh sách Fanpage (Page Scanner)
             scanned_page_idents = set()
+            latest_page_post_ids: Dict[str, set] = {}
             pages = [p for p in watchlist.get("pages", []) if p.get("enabled", True)]
             for page_cfg in pages:
                 p_id = page_cfg.get("id")
@@ -1151,11 +1257,15 @@ class TrackerOrchestrator:
                         "next_poll_at": (now_vn() + timedelta(minutes=max(15, page_mins))).isoformat(timespec="seconds"),
                         "last_discovered": new_discovered,
                     }
+                    latest_page_post_ids[p_id] = {str(lp["post_id"]) for lp in latest_posts if lp.get("post_id")}
                     write_json_safe(self.state_path, state)
                     time.sleep(max(10, delay_sec))
                 except Exception as ex:
                     state["status"]["last_error"] = f"Lỗi quét Page {p_ident}: {ex}"
                     write_json_safe(self.state_path, state)
+
+            # 1.5. Áp dụng ngưỡng tự động ngừng quét bài cũ (Retention Policy: latest_only | max_posts | max_days)
+            self.apply_retention_policy(watchlist, state, latest_page_post_ids)
 
             # 2. Gộp danh sách bài viết từ Watchlist + Bài viết phát hiện tự động từ Fanpage
             all_posts = list(watchlist.get("posts", []))

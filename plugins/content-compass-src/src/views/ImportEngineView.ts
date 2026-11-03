@@ -1,18 +1,32 @@
 /**
  * Ten file: ImportEngineView.ts
- * Last update: 30/10/2026 16:30 (GMT+7)
- * Vai tro: Bang dieu khien Theo doi Fanpage, Trang ca nhan & Bai viet (hien thi truc dien) kem Ngan keo Thu thap/Nhap du lieu Engagement (mac dinh an de tiet kiem dien tich).
+ * Last update: 03/11/2026 15:52 (GMT+7)
+ * Vai tro: Bang dieu khien Theo doi Fanpage, Trang ca nhan & Bai viet (hien thi truc dien) kem Ngan keo Thu thap/Nhap du lieu Engagement va Cai dat Quet nang cao (mac dinh an de tiet kiem dien tich).
  * Duoc su dung khi nao?: Khi user mo tab Analytics tren Dashboard.
  * Output:
- *  1. Thanh Header gon nhe + Nut bat/tat ngan keo "➕ Thêm nguồn theo dõi / Nhập dữ liệu".
- *  2. Cum nut "🔑 Đăng nhập FB phụ (Quét trang cá nhân)" / "🟢 FB phụ đã kết nối" (Phuong an B - CDP Chrome cach ly) trong ngan keo cai dat.
- *  3. Bang 1 (Luon hien thi): Danh sach cac Fanpage / Trang ca nhan user da chi dinh theo doi (sua truc tiep so bai/lan, xoa 1-click).
- *  4. Bang 2 (Luon hien thi): Danh sach cac Bai viet dang theo doi (hien thi dam Ten bai / Cau dau tien cua bai viet, loc/sap xep theo Score, Xem truoc & Luu vao Vault `03-Content/Posted` hoac `Viral Posts`, xoa don/hang loat).
- * Tom tat logic hoat dong: Khoa cung cac tham so ky thuat bao ve IP (Adaptive Polling 15p/60p/360p, nghi 8s/bai, toi da 20 bai/phien) o tang he thong; ho tro Dual-Context (Tang 3 Khong Cookie + Tang 2 Co Cookie nick phu); luu bai viet duoc chon thanh file .md chuan trong Vault.
+ *  1. Thanh Header gon nhe hien thi so Trang, so Bai dang theo doi va Chu ky cap nhat du lieu moi + Nut bat/tat ngan keo "➕ Thêm nguồn / Cài đặt quét".
+ *  2. Tab "Quét tự động Facebook (Fanpage / Cá nhân / Post URL)" tich hop:
+ *     - Cong tac chay ngam, binh luan cap 2 & Ket noi Nick FB phu.
+ *     - 2 khung nhap Fanpage/Trang ca nhan & Post URL le (ho tro Phan loai: Doi thu, Thuong hieu, Khac va Tu tao nhan moi).
+ *     - Bang Du bao Khoi luong Theo doi & Chu ky Cap nhat Chi so Tuong tac (tinh toan tuc thoi khi user nhap them trang/bai viet).
+ *     - Khoi Cai dat Quet nang cao & Nguong tu dong ngung quet cho bai cu (3 che do + Batch Size + 6 chi so khoa cung).
+ *  3. Bang 1 (Luon hien thi): Danh sach cac Fanpage / Trang ca nhan user da chi dinh theo doi (doi phan loai hoac tao nhan moi se tu dong dong bo sang toan bo bang bai viet va bieu do).
+ *  4. Bang 2 (Luon hien thi): Danh sach Bai viet da thu thap (tich hop Bo loc Thoi gian khong co Gop/Moc, Sparkline 5 ngay, Xem truoc & Luu vao Vault, xoa don/hang loat, va ho tro nhay/highlight bai viet tu bieu do Engagement).
+ * Tom tat logic hoat dong: Khoa cung cac tham so ky thuat bao ve IP o tang he thong; ho tro Dual-Context (Tang 3 Khong Cookie + Tang 2 Co Cookie nick phu); dong bo nhan phan loai (Doi thu, Thuong hieu, Khac, Nhan tu tao) xuyen suot 4 bang va bieu do.
  */
 
 import { App, Modal, TFile, setIcon } from "obsidian";
-import { EngagementStore, EngagementRecord } from "../data/EngagementStore";
+import {
+	EngagementStore,
+	EngagementRecord,
+	PostSparkline5D,
+	TimelinePeriodPostItem,
+	formatSourceTypeLabel,
+} from "../data/EngagementStore";
+import {
+	DateRangeSelection,
+	renderDateRangePickerButton,
+} from "./DateRangePickerPopover";
 
 // Hàm tiện ích gắn Vector Icon đơn sắc chuẩn SF Symbols / Lucide vào nút bấm hoặc phần tử DOM
 function setBtnContent(el: HTMLElement, iconName: string, labelText?: string, spinning = false): void {
@@ -32,7 +46,157 @@ function createMetricChip(parent: HTMLElement, iconName: string, textValue: stri
 	return chip;
 }
 
+// Hàm vẽ biểu đồ Line nhỏ (5-Day Score Sparkline) nằm gọn trên Dòng 1 cạnh chỉ số Score
+// Nếu bài mới quét lần đầu (chỉ có 1 ngày có dữ liệu): chỉ vẽ 1 chấm tròn tại ngày đó, các ngày trước ghi rõ "Không có dữ liệu"
+function renderPostSparkline5D(parent: HTMLElement, spark: PostSparkline5D, isTop5: boolean): void {
+	const wrap = parent.createDiv({
+		cls: `cc-post-sparkline-wrap ${spark.isFirstScan ? "is-single-point" : ""}`,
+	});
+	const vals = spark.dailyScores;
+	const numericVals = vals.filter((v): v is number => v !== null);
+	const minV = numericVals.length > 0 ? Math.min(...numericVals) : 0;
+	const maxV = numericVals.length > 0 ? Math.max(...numericVals) : 0;
+	const range = maxV - minV;
+
+	const w = 52;
+	const h = 18;
+	const padX = 4;
+	const padY = 3.5;
+	const innerW = w - padX * 2;
+	const innerH = h - padY * 2;
+	const midY = Number((h / 2).toFixed(1));
+
+	const validCoords: Array<{ idx: number; x: number; y: number; val: number }> = [];
+	const emptyXs: number[] = [];
+
+	vals.forEach((v, idx) => {
+		const x = Number((padX + (idx / Math.max(1, vals.length - 1)) * innerW).toFixed(1));
+		if (v === null) {
+			emptyXs.push(x);
+		} else {
+			const y =
+				numericVals.length <= 1 || range === 0
+					? midY
+					: Number((padY + innerH - ((v - minV) / range) * innerH).toFixed(1));
+			validCoords.push({ idx, x, y, val: v });
+		}
+	});
+
+	const strokeColor = "#0a84ff";
+	const fillColor = "rgba(10, 132, 255, 0.14)";
+
+	const svgNs = "http://www.w3.org/2000/svg";
+	const svg = document.createElementNS(svgNs, "svg");
+	svg.setAttribute("class", "cc-post-sparkline-svg");
+	svg.setAttribute("width", String(w));
+	svg.setAttribute("height", String(h));
+	svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+
+	// Trục ngang nét đứt mờ làm khung tham chiếu 5 ngày
+	const baseLine = document.createElementNS(svgNs, "line");
+	baseLine.setAttribute("x1", String(padX));
+	baseLine.setAttribute("y1", String(midY));
+	baseLine.setAttribute("x2", String(w - padX));
+	baseLine.setAttribute("y2", String(midY));
+	baseLine.setAttribute("stroke", "hsla(0, 0%, 55%, 0.25)");
+	baseLine.setAttribute("stroke-width", "1");
+	baseLine.setAttribute("stroke-dasharray", "2,2");
+	svg.appendChild(baseLine);
+
+	// Các ngày không có dữ liệu chỉ hiển thị chấm xám cực nhỏ trên trục nét đứt
+	for (const ex of emptyXs) {
+		const emptyTick = document.createElementNS(svgNs, "circle");
+		emptyTick.setAttribute("cx", String(ex));
+		emptyTick.setAttribute("cy", String(midY));
+		emptyTick.setAttribute("r", "1.1");
+		emptyTick.setAttribute("fill", "hsla(0, 0%, 55%, 0.35)");
+		svg.appendChild(emptyTick);
+	}
+
+	if (validCoords.length === 1) {
+		// Bài mới quét lần đầu: CHỈ hiển thị 1 chấm dữ liệu duy nhất (kèm vòng halo nhẹ), tuyệt đối không vẽ đường nối giả
+		const singlePt = validCoords[0];
+		const halo = document.createElementNS(svgNs, "circle");
+		halo.setAttribute("cx", String(singlePt.x));
+		halo.setAttribute("cy", String(singlePt.y));
+		halo.setAttribute("r", "4.8");
+		halo.setAttribute("fill", fillColor);
+		svg.appendChild(halo);
+
+		const dot = document.createElementNS(svgNs, "circle");
+		dot.setAttribute("cx", String(singlePt.x));
+		dot.setAttribute("cy", String(singlePt.y));
+		dot.setAttribute("r", "2.4");
+		dot.setAttribute("fill", strokeColor);
+		svg.appendChild(dot);
+	} else if (validCoords.length >= 2) {
+		// Bài đã có dữ liệu từ 2 ngày trở lên: Vẽ đường nối giữa các ngày thực sự có dữ liệu
+		const linePoints = validCoords.map((p) => `${p.x},${p.y}`).join(" ");
+		const firstPt = validCoords[0];
+		const lastPt = validCoords[validCoords.length - 1];
+		const areaPoints = `${firstPt.x},${h - 1} ${linePoints} ${lastPt.x},${h - 1}`;
+
+		const polygon = document.createElementNS(svgNs, "polygon");
+		polygon.setAttribute("points", areaPoints);
+		polygon.setAttribute("fill", fillColor);
+		svg.appendChild(polygon);
+
+		const polyline = document.createElementNS(svgNs, "polyline");
+		polyline.setAttribute("points", linePoints);
+		polyline.setAttribute("fill", "none");
+		polyline.setAttribute("stroke", strokeColor);
+		polyline.setAttribute("stroke-width", "1.6");
+		polyline.setAttribute("stroke-linecap", "round");
+		polyline.setAttribute("stroke-linejoin", "round");
+		svg.appendChild(polyline);
+
+		const dot = document.createElementNS(svgNs, "circle");
+		dot.setAttribute("cx", String(lastPt.x));
+		dot.setAttribute("cy", String(lastPt.y));
+		dot.setAttribute("r", "2.2");
+		dot.setAttribute("fill", strokeColor);
+		svg.appendChild(dot);
+	}
+
+	wrap.appendChild(svg);
+
+	if (spark.delta5d !== null && spark.delta5d > 0) {
+		wrap.createSpan({
+			cls: "cc-post-sparkline-delta is-up",
+			text: `+${spark.delta5d}`,
+		});
+	}
+
+	const detailLines = spark.dayLabels.map((lbl, idx) => {
+		const dayVal = vals[idx];
+		const suffix = idx === 4 ? " (Hôm nay)" : "";
+		if (dayVal === null) {
+			return `• ${lbl}${suffix}: Không có dữ liệu`;
+		}
+		return `• ${lbl}${suffix}: ${dayVal} điểm`;
+	});
+
+	let footerNote = "";
+	if (spark.isFirstScan || validCoords.length <= 1) {
+		footerNote =
+			"Trạng thái: Mới quét lần đầu (chỉ có 1 mốc dữ liệu, các ngày trước chưa có dữ liệu để tính tăng trưởng)";
+	} else {
+		const firstDayLbl = spark.dayLabels[validCoords[0].idx];
+		const lastDayLbl = spark.dayLabels[validCoords[validCoords.length - 1].idx];
+		const dVal = spark.delta5d || 0;
+		const deltaSign = dVal > 0 ? `+${dVal}` : String(dVal);
+		footerNote = `Tăng trưởng (${firstDayLbl} → ${lastDayLbl}): ${deltaSign} điểm`;
+	}
+
+	wrap.setAttribute(
+		"title",
+		`Dữ liệu Score 5 ngày gần nhất:\n${detailLines.join("\n")}\n────────────────────\n${footerNote}`
+	);
+}
+
 // Nhom 1: Dinh nghia cau truc du lieu Watchlist, State va Bo dem bai viet (Khoa cung cac chi so an toan IP)
+export type FbRetentionMode = "latest_only" | "max_posts" | "max_days";
+
 export interface FbTrackerSettings {
 	poll_new_mins: number;
 	poll_mid_mins: number;
@@ -40,17 +204,23 @@ export interface FbTrackerSettings {
 	page_scan_mins: number;
 	delay_seconds: number;
 	max_batch_size: number;
+	retention_mode: FbRetentionMode;
+	retention_max_posts: number;
+	retention_max_days: number;
 	fetch_comments: boolean;
 	expand_replies: boolean;
 	background_task_enabled: boolean;
+	custom_source_labels?: string[];
 }
 
 export interface FbPostWatchItem {
 	id: string;
 	url: string;
 	fb_post_id?: string;
-	source_type: "own" | "external";
+	source_type: string;
 	enabled: boolean;
+	auto_paused_reason?: string | null;
+	from_page_id?: string;
 	from_page?: string;
 	from_page_name?: string;
 	added_at: string;
@@ -60,7 +230,7 @@ export interface FbPageWatchItem {
 	id: string;
 	page_identifier: string;
 	limit: number;
-	source_type: "own" | "external";
+	source_type: string;
 	enabled: boolean;
 	added_at: string;
 }
@@ -83,9 +253,13 @@ const LOCKED_SAFE_SETTINGS: FbTrackerSettings = {
 	page_scan_mins: 60,
 	delay_seconds: 8,
 	max_batch_size: 20,
+	retention_mode: "max_days",
+	retention_max_posts: 20,
+	retention_max_days: 7,
 	fetch_comments: true,
 	expand_replies: false,
 	background_task_enabled: false,
+	custom_source_labels: [],
 };
 
 // Ham tien ich dinh tuyen dung binary Python 3.12 tren Windows Electron (tranh loi spawn .cmd)
@@ -124,19 +298,87 @@ function calcEngagementScore(m: { likes?: number; comments?: number; shares?: nu
 	return (m.likes || 0) * 1 + (m.comments || 0) * 2 + (m.shares || 0) * 3;
 }
 
+// Modal tao nhan Phan loai nguon moi (dong bo xuyen suot 4 bang & bieu do)
+class CreateSourceLabelModal extends Modal {
+	private onSubmit: (newLabel: string | null) => void;
+	private submitted = false;
+
+	constructor(app: App, onSubmit: (newLabel: string | null) => void) {
+		super(app);
+		this.onSubmit = onSubmit;
+	}
+
+	onOpen(): void {
+		const { contentEl } = this;
+		contentEl.empty();
+		contentEl.addClass("content-compass-fb-preview-modal");
+
+		const header = contentEl.createDiv({ cls: "content-compass-fb-modal-header" });
+		const h3 = header.createEl("h3");
+		setBtnContent(h3, "tag", "Tạo nhãn Phân loại mới");
+
+		const box = contentEl.createDiv({ cls: "content-compass-fb-modal-savebox" });
+		const lbl = box.createEl("label", { cls: "content-compass-fb-modal-field" });
+		lbl.createSpan({
+			text: "Tên nhãn phân loại (sẽ tự động liên kết ở tất cả các bảng và bộ lọc biểu đồ):",
+		});
+		const inp = lbl.createEl("input", {
+			type: "text",
+			placeholder: "Ví dụ: Kênh đối tác, KOLs, Cộng đồng, Nguồn tham khảo...",
+		}) as HTMLInputElement;
+
+		const actions = box.createDiv({ cls: "content-compass-fb-modal-actions" });
+		const cancelBtn = actions.createEl("button", {
+			cls: "content-compass-refresh-btn",
+			text: "Hủy",
+			attr: { type: "button" },
+		});
+		const saveBtn = actions.createEl("button", {
+			cls: "content-compass-import-btn",
+			attr: { type: "button" },
+		});
+		setBtnContent(saveBtn, "check", "Tạo & Chọn nhãn này");
+
+		const submitVal = () => {
+			const val = inp.value.trim();
+			if (!val) return;
+			this.submitted = true;
+			this.onSubmit(val);
+			this.close();
+		};
+
+		saveBtn.addEventListener("click", submitVal);
+		cancelBtn.addEventListener("click", () => this.close());
+		inp.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") {
+				e.preventDefault();
+				submitVal();
+			}
+		});
+		window.setTimeout(() => inp.focus(), 50);
+	}
+
+	onClose(): void {
+		this.contentEl.empty();
+		if (!this.submitted) {
+			this.onSubmit(null);
+		}
+	}
+}
+
 // Modal xem truoc toan van noi dung bai viet, cay binh luan va tuy chinh tieu de truoc khi luu vao Vault
 class ScrapedPostModal extends Modal {
 	private cacheData: any;
-	private defaultSourceType: "own" | "external";
+	private defaultSourceType: string;
 	private isSaved: boolean;
-	private onSaveWithCustomOpts: (customTitle: string, targetSource: "own" | "external") => Promise<void>;
+	private onSaveWithCustomOpts: (customTitle: string, targetSource: string) => Promise<void>;
 
 	constructor(
 		app: App,
 		cacheData: any,
-		defaultSourceType: "own" | "external",
+		defaultSourceType: string,
 		isSaved: boolean,
-		onSaveWithCustomOpts: (customTitle: string, targetSource: "own" | "external") => Promise<void>
+		onSaveWithCustomOpts: (customTitle: string, targetSource: string) => Promise<void>
 	) {
 		super(app);
 		this.cacheData = cacheData;
@@ -185,9 +427,13 @@ class ScrapedPostModal extends Modal {
 
 		const rowBottom = saveConfigBox.createDiv({ cls: "content-compass-fb-modal-actions" });
 		const selDest = rowBottom.createEl("select", { cls: "content-compass-fb-inline-select" }) as HTMLSelectElement;
-		selDest.createEl("option", { value: "external", text: "Lưu vào: 03-Content/Viral Posts (Bài tham khảo)" });
-		selDest.createEl("option", { value: "own", text: "Lưu vào: 03-Content/Posted (Bài thương hiệu)" });
-		selDest.value = this.defaultSourceType;
+		const nonOwnType = this.defaultSourceType && this.defaultSourceType !== "own" ? this.defaultSourceType : "external";
+		selDest.createEl("option", {
+			value: nonOwnType,
+			text: `Lưu vào: 03-Content/Viral Posts (${formatSourceTypeLabel(nonOwnType)})`,
+		});
+		selDest.createEl("option", { value: "own", text: "Lưu vào: 03-Content/Posted (Thương hiệu)" });
+		selDest.value = this.defaultSourceType === "own" ? "own" : nonOwnType;
 
 		const saveBtn = rowBottom.createEl("button", {
 			cls: "content-compass-import-btn",
@@ -198,7 +444,7 @@ class ScrapedPostModal extends Modal {
 			saveBtn.setAttribute("disabled", "true");
 			await this.onSaveWithCustomOpts(
 				inpTitle.value.trim() || defaultTitle,
-				selDest.value as "own" | "external"
+				selDest.value
 			);
 			setBtnContent(saveBtn, "check", "Đã lưu vào Vault");
 		});
@@ -248,12 +494,24 @@ export class ImportEngineView {
 	// Mac dinh AN ngan keo nhap lieu de tiet kiem dien tich man hinh khi user khong dung den
 	private isInputDrawerOpen: boolean = false;
 	private activeSubTab: "fb" | "manual" | "csv" = "fb";
+	private isAdvancedSectionOpen: boolean = true;
+	private isWorkloadPanelCollapsed: boolean = false;
+	private isFanpagesTableCollapsed: boolean = false;
+	private isPostsTableCollapsed: boolean = false;
+	private isRecentHistoryCollapsed: boolean = false;
 	private selectedPostIds: Set<string> = new Set();
+	private postActiveFilter: "all" | "active" | "paused" = "all";
 	private postVaultFilter: "all" | "unsaved" | "saved" = "all";
 	private postSourceFilter: string = "all";
 	private postSortBy: "score_desc" | "comments_desc" | "shares_desc" | "recent" = "score_desc";
 	private postSearchQuery: string = "";
+	private postDateRange: DateRangeSelection = {
+		presetId: "all",
+		startDate: "",
+		endDate: "",
+	};
 	private livePollTimer: number | null = null;
+	private highlightRowTimer: number | null = null;
 
 	constructor(
 		container: HTMLElement,
@@ -273,18 +531,200 @@ export class ImportEngineView {
 		this.renderMainView(this.container);
 	}
 
+	/**
+	 * Chuyen focus, cuon muot va to sang (highlight) bai viet duoc chon tu Bieu do Engagement sang Bang Danh sach bai viet da thu thap.
+	 */
+	public async focusAndHighlightPost(target: TimelinePeriodPostItem): Promise<void> {
+		const findRowInDom = (): HTMLElement | null => {
+			const rows = Array.from(this.container.querySelectorAll("tr.cc-post-row")) as HTMLElement[];
+			for (const r of rows) {
+				const wId = r.getAttribute("data-watch-id") || "";
+				const fbId = r.getAttribute("data-fb-id") || "";
+				const slug = r.getAttribute("data-post-slug") || "";
+				const url = r.getAttribute("data-post-url") || "";
+				if (target.watchId && wId && wId === target.watchId) return r;
+				if (target.fbPostId && fbId && fbId === target.fbPostId) return r;
+				if (
+					target.postId &&
+					(slug === target.postId || fbId === target.postId || wId === target.postId)
+				) {
+					return r;
+				}
+				if (target.vaultSlug && slug && slug === target.vaultSlug) return r;
+				if (target.url && url && url === target.url) return r;
+			}
+			return null;
+		};
+
+		const hasActiveDateFilter =
+			this.postDateRange.presetId !== "all" ||
+			Boolean(this.postDateRange.startDate) ||
+			Boolean(this.postDateRange.endDate);
+
+		if (this.isPostsTableCollapsed || hasActiveDateFilter || !findRowInDom()) {
+			this.isPostsTableCollapsed = false;
+			// Luôn clear bộ lọc thời gian của bảng Danh sách bài viết để chắc chắn bài viết được hiển thị mà user không cần chỉnh lại
+			this.postDateRange = {
+				presetId: "all",
+				startDate: "",
+				endDate: "",
+			};
+			this.postActiveFilter = "all";
+			this.postVaultFilter = "all";
+			this.postSourceFilter = "all";
+			this.postSearchQuery = "";
+			await this.renderMainView(this.container);
+		}
+
+		const targetRow = findRowInDom();
+		if (!targetRow) return;
+
+		this.container.querySelectorAll("tr.cc-post-row.is-highlighted-target").forEach((el) => {
+			el.removeClass("is-highlighted-target");
+		});
+		if (this.highlightRowTimer) {
+			window.clearTimeout(this.highlightRowTimer);
+			this.highlightRowTimer = null;
+		}
+
+		targetRow.addClass("is-highlighted-target");
+		targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
+
+		this.highlightRowTimer = window.setTimeout(() => {
+			targetRow.removeClass("is-highlighted-target");
+			this.highlightRowTimer = null;
+		}, 4000);
+	}
+
 	// Nhom 4: Doc/Ghi file cau hinh Watchlist, State, Cache va Luu bai viet vao Vault
+	private normalizeSettings(rawSettings: any): FbTrackerSettings {
+		const modeRaw = String(rawSettings?.retention_mode || "max_days");
+		const retentionMode: FbRetentionMode =
+			modeRaw === "latest_only" || modeRaw === "max_posts" || modeRaw === "max_days"
+				? modeRaw
+				: "max_days";
+		const rawLabels = Array.isArray(rawSettings?.custom_source_labels) ? rawSettings.custom_source_labels : [];
+		const customLabels: string[] = Array.from(
+			new Set<string>(
+				rawLabels
+					.map((x: any) => String(x || "").trim())
+					.filter((x: string) => x.length > 0 && x !== "own" && x !== "external" && x !== "other")
+			)
+		);
+		return {
+			...LOCKED_SAFE_SETTINGS,
+			max_batch_size: Math.max(1, Math.min(100, parseInt(rawSettings?.max_batch_size) || 20)),
+			retention_mode: retentionMode,
+			retention_max_posts: Math.max(1, Math.min(500, parseInt(rawSettings?.retention_max_posts) || 20)),
+			retention_max_days: Math.max(1, Math.min(365, parseInt(rawSettings?.retention_max_days) || 7)),
+			expand_replies: Boolean(rawSettings?.expand_replies),
+			background_task_enabled: Boolean(rawSettings?.background_task_enabled),
+			custom_source_labels: customLabels,
+		};
+	}
+
+	private collectAllCustomLabels(watchlist: FbWatchlistData): string[] {
+		const set = new Set<string>();
+		const pushIfCustom = (raw?: string) => {
+			const s = String(raw || "").trim();
+			if (s && s !== "own" && s !== "external" && s !== "other") {
+				set.add(s);
+			}
+		};
+		for (const lbl of watchlist.settings.custom_source_labels || []) {
+			pushIfCustom(lbl);
+		}
+		for (const pg of watchlist.pages || []) {
+			pushIfCustom(pg.source_type);
+		}
+		for (const pt of watchlist.posts || []) {
+			pushIfCustom(pt.source_type);
+		}
+		for (const lbl of this.engagementStore.getCustomSourceLabels()) {
+			pushIfCustom(lbl);
+		}
+		return Array.from(set).sort((a, b) => a.localeCompare(b, "vi"));
+	}
+
+	private bindSourceTypeSelect(
+		selectEl: HTMLSelectElement,
+		watchlist: FbWatchlistData,
+		initialValue: string,
+		onValueChanged?: (newVal: string, createdNewLabel: boolean) => Promise<void> | void
+	): void {
+		let currentVal = initialValue || "external";
+
+		const populate = (selectedVal: string) => {
+			selectEl.empty();
+			selectEl.createEl("option", { value: "external", text: "Đối thủ" });
+			selectEl.createEl("option", { value: "own", text: "Thương hiệu" });
+			selectEl.createEl("option", { value: "other", text: "Khác" });
+
+			const customLabels = this.collectAllCustomLabels(watchlist);
+			if (
+				selectedVal &&
+				selectedVal !== "external" &&
+				selectedVal !== "own" &&
+				selectedVal !== "other" &&
+				!customLabels.includes(selectedVal)
+			) {
+				customLabels.push(selectedVal);
+			}
+			for (const lbl of customLabels) {
+				selectEl.createEl("option", { value: lbl, text: lbl });
+			}
+			selectEl.createEl("option", { value: "__create_new__", text: "+ Tạo nhãn mới..." });
+			selectEl.value = selectedVal;
+		};
+
+		populate(currentVal);
+
+		selectEl.addEventListener("change", async () => {
+			if (selectEl.value === "__create_new__") {
+				new CreateSourceLabelModal(this.app, async (rawNewLabel) => {
+					if (!rawNewLabel) {
+						selectEl.value = currentVal;
+						return;
+					}
+					const trimmed = rawNewLabel.trim();
+					let normalized = trimmed;
+					const lower = trimmed.toLowerCase();
+					if (lower === "thương hiệu" || lower === "own") normalized = "own";
+					else if (lower === "đối thủ" || lower === "external") normalized = "external";
+					else if (lower === "khác" || lower === "other") normalized = "other";
+
+					if (normalized !== "own" && normalized !== "external" && normalized !== "other") {
+						if (!Array.isArray(watchlist.settings.custom_source_labels)) {
+							watchlist.settings.custom_source_labels = [];
+						}
+						if (!watchlist.settings.custom_source_labels.includes(normalized)) {
+							watchlist.settings.custom_source_labels.push(normalized);
+						}
+						await this.saveWatchlist(watchlist);
+					}
+					currentVal = normalized;
+					populate(currentVal);
+					if (onValueChanged) {
+						await onValueChanged(currentVal, true);
+					}
+				}).open();
+				return;
+			}
+
+			currentVal = selectEl.value;
+			if (onValueChanged) {
+				await onValueChanged(currentVal, false);
+			}
+		});
+	}
+
 	private async loadWatchlist(): Promise<FbWatchlistData> {
 		try {
 			if (await this.app.vault.adapter.exists(WATCHLIST_PATH)) {
 				const raw = await this.app.vault.adapter.read(WATCHLIST_PATH);
 				const parsed = JSON.parse(raw);
 				return {
-					settings: {
-						...LOCKED_SAFE_SETTINGS,
-						expand_replies: Boolean(parsed?.settings?.expand_replies),
-						background_task_enabled: Boolean(parsed?.settings?.background_task_enabled),
-					},
+					settings: this.normalizeSettings(parsed?.settings),
 					posts: Array.isArray(parsed.posts) ? parsed.posts : [],
 					pages: Array.isArray(parsed.pages) ? parsed.pages : [],
 				};
@@ -296,11 +736,7 @@ export class ImportEngineView {
 	}
 
 	private async saveWatchlist(data: FbWatchlistData): Promise<void> {
-		data.settings = {
-			...LOCKED_SAFE_SETTINGS,
-			expand_replies: Boolean(data.settings?.expand_replies),
-			background_task_enabled: Boolean(data.settings?.background_task_enabled),
-		};
+		data.settings = this.normalizeSettings(data.settings);
 		const dir = ".content-pipeline";
 		if (!(await this.app.vault.adapter.exists(dir))) {
 			await this.app.vault.adapter.mkdir(dir);
@@ -378,7 +814,7 @@ export class ImportEngineView {
 		item: FbPostWatchItem,
 		state: any,
 		customTitle?: string,
-		overrideSourceType?: "own" | "external"
+		overrideSourceType?: string
 	): Promise<string | null> {
 		const pState = state?.posts?.[item.id];
 		const fbPostId = pState?.fb_post_id || item.fb_post_id;
@@ -544,10 +980,24 @@ export class ImportEngineView {
 		rootContainer.empty();
 		const isRunning = Boolean(state?.status?.is_running);
 
+		const pageSourceMap = new Map<string, string>();
+		for (const pg of watchlist.pages) {
+			if (pg.id && pg.source_type) pageSourceMap.set(pg.id, pg.source_type);
+			if (pg.page_identifier && pg.source_type) pageSourceMap.set(pg.page_identifier, pg.source_type);
+		}
+
 		const allPosts: Array<FbPostWatchItem & { isDiscovered?: boolean }> = [
 			...watchlist.posts,
 			...(Array.isArray(state?.discovered_posts)
-				? state.discovered_posts.map((d: any) => ({ ...d, isDiscovered: true }))
+				? state.discovered_posts.map((d: any) => {
+						const inheritedSrc =
+							(d.from_page_id && pageSourceMap.get(d.from_page_id)) ||
+							(d.from_page && pageSourceMap.get(d.from_page)) ||
+							d.source_type ||
+							"external";
+						d.source_type = inheritedSrc;
+						return { ...d, source_type: inheritedSrc, isDiscovered: true };
+				  })
 				: []),
 		];
 
@@ -563,8 +1013,13 @@ export class ImportEngineView {
 		const lastRun = state?.status?.last_run_at
 			? new Date(state.status.last_run_at).toLocaleString("vi-VN")
 			: "Chưa quét";
+		const activePostsCount = allPosts.filter((p) => p.enabled !== false).length;
+		const pausedPostsCount = allPosts.length - activePostsCount;
+		const batchSizeVal = Math.max(1, watchlist.settings.max_batch_size || 20);
+		const numBatchesCurrent = Math.max(1, Math.ceil(Math.max(1, activePostsCount) / batchSizeVal));
+		const cycleMinsCurrent = numBatchesCurrent * (watchlist.settings.poll_new_mins || 15);
 		const mainStatusLine = statusLine.createSpan({
-			text: `Đang theo dõi: ${watchlist.pages.length} Fanpage & ${allPosts.length} Bài viết • ${progressText} (Cập nhật: ${lastRun})`,
+			text: `Đang theo dõi: ${watchlist.pages.length} Nguồn Trang & ${activePostsCount} Bài đang bật quét (${pausedPostsCount} bài cũ đã ngắt / ${allPosts.length} tổng) • Chu kỳ: ~${cycleMinsCurrent} phút/vòng • ${progressText} (Cập nhật: ${lastRun})`,
 		});
 
 		if (state?.status?.last_error) {
@@ -574,18 +1029,20 @@ export class ImportEngineView {
 
 		const btnGroup = statusBar.createDiv({ cls: "content-compass-fb-btn-group" });
 
-		// Nut Bat/Tat Ngan keo Thu thap & Nhap du lieu (Mac dinh AN de tiet kiem dien tich)
+		// Nut Bat/Tat Ngan keo Thu thap, Nhap du lieu & Cai dat Quet tu dong (Mac dinh AN de tiet kiem dien tich)
 		const toggleDrawerBtn = btnGroup.createEl("button", {
 			cls: `content-compass-refresh-btn ${this.isInputDrawerOpen ? "is-active" : ""}`,
 		});
 		setBtnContent(
 			toggleDrawerBtn,
 			this.isInputDrawerOpen ? "chevron-up" : "plus",
-			this.isInputDrawerOpen ? "Thu gọn khung nhập liệu" : "Thêm nguồn / Nhập dữ liệu"
+			this.isInputDrawerOpen
+				? "Thu gọn khung nhập liệu & cài đặt"
+				: "Thêm nguồn / Cài đặt quét"
 		);
 		toggleDrawerBtn.setAttribute(
 			"title",
-			"Mở hoặc ẩn khung thêm Fanpage, thêm Post URL, nhập thủ công và import CSV"
+			"Mở hoặc ẩn khung thêm Fanpage/Trang cá nhân, thêm Post URL, cài đặt quét nâng cao, nhập thủ công và import CSV"
 		);
 		toggleDrawerBtn.addEventListener("click", () => {
 			this.isInputDrawerOpen = !this.isInputDrawerOpen;
@@ -629,7 +1086,7 @@ export class ImportEngineView {
 		}
 	}
 
-	// Ngan keo Nhap lieu (Mac dinh An, chua 3 tab UISegmentedControl)
+	// Ngan keo Nhap lieu & Cai dat Quet tu dong (Mac dinh An, chua 3 tab UISegmentedControl)
 	private renderCollapsibleInputDrawer(
 		workspace: HTMLElement,
 		watchlist: FbWatchlistData,
@@ -643,7 +1100,7 @@ export class ImportEngineView {
 		const tabFb = tabBar.createEl("button", {
 			cls: `content-compass-tab-btn ${this.activeSubTab === "fb" ? "is-active" : ""}`,
 		});
-		setBtnContent(tabFb, "globe", "Thêm Fanpage / Post URL");
+		setBtnContent(tabFb, "globe", "Quét tự động Facebook (Fanpage / Cá nhân / Post URL)");
 
 		const tabManual = tabBar.createEl("button", {
 			cls: `content-compass-tab-btn ${this.activeSubTab === "manual" ? "is-active" : ""}`,
@@ -680,7 +1137,7 @@ export class ImportEngineView {
 		switchSubTab(this.activeSubTab);
 	}
 
-	// Form them nhanh Fanpage & Post URL ben trong Ngan keo Nhap lieu (Su dung cong tac UISwitch)
+	// Tab 1: Quet tu dong Facebook (Tich hop Them Fanpage/Trang ca nhan, Post URL, Bang Du bao Chu ky Cap nhat & Cai dat Quet nang cao)
 	private renderFbAddFormsInDrawer(
 		container: HTMLElement,
 		watchlist: FbWatchlistData,
@@ -764,17 +1221,17 @@ export class ImportEngineView {
 
 		const twoFormsGrid = container.createDiv({ cls: "content-compass-fb-split-form" });
 
-		// Cột trái: Thêm Fanpage chỉ định
+		// Cột trái: Thêm Fanpage / Trang cá nhân chỉ định
 		const pageBox = twoFormsGrid.createDiv({ cls: "content-compass-fb-add-box" });
 		const pageSub = pageBox.createDiv({ cls: "content-compass-card-subtitle" });
-		setBtnContent(pageSub, "users", "Thêm Fanpage / Trang cá nhân cần theo dõi");
+		setBtnContent(pageSub, "users", "Thêm Fanpage / Trang cá nhân Facebook cần theo dõi");
 
 		const lblPages = pageBox.createEl("label", { cls: "content-compass-fb-textarea-label" });
-		lblPages.createSpan({ text: "Link Fanpage hoặc Trang cá nhân (mỗi dòng 1 địa chỉ):" });
+		lblPages.createSpan({ text: "Link Fanpage hoặc Trang cá nhân Facebook (mỗi dòng 1 địa chỉ):" });
 		const txtPages = lblPages.createEl("textarea", {
 			attr: {
 				rows: "2",
-				placeholder: "https://www.facebook.com/share/1BdsZPSQZa/\nhttps://www.facebook.com/TenFanpage",
+				placeholder: "https://www.facebook.com/share/1BdsZPSQZa/\nhttps://www.facebook.com/TenFanpageHoacCaNhan",
 			},
 		}) as HTMLTextAreaElement;
 
@@ -782,11 +1239,15 @@ export class ImportEngineView {
 		const lblPageSrc = pageControls.createEl("label");
 		lblPageSrc.createSpan({ text: "Phân loại:" });
 		const selPageSrc = lblPageSrc.createEl("select") as HTMLSelectElement;
-		selPageSrc.createEl("option", { value: "external", text: "Đối thủ / Bên ngoài" });
-		selPageSrc.createEl("option", { value: "own", text: "Thương hiệu của tôi" });
+		this.bindSourceTypeSelect(selPageSrc, watchlist, "external", async (_val, createdNew) => {
+			if (createdNew) {
+				await this.engagementStore.initialize();
+				if (this.onRefreshDashboard) this.onRefreshDashboard();
+			}
+		});
 
 		const lblLimit = pageControls.createEl("label");
-		lblLimit.createSpan({ text: "Số bài mới cần lấy/lần (1 - 20):" });
+		lblLimit.createSpan({ text: "Số bài muốn quét/trang (1 - 20):" });
 		const inpLimit = lblLimit.createEl("input", { type: "number", value: "5" }) as HTMLInputElement;
 		inpLimit.min = "1";
 		inpLimit.max = "20";
@@ -807,7 +1268,7 @@ export class ImportEngineView {
 				return;
 			}
 			const limit = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
-			const sourceType = selPageSrc.value as "own" | "external";
+			const sourceType = selPageSrc.value || "external";
 			let lastAddedId = "";
 			for (const rawPage of lines) {
 				const exists = watchlist.pages.some((p) => p.page_identifier.toLowerCase() === rawPage.toLowerCase());
@@ -846,8 +1307,12 @@ export class ImportEngineView {
 		const lblPostSrc = postControls.createEl("label");
 		lblPostSrc.createSpan({ text: "Phân loại:" });
 		const selPostSrc = lblPostSrc.createEl("select") as HTMLSelectElement;
-		selPostSrc.createEl("option", { value: "external", text: "Bài bên ngoài / Đối thủ (Viral Posts)" });
-		selPostSrc.createEl("option", { value: "own", text: "Bài của thương hiệu (Posted)" });
+		this.bindSourceTypeSelect(selPostSrc, watchlist, "external", async (_val, createdNew) => {
+			if (createdNew) {
+				await this.engagementStore.initialize();
+				if (this.onRefreshDashboard) this.onRefreshDashboard();
+			}
+		});
 
 		const addUrlBtn = postControls.createEl("button", {
 			cls: "content-compass-import-btn",
@@ -864,7 +1329,7 @@ export class ImportEngineView {
 				postMsg.setText("Vui lòng dán ít nhất 1 đường link bài viết.");
 				return;
 			}
-			const sourceType = selPostSrc.value as "own" | "external";
+			const sourceType = selPostSrc.value || "external";
 			let lastId = "";
 			for (const rawUrl of urls) {
 				const exists = watchlist.posts.some((p) => p.url === rawUrl);
@@ -886,6 +1351,604 @@ export class ImportEngineView {
 			const args = urls.length === 1 && lastId ? ["--force-id", lastId] : ["--force-all"];
 			this.triggerPythonTracker(args, () => this.renderMainView(rootContainer), liveStatusEl);
 		});
+
+		// 3. BANG DU BAO KHOI LUONG THEO DOI & CHU KY CAP NHAT CHI SO TUONG TAC (HIEN THI TRUC DIEN NGAY DUOI 2 O NHAP)
+		const workloadPanel = container.createDiv({
+			cls: `cc-adv-workload-panel ${this.isWorkloadPanelCollapsed ? "is-collapsed" : ""}`,
+		});
+		const workloadHeader = workloadPanel.createDiv({ cls: "cc-adv-workload-header" });
+		const workloadTitle = workloadHeader.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+		const workloadBody = workloadPanel.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isWorkloadPanelCollapsed) {
+			workloadBody.style.display = "none";
+		}
+		const syncWorkloadTitle = () => {
+			setBtnContent(
+				workloadTitle,
+				this.isWorkloadPanelCollapsed ? "chevron-right" : "chevron-down",
+				"Dự báo Khối lượng Theo dõi & Chu kỳ Cập nhật Chỉ số Tương tác (Tự động tính khi bạn nhập thêm)"
+			);
+			workloadTitle.setAttribute(
+				"title",
+				this.isWorkloadPanelCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+		};
+		syncWorkloadTitle();
+		workloadTitle.addEventListener("click", () => {
+			this.isWorkloadPanelCollapsed = !this.isWorkloadPanelCollapsed;
+			workloadPanel.toggleClass("is-collapsed", this.isWorkloadPanelCollapsed);
+			workloadBody.style.display = this.isWorkloadPanelCollapsed ? "none" : "";
+			syncWorkloadTitle();
+		});
+
+		const kpiStrip = workloadBody.createDiv({ cls: "cc-adv-kpi-strip" });
+		const estimateBanner = workloadBody.createDiv({ cls: "cc-adv-estimate-banner" });
+
+		// 4. KHOI CAI DAT QUET NANG CAO & NGUONG TU DONG NGUNG QUET CHO BAI CU (NAM TRONG CUNG TAB QUET TU DONG)
+		const advWrapper = container.createDiv({ cls: "cc-adv-collapsible-section" });
+		const advHeaderBar = advWrapper.createDiv({ cls: "cc-adv-section-toggle-bar" });
+		const advTitleLeft = advHeaderBar.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+		const syncAdvToggleBtn = () => {
+			setBtnContent(
+				advTitleLeft,
+				this.isAdvancedSectionOpen ? "chevron-down" : "chevron-right",
+				"Cài đặt Quét nâng cao & Ngưỡng tự động ngừng quét cho bài cũ"
+			);
+			advTitleLeft.setAttribute(
+				"title",
+				this.isAdvancedSectionOpen ? "Bấm để Ẩn bảng" : "Bấm để Hiện bảng"
+			);
+		};
+		syncAdvToggleBtn();
+
+		const advBody = advWrapper.createDiv({ cls: "cc-adv-section-body" });
+		if (!this.isAdvancedSectionOpen) {
+			advBody.style.display = "none";
+		}
+		advHeaderBar.addEventListener("click", (ev) => {
+			if ((ev.target as HTMLElement).closest("input, select")) return;
+			this.isAdvancedSectionOpen = !this.isAdvancedSectionOpen;
+			advBody.style.display = this.isAdvancedSectionOpen ? "" : "none";
+			syncAdvToggleBtn();
+		});
+
+		const splitGrid = advBody.createDiv({ cls: "content-compass-fb-split-form" });
+
+		// --- COT TRAI: NGUONG TU DONG NGUNG QUET CHO BAI CU (3 LUA CHON) ---
+		const leftBox = splitGrid.createDiv({ cls: "content-compass-fb-add-box" });
+		const leftTitle = leftBox.createDiv({ cls: "content-compass-card-subtitle" });
+		setBtnContent(leftTitle, "filter", "1. Ngưỡng tự động ngừng quét cho bài cũ");
+
+		leftBox.createDiv({
+			cls: "content-compass-fb-subtext",
+			text: "Khi bài viết cũ vượt quá ngưỡng bên dưới, hệ thống tự động chuyển bài đó sang trạng thái Tạm dừng quét (vẫn giữ nguyên 100% số liệu lịch sử trên biểu đồ).",
+		});
+
+		const radioList = leftBox.createDiv({ cls: "cc-adv-retention-list" });
+		let currentMode: FbRetentionMode = watchlist.settings.retention_mode || "max_days";
+
+		// Lựa chọn (1): Chỉ quét N bài mới nhất ở thời điểm quét (không cộng dồn bài cũ)
+		const cardOpt1 = radioList.createDiv({
+			cls: `cc-adv-radio-card ${currentMode === "latest_only" ? "is-selected" : ""}`,
+		});
+		const rowOpt1 = cardOpt1.createEl("label", { cls: "cc-adv-radio-label" });
+		const rad1 = rowOpt1.createEl("input", {
+			attr: { type: "radio", name: "cc_retention_mode", value: "latest_only" },
+		}) as HTMLInputElement;
+		rad1.checked = currentMode === "latest_only";
+		const txt1 = rowOpt1.createDiv({ cls: "cc-adv-radio-text" });
+		txt1.createDiv({
+			cls: "cc-adv-radio-title",
+			text: "(1) Chỉ quét N bài mới nhất ở thời điểm quét (Không cộng dồn)",
+		});
+		txt1.createDiv({
+			cls: "cc-adv-radio-desc",
+			text: "Mỗi Trang chỉ giữ quét đúng N bài mới nhất trên đầu trang (theo cột 'Số bài mới/lần', mặc định 5 bài). Bài cũ hơn tự động dừng quét.",
+		});
+
+		// Lựa chọn (2): Quét cộng dồn tối đa X bài
+		const cardOpt2 = radioList.createDiv({
+			cls: `cc-adv-radio-card ${currentMode === "max_posts" ? "is-selected" : ""}`,
+		});
+		const rowOpt2 = cardOpt2.createEl("label", { cls: "cc-adv-radio-label" });
+		const rad2 = rowOpt2.createEl("input", {
+			attr: { type: "radio", name: "cc_retention_mode", value: "max_posts" },
+		}) as HTMLInputElement;
+		rad2.checked = currentMode === "max_posts";
+		const txt2 = rowOpt2.createDiv({ cls: "cc-adv-radio-text" });
+		const titleRow2 = txt2.createDiv({ cls: "cc-adv-inline-input-row" });
+		titleRow2.createSpan({
+			cls: "cc-adv-radio-title",
+			text: "(2) Quét cộng dồn tối đa:",
+		});
+		const inpMaxPosts = titleRow2.createEl("input", {
+			type: "number",
+			cls: "content-compass-fb-inline-input",
+			value: String(watchlist.settings.retention_max_posts || 20),
+		}) as HTMLInputElement;
+		inpMaxPosts.min = "1";
+		inpMaxPosts.max = "500";
+		titleRow2.createSpan({ cls: "cc-adv-radio-title", text: "bài viết mới nhất" });
+		txt2.createDiv({
+			cls: "cc-adv-radio-desc",
+			text: "Cộng dồn bài mới qua các ngày nhưng giới hạn tổng số bài đang bật quét không vượt quá con số này.",
+		});
+
+		// Lựa chọn (3): Quét cộng dồn nhưng chỉ quét bài cách thời điểm quét X ngày
+		const cardOpt3 = radioList.createDiv({
+			cls: `cc-adv-radio-card ${currentMode === "max_days" ? "is-selected" : ""}`,
+		});
+		const rowOpt3 = cardOpt3.createEl("label", { cls: "cc-adv-radio-label" });
+		const rad3 = rowOpt3.createEl("input", {
+			attr: { type: "radio", name: "cc_retention_mode", value: "max_days" },
+		}) as HTMLInputElement;
+		rad3.checked = currentMode === "max_days";
+		const txt3 = rowOpt3.createDiv({ cls: "cc-adv-radio-text" });
+		const titleRow3 = txt3.createDiv({ cls: "cc-adv-inline-input-row" });
+		titleRow3.createSpan({
+			cls: "cc-adv-radio-title",
+			text: "(3) Quét cộng dồn bài đăng trong vòng:",
+		});
+		const inpMaxDays = titleRow3.createEl("input", {
+			type: "number",
+			cls: "content-compass-fb-inline-input",
+			value: String(watchlist.settings.retention_max_days || 7),
+		}) as HTMLInputElement;
+		inpMaxDays.min = "1";
+		inpMaxDays.max = "365";
+		titleRow3.createSpan({ cls: "cc-adv-radio-title", text: "ngày gần nhất" });
+		txt3.createDiv({
+			cls: "cc-adv-radio-desc",
+			text: "Cộng dồn bài mới qua các ngày, tự động ngừng quét các bài đã đăng quá số ngày quy định.",
+		});
+
+		const retentionStatusMsg = leftBox.createDiv({ cls: "content-compass-import-status" });
+
+		// --- COT PHAI: SETTING QUET NANG CAO (1 O NHAP + 6 CHI SO KHOA CUNG) ---
+		const rightBox = splitGrid.createDiv({ cls: "content-compass-fb-add-box" });
+		const rightTitle = rightBox.createDiv({ cls: "content-compass-card-subtitle" });
+		setBtnContent(rightTitle, "shield", "2. Cài đặt Quét nâng cao & Bảo vệ IP");
+
+		// Ô duy nhất cho phép User chỉnh sửa: Số bài quét tối đa cùng lúc trong 1 phiên
+		const batchEditRow = rightBox.createDiv({ cls: "cc-adv-batch-edit-box" });
+		const batchLblWrap = batchEditRow.createDiv({ cls: "cc-adv-batch-label-wrap" });
+		batchLblWrap.createDiv({
+			cls: "cc-adv-batch-title",
+			text: "Số bài quét tối đa trong 1 phiên (Batch Size):",
+		});
+		batchLblWrap.createDiv({
+			cls: "cc-adv-batch-sub",
+			text: "Thông số duy nhất được phép tùy chỉnh (1 – 100 bài). Khuyến nghị an toàn: 15 – 25 bài.",
+		});
+
+		const inpBatchSize = batchEditRow.createEl("input", {
+			type: "number",
+			cls: "content-compass-fb-inline-input cc-adv-batch-input",
+			value: String(watchlist.settings.max_batch_size || 20),
+		}) as HTMLInputElement;
+		inpBatchSize.min = "1";
+		inpBatchSize.max = "100";
+
+		// Lưới 6 chỉ số kỹ thuật hiển thị công khai nhưng KHÓA CỨNG (Read-only Locked)
+		const lockedGrid = rightBox.createDiv({ cls: "cc-adv-locked-grid" });
+		const lockedMetrics: Array<{ label: string; value: string; note: string }> = [
+			{
+				label: "Tốc độ quét (Không Cookie)",
+				value: `${watchlist.settings.delay_seconds} giây / bài`,
+				note: "~6 bài/phút (Khóa bảo vệ IP)",
+			},
+			{
+				label: "Tốc độ quét (Có Cookie FB phụ)",
+				value: "15 – 22 giây / bài",
+				note: "Khóa chống Checkpoint nick",
+			},
+			{
+				label: "Tần suất quét bài mới (< 12h)",
+				value: `${watchlist.settings.poll_new_mins} phút / lần`,
+				note: "Bắt nhịp viral đầu tiên",
+			},
+			{
+				label: "Tần suất quét bài vừa (12 – 48h)",
+				value: `${watchlist.settings.poll_mid_mins} phút / lần`,
+				note: "Theo dõi ổn định",
+			},
+			{
+				label: "Tần suất quét bài cũ (> 48h)",
+				value: `${watchlist.settings.poll_old_mins} phút (6 giờ)`,
+				note: "Giãn lịch tiết kiệm tài nguyên",
+			},
+			{
+				label: "Chu kỳ quét bài mới trên Trang",
+				value: `${watchlist.settings.page_scan_mins} phút / lần`,
+				note: "Kiểm tra bài đăng mới",
+			},
+		];
+
+		for (const lm of lockedMetrics) {
+			const cell = lockedGrid.createDiv({ cls: "cc-adv-locked-item" });
+			const top = cell.createDiv({ cls: "cc-adv-locked-top" });
+			top.createSpan({ cls: "cc-adv-locked-label", text: lm.label });
+			const lockIc = top.createSpan({ cls: "cc-icon cc-lock-icon" });
+			setIcon(lockIc, "lock");
+			lockIc.setAttribute("title", "Thông số hệ thống đã khóa cứng để bảo vệ an toàn IP và tài khoản");
+			cell.createDiv({ cls: "cc-adv-locked-val", text: lm.value });
+			cell.createDiv({ cls: "cc-adv-locked-note", text: lm.note });
+		}
+
+		// Hàm áp dụng ngay ngưỡng bài cũ trên state hiện tại và trả về số lượng bài còn bật quét
+		const applyRetentionImmediately = async (saveToDisk: boolean): Promise<{
+			activeCount: number;
+			pausedCount: number;
+			totalCount: number;
+		}> => {
+			watchlist.settings.retention_mode = currentMode;
+			watchlist.settings.retention_max_posts = Math.max(1, Math.min(500, parseInt(inpMaxPosts.value) || 20));
+			watchlist.settings.retention_max_days = Math.max(1, Math.min(365, parseInt(inpMaxDays.value) || 7));
+			if (saveToDisk) {
+				inpMaxPosts.value = String(watchlist.settings.retention_max_posts);
+				inpMaxDays.value = String(watchlist.settings.retention_max_days);
+			}
+
+			const discovered: FbPostWatchItem[] = Array.isArray(state?.discovered_posts)
+				? state.discovered_posts
+				: [];
+			const postsState = state?.posts || {};
+
+			const getSortTs = (item: FbPostWatchItem): number => {
+				const pst = postsState[item.id] || {};
+				if (pst.creation_time) return Number(pst.creation_time) * 1000;
+				if (item.added_at) {
+					const t = new Date(item.added_at).getTime();
+					if (!isNaN(t)) return t;
+				}
+				return 0;
+			};
+
+			if (currentMode === "latest_only") {
+				const pageLimits = new Map<string, number>();
+				for (const pg of watchlist.pages) {
+					pageLimits.set(pg.id, Math.max(1, pg.limit || 5));
+					pageLimits.set(pg.page_identifier, Math.max(1, pg.limit || 5));
+				}
+				const byPage = new Map<string, FbPostWatchItem[]>();
+				for (const dp of discovered) {
+					const key = dp.from_page_id || dp.from_page || "_default";
+					if (!byPage.has(key)) byPage.set(key, []);
+					byPage.get(key)!.push(dp);
+				}
+				for (const [key, list] of byPage.entries()) {
+					const lim = pageLimits.get(key) || 5;
+					list.sort((a, b) => getSortTs(b) - getSortTs(a));
+					list.forEach((dp, idx) => {
+						dp.enabled = idx < lim;
+						dp.auto_paused_reason = idx < lim ? null : "latest_only";
+					});
+				}
+			} else if (currentMode === "max_posts") {
+				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...discovered];
+				allRefs.sort((a, b) => getSortTs(b) - getSortTs(a));
+				const maxP = watchlist.settings.retention_max_posts;
+				allRefs.forEach((item, idx) => {
+					if (idx >= maxP) {
+						item.enabled = false;
+						item.auto_paused_reason = "max_posts";
+					} else if (item.auto_paused_reason) {
+						item.enabled = true;
+						item.auto_paused_reason = null;
+					}
+				});
+			} else if (currentMode === "max_days") {
+				const cutoffMs = Date.now() - watchlist.settings.retention_max_days * 86400000;
+				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...discovered];
+				for (const item of allRefs) {
+					const ts = getSortTs(item);
+					if (ts > 0 && ts < cutoffMs) {
+						item.enabled = false;
+						item.auto_paused_reason = "max_days";
+					} else if (item.auto_paused_reason) {
+						item.enabled = true;
+						item.auto_paused_reason = null;
+					}
+				}
+			}
+
+			const combined = [...watchlist.posts, ...discovered];
+			const activeCount = combined.filter((x) => x.enabled !== false).length;
+			const totalCount = combined.length;
+			const pausedCount = totalCount - activeCount;
+
+			if (saveToDisk) {
+				await this.saveWatchlist(watchlist);
+				await this.saveTrackerState(state);
+				retentionStatusMsg.setText(
+					`Đã lưu! Hiện có ${activeCount}/${totalCount} bài đang bật quét (${pausedCount} bài cũ đã tự động tạm dừng).`
+				);
+			}
+			return { activeCount, pausedCount, totalCount };
+		};
+
+		const formatDuration = (totalSeconds: number): string => {
+			if (totalSeconds < 60) return `${Math.round(totalSeconds)} giây`;
+			const mins = Math.floor(totalSeconds / 60);
+			const secs = Math.round(totalSeconds % 60);
+			if (mins < 60) {
+				return secs > 0 ? `${mins} phút ${secs} giây` : `${mins} phút`;
+			}
+			const hrs = Math.floor(mins / 60);
+			const remMins = mins % 60;
+			return remMins > 0 ? `${hrs} giờ ${remMins} phút` : `${hrs} giờ`;
+		};
+
+		const formatCycleMins = (mins: number): string => {
+			if (mins < 60) return `${mins} phút`;
+			const hrs = Math.floor(mins / 60);
+			const rem = mins % 60;
+			return rem > 0 ? `${hrs} giờ ${rem} phút (${mins} phút)` : `${hrs} giờ (${mins} phút)`;
+		};
+
+		// Hàm tính toán & cập nhật trực tiếp Bảng Dự báo Khối lượng & Chu kỳ Cập nhật theo thời gian thực
+		const updateRealtimeEstimate = async (saveNow = false) => {
+			const batchVal = Math.max(1, Math.min(100, parseInt(inpBatchSize.value) || 20));
+			if (saveNow) {
+				inpBatchSize.value = String(batchVal);
+			}
+			watchlist.settings.max_batch_size = batchVal;
+
+			const { activeCount, pausedCount, totalCount } = await applyRetentionImmediately(saveNow);
+			const enabledPagesCount = watchlist.pages.filter((p) => p.enabled !== false).length;
+
+			// Đếm số Trang mới & Bài viết mới mà User đang gõ vào 2 ô nhập liệu phía trên
+			const rawPageLines = txtPages.value
+				.split("\n")
+				.map((l) => l.trim())
+				.filter((l) => l.length > 0);
+			const uniqueNewPages = rawPageLines.filter(
+				(raw) => !watchlist.pages.some((p) => p.page_identifier.toLowerCase() === raw.toLowerCase())
+			);
+			const newPagesCount = uniqueNewPages.length;
+			const limitPerNewPage = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
+			const addedPostsFromPages = newPagesCount * limitPerNewPage;
+
+			const rawUrlLines = txtUrls.value
+				.split("\n")
+				.map((u) => u.trim())
+				.filter((u) => u.length > 0);
+			const uniqueNewUrls = rawUrlLines.filter(
+				(raw) => !watchlist.posts.some((p) => p.url.toLowerCase() === raw.toLowerCase())
+			);
+			const newDirectPostsCount = uniqueNewUrls.length;
+
+			// Tổng số bài viết User đang muốn quét thêm
+			const totalAddingPosts = addedPostsFromPages + newDirectPostsCount;
+
+			// Tổng số bài viết dự kiến theo dõi sau khi cộng thêm (và áp ngưỡng nếu đang chọn chế độ 2: max_posts)
+			const rawProjectedTotal = activeCount + totalAddingPosts;
+			let effectiveProjectedPosts = rawProjectedTotal;
+			let cappedOverflowPosts = 0;
+			if (currentMode === "max_posts" && rawProjectedTotal > watchlist.settings.retention_max_posts) {
+				effectiveProjectedPosts = watchlist.settings.retention_max_posts;
+				cappedOverflowPosts = rawProjectedTotal - effectiveProjectedPosts;
+			}
+			const projectedPagesCount = enabledPagesCount + newPagesCount;
+
+			// Số đợt (phiên) cần thiết để xoay vòng hết toàn bộ effectiveProjectedPosts bài
+			const numSessionsNeeded = Math.max(1, Math.ceil(Math.max(1, effectiveProjectedPosts) / batchVal));
+			const pollNewBase = watchlist.settings.poll_new_mins || 15;
+			const pollMidBase = watchlist.settings.poll_mid_mins || 60;
+			const pollOldBase = watchlist.settings.poll_old_mins || 360;
+
+			// Chu kỳ xoay vòng thực tế (phút) để toàn bộ danh sách được cập nhật chỉ số mới
+			const rotationCycleMins = numSessionsNeeded * pollNewBase;
+			const newPostCycleMins = Math.max(pollNewBase, rotationCycleMins);
+			const midPostCycleMins = Math.max(pollMidBase, rotationCycleMins);
+			const oldPostCycleMins = Math.max(pollOldBase, rotationCycleMins);
+
+			// Thời gian chạy thực tế của 1 phiên (Tầng 3 Không Cookie ~10s/bài; Tầng 2 Có Cookie ~20s/bài)
+			const firstSessionPosts = Math.min(Math.max(1, effectiveProjectedPosts), batchVal);
+			const secPerSessionNoCookie = projectedPagesCount * 10 + firstSessionPosts * 10;
+			const secPerSessionWithCookie = projectedPagesCount * 15 + firstSessionPosts * 20;
+
+			// Thời gian quét xong toàn bộ danh sách nếu bấm quét thủ công
+			const totalManualSec =
+				projectedPagesCount * 10 +
+				effectiveProjectedPosts * 10 +
+				(numSessionsNeeded - 1) * 120;
+
+			// Thời gian quét lượt đầu cho số bài vừa nhập thêm
+			const addingInitialBatch = Math.min(totalAddingPosts, batchVal);
+			const addingInitialSec = newPagesCount * 10 + addingInitialBatch * 10;
+			const addingSessions = Math.max(1, Math.ceil(Math.max(1, totalAddingPosts) / batchVal));
+			const addingTotalAutoSec =
+				addingSessions === 1
+					? addingInitialSec
+					: (addingSessions - 1) * pollNewBase * 60 +
+					  (newPagesCount * 10 + (totalAddingPosts - (addingSessions - 1) * batchVal) * 10);
+
+			// Render 4 thẻ KPI trên thanh kpiStrip
+			kpiStrip.empty();
+
+			// Thẻ 1: Đang theo dõi (quét theo lịch)
+			const kpi1 = kpiStrip.createDiv({ cls: "cc-adv-kpi-box" });
+			kpi1.createDiv({ cls: "cc-adv-kpi-label", text: "1. Đang theo dõi (theo lịch)" });
+			kpi1.createDiv({ cls: "cc-adv-kpi-value", text: `${activeCount} bài viết` });
+			kpi1.createDiv({
+				cls: "cc-adv-kpi-sub",
+				text: `Trên ${enabledPagesCount} Trang đang bật • Đã ngắt ${pausedCount}/${totalCount} bài cũ`,
+			});
+
+			// Thẻ 2: Đang muốn quét thêm (đang nhập ở trên)
+			const kpi2 = kpiStrip.createDiv({
+				cls: `cc-adv-kpi-box ${totalAddingPosts > 0 || newPagesCount > 0 ? "is-highlight" : ""}`,
+			});
+			kpi2.createDiv({ cls: "cc-adv-kpi-label", text: "2. Đang muốn quét thêm" });
+			kpi2.createDiv({
+				cls: "cc-adv-kpi-value",
+				text: `+${totalAddingPosts} bài mới`,
+			});
+			kpi2.createDiv({
+				cls: "cc-adv-kpi-sub",
+				text:
+					totalAddingPosts > 0 || newPagesCount > 0
+						? `${newPagesCount} Trang mới (×${limitPerNewPage} bài/trang) + ${newDirectPostsCount} Post URL lẻ`
+						: `Nhập link Trang (${limitPerNewPage} bài/trang) hoặc Post URL ở trên để tính`,
+			});
+
+			// Thẻ 3: Tổng số bài sẽ theo dõi theo lịch
+			const kpi3 = kpiStrip.createDiv({ cls: "cc-adv-kpi-box" });
+			kpi3.createDiv({ cls: "cc-adv-kpi-label", text: "3. Tổng bài sẽ quét theo lịch" });
+			kpi3.createDiv({
+				cls: "cc-adv-kpi-value",
+				text: `${effectiveProjectedPosts} bài viết`,
+			});
+			kpi3.createDiv({
+				cls: "cc-adv-kpi-sub",
+				text:
+					cappedOverflowPosts > 0
+						? `Giới hạn trần ${watchlist.settings.retention_max_posts} bài (tự ngắt ${cappedOverflowPosts} bài cũ)`
+						: `Hiện có ${activeCount} bài + Quét thêm ${totalAddingPosts} bài (${projectedPagesCount} Trang)`,
+			});
+
+			// Thẻ 4: Chu kỳ nhận dữ liệu tương tác mới
+			const kpi4 = kpiStrip.createDiv({ cls: "cc-adv-kpi-box is-cycle" });
+			kpi4.createDiv({ cls: "cc-adv-kpi-label", text: "4. Chu kỳ nhận dữ liệu mới" });
+			kpi4.createDiv({
+				cls: "cc-adv-kpi-value",
+				text: `Mỗi ~${formatCycleMins(rotationCycleMins)}`,
+			});
+			kpi4.createDiv({
+				cls: "cc-adv-kpi-sub",
+				text: `Xoay vòng ${numSessionsNeeded} đợt × tối đa ${batchVal} bài/đợt`,
+			});
+
+			// Render khung diễn giải chi tiết & khuyến nghị an toàn
+			estimateBanner.empty();
+			estimateBanner.removeClass("is-safe", "is-warn", "is-danger");
+
+			let tierClass = "is-safe";
+			let badgeText = "NGƯỠNG AN TOÀN TUYỆT ĐỐI (1 – 25 BÀI/PHIÊN)";
+			let bestActionText =
+				"Khuyến nghị tốt nhất: Giữ mức 15 – 25 bài/phiên và bật 'Chạy ngầm tự động'. Hệ thống tự động chia nhỏ tổng số bài cần quét thành các đợt cách nhau 15 phút — an toàn 100% trên mạng thường, KHÔNG cần bật Proxy/VPN mà vẫn lấy đủ toàn bộ kết quả.";
+
+			if (batchVal > 25 && batchVal <= 50) {
+				tierClass = "is-warn";
+				badgeText = "NGƯỠNG TRUNG BÌNH - CẢNH BÁO TẦN SUẤT (26 – 50 BÀI/PHIÊN)";
+				bestActionText =
+					"Khuyến nghị tốt nhất: Phù hợp khi bạn bấm 'Quét cập nhật ngay' thủ công 1 lần để lấy nhanh 30–50 bài. Để tránh bị Facebook chặn IP tạm thời, KHÔNG bấm quét liên tiếp quá 2 lần trong 1 giờ; nếu cần quét liên tục nhiều đợt nên bật VPN/Proxy.";
+			} else if (batchVal > 50) {
+				tierClass = "is-danger";
+				badgeText = "NGƯỠNG RỦI RO CHẶN IP CAO (> 50 BÀI/PHIÊN)";
+				bestActionText =
+					"Khuyến nghị tốt nhất: Trên 1 IP mạng thường, tường lửa Facebook thường cắt kết nối (HTTP 429) ở bài thứ 45–55. Để lấy đủ kết quả an toàn: (Cách 1 - Khuyên dùng) Hạ Số bài/phiên về 20 bài để hệ thống tự chia thành nhiều đợt chạy ngầm; HOẶC (Cách 2) Bắt buộc bật VPN / đổi Proxy sang IP mới trước khi quét. Lưu ý: Tuyệt đối KHÔNG dùng Cookie tài khoản FB để tăng số lượng bài quét (Cookie chỉ dùng mở khóa trang cá nhân riêng tư).";
+			}
+
+			estimateBanner.addClass(tierClass);
+
+			const headLine = estimateBanner.createDiv({ cls: "cc-adv-estimate-head" });
+			headLine.createSpan({ text: badgeText });
+
+			const statsList = estimateBanner.createEl("ul", { cls: "cc-adv-estimate-list" });
+
+			if (totalAddingPosts > 0 || newPagesCount > 0) {
+				statsList.createEl("li", {
+					text: `Thời gian lấy xong dữ liệu lượt đầu cho +${totalAddingPosts} bài mới đang nhập (${newPagesCount} Trang mới + ${newDirectPostsCount} Post lẻ): ${
+						addingSessions === 1
+							? `Lấy xong toàn bộ ngay trong 1 đợt (~${formatDuration(addingInitialSec)}) sau khi bấm nút Thêm.`
+							: `Đợt 1 lấy ngay ${addingInitialBatch} bài trong ~${formatDuration(addingInitialSec)}; toàn bộ +${totalAddingPosts} bài mới hoàn tất sau ${addingSessions} đợt (~${formatDuration(addingTotalAutoSec)}).`
+					}`,
+				});
+			}
+
+			statsList.createEl("li", {
+				text: `Chu kỳ nhận bản cập nhật chỉ số tương tác (Like, Comment, Share) mới cho tổng ${effectiveProjectedPosts} bài viết: Hệ thống chia làm ${numSessionsNeeded} đợt (${batchVal} bài/đợt, mỗi đợt chạy mất ~${formatDuration(secPerSessionNoCookie)} Không Cookie hoặc ~${formatDuration(secPerSessionWithCookie)} Có Cookie):`,
+			});
+
+			const cycleSubList = statsList.createEl("ul", { cls: "cc-adv-cycle-sublist" });
+			cycleSubList.createEl("li", {
+				text: `Bài mới đăng (< 12h): Nhận chỉ số tương tác mới sau mỗi ~${formatCycleMins(newPostCycleMins)}.`,
+			});
+			cycleSubList.createEl("li", {
+				text: `Bài vừa (12 – 48h): Nhận chỉ số tương tác mới sau mỗi ~${formatCycleMins(midPostCycleMins)}.`,
+			});
+			cycleSubList.createEl("li", {
+				text: `Bài cũ (> 48h): Nhận chỉ số tương tác mới sau mỗi ~${formatCycleMins(oldPostCycleMins)}.`,
+			});
+			cycleSubList.createEl("li", {
+				text: `Phát hiện bài mới đăng trên ${projectedPagesCount} Nguồn Trang: Tự động kiểm tra sau mỗi ${watchlist.settings.page_scan_mins} phút.${
+					effectiveProjectedPosts > 0
+						? ` (Nếu bấm 'Quét cập nhật ngay' thủ công cho toàn bộ ${effectiveProjectedPosts} bài: mất tổng cộng ~${formatDuration(totalManualSec)}).`
+						: ""
+				}`,
+			});
+
+			const guideBox = estimateBanner.createDiv({ cls: "cc-adv-estimate-guide" });
+			guideBox.setText(bestActionText);
+		};
+
+		// Gắn sự kiện cập nhật tức thời khi user gõ thêm Trang, đổi số bài/trang, hoặc gõ thêm Post URL
+		txtPages.addEventListener("input", () => updateRealtimeEstimate(false));
+		inpLimit.addEventListener("input", () => updateRealtimeEstimate(false));
+		inpLimit.addEventListener("change", () => updateRealtimeEstimate(false));
+		txtUrls.addEventListener("input", () => updateRealtimeEstimate(false));
+
+		// Gắn sự kiện cập nhật tức thời khi user đổi chế độ Ngưỡng bài cũ hoặc gõ Batch Size
+		const onRetentionInputChange = () => {
+			if (rad1.checked) currentMode = "latest_only";
+			else if (rad2.checked) currentMode = "max_posts";
+			else if (rad3.checked) currentMode = "max_days";
+
+			cardOpt1.toggleClass("is-selected", currentMode === "latest_only");
+			cardOpt2.toggleClass("is-selected", currentMode === "max_posts");
+			cardOpt3.toggleClass("is-selected", currentMode === "max_days");
+			updateRealtimeEstimate(true);
+		};
+
+		rad1.addEventListener("change", onRetentionInputChange);
+		rad2.addEventListener("change", onRetentionInputChange);
+		rad3.addEventListener("change", onRetentionInputChange);
+
+		inpMaxPosts.addEventListener("focus", () => {
+			rad2.checked = true;
+			onRetentionInputChange();
+		});
+		inpMaxPosts.addEventListener("input", () => {
+			rad2.checked = true;
+			cardOpt1.toggleClass("is-selected", false);
+			cardOpt2.toggleClass("is-selected", true);
+			cardOpt3.toggleClass("is-selected", false);
+			currentMode = "max_posts";
+			updateRealtimeEstimate(false);
+		});
+		inpMaxPosts.addEventListener("change", () => {
+			rad2.checked = true;
+			onRetentionInputChange();
+		});
+
+		inpMaxDays.addEventListener("focus", () => {
+			rad3.checked = true;
+			onRetentionInputChange();
+		});
+		inpMaxDays.addEventListener("input", () => {
+			rad3.checked = true;
+			cardOpt1.toggleClass("is-selected", false);
+			cardOpt2.toggleClass("is-selected", false);
+			cardOpt3.toggleClass("is-selected", true);
+			currentMode = "max_days";
+			updateRealtimeEstimate(false);
+		});
+		inpMaxDays.addEventListener("change", () => {
+			rad3.checked = true;
+			onRetentionInputChange();
+		});
+
+		inpBatchSize.addEventListener("input", () => {
+			updateRealtimeEstimate(false);
+		});
+		inpBatchSize.addEventListener("change", () => {
+			updateRealtimeEstimate(true);
+		});
+
+		// Khởi chạy tính toán lần đầu khi mở tab
+		updateRealtimeEstimate(false);
 	}
 
 	// Bang 1 (LUON HIEN THI): The phan vung Fanpage / Trang ca nhan chuan Apple Inset Grouped Card
@@ -896,20 +1959,43 @@ export class ImportEngineView {
 		rootContainer: HTMLElement,
 		liveStatusEl: HTMLElement
 	): void {
-		const sectionCard = wrapper.createDiv({ cls: "content-compass-fb-section-card" });
+		const sectionCard = wrapper.createDiv({
+			cls: `content-compass-fb-section-card ${this.isFanpagesTableCollapsed ? "is-collapsed" : ""}`,
+		});
 		const header = sectionCard.createDiv({ cls: "content-compass-fb-section-header" });
-		const title = header.createDiv({ cls: "content-compass-card-subtitle" });
-		setBtnContent(title, "users", `Nguồn Trang đang theo dõi (${watchlist.pages.length})`);
+		const title = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+		const tableBodyWrap = sectionCard.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isFanpagesTableCollapsed) {
+			tableBodyWrap.style.display = "none";
+		}
+		const syncFanpagesTitle = () => {
+			setBtnContent(
+				title,
+				this.isFanpagesTableCollapsed ? "chevron-right" : "chevron-down",
+				`Nguồn Trang đang theo dõi (${watchlist.pages.length})`
+			);
+			title.setAttribute(
+				"title",
+				this.isFanpagesTableCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+		};
+		syncFanpagesTitle();
+		title.addEventListener("click", () => {
+			this.isFanpagesTableCollapsed = !this.isFanpagesTableCollapsed;
+			sectionCard.toggleClass("is-collapsed", this.isFanpagesTableCollapsed);
+			tableBodyWrap.style.display = this.isFanpagesTableCollapsed ? "none" : "";
+			syncFanpagesTitle();
+		});
 
 		if (watchlist.pages.length === 0) {
-			const empty = sectionCard.createDiv({ cls: "content-compass-placeholder" });
+			const empty = tableBodyWrap.createDiv({ cls: "content-compass-placeholder" });
 			empty.setText(
 				"Chưa có Fanpage hoặc Trang cá nhân nào. Bấm 'Thêm nguồn / Nhập dữ liệu' ở góc trên để thêm."
 			);
 			return;
 		}
 
-		const scrollBox = sectionCard.createDiv({ cls: "content-compass-table-scroll" });
+		const scrollBox = tableBodyWrap.createDiv({ cls: "content-compass-table-scroll" });
 		const pTable = scrollBox.createEl("table", { cls: "content-compass-data-table" });
 		const pHead = pTable.createEl("thead").createEl("tr");
 		for (const h of ["Tên Trang / Địa chỉ", "Phân loại", "Số bài mới/lần", "Lần quét cuối", "Theo dõi"]) {
@@ -940,12 +2026,23 @@ export class ImportEngineView {
 
 			const srcCell = row.createEl("td");
 			const rowSelSource = srcCell.createEl("select", { cls: "content-compass-fb-inline-select" }) as HTMLSelectElement;
-			rowSelSource.createEl("option", { value: "external", text: "Đối thủ" });
-			rowSelSource.createEl("option", { value: "own", text: "Thương hiệu" });
-			rowSelSource.value = pg.source_type || "external";
-			rowSelSource.addEventListener("change", async () => {
-				pg.source_type = rowSelSource.value as "own" | "external";
+			this.bindSourceTypeSelect(rowSelSource, watchlist, pg.source_type || "external", async (newVal) => {
+				pg.source_type = newVal;
+				if (Array.isArray(state?.discovered_posts)) {
+					for (const d of state.discovered_posts) {
+						if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
+							d.source_type = newVal;
+						}
+					}
+				}
 				await this.saveWatchlist(watchlist);
+				await this.saveTrackerState(state);
+				await this.engagementStore.initialize();
+				if (this.onRefreshDashboard) {
+					this.onRefreshDashboard();
+				} else {
+					this.renderMainView(rootContainer);
+				}
 			});
 
 			const limitCell = row.createEl("td");
@@ -960,6 +2057,7 @@ export class ImportEngineView {
 				pg.limit = Math.max(1, Math.min(20, parseInt(rowInpLimit.value) || 5));
 				rowInpLimit.value = String(pg.limit);
 				await this.saveWatchlist(watchlist);
+				this.renderMainView(rootContainer);
 			});
 
 			const lastTime = st.last_polled_at ? new Date(st.last_polled_at).toLocaleTimeString("vi-VN") : "Chưa quét";
@@ -977,10 +2075,15 @@ export class ImportEngineView {
 			});
 
 			const btnToggle = actCell.createEl("button", {
-				cls: "content-compass-icon-btn",
+				cls: `content-compass-icon-btn ${pg.enabled !== false ? "is-active-watch" : ""}`,
 			});
-			setBtnContent(btnToggle, pg.enabled ? "pause" : "play");
-			btnToggle.setAttribute("title", pg.enabled ? "Tạm dừng tự động quét nguồn này" : "Tiếp tục tự động quét nguồn này");
+			setBtnContent(btnToggle, pg.enabled !== false ? "pause" : "play");
+			btnToggle.setAttribute(
+				"title",
+				pg.enabled !== false
+					? "Đang bật theo dõi tự động nguồn này (Bấm để tạm dừng)"
+					: "Đã tạm dừng (Bấm để tiếp tục tự động quét nguồn này)"
+			);
 			btnToggle.addEventListener("click", async () => {
 				pg.enabled = !pg.enabled;
 				await this.saveWatchlist(watchlist);
@@ -998,7 +2101,7 @@ export class ImportEngineView {
 		}
 	}
 
-	// Bang 2 (LUON HIEN THI): The phan vung Bai viet dang theo doi chuan Apple Inset Grouped Card
+	// Bang 2 (LUON HIEN THI): The phan vung Bai viet da thu thap chuan Apple Inset Grouped Card
 	private renderWatchedPostsTable(
 		wrapper: HTMLElement,
 		watchlist: FbWatchlistData,
@@ -1007,10 +2110,11 @@ export class ImportEngineView {
 		rootContainer: HTMLElement,
 		liveStatusEl: HTMLElement
 	): void {
-		const sectionCard = wrapper.createDiv({ cls: "content-compass-fb-section-card" });
+		const sectionCard = wrapper.createDiv({
+			cls: `content-compass-fb-section-card ${this.isPostsTableCollapsed ? "is-collapsed" : ""}`,
+		});
 		const header = sectionCard.createDiv({ cls: "content-compass-fb-section-header" });
-		const title = header.createDiv({ cls: "content-compass-card-subtitle" });
-		setBtnContent(title, "file-text", `Các Bài viết đang theo dõi (${allPosts.length} bài)`);
+		const title = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
 
 		const postStatus = header.createDiv({ cls: "content-compass-import-status" });
 
@@ -1035,19 +2139,55 @@ export class ImportEngineView {
 			};
 		});
 
+		// Xác định thứ hạng Score thực tế (Top 1 -> Top 5) trên toàn danh sách bài có điểm > 0
+		const scoreRankMap = new Map<string, number>();
+		const rankedByScore = [...enrichedPosts]
+			.filter((x) => x.score > 0)
+			.sort((a, b) => b.score - a.score);
+		rankedByScore.forEach((ep, idx) => {
+			scoreRankMap.set(ep.item.id, idx + 1);
+		});
+
 		const getFilteredAndSortedPosts = () => {
 			const list = enrichedPosts.filter((ep) => {
+				if (this.postActiveFilter === "active" && ep.item.enabled === false) return false;
+				if (this.postActiveFilter === "paused" && ep.item.enabled !== false) return false;
+
 				if (this.postVaultFilter === "saved" && !ep.isSaved) return false;
 				if (this.postVaultFilter === "unsaved" && ep.isSaved) return false;
 
 				if (this.postSourceFilter === "own" && ep.item.source_type !== "own") return false;
 				if (this.postSourceFilter === "external" && ep.item.source_type !== "external") return false;
+				if (this.postSourceFilter === "other" && ep.item.source_type !== "other") return false;
+				if (
+					this.postSourceFilter.startsWith("type:") &&
+					ep.item.source_type !== this.postSourceFilter.slice(5)
+				) {
+					return false;
+				}
 				if (this.postSourceFilter === "direct" && ep.item.isDiscovered) return false;
 				if (
 					this.postSourceFilter.startsWith("page:") &&
 					ep.item.from_page !== this.postSourceFilter.slice(5)
 				) {
 					return false;
+				}
+
+				if (
+					this.postDateRange.presetId !== "all" &&
+					this.postDateRange.startDate &&
+					this.postDateRange.endDate
+				) {
+					const startMs = new Date(`${this.postDateRange.startDate}T00:00:00`).getTime();
+					const endMs = new Date(`${this.postDateRange.endDate}T23:59:59.999`).getTime();
+					const rawPostMs = ep.st.creation_time
+						? Number(ep.st.creation_time) * 1000
+						: ep.item.added_at
+							? new Date(ep.item.added_at).getTime()
+							: ep.st.last_polled_at
+								? new Date(ep.st.last_polled_at).getTime()
+								: 0;
+					if (!rawPostMs || rawPostMs < startMs || rawPostMs > endMs) return false;
 				}
 
 				if (this.postSearchQuery.trim().length > 0) {
@@ -1141,8 +2281,13 @@ export class ImportEngineView {
 			this.renderMainView(rootContainer);
 		});
 
+		const postsBodyWrap = sectionCard.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isPostsTableCollapsed) {
+			postsBodyWrap.style.display = "none";
+		}
+
 		// Dai Filter Strip lien mach ben duoi Header (Khong bao gio bi huy/ve lai khi doi filter)
-		const filterBar = sectionCard.createDiv({ cls: "content-compass-fb-toolbar-strip" });
+		const filterBar = postsBodyWrap.createDiv({ cls: "content-compass-fb-toolbar-strip" });
 
 		const selSort = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" }) as HTMLSelectElement;
 		selSort.createEl("option", { value: "score_desc", text: "Sắp xếp: Điểm tương tác (Cao → Thấp)" });
@@ -1154,8 +2299,15 @@ export class ImportEngineView {
 		const selSourceFilter = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" }) as HTMLSelectElement;
 		selSourceFilter.createEl("option", { value: "all", text: "Nguồn: Tất cả" });
 		selSourceFilter.createEl("option", { value: "direct", text: "Chỉ định trực tiếp bằng URL" });
-		selSourceFilter.createEl("option", { value: "own", text: "Chỉ bài Thương hiệu" });
-		selSourceFilter.createEl("option", { value: "external", text: "Chỉ bài Đối thủ / Bên ngoài" });
+		selSourceFilter.createEl("option", { value: "own", text: "Chỉ bài: Thương hiệu" });
+		selSourceFilter.createEl("option", { value: "external", text: "Chỉ bài: Đối thủ" });
+		selSourceFilter.createEl("option", { value: "other", text: "Chỉ bài: Khác" });
+		for (const customLbl of this.collectAllCustomLabels(watchlist)) {
+			selSourceFilter.createEl("option", {
+				value: `type:${customLbl}`,
+				text: `Chỉ bài: ${customLbl}`,
+			});
+		}
 		for (const pg of watchlist.pages) {
 			const pName = state?.pages?.[pg.id]?.page_name || pg.page_identifier;
 			selSourceFilter.createEl("option", {
@@ -1164,6 +2316,36 @@ export class ImportEngineView {
 			});
 		}
 		selSourceFilter.value = this.postSourceFilter;
+
+		const selActiveFilter = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" }) as HTMLSelectElement;
+		const optActiveAll = selActiveFilter.createEl("option", { value: "all", text: "" });
+		const optActiveOn = selActiveFilter.createEl("option", { value: "active", text: "" });
+		const optActiveOff = selActiveFilter.createEl("option", { value: "paused", text: "" });
+		selActiveFilter.value = this.postActiveFilter;
+
+		const syncTableHeaderAndFilterCounts = () => {
+			const activeCnt = enrichedPosts.filter((x) => x.item.enabled !== false).length;
+			const pausedCnt = enrichedPosts.length - activeCnt;
+			setBtnContent(
+				title,
+				this.isPostsTableCollapsed ? "chevron-right" : "chevron-down",
+				`Danh sách Bài viết đã thu thập (${activeCnt} đang bật quét • ${pausedCnt} đã ngắt bài cũ / ${enrichedPosts.length} tổng)`
+			);
+			title.setAttribute(
+				"title",
+				this.isPostsTableCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+			optActiveAll.text = `Lịch quét: Tất cả (${enrichedPosts.length})`;
+			optActiveOn.text = `Đang bật quét (${activeCnt})`;
+			optActiveOff.text = `Đã ngắt / Tạm dừng (${pausedCnt})`;
+		};
+		syncTableHeaderAndFilterCounts();
+		title.addEventListener("click", () => {
+			this.isPostsTableCollapsed = !this.isPostsTableCollapsed;
+			sectionCard.toggleClass("is-collapsed", this.isPostsTableCollapsed);
+			postsBodyWrap.style.display = this.isPostsTableCollapsed ? "none" : "";
+			syncTableHeaderAndFilterCounts();
+		});
 
 		const selVaultFilter = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" }) as HTMLSelectElement;
 		selVaultFilter.createEl("option", { value: "all", text: `Vault: Tất cả (${enrichedPosts.length})` });
@@ -1177,6 +2359,17 @@ export class ImportEngineView {
 		});
 		selVaultFilter.value = this.postVaultFilter;
 
+		// Bộ lọc Thời gian chuẩn 3 cột (Không hiển thị Gộp hay Mốc vì lọc trực tiếp trên danh sách bài viết)
+		renderDateRangePickerButton(
+			filterBar,
+			this.postDateRange,
+			{ showGroupBy: false, showDateBasis: false },
+			(nextRange) => {
+				this.postDateRange = nextRange;
+				rebuildTableRows();
+			}
+		);
+
 		const searchBox = filterBar.createDiv({ cls: "content-compass-search-box" });
 		const searchIcon = searchBox.createSpan({ cls: "cc-icon" });
 		setIcon(searchIcon, "search");
@@ -1188,7 +2381,7 @@ export class ImportEngineView {
 		}) as HTMLInputElement;
 
 		// Khung cuộn bảng cố định chiều cao để bảng không bao giờ bị co giãn/nhảy trang khi lọc
-		const postSec = sectionCard.createDiv({ cls: "content-compass-table-scroll content-compass-posts-scroll" });
+		const postSec = postsBodyWrap.createDiv({ cls: "content-compass-table-scroll content-compass-posts-scroll" });
 		const table = postSec.createEl("table", { cls: "content-compass-data-table content-compass-posts-table" });
 		const thead = table.createEl("thead").createEl("tr");
 		const headersConfig: Array<{ label: string; tooltip?: string }> = [
@@ -1235,7 +2428,17 @@ export class ImportEngineView {
 			}
 
 			for (const { item, st, m, score, authorName, snippet, vaultPath, isSaved, isScraped } of filteredPosts) {
-				const row = tbody.createEl("tr");
+				const fbId = String(st.fb_post_id || item.fb_post_id || "");
+				const slugKey = String(st.vault_slug || (fbId ? `fb-post-${fbId}` : ""));
+				const row = tbody.createEl("tr", {
+					cls: "cc-post-row",
+					attr: {
+						"data-watch-id": String(item.id || ""),
+						"data-fb-id": fbId,
+						"data-post-slug": slugKey,
+						"data-post-url": String(item.url || ""),
+					},
+				});
 
 				// 1. Checkbox chon de Luu hoac Xoa hang loat (Apple Rounded Checkbox)
 				const chkCell = row.createEl("td");
@@ -1265,11 +2468,37 @@ export class ImportEngineView {
 			headlineLink.setAttribute("rel", "noopener noreferrer");
 			headlineLink.setAttribute("title", `Mở trên trình duyệt:\n${snippet}\n${item.url}`);
 
+			// Tính trước dữ liệu Sparkline 5 ngày để nhận diện bài "Mới quét lần đầu"
+			const spark5d = this.engagementStore.getPostScoreSparkline5Days(
+				[slugKey, fbId, item.id],
+				score,
+				st.last_polled_at || item.added_at
+			);
+
 			const subMeta = nameCell.createDiv({ cls: "content-compass-fb-post-title-row" });
 			subMeta.createSpan({
 				cls: `content-compass-source-pill ${item.source_type === "own" ? "is-own" : ""}`,
-				text: item.source_type === "own" ? "Thương hiệu" : "Đối thủ",
+				text: formatSourceTypeLabel(item.source_type),
 			});
+			const isPostActive = item.enabled !== false;
+			subMeta.createSpan({
+				cls: `content-compass-source-pill ${isPostActive ? "is-own" : ""}`,
+				text: isPostActive
+					? "Đang bật quét"
+					: item.auto_paused_reason
+						? "Đã ngắt (bài cũ)"
+						: "Đã tạm dừng",
+			});
+			if (isScraped && spark5d.isFirstScan) {
+				const firstScanBadge = subMeta.createSpan({
+					cls: "content-compass-source-pill is-first-scan",
+					text: "Mới quét lần đầu",
+				});
+				firstScanBadge.setAttribute(
+					"title",
+					"Bài viết mới chỉ có 1 mốc dữ liệu thu thập (chưa có dữ liệu các ngày trước để so sánh tăng trưởng)"
+				);
+			}
 			const originLabel = item.isDiscovered ? `Từ Trang: ${authorName}` : `Chỉ định trực tiếp (${authorName})`;
 			const pubDateStr = st.creation_time
 				? " • " + new Date(Number(st.creation_time) * 1000).toLocaleDateString("vi-VN")
@@ -1279,17 +2508,36 @@ export class ImportEngineView {
 				cls: "content-compass-fb-subtext",
 			});
 
-			// 3. Tong diem Score & Chi so tuong tac (Vector Icons + Tabular Numbers + Tooltip giải thích chi tiết)
+			// 3. Tong diem Score (Highlight Top 5 + Lua mau Top 3 + Sparkline 5 ngay o Dong 1) & 3 Chi so o Dong 2
 			const metricCell = row.createEl("td");
 			const likes = Number(m.likes || 0);
 			const commentsCnt = Number(m.comments || 0);
 			const shares = Number(m.shares || 0);
-			const scoreBadge = createMetricChip(metricCell, "flame", `Score ${score}`, "content-compass-fb-score-badge");
+			const rank = scoreRankMap.get(item.id) || 999;
+			const isTop5 = rank <= 5;
+			const isTop3 = rank <= 3;
+			const badgeRankCls = [
+				"content-compass-fb-score-badge",
+				isTop5 ? "is-top5" : "",
+				isTop3 ? `is-top3 is-rank-${rank}` : "",
+			]
+				.filter(Boolean)
+				.join(" ");
+
+			const scoreTopRow = metricCell.createDiv({ cls: "cc-post-score-top-row" });
+			const scoreBadge = createMetricChip(scoreTopRow, "flame", `Score ${score}`, badgeRankCls);
+			const rankNote = isTop3
+				? `🏆 Hạng #${rank} bài tương tác cao nhất (Top 3)\n`
+				: isTop5
+					? `⭐ Hạng #${rank} bài tương tác cao nhất (Top 5)\n`
+					: "";
 			scoreBadge.setAttribute(
 				"title",
-				`Cách tính Điểm tương tác (Score):\n• Likes: ${likes} × 1 = ${likes} điểm\n• Bình luận: ${commentsCnt} × 2 = ${commentsCnt * 2} điểm\n• Chia sẻ: ${shares} × 3 = ${shares * 3} điểm\n────────────────────\nTổng cộng: ${score} điểm`
+				`${rankNote}Cách tính Điểm tương tác (Score):\n• Likes: ${likes} × 1 = ${likes} điểm\n• Bình luận: ${commentsCnt} × 2 = ${commentsCnt * 2} điểm\n• Chia sẻ: ${shares} × 3 = ${shares * 3} điểm\n────────────────────\nTổng cộng: ${score} điểm`
 			);
 			scoreBadge.style.cursor = "help";
+
+			renderPostSparkline5D(scoreTopRow, spark5d, isTop5);
 
 			const mRow = metricCell.createDiv({ cls: "content-compass-fb-metrics-row" });
 			const chipLike = createMetricChip(mRow, "thumbs-up", String(likes));
@@ -1303,7 +2551,7 @@ export class ImportEngineView {
 			const lastT = st.last_polled_at ? new Date(st.last_polled_at).toLocaleTimeString("vi-VN") : "Chờ quét";
 			row.createEl("td", { text: lastT });
 
-			// 5. Cột "Đọc & Lưu bài" (Gói trong div con để không phá vỡ table-cell của <td>)
+			// 5. Cột "Đọc & Lưu bài" (Icon-only đồng bộ màu sắc nhẹ nhàng như nút Xem)
 			const vaultTd = row.createEl("td");
 			const vaultCell = vaultTd.createDiv({ cls: "content-compass-fb-row-actions" });
 			if (isScraped) {
@@ -1313,9 +2561,9 @@ export class ImportEngineView {
 				setBtnContent(btnPreview, "eye");
 				btnPreview.setAttribute("title", "Đọc toàn văn bài viết, bình luận và chỉnh tiêu đề trước khi lưu");
 				btnPreview.addEventListener("click", async () => {
-					const fbId = st.fb_post_id || item.fb_post_id;
-					const cacheData = (await this.readPostCache(fbId)) || {
-						fb_post_id: fbId,
+					const curFbId = st.fb_post_id || item.fb_post_id;
+					const cacheData = (await this.readPostCache(curFbId)) || {
+						fb_post_id: curFbId,
 						author_name: authorName,
 						post_text: snippet,
 						metrics: m,
@@ -1336,18 +2584,18 @@ export class ImportEngineView {
 
 				if (isSaved && vaultPath) {
 					const btnOpen = vaultCell.createEl("button", {
-						cls: "content-compass-refresh-btn",
+						cls: "content-compass-icon-btn is-saved-vault",
 					});
-					setBtnContent(btnOpen, "folder-open", "Mở file");
-					btnOpen.setAttribute("title", `Đã lưu tại: ${vaultPath}. Bấm để mở trong Obsidian.`);
+					setBtnContent(btnOpen, "folder-open");
+					btnOpen.setAttribute("title", `Đã lưu tại: ${vaultPath}. Bấm để mở file trong Obsidian.`);
 					btnOpen.addEventListener("click", () => {
 						this.app.workspace.openLinkText(vaultPath, "", false);
 					});
 				} else {
 					const btnSaveOne = vaultCell.createEl("button", {
-						cls: "content-compass-import-btn",
+						cls: "content-compass-icon-btn",
 					});
-					setBtnContent(btnSaveOne, "download", "Lưu");
+					setBtnContent(btnSaveOne, "download");
 					btnSaveOne.setAttribute("title", "Lưu bài này thành file .md trong Obsidian Vault");
 					btnSaveOne.addEventListener("click", async () => {
 						setBtnContent(btnSaveOne, "loader", undefined, true);
@@ -1360,7 +2608,7 @@ export class ImportEngineView {
 				vaultCell.createSpan({ text: "Chờ quét", cls: "content-compass-import-status" });
 			}
 
-			// 6. Cột "Theo dõi" (Gói trong div con để hiển thị đúng ở cột 6, không bị gộp vào cột 5)
+			// 6. Cột "Theo dõi" (Highlight viền xanh blue cho nút đang bật quét tự động)
 			const actTd = row.createEl("td");
 			const actCell = actTd.createDiv({ cls: "content-compass-fb-row-actions" });
 			const btnScan = actCell.createEl("button", { cls: "content-compass-icon-btn" });
@@ -1376,30 +2624,32 @@ export class ImportEngineView {
 			});
 
 			const btnToggle = actCell.createEl("button", {
-				cls: "content-compass-icon-btn",
+				cls: `content-compass-icon-btn ${item.enabled !== false ? "is-active-watch" : ""}`,
 			});
 			setBtnContent(btnToggle, item.enabled !== false ? "pause" : "play");
 			btnToggle.setAttribute(
 				"title",
-				item.enabled !== false ? "Tạm dừng tự động quét bài này" : "Tiếp tục tự động quét bài này"
+				item.enabled !== false
+					? "Đang bật theo dõi & quét tự động (Bấm để tạm dừng)"
+					: "Đã ngắt / tạm dừng quét (Bấm để tiếp tục tự động quét bài này)"
 			);
 				btnToggle.addEventListener("click", async () => {
 					if (item.isDiscovered) {
 						const target = (state.discovered_posts || []).find((d: any) => d.id === item.id);
 						if (target) {
 							target.enabled = target.enabled === false ? true : false;
+							target.auto_paused_reason = null;
 							item.enabled = target.enabled;
+							item.auto_paused_reason = null;
 						}
 						await this.saveTrackerState(state);
 					} else {
 						item.enabled = !item.enabled;
+						item.auto_paused_reason = null;
 						await this.saveWatchlist(watchlist);
 					}
-					setBtnContent(btnToggle, item.enabled !== false ? "pause" : "play");
-					btnToggle.setAttribute(
-						"title",
-						item.enabled !== false ? "Tạm dừng tự động quét bài này" : "Tiếp tục tự động quét bài này"
-					);
+					syncTableHeaderAndFilterCounts();
+					rebuildTableRows();
 				});
 
 				const btnDel = actCell.createEl("button", { cls: "content-compass-icon-btn is-danger" });
@@ -1448,6 +2698,11 @@ export class ImportEngineView {
 
 		selSourceFilter.addEventListener("change", () => {
 			this.postSourceFilter = selSourceFilter.value;
+			rebuildTableRows();
+		});
+
+		selActiveFilter.addEventListener("change", () => {
+			this.postActiveFilter = selActiveFilter.value as "all" | "active" | "paused";
 			rebuildTableRows();
 		});
 
@@ -1653,12 +2908,35 @@ export class ImportEngineView {
 		const recent = this.engagementStore.getRecentRecords(5);
 		if (recent.length === 0) return;
 
-		const section = card.createDiv({ cls: "content-compass-recent-imports" });
-		const subtitle = section.createDiv({ cls: "content-compass-card-subtitle" });
-		subtitle.setText("Lịch sử nhập gần đây:");
-		subtitle.style.marginBottom = "4px";
+		const section = card.createDiv({
+			cls: `content-compass-recent-imports ${this.isRecentHistoryCollapsed ? "is-collapsed" : ""}`,
+		});
+		const header = section.createDiv({ cls: "content-compass-card-header" });
+		const subtitle = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+		const bodyWrap = section.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isRecentHistoryCollapsed) {
+			bodyWrap.style.display = "none";
+		}
+		const syncRecentTitle = () => {
+			setBtnContent(
+				subtitle,
+				this.isRecentHistoryCollapsed ? "chevron-right" : "chevron-down",
+				"Lịch sử nhập gần đây:"
+			);
+			subtitle.setAttribute(
+				"title",
+				this.isRecentHistoryCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+		};
+		syncRecentTitle();
+		subtitle.addEventListener("click", () => {
+			this.isRecentHistoryCollapsed = !this.isRecentHistoryCollapsed;
+			section.toggleClass("is-collapsed", this.isRecentHistoryCollapsed);
+			bodyWrap.style.display = this.isRecentHistoryCollapsed ? "none" : "";
+			syncRecentTitle();
+		});
 
-		const table = section.createEl("table", { cls: "content-compass-data-table" });
+		const table = bodyWrap.createEl("table", { cls: "content-compass-data-table" });
 		const thead = table.createEl("thead");
 		const headerRow = thead.createEl("tr");
 		for (const h of ["Post", "Platform", "Score", "Ngày"]) {

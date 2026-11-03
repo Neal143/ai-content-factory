@@ -1,9 +1,9 @@
 /**
  * Ten file: PillarMapView.ts
- * Last update: 24/10/2026 15:00 (GMT+7)
+ * Last update: 03/11/2026 12:19 (GMT+7)
  * Vai tro: Renderer cho goc nhin Treemap (Pillar Map) trong tab Strategy.
  * Duoc su dung khi nao?: Khi tab Strategy duoc hien thi tren Dashboard.
- * Output: Giao dien Treemap 2D, dien tich ty le voi engagement score (fallback topicCount).
+ * Output: Giao dien Treemap 2D co nut Hide/Show o goc tren cung ben phai, dien tich ty le voi engagement score (fallback topicCount).
  * Tom tat logic hoat dong: Lay du lieu tu TagIndex, AudienceIndex, EngagementStore, tinh weight
  * (uu tien engagement, fallback topicCount), ap dung Squarified Treemap, render khoi pillar.
  */
@@ -132,6 +132,7 @@ export class PillarMapView {
 	private audienceIndex: AudienceIndex;
 	private app: App;
 	private engagementStore: EngagementStore | null;
+	private isCollapsed: boolean = false;
 
 	constructor(container: HTMLElement, tagIndex: TagIndex, audienceIndex: AudienceIndex, app: App, engagementStore?: EngagementStore) {
 		this.container = container;
@@ -145,21 +146,43 @@ export class PillarMapView {
 	public render(): void {
 		this.container.empty();
 
-		const card = this.container.createDiv({ cls: "content-compass-card" });
-		const title = card.createDiv({ cls: "content-compass-card-title" });
+		const card = this.container.createDiv({
+			cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`,
+		});
+		const header = card.createDiv({ cls: "content-compass-card-header" });
+		const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
 		const titleIcon = title.createSpan({ cls: "cc-icon" });
-		setIcon(titleIcon, "layout-grid");
 		title.createSpan({ text: "Bản đồ Trụ cột Nội dung (Pillar Treemap)" });
+
+		const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isCollapsed) {
+			cardBody.style.display = "none";
+		}
+		const syncCollapseTitle = () => {
+			titleIcon.empty();
+			setIcon(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+			title.setAttribute(
+				"title",
+				this.isCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+		};
+		syncCollapseTitle();
+		title.addEventListener("click", () => {
+			this.isCollapsed = !this.isCollapsed;
+			card.toggleClass("is-collapsed", this.isCollapsed);
+			cardBody.style.display = this.isCollapsed ? "none" : "";
+			syncCollapseTitle();
+		});
 
 		const pillars = this.tagIndex.getPillars();
 		if (pillars.size === 0) {
-			const emptyMsg = card.createDiv({ cls: "content-compass-placeholder" });
+			const emptyMsg = cardBody.createDiv({ cls: "content-compass-placeholder" });
 			emptyMsg.setText("Chưa nạp được danh mục Pillar từ topic_map.yaml");
 			return;
 		}
 
 		const totalTopics = this.tagIndex.getTotalTopicCount() || 1;
-		const treemap = card.createDiv({ cls: "content-compass-treemap" });
+		const treemap = cardBody.createDiv({ cls: "content-compass-treemap" });
 
 		// Thu thap du lieu Pillar theo thu tu goc
 		const pillarEntries = Array.from(pillars.entries());

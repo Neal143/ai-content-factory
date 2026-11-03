@@ -1,11 +1,11 @@
 /**
  * Tên file: styles.css
- * Last update: 02/11/2026 17:05 (GMT+7)
+ * Last update: 03/11/2026 15:52 (GMT+7)
  * Vai trò: Bảng định kiểu CSS chuẩn Apple Human Interface Guidelines (macOS Sequoia / iPadOS 18 Bento & Glass UI)
  *          cho plugin Content Compass trong Obsidian.
  * Được sử dụng khi nào?: Được Obsidian tự động nạp khi plugin content-compass kích hoạt.
  * Output: Hệ thống giao diện đồng bộ gồm Bento Cards, UISegmentedControl, UISwitch, Vector Monoline Icons,
- *         Unified Inset Grouped Tables (với Sticky Frosted Header) và Ghost Icon Action Buttons.
+ *         Unified Inset Grouped Tables (với Sticky Frosted Header), Nút Hide/Show (Thu gọn/Mở rộng) mọi bảng và Ghost Icon Action Buttons.
  * Tóm tắt logic hoạt động: Sử dụng hệ thống biến CSS (--cc-*) tự động thích ứng với Light Mode và Dark Mode
  *          của Obsidian, khóa độ ưu tiên (specificity) để không bị stylesheet mặc định của Obsidian ghi đè.
  */
@@ -395,6 +395,23 @@
 	background: var(--cc-red-soft) !important;
 	border-color: rgba(255, 59, 48, 0.22) !important;
 	color: var(--cc-red) !important;
+}
+
+/* Highlight nhẹ viền sáng xanh blue cho các icon đang chạy / đang bật theo dõi tự động */
+.content-compass-container button.content-compass-icon-btn.is-active-watch {
+	border-color: rgba(10, 132, 255, 0.65) !important;
+	background: rgba(10, 132, 255, 0.08) !important;
+	color: var(--cc-blue) !important;
+	box-shadow: 0 0 6px rgba(10, 132, 255, 0.14) !important;
+}
+
+.content-compass-container button.content-compass-icon-btn.is-active-watch:hover {
+	background: rgba(10, 132, 255, 0.15) !important;
+	border-color: var(--cc-blue) !important;
+}
+
+.content-compass-container button.content-compass-icon-btn.is-saved-vault {
+	color: var(--text-normal);
 }
 
 .content-compass-tab-content {
@@ -1126,7 +1143,7 @@
 	border: 1px solid var(--cc-border-subtle);
 }
 
-/* Thẻ phân vùng liền mạch (Unified Section Card - không lồng hộp chồng chéo) */
+/* Thẻ phân vùng liền mạch (Unified Section Card - không lồng hộp chồng chéo, cho phép hiển thị Popover lịch) */
 .content-compass-fb-section-card {
 	background-color: var(--cc-bg-card);
 	border: 1px solid var(--cc-border-subtle);
@@ -1134,7 +1151,7 @@
 	box-shadow: var(--cc-shadow-card);
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	overflow: visible;
 }
 
 .content-compass-fb-section-header {
@@ -1158,11 +1175,44 @@
 	border-bottom: 1px solid var(--cc-border-subtle);
 }
 
+/* Đồng bộ chiều cao & bề mặt nút chọn thời gian khi đặt trong dải lọc của bảng Danh sách bài viết */
+.content-compass-fb-toolbar-strip .cc-daterange-bar {
+	background: var(--cc-bg-input);
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: var(--cc-radius-control);
+	padding: 1px 2px;
+}
+
+.content-compass-fb-toolbar-strip button.cc-daterange-trigger {
+	height: 26px;
+}
+
 .content-compass-table-scroll {
 	max-height: 460px;
 	overflow-y: auto;
 	width: 100%;
 	scrollbar-gutter: stable;
+	border-bottom-left-radius: var(--cc-radius-card);
+	border-bottom-right-radius: var(--cc-radius-card);
+}
+
+/* Hiệu ứng highlight xanh dương khi người dùng click từ Biểu đồ Engagement nhảy tới 1 bài viết trong bảng */
+@keyframes cc-row-highlight-pulse {
+	0% {
+		background-color: rgba(10, 132, 255, 0.24);
+	}
+	50% {
+		background-color: rgba(10, 132, 255, 0.14);
+	}
+	100% {
+		background-color: rgba(10, 132, 255, 0.08);
+	}
+}
+
+.content-compass-posts-table tbody tr.cc-post-row.is-highlighted-target {
+	background-color: rgba(10, 132, 255, 0.12) !important;
+	box-shadow: inset 3px 0 0 var(--cc-blue), inset 0 0 0 1px rgba(10, 132, 255, 0.35);
+	animation: cc-row-highlight-pulse 1.6s ease-in-out 2;
 }
 
 /* Khóa cứng chiều cao khung cuộn và độ rộng cột cho bảng Bài viết để không bao giờ bị giật/nhảy khi lọc hoặc sắp xếp */
@@ -1192,7 +1242,7 @@
 
 .content-compass-posts-table th:nth-child(3),
 .content-compass-posts-table td:nth-child(3) {
-	width: 185px;
+	width: 215px;
 }
 
 .content-compass-posts-table th:nth-child(4),
@@ -1202,7 +1252,7 @@
 
 .content-compass-posts-table th:nth-child(5),
 .content-compass-posts-table td:nth-child(5) {
-	width: 138px;
+	width: 96px;
 }
 
 .content-compass-posts-table th:nth-child(6),
@@ -1322,31 +1372,115 @@
 	color: var(--cc-blue);
 }
 
-/* Apple Pill Badges cho Score và Metrics */
+/* Huy hiệu nhận diện bài "Mới quét lần đầu" (chỉ mới có 1 mốc dữ liệu ngày thu thập đầu tiên) */
+.content-compass-source-pill.is-first-scan {
+	background: rgba(94, 92, 230, 0.12);
+	color: #5e5ce6;
+	border: 1px solid rgba(94, 92, 230, 0.25);
+	cursor: help;
+}
+
+/* Dòng 1 của cột Điểm & Tương tác: [Score Badge] + [Sparkline 5 ngày] nằm gọn trên cùng 1 hàng */
+.cc-post-score-top-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 5px;
+	flex-wrap: nowrap;
+}
+
+/* Apple Pill Badges cho Score: Mặc định trung tính, chỉ highlight xanh cho Top 5 và tô màu lửa cho Top 3 */
 .content-compass-fb-score-badge {
 	display: inline-flex;
 	align-items: center;
 	gap: 4px;
-	font-weight: 650;
+	font-weight: 600;
 	font-size: 11.5px;
 	font-variant-numeric: tabular-nums;
-	color: var(--cc-blue);
-	background: var(--cc-blue-soft);
-	padding: 2.5px 9px;
+	color: var(--text-normal);
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-hairline);
+	padding: 2px 8px;
 	border-radius: var(--cc-radius-pill);
-	margin-bottom: 5px;
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 .content-compass-fb-score-badge .cc-icon svg {
 	width: 12px;
 	height: 12px;
+	color: var(--text-muted);
 }
 
+/* Chỉ Highlight Blue cho Top 5 bài viết có Score cao nhất */
+.content-compass-fb-score-badge.is-top5,
+.content-compass-fb-modal-meta .content-compass-fb-score-badge {
+	font-weight: 650;
+	color: var(--cc-blue);
+	background: var(--cc-blue-soft);
+	border-color: rgba(10, 132, 255, 0.25);
+}
+
+.content-compass-fb-score-badge.is-top5 .cc-icon svg,
+.content-compass-fb-modal-meta .content-compass-fb-score-badge .cc-icon svg {
+	color: var(--cc-blue);
+}
+
+/* Top 3 có biểu tượng ngọn lửa (flame) tô màu nhiệt nổi bật */
+.content-compass-fb-score-badge.is-top3.is-rank-1 .cc-icon svg {
+	color: #ff3b30;
+	stroke: #ff3b30;
+	fill: rgba(255, 59, 48, 0.28);
+}
+
+.content-compass-fb-score-badge.is-top3.is-rank-2 .cc-icon svg {
+	color: #ff9500;
+	stroke: #ff9500;
+	fill: rgba(255, 149, 0, 0.25);
+}
+
+.content-compass-fb-score-badge.is-top3.is-rank-3 .cc-icon svg {
+	color: #eab308;
+	stroke: #eab308;
+	fill: rgba(234, 179, 8, 0.26);
+}
+
+/* Biểu đồ Line nhỏ (5-Day Score Sparkline) nằm ngay bên phải Score ở Dòng 1 */
+.cc-post-sparkline-wrap {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	height: 20px;
+	padding: 0 4px;
+	border-radius: 6px;
+	background: rgba(142, 142, 147, 0.05);
+	cursor: help;
+	flex-shrink: 0;
+}
+
+.cc-post-sparkline-svg {
+	display: block;
+	overflow: visible;
+}
+
+.cc-post-sparkline-delta {
+	font-size: 10px;
+	font-weight: 650;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.cc-post-sparkline-delta.is-up {
+	color: var(--cc-blue);
+}
+
+/* Dòng 2 của cột Điểm & Tương tác: 3 chỉ số Like, Comment, Share luôn giữ trên 1 hàng */
 .content-compass-fb-metrics-row {
 	display: flex;
 	align-items: center;
 	gap: 5px;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 }
 
 .content-compass-fb-metric-chip {
@@ -1822,5 +1956,850 @@
 	font-size: 11.5px;
 	border-radius: 6px;
 }
+
+/* ============================================================================
+   NHÓM 12: MULTI-SELECT CHECKBOX POPOVER, INTERACTIVE LEGEND & CHART TOOLTIP
+   ============================================================================ */
+.cc-multiselect-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.content-compass-container button.cc-multiselect-trigger {
+	height: 28px;
+	padding: 0 10px;
+	gap: 6px;
+	font-size: 12px;
+	font-weight: 550;
+	border-radius: var(--cc-radius-control);
+	background-color: var(--cc-bg-input) !important;
+	border: 1px solid var(--cc-border-subtle) !important;
+	color: var(--text-normal);
+}
+
+.content-compass-container button.cc-multiselect-trigger.is-filtered {
+	border-color: var(--cc-blue) !important;
+	background-color: var(--cc-blue-soft) !important;
+	color: var(--cc-blue) !important;
+}
+
+.cc-multiselect-trigger-text {
+	max-width: 210px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cc-multiselect-popover {
+	position: absolute;
+	top: calc(100% + 6px);
+	left: 0;
+	z-index: 260;
+	width: 280px;
+	max-width: 90vw;
+	background: var(--background-primary);
+	border: 1px solid var(--cc-border-subtle);
+	border-radius: 11px;
+	box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22), 0 3px 10px rgba(0, 0, 0, 0.08);
+	padding: 8px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.cc-multiselect-search-wrap {
+	display: flex;
+}
+
+.content-compass-container input.cc-multiselect-search-input {
+	width: 100%;
+	height: 26px;
+	padding: 0 8px;
+	font-size: 11.5px;
+	border-radius: 6px;
+	border: 1px solid var(--cc-border-subtle);
+	background: var(--cc-bg-input);
+	color: var(--text-normal);
+}
+
+.cc-multiselect-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 5px;
+	border-bottom: 1px solid var(--cc-border-hairline);
+}
+
+.cc-multiselect-count {
+	font-size: 10.5px;
+	font-weight: 550;
+	color: var(--text-muted);
+}
+
+.cc-multiselect-action-btns {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.content-compass-container button.cc-multiselect-link-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 1px 4px;
+	height: auto;
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--cc-blue);
+	cursor: pointer;
+}
+
+.content-compass-container button.cc-multiselect-link-btn:hover {
+	text-decoration: underline;
+}
+
+.cc-multiselect-list {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	max-height: 220px;
+	overflow-y: auto;
+	padding-right: 2px;
+}
+
+.cc-multiselect-group-header {
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-faint);
+	padding: 5px 6px 2px 6px;
+}
+
+.cc-multiselect-item {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 4.5px 6px;
+	border-radius: 6px;
+	cursor: pointer;
+	user-select: none;
+	font-size: 12px;
+	color: var(--text-normal);
+	transition: background-color 0.12s ease;
+}
+
+.cc-multiselect-item:hover {
+	background-color: var(--cc-bg-row-hover);
+}
+
+.cc-multiselect-item.is-checked {
+	background-color: var(--cc-blue-soft);
+	font-weight: 550;
+}
+
+.cc-multiselect-item input[type="checkbox"] {
+	margin: 0;
+	width: 14px;
+	height: 14px;
+	accent-color: var(--cc-blue);
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.cc-multiselect-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.cc-multiselect-item-labels {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	flex: 1;
+}
+
+.cc-multiselect-item-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cc-multiselect-item-sub {
+	font-size: 10px;
+	color: var(--text-muted);
+}
+
+.cc-multiselect-empty {
+	padding: 12px 8px;
+	text-align: center;
+	font-size: 11.5px;
+	color: var(--text-muted);
+}
+
+/* Dải Chú giải Tương tác (Interactive Series Legend) */
+.cc-chart-legend {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-bottom: 10px;
+}
+
+.content-compass-container button.cc-legend-item,
+.cc-legend-item.is-static {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: 24px;
+	padding: 0 9px;
+	border-radius: var(--cc-radius-pill);
+	background: var(--cc-bg-elevated) !important;
+	border: 1px solid var(--cc-border-subtle) !important;
+	box-shadow: none !important;
+	font-size: 11.5px;
+	font-weight: 550;
+	color: var(--text-normal);
+}
+
+.content-compass-container button.cc-legend-item {
+	cursor: pointer;
+	transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.content-compass-container button.cc-legend-item:hover {
+	border-color: var(--cc-border-strong) !important;
+}
+
+.content-compass-container button.cc-legend-item.is-muted {
+	opacity: 0.42;
+	text-decoration: line-through;
+}
+
+.cc-legend-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.cc-legend-label {
+	max-width: 190px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cc-legend-val {
+	font-weight: 650;
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted);
+	font-size: 11px;
+}
+
+/* Hộp Floating & Pinned Tooltip trên đồ thị đa tuyến + Popup Danh sách bài viết theo mốc thời gian */
+.cc-canvas-interactive-wrap {
+	position: relative;
+}
+
+.cc-chart-tooltip {
+	position: absolute;
+	z-index: 45;
+	width: 228px;
+	pointer-events: none;
+	background: var(--background-primary);
+	border: 1px solid var(--cc-border-strong);
+	border-radius: 10px;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+	padding: 8px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 11.5px;
+	transition: border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.cc-chart-tooltip.is-pinned {
+	pointer-events: auto;
+	border-color: var(--cc-blue);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 0 0 2px var(--cc-blue-soft);
+}
+
+.cc-chart-tooltip.is-hidden {
+	display: none;
+}
+
+.cc-tooltip-title {
+	font-weight: 650;
+	font-size: 11px;
+	color: var(--text-muted);
+	padding-bottom: 3px;
+	border-bottom: 1px solid var(--cc-border-hairline);
+	margin-bottom: 2px;
+}
+
+.cc-tooltip-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.cc-tooltip-series {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	min-width: 0;
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cc-tooltip-right-group {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	flex-shrink: 0;
+}
+
+.cc-tooltip-val {
+	font-weight: 650;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+/* Chữ (số bài) màu xanh dương đơn giản, khi hover sẽ mở Popup danh sách bài viết */
+.cc-tooltip-post-count-link {
+	font-size: 11px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	color: var(--cc-blue);
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.cc-tooltip-post-count-link:hover,
+.cc-tooltip-post-count-link.is-active {
+	text-decoration: underline;
+}
+
+.cc-tooltip-post-count-zero {
+	font-size: 11px;
+	color: var(--text-faint);
+	white-space: nowrap;
+}
+
+/* Popup thứ 2: Danh sách các bài viết của Nguồn / Đường tại mốc thời gian đang chọn */
+.cc-chart-posts-popover {
+	position: absolute;
+	z-index: 60;
+	width: 330px;
+	max-width: 90vw;
+	background: var(--background-primary);
+	border: 1px solid var(--cc-border-strong);
+	border-radius: 11px;
+	box-shadow: 0 14px 36px rgba(0, 0, 0, 0.26), 0 3px 10px rgba(0, 0, 0, 0.1);
+	padding: 9px 11px;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.cc-chart-posts-popover.is-hidden {
+	display: none;
+}
+
+.cc-chart-posts-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 8px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid var(--cc-border-hairline);
+}
+
+.cc-chart-posts-title-group {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.cc-chart-posts-title {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	font-weight: 650;
+	color: var(--text-normal);
+}
+
+.cc-chart-posts-sub {
+	font-size: 10.5px;
+	color: var(--text-muted);
+}
+
+.content-compass-container button.cc-chart-posts-close {
+	width: 22px;
+	height: 22px;
+	min-height: 22px;
+	flex-shrink: 0;
+}
+
+.cc-chart-posts-list {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	max-height: 215px;
+	overflow-y: auto;
+	padding-right: 2px;
+}
+
+.cc-chart-post-item {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 7px 9px;
+	border-radius: 8px;
+	background: var(--cc-bg-elevated);
+	border: 1px solid var(--cc-border-subtle);
+	cursor: pointer;
+	transition: all 0.14s ease;
+}
+
+.cc-chart-post-item:hover {
+	border-color: var(--cc-blue);
+	background: var(--cc-blue-soft);
+}
+
+.cc-chart-post-headline-row {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 6px;
+}
+
+.cc-chart-post-headline {
+	font-size: 11.5px;
+	font-weight: 600;
+	color: var(--text-normal);
+	line-height: 1.35;
+	flex: 1;
+}
+
+.cc-chart-post-item:hover .cc-chart-post-headline {
+	color: var(--cc-blue);
+}
+
+.cc-chart-post-jump-icon svg {
+	width: 12px;
+	height: 12px;
+	color: var(--text-muted);
+}
+
+.cc-chart-post-item:hover .cc-chart-post-jump-icon svg {
+	color: var(--cc-blue);
+}
+
+.cc-chart-post-meta-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	font-size: 10.5px;
+	color: var(--text-muted);
+}
+
+.cc-chart-post-author {
+	font-weight: 550;
+	max-width: 120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cc-chart-post-metrics {
+	font-weight: 600;
+	color: var(--cc-blue);
+	font-variant-numeric: tabular-nums;
+	margin-left: auto;
+}
+
+/* ============================================================================
+   NHÓM 13: BẢNG CÀI ĐẶT QUÉT NÂNG CAO & NGƯỠNG TỰ ĐỘNG NGỪNG QUÉT BÀI CŨ
+   ============================================================================ */
+.cc-adv-retention-list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.cc-adv-radio-card {
+	padding: 10px 12px;
+	border-radius: 10px;
+	background: var(--cc-bg-input);
+	border: 1px solid var(--cc-border-subtle);
+	transition: all 0.15s ease;
+}
+
+.cc-adv-radio-card.is-selected {
+	border-color: var(--cc-blue);
+	background: var(--cc-blue-soft);
+}
+
+.cc-adv-radio-label {
+	display: flex;
+	align-items: flex-start;
+	gap: 9px;
+	cursor: pointer;
+	margin: 0;
+}
+
+.cc-adv-radio-label input[type="radio"] {
+	margin-top: 3px;
+	accent-color: var(--cc-blue);
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.cc-adv-radio-text {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	flex: 1;
+}
+
+.cc-adv-inline-input-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.cc-adv-radio-title {
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.cc-adv-radio-desc {
+	font-size: 11.5px;
+	color: var(--text-muted);
+	line-height: 1.4;
+}
+
+.cc-adv-batch-edit-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 12px;
+	border-radius: 10px;
+	background: var(--cc-bg-input);
+	border: 1.5px solid var(--cc-blue);
+}
+
+.cc-adv-batch-label-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.cc-adv-batch-title {
+	font-size: 12.5px;
+	font-weight: 650;
+	color: var(--text-normal);
+}
+
+.cc-adv-batch-sub {
+	font-size: 11px;
+	color: var(--text-muted);
+}
+
+.content-compass-container input.cc-adv-batch-input {
+	width: 78px;
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--cc-blue);
+}
+
+.cc-adv-locked-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 7px;
+}
+
+@media (max-width: 680px) {
+	.cc-adv-locked-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.cc-adv-locked-item {
+	padding: 8px 10px;
+	border-radius: 8px;
+	background: var(--cc-bg-input);
+	border: 1px dashed var(--cc-border-subtle);
+	opacity: 0.86;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.cc-adv-locked-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 4px;
+}
+
+.cc-adv-locked-label {
+	font-size: 11px;
+	font-weight: 550;
+	color: var(--text-muted);
+}
+
+.cc-lock-icon svg {
+	width: 11px;
+	height: 11px;
+	color: var(--text-faint);
+}
+
+.cc-adv-locked-val {
+	font-size: 12.5px;
+	font-weight: 650;
+	color: var(--text-normal);
+	font-variant-numeric: tabular-nums;
+}
+
+.cc-adv-locked-note {
+	font-size: 10.5px;
+	color: var(--text-faint);
+}
+
+.cc-adv-estimate-banner {
+	padding: 11px 13px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 12px;
+	line-height: 1.45;
+	border: 1px solid var(--cc-border-subtle);
+}
+
+.cc-adv-estimate-banner.is-safe {
+	background: var(--cc-green-soft);
+	border-color: rgba(48, 209, 88, 0.35);
+}
+
+.cc-adv-estimate-banner.is-warn {
+	background: var(--cc-orange-soft);
+	border-color: rgba(255, 159, 10, 0.38);
+}
+
+.cc-adv-estimate-banner.is-danger {
+	background: var(--cc-red-soft);
+	border-color: rgba(255, 69, 58, 0.4);
+}
+
+.cc-adv-estimate-head {
+	font-size: 11.5px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.cc-adv-estimate-banner.is-safe .cc-adv-estimate-head {
+	color: var(--cc-green);
+}
+
+.cc-adv-estimate-banner.is-warn .cc-adv-estimate-head {
+	color: var(--cc-orange);
+}
+
+.cc-adv-estimate-banner.is-danger .cc-adv-estimate-head {
+	color: var(--cc-red);
+}
+
+.cc-adv-estimate-list {
+	margin: 0;
+	padding-left: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	color: var(--text-normal);
+	font-size: 11.5px;
+}
+
+.cc-adv-estimate-guide {
+	padding-top: 5px;
+	border-top: 1px solid var(--cc-border-hairline);
+	font-size: 11.5px;
+	font-weight: 550;
+	color: var(--text-normal);
+}
+
+.cc-adv-workload-panel {
+	margin-top: 12px;
+	padding: 12px 14px;
+	border-radius: var(--cc-radius-md);
+	background: var(--cc-bg-surface);
+	border: 1px solid var(--cc-border-subtle);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.cc-adv-workload-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cc-adv-kpi-strip {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 8px;
+}
+
+@media (max-width: 900px) {
+	.cc-adv-kpi-strip {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.cc-adv-kpi-box {
+	padding: 9px 11px;
+	border-radius: 10px;
+	background: var(--cc-bg-input);
+	border: 1px solid var(--cc-border-subtle);
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	transition: all 0.15s ease;
+}
+
+.cc-adv-kpi-box.is-highlight {
+	border-color: var(--cc-blue);
+	background: var(--cc-blue-soft);
+}
+
+.cc-adv-kpi-box.is-cycle {
+	border-color: rgba(48, 209, 88, 0.45);
+	background: var(--cc-green-soft);
+}
+
+.cc-adv-kpi-label {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+.cc-adv-kpi-value {
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--text-normal);
+	font-variant-numeric: tabular-nums;
+}
+
+.cc-adv-kpi-box.is-highlight .cc-adv-kpi-value {
+	color: var(--cc-blue);
+}
+
+.cc-adv-kpi-box.is-cycle .cc-adv-kpi-value {
+	color: var(--cc-green);
+}
+
+.cc-adv-kpi-sub {
+	font-size: 10.5px;
+	color: var(--text-muted);
+	line-height: 1.35;
+}
+
+.cc-adv-cycle-sublist {
+	margin: 3px 0 2px 0;
+	padding-left: 18px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	font-size: 11.3px;
+	color: var(--text-muted);
+}
+
+.cc-adv-collapsible-section {
+	margin-top: 12px;
+	border-radius: var(--cc-radius-md);
+	background: var(--cc-bg-surface);
+	border: 1px solid var(--cc-border-subtle);
+	overflow: hidden;
+}
+
+.cc-adv-section-toggle-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 14px;
+	cursor: pointer;
+	user-select: none;
+	border-bottom: 1px solid var(--cc-border-hairline);
+}
+
+.cc-adv-section-toggle-bar:hover {
+	background: var(--cc-bg-input);
+}
+
+.cc-adv-section-body {
+	padding: 12px 14px;
+}
+
+/* Tích hợp Trigger Hide/Show trực tiếp vào tên bảng (Title) */
+.cc-collapsible-title {
+	cursor: pointer;
+	user-select: none;
+	border-radius: 7px;
+	padding: 2px 6px;
+	margin-left: -6px;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.cc-collapsible-title:hover {
+	background-color: var(--cc-bg-elevated);
+	color: var(--cc-blue);
+}
+
+.cc-collapsible-title:active {
+	transform: scale(0.99);
+}
+
+.content-compass-card.is-collapsed {
+	padding-bottom: 14px;
+}
+
+.content-compass-card.is-collapsed .content-compass-card-header {
+	margin-bottom: 0;
+}
+
+.content-compass-fb-section-card.is-collapsed .content-compass-fb-section-header {
+	border-bottom: none;
+}
+
+.cc-adv-workload-panel.is-collapsed {
+	gap: 0;
+}
+
+.cc-adv-workload-panel .cc-card-collapsible-body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+
 
 

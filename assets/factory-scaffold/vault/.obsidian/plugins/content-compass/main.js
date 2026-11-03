@@ -29,7 +29,7 @@ __export(main_exports, {
   default: () => ContentCompassPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian12 = require("obsidian");
+var import_obsidian13 = require("obsidian");
 
 // src/data/AudienceIndex.ts
 var import_obsidian = require("obsidian");
@@ -347,13 +347,27 @@ var TagIndex = class {
 
 // src/data/EngagementStore.ts
 var import_obsidian3 = require("obsidian");
+var UNASSIGNED_AUDIENCE_KEY = "__unassigned__";
 var ENGAGEMENT_DIR = ".content-pipeline/engagement";
 var SCORE_WEIGHTS = { likes: 1, comments: 2, shares: 3 };
+function formatSourceTypeLabel(rawType) {
+  const v = String(rawType || "external").trim();
+  if (!v || v === "external")
+    return "\u0110\u1ED1i th\u1EE7";
+  if (v === "own")
+    return "Th\u01B0\u01A1ng hi\u1EC7u";
+  if (v === "other")
+    return "Kh\xE1c";
+  if (v.startsWith("source_type:"))
+    return v.slice(12);
+  return v;
+}
 var EngagementStore = class {
   constructor(app, tagIndex) {
     this.records = [];
     this.postMetaMap = /* @__PURE__ */ new Map();
     this.knownAuthors = /* @__PURE__ */ new Set();
+    this.customSourceLabels = /* @__PURE__ */ new Set();
     this.isInitialized = false;
     this.app = app;
     this.tagIndex = tagIndex || null;
@@ -363,6 +377,7 @@ var EngagementStore = class {
     this.records = [];
     this.postMetaMap.clear();
     this.knownAuthors.clear();
+    this.customSourceLabels.clear();
     await this.loadEngagementFiles();
     await this.buildPostMetaMap();
     this.isInitialized = true;
@@ -397,6 +412,7 @@ var EngagementStore = class {
   }
   // Quet cac file bai viet trong Vault (03-Content/) de lay tags/audience_target va hop nhat metadata tu fb-tracker-state.json
   async buildPostMetaMap() {
+    var _a;
     const resolvePillars = (audiences) => {
       const pillars = [];
       if (this.tagIndex) {
@@ -461,9 +477,14 @@ var EngagementStore = class {
       const authorName = String(fm.author || "Vault Post").trim();
       if (authorName)
         this.knownAuthors.add(authorName);
-      const sourceType = fm.source_type === "own" || normPath.startsWith("03-Content/Posted") ? "own" : "external";
+      const rawFmSource = fm.source_type ? String(fm.source_type).trim() : "";
+      const sourceType = rawFmSource ? rawFmSource : normPath.startsWith("03-Content/Posted") ? "own" : "external";
+      if (sourceType && !["own", "external", "other"].includes(sourceType)) {
+        this.customSourceLabels.add(sourceType);
+      }
       const publishedAt = fm.publish_date ? new Date(String(fm.publish_date)).toISOString() : void 0;
       const pillars = resolvePillars(audiences);
+      const fbIdStr = hasFbPostId ? String(fm.fb_post_id).trim() : void 0;
       const metaObj = {
         inVault: true,
         audiences,
@@ -473,23 +494,49 @@ var EngagementStore = class {
         sourceType,
         titleSnippet: titleStr,
         url: String(fm.fb_url || ""),
-        publishedAt
+        publishedAt,
+        fbPostId: fbIdStr,
+        vaultSlug: postId
       };
       this.postMetaMap.set(postId, metaObj);
-      if (hasFbPostId) {
-        this.postMetaMap.set(String(fm.fb_post_id).trim(), metaObj);
+      if (fbIdStr) {
+        this.postMetaMap.set(fbIdStr, metaObj);
       }
     }
     try {
       const wlPath = ".content-pipeline/fb-watchlist.json";
       const stPath = ".content-pipeline/fb-tracker-state.json";
       const watchSourceMap = /* @__PURE__ */ new Map();
+      const pageSourceById = /* @__PURE__ */ new Map();
+      const pageSourceByIdent = /* @__PURE__ */ new Map();
       if (await this.app.vault.adapter.exists(wlPath)) {
         const wl = JSON.parse(await this.app.vault.adapter.read(wlPath));
+        if (Array.isArray((_a = wl == null ? void 0 : wl.settings) == null ? void 0 : _a.custom_source_labels)) {
+          for (const lbl of wl.settings.custom_source_labels) {
+            const clean = String(lbl || "").trim();
+            if (clean && !["own", "external", "other"].includes(clean)) {
+              this.customSourceLabels.add(clean);
+            }
+          }
+        }
+        for (const pg of (wl == null ? void 0 : wl.pages) || []) {
+          const stype = String((pg == null ? void 0 : pg.source_type) || "external").trim() || "external";
+          if (!["own", "external", "other"].includes(stype)) {
+            this.customSourceLabels.add(stype);
+          }
+          if (pg == null ? void 0 : pg.id)
+            pageSourceById.set(pg.id, stype);
+          if (pg == null ? void 0 : pg.page_identifier)
+            pageSourceByIdent.set(pg.page_identifier, stype);
+        }
         for (const p of (wl == null ? void 0 : wl.posts) || []) {
           if (p == null ? void 0 : p.id) {
+            const stype = String(p.source_type || "external").trim() || "external";
+            if (!["own", "external", "other"].includes(stype)) {
+              this.customSourceLabels.add(stype);
+            }
             watchSourceMap.set(p.id, {
-              sourceType: p.source_type === "own" ? "own" : "external",
+              sourceType: stype,
               url: String(p.url || ""),
               fromPage: p.from_page_name || p.from_page
             });
@@ -500,8 +547,12 @@ var EngagementStore = class {
         const st = JSON.parse(await this.app.vault.adapter.read(stPath));
         for (const d of (st == null ? void 0 : st.discovered_posts) || []) {
           if (d == null ? void 0 : d.id) {
+            const inheritedPageType = d.from_page_id && pageSourceById.get(d.from_page_id) || d.from_page && pageSourceByIdent.get(d.from_page) || String(d.source_type || "external").trim() || "external";
+            if (!["own", "external", "other"].includes(inheritedPageType)) {
+              this.customSourceLabels.add(inheritedPageType);
+            }
             watchSourceMap.set(d.id, {
-              sourceType: d.source_type === "own" ? "own" : "external",
+              sourceType: inheritedPageType,
               url: String(d.url || ""),
               fromPage: d.from_page_name || d.from_page
             });
@@ -518,7 +569,7 @@ var EngagementStore = class {
           const authorName = String(pState.author_name || (wInfo == null ? void 0 : wInfo.fromPage) || "Facebook").trim();
           if (authorName)
             this.knownAuthors.add(authorName);
-          const sourceType = pState.source_type === "own" || (wInfo == null ? void 0 : wInfo.sourceType) === "own" ? "own" : "external";
+          const sourceType = (wInfo == null ? void 0 : wInfo.sourceType) || String(pState.source_type || "external").trim() || "external";
           const snippet = String(pState.title_snippet || slug || fbId || "B\xE0i vi\u1EBFt Facebook");
           const publishedAt = pState.creation_time ? new Date(Number(pState.creation_time) * 1e3).toISOString() : void 0;
           const existingMeta = slug && this.postMetaMap.get(slug) || fbId && this.postMetaMap.get(fbId) || null;
@@ -528,15 +579,21 @@ var EngagementStore = class {
             tags: existingMeta ? existingMeta.tags : [],
             pillars: existingMeta ? existingMeta.pillars : [],
             authorName: (existingMeta == null ? void 0 : existingMeta.authorName) && existingMeta.authorName !== "Vault Post" ? existingMeta.authorName : authorName,
-            sourceType: existingMeta ? existingMeta.sourceType : sourceType,
+            sourceType: (wInfo == null ? void 0 : wInfo.sourceType) || (existingMeta == null ? void 0 : existingMeta.sourceType) || sourceType,
             titleSnippet: snippet,
             url: (wInfo == null ? void 0 : wInfo.url) || (existingMeta == null ? void 0 : existingMeta.url) || (fbId ? `https://www.facebook.com/${fbId}` : ""),
-            publishedAt: publishedAt || (existingMeta == null ? void 0 : existingMeta.publishedAt)
+            publishedAt: publishedAt || (existingMeta == null ? void 0 : existingMeta.publishedAt),
+            watchId,
+            fbPostId: fbId || (existingMeta == null ? void 0 : existingMeta.fbPostId),
+            vaultSlug: slug || (existingMeta == null ? void 0 : existingMeta.vaultSlug)
           };
+          this.postMetaMap.set(watchId, finalMeta);
           if (slug)
             this.postMetaMap.set(slug, finalMeta);
           if (fbId)
             this.postMetaMap.set(fbId, finalMeta);
+          if (existingMeta == null ? void 0 : existingMeta.vaultSlug)
+            this.postMetaMap.set(existingMeta.vaultSlug, finalMeta);
         }
       }
     } catch (e) {
@@ -544,6 +601,27 @@ var EngagementStore = class {
   }
   getKnownAuthors() {
     return Array.from(this.knownAuthors).sort((a, b) => a.localeCompare(b));
+  }
+  getCustomSourceLabels() {
+    return Array.from(this.customSourceLabels).sort((a, b) => a.localeCompare(b));
+  }
+  getSourceTypeFilterOptions() {
+    const CUSTOM_COLORS = ["#30d158", "#bf5af2", "#ff375f", "#64d2ff", "#ffd60a", "#ac8e68"];
+    const opts = [
+      { value: "own", label: "Ch\u1EC9 Th\u01B0\u01A1ng hi\u1EC7u", group: "Ph\xE2n lo\u1EA1i ngu\u1ED3n", color: "#0a84ff" },
+      { value: "external", label: "Ch\u1EC9 \u0110\u1ED1i th\u1EE7", group: "Ph\xE2n lo\u1EA1i ngu\u1ED3n", color: "#ff9f0a" },
+      { value: "other", label: "Ch\u1EC9 Kh\xE1c", group: "Ph\xE2n lo\u1EA1i ngu\u1ED3n", color: "#8e8e93" }
+    ];
+    const customs = this.getCustomSourceLabels();
+    customs.forEach((lbl, idx) => {
+      opts.push({
+        value: `source_type:${lbl}`,
+        label: `Ch\u1EC9 ${lbl}`,
+        group: "Ph\xE2n lo\u1EA1i ngu\u1ED3n",
+        color: CUSTOM_COLORS[idx % CUSTOM_COLORS.length]
+      });
+    });
+    return opts;
   }
   // --- Nhom 6: Ghi du lieu ---
   async addRecord(record) {
@@ -598,19 +676,47 @@ var EngagementStore = class {
       return new Date(rawDate).getTime() >= cutoff;
     });
   }
-  matchesSourceFilter(postId, sourceFilter) {
-    if (!sourceFilter || sourceFilter === "all")
+  matchesSingleSourceToken(postId, token) {
+    if (!token || token === "all")
       return true;
     const meta = this.postMetaMap.get(postId);
     if (!meta)
-      return sourceFilter === "external";
-    if (sourceFilter === "own")
-      return meta.sourceType === "own";
-    if (sourceFilter === "external")
-      return meta.sourceType === "external";
-    if (sourceFilter.startsWith("author:")) {
-      const targetAuthor = sourceFilter.slice(7);
+      return token === "external";
+    if (token === "own" || token === "external" || token === "other") {
+      return meta.sourceType === token;
+    }
+    if (token.startsWith("source_type:")) {
+      const targetType = token.slice(12);
+      return meta.sourceType === targetType;
+    }
+    if (token.startsWith("author:")) {
+      const targetAuthor = token.slice(7);
       return meta.authorName === targetAuthor;
+    }
+    return meta.sourceType === token;
+  }
+  matchesSourceFilter(postId, sourceFilter, sourceFilters) {
+    if (Array.isArray(sourceFilters) && sourceFilters.length > 0) {
+      if (sourceFilters.includes("all"))
+        return true;
+      return sourceFilters.some((tok) => this.matchesSingleSourceToken(postId, tok));
+    }
+    return this.matchesSingleSourceToken(postId, sourceFilter);
+  }
+  matchesAudienceFilter(postId, singleAudience, multiAudiences) {
+    const meta = this.postMetaMap.get(postId);
+    if (Array.isArray(multiAudiences) && multiAudiences.length > 0) {
+      const postAuds = (meta == null ? void 0 : meta.inVault) ? meta.audiences : [];
+      if (postAuds.length === 0) {
+        return multiAudiences.includes(UNASSIGNED_AUDIENCE_KEY);
+      }
+      return postAuds.some((a) => multiAudiences.includes(a));
+    }
+    if (singleAudience) {
+      if (singleAudience === UNASSIGNED_AUDIENCE_KEY) {
+        return !meta || !meta.inVault || meta.audiences.length === 0;
+      }
+      return Boolean(meta && meta.inVault && meta.audiences.includes(singleAudience));
     }
     return true;
   }
@@ -670,13 +776,10 @@ var EngagementStore = class {
   queryTimelineAdvanced(opts) {
     const filteredByTime = this.filterByDays(opts.days, opts.dateBasis, opts.startDate, opts.endDate);
     const matchingRecords = filteredByTime.filter((rec) => {
-      if (!this.matchesSourceFilter(rec.post_id, opts.sourceFilter))
+      if (!this.matchesSourceFilter(rec.post_id, opts.sourceFilter, opts.sourceFilters))
         return false;
-      if (opts.filterAudience) {
-        const meta = this.postMetaMap.get(rec.post_id);
-        if (!meta || !meta.audiences.includes(opts.filterAudience))
-          return false;
-      }
+      if (!this.matchesAudienceFilter(rec.post_id, opts.filterAudience, opts.filterAudiences))
+        return false;
       return true;
     });
     const uniquePosts = this.getLatestRecordsByPost(matchingRecords);
@@ -769,6 +872,271 @@ var EngagementStore = class {
       }
     };
   }
+  // Truy van Da tuyen (Multi-Series) phuc vu TimelineChartView (Tach duong theo Chi so | Nguon/Trang | Audience)
+  queryTimelineMultiSeries(opts) {
+    const SERIES_PALETTE = [
+      "#0a84ff",
+      // Blue
+      "#5e5ce6",
+      // Indigo
+      "#30d158",
+      // Green
+      "#ff9f0a",
+      // Orange
+      "#ff375f",
+      // Pink
+      "#64d2ff",
+      // Cyan
+      "#bf5af2",
+      // Purple
+      "#ffd60a",
+      // Yellow
+      "#ac8e68",
+      // Brown
+      "#ff453a"
+      // Red
+    ];
+    const METRIC_INFO = {
+      score: { label: "T\u1ED5ng \u0110i\u1EC3m (Score)", color: "#0a84ff" },
+      avg_score: { label: "TB Score / b\xE0i", color: "#64d2ff" },
+      likes: { label: "L\u01B0\u1EE3t th\xEDch (Likes)", color: "#5e5ce6" },
+      comments: { label: "B\xECnh lu\u1EADn (Comments)", color: "#30d158" },
+      shares: { label: "Chia s\u1EBB (Shares)", color: "#ff9f0a" },
+      posts: { label: "S\u1ED1 l\u01B0\u1EE3ng b\xE0i vi\u1EBFt", color: "#ff375f" }
+    };
+    const baseResult = this.queryTimelineAdvanced({
+      groupBy: opts.groupBy,
+      days: opts.days,
+      startDate: opts.startDate,
+      endDate: opts.endDate,
+      metric: opts.metrics[0] || "score",
+      dateBasis: opts.dateBasis,
+      sourceFilter: "all",
+      sourceFilters: opts.sourceFilters,
+      filterAudiences: opts.filterAudiences
+    });
+    const allPeriodsSet = new Set(baseResult.points.map((p) => p.period));
+    const rawSeriesList = [];
+    const activeMetrics = opts.metrics && opts.metrics.length > 0 ? opts.metrics : ["score"];
+    const primaryMetric = activeMetrics[0] || "score";
+    if (opts.breakdownBy === "metric") {
+      for (const m of activeMetrics) {
+        const res = this.queryTimelineAdvanced({
+          groupBy: opts.groupBy,
+          days: opts.days,
+          startDate: opts.startDate,
+          endDate: opts.endDate,
+          metric: m,
+          dateBasis: opts.dateBasis,
+          sourceFilter: "all",
+          sourceFilters: opts.sourceFilters,
+          filterAudiences: opts.filterAudiences
+        });
+        const pMap = /* @__PURE__ */ new Map();
+        for (const pt of res.points) {
+          allPeriodsSet.add(pt.period);
+          pMap.set(pt.period, pt);
+        }
+        const info = METRIC_INFO[m] || { label: m, color: "#0a84ff" };
+        rawSeriesList.push({
+          key: `metric:${m}`,
+          label: info.label,
+          color: info.color,
+          pointMap: pMap
+        });
+      }
+    } else if (opts.breakdownBy === "source") {
+      let targetSources = [...opts.sourceFilters];
+      if (targetSources.length === 0) {
+        const authors = this.getKnownAuthors();
+        if (authors.length > 0) {
+          targetSources = authors.slice(0, 8).map((a) => `author:${a}`);
+        } else {
+          targetSources = ["own", "external"];
+        }
+      }
+      targetSources.forEach((srcToken, idx) => {
+        const res = this.queryTimelineAdvanced({
+          groupBy: opts.groupBy,
+          days: opts.days,
+          startDate: opts.startDate,
+          endDate: opts.endDate,
+          metric: primaryMetric,
+          dateBasis: opts.dateBasis,
+          sourceFilter: srcToken,
+          filterAudiences: opts.filterAudiences
+        });
+        const pMap = /* @__PURE__ */ new Map();
+        for (const pt of res.points) {
+          allPeriodsSet.add(pt.period);
+          pMap.set(pt.period, pt);
+        }
+        let label = srcToken;
+        if (srcToken.startsWith("author:"))
+          label = srcToken.slice(7);
+        else
+          label = formatSourceTypeLabel(srcToken);
+        rawSeriesList.push({
+          key: `source:${srcToken}`,
+          label,
+          color: SERIES_PALETTE[idx % SERIES_PALETTE.length],
+          pointMap: pMap
+        });
+      });
+    } else if (opts.breakdownBy === "audience") {
+      let targetAudiences = [...opts.filterAudiences];
+      if (targetAudiences.length === 0) {
+        const discoveredAuds = /* @__PURE__ */ new Set();
+        for (const meta of this.postMetaMap.values()) {
+          if (meta.inVault && meta.audiences.length > 0) {
+            meta.audiences.forEach((a) => discoveredAuds.add(a));
+          }
+        }
+        if (discoveredAuds.size > 0) {
+          targetAudiences = Array.from(discoveredAuds).slice(0, 8);
+        } else {
+          targetAudiences = [UNASSIGNED_AUDIENCE_KEY];
+        }
+      }
+      targetAudiences.forEach((audKey, idx) => {
+        var _a;
+        const res = this.queryTimelineAdvanced({
+          groupBy: opts.groupBy,
+          days: opts.days,
+          startDate: opts.startDate,
+          endDate: opts.endDate,
+          metric: primaryMetric,
+          dateBasis: opts.dateBasis,
+          sourceFilter: "all",
+          sourceFilters: opts.sourceFilters,
+          filterAudiences: [audKey]
+        });
+        const pMap = /* @__PURE__ */ new Map();
+        for (const pt of res.points) {
+          allPeriodsSet.add(pt.period);
+          pMap.set(pt.period, pt);
+        }
+        const label = audKey === UNASSIGNED_AUDIENCE_KEY ? "Ch\u01B0a g\u1EAFn Audience (Ngo\xE0i Vault)" : ((_a = opts.audienceLabelMap) == null ? void 0 : _a.get(audKey)) || audKey;
+        rawSeriesList.push({
+          key: `audience:${audKey}`,
+          label,
+          color: SERIES_PALETTE[idx % SERIES_PALETTE.length],
+          pointMap: pMap
+        });
+      });
+    }
+    const sortedPeriods = Array.from(allPeriodsSet).sort((a, b) => a.localeCompare(b));
+    const finalSeries = rawSeriesList.map((raw) => {
+      let totalVal = 0;
+      const alignedPoints = sortedPeriods.map((period) => {
+        const found = raw.pointMap.get(period);
+        if (found) {
+          totalVal += found.value;
+          return found;
+        }
+        return {
+          period,
+          totalScore: 0,
+          value: 0,
+          likes: 0,
+          comments: 0,
+          shares: 0,
+          recordCount: 0
+        };
+      });
+      return {
+        key: raw.key,
+        label: raw.label,
+        color: raw.color,
+        points: alignedPoints,
+        totalValue: totalVal
+      };
+    });
+    return {
+      periods: sortedPeriods,
+      series: finalSeries,
+      summary: baseResult.summary
+    };
+  }
+  /**
+   * Truy van danh sach bai viet chi tiet cua 1 moc thoi gian (targetPeriod) va 1 duong bieu dien (seriesKey).
+   * Neu bieu do dang ve theo Nguon/Trang (seriesKey = "source:<token>") hoac Audience (seriesKey = "audience:<slug>"),
+   * ham se chi tra ve dung cac bai viet thuoc Nguon hoac Audience do tai moc thoi gian duoc chon.
+   */
+  queryTimelinePeriodPosts(opts) {
+    let effectiveSourceFilter = "all";
+    let effectiveSourceFilters = opts.sourceFilters;
+    let effectiveAudiences = opts.filterAudiences;
+    if (opts.seriesKey.startsWith("source:")) {
+      effectiveSourceFilter = opts.seriesKey.slice(7);
+      effectiveSourceFilters = void 0;
+    } else if (opts.seriesKey.startsWith("audience:")) {
+      const audKey = opts.seriesKey.slice(9);
+      effectiveAudiences = [audKey];
+    }
+    const filteredByTime = this.filterByDays(opts.days, opts.dateBasis, opts.startDate, opts.endDate);
+    const matchingRecords = filteredByTime.filter((rec) => {
+      if (!this.matchesSourceFilter(rec.post_id, effectiveSourceFilter, effectiveSourceFilters))
+        return false;
+      if (!this.matchesAudienceFilter(rec.post_id, void 0, effectiveAudiences))
+        return false;
+      return true;
+    });
+    const uniquePosts = this.getLatestRecordsByPost(matchingRecords);
+    const recordsToGroup = opts.dateBasis === "published" ? uniquePosts : matchingRecords;
+    const postMap = /* @__PURE__ */ new Map();
+    for (const rec of recordsToGroup) {
+      const meta = this.postMetaMap.get(rec.post_id);
+      const rawDateStr = opts.dateBasis === "published" && (meta == null ? void 0 : meta.publishedAt) ? meta.publishedAt : rec.collected_at;
+      const date = new Date(rawDateStr);
+      if (isNaN(date.getTime()))
+        continue;
+      let period;
+      if (opts.groupBy === "day") {
+        period = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+      } else if (opts.groupBy === "month") {
+        period = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+      } else if (opts.groupBy === "year") {
+        period = String(date.getFullYear());
+      } else {
+        const startOfYear = new Date(date.getFullYear(), 0, 1);
+        const dayOfYear = Math.floor((date.getTime() - startOfYear.getTime()) / 864e5);
+        const weekNum = Math.ceil((dayOfYear + startOfYear.getDay() + 1) / 7);
+        period = `${date.getFullYear()}-W${String(weekNum).padStart(2, "0")}`;
+      }
+      if (period !== opts.targetPeriod)
+        continue;
+      const prev = postMap.get(rec.post_id);
+      if (!prev || new Date(rec.collected_at).getTime() >= new Date(prev.collected_at).getTime()) {
+        postMap.set(rec.post_id, rec);
+      }
+    }
+    const items = [];
+    for (const rec of postMap.values()) {
+      const meta = this.postMetaMap.get(rec.post_id);
+      const likes = rec.metrics.likes || 0;
+      const comments = rec.metrics.comments || 0;
+      const shares = rec.metrics.shares || 0;
+      const score = this.calcScore(rec.metrics);
+      items.push({
+        postId: rec.post_id,
+        watchId: meta == null ? void 0 : meta.watchId,
+        fbPostId: meta == null ? void 0 : meta.fbPostId,
+        vaultSlug: (meta == null ? void 0 : meta.vaultSlug) || rec.post_id,
+        titleSnippet: (meta == null ? void 0 : meta.titleSnippet) || `B\xE0i vi\u1EBFt ${rec.post_id}`,
+        authorName: (meta == null ? void 0 : meta.authorName) || rec.platform || "Facebook",
+        sourceType: (meta == null ? void 0 : meta.sourceType) || "external",
+        url: (meta == null ? void 0 : meta.url) || "",
+        publishedAt: meta == null ? void 0 : meta.publishedAt,
+        collectedAt: rec.collected_at,
+        score,
+        likes,
+        comments,
+        shares
+      });
+    }
+    return items.sort((a, b) => b.score - a.score);
+  }
   // Phuong thuc tuong thich nguoc
   getTimeline(groupBy, filterAudience) {
     return this.queryTimelineAdvanced({
@@ -784,7 +1152,9 @@ var EngagementStore = class {
   queryRankingAdvanced(opts) {
     const recent = this.getLatestRecordsByPost(
       this.filterByDays(opts.days, opts.dateBasis || "collected", opts.startDate, opts.endDate)
-    ).filter((r) => this.matchesSourceFilter(r.post_id, opts.sourceFilter));
+    ).filter(
+      (r) => this.matchesSourceFilter(r.post_id, opts.sourceFilter, opts.sourceFilters) && this.matchesAudienceFilter(r.post_id, void 0, opts.filterAudiences)
+    );
     const bucketMap = /* @__PURE__ */ new Map();
     const addBucket = (key, rec, score, sublabel, url) => {
       const existing = bucketMap.get(key) || {
@@ -833,9 +1203,14 @@ var EngagementStore = class {
         }
       }
     }
+    const activeComp = opts.selectedMetrics && opts.selectedMetrics.length > 0 ? opts.selectedMetrics : ["likes", "comments", "shares"];
     const entries = Array.from(bucketMap.entries()).map(([key, data]) => {
       const postCount = data.posts.size;
-      let val = data.score;
+      const filteredLikes = activeComp.includes("likes") ? data.likes : 0;
+      const filteredComments = activeComp.includes("comments") ? data.comments : 0;
+      const filteredShares = activeComp.includes("shares") ? data.shares : 0;
+      const customScore = filteredLikes * SCORE_WEIGHTS.likes + filteredComments * SCORE_WEIGHTS.comments + filteredShares * SCORE_WEIGHTS.shares;
+      let val = customScore;
       if (opts.metric === "likes")
         val = data.likes;
       else if (opts.metric === "comments")
@@ -843,16 +1218,16 @@ var EngagementStore = class {
       else if (opts.metric === "shares")
         val = data.shares;
       else if (opts.metric === "avg_score")
-        val = postCount > 0 ? Math.round(data.score / postCount) : 0;
+        val = postCount > 0 ? Math.round(customScore / postCount) : 0;
       return {
         tag: key,
         sublabel: data.sublabel,
         url: data.url,
-        score: data.score,
+        score: customScore,
         value: val,
-        likes: data.likes,
-        comments: data.comments,
-        shares: data.shares,
+        likes: filteredLikes,
+        comments: filteredComments,
+        shares: filteredShares,
         postCount
       };
     });
@@ -867,7 +1242,78 @@ var EngagementStore = class {
       sourceFilter: "all"
     });
   }
-  // --- Nhom 11: Truy van trang thai ---
+  // --- Nhom 11: Truy van trang thai & Sparkline 5 ngay cho tung bai viet ---
+  /**
+   * Tinh chuoi 5 diem Score trong 5 ngay gan nhat (D-4 -> Hom nay) cho 1 bai viet.
+   * Nguyen tac trung thuc du lieu:
+   * - Ngay nao KHONG co du lieu quet cua bai viet do thi tra ve `null` ("Không có dữ liệu").
+   * - Tuyet doi khong tu dien (back-fill) diem hien tai vao cac ngay truoc khi bai viet chua duoc quet.
+   */
+  getPostScoreSparkline5Days(candidatePostIds, currentScore, fallbackTimestampIso) {
+    const validIds = new Set(
+      candidatePostIds.map((id) => String(id || "").trim()).filter((id) => id.length > 0)
+    );
+    const matching = this.records.filter((r) => validIds.has(r.post_id)).map((r) => ({
+      ts: new Date(r.collected_at).getTime(),
+      score: this.calcScore(r.metrics)
+    })).filter((x) => !isNaN(x.ts)).sort((a, b) => a.ts - b.ts);
+    const now = /* @__PURE__ */ new Date();
+    const dayStarts = [];
+    const dayEnds = [];
+    const dayLabels = [];
+    const pad = (n) => String(n).padStart(2, "0");
+    for (let offset = 4; offset >= 0; offset--) {
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - offset);
+      const startMs = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0).getTime();
+      const endMs = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999).getTime();
+      dayStarts.push(startMs);
+      dayEnds.push(endMs);
+      dayLabels.push(`${pad(d.getDate())}/${pad(d.getMonth() + 1)}`);
+    }
+    const dailyScores = [null, null, null, null, null];
+    for (let i = 0; i < 5; i++) {
+      const startMs = dayStarts[i];
+      const endMs = dayEnds[i];
+      let latestScoreOnDay = null;
+      for (const rec of matching) {
+        if (rec.ts >= startMs && rec.ts <= endMs) {
+          latestScoreOnDay = rec.score;
+        }
+      }
+      dailyScores[i] = latestScoreOnDay;
+    }
+    const anyRecordedIn5d = dailyScores.some((v) => v !== null);
+    if (!anyRecordedIn5d) {
+      const fallbackMs = fallbackTimestampIso ? new Date(fallbackTimestampIso).getTime() : Date.now();
+      const targetMs = !isNaN(fallbackMs) && fallbackMs > 0 ? fallbackMs : Date.now();
+      let placed = false;
+      for (let i = 0; i < 5; i++) {
+        if (targetMs >= dayStarts[i] && targetMs <= dayEnds[i]) {
+          dailyScores[i] = currentScore;
+          placed = true;
+          break;
+        }
+      }
+      if (!placed) {
+        dailyScores[4] = currentScore;
+      }
+    } else if (dailyScores[4] !== null) {
+      dailyScores[4] = currentScore;
+    }
+    const validScores = dailyScores.filter((v) => v !== null);
+    const validDaysCount = validScores.length;
+    const totalScanCount = Math.max(1, matching.length);
+    const isFirstScan = validDaysCount <= 1;
+    const delta5d = validDaysCount >= 2 ? validScores[validScores.length - 1] - validScores[0] : null;
+    return {
+      dailyScores,
+      dayLabels,
+      delta5d,
+      validDaysCount,
+      totalScanCount,
+      isFirstScan
+    };
+  }
   getRecentRecords(limit = 5) {
     return [...this.records].sort((a, b) => new Date(b.collected_at).getTime() - new Date(a.collected_at).getTime()).slice(0, limit);
   }
@@ -883,7 +1329,7 @@ var EngagementStore = class {
 };
 
 // src/views/DashboardView.ts
-var import_obsidian11 = require("obsidian");
+var import_obsidian12 = require("obsidian");
 
 // src/views/PillarMapView.ts
 var import_obsidian4 = require("obsidian");
@@ -961,6 +1407,7 @@ function squarifyRecursive(items, rect, out) {
 }
 var PillarMapView = class {
   constructor(container, tagIndex, audienceIndex, app, engagementStore) {
+    this.isCollapsed = false;
     this.container = container;
     this.tagIndex = tagIndex;
     this.audienceIndex = audienceIndex;
@@ -971,19 +1418,40 @@ var PillarMapView = class {
   render() {
     var _a, _b;
     this.container.empty();
-    const card = this.container.createDiv({ cls: "content-compass-card" });
-    const title = card.createDiv({ cls: "content-compass-card-title" });
+    const card = this.container.createDiv({
+      cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`
+    });
+    const header = card.createDiv({ cls: "content-compass-card-header" });
+    const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
     const titleIcon = title.createSpan({ cls: "cc-icon" });
-    (0, import_obsidian4.setIcon)(titleIcon, "layout-grid");
     title.createSpan({ text: "B\u1EA3n \u0111\u1ED3 Tr\u1EE5 c\u1ED9t N\u1ED9i dung (Pillar Treemap)" });
+    const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isCollapsed) {
+      cardBody.style.display = "none";
+    }
+    const syncCollapseTitle = () => {
+      titleIcon.empty();
+      (0, import_obsidian4.setIcon)(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+      title.setAttribute(
+        "title",
+        this.isCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+    };
+    syncCollapseTitle();
+    title.addEventListener("click", () => {
+      this.isCollapsed = !this.isCollapsed;
+      card.toggleClass("is-collapsed", this.isCollapsed);
+      cardBody.style.display = this.isCollapsed ? "none" : "";
+      syncCollapseTitle();
+    });
     const pillars = this.tagIndex.getPillars();
     if (pillars.size === 0) {
-      const emptyMsg = card.createDiv({ cls: "content-compass-placeholder" });
+      const emptyMsg = cardBody.createDiv({ cls: "content-compass-placeholder" });
       emptyMsg.setText("Ch\u01B0a n\u1EA1p \u0111\u01B0\u1EE3c danh m\u1EE5c Pillar t\u1EEB topic_map.yaml");
       return;
     }
     const totalTopics = this.tagIndex.getTotalTopicCount() || 1;
-    const treemap = card.createDiv({ cls: "content-compass-treemap" });
+    const treemap = cardBody.createDiv({ cls: "content-compass-treemap" });
     const pillarEntries = Array.from(pillars.entries());
     const useEngagement = (_b = (_a = this.engagementStore) == null ? void 0 : _a.hasData()) != null ? _b : false;
     const weights = pillarEntries.map(([pillarName, p]) => {
@@ -1070,6 +1538,7 @@ var HierarchyBrowserView = class {
   constructor(container, audienceIndex, app) {
     this.searchQuery = "";
     this.onlyBuyerJobs = false;
+    this.isCollapsed = false;
     this.container = container;
     this.audienceIndex = audienceIndex;
     this.app = app;
@@ -1077,17 +1546,37 @@ var HierarchyBrowserView = class {
   // Nhóm 2: Phương thức dựng giao diện cây phả hệ kèm thanh công cụ lọc
   render() {
     this.container.empty();
-    const card = this.container.createDiv({ cls: "content-compass-card" });
+    const card = this.container.createDiv({
+      cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`
+    });
     const header = card.createDiv({ cls: "content-compass-card-header" });
-    const title = header.createDiv({ cls: "content-compass-card-title" });
+    const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
     const titleIcon = title.createSpan({ cls: "cc-icon" });
-    (0, import_obsidian5.setIcon)(titleIcon, "git-branch");
     title.createSpan({ text: "C\xE2y Ph\u1EA3 h\u1EC7 Kh\xE1n gi\u1EA3 (Audience Hierarchy)" });
     const buyerCount = this.audienceIndex.getBuyerJobCount();
     const totalCount = this.audienceIndex.getAudienceCount();
     const subtitle = header.createDiv({ cls: "content-compass-treemap-badge" });
     subtitle.setText(`${totalCount} Audiences \u2022 ${buyerCount} Buyer Jobs`);
-    const toolbar = card.createDiv({ cls: "content-compass-tree-toolbar" });
+    const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isCollapsed) {
+      cardBody.style.display = "none";
+    }
+    const syncCollapseTitle = () => {
+      titleIcon.empty();
+      (0, import_obsidian5.setIcon)(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+      title.setAttribute(
+        "title",
+        this.isCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+    };
+    syncCollapseTitle();
+    title.addEventListener("click", () => {
+      this.isCollapsed = !this.isCollapsed;
+      card.toggleClass("is-collapsed", this.isCollapsed);
+      cardBody.style.display = this.isCollapsed ? "none" : "";
+      syncCollapseTitle();
+    });
+    const toolbar = cardBody.createDiv({ cls: "content-compass-tree-toolbar" });
     const searchBox = toolbar.createDiv({ cls: "content-compass-search-box" });
     const searchIcon = searchBox.createSpan({ cls: "cc-icon" });
     (0, import_obsidian5.setIcon)(searchIcon, "search");
@@ -1112,7 +1601,7 @@ var HierarchyBrowserView = class {
       this.onlyBuyerJobs = buyerCheckbox.checked;
       this.renderTree(treeContainer);
     });
-    const treeContainer = card.createDiv({ cls: "content-compass-hierarchy" });
+    const treeContainer = cardBody.createDiv({ cls: "content-compass-hierarchy" });
     this.renderTree(treeContainer);
   }
   // Nhóm 3: Dựng danh sách cây phả hệ
@@ -1220,6 +1709,7 @@ var PILLAR_COLORS = [
 ];
 var PillarHealthView = class {
   constructor(container, tagIndex, audienceIndex) {
+    this.isCollapsed = false;
     this.container = container;
     this.tagIndex = tagIndex;
     this.audienceIndex = audienceIndex;
@@ -1227,22 +1717,43 @@ var PillarHealthView = class {
   // Nhóm 3: Phương thức dựng giao diện biểu đồ thanh ngang và bảng dữ liệu
   render() {
     this.container.empty();
-    const card = this.container.createDiv({ cls: "content-compass-card" });
-    const title = card.createDiv({ cls: "content-compass-card-title" });
+    const card = this.container.createDiv({
+      cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`
+    });
+    const header = card.createDiv({ cls: "content-compass-card-header" });
+    const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
     const titleIcon = title.createSpan({ cls: "cc-icon" });
-    (0, import_obsidian6.setIcon)(titleIcon, "activity");
     title.createSpan({ text: "T\u1EF7 tr\u1ECDng & S\u1EE9c kh\u1ECFe Tr\u1EE5 c\u1ED9t (Pillar Health)" });
+    const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isCollapsed) {
+      cardBody.style.display = "none";
+    }
+    const syncCollapseTitle = () => {
+      titleIcon.empty();
+      (0, import_obsidian6.setIcon)(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+      title.setAttribute(
+        "title",
+        this.isCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+    };
+    syncCollapseTitle();
+    title.addEventListener("click", () => {
+      this.isCollapsed = !this.isCollapsed;
+      card.toggleClass("is-collapsed", this.isCollapsed);
+      cardBody.style.display = this.isCollapsed ? "none" : "";
+      syncCollapseTitle();
+    });
     const pillars = this.tagIndex.getPillars();
     let totalTopics = 0;
     for (const p of pillars.values()) {
       totalTopics += p.topicIds.length;
     }
     if (pillars.size === 0 || totalTopics === 0) {
-      const emptyMsg = card.createDiv({ cls: "content-compass-placeholder" });
+      const emptyMsg = cardBody.createDiv({ cls: "content-compass-placeholder" });
       emptyMsg.setText("Ch\u01B0a c\xF3 \u0111\u1EE7 d\u1EEF li\u1EC7u topics \u0111\u1EC3 t\xEDnh t\u1EF7 tr\u1ECDng Pillar.");
       return;
     }
-    const list = card.createDiv({ cls: "content-compass-health-list" });
+    const list = cardBody.createDiv({ cls: "content-compass-health-list" });
     let colorIdx = 0;
     const tableRows = [];
     for (const [pillarName, pillarNode] of pillars.entries()) {
@@ -1271,7 +1782,7 @@ var PillarHealthView = class {
       fill.style.width = `${percent}%`;
       fill.style.backgroundColor = color;
     }
-    const tableContainer = card.createDiv({ cls: "content-compass-table-container" });
+    const tableContainer = cardBody.createDiv({ cls: "content-compass-table-container" });
     const table = tableContainer.createEl("table", { cls: "content-compass-data-table" });
     const thead = table.createEl("thead");
     const headRow = thead.createEl("tr");
@@ -1300,11 +1811,396 @@ var PillarHealthView = class {
 };
 
 // src/views/ImportEngineView.ts
+var import_obsidian8 = require("obsidian");
+
+// src/views/DateRangePickerPopover.ts
 var import_obsidian7 = require("obsidian");
+var PRESET_OPTIONS = [
+  { id: "today", label: "H\xF4m nay" },
+  { id: "yesterday", label: "H\xF4m qua" },
+  { id: "7d", label: "7 ng\xE0y tr\u01B0\u1EDBc" },
+  { id: "30d", label: "30 ng\xE0y tr\u01B0\u1EDBc" },
+  { id: "90d", label: "90 ng\xE0y tr\u01B0\u1EDBc" },
+  { id: "this_week", label: "Tu\u1EA7n n\xE0y" },
+  { id: "this_month", label: "Th\xE1ng n\xE0y" },
+  { id: "last_month", label: "Th\xE1ng tr\u01B0\u1EDBc" },
+  { id: "this_year", label: "N\u0103m nay" },
+  { id: "all", label: "T\u1EA5t c\u1EA3 th\u1EDDi gian" },
+  { id: "custom", label: "T\xF9y ch\u1EC9nh ng\xE0y..." }
+];
+function toYmd(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+function formatVnShort(ymd) {
+  if (!ymd)
+    return "";
+  const parts = ymd.split("-");
+  if (parts.length !== 3)
+    return ymd;
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+function computeRangeForPreset(presetId) {
+  const now = /* @__PURE__ */ new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  if (presetId === "all") {
+    return { startDate: "", endDate: "" };
+  }
+  if (presetId === "today") {
+    const s = toYmd(today);
+    return { startDate: s, endDate: s };
+  }
+  if (presetId === "yesterday") {
+    const yest = new Date(today.getTime() - 864e5);
+    const s = toYmd(yest);
+    return { startDate: s, endDate: s };
+  }
+  if (presetId === "7d") {
+    const start = new Date(today.getTime() - 6 * 864e5);
+    return { startDate: toYmd(start), endDate: toYmd(today) };
+  }
+  if (presetId === "30d") {
+    const start = new Date(today.getTime() - 29 * 864e5);
+    return { startDate: toYmd(start), endDate: toYmd(today) };
+  }
+  if (presetId === "90d") {
+    const start = new Date(today.getTime() - 89 * 864e5);
+    return { startDate: toYmd(start), endDate: toYmd(today) };
+  }
+  if (presetId === "this_week") {
+    const dayOfWeek = today.getDay() || 7;
+    const monday = new Date(today.getTime() - (dayOfWeek - 1) * 864e5);
+    return { startDate: toYmd(monday), endDate: toYmd(today) };
+  }
+  if (presetId === "this_month") {
+    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    return { startDate: toYmd(firstDay), endDate: toYmd(today) };
+  }
+  if (presetId === "last_month") {
+    const firstPrev = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    const lastPrev = new Date(today.getFullYear(), today.getMonth(), 0);
+    return { startDate: toYmd(firstPrev), endDate: toYmd(lastPrev) };
+  }
+  if (presetId === "this_year") {
+    const firstJan = new Date(today.getFullYear(), 0, 1);
+    return { startDate: toYmd(firstJan), endDate: toYmd(today) };
+  }
+  const fallbackStart = new Date(today.getTime() - 29 * 864e5);
+  return { startDate: toYmd(fallbackStart), endDate: toYmd(today) };
+}
+function renderDateRangePickerButton(parentEl, current, options, onApply) {
+  const wrapper = parentEl.createDiv({ cls: "cc-daterange-wrapper" });
+  let activeSelection = { ...current };
+  const controlBar = wrapper.createDiv({ cls: "cc-daterange-bar" });
+  const formatRangeText = (sel) => {
+    const presetObj = PRESET_OPTIONS.find((p) => p.id === sel.presetId);
+    const presetLabel = presetObj ? presetObj.label : "T\xF9y ch\u1EC9nh";
+    if (sel.presetId === "custom" && sel.startDate && sel.endDate) {
+      return `${formatVnShort(sel.startDate)} \u2192 ${formatVnShort(sel.endDate)}`;
+    }
+    if (sel.startDate && sel.endDate) {
+      return `${presetLabel} (${formatVnShort(sel.startDate).slice(0, 5)} \u2013 ${formatVnShort(sel.endDate).slice(0, 5)})`;
+    }
+    return presetLabel;
+  };
+  const triggerBtn = controlBar.createEl("button", {
+    cls: "content-compass-refresh-btn cc-daterange-trigger",
+    attr: { type: "button" }
+  });
+  triggerBtn.setAttribute("title", "B\u1EA5m \u0111\u1EC3 m\u1EDF b\u1EA3ng ch\u1ECDn kho\u1EA3ng th\u1EDDi gian 3 c\u1ED9t (Ch\u1ECDn nhanh + L\u1ECBch k\xE9p)");
+  const calIcon = triggerBtn.createSpan({ cls: "cc-icon" });
+  (0, import_obsidian7.setIcon)(calIcon, "calendar");
+  const labelSpan = triggerBtn.createSpan({ text: formatRangeText(activeSelection) });
+  const chevIcon = triggerBtn.createSpan({ cls: "cc-icon" });
+  (0, import_obsidian7.setIcon)(chevIcon, "chevron-down");
+  let inlineGroupSelect = null;
+  if (options.showGroupBy) {
+    const inlineGroupWrap = controlBar.createDiv({ cls: "cc-inline-group-wrap" });
+    inlineGroupSelect = inlineGroupWrap.createEl("select", {
+      cls: "cc-inline-group-select"
+    });
+    inlineGroupSelect.setAttribute("title", "Ch\u1ECDn \u0111\u01A1n v\u1ECB g\u1ED9p d\u1EEF li\u1EC7u theo th\u1EDDi gian (Ng\xE0y, Tu\u1EA7n, Th\xE1ng, N\u0103m)");
+    inlineGroupSelect.createEl("option", { value: "day", text: "Xem theo: Ng\xE0y" });
+    inlineGroupSelect.createEl("option", { value: "week", text: "Xem theo: Tu\u1EA7n" });
+    inlineGroupSelect.createEl("option", { value: "month", text: "Xem theo: Th\xE1ng" });
+    inlineGroupSelect.createEl("option", { value: "year", text: "Xem theo: N\u0103m" });
+    inlineGroupSelect.value = activeSelection.groupBy || "day";
+    inlineGroupSelect.addEventListener("change", (e) => {
+      e.stopPropagation();
+      if (!inlineGroupSelect)
+        return;
+      activeSelection = {
+        ...activeSelection,
+        groupBy: inlineGroupSelect.value
+      };
+      draftGroupBy = activeSelection.groupBy || "day";
+      onApply(activeSelection);
+    });
+  }
+  const popover = wrapper.createDiv({ cls: "cc-daterange-popover" });
+  popover.style.display = "none";
+  let draftPreset = activeSelection.presetId;
+  let draftStart = activeSelection.startDate;
+  let draftEnd = activeSelection.endDate;
+  let draftGroupBy = activeSelection.groupBy || "day";
+  let draftBasis = activeSelection.dateBasis || "published";
+  let pickingPhase = "start";
+  const now = /* @__PURE__ */ new Date();
+  let rightCalYear = now.getFullYear();
+  let rightCalMonth = now.getMonth();
+  const rebuildPopoverContent = () => {
+    popover.empty();
+    const topBar = popover.createDiv({ cls: "cc-daterange-top-bar" });
+    const rangeInputs = topBar.createDiv({ cls: "cc-daterange-inputs" });
+    rangeInputs.createSpan({ text: "T\u1EEB", cls: "cc-daterange-lbl" });
+    const inpStart = rangeInputs.createEl("input", {
+      type: "date",
+      cls: "cc-daterange-date-input",
+      value: draftStart
+    });
+    inpStart.addEventListener("change", () => {
+      if (inpStart.value) {
+        draftPreset = "custom";
+        draftStart = inpStart.value;
+        if (draftEnd && draftStart > draftEnd) {
+          draftEnd = draftStart;
+        }
+        rebuildPopoverContent();
+      }
+    });
+    rangeInputs.createSpan({ text: "\u2192", cls: "cc-daterange-lbl" });
+    const inpEnd = rangeInputs.createEl("input", {
+      type: "date",
+      cls: "cc-daterange-date-input",
+      value: draftEnd
+    });
+    inpEnd.addEventListener("change", () => {
+      if (inpEnd.value) {
+        draftPreset = "custom";
+        draftEnd = inpEnd.value;
+        if (draftStart && draftEnd < draftStart) {
+          draftStart = draftEnd;
+        }
+        rebuildPopoverContent();
+      }
+    });
+    if (options.showGroupBy) {
+      const grpWrap = topBar.createDiv({ cls: "cc-daterange-inputs" });
+      grpWrap.createSpan({ text: "G\u1ED9p:", cls: "cc-daterange-lbl" });
+      const selGroup = grpWrap.createEl("select", { cls: "cc-daterange-select" });
+      selGroup.createEl("option", { value: "day", text: "Theo Ng\xE0y" });
+      selGroup.createEl("option", { value: "week", text: "Theo Tu\u1EA7n" });
+      selGroup.createEl("option", { value: "month", text: "Theo Th\xE1ng" });
+      selGroup.createEl("option", { value: "year", text: "Theo N\u0103m" });
+      selGroup.value = draftGroupBy;
+      selGroup.addEventListener("change", () => {
+        draftGroupBy = selGroup.value;
+      });
+    }
+    if (options.showDateBasis) {
+      const basisWrap = topBar.createDiv({ cls: "cc-daterange-inputs" });
+      basisWrap.createSpan({ text: "M\u1ED1c:", cls: "cc-daterange-lbl" });
+      const selBasis = basisWrap.createEl("select", { cls: "cc-daterange-select" });
+      selBasis.createEl("option", { value: "published", text: "Ng\xE0y \u0111\u0103ng b\xE0i" });
+      selBasis.createEl("option", { value: "collected", text: "Th\u1EDDi \u0111i\u1EC3m qu\xE9t" });
+      selBasis.value = draftBasis;
+      selBasis.addEventListener("change", () => {
+        draftBasis = selBasis.value;
+      });
+    }
+    const threeCols = popover.createDiv({ cls: "cc-daterange-columns" });
+    const colPresets = threeCols.createDiv({ cls: "cc-daterange-presets" });
+    for (const p of PRESET_OPTIONS) {
+      const itemBtn = colPresets.createEl("button", {
+        cls: `cc-preset-item ${draftPreset === p.id ? "is-active" : ""}`,
+        text: p.label
+      });
+      itemBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        draftPreset = p.id;
+        if (p.id !== "custom") {
+          const computed = computeRangeForPreset(p.id);
+          draftStart = computed.startDate;
+          draftEnd = computed.endDate;
+          if (draftEnd) {
+            const endObj = /* @__PURE__ */ new Date(draftEnd + "T00:00:00");
+            if (!isNaN(endObj.getTime())) {
+              rightCalYear = endObj.getFullYear();
+              rightCalMonth = endObj.getMonth();
+            }
+          }
+        }
+        rebuildPopoverContent();
+      });
+    }
+    const leftDate = new Date(rightCalYear, rightCalMonth - 1, 1);
+    const rightDate = new Date(rightCalYear, rightCalMonth, 1);
+    renderMonthCalendar(threeCols, leftDate.getFullYear(), leftDate.getMonth(), "left");
+    renderMonthCalendar(threeCols, rightDate.getFullYear(), rightDate.getMonth(), "right");
+    const footer = popover.createDiv({ cls: "cc-daterange-footer" });
+    const summaryText = draftPreset === "all" ? "Ph\u1EA1m vi: T\u1EA5t c\u1EA3 th\u1EDDi gian" : draftStart && draftEnd ? `\u0110ang ch\u1ECDn: ${formatVnShort(draftStart)} \u2192 ${formatVnShort(draftEnd)}` : "Ch\u1ECDn ng\xE0y b\u1EAFt \u0111\u1EA7u v\xE0 k\u1EBFt th\xFAc tr\xEAn l\u1ECBch";
+    footer.createSpan({ cls: "cc-daterange-summary", text: summaryText });
+    const footerBtns = footer.createDiv({ cls: "cc-daterange-footer-btns" });
+    const btnCancel = footerBtns.createEl("button", {
+      cls: "content-compass-refresh-btn cc-btn-sm",
+      text: "H\u1EE7y"
+    });
+    btnCancel.addEventListener("click", (e) => {
+      e.stopPropagation();
+      popover.style.display = "none";
+    });
+    const btnApply = footerBtns.createEl("button", {
+      cls: "content-compass-import-btn cc-btn-sm",
+      text: "\xC1p d\u1EE5ng",
+      attr: { type: "button" }
+    });
+    btnApply.addEventListener("click", (e) => {
+      e.stopPropagation();
+      popover.style.display = "none";
+      activeSelection = {
+        presetId: draftPreset,
+        startDate: draftStart,
+        endDate: draftEnd,
+        groupBy: draftGroupBy,
+        dateBasis: draftBasis
+      };
+      labelSpan.setText(formatRangeText(activeSelection));
+      if (inlineGroupSelect && activeSelection.groupBy) {
+        inlineGroupSelect.value = activeSelection.groupBy;
+      }
+      onApply(activeSelection);
+    });
+  };
+  const renderMonthCalendar = (container, year, month, side) => {
+    const calCol = container.createDiv({ cls: "cc-daterange-calendar" });
+    const navHeader = calCol.createDiv({ cls: "cc-cal-header" });
+    if (side === "left") {
+      const prevBtn = navHeader.createEl("button", { cls: "content-compass-icon-btn" });
+      const ic = prevBtn.createSpan({ cls: "cc-icon" });
+      (0, import_obsidian7.setIcon)(ic, "chevron-left");
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        rightCalMonth -= 1;
+        if (rightCalMonth < 0) {
+          rightCalMonth = 11;
+          rightCalYear -= 1;
+        }
+        rebuildPopoverContent();
+      });
+    } else {
+      navHeader.createSpan({ cls: "cc-cal-spacer" });
+    }
+    navHeader.createSpan({
+      cls: "cc-cal-title",
+      text: `Th\xE1ng ${month + 1} / ${year}`
+    });
+    if (side === "right") {
+      const nextBtn = navHeader.createEl("button", { cls: "content-compass-icon-btn" });
+      const ic = nextBtn.createSpan({ cls: "cc-icon" });
+      (0, import_obsidian7.setIcon)(ic, "chevron-right");
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        rightCalMonth += 1;
+        if (rightCalMonth > 11) {
+          rightCalMonth = 0;
+          rightCalYear += 1;
+        }
+        rebuildPopoverContent();
+      });
+    } else {
+      navHeader.createSpan({ cls: "cc-cal-spacer" });
+    }
+    const weekdaysGrid = calCol.createDiv({ cls: "cc-cal-weekdays" });
+    for (const wd of ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]) {
+      weekdaysGrid.createSpan({ text: wd });
+    }
+    const daysGrid = calCol.createDiv({ cls: "cc-cal-days" });
+    const firstDay = new Date(year, month, 1);
+    const startOffset = (firstDay.getDay() + 6) % 7;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    for (let i = 0; i < startOffset; i++) {
+      daysGrid.createSpan({ cls: "cc-cal-day is-empty" });
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const ymd = toYmd(new Date(year, month, d));
+      const isStart = Boolean(draftStart && ymd === draftStart);
+      const isEnd = Boolean(draftEnd && ymd === draftEnd);
+      const isInRange = Boolean(draftStart && draftEnd && ymd > draftStart && ymd < draftEnd);
+      const dayBtn = daysGrid.createEl("button", {
+        cls: [
+          "cc-cal-day",
+          isStart ? "is-start" : "",
+          isEnd ? "is-end" : "",
+          isInRange ? "is-in-range" : ""
+        ].filter(Boolean).join(" "),
+        text: String(d)
+      });
+      dayBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        draftPreset = "custom";
+        if (pickingPhase === "start" || !draftStart || draftStart && draftEnd && draftStart !== draftEnd) {
+          draftStart = ymd;
+          draftEnd = ymd;
+          pickingPhase = "end";
+        } else {
+          if (ymd < draftStart) {
+            draftEnd = draftStart;
+            draftStart = ymd;
+          } else {
+            draftEnd = ymd;
+          }
+          pickingPhase = "start";
+        }
+        rebuildPopoverContent();
+      });
+    }
+  };
+  triggerBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isHidden = popover.style.display === "none";
+    if (isHidden) {
+      draftPreset = activeSelection.presetId;
+      draftStart = activeSelection.startDate;
+      draftEnd = activeSelection.endDate;
+      draftGroupBy = activeSelection.groupBy || "day";
+      draftBasis = activeSelection.dateBasis || "published";
+      rebuildPopoverContent();
+      const btnRect = triggerBtn.getBoundingClientRect();
+      const popoverWidth = 520;
+      if (btnRect.left + popoverWidth <= window.innerWidth - 20) {
+        popover.style.left = "0";
+        popover.style.right = "auto";
+      } else {
+        popover.style.right = "0";
+        popover.style.left = "auto";
+      }
+      popover.style.display = "flex";
+    } else {
+      popover.style.display = "none";
+    }
+  });
+  wrapper.syncSelection = (next) => {
+    activeSelection = { ...next };
+    labelSpan.setText(formatRangeText(activeSelection));
+    if (inlineGroupSelect && activeSelection.groupBy) {
+      inlineGroupSelect.value = activeSelection.groupBy;
+    }
+  };
+  document.addEventListener("mousedown", (evt) => {
+    if (popover.style.display !== "none" && !wrapper.contains(evt.target)) {
+      popover.style.display = "none";
+    }
+  });
+  return wrapper;
+}
+
+// src/views/ImportEngineView.ts
 function setBtnContent(el, iconName, labelText, spinning = false) {
   el.empty();
   const ic = el.createSpan({ cls: `cc-icon ${spinning ? "is-spinning" : ""}` });
-  (0, import_obsidian7.setIcon)(ic, iconName);
+  (0, import_obsidian8.setIcon)(ic, iconName);
   if (labelText) {
     el.createSpan({ text: labelText });
   }
@@ -1312,9 +2208,132 @@ function setBtnContent(el, iconName, labelText, spinning = false) {
 function createMetricChip(parent, iconName, textValue, extraCls = "content-compass-fb-metric-chip") {
   const chip = parent.createSpan({ cls: extraCls });
   const ic = chip.createSpan({ cls: "cc-icon" });
-  (0, import_obsidian7.setIcon)(ic, iconName);
+  (0, import_obsidian8.setIcon)(ic, iconName);
   chip.createSpan({ text: textValue });
   return chip;
+}
+function renderPostSparkline5D(parent, spark, isTop5) {
+  const wrap = parent.createDiv({
+    cls: `cc-post-sparkline-wrap ${spark.isFirstScan ? "is-single-point" : ""}`
+  });
+  const vals = spark.dailyScores;
+  const numericVals = vals.filter((v) => v !== null);
+  const minV = numericVals.length > 0 ? Math.min(...numericVals) : 0;
+  const maxV = numericVals.length > 0 ? Math.max(...numericVals) : 0;
+  const range = maxV - minV;
+  const w = 52;
+  const h = 18;
+  const padX = 4;
+  const padY = 3.5;
+  const innerW = w - padX * 2;
+  const innerH = h - padY * 2;
+  const midY = Number((h / 2).toFixed(1));
+  const validCoords = [];
+  const emptyXs = [];
+  vals.forEach((v, idx) => {
+    const x = Number((padX + idx / Math.max(1, vals.length - 1) * innerW).toFixed(1));
+    if (v === null) {
+      emptyXs.push(x);
+    } else {
+      const y = numericVals.length <= 1 || range === 0 ? midY : Number((padY + innerH - (v - minV) / range * innerH).toFixed(1));
+      validCoords.push({ idx, x, y, val: v });
+    }
+  });
+  const strokeColor = "#0a84ff";
+  const fillColor = "rgba(10, 132, 255, 0.14)";
+  const svgNs = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNs, "svg");
+  svg.setAttribute("class", "cc-post-sparkline-svg");
+  svg.setAttribute("width", String(w));
+  svg.setAttribute("height", String(h));
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+  const baseLine = document.createElementNS(svgNs, "line");
+  baseLine.setAttribute("x1", String(padX));
+  baseLine.setAttribute("y1", String(midY));
+  baseLine.setAttribute("x2", String(w - padX));
+  baseLine.setAttribute("y2", String(midY));
+  baseLine.setAttribute("stroke", "hsla(0, 0%, 55%, 0.25)");
+  baseLine.setAttribute("stroke-width", "1");
+  baseLine.setAttribute("stroke-dasharray", "2,2");
+  svg.appendChild(baseLine);
+  for (const ex of emptyXs) {
+    const emptyTick = document.createElementNS(svgNs, "circle");
+    emptyTick.setAttribute("cx", String(ex));
+    emptyTick.setAttribute("cy", String(midY));
+    emptyTick.setAttribute("r", "1.1");
+    emptyTick.setAttribute("fill", "hsla(0, 0%, 55%, 0.35)");
+    svg.appendChild(emptyTick);
+  }
+  if (validCoords.length === 1) {
+    const singlePt = validCoords[0];
+    const halo = document.createElementNS(svgNs, "circle");
+    halo.setAttribute("cx", String(singlePt.x));
+    halo.setAttribute("cy", String(singlePt.y));
+    halo.setAttribute("r", "4.8");
+    halo.setAttribute("fill", fillColor);
+    svg.appendChild(halo);
+    const dot = document.createElementNS(svgNs, "circle");
+    dot.setAttribute("cx", String(singlePt.x));
+    dot.setAttribute("cy", String(singlePt.y));
+    dot.setAttribute("r", "2.4");
+    dot.setAttribute("fill", strokeColor);
+    svg.appendChild(dot);
+  } else if (validCoords.length >= 2) {
+    const linePoints = validCoords.map((p) => `${p.x},${p.y}`).join(" ");
+    const firstPt = validCoords[0];
+    const lastPt = validCoords[validCoords.length - 1];
+    const areaPoints = `${firstPt.x},${h - 1} ${linePoints} ${lastPt.x},${h - 1}`;
+    const polygon = document.createElementNS(svgNs, "polygon");
+    polygon.setAttribute("points", areaPoints);
+    polygon.setAttribute("fill", fillColor);
+    svg.appendChild(polygon);
+    const polyline = document.createElementNS(svgNs, "polyline");
+    polyline.setAttribute("points", linePoints);
+    polyline.setAttribute("fill", "none");
+    polyline.setAttribute("stroke", strokeColor);
+    polyline.setAttribute("stroke-width", "1.6");
+    polyline.setAttribute("stroke-linecap", "round");
+    polyline.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(polyline);
+    const dot = document.createElementNS(svgNs, "circle");
+    dot.setAttribute("cx", String(lastPt.x));
+    dot.setAttribute("cy", String(lastPt.y));
+    dot.setAttribute("r", "2.2");
+    dot.setAttribute("fill", strokeColor);
+    svg.appendChild(dot);
+  }
+  wrap.appendChild(svg);
+  if (spark.delta5d !== null && spark.delta5d > 0) {
+    wrap.createSpan({
+      cls: "cc-post-sparkline-delta is-up",
+      text: `+${spark.delta5d}`
+    });
+  }
+  const detailLines = spark.dayLabels.map((lbl, idx) => {
+    const dayVal = vals[idx];
+    const suffix = idx === 4 ? " (H\xF4m nay)" : "";
+    if (dayVal === null) {
+      return `\u2022 ${lbl}${suffix}: Kh\xF4ng c\xF3 d\u1EEF li\u1EC7u`;
+    }
+    return `\u2022 ${lbl}${suffix}: ${dayVal} \u0111i\u1EC3m`;
+  });
+  let footerNote = "";
+  if (spark.isFirstScan || validCoords.length <= 1) {
+    footerNote = "Tr\u1EA1ng th\xE1i: M\u1EDBi qu\xE9t l\u1EA7n \u0111\u1EA7u (ch\u1EC9 c\xF3 1 m\u1ED1c d\u1EEF li\u1EC7u, c\xE1c ng\xE0y tr\u01B0\u1EDBc ch\u01B0a c\xF3 d\u1EEF li\u1EC7u \u0111\u1EC3 t\xEDnh t\u0103ng tr\u01B0\u1EDFng)";
+  } else {
+    const firstDayLbl = spark.dayLabels[validCoords[0].idx];
+    const lastDayLbl = spark.dayLabels[validCoords[validCoords.length - 1].idx];
+    const dVal = spark.delta5d || 0;
+    const deltaSign = dVal > 0 ? `+${dVal}` : String(dVal);
+    footerNote = `T\u0103ng tr\u01B0\u1EDFng (${firstDayLbl} \u2192 ${lastDayLbl}): ${deltaSign} \u0111i\u1EC3m`;
+  }
+  wrap.setAttribute(
+    "title",
+    `D\u1EEF li\u1EC7u Score 5 ng\xE0y g\u1EA7n nh\u1EA5t:
+${detailLines.join("\n")}
+\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+${footerNote}`
+  );
 }
 var WATCHLIST_PATH = ".content-pipeline/fb-watchlist.json";
 var STATE_PATH = ".content-pipeline/fb-tracker-state.json";
@@ -1326,9 +2345,13 @@ var LOCKED_SAFE_SETTINGS = {
   page_scan_mins: 60,
   delay_seconds: 8,
   max_batch_size: 20,
+  retention_mode: "max_days",
+  retention_max_posts: 20,
+  retention_max_days: 7,
   fetch_comments: true,
   expand_replies: false,
-  background_task_enabled: false
+  background_task_enabled: false,
+  custom_source_labels: []
 };
 function resolvePythonExe() {
   try {
@@ -1361,7 +2384,65 @@ function formatNowVn() {
 function calcEngagementScore(m) {
   return (m.likes || 0) * 1 + (m.comments || 0) * 2 + (m.shares || 0) * 3;
 }
-var ScrapedPostModal = class extends import_obsidian7.Modal {
+var CreateSourceLabelModal = class extends import_obsidian8.Modal {
+  constructor(app, onSubmit) {
+    super(app);
+    this.submitted = false;
+    this.onSubmit = onSubmit;
+  }
+  onOpen() {
+    const { contentEl } = this;
+    contentEl.empty();
+    contentEl.addClass("content-compass-fb-preview-modal");
+    const header = contentEl.createDiv({ cls: "content-compass-fb-modal-header" });
+    const h3 = header.createEl("h3");
+    setBtnContent(h3, "tag", "T\u1EA1o nh\xE3n Ph\xE2n lo\u1EA1i m\u1EDBi");
+    const box = contentEl.createDiv({ cls: "content-compass-fb-modal-savebox" });
+    const lbl = box.createEl("label", { cls: "content-compass-fb-modal-field" });
+    lbl.createSpan({
+      text: "T\xEAn nh\xE3n ph\xE2n lo\u1EA1i (s\u1EBD t\u1EF1 \u0111\u1ED9ng li\xEAn k\u1EBFt \u1EDF t\u1EA5t c\u1EA3 c\xE1c b\u1EA3ng v\xE0 b\u1ED9 l\u1ECDc bi\u1EC3u \u0111\u1ED3):"
+    });
+    const inp = lbl.createEl("input", {
+      type: "text",
+      placeholder: "V\xED d\u1EE5: K\xEAnh \u0111\u1ED1i t\xE1c, KOLs, C\u1ED9ng \u0111\u1ED3ng, Ngu\u1ED3n tham kh\u1EA3o..."
+    });
+    const actions = box.createDiv({ cls: "content-compass-fb-modal-actions" });
+    const cancelBtn = actions.createEl("button", {
+      cls: "content-compass-refresh-btn",
+      text: "H\u1EE7y",
+      attr: { type: "button" }
+    });
+    const saveBtn = actions.createEl("button", {
+      cls: "content-compass-import-btn",
+      attr: { type: "button" }
+    });
+    setBtnContent(saveBtn, "check", "T\u1EA1o & Ch\u1ECDn nh\xE3n n\xE0y");
+    const submitVal = () => {
+      const val = inp.value.trim();
+      if (!val)
+        return;
+      this.submitted = true;
+      this.onSubmit(val);
+      this.close();
+    };
+    saveBtn.addEventListener("click", submitVal);
+    cancelBtn.addEventListener("click", () => this.close());
+    inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        submitVal();
+      }
+    });
+    window.setTimeout(() => inp.focus(), 50);
+  }
+  onClose() {
+    this.contentEl.empty();
+    if (!this.submitted) {
+      this.onSubmit(null);
+    }
+  }
+};
+var ScrapedPostModal = class extends import_obsidian8.Modal {
   constructor(app, cacheData, defaultSourceType, isSaved, onSaveWithCustomOpts) {
     super(app);
     this.cacheData = cacheData;
@@ -1405,9 +2486,13 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
     const inpTitle = lblTitle.createEl("input", { type: "text", value: defaultTitle });
     const rowBottom = saveConfigBox.createDiv({ cls: "content-compass-fb-modal-actions" });
     const selDest = rowBottom.createEl("select", { cls: "content-compass-fb-inline-select" });
-    selDest.createEl("option", { value: "external", text: "L\u01B0u v\xE0o: 03-Content/Viral Posts (B\xE0i tham kh\u1EA3o)" });
-    selDest.createEl("option", { value: "own", text: "L\u01B0u v\xE0o: 03-Content/Posted (B\xE0i th\u01B0\u01A1ng hi\u1EC7u)" });
-    selDest.value = this.defaultSourceType;
+    const nonOwnType = this.defaultSourceType && this.defaultSourceType !== "own" ? this.defaultSourceType : "external";
+    selDest.createEl("option", {
+      value: nonOwnType,
+      text: `L\u01B0u v\xE0o: 03-Content/Viral Posts (${formatSourceTypeLabel(nonOwnType)})`
+    });
+    selDest.createEl("option", { value: "own", text: "L\u01B0u v\xE0o: 03-Content/Posted (Th\u01B0\u01A1ng hi\u1EC7u)" });
+    selDest.value = this.defaultSourceType === "own" ? "own" : nonOwnType;
     const saveBtn = rowBottom.createEl("button", {
       cls: "content-compass-import-btn"
     });
@@ -1458,12 +2543,24 @@ var ImportEngineView = class {
     // Mac dinh AN ngan keo nhap lieu de tiet kiem dien tich man hinh khi user khong dung den
     this.isInputDrawerOpen = false;
     this.activeSubTab = "fb";
+    this.isAdvancedSectionOpen = true;
+    this.isWorkloadPanelCollapsed = false;
+    this.isFanpagesTableCollapsed = false;
+    this.isPostsTableCollapsed = false;
+    this.isRecentHistoryCollapsed = false;
     this.selectedPostIds = /* @__PURE__ */ new Set();
+    this.postActiveFilter = "all";
     this.postVaultFilter = "all";
     this.postSourceFilter = "all";
     this.postSortBy = "score_desc";
     this.postSearchQuery = "";
+    this.postDateRange = {
+      presetId: "all",
+      startDate: "",
+      endDate: ""
+    };
     this.livePollTimer = null;
+    this.highlightRowTimer = null;
     this.container = container;
     this.engagementStore = engagementStore;
     this.app = app;
@@ -1474,19 +2571,169 @@ var ImportEngineView = class {
     this.container.empty();
     this.renderMainView(this.container);
   }
+  /**
+   * Chuyen focus, cuon muot va to sang (highlight) bai viet duoc chon tu Bieu do Engagement sang Bang Danh sach bai viet da thu thap.
+   */
+  async focusAndHighlightPost(target) {
+    const findRowInDom = () => {
+      const rows = Array.from(this.container.querySelectorAll("tr.cc-post-row"));
+      for (const r of rows) {
+        const wId = r.getAttribute("data-watch-id") || "";
+        const fbId = r.getAttribute("data-fb-id") || "";
+        const slug = r.getAttribute("data-post-slug") || "";
+        const url = r.getAttribute("data-post-url") || "";
+        if (target.watchId && wId && wId === target.watchId)
+          return r;
+        if (target.fbPostId && fbId && fbId === target.fbPostId)
+          return r;
+        if (target.postId && (slug === target.postId || fbId === target.postId || wId === target.postId)) {
+          return r;
+        }
+        if (target.vaultSlug && slug && slug === target.vaultSlug)
+          return r;
+        if (target.url && url && url === target.url)
+          return r;
+      }
+      return null;
+    };
+    const hasActiveDateFilter = this.postDateRange.presetId !== "all" || Boolean(this.postDateRange.startDate) || Boolean(this.postDateRange.endDate);
+    if (this.isPostsTableCollapsed || hasActiveDateFilter || !findRowInDom()) {
+      this.isPostsTableCollapsed = false;
+      this.postDateRange = {
+        presetId: "all",
+        startDate: "",
+        endDate: ""
+      };
+      this.postActiveFilter = "all";
+      this.postVaultFilter = "all";
+      this.postSourceFilter = "all";
+      this.postSearchQuery = "";
+      await this.renderMainView(this.container);
+    }
+    const targetRow = findRowInDom();
+    if (!targetRow)
+      return;
+    this.container.querySelectorAll("tr.cc-post-row.is-highlighted-target").forEach((el) => {
+      el.removeClass("is-highlighted-target");
+    });
+    if (this.highlightRowTimer) {
+      window.clearTimeout(this.highlightRowTimer);
+      this.highlightRowTimer = null;
+    }
+    targetRow.addClass("is-highlighted-target");
+    targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
+    this.highlightRowTimer = window.setTimeout(() => {
+      targetRow.removeClass("is-highlighted-target");
+      this.highlightRowTimer = null;
+    }, 4e3);
+  }
   // Nhom 4: Doc/Ghi file cau hinh Watchlist, State, Cache va Luu bai viet vao Vault
+  normalizeSettings(rawSettings) {
+    const modeRaw = String((rawSettings == null ? void 0 : rawSettings.retention_mode) || "max_days");
+    const retentionMode = modeRaw === "latest_only" || modeRaw === "max_posts" || modeRaw === "max_days" ? modeRaw : "max_days";
+    const rawLabels = Array.isArray(rawSettings == null ? void 0 : rawSettings.custom_source_labels) ? rawSettings.custom_source_labels : [];
+    const customLabels = Array.from(
+      new Set(
+        rawLabels.map((x) => String(x || "").trim()).filter((x) => x.length > 0 && x !== "own" && x !== "external" && x !== "other")
+      )
+    );
+    return {
+      ...LOCKED_SAFE_SETTINGS,
+      max_batch_size: Math.max(1, Math.min(100, parseInt(rawSettings == null ? void 0 : rawSettings.max_batch_size) || 20)),
+      retention_mode: retentionMode,
+      retention_max_posts: Math.max(1, Math.min(500, parseInt(rawSettings == null ? void 0 : rawSettings.retention_max_posts) || 20)),
+      retention_max_days: Math.max(1, Math.min(365, parseInt(rawSettings == null ? void 0 : rawSettings.retention_max_days) || 7)),
+      expand_replies: Boolean(rawSettings == null ? void 0 : rawSettings.expand_replies),
+      background_task_enabled: Boolean(rawSettings == null ? void 0 : rawSettings.background_task_enabled),
+      custom_source_labels: customLabels
+    };
+  }
+  collectAllCustomLabels(watchlist) {
+    const set = /* @__PURE__ */ new Set();
+    const pushIfCustom = (raw) => {
+      const s = String(raw || "").trim();
+      if (s && s !== "own" && s !== "external" && s !== "other") {
+        set.add(s);
+      }
+    };
+    for (const lbl of watchlist.settings.custom_source_labels || []) {
+      pushIfCustom(lbl);
+    }
+    for (const pg of watchlist.pages || []) {
+      pushIfCustom(pg.source_type);
+    }
+    for (const pt of watchlist.posts || []) {
+      pushIfCustom(pt.source_type);
+    }
+    for (const lbl of this.engagementStore.getCustomSourceLabels()) {
+      pushIfCustom(lbl);
+    }
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "vi"));
+  }
+  bindSourceTypeSelect(selectEl, watchlist, initialValue, onValueChanged) {
+    let currentVal = initialValue || "external";
+    const populate = (selectedVal) => {
+      selectEl.empty();
+      selectEl.createEl("option", { value: "external", text: "\u0110\u1ED1i th\u1EE7" });
+      selectEl.createEl("option", { value: "own", text: "Th\u01B0\u01A1ng hi\u1EC7u" });
+      selectEl.createEl("option", { value: "other", text: "Kh\xE1c" });
+      const customLabels = this.collectAllCustomLabels(watchlist);
+      if (selectedVal && selectedVal !== "external" && selectedVal !== "own" && selectedVal !== "other" && !customLabels.includes(selectedVal)) {
+        customLabels.push(selectedVal);
+      }
+      for (const lbl of customLabels) {
+        selectEl.createEl("option", { value: lbl, text: lbl });
+      }
+      selectEl.createEl("option", { value: "__create_new__", text: "+ T\u1EA1o nh\xE3n m\u1EDBi..." });
+      selectEl.value = selectedVal;
+    };
+    populate(currentVal);
+    selectEl.addEventListener("change", async () => {
+      if (selectEl.value === "__create_new__") {
+        new CreateSourceLabelModal(this.app, async (rawNewLabel) => {
+          if (!rawNewLabel) {
+            selectEl.value = currentVal;
+            return;
+          }
+          const trimmed = rawNewLabel.trim();
+          let normalized = trimmed;
+          const lower = trimmed.toLowerCase();
+          if (lower === "th\u01B0\u01A1ng hi\u1EC7u" || lower === "own")
+            normalized = "own";
+          else if (lower === "\u0111\u1ED1i th\u1EE7" || lower === "external")
+            normalized = "external";
+          else if (lower === "kh\xE1c" || lower === "other")
+            normalized = "other";
+          if (normalized !== "own" && normalized !== "external" && normalized !== "other") {
+            if (!Array.isArray(watchlist.settings.custom_source_labels)) {
+              watchlist.settings.custom_source_labels = [];
+            }
+            if (!watchlist.settings.custom_source_labels.includes(normalized)) {
+              watchlist.settings.custom_source_labels.push(normalized);
+            }
+            await this.saveWatchlist(watchlist);
+          }
+          currentVal = normalized;
+          populate(currentVal);
+          if (onValueChanged) {
+            await onValueChanged(currentVal, true);
+          }
+        }).open();
+        return;
+      }
+      currentVal = selectEl.value;
+      if (onValueChanged) {
+        await onValueChanged(currentVal, false);
+      }
+    });
+  }
   async loadWatchlist() {
-    var _a, _b;
     try {
       if (await this.app.vault.adapter.exists(WATCHLIST_PATH)) {
         const raw = await this.app.vault.adapter.read(WATCHLIST_PATH);
         const parsed = JSON.parse(raw);
         return {
-          settings: {
-            ...LOCKED_SAFE_SETTINGS,
-            expand_replies: Boolean((_a = parsed == null ? void 0 : parsed.settings) == null ? void 0 : _a.expand_replies),
-            background_task_enabled: Boolean((_b = parsed == null ? void 0 : parsed.settings) == null ? void 0 : _b.background_task_enabled)
-          },
+          settings: this.normalizeSettings(parsed == null ? void 0 : parsed.settings),
           posts: Array.isArray(parsed.posts) ? parsed.posts : [],
           pages: Array.isArray(parsed.pages) ? parsed.pages : []
         };
@@ -1497,12 +2744,7 @@ var ImportEngineView = class {
     return { settings: { ...LOCKED_SAFE_SETTINGS }, posts: [], pages: [] };
   }
   async saveWatchlist(data) {
-    var _a, _b;
-    data.settings = {
-      ...LOCKED_SAFE_SETTINGS,
-      expand_replies: Boolean((_a = data.settings) == null ? void 0 : _a.expand_replies),
-      background_task_enabled: Boolean((_b = data.settings) == null ? void 0 : _b.background_task_enabled)
-    };
+    data.settings = this.normalizeSettings(data.settings);
     const dir = ".content-pipeline";
     if (!await this.app.vault.adapter.exists(dir)) {
       await this.app.vault.adapter.mkdir(dir);
@@ -1557,7 +2799,7 @@ var ImportEngineView = class {
   resolveExistingVaultPath(item, pState) {
     if (pState == null ? void 0 : pState.vault_path) {
       const f = this.app.vault.getAbstractFileByPath(pState.vault_path);
-      if (f instanceof import_obsidian7.TFile)
+      if (f instanceof import_obsidian8.TFile)
         return f.path;
     }
     const slug = pState == null ? void 0 : pState.vault_slug;
@@ -1565,7 +2807,7 @@ var ImportEngineView = class {
       for (const folder of ["03-Content/Posted", "03-Content/Viral Posts"]) {
         const candidate = `${folder}/${slug}.md`;
         const f = this.app.vault.getAbstractFileByPath(candidate);
-        if (f instanceof import_obsidian7.TFile)
+        if (f instanceof import_obsidian8.TFile)
           return f.path;
       }
     }
@@ -1730,9 +2972,20 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     const state = await this.loadTrackerState();
     rootContainer.empty();
     const isRunning = Boolean((_a = state == null ? void 0 : state.status) == null ? void 0 : _a.is_running);
+    const pageSourceMap = /* @__PURE__ */ new Map();
+    for (const pg of watchlist.pages) {
+      if (pg.id && pg.source_type)
+        pageSourceMap.set(pg.id, pg.source_type);
+      if (pg.page_identifier && pg.source_type)
+        pageSourceMap.set(pg.page_identifier, pg.source_type);
+    }
     const allPosts = [
       ...watchlist.posts,
-      ...Array.isArray(state == null ? void 0 : state.discovered_posts) ? state.discovered_posts.map((d) => ({ ...d, isDiscovered: true })) : []
+      ...Array.isArray(state == null ? void 0 : state.discovered_posts) ? state.discovered_posts.map((d) => {
+        const inheritedSrc = d.from_page_id && pageSourceMap.get(d.from_page_id) || d.from_page && pageSourceMap.get(d.from_page) || d.source_type || "external";
+        d.source_type = inheritedSrc;
+        return { ...d, source_type: inheritedSrc, isDiscovered: true };
+      }) : []
     ];
     const workspace = rootContainer.createDiv({ cls: "content-compass-fb-workspace" });
     const statusBar = workspace.createDiv({ cls: "content-compass-fb-statusbar" });
@@ -1741,8 +2994,13 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     statusLine.createSpan({ cls: `cc-status-dot ${isRunning ? "is-running" : ""}` });
     const progressText = ((_b = state == null ? void 0 : state.status) == null ? void 0 : _b.progress_text) || "S\u1EB5n s\xE0ng";
     const lastRun = ((_c = state == null ? void 0 : state.status) == null ? void 0 : _c.last_run_at) ? new Date(state.status.last_run_at).toLocaleString("vi-VN") : "Ch\u01B0a qu\xE9t";
+    const activePostsCount = allPosts.filter((p) => p.enabled !== false).length;
+    const pausedPostsCount = allPosts.length - activePostsCount;
+    const batchSizeVal = Math.max(1, watchlist.settings.max_batch_size || 20);
+    const numBatchesCurrent = Math.max(1, Math.ceil(Math.max(1, activePostsCount) / batchSizeVal));
+    const cycleMinsCurrent = numBatchesCurrent * (watchlist.settings.poll_new_mins || 15);
     const mainStatusLine = statusLine.createSpan({
-      text: `\u0110ang theo d\xF5i: ${watchlist.pages.length} Fanpage & ${allPosts.length} B\xE0i vi\u1EBFt \u2022 ${progressText} (C\u1EADp nh\u1EADt: ${lastRun})`
+      text: `\u0110ang theo d\xF5i: ${watchlist.pages.length} Ngu\u1ED3n Trang & ${activePostsCount} B\xE0i \u0111ang b\u1EADt qu\xE9t (${pausedPostsCount} b\xE0i c\u0169 \u0111\xE3 ng\u1EAFt / ${allPosts.length} t\u1ED5ng) \u2022 Chu k\u1EF3: ~${cycleMinsCurrent} ph\xFAt/v\xF2ng \u2022 ${progressText} (C\u1EADp nh\u1EADt: ${lastRun})`
     });
     if ((_d = state == null ? void 0 : state.status) == null ? void 0 : _d.last_error) {
       const errSpan = leftStatus.createDiv({ cls: "content-compass-fb-error" });
@@ -1755,11 +3013,11 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     setBtnContent(
       toggleDrawerBtn,
       this.isInputDrawerOpen ? "chevron-up" : "plus",
-      this.isInputDrawerOpen ? "Thu g\u1ECDn khung nh\u1EADp li\u1EC7u" : "Th\xEAm ngu\u1ED3n / Nh\u1EADp d\u1EEF li\u1EC7u"
+      this.isInputDrawerOpen ? "Thu g\u1ECDn khung nh\u1EADp li\u1EC7u & c\xE0i \u0111\u1EB7t" : "Th\xEAm ngu\u1ED3n / C\xE0i \u0111\u1EB7t qu\xE9t"
     );
     toggleDrawerBtn.setAttribute(
       "title",
-      "M\u1EDF ho\u1EB7c \u1EA9n khung th\xEAm Fanpage, th\xEAm Post URL, nh\u1EADp th\u1EE7 c\xF4ng v\xE0 import CSV"
+      "M\u1EDF ho\u1EB7c \u1EA9n khung th\xEAm Fanpage/Trang c\xE1 nh\xE2n, th\xEAm Post URL, c\xE0i \u0111\u1EB7t qu\xE9t n\xE2ng cao, nh\u1EADp th\u1EE7 c\xF4ng v\xE0 import CSV"
     );
     toggleDrawerBtn.addEventListener("click", () => {
       this.isInputDrawerOpen = !this.isInputDrawerOpen;
@@ -1797,14 +3055,14 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       scrollParent.scrollTop = savedScrollTop;
     }
   }
-  // Ngan keo Nhap lieu (Mac dinh An, chua 3 tab UISegmentedControl)
+  // Ngan keo Nhap lieu & Cai dat Quet tu dong (Mac dinh An, chua 3 tab UISegmentedControl)
   renderCollapsibleInputDrawer(workspace, watchlist, state, rootContainer, liveStatusEl) {
     const drawer = workspace.createDiv({ cls: "content-compass-fb-settings-panel" });
     const tabBar = drawer.createDiv({ cls: "content-compass-import-tabs" });
     const tabFb = tabBar.createEl("button", {
       cls: `content-compass-tab-btn ${this.activeSubTab === "fb" ? "is-active" : ""}`
     });
-    setBtnContent(tabFb, "globe", "Th\xEAm Fanpage / Post URL");
+    setBtnContent(tabFb, "globe", "Qu\xE9t t\u1EF1 \u0111\u1ED9ng Facebook (Fanpage / C\xE1 nh\xE2n / Post URL)");
     const tabManual = tabBar.createEl("button", {
       cls: `content-compass-tab-btn ${this.activeSubTab === "manual" ? "is-active" : ""}`
     });
@@ -1834,7 +3092,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     tabCsv.addEventListener("click", () => switchSubTab("csv"));
     switchSubTab(this.activeSubTab);
   }
-  // Form them nhanh Fanpage & Post URL ben trong Ngan keo Nhap lieu (Su dung cong tac UISwitch)
+  // Tab 1: Quet tu dong Facebook (Tich hop Them Fanpage/Trang ca nhan, Post URL, Bang Du bao Chu ky Cap nhat & Cai dat Quet nang cao)
   renderFbAddFormsInDrawer(container, watchlist, state, rootContainer, liveStatusEl) {
     container.empty();
     const toggleRow = container.createDiv({ cls: "content-compass-fb-checkbox-row" });
@@ -1903,23 +3161,28 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     const twoFormsGrid = container.createDiv({ cls: "content-compass-fb-split-form" });
     const pageBox = twoFormsGrid.createDiv({ cls: "content-compass-fb-add-box" });
     const pageSub = pageBox.createDiv({ cls: "content-compass-card-subtitle" });
-    setBtnContent(pageSub, "users", "Th\xEAm Fanpage / Trang c\xE1 nh\xE2n c\u1EA7n theo d\xF5i");
+    setBtnContent(pageSub, "users", "Th\xEAm Fanpage / Trang c\xE1 nh\xE2n Facebook c\u1EA7n theo d\xF5i");
     const lblPages = pageBox.createEl("label", { cls: "content-compass-fb-textarea-label" });
-    lblPages.createSpan({ text: "Link Fanpage ho\u1EB7c Trang c\xE1 nh\xE2n (m\u1ED7i d\xF2ng 1 \u0111\u1ECBa ch\u1EC9):" });
+    lblPages.createSpan({ text: "Link Fanpage ho\u1EB7c Trang c\xE1 nh\xE2n Facebook (m\u1ED7i d\xF2ng 1 \u0111\u1ECBa ch\u1EC9):" });
     const txtPages = lblPages.createEl("textarea", {
       attr: {
         rows: "2",
-        placeholder: "https://www.facebook.com/share/1BdsZPSQZa/\nhttps://www.facebook.com/TenFanpage"
+        placeholder: "https://www.facebook.com/share/1BdsZPSQZa/\nhttps://www.facebook.com/TenFanpageHoacCaNhan"
       }
     });
     const pageControls = pageBox.createDiv({ cls: "content-compass-fb-side-controls" });
     const lblPageSrc = pageControls.createEl("label");
     lblPageSrc.createSpan({ text: "Ph\xE2n lo\u1EA1i:" });
     const selPageSrc = lblPageSrc.createEl("select");
-    selPageSrc.createEl("option", { value: "external", text: "\u0110\u1ED1i th\u1EE7 / B\xEAn ngo\xE0i" });
-    selPageSrc.createEl("option", { value: "own", text: "Th\u01B0\u01A1ng hi\u1EC7u c\u1EE7a t\xF4i" });
+    this.bindSourceTypeSelect(selPageSrc, watchlist, "external", async (_val, createdNew) => {
+      if (createdNew) {
+        await this.engagementStore.initialize();
+        if (this.onRefreshDashboard)
+          this.onRefreshDashboard();
+      }
+    });
     const lblLimit = pageControls.createEl("label");
-    lblLimit.createSpan({ text: "S\u1ED1 b\xE0i m\u1EDBi c\u1EA7n l\u1EA5y/l\u1EA7n (1 - 20):" });
+    lblLimit.createSpan({ text: "S\u1ED1 b\xE0i mu\u1ED1n qu\xE9t/trang (1 - 20):" });
     const inpLimit = lblLimit.createEl("input", { type: "number", value: "5" });
     inpLimit.min = "1";
     inpLimit.max = "20";
@@ -1935,7 +3198,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         return;
       }
       const limit = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
-      const sourceType = selPageSrc.value;
+      const sourceType = selPageSrc.value || "external";
       let lastAddedId = "";
       for (const rawPage of lines) {
         const exists = watchlist.pages.some((p) => p.page_identifier.toLowerCase() === rawPage.toLowerCase());
@@ -1970,8 +3233,13 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     const lblPostSrc = postControls.createEl("label");
     lblPostSrc.createSpan({ text: "Ph\xE2n lo\u1EA1i:" });
     const selPostSrc = lblPostSrc.createEl("select");
-    selPostSrc.createEl("option", { value: "external", text: "B\xE0i b\xEAn ngo\xE0i / \u0110\u1ED1i th\u1EE7 (Viral Posts)" });
-    selPostSrc.createEl("option", { value: "own", text: "B\xE0i c\u1EE7a th\u01B0\u01A1ng hi\u1EC7u (Posted)" });
+    this.bindSourceTypeSelect(selPostSrc, watchlist, "external", async (_val, createdNew) => {
+      if (createdNew) {
+        await this.engagementStore.initialize();
+        if (this.onRefreshDashboard)
+          this.onRefreshDashboard();
+      }
+    });
     const addUrlBtn = postControls.createEl("button", {
       cls: "content-compass-import-btn"
     });
@@ -1983,7 +3251,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         postMsg.setText("Vui l\xF2ng d\xE1n \xEDt nh\u1EA5t 1 \u0111\u01B0\u1EDDng link b\xE0i vi\u1EBFt.");
         return;
       }
-      const sourceType = selPostSrc.value;
+      const sourceType = selPostSrc.value || "external";
       let lastId = "";
       for (const rawUrl of urls) {
         const exists = watchlist.posts.some((p) => p.url === rawUrl);
@@ -2005,22 +3273,529 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       const args = urls.length === 1 && lastId ? ["--force-id", lastId] : ["--force-all"];
       this.triggerPythonTracker(args, () => this.renderMainView(rootContainer), liveStatusEl);
     });
+    const workloadPanel = container.createDiv({
+      cls: `cc-adv-workload-panel ${this.isWorkloadPanelCollapsed ? "is-collapsed" : ""}`
+    });
+    const workloadHeader = workloadPanel.createDiv({ cls: "cc-adv-workload-header" });
+    const workloadTitle = workloadHeader.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+    const workloadBody = workloadPanel.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isWorkloadPanelCollapsed) {
+      workloadBody.style.display = "none";
+    }
+    const syncWorkloadTitle = () => {
+      setBtnContent(
+        workloadTitle,
+        this.isWorkloadPanelCollapsed ? "chevron-right" : "chevron-down",
+        "D\u1EF1 b\xE1o Kh\u1ED1i l\u01B0\u1EE3ng Theo d\xF5i & Chu k\u1EF3 C\u1EADp nh\u1EADt Ch\u1EC9 s\u1ED1 T\u01B0\u01A1ng t\xE1c (T\u1EF1 \u0111\u1ED9ng t\xEDnh khi b\u1EA1n nh\u1EADp th\xEAm)"
+      );
+      workloadTitle.setAttribute(
+        "title",
+        this.isWorkloadPanelCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+    };
+    syncWorkloadTitle();
+    workloadTitle.addEventListener("click", () => {
+      this.isWorkloadPanelCollapsed = !this.isWorkloadPanelCollapsed;
+      workloadPanel.toggleClass("is-collapsed", this.isWorkloadPanelCollapsed);
+      workloadBody.style.display = this.isWorkloadPanelCollapsed ? "none" : "";
+      syncWorkloadTitle();
+    });
+    const kpiStrip = workloadBody.createDiv({ cls: "cc-adv-kpi-strip" });
+    const estimateBanner = workloadBody.createDiv({ cls: "cc-adv-estimate-banner" });
+    const advWrapper = container.createDiv({ cls: "cc-adv-collapsible-section" });
+    const advHeaderBar = advWrapper.createDiv({ cls: "cc-adv-section-toggle-bar" });
+    const advTitleLeft = advHeaderBar.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+    const syncAdvToggleBtn = () => {
+      setBtnContent(
+        advTitleLeft,
+        this.isAdvancedSectionOpen ? "chevron-down" : "chevron-right",
+        "C\xE0i \u0111\u1EB7t Qu\xE9t n\xE2ng cao & Ng\u01B0\u1EE1ng t\u1EF1 \u0111\u1ED9ng ng\u1EEBng qu\xE9t cho b\xE0i c\u0169"
+      );
+      advTitleLeft.setAttribute(
+        "title",
+        this.isAdvancedSectionOpen ? "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng"
+      );
+    };
+    syncAdvToggleBtn();
+    const advBody = advWrapper.createDiv({ cls: "cc-adv-section-body" });
+    if (!this.isAdvancedSectionOpen) {
+      advBody.style.display = "none";
+    }
+    advHeaderBar.addEventListener("click", (ev) => {
+      if (ev.target.closest("input, select"))
+        return;
+      this.isAdvancedSectionOpen = !this.isAdvancedSectionOpen;
+      advBody.style.display = this.isAdvancedSectionOpen ? "" : "none";
+      syncAdvToggleBtn();
+    });
+    const splitGrid = advBody.createDiv({ cls: "content-compass-fb-split-form" });
+    const leftBox = splitGrid.createDiv({ cls: "content-compass-fb-add-box" });
+    const leftTitle = leftBox.createDiv({ cls: "content-compass-card-subtitle" });
+    setBtnContent(leftTitle, "filter", "1. Ng\u01B0\u1EE1ng t\u1EF1 \u0111\u1ED9ng ng\u1EEBng qu\xE9t cho b\xE0i c\u0169");
+    leftBox.createDiv({
+      cls: "content-compass-fb-subtext",
+      text: "Khi b\xE0i vi\u1EBFt c\u0169 v\u01B0\u1EE3t qu\xE1 ng\u01B0\u1EE1ng b\xEAn d\u01B0\u1EDBi, h\u1EC7 th\u1ED1ng t\u1EF1 \u0111\u1ED9ng chuy\u1EC3n b\xE0i \u0111\xF3 sang tr\u1EA1ng th\xE1i T\u1EA1m d\u1EEBng qu\xE9t (v\u1EABn gi\u1EEF nguy\xEAn 100% s\u1ED1 li\u1EC7u l\u1ECBch s\u1EED tr\xEAn bi\u1EC3u \u0111\u1ED3)."
+    });
+    const radioList = leftBox.createDiv({ cls: "cc-adv-retention-list" });
+    let currentMode = watchlist.settings.retention_mode || "max_days";
+    const cardOpt1 = radioList.createDiv({
+      cls: `cc-adv-radio-card ${currentMode === "latest_only" ? "is-selected" : ""}`
+    });
+    const rowOpt1 = cardOpt1.createEl("label", { cls: "cc-adv-radio-label" });
+    const rad1 = rowOpt1.createEl("input", {
+      attr: { type: "radio", name: "cc_retention_mode", value: "latest_only" }
+    });
+    rad1.checked = currentMode === "latest_only";
+    const txt1 = rowOpt1.createDiv({ cls: "cc-adv-radio-text" });
+    txt1.createDiv({
+      cls: "cc-adv-radio-title",
+      text: "(1) Ch\u1EC9 qu\xE9t N b\xE0i m\u1EDBi nh\u1EA5t \u1EDF th\u1EDDi \u0111i\u1EC3m qu\xE9t (Kh\xF4ng c\u1ED9ng d\u1ED3n)"
+    });
+    txt1.createDiv({
+      cls: "cc-adv-radio-desc",
+      text: "M\u1ED7i Trang ch\u1EC9 gi\u1EEF qu\xE9t \u0111\xFAng N b\xE0i m\u1EDBi nh\u1EA5t tr\xEAn \u0111\u1EA7u trang (theo c\u1ED9t 'S\u1ED1 b\xE0i m\u1EDBi/l\u1EA7n', m\u1EB7c \u0111\u1ECBnh 5 b\xE0i). B\xE0i c\u0169 h\u01A1n t\u1EF1 \u0111\u1ED9ng d\u1EEBng qu\xE9t."
+    });
+    const cardOpt2 = radioList.createDiv({
+      cls: `cc-adv-radio-card ${currentMode === "max_posts" ? "is-selected" : ""}`
+    });
+    const rowOpt2 = cardOpt2.createEl("label", { cls: "cc-adv-radio-label" });
+    const rad2 = rowOpt2.createEl("input", {
+      attr: { type: "radio", name: "cc_retention_mode", value: "max_posts" }
+    });
+    rad2.checked = currentMode === "max_posts";
+    const txt2 = rowOpt2.createDiv({ cls: "cc-adv-radio-text" });
+    const titleRow2 = txt2.createDiv({ cls: "cc-adv-inline-input-row" });
+    titleRow2.createSpan({
+      cls: "cc-adv-radio-title",
+      text: "(2) Qu\xE9t c\u1ED9ng d\u1ED3n t\u1ED1i \u0111a:"
+    });
+    const inpMaxPosts = titleRow2.createEl("input", {
+      type: "number",
+      cls: "content-compass-fb-inline-input",
+      value: String(watchlist.settings.retention_max_posts || 20)
+    });
+    inpMaxPosts.min = "1";
+    inpMaxPosts.max = "500";
+    titleRow2.createSpan({ cls: "cc-adv-radio-title", text: "b\xE0i vi\u1EBFt m\u1EDBi nh\u1EA5t" });
+    txt2.createDiv({
+      cls: "cc-adv-radio-desc",
+      text: "C\u1ED9ng d\u1ED3n b\xE0i m\u1EDBi qua c\xE1c ng\xE0y nh\u01B0ng gi\u1EDBi h\u1EA1n t\u1ED5ng s\u1ED1 b\xE0i \u0111ang b\u1EADt qu\xE9t kh\xF4ng v\u01B0\u1EE3t qu\xE1 con s\u1ED1 n\xE0y."
+    });
+    const cardOpt3 = radioList.createDiv({
+      cls: `cc-adv-radio-card ${currentMode === "max_days" ? "is-selected" : ""}`
+    });
+    const rowOpt3 = cardOpt3.createEl("label", { cls: "cc-adv-radio-label" });
+    const rad3 = rowOpt3.createEl("input", {
+      attr: { type: "radio", name: "cc_retention_mode", value: "max_days" }
+    });
+    rad3.checked = currentMode === "max_days";
+    const txt3 = rowOpt3.createDiv({ cls: "cc-adv-radio-text" });
+    const titleRow3 = txt3.createDiv({ cls: "cc-adv-inline-input-row" });
+    titleRow3.createSpan({
+      cls: "cc-adv-radio-title",
+      text: "(3) Qu\xE9t c\u1ED9ng d\u1ED3n b\xE0i \u0111\u0103ng trong v\xF2ng:"
+    });
+    const inpMaxDays = titleRow3.createEl("input", {
+      type: "number",
+      cls: "content-compass-fb-inline-input",
+      value: String(watchlist.settings.retention_max_days || 7)
+    });
+    inpMaxDays.min = "1";
+    inpMaxDays.max = "365";
+    titleRow3.createSpan({ cls: "cc-adv-radio-title", text: "ng\xE0y g\u1EA7n nh\u1EA5t" });
+    txt3.createDiv({
+      cls: "cc-adv-radio-desc",
+      text: "C\u1ED9ng d\u1ED3n b\xE0i m\u1EDBi qua c\xE1c ng\xE0y, t\u1EF1 \u0111\u1ED9ng ng\u1EEBng qu\xE9t c\xE1c b\xE0i \u0111\xE3 \u0111\u0103ng qu\xE1 s\u1ED1 ng\xE0y quy \u0111\u1ECBnh."
+    });
+    const retentionStatusMsg = leftBox.createDiv({ cls: "content-compass-import-status" });
+    const rightBox = splitGrid.createDiv({ cls: "content-compass-fb-add-box" });
+    const rightTitle = rightBox.createDiv({ cls: "content-compass-card-subtitle" });
+    setBtnContent(rightTitle, "shield", "2. C\xE0i \u0111\u1EB7t Qu\xE9t n\xE2ng cao & B\u1EA3o v\u1EC7 IP");
+    const batchEditRow = rightBox.createDiv({ cls: "cc-adv-batch-edit-box" });
+    const batchLblWrap = batchEditRow.createDiv({ cls: "cc-adv-batch-label-wrap" });
+    batchLblWrap.createDiv({
+      cls: "cc-adv-batch-title",
+      text: "S\u1ED1 b\xE0i qu\xE9t t\u1ED1i \u0111a trong 1 phi\xEAn (Batch Size):"
+    });
+    batchLblWrap.createDiv({
+      cls: "cc-adv-batch-sub",
+      text: "Th\xF4ng s\u1ED1 duy nh\u1EA5t \u0111\u01B0\u1EE3c ph\xE9p t\xF9y ch\u1EC9nh (1 \u2013 100 b\xE0i). Khuy\u1EBFn ngh\u1ECB an to\xE0n: 15 \u2013 25 b\xE0i."
+    });
+    const inpBatchSize = batchEditRow.createEl("input", {
+      type: "number",
+      cls: "content-compass-fb-inline-input cc-adv-batch-input",
+      value: String(watchlist.settings.max_batch_size || 20)
+    });
+    inpBatchSize.min = "1";
+    inpBatchSize.max = "100";
+    const lockedGrid = rightBox.createDiv({ cls: "cc-adv-locked-grid" });
+    const lockedMetrics = [
+      {
+        label: "T\u1ED1c \u0111\u1ED9 qu\xE9t (Kh\xF4ng Cookie)",
+        value: `${watchlist.settings.delay_seconds} gi\xE2y / b\xE0i`,
+        note: "~6 b\xE0i/ph\xFAt (Kh\xF3a b\u1EA3o v\u1EC7 IP)"
+      },
+      {
+        label: "T\u1ED1c \u0111\u1ED9 qu\xE9t (C\xF3 Cookie FB ph\u1EE5)",
+        value: "15 \u2013 22 gi\xE2y / b\xE0i",
+        note: "Kh\xF3a ch\u1ED1ng Checkpoint nick"
+      },
+      {
+        label: "T\u1EA7n su\u1EA5t qu\xE9t b\xE0i m\u1EDBi (< 12h)",
+        value: `${watchlist.settings.poll_new_mins} ph\xFAt / l\u1EA7n`,
+        note: "B\u1EAFt nh\u1ECBp viral \u0111\u1EA7u ti\xEAn"
+      },
+      {
+        label: "T\u1EA7n su\u1EA5t qu\xE9t b\xE0i v\u1EEBa (12 \u2013 48h)",
+        value: `${watchlist.settings.poll_mid_mins} ph\xFAt / l\u1EA7n`,
+        note: "Theo d\xF5i \u1ED5n \u0111\u1ECBnh"
+      },
+      {
+        label: "T\u1EA7n su\u1EA5t qu\xE9t b\xE0i c\u0169 (> 48h)",
+        value: `${watchlist.settings.poll_old_mins} ph\xFAt (6 gi\u1EDD)`,
+        note: "Gi\xE3n l\u1ECBch ti\u1EBFt ki\u1EC7m t\xE0i nguy\xEAn"
+      },
+      {
+        label: "Chu k\u1EF3 qu\xE9t b\xE0i m\u1EDBi tr\xEAn Trang",
+        value: `${watchlist.settings.page_scan_mins} ph\xFAt / l\u1EA7n`,
+        note: "Ki\u1EC3m tra b\xE0i \u0111\u0103ng m\u1EDBi"
+      }
+    ];
+    for (const lm of lockedMetrics) {
+      const cell = lockedGrid.createDiv({ cls: "cc-adv-locked-item" });
+      const top = cell.createDiv({ cls: "cc-adv-locked-top" });
+      top.createSpan({ cls: "cc-adv-locked-label", text: lm.label });
+      const lockIc = top.createSpan({ cls: "cc-icon cc-lock-icon" });
+      (0, import_obsidian8.setIcon)(lockIc, "lock");
+      lockIc.setAttribute("title", "Th\xF4ng s\u1ED1 h\u1EC7 th\u1ED1ng \u0111\xE3 kh\xF3a c\u1EE9ng \u0111\u1EC3 b\u1EA3o v\u1EC7 an to\xE0n IP v\xE0 t\xE0i kho\u1EA3n");
+      cell.createDiv({ cls: "cc-adv-locked-val", text: lm.value });
+      cell.createDiv({ cls: "cc-adv-locked-note", text: lm.note });
+    }
+    const applyRetentionImmediately = async (saveToDisk) => {
+      watchlist.settings.retention_mode = currentMode;
+      watchlist.settings.retention_max_posts = Math.max(1, Math.min(500, parseInt(inpMaxPosts.value) || 20));
+      watchlist.settings.retention_max_days = Math.max(1, Math.min(365, parseInt(inpMaxDays.value) || 7));
+      if (saveToDisk) {
+        inpMaxPosts.value = String(watchlist.settings.retention_max_posts);
+        inpMaxDays.value = String(watchlist.settings.retention_max_days);
+      }
+      const discovered = Array.isArray(state == null ? void 0 : state.discovered_posts) ? state.discovered_posts : [];
+      const postsState = (state == null ? void 0 : state.posts) || {};
+      const getSortTs = (item) => {
+        const pst = postsState[item.id] || {};
+        if (pst.creation_time)
+          return Number(pst.creation_time) * 1e3;
+        if (item.added_at) {
+          const t = new Date(item.added_at).getTime();
+          if (!isNaN(t))
+            return t;
+        }
+        return 0;
+      };
+      if (currentMode === "latest_only") {
+        const pageLimits = /* @__PURE__ */ new Map();
+        for (const pg of watchlist.pages) {
+          pageLimits.set(pg.id, Math.max(1, pg.limit || 5));
+          pageLimits.set(pg.page_identifier, Math.max(1, pg.limit || 5));
+        }
+        const byPage = /* @__PURE__ */ new Map();
+        for (const dp of discovered) {
+          const key = dp.from_page_id || dp.from_page || "_default";
+          if (!byPage.has(key))
+            byPage.set(key, []);
+          byPage.get(key).push(dp);
+        }
+        for (const [key, list] of byPage.entries()) {
+          const lim = pageLimits.get(key) || 5;
+          list.sort((a, b) => getSortTs(b) - getSortTs(a));
+          list.forEach((dp, idx) => {
+            dp.enabled = idx < lim;
+            dp.auto_paused_reason = idx < lim ? null : "latest_only";
+          });
+        }
+      } else if (currentMode === "max_posts") {
+        const allRefs = [...watchlist.posts, ...discovered];
+        allRefs.sort((a, b) => getSortTs(b) - getSortTs(a));
+        const maxP = watchlist.settings.retention_max_posts;
+        allRefs.forEach((item, idx) => {
+          if (idx >= maxP) {
+            item.enabled = false;
+            item.auto_paused_reason = "max_posts";
+          } else if (item.auto_paused_reason) {
+            item.enabled = true;
+            item.auto_paused_reason = null;
+          }
+        });
+      } else if (currentMode === "max_days") {
+        const cutoffMs = Date.now() - watchlist.settings.retention_max_days * 864e5;
+        const allRefs = [...watchlist.posts, ...discovered];
+        for (const item of allRefs) {
+          const ts = getSortTs(item);
+          if (ts > 0 && ts < cutoffMs) {
+            item.enabled = false;
+            item.auto_paused_reason = "max_days";
+          } else if (item.auto_paused_reason) {
+            item.enabled = true;
+            item.auto_paused_reason = null;
+          }
+        }
+      }
+      const combined = [...watchlist.posts, ...discovered];
+      const activeCount = combined.filter((x) => x.enabled !== false).length;
+      const totalCount = combined.length;
+      const pausedCount = totalCount - activeCount;
+      if (saveToDisk) {
+        await this.saveWatchlist(watchlist);
+        await this.saveTrackerState(state);
+        retentionStatusMsg.setText(
+          `\u0110\xE3 l\u01B0u! Hi\u1EC7n c\xF3 ${activeCount}/${totalCount} b\xE0i \u0111ang b\u1EADt qu\xE9t (${pausedCount} b\xE0i c\u0169 \u0111\xE3 t\u1EF1 \u0111\u1ED9ng t\u1EA1m d\u1EEBng).`
+        );
+      }
+      return { activeCount, pausedCount, totalCount };
+    };
+    const formatDuration = (totalSeconds) => {
+      if (totalSeconds < 60)
+        return `${Math.round(totalSeconds)} gi\xE2y`;
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = Math.round(totalSeconds % 60);
+      if (mins < 60) {
+        return secs > 0 ? `${mins} ph\xFAt ${secs} gi\xE2y` : `${mins} ph\xFAt`;
+      }
+      const hrs = Math.floor(mins / 60);
+      const remMins = mins % 60;
+      return remMins > 0 ? `${hrs} gi\u1EDD ${remMins} ph\xFAt` : `${hrs} gi\u1EDD`;
+    };
+    const formatCycleMins = (mins) => {
+      if (mins < 60)
+        return `${mins} ph\xFAt`;
+      const hrs = Math.floor(mins / 60);
+      const rem = mins % 60;
+      return rem > 0 ? `${hrs} gi\u1EDD ${rem} ph\xFAt (${mins} ph\xFAt)` : `${hrs} gi\u1EDD (${mins} ph\xFAt)`;
+    };
+    const updateRealtimeEstimate = async (saveNow = false) => {
+      const batchVal = Math.max(1, Math.min(100, parseInt(inpBatchSize.value) || 20));
+      if (saveNow) {
+        inpBatchSize.value = String(batchVal);
+      }
+      watchlist.settings.max_batch_size = batchVal;
+      const { activeCount, pausedCount, totalCount } = await applyRetentionImmediately(saveNow);
+      const enabledPagesCount = watchlist.pages.filter((p) => p.enabled !== false).length;
+      const rawPageLines = txtPages.value.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
+      const uniqueNewPages = rawPageLines.filter(
+        (raw) => !watchlist.pages.some((p) => p.page_identifier.toLowerCase() === raw.toLowerCase())
+      );
+      const newPagesCount = uniqueNewPages.length;
+      const limitPerNewPage = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
+      const addedPostsFromPages = newPagesCount * limitPerNewPage;
+      const rawUrlLines = txtUrls.value.split("\n").map((u) => u.trim()).filter((u) => u.length > 0);
+      const uniqueNewUrls = rawUrlLines.filter(
+        (raw) => !watchlist.posts.some((p) => p.url.toLowerCase() === raw.toLowerCase())
+      );
+      const newDirectPostsCount = uniqueNewUrls.length;
+      const totalAddingPosts = addedPostsFromPages + newDirectPostsCount;
+      const rawProjectedTotal = activeCount + totalAddingPosts;
+      let effectiveProjectedPosts = rawProjectedTotal;
+      let cappedOverflowPosts = 0;
+      if (currentMode === "max_posts" && rawProjectedTotal > watchlist.settings.retention_max_posts) {
+        effectiveProjectedPosts = watchlist.settings.retention_max_posts;
+        cappedOverflowPosts = rawProjectedTotal - effectiveProjectedPosts;
+      }
+      const projectedPagesCount = enabledPagesCount + newPagesCount;
+      const numSessionsNeeded = Math.max(1, Math.ceil(Math.max(1, effectiveProjectedPosts) / batchVal));
+      const pollNewBase = watchlist.settings.poll_new_mins || 15;
+      const pollMidBase = watchlist.settings.poll_mid_mins || 60;
+      const pollOldBase = watchlist.settings.poll_old_mins || 360;
+      const rotationCycleMins = numSessionsNeeded * pollNewBase;
+      const newPostCycleMins = Math.max(pollNewBase, rotationCycleMins);
+      const midPostCycleMins = Math.max(pollMidBase, rotationCycleMins);
+      const oldPostCycleMins = Math.max(pollOldBase, rotationCycleMins);
+      const firstSessionPosts = Math.min(Math.max(1, effectiveProjectedPosts), batchVal);
+      const secPerSessionNoCookie = projectedPagesCount * 10 + firstSessionPosts * 10;
+      const secPerSessionWithCookie = projectedPagesCount * 15 + firstSessionPosts * 20;
+      const totalManualSec = projectedPagesCount * 10 + effectiveProjectedPosts * 10 + (numSessionsNeeded - 1) * 120;
+      const addingInitialBatch = Math.min(totalAddingPosts, batchVal);
+      const addingInitialSec = newPagesCount * 10 + addingInitialBatch * 10;
+      const addingSessions = Math.max(1, Math.ceil(Math.max(1, totalAddingPosts) / batchVal));
+      const addingTotalAutoSec = addingSessions === 1 ? addingInitialSec : (addingSessions - 1) * pollNewBase * 60 + (newPagesCount * 10 + (totalAddingPosts - (addingSessions - 1) * batchVal) * 10);
+      kpiStrip.empty();
+      const kpi1 = kpiStrip.createDiv({ cls: "cc-adv-kpi-box" });
+      kpi1.createDiv({ cls: "cc-adv-kpi-label", text: "1. \u0110ang theo d\xF5i (theo l\u1ECBch)" });
+      kpi1.createDiv({ cls: "cc-adv-kpi-value", text: `${activeCount} b\xE0i vi\u1EBFt` });
+      kpi1.createDiv({
+        cls: "cc-adv-kpi-sub",
+        text: `Tr\xEAn ${enabledPagesCount} Trang \u0111ang b\u1EADt \u2022 \u0110\xE3 ng\u1EAFt ${pausedCount}/${totalCount} b\xE0i c\u0169`
+      });
+      const kpi2 = kpiStrip.createDiv({
+        cls: `cc-adv-kpi-box ${totalAddingPosts > 0 || newPagesCount > 0 ? "is-highlight" : ""}`
+      });
+      kpi2.createDiv({ cls: "cc-adv-kpi-label", text: "2. \u0110ang mu\u1ED1n qu\xE9t th\xEAm" });
+      kpi2.createDiv({
+        cls: "cc-adv-kpi-value",
+        text: `+${totalAddingPosts} b\xE0i m\u1EDBi`
+      });
+      kpi2.createDiv({
+        cls: "cc-adv-kpi-sub",
+        text: totalAddingPosts > 0 || newPagesCount > 0 ? `${newPagesCount} Trang m\u1EDBi (\xD7${limitPerNewPage} b\xE0i/trang) + ${newDirectPostsCount} Post URL l\u1EBB` : `Nh\u1EADp link Trang (${limitPerNewPage} b\xE0i/trang) ho\u1EB7c Post URL \u1EDF tr\xEAn \u0111\u1EC3 t\xEDnh`
+      });
+      const kpi3 = kpiStrip.createDiv({ cls: "cc-adv-kpi-box" });
+      kpi3.createDiv({ cls: "cc-adv-kpi-label", text: "3. T\u1ED5ng b\xE0i s\u1EBD qu\xE9t theo l\u1ECBch" });
+      kpi3.createDiv({
+        cls: "cc-adv-kpi-value",
+        text: `${effectiveProjectedPosts} b\xE0i vi\u1EBFt`
+      });
+      kpi3.createDiv({
+        cls: "cc-adv-kpi-sub",
+        text: cappedOverflowPosts > 0 ? `Gi\u1EDBi h\u1EA1n tr\u1EA7n ${watchlist.settings.retention_max_posts} b\xE0i (t\u1EF1 ng\u1EAFt ${cappedOverflowPosts} b\xE0i c\u0169)` : `Hi\u1EC7n c\xF3 ${activeCount} b\xE0i + Qu\xE9t th\xEAm ${totalAddingPosts} b\xE0i (${projectedPagesCount} Trang)`
+      });
+      const kpi4 = kpiStrip.createDiv({ cls: "cc-adv-kpi-box is-cycle" });
+      kpi4.createDiv({ cls: "cc-adv-kpi-label", text: "4. Chu k\u1EF3 nh\u1EADn d\u1EEF li\u1EC7u m\u1EDBi" });
+      kpi4.createDiv({
+        cls: "cc-adv-kpi-value",
+        text: `M\u1ED7i ~${formatCycleMins(rotationCycleMins)}`
+      });
+      kpi4.createDiv({
+        cls: "cc-adv-kpi-sub",
+        text: `Xoay v\xF2ng ${numSessionsNeeded} \u0111\u1EE3t \xD7 t\u1ED1i \u0111a ${batchVal} b\xE0i/\u0111\u1EE3t`
+      });
+      estimateBanner.empty();
+      estimateBanner.removeClass("is-safe", "is-warn", "is-danger");
+      let tierClass = "is-safe";
+      let badgeText = "NG\u01AF\u1EE0NG AN TO\xC0N TUY\u1EC6T \u0110\u1ED0I (1 \u2013 25 B\xC0I/PHI\xCAN)";
+      let bestActionText = "Khuy\u1EBFn ngh\u1ECB t\u1ED1t nh\u1EA5t: Gi\u1EEF m\u1EE9c 15 \u2013 25 b\xE0i/phi\xEAn v\xE0 b\u1EADt 'Ch\u1EA1y ng\u1EA7m t\u1EF1 \u0111\u1ED9ng'. H\u1EC7 th\u1ED1ng t\u1EF1 \u0111\u1ED9ng chia nh\u1ECF t\u1ED5ng s\u1ED1 b\xE0i c\u1EA7n qu\xE9t th\xE0nh c\xE1c \u0111\u1EE3t c\xE1ch nhau 15 ph\xFAt \u2014 an to\xE0n 100% tr\xEAn m\u1EA1ng th\u01B0\u1EDDng, KH\xD4NG c\u1EA7n b\u1EADt Proxy/VPN m\xE0 v\u1EABn l\u1EA5y \u0111\u1EE7 to\xE0n b\u1ED9 k\u1EBFt qu\u1EA3.";
+      if (batchVal > 25 && batchVal <= 50) {
+        tierClass = "is-warn";
+        badgeText = "NG\u01AF\u1EE0NG TRUNG B\xCCNH - C\u1EA2NH B\xC1O T\u1EA6N SU\u1EA4T (26 \u2013 50 B\xC0I/PHI\xCAN)";
+        bestActionText = "Khuy\u1EBFn ngh\u1ECB t\u1ED1t nh\u1EA5t: Ph\xF9 h\u1EE3p khi b\u1EA1n b\u1EA5m 'Qu\xE9t c\u1EADp nh\u1EADt ngay' th\u1EE7 c\xF4ng 1 l\u1EA7n \u0111\u1EC3 l\u1EA5y nhanh 30\u201350 b\xE0i. \u0110\u1EC3 tr\xE1nh b\u1ECB Facebook ch\u1EB7n IP t\u1EA1m th\u1EDDi, KH\xD4NG b\u1EA5m qu\xE9t li\xEAn ti\u1EBFp qu\xE1 2 l\u1EA7n trong 1 gi\u1EDD; n\u1EBFu c\u1EA7n qu\xE9t li\xEAn t\u1EE5c nhi\u1EC1u \u0111\u1EE3t n\xEAn b\u1EADt VPN/Proxy.";
+      } else if (batchVal > 50) {
+        tierClass = "is-danger";
+        badgeText = "NG\u01AF\u1EE0NG R\u1EE6I RO CH\u1EB6N IP CAO (> 50 B\xC0I/PHI\xCAN)";
+        bestActionText = "Khuy\u1EBFn ngh\u1ECB t\u1ED1t nh\u1EA5t: Tr\xEAn 1 IP m\u1EA1ng th\u01B0\u1EDDng, t\u01B0\u1EDDng l\u1EEDa Facebook th\u01B0\u1EDDng c\u1EAFt k\u1EBFt n\u1ED1i (HTTP 429) \u1EDF b\xE0i th\u1EE9 45\u201355. \u0110\u1EC3 l\u1EA5y \u0111\u1EE7 k\u1EBFt qu\u1EA3 an to\xE0n: (C\xE1ch 1 - Khuy\xEAn d\xF9ng) H\u1EA1 S\u1ED1 b\xE0i/phi\xEAn v\u1EC1 20 b\xE0i \u0111\u1EC3 h\u1EC7 th\u1ED1ng t\u1EF1 chia th\xE0nh nhi\u1EC1u \u0111\u1EE3t ch\u1EA1y ng\u1EA7m; HO\u1EB6C (C\xE1ch 2) B\u1EAFt bu\u1ED9c b\u1EADt VPN / \u0111\u1ED5i Proxy sang IP m\u1EDBi tr\u01B0\u1EDBc khi qu\xE9t. L\u01B0u \xFD: Tuy\u1EC7t \u0111\u1ED1i KH\xD4NG d\xF9ng Cookie t\xE0i kho\u1EA3n FB \u0111\u1EC3 t\u0103ng s\u1ED1 l\u01B0\u1EE3ng b\xE0i qu\xE9t (Cookie ch\u1EC9 d\xF9ng m\u1EDF kh\xF3a trang c\xE1 nh\xE2n ri\xEAng t\u01B0).";
+      }
+      estimateBanner.addClass(tierClass);
+      const headLine = estimateBanner.createDiv({ cls: "cc-adv-estimate-head" });
+      headLine.createSpan({ text: badgeText });
+      const statsList = estimateBanner.createEl("ul", { cls: "cc-adv-estimate-list" });
+      if (totalAddingPosts > 0 || newPagesCount > 0) {
+        statsList.createEl("li", {
+          text: `Th\u1EDDi gian l\u1EA5y xong d\u1EEF li\u1EC7u l\u01B0\u1EE3t \u0111\u1EA7u cho +${totalAddingPosts} b\xE0i m\u1EDBi \u0111ang nh\u1EADp (${newPagesCount} Trang m\u1EDBi + ${newDirectPostsCount} Post l\u1EBB): ${addingSessions === 1 ? `L\u1EA5y xong to\xE0n b\u1ED9 ngay trong 1 \u0111\u1EE3t (~${formatDuration(addingInitialSec)}) sau khi b\u1EA5m n\xFAt Th\xEAm.` : `\u0110\u1EE3t 1 l\u1EA5y ngay ${addingInitialBatch} b\xE0i trong ~${formatDuration(addingInitialSec)}; to\xE0n b\u1ED9 +${totalAddingPosts} b\xE0i m\u1EDBi ho\xE0n t\u1EA5t sau ${addingSessions} \u0111\u1EE3t (~${formatDuration(addingTotalAutoSec)}).`}`
+        });
+      }
+      statsList.createEl("li", {
+        text: `Chu k\u1EF3 nh\u1EADn b\u1EA3n c\u1EADp nh\u1EADt ch\u1EC9 s\u1ED1 t\u01B0\u01A1ng t\xE1c (Like, Comment, Share) m\u1EDBi cho t\u1ED5ng ${effectiveProjectedPosts} b\xE0i vi\u1EBFt: H\u1EC7 th\u1ED1ng chia l\xE0m ${numSessionsNeeded} \u0111\u1EE3t (${batchVal} b\xE0i/\u0111\u1EE3t, m\u1ED7i \u0111\u1EE3t ch\u1EA1y m\u1EA5t ~${formatDuration(secPerSessionNoCookie)} Kh\xF4ng Cookie ho\u1EB7c ~${formatDuration(secPerSessionWithCookie)} C\xF3 Cookie):`
+      });
+      const cycleSubList = statsList.createEl("ul", { cls: "cc-adv-cycle-sublist" });
+      cycleSubList.createEl("li", {
+        text: `B\xE0i m\u1EDBi \u0111\u0103ng (< 12h): Nh\u1EADn ch\u1EC9 s\u1ED1 t\u01B0\u01A1ng t\xE1c m\u1EDBi sau m\u1ED7i ~${formatCycleMins(newPostCycleMins)}.`
+      });
+      cycleSubList.createEl("li", {
+        text: `B\xE0i v\u1EEBa (12 \u2013 48h): Nh\u1EADn ch\u1EC9 s\u1ED1 t\u01B0\u01A1ng t\xE1c m\u1EDBi sau m\u1ED7i ~${formatCycleMins(midPostCycleMins)}.`
+      });
+      cycleSubList.createEl("li", {
+        text: `B\xE0i c\u0169 (> 48h): Nh\u1EADn ch\u1EC9 s\u1ED1 t\u01B0\u01A1ng t\xE1c m\u1EDBi sau m\u1ED7i ~${formatCycleMins(oldPostCycleMins)}.`
+      });
+      cycleSubList.createEl("li", {
+        text: `Ph\xE1t hi\u1EC7n b\xE0i m\u1EDBi \u0111\u0103ng tr\xEAn ${projectedPagesCount} Ngu\u1ED3n Trang: T\u1EF1 \u0111\u1ED9ng ki\u1EC3m tra sau m\u1ED7i ${watchlist.settings.page_scan_mins} ph\xFAt.${effectiveProjectedPosts > 0 ? ` (N\u1EBFu b\u1EA5m 'Qu\xE9t c\u1EADp nh\u1EADt ngay' th\u1EE7 c\xF4ng cho to\xE0n b\u1ED9 ${effectiveProjectedPosts} b\xE0i: m\u1EA5t t\u1ED5ng c\u1ED9ng ~${formatDuration(totalManualSec)}).` : ""}`
+      });
+      const guideBox = estimateBanner.createDiv({ cls: "cc-adv-estimate-guide" });
+      guideBox.setText(bestActionText);
+    };
+    txtPages.addEventListener("input", () => updateRealtimeEstimate(false));
+    inpLimit.addEventListener("input", () => updateRealtimeEstimate(false));
+    inpLimit.addEventListener("change", () => updateRealtimeEstimate(false));
+    txtUrls.addEventListener("input", () => updateRealtimeEstimate(false));
+    const onRetentionInputChange = () => {
+      if (rad1.checked)
+        currentMode = "latest_only";
+      else if (rad2.checked)
+        currentMode = "max_posts";
+      else if (rad3.checked)
+        currentMode = "max_days";
+      cardOpt1.toggleClass("is-selected", currentMode === "latest_only");
+      cardOpt2.toggleClass("is-selected", currentMode === "max_posts");
+      cardOpt3.toggleClass("is-selected", currentMode === "max_days");
+      updateRealtimeEstimate(true);
+    };
+    rad1.addEventListener("change", onRetentionInputChange);
+    rad2.addEventListener("change", onRetentionInputChange);
+    rad3.addEventListener("change", onRetentionInputChange);
+    inpMaxPosts.addEventListener("focus", () => {
+      rad2.checked = true;
+      onRetentionInputChange();
+    });
+    inpMaxPosts.addEventListener("input", () => {
+      rad2.checked = true;
+      cardOpt1.toggleClass("is-selected", false);
+      cardOpt2.toggleClass("is-selected", true);
+      cardOpt3.toggleClass("is-selected", false);
+      currentMode = "max_posts";
+      updateRealtimeEstimate(false);
+    });
+    inpMaxPosts.addEventListener("change", () => {
+      rad2.checked = true;
+      onRetentionInputChange();
+    });
+    inpMaxDays.addEventListener("focus", () => {
+      rad3.checked = true;
+      onRetentionInputChange();
+    });
+    inpMaxDays.addEventListener("input", () => {
+      rad3.checked = true;
+      cardOpt1.toggleClass("is-selected", false);
+      cardOpt2.toggleClass("is-selected", false);
+      cardOpt3.toggleClass("is-selected", true);
+      currentMode = "max_days";
+      updateRealtimeEstimate(false);
+    });
+    inpMaxDays.addEventListener("change", () => {
+      rad3.checked = true;
+      onRetentionInputChange();
+    });
+    inpBatchSize.addEventListener("input", () => {
+      updateRealtimeEstimate(false);
+    });
+    inpBatchSize.addEventListener("change", () => {
+      updateRealtimeEstimate(true);
+    });
+    updateRealtimeEstimate(false);
   }
   // Bang 1 (LUON HIEN THI): The phan vung Fanpage / Trang ca nhan chuan Apple Inset Grouped Card
   renderWatchedFanpagesTable(wrapper, watchlist, state, rootContainer, liveStatusEl) {
     var _a;
-    const sectionCard = wrapper.createDiv({ cls: "content-compass-fb-section-card" });
+    const sectionCard = wrapper.createDiv({
+      cls: `content-compass-fb-section-card ${this.isFanpagesTableCollapsed ? "is-collapsed" : ""}`
+    });
     const header = sectionCard.createDiv({ cls: "content-compass-fb-section-header" });
-    const title = header.createDiv({ cls: "content-compass-card-subtitle" });
-    setBtnContent(title, "users", `Ngu\u1ED3n Trang \u0111ang theo d\xF5i (${watchlist.pages.length})`);
+    const title = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+    const tableBodyWrap = sectionCard.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isFanpagesTableCollapsed) {
+      tableBodyWrap.style.display = "none";
+    }
+    const syncFanpagesTitle = () => {
+      setBtnContent(
+        title,
+        this.isFanpagesTableCollapsed ? "chevron-right" : "chevron-down",
+        `Ngu\u1ED3n Trang \u0111ang theo d\xF5i (${watchlist.pages.length})`
+      );
+      title.setAttribute(
+        "title",
+        this.isFanpagesTableCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+    };
+    syncFanpagesTitle();
+    title.addEventListener("click", () => {
+      this.isFanpagesTableCollapsed = !this.isFanpagesTableCollapsed;
+      sectionCard.toggleClass("is-collapsed", this.isFanpagesTableCollapsed);
+      tableBodyWrap.style.display = this.isFanpagesTableCollapsed ? "none" : "";
+      syncFanpagesTitle();
+    });
     if (watchlist.pages.length === 0) {
-      const empty = sectionCard.createDiv({ cls: "content-compass-placeholder" });
+      const empty = tableBodyWrap.createDiv({ cls: "content-compass-placeholder" });
       empty.setText(
         "Ch\u01B0a c\xF3 Fanpage ho\u1EB7c Trang c\xE1 nh\xE2n n\xE0o. B\u1EA5m 'Th\xEAm ngu\u1ED3n / Nh\u1EADp d\u1EEF li\u1EC7u' \u1EDF g\xF3c tr\xEAn \u0111\u1EC3 th\xEAm."
       );
       return;
     }
-    const scrollBox = sectionCard.createDiv({ cls: "content-compass-table-scroll" });
+    const scrollBox = tableBodyWrap.createDiv({ cls: "content-compass-table-scroll" });
     const pTable = scrollBox.createEl("table", { cls: "content-compass-data-table" });
     const pHead = pTable.createEl("thead").createEl("tr");
     for (const h of ["T\xEAn Trang / \u0110\u1ECBa ch\u1EC9", "Ph\xE2n lo\u1EA1i", "S\u1ED1 b\xE0i m\u1EDBi/l\u1EA7n", "L\u1EA7n qu\xE9t cu\u1ED1i", "Theo d\xF5i"]) {
@@ -2047,12 +3822,23 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       }
       const srcCell = row.createEl("td");
       const rowSelSource = srcCell.createEl("select", { cls: "content-compass-fb-inline-select" });
-      rowSelSource.createEl("option", { value: "external", text: "\u0110\u1ED1i th\u1EE7" });
-      rowSelSource.createEl("option", { value: "own", text: "Th\u01B0\u01A1ng hi\u1EC7u" });
-      rowSelSource.value = pg.source_type || "external";
-      rowSelSource.addEventListener("change", async () => {
-        pg.source_type = rowSelSource.value;
+      this.bindSourceTypeSelect(rowSelSource, watchlist, pg.source_type || "external", async (newVal) => {
+        pg.source_type = newVal;
+        if (Array.isArray(state == null ? void 0 : state.discovered_posts)) {
+          for (const d of state.discovered_posts) {
+            if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
+              d.source_type = newVal;
+            }
+          }
+        }
         await this.saveWatchlist(watchlist);
+        await this.saveTrackerState(state);
+        await this.engagementStore.initialize();
+        if (this.onRefreshDashboard) {
+          this.onRefreshDashboard();
+        } else {
+          this.renderMainView(rootContainer);
+        }
       });
       const limitCell = row.createEl("td");
       const rowInpLimit = limitCell.createEl("input", {
@@ -2066,6 +3852,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         pg.limit = Math.max(1, Math.min(20, parseInt(rowInpLimit.value) || 5));
         rowInpLimit.value = String(pg.limit);
         await this.saveWatchlist(watchlist);
+        this.renderMainView(rootContainer);
       });
       const lastTime = st.last_polled_at ? new Date(st.last_polled_at).toLocaleTimeString("vi-VN") : "Ch\u01B0a qu\xE9t";
       const discInfo = st.last_discovered !== void 0 ? ` (+${st.last_discovered} b\xE0i m\u1EDBi)` : "";
@@ -2080,10 +3867,13 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         this.triggerPythonTracker(["--force-id", pg.id], () => this.renderMainView(rootContainer), liveStatusEl);
       });
       const btnToggle = actCell.createEl("button", {
-        cls: "content-compass-icon-btn"
+        cls: `content-compass-icon-btn ${pg.enabled !== false ? "is-active-watch" : ""}`
       });
-      setBtnContent(btnToggle, pg.enabled ? "pause" : "play");
-      btnToggle.setAttribute("title", pg.enabled ? "T\u1EA1m d\u1EEBng t\u1EF1 \u0111\u1ED9ng qu\xE9t ngu\u1ED3n n\xE0y" : "Ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t ngu\u1ED3n n\xE0y");
+      setBtnContent(btnToggle, pg.enabled !== false ? "pause" : "play");
+      btnToggle.setAttribute(
+        "title",
+        pg.enabled !== false ? "\u0110ang b\u1EADt theo d\xF5i t\u1EF1 \u0111\u1ED9ng ngu\u1ED3n n\xE0y (B\u1EA5m \u0111\u1EC3 t\u1EA1m d\u1EEBng)" : "\u0110\xE3 t\u1EA1m d\u1EEBng (B\u1EA5m \u0111\u1EC3 ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t ngu\u1ED3n n\xE0y)"
+      );
       btnToggle.addEventListener("click", async () => {
         pg.enabled = !pg.enabled;
         await this.saveWatchlist(watchlist);
@@ -2099,13 +3889,14 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       });
     }
   }
-  // Bang 2 (LUON HIEN THI): The phan vung Bai viet dang theo doi chuan Apple Inset Grouped Card
+  // Bang 2 (LUON HIEN THI): The phan vung Bai viet da thu thap chuan Apple Inset Grouped Card
   renderWatchedPostsTable(wrapper, watchlist, state, allPosts, rootContainer, liveStatusEl) {
     var _a, _b;
-    const sectionCard = wrapper.createDiv({ cls: "content-compass-fb-section-card" });
+    const sectionCard = wrapper.createDiv({
+      cls: `content-compass-fb-section-card ${this.isPostsTableCollapsed ? "is-collapsed" : ""}`
+    });
     const header = sectionCard.createDiv({ cls: "content-compass-fb-section-header" });
-    const title = header.createDiv({ cls: "content-compass-card-subtitle" });
-    setBtnContent(title, "file-text", `C\xE1c B\xE0i vi\u1EBFt \u0111ang theo d\xF5i (${allPosts.length} b\xE0i)`);
+    const title = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
     const postStatus = header.createDiv({ cls: "content-compass-import-status" });
     const enrichedPosts = allPosts.map((item) => {
       var _a2;
@@ -2128,8 +3919,17 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         isScraped
       };
     });
+    const scoreRankMap = /* @__PURE__ */ new Map();
+    const rankedByScore = [...enrichedPosts].filter((x) => x.score > 0).sort((a, b) => b.score - a.score);
+    rankedByScore.forEach((ep, idx) => {
+      scoreRankMap.set(ep.item.id, idx + 1);
+    });
     const getFilteredAndSortedPosts = () => {
       const list = enrichedPosts.filter((ep) => {
+        if (this.postActiveFilter === "active" && ep.item.enabled === false)
+          return false;
+        if (this.postActiveFilter === "paused" && ep.item.enabled !== false)
+          return false;
         if (this.postVaultFilter === "saved" && !ep.isSaved)
           return false;
         if (this.postVaultFilter === "unsaved" && ep.isSaved)
@@ -2138,10 +3938,22 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
           return false;
         if (this.postSourceFilter === "external" && ep.item.source_type !== "external")
           return false;
+        if (this.postSourceFilter === "other" && ep.item.source_type !== "other")
+          return false;
+        if (this.postSourceFilter.startsWith("type:") && ep.item.source_type !== this.postSourceFilter.slice(5)) {
+          return false;
+        }
         if (this.postSourceFilter === "direct" && ep.item.isDiscovered)
           return false;
         if (this.postSourceFilter.startsWith("page:") && ep.item.from_page !== this.postSourceFilter.slice(5)) {
           return false;
+        }
+        if (this.postDateRange.presetId !== "all" && this.postDateRange.startDate && this.postDateRange.endDate) {
+          const startMs = (/* @__PURE__ */ new Date(`${this.postDateRange.startDate}T00:00:00`)).getTime();
+          const endMs = (/* @__PURE__ */ new Date(`${this.postDateRange.endDate}T23:59:59.999`)).getTime();
+          const rawPostMs = ep.st.creation_time ? Number(ep.st.creation_time) * 1e3 : ep.item.added_at ? new Date(ep.item.added_at).getTime() : ep.st.last_polled_at ? new Date(ep.st.last_polled_at).getTime() : 0;
+          if (!rawPostMs || rawPostMs < startMs || rawPostMs > endMs)
+            return false;
         }
         if (this.postSearchQuery.trim().length > 0) {
           const q = this.postSearchQuery.trim().toLowerCase();
@@ -2231,7 +4043,11 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       postStatus.setText(`\u0110\xE3 x\xF3a ${count} b\xE0i vi\u1EBFt kh\u1ECFi danh s\xE1ch theo d\xF5i.`);
       this.renderMainView(rootContainer);
     });
-    const filterBar = sectionCard.createDiv({ cls: "content-compass-fb-toolbar-strip" });
+    const postsBodyWrap = sectionCard.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isPostsTableCollapsed) {
+      postsBodyWrap.style.display = "none";
+    }
+    const filterBar = postsBodyWrap.createDiv({ cls: "content-compass-fb-toolbar-strip" });
     const selSort = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" });
     selSort.createEl("option", { value: "score_desc", text: "S\u1EAFp x\u1EBFp: \u0110i\u1EC3m t\u01B0\u01A1ng t\xE1c (Cao \u2192 Th\u1EA5p)" });
     selSort.createEl("option", { value: "comments_desc", text: "S\u1EAFp x\u1EBFp: Nhi\u1EC1u b\xECnh lu\u1EADn nh\u1EA5t" });
@@ -2241,8 +4057,15 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     const selSourceFilter = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" });
     selSourceFilter.createEl("option", { value: "all", text: "Ngu\u1ED3n: T\u1EA5t c\u1EA3" });
     selSourceFilter.createEl("option", { value: "direct", text: "Ch\u1EC9 \u0111\u1ECBnh tr\u1EF1c ti\u1EBFp b\u1EB1ng URL" });
-    selSourceFilter.createEl("option", { value: "own", text: "Ch\u1EC9 b\xE0i Th\u01B0\u01A1ng hi\u1EC7u" });
-    selSourceFilter.createEl("option", { value: "external", text: "Ch\u1EC9 b\xE0i \u0110\u1ED1i th\u1EE7 / B\xEAn ngo\xE0i" });
+    selSourceFilter.createEl("option", { value: "own", text: "Ch\u1EC9 b\xE0i: Th\u01B0\u01A1ng hi\u1EC7u" });
+    selSourceFilter.createEl("option", { value: "external", text: "Ch\u1EC9 b\xE0i: \u0110\u1ED1i th\u1EE7" });
+    selSourceFilter.createEl("option", { value: "other", text: "Ch\u1EC9 b\xE0i: Kh\xE1c" });
+    for (const customLbl of this.collectAllCustomLabels(watchlist)) {
+      selSourceFilter.createEl("option", {
+        value: `type:${customLbl}`,
+        text: `Ch\u1EC9 b\xE0i: ${customLbl}`
+      });
+    }
     for (const pg of watchlist.pages) {
       const pName = ((_b = (_a = state == null ? void 0 : state.pages) == null ? void 0 : _a[pg.id]) == null ? void 0 : _b.page_name) || pg.page_identifier;
       selSourceFilter.createEl("option", {
@@ -2251,6 +4074,34 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       });
     }
     selSourceFilter.value = this.postSourceFilter;
+    const selActiveFilter = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" });
+    const optActiveAll = selActiveFilter.createEl("option", { value: "all", text: "" });
+    const optActiveOn = selActiveFilter.createEl("option", { value: "active", text: "" });
+    const optActiveOff = selActiveFilter.createEl("option", { value: "paused", text: "" });
+    selActiveFilter.value = this.postActiveFilter;
+    const syncTableHeaderAndFilterCounts = () => {
+      const activeCnt = enrichedPosts.filter((x) => x.item.enabled !== false).length;
+      const pausedCnt = enrichedPosts.length - activeCnt;
+      setBtnContent(
+        title,
+        this.isPostsTableCollapsed ? "chevron-right" : "chevron-down",
+        `Danh s\xE1ch B\xE0i vi\u1EBFt \u0111\xE3 thu th\u1EADp (${activeCnt} \u0111ang b\u1EADt qu\xE9t \u2022 ${pausedCnt} \u0111\xE3 ng\u1EAFt b\xE0i c\u0169 / ${enrichedPosts.length} t\u1ED5ng)`
+      );
+      title.setAttribute(
+        "title",
+        this.isPostsTableCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+      optActiveAll.text = `L\u1ECBch qu\xE9t: T\u1EA5t c\u1EA3 (${enrichedPosts.length})`;
+      optActiveOn.text = `\u0110ang b\u1EADt qu\xE9t (${activeCnt})`;
+      optActiveOff.text = `\u0110\xE3 ng\u1EAFt / T\u1EA1m d\u1EEBng (${pausedCnt})`;
+    };
+    syncTableHeaderAndFilterCounts();
+    title.addEventListener("click", () => {
+      this.isPostsTableCollapsed = !this.isPostsTableCollapsed;
+      sectionCard.toggleClass("is-collapsed", this.isPostsTableCollapsed);
+      postsBodyWrap.style.display = this.isPostsTableCollapsed ? "none" : "";
+      syncTableHeaderAndFilterCounts();
+    });
     const selVaultFilter = filterBar.createEl("select", { cls: "content-compass-fb-inline-select" });
     selVaultFilter.createEl("option", { value: "all", text: `Vault: T\u1EA5t c\u1EA3 (${enrichedPosts.length})` });
     selVaultFilter.createEl("option", {
@@ -2262,16 +4113,25 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       text: `\u0110\xE3 l\u01B0u trong Vault (${enrichedPosts.filter((x) => x.isSaved).length})`
     });
     selVaultFilter.value = this.postVaultFilter;
+    renderDateRangePickerButton(
+      filterBar,
+      this.postDateRange,
+      { showGroupBy: false, showDateBasis: false },
+      (nextRange) => {
+        this.postDateRange = nextRange;
+        rebuildTableRows();
+      }
+    );
     const searchBox = filterBar.createDiv({ cls: "content-compass-search-box" });
     const searchIcon = searchBox.createSpan({ cls: "cc-icon" });
-    (0, import_obsidian7.setIcon)(searchIcon, "search");
+    (0, import_obsidian8.setIcon)(searchIcon, "search");
     const inpSearch = searchBox.createEl("input", {
       type: "text",
       cls: "content-compass-fb-search-input",
       placeholder: "T\xECm theo t\xEAn b\xE0i, c\xE2u \u0111\u1EA7u ti\xEAn ho\u1EB7c t\xE1c gi\u1EA3...",
       value: this.postSearchQuery
     });
-    const postSec = sectionCard.createDiv({ cls: "content-compass-table-scroll content-compass-posts-scroll" });
+    const postSec = postsBodyWrap.createDiv({ cls: "content-compass-table-scroll content-compass-posts-scroll" });
     const table = postSec.createEl("table", { cls: "content-compass-data-table content-compass-posts-table" });
     const thead = table.createEl("thead").createEl("tr");
     const headersConfig = [
@@ -2312,7 +4172,17 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         return;
       }
       for (const { item, st, m, score, authorName, snippet, vaultPath, isSaved, isScraped } of filteredPosts) {
-        const row = tbody.createEl("tr");
+        const fbId = String(st.fb_post_id || item.fb_post_id || "");
+        const slugKey = String(st.vault_slug || (fbId ? `fb-post-${fbId}` : ""));
+        const row = tbody.createEl("tr", {
+          cls: "cc-post-row",
+          attr: {
+            "data-watch-id": String(item.id || ""),
+            "data-fb-id": fbId,
+            "data-post-slug": slugKey,
+            "data-post-url": String(item.url || "")
+          }
+        });
         const chkCell = row.createEl("td");
         const chk = chkCell.createEl("input", {
           type: "checkbox",
@@ -2339,11 +4209,31 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         headlineLink.setAttribute("title", `M\u1EDF tr\xEAn tr\xECnh duy\u1EC7t:
 ${snippet}
 ${item.url}`);
+        const spark5d = this.engagementStore.getPostScoreSparkline5Days(
+          [slugKey, fbId, item.id],
+          score,
+          st.last_polled_at || item.added_at
+        );
         const subMeta = nameCell.createDiv({ cls: "content-compass-fb-post-title-row" });
         subMeta.createSpan({
           cls: `content-compass-source-pill ${item.source_type === "own" ? "is-own" : ""}`,
-          text: item.source_type === "own" ? "Th\u01B0\u01A1ng hi\u1EC7u" : "\u0110\u1ED1i th\u1EE7"
+          text: formatSourceTypeLabel(item.source_type)
         });
+        const isPostActive = item.enabled !== false;
+        subMeta.createSpan({
+          cls: `content-compass-source-pill ${isPostActive ? "is-own" : ""}`,
+          text: isPostActive ? "\u0110ang b\u1EADt qu\xE9t" : item.auto_paused_reason ? "\u0110\xE3 ng\u1EAFt (b\xE0i c\u0169)" : "\u0110\xE3 t\u1EA1m d\u1EEBng"
+        });
+        if (isScraped && spark5d.isFirstScan) {
+          const firstScanBadge = subMeta.createSpan({
+            cls: "content-compass-source-pill is-first-scan",
+            text: "M\u1EDBi qu\xE9t l\u1EA7n \u0111\u1EA7u"
+          });
+          firstScanBadge.setAttribute(
+            "title",
+            "B\xE0i vi\u1EBFt m\u1EDBi ch\u1EC9 c\xF3 1 m\u1ED1c d\u1EEF li\u1EC7u thu th\u1EADp (ch\u01B0a c\xF3 d\u1EEF li\u1EC7u c\xE1c ng\xE0y tr\u01B0\u1EDBc \u0111\u1EC3 so s\xE1nh t\u0103ng tr\u01B0\u1EDFng)"
+          );
+        }
         const originLabel = item.isDiscovered ? `T\u1EEB Trang: ${authorName}` : `Ch\u1EC9 \u0111\u1ECBnh tr\u1EF1c ti\u1EBFp (${authorName})`;
         const pubDateStr = st.creation_time ? " \u2022 " + new Date(Number(st.creation_time) * 1e3).toLocaleDateString("vi-VN") : "";
         subMeta.createSpan({
@@ -2354,10 +4244,22 @@ ${item.url}`);
         const likes = Number(m.likes || 0);
         const commentsCnt = Number(m.comments || 0);
         const shares = Number(m.shares || 0);
-        const scoreBadge = createMetricChip(metricCell, "flame", `Score ${score}`, "content-compass-fb-score-badge");
+        const rank = scoreRankMap.get(item.id) || 999;
+        const isTop5 = rank <= 5;
+        const isTop3 = rank <= 3;
+        const badgeRankCls = [
+          "content-compass-fb-score-badge",
+          isTop5 ? "is-top5" : "",
+          isTop3 ? `is-top3 is-rank-${rank}` : ""
+        ].filter(Boolean).join(" ");
+        const scoreTopRow = metricCell.createDiv({ cls: "cc-post-score-top-row" });
+        const scoreBadge = createMetricChip(scoreTopRow, "flame", `Score ${score}`, badgeRankCls);
+        const rankNote = isTop3 ? `\u{1F3C6} H\u1EA1ng #${rank} b\xE0i t\u01B0\u01A1ng t\xE1c cao nh\u1EA5t (Top 3)
+` : isTop5 ? `\u2B50 H\u1EA1ng #${rank} b\xE0i t\u01B0\u01A1ng t\xE1c cao nh\u1EA5t (Top 5)
+` : "";
         scoreBadge.setAttribute(
           "title",
-          `C\xE1ch t\xEDnh \u0110i\u1EC3m t\u01B0\u01A1ng t\xE1c (Score):
+          `${rankNote}C\xE1ch t\xEDnh \u0110i\u1EC3m t\u01B0\u01A1ng t\xE1c (Score):
 \u2022 Likes: ${likes} \xD7 1 = ${likes} \u0111i\u1EC3m
 \u2022 B\xECnh lu\u1EADn: ${commentsCnt} \xD7 2 = ${commentsCnt * 2} \u0111i\u1EC3m
 \u2022 Chia s\u1EBB: ${shares} \xD7 3 = ${shares * 3} \u0111i\u1EC3m
@@ -2365,6 +4267,7 @@ ${item.url}`);
 T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
         );
         scoreBadge.style.cursor = "help";
+        renderPostSparkline5D(scoreTopRow, spark5d, isTop5);
         const mRow = metricCell.createDiv({ cls: "content-compass-fb-metrics-row" });
         const chipLike = createMetricChip(mRow, "thumbs-up", String(likes));
         chipLike.setAttribute("title", `L\u01B0\u1EE3t th\xEDch / C\u1EA3m x\xFAc: ${likes} (\xD71 \u0111i\u1EC3m)`);
@@ -2383,9 +4286,9 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
           setBtnContent(btnPreview, "eye");
           btnPreview.setAttribute("title", "\u0110\u1ECDc to\xE0n v\u0103n b\xE0i vi\u1EBFt, b\xECnh lu\u1EADn v\xE0 ch\u1EC9nh ti\xEAu \u0111\u1EC1 tr\u01B0\u1EDBc khi l\u01B0u");
           btnPreview.addEventListener("click", async () => {
-            const fbId = st.fb_post_id || item.fb_post_id;
-            const cacheData = await this.readPostCache(fbId) || {
-              fb_post_id: fbId,
+            const curFbId = st.fb_post_id || item.fb_post_id;
+            const cacheData = await this.readPostCache(curFbId) || {
+              fb_post_id: curFbId,
               author_name: authorName,
               post_text: snippet,
               metrics: m,
@@ -2405,18 +4308,18 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
           });
           if (isSaved && vaultPath) {
             const btnOpen = vaultCell.createEl("button", {
-              cls: "content-compass-refresh-btn"
+              cls: "content-compass-icon-btn is-saved-vault"
             });
-            setBtnContent(btnOpen, "folder-open", "M\u1EDF file");
-            btnOpen.setAttribute("title", `\u0110\xE3 l\u01B0u t\u1EA1i: ${vaultPath}. B\u1EA5m \u0111\u1EC3 m\u1EDF trong Obsidian.`);
+            setBtnContent(btnOpen, "folder-open");
+            btnOpen.setAttribute("title", `\u0110\xE3 l\u01B0u t\u1EA1i: ${vaultPath}. B\u1EA5m \u0111\u1EC3 m\u1EDF file trong Obsidian.`);
             btnOpen.addEventListener("click", () => {
               this.app.workspace.openLinkText(vaultPath, "", false);
             });
           } else {
             const btnSaveOne = vaultCell.createEl("button", {
-              cls: "content-compass-import-btn"
+              cls: "content-compass-icon-btn"
             });
-            setBtnContent(btnSaveOne, "download", "L\u01B0u");
+            setBtnContent(btnSaveOne, "download");
             btnSaveOne.setAttribute("title", "L\u01B0u b\xE0i n\xE0y th\xE0nh file .md trong Obsidian Vault");
             btnSaveOne.addEventListener("click", async () => {
               setBtnContent(btnSaveOne, "loader", void 0, true);
@@ -2442,30 +4345,30 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
           );
         });
         const btnToggle = actCell.createEl("button", {
-          cls: "content-compass-icon-btn"
+          cls: `content-compass-icon-btn ${item.enabled !== false ? "is-active-watch" : ""}`
         });
         setBtnContent(btnToggle, item.enabled !== false ? "pause" : "play");
         btnToggle.setAttribute(
           "title",
-          item.enabled !== false ? "T\u1EA1m d\u1EEBng t\u1EF1 \u0111\u1ED9ng qu\xE9t b\xE0i n\xE0y" : "Ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t b\xE0i n\xE0y"
+          item.enabled !== false ? "\u0110ang b\u1EADt theo d\xF5i & qu\xE9t t\u1EF1 \u0111\u1ED9ng (B\u1EA5m \u0111\u1EC3 t\u1EA1m d\u1EEBng)" : "\u0110\xE3 ng\u1EAFt / t\u1EA1m d\u1EEBng qu\xE9t (B\u1EA5m \u0111\u1EC3 ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t b\xE0i n\xE0y)"
         );
         btnToggle.addEventListener("click", async () => {
           if (item.isDiscovered) {
             const target = (state.discovered_posts || []).find((d) => d.id === item.id);
             if (target) {
               target.enabled = target.enabled === false ? true : false;
+              target.auto_paused_reason = null;
               item.enabled = target.enabled;
+              item.auto_paused_reason = null;
             }
             await this.saveTrackerState(state);
           } else {
             item.enabled = !item.enabled;
+            item.auto_paused_reason = null;
             await this.saveWatchlist(watchlist);
           }
-          setBtnContent(btnToggle, item.enabled !== false ? "pause" : "play");
-          btnToggle.setAttribute(
-            "title",
-            item.enabled !== false ? "T\u1EA1m d\u1EEBng t\u1EF1 \u0111\u1ED9ng qu\xE9t b\xE0i n\xE0y" : "Ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t b\xE0i n\xE0y"
-          );
+          syncTableHeaderAndFilterCounts();
+          rebuildTableRows();
         });
         const btnDel = actCell.createEl("button", { cls: "content-compass-icon-btn is-danger" });
         setBtnContent(btnDel, "trash-2");
@@ -2473,9 +4376,9 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
         btnDel.addEventListener("click", async () => {
           this.selectedPostIds.delete(item.id);
           if (item.isDiscovered) {
-            const fbId = st.fb_post_id || item.fb_post_id;
-            if (fbId && !state.ignored_fb_ids.includes(String(fbId))) {
-              state.ignored_fb_ids.push(String(fbId));
+            const fbId2 = st.fb_post_id || item.fb_post_id;
+            if (fbId2 && !state.ignored_fb_ids.includes(String(fbId2))) {
+              state.ignored_fb_ids.push(String(fbId2));
             }
             state.discovered_posts = (state.discovered_posts || []).filter((d) => d.id !== item.id);
             delete state.posts[item.id];
@@ -2508,6 +4411,10 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
     });
     selSourceFilter.addEventListener("change", () => {
       this.postSourceFilter = selSourceFilter.value;
+      rebuildTableRows();
+    });
+    selActiveFilter.addEventListener("change", () => {
+      this.postActiveFilter = selActiveFilter.value;
       rebuildTableRows();
     });
     selVaultFilter.addEventListener("change", () => {
@@ -2688,11 +4595,34 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
     const recent = this.engagementStore.getRecentRecords(5);
     if (recent.length === 0)
       return;
-    const section = card.createDiv({ cls: "content-compass-recent-imports" });
-    const subtitle = section.createDiv({ cls: "content-compass-card-subtitle" });
-    subtitle.setText("L\u1ECBch s\u1EED nh\u1EADp g\u1EA7n \u0111\xE2y:");
-    subtitle.style.marginBottom = "4px";
-    const table = section.createEl("table", { cls: "content-compass-data-table" });
+    const section = card.createDiv({
+      cls: `content-compass-recent-imports ${this.isRecentHistoryCollapsed ? "is-collapsed" : ""}`
+    });
+    const header = section.createDiv({ cls: "content-compass-card-header" });
+    const subtitle = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+    const bodyWrap = section.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isRecentHistoryCollapsed) {
+      bodyWrap.style.display = "none";
+    }
+    const syncRecentTitle = () => {
+      setBtnContent(
+        subtitle,
+        this.isRecentHistoryCollapsed ? "chevron-right" : "chevron-down",
+        "L\u1ECBch s\u1EED nh\u1EADp g\u1EA7n \u0111\xE2y:"
+      );
+      subtitle.setAttribute(
+        "title",
+        this.isRecentHistoryCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng"
+      );
+    };
+    syncRecentTitle();
+    subtitle.addEventListener("click", () => {
+      this.isRecentHistoryCollapsed = !this.isRecentHistoryCollapsed;
+      section.toggleClass("is-collapsed", this.isRecentHistoryCollapsed);
+      bodyWrap.style.display = this.isRecentHistoryCollapsed ? "none" : "";
+      syncRecentTitle();
+    });
+    const table = bodyWrap.createEl("table", { cls: "content-compass-data-table" });
     const thead = table.createEl("thead");
     const headerRow = thead.createEl("tr");
     for (const h of ["Post", "Platform", "Score", "Ng\xE0y"]) {
@@ -2715,556 +4645,620 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
 };
 
 // src/views/TimelineChartView.ts
-var import_obsidian9 = require("obsidian");
+var import_obsidian10 = require("obsidian");
 
-// src/views/DateRangePickerPopover.ts
-var import_obsidian8 = require("obsidian");
-var PRESET_OPTIONS = [
-  { id: "today", label: "H\xF4m nay" },
-  { id: "yesterday", label: "H\xF4m qua" },
-  { id: "7d", label: "7 ng\xE0y tr\u01B0\u1EDBc" },
-  { id: "30d", label: "30 ng\xE0y tr\u01B0\u1EDBc" },
-  { id: "90d", label: "90 ng\xE0y tr\u01B0\u1EDBc" },
-  { id: "this_week", label: "Tu\u1EA7n n\xE0y" },
-  { id: "this_month", label: "Th\xE1ng n\xE0y" },
-  { id: "last_month", label: "Th\xE1ng tr\u01B0\u1EDBc" },
-  { id: "this_year", label: "N\u0103m nay" },
-  { id: "all", label: "T\u1EA5t c\u1EA3 th\u1EDDi gian" },
-  { id: "custom", label: "T\xF9y ch\u1EC9nh ng\xE0y..." }
-];
-function toYmd(d) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
+// src/views/MultiSelectPopover.ts
+var import_obsidian9 = require("obsidian");
+function formatTriggerSummary(cfg) {
+  const sel = cfg.selectedValues;
+  const total = cfg.options.length;
+  const allText = cfg.allLabel || "T\u1EA5t c\u1EA3";
+  if (cfg.allWhenEmpty && (sel.length === 0 || sel.length === total)) {
+    return `${cfg.prefixLabel}: ${allText}`;
+  }
+  if (sel.length === 0) {
+    return `${cfg.prefixLabel}: ${allText}`;
+  }
+  const selectedLabels = sel.map((v) => {
+    var _a;
+    return ((_a = cfg.options.find((o) => o.value === v)) == null ? void 0 : _a.label) || v;
+  }).filter(Boolean);
+  if (selectedLabels.length === 1) {
+    const lbl = selectedLabels[0];
+    return `${cfg.prefixLabel}: ${lbl.length > 22 ? lbl.slice(0, 20) + "\u2026" : lbl}`;
+  }
+  if (selectedLabels.length === 2) {
+    const first = selectedLabels[0].length > 14 ? selectedLabels[0].slice(0, 12) + "\u2026" : selectedLabels[0];
+    const second = selectedLabels[1].length > 14 ? selectedLabels[1].slice(0, 12) + "\u2026" : selectedLabels[1];
+    return `${cfg.prefixLabel}: ${first}, ${second}`;
+  }
+  return `${cfg.prefixLabel}: ${selectedLabels.length} m\u1EE5c \u0111\xE3 ch\u1ECDn`;
 }
-function formatVnShort(ymd) {
-  if (!ymd)
-    return "";
-  const parts = ymd.split("-");
-  if (parts.length !== 3)
-    return ymd;
-  return `${parts[2]}/${parts[1]}/${parts[0]}`;
-}
-function computeRangeForPreset(presetId) {
-  const now = /* @__PURE__ */ new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  if (presetId === "all") {
-    return { startDate: "", endDate: "" };
-  }
-  if (presetId === "today") {
-    const s = toYmd(today);
-    return { startDate: s, endDate: s };
-  }
-  if (presetId === "yesterday") {
-    const yest = new Date(today.getTime() - 864e5);
-    const s = toYmd(yest);
-    return { startDate: s, endDate: s };
-  }
-  if (presetId === "7d") {
-    const start = new Date(today.getTime() - 6 * 864e5);
-    return { startDate: toYmd(start), endDate: toYmd(today) };
-  }
-  if (presetId === "30d") {
-    const start = new Date(today.getTime() - 29 * 864e5);
-    return { startDate: toYmd(start), endDate: toYmd(today) };
-  }
-  if (presetId === "90d") {
-    const start = new Date(today.getTime() - 89 * 864e5);
-    return { startDate: toYmd(start), endDate: toYmd(today) };
-  }
-  if (presetId === "this_week") {
-    const dayOfWeek = today.getDay() || 7;
-    const monday = new Date(today.getTime() - (dayOfWeek - 1) * 864e5);
-    return { startDate: toYmd(monday), endDate: toYmd(today) };
-  }
-  if (presetId === "this_month") {
-    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-    return { startDate: toYmd(firstDay), endDate: toYmd(today) };
-  }
-  if (presetId === "last_month") {
-    const firstPrev = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-    const lastPrev = new Date(today.getFullYear(), today.getMonth(), 0);
-    return { startDate: toYmd(firstPrev), endDate: toYmd(lastPrev) };
-  }
-  if (presetId === "this_year") {
-    const firstJan = new Date(today.getFullYear(), 0, 1);
-    return { startDate: toYmd(firstJan), endDate: toYmd(today) };
-  }
-  const fallbackStart = new Date(today.getTime() - 29 * 864e5);
-  return { startDate: toYmd(fallbackStart), endDate: toYmd(today) };
-}
-function renderDateRangePickerButton(parentEl, current, options, onApply) {
-  const wrapper = parentEl.createDiv({ cls: "cc-daterange-wrapper" });
-  const controlBar = wrapper.createDiv({ cls: "cc-daterange-bar" });
-  const presetObj = PRESET_OPTIONS.find((p) => p.id === current.presetId);
-  const presetLabel = presetObj ? presetObj.label : "T\xF9y ch\u1EC9nh";
-  let rangeText = presetLabel;
-  if (current.presetId === "custom" && current.startDate && current.endDate) {
-    rangeText = `${formatVnShort(current.startDate)} \u2192 ${formatVnShort(current.endDate)}`;
-  } else if (current.startDate && current.endDate) {
-    rangeText = `${presetLabel} (${formatVnShort(current.startDate).slice(0, 5)} \u2013 ${formatVnShort(current.endDate).slice(0, 5)})`;
-  }
-  const triggerBtn = controlBar.createEl("button", {
-    cls: "content-compass-refresh-btn cc-daterange-trigger"
+function renderMultiSelectPopoverButton(parent, config, onChange) {
+  const wrapper = parent.createDiv({ cls: "cc-multiselect-wrapper" });
+  const triggerBtn = wrapper.createEl("button", {
+    cls: "content-compass-secondary-btn cc-multiselect-trigger",
+    attr: { type: "button" }
   });
-  triggerBtn.setAttribute("title", "B\u1EA5m \u0111\u1EC3 m\u1EDF b\u1EA3ng ch\u1ECDn kho\u1EA3ng th\u1EDDi gian 3 c\u1ED9t (Ch\u1ECDn nhanh + L\u1ECBch k\xE9p)");
-  const calIcon = triggerBtn.createSpan({ cls: "cc-icon" });
-  (0, import_obsidian8.setIcon)(calIcon, "calendar");
-  triggerBtn.createSpan({ text: rangeText });
-  const chevIcon = triggerBtn.createSpan({ cls: "cc-icon" });
-  (0, import_obsidian8.setIcon)(chevIcon, "chevron-down");
-  if (options.showGroupBy) {
-    const inlineGroupWrap = controlBar.createDiv({ cls: "cc-inline-group-wrap" });
-    const inlineGroupSelect = inlineGroupWrap.createEl("select", {
-      cls: "cc-inline-group-select"
-    });
-    inlineGroupSelect.setAttribute("title", "Ch\u1ECDn \u0111\u01A1n v\u1ECB g\u1ED9p d\u1EEF li\u1EC7u theo th\u1EDDi gian (Ng\xE0y, Tu\u1EA7n, Th\xE1ng, N\u0103m)");
-    inlineGroupSelect.createEl("option", { value: "day", text: "Xem theo: Ng\xE0y" });
-    inlineGroupSelect.createEl("option", { value: "week", text: "Xem theo: Tu\u1EA7n" });
-    inlineGroupSelect.createEl("option", { value: "month", text: "Xem theo: Th\xE1ng" });
-    inlineGroupSelect.createEl("option", { value: "year", text: "Xem theo: N\u0103m" });
-    inlineGroupSelect.value = current.groupBy || "day";
-    inlineGroupSelect.addEventListener("change", (e) => {
-      e.stopPropagation();
-      onApply({
-        ...current,
-        groupBy: inlineGroupSelect.value
-      });
-    });
+  const hasActiveFilter = config.allWhenEmpty ? config.selectedValues.length > 0 && config.selectedValues.length < config.options.length : config.selectedValues.length > 1;
+  if (hasActiveFilter) {
+    triggerBtn.addClass("is-filtered");
   }
-  const popover = wrapper.createDiv({ cls: "cc-daterange-popover" });
-  popover.style.display = "none";
-  let draftPreset = current.presetId;
-  let draftStart = current.startDate;
-  let draftEnd = current.endDate;
-  let draftGroupBy = current.groupBy || "day";
-  let draftBasis = current.dateBasis || "published";
-  let pickingPhase = "start";
-  const now = /* @__PURE__ */ new Date();
-  let rightCalYear = now.getFullYear();
-  let rightCalMonth = now.getMonth();
-  const rebuildPopoverContent = () => {
-    popover.empty();
-    const topBar = popover.createDiv({ cls: "cc-daterange-top-bar" });
-    const rangeInputs = topBar.createDiv({ cls: "cc-daterange-inputs" });
-    rangeInputs.createSpan({ text: "T\u1EEB", cls: "cc-daterange-lbl" });
-    const inpStart = rangeInputs.createEl("input", {
-      type: "date",
-      cls: "cc-daterange-date-input",
-      value: draftStart
-    });
-    inpStart.addEventListener("change", () => {
-      if (inpStart.value) {
-        draftPreset = "custom";
-        draftStart = inpStart.value;
-        if (draftEnd && draftStart > draftEnd) {
-          draftEnd = draftStart;
-        }
-        rebuildPopoverContent();
-      }
-    });
-    rangeInputs.createSpan({ text: "\u2192", cls: "cc-daterange-lbl" });
-    const inpEnd = rangeInputs.createEl("input", {
-      type: "date",
-      cls: "cc-daterange-date-input",
-      value: draftEnd
-    });
-    inpEnd.addEventListener("change", () => {
-      if (inpEnd.value) {
-        draftPreset = "custom";
-        draftEnd = inpEnd.value;
-        if (draftStart && draftEnd < draftStart) {
-          draftStart = draftEnd;
-        }
-        rebuildPopoverContent();
-      }
-    });
-    if (options.showGroupBy) {
-      const grpWrap = topBar.createDiv({ cls: "cc-daterange-inputs" });
-      grpWrap.createSpan({ text: "G\u1ED9p:", cls: "cc-daterange-lbl" });
-      const selGroup = grpWrap.createEl("select", { cls: "cc-daterange-select" });
-      selGroup.createEl("option", { value: "day", text: "Theo Ng\xE0y" });
-      selGroup.createEl("option", { value: "week", text: "Theo Tu\u1EA7n" });
-      selGroup.createEl("option", { value: "month", text: "Theo Th\xE1ng" });
-      selGroup.createEl("option", { value: "year", text: "Theo N\u0103m" });
-      selGroup.value = draftGroupBy;
-      selGroup.addEventListener("change", () => {
-        draftGroupBy = selGroup.value;
-      });
+  const textSpan = triggerBtn.createSpan({
+    cls: "cc-multiselect-trigger-text",
+    text: formatTriggerSummary(config)
+  });
+  const chevSpan = triggerBtn.createSpan({ cls: "cc-icon" });
+  (0, import_obsidian9.setIcon)(chevSpan, "chevron-down");
+  let popoverEl = null;
+  let workingValues = [...config.selectedValues];
+  let searchQuery = "";
+  const closePopover = () => {
+    if (popoverEl) {
+      popoverEl.remove();
+      popoverEl = null;
     }
-    if (options.showDateBasis) {
-      const basisWrap = topBar.createDiv({ cls: "cc-daterange-inputs" });
-      basisWrap.createSpan({ text: "M\u1ED1c:", cls: "cc-daterange-lbl" });
-      const selBasis = basisWrap.createEl("select", { cls: "cc-daterange-select" });
-      selBasis.createEl("option", { value: "published", text: "Ng\xE0y \u0111\u0103ng b\xE0i" });
-      selBasis.createEl("option", { value: "collected", text: "Th\u1EDDi \u0111i\u1EC3m qu\xE9t" });
-      selBasis.value = draftBasis;
-      selBasis.addEventListener("change", () => {
-        draftBasis = selBasis.value;
-      });
-    }
-    const threeCols = popover.createDiv({ cls: "cc-daterange-columns" });
-    const colPresets = threeCols.createDiv({ cls: "cc-daterange-presets" });
-    for (const p of PRESET_OPTIONS) {
-      const itemBtn = colPresets.createEl("button", {
-        cls: `cc-preset-item ${draftPreset === p.id ? "is-active" : ""}`,
-        text: p.label
-      });
-      itemBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        draftPreset = p.id;
-        if (p.id !== "custom") {
-          const computed = computeRangeForPreset(p.id);
-          draftStart = computed.startDate;
-          draftEnd = computed.endDate;
-          if (draftEnd) {
-            const endObj = /* @__PURE__ */ new Date(draftEnd + "T00:00:00");
-            if (!isNaN(endObj.getTime())) {
-              rightCalYear = endObj.getFullYear();
-              rightCalMonth = endObj.getMonth();
-            }
-          }
-        }
-        rebuildPopoverContent();
-      });
-    }
-    const leftDate = new Date(rightCalYear, rightCalMonth - 1, 1);
-    const rightDate = new Date(rightCalYear, rightCalMonth, 1);
-    renderMonthCalendar(threeCols, leftDate.getFullYear(), leftDate.getMonth(), "left");
-    renderMonthCalendar(threeCols, rightDate.getFullYear(), rightDate.getMonth(), "right");
-    const footer = popover.createDiv({ cls: "cc-daterange-footer" });
-    const summaryText = draftPreset === "all" ? "Ph\u1EA1m vi: T\u1EA5t c\u1EA3 th\u1EDDi gian" : draftStart && draftEnd ? `\u0110ang ch\u1ECDn: ${formatVnShort(draftStart)} \u2192 ${formatVnShort(draftEnd)}` : "Ch\u1ECDn ng\xE0y b\u1EAFt \u0111\u1EA7u v\xE0 k\u1EBFt th\xFAc tr\xEAn l\u1ECBch";
-    footer.createSpan({ cls: "cc-daterange-summary", text: summaryText });
-    const footerBtns = footer.createDiv({ cls: "cc-daterange-footer-btns" });
-    const btnCancel = footerBtns.createEl("button", {
-      cls: "content-compass-refresh-btn cc-btn-sm",
-      text: "H\u1EE7y"
-    });
-    btnCancel.addEventListener("click", (e) => {
-      e.stopPropagation();
-      popover.style.display = "none";
-    });
-    const btnApply = footerBtns.createEl("button", {
-      cls: "content-compass-import-btn cc-btn-sm",
-      text: "\xC1p d\u1EE5ng"
-    });
-    btnApply.addEventListener("click", (e) => {
-      e.stopPropagation();
-      popover.style.display = "none";
-      onApply({
-        presetId: draftPreset,
-        startDate: draftStart,
-        endDate: draftEnd,
-        groupBy: draftGroupBy,
-        dateBasis: draftBasis
-      });
-    });
+    document.removeEventListener("mousedown", onOutsideClick, true);
   };
-  const renderMonthCalendar = (container, year, month, side) => {
-    const calCol = container.createDiv({ cls: "cc-daterange-calendar" });
-    const navHeader = calCol.createDiv({ cls: "cc-cal-header" });
-    if (side === "left") {
-      const prevBtn = navHeader.createEl("button", { cls: "content-compass-icon-btn" });
-      const ic = prevBtn.createSpan({ cls: "cc-icon" });
-      (0, import_obsidian8.setIcon)(ic, "chevron-left");
-      prevBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        rightCalMonth -= 1;
-        if (rightCalMonth < 0) {
-          rightCalMonth = 11;
-          rightCalYear -= 1;
-        }
-        rebuildPopoverContent();
-      });
-    } else {
-      navHeader.createSpan({ cls: "cc-cal-spacer" });
+  const onOutsideClick = (ev) => {
+    if (!wrapper.isConnected) {
+      closePopover();
+      return;
     }
-    navHeader.createSpan({
-      cls: "cc-cal-title",
-      text: `Th\xE1ng ${month + 1} / ${year}`
+    const target = ev.target;
+    if (target && !wrapper.contains(target)) {
+      closePopover();
+    }
+  };
+  const notifyChange = (nextVals) => {
+    workingValues = [...nextVals];
+    config.selectedValues = [...nextVals];
+    textSpan.setText(formatTriggerSummary(config));
+    const activeNow = config.allWhenEmpty ? nextVals.length > 0 && nextVals.length < config.options.length : nextVals.length > 1;
+    triggerBtn.toggleClass("is-filtered", activeNow);
+    onChange([...nextVals]);
+  };
+  const renderPopoverContent = () => {
+    if (!popoverEl)
+      return;
+    popoverEl.empty();
+    if (config.enableSearch !== false && config.options.length >= 5) {
+      const searchWrap = popoverEl.createDiv({ cls: "cc-multiselect-search-wrap" });
+      const searchInput = searchWrap.createEl("input", {
+        cls: "cc-multiselect-search-input",
+        attr: {
+          type: "text",
+          placeholder: `T\xECm ${config.prefixLabel.toLowerCase()}...`
+        }
+      });
+      searchInput.value = searchQuery;
+      searchInput.addEventListener("input", () => {
+        searchQuery = searchInput.value;
+        renderListItems(listContainer, statusLbl);
+      });
+      setTimeout(() => searchInput.focus(), 10);
+    }
+    const actionRow = popoverEl.createDiv({ cls: "cc-multiselect-actions" });
+    const statusLbl = actionRow.createSpan({
+      cls: "cc-multiselect-count",
+      text: config.allWhenEmpty && workingValues.length === 0 ? `\u0110ang l\u1EA5y t\u1EA5t c\u1EA3 (${config.options.length})` : `\u0110\xE3 ch\u1ECDn ${workingValues.length}/${config.options.length}`
     });
-    if (side === "right") {
-      const nextBtn = navHeader.createEl("button", { cls: "content-compass-icon-btn" });
-      const ic = nextBtn.createSpan({ cls: "cc-icon" });
-      (0, import_obsidian8.setIcon)(ic, "chevron-right");
-      nextBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        rightCalMonth += 1;
-        if (rightCalMonth > 11) {
-          rightCalMonth = 0;
-          rightCalYear += 1;
-        }
-        rebuildPopoverContent();
+    const updateStatusText = () => {
+      statusLbl.setText(
+        config.allWhenEmpty && workingValues.length === 0 ? `\u0110ang l\u1EA5y t\u1EA5t c\u1EA3 (${config.options.length})` : `\u0110\xE3 ch\u1ECDn ${workingValues.length}/${config.options.length}`
+      );
+    };
+    const btnGroup = actionRow.createDiv({ cls: "cc-multiselect-action-btns" });
+    const selectAllBtn = btnGroup.createEl("button", {
+      cls: "cc-multiselect-link-btn",
+      text: "Ch\u1ECDn t\u1EA5t c\u1EA3",
+      attr: { type: "button" }
+    });
+    selectAllBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const allVals = config.options.map((o) => o.value);
+      notifyChange(allVals);
+      updateStatusText();
+      renderListItems(listContainer, statusLbl);
+    });
+    const clearBtn = btnGroup.createEl("button", {
+      cls: "cc-multiselect-link-btn",
+      text: config.allWhenEmpty ? "M\u1EB7c \u0111\u1ECBnh (T\u1EA5t c\u1EA3)" : "\u0110\u1EB7t l\u1EA1i",
+      attr: { type: "button" }
+    });
+    clearBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (config.allWhenEmpty) {
+        notifyChange([]);
+      } else {
+        const fallback = config.options.length > 0 ? [config.options[0].value] : [];
+        notifyChange(fallback);
+      }
+      updateStatusText();
+      renderListItems(listContainer, statusLbl);
+    });
+    const listContainer = popoverEl.createDiv({ cls: "cc-multiselect-list" });
+    renderListItems(listContainer, statusLbl);
+  };
+  const renderListItems = (listContainer, statusLbl) => {
+    listContainer.empty();
+    const q = searchQuery.trim().toLowerCase();
+    const filtered = config.options.filter(
+      (o) => !q || o.label.toLowerCase().includes(q) || o.sublabel && o.sublabel.toLowerCase().includes(q) || o.group && o.group.toLowerCase().includes(q)
+    );
+    if (filtered.length === 0) {
+      listContainer.createDiv({
+        cls: "cc-multiselect-empty",
+        text: "Kh\xF4ng c\xF3 m\u1EE5c n\xE0o kh\u1EDBp t\u1EEB kh\xF3a"
       });
-    } else {
-      navHeader.createSpan({ cls: "cc-cal-spacer" });
+      return;
     }
-    const weekdaysGrid = calCol.createDiv({ cls: "cc-cal-weekdays" });
-    for (const wd of ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]) {
-      weekdaysGrid.createSpan({ text: wd });
-    }
-    const daysGrid = calCol.createDiv({ cls: "cc-cal-days" });
-    const firstDay = new Date(year, month, 1);
-    const startOffset = (firstDay.getDay() + 6) % 7;
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    for (let i = 0; i < startOffset; i++) {
-      daysGrid.createSpan({ cls: "cc-cal-day is-empty" });
-    }
-    for (let d = 1; d <= daysInMonth; d++) {
-      const ymd = toYmd(new Date(year, month, d));
-      const isStart = Boolean(draftStart && ymd === draftStart);
-      const isEnd = Boolean(draftEnd && ymd === draftEnd);
-      const isInRange = Boolean(draftStart && draftEnd && ymd > draftStart && ymd < draftEnd);
-      const dayBtn = daysGrid.createEl("button", {
-        cls: [
-          "cc-cal-day",
-          isStart ? "is-start" : "",
-          isEnd ? "is-end" : "",
-          isInRange ? "is-in-range" : ""
-        ].filter(Boolean).join(" "),
-        text: String(d)
+    let currentGroup = "";
+    for (const opt of filtered) {
+      if (opt.group && opt.group !== currentGroup) {
+        currentGroup = opt.group;
+        listContainer.createDiv({
+          cls: "cc-multiselect-group-header",
+          text: currentGroup
+        });
+      }
+      const isChecked = workingValues.includes(opt.value);
+      const row = listContainer.createEl("label", {
+        cls: `cc-multiselect-item ${isChecked ? "is-checked" : ""}`
       });
-      dayBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        draftPreset = "custom";
-        if (pickingPhase === "start" || !draftStart || draftStart && draftEnd && draftStart !== draftEnd) {
-          draftStart = ymd;
-          draftEnd = ymd;
-          pickingPhase = "end";
+      const cb = row.createEl("input", {
+        attr: { type: "checkbox" }
+      });
+      cb.checked = isChecked;
+      if (opt.color) {
+        const dot = row.createSpan({ cls: "cc-multiselect-dot" });
+        dot.style.backgroundColor = opt.color;
+      }
+      const lblWrap = row.createDiv({ cls: "cc-multiselect-item-labels" });
+      lblWrap.createSpan({ cls: "cc-multiselect-item-text", text: opt.label });
+      if (opt.sublabel) {
+        lblWrap.createSpan({ cls: "cc-multiselect-item-sub", text: opt.sublabel });
+      }
+      cb.addEventListener("change", () => {
+        let next;
+        if (cb.checked) {
+          next = workingValues.includes(opt.value) ? [...workingValues] : [...workingValues, opt.value];
         } else {
-          if (ymd < draftStart) {
-            draftEnd = draftStart;
-            draftStart = ymd;
-          } else {
-            draftEnd = ymd;
+          next = workingValues.filter((v) => v !== opt.value);
+          const minReq = config.minSelected || 0;
+          if (next.length < minReq) {
+            cb.checked = true;
+            return;
           }
-          pickingPhase = "start";
         }
-        rebuildPopoverContent();
+        row.toggleClass("is-checked", cb.checked);
+        notifyChange(next);
+        if (statusLbl) {
+          statusLbl.setText(
+            config.allWhenEmpty && workingValues.length === 0 ? `\u0110ang l\u1EA5y t\u1EA5t c\u1EA3 (${config.options.length})` : `\u0110\xE3 ch\u1ECDn ${workingValues.length}/${config.options.length}`
+          );
+        }
       });
     }
   };
-  triggerBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isHidden = popover.style.display === "none";
-    if (isHidden) {
-      draftPreset = current.presetId;
-      draftStart = current.startDate;
-      draftEnd = current.endDate;
-      draftGroupBy = current.groupBy || "day";
-      draftBasis = current.dateBasis || "published";
-      rebuildPopoverContent();
-      popover.style.display = "flex";
-    } else {
-      popover.style.display = "none";
+  triggerBtn.addEventListener("click", (ev) => {
+    ev.stopPropagation();
+    if (popoverEl) {
+      closePopover();
+      return;
     }
-  });
-  document.addEventListener("mousedown", (evt) => {
-    if (popover.style.display !== "none" && !wrapper.contains(evt.target)) {
-      popover.style.display = "none";
+    workingValues = [...config.selectedValues];
+    searchQuery = "";
+    popoverEl = wrapper.createDiv({ cls: "cc-multiselect-popover" });
+    popoverEl.addEventListener("mousedown", (e) => e.stopPropagation());
+    popoverEl.addEventListener("click", (e) => e.stopPropagation());
+    if (config.widthPx) {
+      popoverEl.style.width = `${config.widthPx}px`;
     }
+    renderPopoverContent();
+    document.addEventListener("mousedown", onOutsideClick, true);
   });
+  wrapper.syncSelectedValues = (nextVals) => {
+    workingValues = [...nextVals];
+    config.selectedValues = [...nextVals];
+    textSpan.setText(formatTriggerSummary(config));
+    const activeNow = config.allWhenEmpty ? nextVals.length > 0 && nextVals.length < config.options.length : nextVals.length > 1;
+    triggerBtn.toggleClass("is-filtered", activeNow);
+    if (popoverEl) {
+      renderPopoverContent();
+    }
+  };
+  return wrapper;
 }
 
 // src/views/TimelineChartView.ts
-var CHART_HEIGHT = 250;
-var CHART_PADDING = { top: 28, right: 38, bottom: 40, left: 56 };
+var CHART_HEIGHT = 265;
+var CHART_PADDING = { top: 28, right: 38, bottom: 40, left: 58 };
 var GRID_COLOR = "hsla(0, 0%, 50%, 0.14)";
 var TEXT_COLOR = "hsla(0, 0%, 58%, 0.95)";
 var FONT_FAMILY = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif';
 var METRIC_THEMES = {
-  score: {
-    line: "#0a84ff",
-    fillTop: "rgba(10, 132, 255, 0.26)",
-    fillBottom: "rgba(10, 132, 255, 0.0)",
-    label: "\u0110i\u1EC3m Score"
-  },
-  avg_score: {
-    line: "#0a84ff",
-    fillTop: "rgba(10, 132, 255, 0.24)",
-    fillBottom: "rgba(10, 132, 255, 0.0)",
-    label: "TB Score/b\xE0i"
-  },
-  likes: {
-    line: "#5e5ce6",
-    fillTop: "rgba(94, 92, 230, 0.26)",
-    fillBottom: "rgba(94, 92, 230, 0.0)",
-    label: "L\u01B0\u1EE3t th\xEDch"
-  },
-  comments: {
-    line: "#30d158",
-    fillTop: "rgba(48, 209, 88, 0.26)",
-    fillBottom: "rgba(48, 209, 88, 0.0)",
-    label: "B\xECnh lu\u1EADn"
-  },
-  shares: {
-    line: "#ff9f0a",
-    fillTop: "rgba(255, 159, 10, 0.26)",
-    fillBottom: "rgba(255, 159, 10, 0.0)",
-    label: "Chia s\u1EBB"
-  },
-  posts: {
-    line: "#ff375f",
-    fillTop: "rgba(255, 55, 95, 0.24)",
-    fillBottom: "rgba(255, 55, 95, 0.0)",
-    label: "S\u1ED1 b\xE0i vi\u1EBFt"
-  }
+  score: { line: "#0a84ff", label: "T\u1ED5ng \u0110i\u1EC3m (Score)" },
+  avg_score: { line: "#64d2ff", label: "TB Score / b\xE0i" },
+  likes: { line: "#5e5ce6", label: "L\u01B0\u1EE3t th\xEDch (Likes)" },
+  comments: { line: "#30d158", label: "B\xECnh lu\u1EADn (Comments)" },
+  shares: { line: "#ff9f0a", label: "Chia s\u1EBB (Shares)" },
+  posts: { line: "#ff375f", label: "S\u1ED1 l\u01B0\u1EE3ng b\xE0i vi\u1EBFt" }
 };
 var TimelineChartView = class {
-  constructor(container, engagementStore, audienceIndex) {
+  constructor(container, engagementStore, audienceIndex, onSelectPost) {
+    this.outsideClickCleanup = null;
     this.dateRange = {
       presetId: "90d",
       ...computeRangeForPreset("90d"),
       groupBy: "day",
       dateBasis: "published"
     };
-    this.metric = "score";
-    this.sourceFilter = "all";
-    this.filterAudience = "";
+    this.breakdownBy = "metric";
+    this.selectedMetrics = ["score"];
+    this.selectedSources = [];
+    // [] = Tat ca nguon
+    this.selectedAudiences = [];
+    // [] = Tat ca audience
+    this.yAxisMode = "raw";
+    this.hiddenSeriesKeys = /* @__PURE__ */ new Set();
+    this.isCollapsed = false;
     this.container = container;
     this.engagementStore = engagementStore;
     this.audienceIndex = audienceIndex;
+    this.onSelectPost = onSelectPost;
   }
-  // Nhom 3: Render toan bo view voi Header (Tich hop Popover 3 cot) + Filter Strip + KPI Cards + Canvas
+  // Nhom 3: Render toan bo view voi Header + Multi-Select Filter Strip + In-place Data Section (KPI + Legend + Canvas)
   render() {
     this.container.empty();
-    const card = this.container.createDiv({ cls: "content-compass-card" });
+    const card = this.container.createDiv({
+      cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`
+    });
     const header = card.createDiv({ cls: "content-compass-card-header" });
-    const title = header.createDiv({ cls: "content-compass-card-title" });
+    const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
     const titleIcon = title.createSpan({ cls: "cc-icon" });
-    (0, import_obsidian9.setIcon)(titleIcon, "trending-up");
     title.createSpan({ text: "Xu h\u01B0\u1EDBng Engagement theo th\u1EDDi gian" });
+    const headerControls = header.createDiv({ cls: "content-compass-chart-controls" });
+    const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isCollapsed) {
+      cardBody.style.display = "none";
+      headerControls.style.display = "none";
+    }
+    let renderChartDataSection = () => {
+    };
+    const syncTitleCollapseState = () => {
+      titleIcon.empty();
+      (0, import_obsidian10.setIcon)(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+      title.setAttribute("title", this.isCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng");
+    };
+    syncTitleCollapseState();
+    title.addEventListener("click", () => {
+      this.isCollapsed = !this.isCollapsed;
+      card.toggleClass("is-collapsed", this.isCollapsed);
+      cardBody.style.display = this.isCollapsed ? "none" : "";
+      headerControls.style.display = this.isCollapsed ? "none" : "";
+      syncTitleCollapseState();
+      if (!this.isCollapsed) {
+        renderChartDataSection();
+      }
+    });
     if (!this.engagementStore.hasData()) {
-      const placeholder = card.createDiv({ cls: "content-compass-placeholder" });
+      const placeholder = cardBody.createDiv({ cls: "content-compass-placeholder" });
       placeholder.setText("Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u engagement. H\xE3y qu\xE9t ho\u1EB7c nh\u1EADp d\u1EEF li\u1EC7u \u1EDF b\u1EA3ng tr\xEAn.");
       return;
     }
+    const yModeSeg = headerControls.createDiv({ cls: "content-compass-segmented-control cc-yaxis-toggle" });
+    const btnRaw = yModeSeg.createEl("button", {
+      cls: `content-compass-tab-btn ${this.yAxisMode === "raw" ? "is-active" : ""}`,
+      text: "Gi\xE1 tr\u1ECB th\u1EF1c (123)",
+      attr: {
+        type: "button",
+        title: "Hi\u1EC3n th\u1ECB tr\u1EE5c tung theo con s\u1ED1 th\u1EF1c t\u1EBF"
+      }
+    });
+    const btnNorm = yModeSeg.createEl("button", {
+      cls: `content-compass-tab-btn ${this.yAxisMode === "normalized" ? "is-active" : ""}`,
+      text: "Chu\u1EA9n h\xF3a %",
+      attr: {
+        type: "button",
+        title: "Chu\u1EA9n h\xF3a m\u1ED7i \u0111\u01B0\u1EDDng v\u1EC1 thang 0\u2013100% theo \u0111\u1EC9nh c\u1EE7a ch\xEDnh \u0111\u01B0\u1EDDng \u0111\xF3 (gi\xFAp so s\xE1nh c\xE1c ch\u1EC9 s\u1ED1 l\u1EC7ch \u0111\u01A1n v\u1ECB nh\u01B0 Score v\xE0 S\u1ED1 b\xE0i vi\u1EBFt)"
+      }
+    });
+    btnRaw.addEventListener("click", () => {
+      if (this.yAxisMode !== "raw") {
+        this.yAxisMode = "raw";
+        btnRaw.addClass("is-active");
+        btnNorm.removeClass("is-active");
+        renderChartDataSection();
+      }
+    });
+    btnNorm.addEventListener("click", () => {
+      if (this.yAxisMode !== "normalized") {
+        this.yAxisMode = "normalized";
+        btnNorm.addClass("is-active");
+        btnRaw.removeClass("is-active");
+        renderChartDataSection();
+      }
+    });
     renderDateRangePickerButton(
-      header,
+      headerControls,
       this.dateRange,
       { showGroupBy: true, showDateBasis: true },
       (next) => {
         this.dateRange = next;
-        this.render();
+        renderChartDataSection();
       }
     );
-    const filterStrip = card.createDiv({ cls: "content-compass-chart-filter-strip" });
-    const metricSelect = filterStrip.createEl("select");
-    metricSelect.setAttribute("title", "Ch\u1ECDn ch\u1EC9 s\u1ED1 hi\u1EC3n th\u1ECB tr\xEAn tr\u1EE5c Y c\u1EE7a bi\u1EC3u \u0111\u1ED3");
-    const metricOpts = [
-      { val: "score", label: "Ch\u1EC9 s\u1ED1: T\u1ED5ng \u0110i\u1EC3m (Score)" },
-      { val: "avg_score", label: "Ch\u1EC9 s\u1ED1: Trung b\xECnh Score / b\xE0i" },
-      { val: "likes", label: "Ch\u1EC9 s\u1ED1: L\u01B0\u1EE3t th\xEDch (Likes)" },
-      { val: "comments", label: "Ch\u1EC9 s\u1ED1: B\xECnh lu\u1EADn (Comments)" },
-      { val: "shares", label: "Ch\u1EC9 s\u1ED1: L\u01B0\u1EE3t chia s\u1EBB (Shares)" },
-      { val: "posts", label: "Ch\u1EC9 s\u1ED1: S\u1ED1 l\u01B0\u1EE3ng b\xE0i vi\u1EBFt" }
+    const filterStrip = cardBody.createDiv({ cls: "content-compass-chart-filter-strip" });
+    const chartDataContainer = cardBody.createDiv({ cls: "cc-chart-data-section" });
+    const breakdownSelect = filterStrip.createEl("select");
+    breakdownSelect.setAttribute(
+      "title",
+      "Ch\u1ECDn \u0111\u1ED1i t\u01B0\u1EE3ng ph\xE2n t\xE1ch th\xE0nh c\xE1c \u0111\u01B0\u1EDDng m\xE0u tr\xEAn bi\u1EC3u \u0111\u1ED3 (Ch\u1EC9 s\u1ED1 / Ngu\u1ED3n / Audience)"
+    );
+    const breakdownOpts = [
+      { id: "metric", label: "V\u1EBD theo: Ch\u1EC9 s\u1ED1" },
+      { id: "source", label: "V\u1EBD theo: Ngu\u1ED3n / Trang" },
+      { id: "audience", label: "V\u1EBD theo: Audience" }
     ];
-    for (const m of metricOpts) {
-      metricSelect.createEl("option", { value: m.val, text: m.label });
+    for (const b of breakdownOpts) {
+      breakdownSelect.createEl("option", {
+        value: b.id,
+        text: b.label
+      });
     }
-    metricSelect.value = this.metric;
-    metricSelect.addEventListener("change", () => {
-      this.metric = metricSelect.value;
-      this.render();
+    breakdownSelect.value = this.breakdownBy;
+    breakdownSelect.addEventListener("change", () => {
+      const nextBreakdown = breakdownSelect.value;
+      if (this.breakdownBy !== nextBreakdown) {
+        this.breakdownBy = nextBreakdown;
+        this.hiddenSeriesKeys.clear();
+        this.render();
+      }
     });
-    const sourceSelect = filterStrip.createEl("select");
-    sourceSelect.setAttribute("title", "L\u1ECDc theo ph\xE2n lo\u1EA1i ngu\u1ED3n ho\u1EB7c t\u1EEBng Trang Facebook \u0111ang theo d\xF5i");
-    sourceSelect.createEl("option", { value: "all", text: "Ngu\u1ED3n: T\u1EA5t c\u1EA3 c\xE1c trang" });
-    sourceSelect.createEl("option", { value: "own", text: "Ngu\u1ED3n: Ch\u1EC9 Th\u01B0\u01A1ng hi\u1EC7u" });
-    sourceSelect.createEl("option", { value: "external", text: "Ngu\u1ED3n: Ch\u1EC9 \u0110\u1ED1i th\u1EE7 / B\xEAn ngo\xE0i" });
+    const metricOptions = Object.keys(METRIC_THEMES).map((k) => ({
+      value: k,
+      label: METRIC_THEMES[k].label,
+      color: METRIC_THEMES[k].line
+    }));
+    let metricPopoverEl = null;
+    let singleMetricSelect = null;
+    if (this.breakdownBy === "metric") {
+      metricPopoverEl = renderMultiSelectPopoverButton(
+        filterStrip,
+        {
+          prefixLabel: "Ch\u1EC9 s\u1ED1 (\u0110\u01B0\u1EDDng)",
+          options: metricOptions,
+          selectedValues: this.selectedMetrics,
+          allWhenEmpty: false,
+          minSelected: 1,
+          enableSearch: false,
+          widthPx: 250
+        },
+        (nextVals) => {
+          this.selectedMetrics = nextVals || ["score"];
+          renderChartDataSection();
+        }
+      );
+    } else {
+      const primaryMetric = this.selectedMetrics[0] || "score";
+      singleMetricSelect = filterStrip.createEl("select");
+      singleMetricSelect.setAttribute("title", "Ch\u1ECDn \u0111\u01A1n v\u1ECB \u0111o tr\xEAn tr\u1EE5c Y cho c\xE1c \u0111\u01B0\u1EDDng Ngu\u1ED3n / Audience");
+      for (const m of metricOptions) {
+        singleMetricSelect.createEl("option", { value: m.value, text: `\u0110o theo: ${m.label}` });
+      }
+      singleMetricSelect.value = primaryMetric;
+      singleMetricSelect.addEventListener("change", () => {
+        if (singleMetricSelect) {
+          this.selectedMetrics = [singleMetricSelect.value];
+          renderChartDataSection();
+        }
+      });
+    }
+    const sourceOptions = [
+      ...this.engagementStore.getSourceTypeFilterOptions()
+    ];
     for (const author of this.engagementStore.getKnownAuthors()) {
-      sourceSelect.createEl("option", { value: `author:${author}`, text: `Trang: ${author}` });
+      sourceOptions.push({
+        value: `author:${author}`,
+        label: author,
+        group: "T\u1EEBng Trang / T\xE1c gi\u1EA3 c\u1EE5 th\u1EC3",
+        color: "#5e5ce6"
+      });
     }
-    sourceSelect.value = this.sourceFilter;
-    sourceSelect.addEventListener("change", () => {
-      this.sourceFilter = sourceSelect.value;
-      this.render();
-    });
-    const audienceSelect = filterStrip.createEl("select");
-    audienceSelect.createEl("option", { value: "", text: "Kh\xE1n gi\u1EA3: T\u1EA5t c\u1EA3 Audience" });
-    const allNodes = this.audienceIndex.getAllNodes();
-    for (const node of allNodes.values()) {
-      audienceSelect.createEl("option", { value: node.slug, text: `Audience: ${node.displayName}` });
-    }
-    audienceSelect.value = this.filterAudience;
-    audienceSelect.addEventListener("change", () => {
-      this.filterAudience = audienceSelect.value;
-      this.render();
-    });
-    const { points, summary } = this.engagementStore.queryTimelineAdvanced({
-      groupBy: this.dateRange.groupBy || "day",
-      days: this.dateRange.presetId === "all" ? 0 : 90,
-      startDate: this.dateRange.startDate || void 0,
-      endDate: this.dateRange.endDate || void 0,
-      metric: this.metric,
-      dateBasis: this.dateRange.dateBasis || "published",
-      sourceFilter: this.sourceFilter,
-      filterAudience: this.filterAudience || void 0
-    });
-    const kpiGrid = card.createDiv({ cls: "content-compass-kpi-grid" });
-    const kpiItems = [
+    renderMultiSelectPopoverButton(
+      filterStrip,
       {
-        key: "score",
-        title: "T\u1ED5ng \u0110i\u1EC3m (Score)",
-        value: summary.totalScore.toLocaleString("vi-VN"),
-        sub: `Trung b\xECnh: ${summary.avgScorePerPost.toLocaleString("vi-VN")} \u0111i\u1EC3m / b\xE0i`,
-        color: "#0a84ff",
-        icon: "flame"
+        prefixLabel: this.breakdownBy === "source" ? "Ngu\u1ED3n (\u0110\u01B0\u1EDDng)" : "L\u1ECDc Ngu\u1ED3n",
+        allLabel: "T\u1EA5t c\u1EA3 trang",
+        options: sourceOptions,
+        selectedValues: this.selectedSources,
+        allWhenEmpty: true,
+        enableSearch: true,
+        widthPx: 290
       },
+      (nextSources) => {
+        this.selectedSources = nextSources;
+        renderChartDataSection();
+      }
+    );
+    const audienceLabelMap = /* @__PURE__ */ new Map();
+    const audienceOptions = [
       {
-        key: "likes",
-        title: "T\u1ED5ng L\u01B0\u1EE3t th\xEDch",
-        value: summary.totalLikes.toLocaleString("vi-VN"),
-        sub: "Tr\u1ECDng s\u1ED1: \xD71 \u0111i\u1EC3m / like",
-        color: "#5e5ce6",
-        icon: "thumbs-up"
-      },
-      {
-        key: "comments",
-        title: "T\u1ED5ng B\xECnh lu\u1EADn",
-        value: summary.totalComments.toLocaleString("vi-VN"),
-        sub: "Tr\u1ECDng s\u1ED1: \xD72 \u0111i\u1EC3m / b\xECnh lu\u1EADn",
-        color: "#30d158",
-        icon: "message-circle"
-      },
-      {
-        key: "shares",
-        title: "T\u1ED5ng Chia s\u1EBB",
-        value: summary.totalShares.toLocaleString("vi-VN"),
-        sub: `Tr\xEAn t\u1ED5ng s\u1ED1 ${summary.postCount} b\xE0i vi\u1EBFt`,
-        color: "#ff9f0a",
-        icon: "share-2"
+        value: UNASSIGNED_AUDIENCE_KEY,
+        label: "(Ch\u01B0a g\u1EAFn Audience / Ngo\xE0i Vault)",
+        group: "Tr\u1EA1ng th\xE1i d\u1EEF li\u1EC7u",
+        color: "#8e8e93"
       }
     ];
-    for (const item of kpiItems) {
-      const tile = kpiGrid.createDiv({
-        cls: `content-compass-kpi-tile ${this.metric === item.key ? "is-selected" : ""}`
-      });
-      tile.setAttribute("title", `B\u1EA5m \u0111\u1EC3 v\u1EBD bi\u1EC3u \u0111\u1ED3 xu h\u01B0\u1EDBng theo: ${item.title}`);
-      const topRow = tile.createDiv({ cls: "content-compass-kpi-title" });
-      const ic = topRow.createSpan({ cls: "cc-icon" });
-      ic.style.color = item.color;
-      (0, import_obsidian9.setIcon)(ic, item.icon);
-      topRow.createSpan({ text: item.title });
-      const valEl = tile.createDiv({ cls: "content-compass-kpi-value", text: item.value });
-      valEl.style.color = item.color;
-      tile.createDiv({ cls: "content-compass-kpi-sub", text: item.sub });
-      tile.addEventListener("click", () => {
-        this.metric = item.key;
-        this.render();
+    for (const node of this.audienceIndex.getAllNodes().values()) {
+      audienceLabelMap.set(node.slug, node.displayName);
+      audienceOptions.push({
+        value: node.slug,
+        label: node.displayName,
+        sublabel: node.level ? `C\u1EA5p: ${node.level.toUpperCase()}` : void 0,
+        group: "Audience trong Vault",
+        color: node.level === "big" ? "#ff453a" : node.level === "little" ? "#30d158" : "#0a84ff"
       });
     }
-    const canvasWrap = card.createDiv({ cls: "content-compass-canvas-wrap" });
-    const canvas = canvasWrap.createEl("canvas", { cls: "content-compass-chart-canvas" });
-    canvas.height = CHART_HEIGHT;
-    requestAnimationFrame(() => {
-      this.drawChart(canvas, points);
-    });
+    renderMultiSelectPopoverButton(
+      filterStrip,
+      {
+        prefixLabel: this.breakdownBy === "audience" ? "Audience (\u0110\u01B0\u1EDDng)" : "L\u1ECDc Audience",
+        allLabel: "T\u1EA5t c\u1EA3 Audience",
+        options: audienceOptions,
+        selectedValues: this.selectedAudiences,
+        allWhenEmpty: true,
+        enableSearch: true,
+        widthPx: 320
+      },
+      (nextAuds) => {
+        this.selectedAudiences = nextAuds;
+        renderChartDataSection();
+      }
+    );
+    renderChartDataSection = () => {
+      if (this.isCollapsed)
+        return;
+      chartDataContainer.empty();
+      const { periods, series, summary } = this.engagementStore.queryTimelineMultiSeries({
+        groupBy: this.dateRange.groupBy || "day",
+        days: this.dateRange.presetId === "all" ? 0 : 90,
+        startDate: this.dateRange.startDate || void 0,
+        endDate: this.dateRange.endDate || void 0,
+        dateBasis: this.dateRange.dateBasis || "published",
+        breakdownBy: this.breakdownBy,
+        metrics: this.selectedMetrics,
+        sourceFilters: this.selectedSources,
+        filterAudiences: this.selectedAudiences,
+        audienceLabelMap
+      });
+      const kpiGrid = chartDataContainer.createDiv({ cls: "content-compass-kpi-grid" });
+      const kpiItems = [
+        {
+          key: "score",
+          title: "T\u1ED5ng \u0110i\u1EC3m (Score)",
+          value: summary.totalScore.toLocaleString("vi-VN"),
+          sub: `Trung b\xECnh: ${summary.avgScorePerPost.toLocaleString("vi-VN")} \u0111i\u1EC3m / b\xE0i`,
+          color: "#0a84ff",
+          icon: "flame"
+        },
+        {
+          key: "likes",
+          title: "T\u1ED5ng L\u01B0\u1EE3t th\xEDch",
+          value: summary.totalLikes.toLocaleString("vi-VN"),
+          sub: "Tr\u1ECDng s\u1ED1: \xD71 \u0111i\u1EC3m / like",
+          color: "#5e5ce6",
+          icon: "thumbs-up"
+        },
+        {
+          key: "comments",
+          title: "T\u1ED5ng B\xECnh lu\u1EADn",
+          value: summary.totalComments.toLocaleString("vi-VN"),
+          sub: "Tr\u1ECDng s\u1ED1: \xD72 \u0111i\u1EC3m / b\xECnh lu\u1EADn",
+          color: "#30d158",
+          icon: "message-circle"
+        },
+        {
+          key: "shares",
+          title: "T\u1ED5ng Chia s\u1EBB",
+          value: summary.totalShares.toLocaleString("vi-VN"),
+          sub: `Tr\xEAn t\u1ED5ng s\u1ED1 ${summary.postCount} b\xE0i vi\u1EBFt`,
+          color: "#ff9f0a",
+          icon: "share-2"
+        }
+      ];
+      for (const item of kpiItems) {
+        const isSelected = this.breakdownBy === "metric" ? this.selectedMetrics.includes(item.key) : this.selectedMetrics[0] === item.key;
+        const tile = kpiGrid.createDiv({
+          cls: `content-compass-kpi-tile ${isSelected ? "is-selected" : ""}`
+        });
+        if (isSelected) {
+          tile.style.borderColor = item.color;
+        }
+        tile.setAttribute(
+          "title",
+          this.breakdownBy === "metric" ? `B\u1EA5m \u0111\u1EC3 B\u1EADt / T\u1EAFt \u0111\u01B0\u1EDDng bi\u1EC3u di\u1EC5n "${item.title}" tr\xEAn bi\u1EC3u \u0111\u1ED3 (ch\u1ECDn nhi\u1EC1u th\u1EBB c\xF9ng l\xFAc)` : `B\u1EA5m \u0111\u1EC3 ch\u1ECDn "${item.title}" l\xE0m ch\u1EC9 s\u1ED1 \u0111o cho c\xE1c \u0111\u01B0\u1EDDng`
+        );
+        const topRow = tile.createDiv({ cls: "content-compass-kpi-title" });
+        const ic = topRow.createSpan({ cls: "cc-icon" });
+        ic.style.color = item.color;
+        (0, import_obsidian10.setIcon)(ic, item.icon);
+        topRow.createSpan({ text: item.title });
+        const valEl = tile.createDiv({ cls: "content-compass-kpi-value", text: item.value });
+        valEl.style.color = item.color;
+        tile.createDiv({ cls: "content-compass-kpi-sub", text: item.sub });
+        tile.addEventListener("click", () => {
+          if (this.breakdownBy === "metric") {
+            if (this.selectedMetrics.includes(item.key)) {
+              if (this.selectedMetrics.length > 1) {
+                this.selectedMetrics = this.selectedMetrics.filter((m) => m !== item.key);
+              }
+            } else {
+              this.selectedMetrics = [...this.selectedMetrics, item.key];
+            }
+            if (metricPopoverEl && metricPopoverEl.syncSelectedValues) {
+              metricPopoverEl.syncSelectedValues(this.selectedMetrics);
+            }
+          } else {
+            this.selectedMetrics = [item.key];
+            if (singleMetricSelect) {
+              singleMetricSelect.value = item.key;
+            }
+          }
+          renderChartDataSection();
+        });
+      }
+      if (series.length > 0 && periods.length > 0) {
+        const legendBar = chartDataContainer.createDiv({ cls: "cc-chart-legend" });
+        for (const s of series) {
+          const isHidden = this.hiddenSeriesKeys.has(s.key);
+          const chip = legendBar.createEl("button", {
+            cls: `cc-legend-item ${isHidden ? "is-muted" : ""}`,
+            attr: {
+              type: "button",
+              title: "B\u1EA5m \u0111\u1EC3 \u1EA9n / hi\u1EC7n \u0111\u01B0\u1EDDng n\xE0y tr\xEAn \u0111\u1ED3 th\u1ECB"
+            }
+          });
+          const dot = chip.createSpan({ cls: "cc-legend-dot" });
+          dot.style.backgroundColor = s.color;
+          chip.createSpan({ cls: "cc-legend-label", text: s.label });
+          chip.createSpan({
+            cls: "cc-legend-val",
+            text: s.totalValue.toLocaleString("vi-VN")
+          });
+          chip.addEventListener("click", () => {
+            if (this.hiddenSeriesKeys.has(s.key)) {
+              this.hiddenSeriesKeys.delete(s.key);
+            } else {
+              const visibleCount = series.filter((x) => !this.hiddenSeriesKeys.has(x.key)).length;
+              if (visibleCount > 1) {
+                this.hiddenSeriesKeys.add(s.key);
+              }
+            }
+            renderChartDataSection();
+          });
+        }
+      }
+      const canvasWrap = chartDataContainer.createDiv({ cls: "content-compass-canvas-wrap cc-canvas-interactive-wrap" });
+      const canvas = canvasWrap.createEl("canvas", { cls: "content-compass-chart-canvas" });
+      canvas.height = CHART_HEIGHT;
+      const tooltipEl = canvasWrap.createDiv({ cls: "cc-chart-tooltip is-hidden" });
+      const postsPopupEl = canvasWrap.createDiv({ cls: "cc-chart-posts-popover is-hidden" });
+      const visibleSeries = series.filter((s) => !this.hiddenSeriesKeys.has(s.key));
+      requestAnimationFrame(() => {
+        this.drawMultiSeriesChart(canvas, tooltipEl, postsPopupEl, periods, visibleSeries);
+      });
+    };
+    renderChartDataSection();
   }
-  // Nhom 4: Ve bieu do line chart len canvas (HiDPI + Khong tran mep phai)
-  drawChart(canvas, data) {
+  // Nhom 4: Ve bieu do Multi-Series Line Chart len Canvas kem Hover Crosshair, Click-to-Pin Tooltip & Post Drilldown Popup
+  drawMultiSeriesChart(canvas, tooltipEl, postsPopupEl, periods, seriesList) {
     var _a;
+    if (this.outsideClickCleanup) {
+      this.outsideClickCleanup();
+      this.outsideClickCleanup = null;
+    }
     const dpr = window.devicePixelRatio || 1;
     const rawParentWidth = ((_a = canvas.parentElement) == null ? void 0 : _a.clientWidth) || 680;
     const containerWidth = Math.max(rawParentWidth, 320);
@@ -3275,110 +5269,373 @@ var TimelineChartView = class {
     const ctx = canvas.getContext("2d");
     if (!ctx)
       return;
-    ctx.scale(dpr, dpr);
-    ctx.clearRect(0, 0, containerWidth, CHART_HEIGHT);
-    if (data.length === 0) {
-      ctx.fillStyle = TEXT_COLOR;
-      ctx.font = `500 13px ${FONT_FAMILY}`;
-      ctx.textAlign = "center";
-      ctx.fillText("Kh\xF4ng c\xF3 d\u1EEF li\u1EC7u kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc \u0111ang ch\u1ECDn", containerWidth / 2, CHART_HEIGHT / 2);
-      return;
-    }
-    const theme = METRIC_THEMES[this.metric] || METRIC_THEMES.score;
-    const plotX = CHART_PADDING.left;
-    const plotY = CHART_PADDING.top;
-    const plotW = containerWidth - CHART_PADDING.left - CHART_PADDING.right;
-    const plotH = CHART_HEIGHT - CHART_PADDING.top - CHART_PADDING.bottom;
-    const maxVal = Math.max(...data.map((d) => d.value), 1);
-    const yScale = plotH / maxVal;
-    ctx.strokeStyle = GRID_COLOR;
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    for (let i = 0; i <= 4; i++) {
-      const y = plotY + plotH - plotH / 4 * i;
-      ctx.beginPath();
-      ctx.moveTo(plotX, y);
-      ctx.lineTo(plotX + plotW, y);
-      ctx.stroke();
+    const renderScene = (hoverIndex) => {
+      ctx.save();
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, containerWidth, CHART_HEIGHT);
+      if (periods.length === 0 || seriesList.length === 0) {
+        ctx.fillStyle = TEXT_COLOR;
+        ctx.font = `500 13px ${FONT_FAMILY}`;
+        ctx.textAlign = "center";
+        ctx.fillText(
+          "Kh\xF4ng c\xF3 d\u1EEF li\u1EC7u kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc \u0111ang ch\u1ECDn",
+          containerWidth / 2,
+          CHART_HEIGHT / 2
+        );
+        ctx.restore();
+        return;
+      }
+      const plotX2 = CHART_PADDING.left;
+      const plotY = CHART_PADDING.top;
+      const plotW2 = containerWidth - CHART_PADDING.left - CHART_PADDING.right;
+      const plotH = CHART_HEIGHT - CHART_PADDING.top - CHART_PADDING.bottom;
+      const isNormalized = this.yAxisMode === "normalized";
+      const globalMaxVal = Math.max(
+        ...seriesList.flatMap((s) => s.points.map((p) => p.value)),
+        1
+      );
+      ctx.strokeStyle = GRID_COLOR;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      for (let i = 0; i <= 4; i++) {
+        const y = plotY + plotH - plotH / 4 * i;
+        ctx.beginPath();
+        ctx.moveTo(plotX2, y);
+        ctx.lineTo(plotX2 + plotW2, y);
+        ctx.stroke();
+        ctx.fillStyle = TEXT_COLOR;
+        ctx.font = `500 11px ${FONT_FAMILY}`;
+        ctx.textAlign = "right";
+        if (isNormalized) {
+          ctx.fillText(`${i * 25}%`, plotX2 - 10, y + 4);
+        } else {
+          const val = Math.round(globalMaxVal / 4 * i);
+          ctx.fillText(val.toLocaleString("vi-VN"), plotX2 - 10, y + 4);
+        }
+      }
+      ctx.setLineDash([]);
+      const xStep2 = periods.length > 1 ? plotW2 / (periods.length - 1) : plotW2 / 2;
+      const getX = (idx) => periods.length === 1 ? plotX2 + plotW2 / 2 : plotX2 + xStep2 * idx;
+      if (hoverIndex !== null && hoverIndex >= 0 && hoverIndex < periods.length) {
+        const hx = getX(hoverIndex);
+        ctx.strokeStyle = "hsla(0, 0%, 55%, 0.45)";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(hx, plotY);
+        ctx.lineTo(hx, plotY + plotH);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      const isSingleSeries = seriesList.length === 1;
+      const showEveryVal = Math.max(1, Math.ceil(periods.length / 12));
+      for (const series of seriesList) {
+        const seriesMax = Math.max(...series.points.map((p) => p.value), 1);
+        const pts = series.points.map((d, idx) => {
+          const ratio = isNormalized ? d.value / seriesMax : d.value / globalMaxVal;
+          return {
+            x: getX(idx),
+            y: plotY + plotH - ratio * plotH,
+            rawValue: d.value,
+            pctValue: Math.round(d.value / seriesMax * 100),
+            period: d.period,
+            postCount: d.recordCount
+          };
+        });
+        if (pts.length > 1) {
+          const areaGrad = ctx.createLinearGradient(0, plotY, 0, plotY + plotH);
+          areaGrad.addColorStop(0, this.hexToRgba(series.color, isSingleSeries ? 0.25 : 0.06));
+          areaGrad.addColorStop(1, this.hexToRgba(series.color, 0));
+          ctx.fillStyle = areaGrad;
+          ctx.beginPath();
+          ctx.moveTo(pts[0].x, plotY + plotH);
+          for (const p of pts)
+            ctx.lineTo(p.x, p.y);
+          ctx.lineTo(pts[pts.length - 1].x, plotY + plotH);
+          ctx.closePath();
+          ctx.fill();
+        }
+        ctx.strokeStyle = series.color;
+        ctx.lineWidth = isSingleSeries ? 2.6 : 2.2;
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        for (let i = 0; i < pts.length; i++) {
+          if (i === 0)
+            ctx.moveTo(pts[i].x, pts[i].y);
+          else
+            ctx.lineTo(pts[i].x, pts[i].y);
+        }
+        ctx.stroke();
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          const isHovered = hoverIndex === i;
+          const outerR = isHovered ? 5.5 : 4.2;
+          const innerR = isHovered ? 3.8 : 2.9;
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, outerR, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = series.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, innerR, 0, Math.PI * 2);
+          ctx.fill();
+          if (seriesList.length <= 3 && (i % showEveryVal === 0 || i === pts.length - 1) && (isSingleSeries || p.rawValue > 0)) {
+            ctx.fillStyle = series.color;
+            ctx.font = `600 10px ${FONT_FAMILY}`;
+            ctx.textAlign = "center";
+            const lblText = isNormalized ? `${p.rawValue} (${p.pctValue}%)` : String(p.rawValue);
+            ctx.fillText(lblText, p.x, p.y - 8);
+          }
+        }
+      }
       ctx.fillStyle = TEXT_COLOR;
       ctx.font = `500 11px ${FONT_FAMILY}`;
-      ctx.textAlign = "right";
-      const val = Math.round(maxVal / 4 * i);
-      ctx.fillText(String(val), plotX - 10, y + 4);
-    }
-    ctx.setLineDash([]);
-    const xStep = data.length > 1 ? plotW / (data.length - 1) : plotW / 2;
-    const pts = data.map((d, i) => ({
-      x: data.length === 1 ? plotX + plotW / 2 : plotX + xStep * i,
-      y: plotY + plotH - d.value * yScale,
-      value: d.value,
-      period: d.period,
-      postCount: d.recordCount
-    }));
-    if (pts.length > 1) {
-      const areaGrad = ctx.createLinearGradient(0, plotY, 0, plotY + plotH);
-      areaGrad.addColorStop(0, theme.fillTop);
-      areaGrad.addColorStop(1, theme.fillBottom);
-      ctx.fillStyle = areaGrad;
-      ctx.beginPath();
-      ctx.moveTo(pts[0].x, plotY + plotH);
-      for (const p of pts)
-        ctx.lineTo(p.x, p.y);
-      ctx.lineTo(pts[pts.length - 1].x, plotY + plotH);
-      ctx.closePath();
-      ctx.fill();
-    }
-    ctx.strokeStyle = theme.line;
-    ctx.lineWidth = 2.5;
-    ctx.lineJoin = "round";
-    ctx.lineCap = "round";
-    ctx.beginPath();
-    for (let i = 0; i < pts.length; i++) {
-      if (i === 0)
-        ctx.moveTo(pts[i].x, pts[i].y);
-      else
-        ctx.lineTo(pts[i].x, pts[i].y);
-    }
-    ctx.stroke();
-    const showEveryVal = Math.max(1, Math.ceil(pts.length / 14));
-    for (let i = 0; i < pts.length; i++) {
-      const p = pts[i];
-      ctx.fillStyle = "#ffffff";
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = theme.line;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
-      ctx.fill();
-      if (i % showEveryVal === 0 || i === pts.length - 1) {
-        ctx.fillStyle = TEXT_COLOR;
-        ctx.font = `600 10.5px ${FONT_FAMILY}`;
-        ctx.textAlign = "center";
-        ctx.fillText(String(p.value), p.x, p.y - 9);
+      ctx.textAlign = "center";
+      const maxLabels = Math.min(periods.length, 10);
+      const labelStep = Math.max(1, Math.ceil(periods.length / maxLabels));
+      for (let i = 0; i < periods.length; i += labelStep) {
+        const label = periods[i].replace(/^\d{4}-/, "");
+        ctx.fillText(label, getX(i), plotY + plotH + 22);
       }
-    }
-    ctx.fillStyle = TEXT_COLOR;
-    ctx.font = `500 11px ${FONT_FAMILY}`;
-    ctx.textAlign = "center";
-    const maxLabels = Math.min(pts.length, 10);
-    const labelStep = Math.max(1, Math.ceil(pts.length / maxLabels));
-    for (let i = 0; i < pts.length; i += labelStep) {
-      const label = pts[i].period.replace(/^\d{4}-/, "");
-      ctx.fillText(label, pts[i].x, plotY + plotH + 22);
-    }
-    if (pts.length > 1 && (pts.length - 1) % labelStep !== 0) {
-      const lastPt = pts[pts.length - 1];
-      ctx.fillText(lastPt.period.replace(/^\d{4}-/, ""), lastPt.x, plotY + plotH + 22);
-    }
+      if (periods.length > 1 && (periods.length - 1) % labelStep !== 0) {
+        const lastIdx = periods.length - 1;
+        ctx.fillText(periods[lastIdx].replace(/^\d{4}-/, ""), getX(lastIdx), plotY + plotH + 22);
+      }
+      ctx.restore();
+    };
+    renderScene(null);
+    if (periods.length === 0 || seriesList.length === 0)
+      return;
+    const plotX = CHART_PADDING.left;
+    const plotW = containerWidth - CHART_PADDING.left - CHART_PADDING.right;
+    const xStep = periods.length > 1 ? plotW / (periods.length - 1) : plotW / 2;
+    let pinnedIdx = null;
+    let activeSeriesKey = null;
+    const getIndexFromEvent = (ev) => {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = ev.clientX - rect.left;
+      if (periods.length <= 1)
+        return 0;
+      const raw = Math.round((mouseX - plotX) / xStep);
+      return Math.max(0, Math.min(periods.length - 1, raw));
+    };
+    const closePinnedState = () => {
+      pinnedIdx = null;
+      activeSeriesKey = null;
+      postsPopupEl.addClass("is-hidden");
+      postsPopupEl.empty();
+      tooltipEl.removeClass("is-pinned");
+      tooltipEl.addClass("is-hidden");
+      renderScene(null);
+    };
+    const openPostsPopupForSeries = (idx, series, tooltipLeftPx, tooltipWidthPx) => {
+      activeSeriesKey = series.key;
+      const posts = this.engagementStore.queryTimelinePeriodPosts({
+        targetPeriod: periods[idx],
+        seriesKey: series.key,
+        groupBy: this.dateRange.groupBy || "day",
+        days: this.dateRange.presetId === "all" ? 0 : 90,
+        startDate: this.dateRange.startDate || void 0,
+        endDate: this.dateRange.endDate || void 0,
+        dateBasis: this.dateRange.dateBasis || "published",
+        sourceFilters: this.selectedSources,
+        filterAudiences: this.selectedAudiences
+      });
+      postsPopupEl.empty();
+      postsPopupEl.removeClass("is-hidden");
+      const popHeader = postsPopupEl.createDiv({ cls: "cc-chart-posts-header" });
+      const popTitleGroup = popHeader.createDiv({ cls: "cc-chart-posts-title-group" });
+      const popTopRow = popTitleGroup.createDiv({ cls: "cc-chart-posts-title" });
+      const dot = popTopRow.createSpan({ cls: "cc-legend-dot" });
+      dot.style.backgroundColor = series.color;
+      popTopRow.createSpan({ text: `${series.label} (${posts.length} b\xE0i)` });
+      popTitleGroup.createDiv({
+        cls: "cc-chart-posts-sub",
+        text: `K\u1EF3: ${periods[idx]} \u2022 B\u1EA5m v\xE0o b\xE0i \u0111\u1EC3 xem trong b\u1EA3ng Danh s\xE1ch b\xE0i vi\u1EBFt`
+      });
+      const btnClosePop = popHeader.createEl("button", {
+        cls: "content-compass-icon-btn cc-chart-posts-close",
+        attr: { type: "button", title: "\u0110\xF3ng danh s\xE1ch b\xE0i vi\u1EBFt" }
+      });
+      (0, import_obsidian10.setIcon)(btnClosePop.createSpan({ cls: "cc-icon" }), "x");
+      btnClosePop.addEventListener("click", (e) => {
+        e.stopPropagation();
+        activeSeriesKey = null;
+        postsPopupEl.addClass("is-hidden");
+        tooltipEl.querySelectorAll(".cc-tooltip-post-count-link").forEach((el) => {
+          el.removeClass("is-active");
+        });
+      });
+      const listEl = postsPopupEl.createDiv({ cls: "cc-chart-posts-list" });
+      if (posts.length === 0) {
+        listEl.createDiv({
+          cls: "cc-multiselect-empty",
+          text: "Kh\xF4ng c\xF3 b\xE0i vi\u1EBFt n\xE0o trong m\u1ED1c n\xE0y."
+        });
+      } else {
+        for (const post of posts) {
+          const itemRow = listEl.createDiv({ cls: "cc-chart-post-item" });
+          itemRow.setAttribute(
+            "title",
+            `B\u1EA5m \u0111\u1EC3 nh\u1EA3y t\u1EDBi b\xE0i vi\u1EBFt n\xE0y \u1EDF b\u1EA3ng Danh s\xE1ch b\xE0i vi\u1EBFt \u0111\xE3 thu th\u1EADp:
+${post.titleSnippet}`
+          );
+          const topLine = itemRow.createDiv({ cls: "cc-chart-post-headline-row" });
+          const shortTitle = post.titleSnippet.length > 82 ? post.titleSnippet.slice(0, 79) + "..." : post.titleSnippet;
+          topLine.createSpan({ cls: "cc-chart-post-headline", text: shortTitle });
+          const jumpIcon = topLine.createSpan({ cls: "cc-icon cc-chart-post-jump-icon" });
+          (0, import_obsidian10.setIcon)(jumpIcon, "arrow-up-right");
+          const metaLine = itemRow.createDiv({ cls: "cc-chart-post-meta-row" });
+          metaLine.createSpan({
+            cls: `content-compass-source-pill ${post.sourceType === "own" ? "is-own" : ""}`,
+            text: formatSourceTypeLabel(post.sourceType)
+          });
+          metaLine.createSpan({
+            cls: "cc-chart-post-author",
+            text: post.authorName
+          });
+          metaLine.createSpan({
+            cls: "cc-chart-post-metrics",
+            text: `Score ${post.score.toLocaleString("vi-VN")} (\u{1F44D}${post.likes} \u2022 \u{1F4AC}${post.comments} \u2022 \u2197${post.shares})`
+          });
+          itemRow.addEventListener("click", (e) => {
+            e.stopPropagation();
+            closePinnedState();
+            if (this.onSelectPost) {
+              this.onSelectPost(post);
+            }
+          });
+        }
+      }
+      const popupW = 330;
+      let popLeft = tooltipLeftPx + tooltipWidthPx + 8;
+      let popTop = 14;
+      if (popLeft + popupW > containerWidth - 6) {
+        if (tooltipLeftPx - popupW - 8 >= 6) {
+          popLeft = tooltipLeftPx - popupW - 8;
+        } else {
+          popLeft = Math.max(8, Math.min(containerWidth - popupW - 8, tooltipLeftPx));
+          popTop = Math.min(CHART_HEIGHT - 160, (tooltipEl.offsetHeight || 86) + 24);
+        }
+      }
+      postsPopupEl.style.left = `${popLeft}px`;
+      postsPopupEl.style.top = `${popTop}px`;
+    };
+    const renderTooltipBox = (idx, isPinned) => {
+      tooltipEl.empty();
+      tooltipEl.removeClass("is-hidden");
+      tooltipEl.toggleClass("is-pinned", isPinned);
+      const pointX = periods.length === 1 ? plotX + plotW / 2 : plotX + xStep * idx;
+      const tooltipW = 228;
+      const leftPos = pointX + tooltipW + 24 > containerWidth ? Math.max(8, pointX - tooltipW - 12) : pointX + 12;
+      tooltipEl.style.left = `${leftPos}px`;
+      tooltipEl.style.top = `14px`;
+      tooltipEl.createDiv({
+        cls: "cc-tooltip-title",
+        text: `K\u1EF3: ${periods[idx]}`
+      });
+      for (const s of seriesList) {
+        const pt = s.points[idx];
+        if (!pt)
+          continue;
+        const sMax = Math.max(...s.points.map((x) => x.value), 1);
+        const pct = Math.round(pt.value / sMax * 100);
+        const row = tooltipEl.createDiv({ cls: "cc-tooltip-row" });
+        const left = row.createDiv({ cls: "cc-tooltip-series" });
+        const dot = left.createSpan({ cls: "cc-legend-dot" });
+        dot.style.backgroundColor = s.color;
+        left.createSpan({ text: s.label, attr: { title: s.label } });
+        const rightGroup = row.createDiv({ cls: "cc-tooltip-right-group" });
+        const valText = this.yAxisMode === "normalized" ? `${pt.value.toLocaleString("vi-VN")} (${pct}%)` : pt.value.toLocaleString("vi-VN");
+        rightGroup.createSpan({ cls: "cc-tooltip-val", text: valText });
+        if (pt.recordCount > 0) {
+          const countLink = rightGroup.createSpan({
+            cls: `cc-tooltip-post-count-link ${activeSeriesKey === s.key ? "is-active" : ""}`,
+            text: `(${pt.recordCount} b\xE0i)`
+          });
+          const showSeriesPosts = () => {
+            pinnedIdx = idx;
+            tooltipEl.addClass("is-pinned");
+            tooltipEl.querySelectorAll(".cc-tooltip-post-count-link").forEach((el) => {
+              el.removeClass("is-active");
+            });
+            countLink.addClass("is-active");
+            openPostsPopupForSeries(idx, s, leftPos, tooltipW);
+          };
+          countLink.addEventListener("mouseenter", () => {
+            if (activeSeriesKey !== s.key || postsPopupEl.hasClass("is-hidden")) {
+              showSeriesPosts();
+            }
+          });
+          countLink.addEventListener("click", (e) => {
+            e.stopPropagation();
+            showSeriesPosts();
+          });
+        } else {
+          rightGroup.createSpan({
+            cls: "cc-tooltip-post-count-zero",
+            text: "(0 b\xE0i)"
+          });
+        }
+      }
+    };
+    canvas.onmousemove = (ev) => {
+      if (pinnedIdx !== null)
+        return;
+      const idx = getIndexFromEvent(ev);
+      renderScene(idx);
+      renderTooltipBox(idx, false);
+    };
+    canvas.onmouseleave = () => {
+      if (pinnedIdx !== null)
+        return;
+      tooltipEl.addClass("is-hidden");
+      renderScene(null);
+    };
+    canvas.onclick = (ev) => {
+      ev.stopPropagation();
+      if (pinnedIdx !== null) {
+        closePinnedState();
+        return;
+      }
+      const idx = getIndexFromEvent(ev);
+      pinnedIdx = idx;
+      activeSeriesKey = null;
+      postsPopupEl.addClass("is-hidden");
+      renderScene(idx);
+      renderTooltipBox(idx, true);
+    };
+    const onDocMouseDown = (evt) => {
+      if (pinnedIdx === null)
+        return;
+      const target = evt.target;
+      if (tooltipEl.contains(target) || postsPopupEl.contains(target) || canvas.contains(target)) {
+        return;
+      }
+      closePinnedState();
+    };
+    document.addEventListener("mousedown", onDocMouseDown);
+    this.outsideClickCleanup = () => {
+      document.removeEventListener("mousedown", onDocMouseDown);
+    };
+  }
+  hexToRgba(hex, alpha) {
+    const clean = hex.replace("#", "");
+    if (clean.length !== 6)
+      return `rgba(10, 132, 255, ${alpha})`;
+    const r = parseInt(clean.slice(0, 2), 16);
+    const g = parseInt(clean.slice(2, 4), 16);
+    const b = parseInt(clean.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 };
 
 // src/views/TagRankingView.ts
-var import_obsidian10 = require("obsidian");
+var import_obsidian11 = require("obsidian");
 var BAR_HEIGHT = 26;
 var BAR_GAP = 10;
-var CHART_PADDING2 = { top: 12, right: 175, bottom: 12, left: 275 };
+var CHART_PADDING2 = { top: 12, right: 185, bottom: 12, left: 275 };
 var BAR_COLORS = [
   "#0a84ff",
   // Apple System Blue
@@ -3391,47 +5648,118 @@ var BAR_COLORS = [
   "#ff375f"
   // Apple System Pink
 ];
+var STACK_COLORS = {
+  likes: { color: "#5e5ce6", label: "Likes", weightLabel: "Likes (\xD71)" },
+  comments: { color: "#30d158", label: "Comments", weightLabel: "Comments (\xD72)" },
+  shares: { color: "#ff9f0a", label: "Shares", weightLabel: "Shares (\xD73)" }
+};
 var TEXT_COLOR2 = "hsla(0, 0%, 58%, 0.95)";
 var TRACK_COLOR = "hsla(0, 0%, 50%, 0.08)";
 var FONT_FAMILY2 = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif';
 var TagRankingView = class {
-  constructor(container, engagementStore) {
+  constructor(container, engagementStore, audienceIndex) {
     this.dimension = "tag";
     this.metric = "score";
+    this.selectedComponents = ["likes", "comments", "shares"];
+    this.barDisplayMode = "stacked";
     this.dateRange = {
       presetId: "90d",
       ...computeRangeForPreset("90d"),
       dateBasis: "published"
     };
     this.limit = 10;
-    this.sourceFilter = "all";
+    this.selectedSources = [];
+    // [] = Tat ca nguon
+    this.selectedAudiences = [];
+    // [] = Tat ca audience
+    this.isCollapsed = false;
     this.container = container;
     this.engagementStore = engagementStore;
+    this.audienceIndex = audienceIndex || null;
   }
-  // Nhom 3: Render toan bo view voi Bo chon 5 Chieu + Bo loc Chi so & Khoang thoi gian (Popover 3 cot)
+  // Nhom 3: Render toan bo view voi Bo chon 5 Chieu + Multi-select Filters + Stacked Bar Toggle + In-place Data Section
   render() {
     this.container.empty();
-    const card = this.container.createDiv({ cls: "content-compass-card" });
+    const card = this.container.createDiv({
+      cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`
+    });
     const header = card.createDiv({ cls: "content-compass-card-header" });
-    const title = header.createDiv({ cls: "content-compass-card-title" });
+    const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
     const titleIcon = title.createSpan({ cls: "cc-icon" });
-    (0, import_obsidian10.setIcon)(titleIcon, "bar-chart-2");
     title.createSpan({ text: "B\u1EA3ng X\u1EBFp h\u1EA1ng Hi\u1EC7u su\u1EA5t \u0110a chi\u1EC1u" });
+    const headerControls = header.createDiv({ cls: "content-compass-chart-controls" });
+    const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+    if (this.isCollapsed) {
+      cardBody.style.display = "none";
+      headerControls.style.display = "none";
+    }
+    let renderRankingDataSection = () => {
+    };
+    const syncTitleCollapseState = () => {
+      titleIcon.empty();
+      (0, import_obsidian11.setIcon)(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+      title.setAttribute("title", this.isCollapsed ? "B\u1EA5m \u0111\u1EC3 Hi\u1EC7n b\u1EA3ng" : "B\u1EA5m \u0111\u1EC3 \u1EA8n b\u1EA3ng");
+    };
+    syncTitleCollapseState();
+    title.addEventListener("click", () => {
+      this.isCollapsed = !this.isCollapsed;
+      card.toggleClass("is-collapsed", this.isCollapsed);
+      cardBody.style.display = this.isCollapsed ? "none" : "";
+      headerControls.style.display = this.isCollapsed ? "none" : "";
+      syncTitleCollapseState();
+      if (!this.isCollapsed) {
+        renderRankingDataSection();
+      }
+    });
     if (!this.engagementStore.hasData()) {
-      const placeholder = card.createDiv({ cls: "content-compass-placeholder" });
+      const placeholder = cardBody.createDiv({ cls: "content-compass-placeholder" });
       placeholder.setText("Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u engagement. H\xE3y qu\xE9t ho\u1EB7c nh\u1EADp d\u1EEF li\u1EC7u \u1EDF b\u1EA3ng tr\xEAn.");
       return;
     }
+    const modeSeg = headerControls.createDiv({ cls: "content-compass-segmented-control cc-yaxis-toggle" });
+    const btnStacked = modeSeg.createEl("button", {
+      cls: `content-compass-tab-btn ${this.barDisplayMode === "stacked" ? "is-active" : ""}`,
+      text: "Thanh ph\xE2n r\xE3 m\xE0u",
+      attr: {
+        type: "button",
+        title: "Chia m\u1ED7i thanh \u0111i\u1EC3m th\xE0nh 3 \u0111o\u1EA1n m\xE0u t\u01B0\u01A1ng \u1EE9ng t\u1EF7 tr\u1ECDng \u0111\xF3ng g\xF3p c\u1EE7a Likes, Comments, Shares"
+      }
+    });
+    const btnSingle = modeSeg.createEl("button", {
+      cls: `content-compass-tab-btn ${this.barDisplayMode === "single" ? "is-active" : ""}`,
+      text: "Thanh \u0111\u01A1n",
+      attr: {
+        type: "button",
+        title: "V\u1EBD m\u1ED9t m\xE0u \u0111\u1ED3ng nh\u1EA5t cho m\u1ED7i thanh x\u1EBFp h\u1EA1ng"
+      }
+    });
+    btnStacked.addEventListener("click", () => {
+      if (this.barDisplayMode !== "stacked") {
+        this.barDisplayMode = "stacked";
+        btnStacked.addClass("is-active");
+        btnSingle.removeClass("is-active");
+        renderRankingDataSection();
+      }
+    });
+    btnSingle.addEventListener("click", () => {
+      if (this.barDisplayMode !== "single") {
+        this.barDisplayMode = "single";
+        btnSingle.addClass("is-active");
+        btnStacked.removeClass("is-active");
+        renderRankingDataSection();
+      }
+    });
     renderDateRangePickerButton(
-      header,
+      headerControls,
       this.dateRange,
       { showGroupBy: false, showDateBasis: true },
       (next) => {
         this.dateRange = next;
-        this.render();
+        renderRankingDataSection();
       }
     );
-    const filterStrip = card.createDiv({ cls: "content-compass-chart-filter-strip" });
+    const filterStrip = cardBody.createDiv({ cls: "content-compass-chart-filter-strip" });
+    const rankingDataContainer = cardBody.createDiv({ cls: "cc-chart-data-section" });
     const dimSeg = filterStrip.createDiv({ cls: "content-compass-segmented-control" });
     const dims = [
       { id: "tag", label: "Theo Tag / Ch\u1EE7 \u0111\u1EC1" },
@@ -3440,14 +5768,21 @@ var TagRankingView = class {
       { id: "audience", label: "Theo Audience" },
       { id: "pillar", label: "Theo Pillar" }
     ];
+    const dimBtns = [];
     for (const d of dims) {
       const b = dimSeg.createEl("button", {
         cls: `content-compass-tab-btn ${this.dimension === d.id ? "is-active" : ""}`,
-        text: d.label
+        text: d.label,
+        attr: { type: "button" }
       });
+      dimBtns.push(b);
       b.addEventListener("click", () => {
-        this.dimension = d.id;
-        this.render();
+        if (this.dimension !== d.id) {
+          this.dimension = d.id;
+          dimBtns.forEach((el) => el.removeClass("is-active"));
+          b.addClass("is-active");
+          renderRankingDataSection();
+        }
       });
     }
     const metricSelect = filterStrip.createEl("select");
@@ -3464,17 +5799,94 @@ var TagRankingView = class {
     metricSelect.value = this.metric;
     metricSelect.addEventListener("change", () => {
       this.metric = metricSelect.value;
-      this.render();
+      renderRankingDataSection();
     });
-    const sourceSelect = filterStrip.createEl("select");
-    sourceSelect.createEl("option", { value: "all", text: "Ngu\u1ED3n: T\u1EA5t c\u1EA3" });
-    sourceSelect.createEl("option", { value: "own", text: "Ch\u1EC9 Th\u01B0\u01A1ng hi\u1EC7u" });
-    sourceSelect.createEl("option", { value: "external", text: "Ch\u1EC9 \u0110\u1ED1i th\u1EE7 / B\xEAn ngo\xE0i" });
-    sourceSelect.value = this.sourceFilter;
-    sourceSelect.addEventListener("change", () => {
-      this.sourceFilter = sourceSelect.value;
-      this.render();
-    });
+    const compOptions = ["likes", "comments", "shares"].map(
+      (k) => ({
+        value: k,
+        label: STACK_COLORS[k].weightLabel,
+        color: STACK_COLORS[k].color
+      })
+    );
+    renderMultiSelectPopoverButton(
+      filterStrip,
+      {
+        prefixLabel: "Th\xE0nh ph\u1EA7n",
+        allLabel: "\u0110\u1EE7 Likes, Comments, Shares",
+        options: compOptions,
+        selectedValues: this.selectedComponents,
+        allWhenEmpty: false,
+        minSelected: 1,
+        enableSearch: false,
+        widthPx: 240
+      },
+      (nextComps) => {
+        this.selectedComponents = nextComps || ["likes", "comments", "shares"];
+        renderRankingDataSection();
+      }
+    );
+    const sourceOptions = [
+      ...this.engagementStore.getSourceTypeFilterOptions()
+    ];
+    for (const author of this.engagementStore.getKnownAuthors()) {
+      sourceOptions.push({
+        value: `author:${author}`,
+        label: author,
+        group: "T\u1EEBng Trang / T\xE1c gi\u1EA3 c\u1EE5 th\u1EC3",
+        color: "#5e5ce6"
+      });
+    }
+    renderMultiSelectPopoverButton(
+      filterStrip,
+      {
+        prefixLabel: "Ngu\u1ED3n",
+        allLabel: "T\u1EA5t c\u1EA3 trang",
+        options: sourceOptions,
+        selectedValues: this.selectedSources,
+        allWhenEmpty: true,
+        enableSearch: true,
+        widthPx: 280
+      },
+      (nextSources) => {
+        this.selectedSources = nextSources;
+        renderRankingDataSection();
+      }
+    );
+    if (this.audienceIndex) {
+      const audienceOptions = [
+        {
+          value: UNASSIGNED_AUDIENCE_KEY,
+          label: "(Ch\u01B0a g\u1EAFn Audience / Ngo\xE0i Vault)",
+          group: "Tr\u1EA1ng th\xE1i d\u1EEF li\u1EC7u",
+          color: "#8e8e93"
+        }
+      ];
+      for (const node of this.audienceIndex.getAllNodes().values()) {
+        audienceOptions.push({
+          value: node.slug,
+          label: node.displayName,
+          sublabel: node.level ? `C\u1EA5p: ${node.level.toUpperCase()}` : void 0,
+          group: "Audience trong Vault",
+          color: node.level === "big" ? "#ff453a" : node.level === "little" ? "#30d158" : "#0a84ff"
+        });
+      }
+      renderMultiSelectPopoverButton(
+        filterStrip,
+        {
+          prefixLabel: "Audience",
+          allLabel: "T\u1EA5t c\u1EA3",
+          options: audienceOptions,
+          selectedValues: this.selectedAudiences,
+          allWhenEmpty: true,
+          enableSearch: true,
+          widthPx: 300
+        },
+        (nextAuds) => {
+          this.selectedAudiences = nextAuds;
+          renderRankingDataSection();
+        }
+      );
+    }
     const limitSelect = filterStrip.createEl("select");
     for (const n of [5, 10, 15, 25]) {
       limitSelect.createEl("option", { value: String(n), text: `Hi\u1EC3n th\u1ECB: Top ${n}` });
@@ -3482,25 +5894,47 @@ var TagRankingView = class {
     limitSelect.value = String(this.limit);
     limitSelect.addEventListener("change", () => {
       this.limit = parseInt(limitSelect.value) || 10;
-      this.render();
+      renderRankingDataSection();
     });
-    const data = this.engagementStore.queryRankingAdvanced({
-      dimension: this.dimension,
-      metric: this.metric,
-      days: this.dateRange.presetId === "all" ? 0 : 90,
-      startDate: this.dateRange.startDate || void 0,
-      endDate: this.dateRange.endDate || void 0,
-      dateBasis: this.dateRange.dateBasis || "published",
-      limit: this.limit,
-      sourceFilter: this.sourceFilter
-    });
-    const canvasWrap = card.createDiv({ cls: "content-compass-canvas-wrap" });
-    const canvas = canvasWrap.createEl("canvas", { cls: "content-compass-chart-canvas" });
-    requestAnimationFrame(() => {
-      this.drawChart(canvas, data);
-    });
+    renderRankingDataSection = () => {
+      if (this.isCollapsed)
+        return;
+      rankingDataContainer.empty();
+      const data = this.engagementStore.queryRankingAdvanced({
+        dimension: this.dimension,
+        metric: this.metric,
+        days: this.dateRange.presetId === "all" ? 0 : 90,
+        startDate: this.dateRange.startDate || void 0,
+        endDate: this.dateRange.endDate || void 0,
+        dateBasis: this.dateRange.dateBasis || "published",
+        limit: this.limit,
+        sourceFilter: "all",
+        sourceFilters: this.selectedSources,
+        filterAudiences: this.selectedAudiences,
+        selectedMetrics: this.selectedComponents
+      });
+      if (this.barDisplayMode === "stacked" && data.length > 0) {
+        const legendBar = rankingDataContainer.createDiv({ cls: "cc-chart-legend" });
+        for (const compKey of this.selectedComponents) {
+          const info = STACK_COLORS[compKey];
+          const item = legendBar.createSpan({ cls: "cc-legend-item is-static" });
+          const dot = item.createSpan({ cls: "cc-legend-dot" });
+          dot.style.backgroundColor = info.color;
+          item.createSpan({
+            cls: "cc-legend-label",
+            text: this.metric === "score" || this.metric === "avg_score" ? info.weightLabel : info.label
+          });
+        }
+      }
+      const canvasWrap = rankingDataContainer.createDiv({ cls: "content-compass-canvas-wrap" });
+      const canvas = canvasWrap.createEl("canvas", { cls: "content-compass-chart-canvas" });
+      requestAnimationFrame(() => {
+        this.drawChart(canvas, data);
+      });
+    };
+    renderRankingDataSection();
   }
-  // Nhom 4: Ve bieu do horizontal bar chart chuan Apple Screen Time
+  // Nhom 4: Ve bieu do horizontal bar chart (Ho tro Stacked Bar phan ra mau & Single Bar)
   drawChart(canvas, data) {
     var _a;
     const dpr = window.devicePixelRatio || 1;
@@ -3523,7 +5957,7 @@ var TagRankingView = class {
       ctx.fillStyle = TEXT_COLOR2;
       ctx.font = `500 13px ${FONT_FAMILY2}`;
       ctx.textAlign = "center";
-      const emptyMsg = this.dimension === "tag" || this.dimension === "audience" || this.dimension === "pillar" ? "Ch\u01B0a c\xF3 b\xE0i vi\u1EBFt n\xE0o \u0111\u01B0\u1EE3c l\u01B0u trong Vault v\xE0 g\u1EAFn d\u1EEF li\u1EC7u n\xE0y trong kho\u1EA3ng th\u1EDDi gian \u0111ang ch\u1ECDn" : "Kh\xF4ng c\xF3 d\u1EEF li\u1EC7u cho chi\u1EC1u ph\xE2n t\xEDch v\xE0 kho\u1EA3ng th\u1EDDi gian n\xE0y";
+      const emptyMsg = this.dimension === "tag" || this.dimension === "audience" || this.dimension === "pillar" ? "Ch\u01B0a c\xF3 b\xE0i vi\u1EBFt n\xE0o \u0111\u01B0\u1EE3c l\u01B0u trong Vault v\xE0 g\u1EAFn d\u1EEF li\u1EC7u n\xE0y trong kho\u1EA3ng th\u1EDDi gian \u0111ang ch\u1ECDn" : "Kh\xF4ng c\xF3 d\u1EEF li\u1EC7u kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc v\xE0 kho\u1EA3ng th\u1EDDi gian \u0111ang ch\u1ECDn";
       ctx.fillText(emptyMsg, containerWidth / 2, logicalHeight / 2);
       return;
     }
@@ -3535,17 +5969,53 @@ var TagRankingView = class {
     for (let i = 0; i < data.length; i++) {
       const entry = data[i];
       const y = CHART_PADDING2.top + i * (BAR_HEIGHT + BAR_GAP);
-      const barWidth = Math.max(entry.value / maxVal * plotW, 8);
-      const color = BAR_COLORS[i % BAR_COLORS.length];
+      const totalBarWidth = Math.max(entry.value / maxVal * plotW, 8);
+      const singleColor = BAR_COLORS[i % BAR_COLORS.length];
       const radius = 7;
       ctx.fillStyle = TRACK_COLOR;
       ctx.beginPath();
       ctx.roundRect(plotX, y, plotW, BAR_HEIGHT, radius);
       ctx.fill();
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.roundRect(plotX, y, barWidth, BAR_HEIGHT, radius);
-      ctx.fill();
+      const useScoreWeights = this.metric === "score" || this.metric === "avg_score";
+      const segParts = [
+        {
+          key: "likes",
+          contrib: this.selectedComponents.includes("likes") ? entry.likes * (useScoreWeights ? 1 : 1) : 0,
+          color: STACK_COLORS.likes.color
+        },
+        {
+          key: "comments",
+          contrib: this.selectedComponents.includes("comments") ? entry.comments * (useScoreWeights ? 2 : 1) : 0,
+          color: STACK_COLORS.comments.color
+        },
+        {
+          key: "shares",
+          contrib: this.selectedComponents.includes("shares") ? entry.shares * (useScoreWeights ? 3 : 1) : 0,
+          color: STACK_COLORS.shares.color
+        }
+      ].filter((p) => p.contrib > 0);
+      const sumContrib = segParts.reduce((acc, p) => acc + p.contrib, 0);
+      if (this.barDisplayMode === "stacked" && segParts.length > 1 && sumContrib > 0) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.roundRect(plotX, y, totalBarWidth, BAR_HEIGHT, radius);
+        ctx.clip();
+        let curX = plotX;
+        for (let sIdx = 0; sIdx < segParts.length; sIdx++) {
+          const seg = segParts[sIdx];
+          const segW = sIdx === segParts.length - 1 ? plotX + totalBarWidth - curX : seg.contrib / sumContrib * totalBarWidth;
+          ctx.fillStyle = seg.color;
+          ctx.fillRect(curX, y, Math.max(segW, 1), BAR_HEIGHT);
+          curX += segW;
+        }
+        ctx.restore();
+      } else {
+        const fallbackColor = this.barDisplayMode === "stacked" && segParts.length === 1 ? segParts[0].color : singleColor;
+        ctx.fillStyle = fallbackColor;
+        ctx.beginPath();
+        ctx.roundRect(plotX, y, totalBarWidth, BAR_HEIGHT, radius);
+        ctx.fill();
+      }
       ctx.fillStyle = TEXT_COLOR2;
       ctx.font = `500 12px ${FONT_FAMILY2}`;
       ctx.textAlign = "right";
@@ -3553,16 +6023,16 @@ var TagRankingView = class {
       if (rawLabel.length > 42)
         rawLabel = rawLabel.slice(0, 40) + "...";
       ctx.fillText(rawLabel, plotX - 10, y + BAR_HEIGHT / 2 + 4);
-      ctx.fillStyle = color;
+      ctx.fillStyle = singleColor;
       ctx.font = `650 12px ${FONT_FAMILY2}`;
       ctx.textAlign = "left";
       const mainValStr = this.formatNumber(entry.value);
-      ctx.fillText(mainValStr, plotX + barWidth + 8, y + BAR_HEIGHT / 2 + 4);
+      ctx.fillText(mainValStr, plotX + totalBarWidth + 8, y + BAR_HEIGHT / 2 + 4);
       const mainValWidth = ctx.measureText(mainValStr).width;
       ctx.fillStyle = TEXT_COLOR2;
       ctx.font = `500 11px ${FONT_FAMILY2}`;
-      const detailStr = this.dimension === "post" ? `(${entry.likes}L \xB7 ${entry.comments}C \xB7 ${entry.shares}S)` : `(${entry.postCount} b\xE0i \xB7 ${entry.likes}L \xB7 ${entry.comments}C)`;
-      ctx.fillText(detailStr, plotX + barWidth + 14 + mainValWidth, y + BAR_HEIGHT / 2 + 4);
+      const detailStr = this.dimension === "post" ? `(${entry.likes}L \xB7 ${entry.comments}C \xB7 ${entry.shares}S)` : `(${entry.postCount} b\xE0i \xB7 ${entry.likes}L \xB7 ${entry.comments}C \xB7 ${entry.shares}S)`;
+      ctx.fillText(detailStr, plotX + totalBarWidth + 14 + mainValWidth, y + BAR_HEIGHT / 2 + 4);
     }
   }
   formatNumber(n) {
@@ -3577,10 +6047,10 @@ var VIEW_TYPE_CONTENT_COMPASS = "content-compass-dashboard";
 function setIconLabel(el, iconName, labelText, spinning = false) {
   el.empty();
   const ic = el.createSpan({ cls: `cc-icon ${spinning ? "is-spinning" : ""}` });
-  (0, import_obsidian11.setIcon)(ic, iconName);
+  (0, import_obsidian12.setIcon)(ic, iconName);
   el.createSpan({ text: labelText });
 }
-var DashboardView = class extends import_obsidian11.ItemView {
+var DashboardView = class extends import_obsidian12.ItemView {
   constructor(leaf, tagIndex, audienceIndex, engagementStore) {
     super(leaf);
     this.activeTab = "strategy";
@@ -3673,10 +6143,17 @@ var DashboardView = class extends import_obsidian11.ItemView {
       );
       importView.render();
       const timelineSection = analyticsLayout.createDiv({ cls: "content-compass-analytics-chart" });
-      const timelineView = new TimelineChartView(timelineSection, this.engagementStore, this.audienceIndex);
+      const timelineView = new TimelineChartView(
+        timelineSection,
+        this.engagementStore,
+        this.audienceIndex,
+        (post) => {
+          void importView.focusAndHighlightPost(post);
+        }
+      );
       timelineView.render();
       const rankingSection = analyticsLayout.createDiv({ cls: "content-compass-analytics-chart" });
-      const rankingView = new TagRankingView(rankingSection, this.engagementStore);
+      const rankingView = new TagRankingView(rankingSection, this.engagementStore, this.audienceIndex);
       rankingView.render();
     } else if (this.activeTab === "advisor") {
       const placeholder = contentEl.createDiv({ cls: "content-compass-placeholder" });
@@ -3693,7 +6170,7 @@ var DashboardView = class extends import_obsidian11.ItemView {
 };
 
 // src/main.ts
-var ContentCompassPlugin = class extends import_obsidian12.Plugin {
+var ContentCompassPlugin = class extends import_obsidian13.Plugin {
   constructor() {
     super(...arguments);
     this.audienceIndex = null;

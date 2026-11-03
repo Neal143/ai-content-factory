@@ -1,9 +1,9 @@
 /**
  * Tên file: PillarHealthView.ts
- * Last update: 23/10/2026 20:10 (GMT+7)
+ * Last update: 03/11/2026 12:20 (GMT+7)
  * Vai trò: Renderer cho biểu đồ tỷ trọng nội dung (Pillar Health) trong tab Strategy.
  * Được sử dụng khi nào?: Trong tab Strategy để trực quan hóa sự cân bằng khối lượng nội dung giữa các Pillar.
- * Output: Biểu đồ thanh ngang (horizontal stacked bar chart) và bảng số liệu thống kê chi tiết.
+ * Output: Biểu đồ thanh ngang (horizontal stacked bar chart), bảng số liệu thống kê chi tiết và nút Hide/Show góc trên cùng bên phải.
  * Tóm tắt logic hoạt động: Tính toán tỷ lệ phần trăm topic và audience thuộc từng Pillar, dựng thanh tiến trình
  * với màu sắc tương ứng và bảng thống kê tổng hợp (Tên Pillar | Số Topics | Số Audiences | % Tỷ trọng).
  */
@@ -26,6 +26,7 @@ export class PillarHealthView {
 	private container: HTMLElement;
 	private tagIndex: TagIndex;
 	private audienceIndex: AudienceIndex;
+	private isCollapsed: boolean = false;
 
 	constructor(container: HTMLElement, tagIndex: TagIndex, audienceIndex: AudienceIndex) {
 		this.container = container;
@@ -37,11 +38,33 @@ export class PillarHealthView {
 	public render(): void {
 		this.container.empty();
 
-		const card = this.container.createDiv({ cls: "content-compass-card" });
-		const title = card.createDiv({ cls: "content-compass-card-title" });
+		const card = this.container.createDiv({
+			cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`,
+		});
+		const header = card.createDiv({ cls: "content-compass-card-header" });
+		const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
 		const titleIcon = title.createSpan({ cls: "cc-icon" });
-		setIcon(titleIcon, "activity");
 		title.createSpan({ text: "Tỷ trọng & Sức khỏe Trụ cột (Pillar Health)" });
+
+		const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
+		if (this.isCollapsed) {
+			cardBody.style.display = "none";
+		}
+		const syncCollapseTitle = () => {
+			titleIcon.empty();
+			setIcon(titleIcon, this.isCollapsed ? "chevron-right" : "chevron-down");
+			title.setAttribute(
+				"title",
+				this.isCollapsed ? "Bấm để Hiện bảng" : "Bấm để Ẩn bảng"
+			);
+		};
+		syncCollapseTitle();
+		title.addEventListener("click", () => {
+			this.isCollapsed = !this.isCollapsed;
+			card.toggleClass("is-collapsed", this.isCollapsed);
+			cardBody.style.display = this.isCollapsed ? "none" : "";
+			syncCollapseTitle();
+		});
 
 		const pillars = this.tagIndex.getPillars();
 		let totalTopics = 0;
@@ -50,13 +73,13 @@ export class PillarHealthView {
 		}
 
 		if (pillars.size === 0 || totalTopics === 0) {
-			const emptyMsg = card.createDiv({ cls: "content-compass-placeholder" });
+			const emptyMsg = cardBody.createDiv({ cls: "content-compass-placeholder" });
 			emptyMsg.setText("Chưa có đủ dữ liệu topics để tính tỷ trọng Pillar.");
 			return;
 		}
 
 		// 1. Danh sách biểu đồ thanh tiến trình
-		const list = card.createDiv({ cls: "content-compass-health-list" });
+		const list = cardBody.createDiv({ cls: "content-compass-health-list" });
 
 		let colorIdx = 0;
 		const tableRows: Array<{ name: string; topics: number; audiences: number; percent: number; color: string }> = [];
@@ -94,7 +117,7 @@ export class PillarHealthView {
 		}
 
 		// 2. Bảng thống kê số liệu chi tiết
-		const tableContainer = card.createDiv({ cls: "content-compass-table-container" });
+		const tableContainer = cardBody.createDiv({ cls: "content-compass-table-container" });
 		const table = tableContainer.createEl("table", { cls: "content-compass-data-table" });
 
 		// Header bảng

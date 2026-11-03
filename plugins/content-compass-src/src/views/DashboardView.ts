@@ -1,6 +1,6 @@
 /**
  * Tên file: DashboardView.ts
- * Last update: 02/11/2026 17:05 (GMT+7)
+ * Last update: 03/11/2026 15:29 (GMT+7)
  * Vai tro: Obsidian ItemView chinh dong vai tro container cho toan bo giao dien Content Compass.
  * Duoc su dung khi nao?: Khi user mo view qua Ribbon icon hoac Command Palette.
  * Output: Cua so Dashboard da tab (Strategy, Analytics, Advisor) tren workspace leaf cua Obsidian.
@@ -154,14 +154,21 @@ export class DashboardView extends ItemView {
 			);
 			importView.render();
 
-			// Khoi giua: Timeline Chart
+			// Khoi giua: Timeline Chart (ket noi callback click bai viet tren chart -> nhay toi bai viet o Bang Danh sach bai viet)
 			const timelineSection = analyticsLayout.createDiv({ cls: "content-compass-analytics-chart" });
-			const timelineView = new TimelineChartView(timelineSection, this.engagementStore, this.audienceIndex);
+			const timelineView = new TimelineChartView(
+				timelineSection,
+				this.engagementStore,
+				this.audienceIndex,
+				(post) => {
+					void importView.focusAndHighlightPost(post);
+				}
+			);
 			timelineView.render();
 
 			// Khoi duoi: Tag Ranking
 			const rankingSection = analyticsLayout.createDiv({ cls: "content-compass-analytics-chart" });
-			const rankingView = new TagRankingView(rankingSection, this.engagementStore);
+			const rankingView = new TagRankingView(rankingSection, this.engagementStore, this.audienceIndex);
 			rankingView.render();
 		} else if (this.activeTab === "advisor") {
 			const placeholder = contentEl.createDiv({ cls: "content-compass-placeholder" });
