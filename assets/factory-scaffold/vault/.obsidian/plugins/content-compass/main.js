@@ -1408,6 +1408,7 @@ function squarifyRecursive(items, rect, out) {
 var PillarMapView = class {
   constructor(container, tagIndex, audienceIndex, app, engagementStore) {
     this.isCollapsed = false;
+    this.weightMode = "topics";
     this.container = container;
     this.tagIndex = tagIndex;
     this.audienceIndex = audienceIndex;
@@ -1416,7 +1417,6 @@ var PillarMapView = class {
   }
   // Nhom 5: Phuong thuc dung giao dien Treemap 2D
   render() {
-    var _a, _b;
     this.container.empty();
     const card = this.container.createDiv({
       cls: `content-compass-card ${this.isCollapsed ? "is-collapsed" : ""}`
@@ -1425,9 +1425,43 @@ var PillarMapView = class {
     const title = header.createDiv({ cls: "content-compass-card-title cc-collapsible-title" });
     const titleIcon = title.createSpan({ cls: "cc-icon" });
     title.createSpan({ text: "B\u1EA3n \u0111\u1ED3 Tr\u1EE5 c\u1ED9t N\u1ED9i dung (Pillar Treemap)" });
+    const headerControls = header.createDiv({ cls: "content-compass-chart-controls" });
+    const modeGroup = headerControls.createDiv({ cls: "content-compass-btn-group" });
+    const modeOptions = [
+      {
+        key: "topics",
+        label: "Theo Topics",
+        tooltip: "T\xEDnh di\u1EC7n t\xEDch c\xE1c kh\u1ED1i Pillar theo s\u1ED1 l\u01B0\u1EE3ng Ch\u1EE7 \u0111\u1EC1 (Topics) trong topic_map.yaml"
+      },
+      {
+        key: "audiences",
+        label: "Theo Audiences",
+        tooltip: "T\xEDnh di\u1EC7n t\xEDch c\xE1c kh\u1ED1i Pillar theo s\u1ED1 l\u01B0\u1EE3ng T\u1EC7p \u0111\u1ED9c gi\u1EA3 (Audiences) li\xEAn k\u1EBFt"
+      },
+      {
+        key: "score",
+        label: "Theo Score",
+        tooltip: "T\xEDnh di\u1EC7n t\xEDch c\xE1c kh\u1ED1i Pillar theo t\u1ED5ng \u0110i\u1EC3m t\u01B0\u01A1ng t\xE1c (Score) c\u1EE7a c\xE1c b\xE0i vi\u1EBFt \u0111\xE3 g\u1EAFn Audience thu\u1ED9c Pillar"
+      }
+    ];
+    for (const opt of modeOptions) {
+      const btn = modeGroup.createEl("button", {
+        cls: `content-compass-btn ${this.weightMode === opt.key ? "is-active" : ""}`,
+        text: opt.label,
+        attr: { type: "button", title: opt.tooltip }
+      });
+      btn.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        if (this.weightMode === opt.key)
+          return;
+        this.weightMode = opt.key;
+        this.render();
+      });
+    }
     const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
     if (this.isCollapsed) {
       cardBody.style.display = "none";
+      headerControls.style.display = "none";
     }
     const syncCollapseTitle = () => {
       titleIcon.empty();
@@ -1442,6 +1476,7 @@ var PillarMapView = class {
       this.isCollapsed = !this.isCollapsed;
       card.toggleClass("is-collapsed", this.isCollapsed);
       cardBody.style.display = this.isCollapsed ? "none" : "";
+      headerControls.style.display = this.isCollapsed ? "none" : "";
       syncCollapseTitle();
     });
     const pillars = this.tagIndex.getPillars();
@@ -1450,23 +1485,53 @@ var PillarMapView = class {
       emptyMsg.setText("Ch\u01B0a n\u1EA1p \u0111\u01B0\u1EE3c danh m\u1EE5c Pillar t\u1EEB topic_map.yaml");
       return;
     }
-    const totalTopics = this.tagIndex.getTotalTopicCount() || 1;
-    const treemap = cardBody.createDiv({ cls: "content-compass-treemap" });
     const pillarEntries = Array.from(pillars.entries());
-    const useEngagement = (_b = (_a = this.engagementStore) == null ? void 0 : _a.hasData()) != null ? _b : false;
-    const weights = pillarEntries.map(([pillarName, p]) => {
-      if (useEngagement) {
-        return this.engagementStore.getScoreByPillar(pillarName) || 1;
+    const pillarMetrics = pillarEntries.map(([pillarName, p]) => {
+      const topicCount = p.topicIds.length || 0;
+      const audienceCount = p.audienceSlugs.length || 0;
+      const score = this.engagementStore ? this.engagementStore.getScoreByPillar(pillarName) : 0;
+      return { pillarName, pillarNode: p, topicCount, audienceCount, score };
+    });
+    const totalTopicsSum = Math.max(
+      1,
+      pillarMetrics.reduce((acc, m) => acc + m.topicCount, 0)
+    );
+    const totalAudiencesSum = Math.max(
+      1,
+      pillarMetrics.reduce((acc, m) => acc + m.audienceCount, 0)
+    );
+    const totalScoreSum = pillarMetrics.reduce((acc, m) => acc + m.score, 0);
+    if (this.weightMode === "score" && totalScoreSum <= 0) {
+      const zeroNotice = cardBody.createDiv({ cls: "cc-treemap-zero-score-notice" });
+      zeroNotice.style.fontSize = "12px";
+      zeroNotice.style.color = "var(--text-muted)";
+      zeroNotice.style.backgroundColor = "var(--background-secondary)";
+      zeroNotice.style.border = "1px solid var(--background-modifier-border)";
+      zeroNotice.style.borderRadius = "6px";
+      zeroNotice.style.padding = "6px 10px";
+      zeroNotice.style.marginBottom = "8px";
+      zeroNotice.setText(
+        "Hi\u1EC7n ch\u01B0a c\xF3 b\xE0i vi\u1EBFt n\xE0o \u0111\u01B0\u1EE3c l\u01B0u v\xE0o Vault (03-Content/) v\xE0 g\u1EAFn audience_target, n\xEAn \u0111i\u1EC3m Score c\u1EE7a c\u1EA3 4 Pillar \u0111\u1EC1u b\u1EB1ng 0 (di\u1EC7n t\xEDch chia \u0111\u1EC1u 1:1:1:1)."
+      );
+    }
+    const treemap = cardBody.createDiv({ cls: "content-compass-treemap" });
+    const weights = pillarMetrics.map((m) => {
+      if (this.weightMode === "audiences") {
+        return Math.max(1, m.audienceCount);
       }
-      return p.topicIds.length || 1;
+      if (this.weightMode === "score") {
+        return Math.max(1, m.score);
+      }
+      return Math.max(1, m.topicCount);
     });
     const rects = squarifiedLayout(weights);
-    for (let idx = 0; idx < pillarEntries.length; idx++) {
-      const [pillarName, pillarNode] = pillarEntries[idx];
+    for (let idx = 0; idx < pillarMetrics.length; idx++) {
+      const { pillarName, pillarNode, topicCount, audienceCount, score } = pillarMetrics[idx];
       const palette = PILLAR_COLOR_PALETTES[idx % PILLAR_COLOR_PALETTES.length];
       const rect = rects[idx];
-      const topicCount = pillarNode.topicIds.length || 1;
-      const pillarPercent = Math.round(topicCount / totalTopics * 100);
+      const topicPct = Math.round(topicCount / totalTopicsSum * 100);
+      const audPct = Math.round(audienceCount / totalAudiencesSum * 100);
+      const scorePct = totalScoreSum > 0 ? Math.round(score / totalScoreSum * 100) : 0;
       const pillarBlock = treemap.createDiv({ cls: "content-compass-treemap-pillar" });
       pillarBlock.style.borderColor = palette.border;
       pillarBlock.style.backgroundColor = palette.bg;
@@ -1479,11 +1544,18 @@ var PillarMapView = class {
       pillarHeader.style.color = palette.text;
       pillarHeader.setText(`${pillarName}`);
       const statsBadge = pillarHeader.createSpan({ cls: "content-compass-treemap-badge" });
-      if (useEngagement) {
-        const score = this.engagementStore.getScoreByPillar(pillarName);
-        statsBadge.setText(`${topicCount} topics \u2022 Score: ${score} \u2022 ${pillarNode.audienceSlugs.length} audiences`);
+      if (this.weightMode === "audiences") {
+        statsBadge.setText(
+          `${audienceCount} audiences (${audPct}%) \u2022 ${topicCount} topics \u2022 Score: ${score}`
+        );
+      } else if (this.weightMode === "score") {
+        statsBadge.setText(
+          `Score: ${score} (${scorePct}%) \u2022 ${topicCount} topics \u2022 ${audienceCount} audiences`
+        );
       } else {
-        statsBadge.setText(`${topicCount} topics (${pillarPercent}%) \u2022 ${pillarNode.audienceSlugs.length} audiences`);
+        statsBadge.setText(
+          `${topicCount} topics (${topicPct}%) \u2022 ${audienceCount} audiences \u2022 Score: ${score}`
+        );
       }
       const cellsContainer = pillarBlock.createDiv({ cls: "content-compass-treemap-cells" });
       if (pillarNode.audienceSlugs.length === 0) {

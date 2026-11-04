@@ -1,11 +1,11 @@
 /**
  * Ten file: PillarMapView.ts
- * Last update: 03/11/2026 12:19 (GMT+7)
+ * Last update: 04/11/2026 12:24 (GMT+7)
  * Vai tro: Renderer cho goc nhin Treemap (Pillar Map) trong tab Strategy.
  * Duoc su dung khi nao?: Khi tab Strategy duoc hien thi tren Dashboard.
- * Output: Giao dien Treemap 2D co nut Hide/Show o goc tren cung ben phai, dien tich ty le voi engagement score (fallback topicCount).
+ * Output: Giao dien Treemap 2D co nut Hide/Show va 3 che do tinh dien tich Pillar: Theo Topics (mac dinh) | Theo Audiences | Theo Score.
  * Tom tat logic hoat dong: Lay du lieu tu TagIndex, AudienceIndex, EngagementStore, tinh weight
- * (uu tien engagement, fallback topicCount), ap dung Squarified Treemap, render khoi pillar.
+ * theo che do duoc chon (mac dinh theo topicCount), ap dung Squarified Treemap, render khoi pillar.
  */
 
 import { App, setIcon } from "obsidian";
@@ -133,6 +133,7 @@ export class PillarMapView {
 	private app: App;
 	private engagementStore: EngagementStore | null;
 	private isCollapsed: boolean = false;
+	private weightMode: "topics" | "audiences" | "score" = "topics";
 
 	constructor(container: HTMLElement, tagIndex: TagIndex, audienceIndex: AudienceIndex, app: App, engagementStore?: EngagementStore) {
 		this.container = container;
@@ -154,9 +155,48 @@ export class PillarMapView {
 		const titleIcon = title.createSpan({ cls: "cc-icon" });
 		title.createSpan({ text: "Bản đồ Trụ cột Nội dung (Pillar Treemap)" });
 
+		// Bộ chuyển đổi 3 chế độ tính diện tích Pillar trên góc phải Header: Theo Topics | Theo Audiences | Theo Score
+		const headerControls = header.createDiv({ cls: "content-compass-chart-controls" });
+		const modeGroup = headerControls.createDiv({ cls: "content-compass-btn-group" });
+		const modeOptions: Array<{
+			key: "topics" | "audiences" | "score";
+			label: string;
+			tooltip: string;
+		}> = [
+			{
+				key: "topics",
+				label: "Theo Topics",
+				tooltip: "Tính diện tích các khối Pillar theo số lượng Chủ đề (Topics) trong topic_map.yaml",
+			},
+			{
+				key: "audiences",
+				label: "Theo Audiences",
+				tooltip: "Tính diện tích các khối Pillar theo số lượng Tệp độc giả (Audiences) liên kết",
+			},
+			{
+				key: "score",
+				label: "Theo Score",
+				tooltip: "Tính diện tích các khối Pillar theo tổng Điểm tương tác (Score) của các bài viết đã gắn Audience thuộc Pillar",
+			},
+		];
+		for (const opt of modeOptions) {
+			const btn = modeGroup.createEl("button", {
+				cls: `content-compass-btn ${this.weightMode === opt.key ? "is-active" : ""}`,
+				text: opt.label,
+				attr: { type: "button", title: opt.tooltip },
+			});
+			btn.addEventListener("click", (ev) => {
+				ev.stopPropagation();
+				if (this.weightMode === opt.key) return;
+				this.weightMode = opt.key;
+				this.render();
+			});
+		}
+
 		const cardBody = card.createDiv({ cls: "cc-card-collapsible-body" });
 		if (this.isCollapsed) {
 			cardBody.style.display = "none";
+			headerControls.style.display = "none";
 		}
 		const syncCollapseTitle = () => {
 			titleIcon.empty();
@@ -171,6 +211,7 @@ export class PillarMapView {
 			this.isCollapsed = !this.isCollapsed;
 			card.toggleClass("is-collapsed", this.isCollapsed);
 			cardBody.style.display = this.isCollapsed ? "none" : "";
+			headerControls.style.display = this.isCollapsed ? "none" : "";
 			syncCollapseTitle();
 		});
 
@@ -181,31 +222,63 @@ export class PillarMapView {
 			return;
 		}
 
-		const totalTopics = this.tagIndex.getTotalTopicCount() || 1;
-		const treemap = cardBody.createDiv({ cls: "content-compass-treemap" });
-
 		// Thu thap du lieu Pillar theo thu tu goc
 		const pillarEntries = Array.from(pillars.entries());
-		// Xac dinh nguon weight: uu tien engagement, fallback topicCount
-		const useEngagement = this.engagementStore?.hasData() ?? false;
-		const weights = pillarEntries.map(([pillarName, p]) => {
-			if (useEngagement) {
-				return this.engagementStore!.getScoreByPillar(pillarName) || 1;
+		const pillarMetrics = pillarEntries.map(([pillarName, p]) => {
+			const topicCount = p.topicIds.length || 0;
+			const audienceCount = p.audienceSlugs.length || 0;
+			const score = this.engagementStore ? this.engagementStore.getScoreByPillar(pillarName) : 0;
+			return { pillarName, pillarNode: p, topicCount, audienceCount, score };
+		});
+
+		const totalTopicsSum = Math.max(
+			1,
+			pillarMetrics.reduce((acc, m) => acc + m.topicCount, 0)
+		);
+		const totalAudiencesSum = Math.max(
+			1,
+			pillarMetrics.reduce((acc, m) => acc + m.audienceCount, 0)
+		);
+		const totalScoreSum = pillarMetrics.reduce((acc, m) => acc + m.score, 0);
+
+		if (this.weightMode === "score" && totalScoreSum <= 0) {
+			const zeroNotice = cardBody.createDiv({ cls: "cc-treemap-zero-score-notice" });
+			zeroNotice.style.fontSize = "12px";
+			zeroNotice.style.color = "var(--text-muted)";
+			zeroNotice.style.backgroundColor = "var(--background-secondary)";
+			zeroNotice.style.border = "1px solid var(--background-modifier-border)";
+			zeroNotice.style.borderRadius = "6px";
+			zeroNotice.style.padding = "6px 10px";
+			zeroNotice.style.marginBottom = "8px";
+			zeroNotice.setText(
+				"Hiện chưa có bài viết nào được lưu vào Vault (03-Content/) và gắn audience_target, nên điểm Score của cả 4 Pillar đều bằng 0 (diện tích chia đều 1:1:1:1)."
+			);
+		}
+
+		const treemap = cardBody.createDiv({ cls: "content-compass-treemap" });
+
+		const weights = pillarMetrics.map((m) => {
+			if (this.weightMode === "audiences") {
+				return Math.max(1, m.audienceCount);
 			}
-			return p.topicIds.length || 1;
+			if (this.weightMode === "score") {
+				return Math.max(1, m.score);
+			}
+			return Math.max(1, m.topicCount);
 		});
 
 		// Tinh layout bang thuat toan Squarified Treemap
 		const rects = squarifiedLayout(weights);
 
 		// Render tung khoi Pillar tai vi tri da tinh
-		for (let idx = 0; idx < pillarEntries.length; idx++) {
-			const [pillarName, pillarNode] = pillarEntries[idx];
+		for (let idx = 0; idx < pillarMetrics.length; idx++) {
+			const { pillarName, pillarNode, topicCount, audienceCount, score } = pillarMetrics[idx];
 			const palette = PILLAR_COLOR_PALETTES[idx % PILLAR_COLOR_PALETTES.length];
 			const rect = rects[idx];
 
-			const topicCount = pillarNode.topicIds.length || 1;
-			const pillarPercent = Math.round((topicCount / totalTopics) * 100);
+			const topicPct = Math.round((topicCount / totalTopicsSum) * 100);
+			const audPct = Math.round((audienceCount / totalAudiencesSum) * 100);
+			const scorePct = totalScoreSum > 0 ? Math.round((score / totalScoreSum) * 100) : 0;
 
 			// Khoi Pillar: position absolute, vi tri va kich thuoc tinh bang %
 			const pillarBlock = treemap.createDiv({ cls: "content-compass-treemap-pillar" });
@@ -225,11 +298,18 @@ export class PillarMapView {
 			pillarHeader.setText(`${pillarName}`);
 
 			const statsBadge = pillarHeader.createSpan({ cls: "content-compass-treemap-badge" });
-			if (useEngagement) {
-				const score = this.engagementStore!.getScoreByPillar(pillarName);
-				statsBadge.setText(`${topicCount} topics \u2022 Score: ${score} \u2022 ${pillarNode.audienceSlugs.length} audiences`);
+			if (this.weightMode === "audiences") {
+				statsBadge.setText(
+					`${audienceCount} audiences (${audPct}%) \u2022 ${topicCount} topics \u2022 Score: ${score}`
+				);
+			} else if (this.weightMode === "score") {
+				statsBadge.setText(
+					`Score: ${score} (${scorePct}%) \u2022 ${topicCount} topics \u2022 ${audienceCount} audiences`
+				);
 			} else {
-				statsBadge.setText(`${topicCount} topics (${pillarPercent}%) \u2022 ${pillarNode.audienceSlugs.length} audiences`);
+				statsBadge.setText(
+					`${topicCount} topics (${topicPct}%) \u2022 ${audienceCount} audiences \u2022 Score: ${score}`
+				);
 			}
 
 			// Container chua cac cell Audience thuoc Pillar
