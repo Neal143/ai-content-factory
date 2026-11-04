@@ -2239,8 +2239,8 @@ function renderPostSparkline5D(parent, spark, isTop5) {
       validCoords.push({ idx, x, y, val: v });
     }
   });
-  const strokeColor = "#0a84ff";
-  const fillColor = "rgba(10, 132, 255, 0.14)";
+  const strokeColor = "#30d158";
+  const fillColor = "rgba(48, 209, 88, 0.16)";
   const svgNs = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(svgNs, "svg");
   svg.setAttribute("class", "cc-post-sparkline-svg");
@@ -2627,6 +2627,37 @@ var ImportEngineView = class {
       this.highlightRowTimer = null;
     }, 4e3);
   }
+  /**
+   * Mo ngan keo Cai dat Quet tu dong va cuon muot den dung khu vuc muc tieu:
+   * - "workload": Bang Du bao Khoi luong Theo doi & Chu ky Cap nhat Chi so Tuong tac
+   * - "advanced": Bang Cai dat Quet nang cao & Nguong tu dong ngung quet bai cu
+   */
+  async jumpToDrawerSection(rootContainer, targetSelector, openTarget) {
+    this.isInputDrawerOpen = true;
+    this.activeSubTab = "fb";
+    if (openTarget === "workload") {
+      this.isWorkloadPanelCollapsed = false;
+    } else {
+      this.isAdvancedSectionOpen = true;
+    }
+    await this.renderMainView(rootContainer);
+    const targetEl = rootContainer.querySelector(targetSelector);
+    if (!targetEl)
+      return;
+    rootContainer.querySelectorAll(".is-highlighted-target").forEach((el) => {
+      el.removeClass("is-highlighted-target");
+    });
+    if (this.highlightRowTimer) {
+      window.clearTimeout(this.highlightRowTimer);
+      this.highlightRowTimer = null;
+    }
+    targetEl.addClass("is-highlighted-target");
+    targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    this.highlightRowTimer = window.setTimeout(() => {
+      targetEl.removeClass("is-highlighted-target");
+      this.highlightRowTimer = null;
+    }, 3500);
+  }
   // Nhom 4: Doc/Ghi file cau hinh Watchlist, State, Cache va Luu bai viet vao Vault
   normalizeSettings(rawSettings) {
     const modeRaw = String((rawSettings == null ? void 0 : rawSettings.retention_mode) || "max_days");
@@ -2964,12 +2995,102 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     }
   }
   // Nhom 5: Giao dien chinh chuan Apple Bento Workspace (Khong long hop 4 tang, khong giat nhay DOM khi await)
+  async reconcilePagesAndPostsState(watchlist, state) {
+    let wlChanged = false;
+    let stChanged = false;
+    const pagesState = (state == null ? void 0 : state.pages) || {};
+    const discovered = Array.isArray(state == null ? void 0 : state.discovered_posts) ? state.discovered_posts : [];
+    const findWatchlistPage = (dpOrPageId, pageIdent, pageName) => {
+      const idStr = String(dpOrPageId || "").trim();
+      const identLower = String(pageIdent || "").trim().toLowerCase();
+      const nameLower = String(pageName || "").trim().toLowerCase();
+      const stEntry = idStr ? pagesState[idStr] : void 0;
+      const resolvedId = String((stEntry == null ? void 0 : stEntry.resolved_page_id) || "").trim();
+      for (const pg of watchlist.pages) {
+        if (idStr && pg.id === idStr)
+          return pg;
+        if (identLower && pg.page_identifier.trim().toLowerCase() === identLower)
+          return pg;
+        const pgSt = pagesState[pg.id] || {};
+        if (resolvedId && pgSt.resolved_page_id && String(pgSt.resolved_page_id) === resolvedId)
+          return pg;
+        if (nameLower && pgSt.page_name && String(pgSt.page_name).trim().toLowerCase() === nameLower)
+          return pg;
+      }
+      return void 0;
+    };
+    for (const dp of discovered) {
+      const matchedPg = findWatchlistPage(dp.from_page_id, dp.from_page, dp.from_page_name);
+      if (matchedPg) {
+        if (dp.from_page_id !== matchedPg.id) {
+          dp.from_page_id = matchedPg.id;
+          stChanged = true;
+        }
+        if (dp.from_page !== matchedPg.page_identifier) {
+          dp.from_page = matchedPg.page_identifier;
+          stChanged = true;
+        }
+        if (matchedPg.enabled === false && dp.enabled !== false) {
+          dp.enabled = false;
+          dp.auto_paused_reason = "page_paused";
+          stChanged = true;
+        }
+      } else if (dp.from_page || dp.from_page_id) {
+        if (dp.enabled !== false && dp.auto_paused_reason !== "page_removed") {
+          const restoredId = String(dp.from_page_id || `page_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`);
+          const restoredIdent = String(dp.from_page || dp.from_page_name || restoredId);
+          const newPg = {
+            id: restoredId,
+            page_identifier: restoredIdent,
+            limit: 5,
+            source_type: dp.source_type || "external",
+            enabled: true,
+            added_at: dp.added_at || (/* @__PURE__ */ new Date()).toISOString()
+          };
+          watchlist.pages.push(newPg);
+          wlChanged = true;
+        } else if (dp.enabled !== false) {
+          dp.enabled = false;
+          dp.auto_paused_reason = "page_removed";
+          stChanged = true;
+        }
+      }
+    }
+    const activeIds = new Set(watchlist.pages.map((p) => p.id));
+    for (const pg of watchlist.pages) {
+      const curSt = pagesState[pg.id];
+      for (const [otherId, otherSt] of Object.entries(pagesState)) {
+        if (otherId === pg.id || activeIds.has(otherId))
+          continue;
+        const sameResolved = (curSt == null ? void 0 : curSt.resolved_page_id) && (otherSt == null ? void 0 : otherSt.resolved_page_id) && String(curSt.resolved_page_id) === String(otherSt.resolved_page_id);
+        const sameName = (curSt == null ? void 0 : curSt.page_name) && (otherSt == null ? void 0 : otherSt.page_name) && String(curSt.page_name).trim().toLowerCase() === String(otherSt.page_name).trim().toLowerCase();
+        if (sameResolved || sameName) {
+          if (otherSt.last_polled_at && (!(curSt == null ? void 0 : curSt.last_polled_at) || String(otherSt.last_polled_at) > String(curSt.last_polled_at))) {
+            pagesState[pg.id] = {
+              ...curSt,
+              ...otherSt,
+              page_identifier: pg.page_identifier
+            };
+          }
+          delete pagesState[otherId];
+          stChanged = true;
+        }
+      }
+    }
+    if (wlChanged) {
+      await this.saveWatchlist(watchlist);
+    }
+    if (stChanged) {
+      await this.saveTrackerState(state);
+    }
+  }
   async renderMainView(rootContainer) {
     var _a, _b, _c, _d;
     const scrollParent = rootContainer.closest(".content-compass-tab-content");
     const savedScrollTop = scrollParent ? scrollParent.scrollTop : 0;
     const watchlist = await this.loadWatchlist();
     const state = await this.loadTrackerState();
+    await this.reconcilePagesAndPostsState(watchlist, state);
     rootContainer.empty();
     const isRunning = Boolean((_a = state == null ? void 0 : state.status) == null ? void 0 : _a.is_running);
     const pageSourceMap = /* @__PURE__ */ new Map();
@@ -3492,6 +3613,27 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         }
         return 0;
       };
+      const activePageIds = new Set(
+        watchlist.pages.filter((p) => p.enabled !== false).map((p) => p.id)
+      );
+      const activePageIdents = new Set(
+        watchlist.pages.filter((p) => p.enabled !== false).map((p) => p.page_identifier.toLowerCase())
+      );
+      const allPageIds = new Set(watchlist.pages.map((p) => p.id));
+      const allPageIdents = new Set(watchlist.pages.map((p) => p.page_identifier.toLowerCase()));
+      const isParentPageActive = (item) => {
+        if (!item.from_page_id && !item.from_page)
+          return true;
+        const pid = item.from_page_id || "";
+        const pident = (item.from_page || "").toLowerCase();
+        if (activePageIds.has(pid) || pident && activePageIdents.has(pident)) {
+          return true;
+        }
+        const existsInWatchlist = allPageIds.has(pid) || pident && allPageIdents.has(pident);
+        item.enabled = false;
+        item.auto_paused_reason = existsInWatchlist ? "page_paused" : "page_removed";
+        return false;
+      };
       if (currentMode === "latest_only") {
         const pageLimits = /* @__PURE__ */ new Map();
         for (const pg of watchlist.pages) {
@@ -3500,6 +3642,8 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         }
         const byPage = /* @__PURE__ */ new Map();
         for (const dp of discovered) {
+          if (!isParentPageActive(dp))
+            continue;
           const key = dp.from_page_id || dp.from_page || "_default";
           if (!byPage.has(key))
             byPage.set(key, []);
@@ -3514,27 +3658,29 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
           });
         }
       } else if (currentMode === "max_posts") {
-        const allRefs = [...watchlist.posts, ...discovered];
+        const eligibleDiscovered = discovered.filter((dp) => isParentPageActive(dp));
+        const allRefs = [...watchlist.posts, ...eligibleDiscovered];
         allRefs.sort((a, b) => getSortTs(b) - getSortTs(a));
         const maxP = watchlist.settings.retention_max_posts;
         allRefs.forEach((item, idx) => {
           if (idx >= maxP) {
             item.enabled = false;
             item.auto_paused_reason = "max_posts";
-          } else if (item.auto_paused_reason) {
+          } else if (item.auto_paused_reason === "latest_only" || item.auto_paused_reason === "max_posts" || item.auto_paused_reason === "max_days" || item.auto_paused_reason === "page_paused") {
             item.enabled = true;
             item.auto_paused_reason = null;
           }
         });
       } else if (currentMode === "max_days") {
         const cutoffMs = Date.now() - watchlist.settings.retention_max_days * 864e5;
-        const allRefs = [...watchlist.posts, ...discovered];
+        const eligibleDiscovered = discovered.filter((dp) => isParentPageActive(dp));
+        const allRefs = [...watchlist.posts, ...eligibleDiscovered];
         for (const item of allRefs) {
           const ts = getSortTs(item);
           if (ts > 0 && ts < cutoffMs) {
             item.enabled = false;
             item.auto_paused_reason = "max_days";
-          } else if (item.auto_paused_reason) {
+          } else if (item.auto_paused_reason === "latest_only" || item.auto_paused_reason === "max_posts" || item.auto_paused_reason === "max_days" || item.auto_paused_reason === "page_paused") {
             item.enabled = true;
             item.auto_paused_reason = null;
           }
@@ -3766,6 +3912,19 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     });
     const header = sectionCard.createDiv({ cls: "content-compass-fb-section-header" });
     const title = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+    const headerActions = header.createDiv({ cls: "content-compass-fb-btn-group" });
+    const btnAdvSettings = headerActions.createEl("button", {
+      cls: "content-compass-icon-btn cc-header-icon-btn",
+      attr: {
+        type: "button",
+        "data-cc-tooltip": "C\xE0i \u0111\u1EB7t qu\xE9t N\xE2ng cao"
+      }
+    });
+    setBtnContent(btnAdvSettings, "settings");
+    btnAdvSettings.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      this.jumpToDrawerSection(rootContainer, ".cc-adv-collapsible-section", "advanced");
+    });
     const tableBodyWrap = sectionCard.createDiv({ cls: "cc-card-collapsible-body" });
     if (this.isFanpagesTableCollapsed) {
       tableBodyWrap.style.display = "none";
@@ -3875,23 +4034,57 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         pg.enabled !== false ? "\u0110ang b\u1EADt theo d\xF5i t\u1EF1 \u0111\u1ED9ng ngu\u1ED3n n\xE0y (B\u1EA5m \u0111\u1EC3 t\u1EA1m d\u1EEBng)" : "\u0110\xE3 t\u1EA1m d\u1EEBng (B\u1EA5m \u0111\u1EC3 ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t ngu\u1ED3n n\xE0y)"
       );
       btnToggle.addEventListener("click", async () => {
+        var _a2;
         pg.enabled = !pg.enabled;
+        if (Array.isArray(state == null ? void 0 : state.discovered_posts)) {
+          const cutoffMs = Date.now() - (watchlist.settings.retention_max_days || 7) * 864e5;
+          for (const d of state.discovered_posts) {
+            if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
+              if (!pg.enabled) {
+                if (d.enabled !== false) {
+                  d.enabled = false;
+                  d.auto_paused_reason = "page_paused";
+                }
+              } else if (d.auto_paused_reason === "page_paused" || d.auto_paused_reason === "page_removed") {
+                const pst = ((_a2 = state == null ? void 0 : state.posts) == null ? void 0 : _a2[d.id]) || {};
+                const ts = pst.creation_time ? Number(pst.creation_time) * 1e3 : d.added_at ? new Date(d.added_at).getTime() : 0;
+                if (watchlist.settings.retention_mode === "max_days" && ts > 0 && ts < cutoffMs) {
+                  d.enabled = false;
+                  d.auto_paused_reason = "max_days";
+                } else {
+                  d.enabled = true;
+                  d.auto_paused_reason = null;
+                }
+              }
+            }
+          }
+        }
         await this.saveWatchlist(watchlist);
+        await this.saveTrackerState(state);
         this.renderMainView(rootContainer);
       });
       const btnDel = actCell.createEl("button", { cls: "content-compass-icon-btn is-danger" });
       setBtnContent(btnDel, "trash-2");
-      btnDel.setAttribute("title", "B\u1ECF theo d\xF5i ngu\u1ED3n n\xE0y");
+      btnDel.setAttribute("title", "B\u1ECF theo d\xF5i ngu\u1ED3n n\xE0y (\u0111\u1ED3ng th\u1EDDi ng\u1EAFt qu\xE9t c\xE1c b\xE0i thu\u1ED9c ngu\u1ED3n n\xE0y \u1EDF B\u1EA3ng 2)");
       btnDel.addEventListener("click", async () => {
         watchlist.pages = watchlist.pages.filter((x) => x.id !== pg.id);
+        if (Array.isArray(state == null ? void 0 : state.discovered_posts)) {
+          for (const d of state.discovered_posts) {
+            if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
+              d.enabled = false;
+              d.auto_paused_reason = "page_removed";
+            }
+          }
+        }
         await this.saveWatchlist(watchlist);
+        await this.saveTrackerState(state);
         this.renderMainView(rootContainer);
       });
     }
   }
   // Bang 2 (LUON HIEN THI): The phan vung Bai viet da thu thap chuan Apple Inset Grouped Card
   renderWatchedPostsTable(wrapper, watchlist, state, allPosts, rootContainer, liveStatusEl) {
-    var _a, _b;
+    var _a, _b, _c;
     const sectionCard = wrapper.createDiv({
       cls: `content-compass-fb-section-card ${this.isPostsTableCollapsed ? "is-collapsed" : ""}`
     });
@@ -3975,24 +4168,49 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       return list;
     };
     const bulkGroup = header.createDiv({ cls: "content-compass-fb-btn-group" });
-    const selectAllBtn = bulkGroup.createEl("button", {
-      cls: "content-compass-refresh-btn"
-    });
-    setBtnContent(selectAllBtn, "check-square", "Ch\u1ECDn t\u1EA5t c\u1EA3");
-    const clearSelBtn = bulkGroup.createEl("button", {
-      cls: "content-compass-refresh-btn"
-    });
-    setBtnContent(clearSelBtn, "x", "B\u1ECF ch\u1ECDn");
     const saveSelectedBtn = bulkGroup.createEl("button", {
-      cls: "content-compass-import-btn"
+      cls: "content-compass-icon-btn cc-header-icon-btn",
+      attr: { type: "button" }
     });
     const deleteSelectedBtn = bulkGroup.createEl("button", {
-      cls: "content-compass-refresh-btn"
+      cls: "content-compass-icon-btn cc-header-icon-btn is-danger",
+      attr: { type: "button" }
     });
+    const batchVal = Math.max(1, watchlist.settings.max_batch_size || 20);
+    const hasRateLimitErr = Boolean(
+      ((_a = state == null ? void 0 : state.status) == null ? void 0 : _a.last_error) && String(state.status.last_error).includes("429")
+    );
+    const lampTier = batchVal > 50 || hasRateLimitErr ? "is-danger" : batchVal > 25 ? "is-warn" : "is-safe";
+    const lampStatusText = lampTier === "is-danger" ? `T\xECnh tr\u1EA1ng qu\xE9t: C\u1EA7n thay \u0111\u1ED5i (${batchVal} b\xE0i/phi\xEAn) \u2022 B\u1EA5m \u0111\u1EC3 xem D\u1EF1 b\xE1o kh\u1ED1i l\u01B0\u1EE3ng & Chu k\u1EF3` : lampTier === "is-warn" ? `T\xECnh tr\u1EA1ng qu\xE9t: Trung b\xECnh (${batchVal} b\xE0i/phi\xEAn) \u2022 B\u1EA5m \u0111\u1EC3 xem D\u1EF1 b\xE1o kh\u1ED1i l\u01B0\u1EE3ng & Chu k\u1EF3` : `T\xECnh tr\u1EA1ng qu\xE9t: An to\xE0n (${batchVal} b\xE0i/phi\xEAn) \u2022 B\u1EA5m \u0111\u1EC3 xem D\u1EF1 b\xE1o kh\u1ED1i l\u01B0\u1EE3ng & Chu k\u1EF3`;
+    const scanHealthLampBtn = bulkGroup.createEl("button", {
+      cls: `cc-scan-health-lamp-btn ${lampTier}`,
+      attr: {
+        type: "button",
+        "data-cc-tooltip": lampStatusText
+      }
+    });
+    scanHealthLampBtn.createSpan({ cls: "cc-scan-health-dot" });
+    scanHealthLampBtn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      this.jumpToDrawerSection(rootContainer, ".cc-adv-workload-panel", "workload");
+    });
+    let masterCheckbox = null;
+    const syncMasterCheckboxState = () => {
+      if (!masterCheckbox)
+        return;
+      const visible = getFilteredAndSortedPosts();
+      const allSelected = visible.length > 0 && visible.every((ep) => this.selectedPostIds.has(ep.item.id));
+      masterCheckbox.checked = allSelected;
+    };
     const syncBulkActionButtons = () => {
       const cnt = this.selectedPostIds.size;
-      setBtnContent(saveSelectedBtn, "download", `L\u01B0u v\xE0o Vault (${cnt})`);
-      setBtnContent(deleteSelectedBtn, "trash-2", `X\xF3a \u0111\xE3 ch\u1ECDn (${cnt})`);
+      setBtnContent(saveSelectedBtn, "download");
+      setBtnContent(deleteSelectedBtn, "trash-2");
+      const saveTip = `L\u01B0u v\xE0o Vault (${cnt})`;
+      const delTip = `X\xF3a \u0111\xE3 ch\u1ECDn (${cnt})`;
+      saveSelectedBtn.setAttribute("data-cc-tooltip", saveTip);
+      deleteSelectedBtn.setAttribute("data-cc-tooltip", delTip);
+      saveSelectedBtn.toggleClass("is-active-watch", cnt > 0);
       if (cnt > 0) {
         saveSelectedBtn.removeAttribute("disabled");
         deleteSelectedBtn.removeAttribute("disabled");
@@ -4000,10 +4218,11 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         saveSelectedBtn.setAttribute("disabled", "true");
         deleteSelectedBtn.setAttribute("disabled", "true");
       }
+      syncMasterCheckboxState();
     };
     syncBulkActionButtons();
     saveSelectedBtn.addEventListener("click", async () => {
-      setBtnContent(saveSelectedBtn, "loader", "\u0110ang l\u01B0u...", true);
+      setBtnContent(saveSelectedBtn, "loader", void 0, true);
       saveSelectedBtn.setAttribute("disabled", "true");
       let savedCount = 0;
       for (const ep of enrichedPosts) {
@@ -4067,7 +4286,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       });
     }
     for (const pg of watchlist.pages) {
-      const pName = ((_b = (_a = state == null ? void 0 : state.pages) == null ? void 0 : _a[pg.id]) == null ? void 0 : _b.page_name) || pg.page_identifier;
+      const pName = ((_c = (_b = state == null ? void 0 : state.pages) == null ? void 0 : _b[pg.id]) == null ? void 0 : _c.page_name) || pg.page_identifier;
       selSourceFilter.createEl("option", {
         value: `page:${pg.page_identifier}`,
         text: `T\u1EEB Trang: ${pName}`
@@ -4134,8 +4353,26 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     const postSec = postsBodyWrap.createDiv({ cls: "content-compass-table-scroll content-compass-posts-scroll" });
     const table = postSec.createEl("table", { cls: "content-compass-data-table content-compass-posts-table" });
     const thead = table.createEl("thead").createEl("tr");
+    const thSelect = thead.createEl("th", { cls: "cc-th-checkbox-col" });
+    masterCheckbox = thSelect.createEl("input", {
+      type: "checkbox",
+      cls: "content-compass-row-checkbox cc-master-checkbox",
+      attr: {
+        title: "B\u1EA5m l\u1EA7n 1 \u0111\u1EC3 Ch\u1ECDn t\u1EA5t c\u1EA3 \u2022 B\u1EA5m l\u1EA7n ti\u1EBFp theo \u0111\u1EC3 B\u1ECF ch\u1ECDn t\u1EA5t c\u1EA3"
+      }
+    });
+    masterCheckbox.addEventListener("change", () => {
+      if (masterCheckbox && masterCheckbox.checked) {
+        for (const ep of getFilteredAndSortedPosts()) {
+          this.selectedPostIds.add(ep.item.id);
+        }
+      } else {
+        this.selectedPostIds.clear();
+      }
+      syncBulkActionButtons();
+      rebuildTableRows();
+    });
     const headersConfig = [
-      { label: "Ch\u1ECDn" },
       { label: "T\xEAn b\xE0i vi\u1EBFt / C\xE2u \u0111\u1EA7u ti\xEAn c\u1EE7a b\xE0i" },
       {
         label: "\u0110i\u1EC3m & T\u01B0\u01A1ng t\xE1c \u24D8",
@@ -4162,6 +4399,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     const rebuildTableRows = () => {
       tbody.empty();
       const filteredPosts = getFilteredAndSortedPosts();
+      syncMasterCheckboxState();
       if (filteredPosts.length === 0) {
         const emptyRow = tbody.createEl("tr");
         const emptyTd = emptyRow.createEl("td", {
@@ -4220,9 +4458,10 @@ ${item.url}`);
           text: formatSourceTypeLabel(item.source_type)
         });
         const isPostActive = item.enabled !== false;
+        const pausedReasonLabel = item.auto_paused_reason === "page_paused" ? "\u0110\xE3 t\u1EA1m d\u1EEBng (t\u1EAFt Trang)" : item.auto_paused_reason === "page_removed" ? "\u0110\xE3 ng\u1EAFt (\u0111\xE3 g\u1EE1 Trang)" : item.auto_paused_reason ? "\u0110\xE3 ng\u1EAFt (b\xE0i c\u0169)" : "\u0110\xE3 t\u1EA1m d\u1EEBng";
         subMeta.createSpan({
           cls: `content-compass-source-pill ${isPostActive ? "is-own" : ""}`,
-          text: isPostActive ? "\u0110ang b\u1EADt qu\xE9t" : item.auto_paused_reason ? "\u0110\xE3 ng\u1EAFt (b\xE0i c\u0169)" : "\u0110\xE3 t\u1EA1m d\u1EEBng"
+          text: isPostActive ? "\u0110ang b\u1EADt qu\xE9t" : pausedReasonLabel
         });
         if (isScraped && spark5d.isFirstScan) {
           const firstScanBadge = subMeta.createSpan({
@@ -4353,6 +4592,7 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
           item.enabled !== false ? "\u0110ang b\u1EADt theo d\xF5i & qu\xE9t t\u1EF1 \u0111\u1ED9ng (B\u1EA5m \u0111\u1EC3 t\u1EA1m d\u1EEBng)" : "\u0110\xE3 ng\u1EAFt / t\u1EA1m d\u1EEBng qu\xE9t (B\u1EA5m \u0111\u1EC3 ti\u1EBFp t\u1EE5c t\u1EF1 \u0111\u1ED9ng qu\xE9t b\xE0i n\xE0y)"
         );
         btnToggle.addEventListener("click", async () => {
+          let needFullRerender = false;
           if (item.isDiscovered) {
             const target = (state.discovered_posts || []).find((d) => d.id === item.id);
             if (target) {
@@ -4360,6 +4600,19 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
               target.auto_paused_reason = null;
               item.enabled = target.enabled;
               item.auto_paused_reason = null;
+              if (target.enabled) {
+                const parentPg = watchlist.pages.find(
+                  (p) => p.id === target.from_page_id || p.page_identifier === target.from_page
+                );
+                if (parentPg && parentPg.enabled === false) {
+                  parentPg.enabled = true;
+                  await this.saveWatchlist(watchlist);
+                  needFullRerender = true;
+                } else if (!parentPg && (target.from_page || target.from_page_id)) {
+                  await this.reconcilePagesAndPostsState(watchlist, state);
+                  needFullRerender = true;
+                }
+              }
             }
             await this.saveTrackerState(state);
           } else {
@@ -4367,8 +4620,12 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
             item.auto_paused_reason = null;
             await this.saveWatchlist(watchlist);
           }
-          syncTableHeaderAndFilterCounts();
-          rebuildTableRows();
+          if (needFullRerender) {
+            this.renderMainView(rootContainer);
+          } else {
+            syncTableHeaderAndFilterCounts();
+            rebuildTableRows();
+          }
         });
         const btnDel = actCell.createEl("button", { cls: "content-compass-icon-btn is-danger" });
         setBtnContent(btnDel, "trash-2");
@@ -4393,18 +4650,6 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
         });
       }
     };
-    selectAllBtn.addEventListener("click", () => {
-      for (const ep of getFilteredAndSortedPosts()) {
-        this.selectedPostIds.add(ep.item.id);
-      }
-      syncBulkActionButtons();
-      rebuildTableRows();
-    });
-    clearSelBtn.addEventListener("click", () => {
-      this.selectedPostIds.clear();
-      syncBulkActionButtons();
-      rebuildTableRows();
-    });
     selSort.addEventListener("change", () => {
       this.postSortBy = selSort.value;
       rebuildTableRows();
@@ -4901,6 +5146,7 @@ var TimelineChartView = class {
     this.selectedAudiences = [];
     // [] = Tat ca audience
     this.yAxisMode = "raw";
+    this.pieMode = "auto";
     this.hiddenSeriesKeys = /* @__PURE__ */ new Set();
     this.isCollapsed = false;
     this.container = container;
@@ -5240,12 +5486,16 @@ var TimelineChartView = class {
           });
         }
       }
-      const canvasWrap = chartDataContainer.createDiv({ cls: "content-compass-canvas-wrap cc-canvas-interactive-wrap" });
+      const chartsRow = chartDataContainer.createDiv({ cls: "cc-timeline-charts-row" });
+      const lineCol = chartsRow.createDiv({ cls: "cc-timeline-line-col" });
+      const pieCol = chartsRow.createDiv({ cls: "cc-timeline-pie-col" });
+      const canvasWrap = lineCol.createDiv({ cls: "content-compass-canvas-wrap cc-canvas-interactive-wrap" });
       const canvas = canvasWrap.createEl("canvas", { cls: "content-compass-chart-canvas" });
       canvas.height = CHART_HEIGHT;
       const tooltipEl = canvasWrap.createDiv({ cls: "cc-chart-tooltip is-hidden" });
       const postsPopupEl = canvasWrap.createDiv({ cls: "cc-chart-posts-popover is-hidden" });
       const visibleSeries = series.filter((s) => !this.hiddenSeriesKeys.has(s.key));
+      this.renderPieChartPanel(pieCol, visibleSeries, summary, audienceLabelMap);
       requestAnimationFrame(() => {
         this.drawMultiSeriesChart(canvas, tooltipEl, postsPopupEl, periods, visibleSeries);
       });
@@ -5619,6 +5869,262 @@ ${post.titleSnippet}`
     this.outsideClickCleanup = () => {
       document.removeEventListener("mousedown", onDocMouseDown);
     };
+  }
+  // Nhom 5: Render Bieu do Tron (Donut Chart) Ty trong ben phai Bieu do Xu huong
+  renderPieChartPanel(pieCol, visibleSeries, summary, audienceLabelMap) {
+    pieCol.empty();
+    const pieCard = pieCol.createDiv({ cls: "cc-pie-card" });
+    const pieHeader = pieCard.createDiv({ cls: "cc-pie-header" });
+    pieHeader.createSpan({ cls: "cc-pie-title", text: "T\u1EF7 tr\u1ECDng" });
+    const modeSelect = pieHeader.createEl("select", {
+      cls: "cc-pie-mode-select",
+      attr: { "aria-label": "Ch\u1EBF \u0111\u1ED9 bi\u1EC3u \u0111\u1ED3 tr\xF2n t\u1EF7 tr\u1ECDng" }
+    });
+    const modeOptions = [
+      { value: "auto", label: "T\u1EF1 \u0111\u1ED9ng" },
+      { value: "score_comp", label: "C\u01A1 c\u1EA5u \u0110i\u1EC3m" },
+      { value: "source", label: "Theo Ngu\u1ED3n" },
+      { value: "audience", label: "Theo Audience" }
+    ];
+    for (const opt of modeOptions) {
+      const optEl = modeSelect.createEl("option", { value: opt.value, text: opt.label });
+      if (opt.value === this.pieMode) {
+        optEl.selected = true;
+      }
+    }
+    modeSelect.addEventListener("change", () => {
+      this.pieMode = modeSelect.value;
+      this.renderPieChartPanel(pieCol, visibleSeries, summary, audienceLabelMap);
+    });
+    let effectiveMode = "current_series";
+    if (this.pieMode !== "auto") {
+      effectiveMode = this.pieMode;
+    } else {
+      if (this.breakdownBy === "source" || this.breakdownBy === "audience") {
+        effectiveMode = "current_series";
+      } else if (visibleSeries.length > 1) {
+        effectiveMode = "current_series";
+      } else {
+        const primaryMetric = this.selectedMetrics[0] || "score";
+        if (primaryMetric === "score" || primaryMetric === "avg_score") {
+          effectiveMode = "score_comp";
+        } else {
+          effectiveMode = "source";
+        }
+      }
+    }
+    let rawSlices = [];
+    let centerSubLabel = "T\u1ED5ng";
+    if (effectiveMode === "current_series") {
+      rawSlices = visibleSeries.map((s) => ({
+        key: s.key,
+        label: s.label,
+        value: Math.max(0, s.totalValue),
+        color: s.color
+      }));
+      centerSubLabel = this.breakdownBy === "source" ? "Theo Ngu\u1ED3n" : this.breakdownBy === "audience" ? "Theo Audience" : "Theo Ch\u1EC9 s\u1ED1";
+    } else if (effectiveMode === "score_comp") {
+      rawSlices = [
+        {
+          key: "likes_pts",
+          label: "Likes (\xD71)",
+          value: Math.max(0, summary.totalLikes),
+          color: "#5e5ce6"
+        },
+        {
+          key: "comments_pts",
+          label: "B\xECnh lu\u1EADn (\xD72)",
+          value: Math.max(0, summary.totalComments * 2),
+          color: "#30d158"
+        },
+        {
+          key: "shares_pts",
+          label: "Chia s\u1EBB (\xD73)",
+          value: Math.max(0, summary.totalShares * 3),
+          color: "#ff9f0a"
+        }
+      ];
+      centerSubLabel = "T\u1ED5ng \u0110i\u1EC3m";
+    } else {
+      const primaryMetric = this.selectedMetrics[0] || "score";
+      const subQuery = this.engagementStore.queryTimelineMultiSeries({
+        groupBy: this.dateRange.groupBy || "day",
+        days: this.dateRange.presetId === "all" ? 0 : 90,
+        startDate: this.dateRange.startDate || void 0,
+        endDate: this.dateRange.endDate || void 0,
+        dateBasis: this.dateRange.dateBasis || "published",
+        breakdownBy: effectiveMode,
+        metrics: [primaryMetric],
+        sourceFilters: this.selectedSources,
+        filterAudiences: this.selectedAudiences,
+        audienceLabelMap
+      });
+      rawSlices = subQuery.series.map((s) => ({
+        key: s.key,
+        label: s.label,
+        value: Math.max(0, s.totalValue),
+        color: s.color
+      }));
+      centerSubLabel = effectiveMode === "source" ? "Theo Ngu\u1ED3n" : "Theo Audience";
+    }
+    const positiveSlices = rawSlices.filter((s) => s.value > 0).sort((a, b) => b.value - a.value);
+    let slices = [];
+    if (positiveSlices.length > 6) {
+      const top5 = positiveSlices.slice(0, 5);
+      const rest = positiveSlices.slice(5);
+      const restSum = rest.reduce((acc, item) => acc + item.value, 0);
+      slices = [
+        ...top5,
+        {
+          key: "__others__",
+          label: `Kh\xE1c (${rest.length})`,
+          value: restSum,
+          color: "#8e8e93"
+        }
+      ];
+    } else {
+      slices = positiveSlices;
+    }
+    const totalValue = slices.reduce((acc, s) => acc + s.value, 0);
+    const donutWrap = pieCard.createDiv({ cls: "cc-pie-canvas-wrap" });
+    const canvasSize = 132;
+    const donutCanvas = donutWrap.createEl("canvas", { cls: "cc-pie-canvas" });
+    donutCanvas.width = canvasSize;
+    donutCanvas.height = canvasSize;
+    const centerInfo = donutWrap.createDiv({ cls: "cc-pie-center-info" });
+    const centerValEl = centerInfo.createDiv({
+      cls: "cc-pie-center-val",
+      text: totalValue.toLocaleString("vi-VN")
+    });
+    const centerSubEl = centerInfo.createDiv({
+      cls: "cc-pie-center-sub",
+      text: centerSubLabel
+    });
+    const legendList = pieCard.createDiv({ cls: "cc-pie-legend-list" });
+    const legendRows = [];
+    if (slices.length === 0 || totalValue <= 0) {
+      legendList.createDiv({
+        cls: "cc-pie-empty-note",
+        text: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u t\u1EF7 tr\u1ECDng trong k\u1EF3."
+      });
+    }
+    let currentAngle = -Math.PI / 2;
+    const sliceAngles = slices.map((s) => {
+      const sweep = totalValue > 0 ? s.value / totalValue * Math.PI * 2 : 0;
+      const start = currentAngle;
+      const end = currentAngle + sweep;
+      currentAngle = end;
+      const pct = totalValue > 0 ? s.value / totalValue * 100 : 0;
+      return {
+        ...s,
+        startAngle: start,
+        endAngle: end,
+        pct,
+        pctText: pct >= 10 ? `${pct.toFixed(1)}%` : `${pct.toFixed(1)}%`
+      };
+    });
+    const updateHoverState = (hoverIdx) => {
+      this.drawDonutChart(donutCanvas, canvasSize, sliceAngles, totalValue, hoverIdx);
+      legendRows.forEach((row, idx) => {
+        row.toggleClass("is-hovered", hoverIdx === idx);
+      });
+      if (hoverIdx !== null && sliceAngles[hoverIdx]) {
+        const target = sliceAngles[hoverIdx];
+        centerValEl.setText(`${target.pct.toFixed(1)}%`);
+        centerValEl.style.color = target.color;
+        centerSubEl.setText(target.value.toLocaleString("vi-VN"));
+      } else {
+        centerValEl.setText(totalValue.toLocaleString("vi-VN"));
+        centerValEl.style.color = "";
+        centerSubEl.setText(centerSubLabel);
+      }
+    };
+    sliceAngles.forEach((s, idx) => {
+      const row = legendList.createDiv({ cls: "cc-pie-legend-row" });
+      row.setAttribute("title", `${s.label}: ${s.value.toLocaleString("vi-VN")} (${s.pct.toFixed(1)}%)`);
+      const leftPart = row.createDiv({ cls: "cc-pie-legend-left" });
+      const dot = leftPart.createSpan({ cls: "cc-legend-dot" });
+      dot.style.backgroundColor = s.color;
+      leftPart.createSpan({ cls: "cc-pie-legend-name", text: s.label });
+      const rightPart = row.createDiv({ cls: "cc-pie-legend-right" });
+      rightPart.createSpan({
+        cls: "cc-pie-legend-pct",
+        text: `${s.pct.toFixed(1)}%`
+      });
+      row.addEventListener("mouseenter", () => updateHoverState(idx));
+      row.addEventListener("mouseleave", () => updateHoverState(null));
+      legendRows.push(row);
+    });
+    donutCanvas.addEventListener("mousemove", (ev) => {
+      if (sliceAngles.length === 0 || totalValue <= 0)
+        return;
+      const rect = donutCanvas.getBoundingClientRect();
+      const cx = canvasSize / 2;
+      const cy = canvasSize / 2;
+      const dx = ev.clientX - rect.left - cx;
+      const dy = ev.clientY - rect.top - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 32 || dist > 64) {
+        updateHoverState(null);
+        return;
+      }
+      let angle = Math.atan2(dy, dx);
+      if (angle < -Math.PI / 2) {
+        angle += Math.PI * 2;
+      }
+      const foundIdx = sliceAngles.findIndex((s) => angle >= s.startAngle && angle <= s.endAngle);
+      updateHoverState(foundIdx >= 0 ? foundIdx : null);
+    });
+    donutCanvas.addEventListener("mouseleave", () => {
+      updateHoverState(null);
+    });
+    requestAnimationFrame(() => {
+      updateHoverState(null);
+    });
+  }
+  drawDonutChart(canvas, size, slices, totalValue, hoverIdx) {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.style.width = `${size}px`;
+    canvas.style.height = `${size}px`;
+    canvas.width = Math.floor(size * dpr);
+    canvas.height = Math.floor(size * dpr);
+    const ctx = canvas.getContext("2d");
+    if (!ctx)
+      return;
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, size, size);
+    const cx = size / 2;
+    const cy = size / 2;
+    const outerR = 56;
+    const innerR = 37;
+    if (slices.length === 0 || totalValue <= 0) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, outerR, 0, Math.PI * 2);
+      ctx.arc(cx, cy, innerR, 0, Math.PI * 2, true);
+      ctx.fillStyle = "hsla(0, 0%, 50%, 0.14)";
+      ctx.fill();
+      ctx.restore();
+      return;
+    }
+    const padAngle = slices.length > 1 ? 0.025 : 0;
+    slices.forEach((s, idx) => {
+      const isHovered = hoverIdx === idx;
+      const isDimmed = hoverIdx !== null && hoverIdx !== idx;
+      const rOut = isHovered ? outerR + 4 : outerR;
+      const rIn = isHovered ? innerR - 1 : innerR;
+      const sweep = s.endAngle - s.startAngle;
+      const actualPad = sweep > padAngle * 2 ? padAngle / 2 : 0;
+      const aStart = s.startAngle + actualPad;
+      const aEnd = s.endAngle - actualPad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, rOut, aStart, aEnd, false);
+      ctx.arc(cx, cy, rIn, aEnd, aStart, true);
+      ctx.closePath();
+      ctx.fillStyle = isDimmed ? this.hexToRgba(s.color, 0.38) : s.color;
+      ctx.fill();
+    });
+    ctx.restore();
   }
   hexToRgba(hex, alpha) {
     const clean = hex.replace("#", "");

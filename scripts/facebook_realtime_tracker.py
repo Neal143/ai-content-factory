@@ -3,7 +3,7 @@
 THÔNG TIN MÔ TẢ FILE (RULE 7)
 ================================================================================
 - Tên file: facebook_realtime_tracker.py
-- Last update: 03/11/2026 10:06 (GMT+7)
+- Last update: 04/11/2026 11:20 (GMT+7)
 - Vai trò: Engine thu thập tự động nội dung bài viết, chỉ số tương tác (Reactions,
   Comments, Shares, Views) và bình luận phân nhánh (Threaded Comments) từ URL bài viết,
   Fanpage công khai và Trang cá nhân Facebook theo Kiến trúc Phân luồng Kép (Dual-Context:
@@ -1088,11 +1088,44 @@ class TrackerOrchestrator:
                     pass
             return 0.0
 
+        # 0. Kiểm tra tính nhất quán giữa Bảng 1 (watchlist.pages) và Bảng 2 (state.discovered_posts):
+        # Bài viết thuộc Trang đã tạm dừng hoặc đã gỡ khỏi watchlist.pages phải luôn ở trạng thái tạm dừng quét.
+        wl_pages = watchlist.get("pages", [])
+        active_page_ids = {p.get("id") for p in wl_pages if p.get("enabled", True) and p.get("id")}
+        active_page_idents = {
+            str(p.get("page_identifier", "")).strip().lower()
+            for p in wl_pages
+            if p.get("enabled", True) and p.get("page_identifier")
+        }
+        all_page_ids = {p.get("id") for p in wl_pages if p.get("id")}
+        all_page_idents = {
+            str(p.get("page_identifier", "")).strip().lower()
+            for p in wl_pages
+            if p.get("page_identifier")
+        }
+
+        eligible_discovered: List[Dict[str, Any]] = []
+        for dp in discovered:
+            pid = dp.get("from_page_id")
+            pident = str(dp.get("from_page") or "").strip().lower()
+            if not pid and not pident:
+                eligible_discovered.append(dp)
+                continue
+            if (pid and pid in active_page_ids) or (pident and pident in active_page_idents):
+                eligible_discovered.append(dp)
+            else:
+                in_watchlist = (pid and pid in all_page_ids) or (pident and pident in all_page_idents)
+                target_reason = "page_paused" if in_watchlist else "page_removed"
+                if dp.get("enabled", True) or dp.get("auto_paused_reason") != target_reason:
+                    dp["enabled"] = False
+                    dp["auto_paused_reason"] = target_reason
+                    changed = True
+
         # 1. Chế độ 1 (latest_only): Chỉ giữ bật quét cho đúng N bài mới nhất của từng Fanpage
         if retention_mode == "latest_only":
-            page_limits = {p.get("id"): max(1, int(p.get("limit", 5))) for p in watchlist.get("pages", [])}
+            page_limits = {p.get("id"): max(1, int(p.get("limit", 5))) for p in wl_pages}
             by_page: Dict[str, List[Dict[str, Any]]] = {}
-            for dp in discovered:
+            for dp in eligible_discovered:
                 pid = dp.get("from_page_id") or dp.get("from_page") or "_default"
                 by_page.setdefault(pid, []).append(dp)
 
@@ -1117,14 +1150,14 @@ class TrackerOrchestrator:
 
         # 2. Chế độ 2 (max_posts): Cộng dồn nhưng chỉ giữ bật quét tối đa X bài mới nhất
         elif retention_mode == "max_posts":
-            all_refs: List[Dict[str, Any]] = list(watchlist.get("posts", [])) + list(discovered)
+            all_refs: List[Dict[str, Any]] = list(watchlist.get("posts", [])) + eligible_discovered
             sorted_all = sorted(all_refs, key=get_post_sort_ts, reverse=True)
             for idx, item in enumerate(sorted_all):
                 if idx >= max_posts_limit and item.get("enabled", True):
                     item["enabled"] = False
                     item["auto_paused_reason"] = "max_posts"
                     changed = True
-                elif idx < max_posts_limit and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days"):
+                elif idx < max_posts_limit and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days", "page_paused"):
                     item["enabled"] = True
                     item["auto_paused_reason"] = None
                     changed = True
@@ -1132,7 +1165,7 @@ class TrackerOrchestrator:
         # 3. Chế độ 3 (max_days): Cộng dồn nhưng chỉ quét bài trong vòng X ngày tính đến thời điểm quét
         elif retention_mode == "max_days":
             cutoff_ts = now_ts - (max_days_limit * 86400.0)
-            all_refs = list(watchlist.get("posts", [])) + list(discovered)
+            all_refs = list(watchlist.get("posts", [])) + eligible_discovered
             for item in all_refs:
                 pts = get_post_sort_ts(item)
                 if pts > 0 and pts < cutoff_ts:
@@ -1140,7 +1173,7 @@ class TrackerOrchestrator:
                         item["enabled"] = False
                         item["auto_paused_reason"] = "max_days"
                         changed = True
-                elif pts >= cutoff_ts and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days"):
+                elif pts >= cutoff_ts and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days", "page_paused"):
                     item["enabled"] = True
                     item["auto_paused_reason"] = None
                     changed = True

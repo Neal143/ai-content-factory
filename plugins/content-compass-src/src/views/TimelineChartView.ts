@@ -1,15 +1,15 @@
 /**
  * Ten file: TimelineChartView.ts
- * Last update: 03/11/2026 15:52 (GMT+7)
- * Vai tro: Render bang phan tich xu huong Engagement Da tuyen (Multi-Series Line Chart + Multi-Select Popover Filters + Nut Thu gon/Mo rong).
+ * Last update: 04/11/2026 10:50 (GMT+7)
+ * Vai tro: Render bang phan tich xu huong Engagement Da tuyen (Multi-Series Line Chart + Biểu đồ Tròn Donut Tỷ trọng + Multi-Select Popover Filters).
  * Duoc su dung khi nao?: Khi tab Analytics duoc hien thi tren Dashboard.
  * Output:
  *   - Chieu tach duong (BreakdownBy: Theo Chi so | Theo Nguon/Trang | Theo Audience) dang Dropdown Single-Choice.
  *   - Bo loc Multi-select Popover cho Chi so, Nguon/Trang, Audience (giu nguyen Popover mo khi chon nhieu muc, cap nhat do thi tuc thoi in-place).
  *   - Nut chuyen doi Truc Y: Gia tri thuc (123) <-> Ty le chuan hoa % (0-100%) + Tieu de click de Hide/Show.
- *   - 4 the KPI tuong tac + Thanh Chu giai (Legend) + HiDPI Canvas kem Pinned Tooltip & Popup Danh sach Bai viet theo moc thoi gian.
- * Tom tat logic hoat dong: Truy van EngagementStore.queryTimelineMultiSeries, ho tro click ghim moc thoi gian tren bieu do,
- *          click vao so bai viet de mo popup danh sach bai viet cua dung duong/nguon do va nhay den bai viet trong bang Danh sach bai viet.
+ *   - 4 the KPI tuong tac + Thanh Chu giai (Legend) + Bo doi Bieu do Duong (Ben trai) & Bieu do Tron Donut Ty trong (Ben phai).
+ * Tom tat logic hoat dong: Truy van EngagementStore.queryTimelineMultiSeries, ho tro click ghim moc thoi gian tren bieu do duong,
+ *          hover vao (so bai) de mo popup danh sach bai viet va nhay den bai viet trong bang Danh sach bai viet; dong thoi ve bieu do tron ty trong ben phai.
  */
 
 import { setIcon } from "obsidian";
@@ -69,6 +69,7 @@ export class TimelineChartView {
 	private selectedSources: string[] = []; // [] = Tat ca nguon
 	private selectedAudiences: string[] = []; // [] = Tat ca audience
 	private yAxisMode: "raw" | "normalized" = "raw";
+	private pieMode: "auto" | "score_comp" | "source" | "audience" = "auto";
 	private hiddenSeriesKeys: Set<string> = new Set();
 	private isCollapsed: boolean = false;
 
@@ -460,14 +461,20 @@ export class TimelineChartView {
 				}
 			}
 
-			// 6. Khung Canvas vẽ biểu đồ Đa tuyến + Floating/Pinned Tooltip + Popup Danh sách Bài viết
-			const canvasWrap = chartDataContainer.createDiv({ cls: "content-compass-canvas-wrap cc-canvas-interactive-wrap" });
+			// 6. Bố cục 2 cột ngang: Biểu đồ Đường Xu hướng (Bên trái) + Biểu đồ Tròn Tỷ trọng (Bên phải)
+			const chartsRow = chartDataContainer.createDiv({ cls: "cc-timeline-charts-row" });
+			const lineCol = chartsRow.createDiv({ cls: "cc-timeline-line-col" });
+			const pieCol = chartsRow.createDiv({ cls: "cc-timeline-pie-col" });
+
+			const canvasWrap = lineCol.createDiv({ cls: "content-compass-canvas-wrap cc-canvas-interactive-wrap" });
 			const canvas = canvasWrap.createEl("canvas", { cls: "content-compass-chart-canvas" });
 			canvas.height = CHART_HEIGHT;
 			const tooltipEl = canvasWrap.createDiv({ cls: "cc-chart-tooltip is-hidden" });
 			const postsPopupEl = canvasWrap.createDiv({ cls: "cc-chart-posts-popover is-hidden" });
 
 			const visibleSeries = series.filter((s) => !this.hiddenSeriesKeys.has(s.key));
+
+			this.renderPieChartPanel(pieCol, visibleSeries, summary, audienceLabelMap);
 
 			requestAnimationFrame(() => {
 				this.drawMultiSeriesChart(canvas, tooltipEl, postsPopupEl, periods, visibleSeries);
@@ -909,6 +916,339 @@ export class TimelineChartView {
 		this.outsideClickCleanup = () => {
 			document.removeEventListener("mousedown", onDocMouseDown);
 		};
+	}
+
+	// Nhom 5: Render Bieu do Tron (Donut Chart) Ty trong ben phai Bieu do Xu huong
+	private renderPieChartPanel(
+		pieCol: HTMLElement,
+		visibleSeries: TimelineSeries[],
+		summary: {
+			totalScore: number;
+			totalLikes: number;
+			totalComments: number;
+			totalShares: number;
+			postCount: number;
+			avgScorePerPost: number;
+		},
+		audienceLabelMap: Map<string, string>
+	): void {
+		pieCol.empty();
+		const pieCard = pieCol.createDiv({ cls: "cc-pie-card" });
+
+		// 1. Header nhỏ gọn của Biểu đồ Tròn: Tiêu đề + Dropdown chọn góc nhìn tỷ trọng
+		const pieHeader = pieCard.createDiv({ cls: "cc-pie-header" });
+		pieHeader.createSpan({ cls: "cc-pie-title", text: "Tỷ trọng" });
+
+		const modeSelect = pieHeader.createEl("select", {
+			cls: "cc-pie-mode-select",
+			attr: { "aria-label": "Chế độ biểu đồ tròn tỷ trọng" },
+		});
+		const modeOptions: Array<{ value: "auto" | "score_comp" | "source" | "audience"; label: string }> = [
+			{ value: "auto", label: "Tự động" },
+			{ value: "score_comp", label: "Cơ cấu Điểm" },
+			{ value: "source", label: "Theo Nguồn" },
+			{ value: "audience", label: "Theo Audience" },
+		];
+		for (const opt of modeOptions) {
+			const optEl = modeSelect.createEl("option", { value: opt.value, text: opt.label });
+			if (opt.value === this.pieMode) {
+				optEl.selected = true;
+			}
+		}
+		modeSelect.addEventListener("change", () => {
+			this.pieMode = modeSelect.value as "auto" | "score_comp" | "source" | "audience";
+			this.renderPieChartPanel(pieCol, visibleSeries, summary, audienceLabelMap);
+		});
+
+		// 2. Xác định dữ liệu các lát cắt (Slices) dựa trên chế độ đang chọn
+		interface PieSlice {
+			key: string;
+			label: string;
+			value: number;
+			color: string;
+		}
+
+		let effectiveMode: "current_series" | "score_comp" | "source" | "audience" = "current_series";
+		if (this.pieMode !== "auto") {
+			effectiveMode = this.pieMode;
+		} else {
+			if (this.breakdownBy === "source" || this.breakdownBy === "audience") {
+				effectiveMode = "current_series";
+			} else if (visibleSeries.length > 1) {
+				effectiveMode = "current_series";
+			} else {
+				const primaryMetric = this.selectedMetrics[0] || "score";
+				if (primaryMetric === "score" || primaryMetric === "avg_score") {
+					effectiveMode = "score_comp";
+				} else {
+					effectiveMode = "source";
+				}
+			}
+		}
+
+		let rawSlices: PieSlice[] = [];
+		let centerSubLabel = "Tổng";
+
+		if (effectiveMode === "current_series") {
+			rawSlices = visibleSeries.map((s) => ({
+				key: s.key,
+				label: s.label,
+				value: Math.max(0, s.totalValue),
+				color: s.color,
+			}));
+			centerSubLabel =
+				this.breakdownBy === "source"
+					? "Theo Nguồn"
+					: this.breakdownBy === "audience"
+					? "Theo Audience"
+					: "Theo Chỉ số";
+		} else if (effectiveMode === "score_comp") {
+			rawSlices = [
+				{
+					key: "likes_pts",
+					label: "Likes (×1)",
+					value: Math.max(0, summary.totalLikes),
+					color: "#5e5ce6",
+				},
+				{
+					key: "comments_pts",
+					label: "Bình luận (×2)",
+					value: Math.max(0, summary.totalComments * 2),
+					color: "#30d158",
+				},
+				{
+					key: "shares_pts",
+					label: "Chia sẻ (×3)",
+					value: Math.max(0, summary.totalShares * 3),
+					color: "#ff9f0a",
+				},
+			];
+			centerSubLabel = "Tổng Điểm";
+		} else {
+			const primaryMetric = this.selectedMetrics[0] || "score";
+			const subQuery = this.engagementStore.queryTimelineMultiSeries({
+				groupBy: this.dateRange.groupBy || "day",
+				days: this.dateRange.presetId === "all" ? 0 : 90,
+				startDate: this.dateRange.startDate || undefined,
+				endDate: this.dateRange.endDate || undefined,
+				dateBasis: this.dateRange.dateBasis || "published",
+				breakdownBy: effectiveMode,
+				metrics: [primaryMetric],
+				sourceFilters: this.selectedSources,
+				filterAudiences: this.selectedAudiences,
+				audienceLabelMap,
+			});
+			rawSlices = subQuery.series.map((s) => ({
+				key: s.key,
+				label: s.label,
+				value: Math.max(0, s.totalValue),
+				color: s.color,
+			}));
+			centerSubLabel = effectiveMode === "source" ? "Theo Nguồn" : "Theo Audience";
+		}
+
+		// Sắp xếp giảm dần theo giá trị và gộp nhóm nếu quá 6 phần tử
+		const positiveSlices = rawSlices.filter((s) => s.value > 0).sort((a, b) => b.value - a.value);
+		let slices: PieSlice[] = [];
+		if (positiveSlices.length > 6) {
+			const top5 = positiveSlices.slice(0, 5);
+			const rest = positiveSlices.slice(5);
+			const restSum = rest.reduce((acc, item) => acc + item.value, 0);
+			slices = [
+				...top5,
+				{
+					key: "__others__",
+					label: `Khác (${rest.length})`,
+					value: restSum,
+					color: "#8e8e93",
+				},
+			];
+		} else {
+			slices = positiveSlices;
+		}
+
+		const totalValue = slices.reduce((acc, s) => acc + s.value, 0);
+
+		// 3. Vùng chứa Canvas Donut + Tâm hiển thị tổng/phần trăm
+		const donutWrap = pieCard.createDiv({ cls: "cc-pie-canvas-wrap" });
+		const canvasSize = 132;
+		const donutCanvas = donutWrap.createEl("canvas", { cls: "cc-pie-canvas" });
+		donutCanvas.width = canvasSize;
+		donutCanvas.height = canvasSize;
+
+		const centerInfo = donutWrap.createDiv({ cls: "cc-pie-center-info" });
+		const centerValEl = centerInfo.createDiv({
+			cls: "cc-pie-center-val",
+			text: totalValue.toLocaleString("vi-VN"),
+		});
+		const centerSubEl = centerInfo.createDiv({
+			cls: "cc-pie-center-sub",
+			text: centerSubLabel,
+		});
+
+		// 4. Danh sách chú giải tỷ trọng bên dưới biểu đồ tròn
+		const legendList = pieCard.createDiv({ cls: "cc-pie-legend-list" });
+		const legendRows: HTMLElement[] = [];
+
+		if (slices.length === 0 || totalValue <= 0) {
+			legendList.createDiv({
+				cls: "cc-pie-empty-note",
+				text: "Chưa có dữ liệu tỷ trọng trong kỳ.",
+			});
+		}
+
+		// Tính góc bắt đầu và kết thúc cho từng lát cắt để vẽ và bắt sự kiện hover
+		let currentAngle = -Math.PI / 2;
+		const sliceAngles = slices.map((s) => {
+			const sweep = totalValue > 0 ? (s.value / totalValue) * Math.PI * 2 : 0;
+			const start = currentAngle;
+			const end = currentAngle + sweep;
+			currentAngle = end;
+			const pct = totalValue > 0 ? (s.value / totalValue) * 100 : 0;
+			return {
+				...s,
+				startAngle: start,
+				endAngle: end,
+				pct,
+				pctText: pct >= 10 ? `${pct.toFixed(1)}%` : `${pct.toFixed(1)}%`,
+			};
+		});
+
+		const updateHoverState = (hoverIdx: number | null) => {
+			this.drawDonutChart(donutCanvas, canvasSize, sliceAngles, totalValue, hoverIdx);
+			legendRows.forEach((row, idx) => {
+				row.toggleClass("is-hovered", hoverIdx === idx);
+			});
+			if (hoverIdx !== null && sliceAngles[hoverIdx]) {
+				const target = sliceAngles[hoverIdx];
+				centerValEl.setText(`${target.pct.toFixed(1)}%`);
+				centerValEl.style.color = target.color;
+				centerSubEl.setText(target.value.toLocaleString("vi-VN"));
+			} else {
+				centerValEl.setText(totalValue.toLocaleString("vi-VN"));
+				centerValEl.style.color = "";
+				centerSubEl.setText(centerSubLabel);
+			}
+		};
+
+		sliceAngles.forEach((s, idx) => {
+			const row = legendList.createDiv({ cls: "cc-pie-legend-row" });
+			row.setAttribute("title", `${s.label}: ${s.value.toLocaleString("vi-VN")} (${s.pct.toFixed(1)}%)`);
+
+			const leftPart = row.createDiv({ cls: "cc-pie-legend-left" });
+			const dot = leftPart.createSpan({ cls: "cc-legend-dot" });
+			dot.style.backgroundColor = s.color;
+			leftPart.createSpan({ cls: "cc-pie-legend-name", text: s.label });
+
+			const rightPart = row.createDiv({ cls: "cc-pie-legend-right" });
+			rightPart.createSpan({
+				cls: "cc-pie-legend-pct",
+				text: `${s.pct.toFixed(1)}%`,
+			});
+
+			row.addEventListener("mouseenter", () => updateHoverState(idx));
+			row.addEventListener("mouseleave", () => updateHoverState(null));
+			legendRows.push(row);
+		});
+
+		// Bắt sự kiện di chuột trực tiếp trên các lát cắt của biểu đồ tròn
+		donutCanvas.addEventListener("mousemove", (ev: MouseEvent) => {
+			if (sliceAngles.length === 0 || totalValue <= 0) return;
+			const rect = donutCanvas.getBoundingClientRect();
+			const cx = canvasSize / 2;
+			const cy = canvasSize / 2;
+			const dx = ev.clientX - rect.left - cx;
+			const dy = ev.clientY - rect.top - cy;
+			const dist = Math.sqrt(dx * dx + dy * dy);
+
+			if (dist < 32 || dist > 64) {
+				updateHoverState(null);
+				return;
+			}
+
+			let angle = Math.atan2(dy, dx);
+			if (angle < -Math.PI / 2) {
+				angle += Math.PI * 2;
+			}
+			const foundIdx = sliceAngles.findIndex((s) => angle >= s.startAngle && angle <= s.endAngle);
+			updateHoverState(foundIdx >= 0 ? foundIdx : null);
+		});
+
+		donutCanvas.addEventListener("mouseleave", () => {
+			updateHoverState(null);
+		});
+
+		requestAnimationFrame(() => {
+			updateHoverState(null);
+		});
+	}
+
+	private drawDonutChart(
+		canvas: HTMLCanvasElement,
+		size: number,
+		slices: Array<{
+			key: string;
+			label: string;
+			value: number;
+			color: string;
+			startAngle: number;
+			endAngle: number;
+			pct: number;
+		}>,
+		totalValue: number,
+		hoverIdx: number | null
+	): void {
+		const dpr = window.devicePixelRatio || 1;
+		canvas.style.width = `${size}px`;
+		canvas.style.height = `${size}px`;
+		canvas.width = Math.floor(size * dpr);
+		canvas.height = Math.floor(size * dpr);
+
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+
+		ctx.save();
+		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		ctx.clearRect(0, 0, size, size);
+
+		const cx = size / 2;
+		const cy = size / 2;
+		const outerR = 56;
+		const innerR = 37;
+
+		if (slices.length === 0 || totalValue <= 0) {
+			ctx.beginPath();
+			ctx.arc(cx, cy, outerR, 0, Math.PI * 2);
+			ctx.arc(cx, cy, innerR, 0, Math.PI * 2, true);
+			ctx.fillStyle = "hsla(0, 0%, 50%, 0.14)";
+			ctx.fill();
+			ctx.restore();
+			return;
+		}
+
+		const padAngle = slices.length > 1 ? 0.025 : 0;
+
+		slices.forEach((s, idx) => {
+			const isHovered = hoverIdx === idx;
+			const isDimmed = hoverIdx !== null && hoverIdx !== idx;
+			const rOut = isHovered ? outerR + 4 : outerR;
+			const rIn = isHovered ? innerR - 1 : innerR;
+
+			const sweep = s.endAngle - s.startAngle;
+			const actualPad = sweep > padAngle * 2 ? padAngle / 2 : 0;
+			const aStart = s.startAngle + actualPad;
+			const aEnd = s.endAngle - actualPad;
+
+			ctx.beginPath();
+			ctx.arc(cx, cy, rOut, aStart, aEnd, false);
+			ctx.arc(cx, cy, rIn, aEnd, aStart, true);
+			ctx.closePath();
+
+			ctx.fillStyle = isDimmed ? this.hexToRgba(s.color, 0.38) : s.color;
+			ctx.fill();
+		});
+
+		ctx.restore();
 	}
 
 	private hexToRgba(hex: string, alpha: number): string {

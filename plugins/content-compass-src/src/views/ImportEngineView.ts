@@ -1,6 +1,6 @@
 /**
  * Ten file: ImportEngineView.ts
- * Last update: 03/11/2026 15:52 (GMT+7)
+ * Last update: 04/11/2026 11:50 (GMT+7)
  * Vai tro: Bang dieu khien Theo doi Fanpage, Trang ca nhan & Bai viet (hien thi truc dien) kem Ngan keo Thu thap/Nhap du lieu Engagement va Cai dat Quet nang cao (mac dinh an de tiet kiem dien tich).
  * Duoc su dung khi nao?: Khi user mo tab Analytics tren Dashboard.
  * Output:
@@ -82,8 +82,8 @@ function renderPostSparkline5D(parent: HTMLElement, spark: PostSparkline5D, isTo
 		}
 	});
 
-	const strokeColor = "#0a84ff";
-	const fillColor = "rgba(10, 132, 255, 0.14)";
+	const strokeColor = "#30d158";
+	const fillColor = "rgba(48, 209, 88, 0.16)";
 
 	const svgNs = "http://www.w3.org/2000/svg";
 	const svg = document.createElementNS(svgNs, "svg");
@@ -596,6 +596,45 @@ export class ImportEngineView {
 		}, 4000);
 	}
 
+	/**
+	 * Mo ngan keo Cai dat Quet tu dong va cuon muot den dung khu vuc muc tieu:
+	 * - "workload": Bang Du bao Khoi luong Theo doi & Chu ky Cap nhat Chi so Tuong tac
+	 * - "advanced": Bang Cai dat Quet nang cao & Nguong tu dong ngung quet bai cu
+	 */
+	private async jumpToDrawerSection(
+		rootContainer: HTMLElement,
+		targetSelector: string,
+		openTarget: "workload" | "advanced"
+	): Promise<void> {
+		this.isInputDrawerOpen = true;
+		this.activeSubTab = "fb";
+		if (openTarget === "workload") {
+			this.isWorkloadPanelCollapsed = false;
+		} else {
+			this.isAdvancedSectionOpen = true;
+		}
+		await this.renderMainView(rootContainer);
+
+		const targetEl = rootContainer.querySelector(targetSelector) as HTMLElement | null;
+		if (!targetEl) return;
+
+		rootContainer.querySelectorAll(".is-highlighted-target").forEach((el) => {
+			el.removeClass("is-highlighted-target");
+		});
+		if (this.highlightRowTimer) {
+			window.clearTimeout(this.highlightRowTimer);
+			this.highlightRowTimer = null;
+		}
+
+		targetEl.addClass("is-highlighted-target");
+		targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+
+		this.highlightRowTimer = window.setTimeout(() => {
+			targetEl.removeClass("is-highlighted-target");
+			this.highlightRowTimer = null;
+		}, 3500);
+	}
+
 	// Nhom 4: Doc/Ghi file cau hinh Watchlist, State, Cache va Luu bai viet vao Vault
 	private normalizeSettings(rawSettings: any): FbTrackerSettings {
 		const modeRaw = String(rawSettings?.retention_mode || "max_days");
@@ -971,12 +1010,119 @@ export class ImportEngineView {
 	}
 
 	// Nhom 5: Giao dien chinh chuan Apple Bento Workspace (Khong long hop 4 tang, khong giat nhay DOM khi await)
+	private async reconcilePagesAndPostsState(watchlist: FbWatchlistData, state: any): Promise<void> {
+		let wlChanged = false;
+		let stChanged = false;
+		const pagesState = state?.pages || {};
+		const discovered: any[] = Array.isArray(state?.discovered_posts) ? state.discovered_posts : [];
+
+		// 1. Ánh xạ các Trang hiện có trong watchlist.pages theo id, page_identifier, resolved_page_id và page_name
+		const findWatchlistPage = (dpOrPageId?: string, pageIdent?: string, pageName?: string): FbPageWatchItem | undefined => {
+			const idStr = String(dpOrPageId || "").trim();
+			const identLower = String(pageIdent || "").trim().toLowerCase();
+			const nameLower = String(pageName || "").trim().toLowerCase();
+			const stEntry = idStr ? pagesState[idStr] : undefined;
+			const resolvedId = String(stEntry?.resolved_page_id || "").trim();
+
+			for (const pg of watchlist.pages) {
+				if (idStr && pg.id === idStr) return pg;
+				if (identLower && pg.page_identifier.trim().toLowerCase() === identLower) return pg;
+				const pgSt = pagesState[pg.id] || {};
+				if (resolvedId && pgSt.resolved_page_id && String(pgSt.resolved_page_id) === resolvedId) return pg;
+				if (nameLower && pgSt.page_name && String(pgSt.page_name).trim().toLowerCase() === nameLower) return pg;
+			}
+			return undefined;
+		};
+
+		// 2. Đồng bộ 2 chiều giữa discovered_posts (Bảng 2) và watchlist.pages (Bảng 1)
+		for (const dp of discovered) {
+			const matchedPg = findWatchlistPage(dp.from_page_id, dp.from_page, dp.from_page_name);
+			if (matchedPg) {
+				// Chuẩn hóa về cùng 1 ID và địa chỉ Trang nếu trước đó bị tách làm 2 link (vd link share vs link gốc)
+				if (dp.from_page_id !== matchedPg.id) {
+					dp.from_page_id = matchedPg.id;
+					stChanged = true;
+				}
+				if (dp.from_page !== matchedPg.page_identifier) {
+					dp.from_page = matchedPg.page_identifier;
+					stChanged = true;
+				}
+				// Nếu Trang ở Bảng 1 đang Tạm dừng (enabled === false) thì bài viết ở Bảng 2 không được bật quét
+				if (matchedPg.enabled === false && dp.enabled !== false) {
+					dp.enabled = false;
+					dp.auto_paused_reason = "page_paused";
+					stChanged = true;
+				}
+			} else if (dp.from_page || dp.from_page_id) {
+				// Trang của bài viết này chưa có mặt trong watchlist.pages:
+				// Nếu bài viết đang bật quét (và chưa từng bị xóa chủ động bằng nút Xóa Trang), tự động khôi phục Trang lên Bảng 1
+				if (dp.enabled !== false && dp.auto_paused_reason !== "page_removed") {
+					const restoredId = String(dp.from_page_id || `page_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`);
+					const restoredIdent = String(dp.from_page || dp.from_page_name || restoredId);
+					const newPg: FbPageWatchItem = {
+						id: restoredId,
+						page_identifier: restoredIdent,
+						limit: 5,
+						source_type: dp.source_type || "external",
+						enabled: true,
+						added_at: dp.added_at || new Date().toISOString(),
+					};
+					watchlist.pages.push(newPg);
+					wlChanged = true;
+				} else if (dp.enabled !== false) {
+					dp.enabled = false;
+					dp.auto_paused_reason = "page_removed";
+					stChanged = true;
+				}
+			}
+		}
+
+		// 3. Gộp thông tin state.pages bị trùng resolved_page_id về đúng ID chuẩn trong watchlist.pages
+		const activeIds = new Set(watchlist.pages.map((p) => p.id));
+		for (const pg of watchlist.pages) {
+			const curSt = pagesState[pg.id];
+			for (const [otherId, otherSt] of Object.entries(pagesState) as Array<[string, any]>) {
+				if (otherId === pg.id || activeIds.has(otherId)) continue;
+				const sameResolved =
+					curSt?.resolved_page_id &&
+					otherSt?.resolved_page_id &&
+					String(curSt.resolved_page_id) === String(otherSt.resolved_page_id);
+				const sameName =
+					curSt?.page_name &&
+					otherSt?.page_name &&
+					String(curSt.page_name).trim().toLowerCase() === String(otherSt.page_name).trim().toLowerCase();
+				if (sameResolved || sameName) {
+					if (
+						otherSt.last_polled_at &&
+						(!curSt?.last_polled_at || String(otherSt.last_polled_at) > String(curSt.last_polled_at))
+					) {
+						pagesState[pg.id] = {
+							...curSt,
+							...otherSt,
+							page_identifier: pg.page_identifier,
+						};
+					}
+					delete pagesState[otherId];
+					stChanged = true;
+				}
+			}
+		}
+
+		if (wlChanged) {
+			await this.saveWatchlist(watchlist);
+		}
+		if (stChanged) {
+			await this.saveTrackerState(state);
+		}
+	}
+
 	private async renderMainView(rootContainer: HTMLElement): Promise<void> {
 		const scrollParent = rootContainer.closest(".content-compass-tab-content") as HTMLElement | null;
 		const savedScrollTop = scrollParent ? scrollParent.scrollTop : 0;
 
 		const watchlist = await this.loadWatchlist();
 		const state = await this.loadTrackerState();
+		await this.reconcilePagesAndPostsState(watchlist, state);
 		rootContainer.empty();
 		const isRunning = Boolean(state?.status?.is_running);
 
@@ -1604,6 +1750,28 @@ export class ImportEngineView {
 				return 0;
 			};
 
+			const activePageIds = new Set(
+				watchlist.pages.filter((p) => p.enabled !== false).map((p) => p.id)
+			);
+			const activePageIdents = new Set(
+				watchlist.pages.filter((p) => p.enabled !== false).map((p) => p.page_identifier.toLowerCase())
+			);
+			const allPageIds = new Set(watchlist.pages.map((p) => p.id));
+			const allPageIdents = new Set(watchlist.pages.map((p) => p.page_identifier.toLowerCase()));
+
+			const isParentPageActive = (item: FbPostWatchItem): boolean => {
+				if (!item.from_page_id && !item.from_page) return true;
+				const pid = item.from_page_id || "";
+				const pident = (item.from_page || "").toLowerCase();
+				if (activePageIds.has(pid) || (pident && activePageIdents.has(pident))) {
+					return true;
+				}
+				const existsInWatchlist = allPageIds.has(pid) || (pident && allPageIdents.has(pident));
+				item.enabled = false;
+				item.auto_paused_reason = existsInWatchlist ? "page_paused" : "page_removed";
+				return false;
+			};
+
 			if (currentMode === "latest_only") {
 				const pageLimits = new Map<string, number>();
 				for (const pg of watchlist.pages) {
@@ -1612,6 +1780,7 @@ export class ImportEngineView {
 				}
 				const byPage = new Map<string, FbPostWatchItem[]>();
 				for (const dp of discovered) {
+					if (!isParentPageActive(dp)) continue;
 					const key = dp.from_page_id || dp.from_page || "_default";
 					if (!byPage.has(key)) byPage.set(key, []);
 					byPage.get(key)!.push(dp);
@@ -1625,27 +1794,39 @@ export class ImportEngineView {
 					});
 				}
 			} else if (currentMode === "max_posts") {
-				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...discovered];
+				const eligibleDiscovered = discovered.filter((dp) => isParentPageActive(dp));
+				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...eligibleDiscovered];
 				allRefs.sort((a, b) => getSortTs(b) - getSortTs(a));
 				const maxP = watchlist.settings.retention_max_posts;
 				allRefs.forEach((item, idx) => {
 					if (idx >= maxP) {
 						item.enabled = false;
 						item.auto_paused_reason = "max_posts";
-					} else if (item.auto_paused_reason) {
+					} else if (
+						item.auto_paused_reason === "latest_only" ||
+						item.auto_paused_reason === "max_posts" ||
+						item.auto_paused_reason === "max_days" ||
+						item.auto_paused_reason === "page_paused"
+					) {
 						item.enabled = true;
 						item.auto_paused_reason = null;
 					}
 				});
 			} else if (currentMode === "max_days") {
 				const cutoffMs = Date.now() - watchlist.settings.retention_max_days * 86400000;
-				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...discovered];
+				const eligibleDiscovered = discovered.filter((dp) => isParentPageActive(dp));
+				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...eligibleDiscovered];
 				for (const item of allRefs) {
 					const ts = getSortTs(item);
 					if (ts > 0 && ts < cutoffMs) {
 						item.enabled = false;
 						item.auto_paused_reason = "max_days";
-					} else if (item.auto_paused_reason) {
+					} else if (
+						item.auto_paused_reason === "latest_only" ||
+						item.auto_paused_reason === "max_posts" ||
+						item.auto_paused_reason === "max_days" ||
+						item.auto_paused_reason === "page_paused"
+					) {
 						item.enabled = true;
 						item.auto_paused_reason = null;
 					}
@@ -1964,6 +2145,20 @@ export class ImportEngineView {
 		});
 		const header = sectionCard.createDiv({ cls: "content-compass-fb-section-header" });
 		const title = header.createDiv({ cls: "content-compass-card-subtitle cc-collapsible-title" });
+		const headerActions = header.createDiv({ cls: "content-compass-fb-btn-group" });
+		const btnAdvSettings = headerActions.createEl("button", {
+			cls: "content-compass-icon-btn cc-header-icon-btn",
+			attr: {
+				type: "button",
+				"data-cc-tooltip": "Cài đặt quét Nâng cao",
+			},
+		});
+		setBtnContent(btnAdvSettings, "settings");
+		btnAdvSettings.addEventListener("click", (ev) => {
+			ev.stopPropagation();
+			this.jumpToDrawerSection(rootContainer, ".cc-adv-collapsible-section", "advanced");
+		});
+
 		const tableBodyWrap = sectionCard.createDiv({ cls: "cc-card-collapsible-body" });
 		if (this.isFanpagesTableCollapsed) {
 			tableBodyWrap.style.display = "none";
@@ -2086,16 +2281,53 @@ export class ImportEngineView {
 			);
 			btnToggle.addEventListener("click", async () => {
 				pg.enabled = !pg.enabled;
+				if (Array.isArray(state?.discovered_posts)) {
+					const cutoffMs = Date.now() - (watchlist.settings.retention_max_days || 7) * 86400000;
+					for (const d of state.discovered_posts) {
+						if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
+							if (!pg.enabled) {
+								if (d.enabled !== false) {
+									d.enabled = false;
+									d.auto_paused_reason = "page_paused";
+								}
+							} else if (d.auto_paused_reason === "page_paused" || d.auto_paused_reason === "page_removed") {
+								const pst = state?.posts?.[d.id] || {};
+								const ts = pst.creation_time
+									? Number(pst.creation_time) * 1000
+									: d.added_at
+										? new Date(d.added_at).getTime()
+										: 0;
+								if (watchlist.settings.retention_mode === "max_days" && ts > 0 && ts < cutoffMs) {
+									d.enabled = false;
+									d.auto_paused_reason = "max_days";
+								} else {
+									d.enabled = true;
+									d.auto_paused_reason = null;
+								}
+							}
+						}
+					}
+				}
 				await this.saveWatchlist(watchlist);
+				await this.saveTrackerState(state);
 				this.renderMainView(rootContainer);
 			});
 
 			const btnDel = actCell.createEl("button", { cls: "content-compass-icon-btn is-danger" });
 			setBtnContent(btnDel, "trash-2");
-			btnDel.setAttribute("title", "Bỏ theo dõi nguồn này");
+			btnDel.setAttribute("title", "Bỏ theo dõi nguồn này (đồng thời ngắt quét các bài thuộc nguồn này ở Bảng 2)");
 			btnDel.addEventListener("click", async () => {
 				watchlist.pages = watchlist.pages.filter((x) => x.id !== pg.id);
+				if (Array.isArray(state?.discovered_posts)) {
+					for (const d of state.discovered_posts) {
+						if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
+							d.enabled = false;
+							d.auto_paused_reason = "page_removed";
+						}
+					}
+				}
 				await this.saveWatchlist(watchlist);
+				await this.saveTrackerState(state);
 				this.renderMainView(rootContainer);
 			});
 		}
@@ -2207,30 +2439,62 @@ export class ImportEngineView {
 			return list;
 		};
 
-		// Thanh Bulk Actions gon ngay trong Header (hoac Toolbar strip)
+		// Thanh Actions gọn trên Header theo đúng thứ tự: [Lưu vào Vault (icon)] -> [Xóa đã chọn (icon)] -> [Đèn chỉ báo Xanh/Vàng/Đỏ]
 		const bulkGroup = header.createDiv({ cls: "content-compass-fb-btn-group" });
 
-		const selectAllBtn = bulkGroup.createEl("button", {
-			cls: "content-compass-refresh-btn",
-		});
-		setBtnContent(selectAllBtn, "check-square", "Chọn tất cả");
-
-		const clearSelBtn = bulkGroup.createEl("button", {
-			cls: "content-compass-refresh-btn",
-		});
-		setBtnContent(clearSelBtn, "x", "Bỏ chọn");
-
 		const saveSelectedBtn = bulkGroup.createEl("button", {
-			cls: "content-compass-import-btn",
+			cls: "content-compass-icon-btn cc-header-icon-btn",
+			attr: { type: "button" },
 		});
 		const deleteSelectedBtn = bulkGroup.createEl("button", {
-			cls: "content-compass-refresh-btn",
+			cls: "content-compass-icon-btn cc-header-icon-btn is-danger",
+			attr: { type: "button" },
 		});
+
+		const batchVal = Math.max(1, watchlist.settings.max_batch_size || 20);
+		const hasRateLimitErr = Boolean(
+			state?.status?.last_error && String(state.status.last_error).includes("429")
+		);
+		const lampTier =
+			batchVal > 50 || hasRateLimitErr ? "is-danger" : batchVal > 25 ? "is-warn" : "is-safe";
+		const lampStatusText =
+			lampTier === "is-danger"
+				? `Tình trạng quét: Cần thay đổi (${batchVal} bài/phiên) • Bấm để xem Dự báo khối lượng & Chu kỳ`
+				: lampTier === "is-warn"
+					? `Tình trạng quét: Trung bình (${batchVal} bài/phiên) • Bấm để xem Dự báo khối lượng & Chu kỳ`
+					: `Tình trạng quét: An toàn (${batchVal} bài/phiên) • Bấm để xem Dự báo khối lượng & Chu kỳ`;
+
+		const scanHealthLampBtn = bulkGroup.createEl("button", {
+			cls: `cc-scan-health-lamp-btn ${lampTier}`,
+			attr: {
+				type: "button",
+				"data-cc-tooltip": lampStatusText,
+			},
+		});
+		scanHealthLampBtn.createSpan({ cls: "cc-scan-health-dot" });
+		scanHealthLampBtn.addEventListener("click", (ev) => {
+			ev.stopPropagation();
+			this.jumpToDrawerSection(rootContainer, ".cc-adv-workload-panel", "workload");
+		});
+
+		let masterCheckbox: HTMLInputElement | null = null;
+		const syncMasterCheckboxState = () => {
+			if (!masterCheckbox) return;
+			const visible = getFilteredAndSortedPosts();
+			const allSelected =
+				visible.length > 0 && visible.every((ep) => this.selectedPostIds.has(ep.item.id));
+			masterCheckbox.checked = allSelected;
+		};
 
 		const syncBulkActionButtons = () => {
 			const cnt = this.selectedPostIds.size;
-			setBtnContent(saveSelectedBtn, "download", `Lưu vào Vault (${cnt})`);
-			setBtnContent(deleteSelectedBtn, "trash-2", `Xóa đã chọn (${cnt})`);
+			setBtnContent(saveSelectedBtn, "download");
+			setBtnContent(deleteSelectedBtn, "trash-2");
+			const saveTip = `Lưu vào Vault (${cnt})`;
+			const delTip = `Xóa đã chọn (${cnt})`;
+			saveSelectedBtn.setAttribute("data-cc-tooltip", saveTip);
+			deleteSelectedBtn.setAttribute("data-cc-tooltip", delTip);
+			saveSelectedBtn.toggleClass("is-active-watch", cnt > 0);
 			if (cnt > 0) {
 				saveSelectedBtn.removeAttribute("disabled");
 				deleteSelectedBtn.removeAttribute("disabled");
@@ -2238,11 +2502,12 @@ export class ImportEngineView {
 				saveSelectedBtn.setAttribute("disabled", "true");
 				deleteSelectedBtn.setAttribute("disabled", "true");
 			}
+			syncMasterCheckboxState();
 		};
 		syncBulkActionButtons();
 
 		saveSelectedBtn.addEventListener("click", async () => {
-			setBtnContent(saveSelectedBtn, "loader", "Đang lưu...", true);
+			setBtnContent(saveSelectedBtn, "loader", undefined, true);
 			saveSelectedBtn.setAttribute("disabled", "true");
 			let savedCount = 0;
 			for (const ep of enrichedPosts) {
@@ -2384,8 +2649,28 @@ export class ImportEngineView {
 		const postSec = postsBodyWrap.createDiv({ cls: "content-compass-table-scroll content-compass-posts-scroll" });
 		const table = postSec.createEl("table", { cls: "content-compass-data-table content-compass-posts-table" });
 		const thead = table.createEl("thead").createEl("tr");
+		// Cột 1: Ô Checkbox chọn tất cả / bỏ chọn tất cả thay cho chữ "Chọn"
+		const thSelect = thead.createEl("th", { cls: "cc-th-checkbox-col" });
+		masterCheckbox = thSelect.createEl("input", {
+			type: "checkbox",
+			cls: "content-compass-row-checkbox cc-master-checkbox",
+			attr: {
+				title: "Bấm lần 1 để Chọn tất cả • Bấm lần tiếp theo để Bỏ chọn tất cả",
+			},
+		}) as HTMLInputElement;
+		masterCheckbox.addEventListener("change", () => {
+			if (masterCheckbox && masterCheckbox.checked) {
+				for (const ep of getFilteredAndSortedPosts()) {
+					this.selectedPostIds.add(ep.item.id);
+				}
+			} else {
+				this.selectedPostIds.clear();
+			}
+			syncBulkActionButtons();
+			rebuildTableRows();
+		});
+
 		const headersConfig: Array<{ label: string; tooltip?: string }> = [
-			{ label: "Chọn" },
 			{ label: "Tên bài viết / Câu đầu tiên của bài" },
 			{
 				label: "Điểm & Tương tác ⓘ",
@@ -2416,6 +2701,7 @@ export class ImportEngineView {
 		const rebuildTableRows = () => {
 			tbody.empty();
 			const filteredPosts = getFilteredAndSortedPosts();
+			syncMasterCheckboxState();
 
 			if (filteredPosts.length === 0) {
 				const emptyRow = tbody.createEl("tr");
@@ -2481,13 +2767,17 @@ export class ImportEngineView {
 				text: formatSourceTypeLabel(item.source_type),
 			});
 			const isPostActive = item.enabled !== false;
+			const pausedReasonLabel =
+				item.auto_paused_reason === "page_paused"
+					? "Đã tạm dừng (tắt Trang)"
+					: item.auto_paused_reason === "page_removed"
+						? "Đã ngắt (đã gỡ Trang)"
+						: item.auto_paused_reason
+							? "Đã ngắt (bài cũ)"
+							: "Đã tạm dừng";
 			subMeta.createSpan({
 				cls: `content-compass-source-pill ${isPostActive ? "is-own" : ""}`,
-				text: isPostActive
-					? "Đang bật quét"
-					: item.auto_paused_reason
-						? "Đã ngắt (bài cũ)"
-						: "Đã tạm dừng",
+				text: isPostActive ? "Đang bật quét" : pausedReasonLabel,
 			});
 			if (isScraped && spark5d.isFirstScan) {
 				const firstScanBadge = subMeta.createSpan({
@@ -2634,6 +2924,7 @@ export class ImportEngineView {
 					: "Đã ngắt / tạm dừng quét (Bấm để tiếp tục tự động quét bài này)"
 			);
 				btnToggle.addEventListener("click", async () => {
+					let needFullRerender = false;
 					if (item.isDiscovered) {
 						const target = (state.discovered_posts || []).find((d: any) => d.id === item.id);
 						if (target) {
@@ -2641,6 +2932,22 @@ export class ImportEngineView {
 							target.auto_paused_reason = null;
 							item.enabled = target.enabled;
 							item.auto_paused_reason = null;
+
+							// Nếu user bật quét lại cho 1 bài viết thuộc Trang đang bị Tạm dừng hoặc đã gỡ ở Bảng 1,
+							// đồng bộ bật/khôi phục lại Trang đó ở Bảng 1 để 2 bảng luôn nhất quán 100%
+							if (target.enabled) {
+								const parentPg = watchlist.pages.find(
+									(p) => p.id === target.from_page_id || p.page_identifier === target.from_page
+								);
+								if (parentPg && parentPg.enabled === false) {
+									parentPg.enabled = true;
+									await this.saveWatchlist(watchlist);
+									needFullRerender = true;
+								} else if (!parentPg && (target.from_page || target.from_page_id)) {
+									await this.reconcilePagesAndPostsState(watchlist, state);
+									needFullRerender = true;
+								}
+							}
 						}
 						await this.saveTrackerState(state);
 					} else {
@@ -2648,8 +2955,12 @@ export class ImportEngineView {
 						item.auto_paused_reason = null;
 						await this.saveWatchlist(watchlist);
 					}
-					syncTableHeaderAndFilterCounts();
-					rebuildTableRows();
+					if (needFullRerender) {
+						this.renderMainView(rootContainer);
+					} else {
+						syncTableHeaderAndFilterCounts();
+						rebuildTableRows();
+					}
 				});
 
 				const btnDel = actCell.createEl("button", { cls: "content-compass-icon-btn is-danger" });
@@ -2676,21 +2987,7 @@ export class ImportEngineView {
 			}
 		};
 
-		// Gắn sự kiện cập nhật tại chỗ (In-place) cho tất cả bộ lọc / sắp xếp / tìm kiếm / chọn hàng loạt
-		selectAllBtn.addEventListener("click", () => {
-			for (const ep of getFilteredAndSortedPosts()) {
-				this.selectedPostIds.add(ep.item.id);
-			}
-			syncBulkActionButtons();
-			rebuildTableRows();
-		});
-
-		clearSelBtn.addEventListener("click", () => {
-			this.selectedPostIds.clear();
-			syncBulkActionButtons();
-			rebuildTableRows();
-		});
-
+		// Gắn sự kiện cập nhật tại chỗ (In-place) cho tất cả bộ lọc / sắp xếp / tìm kiếm
 		selSort.addEventListener("change", () => {
 			this.postSortBy = selSort.value as any;
 			rebuildTableRows();
