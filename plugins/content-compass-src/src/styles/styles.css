@@ -1,6 +1,6 @@
 /**
  * Tên file: styles.css
- * Last update: 04/11/2026 11:52 (GMT+7)
+ * Last update: 04/11/2026 12:38 (GMT+7)
  * Vai trò: Bảng định kiểu CSS chuẩn Apple Human Interface Guidelines (macOS Sequoia / iPadOS 18 Bento & Glass UI)
  *          cho plugin Content Compass trong Obsidian.
  * Được sử dụng khi nào?: Được Obsidian tự động nạp khi plugin content-compass kích hoạt.
@@ -441,8 +441,12 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 18px;
-	flex: 1;
-	min-height: 320px;
+	align-items: start;
+}
+
+.content-compass-bottom-col {
+	min-width: 0;
+	align-self: start;
 }
 
 @media (max-width: 960px) {
@@ -2966,6 +2970,10 @@
 
 .content-compass-card.is-collapsed {
 	padding-bottom: 14px;
+	align-self: start;
+	height: auto !important;
+	min-height: 0 !important;
+	flex: 0 0 auto !important;
 }
 
 .content-compass-card.is-collapsed .content-compass-card-header {

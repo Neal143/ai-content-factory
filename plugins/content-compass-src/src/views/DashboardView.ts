@@ -1,6 +1,6 @@
 /**
  * Tên file: DashboardView.ts
- * Last update: 03/11/2026 15:29 (GMT+7)
+ * Last update: 04/11/2026 12:38 (GMT+7)
  * Vai tro: Obsidian ItemView chinh dong vai tro container cho toan bo giao dien Content Compass.
  * Duoc su dung khi nao?: Khi user mo view qua Ribbon icon hoac Command Palette.
  * Output: Cua so Dashboard da tab (Strategy, Analytics, Advisor) tren workspace leaf cua Obsidian.
@@ -135,11 +135,13 @@ export class DashboardView extends ItemView {
 
 			// Khối dưới: Hierarchy Browser (trái) và Pillar Health (phải)
 			const bottomSection = strategyLayout.createDiv({ cls: "content-compass-bottom-section" });
+			const leftCol = bottomSection.createDiv({ cls: "content-compass-bottom-col" });
+			const rightCol = bottomSection.createDiv({ cls: "content-compass-bottom-col" });
 
-			const hierarchyView = new HierarchyBrowserView(bottomSection, this.audienceIndex, this.app);
+			const hierarchyView = new HierarchyBrowserView(leftCol, this.audienceIndex, this.app);
 			hierarchyView.render();
 
-			const healthView = new PillarHealthView(bottomSection, this.tagIndex, this.audienceIndex);
+			const healthView = new PillarHealthView(rightCol, this.tagIndex, this.audienceIndex);
 			healthView.render();
 		} else if (this.activeTab === "analytics") {
 			const analyticsLayout = contentEl.createDiv({ cls: "content-compass-analytics-layout" });

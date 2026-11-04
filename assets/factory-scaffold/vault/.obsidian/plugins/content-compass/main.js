@@ -6706,9 +6706,11 @@ var DashboardView = class extends import_obsidian12.ItemView {
       const pillarMapView = new PillarMapView(topSection, this.tagIndex, this.audienceIndex, this.app, this.engagementStore);
       pillarMapView.render();
       const bottomSection = strategyLayout.createDiv({ cls: "content-compass-bottom-section" });
-      const hierarchyView = new HierarchyBrowserView(bottomSection, this.audienceIndex, this.app);
+      const leftCol = bottomSection.createDiv({ cls: "content-compass-bottom-col" });
+      const rightCol = bottomSection.createDiv({ cls: "content-compass-bottom-col" });
+      const hierarchyView = new HierarchyBrowserView(leftCol, this.audienceIndex, this.app);
       hierarchyView.render();
-      const healthView = new PillarHealthView(bottomSection, this.tagIndex, this.audienceIndex);
+      const healthView = new PillarHealthView(rightCol, this.tagIndex, this.audienceIndex);
       healthView.render();
     } else if (this.activeTab === "analytics") {
       const analyticsLayout = contentEl.createDiv({ cls: "content-compass-analytics-layout" });
