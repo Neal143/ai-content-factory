@@ -1,11 +1,11 @@
 /**
  * Tên file: AudienceIndex.ts
- * Last update: 23/10/2026 20:05 (GMT+7)
- * Vai trò: Quản lý và xây dựng chỉ mục cây phả hệ Audience từ MetadataCache của Obsidian.
- * Được sử dụng khi nào?: Khi plugin khởi động và khi có sự kiện thay đổi file Audience (.md).
+ * Last update: 05/11/2026 14:25 (GMT+7)
+ * Vai trò: Quản lý và xây dựng chỉ mục cây phả hệ Audience từ MetadataCache của Obsidian và _audience_index.yaml.
+ * Được sử dụng khi nào?: Khi plugin khởi động và khi có sự kiện thay đổi file Audience (.md / _audience_index.yaml).
  * Output: Cấu trúc Map<string, AudienceNode> phục vụ cho việc render cây phả hệ và biểu đồ.
- * Tóm tắt logic hoạt động: Quét các file trong vault/01-Atomic/Audiences/, trích xuất Frontmatter
- * (audience_level, parent_audience, next_job_step, is_buyer_job) để xây dựng DAG quan hệ cha-con và tiến trình.
+ * Tóm tắt logic hoạt động: Quét các file trong vault/01-Atomic/Audiences/ kết hợp đọc trực tiếp _audience_index.yaml,
+ * trích xuất Frontmatter (audience_level, parent_audience, next_job_step, is_buyer_job) để xây dựng DAG quan hệ cha-con và tiến trình.
  */
 
 import { App, TFile, parseYaml } from "obsidian";
@@ -109,6 +109,48 @@ export class AudienceIndex {
 				isBuyerJob,
 				filePath: file.path,
 			});
+		}
+
+		// Bổ sung đồng bộ trực tiếp từ _audience_index.yaml để nhận diện tức thời các Audience vừa được tạo mới trên đĩa
+		try {
+			const idxPath = "01-Atomic/Audiences/_audience_index.yaml";
+			if (await this.app.vault.adapter.exists(idxPath)) {
+				const rawIdx = await this.app.vault.adapter.read(idxPath);
+				const bodyIdx = rawIdx
+					.split("\n")
+					.filter((l: string) => !l.trim().startsWith("#"))
+					.join("\n");
+				const parsedIdx = parseYaml(bodyIdx) as { audiences?: Array<Record<string, any>> } | undefined;
+				if (parsedIdx && Array.isArray(parsedIdx.audiences)) {
+					for (const entry of parsedIdx.audiences) {
+						const rawRef = String(entry.file_ref || "").replace(/\[\[|\]\]/g, "").split("|")[0].trim();
+						if (!rawRef || this.nodes.has(rawRef)) continue;
+
+						let pSlug: string | null = null;
+						if (entry.parent_audience) {
+							const pVal = Array.isArray(entry.parent_audience)
+								? entry.parent_audience[0]
+								: entry.parent_audience;
+							if (typeof pVal === "string" && pVal.trim().length > 0) {
+								pSlug = pVal.replace(/\[\[|\]\]/g, "").split("|")[0].trim();
+							}
+						}
+
+						this.nodes.set(rawRef, {
+							slug: rawRef,
+							displayName: String(entry.audience_main_job || rawRef),
+							level: (entry.audience_level as "big" | "little" | "micro") || "little",
+							parentSlug: pSlug,
+							childSlugs: [],
+							nextJobStepSlugs: [],
+							isBuyerJob: Boolean(entry.is_buyer_job),
+							filePath: `01-Atomic/Audiences/${rawRef}.md`,
+						});
+					}
+				}
+			}
+		} catch (err) {
+			console.warn("[AudienceIndex] Không thể đọc bổ sung _audience_index.yaml:", err);
 		}
 
 		// Xây dựng quan hệ hai chiều childSlugs từ parentSlug

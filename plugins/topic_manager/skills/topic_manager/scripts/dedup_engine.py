@@ -1,6 +1,6 @@
 """
 Tên file: dedup_engine.py
-Last update: 01/06/2026 23:55 (GMT+7)
+Last update: 10/11/2026 20:47 (GMT+7)
 Vai trò: Quản lý quy trình 2-Pass Semantic Dedup (Internal & External) và Biên dịch (Compile & Commit) YAML.
 Sử dụng khi nào: Trong Phase 1, Bước 1.5 của book-parser, khi Plugin topic_manager được triệu gọi.
 Output:
@@ -8,9 +8,9 @@ Output:
   - external_state.json & external_temp.json (Chặng 2)
   - resolved_topics.json (Chặng 3 - Biên dịch)
 Tóm tắt logic hoạt động:
-  - Chặng 1 (Internal): Rolling batch 5 items, gộp các raw topics trùng lặp nội bộ, xuất unique_topics.json.
-  - Chặng 2 (External): Rolling batch 5 items, đối chiếu unique topics với global topic_map.yaml.
-  - Chặng 3 (Compile & Commit): Dò ngược luồng gộp, cộng dồn audiences, gọi topic_manager.py để cập nhật YAML, xuất resolved_topics.json.
+  - Chặng 1 (Internal): Rolling batch 5 items, gộp các raw topics trùng lặp nội bộ (bảo toàn và chặn cross-type), xuất unique_topics.json.
+  - Chặng 2 (External): Rolling batch 5 items, đối chiếu unique topics với global topic_map.yaml (chặn cross-type merge).
+  - Chặng 3 (Compile & Commit): Dò ngược luồng gộp, cộng dồn audiences, gọi topic_manager.py để cập nhật YAML kèm topic_type, xuất resolved_topics.json.
 """
 import os
 import json
@@ -91,6 +91,7 @@ def prepare_internal(session_dir, proposed_topics_path):
         template_data["batch_topics"].append({
             "proposed_id": item["id"],
             "label": item["label"],
+            "topic_type": item.get("topic_type", "knowledge"),
             "action": "[ĐIỀN VÀO ĐÂY: create hoặc merge]",
             "resolved_to": "[ĐIỀN VÀO ĐÂY: Nếu merge, điền id của anchor hoặc topic trước trong batch. Nếu create, để trống]",
             "reasoning": "[ĐIỀN VÀO ĐÂY: Giải thích lý do chọn action này (LLM-CAPTCHA)]"
@@ -167,6 +168,7 @@ def submit_internal(session_dir, submit_file):
             return
             
         # Nhóm 1.14.4: Xử lý khi chọn create mới
+        cand_type = str(batch[i].get("topic_type") or "knowledge").strip().lower()
         if action == "create":
             unique_id = proposed_id.replace('-', '_').lower()
             resolved[proposed_id] = unique_id
@@ -175,6 +177,7 @@ def submit_internal(session_dir, submit_file):
                 unique_topics.append({
                     "id": unique_id,
                     "label": batch[i]["label"],
+                    "topic_type": cand_type,
                     "pillar": state["pillar"]
                 })
         # Nhóm 1.14.5: Xử lý khi chọn merge (so khớp) vào topic đã ghi nhận
@@ -190,10 +193,13 @@ def submit_internal(session_dir, submit_file):
             if not resolved_to or "[ĐIỀN VÀO ĐÂY" in resolved_to:
                 print(f"[REJECT] Merge topic '{proposed_id}' nhung thieu truong resolved_to")
                 return
-            exists_in_unique = any(x["id"] == resolved_to for x in unique_topics)
+            target_unique = next((x for x in unique_topics if x["id"] == resolved_to), None)
             exists_in_batch = resolved_to in current_batch_created
-            if not (exists_in_unique or exists_in_batch):
+            if not (target_unique or exists_in_batch):
                 print(f"[REJECT] resolved_to '{resolved_to}' khong ton tai trong tap hop unique")
+                return
+            if target_unique and str(target_unique.get("topic_type") or "knowledge").strip().lower() != cand_type:
+                print(f"[REJECT] CROSS-TYPE merge bi cam. '{proposed_id}' ({cand_type}) khac topic_type voi '{resolved_to}'.")
                 return
             resolved[proposed_id] = resolved_to
             
@@ -277,6 +283,7 @@ def prepare_external(session_dir, map_path):
         template_data["batch_topics"].append({
             "proposed_id": item["id"],
             "label": item["label"],
+            "topic_type": item.get("topic_type", "knowledge"),
             "action": "[ĐIỀN VÀO ĐÂY: create hoặc merge]",
             "resolved_to": "[ĐIỀN VÀO ĐÂY: Nếu merge, điền id gốc trong topic_map.yaml. Nếu create, để trống]",
             "reasoning": "[ĐIỀN VÀO ĐÂY: Giải thích lý do chọn action này (LLM-CAPTCHA)]"
@@ -326,6 +333,7 @@ def submit_external(session_dir, map_path, submit_file):
     with open(map_path, 'r', encoding='utf-8') as f:
         global_map = yaml.safe_load(f) or {"topics": []}
     global_ids = {t["id"] for t in global_map.get("topics", [])}
+    global_types = {t["id"]: str(t.get("topic_type") or "knowledge").strip().lower() for t in global_map.get("topics", [])}
     
     pending = state.get("pending", [])
     batch = pending[:5]
@@ -378,6 +386,10 @@ def submit_external(session_dir, map_path, submit_file):
                 return
             if resolved_to not in global_ids:
                 print(f"[REJECT] resolved_to '{resolved_to}' khong ton tai trong file topic_map.yaml toan cuc")
+                return
+            cand_type = str(batch[i].get("topic_type") or "knowledge").strip().lower()
+            if global_types.get(resolved_to, "knowledge") != cand_type:
+                print(f"[REJECT] CROSS-TYPE merge bi cam. '{proposed_id}' ({cand_type}) khac topic_type voi '{resolved_to}' ({global_types.get(resolved_to)}).")
                 return
             resolved[proposed_id] = resolved_to
             
@@ -437,6 +449,7 @@ def compile_and_commit(session_dir, map_path):
         global_ids = {t["id"] for t in global_map.get("topics", [])}
         
     unique_labels = {t["id"]: t["label"] for t in unique_topics}
+    unique_types = {t["id"]: t.get("topic_type", "knowledge") for t in unique_topics}
     
     final_topics = {}
     resolved_dict = {}
@@ -454,8 +467,10 @@ def compile_and_commit(session_dir, map_path):
         
         if final_id not in final_topics:
             label = unique_labels.get(final_id, entry["label"])
+            t_type = unique_types.get(final_id, entry.get("topic_type", "knowledge"))
             final_topics[final_id] = {
                 "label": label,
+                "topic_type": t_type,
                 "audiences": set(),
                 "groups": set(),
                 "is_external_merge": is_external_merge
@@ -473,8 +488,15 @@ def compile_and_commit(session_dir, map_path):
             # Gọi hàm append thêm audience vào topic đã có sẵn
             topic_manager.update_audience(map_path, final_id, audiences_list)
         else:
-            # Gọi hàm ghi mới topic hoàn toàn mới vào YAML
-            topic_manager.confirm_new(map_path, [final_id], [data["label"]], pillar, audiences_list)
+            # Gọi hàm ghi mới topic hoàn toàn mới vào YAML kèm topic_type
+            topic_manager.confirm_new(
+                map_path,
+                [final_id],
+                [data["label"]],
+                pillar,
+                audiences_list,
+                topic_types=[data.get("topic_type", "knowledge")],
+            )
             # Thêm ngay vào global_ids để tránh ghi trùng lặp trong cùng một lô chạy
             global_ids.add(final_id)
             

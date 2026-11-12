@@ -152,7 +152,12 @@ export class DashboardView extends ItemView {
 				importSection,
 				this.engagementStore,
 				this.app,
-				() => this.refresh()
+				async () => {
+					await this.audienceIndex.initialize();
+					await this.tagIndex.initialize();
+					await this.engagementStore.initialize();
+					this.refresh();
+				}
 			);
 			importView.render();
 

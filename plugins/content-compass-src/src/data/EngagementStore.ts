@@ -1,16 +1,17 @@
 /**
  * Ten file: EngagementStore.ts
- * Last update: 03/11/2026 15:24 (GMT+7)
+ * Last update: 05/11/2026 14:27 (GMT+7)
  * Vai tro: Tang du lieu doc/ghi/truy van da chieu engagement tu file JSONL va bo dem Facebook Tracker trong vault.
  * Duoc su dung khi nao?: Khi plugin khoi dong, khi user nhap du lieu, khi cac view bieu do can truy van da chieu.
  * Output: Cac phuong thuc truy van engagement theo thoi gian (Ngay/Tuan/Thang), chi so (Score/Likes/Comments/Shares/Avg),
- *         nguon (Thuong hieu/Doi thu/Khac/Nhan tuy chinh/Tung Trang), va xep hang da chieu.
- * Tom tat logic hoat dong: Doc file JSONL trong .content-pipeline/engagement/, ket hop quet YAML frontmatter trong vault
- *          va du lieu thuc te tu .content-pipeline/fb-tracker-state.json + fb-watchlist.json, dong bo nhan phan loai xuyen suot moi bang.
+ *         nguon (Thuong hieu/Doi thu/Khac/Nhan tuy chinh/Tung Trang), va xep hang da chieu (co ho tro loc 4 nhom Tags sach).
+ * Tom tat logic hoat dong: Doc file JSONL trong .content-pipeline/engagement/, ket hop doc truc tiep YAML frontmatter trong vault
+ *          (03-Content/Viral Posts/) ke thua Pillar tu chuoi to tien AudienceIndex, va du lieu thuc te tu .content-pipeline/fb-tracker-state.json.
  */
 
 import { App, TFile, parseYaml } from "obsidian";
 import { TagIndex } from "./TagIndex";
+import { AudienceIndex } from "./AudienceIndex";
 
 // Nhom 1: Dinh nghia cac interface du lieu engagement & Bo loc da chieu
 export interface EngagementMetrics {
@@ -32,6 +33,7 @@ export type TimelineGroupBy = "day" | "week" | "month" | "year";
 export type TimelineBreakdownBy = "metric" | "source" | "audience";
 export type RankingDimension = "post" | "author" | "tag" | "audience" | "pillar";
 export type ComponentMetricKey = "likes" | "comments" | "shares";
+export type TagCategoryFilter = "all" | "knowledge" | "insight" | "needs" | "product" | "event" | "need";
 
 export const UNASSIGNED_AUDIENCE_KEY = "__unassigned__";
 
@@ -100,6 +102,7 @@ export interface RankingQueryOptions {
 	sourceFilters?: string[]; // Multi-select nguon/trang
 	filterAudiences?: string[]; // Multi-select audience
 	selectedMetrics?: ComponentMetricKey[]; // Phan ra thanh phan Likes/Comments/Shares
+	tagCategoryFilter?: TagCategoryFilter; // Bo loc 4 loai Tags sach: Tri thuc | Insight | San pham | Needs
 }
 
 export interface TagRankEntry {
@@ -149,6 +152,11 @@ interface PostMeta {
 	inVault: boolean; // Chi true khi bai viet da duoc luu thanh file .md trong Vault
 	audiences: string[];
 	tags: string[];
+	tagsKnowledge: string[];
+	tagsInsight: string[];
+	tagsProduct: string[];
+	tagsNeeds: string[];
+	tagsEvent: string[];
 	pillars: string[];
 	authorName: string;
 	sourceType: string; // "own" | "external" | "other" | Nhan do user tu tao
@@ -173,15 +181,17 @@ export function formatSourceTypeLabel(rawType?: string): string {
 export class EngagementStore {
 	private app: App;
 	private tagIndex: TagIndex | null;
+	private audienceIndex: AudienceIndex | null;
 	private records: EngagementRecord[] = [];
 	private postMetaMap: Map<string, PostMeta> = new Map();
 	private knownAuthors: Set<string> = new Set();
 	private customSourceLabels: Set<string> = new Set();
 	private isInitialized: boolean = false;
 
-	constructor(app: App, tagIndex?: TagIndex) {
+	constructor(app: App, tagIndex?: TagIndex, audienceIndex?: AudienceIndex) {
 		this.app = app;
 		this.tagIndex = tagIndex || null;
+		this.audienceIndex = audienceIndex || null;
 	}
 
 	// --- Nhom 5: Khoi tao va doc du lieu ---
@@ -191,6 +201,9 @@ export class EngagementStore {
 		this.postMetaMap.clear();
 		this.knownAuthors.clear();
 		this.customSourceLabels.clear();
+		if (this.tagIndex) {
+			await this.tagIndex.initialize();
+		}
 		await this.loadEngagementFiles();
 		await this.buildPostMetaMap();
 		this.isInitialized = true;
@@ -233,7 +246,17 @@ export class EngagementStore {
 			const pillars: string[] = [];
 			if (this.tagIndex) {
 				for (const aSlug of audiences) {
-					const pNames = this.tagIndex.getPillarsForAudience(aSlug);
+					let pNames = this.tagIndex.getPillarsForAudience(aSlug);
+					// Neu Audience con hoac Audience moi tao chua gan truc tiep trong topic_map.yaml, ke thua Pillar tu chuoi to tien
+					if (pNames.length === 0 && this.audienceIndex) {
+						const ancestors = this.audienceIndex.getAncestors(aSlug);
+						for (const anc of ancestors) {
+							const ancPillars = this.tagIndex.getPillarsForAudience(anc.slug);
+							for (const ap of ancPillars) {
+								if (!pNames.includes(ap)) pNames.push(ap);
+							}
+						}
+					}
 					for (const p of pNames) {
 						if (!pillars.includes(p)) pillars.push(p);
 					}
@@ -242,18 +265,53 @@ export class EngagementStore {
 			return pillars;
 		};
 
-		// 1. Quet cac file bai viet Markdown da luu trong Vault (Nguon duy nhat cho tags, audience_target, pillars)
+		const extractCleanList = (rawArr: any): string[] => {
+			const out: string[] = [];
+			if (Array.isArray(rawArr)) {
+				for (const item of rawArr) {
+					const val = typeof item === "object" && item !== null ? item.name : item;
+					if (typeof val === "string" && val.trim().length > 0) {
+						const s = val.trim();
+						if (!out.includes(s)) out.push(s);
+					}
+				}
+			}
+			return out;
+		};
+
+		// 1. Tap hop danh sach duong dan file Markdown trong Vault + quet truc tiep 03-Content/Viral Posts tren dia
+		const candidatePaths = new Set<string>();
 		const files = this.app.vault.getMarkdownFiles();
+		const fileByPath = new Map<string, TFile>();
 		for (const file of files) {
 			const normPath = file.path.replace(/\\/g, "/");
 			if (normPath.startsWith("01-Atomic/")) continue;
+			candidatePaths.add(normPath);
+			fileByPath.set(normPath, file);
+		}
+		try {
+			const viralDir = "03-Content/Viral Posts";
+			if (await this.app.vault.adapter.exists(viralDir)) {
+				const listed = await this.app.vault.adapter.list(viralDir);
+				for (const fPath of listed.files) {
+					const norm = fPath.replace(/\\/g, "/");
+					if (norm.endsWith(".md")) {
+						candidatePaths.add(norm);
+					}
+				}
+			}
+		} catch {
+			// Bo qua neu thu muc chua ton tai
+		}
 
-			const cache = this.app.metadataCache.getFileCache(file);
-			let fm: Record<string, any> | undefined = cache?.frontmatter;
+		for (const normPath of candidatePaths) {
+			const file = fileByPath.get(normPath);
+			let fm: Record<string, any> | undefined;
 
-			if (!fm && normPath.startsWith("03-Content/")) {
+			// Doi voi cac file trong 03-Content/, uu tien doc truc tiep tu dia de nhan dien tuc thoi ket qua tu classify_vault_posts.py
+			if (normPath.startsWith("03-Content/")) {
 				try {
-					const content = await this.app.vault.read(file);
+					const content = await this.app.vault.adapter.read(normPath);
 					if (content.startsWith("---")) {
 						const parts = content.split("---", 3);
 						if (parts.length >= 3) {
@@ -261,21 +319,67 @@ export class EngagementStore {
 						}
 					}
 				} catch {
-					// Bo qua
+					// Fallback xuong metadataCache
 				}
+			}
+
+			if (!fm && file) {
+				const cache = this.app.metadataCache.getFileCache(file);
+				fm = cache?.frontmatter;
 			}
 
 			if (!fm) continue;
 
+			const rawTopics = extractCleanList(fm.topics);
+			const tagsKnowledge = extractCleanList(fm.tags_knowledge);
+			const tagsInsight = extractCleanList(fm.tags_insight);
+			const tagsProduct = extractCleanList(fm.tags_product);
+			const tagsNeeds = extractCleanList(fm.tags_needs);
+			const tagsEvent: string[] = [];
+			const tags: string[] = [];
+			const topicPillars: string[] = [];
+
+			for (const tLabel of rawTopics) {
+				const tNode = this.tagIndex?.getTopicByLabelOrId(tLabel);
+				const canonicalLabel = tNode ? tNode.label : tLabel;
+				if (!tags.includes(canonicalLabel)) tags.push(canonicalLabel);
+				if (tNode) {
+					for (const pName of tNode.pillarNames) {
+						if (!topicPillars.includes(pName)) topicPillars.push(pName);
+					}
+					if (tNode.topicType === "knowledge" && !tagsKnowledge.includes(canonicalLabel)) {
+						tagsKnowledge.push(canonicalLabel);
+					} else if (tNode.topicType === "insight" && !tagsInsight.includes(canonicalLabel)) {
+						tagsInsight.push(canonicalLabel);
+					} else if (tNode.topicType === "needs" && !tagsNeeds.includes(canonicalLabel)) {
+						tagsNeeds.push(canonicalLabel);
+					} else if (tNode.topicType === "product" && !tagsProduct.includes(canonicalLabel)) {
+						tagsProduct.push(canonicalLabel);
+					} else if (tNode.topicType === "event" && !tagsEvent.includes(canonicalLabel)) {
+						tagsEvent.push(canonicalLabel);
+					}
+				} else if (/^(Giảm thiểu|Tối đa hóa)\s+/i.test(canonicalLabel)) {
+					if (!tagsNeeds.includes(canonicalLabel)) tagsNeeds.push(canonicalLabel);
+				}
+			}
+			for (const legacyTag of extractCleanList(fm.tags)) {
+				if (!tags.includes(legacyTag)) tags.push(legacyTag);
+			}
+			for (const subTag of [...tagsKnowledge, ...tagsInsight, ...tagsProduct, ...tagsNeeds, ...tagsEvent]) {
+				if (!tags.includes(subTag)) {
+					tags.push(subTag);
+				}
+			}
+
 			const hasAudienceTarget = Array.isArray(fm.audience_target) && fm.audience_target.length > 0;
-			const hasTags = Array.isArray(fm.tags) && fm.tags.length > 0;
+			const hasTags = tags.length > 0;
 			const hasFbPostId =
 				fm.fb_post_id !== undefined && fm.fb_post_id !== null && String(fm.fb_post_id).trim().length > 0;
 			if (!hasAudienceTarget && !hasTags && !hasFbPostId) continue;
 
-			const postId = file.basename;
+			const baseName = file ? file.basename : (normPath.split("/").pop() || "").replace(/\.md$/i, "");
+			const postId = baseName;
 			const audiences: string[] = [];
-			const tags: string[] = [];
 
 			if (hasAudienceTarget) {
 				for (const raw of fm.audience_target) {
@@ -286,19 +390,7 @@ export class EngagementStore {
 				}
 			}
 
-			// Chi lay DUNG truong tags trong YAML Frontmatter cua bai viet da luu trong Vault
-			if (hasTags) {
-				for (const t of fm.tags) {
-					if (typeof t === "string" && t.trim().length > 0) {
-						const cleanTag = t.trim();
-						if (!tags.includes(cleanTag)) {
-							tags.push(cleanTag);
-						}
-					}
-				}
-			}
-
-			const titleStr = String(fm.title || file.basename);
+			const titleStr = String(fm.title || baseName);
 			const authorName = String(fm.author || "Vault Post").trim();
 			if (authorName) this.knownAuthors.add(authorName);
 			const rawFmSource = fm.source_type ? String(fm.source_type).trim() : "";
@@ -312,12 +404,17 @@ export class EngagementStore {
 			}
 			const publishedAt = fm.publish_date ? new Date(String(fm.publish_date)).toISOString() : undefined;
 
-			const pillars = resolvePillars(audiences);
+			const pillars = topicPillars.length > 0 ? topicPillars : resolvePillars(audiences);
 			const fbIdStr = hasFbPostId ? String(fm.fb_post_id).trim() : undefined;
 			const metaObj: PostMeta = {
 				inVault: true,
 				audiences,
 				tags,
+				tagsKnowledge,
+				tagsInsight,
+				tagsProduct,
+				tagsNeeds,
+				tagsEvent,
 				pillars,
 				authorName,
 				sourceType,
@@ -418,6 +515,11 @@ export class EngagementStore {
 						inVault: existingMeta ? existingMeta.inVault : false,
 						audiences: existingMeta ? existingMeta.audiences : [],
 						tags: existingMeta ? existingMeta.tags : [],
+						tagsKnowledge: existingMeta ? existingMeta.tagsKnowledge : [],
+						tagsInsight: existingMeta ? existingMeta.tagsInsight : [],
+						tagsProduct: existingMeta ? existingMeta.tagsProduct : [],
+						tagsNeeds: existingMeta ? existingMeta.tagsNeeds : [],
+						tagsEvent: existingMeta ? existingMeta.tagsEvent : [],
 						pillars: existingMeta ? existingMeta.pillars : [],
 						authorName: existingMeta?.authorName && existingMeta.authorName !== "Vault Post"
 							? existingMeta.authorName
@@ -1121,9 +1223,17 @@ export class EngagementStore {
 				const author = meta?.authorName || ` Nguồn ${rec.platform}`;
 				addBucket(author, rec, score);
 			} else if (opts.dimension === "tag") {
-				// Chi tinh cac bai viet DA LUU TRONG VAULT va da duoc gan tags trong YAML Frontmatter
-				if (meta?.inVault && meta.tags.length > 0) {
-					for (const t of meta.tags) {
+				// Chi tinh cac bai viet DA LUU TRONG VAULT va da duoc gan topics trong YAML Frontmatter
+				if (meta?.inVault) {
+					const cat = opts.tagCategoryFilter || "all";
+					let activeTagList = meta.tags;
+					if (cat === "knowledge") activeTagList = meta.tagsKnowledge;
+					else if (cat === "insight") activeTagList = meta.tagsInsight;
+					else if (cat === "needs" || cat === "need") activeTagList = meta.tagsNeeds;
+					else if (cat === "product") activeTagList = meta.tagsProduct;
+					else if (cat === "event") activeTagList = meta.tagsEvent;
+
+					for (const t of activeTagList) {
 						addBucket(t, rec, score);
 					}
 				}

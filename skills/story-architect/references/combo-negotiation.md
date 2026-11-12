@@ -1,7 +1,7 @@
 ---
 Mô tả file:
 - Tên file: combo-negotiation.md
-- Last update: 29/06/2026 05:57 (GMT+7)
+- Last update: 10/11/2026 22:48 (GMT+7)
 - Vai trò: Hướng dẫn xử lý khi user muốn thay đổi Combo {Pillar, Insight, Topic} đã đề xuất ở Bước 2.
 - Được sử dụng khi nào?: Khi user không đồng ý với Combo và SKILL.md chuyển hướng đến file này.
 - Output: Combo mới đã chốt + prompt persona-interviewer nếu có insight/topic mới.
@@ -41,13 +41,13 @@ User không đồng ý với Pillar đề xuất.
 
 ## Phase 3 — Chốt Topic (chỉ khi chưa có topic từ Phase 2)
 
-**Tầng 1:** Đọc `topic_map.yaml` → lọc topics có `belongs_to_audience` **chứa** Big Audience wikilink (đọc `audience.yaml` → `file_ref`). Đề xuất 3 topics phù hợp nhất với story cho user chọn.
+**Tầng 1:** Đọc `topic_map.yaml` → lọc các topics có `topic_type: knowledge` (hoặc không khai báo `topic_type`, mặc định là `knowledge`) VÀ có `belongs_to_audience` **chứa** Big Audience wikilink (đọc `audience.yaml` → `file_ref`). Đề xuất 3 topics phù hợp nhất với story cho user chọn.
 
 **Tầng 2:** User không chọn được topic nào → User tự đề xuất topic.
 Agent chạy dedup **1 lần** (dữ liệu `topic_map.yaml` đã có trong working memory từ Tầng 1):
-- Chuẩn bị: `id` = `[pN_id_moi]`, `label` = `"[label mới]"`.
-- **Phạm vi:** Chỉ so khớp với topics có cùng tiền tố Pillar (`pN_`).
-- **Quy luật:** MATCH nếu Synonym (từ đồng nghĩa), Paraphrase (diễn đạt khác cùng nghĩa), hoặc Reorder (đảo vị trí từ). Cross-Pillar (khác tiền tố `pN_`) = NO MATCH.
+- Chuẩn bị: `id` = `[pN_id_moi]`, `label` = `"[label mới]"`, `topic_type` = `knowledge`.
+- **Phạm vi:** Chỉ so khớp với topics có cùng tiền tố Pillar (`pN_`) và cùng `topic_type: knowledge`.
+- **Quy luật:** MATCH nếu Synonym (từ đồng nghĩa), Paraphrase (diễn đạt khác cùng nghĩa), hoặc Reorder (đảo vị trí từ). Cross-Pillar (khác tiền tố `pN_`) hoặc khác `topic_type` = NO MATCH.
 - **Nếu MATCH:** Thông báo: *"Topic này trùng ngữ nghĩa với `[topic_gốc]`. Dùng topic đó?"*
   - User OK → chốt topic gốc. Sang **Phase 4**.
   - User không OK → user sửa đề xuất → dedup lại 1 lần.
@@ -62,6 +62,6 @@ Quay lại SKILL.md Bước 2 mục 5 (Topic Resolution).
 1. Agent **TẠM DỪNG** xử lý story.
 2. Agent sinh prompt cho user, gồm đầy đủ:
    - Insight mới (nếu có): type, raw (nguyên văn user đã chốt), pillar key cụ thể (vd: `pillar_1`).
-   - Topic mới (nếu có): id, label, pillar_parents (vd: `["Xác định triết lý giáo dục cho con"]` — BẮT BUỘC dùng Tên tiếng Việt từ trường name trong pillars.yaml), belongs_to_audience (= Big Audience `file_ref` từ `audience.yaml`).
+   - Topic mới (nếu có): id, label, `topic_type: knowledge`, pillar_parents (vd: `["Xác định triết lý giáo dục cho con"]` — BẮT BUỘC dùng Tên tiếng Việt từ trường name trong pillars.yaml), belongs_to_audience (= Big Audience `file_ref` từ `audience.yaml`).
 3. Hướng dẫn: *"Mở conversation mới, paste prompt bên dưới và gọi persona-interviewer thực thi. Sau khi xong, quay lại conversation này để tiếp tục."*
 4. Khi user quay lại: Agent đọc file insight mới tạo trong `vault/01-Atomic/Insights/` → lấy `file_ref` chính xác → quay lại SKILL.md Bước 2 mục 5.

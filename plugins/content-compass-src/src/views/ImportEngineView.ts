@@ -1,6 +1,6 @@
 /**
  * Ten file: ImportEngineView.ts
- * Last update: 04/11/2026 11:50 (GMT+7)
+ * Last update: 05/11/2026 14:29 (GMT+7)
  * Vai tro: Bang dieu khien Theo doi Fanpage, Trang ca nhan & Bai viet (hien thi truc dien) kem Ngan keo Thu thap/Nhap du lieu Engagement va Cai dat Quet nang cao (mac dinh an de tiet kiem dien tich).
  * Duoc su dung khi nao?: Khi user mo tab Analytics tren Dashboard.
  * Output:
@@ -11,8 +11,8 @@
  *     - Bang Du bao Khoi luong Theo doi & Chu ky Cap nhat Chi so Tuong tac (tinh toan tuc thoi khi user nhap them trang/bai viet).
  *     - Khoi Cai dat Quet nang cao & Nguong tu dong ngung quet cho bai cu (3 che do + Batch Size + 6 chi so khoa cung).
  *  3. Bang 1 (Luon hien thi): Danh sach cac Fanpage / Trang ca nhan user da chi dinh theo doi (doi phan loai hoac tao nhan moi se tu dong dong bo sang toan bo bang bai viet va bieu do).
- *  4. Bang 2 (Luon hien thi): Danh sach Bai viet da thu thap (tich hop Bo loc Thoi gian khong co Gop/Moc, Sparkline 5 ngay, Xem truoc & Luu vao Vault, xoa don/hang loat, va ho tro nhay/highlight bai viet tu bieu do Engagement).
- * Tom tat logic hoat dong: Khoa cung cac tham so ky thuat bao ve IP o tang he thong; ho tro Dual-Context (Tang 3 Khong Cookie + Tang 2 Co Cookie nick phu); dong bo nhan phan loai (Doi thu, Thuong hieu, Khac, Nhan tu tao) xuyen suot 4 bang va bieu do.
+ *  4. Bang 2 (Luon hien thi): Danh sach Bai viet da thu thap (tich hop Bo loc Thoi gian, Sparkline 5 ngay, Xem truoc & Luu vao `03-Content/Viral Posts`, tu dong kich hoat PostClassifierAgent phan loai Audience & 4 nhom Tags).
+ * Tom tat logic hoat dong: Khoa cung cac tham so ky thuat bao ve IP o tang he thong; ho tro Dual-Context; luu bai viet vao `03-Content/Viral Posts` va tu dong goi `classify_vault_posts.py` ngam qua Antigravity CLI.
  */
 
 import { App, Modal, TFile, setIcon } from "obsidian";
@@ -432,21 +432,25 @@ class ScrapedPostModal extends Modal {
 			value: nonOwnType,
 			text: `Lưu vào: 03-Content/Viral Posts (${formatSourceTypeLabel(nonOwnType)})`,
 		});
-		selDest.createEl("option", { value: "own", text: "Lưu vào: 03-Content/Posted (Thương hiệu)" });
+		selDest.createEl("option", { value: "own", text: "Lưu vào: 03-Content/Viral Posts (Thương hiệu)" });
 		selDest.value = this.defaultSourceType === "own" ? "own" : nonOwnType;
 
 		const saveBtn = rowBottom.createEl("button", {
 			cls: "content-compass-import-btn",
 		});
-		setBtnContent(saveBtn, "download", this.isSaved ? "Cập nhật lại vào Vault" : "Lưu bài viết vào Vault");
+		setBtnContent(
+			saveBtn,
+			"sparkles",
+			this.isSaved ? "Cập nhật vào Vault & Phân loại lại (AI)" : "Lưu vào Vault & Phân loại (AI)"
+		);
 		saveBtn.addEventListener("click", async () => {
-			setBtnContent(saveBtn, "loader", "Đang lưu...", true);
+			setBtnContent(saveBtn, "loader", "Đang lưu & kích hoạt AI...", true);
 			saveBtn.setAttribute("disabled", "true");
 			await this.onSaveWithCustomOpts(
 				inpTitle.value.trim() || defaultTitle,
 				selDest.value
 			);
-			setBtnContent(saveBtn, "check", "Đã lưu vào Vault");
+			setBtnContent(saveBtn, "check", "Đã lưu & đang phân loại AI");
 		});
 
 		const bodyBox = contentEl.createDiv({ cls: "content-compass-fb-modal-body" });
@@ -871,7 +875,8 @@ export class ImportEngineView {
 		};
 
 		const sourceType = overrideSourceType || item.source_type || cache.source_type || "external";
-		const targetFolder = sourceType === "own" ? "03-Content/Posted" : "03-Content/Viral Posts";
+		// Tat ca bai viet thu thap tu Content Compass deu luu vao thu muc 03-Content/Viral Posts
+		const targetFolder = "03-Content/Viral Posts";
 		if (!(await this.app.vault.adapter.exists("03-Content"))) {
 			await this.app.vault.adapter.mkdir("03-Content");
 		}
@@ -935,7 +940,7 @@ export class ImportEngineView {
 				`fb_url: "${item.url}"\n` +
 				`author: "${authorName}"\n` +
 				`source_type: ${sourceType}\n` +
-				`tags: []\n` +
+				`topics: []\n` +
 				`status: published\n` +
 				`---\n\n` +
 				`<!--\n` +
@@ -1006,6 +1011,56 @@ export class ImportEngineView {
 			});
 		} catch (err) {
 			console.error("[FacebookTracker] Lỗi gọi tiến trình Python:", err);
+		}
+	}
+
+	// Kich hoat ngam Sub-Agent PostClassifierAgent (qua script classify_vault_posts.py) de xac dinh Audience & 4 nhom Tags
+	public triggerPostClassifier(args: string[], liveStatusEl?: HTMLElement, onDone?: () => void): void {
+		try {
+			const { spawn } = require("child_process");
+			const path = require("path");
+			const adapter = this.app.vault.adapter as any;
+			const vaultPath = adapter?.basePath;
+			if (!vaultPath) return;
+
+			if (this.livePollTimer) {
+				window.clearInterval(this.livePollTimer);
+				this.livePollTimer = null;
+			}
+
+			if (liveStatusEl) {
+				liveStatusEl.setText("🤖 Đang khởi chạy PostClassifierAgent (4 Skills: JTBD -> Audience -> Candidates -> ODI Needs & Topic Dedup)...");
+				this.livePollTimer = window.setInterval(async () => {
+					const st = await this.loadTrackerState();
+					const prog = st?.status?.progress_text || "🤖 Đang phân loại Audience & Topics...";
+					liveStatusEl.setText(prog);
+				}, 2000);
+			}
+
+			const pyExe = resolvePythonExe();
+			const scriptPath = path.resolve(vaultPath, "..", ".agents", "scripts", "classify_vault_posts.py");
+			const child = spawn(pyExe, [scriptPath, "--vault", vaultPath, ...args], {
+				windowsHide: true,
+				stdio: "ignore",
+			});
+			child.on("close", async () => {
+				if (this.livePollTimer) {
+					window.clearInterval(this.livePollTimer);
+					this.livePollTimer = null;
+				}
+				const st = await this.loadTrackerState();
+				if (liveStatusEl && st?.status?.progress_text) {
+					liveStatusEl.setText(String(st.status.progress_text));
+				}
+				if (this.onRefreshDashboard) {
+					await this.onRefreshDashboard();
+				} else {
+					await this.engagementStore.initialize();
+					if (onDone) onDone();
+				}
+			});
+		} catch (err) {
+			console.error("[PostClassifier] Lỗi gọi tiến trình classify_vault_posts.py:", err);
 		}
 	}
 
@@ -1393,10 +1448,10 @@ export class ImportEngineView {
 		});
 
 		const lblLimit = pageControls.createEl("label");
-		lblLimit.createSpan({ text: "Số bài muốn quét/trang (1 - 20):" });
+		lblLimit.createSpan({ text: "Số bài muốn quét/trang (1 - 100):" });
 		const inpLimit = lblLimit.createEl("input", { type: "number", value: "5" }) as HTMLInputElement;
 		inpLimit.min = "1";
-		inpLimit.max = "20";
+		inpLimit.max = "100";
 
 		const addPageBtn = pageControls.createEl("button", {
 			cls: "content-compass-import-btn",
@@ -1413,12 +1468,15 @@ export class ImportEngineView {
 				pageMsg.setText("Vui lòng nhập ít nhất 1 địa chỉ Fanpage hoặc Trang cá nhân.");
 				return;
 			}
-			const limit = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
+			const limit = Math.max(1, Math.min(100, parseInt(inpLimit.value) || 5));
 			const sourceType = selPageSrc.value || "external";
 			let lastAddedId = "";
+			let stateChanged = false;
 			for (const rawPage of lines) {
-				const exists = watchlist.pages.some((p) => p.page_identifier.toLowerCase() === rawPage.toLowerCase());
-				if (!exists) {
+				const existingPage = watchlist.pages.find(
+					(p) => p.page_identifier.toLowerCase() === rawPage.toLowerCase()
+				);
+				if (!existingPage) {
 					lastAddedId = `page_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
 					watchlist.pages.push({
 						id: lastAddedId,
@@ -1428,9 +1486,21 @@ export class ImportEngineView {
 						enabled: true,
 						added_at: new Date().toISOString(),
 					});
+				} else {
+					existingPage.limit = limit;
+					existingPage.source_type = sourceType;
+					existingPage.enabled = true;
+					lastAddedId = existingPage.id;
+					if (state?.pages?.[existingPage.id]) {
+						state.pages[existingPage.id].reset_ignored = true;
+						stateChanged = true;
+					}
 				}
 			}
 			await this.saveWatchlist(watchlist);
+			if (stateChanged) {
+				await this.saveTrackerState(state);
+			}
 			addPageBtn.setAttribute("disabled", "true");
 			pageMsg.setText(`Đã thêm ${lines.length} nguồn. Đang quét...`);
 			txtPages.value = "";
@@ -1772,6 +1842,11 @@ export class ImportEngineView {
 				return false;
 			};
 
+			const hasCompletedFirstScan = (item: FbPostWatchItem): boolean => {
+				const pst = postsState[item.id] || {};
+				return Boolean(pst.last_polled_at);
+			};
+
 			if (currentMode === "latest_only") {
 				const pageLimits = new Map<string, number>();
 				for (const pg of watchlist.pages) {
@@ -1789,8 +1864,9 @@ export class ImportEngineView {
 					const lim = pageLimits.get(key) || 5;
 					list.sort((a, b) => getSortTs(b) - getSortTs(a));
 					list.forEach((dp, idx) => {
-						dp.enabled = idx < lim;
-						dp.auto_paused_reason = idx < lim ? null : "latest_only";
+						const shouldEnable = idx < lim || !hasCompletedFirstScan(dp);
+						dp.enabled = shouldEnable;
+						dp.auto_paused_reason = shouldEnable ? null : "latest_only";
 					});
 				}
 			} else if (currentMode === "max_posts") {
@@ -1799,14 +1875,15 @@ export class ImportEngineView {
 				allRefs.sort((a, b) => getSortTs(b) - getSortTs(a));
 				const maxP = watchlist.settings.retention_max_posts;
 				allRefs.forEach((item, idx) => {
-					if (idx >= maxP) {
+					if (idx >= maxP && hasCompletedFirstScan(item)) {
 						item.enabled = false;
 						item.auto_paused_reason = "max_posts";
 					} else if (
-						item.auto_paused_reason === "latest_only" ||
-						item.auto_paused_reason === "max_posts" ||
-						item.auto_paused_reason === "max_days" ||
-						item.auto_paused_reason === "page_paused"
+						(idx < maxP || !hasCompletedFirstScan(item)) &&
+						(item.auto_paused_reason === "latest_only" ||
+							item.auto_paused_reason === "max_posts" ||
+							item.auto_paused_reason === "max_days" ||
+							item.auto_paused_reason === "page_paused")
 					) {
 						item.enabled = true;
 						item.auto_paused_reason = null;
@@ -1818,14 +1895,15 @@ export class ImportEngineView {
 				const allRefs: FbPostWatchItem[] = [...watchlist.posts, ...eligibleDiscovered];
 				for (const item of allRefs) {
 					const ts = getSortTs(item);
-					if (ts > 0 && ts < cutoffMs) {
+					if (ts > 0 && ts < cutoffMs && hasCompletedFirstScan(item)) {
 						item.enabled = false;
 						item.auto_paused_reason = "max_days";
 					} else if (
-						item.auto_paused_reason === "latest_only" ||
-						item.auto_paused_reason === "max_posts" ||
-						item.auto_paused_reason === "max_days" ||
-						item.auto_paused_reason === "page_paused"
+						(ts >= cutoffMs || !hasCompletedFirstScan(item)) &&
+						(item.auto_paused_reason === "latest_only" ||
+							item.auto_paused_reason === "max_posts" ||
+							item.auto_paused_reason === "max_days" ||
+							item.auto_paused_reason === "page_paused")
 					) {
 						item.enabled = true;
 						item.auto_paused_reason = null;
@@ -1887,7 +1965,7 @@ export class ImportEngineView {
 				(raw) => !watchlist.pages.some((p) => p.page_identifier.toLowerCase() === raw.toLowerCase())
 			);
 			const newPagesCount = uniqueNewPages.length;
-			const limitPerNewPage = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
+			const limitPerNewPage = Math.max(1, Math.min(100, parseInt(inpLimit.value) || 5));
 			const addedPostsFromPages = newPagesCount * limitPerNewPage;
 
 			const rawUrlLines = txtUrls.value
@@ -2247,9 +2325,9 @@ export class ImportEngineView {
 				value: String(pg.limit || 5),
 			}) as HTMLInputElement;
 			rowInpLimit.min = "1";
-			rowInpLimit.max = "20";
+			rowInpLimit.max = "100";
 			rowInpLimit.addEventListener("change", async () => {
-				pg.limit = Math.max(1, Math.min(20, parseInt(rowInpLimit.value) || 5));
+				pg.limit = Math.max(1, Math.min(100, parseInt(rowInpLimit.value) || 5));
 				rowInpLimit.value = String(pg.limit);
 				await this.saveWatchlist(watchlist);
 				this.renderMainView(rootContainer);
@@ -2297,7 +2375,12 @@ export class ImportEngineView {
 									: d.added_at
 										? new Date(d.added_at).getTime()
 										: 0;
-								if (watchlist.settings.retention_mode === "max_days" && ts > 0 && ts < cutoffMs) {
+								if (
+									watchlist.settings.retention_mode === "max_days" &&
+									ts > 0 &&
+									ts < cutoffMs &&
+									Boolean(pst.last_polled_at)
+								) {
 									d.enabled = false;
 									d.auto_paused_reason = "max_days";
 								} else {
@@ -2318,13 +2401,22 @@ export class ImportEngineView {
 			btnDel.setAttribute("title", "Bỏ theo dõi nguồn này (đồng thời ngắt quét các bài thuộc nguồn này ở Bảng 2)");
 			btnDel.addEventListener("click", async () => {
 				watchlist.pages = watchlist.pages.filter((x) => x.id !== pg.id);
+				const pageFbIds = new Set<string>();
 				if (Array.isArray(state?.discovered_posts)) {
 					for (const d of state.discovered_posts) {
 						if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
 							d.enabled = false;
 							d.auto_paused_reason = "page_removed";
+							const fbId = d.fb_post_id || state?.posts?.[d.id]?.fb_post_id;
+							if (fbId) pageFbIds.add(String(fbId));
 						}
 					}
+				}
+				if (pageFbIds.size > 0 && Array.isArray(state?.ignored_fb_ids)) {
+					state.ignored_fb_ids = state.ignored_fb_ids.filter((id: string) => !pageFbIds.has(String(id)));
+				}
+				if (state?.pages && state.pages[pg.id]) {
+					delete state.pages[pg.id];
 				}
 				await this.saveWatchlist(watchlist);
 				await this.saveTrackerState(state);
@@ -2439,7 +2531,7 @@ export class ImportEngineView {
 			return list;
 		};
 
-		// Thanh Actions gọn trên Header theo đúng thứ tự: [Lưu vào Vault (icon)] -> [Xóa đã chọn (icon)] -> [Đèn chỉ báo Xanh/Vàng/Đỏ]
+		// Thanh Actions gọn trên Header theo đúng thứ tự: [Lưu vào Vault & Phân loại AI (sparkles)] -> [Xóa đã chọn (icon)] -> [Đèn chỉ báo Xanh/Vàng/Đỏ]
 		const bulkGroup = header.createDiv({ cls: "content-compass-fb-btn-group" });
 
 		const saveSelectedBtn = bulkGroup.createEl("button", {
@@ -2488,9 +2580,9 @@ export class ImportEngineView {
 
 		const syncBulkActionButtons = () => {
 			const cnt = this.selectedPostIds.size;
-			setBtnContent(saveSelectedBtn, "download");
+			setBtnContent(saveSelectedBtn, "sparkles");
 			setBtnContent(deleteSelectedBtn, "trash-2");
-			const saveTip = `Lưu vào Vault (${cnt})`;
+			const saveTip = `Lưu vào Vault & Phân loại Audience/Topics (${cnt})`;
 			const delTip = `Xóa đã chọn (${cnt})`;
 			saveSelectedBtn.setAttribute("data-cc-tooltip", saveTip);
 			deleteSelectedBtn.setAttribute("data-cc-tooltip", delTip);
@@ -2509,17 +2601,22 @@ export class ImportEngineView {
 		saveSelectedBtn.addEventListener("click", async () => {
 			setBtnContent(saveSelectedBtn, "loader", undefined, true);
 			saveSelectedBtn.setAttribute("disabled", "true");
-			let savedCount = 0;
+			const createdFiles: string[] = [];
 			for (const ep of enrichedPosts) {
 				if (this.selectedPostIds.has(ep.item.id) && ep.isScraped) {
 					const pathCreated = await this.savePostToVault(ep.item, state);
-					if (pathCreated) savedCount++;
+					if (pathCreated) createdFiles.push(pathCreated);
 				}
 			}
 			this.selectedPostIds.clear();
 			await this.engagementStore.initialize();
-			postStatus.setText(`Đã lưu ${savedCount} bài viết vào Vault.`);
+			postStatus.setText(
+				`Đã lưu ${createdFiles.length} bài viết vào 03-Content/Viral Posts. Đang phân loại Audience & Topics (5 nhóm)...`
+			);
 			this.renderMainView(rootContainer);
+			if (createdFiles.length > 0) {
+				this.triggerPostClassifier(["--files", ...createdFiles, "--force", "--all-unclassified"], postStatus);
+			}
 		});
 
 		deleteSelectedBtn.addEventListener("click", async () => {
@@ -2865,9 +2962,12 @@ export class ImportEngineView {
 						item.source_type || "external",
 						isSaved,
 						async (customTitle, targetSource) => {
-							await this.savePostToVault(item, state, customTitle, targetSource);
+							const savedPath = await this.savePostToVault(item, state, customTitle, targetSource);
 							await this.engagementStore.initialize();
 							this.renderMainView(rootContainer);
+							if (savedPath) {
+								this.triggerPostClassifier(["--files", savedPath, "--force", "--all-unclassified"], postStatus);
+							}
 						}
 					).open();
 				});
@@ -2885,13 +2985,16 @@ export class ImportEngineView {
 					const btnSaveOne = vaultCell.createEl("button", {
 						cls: "content-compass-icon-btn",
 					});
-					setBtnContent(btnSaveOne, "download");
-					btnSaveOne.setAttribute("title", "Lưu bài này thành file .md trong Obsidian Vault");
+					setBtnContent(btnSaveOne, "sparkles");
+					btnSaveOne.setAttribute("title", "Lưu vào Vault & Phân loại Audience/Topics (AI)");
 					btnSaveOne.addEventListener("click", async () => {
 						setBtnContent(btnSaveOne, "loader", undefined, true);
-						await this.savePostToVault(item, state);
+						const savedPath = await this.savePostToVault(item, state);
 						await this.engagementStore.initialize();
 						this.renderMainView(rootContainer);
+						if (savedPath) {
+							this.triggerPostClassifier(["--files", savedPath, "--all-unclassified"], postStatus);
+						}
 					});
 				}
 			} else {

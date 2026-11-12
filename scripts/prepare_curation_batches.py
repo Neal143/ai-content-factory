@@ -15,7 +15,7 @@ if hasattr(sys.stderr, "reconfigure"):
 
 """
 Ten file: prepare_curation_batches.py
-Last update: 13/07/2026 09:38 (GMT+7)
+Last update: 10/11/2026 20:49 (GMT+7)
 Vai tro: Quan ly batch cho 3 curation skills (auto-tagger, atom-dedup, atom-linker).
          Co che anti-cheat: submit-and-validate + content isolation (embed atom content vao batch).
 Su dung khi: Goi tu cac skill auto-tagger, atom-dedup, atom-linker.
@@ -196,10 +196,14 @@ def init_meta_dedup_batches(skill, meta_source, batch_size, output_dir):
         groups = {}
         for t in topics:
             prefix = t.get('id', '').split('_')[0]
-            groups.setdefault(prefix, []).append(t)
+            t_type = str(t.get('topic_type') or 'knowledge').strip().lower()
+            t['topic_type'] = t_type
+            group_key = f"{prefix}_{t_type}"
+            groups.setdefault(group_key, []).append(t)
             
         batch_id = 1
-        for prefix, items in groups.items():
+        for group_key, items in groups.items():
+            prefix, t_type = group_key.split('_', 1)
             for i in range(0, len(items), batch_size):
                 chunk = items[i:i+batch_size]
                 # Anti-hallucination: Xoa aliases khoi batch de LLM khong nham lan
@@ -209,6 +213,7 @@ def init_meta_dedup_batches(skill, meta_source, batch_size, output_dir):
                 _write_json(batch_file, {
                     "batch_id": batch_id,
                     "pillar_prefix": prefix,
+                    "topic_type": t_type,
                     "items": chunk,
                     "anchors": []
                 })
@@ -266,7 +271,14 @@ def _execute_meta_dedup(entries, output_dir):
             if skill == "vc-topic-dedup":
                 cmd = [sys.executable, script_path, "--action", "merge-topic", "--loser-id", loser, "--survivor-id", survivor, "--topic-map", meta_source, "--vault-root", "vault/01-Atomic"]
             else:
-                cmd = [sys.executable, script_path, "--action", "merge-audience", "--loser-file", loser, "--survivor-file", survivor, "--audience-index", meta_source, "--topic-map", "vault/01-Atomic/Topics/topic_map.yaml", "--vault-root", "vault/01-Atomic"]
+                resolved_tm = "vault/01-Atomic/Topics/topic_map.yaml"
+                if os.path.isdir("personas"):
+                    for p_dir in os.listdir("personas"):
+                        cand_tm = os.path.join("personas", p_dir, "topic_map.yaml")
+                        if os.path.isfile(cand_tm):
+                            resolved_tm = cand_tm
+                            break
+                cmd = [sys.executable, script_path, "--action", "merge-audience", "--loser-file", loser, "--survivor-file", survivor, "--audience-index", meta_source, "--topic-map", resolved_tm, "--vault-root", "vault/01-Atomic"]
             
             res = subprocess.run(cmd, capture_output=True, text=True)
             if res.returncode != 0:

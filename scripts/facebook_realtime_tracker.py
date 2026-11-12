@@ -478,24 +478,37 @@ class FacebookTrackerEngine:
         raise ValueError(f"Không thể phân giải ID trang cá nhân '{page_input}' ngay cả khi đã dùng Cookie nick phụ.")
 
     def _collect_posts_from_context(
-        self, ctx: fgs.FacebookContext, clean_id: str, limit: int
+        self,
+        ctx: fgs.FacebookContext,
+        clean_id: str,
+        limit: int,
+        ignored_ids: Optional[set] = None,
+        is_auth: bool = False,
     ) -> tuple[str, List[Dict[str, Any]]]:
         """
         Khởi tạo trực tiếp `fgs.Profile(ctx, {"id": clean_id})` và đọc thẳng `post._data`
-        để triệt tiêu 100% bẫy ngầm `_obtain_metadata()` của cả `Profile` lẫn `Post`
-        (đảm bảo chỉ tốn đúng 1 request GraphQL duy nhất).
+        để triệt tiêu 100% bẫy ngầm `_obtain_metadata()` của cả `Profile` lẫn `Post`.
+        Bỏ qua các bài nằm trong `ignored_ids` trước khi đếm `limit` để luôn lấy đủ số bài hợp lệ,
+        đồng thời chèn nhịp nghỉ nhẹ mỗi 5 bài khi lật nhiều trang Timeline.
         """
         page_user = fgs.Profile(ctx, {"id": str(clean_id)})
         page_name = str(clean_id)
         results: List[Dict[str, Any]] = []
+        seen_raw_count = 0
+        max_scan_guard = max(limit * 3, limit + len(ignored_ids or ()) + 20)
         for post in page_user.get_posts():
             raw_data = getattr(post, "_data", None) or {}
             post_id = str(raw_data.get("id") or "")
             if not post_id:
                 continue
+            seen_raw_count += 1
             author_obj = raw_data.get("author") or {}
             if isinstance(author_obj, dict) and author_obj.get("name"):
                 page_name = str(author_obj["name"])
+            if ignored_ids and post_id in ignored_ids:
+                if seen_raw_count >= max_scan_guard:
+                    break
+                continue
             raw_txt = str(raw_data.get("text") or "").strip()
             first_line = raw_txt.split("\n")[0].strip() if raw_txt else ""
             raw_post_url = raw_data.get("url") or f"https://www.facebook.com/{clean_id}/posts/{post_id}"
@@ -517,12 +530,18 @@ class FacebookTrackerEngine:
                     "views": 0,
                 },
             })
-            if len(results) >= limit:
+            if len(results) >= limit or seen_raw_count >= max_scan_guard:
                 break
+            if len(results) % 5 == 0:
+                time.sleep(3.0 if is_auth else 1.5)
         return page_name, results
 
     def get_latest_posts_from_page(
-        self, page_identifier: str, limit: int = 5, resolved_id: Optional[str] = None
+        self,
+        page_identifier: str,
+        limit: int = 5,
+        resolved_id: Optional[str] = None,
+        ignored_ids: Optional[set] = None,
     ) -> tuple[str, str, List[Dict[str, Any]]]:
         """
         Quét N bài viết mới nhất theo Kiến trúc Phân luồng Kép:
@@ -543,7 +562,9 @@ class FacebookTrackerEngine:
         # Nếu phân giải được ở Tầng 3 thì ưu tiên lấy bài ở Tầng 3 trước
         if not used_auth_for_resolve:
             try:
-                page_name, results = self._collect_posts_from_context(self.ctx, clean_id, limit)
+                page_name, results = self._collect_posts_from_context(
+                    self.ctx, clean_id, limit, ignored_ids=ignored_ids, is_auth=False
+                )
                 if len(results) > 0 or not self.ctx_auth:
                     return str(clean_id), page_name, results
             except Exception:
@@ -561,7 +582,9 @@ class FacebookTrackerEngine:
         self._ensure_auth_dtsg()
         self._wait_auth_rate_limit()
         try:
-            page_name, results = self._collect_posts_from_context(self.ctx_auth, clean_id, limit)
+            page_name, results = self._collect_posts_from_context(
+                self.ctx_auth, clean_id, limit, ignored_ids=ignored_ids, is_auth=True
+            )
             return str(clean_id), page_name, results
         except SessionExpiredError as exp_err:
             self._trip_auth_circuit_breaker("Phiên Cookie nick phụ đã hết hạn hoặc bị đăng xuất.")
@@ -1121,6 +1144,11 @@ class TrackerOrchestrator:
                     dp["auto_paused_reason"] = target_reason
                     changed = True
 
+        def has_completed_first_scan(item: Dict[str, Any]) -> bool:
+            iid = item.get("id", "")
+            pst = posts_state.get(iid, {})
+            return bool(pst.get("last_polled_at"))
+
         # 1. Chế độ 1 (latest_only): Chỉ giữ bật quét cho đúng N bài mới nhất của từng Fanpage
         if retention_mode == "latest_only":
             page_limits = {p.get("id"): max(1, int(p.get("limit", 5))) for p in wl_pages}
@@ -1133,7 +1161,7 @@ class TrackerOrchestrator:
                 fresh_ids = latest_page_post_ids.get(pid)
                 if fresh_ids:
                     for dp in dp_list:
-                        should_enable = str(dp.get("fb_post_id")) in fresh_ids
+                        should_enable = (str(dp.get("fb_post_id")) in fresh_ids) or (not has_completed_first_scan(dp))
                         if dp.get("enabled", True) != should_enable:
                             dp["enabled"] = should_enable
                             dp["auto_paused_reason"] = None if should_enable else "latest_only"
@@ -1142,7 +1170,7 @@ class TrackerOrchestrator:
                     limit_n = page_limits.get(pid, 5)
                     sorted_dp = sorted(dp_list, key=get_post_sort_ts, reverse=True)
                     for idx, dp in enumerate(sorted_dp):
-                        should_enable = idx < limit_n
+                        should_enable = (idx < limit_n) or (not has_completed_first_scan(dp))
                         if dp.get("enabled", True) != should_enable:
                             dp["enabled"] = should_enable
                             dp["auto_paused_reason"] = None if should_enable else "latest_only"
@@ -1153,11 +1181,11 @@ class TrackerOrchestrator:
             all_refs: List[Dict[str, Any]] = list(watchlist.get("posts", [])) + eligible_discovered
             sorted_all = sorted(all_refs, key=get_post_sort_ts, reverse=True)
             for idx, item in enumerate(sorted_all):
-                if idx >= max_posts_limit and item.get("enabled", True):
+                if idx >= max_posts_limit and has_completed_first_scan(item) and item.get("enabled", True):
                     item["enabled"] = False
                     item["auto_paused_reason"] = "max_posts"
                     changed = True
-                elif idx < max_posts_limit and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days", "page_paused"):
+                elif (idx < max_posts_limit or not has_completed_first_scan(item)) and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days", "page_paused"):
                     item["enabled"] = True
                     item["auto_paused_reason"] = None
                     changed = True
@@ -1168,12 +1196,12 @@ class TrackerOrchestrator:
             all_refs = list(watchlist.get("posts", [])) + eligible_discovered
             for item in all_refs:
                 pts = get_post_sort_ts(item)
-                if pts > 0 and pts < cutoff_ts:
+                if pts > 0 and pts < cutoff_ts and has_completed_first_scan(item):
                     if item.get("enabled", True):
                         item["enabled"] = False
                         item["auto_paused_reason"] = "max_days"
                         changed = True
-                elif pts >= cutoff_ts and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days", "page_paused"):
+                elif (pts >= cutoff_ts or not has_completed_first_scan(item)) and item.get("auto_paused_reason") in ("latest_only", "max_posts", "max_days", "page_paused"):
                     item["enabled"] = True
                     item["auto_paused_reason"] = None
                     changed = True
@@ -1218,14 +1246,44 @@ class TrackerOrchestrator:
                     continue
 
                 scanned_page_idents.add(p_ident)
-                limit = max(1, min(20, int(page_cfg.get("limit", 5))))
+                configured_limit = max(1, min(100, int(page_cfg.get("limit", 5))))
+                is_fresh_or_reset_page = (not p_state.get("last_polled_at")) or bool(p_state.get("reset_ignored"))
+                # Nếu là chu kỳ chạy ngầm định kỳ (mode == "due") trên trang đã từng quét đủ configured_limit,
+                # chỉ cần kiểm tra tối đa 10 bài đầu trang để bắt bài mới đăng (trừ chế độ latest_only)
+                if (
+                    mode == "due"
+                    and not is_fresh_or_reset_page
+                    and int(p_state.get("last_scan_limit", 0)) >= configured_limit
+                    and str(settings.get("retention_mode", "max_days")) != "latest_only"
+                ):
+                    limit = min(configured_limit, 10)
+                else:
+                    limit = configured_limit
+
                 self.update_status(state, True, f"Đang quét Fanpage: {p_ident} (lấy {limit} bài)...")
                 try:
                     cached_page_id = p_state.get("resolved_page_id")
+                    raw_ignored_list = [str(x) for x in state.get("ignored_fb_ids", [])]
+                    ignored_set = set(raw_ignored_list)
+                    # Nếu trang mới được thêm / thêm lại: không lọc bỏ bằng ignored_set mà gỡ các bài của trang này khỏi ignored_fb_ids
+                    effective_ignored = None if is_fresh_or_reset_page else ignored_set
                     resolved_pid, page_name, latest_posts = engine.get_latest_posts_from_page(
-                        p_ident, limit=limit, resolved_id=cached_page_id
+                        p_ident, limit=limit, resolved_id=cached_page_id, ignored_ids=effective_ignored
                     )
-                    ignored_set = set(str(x) for x in state.get("ignored_fb_ids", []))
+                    if is_fresh_or_reset_page and latest_posts:
+                        fetched_fb_ids = {str(lp["post_id"]) for lp in latest_posts if lp.get("post_id")}
+                        if fetched_fb_ids & ignored_set:
+                            state["ignored_fb_ids"] = [x for x in raw_ignored_list if x not in fetched_fb_ids]
+                            ignored_set -= fetched_fb_ids
+                        # Khôi phục các bài từng bị ngắt do xóa trang trước đó (nếu còn trong discovered_posts)
+                        for dp_existing in state.get("discovered_posts", []):
+                            if str(dp_existing.get("fb_post_id")) in fetched_fb_ids and dp_existing.get("auto_paused_reason") == "page_removed":
+                                dp_existing["enabled"] = True
+                                dp_existing["auto_paused_reason"] = None
+                                dp_existing["from_page_id"] = p_id
+                                dp_existing["from_page"] = p_ident
+                                dp_existing["from_page_name"] = page_name
+
                     known_fb_ids = {
                         v.get("fb_post_id") for v in state["posts"].values() if v.get("fb_post_id")
                     } | ignored_set
@@ -1282,6 +1340,7 @@ class TrackerOrchestrator:
                                 new_discovered += 1
 
                     page_mins = int(settings.get("page_scan_mins", 60))
+                    prev_scan_limit = int(p_state.get("last_scan_limit", 0))
                     state["pages"][p_id] = {
                         "page_identifier": p_ident,
                         "resolved_page_id": resolved_pid,
@@ -1289,6 +1348,8 @@ class TrackerOrchestrator:
                         "last_polled_at": now_iso(),
                         "next_poll_at": (now_vn() + timedelta(minutes=max(15, page_mins))).isoformat(timespec="seconds"),
                         "last_discovered": new_discovered,
+                        "last_scan_limit": max(limit, prev_scan_limit),
+                        "reset_ignored": False,
                     }
                     latest_page_post_ids[p_id] = {str(lp["post_id"]) for lp in latest_posts if lp.get("post_id")}
                     write_json_safe(self.state_path, state)
@@ -1332,8 +1393,10 @@ class TrackerOrchestrator:
                     continue
                 due_posts.append(post_cfg)
 
-            if mode != "id":
-                due_posts = due_posts[:max_batch]
+            # Ưu tiên xếp các bài mới phát hiện chưa từng cào lượt đầu (last_polled_at == None) lên đầu hàng đợi,
+            # và luôn cắt theo max_batch ở mọi chế độ để bảo vệ IP khi limit > max_batch
+            due_posts.sort(key=lambda cfg: 0 if not state["posts"].get(cfg.get("id"), {}).get("last_polled_at") else 1)
+            due_posts = due_posts[:max_batch]
 
             # 3. Thực thi quét tuần tự từng bài viết với Rate-Limit Guard
             total_due = len(due_posts)
@@ -1454,6 +1517,9 @@ class TrackerOrchestrator:
                 except Exception as ex:
                     state["status"]["last_error"] = f"Lỗi bài {url[:40]}: {ex}"
                     write_json_safe(self.state_path, state)
+
+            # 3.5. Áp dụng lại ngưỡng bài cũ sau khi các bài mới phát hiện đã hoàn tất lượt cào chi tiết đầu tiên
+            self.apply_retention_policy(watchlist, state, latest_page_post_ids)
 
             self.update_status(state, False, f"Hoàn tất ({total_due} bài đã cập nhật)")
         finally:

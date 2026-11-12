@@ -1,7 +1,7 @@
 ---
 name: Persona Interviewer
 description: BẮT BUỘC KÍCH HOẠT skill này NGAY LẬP TỨC nếu User dùng lệnh /onboarding-persona, hoặc có nhu cầu cài đặt hệ thống persona, thiết lập phong cách viết, hay tham gia phỏng vấn cấu hình giọng văn. Skill này điều phối toàn bộ quá trình thu thập và lưu dữ liệu. KHÔNG YÊU CẦU GIẢI THÍCH TRƯỚC.
-last_update: 26/06/2026 15:16 (GMT+7)
+last_update: 10/11/2026 20:48 (GMT+7)
 role: Hướng dẫn tích hợp phỏng vấn và thu thập thông tin Persona
 usage: Được kích hoạt khi onboarding hoặc phỏng vấn thiết lập phong cách, tạo file Insight vật lý
 output: Hướng dẫn luồng tương tác 12 câu hỏi và ghi nhận file tĩnh insights_payload.json
@@ -179,11 +179,12 @@ Mục tiêu: Đạt 65% Completeness. Tiến trình phỏng vấn BẮT BUỘC t
       - 
       ```
       *User chỉ cần copy template và điền sau dấu `:` hoặc sau dấu `-`.*
-      + ⛔ Khi nhận câu trả lời, **BẮT BUỘC** ghi các Topics ngách vào thẻ mảng `topics: []` trong `topic_map.yaml` ngay lập tức. **TUYỆT ĐỐI CẤM ghi vào `pillars.yaml`** ở bước này. Mỗi entry PHẢI tuân thủ đúng schema 4 trường (`id`, `label`, `pillar_parents`, `belongs_to_audience`) — **điền đầy đủ cả `pillar_parents`** bằng tên Pillar cha mà User vừa cung cấp (đây KHÔNG phải là ghi vào `pillars.yaml`):
+      + ⛔ Khi nhận câu trả lời, **BẮT BUỘC** ghi các Topics ngách vào thẻ mảng `topics: []` trong `topic_map.yaml` ngay lập tức. **TUYỆT ĐỐI CẤM ghi vào `pillars.yaml`** ở bước này. Mỗi entry PHẢI tuân thủ đúng schema 5 trường (`id`, `label`, `topic_type`, `pillar_parents`, `belongs_to_audience`) — **điền đầy đủ cả `pillar_parents`** bằng tên Pillar cha mà User vừa cung cấp (đây KHÔNG phải là ghi vào `pillars.yaml`):
       + ⛔ **BẮT BUỘC tiền tố Pillar:** Tra `pillars.yaml` lấy key của Pillar (VD: `pillar_1` → `p1`, `pillar_3` → `p3`). Nối tiền tố `pN_` vào trước `id`. Mục đích: phân biệt topic cùng tên nhưng khác ngữ cảnh Pillar.
       ```yaml
       - id: "pN_[english_snake_case]" # Tiếng Anh snake_case (VD: p1_time_management). KHÔNG dùng dấu gạch ngang.
         label: "[Tên_Topic_Nguyên_Bản_Tiếng_Việt_Có_Dấu]" # Lưu giữ chính xác tiếng Việt có dấu user nhập (VD: Quản lý thời gian).
+        topic_type: knowledge
         pillar_parents: ["[Tên_Pillar_cha_user_vừa_khai]"]
         belongs_to_audience: ["[[Tên_file_Audience_vừa_tạo_ở_Câu_10]]"]
       ```

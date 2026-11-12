@@ -104,6 +104,40 @@ var AudienceIndex = class {
         filePath: file.path
       });
     }
+    try {
+      const idxPath = "01-Atomic/Audiences/_audience_index.yaml";
+      if (await this.app.vault.adapter.exists(idxPath)) {
+        const rawIdx = await this.app.vault.adapter.read(idxPath);
+        const bodyIdx = rawIdx.split("\n").filter((l) => !l.trim().startsWith("#")).join("\n");
+        const parsedIdx = (0, import_obsidian.parseYaml)(bodyIdx);
+        if (parsedIdx && Array.isArray(parsedIdx.audiences)) {
+          for (const entry of parsedIdx.audiences) {
+            const rawRef = String(entry.file_ref || "").replace(/\[\[|\]\]/g, "").split("|")[0].trim();
+            if (!rawRef || this.nodes.has(rawRef))
+              continue;
+            let pSlug = null;
+            if (entry.parent_audience) {
+              const pVal = Array.isArray(entry.parent_audience) ? entry.parent_audience[0] : entry.parent_audience;
+              if (typeof pVal === "string" && pVal.trim().length > 0) {
+                pSlug = pVal.replace(/\[\[|\]\]/g, "").split("|")[0].trim();
+              }
+            }
+            this.nodes.set(rawRef, {
+              slug: rawRef,
+              displayName: String(entry.audience_main_job || rawRef),
+              level: entry.audience_level || "little",
+              parentSlug: pSlug,
+              childSlugs: [],
+              nextJobStepSlugs: [],
+              isBuyerJob: Boolean(entry.is_buyer_job),
+              filePath: `01-Atomic/Audiences/${rawRef}.md`
+            });
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("[AudienceIndex] Kh\xF4ng th\u1EC3 \u0111\u1ECDc b\u1ED5 sung _audience_index.yaml:", err);
+    }
     for (const [slug, node] of this.nodes.entries()) {
       if (node.parentSlug && this.nodes.has(node.parentSlug)) {
         const parent = this.nodes.get(node.parentSlug);
@@ -191,6 +225,7 @@ var import_obsidian2 = require("obsidian");
 var TagIndex = class {
   constructor(app) {
     this.topics = /* @__PURE__ */ new Map();
+    this.topicsByLabel = /* @__PURE__ */ new Map();
     this.pillars = /* @__PURE__ */ new Map();
     this.isInitialized = false;
     this.app = app;
@@ -200,6 +235,7 @@ var TagIndex = class {
    */
   async initialize() {
     this.topics.clear();
+    this.topicsByLabel.clear();
     this.pillars.clear();
     const content = await this.readActiveTopicMapContent();
     if (!content) {
@@ -216,6 +252,9 @@ var TagIndex = class {
           const id = String(item.id);
           const label = item.label || id;
           const pillarNames = Array.isArray(item.pillar_parents) ? item.pillar_parents : [];
+          const rawType = String(item.topic_type || "knowledge").trim().toLowerCase();
+          const validTypes = ["knowledge", "insight", "needs", "product", "event"];
+          const topicType = validTypes.includes(rawType) ? rawType : "knowledge";
           const audienceSlugs = [];
           if (Array.isArray(item.belongs_to_audience)) {
             for (const rawAudience of item.belongs_to_audience) {
@@ -227,12 +266,23 @@ var TagIndex = class {
               }
             }
           }
-          this.topics.set(id, {
+          const topicNode = {
             id,
             label,
+            topicType,
             pillarNames,
             audienceSlugs
-          });
+          };
+          this.topics.set(id, topicNode);
+          this.topicsByLabel.set(label.trim().toLowerCase(), topicNode);
+          if (Array.isArray(item.aliases)) {
+            for (const al of item.aliases) {
+              const cleanAl = String(al || "").trim().toLowerCase();
+              if (cleanAl && !this.topicsByLabel.has(cleanAl)) {
+                this.topicsByLabel.set(cleanAl, topicNode);
+              }
+            }
+          }
           for (const pillarName of pillarNames) {
             if (!this.pillars.has(pillarName)) {
               this.pillars.set(pillarName, {
@@ -337,6 +387,12 @@ var TagIndex = class {
     }
     return Array.from(pillarSet);
   }
+  getTopicByLabelOrId(key) {
+    const clean = String(key || "").trim();
+    if (!clean)
+      return void 0;
+    return this.topics.get(clean) || this.topicsByLabel.get(clean.toLowerCase());
+  }
   getTotalTopicCount() {
     return this.topics.size;
   }
@@ -363,7 +419,7 @@ function formatSourceTypeLabel(rawType) {
   return v;
 }
 var EngagementStore = class {
-  constructor(app, tagIndex) {
+  constructor(app, tagIndex, audienceIndex) {
     this.records = [];
     this.postMetaMap = /* @__PURE__ */ new Map();
     this.knownAuthors = /* @__PURE__ */ new Set();
@@ -371,6 +427,7 @@ var EngagementStore = class {
     this.isInitialized = false;
     this.app = app;
     this.tagIndex = tagIndex || null;
+    this.audienceIndex = audienceIndex || null;
   }
   // --- Nhom 5: Khoi tao va doc du lieu ---
   async initialize() {
@@ -378,6 +435,9 @@ var EngagementStore = class {
     this.postMetaMap.clear();
     this.knownAuthors.clear();
     this.customSourceLabels.clear();
+    if (this.tagIndex) {
+      await this.tagIndex.initialize();
+    }
     await this.loadEngagementFiles();
     await this.buildPostMetaMap();
     this.isInitialized = true;
@@ -412,12 +472,22 @@ var EngagementStore = class {
   }
   // Quet cac file bai viet trong Vault (03-Content/) de lay tags/audience_target va hop nhat metadata tu fb-tracker-state.json
   async buildPostMetaMap() {
-    var _a;
+    var _a, _b;
     const resolvePillars = (audiences) => {
       const pillars = [];
       if (this.tagIndex) {
         for (const aSlug of audiences) {
-          const pNames = this.tagIndex.getPillarsForAudience(aSlug);
+          let pNames = this.tagIndex.getPillarsForAudience(aSlug);
+          if (pNames.length === 0 && this.audienceIndex) {
+            const ancestors = this.audienceIndex.getAncestors(aSlug);
+            for (const anc of ancestors) {
+              const ancPillars = this.tagIndex.getPillarsForAudience(anc.slug);
+              for (const ap of ancPillars) {
+                if (!pNames.includes(ap))
+                  pNames.push(ap);
+              }
+            }
+          }
           for (const p of pNames) {
             if (!pillars.includes(p))
               pillars.push(p);
@@ -426,16 +496,49 @@ var EngagementStore = class {
       }
       return pillars;
     };
+    const extractCleanList = (rawArr) => {
+      const out = [];
+      if (Array.isArray(rawArr)) {
+        for (const item of rawArr) {
+          const val = typeof item === "object" && item !== null ? item.name : item;
+          if (typeof val === "string" && val.trim().length > 0) {
+            const s = val.trim();
+            if (!out.includes(s))
+              out.push(s);
+          }
+        }
+      }
+      return out;
+    };
+    const candidatePaths = /* @__PURE__ */ new Set();
     const files = this.app.vault.getMarkdownFiles();
+    const fileByPath = /* @__PURE__ */ new Map();
     for (const file of files) {
       const normPath = file.path.replace(/\\/g, "/");
       if (normPath.startsWith("01-Atomic/"))
         continue;
-      const cache = this.app.metadataCache.getFileCache(file);
-      let fm = cache == null ? void 0 : cache.frontmatter;
-      if (!fm && normPath.startsWith("03-Content/")) {
+      candidatePaths.add(normPath);
+      fileByPath.set(normPath, file);
+    }
+    try {
+      const viralDir = "03-Content/Viral Posts";
+      if (await this.app.vault.adapter.exists(viralDir)) {
+        const listed = await this.app.vault.adapter.list(viralDir);
+        for (const fPath of listed.files) {
+          const norm = fPath.replace(/\\/g, "/");
+          if (norm.endsWith(".md")) {
+            candidatePaths.add(norm);
+          }
+        }
+      }
+    } catch (e) {
+    }
+    for (const normPath of candidatePaths) {
+      const file = fileByPath.get(normPath);
+      let fm;
+      if (normPath.startsWith("03-Content/")) {
         try {
-          const content = await this.app.vault.read(file);
+          const content = await this.app.vault.adapter.read(normPath);
           if (content.startsWith("---")) {
             const parts = content.split("---", 3);
             if (parts.length >= 3) {
@@ -445,16 +548,63 @@ var EngagementStore = class {
         } catch (e) {
         }
       }
+      if (!fm && file) {
+        const cache = this.app.metadataCache.getFileCache(file);
+        fm = cache == null ? void 0 : cache.frontmatter;
+      }
       if (!fm)
         continue;
+      const rawTopics = extractCleanList(fm.topics);
+      const tagsKnowledge = extractCleanList(fm.tags_knowledge);
+      const tagsInsight = extractCleanList(fm.tags_insight);
+      const tagsProduct = extractCleanList(fm.tags_product);
+      const tagsNeeds = extractCleanList(fm.tags_needs);
+      const tagsEvent = [];
+      const tags = [];
+      const topicPillars = [];
+      for (const tLabel of rawTopics) {
+        const tNode = (_a = this.tagIndex) == null ? void 0 : _a.getTopicByLabelOrId(tLabel);
+        const canonicalLabel = tNode ? tNode.label : tLabel;
+        if (!tags.includes(canonicalLabel))
+          tags.push(canonicalLabel);
+        if (tNode) {
+          for (const pName of tNode.pillarNames) {
+            if (!topicPillars.includes(pName))
+              topicPillars.push(pName);
+          }
+          if (tNode.topicType === "knowledge" && !tagsKnowledge.includes(canonicalLabel)) {
+            tagsKnowledge.push(canonicalLabel);
+          } else if (tNode.topicType === "insight" && !tagsInsight.includes(canonicalLabel)) {
+            tagsInsight.push(canonicalLabel);
+          } else if (tNode.topicType === "needs" && !tagsNeeds.includes(canonicalLabel)) {
+            tagsNeeds.push(canonicalLabel);
+          } else if (tNode.topicType === "product" && !tagsProduct.includes(canonicalLabel)) {
+            tagsProduct.push(canonicalLabel);
+          } else if (tNode.topicType === "event" && !tagsEvent.includes(canonicalLabel)) {
+            tagsEvent.push(canonicalLabel);
+          }
+        } else if (/^(Giảm thiểu|Tối đa hóa)\s+/i.test(canonicalLabel)) {
+          if (!tagsNeeds.includes(canonicalLabel))
+            tagsNeeds.push(canonicalLabel);
+        }
+      }
+      for (const legacyTag of extractCleanList(fm.tags)) {
+        if (!tags.includes(legacyTag))
+          tags.push(legacyTag);
+      }
+      for (const subTag of [...tagsKnowledge, ...tagsInsight, ...tagsProduct, ...tagsNeeds, ...tagsEvent]) {
+        if (!tags.includes(subTag)) {
+          tags.push(subTag);
+        }
+      }
       const hasAudienceTarget = Array.isArray(fm.audience_target) && fm.audience_target.length > 0;
-      const hasTags = Array.isArray(fm.tags) && fm.tags.length > 0;
+      const hasTags = tags.length > 0;
       const hasFbPostId = fm.fb_post_id !== void 0 && fm.fb_post_id !== null && String(fm.fb_post_id).trim().length > 0;
       if (!hasAudienceTarget && !hasTags && !hasFbPostId)
         continue;
-      const postId = file.basename;
+      const baseName = file ? file.basename : (normPath.split("/").pop() || "").replace(/\.md$/i, "");
+      const postId = baseName;
       const audiences = [];
-      const tags = [];
       if (hasAudienceTarget) {
         for (const raw of fm.audience_target) {
           const clean = String(raw).replace(/\[\[|\]\]/g, "").split("|")[0].trim();
@@ -463,17 +613,7 @@ var EngagementStore = class {
           }
         }
       }
-      if (hasTags) {
-        for (const t of fm.tags) {
-          if (typeof t === "string" && t.trim().length > 0) {
-            const cleanTag = t.trim();
-            if (!tags.includes(cleanTag)) {
-              tags.push(cleanTag);
-            }
-          }
-        }
-      }
-      const titleStr = String(fm.title || file.basename);
+      const titleStr = String(fm.title || baseName);
       const authorName = String(fm.author || "Vault Post").trim();
       if (authorName)
         this.knownAuthors.add(authorName);
@@ -483,12 +623,17 @@ var EngagementStore = class {
         this.customSourceLabels.add(sourceType);
       }
       const publishedAt = fm.publish_date ? new Date(String(fm.publish_date)).toISOString() : void 0;
-      const pillars = resolvePillars(audiences);
+      const pillars = topicPillars.length > 0 ? topicPillars : resolvePillars(audiences);
       const fbIdStr = hasFbPostId ? String(fm.fb_post_id).trim() : void 0;
       const metaObj = {
         inVault: true,
         audiences,
         tags,
+        tagsKnowledge,
+        tagsInsight,
+        tagsProduct,
+        tagsNeeds,
+        tagsEvent,
         pillars,
         authorName,
         sourceType,
@@ -511,7 +656,7 @@ var EngagementStore = class {
       const pageSourceByIdent = /* @__PURE__ */ new Map();
       if (await this.app.vault.adapter.exists(wlPath)) {
         const wl = JSON.parse(await this.app.vault.adapter.read(wlPath));
-        if (Array.isArray((_a = wl == null ? void 0 : wl.settings) == null ? void 0 : _a.custom_source_labels)) {
+        if (Array.isArray((_b = wl == null ? void 0 : wl.settings) == null ? void 0 : _b.custom_source_labels)) {
           for (const lbl of wl.settings.custom_source_labels) {
             const clean = String(lbl || "").trim();
             if (clean && !["own", "external", "other"].includes(clean)) {
@@ -577,6 +722,11 @@ var EngagementStore = class {
             inVault: existingMeta ? existingMeta.inVault : false,
             audiences: existingMeta ? existingMeta.audiences : [],
             tags: existingMeta ? existingMeta.tags : [],
+            tagsKnowledge: existingMeta ? existingMeta.tagsKnowledge : [],
+            tagsInsight: existingMeta ? existingMeta.tagsInsight : [],
+            tagsProduct: existingMeta ? existingMeta.tagsProduct : [],
+            tagsNeeds: existingMeta ? existingMeta.tagsNeeds : [],
+            tagsEvent: existingMeta ? existingMeta.tagsEvent : [],
             pillars: existingMeta ? existingMeta.pillars : [],
             authorName: (existingMeta == null ? void 0 : existingMeta.authorName) && existingMeta.authorName !== "Vault Post" ? existingMeta.authorName : authorName,
             sourceType: (wInfo == null ? void 0 : wInfo.sourceType) || (existingMeta == null ? void 0 : existingMeta.sourceType) || sourceType,
@@ -1184,8 +1334,20 @@ var EngagementStore = class {
         const author = (meta == null ? void 0 : meta.authorName) || ` Ngu\u1ED3n ${rec.platform}`;
         addBucket(author, rec, score);
       } else if (opts.dimension === "tag") {
-        if ((meta == null ? void 0 : meta.inVault) && meta.tags.length > 0) {
-          for (const t of meta.tags) {
+        if (meta == null ? void 0 : meta.inVault) {
+          const cat = opts.tagCategoryFilter || "all";
+          let activeTagList = meta.tags;
+          if (cat === "knowledge")
+            activeTagList = meta.tagsKnowledge;
+          else if (cat === "insight")
+            activeTagList = meta.tagsInsight;
+          else if (cat === "needs" || cat === "need")
+            activeTagList = meta.tagsNeeds;
+          else if (cat === "product")
+            activeTagList = meta.tagsProduct;
+          else if (cat === "event")
+            activeTagList = meta.tagsEvent;
+          for (const t of activeTagList) {
             addBucket(t, rec, score);
           }
         }
@@ -2563,20 +2725,24 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
       value: nonOwnType,
       text: `L\u01B0u v\xE0o: 03-Content/Viral Posts (${formatSourceTypeLabel(nonOwnType)})`
     });
-    selDest.createEl("option", { value: "own", text: "L\u01B0u v\xE0o: 03-Content/Posted (Th\u01B0\u01A1ng hi\u1EC7u)" });
+    selDest.createEl("option", { value: "own", text: "L\u01B0u v\xE0o: 03-Content/Viral Posts (Th\u01B0\u01A1ng hi\u1EC7u)" });
     selDest.value = this.defaultSourceType === "own" ? "own" : nonOwnType;
     const saveBtn = rowBottom.createEl("button", {
       cls: "content-compass-import-btn"
     });
-    setBtnContent(saveBtn, "download", this.isSaved ? "C\u1EADp nh\u1EADt l\u1EA1i v\xE0o Vault" : "L\u01B0u b\xE0i vi\u1EBFt v\xE0o Vault");
+    setBtnContent(
+      saveBtn,
+      "sparkles",
+      this.isSaved ? "C\u1EADp nh\u1EADt v\xE0o Vault & Ph\xE2n lo\u1EA1i l\u1EA1i (AI)" : "L\u01B0u v\xE0o Vault & Ph\xE2n lo\u1EA1i (AI)"
+    );
     saveBtn.addEventListener("click", async () => {
-      setBtnContent(saveBtn, "loader", "\u0110ang l\u01B0u...", true);
+      setBtnContent(saveBtn, "loader", "\u0110ang l\u01B0u & k\xEDch ho\u1EA1t AI...", true);
       saveBtn.setAttribute("disabled", "true");
       await this.onSaveWithCustomOpts(
         inpTitle.value.trim() || defaultTitle,
         selDest.value
       );
-      setBtnContent(saveBtn, "check", "\u0110\xE3 l\u01B0u v\xE0o Vault");
+      setBtnContent(saveBtn, "check", "\u0110\xE3 l\u01B0u & \u0111ang ph\xE2n lo\u1EA1i AI");
     });
     const bodyBox = contentEl.createDiv({ cls: "content-compass-fb-modal-body" });
     const h4Body = bodyBox.createEl("h4");
@@ -2934,7 +3100,7 @@ var ImportEngineView = class {
       comments_tree: []
     };
     const sourceType = overrideSourceType || item.source_type || cache.source_type || "external";
-    const targetFolder = sourceType === "own" ? "03-Content/Posted" : "03-Content/Viral Posts";
+    const targetFolder = "03-Content/Viral Posts";
     if (!await this.app.vault.adapter.exists("03-Content")) {
       await this.app.vault.adapter.mkdir("03-Content");
     }
@@ -2992,7 +3158,7 @@ fb_post_id: "${fbPostId}"
 fb_url: "${item.url}"
 author: "${authorName}"
 source_type: ${sourceType}
-tags: []
+topics: []
 status: published
 ---
 
@@ -3064,6 +3230,56 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       });
     } catch (err) {
       console.error("[FacebookTracker] L\u1ED7i g\u1ECDi ti\u1EBFn tr\xECnh Python:", err);
+    }
+  }
+  // Kich hoat ngam Sub-Agent PostClassifierAgent (qua script classify_vault_posts.py) de xac dinh Audience & 4 nhom Tags
+  triggerPostClassifier(args, liveStatusEl, onDone) {
+    try {
+      const { spawn } = require("child_process");
+      const path = require("path");
+      const adapter = this.app.vault.adapter;
+      const vaultPath = adapter == null ? void 0 : adapter.basePath;
+      if (!vaultPath)
+        return;
+      if (this.livePollTimer) {
+        window.clearInterval(this.livePollTimer);
+        this.livePollTimer = null;
+      }
+      if (liveStatusEl) {
+        liveStatusEl.setText("\u{1F916} \u0110ang kh\u1EDFi ch\u1EA1y PostClassifierAgent (4 Skills: JTBD -> Audience -> Candidates -> ODI Needs & Topic Dedup)...");
+        this.livePollTimer = window.setInterval(async () => {
+          var _a;
+          const st = await this.loadTrackerState();
+          const prog = ((_a = st == null ? void 0 : st.status) == null ? void 0 : _a.progress_text) || "\u{1F916} \u0110ang ph\xE2n lo\u1EA1i Audience & Topics...";
+          liveStatusEl.setText(prog);
+        }, 2e3);
+      }
+      const pyExe = resolvePythonExe();
+      const scriptPath = path.resolve(vaultPath, "..", ".agents", "scripts", "classify_vault_posts.py");
+      const child = spawn(pyExe, [scriptPath, "--vault", vaultPath, ...args], {
+        windowsHide: true,
+        stdio: "ignore"
+      });
+      child.on("close", async () => {
+        var _a;
+        if (this.livePollTimer) {
+          window.clearInterval(this.livePollTimer);
+          this.livePollTimer = null;
+        }
+        const st = await this.loadTrackerState();
+        if (liveStatusEl && ((_a = st == null ? void 0 : st.status) == null ? void 0 : _a.progress_text)) {
+          liveStatusEl.setText(String(st.status.progress_text));
+        }
+        if (this.onRefreshDashboard) {
+          await this.onRefreshDashboard();
+        } else {
+          await this.engagementStore.initialize();
+          if (onDone)
+            onDone();
+        }
+      });
+    } catch (err) {
+      console.error("[PostClassifier] L\u1ED7i g\u1ECDi ti\u1EBFn tr\xECnh classify_vault_posts.py:", err);
     }
   }
   // Nhom 5: Giao dien chinh chuan Apple Bento Workspace (Khong long hop 4 tang, khong giat nhay DOM khi await)
@@ -3375,27 +3591,31 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       }
     });
     const lblLimit = pageControls.createEl("label");
-    lblLimit.createSpan({ text: "S\u1ED1 b\xE0i mu\u1ED1n qu\xE9t/trang (1 - 20):" });
+    lblLimit.createSpan({ text: "S\u1ED1 b\xE0i mu\u1ED1n qu\xE9t/trang (1 - 100):" });
     const inpLimit = lblLimit.createEl("input", { type: "number", value: "5" });
     inpLimit.min = "1";
-    inpLimit.max = "20";
+    inpLimit.max = "100";
     const addPageBtn = pageControls.createEl("button", {
       cls: "content-compass-import-btn"
     });
     setBtnContent(addPageBtn, "plus", "Th\xEAm ngu\u1ED3n & Qu\xE9t b\xE0i m\u1EDBi");
     const pageMsg = pageBox.createDiv({ cls: "content-compass-import-status" });
     addPageBtn.addEventListener("click", async () => {
+      var _a;
       const lines = txtPages.value.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
       if (lines.length === 0) {
         pageMsg.setText("Vui l\xF2ng nh\u1EADp \xEDt nh\u1EA5t 1 \u0111\u1ECBa ch\u1EC9 Fanpage ho\u1EB7c Trang c\xE1 nh\xE2n.");
         return;
       }
-      const limit = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
+      const limit = Math.max(1, Math.min(100, parseInt(inpLimit.value) || 5));
       const sourceType = selPageSrc.value || "external";
       let lastAddedId = "";
+      let stateChanged = false;
       for (const rawPage of lines) {
-        const exists = watchlist.pages.some((p) => p.page_identifier.toLowerCase() === rawPage.toLowerCase());
-        if (!exists) {
+        const existingPage = watchlist.pages.find(
+          (p) => p.page_identifier.toLowerCase() === rawPage.toLowerCase()
+        );
+        if (!existingPage) {
           lastAddedId = `page_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
           watchlist.pages.push({
             id: lastAddedId,
@@ -3405,9 +3625,21 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
             enabled: true,
             added_at: (/* @__PURE__ */ new Date()).toISOString()
           });
+        } else {
+          existingPage.limit = limit;
+          existingPage.source_type = sourceType;
+          existingPage.enabled = true;
+          lastAddedId = existingPage.id;
+          if ((_a = state == null ? void 0 : state.pages) == null ? void 0 : _a[existingPage.id]) {
+            state.pages[existingPage.id].reset_ignored = true;
+            stateChanged = true;
+          }
         }
       }
       await this.saveWatchlist(watchlist);
+      if (stateChanged) {
+        await this.saveTrackerState(state);
+      }
       addPageBtn.setAttribute("disabled", "true");
       pageMsg.setText(`\u0110\xE3 th\xEAm ${lines.length} ngu\u1ED3n. \u0110ang qu\xE9t...`);
       txtPages.value = "";
@@ -3706,6 +3938,10 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         item.auto_paused_reason = existsInWatchlist ? "page_paused" : "page_removed";
         return false;
       };
+      const hasCompletedFirstScan = (item) => {
+        const pst = postsState[item.id] || {};
+        return Boolean(pst.last_polled_at);
+      };
       if (currentMode === "latest_only") {
         const pageLimits = /* @__PURE__ */ new Map();
         for (const pg of watchlist.pages) {
@@ -3725,8 +3961,9 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
           const lim = pageLimits.get(key) || 5;
           list.sort((a, b) => getSortTs(b) - getSortTs(a));
           list.forEach((dp, idx) => {
-            dp.enabled = idx < lim;
-            dp.auto_paused_reason = idx < lim ? null : "latest_only";
+            const shouldEnable = idx < lim || !hasCompletedFirstScan(dp);
+            dp.enabled = shouldEnable;
+            dp.auto_paused_reason = shouldEnable ? null : "latest_only";
           });
         }
       } else if (currentMode === "max_posts") {
@@ -3735,10 +3972,10 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         allRefs.sort((a, b) => getSortTs(b) - getSortTs(a));
         const maxP = watchlist.settings.retention_max_posts;
         allRefs.forEach((item, idx) => {
-          if (idx >= maxP) {
+          if (idx >= maxP && hasCompletedFirstScan(item)) {
             item.enabled = false;
             item.auto_paused_reason = "max_posts";
-          } else if (item.auto_paused_reason === "latest_only" || item.auto_paused_reason === "max_posts" || item.auto_paused_reason === "max_days" || item.auto_paused_reason === "page_paused") {
+          } else if ((idx < maxP || !hasCompletedFirstScan(item)) && (item.auto_paused_reason === "latest_only" || item.auto_paused_reason === "max_posts" || item.auto_paused_reason === "max_days" || item.auto_paused_reason === "page_paused")) {
             item.enabled = true;
             item.auto_paused_reason = null;
           }
@@ -3749,10 +3986,10 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         const allRefs = [...watchlist.posts, ...eligibleDiscovered];
         for (const item of allRefs) {
           const ts = getSortTs(item);
-          if (ts > 0 && ts < cutoffMs) {
+          if (ts > 0 && ts < cutoffMs && hasCompletedFirstScan(item)) {
             item.enabled = false;
             item.auto_paused_reason = "max_days";
-          } else if (item.auto_paused_reason === "latest_only" || item.auto_paused_reason === "max_posts" || item.auto_paused_reason === "max_days" || item.auto_paused_reason === "page_paused") {
+          } else if ((ts >= cutoffMs || !hasCompletedFirstScan(item)) && (item.auto_paused_reason === "latest_only" || item.auto_paused_reason === "max_posts" || item.auto_paused_reason === "max_days" || item.auto_paused_reason === "page_paused")) {
             item.enabled = true;
             item.auto_paused_reason = null;
           }
@@ -3803,7 +4040,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         (raw) => !watchlist.pages.some((p) => p.page_identifier.toLowerCase() === raw.toLowerCase())
       );
       const newPagesCount = uniqueNewPages.length;
-      const limitPerNewPage = Math.max(1, Math.min(20, parseInt(inpLimit.value) || 5));
+      const limitPerNewPage = Math.max(1, Math.min(100, parseInt(inpLimit.value) || 5));
       const addedPostsFromPages = newPagesCount * limitPerNewPage;
       const rawUrlLines = txtUrls.value.split("\n").map((u) => u.trim()).filter((u) => u.length > 0);
       const uniqueNewUrls = rawUrlLines.filter(
@@ -4078,9 +4315,9 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
         value: String(pg.limit || 5)
       });
       rowInpLimit.min = "1";
-      rowInpLimit.max = "20";
+      rowInpLimit.max = "100";
       rowInpLimit.addEventListener("change", async () => {
-        pg.limit = Math.max(1, Math.min(20, parseInt(rowInpLimit.value) || 5));
+        pg.limit = Math.max(1, Math.min(100, parseInt(rowInpLimit.value) || 5));
         rowInpLimit.value = String(pg.limit);
         await this.saveWatchlist(watchlist);
         this.renderMainView(rootContainer);
@@ -4120,7 +4357,7 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
               } else if (d.auto_paused_reason === "page_paused" || d.auto_paused_reason === "page_removed") {
                 const pst = ((_a2 = state == null ? void 0 : state.posts) == null ? void 0 : _a2[d.id]) || {};
                 const ts = pst.creation_time ? Number(pst.creation_time) * 1e3 : d.added_at ? new Date(d.added_at).getTime() : 0;
-                if (watchlist.settings.retention_mode === "max_days" && ts > 0 && ts < cutoffMs) {
+                if (watchlist.settings.retention_mode === "max_days" && ts > 0 && ts < cutoffMs && Boolean(pst.last_polled_at)) {
                   d.enabled = false;
                   d.auto_paused_reason = "max_days";
                 } else {
@@ -4139,14 +4376,25 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
       setBtnContent(btnDel, "trash-2");
       btnDel.setAttribute("title", "B\u1ECF theo d\xF5i ngu\u1ED3n n\xE0y (\u0111\u1ED3ng th\u1EDDi ng\u1EAFt qu\xE9t c\xE1c b\xE0i thu\u1ED9c ngu\u1ED3n n\xE0y \u1EDF B\u1EA3ng 2)");
       btnDel.addEventListener("click", async () => {
+        var _a2, _b;
         watchlist.pages = watchlist.pages.filter((x) => x.id !== pg.id);
+        const pageFbIds = /* @__PURE__ */ new Set();
         if (Array.isArray(state == null ? void 0 : state.discovered_posts)) {
           for (const d of state.discovered_posts) {
             if (d.from_page_id === pg.id || d.from_page === pg.page_identifier) {
               d.enabled = false;
               d.auto_paused_reason = "page_removed";
+              const fbId = d.fb_post_id || ((_b = (_a2 = state == null ? void 0 : state.posts) == null ? void 0 : _a2[d.id]) == null ? void 0 : _b.fb_post_id);
+              if (fbId)
+                pageFbIds.add(String(fbId));
             }
           }
+        }
+        if (pageFbIds.size > 0 && Array.isArray(state == null ? void 0 : state.ignored_fb_ids)) {
+          state.ignored_fb_ids = state.ignored_fb_ids.filter((id) => !pageFbIds.has(String(id)));
+        }
+        if ((state == null ? void 0 : state.pages) && state.pages[pg.id]) {
+          delete state.pages[pg.id];
         }
         await this.saveWatchlist(watchlist);
         await this.saveTrackerState(state);
@@ -4276,9 +4524,9 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     };
     const syncBulkActionButtons = () => {
       const cnt = this.selectedPostIds.size;
-      setBtnContent(saveSelectedBtn, "download");
+      setBtnContent(saveSelectedBtn, "sparkles");
       setBtnContent(deleteSelectedBtn, "trash-2");
-      const saveTip = `L\u01B0u v\xE0o Vault (${cnt})`;
+      const saveTip = `L\u01B0u v\xE0o Vault & Ph\xE2n lo\u1EA1i Audience/Topics (${cnt})`;
       const delTip = `X\xF3a \u0111\xE3 ch\u1ECDn (${cnt})`;
       saveSelectedBtn.setAttribute("data-cc-tooltip", saveTip);
       deleteSelectedBtn.setAttribute("data-cc-tooltip", delTip);
@@ -4296,18 +4544,23 @@ ${safeText || "*(B\xE0i vi\u1EBFt d\u1EA1ng Video/H\xECnh \u1EA3nh kh\xF4ng c\xF
     saveSelectedBtn.addEventListener("click", async () => {
       setBtnContent(saveSelectedBtn, "loader", void 0, true);
       saveSelectedBtn.setAttribute("disabled", "true");
-      let savedCount = 0;
+      const createdFiles = [];
       for (const ep of enrichedPosts) {
         if (this.selectedPostIds.has(ep.item.id) && ep.isScraped) {
           const pathCreated = await this.savePostToVault(ep.item, state);
           if (pathCreated)
-            savedCount++;
+            createdFiles.push(pathCreated);
         }
       }
       this.selectedPostIds.clear();
       await this.engagementStore.initialize();
-      postStatus.setText(`\u0110\xE3 l\u01B0u ${savedCount} b\xE0i vi\u1EBFt v\xE0o Vault.`);
+      postStatus.setText(
+        `\u0110\xE3 l\u01B0u ${createdFiles.length} b\xE0i vi\u1EBFt v\xE0o 03-Content/Viral Posts. \u0110ang ph\xE2n lo\u1EA1i Audience & Topics (5 nh\xF3m)...`
+      );
       this.renderMainView(rootContainer);
+      if (createdFiles.length > 0) {
+        this.triggerPostClassifier(["--files", ...createdFiles, "--force", "--all-unclassified"], postStatus);
+      }
     });
     deleteSelectedBtn.addEventListener("click", async () => {
       const count = this.selectedPostIds.size;
@@ -4611,9 +4864,12 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
               item.source_type || "external",
               isSaved,
               async (customTitle, targetSource) => {
-                await this.savePostToVault(item, state, customTitle, targetSource);
+                const savedPath = await this.savePostToVault(item, state, customTitle, targetSource);
                 await this.engagementStore.initialize();
                 this.renderMainView(rootContainer);
+                if (savedPath) {
+                  this.triggerPostClassifier(["--files", savedPath, "--force", "--all-unclassified"], postStatus);
+                }
               }
             ).open();
           });
@@ -4630,13 +4886,16 @@ T\u1ED5ng c\u1ED9ng: ${score} \u0111i\u1EC3m`
             const btnSaveOne = vaultCell.createEl("button", {
               cls: "content-compass-icon-btn"
             });
-            setBtnContent(btnSaveOne, "download");
-            btnSaveOne.setAttribute("title", "L\u01B0u b\xE0i n\xE0y th\xE0nh file .md trong Obsidian Vault");
+            setBtnContent(btnSaveOne, "sparkles");
+            btnSaveOne.setAttribute("title", "L\u01B0u v\xE0o Vault & Ph\xE2n lo\u1EA1i Audience/Topics (AI)");
             btnSaveOne.addEventListener("click", async () => {
               setBtnContent(btnSaveOne, "loader", void 0, true);
-              await this.savePostToVault(item, state);
+              const savedPath = await this.savePostToVault(item, state);
               await this.engagementStore.initialize();
               this.renderMainView(rootContainer);
+              if (savedPath) {
+                this.triggerPostClassifier(["--files", savedPath, "--all-unclassified"], postStatus);
+              }
             });
           }
         } else {
@@ -6237,6 +6496,7 @@ var FONT_FAMILY2 = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", s
 var TagRankingView = class {
   constructor(container, engagementStore, audienceIndex) {
     this.dimension = "tag";
+    this.tagCategory = "all";
     this.metric = "score";
     this.selectedComponents = ["likes", "comments", "shares"];
     this.barDisplayMode = "stacked";
@@ -6340,13 +6600,14 @@ var TagRankingView = class {
     const rankingDataContainer = cardBody.createDiv({ cls: "cc-chart-data-section" });
     const dimSeg = filterStrip.createDiv({ cls: "content-compass-segmented-control" });
     const dims = [
-      { id: "tag", label: "Theo Tag / Ch\u1EE7 \u0111\u1EC1" },
+      { id: "tag", label: "Theo Ch\u1EE7 \u0111\u1EC1 (Topics)" },
       { id: "post", label: "Top B\xE0i vi\u1EBFt" },
       { id: "author", label: "Theo Trang / T\xE1c gi\u1EA3" },
       { id: "audience", label: "Theo Audience" },
       { id: "pillar", label: "Theo Pillar" }
     ];
     const dimBtns = [];
+    let tagCatSelect = null;
     for (const d of dims) {
       const b = dimSeg.createEl("button", {
         cls: `content-compass-tab-btn ${this.dimension === d.id ? "is-active" : ""}`,
@@ -6359,10 +6620,33 @@ var TagRankingView = class {
           this.dimension = d.id;
           dimBtns.forEach((el) => el.removeClass("is-active"));
           b.addClass("is-active");
+          if (tagCatSelect) {
+            tagCatSelect.style.display = this.dimension === "tag" ? "" : "none";
+          }
           renderRankingDataSection();
         }
       });
     }
+    tagCatSelect = filterStrip.createEl("select");
+    const tagCatOpts = [
+      { val: "all", label: "Lo\u1EA1i Topic: T\u1EA5t c\u1EA3 (5 nh\xF3m)" },
+      { val: "knowledge", label: "Lo\u1EA1i Topic: 1. Knowledge (Tri th\u1EE9c)" },
+      { val: "insight", label: "Lo\u1EA1i Topic: 2. Insight (T\xE2m l\xFD)" },
+      { val: "needs", label: "Lo\u1EA1i Topic: 3. Needs (Nhu c\u1EA7u ODI)" },
+      { val: "product", label: "Lo\u1EA1i Topic: 4. Product (S\u1EA3n ph\u1EA9m / D\u1ECBch v\u1EE5)" },
+      { val: "event", label: "Lo\u1EA1i Topic: 5. Event (Th\u1EDDi s\u1EF1 / S\u1EF1 ki\u1EC7n)" }
+    ];
+    for (const tc of tagCatOpts) {
+      tagCatSelect.createEl("option", { value: tc.val, text: tc.label });
+    }
+    tagCatSelect.value = this.tagCategory;
+    tagCatSelect.style.display = this.dimension === "tag" ? "" : "none";
+    tagCatSelect.addEventListener("change", () => {
+      if (tagCatSelect) {
+        this.tagCategory = tagCatSelect.value;
+        renderRankingDataSection();
+      }
+    });
     const metricSelect = filterStrip.createEl("select");
     const metricOpts = [
       { val: "score", label: "X\u1EBFp theo: T\u1ED5ng \u0110i\u1EC3m (Score)" },
@@ -6489,7 +6773,8 @@ var TagRankingView = class {
         sourceFilter: "all",
         sourceFilters: this.selectedSources,
         filterAudiences: this.selectedAudiences,
-        selectedMetrics: this.selectedComponents
+        selectedMetrics: this.selectedComponents,
+        tagCategoryFilter: this.dimension === "tag" ? this.tagCategory : "all"
       });
       if (this.barDisplayMode === "stacked" && data.length > 0) {
         const legendBar = rankingDataContainer.createDiv({ cls: "cc-chart-legend" });
@@ -6719,7 +7004,12 @@ var DashboardView = class extends import_obsidian12.ItemView {
         importSection,
         this.engagementStore,
         this.app,
-        () => this.refresh()
+        async () => {
+          await this.audienceIndex.initialize();
+          await this.tagIndex.initialize();
+          await this.engagementStore.initialize();
+          this.refresh();
+        }
       );
       importView.render();
       const timelineSection = analyticsLayout.createDiv({ cls: "content-compass-analytics-chart" });
@@ -6764,7 +7054,7 @@ var ContentCompassPlugin = class extends import_obsidian13.Plugin {
     console.log("[Content Compass] Kh\u1EDFi ch\u1EA1y plugin...");
     this.audienceIndex = new AudienceIndex(this.app);
     this.tagIndex = new TagIndex(this.app);
-    this.engagementStore = new EngagementStore(this.app, this.tagIndex);
+    this.engagementStore = new EngagementStore(this.app, this.tagIndex, this.audienceIndex);
     this.registerView(
       VIEW_TYPE_CONTENT_COMPASS,
       (leaf) => new DashboardView(leaf, this.tagIndex, this.audienceIndex, this.engagementStore)
@@ -6792,12 +7082,23 @@ var ContentCompassPlugin = class extends import_obsidian13.Plugin {
       console.log("[Content Compass] Du lieu AudienceIndex, TagIndex & EngagementStore da san sang.");
       this.refreshOpenViews();
       this.setupPipelineDirectoryWatcher();
-      window.setTimeout(() => this.runDueFacebookTracker(), 1e4);
+      window.setTimeout(() => {
+        this.runDueFacebookTracker();
+        this.runAutoClassifyViralPosts();
+      }, 1e4);
     });
     this.registerInterval(
       window.setInterval(() => {
         this.runDueFacebookTracker();
       }, 5 * 60 * 1e3)
+    );
+    this.registerEvent(
+      this.app.vault.on("create", async (file) => {
+        const normPath = file.path.replace(/\\/g, "/");
+        if (normPath.startsWith("03-Content/Viral Posts/") && normPath.endsWith(".md")) {
+          this.runAutoClassifyViralPosts();
+        }
+      })
     );
     this.registerEvent(
       this.app.metadataCache.on("changed", async (file) => {
@@ -6808,6 +7109,9 @@ var ContentCompassPlugin = class extends import_obsidian13.Plugin {
             this.refreshOpenViews();
           }
         } else if (normPath.startsWith("03-Content/")) {
+          if (this.audienceIndex) {
+            await this.audienceIndex.initialize();
+          }
           if (this.engagementStore) {
             await this.engagementStore.initialize();
             this.refreshOpenViews();
@@ -6873,6 +7177,33 @@ var ContentCompassPlugin = class extends import_obsidian13.Plugin {
       spawn(pyExe, [scriptPath, "--vault", vaultPath, "--run-due"], {
         windowsHide: true,
         stdio: "ignore"
+      });
+    } catch (e) {
+    }
+  }
+  // Kich hoat ngam classify_vault_posts.py de tu dong phan loai cac bai viet chua co Audience/Tags trong 03-Content/Viral Posts
+  runAutoClassifyViralPosts() {
+    try {
+      const { spawn } = require("child_process");
+      const path = require("path");
+      const adapter = this.app.vault.adapter;
+      const vaultPath = adapter == null ? void 0 : adapter.basePath;
+      if (!vaultPath)
+        return;
+      const pyExe = resolvePythonExe();
+      const scriptPath = path.resolve(vaultPath, "..", ".agents", "scripts", "classify_vault_posts.py");
+      const child = spawn(pyExe, [scriptPath, "--vault", vaultPath, "--all-unclassified"], {
+        windowsHide: true,
+        stdio: "ignore"
+      });
+      child.on("close", async () => {
+        if (this.audienceIndex)
+          await this.audienceIndex.initialize();
+        if (this.tagIndex)
+          await this.tagIndex.initialize();
+        if (this.engagementStore)
+          await this.engagementStore.initialize();
+        this.refreshOpenViews();
       });
     } catch (e) {
     }

@@ -1,11 +1,11 @@
 """
 Tên file: topic_manager.py
-Last update: 21/08/2026 22:50 (GMT+7)
+Last update: 10/11/2026 20:45 (GMT+7)
 Vai trò: Thư viện ghi nhận và lưu trữ topic mới / append audience vào topic_map.yaml.
-Sử dụng khi nào: Được gọi trực tiếp bởi dedup_engine.py ở Chặng 3 (Compile & Commit).
+Sử dụng khi nào: Được gọi trực tiếp bởi dedup_engine.py ở Chặng 3 (Compile & Commit) hoặc classify_vault_posts.py.
 Output: Cập nhật vật lý lên file topic_map.yaml.
 Tóm tắt logic hoạt động:
-  - confirm_new: Thêm các topics hoàn toàn mới vào YAML (tự động resolve pillar name chuẩn).
+  - confirm_new: Thêm các topics hoàn toàn mới vào YAML (tự động resolve pillar name chuẩn và lưu topic_type).
   - update_audience: Append mảng audiences vào topic đã tồn tại trong YAML (idempotent).
   - batch_commit: Batch commit từ file JSON (dành cho chế độ cũ).
 """
@@ -14,18 +14,51 @@ import json
 import yaml
 
 # === NHÓM 1: Hằng số & Cấu hình Header YAML ===
+VALID_TOPIC_TYPES = {"knowledge", "insight", "needs", "product", "event"}
+
 TOPIC_MAP_HEADER = (
     "# BẢN ĐỒ TOPIC\n"
-    "# id: English snake_case — dùng cho AI matching, script calls, frontmatter tags\n"
-    "# label: Tiếng Việt đầy đủ dấu — CHỈ dùng cho human readability, KHÔNG dùng để match\n"
+    "# id: English snake_case — dùng cho AI matching, script calls, frontmatter topics\n"
+    "# label: Tiếng Việt đầy đủ dấu — dùng hiển thị và lưu trong trường topics của bài viết\n"
+    "# topic_type: Phân loại bản chất chủ đề (knowledge | insight | needs | product | event)\n"
 )
 
 def _write_topic_map(data, path):
-    """Helper ghi topic_map.yaml — bảo toàn comment header."""
-    with open(path, 'w', encoding='utf-8') as f:
-        f.write(TOPIC_MAP_HEADER)
-        yaml.Dumper.ignore_aliases = lambda *args: True
-        yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+    """Helper ghi topic_map.yaml — bảo toàn comment header, thứ tự trường chuẩn và escape dấu nháy kép."""
+    lines = [TOPIC_MAP_HEADER.rstrip("\n"), "topics:"]
+    for t in data.get("topics", []):
+        safe_label = str(t.get("label") or "").replace('"', "'").strip()
+        t_type = str(t.get("topic_type") or "knowledge").strip().lower()
+        if t_type not in VALID_TOPIC_TYPES:
+            t_type = "knowledge"
+        lines.append(f"- id: {t['id']}")
+        lines.append(f'  label: "{safe_label}"')
+        lines.append(f"  topic_type: {t_type}")
+        if "pillar_parents" in t and t["pillar_parents"]:
+            lines.append("  pillar_parents:")
+            for p in t["pillar_parents"]:
+                safe_p = str(p).replace('"', "'").strip()
+                lines.append(f'  - "{safe_p}"')
+        else:
+            lines.append("  pillar_parents: []")
+        if "aliases" in t and t["aliases"]:
+            lines.append("  aliases:")
+            for al in t["aliases"]:
+                safe_al = str(al).replace('"', "'").strip()
+                lines.append(f'  - "{safe_al}"')
+        if "belongs_to_audience" in t and t["belongs_to_audience"]:
+            lines.append("  belongs_to_audience:")
+            for a in t["belongs_to_audience"]:
+                safe_a = str(a).replace('"', "'").strip()
+                lines.append(f'  - "{safe_a}"')
+        else:
+            lines.append("  belongs_to_audience: []")
+        lines.append("")
+
+    tmp_path = f"{path}.tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines).rstrip() + "\n")
+    os.replace(tmp_path, path)
 
 
 # === NHÓM 1.5: Helper Chuẩn hóa & Ánh xạ Dữ liệu ===
@@ -67,14 +100,16 @@ def _resolve_pillar_name(pillar_input, topic_map_path):
 
 
 # === NHÓM 2: Tạo Mới Topic (confirm_new) ===
-def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_audience):
+def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_audience, topic_types=None):
     """
     Ghi topics đã được LLM xác nhận là HOÀN TOÀN MỚI vào topic_map.yaml.
-    Poka-Yoke: normalize id (lowercase + replace '-' -> '_') trước khi ghi.
+    Poka-Yoke: normalize id (lowercase + replace '-' -> '_') và kiểm tra topic_type trước khi ghi.
     KHÔNG check trùng — LLM đã quyết định rồi.
     """
     if labels and len(labels) != len(new_topics):
         raise ValueError(f"❌ Số labels ({len(labels)}) không khớp với topics ({len(new_topics)})")
+    if topic_types and len(topic_types) != len(new_topics):
+        raise ValueError(f"❌ Số topic_types ({len(topic_types)}) không khớp với topics ({len(new_topics)})")
 
     if isinstance(pillar_parent, list):
         if len(pillar_parent) > 1:
@@ -94,6 +129,10 @@ def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_au
 
     for i, raw_id in enumerate(new_topics):
         t_id = raw_id.replace('-', '_').lower()  # Poka-Yoke normalize
+        raw_type = topic_types[i] if topic_types else "knowledge"
+        t_type = str(raw_type or "knowledge").strip().lower()
+        if t_type not in VALID_TOPIC_TYPES:
+            t_type = "knowledge"
         # Sanitize: normalize [[[[slug]]]] -> [[slug]] trong belongs_to_audience
         clean_audiences = []
         for aud in belongs_to_audience:
@@ -103,6 +142,7 @@ def confirm_new(topic_map_path, new_topics, labels, pillar_parent, belongs_to_au
         data["topics"].append({
             "id": t_id,
             "label": labels[i],
+            "topic_type": t_type,
             "pillar_parents": [pillar_parent],
             "belongs_to_audience": clean_audiences
         })
@@ -176,7 +216,7 @@ def batch_commit(topic_map_path, input_path, output_path):
     merges = [e for e in entries if e["action"] == "merge"]
 
     # ── Bước 2: Deduplicate creates theo id ──
-    seen_ids = {}  # id → {"label": ..., "audiences": set(), "groups": []}
+    seen_ids = {}  # id → {"label": ..., "topic_type": ..., "audiences": set(), "groups": []}
     for entry in creates:
         tid = entry["id"].replace('-', '_').lower()  # Poka-Yoke normalize
         if tid in seen_ids:
@@ -187,6 +227,7 @@ def batch_commit(topic_map_path, input_path, output_path):
         else:
             seen_ids[tid] = {
                 "label": entry["label"],
+                "topic_type": entry.get("topic_type", "knowledge"),
                 "audiences": set(entry["audiences"]),
                 "groups": [_group_key(entry)],
             }
@@ -198,7 +239,8 @@ def batch_commit(topic_map_path, input_path, output_path):
             new_topics=[tid],
             labels=[info["label"]],
             pillar_parent=pillar,
-            belongs_to_audience=list(info["audiences"])
+            belongs_to_audience=list(info["audiences"]),
+            topic_types=[info.get("topic_type", "knowledge")],
         )
 
     # ── Bước 4: Xử lý merges (gọi update_audience) ──
@@ -248,10 +290,11 @@ if __name__ == "__main__":
 
     # Chế độ 1: confirm-new — ghi topic mới
     p_new = subparsers.add_parser("confirm-new", help="Ghi topics hoàn toàn mới vào YAML")
-    p_new.add_argument("--topics",    required=True, nargs="+", help="Danh sách Topic ID")
-    p_new.add_argument("--labels",    required=True, nargs="+", help="Nhãn tiếng Việt tương ứng 1-1 với --topics")
-    p_new.add_argument("--pillar",    required=True, help="Tên Pillar duy nhất (One Topic, One Pillar)")
-    p_new.add_argument("--audiences", required=True, nargs="+", help="Danh sách Audience Links")
+    p_new.add_argument("--topics",      required=True, nargs="+", help="Danh sách Topic ID")
+    p_new.add_argument("--labels",      required=True, nargs="+", help="Nhãn tiếng Việt tương ứng 1-1 với --topics")
+    p_new.add_argument("--pillar",      required=True, help="Tên Pillar duy nhất (One Topic, One Pillar)")
+    p_new.add_argument("--audiences",   required=True, nargs="+", help="Danh sách Audience Links")
+    p_new.add_argument("--topic-types", required=False, nargs="+", default=None, help="Danh sách topic_type tương ứng (mặc định: knowledge)")
 
     # Chế độ 2: update-audience — append audience vào topic đã tồn tại
     p_upd = subparsers.add_parser("update-audience", help="Append audience mới vào topic đã tồn tại")
@@ -266,7 +309,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.mode == "confirm-new":
-        confirm_new(args.map_path, args.topics, args.labels, args.pillar, args.audiences)
+        confirm_new(args.map_path, args.topics, args.labels, args.pillar, args.audiences, args.topic_types)
     elif args.mode == "update-audience":
         update_audience(args.map_path, args.topic, args.audiences)
     elif args.mode == "batch-commit":

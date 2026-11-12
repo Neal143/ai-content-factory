@@ -1,13 +1,13 @@
 # Plugin Topic Manager — 2-Pass Semantic Dedup
 
 **Tên file:** `SKILL.md`
-**Last update:** 22/06/2026 15:42 (GMT+7)
+**Last update:** 10/11/2026 22:48 (GMT+7)
 **Vai trò:** Cẩm nang hướng dẫn vận hành 2-pass Semantic Dedup cho Agent.
 **Được sử dụng khi nào:** Khi Plugin được triệu gọi để xử lý proposed_topics.json.
-**Output:** File resolved_topics.json hoàn chỉnh và topic_map.yaml được cập nhật.
+**Output:** File resolved_topics.json hoàn chỉnh và topic_map.yaml được cập nhật (bảo toàn `topic_type`).
 **Tóm tắt logic hoạt động:**
   - Hướng dẫn chi tiết cách chạy từng lệnh CLI trong 3 chặng.
-  - Cung cấp bảng quy luật so khớp ngữ nghĩa MATCH / NO MATCH bất biến để LLM ra quyết định chuẩn xác.
+  - Cung cấp bảng quy luật so khớp ngữ nghĩa MATCH / NO MATCH bất biến (cùng tiền tố Pillar và cùng `topic_type`) để LLM ra quyết định chuẩn xác.
 
 ---
 
@@ -70,5 +70,6 @@ python .agents/plugins/topic_manager/skills/topic_manager/scripts/dedup_engine.p
 ### Nguyên Tắc Bất Biến:
 - **One Topic, One Pillar:** Một khái niệm chỉ được gán cho một Pillar duy nhất trong YAML.
 - **Pillar Override:** Nếu `merge` vào topic sẵn có, bắt buộc kế thừa Pillar của topic gốc đó. Chỉ được merge khi cả 2 topic có cùng tiền tố Pillar (VD: `p1_` merge vào `p1_`).
-- **Global Scope:** Khi quét so khớp ở Chặng 2, đối chiếu với toàn bộ `topic_map.yaml` nhưng CHỈ xét merge với các topic có CÙNG tiền tố Pillar. Các topic khác tiền tố được coi là khái niệm độc lập.
+- **Global Scope:** Khi quét so khớp ở Chặng 2, đối chiếu với toàn bộ `topic_map.yaml` nhưng CHỈ xét merge với các topic có CÙNG tiền tố Pillar và CÙNG `topic_type`. Các topic khác tiền tố hoặc khác `topic_type` được coi là khái niệm độc lập.
 - **Cross-Pillar Firewall (NO MATCH):** Cùng label nhưng khác tiền tố Pillar (VD: `p3_tri_tuong_tuong` vs `p4_tri_tuong_tuong`) là 2 khái niệm ĐỘC LẬP. Tuyệt đối KHÔNG được merge.
+- **Cross-Topic-Type Firewall (NO MATCH):** Chỉ được phép `merge` hai topic khi chúng có CÙNG `topic_type` (`knowledge` chỉ gộp vào `knowledge`, `insight` vào `insight`, `needs` vào `needs`, `product` vào `product`, `event` vào `event`). Tuyệt đối KHÔNG gộp chéo khác `topic_type`.

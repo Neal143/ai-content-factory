@@ -1,19 +1,22 @@
 /**
  * Tên file: TagIndex.ts
- * Last update: 23/10/2026 20:05 (GMT+7)
- * Vai trò: Quản lý danh mục Pillar và Topic từ file topic_map.yaml của active persona.
+ * Last update: 10/11/2026 19:50 (GMT+7)
+ * Vai trò: Quản lý danh mục Pillar và Topic từ file topic_map.yaml của active persona (kèm topic_type và tra cứu theo ID/Label/Aliases).
  * Được sử dụng khi nào?: Khi plugin khởi động và cần ánh xạ quan hệ giữa Pillar, Topic và Audience.
- * Output: Cấu trúc Map<string, TopicNode> và Map<string, PillarNode>.
+ * Output: Cấu trúc Map<string, TopicNode> (theo ID), Map<string, TopicNode> (theo Label/Aliases) và Map<string, PillarNode>.
  * Tóm tắt logic hoạt động: Quét thư mục personas/ (hỗ trợ cả đường dẫn ngoài vault trên Desktop lẫn trong vault),
- * nạp file topic_map.yaml, bóc tách quan hệ Pillar-Topic-Audience và cung cấp các hàm truy vấn phân bổ.
+ * nạp file topic_map.yaml, bóc tách quan hệ Pillar-Topic-Audience kèm topic_type và cung cấp các hàm truy vấn phân bổ.
  */
 
 import { App, parseYaml } from "obsidian";
 
 // Nhóm 1: Định nghĩa cấu trúc dữ liệu cho Topic và Pillar
+export type TopicCategoryType = "knowledge" | "insight" | "needs" | "product" | "event";
+
 export interface TopicNode {
 	id: string;
 	label: string;
+	topicType: TopicCategoryType;
 	pillarNames: string[];
 	audienceSlugs: string[];
 }
@@ -27,6 +30,8 @@ export interface PillarNode {
 interface RawTopicEntry {
 	id?: string;
 	label?: string;
+	topic_type?: string;
+	aliases?: string[];
 	pillar_parents?: string[];
 	belongs_to_audience?: string[];
 }
@@ -39,6 +44,7 @@ interface RawTopicMap {
 export class TagIndex {
 	private app: App;
 	private topics: Map<string, TopicNode> = new Map();
+	private topicsByLabel: Map<string, TopicNode> = new Map();
 	private pillars: Map<string, PillarNode> = new Map();
 	private isInitialized: boolean = false;
 
@@ -51,6 +57,7 @@ export class TagIndex {
 	 */
 	public async initialize(): Promise<void> {
 		this.topics.clear();
+		this.topicsByLabel.clear();
 		this.pillars.clear();
 
 		const content = await this.readActiveTopicMapContent();
@@ -71,6 +78,12 @@ export class TagIndex {
 					const label = item.label || id;
 					const pillarNames = Array.isArray(item.pillar_parents) ? item.pillar_parents : [];
 
+					const rawType = String(item.topic_type || "knowledge").trim().toLowerCase();
+					const validTypes: TopicCategoryType[] = ["knowledge", "insight", "needs", "product", "event"];
+					const topicType: TopicCategoryType = validTypes.includes(rawType as TopicCategoryType)
+						? (rawType as TopicCategoryType)
+						: "knowledge";
+
 					// Parse belongs_to_audience: loại bỏ cú pháp wikilink [[slug]] và alias |
 					const audienceSlugs: string[] = [];
 					if (Array.isArray(item.belongs_to_audience)) {
@@ -84,13 +97,25 @@ export class TagIndex {
 						}
 					}
 
-					// Lưu trữ TopicNode
-					this.topics.set(id, {
+					const topicNode: TopicNode = {
 						id,
 						label,
+						topicType,
 						pillarNames,
 						audienceSlugs,
-					});
+					};
+
+					// Lưu trữ TopicNode theo ID, Label và Aliases
+					this.topics.set(id, topicNode);
+					this.topicsByLabel.set(label.trim().toLowerCase(), topicNode);
+					if (Array.isArray(item.aliases)) {
+						for (const al of item.aliases) {
+							const cleanAl = String(al || "").trim().toLowerCase();
+							if (cleanAl && !this.topicsByLabel.has(cleanAl)) {
+								this.topicsByLabel.set(cleanAl, topicNode);
+							}
+						}
+					}
 
 					// Cập nhật cấu trúc PillarNode
 					for (const pillarName of pillarNames) {
@@ -212,6 +237,12 @@ export class TagIndex {
 			}
 		}
 		return Array.from(pillarSet);
+	}
+
+	public getTopicByLabelOrId(key: string): TopicNode | undefined {
+		const clean = String(key || "").trim();
+		if (!clean) return undefined;
+		return this.topics.get(clean) || this.topicsByLabel.get(clean.toLowerCase());
 	}
 
 	public getTotalTopicCount(): number {

@@ -1,10 +1,11 @@
 # Cognitive Agent Layer (Lớp Nhận thức Sub-Agent)
 
 > **Tên file**: .agents/agents/README.md
-> **Last update**: 21/05/2026 20:00 (GMT+7)
+> **Last update**: 05/11/2026 14:24 (GMT+7)
 > **Vai trò**: Tài liệu hướng dẫn kiến trúc lớp nhận thức Sub-Agent của hệ thống AI Content Factory.
 > **Sử dụng khi**: Lập trình viên hoặc điều phối viên cần hiểu cách hệ thống đa tác nhân vận hành và giao tiếp giữa các tầng.
-> **Output**: Sơ đồ kiến trúc nhận thức và định nghĩa vai trò của 15 Sub-Agent.
+> **Output**: Sơ đồ kiến trúc nhận thức và định nghĩa vai trò của 17 Sub-Agent.
+> **Tóm tắt logic hoạt động**: Phân rã hệ thống thành 3 lớp (Workflow Layer, Cognitive Agent Layer, Execution Skill Engine) và định nghĩa trách nhiệm nhận thức của từng Sub-Agent trong `.agents/agents/`.
 
 Hệ thống AI Content Factory v3.7B áp dụng mô hình **Đa tác nhân phối hợp (Multi-Agent Cooperation)**. Trong đó, hệ thống được phân rã thành 3 lớp phân cấp rõ ràng:
 
@@ -29,7 +30,7 @@ graph TD
 
 ---
 
-## Danh sách 16 Specialized Sub-Agents
+## Danh sách 17 Specialized Sub-Agents
 
 | Tên Agent | Thư mục định nghĩa | Vai trò cốt lõi |
 |-----------|--------------------|-----------------|
@@ -49,3 +50,4 @@ graph TD
 | **AudienceResolverAgent** | `audience-resolver/` | Phân giải JTBD từ bất kỳ source nào (book, video, podcast...) và so khớp Semantic với thư viện Audiences |
 | **BookParserAgent** | `book-parser/` | Phân rã cấu trúc sách thành Atoms vật lý theo mô hình DIKW |
 | **VaultCuratorAgent** | `vault-curator/` | Điều phối Pipeline bảo dưỡng Vault: auto-tagging, dedup và alignment |
+| **PostClassifierAgent** | `post-classifier/` | Điều phối chuỗi 4 Skills phân loại Audience (JTBD) và gắn 4 nhóm Tags cho bài viết trong `03-Content/Viral Posts/` |

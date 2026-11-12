@@ -1,11 +1,10 @@
 /**
  * Ten file: TagRankingView.ts
- * Last update: 03/11/2026 12:44 (GMT+7)
+ * Last update: 05/11/2026 14:30 (GMT+7)
  * Vai tro: Render Bang Xep hang Hieu suat Da chieu (Theo Tag/Chu de, Top Bai viet, Theo Trang,
- *          Theo Audience, Theo Pillar) ho tro Thanh Phan ra Ty trong (Stacked Bar), Bo loc Multi-select & Nut Hide/Show.
+ *          Theo Audience, Theo Pillar) ho tro Thanh Phan ra Ty trong (Stacked Bar), Bo loc 4 Nhom Tags sach, Bo loc Multi-select & Nut Hide/Show.
  * Duoc su dung khi nao?: Khi tab Analytics duoc hien thi tren Dashboard.
- * Output: Bo chon 5 chieu phan tich + Che do Stacked Bar (Likes/Comments/Shares) + Multi-select Popover (giu mo khi chon nhieu muc,
- *         cap nhat do thi tuc thoi in-place) + Nut Hide/Show o goc tren cung ben phai + Bieu do thanh ngang HiDPI.
+ * Output: Bo chon 5 chieu phan tich + Bo loc 4 Nhom Tags (1. Tri thuc, 2. Insight, 3. San pham/Dich vu, 4. Needs) + Che do Stacked Bar + Multi-select Popover.
  * Tom tat logic hoat dong: Truy van EngagementStore.queryRankingAdvanced voi bo loc da chon, cap nhat vung Legend/Canvas tai cho (in-place)
  *          ngay khi tich chon trong MultiSelectPopover ma khong dong Popover.
  */
@@ -17,6 +16,7 @@ import {
 	RankingDimension,
 	ChartMetricType,
 	ComponentMetricKey,
+	TagCategoryFilter,
 	UNASSIGNED_AUDIENCE_KEY,
 } from "../data/EngagementStore";
 import { AudienceIndex } from "../data/AudienceIndex";
@@ -57,6 +57,7 @@ export class TagRankingView {
 	private audienceIndex: AudienceIndex | null;
 
 	private dimension: RankingDimension = "tag";
+	private tagCategory: TagCategoryFilter = "all";
 	private metric: Exclude<ChartMetricType, "posts"> = "score";
 	private selectedComponents: ComponentMetricKey[] = ["likes", "comments", "shares"];
 	private barDisplayMode: "stacked" | "single" = "stacked";
@@ -173,13 +174,14 @@ export class TagRankingView {
 		// 2.1. Segmented Pill: 5 Chiều Xếp hạng
 		const dimSeg = filterStrip.createDiv({ cls: "content-compass-segmented-control" });
 		const dims: Array<{ id: RankingDimension; label: string }> = [
-			{ id: "tag", label: "Theo Tag / Chủ đề" },
+			{ id: "tag", label: "Theo Chủ đề (Topics)" },
 			{ id: "post", label: "Top Bài viết" },
 			{ id: "author", label: "Theo Trang / Tác giả" },
 			{ id: "audience", label: "Theo Audience" },
 			{ id: "pillar", label: "Theo Pillar" },
 		];
 		const dimBtns: HTMLButtonElement[] = [];
+		let tagCatSelect: HTMLSelectElement | null = null;
 		for (const d of dims) {
 			const b = dimSeg.createEl("button", {
 				cls: `content-compass-tab-btn ${this.dimension === d.id ? "is-active" : ""}`,
@@ -192,10 +194,35 @@ export class TagRankingView {
 					this.dimension = d.id;
 					dimBtns.forEach((el) => el.removeClass("is-active"));
 					b.addClass("is-active");
+					if (tagCatSelect) {
+						tagCatSelect.style.display = this.dimension === "tag" ? "" : "none";
+					}
 					renderRankingDataSection();
 				}
 			});
 		}
+
+		// 2.1b. Chọn nhóm Topic chuyên biệt (1. Knowledge | 2. Insight | 3. Needs | 4. Product | 5. Event) khi đang ở chiều "Theo Chủ đề (Topics)"
+		tagCatSelect = filterStrip.createEl("select");
+		const tagCatOpts: Array<{ val: TagCategoryFilter; label: string }> = [
+			{ val: "all", label: "Loại Topic: Tất cả (5 nhóm)" },
+			{ val: "knowledge", label: "Loại Topic: 1. Knowledge (Tri thức)" },
+			{ val: "insight", label: "Loại Topic: 2. Insight (Tâm lý)" },
+			{ val: "needs", label: "Loại Topic: 3. Needs (Nhu cầu ODI)" },
+			{ val: "product", label: "Loại Topic: 4. Product (Sản phẩm / Dịch vụ)" },
+			{ val: "event", label: "Loại Topic: 5. Event (Thời sự / Sự kiện)" },
+		];
+		for (const tc of tagCatOpts) {
+			tagCatSelect.createEl("option", { value: tc.val, text: tc.label });
+		}
+		tagCatSelect.value = this.tagCategory;
+		tagCatSelect.style.display = this.dimension === "tag" ? "" : "none";
+		tagCatSelect.addEventListener("change", () => {
+			if (tagCatSelect) {
+				this.tagCategory = tagCatSelect.value as TagCategoryFilter;
+				renderRankingDataSection();
+			}
+		});
 
 		// 2.2. Chọn tiêu chí xếp hạng chính
 		const metricSelect = filterStrip.createEl("select");
@@ -335,6 +362,7 @@ export class TagRankingView {
 				sourceFilters: this.selectedSources,
 				filterAudiences: this.selectedAudiences,
 				selectedMetrics: this.selectedComponents,
+				tagCategoryFilter: this.dimension === "tag" ? this.tagCategory : "all",
 			});
 
 			// 4. Chú giải màu khi bật chế độ Thanh phân rã (Stacked Bar)

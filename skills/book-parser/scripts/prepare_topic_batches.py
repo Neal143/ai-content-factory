@@ -17,7 +17,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 """
 Tên file: prepare_topic_batches.py
-Last update: 21/08/2026 22:50 (GMT+7)
+Last update: 10/11/2026 20:48 (GMT+7)
 Vai trò: Chia nội dung chunk sách thành batch, gatekeeper truy cập tuần tự, validate submission.
 Sử dụng khi: Phase 4 (Topic Gen) của book-extractor pipeline.
 Output:
@@ -458,6 +458,7 @@ def export_proposed_topics(run_folder: str, decision_map_path: str):
             "source_group": "book",
             "id": t["id"],
             "label": t["label"],
+            "topic_type": t.get("topic_type", "knowledge"),
             "audiences": [f"[[{book_aud}]]"] if book_aud else []
         })
         
@@ -470,6 +471,7 @@ def export_proposed_topics(run_folder: str, decision_map_path: str):
                 "source_group": str(idx),
                 "id": t["id"],
                 "label": t["label"],
+                "topic_type": t.get("topic_type", "knowledge"),
                 "audiences": [f"[[{c_aud}]]"] if c_aud else []
             })
             

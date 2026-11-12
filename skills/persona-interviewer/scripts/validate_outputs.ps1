@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
 Tên file: validate_outputs.ps1
 Last update: 23/08/2026 23:16 (GMT+7)
@@ -159,10 +159,11 @@ foreach ($userFolder in $userFolders) {
         $totalEntries = ([regex]::Matches($c, "(?m)^\s*-\s*id:\s*")).Count
         $validIdCount = ([regex]::Matches($c, "(?m)^\s*-\s*id:\s*(?!null\b)(?!""""\s*(#.*)?$)(?!''\s*(#.*)?$)(?!\[\s*\]\s*(#.*)?$)(?!\s*(#.*)?$).+")).Count
         $validLabelCount = ([regex]::Matches($c, "(?m)^\s*label:\s*(?!null\b)(?!""""\s*(#.*)?$)(?!''\s*(#.*)?$)(?!\[\s*\]\s*(#.*)?$)(?!\s*(#.*)?$).+")).Count
-        if ($totalEntries -gt 0 -and $validIdCount -eq $totalEntries -and $validLabelCount -eq $totalEntries) {
-            Write-Host "[OK] topic_map.yaml co du id va label hop le cho moi entries" -ForegroundColor Green
+        $validTopicTypeCount = ([regex]::Matches($c, "(?m)^\s*topic_type:\s*[`"']?(knowledge|insight|needs|product|event)[`"']?\s*(#.*)?$")).Count
+        if ($totalEntries -gt 0 -and $validIdCount -eq $totalEntries -and $validLabelCount -eq $totalEntries -and $validTopicTypeCount -eq $totalEntries) {
+            Write-Host "[OK] topic_map.yaml co du id, label va topic_type hop le cho moi entries ($totalEntries entries)" -ForegroundColor Green
         } else {
-            Write-Host "[FAIL] topic_map.yaml bi thieu hoac rong id/label o mot so entries" -ForegroundColor Red
+            Write-Host "[FAIL] topic_map.yaml bi thieu hoac sai id/label/topic_type o mot so entries (total=$totalEntries, id=$validIdCount, label=$validLabelCount, topic_type=$validTopicTypeCount)" -ForegroundColor Red
         }
     }
 

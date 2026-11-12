@@ -1,7 +1,7 @@
 ---
 name: Topic-Dedup
 description: "Full semantic dedup cho Topics của một Persona. Quét toàn bộ pool hiện có, LLM đánh giá trùng lặp, script cascade merge."
-last_update: 14/07/2026 15:46 (GMT+7)
+last_update: 10/11/2026 20:51 (GMT+7)
 ---
 
 # Topic-Dedup Skill
@@ -50,10 +50,10 @@ Với mỗi batch, LLM nhận `items` (id + label) VÀ `anchors` (id + label), x
 - Topic nào bị gộp (loser → resolved_to survivor hoặc anchor)?
 
 **LUẬT SO KHỚP** (bắt buộc tuân thủ):
-- CHỈ merge cùng pillar prefix (VD: p1_ với p1_). TUYỆT ĐỐI KHÔNG merge cross-pillar.
+- CHỈ merge cùng pillar prefix (VD: p1_ với p1_) VÀ cùng `topic_type` (`knowledge`, `insight`, `needs`, `product`, `event`). TUYỆT ĐỐI KHÔNG merge cross-pillar hoặc khác `topic_type`.
 - Hai topics dùng từ giống nhưng mô tả 2 khía cạnh khác nhau của cùng chủ đề → KHÔNG merge.
-- Chỉ merge khi 2 topics thực sự mô tả CÙNG MỘT khái niệm (Synonym, Paraphrase, Reorder).
-- Phải đánh giá trên CẢ HAI `id` (English) và `label` (Vietnamese) để quyết định.
+- Chỉ merge khi 2 topics thực sự mô tả CÙNG MỘT khái niệm (Synonym, Paraphrase, Reorder) trong cùng `topic_type`.
+- Phải đánh giá trên CẢ BA `id` (English), `label` (Vietnamese) và `topic_type` để quyết định.
 - LƯU Ý ĐỊNH DẠNG: Tham số `loser_id` và `survivor_id` phải là **chính xác ID của topic (có chứa dấu gạch dưới '_')**, tuyệt đối KHÔNG chứa đuôi `.md` và KHÔNG chứa dấu ngoặc vuông `[[ ]]`. Tuyệt đối không được nhầm lẫn với tên file (dấu gạch ngang '-').
 
 Điền kết quả vào `<output_dir>/results_temp.json`:

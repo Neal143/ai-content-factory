@@ -1,10 +1,10 @@
 """
 Tên file: cascade_merge.py
-Last update: 15/08/2026 (GMT+7)
+Last update: 10/11/2026 20:50 (GMT+7)
 Vai trò: Xử lý các side-effect (cập nhật file YAML và file Markdown Atom) khi merge topic hoặc audience.
 Được sử dụng khi: Skill vc-topic-dedup hoặc vc-audience-curator ra quyết định merge và được submit.
-Output: Cập nhật topic_map.yaml hoặc _audience_index.yaml và cập nhật frontmatter các file Atoms liên quan.
-Tóm tắt logic hoạt động: Chạy cascade merge cho Topics (cộng dồn insight, đổi reference) hoặc Audiences (reparenting, redirect, cascade level recalculation cho sub-tree bi anh huong).
+Output: Cập nhật topic_map.yaml hoặc _audience_index.yaml và cập nhật frontmatter các file Atoms/Posts liên quan.
+Tóm tắt logic hoạt động: Chạy cascade merge cho Topics (cùng pillar và cùng topic_type, cộng dồn insight/aliases, đổi reference cả ID và label trong 01-Atomic và 03-Content) hoặc Audiences (reparenting, redirect, cascade level recalculation cho sub-tree bi anh huong).
 """
 
 import os
@@ -14,6 +14,51 @@ import argparse
 import json
 import codecs
 import yaml
+
+VALID_TOPIC_TYPES = {"knowledge", "insight", "needs", "product", "event"}
+TOPIC_MAP_HEADER = (
+    "# BẢN ĐỒ TOPIC\n"
+    "# id: English snake_case — dùng cho AI matching, script calls, frontmatter topics\n"
+    "# label: Tiếng Việt đầy đủ dấu — dùng hiển thị và lưu trong trường topics của bài viết\n"
+    "# topic_type: Phân loại bản chất chủ đề (knowledge | insight | needs | product | event)\n"
+)
+
+def _write_topic_map_formatted(data, path):
+    """Ghi topic_map.yaml bao toan TOPIC_MAP_HEADER, thu tu truong chuan va escape dau nhay kep."""
+    lines = [TOPIC_MAP_HEADER.rstrip("\n"), "topics:"]
+    for t in data.get("topics", []):
+        safe_label = str(t.get("label") or "").replace('"', "'").strip()
+        t_type = str(t.get("topic_type") or "knowledge").strip().lower()
+        if t_type not in VALID_TOPIC_TYPES:
+            t_type = "knowledge"
+        lines.append(f"- id: {t['id']}")
+        lines.append(f'  label: "{safe_label}"')
+        lines.append(f"  topic_type: {t_type}")
+        if "pillar_parents" in t and t["pillar_parents"]:
+            lines.append("  pillar_parents:")
+            for p in t["pillar_parents"]:
+                safe_p = str(p).replace('"', "'").strip()
+                lines.append(f'  - "{safe_p}"')
+        else:
+            lines.append("  pillar_parents: []")
+        if "aliases" in t and t["aliases"]:
+            lines.append("  aliases:")
+            for al in t["aliases"]:
+                safe_al = str(al).replace('"', "'").strip()
+                lines.append(f'  - "{safe_al}"')
+        if "belongs_to_audience" in t and t["belongs_to_audience"]:
+            lines.append("  belongs_to_audience:")
+            for a in t["belongs_to_audience"]:
+                safe_a = str(a).replace('"', "'").strip()
+                lines.append(f'  - "{safe_a}"')
+        else:
+            lines.append("  belongs_to_audience: []")
+        lines.append("")
+
+    tmp_path = f"{path}.tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines).rstrip() + "\n")
+    os.replace(tmp_path, path)
 
 def _read_md_file(filepath):
     try:
@@ -56,11 +101,16 @@ def merge_topic(args):
         print(json.dumps({"error": "Khong tim thay loser_id hoac survivor_id trong topic_map"}))
         sys.exit(1)
         
-    # Poka-Yoke: Cung pillar
+    # Poka-Yoke: Cung pillar va cung topic_type
     loser_prefix = args.loser_id.split('_')[0]
     survivor_prefix = args.survivor_id.split('_')[0]
     if loser_prefix != survivor_prefix:
         print(json.dumps({"error": "Khong the merge cross-pillar (khac prefix)"}))
+        sys.exit(1)
+    loser_type = str(loser_entry.get("topic_type") or "knowledge").strip().lower()
+    survivor_type = str(survivor_entry.get("topic_type") or "knowledge").strip().lower()
+    if loser_type != survivor_type:
+        print(json.dumps({"error": f"Khong the merge khac topic_type ({loser_type} vs {survivor_type})"}))
         sys.exit(1)
         
     # Cong don belongs_to_audience va aliases
@@ -71,7 +121,8 @@ def merge_topic(args):
     survivor_aliases = survivor_entry.get('aliases', [])
     if args.loser_id not in survivor_aliases:
         survivor_aliases.insert(0, args.loser_id)
-    loser_label = loser_entry.get('label', '')
+    loser_label = str(loser_entry.get('label', '')).strip()
+    survivor_label = str(survivor_entry.get('label', '')).strip()
     if loser_label and loser_label not in survivor_aliases:
         survivor_aliases.insert(0, loser_label)
         
@@ -83,56 +134,74 @@ def merge_topic(args):
     
     # Ghi lai topic_map (neu khong phai dry-run)
     if not args.dry_run:
-        with open(args.topic_map, 'w', encoding='utf-8') as f:
-            yaml.dump(topic_map, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        _write_topic_map_formatted(topic_map, args.topic_map)
             
-    # Quet tat ca atoms
+    # Quet tat ca atoms trong args.vault_root va bai viet trong vault/03-Content
     updated_files = []
-    for root, _, files in os.walk(args.vault_root):
-        if '_DLQ' in root or 'Audiences' in root:
-            continue
-        for file in files:
-            if not file.endswith('.md'):
+    abs_vault_arg = os.path.abspath(args.vault_root.rstrip("/\\"))
+    vault_base = os.path.dirname(abs_vault_arg) if os.path.basename(abs_vault_arg) == "01-Atomic" else abs_vault_arg
+    content_root = os.path.join(vault_base, "03-Content")
+    scan_roots = [args.vault_root]
+    if os.path.isdir(content_root) and os.path.normcase(content_root) != os.path.normcase(abs_vault_arg):
+        scan_roots.append(content_root)
+
+    def _is_topic_item_match(line_str, target_val):
+        if not target_val:
+            return False
+        s = line_str.strip()
+        if not s.startswith("- "):
+            return False
+        val = s[2:].strip().strip("'\"")
+        return val == target_val
+
+    for s_root in scan_roots:
+        for root, _, files in os.walk(s_root):
+            if '_DLQ' in root or 'Audiences' in root:
                 continue
-            
-            filepath = os.path.join(root, file)
-            content = _read_md_file(filepath)
-            if not content:
-                continue
+            for file in files:
+                if not file.endswith('.md'):
+                    continue
                 
-            # Parse frontmatter
-            match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
-            if not match:
-                print(f"[WARN] Frontmatter parse failed, bo qua: {filepath}")
-                continue
+                filepath = os.path.join(root, file)
+                content = _read_md_file(filepath)
+                if not content:
+                    continue
+                content_norm = content.replace('\r\n', '\n')
                 
-            frontmatter_text = match.group(1)
-            
-            # De dam bao an toan, tim kiem dong chua "- loser_id"
-            lines = frontmatter_text.split('\n')
-            new_lines = []
-            has_changes = False
-            has_survivor = any(f"- {args.survivor_id}" in l for l in lines)
-            
-            for line in lines:
-                if f"- {args.loser_id}" in line:
-                    has_changes = True
-                    if not has_survivor:
-                        # Thay the
-                        new_lines.append(line.replace(f"- {args.loser_id}", f"- {args.survivor_id}"))
-                        has_survivor = True
-                    else:
-                        # Bo qua (xoa dong)
-                        pass
-                else:
-                    new_lines.append(line)
+                # Parse frontmatter
+                match = re.match(r'^---\n(.*?)\n---', content_norm, re.DOTALL)
+                if not match:
+                    continue
                     
-            if has_changes:
-                new_frontmatter = '\n'.join(new_lines)
-                new_content = content.replace(f"---\n{frontmatter_text}\n---", f"---\n{new_frontmatter}\n---", 1)
-                if not args.dry_run:
-                    _write_md_file(filepath, new_content)
-                updated_files.append(filepath)
+                frontmatter_text = match.group(1)
+                lines = frontmatter_text.split('\n')
+                new_lines = []
+                has_changes = False
+                has_survivor_id = any(_is_topic_item_match(l, args.survivor_id) for l in lines)
+                has_survivor_lbl = any(_is_topic_item_match(l, survivor_label) for l in lines)
+                
+                for line in lines:
+                    if _is_topic_item_match(line, args.loser_id):
+                        has_changes = True
+                        if not has_survivor_id:
+                            indent = line[:len(line) - len(line.lstrip())]
+                            new_lines.append(f"{indent}- {args.survivor_id}")
+                            has_survivor_id = True
+                    elif loser_label and _is_topic_item_match(line, loser_label):
+                        has_changes = True
+                        if not has_survivor_lbl and survivor_label:
+                            indent = line[:len(line) - len(line.lstrip())]
+                            new_lines.append(f"{indent}- {survivor_label}")
+                            has_survivor_lbl = True
+                    else:
+                        new_lines.append(line)
+                        
+                if has_changes:
+                    new_frontmatter = '\n'.join(new_lines)
+                    new_content = content_norm.replace(f"---\n{frontmatter_text}\n---", f"---\n{new_frontmatter}\n---", 1)
+                    if not args.dry_run:
+                        _write_md_file(filepath, new_content)
+                    updated_files.append(filepath)
                 
     result = {
         "action": "merge-topic",
@@ -382,8 +451,7 @@ def merge_audience(args):
                 t['belongs_to_audience'] = aud_refs
                 
         if has_tm_changes and not args.dry_run:
-            with open(args.topic_map, 'w', encoding='utf-8') as f:
-                yaml.dump(topic_map, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+            _write_topic_map_formatted(topic_map, args.topic_map)
                 
     # 2. Quet toan bo Content Factory (tru .agents/) de replace references
     script_dir = os.path.dirname(os.path.abspath(__file__))

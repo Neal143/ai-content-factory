@@ -1,10 +1,10 @@
 /**
  * Tên file: main.ts
- * Last update: 29/10/2026 15:55 (GMT+7)
+ * Last update: 05/11/2026 14:27 (GMT+7)
  * Vai tro: Diem nhap (entry point) chinh cua plugin Content Compass trong Obsidian.
  * Duoc su dung khi nao?: Duoc Obsidian goi phuong thuc onload() khi bat plugin hoac khoi dong app.
  * Output: Dang ky View, Ribbon Icon, Command Palette, khoi tao cac Data Index/Store va lang nghe su kien cache + fs.watch.
- * Tom tat logic hoat dong: Khoi tao AudienceIndex, TagIndex, EngagementStore, dang ky DashboardView,
+ * Tom tat logic hoat dong: Khoi tao AudienceIndex, TagIndex, EngagementStore (lien ket ca TagIndex va AudienceIndex), dang ky DashboardView,
  * gan icon compass vao ribbon, command mo dashboard, tu dong refresh khi file thay doi (audience + engagement)
  * va kich hoat định kỳ Facebook Tracker.
  */
@@ -31,7 +31,7 @@ export default class ContentCompassPlugin extends Plugin {
 		// Khởi tạo các tầng dữ liệu (Data Layer)
 		this.audienceIndex = new AudienceIndex(this.app);
 		this.tagIndex = new TagIndex(this.app);
-		this.engagementStore = new EngagementStore(this.app, this.tagIndex);
+		this.engagementStore = new EngagementStore(this.app, this.tagIndex, this.audienceIndex);
 
 		// Dang ky View hien thi Dashboard
 		this.registerView(
@@ -68,8 +68,11 @@ export default class ContentCompassPlugin extends Plugin {
 			this.refreshOpenViews();
 			this.setupPipelineDirectoryWatcher();
 
-			// Kich hoat kiem tra lich quet Facebook Tracker sau khi khoi dong 10 giay
-			window.setTimeout(() => this.runDueFacebookTracker(), 10000);
+			// Kich hoat kiem tra lich quet Facebook Tracker va quet bu cac bai viet chua phan loai trong Viral Posts sau khi khoi dong 10 giay
+			window.setTimeout(() => {
+				this.runDueFacebookTracker();
+				this.runAutoClassifyViralPosts();
+			}, 10000);
 		});
 
 		// Dinh ky moi 5 phut kiem tra va chay cac muc da den han quet trong fb-watchlist.json
@@ -77,6 +80,16 @@ export default class ContentCompassPlugin extends Plugin {
 			window.setInterval(() => {
 				this.runDueFacebookTracker();
 			}, 5 * 60 * 1000)
+		);
+
+		// Tu dong kich hoat PostClassifierAgent khi co file .md moi duoc tao/tha vao 03-Content/Viral Posts/
+		this.registerEvent(
+			this.app.vault.on("create", async (file) => {
+				const normPath = file.path.replace(/\\/g, "/");
+				if (normPath.startsWith("03-Content/Viral Posts/") && normPath.endsWith(".md")) {
+					this.runAutoClassifyViralPosts();
+				}
+			})
 		);
 
 		// Lắng nghe sự thay đổi file trong vault để cập nhật index và dashboard tức thời
@@ -89,6 +102,9 @@ export default class ContentCompassPlugin extends Plugin {
 						this.refreshOpenViews();
 					}
 				} else if (normPath.startsWith("03-Content/")) {
+					if (this.audienceIndex) {
+						await this.audienceIndex.initialize();
+					}
 					if (this.engagementStore) {
 						await this.engagementStore.initialize();
 						this.refreshOpenViews();
@@ -157,6 +173,32 @@ export default class ContentCompassPlugin extends Plugin {
 			spawn(pyExe, [scriptPath, "--vault", vaultPath, "--run-due"], {
 				windowsHide: true,
 				stdio: "ignore",
+			});
+		} catch {
+			// Bo qua neu moi truong khong ho tro child_process
+		}
+	}
+
+	// Kich hoat ngam classify_vault_posts.py de tu dong phan loai cac bai viet chua co Audience/Tags trong 03-Content/Viral Posts
+	private runAutoClassifyViralPosts(): void {
+		try {
+			const { spawn } = require("child_process");
+			const path = require("path");
+			const adapter = this.app.vault.adapter as any;
+			const vaultPath = adapter?.basePath;
+			if (!vaultPath) return;
+
+			const pyExe = resolvePythonExe();
+			const scriptPath = path.resolve(vaultPath, "..", ".agents", "scripts", "classify_vault_posts.py");
+			const child = spawn(pyExe, [scriptPath, "--vault", vaultPath, "--all-unclassified"], {
+				windowsHide: true,
+				stdio: "ignore",
+			});
+			child.on("close", async () => {
+				if (this.audienceIndex) await this.audienceIndex.initialize();
+				if (this.tagIndex) await this.tagIndex.initialize();
+				if (this.engagementStore) await this.engagementStore.initialize();
+				this.refreshOpenViews();
 			});
 		} catch {
 			// Bo qua neu moi truong khong ho tro child_process

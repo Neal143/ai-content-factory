@@ -1,6 +1,6 @@
 """
 generate_coverage_preview.py
-Last update: 06/10/2026 14:35 (GMT+7)
+Last update: 10/11/2026 20:49 (GMT+7)
 Vai tro: Script me (Orchestrator & Data Aggregator) thu thap, chuan hoa toan bo du lieu Ma tran phu tri thuc tu Vault & Persona, sau do dieu phoi cac Renderer Modules con xuat file.
 Su dung khi:
   - Duoc goi boi factory-sync Obsidian plugin (khi vault co file sua/tao/xoa hoac layout ready).
@@ -118,7 +118,7 @@ def collect_coverage_data(factory_root):
         except Exception:
             pass
 
-    # 2. Load Topics from topic_map.yaml
+    # 2. Load Topics from topic_map.yaml (Chi dua topic_type == 'knowledge' vao ma tran kiem dinh do phu nguyen tu sach 01-Atomic/)
     topics = []
     topic_label_map = {}
     if os.path.exists(topic_map_path):
@@ -126,8 +126,17 @@ def collect_coverage_data(factory_root):
             with open(topic_map_path, "r", encoding="utf-8-sig", errors="ignore") as f:
                 t_yaml = yaml.safe_load(f)
                 if isinstance(t_yaml, dict):
-                    topics = t_yaml.get("topics", [])
-                    topic_label_map = {t["id"]: t.get("label", t["id"]) for t in topics}
+                    raw_topics = t_yaml.get("topics", [])
+                    topic_label_map = {
+                        t["id"]: t.get("label", t["id"])
+                        for t in raw_topics
+                        if isinstance(t, dict) and t.get("id")
+                    }
+                    topics = [
+                        t for t in raw_topics
+                        if isinstance(t, dict)
+                        and str(t.get("topic_type") or "knowledge").strip().lower() == "knowledge"
+                    ]
         except Exception:
             pass
 
